@@ -58,7 +58,7 @@ sub is_divided {
     $_[0] =~ /\@.+{[^}]+$/;
 }
 sub is_breakable {
-    $_[0] !~ /[\x20-\x7f]/; # ascii codes without space
+    $_[0] !~ /[\x20-\x7f]/; # ascii codes
 }
 sub is_exception {
     $_[0] =~ /^\@c|^\@set|^\@item|^\@node/;
@@ -98,7 +98,7 @@ sub get_valid_texinfo_data {
 sub subs_unexpected_break {
     my @dst = ();
     foreach my $line (@{$_[0]}){
-
+# nothing to do, now
     }
     return \@{$_[0]};
 }
