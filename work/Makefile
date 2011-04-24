@@ -4,7 +4,7 @@
 
 TARGET = org-ja.pdf
 
-TEXI = org.texi
+TEXI = ../org.texi
 TEXI_JA = org-ja.texi
 TEXI_JA_PATCH = org-ja.texi.patch
 TEX = ptex
