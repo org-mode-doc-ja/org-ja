@@ -17,7 +17,7 @@ print "Make a new texi file with valid wrap for generateing an INFO file\n";
 
 my $backup = 'org-ja_bak.texi';
 my $texinfo = 'org-ja.texi';
-my $wrap = '74';
+my $wrap = '72';
 my $stringcode = 'utf-8';
 
 # Backup the target file.
@@ -31,8 +31,12 @@ my @src = <IN>;
 close(IN);
 
 # Replace \p{UTF-8}\n\p{UTF-8} to \p{UTF-8}\p{UTF-8}
-&subs_unexpected_break(\@src);
-my $dst = &get_valid_texinfo_data(\@src);
+my $dst = &get_valid_texinfo_data(&subs_unexpected_break(\@src));
+
+#&subs_unexpected_break(\@src);
+#my $dst = &get_valid_texinfo_data(\@src);
+
+
 open(OUT,"> $texinfo") or die("ERROR: FAIL TO OPEN A FILE $!");
 foreach my $line (@{$dst}){
     chomp($line);
@@ -57,6 +61,10 @@ sub bytecount {
 sub is_divided {
     $_[0] =~ /\@.+{[^}]+$/;
 }
+sub is_utf {
+    $_[0] !~ /[\x20-\x7f]/; # ascii codes
+}
+
 sub is_breakable {
     $_[0] !~ /[\x20-\x7f]/; # ascii codes
 }
@@ -97,10 +105,38 @@ sub get_valid_texinfo_data {
 }
 sub subs_unexpected_break {
     my @dst = ();
+    my $buffer = "";
+    # 翻訳データ中の不用意な半角スペースを抑制可能．
     foreach my $line (@{$_[0]}){
-# nothing to do, now
+	chomp($line);
+	push(@dst,$line);
+	if($line eq ""){
+	    #buffer を解析
+	    my @words = split //, $buffer; # UTF を考慮して全文字を配列化
+	    for(my $i=1; $i<$#words-1; $i++){
+		if($words[$i] =~ /[\n]/ &&
+		   is_utf($words[$i-1])  && is_utf($words[$i+1])){
+		    print "hit ".$words[$i-1]."\t".$words[$i+1]."\n";
+		}
+	    }
+	    $buffer = "";
+	}else{
+	    $buffer .= $line."\n";
+	}
     }
-    return \@{$_[0]};
+
+#    for(my $i=0; $i<$#{$_[0]}; $i++){
+#	chomp(${$_[0]}[$i]);
+#	$buffer1 = ${$_[0]}[$i];
+#	print $buffer1."\n";
+#    }
+    return \@dst;
+}
+
+sub flash_buffer {
+    my($b1, $b2) = @_;
+    $$b1 = "";
+    $$b2 = "";
 }
 
 # This function will insert LF code into appropriate positions on line.
@@ -134,10 +170,14 @@ sub get_wraped_string {
 	    }else{                # texinfo code nesting
 		$code_stack[$#code_stack] .= $word;
 		# Insert a Line Feed code ( \n@hoge{ or @hoge{...\n)
-#		if($word_count >= $wrap){
+		if($word eq "}" && $code_stack[$#code_stack] =~ /^\@(.+){/){
+		    # 制御文が判明したらカウントを戻す
+		    $word_count -= &bytecount($1)+1; # 1 = (@,{,})-(`,')
+		}
 		if($word_count >= $wrap && &is_breakable($word)){
 		    if($code_stack[$#code_stack] =~ /^\@(.+){/){
 			if(&is_conflict_free($1)){
+			    # OK insert \n middle of the texinfo code
 			    $code_stack[$#code_stack] .= "\n";
 			}else{
 			    $code_stack[$#code_stack]
@@ -148,7 +188,7 @@ sub get_wraped_string {
 		    }
 		}
 		# Check completion of texinfo code (e.g. @hoge{ })
-		if($word =~ /^\}$/){
+		if($word eq "}"){
 		    if($#code_stack > 0){ # multiple nesting
 			$code_stack[$#code_stack-1]
 			    .= $code_stack[$#code_stack];

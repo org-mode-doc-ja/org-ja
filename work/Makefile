@@ -25,14 +25,14 @@ $(TARGET): $(TEXI) $(POT) $(PO) $(TEXI_JA) texinfo.tex
 	$(TEX) $(TEXOPTION) $(TEXI_JA)
 	dvipdfmx org-ja.dvi
 
-# -w 1000
+
 $(TEXI_JA): $(PO)
-	$(TRANSLATE) -f texinfo -m $(TEXI) -M UTF-8 -p $(PO) -l $(TEXI_JA) -k 0
+	$(TRANSLATE) -f texinfo -m $(TEXI) -M UTF-8 -p $(PO) -l $(TEXI_JA) -k 0  -w 1000
 	patch -p0 < org-ja.texi.patch
 	$(PERL) $(TEXIFMT) > texifmt.log
 
 $(INFO): $(TEXI_JA)
-	makeinfo --no-split $(TEXI_JA) -o $(INFO) --fill-column=72
+	makeinfo --no-split $(TEXI_JA) -o $(INFO) --fill-column=76
 
 $(POT): $(TEXI)
 	$(GETTEXTIZE) -f texinfo -m $(TEXI) -M UTF-8 -p $(POT)
