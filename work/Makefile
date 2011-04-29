@@ -13,6 +13,7 @@ TEXOPTION = '-kanji=utf8'
 POT = org.pot
 PO = ../org-ja.po
 INFO = org
+JINFO = org-ja
 TRANSLATE = po4a-translate
 GETTEXTIZE = po4a-gettextize
 TEXIFMT = texifmt.pl
@@ -33,6 +34,7 @@ $(TEXI_JA): $(PO)
 
 $(INFO): $(TEXI_JA)
 	makeinfo --no-split $(TEXI_JA) -o $(INFO) --fill-column=76
+	cp -f $(INFO) $(JINFO)
 
 $(POT): $(TEXI)
 	$(GETTEXTIZE) -f texinfo -m $(TEXI) -M UTF-8 -p $(POT)
