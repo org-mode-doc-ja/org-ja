@@ -12,7 +12,7 @@ PERL = perl
 TEXOPTION = '-kanji=utf8'
 POT = org.pot
 PO = ../org-ja.po
-INFO = org
+INFO = org-ja
 TRANSLATE = po4a-translate
 GETTEXTIZE = po4a-gettextize
 TEXIFMT = texifmt.pl
