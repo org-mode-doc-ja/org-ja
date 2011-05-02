@@ -16,6 +16,9 @@ INFO = org-ja
 TRANSLATE = po4a-translate
 GETTEXTIZE = po4a-gettextize
 TEXIFMT = texifmt.pl
+INFODIR = ./
+INSTALL_INFO = install-info
+CP = cp -f
 
 $(TARGET): $(TEXI) $(POT) $(PO) $(TEXI_JA) texinfo.tex
 	$(TEX) $(TEXOPTION) $(TEXI_JA)
@@ -24,7 +27,6 @@ $(TARGET): $(TEXI) $(POT) $(PO) $(TEXI_JA) texinfo.tex
 	texindex org-ja.??
 	$(TEX) $(TEXOPTION) $(TEXI_JA)
 	dvipdfmx org-ja.dvi
-
 
 $(TEXI_JA): $(PO)
 	$(TRANSLATE) -f texinfo -m $(TEXI) -M UTF-8 -p $(PO) -l $(TEXI_JA) -k 0  -w 1000
@@ -36,6 +38,13 @@ $(INFO): $(TEXI_JA)
 
 $(POT): $(TEXI)
 	$(GETTEXTIZE) -f texinfo -m $(TEXI) -M UTF-8 -p $(POT)
+
+install-info: $(INFO)
+	if [ ! -d $(INFODIR) ]; then mkdir $(INFODIR); else true; fi ;
+ifneq ($(INFODIR),./)
+	$(CP) $(INFO) $(INFODIR)
+endif
+	$(INSTALL_INFO) --info-file=$(INFO) --info-dir=$(INFODIR)
 
 info: $(INFO)
 texi: $(TEXI_JA)

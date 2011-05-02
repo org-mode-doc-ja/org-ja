@@ -460,41 +460,42 @@ Tags
 
 
 
-* Tag inheritance::          Tags use the tree structure of the outline
-* Setting tags::             How to assign tags to a headline
-* Tag searches::             Searching for combinations of tags
+* Tag inheritance::          アウトラインのツリー構造に沿ってタグ付けされ
+る
+* Setting tags::             見出しにタグをつける
+* Tag searches::             タグの組み合わせで検索する
 
-Properties and columns
+プロパティ（属性）とカラム（列）
 
 
 
-* Property syntax::          How properties are spelled out
-* Special properties::       Access to other Org-mode features
-* Property searches::        Matching property values
-* Property inheritance::     Passing values down the tree
-* Column view::              Tabular viewing and editing
-* Property API::             Properties for Lisp programmers
+* Property syntax::          プロパティの表記の仕方
+* Special properties::       他のorg-modeの機能を使用する
+* Property searches::        プロパティ値の一致作業
+* Property inheritance::     ツリー上でのプロパティの伝達
+* Column view::              表による表示と修正
+* Property API::             Lispプログラマのためのプロパティ
 
 Column view
 
 
 
-* Defining columns::         The COLUMNS format property
-* Using column view::        How to create and use column view
-* Capturing column view::    A dynamic block for column view
+* Defining columns::         カラムの書式のプロパティ
+* Using column view::        カラム表示の作り方と使い方
+* カラム表示の保存::  カラム表示用の動的ブロック
 
 Defining columns
 
 
 
-* Scope of column definitions::  Where defined, where valid?
-* Column attributes::        Appearance and content of a column
+* Scope of column definitions::  カラム設定の定義範囲の指定方法は？
+* Column attributes::        カラム内の表示と値
 
-Dates and times
+日付と時刻
 
 
 
-* Timestamps::               Assigning a time to a tree entry
+* Timestamps::               ツリーに時間の割り当て
 * Creating timestamps::      タイムスタンプを挿入するコマンド
 * Deadlines and scheduling::  作業計画をたてる
 * Clocking work time::       タスクに費す時間を追跡する
@@ -4302,9 +4303,10 @@ You may specify special faces for specific tags using the variable
 (@pxref{Faces for TODO keywords}).
 
 @menu
-* Tag inheritance::          Tags use the tree structure of the outline
-* Setting tags::             How to assign tags to a headline
-* Tag searches::             Searching for combinations of tags
+* Tag inheritance::          アウトラインのツリー構造に沿ってタグ付けされ
+る
+* Setting tags::             見出しにタグをつける
+* Tag searches::             タグの組み合わせで検索する
 @end menu
 
 @node Tag inheritance, Setting tags, Tags, Tags
@@ -4557,7 +4559,7 @@ description with many examples, see @ref{Matching tags and properties}.
 
 
 @node Properties and Columns, Date and Times, Tags, Top
-@chapter Properties and columns
+@chapter プロパティ（属性）とカラム（列）
 @cindex properties
 
 Properties are a set of key-value pairs associated with an entry.  There are
@@ -4577,12 +4579,12 @@ Properties can be conveniently edited and viewed in column view
 (@pxref{Column view}).
 
 @menu
-* Property syntax::          How properties are spelled out
-* Special properties::       Access to other Org-mode features
-* Property searches::        Matching property values
-* Property inheritance::     Passing values down the tree
-* Column view::              Tabular viewing and editing
-* Property API::             Properties for Lisp programmers
+* Property syntax::          プロパティの表記の仕方
+* Special properties::       他のorg-modeの機能を使用する
+* Property searches::        プロパティ値の一致作業
+* Property inheritance::     ツリー上でのプロパティの伝達
+* Column view::              表による表示と修正
+* Property API::             Lispプログラマのためのプロパティ
 @end menu
 
 @node Property syntax, Special properties, Properties and Columns, Properties and Columns
@@ -4794,9 +4796,9 @@ for the selected items.  Column view also works in agenda buffers
 from a number of files.
 
 @menu
-* Defining columns::         The COLUMNS format property
-* Using column view::        How to create and use column view
-* Capturing column view::    A dynamic block for column view
+* Defining columns::         カラムの書式のプロパティ
+* Using column view::        カラム表示の作り方と使い方
+* カラム表示の保存::  カラム表示用の動的ブロック
 @end menu
 
 @node Defining columns, Using column view, Column view, Column view
@@ -4808,8 +4810,8 @@ Setting up a column view first requires defining the columns.  This is done
 by defining a column format line.
 
 @menu
-* Scope of column definitions::  Where defined, where valid?
-* Column attributes::        Appearance and content of a column
+* Scope of column definitions::  カラム設定の定義範囲の指定方法は？
+* Column attributes::        カラム内の表示と値
 @end menu
 
 @node Scope of column definitions, Column attributes, Defining columns, Defining columns
@@ -4928,7 +4930,7 @@ and for the @samp{Approved} column, by providing an @samp{[X]} status if all
 children have been checked.  The @samp{CLOCKSUM} column is special, it lists
 the sum of CLOCK intervals in the subtree.
 
-@node Using column view, Capturing column view, Defining columns, Column view
+@node Using column view, カラム表示の保存, Defining columns, Column view
 @subsection Using column view
 
 @table @kbd
@@ -4975,8 +4977,8 @@ the current column.  @orgcmd{S-M-@key{left},org-columns-delete} Delete the
 current column.
 @end table
 
-@node Capturing column view, , Using column view, Column view
-@subsection Capturing column view
+@node カラム表示の保存, , Using column view, Column view
+@subsection カラム表示の保存
 
 Since column view is just an overlay over a buffer, it cannot be exported or
 printed directly.  If you want to capture a column view, use a
@@ -5060,7 +5062,7 @@ used by Emacs Lisp programs to work with properties and to implement
 features based on them.  For more information see @ref{Using the property API}.
 
 @node Date and Times, Capture - Refile - Archive, Properties and Columns, Top
-@chapter Dates and times
+@chapter 日付と時刻
 @cindex dates
 @cindex times
 @cindex タイムスタンプ
@@ -5073,7 +5075,7 @@ because timestamp is often used as indicating when something was created or
 last changed.  However, in Org-mode this term is used in a much wider sense.
 
 @menu
-* Timestamps::               Assigning a time to a tree entry
+* Timestamps::               ツリーに時間の割り当て
 * Creating timestamps::      タイムスタンプを挿入するコマンド
 * Deadlines and scheduling::  作業計画をたてる
 * Clocking work time::       タスクに費す時間を追跡する
@@ -7851,8 +7853,8 @@ Export a single iCalendar file containing entries from all agenda files.
 This is a globally available command, and also available in the agenda menu.
 
 @tsubheading{Exporting to a file} @orgcmd{C-x C-w,org-write-agenda}
-@cindex exporting agenda views
-@cindex agenda views, exporting
+@cindex アジェンダビューの出力
+@cindex アジェンダビュー（出力）
 @vindex org-agenda-exporter-settings
 Write the agenda view to a file.  Depending on the extension of the selected
 file name, the view will be exported as HTML (extension @file{.html} or
@@ -8057,7 +8059,7 @@ need to add the double-quotes around the value yourself.
 
 @node Exporting Agenda Views, Agenda column view, Custom agenda views, Agenda Views
 @section Exporting Agenda Views
-@cindex agenda views, exporting
+@cindex アジェンダビュー（出力）
 
 If you are away from your computer, it can be very useful to have a printed
 version of some agenda views to carry around.  Org-mode can export custom
@@ -8067,8 +8069,8 @@ files.  If you want to do this only occasionally, use the command
 
 @table @kbd
 @orgcmd{C-x C-w,org-write-agenda}
-@cindex exporting agenda views
-@cindex agenda views, exporting
+@cindex アジェンダビューの出力
+@cindex アジェンダビュー（出力）
 @vindex org-agenda-exporter-settings
 Write the agenda view to a file.  Depending on the extension of the selected
 file name, the view will be exported as HTML (extension @file{.html} or
