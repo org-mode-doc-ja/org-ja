@@ -17,7 +17,7 @@ print "Make a new texi file with valid wrap for generateing an INFO file\n";
 
 my $backup = 'org-ja_bak.texi';
 my $texinfo = 'org-ja.texi';
-my $wrap = '72';
+my $wrap = '76';
 my $stringcode = 'utf-8';
 
 # Backup the target file.
