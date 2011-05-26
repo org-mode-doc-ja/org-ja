@@ -17880,7 +17880,7 @@ msgstr "org-export-with-toc"
 #. type: Plain text
 #: org.texi:8620
 msgid "The table of contents is normally inserted directly before the first headline of the file.  If you would like to get it to a different location, insert the string @code{[TABLE-OF-CONTENTS]} on a line by itself at the desired location.  The depth of the table of contents is by default the same as the number of headline levels, but you can choose a smaller number, or turn off the table of contents entirely, by configuring the variable @code{org-export-with-toc}, or on a per-file basis with a line like"
-msgstr ""
+msgstr "目次は通常ファイルの最初の見出しの前に直接挿入されます．もしあなたが異なる場所に目次を挿入したいのなら，その場所に@code{[TABLE-OF-CONTENTS]}文字列を書いてください．目次の深さはデフォルトでは見出しのレベルの数と同じですが，@code{org-export-with-toc}変数を設定するか，ファイルに以下のように書くことによって，あなたはこれより小さな値に変更することも，目次を完全に表示させないようにすることも可能です．"
 
 #+glossary: level ( レベル|階層 ) /
 #. type: example
@@ -17890,20 +17890,22 @@ msgid ""
 "#+OPTIONS: toc:2          (only to two levels in TOC)\n"
 "#+OPTIONS: toc:nil        (no TOC at all)\n"
 msgstr ""
+"#+OPTIONS: toc:2          (目次に表示するレベルを2までとする)\n"
+"#+OPTIONS: toc:nil        (目次を表示しない)\n"
 
 #+glossary: headline ( 見出し ) / text ( テキスト|文章 ) /
 #. type: subheading
 #: org.texi:8627
 #, no-wrap
 msgid "Text before the first headline"
-msgstr ""
+msgstr "最初の見出しより前のテキスト"
 
 #+glossary: headline ( 見出し ) / text ( テキスト|文章 ) /
 #. type: cindex
 #: org.texi:8628
 #, no-wrap
 msgid "text before first headline, markup rules"
-msgstr ""
+msgstr "最初の見出しより前のテキスト，マークアップのルール"
 
 #. type: cindex
 #: org.texi:8629
@@ -17916,7 +17918,7 @@ msgstr "#+TEXT"
 #. type: Plain text
 #: org.texi:8635
 msgid "Org-mode normally exports the text before the first headline, and even uses the first line as the document title.  The text will be fully marked up.  If you need to include literal HTML, @LaTeX{}, or DocBook code, use the special constructs described below in the sections for the individual exporters."
-msgstr ""
+msgstr "Org-modeは通常最初の見出しの前にテキストをエクスポートし，最初の行を文書のタイトルにします．テキストは完全にマークアップされているでしょう．もしあなたがHTMLや@LaTeX{}，DocBookのような<リテラルを含めたい場合，独立したエクスポート機構のセクションで説明されている特別な構造を使います．"
 
 #. type: vindex
 #: org.texi:8636
@@ -17929,13 +17931,13 @@ msgstr "org-export-skip-text-before-1st-heading"
 #. type: Plain text
 #: org.texi:8642
 msgid "Some people like to use the space before the first headline for setup and internal links and therefore would like to control the exported text before the first headline in a different way.  You can do so by setting the variable @code{org-export-skip-text-before-1st-heading} to @code{t}.  On a per-file basis, you can get the same effect with @samp{#+OPTIONS: skip:t}."
-msgstr ""
+msgstr "多くの人々は内部リンクの設定のためとそのために異なる方法でエクスポートされた最初の見出しの前のテキストを制御する最初の見出しの前に空白を使うことを好みます．あなたは@code{orgexport-skip-text-before-1st-heading}変数をを@cde{t}にすることで設定することができます．ファイル中に設定する場合，あなたは@samp{#+OPTIONS: skip:t}とすることで同等の設定を行うことができます．"
 
 #+glossary: headline ( 見出し ) / text ( テキスト|文章 ) /
 #. type: Plain text
 #: org.texi:8646
 msgid "If you still want to have some text before the first headline, use the @code{#+TEXT} construct:"
-msgstr ""
+msgstr "もし，あなたがまだ最初の見出しの前にテキストを置きたいのであれば，@code{#+TEXT}構造を使います:"
 
 #+glossary: content ( コンテンツ|内容 ) / table ( テーブル ) / text ( テキスト|文章 ) /
 #. type: example
@@ -17947,13 +17949,17 @@ msgid ""
 "#+TEXT: [TABLE-OF-CONTENTS]\n"
 "#+TEXT: This goes between the table of contents and the first headline\n"
 msgstr ""
+"#+OPTIONS: skip:t\n"
+"#+TEXT: このテキストは*最初の*見出しの前に置かれます\n"
+"#+TEXT: [TABLE-OF-CONTENTS]\n"
+"#+TEXT: このテキストは目次と最初の見出しの間に置かれます"
 
 #+glossary: list ( リスト ) /
 #. type: cindex
 #: org.texi:8656
 #, no-wrap
 msgid "lists, markup rules"
-msgstr ""
+msgstr "リスト，マークアップのルール"
 
 #+glossary: plain list ( プレーンリスト|単純なリスト ) / list ( リスト ) / syntax ( 構文|シンタックス ) /
 #. type: Plain text
