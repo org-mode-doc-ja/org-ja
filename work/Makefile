@@ -20,7 +20,7 @@ INFODIR = ./
 INSTALL_INFO = install-info
 CP = cp -f
 
-$(TARGET): $(TEXI) $(POT) $(PO) $(TEXI_JA) texinfo.tex
+$(TARGET): $(TEXI) $(PO) $(TEXI_JA) texinfo.tex
 	$(TEX) $(TEXOPTION) $(TEXI_JA)
 	texindex org-ja.??
 	$(TEX) $(TEXOPTION) $(TEXI_JA)

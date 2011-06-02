@@ -268,7 +268,7 @@
 @end macro
 
 @copying
-This manual is for Org version @value{VERSION}.
+このマニュアルは，Org-mode @value{VERSION}に対応しています．
 
 Copyright @copyright{} 2004, 2005, 2006, 2007, 2008, 2009, 2010 Free
 Software Foundation, Inc.
@@ -301,7 +301,7 @@ document, as described in section 6 of the license.
 @titlepage
 @title Org Mode マニュアル
 
-@subtitle Release @value{VERSION}
+@subtitle リリース @value{VERSION}
 @author by Carsten Dominik
 with contributions by David O'Toole, Bastien Guerry, Philip Rooke, Dan
 Davison, Eric Schulte, and Thomas Dye
@@ -324,15 +324,15 @@ Davison, Eric Schulte, and Thomas Dye
 
 @menu
 * Introduction::             さあ、はじめよう
-* Document Structure::       A tree works like your brain
+* Document Structure::       ツリーはあなたの脳のように動作します．
 * Tables::                   Pure magic for quick formatting
-* Hyperlinks::               Notes in context
-* TODO Items::               Every tree branch can be a TODO item
-* Tags::                     Tagging headlines and matching sets of tags
-* Properties and Columns::   Storing information about an entry
-* Date and Times::           Making items useful for planning
+* Hyperlinks::               コンテクストにおけるノート
+* TODO Items::               全ツリーの枝をTODOアイテムになれます
+* Tags::                     見出しのタグ付けとタグの組み合せによる検索
+* Properties and Columns::   エントリーについての情報を保存する
+* Date and Times::           計画のためにアイテムを扱いやすくする
 * Capture - Refile - Archive::  The ins and outs for projects
-* Agenda Views::             Collecting information into views
+* Agenda Views::             さまざまな情報をビューにまとめて表示する
 * Markup::                   Prepare text for rich export
 * Exporting::                Sharing and publishing of notes
 * Publishing::               Create a web site of linked Org files
@@ -844,7 +844,7 @@ MobileOrg
 
 @node Introduction, Document Structure, Top, Top
 @chapter Introduction
-@cindex introduction
+@cindex はじめに
 
 @menu
 * Summary::                  Org-modeで何ができるか
@@ -856,32 +856,35 @@ MobileOrg
 
 @node Summary, Installation, Introduction, Introduction
 @section Summary
-@cindex summary
+@cindex 概要
 
-Org is a mode for keeping notes, maintaining TODO lists, and doing project
-planning with a fast and effective plain-text system.
+Org-modeはノートを保存したり，TODOリストを管理したり，プロジェクトの計画を素
+早く効率良く行うプレーンテキストのシステムのためのEmacsのモードです．
 
-Org develops organizational tasks around NOTES files that contain lists or
-information about projects as plain text.  Org is implemented on top of
-Outline mode, which makes it possible to keep the content of large files
-well structured.  Visibility cycling and structure editing help to work with
-the tree.  Tables are easily created with a built-in table editor.  Org
-supports TODO items, deadlines, timestamps, and scheduling.  It dynamically
-compiles entries into an agenda that utilizes and smoothly integrates much
-of the Emacs calendar and diary.  Plain text URL-like links connect to
-websites, emails, Usenet messages, BBDB entries, and any files related to
-the projects.  For printing and sharing of notes, an Org file can be
-exported as a structured ASCII file, as HTML, or (TODO and agenda items
-only) as an iCalendar file.  It can also serve as a publishing tool for a
-set of linked web pages.
+Org-modeは，複数のプロジェクトに関連するリストや情報を含んだ，プレーンなテキ
+スト形式のノートをまとめることで，組織的に結びついたタスクを管理します．Org-modeは
+，アウトラインモードを元に実装されています．そのため，大きなファイルの内容を
+わかりやすく構造化された状態に保つことが可能です．文書の見出しや本文の表示と
+非表示を切り替えて，全体を把握しながら文書を編集するときには，ツリー形式をと
+ると便利です．表は，ビルトインされたテーブルエディタで簡単に作ることができま
+す．Org-modeは，TODOアイテム，デッドライン，タイムスタンプ，そしてスケジュー
+ル管理に対応しています．スケジュール管理は，タスクを動的にアジェンダへ蓄積し
+ます．アジェンダは，Emacsのcalendarとdiaryの多くの機能を利用し，スムーズに統
+合しています．プレーンテキストのURLに似たリンクは，ウェブサイト，メール，ネッ
+トのメッセージ，BBDBのデータ，そして，プロジェクトに関連するどのようなファイ
+ルに対しても結びついています．印刷したりノートを共有するために，Org-modeのフ
+ァイルは，構造化されたアスキー形式のファイルやHTMLのファイル，または（TODOと
+アジェンダアイテムに限り）iCalendar形式のファイルにエクスポートできます．リン
+クの張られたウェブページ一式を公開するツールとしても役立ちます．
 
-As a project planning environment, Org works by adding metadata to outline
-nodes.  Based on this data, specific entries can be extracted in queries and
-create dynamic @i{agenda views}.
+プロジェクトを計画する環境として，Org-modeは，見出しとなるノードにメタデータ
+を追加することで動作します．そのメタデータに基づくことで，クエリの中から特定
+のエントリーを抽出でき，動的な@i{agenda views}を生成します．
 
-Org mode contains the Org Babel environment which allows you to work with
-embedded source code blocks in a file, to facilitate code evaluation,
-documentation, and literate programming techniques.
+Org-modeは，Org-Babel環境を含んでいます．この環境はあなたに次のようなことを許
+可します．すなわち，ファイルの中に組み込まれたソースコードのブロックを動作さ
+せること，コードの評価，文書化，そして，文芸的プログラミングを容易にすること
+です．
 
 Org's automatic, context-sensitive table editor with spreadsheet
 capabilities can be integrated into any major mode by activating the minor
@@ -1558,7 +1561,7 @@ or a right parenthesis@footnote{You can filter out any of them by configuring @c
 minimize confusion with normal text, those are limited to one character
 only.  Beyond that limit, bullets will automatically fallback to numbers.}.
 If you want a list to start with a different value (e.g.@: 20), start the
-text of the item with @code{[@@20]}@footnote{If there's a checkbox in the item, the cookie must be put @emph{before} the checkbox.  If you have
+text of the item with @@@code{[20]}@footnote{If there's a checkbox in the item, the cookie must be put @emph{before} the checkbox.  If you have
 activated alphabetical lists, you can also use counters like
 @code{[@@b]}.}.  Those constructs can be used in any item of the list in
 order to enforce a particular numbering.
@@ -2347,7 +2350,7 @@ You may reference a rectangular range of fields by specifying two field
 references connected by two dots @samp{..}.  If both fields are in the
 current row, you may simply use @samp{$2..$7}, but if at least one field is
 in a different row, you need to use the general @code{@@row$column} format
-at least for the first field (i.e the reference must start with @samp{@@} in
+at least for the first field (i.e the reference must start with @@@samp{} in
 order to be interpreted correctly).  Examples:
 
 @example
@@ -2356,7 +2359,7 @@ $P..$Q        @r{Range, using column names (see under Advanced)}
 @@2$1..@@4$3    @r{6 fields between these two fields}
 A2..C4        @r{Same as above}
 @@-1$-2..@@-1   @r{3 numbers from the column to the left, 2 up to current row}
-@@I..II        @r{Between first and second hline, short for @code{@@I..@@II}}
+@@I..II        @@@@@r{Between first and second hline, short for @code{I..II}}
 @end example
 
 @noindent Range references return a vector of values that can be fed
@@ -2556,7 +2559,7 @@ embed them in list or vector syntax.  Here are a few examples---note how the
 @cindex formula, for range of fields
 
 To assign a formula to a particular field, type it directly into the field,
-preceded by @samp{:=}, for example @samp{:=vsum(@@II..III)}.  When you press
+preceded by @samp{:=}, for example @@@samp{:=vsum(II..III)}.  When you press
 @key{TAB} or @key{RET} or @kbd{C-c C-c} with the cursor still in the field,
 the formula will be stored as the formula for this field, evaluated, and the
 current field will be replaced with the result.
@@ -2951,10 +2954,10 @@ content of the data file.
 
 @node Hyperlinks, TODO Items, Tables, Top
 @chapter Hyperlinks
-@cindex hyperlinks
+@cindex ハイパーリンク
 
-Like HTML, Org provides links inside a file, external links to other files,
-Usenet articles, emails, and much more.
+HTMLのように、Org-modeはファイル内でリンクしたり、他のファイルやUsenetの記事
+やメールなど、外部へリンクしたりすることができます。
 
 @menu
 * Link format::              Org-modeでのリンクのフォーマット
@@ -2969,7 +2972,7 @@ Usenet articles, emails, and much more.
 
 @node Link format, Internal links, Hyperlinks, Hyperlinks
 @section Link format
-@cindex link format
+@cindex リンクのフォーマット
 @cindex format, of links
 
 Org will recognize plain URL-like links and activate them as clickable
@@ -3467,16 +3470,17 @@ implementation example.  See the file @file{org-bibtex.el}.
 @chapter TODOアイテム
 @cindex TODOアイテム
 
-Org-mode does not maintain TODO lists as separate documents@footnote{Of course, you can make a document that contains only long lists of TODO items,
-but this is not required.}.  Instead, TODO items are an integral part of the
-notes file, because TODO items usually come up while taking notes! With Org
-mode, simply mark any entry in a tree as being a TODO item.  In this way,
-information is not duplicated, and the entire context from which the TODO
-item emerged is always present.
+Org-modeではTODOリストを個別の文書として管理するわけではありません。
+@footnote{もちろん、長いTODOリストだけを含む個別の文書を作成することもできますが、そうする必要はないということです。}そ
+の変りに、TODOアイテムはノートファイルの一部として存在します。なぜならTODOア
+イテムはメモを書いている最中に頭に浮かぶものだからです!Org-modeでは、ツリーの
+中のどの項目でも簡単にマークしてTODOアイテムとするだけです。この方法により特
+定の情報を複数個所にもつ必要は無くなり、TODOアイテムを作成するのに使用した全
+文書が常に最新であることになります。
 
-Of course, this technique for managing TODO items scatters them throughout
-your notes file.  Org-mode compensates for this by providing methods to give
-you an overview of all the things that you have to do.
+もちろん、こうした手法をとることで、あなたのノートファイルの中のあちこちに、
+TODOアイテムが散らばることになります。それを補うためにOrg-modeでは、やらなけ
+ればならない事柄の全体を見渡す方法が提供されています。
 
 @menu
 * TODO basics::              登録したTODOのマーキングと表示
@@ -3488,34 +3492,36 @@ you an overview of all the things that you have to do.
 @end menu
 
 @node TODO basics, TODO extensions, TODO Items, TODO Items
-@section Basic TODO functionality
+@section 基本的なTODOの機能
 
-Any headline becomes a TODO item when it starts with the word @samp{TODO},
-for example:
+どの見出しでも@samp{TODO}という言葉を前につけることで、TODOアイテムとみなします。
+例えば:
 
 @example
-*** TODO Write letter to Sam Fortune
+*** TODO サム フォーチュンに手紙を書く。
 @end example
 
 @noindent
-The most important commands to work with TODO entries are:
+TODO項目を入力するときの重要なコマンドは以下のとおりです。
 
 @table @kbd
 @orgcmd{C-c C-t,org-todo}
-@cindex cycling, of TODO states
-Rotate the TODO state of the current item among
+@cindex TODOの状況の切り替え
+現在のTODOの状況を次のように切り替えます。
 
 @example
-,-> (unmarked) -> TODO -> DONE --.
-'--------------------------------'
+,-> (マーク無し) -> TODO -> DONE --.
+'----------------------------------'
 @end example
 
-The same rotation can also be done ``remotely'' from the timeline and agenda
-buffers with the @kbd{t} command key (@pxref{Agenda commands}).
+同じような状況の切り替えは、タイムラインとアジェンダバッファで@kbd{t}コマンドキー
+（@pxref{Agenda commands}参照）を入力することで「リモートで」完了にすることもできま
+す。
 
-@orgkey{C-u C-c C-t} Select a specific keyword using completion or (if it
-has been set up)  the fast selection interface.  For the latter, you need to
-assign keys to TODO states, see @ref{Per-file keywords}, and @ref{Setting tags}, for more information.
+@orgkey{C-u C-c C-t}補完や「すでに設定されていれば」さらに速い選択方法を提供するイン
+ターフェイスを使用して特定のキーワードを選択します。後者の方法では、TODOの状
+況に対してキーを割り振る必要があります。詳細は、@ref{Per-file keywords}と@ref{Setting tags}を
+参照してください。
 
 @kindex S-@key{right}
 @kindex S-@key{left}
@@ -3900,7 +3906,7 @@ the setting of this variable for a subtree by setting a
 
 Since it is normally too much to record a note for every state, Org-mode
 expects configuration on a per-keyword basis for this.  This is achieved by
-adding special markers @samp{!} (for a timestamp) and @samp{@@} (for a note)
+adding special markers @samp{!} (for a timestamp) and @@@samp{} (for a note)
 in parentheses after each keyword.  For example, with the setting
 
 @lisp
@@ -4499,7 +4505,7 @@ mode, the first @kbd{C-c} will display the selection window.
 @noindent
 This method lets you assign tags to a headline with very few keys.  With the
 above setup, you could clear the current tags and set @samp{@@home},
-@samp{laptop} and @samp{pc} tags with just the following keys: @kbd{C-c C-c @key{SPC} h l p @key{RET}}.  Switching from @samp{@@home} to @samp{@@work}
+@samp{laptop} and @samp{pc} tags with just the following keys: @kbd{C-c C-c @key{SPC} h l p @key{RET}}.  Switching from @@@samp{home} to @@@samp{work}
 would be done with @kbd{C-c C-c w @key{RET}} or alternatively with @kbd{C-c C-c C-c w}.  Adding the non-predefined tag @samp{Sarah} could be done with
 @kbd{C-c C-c @key{TAB} S a r a h @key{RET} @key{RET}}.
 
@@ -4864,7 +4870,7 @@ The individual parts have the following meaning:
                 @{:mean@}   @r{Arithmetic mean of time values.}
                 @{@@min@}    @r{Minimum age (in days/hours/mins/seconds).}
                 @{@@max@}    @r{Maximum age (in days/hours/mins/seconds).}
-                @{@@mean@}   @r{Arithmetic mean of ages (in days/hours/mins/seconds).}
+                @@@{mean@}   @r{Arithmetic mean of ages (in days/hours/mins/seconds).}
                 @{est+@}    @r{Add low-high estimates.}
 @end example
 
@@ -6653,50 +6659,48 @@ including inherited tags and approximate position in the outline.
 
 @node Agenda Views, Markup, Capture - Refile - Archive, Top
 @chapter アジェンダビュー
-@cindex agenda views
+@cindex アジェンダビュー
 
-Due to the way Org works, TODO items, time-stamped items, and tagged
-headlines can be scattered throughout a file or even a number of files.  To
-get an overview of open action items, or of events that are important for a
-particular date, this information must be collected, sorted and displayed in
-an organized way.
+Org-modeで作業した結果、TODOアイテム、タイムスタンプのついたアイテム、タグの
+付いた見出しなどが、1つのファイル、あるいはいくつものファイルにまたがって、撒
+き散らされることとなります。ある特定の日に重要な、実際に動いているアイテムや
+イベントの全体像を把握するためには、ひとつの管理された方法で、これらの情報を
+集めたり、並び替えたりしながら、表示することが必要です。
 
-Org can select items based on various criteria and display them in a
-separate buffer.  Seven different view types are provided:
+Org-modeでは、いろいろな基準によってアイテムを選択することが可能であり、独立
+したバッファにそれらのアイテムを表示させることができます。７つの異なるビュー
+のタイプが用意されています。：
 
 @itemize @bullet
 @item
-an @emph{agenda} that is like a calendar and shows information for specific
-dates,
+@emph{アジェンダ}　カレンダーのように指定した日付の情報を表示します、
 @item
-a @emph{TODO list} that covers all unfinished action items,
+@emph{TODOリスト}　未完了のアクションアイテムをカバーします、
 @item
-a @emph{match view}, showings headlines based on the tags, properties, and
-TODO state associated with them,
+@emph{マッチビュー}　関連づけられているタグやプロパティ、TODOの状態に基づいて見出
+しを表示します、
 @item
-a @emph{timeline view} that shows all events in a single Org file, in
-time-sorted view,
+@emph{タイムラインビュー}　1つのOrg-modeのファイルの中に含まれている全てのイベント
+を時間順のビューに表示します、
 @item
-a @emph{text search view} that shows all entries from multiple files that
-contain specified keywords,
+a @emph{テキストの検索ビュー}　複数のファイルの中かから、指定したキーワードを含ん
+でいるすべてのエントリーを表示します、
 @item
-a @emph{stuck projects view} showing projects that currently don't move
-along, and
+a @emph{詳細が未決定のプロジェクトビュー}　現在作業が進んでいないプロジェクトを表
+示します。そして、
 @item
-@emph{custom views} that are special searches and combinations of different
-views.
+@emph{カスタムビュー}　特別な検索や異なるビューの組合せによるビューです。
 @end itemize
 
 @noindent
-The extracted information is displayed in a special @emph{agenda buffer}.
-This buffer is read-only, but provides commands to visit the corresponding
-locations in the original Org files, and even to edit these files remotely.
+抽出された情報は特別な@emph{アジェンダバッファ}に表示されます。このバッファはリー
+ドオンリーですが、オリジナルのOrg-modeファイルにジャンプしたり、オリジナルの
+ファイルを間接的に編集することができます。  
 
 @vindex org-agenda-window-setup
 @vindex org-agenda-restore-windows-after-quit
-Two variables control how the agenda buffer is displayed and whether the
-window configuration is restored when the agenda exits:
-@code{org-agenda-window-setup} and
+２つの変数によって、アジェンダバッファをどのように表示するか、アジェンダが存
+在したときに、ウインドウの設定を元に戻すかどうかをコントロールします。；@code{org-agenda-window-setup}と
 @code{org-agenda-restore-windows-after-quit}.
 
 @menu
@@ -6713,120 +6717,128 @@ window configuration is restored when the agenda exits:
 
 @node Agenda files, Agenda dispatcher, Agenda Views, Agenda Views
 @section Agenda files
-@cindex agenda files
-@cindex files for agenda
+@cindex アジェンダファイル
+@cindex アジェンダ用のファイル
 
 @vindex org-agenda-files
-The information to be shown is normally collected from all @emph{agenda files}, the files listed in the variable @code{org-agenda-files}@footnote{If the value of that variable is not a list, but a single file name, then the
-list of agenda files will be maintained in that external file.}. If a
-directory is part of this list, all files with the extension @file{.org} in
-this directory will be part of the list.
+表示される情報は、通常すべての@emph{アジェンダファイル}から収集されます。アジェン
+ダファイルは@code{org-agenda-files}
+@footnote{もしもその変数の値がリストではなく、単独のファイル名の場合には、その外部ファイルの中に記載されているアジェンダファイルの名前となります。}変
+数にリスト化されたファイルが対象となります。もしもこのリストの中にディレクト
+リ名が記載されていたら、
+そのディレクトリの中にある@file{.org}という拡張子がついた全てのファイルが、アジェ
+ンダファイルの対象となります。
 
-Thus, even if you only work with a single Org file, that file should be put
-into the list@footnote{When using the dispatcher, pressing @kbd{<} before
-selecting a command will actually limit the command to the current file, and
-ignore @code{org-agenda-files} until the next dispatcher command.}.  You can
-customize @code{org-agenda-files}, but the easiest way to maintain it is
-through the following commands
+したがって、たとえあなたが1つのOrg-modeファイルでしか作業をしていなくても、こ
+のファイルをそのリスト
+@footnote{コマンド選択画面を使用しているときに、コマンドを選択する前に、@kbd{<}を押すと、編集中のファイルに対するコマンドが制限されて、次のコマンド選択画面でコマンドが入力されるまで、@code{org-agenda-files}は無視されます。}に
+記載したことになるでしょう。@code{org-agenda-files}をカスタマイズすることが可能で
+、しかも以下に述べるコマンドを通して簡単な方法で維持することができます。
 
-@cindex files, adding to agenda list
+@cindex ファイル、アジェンダリストに追加する
 @table @kbd
-@orgcmd{C-c [,org-agenda-file-to-front} Add current file to the list of
-agenda files.  The file is added to the front of the list.  If it was
-already in the list, it is moved to the front.  With a prefix argument, file
-is added/moved to the end.  @orgcmd{C-c ],org-remove-file} Remove current
-file from the list of agenda files.
+@orgcmd{C-c [,org-agenda-file-to-front}　アジェンダファイルのリストに編集中のファイ
+ルを追加する。そのファイルは、リストの先頭に追加される。もしも既にリストに存
+在していたら、先頭に移動する。前置引数をつけることで、リストの最後に追加／移
+動する。@orgcmd{C-c ],org-remove-file}　編集中のファイルをアジェンダファイルのリスト
+から削除する。
 @kindex C-,
 @orgcmd{C-',org-cycle-agenda-files}
 @itemx C-,
-Cycle through agenda file list, visiting one file after the other.
+アジェンダファイルのリストに従って、1つのファイルから次のファイルへと切り替え
+る。
 @kindex M-x org-iswitchb
 @item M-x org-iswitchb
-Command to use an @code{iswitchb}-like interface to switch to and between
-Org buffers.
+@code{iswitchb}と似たようなインターフェースでOrg-modeのバッファの間を切り替えるコマンド。
 @end table
 
 @noindent
-The Org menu contains the current list of files and can be used to visit any
-of them.
+Org-modeメニューには、現時点のファイルのリストが含まれており、その中のファイ
+ルに移動するのに役立ちます。
 
-If you would like to focus the agenda temporarily on a file not in this
-list, or on just one file in the list, or even on only a subtree in a file,
-then this can be done in different ways.  For a single agenda command, you
-may press @kbd{<} once or several times in the dispatcher (@pxref{Agenda dispatcher}).  To restrict the agenda scope for an extended period, use the
-following commands:
+もしもこのリストに載っているファイルではなく、作業中のアジェンダファイルに焦
+点をあてたかったり、リストにあるファイルのまさにひとつのファイルに焦点をあて
+たかったり、はたまたあるファイルの中のあるサブツリーに焦点をあてたかったりし
+たいときは、いくつかの方法が用意されています。単一のアジェンダコマンドとして
+、コマンド選択画面上
+(@pxref{Agenda dispatcher})で@kbd{<}を1回ないし数回押すとよいのです。アジェンダの対象を
+ある限定した期間に絞り込むために以下のコマンドが用意されています。：
 
 @table @kbd
-@orgcmd{C-c C-x <,org-agenda-set-restriction-lock} Permanently restrict the
-agenda to the current subtree.  When with a prefix argument, or with the
-cursor before the first headline in a file, the agenda scope is set to the
-entire file.  This restriction remains in effect until removed with @kbd{C-c C-x >}, or by typing either @kbd{<} or @kbd{>} in the agenda dispatcher.  If
-there is a window displaying an agenda view, the new restriction takes
-effect immediately.  @orgcmd{C-c C-x >,org-agenda-remove-restriction-lock}
-Remove the permanent restriction created by @kbd{C-c C-x <}.
+@orgcmd{C-c C-x <,org-agenda-set-restriction-lock}アジェンダの対象を現在カーソルが置
+かれているサブツリーに固定的に制限します。前置引数をつけたり、ファイルの最初
+の見出しよりも前にカーソルが置かれているときには、アジェンダの対象範囲はファ
+イル全体になります。この制約は@kbd{C-c C-x
+>}を実行して取り除くか、@kbd{<}または@kbd{>}をアジェンダのコマンド選択画面上で入力す
+るまでは維持します。もしもウインドウ上にアジェンダビューが表示されているなら
+ば、あたらしい制約が即座に効果を及ぼします。@orgcmd{C-c C-x >,org-agenda-remove-restriction-lock}@kbd{C-c C-x <}で
+作成された固定する制限を削除します。
 @end table
 
 @noindent
-When working with @file{speedbar.el}, you can use the following commands in
-the Speedbar frame:
+@file{speedbar.el}を併用しているときは、Speedbarのフレームの中で以下のコマンドを使
+用することができます。
 @table @kbd
-@orgcmdtkc{< @r{in the speedbar frame},<,org-speedbar-set-agenda-restriction} Permanently restrict the
-agenda to the item---either an Org file or a subtree in such a file---at the
-cursor in the Speedbar frame.  If there is a window displaying an agenda
-view, the new restriction takes effect immediately.  @orgcmdtkc{> @r{in the speedbar frame},>,org-agenda-remove-restriction-lock} Lift the restriction.
+@orgcmdtkc{< @r{in the speedbar frame},<,org-speedbar-set-agenda-restriction}　Speedbarのフレ
+ームの中で、1つのOrg-modeファイルか、そのファイルのサブツリーの一つか、カーソ
+ルの置かれているアイテムに対応してアジェンダを恒久的に限定します。もしもアジ
+ェンダビューが表示されているウインドウがあるならば、限定箇所が変更されると即
+座に反映する。@orgcmdtkc{> @r{in the speedbar frame},>,org-agenda-remove-restriction-lock}　制
+限をふたたび解除する。
 @end table
 
 @node Agenda dispatcher, Built-in agenda views, Agenda files, Agenda Views
-@section The agenda dispatcher
-@cindex agenda dispatcher
-@cindex dispatching agenda commands
-The views are created through a dispatcher, which should be bound to a
-global key---for example @kbd{C-c a} (@pxref{Installation}).  In the
-following we will assume that @kbd{C-c a} is indeed how the dispatcher is
-accessed and list keyboard access to commands accordingly.  After pressing
-@kbd{C-c a}, an additional letter is required to execute a command.  The
-dispatcher offers the following default commands:
+@section アジェンダのコマンド選択画面
+@cindex アジェンダのコマンド選択画面
+@cindex アジェンダのコマンドを選択する
+グローバルなキーと結びついている、コマンド選択画面を通してそのビューは作成さ
+れます。---例えば、@kbd{C-c a}
+(@pxref{Installation})のように。以下のように、コマンド選択画面にアクセスする方法と
+して@kbd{C-c a}を想定しており、キーボードでコマンドにアクセスするためのリストが表
+示されています。@kbd{C-c a}を入力した後、コマンドを実行するために、次に入力する文
+字を要求します。コマンド選択画面では以下に記載するデフォルトのコマンドが提供
+されています。
 @table @kbd
 @item a
-Create the calendar-like agenda (@pxref{Weekly/daily agenda}).
+カレンダーのようなアジェンダを作成します。(@pxref{Weekly/daily agenda})
 @item t @r{/} T
-Create a list of all TODO items (@pxref{Global TODO list}).
+すべてのTODOアイテムのリストを作成します。 (@pxref{Global TODO list})
 @item m @r{/} M
-Create a list of headlines matching a TAGS expression (@pxref{Matching tags and properties}).
+タグの表記にマッチした見出しのリストを作成します。(@pxref{Matching tags and properties})
 @item L
-Create the timeline view for the current buffer (@pxref{Timeline}).
+カレントバッファ用のタイムラインのビューを作成します。(@pxref{Timeline})
 @item s
-Create a list of entries selected by a boolean expression of keywords and/or
-regular expressions that must or must not occur in the entry.
+そのエントリーに存在するしないにかかわらず、and/orという正規表現によるキーワ
+ードの論理式で選択したエントリのリストを作成します。
 @item /
 @vindex org-agenda-text-search-extra-files
-Search for a regular expression in all agenda files and additionally in the
-files listed in @code{org-agenda-text-search-extra-files}.  This uses the
-Emacs command @code{multi-occur}.  A prefix argument can be used to specify
-the number of context lines for each match, default is 1.
+すべてのアジェンダファイルと@code{org-agenda-text-search-extra-files}の中でリスト
+化かれているファイルの中から正規表現を用いて検索します。これはEmacsの@code{multi-occur}と
+いうコマンドを使用します。前置引数をつけると、それぞれのマッチした行の状況の
+数をしていすることができます。デフォルトは1となっています。
 @item # @r{/} !
-Create a list of stuck projects (@pxref{Stuck projects}).
+詳細が未決定のプロジェクトのリストを作成します。(@pxref{Stuck projects})
 @item <
-Restrict an agenda command to the current buffer@footnote{For backward compatibility, you can also press @kbd{1} to restrict to the current
-buffer.}.  After pressing @kbd{<}, you still need to press the character
-selecting the command.
+カレントバッファ
+@footnote{逆の互換性として、@kbd{1}をカレントバッファを制限するために入力することもできます。}に対してアジェンダコマンドを制限します。@kbd{<}を入
+力したあと、コマンドを選択するために文字を入力する必要があります。
 @item < <
-If there is an active region, restrict the following agenda command to the
-region.  Otherwise, restrict it to the current subtree@footnote{For backward compatibility, you can also press @kbd{0} to restrict to the current
-region/subtree.}.  After pressing @kbd{< <}, you still need to press the
-character selecting the command.
+もしもアクティブなリージョンがあるときは、以下のようなアジェンダコマンドがそ
+のリージョンに限定されます。一方、カレントのサブツリー
+@footnote{逆の互換性として、カレントリージョンまたはカレントサブツリーに限定するために@kbd{0}を入力することもできます。.}に
+限定することもできます。@kbd{< <}を入力したあと、コマンドを選択する文字を入力する
+必要があります。
 @end table
 
-You can also define custom commands that will be accessible through the
-dispatcher, just like the default commands.  This includes the possibility
-to create extended agenda buffers that contain several blocks together, for
-example the weekly agenda, the global TODO list and a number of special tags
-matches.  @xref{Custom agenda views}.
+あなたは、あたかもデフォルトのコマンドのように、コマンド選択画面でアクセスす
+るカスタムコマンドを定義することもできます。複数のブロックを同時に含めた拡張
+されたアジェンダバッファを作成する可能性を含んでいます。例えば週のアジェンダ
+、グローバルなTODOリスト、そして多数の特定タグの検索など。@xref{Custom agenda views}.
 
 @node Built-in agenda views, Presentation and sorting, Agenda dispatcher, Agenda Views
 @section agendaに組み込まれているビュー
 
-In this section we describe the built-in views.
+このセクションではビルトインビューについて説明します。
 
 @menu
 * Weekly/daily agenda::      現在のタスクが表示されたカレンダーのページ
@@ -6838,71 +6850,72 @@ In this section we describe the built-in views.
 @end menu
 
 @node Weekly/daily agenda, Global TODO list, Built-in agenda views, Built-in agenda views
-@subsection The weekly/daily agenda
-@cindex agenda
-@cindex weekly agenda
-@cindex daily agenda
+@subsection 1週間／1日のアジェンダ
+@cindex アジェンダ
+@cindex 1週間のアジェンダ
+@cindex 1日のアジェンダ
 
-The purpose of the weekly/daily @emph{agenda} is to act like a page of a
-paper agenda, showing all the tasks for the current week or day.
+1週間の／1日の@emph{アジェンダ}の目的は、その週あるいはその日のタスクをすべて表示
+して、紙のアジェンダのページのように、実行に移すことです。
 
 @table @kbd
 @cindex org-agenda, command
-@orgcmd{C-c a a,org-agenda-list} Compile an agenda for the current week from
-a list of Org files.  The agenda shows the entries for each day.  With a
-numeric prefix@footnote{For backward compatibility, the universal prefix @kbd{C-u} causes all TODO entries to be listed before the agenda.  This
-feature is deprecated, use the dedicated TODO list, or a block agenda
-instead (@pxref{Block agenda}).} (like @kbd{C-u 2 1 C-c a a}) you may set
-the number of days to be displayed.
+@orgcmd{C-c a a,org-agenda-list}　Org-modeのファイルのリストの中からその週の予定を収
+集するものです。予定はそれぞれの日に表示されます。（@kbd{C-u 2 1 C-c a
+a}のように)前置引数に数字をつけて
+@footnote{逆方向の互換性のために、普遍的な前置引数@kbd{C-u}をつけることでアジェンダ（予定表）より上に、TODOリストを書き出すことができます。この機能は軽視されており、専用のTODOリストやブロックアジェンダ(@pxref{Block agenda}).をその代わりに利用することが多いです。}表
+示する日数を設定することができます。
 @end table
 
 @vindex org-agenda-span
 @vindex org-agenda-ndays
-The default number of days displayed in the agenda is set by the variable
-@code{org-agenda-span} (or the obsolete @code{org-agenda-ndays}).  This
-variable can be set to any number of days you want to see by default in the
-agenda, or to a span name, such a @code{day}, @code{week}, @code{month} or
-@code{year}.
+表示されるデフォルトの日数は、@code{org-agenda-span}(あるいは古くさくなってしまい
+ましたが@code{org-agenda-ndays})という変数で設定します。この変数は、アジェンダの中
+でデフォルトとして確認したい日数、あるいは、期間を示す@code{day}、@code{week}、@code{month}や
+@code{year}といった期間を示す名前をつけて設定します。
 
-Remote editing from the agenda buffer means, for example, that you can
-change the dates of deadlines and appointments from the agenda buffer.  The
-commands available in the Agenda buffer are listed in @ref{Agenda commands}.
+アジェンダバッファからリモートで編集するとは、例えば、アジェンダバッファの中
+でデッドラインやアポイントメントの日付を変更することができるという意味です。
+アジェンダバッファの中で利用できるコマンドは、@ref{Agenda commands}の中で一覧表に
+しています。
 
-@subsubheading Calendar/Diary integration
-@cindex calendar integration
-@cindex diary integration
+@subsubheading カレンダー／日記の統合
+@cindex カレンダーの統合
+@cindex 日記の統合
 
-Emacs contains the calendar and diary by Edward M. Reingold.  The calendar
-displays a three-month calendar with holidays from different countries and
-cultures.  The diary allows you to keep track of anniversaries, lunar
-phases, sunrise/set, recurrent appointments (weekly, monthly) and more.  In
-this way, it is quite complementary to Org.  It can be very useful to
-combine output from Org with the diary.
+Emacsには、Edward
+M.
+Reingoldによって開発されたカレンダーと日記の機能があります。カレンダーでは、
+国や文化の異なる祝祭日を備えた3ヵ月分のカレンダーが表示されます。日記には記念
+日、月の満ち欠け、日の出日の入り、繰り返しの予定（隔週、隔月）などを記録して
+おくことができます。このような機能は、Org-modeに対して大変補完的な関係にあり
+ます。日記とOrg-modeの出力を結びつけることは大変有益です。
 
-In order to include entries from the Emacs diary into Org-mode's agenda, you
-only need to customize the variable
+Emacsの日記からOrg-modeのアジェンダに項目を落とし込むために、あなたは次のよう
+に変数を設定するだけです。
 
 @lisp
 (setq org-agenda-include-diary t)
 @end lisp
 
 @noindent After that, everything will happen automatically.  All diary
-entries including holidays, anniversaries, etc., will be included in the
-agenda buffer created by Org-mode.  @key{SPC}, @key{TAB}, and @key{RET} can
-be used from the agenda buffer to jump to the diary file in order to edit
-existing diary entries.  The @kbd{i} command to insert new entries for the
-current date works in the agenda buffer, as well as the commands @kbd{S},
-@kbd{M}, and @kbd{C} to display Sunrise/Sunset times, show lunar phases and
-to convert to other calendars, respectively.  @kbd{c} can be used to switch
-back and forth between calendar and agenda.
+祝祭日や記念日などを含むすべての項目は、Org-modeで作成されるジェンダバッファ
+に取り込むことができます。日記に記録されている項目を編集するために、アジェン
+ダバッファ上で@key{SPC}、
+@key{TAB}、及び
+@key{RET}を入力することで、日記のファイルにジャンプすることができます。その日に新
+しいエントリーを挿入する@kbd{i}というコマンドはアジェンダバッファ上で動作します。
+あたかも、日の出日の入りの時刻を表示したり、月の満ち欠けの状態を表示したり、
+他の暦に変換するための、@kbd{S}、@kbd{M}、および@kbd{C}というコマンドと同様です。
+@kbd{c}はカレンダーとアジェンダの間を行ったり来たりすることができます。
 
-If you are using the diary only for sexp entries and holidays, it is faster
-to not use the above setting, but instead to copy or even move the entries
-into an Org file. Org-mode evaluates diary-style sexp entries, and does it
-faster because there is no overhead for first creating the diary display.
-Note that the sexp entries must start at the left margin, no whitespace is
-allowed before them.  For example, the following segment of an Org file will
-be processed and entries will be made in the agenda:
+もしもあなたが日記をS式項目と祝祭日だけで使用しているのならば、上のような設定
+をするよりも、Org-modeファイルに直接コピーしたり移動したりしたほうが手っ取り
+早いです。Org-modeは日記形式のS式項目を評価し、しかもより早く、というのは、最
+初にカレンダーを表示するという負荷がかからないからです。S式項目は左端から記述
+し、式の前にスペースが入ってはいけないことに注意してください。たとえば、ある
+Org-modeファイルについての、以下にのべるセグメントが処理され、項目がアジェン
+ダの中に作成されます。
 
 @example
 * Birthdays and similar stuff
@@ -6917,11 +6930,12 @@ be processed and entries will be made in the agenda:
 @cindex BBDB, anniversaries
 @cindex anniversaries, from BBDB
 
-If you are using the Big Brothers Database to store your contacts, you will
-very likely prefer to store anniversaries in BBDB rather than in a separate
-Org or diary file.  Org supports this and will show BBDB anniversaries as
-part of the agenda.  All you need to do is to add the following to one your
-your agenda files:
+もしもBig Brothers
+Databaseを使用して連絡先を管理しているのならば、あなたは先に述べたのと同様に
+、独立したOrg-modeのファイルや日記のファイルに登録するよりも、BBDBの中に記念
+日を登録したいと考えるでしょう。Org-modeはこれもサポートしており、アジェンダ
+の一部としてBBDBの記念日を表示することができます。そのために必要なことは、以
+下のような記述をアジェンダファイルに行うことです。
 
 @example
 * Anniversaries
@@ -6931,13 +6945,13 @@ your agenda files:
 %%(org-bbdb-anniversaries)
 @end example
 
-You can then go ahead and define anniversaries for a BBDB record.
-Basically, you need to press @kbd{C-o anniversary @key{RET}} with the cursor
-in a BBDB record and then add the date in the format @code{YYYY-MM-DD} or
-@code{MM-DD}, followed by a space and the class of the anniversary
-(@samp{birthday} or @samp{wedding}, or a format string).  If you omit the
-class, it will default to @samp{birthday}. Here are a few examples, the
-header for the file @file{org-bbdb.el} contains more detailed information.
+それからBBDBのデータレコードのための記念日の定義に取り掛かることができます。
+基本的には、BBDBのレコードの中にカーソルを置いて、@kbd{C-o anniversary
+@key{RET}}を実行し、それから日付を@code{YYYY-MM-DD}または@code{MM-DD}の形式で記入し、半角ス
+ペースに続けて記念日の種類(@samp{birthday}、@samp{wedding}、または定型句)のクラスを記入
+します。もしもクラスを省略した場合は、デフォルトでは@samp{birthday}であるとみなし
+ます。いくつかの例を書いてみました。@file{org-bbdb.el}ファイルの先頭のところにもう
+少し詳しい説明が書いてあります。
 
 @example
 1973-06-22
@@ -6946,78 +6960,77 @@ header for the file @file{org-bbdb.el} contains more detailed information.
 2008-04-14 %s released version 6.01 of org-mode, %d years ago
 @end example
 
-After a change to BBDB, or for the first agenda display during an Emacs
-session, the agenda display will suffer a short delay as Org updates its
-hash with anniversaries.  However, from then on things will be very
-fast---much faster in fact than a long list of @samp{%%(diary-anniversary)}
-entries in an Org or Diary file.
+BBDBを変更したり、Emacsのセッションで最初にアジェンダを表示したとき後は、アジ
+ェンダの表示が少し遅くなるかもしれません。というのはOrg-modeが記念日のハッシ
+ュデータを更新するからです。しかしながら、そのことについていうと非常に早いと
+いえます。実際Org-modeの日記ファイルに@samp{%%(diary-anniversary)}のエントリーを長
+々と書き連ねた場合よりもずっと早いと言えるでしょう。
 
 @subsubheading Appointment reminders
 @cindex @file{appt.el}
 @cindex appointment reminders
 
-Org can interact with Emacs appointments notification facility.  To add all
-the appointments of your agenda files, use the command
-@code{org-agenda-to-appt}.  This command also lets you filter through the
-list of your appointments and add only those belonging to a specific
-category or matching a regular expression. See the docstring for details.
+Org-modeはEmacsの予定を通知する機能と連携しています。あなたのアジェンダファイ
+ルに含まれているすべてのアポイントを追加するために、@code{org-agenda-to-appt}コマ
+ンドを使います。このコマンドはあなたの予定のリストにフィルターをかけ、特別な
+カテゴリーに属しているものや正規表現の検索に合致したものを追加します。詳細は
+ドキュメントを参照してください。
 
 @node Global TODO list, Matching tags and properties, Weekly/daily agenda, Built-in agenda views
 @subsection The global TODO list
 @cindex global TODO list
 @cindex TODO list, global
 
-The global TODO list contains all unfinished TODO items formatted and
-collected into a single place.
+グローバルなTODOリストには、形式を整えられ、1つの場所に集められたすべての未完
+了のTODOアイテムが含まれています。
 
 @table @kbd
-@orgcmd{C-c a t,org-todo-list} Show the global TODO list.  This collects the
-TODO items from all agenda files (@pxref{Agenda Views}) into a single
-buffer.  By default, this lists items with a state the is not a DONE state.
-The buffer is in @code{agenda-mode}, so there are commands to examine and
-manipulate the TODO entries directly from that buffer (@pxref{Agenda commands}).  @orgcmd{C-c a T,org-todo-list}
+@orgcmd{C-c a t,org-todo-list}　グローバルなTODOリストを表示します。これはすべてのア
+ジェンダファイル(@pxref{Agenda Views})からTODOアイテムを１つのバッファに集約します
+。デフォルトでは、このアイテムのリストはDONEという状態ではないアイテムです。
+そのバッファは@code{agenda-mode}となり、そのバッファからTODOアイテムを直接調べたり
+操作したりするコマンドが用意されています(@pxref{Agenda commands})。
 @cindex TODO keyword matching
 @vindex org-todo-keywords
-Like the above, but allows selection of a specific TODO keyword.  You can
-also do this by specifying a prefix argument to @kbd{C-c a t}.  You are
-prompted for a keyword, and you may also specify several keywords by
-separating them with @samp{|} as the boolean OR operator.  With a numeric
-prefix, the Nth keyword in @code{org-todo-keywords} is selected.
+上と似ていますが、指定したTODOキーワードと合致したものを表示します。同じこと
+を前置引数をつけて@kbd{C-c a t}を実行することでも指定できます。キーワードの入力を
+促す指示が表示され、そして複数のキーワードを論理式ORという意味で@samp{|}で区切って
+指定することができます。数字付きの前置引数をつけると@code{org-todo-keywords}の中の
+N番目のキーワードを選択することができます。
 @kindex r
-The @kbd{r} key in the agenda buffer regenerates it, and you can give a
-prefix argument to this command to change the selected TODO keyword, for
-example @kbd{3 r}.  If you often need a search for a specific keyword,
-define a custom command for it (@pxref{Agenda dispatcher}).@* Matching
-specific TODO keywords can also be done as part of a tags search (@pxref{Tag searches}).
+@kbd{r}キーをアジェンダバッファで使用するとバッファの再構成が行われます。たとえば
+@kbd{3 r}というように、前置引数をつけてこのコマンドを実行すると選択したTODOキーワ
+ードが変更することができます。もしも特定のキーワードを使って検索することが多
+い場合は、カスタムコマンドを定義することもできます(@pxref{Agenda dispatcher})。
+@*特定のTODOキーワードと合致するものを検索するのは、タグ検索の１機能として行うこともできます(@pxref{Tag searches})。
 @end table
 
-Remote editing of TODO items means that you can change the state of a TODO
-entry with a single key press.  The commands available in the TODO list are
-described in @ref{Agenda commands}.
+リモートでTODOアイテムを編集するということの意味は、1つのキーを入力することで
+TODOエントリーの状態を変更できるということです。TODOリストの中で利用できるコ
+マンドは@ref{Agenda commands}の記述を参考にしてください。
 
 @cindex sublevels, inclusion into TODO list
-Normally the global TODO list simply shows all headlines with TODO
-keywords.  This list can become very long.  There are two ways to keep it
-more compact:
+通常グローバルなTODOリストには、TODOキーワードのついたすべて見出しが表示され
+ます。このリストは大変長いものになる場合もあります。それをコンパクトにするに
+は２つの方法があります。
 @itemize @minus
 @item
 @vindex org-agenda-todo-ignore-scheduled
 @vindex org-agenda-todo-ignore-deadlines
 @vindex org-agenda-todo-ignore-timestamp
 @vindex org-agenda-todo-ignore-with-date
-Some people view a TODO item that has been @emph{scheduled} for execution or
-have a @emph{deadline} (@pxref{Timestamps}) as no longer @emph{open}.
-Configure the variables @code{org-agenda-todo-ignore-scheduled},
-@code{org-agenda-todo-ignore-deadlines},
-@code{org-agenda-todo-ignore-timestamp} and/or
-@code{org-agenda-todo-ignore-with-date} to exclude such items from the
-global TODO list.
+TODOアイテムが、実行するために@emph{scheduled}となっている、あるいは、もはや@emph{open}と
+なっている@emph{deadline}(@pxref{Timestamps})を持っているかどうかを確認したい人もいるで
+しょう。@code{org-agenda-todo-ignore-scheduled}、@code{org-agenda-todo-ignore-deadlines}、
+@code{org-agenda-todo-ignore-timestamp}
+および／または@code{org-agenda-todo-ignore-with-date}という変数を設定し、グローバ
+ルなTODOリストから取り除くことができます。
 @item
 @vindex org-agenda-todo-list-sublevels
-TODO items may have sublevels to break up the task into subtasks.  In such
-cases it may be enough to list only the highest level TODO headline and omit
-the sublevels from the global list.  Configure the variable
-@code{org-agenda-todo-list-sublevels} to get this behavior.
+TODOアイテムがサブタスクにブレイクダウンされた下位のレベルを持っているかもし
+れません。そういった場合は、最上位のTODOの見出しを表示すれば十分で、グローバ
+ルなリストからは下位のレベルの項目は省略してもよい場合があります。そういった
+ときは@code{org-agenda-todo-list-sublevels}変数を設定することで可能となります
 @end itemize
 
 @node Matching tags and properties, Timeline, Global TODO list, Built-in agenda views
@@ -7027,82 +7040,82 @@ the sublevels from the global list.  Configure the variable
 @cindex tags view
 @cindex match view
 
-If headlines in the agenda files are marked with @emph{tags} (@pxref{Tags}),
-or have properties (@pxref{Properties and Columns}), you can select
-headlines based on this metadata and collect them into an agenda buffer.
-The match syntax described here also applies when creating sparse trees with
-@kbd{C-c / m}.
+アジェンダファイルの中の見出しに@emph{tags}(@pxref{Tags})がついていたり、あるいは属性(@pxref{Properties and
+Columns})がついていたときは、このメタデータに基づいて見出しを選択し、アジェン
+ダバッファに収集することができます。この項で述べている検索構文は@kbd{C-c / m}を用
+いたツリーの抽出を行うときも適用できます。
 
 @table @kbd
-@orgcmd{C-c a m,org-tags-view} Produce a list of all headlines that match a
-given set of tags.  The command prompts for a selection criterion, which is
-a boolean logic expression with tags, like @samp{+work+urgent-withboss} or
-@samp{work|home} (@pxref{Tags}).  If you often need a specific search,
-define a custom command for it (@pxref{Agenda dispatcher}).  @orgcmd{C-c a M,org-tags-view}
+@orgcmd{C-c a m,org-tags-view}　一組のタグのセットに合致したすべての見出しのリストを
+作成します。選択の基準の入力を指示するコマンドでタグのついた論理式による表現
+で記入します。例えば、@samp{+work+urgent-withboss}あるいは@samp{work|home}
+というように(@pxref{Tags})。もしも特定の検索をよく行うならばそのためのカスタムコマ
+ンドを定義することができます(@pxref{Agenda dispatcher})。@orgcmd{C-c a M,org-tags-view}
 @vindex org-tags-match-list-sublevels
 @vindex org-agenda-tags-todo-honor-ignore-options
-Like @kbd{C-c a m}, but only select headlines that are also TODO items in a
-not-DONE state and force checking subitems (see variable
-@code{org-tags-match-list-sublevels}).  To exclude scheduled/deadline items,
-see the variable @code{org-agenda-tags-todo-honor-ignore-options}.  Matching
-specific TODO keywords together with a tags match is also possible, see
-@ref{Tag searches}.
+@kbd{C-c a m}と似ていますが、not-DONEの状態にあるTODOアイテムの見出しから選択する
+もので、自動的にサブアイテムもチェックします(@code{org-tags-match-list-sublevels}変
+数参照)。予定／期限のついたアイテムを除外するには@code{org-agenda-tags-todo-honor-ignore-options}の
+変数を参照してください。特定のTODOキーワードをタグの一致と一緒に指定すること
+も可能です。@ref{Tag searches}を参照してください。
 @end table
 
-The commands available in the tags list are described in @ref{Agenda commands}.
+タグのリストで利用できるコマンドは@ref{Agenda commands}のところで説明しています。
 
 @subsubheading Match syntax
 
 @cindex Boolean logic, for tag/property searches
-A search string can use Boolean operators @samp{&} for AND and @samp{|} for
-OR.  @samp{&} binds more strongly than @samp{|}.  Parentheses are currently
-not implemented.  Each element in the search is either a tag, a regular
-expression matching tags, or an expression like @code{PROPERTY OPERATOR VALUE} with a comparison operator, accessing a property value.  Each element
-may be preceded by @samp{-}, to select against it, and @samp{+} is syntactic
-sugar for positive selection.  The AND operator @samp{&} is optional when
-@samp{+} or @samp{-} is present.  Here are some examples, using only tags.
+検索文字列ではANDの意味で@samp{&}、ORの意味で@samp{|}という論理式を使うことができます。
+@samp{&}は@samp{|}よりも強く結びつけます。括弧（
+）は現在準備されていません。検索のどの要素も、タグそのものか、正規表現でマッ
+チしたタグか、あるいは@code{PROPERTY OPERATOR VALUE}のような属性値にアクセスして比
+較操作のできる値のいずれかになります。どの要素も@samp{-}を先頭につけてそれ以外のも
+のを表現するか、@samp{+}を先頭につけてポジティブな選択を行う、というような糖衣構文
+（簡便な構文）で表現します。@samp{&}でANDを取り扱うことは@samp{+}、@samp{-}で表現できるもの
+のオプションです。下にタグだけをつかったいくつかの例を挙げておきました。
 
 @table @samp
 @item +work-boss
-Select headlines tagged @samp{:work:}, but discard those also tagged
-@samp{:boss:}.
+@samp{:work:}というタグがついているが、@samp{:boss:}というタグがついていない見出しを選
+択します。
 @item work|laptop
-Selects lines tagged @samp{:work:} or @samp{:laptop:}.
+@samp{:work:}または@samp{:laptop:}というタグがついたものを選択します。
 @item work|laptop+night
-Like before, but require the @samp{:laptop:} lines to be tagged also
-@samp{:night:}.
+前の文と同じですが、@samp{:laptop:}の行には、同時に@samp{:night:}というタグが付いている
+必要があります。
 @end table
 
 @cindex regular expressions, with tags search
-Instead of a tag, you may also specify a regular expression enclosed in
-curly braces.  For example, @samp{work+@{^boss.*@}} matches headlines that
-contain the tag @samp{:work:} and any tag @i{starting} with @samp{boss}.
+タグの代わりに、大括弧でくくられた正規表現により指定をすることもできます。例
+えば、
+@samp{work+@{^boss.*@}}と指定すると、@samp{:work:}というタグのついた見出しで@samp{boss}という単語で@i{starting}するタグがついているものに一致します。
 
 @cindex TODO keyword matching, with tags search
 @cindex level, require for tags/property match
 @cindex category, require for tags/property match
 @vindex org-odd-levels-only
-You may also test for properties (@pxref{Properties and Columns}) at the
-same time as matching tags.  The properties may be real properties, or
-special properties that represent other metadata (@pxref{Special properties}).  For example, the ``property'' @code{TODO} represents the TODO
-keyword of the entry.  Or, the ``property'' @code{LEVEL} represents the
-level of an entry.  So a search @samp{+LEVEL=3+boss-TODO="DONE"} lists all
-level three headlines that have the tag @samp{boss} and are @emph{not}
-marked with the TODO keyword DONE.  In buffers with
-@code{org-odd-levels-only} set, @samp{LEVEL} does not count the number of
-stars, but @samp{LEVEL=2} will correspond to 3 stars etc.
+タグとマッチするものを探すと同時に属性(@pxref{Properties and Columns})の検索をする
+ことも可能です。属性としては実際の属性のほかに、他のメタデータで表現された特
+別な属性(@pxref{Special properties})にも対応しています。例えば、そのエントリーの中
+のTODOキーワードで表現された@code{TODO}という「属性」。あるいは、そのエントリーの
+階層を示す@code{LEVEL}という「属性」などです。そのため、@samp{+LEVEL=3+boss-TODO="DONE"}と
+いう検索式は、第3階層のすべての見出しの中で、@samp{boss}というタグがついており、TODOキ
+ーワードがDONEでは@samp{ない}もののリストを表示します。@code{org-odd-levels-only}という
+設定がなされているバッファでは@samp{LEVEL}は＊の数を数えるのではなく、@samp{LEVEL=2}（
+2番目）
+の階層は＊が３つある階層が該当します。
 
-Here are more examples:
+いくつかの例を紹介します。
 @table @samp
 @item work+TODO="WAITING"
-Select @samp{:work:}-tagged TODO lines with the specific TODO keyword
-@samp{WAITING}.
+@samp{:work:}というタグがあるTODO行のうち、特にTODOキーワードが@samp{WAITING}となってい
+る行を選択します。
 @item work+TODO="WAITING"|home+TODO="WAITING"
-Waiting tasks both at work and at home.
+workとhomeというタグがついているWaitingとなっているタスク
 @end table
 
-When matching properties, a number of different operators can be used to
-test the value of a property.  Here is a complex example:
+属性の検索では、多数の異なる操作で属性の値をテストすることができます。複雑な
+例を挙げます。
 
 @example
 +work-boss+PRIORITY="A"+Coffee="unlimited"+Effort<2         \
@@ -7110,154 +7123,152 @@ test the value of a property.  Here is a complex example:
 @end example
 
 @noindent
-The type of comparison will depend on how the comparison value is written:
+比較のタイプは比較の値がどのように書かれているかによります。
 @itemize @minus
 @item
-If the comparison value is a plain number, a numerical comparison is done,
-and the allowed operators are @samp{<}, @samp{=}, @samp{>}, @samp{<=},
-@samp{>=}, and @samp{<>}.
+比較する値が普通の数字ならば、数値の比較が行われ、@samp{<}、@samp{=}、@samp{>}、@samp{<=}、@samp{>=}、
+および@samp{<>}という操作が可能です。
 @item
-If the comparison value is enclosed in double-quotes, a string comparison is
-done, and the same operators are allowed.
+比較する対象がダブルクォーテーションで囲まれている場合は、文字列の比較が行わ
+れ、前項と同じ操作が可能です。
 @item
-If the comparison value is enclosed in double-quotes @emph{and} angular
-brackets (like @samp{DEADLINE<="<2008-12-24 18:30>"}), both values are
-assumed to be date/time specifications in the standard Org way, and the
-comparison will be done accordingly.  Special values that will be recognized
-are @code{"<now>"} for now (including time), and @code{"<today>"}, and
-@code{"<tomorrow>"} for these days at 0:00 hours, i.e.@: without a time
-specification.  Also strings like @code{"<+5d>"} or @code{"<-2m>"} with
-units @code{d}, @code{w}, @code{m}, and @code{y} for day, week, month, and
-year, respectively, can be used.
+もしも比較対象が、(@samp{DEADLINE<="<2008-12-24 18:30>"}のように)、ダブルクォーテ
+ーション@emph{および}角括弧<>で囲まれていた場合は、両方の値がOrg-mode流の標準的な
+日付・時刻の指定であると仮定し、それにそって比較を行います。いくつかの特別な
+値があります。@code{"<now>"}は（時刻も含めた）現在を示し、@code{"<today>"}、@code{"<tomorrow>"}は
+それらの日の0:00つまり、
+@:時刻の指定がないことを表します。同様に、@code{"<+5d>"}または@code{"<-2m>"}というような文字列は、それぞれ日、週、月、年を示す、@code{d}、@code{w}、@code{m}、@code{y}という単位がついているものとして使用されます。
 @item
-If the comparison value is enclosed in curly braces, a regexp match is
-performed, with @samp{=} meaning that the regexp matches the property value,
-and @samp{<>} meaning that it does not match.
+もしも比較対象が中括弧｛｝でくくられていて、正規表現での比較がなされるときは
+、@samp{=}は一致していることを示し、@samp{<>}は一致していないことを示します。
 @end itemize
 
-So the search string in the example finds entries tagged @samp{:work:} but
-not @samp{:boss:}, which also have a priority value @samp{A}, a
-@samp{:Coffee:} property with the value @samp{unlimited}, an @samp{Effort}
-property that is numerically smaller than 2, a @samp{:With:} property that
-is matched by the regular expression @samp{Sarah\|Denny}, and that are
-scheduled on or after October 11, 2008.
+そのため、例に掲げた検索文字列の意味は、@samp{:work:}というタグがつけられているが
+、@samp{:boss:}というタグはついておらず、また、優先順位の値が@samp{A}であり、@samp{:Coffee:}が
+@samp{unlimited}という値であり、@samp{Effort}
+属性が数値で２より小さく、@samp{:With:}の値が@samp{Sarah\|Denny}であり、スケジュールが
+2008年10月11日もしくはそれ以降に予約されたものを示しています。
 
-Accessing TODO, LEVEL, and CATEGORY during a search is fast.  Accessing any
-other properties will slow down the search.  However, once you have paid the
-price by accessing one property, testing additional properties is cheap
-again.
+TODO、LEVEL、CATEGORYを検索するときは短時間ですみます。それ以外の属性を検索す
+るときはいささか時間がかかります。しかしながら、一度高い代償を払って1つのプロ
+パティを検索したら、他の属性を追加して再び検索するときは安くあがります。
 
-You can configure Org-mode to use property inheritance during a search, but
-beware that this can slow down searches considerably.  See @ref{Property inheritance}, for details.
+検索の際にOrg-modeで属性の継承という機能を使用するように設定することができま
+すが、相当検索スピードが落ちることを覚悟してください。詳細は@ref{Property inheritance}参
+照。
 
-For backward compatibility, and also for typing speed, there is also a
-different way to test TODO states in a search.  For this, terminate the
-tags/property part of the search string (which may include several terms
-connected with @samp{|}) with a @samp{/} and then specify a Boolean
-expression just for TODO keywords.  The syntax is then similar to that for
-tags, but should be applied with care: for example, a positive selection on
-several TODO keywords cannot meaningfully be combined with boolean AND.
-However, @emph{negative selection} combined with AND can be meaningful.  To
-make sure that only lines are checked that actually have any TODO keyword
-(resulting in a speed-up), use @kbd{C-c a M}, or equivalently start the TODO
-part after the slash with @samp{!}.  Using @kbd{C-c a M} or @samp{/!} will
-not match TODO keywords in a DONE state.  Examples:
+逆互換として、さらにまたタイプのスピードを上げるために、検索においてTODOの状
+態をテストする別の方法があります。このためには、検索文字列（それは@samp{|}で結合さ
+れた複数の用語が含まれていると思いますが）のタグ・属性検索の部分を@samp{/}を使って
+終了させ、TODOキーワードを論理式で結んで指定します。その構文はタグの検索で使
+用したのと似ていますが、よく考えて適用する必要があります。例えば、複数のTODOキ
+ーワードが存在することを検索するには論理式のANDで結びつけても意味がありません
+。しかしながら、@emph{negative selection}（存在しないことを選択する場合）では「AND」
+で結合することは意味を持ちます。これを確かめるには、実際にいくつかのTODOキー
+ワードで、@kbd{C-c a
+M}を用いて確認するだけです（そのほうがスピードアップできます）。あるいはスラ
+ッシュのあとに@samp{!}を記入して同時にTODOの部分を開始します。@kbd{C-c a M}または@samp{/!}を
+使用したときは、DONEの状態にあるTODOキーワードを検索することはできません。例
+えば、
 
 @table @samp
 @item work/WAITING
-Same as @samp{work+TODO="WAITING"}
+@samp{work+TODO="WAITING"}と同じ
 @item work/!-WAITING-NEXT
-Select @samp{:work:}-tagged TODO lines that are neither @samp{WAITING} nor
-@samp{NEXT}
+@samp{:work:}を選択。ただしTODO行では@samp{WAITING}と@samp{NEXT}のどちらのタグもついていない
+もの
 @item work/!+WAITING|+NEXT
-Select @samp{:work:}-tagged TODO lines that are either @samp{WAITING} or
-@samp{NEXT}.
+@samp{:work:}を選択。TODO行に@samp{WAITING}か@samp{NEXT}かどちらかのタグがついているもの。
 @end table
 
 @node Timeline, Search view, Matching tags and properties, Built-in agenda views
 @subsection Timeline for a single file
 @cindex timeline, single file
-@cindex time-sorted view
+@cindex 時間順に並べたビュー
 
-The timeline summarizes all time-stamped items from a single Org-mode file
-in a @emph{time-sorted view}.  The main purpose of this command is to give
-an overview over events in a project.
+タイムラインはひとつのOrg-modeファイルの中から@emph{time-sorted view}（時間順のビ
+ュー）ですべてのタイムスタンプのついたアイテムをまとめてて表示します。このコ
+マンドの主な目的は、あるプロジェクトに含まれているイベント全体の概要をつかむ
+ためにあります。
 
 @table @kbd
-@orgcmd{C-c a L,org-timeline} Show a time-sorted view of the Org file, with
-all time-stamped items.  When called with a @kbd{C-u} prefix, all unfinished
-TODO entries (scheduled or not) are also listed under the current date.
+@orgcmd{C-c a L,org-timeline}すべてのタイムスタンプの付いたアイテムについて、Org-modeフ
+ァイルの中で時間順のビューを提供します。@kbd{C-u}という前置引数をつけて呼び出した
+ときは、現在の日付の時点で、すべての未完了のTODOエントリー（予約されているも
+のも、そうでないものも）を一覧にします。
 @end table
 
 @noindent
-The commands available in the timeline buffer are listed in @ref{Agenda commands}.
+タイムラインのバッファで利用できるコマンドは、@ref{Agenda commands}にリスト化され
+ています。
 
 @node Search view, Stuck projects, Timeline, Built-in agenda views
 @subsection Search view
-@cindex search view
+@cindex 検索ビュー
 @cindex text search
 @cindex searching, for text
 
-This agenda view is a general text search facility for Org-mode entries.  It
-is particularly useful to find notes.
+アジェンダのビューではOrg-modeのエントリーに対する一般的なテキスト検索機能を
+持っています。これはノートを探すのに特に役に立ちます。
 
 @table @kbd
-@orgcmd{C-c a s,org-search-view} This is a special search that lets you
-select entries by matching a substring or specific words using a boolean
-logic.
+@orgcmd{C-c a s,org-search-view}　このコマンドは特別な検索のためのもので、論理式を使
+って、文字列または特定の単語に合致するエントリーを選択します。
 @end table
-For example, the search string @samp{computer equipment} will find entries
-that contain @samp{computer equipment} as a substring.  If the two words are
-separated by more space or a line break, the search will still match.
-Search view can also search for specific keywords in the entry, using
-Boolean logic.  The search string @samp{+computer +wifi -ethernet -@{8\.11[bg]@}} will search for note entries that contain the keywords
-@code{computer} and @code{wifi}, but not the keyword @code{ethernet}, and
-which are also not matched by the regular expression @code{8\.11[bg]},
-meaning to exclude both 8.11b and 8.11g.  The first @samp{+} is necessary to
-turn on word search, other @samp{+} characters are optional.  For more
-details, see the docstring of the command @code{org-search-view}.
+例えば、@samp{computer equipment}という検索文字列は、@samp{computer equipment}という1つ
+の文字列が含まれているエントリーを検索するでしょう。もしも、２つの単語が、1つ
+以上のスペースまたは改行で分かれていても、依然として一致するものを検索するで
+しょう。検索ビューでは、エントリーの中にある特別なキーワードについて論理式を
+使って検索することもできます。@samp{+computer +wifi -ethernet
+-@{8\.11[bg]@}}という検索文字列では、次のようなノートエントリーを検索します。
+@code{computer}と@code{wifi}というキーワードを含んでおり、@code{ethernet}というキーワードは
+含まれておらず、@code{8\.11[bg]}という正規表現を含んでいない、すなわち8.11bおよび
+8.11gともに含まれていないという意味ですが、エントリーを検索します。最初の@samp{+}は
+単語検索をかいしするために必要ですが、ほかの@samp{+}はオプションです。詳しく知りた
+い場合は、@code{org-search-view}というコマンドの説明を参照してください。
 
 @vindex org-agenda-text-search-extra-files
-Note that in addition to the agenda files, this command will also search the
-files listed in @code{org-agenda-text-search-extra-files}.
+アジェンダファイルに加えて、このコマンドは@code{org-agenda-text-search-extra-files}の
+中で一覧になっているファイルもまた検索するということに注意してください。
 
 @node Stuck projects, , Search view, Built-in agenda views
 @subsection Stuck projects
 @pindex GTD, Getting Things Done
 
-If you are following a system like David Allen's GTD to organize your work,
-one of the ``duties'' you have is a regular review to make sure that all
-projects move along.  A @emph{stuck} project is a project that has no
-defined next actions, so it will never show up in the TODO lists Org-mode
-produces.  During the review, you need to identify such projects and define
-next actions for them.
+もしもあなたが、以下に述べるようなDavid
+Allen氏のGTDのようなシステムであなたの仕事を管理しているならば、あなたが抱え
+ている「義務」のひとつは、すべてのプロジェクトが進んでいるかを明確にするため
+に、レビューを定期的に行うことです。@emph{詳細が未決定}のプロジェクトは、次の行動
+が何も定義がされていないため、Org-modeが提示するTODOリストに、全く何も表示さ
+れることがないのです。レビューをする際に、そういったプロジェクトを明確にし、
+それらのプロジェクトための次の行動を定義することが必要です。
 
 @table @kbd
-@orgcmd{C-c a #,org-agenda-list-stuck-projects} List projects that are
-stuck.
+@orgcmd{C-c a #,org-agenda-list-stuck-projects}　詳細が未決定のプロジェクトリスト
 @kindex C-c a !
 @item C-c a !
 @vindex org-stuck-projects
-Customize the variable @code{org-stuck-projects} to define what a stuck
-project is and how to find it.
+@code{org-stuck-projects}の変数をカスタマイズすることで何が詳細が未決定のプロジェクトで、どうやったらそういうプロジェクトを発見できるかを定義することができます。
 @end table
 
-You almost certainly will have to configure this view before it will work
-for you.  The built-in default assumes that all your projects are level-2
-headlines, and that a project is not stuck if it has at least one entry
-marked with a TODO keyword TODO or NEXT or NEXTACTION.
+あなたは九分九厘このコマンドが機能するために、このビューを定義する必要があり
+ます。あらかじめビルトインされているデフォルトの設定では、すべてのあなたのプ
+ロジェクトは第2階層の見出しに記述されており、あるプロジェクトが未決定であると
+はいえない状況とは、すくなくとも1つのエントリーにTODOまたはNEXTまたはNEXTACTIONと
+いう印がつけられている場合です。
 
-Let's assume that you, in your own way of using Org-mode, identify projects
-with a tag PROJECT, and that you use a TODO keyword MAYBE to indicate a
-project that should not be considered yet.  Let's further assume that the
-TODO keyword DONE marks finished projects, and that NEXT and TODO indicate
-next actions.  The tag @@SHOP indicates shopping and is a next action even
-without the NEXT tag.  Finally, if the project contains the special word
-IGNORE anywhere, it should not be listed either.  In this case you would
-start by identifying eligible projects with a tags/todo
-match@footnote{@xref{Tag searches}.} @samp{+PROJECT/-MAYBE-DONE}, and then
-check for TODO, NEXT, @@SHOP, and IGNORE in the subtree to identify projects
-that are not stuck.  The correct customization for this is
+Org-modeを使う際に、あなた自身の方法でアプローチするとして、PROJECTというタグ
+があるものをプロジェクトと定義し、プロジェクトがまだ検討する段階にないという
+ことを示すためにTODOキーワードでMAYBEと書いているものと仮定しましょう。さらに
+TODOキーワードでDONEという印の付いたものは完了したプロジェクトであると仮定し
+ましょう。そしてまたNEXTもしくはTODOと書かれたものはNextActionであると仮定し
+ましょう。@@SHOPというタグがついたときはNEXTというタグが付いていなくても、ショ
+ッピングに行くという次の行動を示しているとします。最終的に、もしもプロジェク
+トにIGNORE（無視）という特別なキーワードがどこかについていたら、それはリスト
+に表示されないものとします。このようなケースの場合、タグ・TODO@footnote{@xref{Tag searches}.}が@samp{+PROJECT/-MAYBE-DONE}と
+マッチし、さらにサブツリーにTODO、NEXT、@@SHOP、およびIGNOREというタグが付いて
+いるようなプロジェクトは、詳細が未決定のプロジェクトではないといえます。この
+ようなカスタマイズを正しく定義するには、
 
 @lisp
 (setq org-stuck-projects
@@ -7265,8 +7276,9 @@ that are not stuck.  The correct customization for this is
                                "\\<IGNORE\\>"))
 @end lisp
 
-Note that if a project is identified as non-stuck, the subtree of this entry
-will still be searched for stuck projects.
+もしもあるプロジェクトが詳細が未決定のプロジェクトではないと定義されたならば
+、そのエントリーのサブツリーは依然として詳細が未決定のプロジェクトとして検索
+されるということに注意してください。
 
 @node Presentation and sorting, Agenda commands, Built-in agenda views, Agenda Views
 @section Presentation and sorting
@@ -7274,14 +7286,14 @@ will still be searched for stuck projects.
 
 @vindex org-agenda-prefix-format
 @vindex org-agenda-tags-column
-Before displaying items in an agenda view, Org-mode visually prepares the
-items and sorts them.  Each item occupies a single line.  The line starts
-with a @emph{prefix} that contains the @emph{category} (@pxref{Categories})
-of the item and other important information.  You can customize in which
-column tags will be displayed through @code{org-agenda-tags-column}.  You
-can also customize the prefix using the option
-@code{org-agenda-prefix-format}.  This prefix is followed by a cleaned-up
-version of the outline headline associated with the item.
+アジェンダビューにアイテムが表示される前に、Org-modeではそのアイテムを表示し
+並び替える準備を行っています。それぞれのアイテムは1行を占めます。その行にはそ
+の項目の@emph{category}
+(@pxref{Categories})を含んだ@emph{prefix}とそれ以外の重要な情報を含んでいます。あなたは
+@code{org-agenda-tags-column}を使って表示されるコラムタグをカスタマイズすることが
+できます。@code{org-agenda-prefix-format}のオプションを使用して前置引数をカスタマ
+イズすることができます。この前置引数は、そのアイテムに関連するアウトラインの
+見出しの最新のバージョンに従います。
 
 @menu
 * Categories::               全てのタスクが同じであるとは限らない
@@ -7294,14 +7306,11 @@ version of the outline headline associated with the item.
 
 @cindex category
 @cindex #+CATEGORY
-The category is a broad label assigned to each agenda item.  By default, the
-category is simply derived from the file name, but you can also specify it
-with a special line in the buffer, like this@footnote{For backward compatibility, the following also works: if there are several such lines in
-a file, each specifies the category for the text below it.  The first
-category also applies to any text before the first CATEGORY line.  However,
-using this method is @emph{strongly} deprecated as it is incompatible with
-the outline structure of the document.  The correct method for setting
-multiple categories in a buffer is using a property.}:
+カテゴリーとは、それぞれのアジェンダアイテムに割り当てられた幅の広いラベルで
+す。デフォルトでは、カテゴリーはファイルの名前から単純に作成されます。しかし
+、バッファ上で特別な行を足すことでそれを指定することができます。
+@footnote{逆に言うと、以下のような動作も生じます。もしも1つのファイルの中に、いくつかののそういう行が存在するならば、それよりも下の行にあるテキストに、そのカテゴリーをそれぞれ指定することになります。最初のカテゴリーは、その最初のCATEGORYの行はよりも前にあるどのテキストにも適用されます。しかしながら、@emph{strongly}という手法を使うことは、文書のアウトライン構造と非互換であることを、
+@emph{強く}非難することになります。複数のカテゴリーをバッファの中で設定する正しい方法は属性を使用することです。.}
 
 @example
 #+CATEGORY: Thesis
@@ -7309,36 +7318,37 @@ multiple categories in a buffer is using a property.}:
 
 @noindent
 @cindex プロパティ（CATEGORY）
-If you would like to have a special CATEGORY for a single entry or a
-(sub)tree, give the entry a @code{:CATEGORY:} property with the special
-category you want to apply as the value.
+もしもあなたが、1つのエントリーもしくは1つの（サブ）ツリーに特別なCATEGORYを
+持たせたいと望むのならば、そのエントリーに、値として適用したいと思っている特
+別なカテゴリーを@code{:CATEGORY:}という属性に設定しなさい。
 
 @noindent
-The display in the agenda buffer looks best if the category is not longer
-than 10 characters.
+アジェンダバッファの表示は、そのカテゴリーが10文字以上長くしない方が見栄えが
+良いです。
 
 @noindent
-You can set up icons for category by customizing the
-@code{org-agenda-category-icon-alist} variable.
+あなたは@code{org-agenda-category-icon-alist}変数をカスタマイズすることで、カテゴ
+リーにアイコンを設定することができます。
 
 @node Time-of-day specifications, agendaの項目をソートする, Categories, Presentation and sorting
 @subsection Time-of-day specifications
 @cindex time-of-day specification
 
 @c
-Org-mode checks each agenda item for a time-of-day specification.  The time
-can be part of the timestamp that triggered inclusion into the agenda, for
-example as in @w{@samp{<2005-05-10 Tue 19:00>}}.  Time ranges can be
-specified with two timestamps, like @w{@samp{<2005-05-10 Tue 20:30>--<2005-05-10 Tue 22:15>}}.
+Org-modeは時刻の仕様に基づいて、それぞれのアジェンダアイテムをチェックします
+。時刻は、例えば、@w{@samp{<2005-05-10 Tue 19:00>}}のように、アジェンダの中に含まれている
+ものをトリガーとしたタイムスタンプの一部です。時間の幅は２つのタイムスタンプ
+で指定され、例えば@w{@samp{<2005-05-10 Tue 20:30>--<2005-05-10 Tue 22:15>}}のように記載さ
+れます。
 
-In the headline of the entry itself, a time(range) may also appear as plain
-text (like @samp{12:45} or a @samp{8:30-1pm}).  If the agenda integrates the
-Emacs diary (@pxref{Weekly/daily agenda}), time specifications in diary
-entries are recognized as well.
+そのエントリー自身の見出しの中で、時刻（時間）はプレーンなテキストとして（@samp{12:45}や
+@samp{8:30-1pm})のように表示されます。もしもアジェンダがEmacsのダイアリー(@pxref{Weekly/daily agenda})と
+一体化されていたときは、ダイアリーのエントリーの中で指定した時間は、同様に認
+識されます。
 
-For agenda display, Org-mode extracts the time and displays it in a standard
-24 hour format as part of the prefix.  The example times in the previous
-paragraphs would end up in the agenda like this:
+アジェンダの表示のために、Org-modeは時間を引き出し、前置引数の一部として標準
+的な24時間のフォーマットでそれを表示します。前の段落に書かれた時間の例は、ア
+ジェンダの中で結局以下のように表示されます。
 
 @example
     8:30-13:00 Arthur Dent lies in front of the bulldozer
@@ -7348,8 +7358,8 @@ paragraphs would end up in the agenda like this:
 @end example
 
 @cindex time grid
-If the agenda is in single-day mode, or for the display of today, the timed
-entries are embedded in a time grid, like
+もしもアジェンダが一日モードであるならば、あるいは今日を表示しているならば、
+時間設定されたエントリーは、次のような時間のグリッドに埋め込まれます。
 
 @example
     8:00...... ------------------
@@ -7367,56 +7377,51 @@ entries are embedded in a time grid, like
 
 @vindex org-agenda-use-time-grid
 @vindex org-agenda-time-grid
-The time grid can be turned on and off with the variable
-@code{org-agenda-use-time-grid}, and can be configured with
-@code{org-agenda-time-grid}.
+時間のグリッドは、@code{org-agenda-use-time-grid}変数で表示したりしなかったさせる
+ことができます。そしてまた@code{org-agenda-time-grid}で設定をすることができます。
 
 @node agendaの項目をソートする, , Time-of-day specifications, Presentation and sorting
 @subsection agendaの項目をソートする
 @cindex sorting, of agenda items
 @cindex priorities, of agenda items
-Before being inserted into a view, the items are sorted.  How this is done
-depends on the type of view.
+ビューに書き出される前に、各アイテムは並び替えが行われます。この並び替えはビ
+ューのタイプによって決まります。
 @itemize @bullet
 @item
 @vindex org-agenda-files
-For the daily/weekly agenda, the items for each day are sorted.  The default
-order is to first collect all items containing an explicit time-of-day
-specification.  These entries will be shown at the beginning of the list, as
-a @emph{schedule} for the day.  After that, items remain grouped in
-categories, in the sequence given by @code{org-agenda-files}.  Within each
-category, items are sorted by priority (@pxref{Priorities}), which is
-composed of the base priority (2000 for priority @samp{A}, 1000 for
-@samp{B}, and 0 for @samp{C}), plus additional increments for overdue
-scheduled or deadline items.
+一日／一週間のアジェンダでは、それぞれの日の各アイテムは順番に並びます。デフ
+ォルトの順番は、明示的に日付と時刻の指定を含んでいるアイテムを、最初に集めま
+す。これらのアイテムは、その日の@emph{スケジュール}に応じて、リストの最初から順番
+に表示されます。その次に、各アイテムは
+@code{org-agenda-files}によって決められた順番に、カテゴリーごとにグループ分けされます。それぞれのカテゴリーの中で、各アイテムは優先順位(@pxref{Priorities})に従って並び替えられます。優先順位は基本的な優先順位で構成されます（優先順位@samp{A}ならば2000、@samp{B}ならば1000、@samp{C}ならば0として）。さらに、予定あるいはデッドラインを過ぎているアイテムのウエイトが追加されます。
 @item
-For the TODO list, items remain in the order of categories, but within each
-category, sorting takes place according to priority (@pxref{Priorities}).
-The priority used for sorting derives from the priority cookie, with
-additions depending on how close an item is to its due or scheduled date.
+TODOリストでは、各アイテムはカテゴリーの順番に並び替えられますが、各カテゴリ
+ーの中では、優先順位(@pxref{Priorities})によって並び替えられます。優先順位は、優先
+順位の記号に従って並べ替えられます。さらに、アイテムが実行する日あるいは予約
+した日にどれだけ近いかということも考慮されます。
 @item
-For tags matches, items are not sorted at all, but just appear in the
-sequence in which they are found in the agenda files.
+タグでの一致については、項目は並び替えは行われず、アジェンダファイルの中で一
+致した項目が発見された順番に従って表示されるのみです。
 @end itemize
 
 @vindex org-agenda-sorting-strategy
-Sorting can be customized using the variable
-@code{org-agenda-sorting-strategy}, and may also include criteria based on
-the estimated effort of an entry (@pxref{Effort estimates}).
+並び替えは、@code{org-agenda-sorting-strategy}変数でカスタマイズすることができます
+。そして、並び替えはそのエントリーの工数の見積りに基づく評価も含まれます。
 
 @node Agenda commands, Custom agenda views, Presentation and sorting, Agenda Views
 @section Commands in the agenda buffer
 @cindex commands, in agenda buffer
 
-Entries in the agenda buffer are linked back to the Org file or diary file
-where they originate.  You are not allowed to edit the agenda buffer itself,
-but commands are provided to show and jump to the original entry location,
-and to edit the Org files ``remotely'' from the agenda buffer.  In this way,
-all information is stored only once, removing the risk that your agenda and
-note files may diverge.
+アジェンダバッファでのエントリーは、その項目が作成されたOrg-modeファイルと日
+記ファイルの間でリンクされます。アジェンダバッファでは編集することはできませ
+んが、コマンドを使って、そのエントリーがある場所を表示したり、ジャンプして、
+アジェンダバッファから「遠隔的に」Org-modeファイルを編集することができます。
+この方法で、すべての情報は１度書き込めばよく、あなたがアジェンダとノートのフ
+ァイルが別の情報になるというリスクを避けることができます。
 
-Some commands can be executed with mouse clicks on agenda lines.  For the
-other commands, the cursor needs to be in the desired line.
+いくつかのコマンドはアジェンダの行上でマウスをクリックすることで実行されます
+。それ以外のコマンドは、必要とされる行の中にカーソルが置かれている必要があり
+ます。
 
 @table @kbd
 @tsubheading{Motion}
@@ -7425,33 +7430,29 @@ other commands, the cursor needs to be in the desired line.
 @c
 @c
 @c
-@orgcmd{n,org-agenda-next-line} Next line (same as @key{up} and @kbd{C-p}).
-@orgcmd{p,org-agenda-previous-line} Previous line (same as @key{down} and
-@kbd{C-n}).  @tsubheading{View/Go to Org file}
-@orgcmdkkc{@key{SPC},mouse-3,org-agenda-show-and-scroll-up} Display the
-original location of the item in another window.  With prefix arg, make sure
-that the entire entry is made visible in the outline, not only the heading.
-@orgcmd{L,org-agenda-recenter} Display original location and recenter that
-window.  @orgcmdkkc{@key{TAB},mouse-2,org-agenda-goto} Go to the original
-location of the item in another window.
-@orgcmd{@key{RET},org-agenda-switch-to} Go to the original location of the
-item and delete other windows.  @orgcmd{F,org-agenda-follow-mode}
+@orgcmd{n,org-agenda-next-line}　次の行へ(@key{up}及び@kbd{C-p}と同じ)。@orgcmd{p,org-agenda-previous-line}　
+次の行へ(@key{down}及び@kbd{C-n}と同じ)。@tsubheading{View/Go to Org
+file}　@orgcmdkkc{@key{SPC},mouse-3,org-agenda-show-and-scroll-up}　そのアイテムのオリジナルの場
+所を別のウインドウで表示する。前置引数を使うことで、見出しだけでなく、アウト
+ライン上にエントリー全体を明確に表示する。@orgcmd{L,org-agenda-recenter}　オリジナル
+の場所を表示し、ウインドウのセンターに再配置する。@orgcmdkkc{@key{TAB},mouse-2,org-agenda-goto}　
+別のウインドウでそのアイテムのオリジナルの場所に移動する。@orgcmd{@key{RET},org-agenda-switch-to}　
+そのアイテムのオリジナルの場所に移動し、他のウインドウは削除する。@orgcmd{F,org-agenda-follow-mode}
 @vindex org-agenda-start-with-follow-mode
 @c
-Toggle Follow mode.  In Follow mode, as you move the cursor through the
-agenda buffer, the other window always shows the corresponding location in
-the Org file.  The initial setting for this mode in new agenda buffers can
-be set with the variable @code{org-agenda-start-with-follow-mode}.
-@orgcmd{C-c C-x b,org-agenda-tree-to-indirect-buffer} Display the entire
-subtree of the current item in an indirect buffer.  With a numeric prefix
-argument N, go up to level N and then take that tree.  If N is negative, go
-up that many levels.  With a @kbd{C-u} prefix, do not remove the previously
-used indirect buffer.
+Followモードをトグルする。Followモードではアジェンダバッファ上でカーソルを動
+かすと、Org-modeファイルの中で、別のウインドウ上で対応する場所を表示する。新
+しいアジェンダバッファの中でこのモードの初期設定値は、@code{org-agenda-start-with-follow-mode}変
+数で設定することができる。@orgcmd{C-c C-x
+b,org-agenda-tree-to-indirect-buffer}　間接的なバッファの中で可憐とアイテムの
+サブツリー全体を表示する。数値付きの前置引数Nをつけると、第N階層まで階層を上
+がり、そのツリーを取得する。もしもNがマイナスならば、多くの階層まで上がる。@kbd{C-u}と
+いう前置引数を付けた場合は、既に使われた間接的バッファは消去されない。
 
-@orgcmd{C-c C-o,org-agenda-open-link} Follow a link in the entry.  This will
-offer a selection of any links in the text belonging to the referenced Org
-node.  If there is only one link, it will be followed without a selection
-prompt.
+@orgcmd{C-c C-o,org-agenda-open-link}　エントリーの中にあるリンクをフォローする。こ
+の機能は、参照されているOrg-modeのノードに属しているテキストの中に含まれてい
+るいくつかのリンクの中から選択するという機能を提供する。もしもリンクが1つしか
+ない場合は、選択画面を表示せずに、そこにリンクを貼る。
 
 @tsubheading{Change display}
 @cindex display changing, in agenda
@@ -8228,11 +8229,11 @@ the agenda).
 @node Markup, Exporting, Agenda Views, Top
 @chapter Markup for rich export
 
-When exporting Org-mode documents, the exporter tries to reflect the
-structure of the document as accurately as possible in the backend.  Since
-export targets like HTML, @LaTeX{}, or DocBook allow much richer formatting,
-Org-mode has rules on how to prepare text for rich export.  This section
-summarizes the markup rules used in an Org-mode buffer.
+Org-modeの文書をエクスポートする時，エクスポート機能は文書の構造をできるだけ
+正確に反映しようとします．HTMLや@LaTeX{}，DocBook，その他のリッチフォーマット等のエ
+クスポートの対象について，Org-modeは文書をリッチエクスポートに変換するルール
+を持ちます．このセクションはOrg-modeんバッファで使われるマークアップのルール
+について説明します．
 
 @menu
 * Structural markup elements::  エクスポートでわかる基本的な構造
@@ -8264,38 +8265,36 @@ summarizes the markup rules used in an Org-mode buffer.
 
 @node Document title, Headings and sections, Structural markup elements, Structural markup elements
 @subheading Document title
-@cindex document title, markup rules
+@cindex 文書のタイトル，マークアップのルール
 
 @noindent
-The title of the exported document is taken from the special line
+エクスポートされた文書のタイトルは専用の行で設定されます．
 
 @cindex #+TITLE
 @example
-#+TITLE: This is the title of the document
+#+TITLE: これは文書のタイトルです．
 @end example
 
 @noindent
-If this line does not exist, the title is derived from the first non-empty,
-non-comment line in the buffer.  If no such line exists, or if you have
-turned off exporting of the text before the first headline (see below), the
-title will be the file name without extension.
+もしこの行が存在しなければ，タイトルはバッファ中の最初の空でない，コメントで
+ない行を用います．もしまだ何も存在していない，またはあなたが最初の見出しより
+前のテキストをエクスポートをしないよう設定していたら，タイトルは拡張子無しの
+ファイル名となります．
 
-@cindex property, EXPORT_TITLE
-If you are exporting only a subtree by marking is as the region, the heading
-of the subtree will become the title of the document.  If the subtree has a
-property @code{EXPORT_TITLE}, that will take precedence.
+@cindex プロパティ，EXPORT_TITLE
+もしあなたがリージョンでマークしたサブツリーのみをエクスポートしているなら，
+サブツリーの見出しは文書のタイトルとなるでしょう．もしサブツリーが@code{EXPORT_TITLE}プ
+ロパティを持っているなら，そのプロパティの値が優先して用いられるでしょう．
 
 @node Headings and sections, Table of contents, Document title, Structural markup elements
 @subheading Headings and sections
-@cindex headings and sections, markup rules
+@cindex 見出しとセクション，マークアップのルール
 
 @vindex org-export-headline-levels
-The outline structure of the document as described in @ref{Document Structure}, forms the basis for defining sections of the exported document.
-However, since the outline structure is also used for (for example) lists of
-tasks, only the first three outline levels will be used as headings.  Deeper
-levels will become itemized lists.  You can change the location of this
-switch globally by setting the variable @code{org-export-headline-levels},
-or on a per-file basis with a line
+@ref{Document Structure}で説明されているような文書のアウトライン構造は
+エクスポートされた文書のセクションの定義の基準を形成しています．しかしながら
+，アウトライン構造はまた(例えば)タスクのリストとしても使われているので，最初
+の3アウトラインレベルのみ見出しとして使われます．
 
 @cindex #+OPTIONS
 @example
@@ -8304,53 +8303,51 @@ or on a per-file basis with a line
 
 @node Table of contents, Initial text, Headings and sections, Structural markup elements
 @subheading Table of contents
-@cindex table of contents, markup rules
+@cindex 目次，マークアップのルール
 
 @vindex org-export-with-toc
-The table of contents is normally inserted directly before the first
-headline of the file.  If you would like to get it to a different location,
-insert the string @code{[TABLE-OF-CONTENTS]} on a line by itself at the
-desired location.  The depth of the table of contents is by default the same
-as the number of headline levels, but you can choose a smaller number, or
-turn off the table of contents entirely, by configuring the variable
-@code{org-export-with-toc}, or on a per-file basis with a line like
+目次は通常ファイルの最初の見出しの前に直接挿入されます．もしあなたが異なる場
+所に目次を挿入したいのなら，その場所に@code{[TABLE-OF-CONTENTS]}文字列を書いてくだ
+さい．目次の深さはデフォルトでは見出しのレベルの数と同じですが，@code{org-export-with-toc}変
+数を設定するか，ファイルに以下のように書くことによって，あなたはこれより小さ
+な値に変更することも，目次を完全に表示させないようにすることも可能です．
 
 @example
-#+OPTIONS: toc:2          (only to two levels in TOC)
-#+OPTIONS: toc:nil        (no TOC at all)
+#+OPTIONS: toc:2          (目次に表示するレベルを2までとする)
+#+OPTIONS: toc:nil        (目次を表示しない)
 @end example
 
 @node Initial text, Lists, Table of contents, Structural markup elements
-@subheading Text before the first headline
-@cindex text before first headline, markup rules
+@subheading 最初の見出しより前のテキスト
+@cindex 最初の見出しより前のテキスト，マークアップのルール
 @cindex #+TEXT
 
-Org-mode normally exports the text before the first headline, and even uses
-the first line as the document title.  The text will be fully marked up.  If
-you need to include literal HTML, @LaTeX{}, or DocBook code, use the special
-constructs described below in the sections for the individual exporters.
+Org-modeは通常最初の見出しの前にテキストをエクスポートし，最初の行を文書のタ
+イトルにします．テキストは完全にマークアップされているでしょう．もしあなたが
+HTMLや@LaTeX{}，DocBookのような<リテラルを含めたい場合，独立したエクスポート機構の
+セクションで説明されている特別な構造を使います．
 
 @vindex org-export-skip-text-before-1st-heading
-Some people like to use the space before the first headline for setup and
-internal links and therefore would like to control the exported text before
-the first headline in a different way.  You can do so by setting the
-variable @code{org-export-skip-text-before-1st-heading} to @code{t}.  On a
-per-file basis, you can get the same effect with @samp{#+OPTIONS: skip:t}.
+多くの人々は内部リンクの設定のためとそのために異なる方法でエクスポートされた
+最初の見出しの前のテキストを制御する最初の見出しの前に空白を使うことを好みま
+す．あなたは@code{orgexport-skip-text-before-1st-heading}変数をを@code{t}にすることで設
+定することができます．ファイル中に設定する場合，あなたは@samp{#+OPTIONS: skip:t}と
+することで同等の設定を行うことができます．
 
 @noindent
-If you still want to have some text before the first headline, use the
-@code{#+TEXT} construct:
+もし，あなたがまだ最初の見出しの前にテキストを置きたいのであれば，@code{#+TEXT}構
+造を使います:
 
 @example
 #+OPTIONS: skip:t
-#+TEXT: This text will go before the *first* headline.
+#+TEXT: このテキストは*最初の*見出しの前に置かれます
 #+TEXT: [TABLE-OF-CONTENTS]
-#+TEXT: This goes between the table of contents and the first headline
+#+TEXT: このテキストは目次と最初の見出しの間に置かれます
 @end example
 
 @node Lists, Paragraphs, Initial text, Structural markup elements
 @subheading Lists
-@cindex lists, markup rules
+@cindex リスト，マークアップのルール
 
 Plain lists as described in @ref{Plain lists}, are translated to the
 backend's syntax for such lists.  Most backends support unordered, ordered,
@@ -8950,23 +8947,27 @@ normal.
 
 @node Exporting, Publishing, Markup, Top
 @chapter Exporting
-@cindex exporting
+@cindex エクスポート
 
-Org-mode documents can be exported into a variety of other formats.  For
-printing and sharing of notes, ASCII export produces a readable and simple
-version of an Org file.  HTML export allows you to publish a notes file on
-the web, while the XOXO format provides a solid base for exchange with a
-broad range of other applications. @LaTeX{} export lets you use Org-mode and
-its structured editing functions to easily create @LaTeX{} files.  DocBook
-export makes it possible to convert Org files to many other formats using
-DocBook tools.  For project management you can create gantt and resource
-charts by using TaskJuggler export.  To incorporate entries with associated
-times like deadlines or appointments into a desktop calendar program like
-iCal, Org-mode can also produce extracts in the iCalendar format.  Currently
-Org-mode only supports export, not import of these different formats.
+org-modeのドキュメントは様々なフォーマットにエクスポートすることができます。
+ノートを共有し印刷するには
+ASCII形式でエクスポートすることでOrgファイルの読みやすく、シンプルなものが得
+られます。
+HTMLのエクスポートではノートをウェブに公開できるようになりますし,
+XOXOフォーマットは他の様々なアプリケーションでやりとりするうえで確かな基礎と
+なります。 @LaTeX{}
+のエクスポートでは、org-modeとその構造化された編集機能を使って、容易に @LaTeX{}
+のファイルを出力することができます。DocBookのエクスポートでは、Orgファイルを
+DocBookのツールを使った様々なフォーマットに変換することが可能です。プロジェク
+トの管理では、TaskJuggler形式のエクスポートを使って、ガントリソースチャートを
+作成することができます。デッドラインや予約のような時間と関連のあるエントリー
+をiCalのようなデスクトップカレンダーに取り込むために
+org-modeはiCalendar形式で抽出することもできます。現在、Org-modeはエクスポート
+のみをサポートしており、他の異なるフォーマットからインポートすることはできま
+せん。
 
-Org supports export of selected regions when @code{transient-mark-mode} is
-enabled (default in Emacs 23).
+org-modeは、 @code{transient-mark-mode} がオンの時(Emacs
+23ではデフォルト)、は選択したリージョンをエクスポートをすることができます。
 
 @menu
 * Selective export::         タグを使ってツリーを選択したり排除したりする
@@ -8985,45 +8986,48 @@ enabled (default in Emacs 23).
 
 @node Selective export, Export options, Exporting, Exporting
 @section Selective export
-@cindex export, selective by tags
+@cindex エクスポート。タグによる選択
 
 @vindex org-export-select-tags
 @vindex org-export-exclude-tags
-You may use tags to select the parts of a document that should be exported,
-or to exclude parts from export.  This behavior is governed by two
-variables: @code{org-export-select-tags} and @code{org-export-exclude-tags}.
+エクスポートしたいドキュメントのある部分を選択、または除外する時にタグを使う
+ことができます。 その挙動は、
+@code{org-export-select-tags} と @code{org-export-exclude-tags}
+の二つの変数により決まります。
 
-Org first checks if any of the @emph{select} tags is present in the buffer.
-If yes, all trees that do not carry one of these tags will be excluded.  If
-a selected tree is a subtree, the heading hierarchy above it will also be
-selected for export, but not the text below those headings.
-
-@noindent
-If none of the select tags is found, the whole buffer will be selected for
-export.
+org-modeはまず最初に @emph{select} タグがバッファにないかチェックします。 あった場
+合は,
+タグがない全てのツリーは除外されます。もし選択したツリーがサブツリーだった場
+合、それより上の階層はエクスポートされるものとして選択されますが,
+それより下の階層は選択されません。
 
 @noindent
-Finally, all subtrees that are marked by any of the @emph{exclude} tags will
-be removed from the export buffer.
+もし、選択されたタグがなかった場合, バッファにある全ての内容がエクスポートさ
+れるものとして選択されるでしょう。
+
+@noindent
+最後に,  @emph{exclude} タグでマークされていない全てのサブツリーはエクスポートバッ
+ファから除かれるでしょう。
 
 @node Export options, The export dispatcher, Selective export, Exporting
 @section Export options
-@cindex options, for export
+@cindex エクスポートのオプション
 
 @cindex 完了、オプションのキーワードの
-The exporter recognizes special lines in the buffer which provide additional
-information.  These lines may be put anywhere in the file.  The whole set of
-lines can be inserted into the buffer with @kbd{C-c C-e t}.  For individual
-lines, a good way to make sure the keyword is correct is to type @samp{#+}
-and then use @kbd{M-@key{TAB}} completion (@pxref{Completion}).  For a
-summary of other in-buffer settings not specifically related to export, see
-@ref{In-buffer settings}.  In particular, note that you can place
-commonly-used (export) options in a separate file which can be included
-using @code{#+SETUPFILE}.
+エクスポートする際にはバッファにある特別な行が読みこまれます。 その行には追加
+的な情報が含まれており、ファイルの中でどこにでも書くことができます。
+@kbd{C-c C-e t} と入力することで、バッファにそのような行をセットで挿入することが
+できます。それぞれの行で @samp{#+}
+と入力した後に @kbd{M-@key{TAB}} による補完を行ない、 (@pxref{Completion})
+キーワードが正しいか、確認してみると良いでしょう。エクスポートと関連のない、
+バッファ内の設定の概要については @ref{In-buffer settings} を参照してください。特
+に、 @code{#+SETUPFILE}
+を使うことによって含めることができる別のファイルの中でよく使われる(エクスポー
+トの)オプションを指定できることに注意してください
 
 @table @kbd
-@orgcmd{C-c C-e t,org-insert-export-options-template} Insert template with
-export options, see example below.
+@orgcmd{C-c C-e t,org-insert-export-options-template}
+エクスポートオプションのテンプレートを挿入します。下の例を見てください。
 @end table
 
 @cindex #+TITLE
@@ -9046,94 +9050,96 @@ export options, see example below.
 @vindex user-mail-address
 @vindex org-export-default-language
 @example
-#+TITLE:       the title to be shown (default is the buffer name)
-#+AUTHOR:      the author (default taken from @code{user-full-name})
-#+DATE:        a date, fixed, or a format string for @code{format-time-string}
-#+EMAIL:       his/her email address (default from @code{user-mail-address})
-#+DESCRIPTION: the page description, e.g.@: for the XHTML meta tag
-#+KEYWORDS:    the page keywords, e.g.@: for the XHTML meta tag
-#+LANGUAGE:    language for HTML, e.g.@: @samp{en} (@code{org-export-default-language})
-#+TEXT:        Some descriptive text to be inserted at the beginning.
-#+TEXT:        Several lines may be given.
+#+TITLE:       表示されるタイトル (デフォルトはバッファ名)
+#+AUTHOR:      著者 (デフォルトは @code{user-full-name} の値)
+#+DATE:         @code{format-time-string} で解釈される固定された日付の文字列
+#+EMAIL:       彼/彼女のメールアドレス(デフォルトは @code{user-mail-address} の値
+)
+#+DESCRIPTION: ページの説明, e.g.@: XHTMLのメタタグで使われる。
+#+KEYWORDS:    ページのキーワード, e.g.@: XHTMLのメタタグで使われる。
+#+LANGUAGE:    HTMLで指定される言語 e.g.@: @samp{en} (@code{org-export-default-language})
+#+TEXT:        冒頭に挿入される説明的な文章
+#+TEXT:        複数の行に書くことができます。
 #+OPTIONS:     H:2 num:t toc:t \n:nil @@:t ::t |:t ^:t f:t TeX:t ...
 #+BIND:        lisp-var lisp-val, e.g.@:: org-export-latex-low-levels itemize
-               @r{You need to confirm using these, or configure @code{org-export-allow-BIND}}
-#+LINK_UP:     the ``up'' link of an exported page
-#+LINK_HOME:   the ``home'' link of an exported page
-#+LATEX_HEADER: extra line(s) for the LaTeX header, like \usepackage@{xyz@}
-#+EXPORT_SELECT_TAGS:   Tags that select a tree for export
-#+EXPORT_EXCLUDE_TAGS:  Tags that exclude a tree from export
-#+XSLT:        the XSLT stylesheet used by DocBook exporter to generate FO file
+               
+@r{これらを確認するか, @code{org-export-allow-BIND} を設定すること}
+#+LINK_UP:     出力したページにおける ``up'' のリンク先
+#+LINK_HOME:   出力したページにおける ``home'' のリンク先
+#+LATEX_HEADER: LaTeXのヘッダーで使われる \usepackage@{xyz@} のような余分な行  
+#+EXPORT_SELECT_TAGS:   エクスポートするツリーを示すタグ
+#+EXPORT_EXCLUDE_TAGS:  エクスポートから除外するツリーを示すタグ
+#+XSLT:        FOファイルを生成するのにDocBookのエクスポート機能が使うXSLTの
+スタイルシート
 @end example
 
 @noindent
-The OPTIONS line is a compact@footnote{If you want to configure many options this way, you can use several OPTIONS lines.} form to specify export
-settings.  Here you can:
-@cindex headline levels
-@cindex section-numbers
-@cindex table of contents
-@cindex line-break preservation
-@cindex quoted HTML tags
-@cindex fixed-width sections
+OPTIONS行は 以下のようなエクスポートの設定を示すコンパクトな式です。 
+@footnote{もし、このように多くのオプションを設定したい時は, それぞれオプション行を作りことができます。} 
+@cindex 見出しの階層
+@cindex 章の番号
+@cindex 目次
+@cindex 改行の維持
+@cindex HTMLの引用タグ
+@cindex 固定幅の段落
 @cindex tables
-@cindex @TeX{}-like syntax for sub- and superscripts
+@cindex 上付き、下付き文字を示す @TeX{} のようなシンタックス
 @cindex footnotes
-@cindex special strings
-@cindex emphasized text
+@cindex 特別な文字列
+@cindex 強調されたテキスト
 @cindex @TeX{}マクロ
 @cindex @LaTeX{}の断片的なコード
-@cindex author info, in export
-@cindex time info, in export
+@cindex 著者の情報、エクスポートの中で
+@cindex 時間の情報、エクスポートの中で
 @example
-H:         @r{set the number of headline levels for export}
-num:       @r{turn on/off section-numbers}
-toc:       @r{turn on/off table of contents, or set level limit (integer)}
-\n:        @r{turn on/off line-break-preservation (DOES NOT WORK)}
-@@:         @r{turn on/off quoted HTML tags}
-::         @r{turn on/off fixed-width sections}
-|:         @r{turn on/off tables}
-^:         @r{turn on/off @TeX{}-like syntax for sub- and superscripts.  If}
-           @r{you write "^:@{@}", @code{a_@{b@}} will be interpreted, but}
-           @r{the simple @code{a_b} will be left as it is.}
--:         @r{turn on/off conversion of special strings.}
-f:         @r{turn on/off footnotes like this[1].}
-todo:      @r{turn on/off inclusion of TODO keywords into exported text}
-pri:       @r{turn on/off priority cookies}
-tags:      @r{turn on/off inclusion of tags, may also be @code{not-in-toc}}
-<:         @r{turn on/off inclusion of any time/date stamps like DEADLINES}
-*:         @r{turn on/off emphasized text (bold, italic, underlined)}
-TeX:       @r{turn on/off simple @TeX{} macros in plain text}
-LaTeX:     @r{configure export of @LaTeX{} fragments.  Default @code{auto}}
-skip:      @r{turn on/off skipping the text before the first heading}
-author:    @r{turn on/off inclusion of author name/email into exported file}
-email:     @r{turn on/off inclusion of author email into exported file}
-creator:   @r{turn on/off inclusion of creator info into exported file}
-timestamp: @r{turn on/off inclusion creation time into exported file}
-d:         @r{turn on/off inclusion of drawers}
+H:         @r{エクスポートする見出しの階層数}
+num:       @r{セクション番号の有無}
+toc:       @r{目次の有無, または階層数の上限 (整数)}
+\n:        @r{改行を維持するかどうか (うまく動作しない)}
+@@:         @r{HTMLの引用タグの有無}
+::         @r{固定幅の段落の有無}
+|:         @r{表の有無}
+^:         @r{上付き、下付き文字を示す @TeX{} のようなシンタックスの有無}
+           @r{ "^:@{@}" は @code{a_@{b@}} 解釈されるが、}
+           @r{簡潔な @code{a_b} はそのままとなるでしょう。}
+-:         @r{特別な文字列を変換するかどうか}
+f:         @r{this[1] のような脚注を用いるかどうか}
+todo:      @r{TODOキーワードを出力した文字列に含めるかどうか}
+pri:       @r{クッキーを優先するかどうか}
+tags:      @r{タグの有無, @code{not-in-toc} となるかもしれません。}
+<:         @r{DEADLINESのような時間/日付の有無}
+*:         @r{強調テキストの有無(太字, イタリック, アンダーライン)}
+TeX:       @r{テキスト中のシンプルな @TeX{} マクロの有無 }
+LaTeX:     @r{ @LaTeX{} 出力の設定  デフォルトは @code{auto}}
+skip:      @r{最初見出しの前にある文章をスキップするかどうか}
+author:    @r{著者の名前/e-mailを出力するかどうか}
+email:     @r{著者のe-mailを出力するかどうか}
+creator:   @r{作者を出力するかどうか}
+timestamp: @r{作成した日付を出力するかどうか}
+d:         @r{drawerを出力するかどうか}
 @end example
 @noindent
-These options take effect in both the HTML and @LaTeX{} export, except for
-@code{TeX} and @code{LaTeX} options, which are respectively @code{t} and
-@code{nil} for the @LaTeX{} export.
+これらのオプションはHTML、 @LaTeX{} の両方のエクスポートに影響します。 @code{TeX} と @code{LaTeX}
+のオプションを除き @LaTeX{} のエクスポートをするのに、それぞれ @code{t} 、または @code{nil} と
+なります。
 
-Setting @code{org-export-html-pre/postamble} to @code{t} will override the
-values of the @code{author}, @code{email} and @code{creator} options in HTML
-export: it will use @code{org-export-html-pre/postamble-format} instead.
+ @code{org-export-html-pre/postamble} を @code{t} とするとHTMLにエクスポートする時に
+@code{author} 、 @code{email} 及び @code{creator} の値は上書きされるでしょう。 代わりに
+@code{org-export-html-pre/postamble-format} が用いられます。
 
-The default values for these and many other options are given by a set of
-variables.  For a list of such variables, the corresponding OPTIONS keys and
-also the publishing keys (@pxref{Project alist}), see the constant
-@code{org-export-plist-vars}.
+このようなオプションの初期値は変数のセットで与えられます。 そのような変数は、
+OPTIONSのキーと公開するキーにも対応しています。
+(@pxref{Project alist}), @code{org-export-plist-vars} の定数を見てください。
 
-When exporting only a single subtree by selecting it with @kbd{C-c @@}
-before calling an export command, the subtree can overrule some of the
-file's export settings with properties @code{EXPORT_FILE_NAME},
-@code{EXPORT_TITLE}, @code{EXPORT_TEXT}, @code{EXPORT_AUTHOR},
-@code{EXPORT_DATE}, and @code{EXPORT_OPTIONS}.
+エクスポートのコマンドを呼びだす前に、 @@@kbd{C-c } で選択した単一のサブツリーをエ
+クスポートする時、そのサブツリーは、
+@code{EXPORT_FILE_NAME} 、 @code{EXPORT_TITLE} 、 @code{EXPORT_TEXT} 、
+@code{EXPORT_AUTHOR} 、 @code{EXPORT_DATE} 、 そして @code{EXPORT_OPTIONS}
+プロパティでエクスポートの設定を無視することができます。
 
 @node The export dispatcher, ASCII/Latin-1/UTF-8 export, Export options, Exporting
 @section The export dispatcher
-@cindex dispatcher, for export commands
+@cindex ディスパッチャー、エクスポートコマンドのための
 
 All export commands can be reached using the export dispatcher, which is a
 prefix key that prompts for an additional key specifying the command.
@@ -9175,7 +9181,7 @@ file with special characters and symbols available in these encodings.
 Export as ASCII file.  For an Org file, @file{myfile.org}, the ASCII file
 will be @file{myfile.txt}.  The file will be overwritten without warning.
 If there is an active region@footnote{This requires @code{transient-mark-mode} be turned on.}, only the region will be
-exported. If the selected region is a single tree@footnote{To select the current subtree, use @kbd{C-c @@}.}, the tree head will become the document
+exported. If the selected region is a single tree@@@footnote{To select the current subtree, use @kbd{C-c }.}, the tree head will become the document
 title.  If the tree head entry has or inherits an @code{EXPORT_FILE_NAME}
 property, that name will be used for the export.  @orgcmd{C-c C-e A,org-export-as-ascii-to-buffer} Export to a temporary buffer.  Do not
 create a file.  @orgcmd{C-c C-e n,org-export-as-latin1} @xorgcmd{C-c C-e N,org-export-as-latin1-to-buffer} Like the above commands, but use Latin-1
@@ -9242,7 +9248,7 @@ with additional support for tables.
 Export as HTML file @file{myfile.html}.  For an Org file @file{myfile.org},
 the ASCII file will be @file{myfile.html}.  The file will be overwritten
 without warning.  If there is an active region@footnote{This requires @code{transient-mark-mode} be turned on.}, only the region will be
-exported. If the selected region is a single tree@footnote{To select the current subtree, use @kbd{C-c @@}.}, the tree head will become the document
+exported. If the selected region is a single tree@@@footnote{To select the current subtree, use @kbd{C-c }.}, the tree head will become the document
 title.  If the tree head entry has, or inherits, an @code{EXPORT_FILE_NAME}
 property, that name will be used for the export.  @orgcmd{C-c C-e b,org-export-as-html-and-open} Export as HTML file and immediately open it
 with a browser.  @orgcmd{C-c C-e H,org-export-as-html-to-buffer} Export to a
@@ -9460,7 +9466,7 @@ p.creator           @r{creator info, about org-mode version}
 .timestamp-kwd      @r{keyword associated with a timestamp, like SCHEDULED}
 .timestamp-wrapper  @r{span around keyword plus timestamp}
 .tag                @r{tag in a headline}
-._HOME              @r{each tag uses itself as a class, "@@" replaced by "_"}
+._HOME              @@@r{each tag uses itself as a class, "" replaced by "_"}
 .target             @r{target for links}
 .linenr             @r{the line number in a code example}
 .code-highlighted   @r{for highlighting referenced code lines}
@@ -9614,7 +9620,7 @@ sections.
 Export as @LaTeX{} file @file{myfile.tex}.  For an Org file
 @file{myfile.org}, the ASCII file will be @file{myfile.tex}.  The file will
 be overwritten without warning.  If there is an active region@footnote{This requires @code{transient-mark-mode} be turned on.}, only the region will be
-exported. If the selected region is a single tree@footnote{To select the current subtree, use @kbd{C-c @@}.}, the tree head will become the document
+exported. If the selected region is a single tree@@@footnote{To select the current subtree, use @kbd{C-c }.}, the tree head will become the document
 title.  If the tree head entry has or inherits an @code{EXPORT_FILE_NAME}
 property, that name will be used for the export.  @orgcmd{C-c C-e L,org-export-as-latex-to-buffer} Export to a temporary buffer.  Do not
 create a file.
@@ -9943,7 +9949,7 @@ Currently DocBook exporter only supports DocBook V5.0.
 Export as DocBook file.  For an Org file, @file{myfile.org}, the DocBook XML
 file will be @file{myfile.xml}.  The file will be overwritten without
 warning.  If there is an active region@footnote{This requires @code{transient-mark-mode} to be turned on}, only the region will be
-exported.  If the selected region is a single tree@footnote{To select the current subtree, use @kbd{C-c @@}.}, the tree head will become the document
+exported.  If the selected region is a single tree@@@footnote{To select the current subtree, use @kbd{C-c }.}, the tree head will become the document
 title.  If the tree head entry has, or inherits, an @code{EXPORT_FILE_NAME}
 property, that name will be used for the export.  @orgcmd{C-c C-e V,org-export-as-docbook-pdf-and-open} Export as DocBook file, process to
 PDF, then open the resulting PDF file.
@@ -13723,7 +13729,7 @@ arguments.  The first argument is the table, a list of lines, each line
 either the symbol @code{hline} or a list of fields.  The second argument is
 the property list containing all parameters specified in the @samp{#+ORGTBL: SEND} line.  The function must return a single string containing the
 formatted table.  If you write a generally useful translator, please post it
-on @email{emacs-orgmode@@gnu.org} so that others can benefit from your work.
+on @@@email{emacs-orgmodegnu.org} so that others can benefit from your work.
 
 @node ラジオリスト, , Translator functions, Tables in arbitrary syntax
 @subsection ラジオリスト
