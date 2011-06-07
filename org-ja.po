@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-06-03 22:07+0900\n"
+"PO-Revision-Date: 2011-06-07 09:32+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -18347,13 +18347,13 @@ msgstr "コードラインのリファレンス，マークアップのルール
 #. type: Plain text
 #: org.texi:8801
 msgid "You can include literal examples that should not be subjected to markup.  Such examples will be typeset in monospace, so this is well suited for source code and similar examples."
-msgstr ""
+msgstr "あなたはマークアップに依存しないリテラルの例を含めることができます．そのような例に等幅のタイプセットがあり，それはソースコードやそれに似た例向きです．"
 
 #. type: cindex
 #: org.texi:8801
 #, no-wrap
 msgid "#+BEGIN_EXAMPLE"
-msgstr ""
+msgstr "#+BEGIN_EXAMPLE"
 
 #+glossary: example ( 例 ) / text ( テキスト|文章 )
 #. type: example
@@ -18364,12 +18364,15 @@ msgid ""
 "Some example from a text file.\n"
 "#+END_EXAMPLE\n"
 msgstr ""
+"#+BEGIN_EXAMPLE\n"
+"テキストファイルからの例．\n"
+"#+END_EXAMPLE\n"
 
 #+glossary: plain list ( プレーンリスト|単純なリスト ) / block ( ブロック ) / example ( 例 ) / line ( 行|ライン|線 ) / note ( ノート ) / structure ( 構造 ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:8814
 msgid "Note that such blocks may be @i{indented} in order to align nicely with indented text and in particular with plain list structure (@pxref{Plain lists}).  For simplicity when using small examples, you can also start the example lines with a colon followed by a space.  There may also be additional whitespace before the colon:"
-msgstr ""
+msgstr "そのようなブロックはインデントされたテキストをうまく整列させるためと，特にプレーンリスト構造(@xref{Plain List})のために@i{インデント}されるでしょう．小さな例を使う時，それを簡単にするために，あなたはコロンとそれに続く空白からなる例の行を使うことができる．それらはコロンの前に空白を追加することもできます．"
 
 #+glossary: example ( 例 ) / text ( テキスト|文章 )
 #. type: example
@@ -18379,25 +18382,27 @@ msgid ""
 "Here is an example\n"
 "   : Some example from a text file.\n"
 msgstr ""
+"ここに例を書きます\n"
+"   : テキストファイルからの例\n"
 
 #+glossary: code ( コード ) / source ( ソース )
 #. type: cindex
 #: org.texi:8820
 #, no-wrap
 msgid "formatting source code, markup rules"
-msgstr ""
+msgstr "ソースコードのフォーマット，マークアップのルール"
 
 #+glossary: block ( ブロック ) / code ( コード ) / configuration ( 設定 ) / example ( 例 ) / header ( ヘッダー ) / install ( インストール ) / language ( 言語 ) / major ( メジャー ) / marked ( マーク ) / mode ( モード|モード ) / option ( オプション ) / output ( アウトプット ) / package ( パッケージ ) / setting ( 設定 ) / source ( ソース ) / text ( テキスト|文章 ) / variable ( 変数 ) / version ( バージョン ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:8841
 msgid "If the example is source code from a programming language, or any other text that can be marked up by font-lock in Emacs, you can ask for the example to look like the fontified Emacs buffer@footnote{This works automatically for the HTML backend (it requires version 1.34 of the @file{htmlize.el} package, which is distributed with Org).  Fontified code chunks in LaTeX can be achieved using either the listings or the @url{http://code.google.com/p/minted, minted,} package. To use listings, turn on the variable @code{org-export-latex-listings} and ensure that the listings package is included by the LaTeX header (e.g.@: by configuring @code{org-export-latex-packages-alist}). See the listings documentation for configuration options, including obtaining colored output.  For minted it is necessary to install the program @url{http://pygments.org, pygments}, in addition to setting @code{org-export-latex-minted}, ensuring that the minted package is included by the LaTeX header, and ensuring that the @code{-shell-escape} option is passed to @file{pdflatex} (see @code{org-latex-to-pdf-process}). See the documentation of the variables @code{org-export-latex-listings} and @code{org-export-latex-minted} for further details.}.  This is done with the @samp{src} block, where you also need to specify the name of the major mode that should be used to fontify the example:"
-msgstr ""
+msgstr "もし例がソースコードなら，もしくはEmacsでフォントロックによりマークアップされたテキストなら，あなたはEmacsバッファ@footnote{HTMLバックエンドに対しては，この作業は自動的に行われます(Org-modeと一緒に配布されている@file{htmlize.el}のバージョン1.34が必要です)．LaTeXの要塞化されたコードの塊はリスティングか，@url{http://coe.google.com/p/minted, minted,}パッケージによってアーカイブされます．リスティングを使うには，@code{org-export-latex-listings}変数をオンにし，LaTeXのヘッダにリスティングパッケージが含まれているようにします(例: @code{org-export-latex-packages-alist}の設定と@:を使います)．色付きの出力を含む設定のオプションについて，リスティングのドキュメントを見てください．mintedを使うには，@url{http://pygemnts.org, pygemnts}プログタムをインストールする必要があり，@code{org-export-latex-minted}を追加で設定し，LaTeXのヘッダにmitedパッケージが含まれていることと@code{-shell-escape}オプションが@file{pdflatex}に引き継がれている(@code{org-latex-to-pdf-process}を見てください)ことを確認します．}を要塞化するように要請することができます．あなたが例に色付けするために使うメジャーモードの名前を指定することが必要な時，@samp{src}ブロックを使います:"
 
 #. type: cindex
 #: org.texi:8841
 #, no-wrap
 msgid "#+BEGIN_SRC"
-msgstr ""
+msgstr "#+BEGIN_SRC"
 
 #. type: example
 #: org.texi:8849
@@ -18410,18 +18415,23 @@ msgid ""
 "     (if a (not b) b))\n"
 "#+END_SRC\n"
 msgstr ""
+"#+BEGIN_SRC emacs-lisp\n"
+"  (defun org-xor (a b)\n"
+"     \"Exclusive or.\"\n"
+"     (if a (not b) b))\n"
+"#+END_SRC\n"
 
 #+glossary: code ( コード ) / current ( カレント|現在の ) / example ( 例 ) / hyperlinks ( ハイパーリンク ) / line ( 行|ライン|線 ) / link ( リンク ) / mouse ( マウス|mouse ) / org ( Org-mode ) / previous ( 前の ) / snippet ( スニペット ) / string ( 文字列 )
 #. type: Plain text
 #: org.texi:8860
 msgid "Both in @code{example} and in @code{src} snippets, you can add a @code{-n} switch to the end of the @code{BEGIN} line, to get the lines of the example numbered.  If you use a @code{+n} switch, the numbering from the previous numbered snippet will be continued in the current one.  In literal examples, Org will interpret strings like @samp{(ref:name)} as labels, and use them as targets for special hyperlinks like @code{[[(name)]]} (i.e.@: the reference name enclosed in single parenthesis).  In HTML, hovering the mouse over such a link will remote-highlight the corresponding code line, which is kind of cool."
-msgstr ""
+msgstr "@code{example}と@code{src}スニペットでは，あなたは@code{BEGIN}の行の最後に@code{-n}を追加することで，例の行番号を表示することができます．もしあなたが@code{+n}とすると，前のスニペットから現在のものに番号が引き継がれます．リテラルの例で，Org-modeは@samp{(ref:name)}をラベルとして解釈し，@code{[[(name)]]}のような特別なリンクによりそこを参照することができます(i.e.@: 参照名は1つの括弧に囲まれています)．HTMLでは，対応するコード行をマウスオーバーすると自動的にハイライト表示になり，少しクールです．"
 
 #+glossary: code ( コード ) / example ( 例 ) / line ( 行|ライン|線 ) / link ( リンク ) / org-mode ( Org-mode ) / source ( ソース )
 #. type: Plain text
 #: org.texi:8868
 msgid "You can also add a @code{-r} switch which @i{removes} the labels from the source code@footnote{Adding @code{-k} to @code{-n -r} will @i{keep} the labels in the source code while using line numbers for the links, which might be useful to explain those in an org-mode example code.}.  With the @code{-n} switch, links to these references will be labeled by the line numbers from the code listing, otherwise links will use the labels with no parentheses.  Here is an example:"
-msgstr ""
+msgstr "また，ソースコード@footnote{Org-modeの例で説明するのに便利なリンクに行番号を使う間，@code{-k}を@code{-n -r}に追加することでソースコードのラベルを@i{維持}します．}からラベルを@i{消去}するかどうかの切り替えのために@code{-r}を追加することもできます．@code{-n}で切り替えると，リンクされるそれらのリファレンスはコードリスティングの行番号によってラベルを付けられ，そうでなければ括弧無しのラベルにリンクされます．"
 
 #+glossary: current ( カレント|現在の ) / line ( 行|ライン|線 )
 #. type: example
@@ -18435,24 +18445,30 @@ msgid ""
 "In line [[(sc)]] we remember the current position.  [[(jump)][Line (jump)]]\n"
 "jumps to point-min.\n"
 msgstr ""
+"#+BEGIN_SRC emacs-lisp -n -r\n"
+"(save-excursion                  (ref:sc)\n"
+"   (goto-char (point-min))       (ref:jump)\n"
+"#+END_SRC\n"
+"In line [[(sc)]] we remember the current position.  [[(jump)][Line (jump)]]\n"
+"jumps to point-min.\n"
 
 #. type: vindex
 #: org.texi:8878
 #, no-wrap
 msgid "org-coderef-label-format"
-msgstr ""
+msgstr "org-coderef-label-format"
 
 #+glossary: conflict ( 衝突する ) / example ( 例 ) / format ( フォーマット|形成 ) / language ( 言語 ) / syntax ( 構文|シンタックス ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:8882
 msgid "If the syntax for the label format conflicts with the language syntax, use a @code{-l} switch to change the format, for example @samp{#+BEGIN_SRC pascal -n -r -l \"((%s))\"}.  See also the variable @code{org-coderef-label-format}."
-msgstr ""
+msgstr "もし，ラベルの構文が言語の構文と衝突した場合，@code{-l}を使うことで@samp{#+BEGIN_SRC pascal -n -r -l \\\"((%s))\\\"}のようにフォーマットを変更できます．@code{org-coderef-label-format}変数を見てください．"
 
 #+glossary: example ( 例 ) / export ( エクスポート ) / published ( 公開 ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:8885
 msgid "HTML export also allows examples to be published as text areas, @xref{Text areas in HTML export}."
-msgstr ""
+msgstr "HTMLはエクスポート時にテキストエリア,@xref{Text areas in HTML export}とすることができます"
 
 #. type: kindex
 #: org.texi:8887
