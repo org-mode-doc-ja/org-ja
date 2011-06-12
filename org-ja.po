@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-05-11 21:47+0900\n"
+"PO-Revision-Date: 2011-06-12 16:30+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -19829,7 +19829,7 @@ msgstr "org-export-html-table-tag"
 #. type: Plain text
 #: org.texi:9670
 msgid "Org-mode tables are exported to HTML using the table tag defined in @code{org-export-html-table-tag}.  The default setting makes tables without cell borders and frame.  If you would like to change this for individual tables, place something like the following before the table:"
-msgstr "Org-mode tables are exported to HTML using the table tag defined in @code{org-export-html-table-tag}.  The default setting makes tables without cell borders and frame.  If you would like to change this for individual tables, place something like the following before the table:"
+msgstr "org-modeの表は、@code{org-export-html-table-tag}で定義されているテーブルのタグを使ってHTMLにエクスポートされます。 デフォルトの設定では、セルの罫線とフレームがない状態でテーブルが出力されます。 個々のテーブルでその設定を変えたい場合は, 次のような行をテーブルの前に記述してください。"
 
 #+glossary: line ( 行|ライン|線 ) / table ( テーブル )
 #. type: example
@@ -19839,20 +19839,22 @@ msgid ""
 "#+CAPTION: This is a table with lines around and between cells\n"
 "#+ATTR_HTML: border=\"2\" rules=\"all\" frame=\"all\"\n"
 msgstr ""
+"#+CAPTION: これはセルの周囲に線が引かれた表です。\n"
+"#+ATTR_HTML: border=\"2\" rules=\"all\" frame=\"all\"\n"
 
 #+glossary: image ( 画像 ) / inline ( インライン )
 #. type: cindex
 #: org.texi:9681
 #, no-wrap
 msgid "images, inline in HTML"
-msgstr ""
+msgstr "画像、HTMLの中でインライン"
 
 #+glossary: image ( 画像 )
 #. type: cindex
 #: org.texi:9682
 #, no-wrap
 msgid "inlining images in HTML"
-msgstr ""
+msgstr "HTMLのインライン画像"
 
 #. type: vindex
 #: org.texi:9683
@@ -19865,19 +19867,19 @@ msgstr "org-export-html-inline-images"
 #. type: Plain text
 #: org.texi:9695
 msgid "HTML export can inline images given as links in the Org file, and it can make an image the clickable part of a link.  By default@footnote{But see the variable @code{org-export-html-inline-images}.}, images are inlined if a link does not have a description.  So @samp{[[file:myimg.jpg]]} will be inlined, while @samp{[[file:myimg.jpg][the image]]} will just produce a link @samp{the image} that points to the image.  If the description part itself is a @code{file:} link or a @code{http:} URL pointing to an image, this image will be inlined and activated so that clicking on the image will activate the link.  For example, to include a thumbnail that will link to a high resolution version of the image, you could use:"
-msgstr ""
+msgstr "HTMLのエクスポートではOrgファイルにリンクがある画像をインライン表示することができます。 その画像はリンクされているクリック可能な部分として扱われます。 デフォルトでは、@footnote{ただし、@code{org-export-html-inline-images}を確認してください。}, リンクにdescriptionがなければ、画像はインライン表示されます。 つまり、 @samp{[[file:myimg.jpg]]}はインライン表示されますが、@samp{[[file:myimg.jpg][the image]]}はが画像にリンクされる@samp{the image}というテキストリンクが作られます。 descriptionの部分が@code{file:}リンクか画像を示す@code{http:}のURLの場合, 画像はインラインに表示され、画像がクリックされると活性化されます。例えば、リンク先に高解像度の画像があるサムネイルを追加したい場合、次のように書くと良いでしょう。"
 
 #. type: example
 #: org.texi:9698
 #, no-wrap
 msgid "[[file:highres.jpg][file:thumb.jpg]]\n"
-msgstr ""
+msgstr "[[file:highres.jpg][file:thumb.jpg]]\n"
 
 #+glossary: example ( 例 ) / image ( 画像 ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:9703
 msgid "If you need to add attributes to an inlined image, use a @code{#+ATTR_HTML}.  In the example below we specify the @code{alt} and @code{title} attributes to support text viewers and accessibility, and align it to the right."
-msgstr ""
+msgstr "インライン画像に属性を追加したい場合は、@code{#+ATTR_HTML}を使います。 次の例では、テキストでの見やすさとアクセスのしやすさを考慮して@code{alt}属性と@code{title}属性を指定して、alignを右にしています。"
 
 #. type: example
 #: org.texi:9710
@@ -19887,66 +19889,69 @@ msgid ""
 "#+ATTR_HTML: alt=\"cat/spider image\" title=\"Action!\" align=\"right\"\n"
 "[[./img/a.jpg]]\n"
 msgstr ""
+"#+CAPTION: A black cat stalking a spider\n"
+"#+ATTR_HTML: alt=\"cat/spider image\" title=\"Action!\" align=\"right\"\n"
+"[[./img/a.jpg]]\n"
 
 #. type: Plain text
 #: org.texi:9714
 msgid "and you could use @code{http} addresses just as well."
-msgstr ""
+msgstr "@code{http}のアドレスも使うことができます。"
 
 #. type: cindex
 #: org.texi:9717
 #, no-wrap
 msgid "MathJax"
-msgstr ""
+msgstr "MathJax"
 
 #. type: cindex
 #: org.texi:9718
 #, no-wrap
 msgid "dvipng"
-msgstr ""
+msgstr "dvipng"
 
 #+glossary: default ( デフォルト|初期値 ) / insert ( 挿入 ) / installation ( インストール ) / math ( 数学 ) / mode ( モード|モード ) / org ( Org-mode ) / org-mode ( Org-mode ) / page ( ページ ) / snippet ( スニペット ) / user ( ユーザー ) / variable ( 変数 ) / view ( ビュー ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:9732
 msgid "@LaTeX{} math snippets (@pxref{LaTeX fragments}) can be displayed in two different ways on HTML pages.  The default is to use the @uref{http://www.mathjax.org, MathJax system} which should work out of the box with Org mode installation because @code{http://orgmode.org} serves @file{MathJax} for Org-mode users for small applications and for testing purposes.  @b{If you plan to use this regularly or on pages with significant page views, you should install@footnote{Installation instructions can be found on the MathJax website, see @uref{http://www.mathjax.org/resources/docs/?installation.html}.} MathJax on your own server in order to limit the load of our server.} To configure @file{MathJax}, use the variable @code{org-export-html-mathjax-options} or insert something like the following into the buffer:"
-msgstr ""
+msgstr "@LaTeX{}の数学用スニペット(@pxref{LaTeX fragments})は二つの異なる方法でHTMLに表示される。デフォルトではorg-modeをインストールすると、すぐに@uref{http://www.mathjax.org, MathJax system}が使えるようになっています。 @code{http://orgmode.org}は@file{MathJax}がOrg-modeユーザ、小さなアプリケーション、そしてテストにとって便利だと考えているからです。  @b{もし特定のページで、あるいは常に@file{MathJax}を使うのであれば、私達のサーバでの読みこみを減らすためにMathJaxをあなたのサーバにインストール@footnote{インストール方法については、MathJaxのウェブサイトにあります。@uref{http://www.mathjax.org/resources/docs/?installation.html}を参照してください。} してください。} @file{MathJax}について設定するには、@code{org-export-html-mathjax-options}を使うか、バッファに次のような行を挿入してください。"
 
 #. type: example
 #: org.texi:9735
 #, no-wrap
 msgid "#+MATHJAX: align:\"left\" mathml:t path:\"/MathJax/MathJax.js\"\n"
-msgstr ""
+msgstr "#+MATHJAX: align:\"left\" mathml:t path:\"/MathJax/MathJax.js\"\n"
 
 #+glossary: line ( 行|ライン|線 ) / parameters ( パラメーター )
 #. type: Plain text
 #: org.texi:9740
 msgid "@code{org-export-html-mathjax-options} for the meaning of the parameters in this line."
-msgstr ""
+msgstr "この行の各パラメータの意味の知るための@code{org-export-html-mathjax-options}"
 
 #+glossary: available ( 利用できる ) / default ( デフォルト|初期値 ) / file ( ファイル ) / fragment ( フラグメント ) / image ( 画像 ) / org ( Org-mode ) / page ( ページ ) / processing ( 処理 ) / system ( システム )
 #. type: Plain text
 #: org.texi:9746
 msgid "If you prefer, you can also request that @LaTeX{} fragments are processed into small images that will be inserted into the browser page.  Before the availability of MathJax, this was the default method for Org files.  This method requires that the @file{dvipng} program is available on your system.  You can still get this processing with"
-msgstr ""
+msgstr "望むのであれば、@LaTeX{}を小さな画像に変換してブラウザ上のページに挿入することもできます。MathJaxが有用である前には、これがorg-modeでのデフォルトの方法でした。この方法を用いるには、あなたのシステムで@file{dvipng}プログラムが利用できる状態である必要があります。この方法は以下のような行を追加することでも有効になります。"
 
 #. type: example
 #: org.texi:9749
 #, no-wrap
 msgid "#+OPTIONS: LaTeX:dvipng\n"
-msgstr ""
+msgstr "#+OPTIONS: LaTeX:dvipng\n"
 
 #+glossary: text ( テキスト|文章 )
 #. type: cindex
 #: org.texi:9754
 #, no-wrap
 msgid "text areas, in HTML"
-msgstr ""
+msgstr "テキストエリア、HTMLの中の"
 
 #+glossary: an alternative way ( 別の方法 ) / block ( ブロック ) / code ( コード ) / default ( デフォルト|初期値 ) / example ( 例 ) / line ( 行|ライン|線 ) / option ( オプション ) / publish ( 公開 ) / syntax ( 構文|シンタックス ) / text ( テキスト|文章 ) / width ( 幅 )
 #. type: Plain text
 #: org.texi:9763
 msgid "An alternative way to publish literal code examples in HTML is to use text areas, where the example can even be edited before pasting it into an application.  It is triggered by a @code{-t} switch at an @code{example} or @code{src} block.  Using this switch disables any options for syntax and label highlighting, and line numbering, which may be present.  You may also use @code{-h} and @code{-w} switches to specify the height and width of the text area, which default to the number of lines in the example, and 80, respectively.  For example"
-msgstr ""
+msgstr "コードサンプルをHTMLにして公開する方法として、テキストエリアを使う方法があります。何かのアプリケーションに貼りつける前であれば、そのコードサンプルは編集することができます。@code{example}ブロックか@code{src}ブロックに@code{-t}スイッチが付加されることでテキストエリアに変換されます。  このスイッチを使うことで、シンタックス、ラベルのハイライト、行番号に関するオプションが無効になります。 @code{-h}と@code{-w}を使うことがあるかもしれません。それらのスイッチはテキストエリアの高さと幅を特定するもので、デフォルトでは高さがexampleブロックの行数で幅は80となります。設定は、例えば以下のようになります。"
 
 #. type: example
 #: org.texi:9770
@@ -19958,38 +19963,43 @@ msgid ""
 "     (if a (not b) b))\n"
 "#+END_EXAMPLE\n"
 msgstr ""
+"#+BEGIN_EXAMPLE -t -w 40\n"
+"  (defun org-xor (a b)\n"
+"     \"Exclusive or.\"\n"
+"     (if a (not b) b))\n"
+"#+END_EXAMPLE\n"
 
 #+glossary: export ( エクスポート )
 #. type: cindex
 #: org.texi:9775
 #, no-wrap
 msgid "CSS, for HTML export"
-msgstr ""
+msgstr "CSS、HTMLエクスポートに関する"
 
 #+glossary: export ( エクスポート )
 #. type: cindex
 #: org.texi:9776
 #, no-wrap
 msgid "HTML export, CSS"
-msgstr ""
+msgstr "HTMLエクスポート、CSS"
 
 #. type: vindex
 #: org.texi:9778
 #, no-wrap
 msgid "org-export-html-todo-kwd-class-prefix"
-msgstr ""
+msgstr "org-export-html-todo-kwd-class-prefix"
 
 #. type: vindex
 #: org.texi:9779
 #, no-wrap
 msgid "org-export-html-tag-class-prefix"
-msgstr ""
+msgstr "org-export-html-tag-class-prefix"
 
 #+glossary: TODO keywords ( TODOキーワード ) / class ( クラス ) / conflict ( 衝突する ) / exported ( エクスポート|出力された ) / exporter ( エクスポート機能 ) / file ( ファイル ) / headline ( 見出し ) / information ( 情報 ) / specification ( 指定 ) / table ( テーブル ) / tag ( タグ ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:9787
 msgid "You can also give style information for the exported file.  The HTML exporter assigns the following special CSS classes@footnote{If the classes on TODO keywords and tags lead to conflicts, use the variables @code{org-export-html-todo-kwd-class-prefix} and @code{org-export-html-tag-class-prefix} to make them unique.} to appropriate parts of the document---your style specifications may change these, in addition to any of the standard classes like for headlines, tables, etc."
-msgstr ""
+msgstr "エクスポートするファイルには、スタイルに関する情報を含めることができます。HTMLエクスポート機能には、文章のパーツを適切に表示するために次に示す特別なCSSクラス@footnote{TODOキーワードやタグにCSSが適用されるとコンフリクトを起こします。@code{org-export-html-todo-kwd-class-prefix}と@code{org-export-html-tag-class-prefix}を使って、それらをユニークにしてください。}があります。見出しやテーブルなどの標準的なクラスに加えて、それら特別なCSSクラスも変更することができます。"
 
 #+glossary: class ( クラス ) / code ( コード ) / footnote ( 脚注|footnote ) / format ( フォーマット|形成 ) / headline ( 見出し ) / information ( 情報 ) / keyword ( キーワード ) / level ( レベル|階層 ) / line ( 行|ライン|線 ) / named ( 名前付き ) / org-mode ( Org-mode ) / outline ( アウトライン|outline ) / section ( セクション ) / source ( ソース ) / tag ( タグ ) / text ( テキスト|文章 ) / timestamp ( タイムスタンプ )
 #. type: example
@@ -20023,6 +20033,32 @@ msgid ""
 ".footref            @r{a footnote reference number (always a <sup>)}\n"
 ".footnum            @r{footnote number in footnote definition (always <sup>)}\n"
 msgstr ""
+"p.author            @r{著者の情報、email含む}\n"
+"p.date              @r{公開日}\n"
+"p.creator           @r{作成情報, org-modeのバージョン}\n"
+".title              @r{文章のタイトル}\n"
+".todo               @r{DONEとなっていないTODOキーワード}\n"
+".done               @r{DONEキーワード、DONEと扱われる全てのキーワードが対象}\n"
+".WAITING            @r{各TODOキーワードはその名前のクラス名も用いることができる}\n"
+".timestamp          @r{タイムスタンプ}\n"
+".timestamp-kwd      @r{SCHEDULED等のタイムスタンプに関連するキーワード}\n"
+".timestamp-wrapper  @r{SCHEDULED等のキーワードとタイムスタンプ全体}\n"
+".tag                @r{見出し中のタグ}\n"
+"._HOME              @r{各タグはその名前のクラス名も用いることができる(\"@\"は\"_\"に置き換えられる)}\n"
+".target             @r{リンクのターゲット}\n"
+".linenr             @r{コード中の行番号}\n"
+".code-highlighted   @r{参照されコード行のハイライト}\n"
+"div.outline-N       @r{深さレベルNのdiv要素(見出しとテキスト)}\n"
+"div.outline-text-N  @r{深さレベルNのテキスト部分のdiv要素}\n"
+".section-number-N   @r{深さレベルNの見出しの番号。各レベルで異なる}\n"
+"div.figure          @r{インライン画像のフォーマット方法}\n"
+"pre.src             @r{ソースコードブロックのフォーマット方法}\n"
+"pre.example         @r{例示ブロック}\n"
+"p.verse             @r{verseブロック}\n"
+"div.footnotes       @r{脚注の見出し}\n"
+"p.footnote          @r{脚注定義の文章、脚注を含む}\n"
+".footref            @r{脚注の参照番号(常に<sup>となる)}\n"
+".footnum            @r{脚注定義中の番号(常に<sup>となる)}\n"
 
 #. type: vindex
 #: org.texi:9816
@@ -20049,80 +20085,80 @@ msgstr "org-export-html-style"
 #: org.texi:9819
 #, no-wrap
 msgid "org-export-html-extra"
-msgstr ""
+msgstr "org-export-html-extra"
 
 #+glossary: class ( クラス ) / customize ( カスタマイズ ) / default ( デフォルト|初期値 ) / exported ( エクスポート|出力された ) / file ( ファイル ) / modify ( 修正 ) / setting ( 設定 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:9830
 msgid "Each exported file contains a compact default style that defines these classes in a basic way@footnote{This style is defined in the constant @code{org-export-html-style-default}, which you should not modify.  To turn inclusion of these defaults off, customize @code{org-export-html-style-include-default}}.  You may overwrite these settings, or add to them by using the variables @code{org-export-html-style} (for Org-wide settings) and @code{org-export-html-style-extra} (for more fine-grained settings, like file-local settings).  To set the latter variable individually for each file, you can use"
-msgstr ""
+msgstr "エクスポートされたファイルは、基礎的な方法で定義されたコンパクトなスタイル@footnote{このスタイルは@code{org-export-html-style-default}で定義されており、変更できません。 この初期設定を無効にするには@code{org-export-html-style-include-default}を修正してください。}が含まれています。この設定は上書きされるかもしれませんし、 @code{org-export-html-style} (Org-wideの設定に使われます)や@code{org-export-html-style-extra} (ファイルごとの設定のような詳細な設定に使われます。)を使って追加されるかもしれません。後者の変数をファイルごとに設定するには、次のように行ないます。"
 
 #. type: cindex
 #: org.texi:9831
 #, no-wrap
 msgid "#+STYLE"
-msgstr ""
+msgstr "#+STYLE"
 
 #. type: example
 #: org.texi:9834
 #, no-wrap
 msgid "#+STYLE: <link rel=\"stylesheet\" type=\"text/css\" href=\"stylesheet.css\" />\n"
-msgstr ""
+msgstr "#+STYLE: <link rel=\"stylesheet\" type=\"text/css\" href=\"stylesheet.css\" />\n"
 
 #+glossary: external ( 外部 ) / file ( ファイル ) / line ( 行|ライン|線 ) / section ( セクション )
 #. type: Plain text
 #: org.texi:9840
 msgid "For longer style definitions, you can use several such lines.  You could also directly write a @code{<style>} @code{</style>} section in this way, without referring to an external file."
-msgstr ""
+msgstr "長いスタイルの定義には複数行で記述することもできます。外部ファイルを参照せずに@code{<style>} @code{</style>}セクションに直接記述してください。"
 
 #+glossary: class ( クラス ) / headline ( 見出し ) / property ( プロパティ ) / subtree ( サブツリー ) / tree ( ツリー )
 #. type: Plain text
 #: org.texi:9845
 msgid "In order to add styles to a subtree, use the @code{:HTML_CONTAINER_CLASS:} property to assign a class to the tree.  In order to specify CSS styles for a particular headline, you can use the id specified in a @code{:CUSTOM_ID:} property."
-msgstr ""
+msgstr "サブツリーにスタイルを追加するには, ツリーにクラスを適用する@code{:HTML_CONTAINER_CLASS:} プロパティを 使います。個々の見出しにCSSスタイルを適用するには、@code{:CUSTOM_ID:}プロパティで指定されるIDを使うことができます。"
 
 #+glossary: display ( ディスプレイ|表示 ) / page ( ページ )
 #. type: subsection
 #: org.texi:9850
 #, no-wrap
 msgid "JavaScript supported display of web pages"
-msgstr ""
+msgstr "ウェブページの表示に関するJavaScriptのサポート"
 
 #. type: cindex
 #: org.texi:9852
 #, no-wrap
 msgid "Rose, Sebastian"
-msgstr ""
+msgstr "Rose, Sebastian"
 
 #+glossary: available ( 利用できる ) / copy ( コピー ) / file ( ファイル ) / install ( インストール ) / key ( キー ) / mode ( モード|モード ) / org ( Org-mode ) / overview ( 概観 ) / provide ( 用意する ) / section ( セクション ) / type ( タイプ|入力する ) / view ( ビュー )
 #. type: Plain text
 #: org.texi:9865
 msgid "Sebastian Rose has written a JavaScript program especially designed to enhance the web viewing experience of HTML files created with Org.  This program allows you to view large files in two different ways.  The first one is an @emph{Info}-like mode where each section is displayed separately and navigation can be done with the @kbd{n} and @kbd{p} keys (and some other keys as well, press @kbd{?} for an overview of the available keys).  The second view type is a @emph{folding} view much like Org provides inside Emacs.  The script is available at @url{http://orgmode.org/org-info.js} and you can find the documentation for it at @url{http://orgmode.org/worg/code/org-info-js/}.  We host the script at our site, but if you use it a lot, you might not want to be dependent on @url{orgmode.org} and prefer to install a local copy on your own web server."
-msgstr ""
+msgstr "Sebastian Roseは、org-modeが生成したHTMLファイルに関するウェブエクスペリエンスを拡張するためにデザインされたJavascriptプログラムを書きました。このプログラムを使うことで、異なる二つの方法で大きなファイルを見ることができます。一つめは@emph{Info}のようなモードで、それぞれの章は別々に表示され、@kbd{n}キーと@kbd{p}キーで操作できます。(他のキーでも操作できます。利用できるキーの概要を知るには、@kbd{?}を入力してください。)。二つめは、org-modeがEmacsで提供するような折りたたまれたスタイルです。 このスクリプトは、@url{http://orgmode.org/org-info.js}で利用できます。ドキュメントについては、@url{http://orgmode.org/worg/code/org-info-js/}にあります。このスクリプトは私達のサイトでホスティングしていますが、何度も使う場合は、@url{orgmode.org}にあるものを使わずにあなたのサーバにコピーしたものを使う方を選択するかもしれせん。"
 
 #+glossary: default ( デフォルト|初期値 ) / line ( 行|ライン|線 ) / org ( Org-mode )
 #. type: Plain text
 #: org.texi:9871
 msgid "To use the script, you need to make sure that the @file{org-jsinfo.el} module gets loaded.  It should be loaded by default, but you can try @kbd{M-x customize-variable @key{RET} org-modules @key{RET}} to convince yourself that this is indeed the case.  All it then takes to make use of the program is adding a single line to the Org file:"
-msgstr ""
+msgstr "このスクリプトを使うには、@file{org-jsinfo.el}がロードされているか、確認する必要があります。デフォルトでは、ロードされるようになっていますが、@kbd{M-x customize-variable @key{RET} org-modules @key{RET}}と入力して、確かにロードされている確認してください。このプログラムを使えるようにするには、次のような行をOrgファイルに追加するだけです。"
 
 #. type: cindex
 #: org.texi:9872
 #, no-wrap
 msgid "#+INFOJS_OPT"
-msgstr ""
+msgstr "#+INFOJS_OPT"
 
 #. type: example
 #: org.texi:9875
 #, no-wrap
 msgid "#+INFOJS_OPT: view:info toc:nil\n"
-msgstr ""
+msgstr "#+INFOJS_OPT: view:info toc:nil\n"
 
 #+glossary: code ( コード ) / header ( ヘッダー ) / line ( 行|ライン|線 )
 #. type: Plain text
 #: org.texi:9881
 msgid "If this line is found, the HTML header will automatically contain the code needed to invoke the script.  Using the line above, you can set the following viewing options:"
-msgstr ""
+msgstr "ファイル中にこの行が見つかると、HTMLのヘッダーは自動的にこのスクリプトを起動させるのに必要なコードを自動的に追加します。以上のような行を使うと、次のようなオプションを設定できます。"
 
 #+glossary: content ( コンテンツ|内容 ) / copy ( コピー ) / default ( デフォルト|初期値 ) / headline ( 見出し ) / level ( レベル|階層 ) / mode ( モード|モード ) / mouse ( マウス|mouse ) / overview ( 概観 ) / page ( ページ ) / section ( セクション ) / table ( テーブル ) / text ( テキスト|文章 ) / value ( 値 ) / variable ( 変数 ) / view ( ビュー )
 #. type: example
@@ -20155,6 +20191,31 @@ msgid ""
 "buttons: @r{Should view-toggle buttons be everywhere?  When @code{nil} (the}\n"
 "         @r{default), only one such button will be present.}\n"
 msgstr ""
+"path:    @r{スクリプトのパス。デフォルトでは、@url{http://orgmode.org/org-info.js} }\n"
+"         @r{を使うようになっていますが、ローカルにコピーしたものを使いたい場合は}\n"
+"         @r{@samp{../scripts/org-info.js}のようなパスを使ってください。}\n"
+"view:    @r{ウェブサイトを最初に開いた時の表示。可能な値は次のとおり:}\n"
+"         info      @r{一つのページに一つのセクションが表示されるInfoのようなインターフェイス}\n"
+"         overview  @r{最初はトップレベルのみが表示される折りたたみインターフェイス}\n"
+"         content   @r{全ての見出しが見える状態の折りたたみインターフェイス}\n"
+"         showall   @r{全ての見出しと文章が見える状態の折りたたみインターフェイス}\n"
+"sdepth:  @r{infoや折りたたみモードで独立して表示されるセクションの}\n"
+"         @r{最大の見出しレベル。デフォルトでは@code{org-export-headline-levels}}\n"
+"         @r{(= @code{#+OPTIONS}の中の@code{H}スイッチ)の値が使われる。}\n"
+"         @r{もし、@code{org-export-headline-levels}の値より小さかった場合、}\n"
+"         @r{info/折りたたみ のセクションは小見出しまで含まれます。}\n"
+"toc:     @r{目次表示の有無}\n"
+"         @r{@code{nil}としても、@kbd{i}を入力することで目次は表示されます。}\n"
+"tdepth:  @r{目次の深さ。デフォルトでは、@code{org-export-headline-levels}}\n"
+"         @r{@code{org-export-with-toc}の値が用いられます。}\n"
+"ftoc:    @r{CSSによって、目次の場所を指定するかどうか。}\n"
+"         @r{「yes」の場合は、セクションとして表示されなくなります。}\n"
+"ltoc:    @r{Should there be short contents (children) in each section?}\n"
+"         @r{Make this @code{above} if the section should be above initial text.}\n"
+"mouse:   @r{Headings are highlighted when the mouse is over them.  Should be}\n"
+"         @r{@samp{underline} (default) or a background color like @samp{#cccccc}.}\n"
+"buttons: @r{Should view-toggle buttons be everywhere?  When @code{nil} (the}\n"
+"         @r{default), only one such button will be present.}\n"
 
 #. type: vindex
 #: org.texi:9910
