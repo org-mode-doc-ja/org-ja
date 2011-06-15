@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-06-15 14:50+0900\n"
+"PO-Revision-Date: 2011-06-15 15:01+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -10474,27 +10474,27 @@ msgstr "(setq org-todo-keywords '((type \"Fred\" \"Sara\" \"Lucy\" \"|\" \"DONE\
 #. type: Plain text
 #: org.texi:3675
 msgid "In this case, different keywords do not indicate a sequence, but rather different types.  So the normal work flow would be to assign a task to a person, and later to mark it DONE.  Org-mode supports this style by adapting the workings of the command @kbd{C-c C-t}@footnote{This is also true for the @kbd{t} command in the timeline and agenda buffers.}.  When used several times in succession, it will still cycle through all names, in order to first select the right type for a task.  But when you return to the item after some time and execute @kbd{C-c C-t} again, it will switch from any name directly to DONE.  Use prefix arguments or completion to quickly select a specific name.  You can also review the items of a specific TODO type in a sparse tree by using a numeric prefix to @kbd{C-c / t}.  For example, to see all things Lucy has to do, you would use @kbd{C-3 C-c / t}.  To collect Lucy's items from all agenda files into a single buffer, you would use the numeric prefix argument as well when creating the global TODO list: @kbd{C-3 C-c a t}."
-msgstr ""
+msgstr "この場合、それぞれのキーワードは作業の順序を表しているのではなく、別々のタイプを表すことになります。そのため、通常の作業の流れとしてタスクを一人に割り振ることになり、その後のDONEになります。Org-modeは、このような形式をサポートするため、「@kbd{C-c C-t}」コマンドの動作が少し変化します（@footnote{タイムラインやアジェンダのバッファでは、「@kbd{t}」コマンドも同じ仕様です。}）。まずは、適当なタイプを選択するのに、繰り返し押すことで、順番にキーワードの名称が表示されます。しばらく間をおいてその項目に戻ってきて、「@kbd{C-c C-t}」を再度実行すると、そのときは、すぐDONEに切り替えられます。前置引数か補完を使えば、適当なタイプをすぐに選ぶことができます。さらに@kbd{C-c / t}に前置引数を指定することにより、抽出されたツリーの中で探しているTODOのタイプを確認することもできます。例えば、Lucyがやらねばならないにすべての項目を見るには、「@kbd{C-3 C-c / t}」を実行します。すべてのアジェンダのファイルの中からLucyの項目を一つのバッファに集約するのに、グローバルなtodoリストを作成し、次のように前置引数を使用します:「@kbd{C-3 C-c a t}」。"
 
 #+glossary: file ( ファイル ) / keyword ( キーワード )
 #. type: subsection
 #: org.texi:3677
 #, no-wrap
 msgid "Multiple keyword sets in one file"
-msgstr ""
+msgstr "同一ファイル内での複数のキーワードセット"
 
 #+glossary: keyword ( キーワード )
 #. type: cindex
 #: org.texi:3678
 #, no-wrap
 msgid "TODO keyword sets"
-msgstr ""
+msgstr "TODOキーワードセット"
 
 #+glossary: TODO keywords ( TODOキーワード ) / bug ( バグ ) / example ( 例 ) / item ( アイテム|項目 ) / setup ( 設定 ) / workflow ( ワークフロー )
 #. type: Plain text
 #: org.texi:3686
 msgid "Sometimes you may want to use different sets of TODO keywords in parallel.  For example, you may want to have the basic @code{TODO}/@code{DONE}, but also a workflow for bug fixing, and a separate state indicating that an item has been canceled (so it is not DONE, but also does not require action).  Your setup would then look like this:"
-msgstr ""
+msgstr "時には、異なるセットのTODOキーワードを同時に使いたい場合があるかもしれません。例えば、通常の@code{TODO}/@code{DONE}を使用しつつ、バグフィックスのワークフロー、さらにアイテムがキャンセルをされたことを表すその次の状態を使用したい場合などです「つまりDONEではないが、次のアクションが必要ない場合」。その場合の設定は次のようになります:"
 
 #. type: lisp
 #: org.texi:3692
@@ -10505,12 +10505,16 @@ msgid ""
 "        (sequence \"REPORT\" \"BUG\" \"KNOWNCAUSE\" \"|\" \"FIXED\")\n"
 "        (sequence \"|\" \"CANCELED\")))\n"
 msgstr ""
+"(setq org-todo-keywords\n"
+"      '((sequence \"TODO\" \"|\" \"DONE\")\n"
+"        (sequence \"REPORT\" \"BUG\" \"KNOWNCAUSE\" \"|\" \"FIXED\")\n"
+"        (sequence \"|\" \"CANCELED\")))\n"
 
 #+glossary: completion ( 補完 ) / entry ( エントリー|文|入力 ) / keyword ( キーワード ) / org-mode ( Org-mode ) / sequence ( 順序 ) / setup ( 設定 )
 #. type: Plain text
 #: org.texi:3701
 msgid "The keywords should all be different, this helps Org-mode to keep track of which subsequence should be used for a given entry.  In this setup, @kbd{C-c C-t} only operates within a subsequence, so it switches from @code{DONE} to (nothing) to @code{TODO}, and from @code{FIXED} to (nothing) to @code{REPORT}.  Therefore you need a mechanism to initially select the correct sequence.  Besides the obvious ways like typing a keyword or using completion, you may also apply the following commands:"
-msgstr ""
+msgstr "キーワードは、すべて異るようにすべきで、そうするとOrg-modeが、現在の状態の次に続くものを認識するのに役立ちます。この設定では、@kbd{C-c C-t}は、サブグループ内だけで働きます。つまり@code{DONE}から(何も無い状態)から@code{TODO}へ、そして@code{FIXED}から(何も無い状態)から@code{REPORT}へ。その為、まず使いたいサブグループを選ぶ方法が必要です。当然通常行うようにキーワードをタイプするか、補完、または次のコマンドを使ううこともできます:"
 
 #. type: itemx
 #: org.texi:3703
@@ -10536,20 +10540,21 @@ msgstr "C-u C-u C-c C-t"
 #+glossary: conflict ( 衝突する ) / example ( 例 ) / key ( キー ) / note ( ノート ) / row ( 行 )
 #. type: table
 #: org.texi:3714
+#, fuzzy
 msgid "These keys jump from one TODO subset to the next.  In the above example, @kbd{C-u C-u C-c C-t} or @kbd{C-S-@key{right}} would jump from @code{TODO} or @code{DONE} to @code{REPORT}, and any of the words in the second row to @code{CANCELED}.  Note that the @kbd{C-S-} key binding conflict with @code{shift-selection-mode} (@pxref{Conflicts})."
-msgstr ""
+msgstr "これらのキーは、あるTODOのサブグループから次へとジャンプします。上の例では、@kbd{C-u C-u C-c C-t}または、@kbd{C-S-@key{right}}は、@code{TODO}か@code{DONE}から@code{REPORT}、そして、二番目のサブグループのどれかの状態から@code{CANCELED}へジャンプします。注意として@kbd{C-S-}キーバインディングは、@code{shift-selection-mode} (@pxref{Conflicts})と衝突します。"
 
 #+glossary: example ( 例 ) / interaction ( 連携 ) / keyword ( キーワード )
 #. type: table
 #: org.texi:3723
 msgid "@kbd{S-@key{<left>}} and @kbd{S-@key{<right>}} and walk through @emph{all} keywords from all sets, so for example @kbd{S-@key{<right>}} would switch from @code{DONE} to @code{REPORT} in the example above.  See also @ref{Conflicts}, for a discussion of the interaction with @code{shift-selection-mode}."
-msgstr ""
+msgstr "@kbd{S-@key{<left>}}と@kbd{S-@key{<right>}}は、すべてのサブグループの@emph{すべて}のキーワード切り替えいきます。例えば、上記の例では、@kbd{S-@key{<right>}}は、@code{DONE}に切り替えられ、さらに@code{REPORT}になります。@code{shift-selection-mode}と連携させる方法については、@ref{Conflicts}を参照してください。"
 
 #+glossary: access to ( アクセスする ) / cycling ( 切り替え ) / entry ( エントリー|文|入力 ) / key ( キー ) / keyword ( キーワード ) / section ( セクション )
 #. type: Plain text
 #: org.texi:3732
 msgid "If you would like to quickly change an entry to an arbitrary TODO state instead of cycling through the states, you can set up keys for single-letter access to the states.  This is done by adding the section key after each keyword, in parentheses.  For example:"
-msgstr ""
+msgstr "もし、切り替えせずに任意のTODOの状態にすばやく変更したい場合は、キー登録して一文字でその状態に変更できます。それには、各キーワードに対して括弧で括ってセクションキーを割り当てることにより実現できます。例えば:"
 
 #. type: lisp
 #: org.texi:3738
@@ -10560,18 +10565,22 @@ msgid ""
 "        (sequence \"REPORT(r)\" \"BUG(b)\" \"KNOWNCAUSE(k)\" \"|\" \"FIXED(f)\")\n"
 "        (sequence \"|\" \"CANCELED(c)\")))\n"
 msgstr ""
+"(setq org-todo-keywords\n"
+"      '((sequence \"TODO(t)\" \"|\" \"DONE(d)\")\n"
+"        (sequence \"REPORT(r)\" \"BUG(b)\" \"KNOWNCAUSE(k)\" \"|\" \"FIXED(f)\")\n"
+"        (sequence \"|\" \"CANCELED(c)\")))\n"
 
 #. type: vindex
 #: org.texi:3740
 #, no-wrap
 msgid "org-fast-tag-selection-include-todo"
-msgstr ""
+msgstr "org-fast-tag-selection-include-todo"
 
 #+glossary: entry ( エントリー|文|入力 ) / key ( キー ) / keyword ( キーワード ) / note ( ノート ) / tag ( タグ ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:3748
 msgid "If you then press @code{C-c C-t} followed by the selection key, the entry will be switched to this state.  @key{SPC} can be used to remove any TODO keyword from an entry.@footnote{Check also the variable @code{org-fast-tag-selection-include-todo}, it allows you to change the TODO state through the tags interface (@pxref{Setting tags}), in case you like to mingle the two concepts.  Note that this means you need to come up with unique keys across both sets of keywords.}"
-msgstr ""
+msgstr "@code{C-c C-t}を押して、選択の為のキーを押せば、その選ばれた状態へ切り替えられます。さらに@key{SPC}を使って、どのTODOキーワードも削除することができます。@footnote{変数@code{org-fast-tag-selection-include-todo}も見てください、この変数は、タグを使って状態の変更を可能にします(@pxref{Setting tags})、この二つを混ぜて使いたいならですが。この場合、それぞれのキーワードセットに単一なキーを準備する必要があります。}"
 
 #+glossary: file ( ファイル ) / keyword ( キーワード ) / setting ( 設定 )
 #. type: subsection
