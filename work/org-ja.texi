@@ -3564,7 +3564,7 @@ the option @code{org-todo-state-tags-triggers} for details.
 雑にTODOアイテムを分類できます。特別な設定により、TODOキーワードシステムは、
 ファイルによって異なる働きにすることできます。
 
-注記、@i{タグ}は見出しと特にTODOアイテムの分類のもう一つの方法です。(@pxref{Tags }).
+注記、@i{タグ}は見出しと特にTODOアイテムの分類のもう一つの方法です。(@pxref{Tags}).
 
 @menu
 * Workflow states::          TODOからDONEまでの流れ
@@ -3701,18 +3701,18 @@ or @code{DONE} to @code{REPORT}, and any of the words in the second row to
 @code{C-c C-t}を押して、選択の為のキーを押せば、その選ばれた状態へ切り替えられます。さらに@key{SPC}を使って、どのTODOキーワードも削除することができます。@footnote{変数@code{org-fast-tag-selection-include-todo}も見てください、この変数は、タグを使って状態の変更を可能にします(@pxref{Setting tags})、この二つを混ぜて使いたいならですが。この場合、それぞれのキーワードセットに単一なキーを準備する必要があります。}
 
 @node Per-file keywords, Faces for TODO keywords, Fast access to TODO states, TODO extensions
-@subsection Setting up keywords for individual files
-@cindex keyword options
-@cindex per-file keywords
+@subsection ファイル別にキーワードを設定する
+@cindex キーワードオプション
+@cindex ファイル毎のキーワード
 @cindex #+TODO
 @cindex #+TYP_TODO
 @cindex #+SEQ_TODO
 
-It can be very useful to use different aspects of the TODO mechanism in
-different files.  For file-local settings, you need to add special lines to
-the file which set the keywords and interpretation for that file only.  For
-example, to set one of the two examples discussed above, you need one of the
-following lines, starting in column zero anywhere in the file:
+異なるファイルごとに、TODOの機能をさまざまなの方法で使用できるととても便利で
+す。ファイル単位のローカルな設定をするためには、そのファイルだけに通用するキ
+ーワードを特別な行を記入することで設定する必要があります。例えば、前述した２
+つの例のうちの一つを設定するの場合、次のような行を、そのファイルのどこかで行
+頭から開始する必要があります。
 
 @example
 #+TODO: TODO FEEDBACK VERIFY | DONE CANCELED
@@ -3723,7 +3723,7 @@ interpretation, but it means the same as @code{#+TODO}), or
 #+TYP_TODO: Fred Sara Lucy Mike | DONE
 @end example
 
-A setup for using several sets in parallel would be:
+同時に複数のキーワードセットの設定には:
 
 @example
 #+TODO: TODO | DONE
@@ -3731,33 +3731,32 @@ A setup for using several sets in parallel would be:
 #+TODO: | CANCELED
 @end example
 
-@cindex 完了、オプションのキーワードの
+@cindex オプションのキーワードの補完
 @kindex M-@key{TAB}
 @noindent To make sure you are using the correct keyword, type
-@samp{#+} into the buffer and then use @kbd{M-@key{TAB}} completion.
+間違いなく正しいキーワードを使うため、そのバッファ内で@samp{#+}をタイプして、@kbd{M-@key{TAB}}を
+使って補完してください。
 
-@cindex DONE, final TODO keyword
-Remember that the keywords after the vertical bar (or the last keyword if no
-bar is there) must always mean that the item is DONE (although you may use a
-different word).  After changing one of these lines, use @kbd{C-c C-c} with
-the cursor still in the line to make the changes known to
-Org-mode@footnote{Org-mode parses these lines only when Org-mode is activated after visiting a file.  @kbd{C-c C-c} with the cursor in a line
-starting with @samp{#+} is simply restarting Org-mode for the current
-buffer.}.
+@cindex DONEは最終のTODOキーワード
+縦線の後のキーワード「もしくは、縦線が指定されてない場合は、最後のキーワード
+」は、そのアイテムがいつもDONE「最後のもの」であることを覚えていてください「
+と言ってもDONE以外のキーワードも使えます」。これらの変更を加えた後、Org-modeに
+変更を認識させるため、カーソルを変更した場所に置いたままで@kbd{C-c C-c}してくださ
+い。
+@footnote{Org-modeがこれらの行を読み込むのは、ファイルを開いてOrg-modeが実行された場合だけです。@samp{#+}で始まる行にカーソルを置いて@kbd{C-c C-c}をすると、現在のバッファでOrg-modeを再起動したことになります。}
 
 @node Faces for TODO keywords, TODO dependencies, Per-file keywords, TODO extensions
 @subsection Faces for TODO keywords
-@cindex faces, for TODO keywords
+@cindex TODOキーワードのフェイス
 
-@vindex org-todo @r{(face)}
-@vindex org-done @r{(face)}
+@vindex org-todo @r{(フェイス)}
+@vindex org-done @r{(フェイス)}
 @vindex org-todo-keyword-faces
-Org-mode highlights TODO keywords with special faces: @code{org-todo} for
-keywords indicating that an item still has to be acted upon, and
-@code{org-done} for keywords indicating that an item is finished.  If you
-are using more than 2 different states, you might want to use special faces
-for some of them.  This can be done using the variable
-@code{org-todo-keyword-faces}.  For example:
+Org-modeは、TODOキーワードを特別なフェイスを使ってハイライトします:@code{org-todo}は
+、あるアイテムがアクションが必要なキーワードであることを指しています。@code{org-done}は
+、あるアイテムが完了していることを指しています。もし2つ以上の異なる状態を使用
+しているのであれば、特別なフェイスを使いたくなるかもしれません。これは、変数
+@code{org-todo-keyword-faces}を変更することで可能です。例えば:
 
 @lisp
 @group
@@ -3767,11 +3766,11 @@ for some of them.  This can be done using the variable
 @end group
 @end lisp
 
-While using a list with face properties as shown for CANCELED @emph{should}
-work, this does not aways seem to be the case.  If necessary, define a
-special face and use that.  A string is interpreted as a color.  The
-variable @code{org-faces-easy-properties} determines if that color is
-interpreted as a foreground or a background color.
+CANCELEDにあるようにフェイスプロパティのリストを使うのは、上手くいく
+@emph{はず}ですが、いつもうまくいってるように見えないかもしれません。必要であれば、特
+別なフェイスを定義してそれを使うのもいいかもしれません。文字列は、カラーとし
+て解釈されます。変数@code{org-faces-easy-properties}により、文字の色にするか、背景
+色にするか指定できます。
 
 @node TODO dependencies, , Faces for TODO keywords, TODO extensions
 @subsection TODO dependencies
@@ -7601,12 +7600,11 @@ Org-modeはまた、コンテクストに対応したタグのフィルターを
 @end group
 @end lisp
 
-@orgcmd{\\,org-agenda-filter-by-tag-refine}
-追加の条件によってカレントのアジェンダフィルターをナローイングします。
-前置引数を用いてコマンドを呼び出したときは、まさにタグがついているエントリー、
-あるいは工数の基準にまさに合致するエントリーを削除する。
-@kbd{/}コマンドのあとの最初のキーとして、@kbd{+}あるいは@kbd{-}を押すことで
-同様の効果を達成することができる。
+@orgcmd{\\,org-agenda-filter-by-tag-refine} Narrow the current agenda filter
+by an additional condition.  When called with prefix arg, remove the entries
+that @emph{do} have the tag, or that do match the effort criterion.  You can
+achieve the same effect by pressing @kbd{+} or @kbd{-} as the first key
+after the @kbd{/} command.
 
 @c
 @kindex [
@@ -7616,12 +7614,10 @@ Org-modeはまた、コンテクストに対応したタグのフィルターを
 @item [ ] @{ @}
 @table @i
 @item @r{in} search view
-新しい検索の単語(@kbd{[}と@kbd{]})、あるいは新しい正規表現(@kbd{@{}と@kbd{@}})
-をクエリー文字列に追加する。開いた角括弧／大括弧は、@samp{+}という接頭辞のつい
-たポジティブな検索用語を追加する。この検索用語は、@i{必ず}そのエントリーに発生
-／合致しなければならないことを示す。閉じた角括弧／大括弧は、ネガティブな検索用
-語を追加し、それは、選択されているエントリーの中で、@i{絶対に}発生／合致しない
-ということである。
+新しい検索の単語(@kbd{[}と@kbd{]})、あるいは新しい正規表現(
+@kbd{@{}と@kbd{@}})をクエリー文字列に追加する。開いた角括弧／大括弧は、@samp{+}という接頭辞のついたポジティブな検索用語を追加する。この検索用語は、@i{必
+ず}そのエントリーに発生／合致しなければならないことを示す。閉じた角括弧／大括弧は、ネガティブな検索用語を追加し、それは、選択されているエントリーの中で、@i{絶
+対に}発生／合致しないということである。
 @end table
 
 @tsubheading{Remote editing}
@@ -7635,18 +7631,12 @@ Digit argument.
 @c
 @c
 @c
-@orgcmd{C-_,org-agenda-undo}
-外部の編集コマンドでの変更を元に戻す。この変更はアジェ
-ンダバッファと外部のバッファの両方を元に戻す。
-@orgcmd{t,org-agenda-todo}
-アイテムの
+@orgcmd{C-_,org-agenda-undo}　外部の編集コマンドでの変更を元に戻す。この変更はアジェ
+ンダバッファと外部のバッファの両方を元に戻す。@orgcmd{t,org-agenda-todo}　アイテムの
 TODOのステータスを変更する。アジェンダファイルでもオリジナルのOrgファイルでも
-有効である。
-@orgcmd{C-S-@key{right},org-agenda-todo-nextset}
-@orgcmd{C-S-@key{left},org-agenda-todo-previousset}
-次／前のTODOキーワードのセットへと切り替える
-。
-@orgcmd{C-k,org-agenda-kill}
+有効である。@orgcmd{C-S-@key{right},org-agenda-todo-nextset}
+@orgcmd{C-S-@key{left},org-agenda-todo-previousset}　次／前のTODOキーワードのセットへと切り替える
+。@orgcmd{C-k,org-agenda-kill}
 @vindex org-agenda-confirm-kill
 @c
 @c
@@ -8988,7 +8978,7 @@ org-modeはまず最初に @emph{select} タグがバッファにないかチェ
 @section Export options
 @cindex エクスポートのオプション
 
-@cindex 完了、オプションのキーワードの
+@cindex オプションのキーワードの補完
 エクスポートする際にはバッファにある特別な行が読みこまれます。 その行には追加
 的な情報が含まれており、ファイルの中でどこにでも書くことができます。
 @kbd{C-c C-e t} と入力することで、バッファにそのような行をセットで挿入することが
@@ -12411,7 +12401,7 @@ emacs -Q --batch -l $ORGINSTALL \
 @cindex completion, of @TeX{} symbols
 @cindex 完了、TODOキーワードの
 @cindex completion, of dictionary words
-@cindex 完了、オプションのキーワードの
+@cindex オプションのキーワードの補完
 @cindex 完了、タグの
 @cindex completion, of property keys
 @cindex completion, of link abbreviations
