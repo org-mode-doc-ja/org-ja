@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-05-11 21:47+0900\n"
+"PO-Revision-Date: 2011-06-07 20:56+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -18488,7 +18488,7 @@ msgstr "C-c '"
 #. type: table
 #: org.texi:8901
 msgid "Edit the source code example at point in its native mode.  This works by switching to a temporary buffer with the source code.  You need to exit by pressing @kbd{C-c '} again@footnote{Upon exit, lines starting with @samp{*} or @samp{#} will get a comma prepended, to keep them from being interpreted by Org as outline nodes or special comments.  These commas will be stripped for editing with @kbd{C-c '}, and also for export.}.  The edited version will then replace the old version in the Org buffer.  Fixed-width regions (where each line starts with a colon followed by a space) will be edited using @code{artist-mode}@footnote{You may select a different-mode with the variable @code{org-edit-fixed-width-region-mode}.} to allow creating ASCII drawings easily.  Using this command in an empty line will create a new fixed-width region."
-msgstr ""
+msgstr "カーソル位置のソースコード例をそのネイティブモードで編集します．これはソースコードを一時バッファに表示し，切り替えることで働きます．あなたは@kbd{C-c '}をもう一度押すことで編集を終了します@footnote{固定幅のリージョン(それぞれの行はコロンとスペースから始まります)は@code{artist-mode}@footnote{あなたは異なる@code{org-edit-fixed-width-region-mode}変数により，モードを選ぶこともできます．}によって編集されます．空行でこのコマンドを使うことで，新しい固定幅のリージョンを作成します．"
 
 #. type: item
 #: org.texi:8901
@@ -18501,38 +18501,38 @@ msgstr "C-c l"
 #. type: table
 #: org.texi:8908
 msgid "Calling @code{org-store-link} while editing a source code example in a temporary buffer created with @kbd{C-c '} will prompt for a label.  Make sure that it is unique in the current buffer, and insert it with the proper formatting like @samp{(ref:label)} at the end of the current line.  Then the label is stored as a link @samp{(label)}, for retrieval with @kbd{C-c C-l}."
-msgstr ""
+msgstr "@kbd{C-c '}によって作成した一時バッファでのソースコード例の編集中に@code{org-store-link}の呼び出しはラベルを指示します．現在のバッファがユニークであることを確認し，現在の行の最後に@samp{(ref:label)}のように適切にフォーマットされたものが挿入されます．ラベルは@samp{(label)}のようなリンクを記憶し，@kbd{C-c C-l}検索する．"
 
 #+glossary: file ( ファイル )
 #. type: cindex
 #: org.texi:8913
 #, no-wrap
 msgid "include files, markup rules"
-msgstr ""
+msgstr "ファイルのインクルード，マークアップのルール"
 
 #+glossary: content ( コンテンツ|内容 ) / example ( 例 ) / export ( エクスポート ) / file ( ファイル )
 #. type: Plain text
 #: org.texi:8917
 msgid "During export, you can include the content of another file.  For example, to include your @file{.emacs} file, you could use:"
-msgstr ""
+msgstr "エクスポート中，あなたは別のファイルの内容をインクルードすることができます．例えば，@file{.emacs}をインクルードするなら，あなたは次のようにします:"
 
 #. type: cindex
 #: org.texi:8917
 #, no-wrap
 msgid "#+INCLUDE"
-msgstr ""
+msgstr "#+INCLUDE"
 
 #. type: example
 #: org.texi:8921
 #, no-wrap
 msgid "#+INCLUDE: \"~/.emacs\" src emacs-lisp\n"
-msgstr ""
+msgstr "#+INCLUDE: \"~/.emacs\" src emacs-lisp\n"
 
 #+glossary: content ( コンテンツ|内容 ) / example ( 例 ) / file ( ファイル ) / format ( フォーマット|形成 ) / item ( アイテム|項目 ) / keyword ( キーワード ) / language ( 言語 ) / level ( レベル|階層 ) / line ( 行|ライン|線 ) / option ( オプション ) / org-mode ( Org-mode ) / parameters ( パラメーター ) / prefix ( 接頭辞 ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:8933
 msgid "The optional second and third parameter are the markup (e.g.@: @samp{quote}, @samp{example}, or @samp{src}), and, if the markup is @samp{src}, the language for formatting the contents.  The markup is optional; if it is not given, the text will be assumed to be in Org-mode format and will be processed normally.  The include line will also allow additional keyword parameters @code{:prefix1} and @code{:prefix} to specify prefixes for the first line and for each following line, @code{:minlevel} in order to get org-mode content demoted to a specified level, as well as any options accepted by the selected markup.  For example, to include a file as an item, use"
-msgstr ""
+msgstr "2つ目のオプションは(e.g.@: @samp{quote}や@samp{example}，@samp{src})のようなマークアップで，3つ目はマークアップが@samp{src}ならコンテンツの言語を表します．マークアップはオプションです; もし与えられなければ，Org-modeフォーマットのテキストと仮定される．インクルードの行は最初の行とそれに続く行のプレフィクスの指定のための追加キーワードパラメータの@code{:prefix1}と@code{:prefix}を，Org-modeのコンテンツを指定したレベル下げるための@code{:minilevel}を，同様に選択したマークアップ固有のオプションを持ちます．例えば，ファイルをインクルードするには:"
 
 #. type: example
 #: org.texi:8936
@@ -18544,7 +18544,7 @@ msgstr ""
 #. type: Plain text
 #: org.texi:8942
 msgid "You can also include a portion of a file by specifying a lines range using the @code{:lines} parameter.  The line at the upper end of the range will not be included.  The start and/or the end of the range may be omitted to use the obvious defaults."
-msgstr ""
+msgstr "@code{:line}パラメータを使うことで，ファイルの指定した範囲の行のみをインクルードすることができます．範囲外の行はインクルードされません．範囲の開始と，または終了は明らかにデフォルトを使いません．"
 
 #+glossary: line ( 行|ライン|線 )
 #. type: example
@@ -18555,25 +18555,28 @@ msgid ""
 "#+INCLUDE: \"~/.emacs\" :lines \"-10\"    @r{Include lines 1 to 10, 10 excluded}\n"
 "#+INCLUDE: \"~/.emacs\" :lines \"10-\"    @r{Include lines from 10 to EOF}\n"
 msgstr ""
+"#+INCLUDE: \"~/.emacs\" :lines \"5-10\"   @r{Include lines 5 to 10, 10 excluded}\n"
+"#+INCLUDE: \"~/.emacs\" :lines \"-10\"    @r{Include lines 1 to 10, 10 excluded}\n"
+"#+INCLUDE: \"~/.emacs\" :lines \"10-\"    @r{Include lines from 10 to EOF}\n"
 
 #+glossary: file ( ファイル ) / point ( ポイント )
 #. type: table
 #: org.texi:8953
 msgid "Visit the include file at point."
-msgstr ""
+msgstr "ポイント位置のインクルードされたファイルに移動します．"
 
 #+glossary: entries ( エントリー|文|入力 ) / index ( インデックス ) / publishing ( 公開 )
 #. type: cindex
 #: org.texi:8957
 #, no-wrap
 msgid "index entries, for publishing"
-msgstr ""
+msgstr "公開のためのインデックスのエントリ"
 
 #+glossary: entries ( エントリー|文|入力 ) / entry ( エントリー|文|入力 ) / index ( インデックス ) / information ( 情報 ) / item ( アイテム|項目 ) / line ( 行|ライン|線 ) / mark ( マーク ) / publishing ( 公開 ) / sub ( サブ|下位の階層の )
 #. type: Plain text
 #: org.texi:8963
 msgid "You can specify entries that will be used for generating an index during publishing.  This is done by lines starting with @code{#+INDEX}.  An entry the contains an exclamation mark will create a sub item.  See @ref{Generating an index} for more information."
-msgstr ""
+msgstr "あなたは公開した文書のインデックスに用いるエントリーを規定することができます．これは@code{#+INDEX}から始まる行により設定します．感嘆符を含むエントリーはサブアイテムを作るでしょう．さらなる情報を見るには@ref{Generating an index}を参照してください．"
 
 #. type: example
 #: org.texi:8968
@@ -18583,25 +18586,28 @@ msgid ""
 "#+INDEX: CV\n"
 "#+INDEX: Application!CV\n"
 msgstr ""
+"* Curriculum Vitae\n"
+"#+INDEX: CV\n"
+"#+INDEX: Application!CV\n"
 
 #+glossary: export ( エクスポート ) / macro ( マクロ )
 #. type: cindex
 #: org.texi:8975
 #, no-wrap
 msgid "macro replacement, during export"
-msgstr ""
+msgstr "エクスポート中のマクロによる置き換え"
 
 #. type: cindex
 #: org.texi:8976
 #, no-wrap
 msgid "#+MACRO"
-msgstr ""
+msgstr "#+MACRO"
 
 #+glossary: snippet ( スニペット ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:8979
 msgid "You can define text snippets with"
-msgstr ""
+msgstr "あなたはこのようにして"
 
 #+glossary: text ( テキスト|文章 )
 #. type: example
@@ -18620,19 +18626,19 @@ msgstr ""
 #. type: Plain text
 #: org.texi:8996
 msgid "Macro expansion takes place during export, and some people use it to construct complex HTML code."
-msgstr ""
+msgstr "マクロ展開はエクスポート中に行われ，一部の人々は複雑なHTMLコードの構築に用いる．"
 
 #. type: cindex
 #: org.texi:9000
 #, no-wrap
 msgid "@TeX{} interpretation"
-msgstr ""
+msgstr "@TeX{}の解釈"
 
 #. type: cindex
 #: org.texi:9001
 #, no-wrap
 msgid "@LaTeX{} interpretation"
-msgstr ""
+msgstr "@LaTeXの解釈"
 
 #+glossary: code ( コード ) / document ( ドキュメント|文書 ) / export ( エクスポート ) / feature ( 機能 ) / file ( ファイル ) / formula ( 数式 ) / macro ( マクロ ) / mathematical ( 数学 ) / note ( ノート ) / org-mode ( Org-mode ) / output ( アウトプット ) / plain ( プレーン ) / source ( ソース ) / symbol ( 記号 ) / system ( システム ) / writing ( 書き出す )
 #. type: Plain text
