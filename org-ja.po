@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-07-14 19:16+0900\n"
+"PO-Revision-Date: 2011-07-25 14:46+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -18943,25 +18943,26 @@ msgstr "org-format-latex-header"
 #. type: Plain text
 #: org.texi:9127
 msgid "Going beyond symbols and sub- and superscripts, a full formula language is needed.  Org-mode can contain @LaTeX{} math fragments, and it supports ways to process these for several export backends.  When exporting to @LaTeX{}, the code is obviously left as it is.  When exporting to HTML, Org invokes the @uref{http://www.mathjax.org, MathJax library} (@pxref{Math formatting in HTML export}) to process and display the math@footnote{If you plan to use this regularly or on pages with significant page views, you should install @file{MathJax} on your own server in order to limit the load of our server.}.  Finally, it can also process the mathematical expressions into images@footnote{For this to work you need to be on a system with a working @LaTeX{} installation. You also need the @file{dvipng} program, available at @url{http://sourceforge.net/projects/dvipng/}.  The @LaTeX{} header that will be used when processing a fragment can be configured with the variable @code{org-format-latex-header}.} that can be displayed in a browser or in DocBook documents."
-msgstr ""
+msgstr "シンボルと上付き，下付き，完全な式を越えることが必要です．Org-modeは@LaTeX{}の数式を含むことができ，各エクスポート先への変換もサポートしています．@LaTeX{}にエクスポートするとき，コードは明らかに残っています．HTMLへエクスポートするとき，Org-modeは数式@footnote{}の処理と描画のために@uref{http://www.mathjax.org, MathJax library} (@pxref{Math formatting in HTML export})を呼び出します．最後に，数式表現はブラウザかDocBook文書で描画可能な画像@footnote{これを行うには，あなたのシステムに@LaTeX{}をインストールする必要があります．そしてまた，@url{http://sourceforge.net/projects/dvipng/}で入手できる@file{dvipng}プログラムも必要です．}へと処理されます．"
 
 #+glossary: fragment ( フラグメント ) / snippet ( スニペット ) / source ( ソース )
 #. type: Plain text
 #: org.texi:9130
 msgid "@LaTeX{} fragments don't need any special marking at all.  The following snippets will be identified as @LaTeX{} source code:"
-msgstr ""
+msgstr "@LaTeX{}のコード片は，特別なマークは全く必要ありません．以下のコード片は@LaTeX{}のソースコードとして知られています:"
+
 
 #+glossary: image ( 画像 ) / line ( 行|ライン|線 )
 #. type: itemize
 #: org.texi:9137
 msgid "Environments of any kind@footnote{When @file{MathJax} is used, only the environment recognized by @file{MathJax} will be processed.  When @file{dvipng} is used to create images, any @LaTeX{} environments will be handled.}.  The only requirement is that the @code{\\begin} statement appears on a new line, preceded by only whitespace."
-msgstr ""
+msgstr "あらゆる種類の環境@footnote{@file{MathJax}が使われている時，@file{MathJax}によって認識されている環境が処理されます．@file{dvipng}を画像の生成に用いる時，@LaTeX{}環境が扱われます．}．唯一必要なことは@code{\\\\begin}文は空白のみがある行に表示されることです．"
 
 #+glossary: line break ( 改行 ) / characters ( 文字 ) / closing ( 完了 ) / conflict ( 衝突する ) / inline ( インライン ) / math ( 数学 ) / specification ( 指定 ) / text ( テキスト|文章 )
 #. type: itemize
 #: org.texi:9145
 msgid "Text within the usual @LaTeX{} math delimiters.  To avoid conflicts with currency specifications, single @samp{$} characters are only recognized as math delimiters if the enclosed text contains at most two line breaks, is directly attached to the @samp{$} characters with no whitespace in between, and if the closing @samp{$} is followed by whitespace, punctuation or a dash.  For the other delimiters, there is no such restriction, so when in doubt, use @samp{\\(...\\)} as inline math delimiters."
-msgstr ""
+msgstr "通常の@LaTeX{}の数学の区切り文字内部のテキスト．流通仕様との衝突を避けるために，囲まれたテキストに最大2つの改行が含まれている場合，@samp{$}文字は数学区切り文字のみとして認識され，@samp{$}文字がの間に空白がない，そして"
 
 #+glossary: table ( テーブル )
 #. type: example
@@ -18973,6 +18974,10 @@ msgid ""
 "\\end@{equation@}                            % etc\n"
 "\n"
 msgstr ""
+"\\begin@{equation@}                          % arbitrary environments,\n"
+"x=\\sqrt@{b@}                                % even tables, figures\n"
+"\\end@{equation@}                            % etc\n"
+"\n"
 
 #. type: example
 #: org.texi:9156
@@ -18981,6 +18986,8 @@ msgid ""
 "If $a^2=b$ and \\( b=2 \\), then the solution must be\n"
 "either $$ a=+\\sqrt@{2@} $$ or \\[ a=-\\sqrt@{2@} \\].\n"
 msgstr ""
+"If $a^2=b$ and \\( b=2 \\), then the solution must be\n"
+"either $$ a=+\\sqrt@{2@} $$ or \\[ a=-\\sqrt@{2@} \\].\n"
 
 #. type: vindex
 #: org.texi:9159
@@ -18993,7 +19000,7 @@ msgstr "org-format-latex-options"
 #. type: Plain text
 #: org.texi:9163
 msgid "If you need any of the delimiter ASCII sequences for other purposes, you can configure the option @code{org-format-latex-options} to deselect the ones you do not wish to have interpreted by the @LaTeX{} converter."
-msgstr ""
+msgstr "もしあなたが他の目的にASCIIの区切り文字が必要なら，@LaTeXコンバータに邪魔されえることを望まない文字を除外するために@code{org-format-latex-options}オプションを設定することができます．"
 
 #. type: vindex
 #: org.texi:9164
@@ -19006,7 +19013,7 @@ msgstr "org-export-with-LaTeX-fragments"
 #. type: Plain text
 #: org.texi:9170
 msgid "LaTeX processing can be configured with the variable @code{org-export-with-LaTeX-fragments}.  The default setting is @code{t} which means @file{MathJax} for HTML, and no processing for DocBook, ASCII and LaTeX backends.  You can also set this variable on a per-file basis using one of these lines:"
-msgstr ""
+msgstr "@LaTeX{}の処理は@code{org-export-with-LaTeX-fragments}変数を設定することができます．デフォルトの設定は@code{t}で，HTMLには@file{MathJax}を用い，DocBookとASCII，@LaTeX{}では処理しません．あなたはこの変数をファイルの冒頭部分に書くことで設定することもできます:"
 
 #+glossary: export ( エクスポート ) / fragment ( フラグメント )
 #. type: example
@@ -19018,19 +19025,23 @@ msgid ""
 "#+OPTIONS: LaTeX:nil        @r{Do not process @LaTeX{} fragments at all}\n"
 "#+OPTIONS: LaTeX:verbatim   @r{Verbatim export, for jsMath or so}\n"
 msgstr ""
+"#+OPTIONS: LaTeX:t          @r{Do the right thing automatically (MathJax)}\n"
+"#+OPTIONS: LaTeX:dvipng     @r{Force using dvipng images}\n"
+"#+OPTIONS: LaTeX:nil        @r{Do not process @LaTeX{} fragments at all}\n"
+"#+OPTIONS: LaTeX:verbatim   @r{Verbatim export, for jsMath or so}\n"
 
 #+glossary: fragment ( フラグメント )
 #. type: cindex
 #: org.texi:9180
 #, no-wrap
 msgid "LaTeX fragments, preview"
-msgstr ""
+msgstr "LaTeXのコード片，プレビュー"
 
 #+glossary: fragment ( フラグメント ) / image ( 画像 )
 #. type: Plain text
 #: org.texi:9184
 msgid "If you have @file{dvipng} installed, @LaTeX{} fragments can be processed to produce preview images of the typeset expressions:"
-msgstr ""
+msgstr "もしあなたが@file{dvipng}をインストールしているのであれば，@LaTeX{}のコード片は出力された組版において画像として処理されます:"
 
 #. type: item
 #: org.texi:9186
@@ -19043,81 +19054,82 @@ msgstr "C-c C-x C-l"
 #. type: table
 #: org.texi:9194
 msgid "Produce a preview image of the @LaTeX{} fragment at point and overlay it over the source code.  If there is no fragment at point, process all fragments in the current entry (between two headlines).  When called with a prefix argument, process the entire subtree.  When called with two prefix arguments, or when the cursor is before the first headline, process the entire buffer."
-msgstr ""
+msgstr "ポイント位置の@LaTeX{}コード片の画像プレビューの提供とソースコード上のオーバレイ．もしポイント位置にコード片がないのであれば，現在のエントリ(2つの見出しの間)の全てのコード片を処理します．前置引数を付けて呼ばれた時は，サブツリー全体を処理します．前置引数を2つ付けて呼ばれた時，またはカーソルが最初の見出しの前にある時は，バッファ全体を処理します．"
 
 #+glossary: image ( 画像 )
 #. type: table
 #: org.texi:9197
 msgid "Remove the overlay preview images."
-msgstr ""
+msgstr "オーバレイされたプレビュー画像を消去します．"
 
 #+glossary: customize ( カスタマイズ ) / export ( エクスポート ) / image ( 画像 ) / influence ( 変更する ) / property ( プロパティ ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:9204
 msgid "You can customize the variable @code{org-format-latex-options} to influence some aspects of the preview. In particular, the @code{:scale} (and for HTML export, @code{:html-scale}) property can be used to adjust the size of the preview images."
-msgstr ""
+msgstr "プレビューの外観を変更するために，あなたは@code{org-format-latex-optins}変数をカスタマイズすることができます．とりわけ，@code{:scale}(そしてHTMLへのエクスポートでは@code{:html-scale})プロパティは画像のプレビューサイズの調整に使われます．"
 
 #+glossary: math ( 数学 )
 #. type: subsection
 #: org.texi:9206
 #, no-wrap
 msgid "Using CDLa@TeX{} to enter math"
-msgstr ""
+msgstr "CDLa@TeX{}を数学の入力に使う"
 
 #. type: cindex
 #: org.texi:9207
 #, no-wrap
 msgid "CDLa@TeX{}"
-msgstr ""
+msgstr "CDLa@TeX{}"
 
 #+glossary: current buffer ( カレントバッファ ) / minor mode ( マイナーモード ) / feature ( 機能 ) / file ( ファイル ) / install ( インストール ) / major ( メジャー ) / math ( 数学 ) / mode ( モード|モード ) / org ( Org-mode ) / org-mode ( Org-mode ) / template ( テンプレート ) / version ( バージョン )
 #. type: Plain text
 #: org.texi:9219
 msgid "CDLa@TeX{} mode is a minor mode that is normally used in combination with a major @LaTeX{} mode like AUC@TeX{} in order to speed-up insertion of environments and math templates.  Inside Org-mode, you can make use of some of the features of CDLa@TeX{} mode.  You need to install @file{cdlatex.el} and @file{texmathp.el} (the latter comes also with AUC@TeX{}) from @url{http://www.astro.uva.nl/~dominik/Tools/cdlatex}.  Don't use CDLa@TeX{} mode itself under Org-mode, but use the light version @code{org-cdlatex-mode} that comes as part of Org-mode.  Turn it on for the current buffer with @code{M-x org-cdlatex-mode}, or for all Org files with"
-msgstr ""
+msgstr "CDLa@TeX{}モードは環境や数学テンプレートの挿入をスピードアップするためにAUC@TeX{}に似たメジャーモードである@LaTeX{}モードと併用して通常使われるマイナーモードです．Org-modeでは，あなたはCDLa@TeX{}モードのいくつかの機能を使用できます．あなたは@url{http://www.astro.uva.nl/~dominik/Tools/cdlatex}から@file{cdlatex.el}と@file{texmathp.el}(最近AUC@TeX{}に追加されました)をインストールする必要があります．Org-mode中ではCDLa@TeX{}モード自身は使わないでください，代わりにOrg-modeに一部である，より軽量なバージョンの@code{org-cdlatex-mode}を使ってください．@code{M-x org-cdlatex-mode}をカレントバッファで実行して有効にするか，全てのOrg-modeファイルで有効するために次の設定を行います:"
 
 #. type: lisp
 #: org.texi:9222
 #, no-wrap
 msgid "(add-hook 'org-mode-hook 'turn-on-org-cdlatex)\n"
-msgstr ""
+msgstr "(add-hook 'org-mode-hook 'turn-on-org-cdlatex)\n"
 
 #+glossary: feature ( 機能 ) / mode ( モード|モード )
 #. type: Plain text
 #: org.texi:9226
 msgid "When this mode is enabled, the following features are present (for more details see the documentation of CDLa@TeX{} mode):"
-msgstr ""
+msgstr "このモードが有効である時，以下の機能が提供されます(詳細はCD@LaTeX{}モードのドキュメントを参照してください)::"
 
 #+glossary: template ( テンプレート )
 #. type: itemize
 #: org.texi:9230
 msgid "Environment templates can be inserted with @kbd{C-c @{}."
-msgstr ""
+msgstr "@kbd{C-c @{}による環境テンプレートの挿入．"
 
 #+glossary: abbreviation ( 省略記法 ) / cursor ( カーソル ) / example ( 例 ) / expansion ( 拡張|展開 ) / fragment ( フラグメント ) / function ( 機能|関数 ) / key ( キー ) / line ( 行|ライン|線 ) / list ( リスト ) / template ( テンプレート ) / type ( タイプ|入力する )
 #. type: itemize
 #: org.texi:9243
 msgid "The @key{TAB} key will do template expansion if the cursor is inside a @LaTeX{} fragment@footnote{Org-mode has a method to test if the cursor is inside such a fragment, see the documentation of the function @code{org-inside-LaTeX-fragment-p}.}.  For example, @key{TAB} will expand @code{fr} to @code{\\frac@{@}@{@}} and position the cursor correctly inside the first brace.  Another @key{TAB} will get you into the second brace.  Even outside fragments, @key{TAB} will expand environment abbreviations at the beginning of a line.  For example, if you write @samp{equ} at the beginning of a line and press @key{TAB}, this abbreviation will be expanded to an @code{equation} environment.  To get a list of all abbreviations, type @kbd{M-x cdlatex-command-help}."
-msgstr ""
+msgstr "カーソルが@LaTeX{}のコード片@footnote{カーソルがコード片の中にあるときにOrg-modeはテストを行うためのメソッドを持ちます．詳細は@code{org-inside-LaTeX-fragment-p}関数のドキュメントを参照してください．}の中にある場合，@key{TAB}キーはテンプレートの展開を行います．例えば，@key{TAB}は@code{fr}を@code{\\\\frac@{@}@{@}}に展開しカーソルを最初の括弧に移動します．もう一度@key{TAB}を押すと2つ目の括弧にカーソルが移動します．コード片の外だと，@key{TAB}は行の先頭にある環境の略語を展開します．例えば，もしあなたが行頭に@samp{equ}と書いていて@key{TAB}を押すと，この略語は@code{equation}環境に展開されます．全ての略語を見るには，@kbd{M-x cdlatex-command-help}をタイプしてください．"
 
 #. type: vindex
 #: org.texi:9246
 #, no-wrap
 msgid "cdlatex-simplify-sub-super-scripts"
-msgstr ""
+msgstr "cdlatex-simplify-sub-super-scripts"
 
 #+glossary: characters ( 文字 ) / fragment ( フラグメント ) / insert ( 挿入 ) / macro ( マクロ ) / variable ( 変数 )
 #. type: itemize
 #: org.texi:9252
 msgid "Pressing @kbd{_} and @kbd{^} inside a @LaTeX{} fragment will insert these characters together with a pair of braces.  If you use @key{TAB} to move out of the braces, and if the braces surround only a single character or macro, they are removed again (depending on the variable @code{cdlatex-simplify-sub-super-scripts})."
-msgstr ""
+msgstr "@LaTeX{}コード片の中で@kbd{_}と@kbd{^}を押すと，それらの文字が括弧のペアと一緒に挿入されます．もしあなたが@key{TAB}を括弧から抜け出すために使うなら，また括弧が1文字の文字かマクロのみを囲っているなら，それらは再び消去されます(@code{cdlatex-simplify-sub-super-script}変数に依存します)．"
 
 #. type: kindex
 #: org.texi:9253
 #, no-wrap
 msgid "`"
-msgstr ""
+msgstr "`"
 
+# @LaTeX{}のコード片以外の文字に続いて@kbd{TAB}を押すと，数学のマクロが挿入されます．もしあなたがバッククォートを押して1.5秒以上待つと，ヘルプウィンドウがポップアップします．
 #+glossary: fragment ( フラグメント ) / insert ( 挿入 ) / macro ( マクロ ) / math ( 数学 ) / window ( ウインドウ )
 #. type: itemize
 #: org.texi:9257
@@ -19128,13 +19140,13 @@ msgstr ""
 #: org.texi:9258
 #, no-wrap
 msgid "'"
-msgstr ""
+msgstr "'"
 
 #+glossary: font ( フォント ) / point ( ポイント ) / quote ( 引用 ) / symbol ( 記号 ) / window ( ウインドウ ) / work ( 作業 )
 #. type: itemize
 #: org.texi:9264
 msgid "Pressing the single-quote @kbd{'} followed by another character modifies the symbol before point with an accent or a font.  If you wait more than 1.5 seconds after the single-quote, a help window will pop up.  Character modification will work only inside @LaTeX{} fragments; outside the quote is normal."
-msgstr ""
+msgstr "別の文字に続いてシングルクォート@kbd{'}を押すと，強調やフォントでポイント前のシンボルが変更されます．もしシングルクォートを入力した後1.5秒以上待つと，ヘルプウィンドウがポップアップします．文字の変更は@LaTeX{}コード片の中でのみ働きます; それ以外ではクォートは通常通りの働きをします．"
 
 #+glossary: exporting ( エクスポート )
 #. type: cindex
