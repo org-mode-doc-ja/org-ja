@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-06-21 02:30+0900\n"
+"PO-Revision-Date: 2011-07-28 08:29+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -18612,7 +18612,7 @@ msgstr "C-c '"
 #. type: table
 #: org.texi:8901
 msgid "Edit the source code example at point in its native mode.  This works by switching to a temporary buffer with the source code.  You need to exit by pressing @kbd{C-c '} again@footnote{Upon exit, lines starting with @samp{*} or @samp{#} will get a comma prepended, to keep them from being interpreted by Org as outline nodes or special comments.  These commas will be stripped for editing with @kbd{C-c '}, and also for export.}.  The edited version will then replace the old version in the Org buffer.  Fixed-width regions (where each line starts with a colon followed by a space) will be edited using @code{artist-mode}@footnote{You may select a different-mode with the variable @code{org-edit-fixed-width-region-mode}.} to allow creating ASCII drawings easily.  Using this command in an empty line will create a new fixed-width region."
-msgstr ""
+msgstr "カーソル位置のソースコード例をそのネイティブモードで編集します．これはソースコードを一時バッファに表示し，切り替えることで働きます．あなたは@kbd{C-c '}をもう一度押すことで編集を終了します@footnote{固定幅のリージョン(それぞれの行はコロンとスペースから始まります)は@code{artist-mode}@footnote{あなたは異なる@code{org-edit-fixed-width-region-mode}変数により，モードを選ぶこともできます．}によって編集されます．空行でこのコマンドを使うことで，新しい固定幅のリージョンを作成します．"
 
 #. type: item
 #: org.texi:8901
@@ -18625,38 +18625,38 @@ msgstr "C-c l"
 #. type: table
 #: org.texi:8908
 msgid "Calling @code{org-store-link} while editing a source code example in a temporary buffer created with @kbd{C-c '} will prompt for a label.  Make sure that it is unique in the current buffer, and insert it with the proper formatting like @samp{(ref:label)} at the end of the current line.  Then the label is stored as a link @samp{(label)}, for retrieval with @kbd{C-c C-l}."
-msgstr ""
+msgstr "@kbd{C-c '}によって作成した一時バッファでのソースコード例の編集中に@code{org-store-link}の呼び出しはラベルを指示します．現在のバッファがユニークであることを確認し，現在の行の最後に@samp{(ref:label)}のように適切にフォーマットされたものが挿入されます．ラベルは@samp{(label)}のようなリンクを記憶し，@kbd{C-c C-l}検索する．"
 
 #+glossary: file ( ファイル )
 #. type: cindex
 #: org.texi:8913
 #, no-wrap
 msgid "include files, markup rules"
-msgstr ""
+msgstr "ファイルのインクルード，マークアップのルール"
 
 #+glossary: content ( コンテンツ|内容 ) / example ( 例 ) / export ( エクスポート ) / file ( ファイル )
 #. type: Plain text
 #: org.texi:8917
 msgid "During export, you can include the content of another file.  For example, to include your @file{.emacs} file, you could use:"
-msgstr ""
+msgstr "エクスポート中，あなたは別のファイルの内容をインクルードすることができます．例えば，@file{.emacs}をインクルードするなら，あなたは次のようにします:"
 
 #. type: cindex
 #: org.texi:8917
 #, no-wrap
 msgid "#+INCLUDE"
-msgstr ""
+msgstr "#+INCLUDE"
 
 #. type: example
 #: org.texi:8921
 #, no-wrap
 msgid "#+INCLUDE: \"~/.emacs\" src emacs-lisp\n"
-msgstr ""
+msgstr "#+INCLUDE: \"~/.emacs\" src emacs-lisp\n"
 
 #+glossary: content ( コンテンツ|内容 ) / example ( 例 ) / file ( ファイル ) / format ( フォーマット|形成 ) / item ( アイテム|項目 ) / keyword ( キーワード ) / language ( 言語 ) / level ( レベル|階層 ) / line ( 行|ライン|線 ) / option ( オプション ) / org-mode ( Org-mode ) / parameters ( パラメーター ) / prefix ( 接頭辞 ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:8933
 msgid "The optional second and third parameter are the markup (e.g.@: @samp{quote}, @samp{example}, or @samp{src}), and, if the markup is @samp{src}, the language for formatting the contents.  The markup is optional; if it is not given, the text will be assumed to be in Org-mode format and will be processed normally.  The include line will also allow additional keyword parameters @code{:prefix1} and @code{:prefix} to specify prefixes for the first line and for each following line, @code{:minlevel} in order to get org-mode content demoted to a specified level, as well as any options accepted by the selected markup.  For example, to include a file as an item, use"
-msgstr ""
+msgstr "2つ目のオプションは(e.g.@: @samp{quote}や@samp{example}，@samp{src})のようなマークアップで，3つ目はマークアップが@samp{src}ならコンテンツの言語を表します．マークアップはオプションです; もし与えられなければ，Org-modeフォーマットのテキストと仮定される．インクルードの行は最初の行とそれに続く行のプレフィクスの指定のための追加キーワードパラメータの@code{:prefix1}と@code{:prefix}を，Org-modeのコンテンツを指定したレベル下げるための@code{:minilevel}を，同様に選択したマークアップ固有のオプションを持ちます．例えば，ファイルをインクルードするには:"
 
 #. type: example
 #: org.texi:8936
@@ -18668,7 +18668,7 @@ msgstr ""
 #. type: Plain text
 #: org.texi:8942
 msgid "You can also include a portion of a file by specifying a lines range using the @code{:lines} parameter.  The line at the upper end of the range will not be included.  The start and/or the end of the range may be omitted to use the obvious defaults."
-msgstr ""
+msgstr "@code{:line}パラメータを使うことで，ファイルの指定した範囲の行のみをインクルードすることができます．範囲外の行はインクルードされません．範囲の開始と，または終了は明らかにデフォルトを使いません．"
 
 #+glossary: line ( 行|ライン|線 )
 #. type: example
@@ -18679,25 +18679,28 @@ msgid ""
 "#+INCLUDE: \"~/.emacs\" :lines \"-10\"    @r{Include lines 1 to 10, 10 excluded}\n"
 "#+INCLUDE: \"~/.emacs\" :lines \"10-\"    @r{Include lines from 10 to EOF}\n"
 msgstr ""
+"#+INCLUDE: \"~/.emacs\" :lines \"5-10\"   @r{Include lines 5 to 10, 10 excluded}\n"
+"#+INCLUDE: \"~/.emacs\" :lines \"-10\"    @r{Include lines 1 to 10, 10 excluded}\n"
+"#+INCLUDE: \"~/.emacs\" :lines \"10-\"    @r{Include lines from 10 to EOF}\n"
 
 #+glossary: file ( ファイル ) / point ( ポイント )
 #. type: table
 #: org.texi:8953
 msgid "Visit the include file at point."
-msgstr ""
+msgstr "ポイント位置のインクルードされたファイルに移動します．"
 
 #+glossary: entries ( エントリー|文|入力 ) / index ( インデックス ) / publishing ( 公開 )
 #. type: cindex
 #: org.texi:8957
 #, no-wrap
 msgid "index entries, for publishing"
-msgstr ""
+msgstr "公開のためのインデックスのエントリ"
 
 #+glossary: entries ( エントリー|文|入力 ) / entry ( エントリー|文|入力 ) / index ( インデックス ) / information ( 情報 ) / item ( アイテム|項目 ) / line ( 行|ライン|線 ) / mark ( マーク ) / publishing ( 公開 ) / sub ( サブ|下位の階層の )
 #. type: Plain text
 #: org.texi:8963
 msgid "You can specify entries that will be used for generating an index during publishing.  This is done by lines starting with @code{#+INDEX}.  An entry the contains an exclamation mark will create a sub item.  See @ref{Generating an index} for more information."
-msgstr ""
+msgstr "あなたは公開した文書のインデックスに用いるエントリーを規定することができます．これは@code{#+INDEX}から始まる行により設定します．感嘆符を含むエントリーはサブアイテムを作るでしょう．さらなる情報を見るには@ref{Generating an index}を参照してください．"
 
 #. type: example
 #: org.texi:8968
@@ -18707,25 +18710,28 @@ msgid ""
 "#+INDEX: CV\n"
 "#+INDEX: Application!CV\n"
 msgstr ""
+"* Curriculum Vitae\n"
+"#+INDEX: CV\n"
+"#+INDEX: Application!CV\n"
 
 #+glossary: export ( エクスポート ) / macro ( マクロ )
 #. type: cindex
 #: org.texi:8975
 #, no-wrap
 msgid "macro replacement, during export"
-msgstr ""
+msgstr "エクスポート中のマクロによる置き換え"
 
 #. type: cindex
 #: org.texi:8976
 #, no-wrap
 msgid "#+MACRO"
-msgstr ""
+msgstr "#+MACRO"
 
 #+glossary: snippet ( スニペット ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:8979
 msgid "You can define text snippets with"
-msgstr ""
+msgstr "あなたはこのようにして"
 
 #+glossary: text ( テキスト|文章 )
 #. type: example
@@ -18744,39 +18750,39 @@ msgstr ""
 #. type: Plain text
 #: org.texi:8996
 msgid "Macro expansion takes place during export, and some people use it to construct complex HTML code."
-msgstr ""
+msgstr "マクロ展開はエクスポート中に行われ，一部の人々は複雑なHTMLコードの構築に用いる．"
 
 #. type: cindex
 #: org.texi:9000
 #, no-wrap
 msgid "@TeX{} interpretation"
-msgstr ""
+msgstr "@TeX{}の解釈"
 
 #. type: cindex
 #: org.texi:9001
 #, no-wrap
 msgid "@LaTeX{} interpretation"
-msgstr ""
+msgstr "@LaTeXの解釈"
 
 #+glossary: code ( コード ) / document ( ドキュメント|文書 ) / export ( エクスポート ) / feature ( 機能 ) / file ( ファイル ) / formula ( 数式 ) / macro ( マクロ ) / mathematical ( 数学 ) / note ( ノート ) / org-mode ( Org-mode ) / output ( アウトプット ) / plain ( プレーン ) / source ( ソース ) / symbol ( 記号 ) / system ( システム ) / writing ( 書き出す )
 #. type: Plain text
 #: org.texi:9012
 msgid "Plain ASCII is normally sufficient for almost all note taking.  Exceptions include scientific notes, which often require mathematical symbols and the occasional formula.  @LaTeX{}@footnote{@LaTeX{} is a macro system based on Donald E. Knuth's @TeX{} system.  Many of the features described here as ``@LaTeX{}'' are really from @TeX{}, but for simplicity I am blurring this distinction.} is widely used to typeset scientific documents. Org-mode supports embedding @LaTeX{} code into its files, because many academics are used to writing and reading @LaTeX{} source code, and because it can be readily processed to produce pretty output for a number of export backends."
-msgstr ""
+msgstr "プレーンなASCIIはほとんどの場合ノートをとるのに十分です．例外は数学の記号や時々出てくる数式を必要とする科学に関するノートのようなものです．@LaTeX{}@footnote{@LaTeX{}はドナルド・クヌースの@TeX{}システムを基としたマクロシステムです．``@LaTeX{}''で説明される多くの機能は@TeX{}からのものですが，違いはそれほどありません}は科学に関する文書の組版に広く使われています．多くのacademicsは@LaTeX{}のソースコードの読み書きに使われていて，すぐに多くのエクスポートバックエンドに対応できるため，Org-modeは@LaTeX{}コードのファイルへの組込みをサポートしています．"
 
 #+glossary: math ( 数学 ) / symbol ( 記号 )
 #. type: cindex
 #: org.texi:9023
 #, no-wrap
 msgid "math symbols"
-msgstr ""
+msgstr "数学記号"
 
 #+glossary: symbol ( 記号 )
 #. type: cindex
 #: org.texi:9024
 #, no-wrap
 msgid "special symbols"
-msgstr ""
+msgstr "特殊記号"
 
 #+glossary: macro ( マクロ )
 #. type: cindex
@@ -18791,31 +18797,31 @@ msgstr "@TeX{}マクロ"
 #: org.texi:9026
 #, no-wrap
 msgid "@LaTeX{} fragments, markup rules"
-msgstr ""
+msgstr "@LaTeX{}の断片，マークアップのルール"
 
 #. type: cindex
 #: org.texi:9027
 #, no-wrap
 msgid "HTML entities"
-msgstr ""
+msgstr "HTMLのエントリ"
 
 #. type: cindex
 #: org.texi:9028
 #, no-wrap
 msgid "@LaTeX{} entities"
-msgstr ""
+msgstr "@LaTeX{}のエントリ"
 
 #+glossary: available ( 利用できる ) / code ( コード ) / completion ( 補完 ) / insert ( 挿入 ) / macro ( マクロ ) / math ( 数学 ) / org-mode ( Org-mode ) / symbol ( 記号 ) / type ( タイプ|入力する )
 #. type: Plain text
 #: org.texi:9036
 msgid "You can use @LaTeX{} macros to insert special symbols like @samp{\\alpha} to indicate the Greek letter, or @samp{\\to} to indicate an arrow.  Completion for these macros is available, just type @samp{\\} and maybe a few letters, and press @kbd{M-@key{TAB}} to see possible completions.  Unlike @LaTeX{} code, Org-mode allows these macros to be present without surrounding math delimiters, for example:"
-msgstr ""
+msgstr "あなたは@LaTeX{}マクロをギリシャ文字を表す@samp{\\\\alpha}や矢印を表す@samp{\\\\tpo}のような特殊記号の挿入に使うことができます．これらのマクロは補完が可能で，@samp{\\\\}まで入力し，その後に何文字か入力して@kbd{M-@key{TAB}}を押すことで補完が可能です．@LaTeX{}のコードとは違い，Org-modeは数学の区切り文字を囲まないようなマクロも使うことができます．以下に例を挙げます:"
 
 #. type: example
 #: org.texi:9039
 #, no-wrap
 msgid "Angles are written as Greek letters \\alpha, \\beta and \\gamma.\n"
-msgstr ""
+msgstr "Angles are written as Geek letters \\\\alpha, \\\\beta and \\\\gamma."
 
 #. type: vindex
 #: org.texi:9041
@@ -18830,19 +18836,19 @@ msgstr "org-entities"
 msgid ""
 "During export, these symbols will be transformed into the native format of the exporter backend.  Strings like @code{\\alpha} will be exported as @code{&alpha;} in the HTML output, and as @code{$\\alpha$} in the @LaTeX{} output.  Similarly, @code{\\n"
 "bsp} will become @code{&nbsp;} in HTML and @code{~} in @LaTeX{}.  If you need such a symbol inside a word, terminate it like this: @samp{\\Aacute@{@}stor}."
-msgstr ""
+msgstr "エクスポート時，これらのシンボルはエクスポート先のネイティブフォーマットに変換されます．HTMLでは@code{\\\\alpha}のような文字列は@code{&alpha;}にエクスポートされ，@LaTeX{}では@code{$\\\\alpha$}となります．同様に，@code{\\\\nbsp}はHTMLでは@code{&nbsp;}に，@LaTeX{}では@code{~}となります．もしあなたが記号を単語の中に含めたいのであれば，次のようにします: @samp{\\Aacute@{@}stor}．"
 
 #+glossary: command ( コマンド ) / creating ( 作成 ) / list ( リスト ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:9054
 msgid "A large number of entities is provided, with names taken from both HTML and @LaTeX{}; see the variable @code{org-entities} for the complete list.  @samp{\\-} is treated as a shy hyphen, and @samp{--}, @samp{---}, and @samp{...} are all converted into special commands creating hyphens of different lengths or a compact set of dots."
-msgstr ""
+msgstr "非常に多くのエンティティが提供されていて，HTMLと@LaTeX{}からその名前を引き継いでいます;完全なリストは@code{org-entities}変数を見てください．@samp{\\\\-}はシャイなハイフンとして扱われていて，@samp{--}や@samp{---}，@samp{...}は異なる長さのハイフンかドットの集合を作成するための全て特殊コマンドに変換されます．"
 
 #+glossary: characters ( 文字 ) / default ( デフォルト|初期値 ) / option ( オプション ) / setting ( 設定 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:9059
 msgid "If you would like to see entities displayed as UTF8 characters, use the following command@footnote{You can turn this on by default by setting the variable @code{org-pretty-entities}, or on a per-file base with the @code{#+STARTUP} option @code{entitiespretty}.}:"
-msgstr ""
+msgstr "もしあなたがUTF-8文字でエンティティを表示したいのなら，以下のコマンド@footnote{あなたは @code{org-pretty-entities}変数または@code{#+STARTUP}オプション@code{entitiespretty}にデフォルトを設定することができます}:"
 
 #. type: item
 #: org.texi:9061
@@ -18857,26 +18863,26 @@ msgstr "C-c C-x \\"
 #. type: table
 #: org.texi:9066
 msgid "Toggle display of entities as UTF-8 characters.  This does not change the buffer content which remains plain ASCII, but it overlays the UTF-8 character for display purposes only."
-msgstr ""
+msgstr "エンティティのUTF-8での表示をトグルします．これはバッファの内容を変更せず，UTF-8の文字を表示するためにオーバレイを用いています．"
 
 #. type: cindex
 #: org.texi:9070
 #, no-wrap
 msgid "subscript"
-msgstr ""
+msgstr "下付き文字"
 
 #+glossary: superscript ( 上付き文字 )
 #. type: cindex
 #: org.texi:9071
 #, no-wrap
 msgid "superscript"
-msgstr ""
+msgstr "上付き文字"
 
 #+glossary: curly braces ( 中括弧{} ) / example ( 例 ) / subscripts ( 下付き文字 ) / superscript ( 上付き文字 ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:9078
 msgid "Just like in @LaTeX{}, @samp{^} and @samp{_} are used to indicate super- and subscripts.  Again, these can be used without embedding them in math-mode delimiters.  To increase the readability of ASCII text, it is not necessary (but OK) to surround multi-character sub- and superscripts with curly braces.  For example"
-msgstr ""
+msgstr "@LaTeX{}と同じように，@samp{^}と@samp{_}が下付き文字と上付き文字を示しています．さらに，それらはmath-modeにの区切り文字に組込まずに使うことができます．ASCIIテキストの可読性の向上のため，複数文字の下付き文字と上付き文字を波括弧で囲む必要はありません(囲んでもかまいませんが)．例"
 
 #. type: example
 #: org.texi:9082
@@ -18885,6 +18891,8 @@ msgid ""
 "The mass of the sun is M_sun = 1.989 x 10^30 kg.  The radius of\n"
 "the sun is R_@{sun@} = 6.96 x 10^8 m.\n"
 msgstr ""
+"The mass of the sun is M_sun = 1.989 x 10^30 kg.  The radius of\n"
+"the sun is R_@{sun@} = 6.96 x 10^8 m.\n"
 
 #. type: vindex
 #: org.texi:9084
@@ -18897,13 +18905,13 @@ msgstr "org-export-with-sub-superscripts"
 #. type: Plain text
 #: org.texi:9091
 msgid "To avoid interpretation as raised or lowered text, you can quote @samp{^} and @samp{_} with a backslash: @samp{\\^} and @samp{\\_}.  If you write a text where the underscore is often used in a different context, Org's convention to always interpret these as subscripts can get in your way.  Configure the variable @code{org-export-with-sub-superscripts} to globally change this convention, or use, on a per-file basis:"
-msgstr ""
+msgstr "上付きテキスト，下付きテキストの説明を避けるため，あなたはバックスラッシュをつけた@samp{^}と@samp{_}を引用できます: @samp{\\\\^}と@samp{\\\\_}です．異なる文脈でしばしば使われるアンダーラインのテキストを書くなら，常にこれらの下付き文字として解釈するOrg-modeの慣習はあなたのやり方で得ることができます．この慣習を変更するには@code{org-export-with-sb-superscripts}変数を設定するか，ファイルに次のように書いてください．"
 
 #. type: example
 #: org.texi:9094
 #, no-wrap
 msgid "#+OPTIONS: ^:@{@}\n"
-msgstr ""
+msgstr "#+OPTIONS: ^:@{@}\n"
 
 #. type: Plain text
 #: org.texi:9098
@@ -18914,7 +18922,7 @@ msgstr ""
 #. type: table
 #: org.texi:9104
 msgid "In addition to showing entities as UTF-8 characters, this command will also format sub- and superscripts in a WYSIWYM way."
-msgstr ""
+msgstr "さらにUTF-8のエンティティを見るため，このコマンドは下付き文字と上付き文字をWYSISYMで形成する．"
 
 #+glossary: fragment ( フラグメント )
 #. type: cindex
@@ -18929,31 +18937,32 @@ msgstr "@LaTeX{}の断片的なコード"
 #: org.texi:9110
 #, no-wrap
 msgid "org-format-latex-header"
-msgstr ""
+msgstr "org-format-latex-header"
 
 #+glossary: available ( 利用できる ) / code ( コード ) / display ( ディスプレイ|表示 ) / document ( ドキュメント|文書 ) / export ( エクスポート ) / exporting ( エクスポート ) / formula ( 数式 ) / fragment ( フラグメント ) / header ( ヘッダー ) / install ( インストール ) / installation ( インストール ) / language ( 言語 ) / math ( 数学 ) / mathematical ( 数学 ) / org ( Org-mode ) / org-mode ( Org-mode ) / page ( ページ ) / processing ( 処理 ) / superscript ( 上付き文字 ) / symbol ( 記号 ) / system ( システム ) / variable ( 変数 ) / view ( ビュー ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:9127
 msgid "Going beyond symbols and sub- and superscripts, a full formula language is needed.  Org-mode can contain @LaTeX{} math fragments, and it supports ways to process these for several export backends.  When exporting to @LaTeX{}, the code is obviously left as it is.  When exporting to HTML, Org invokes the @uref{http://www.mathjax.org, MathJax library} (@pxref{Math formatting in HTML export}) to process and display the math@footnote{If you plan to use this regularly or on pages with significant page views, you should install @file{MathJax} on your own server in order to limit the load of our server.}.  Finally, it can also process the mathematical expressions into images@footnote{For this to work you need to be on a system with a working @LaTeX{} installation. You also need the @file{dvipng} program, available at @url{http://sourceforge.net/projects/dvipng/}.  The @LaTeX{} header that will be used when processing a fragment can be configured with the variable @code{org-format-latex-header}.} that can be displayed in a browser or in DocBook documents."
-msgstr ""
+msgstr "シンボルと上付き，下付き，完全な式を越えることが必要です．Org-modeは@LaTeX{}の数式を含むことができ，各エクスポート先への変換もサポートしています．@LaTeX{}にエクスポートするとき，コードは明らかに残っています．HTMLへエクスポートするとき，Org-modeは数式@footnote{}の処理と描画のために@uref{http://www.mathjax.org, MathJax library} (@pxref{Math formatting in HTML export})を呼び出します．最後に，数式表現はブラウザかDocBook文書で描画可能な画像@footnote{これを行うには，あなたのシステムに@LaTeX{}をインストールする必要があります．そしてまた，@url{http://sourceforge.net/projects/dvipng/}で入手できる@file{dvipng}プログラムも必要です．}へと処理されます．"
 
 #+glossary: fragment ( フラグメント ) / snippet ( スニペット ) / source ( ソース )
 #. type: Plain text
 #: org.texi:9130
 msgid "@LaTeX{} fragments don't need any special marking at all.  The following snippets will be identified as @LaTeX{} source code:"
-msgstr ""
+msgstr "@LaTeX{}のコード片は，特別なマークは全く必要ありません．以下のコード片は@LaTeX{}のソースコードとして知られています:"
+
 
 #+glossary: image ( 画像 ) / line ( 行|ライン|線 )
 #. type: itemize
 #: org.texi:9137
 msgid "Environments of any kind@footnote{When @file{MathJax} is used, only the environment recognized by @file{MathJax} will be processed.  When @file{dvipng} is used to create images, any @LaTeX{} environments will be handled.}.  The only requirement is that the @code{\\begin} statement appears on a new line, preceded by only whitespace."
-msgstr ""
+msgstr "あらゆる種類の環境@footnote{@file{MathJax}が使われている時，@file{MathJax}によって認識されている環境が処理されます．@file{dvipng}を画像の生成に用いる時，@LaTeX{}環境が扱われます．}．唯一必要なことは@code{\\\\begin}文は空白のみがある行に表示されることです．"
 
 #+glossary: line break ( 改行 ) / characters ( 文字 ) / closing ( 完了 ) / conflict ( 衝突する ) / inline ( インライン ) / math ( 数学 ) / specification ( 指定 ) / text ( テキスト|文章 )
 #. type: itemize
 #: org.texi:9145
 msgid "Text within the usual @LaTeX{} math delimiters.  To avoid conflicts with currency specifications, single @samp{$} characters are only recognized as math delimiters if the enclosed text contains at most two line breaks, is directly attached to the @samp{$} characters with no whitespace in between, and if the closing @samp{$} is followed by whitespace, punctuation or a dash.  For the other delimiters, there is no such restriction, so when in doubt, use @samp{\\(...\\)} as inline math delimiters."
-msgstr ""
+msgstr "通常の@LaTeX{}の数学の区切り文字内部のテキスト．流通仕様との衝突を避けるために，囲まれたテキストに最大2つの改行が含まれている場合，@samp{$}文字は数学区切り文字のみとして認識され，@samp{$}文字がの間に空白がない，そして"
 
 #+glossary: table ( テーブル )
 #. type: example
@@ -18965,6 +18974,10 @@ msgid ""
 "\\end@{equation@}                            % etc\n"
 "\n"
 msgstr ""
+"\\begin@{equation@}                          % arbitrary environments,\n"
+"x=\\sqrt@{b@}                                % even tables, figures\n"
+"\\end@{equation@}                            % etc\n"
+"\n"
 
 #. type: example
 #: org.texi:9156
@@ -18973,6 +18986,8 @@ msgid ""
 "If $a^2=b$ and \\( b=2 \\), then the solution must be\n"
 "either $$ a=+\\sqrt@{2@} $$ or \\[ a=-\\sqrt@{2@} \\].\n"
 msgstr ""
+"If $a^2=b$ and \\( b=2 \\), then the solution must be\n"
+"either $$ a=+\\sqrt@{2@} $$ or \\[ a=-\\sqrt@{2@} \\].\n"
 
 #. type: vindex
 #: org.texi:9159
@@ -18985,7 +19000,7 @@ msgstr "org-format-latex-options"
 #. type: Plain text
 #: org.texi:9163
 msgid "If you need any of the delimiter ASCII sequences for other purposes, you can configure the option @code{org-format-latex-options} to deselect the ones you do not wish to have interpreted by the @LaTeX{} converter."
-msgstr ""
+msgstr "もしあなたが他の目的にASCIIの区切り文字が必要なら，@LaTeXコンバータに邪魔されえることを望まない文字を除外するために@code{org-format-latex-options}オプションを設定することができます．"
 
 #. type: vindex
 #: org.texi:9164
@@ -18998,7 +19013,7 @@ msgstr "org-export-with-LaTeX-fragments"
 #. type: Plain text
 #: org.texi:9170
 msgid "LaTeX processing can be configured with the variable @code{org-export-with-LaTeX-fragments}.  The default setting is @code{t} which means @file{MathJax} for HTML, and no processing for DocBook, ASCII and LaTeX backends.  You can also set this variable on a per-file basis using one of these lines:"
-msgstr ""
+msgstr "@LaTeX{}の処理は@code{org-export-with-LaTeX-fragments}変数を設定することができます．デフォルトの設定は@code{t}で，HTMLには@file{MathJax}を用い，DocBookとASCII，@LaTeX{}では処理しません．あなたはこの変数をファイルの冒頭部分に書くことで設定することもできます:"
 
 #+glossary: export ( エクスポート ) / fragment ( フラグメント )
 #. type: example
@@ -19010,19 +19025,23 @@ msgid ""
 "#+OPTIONS: LaTeX:nil        @r{Do not process @LaTeX{} fragments at all}\n"
 "#+OPTIONS: LaTeX:verbatim   @r{Verbatim export, for jsMath or so}\n"
 msgstr ""
+"#+OPTIONS: LaTeX:t          @r{Do the right thing automatically (MathJax)}\n"
+"#+OPTIONS: LaTeX:dvipng     @r{Force using dvipng images}\n"
+"#+OPTIONS: LaTeX:nil        @r{Do not process @LaTeX{} fragments at all}\n"
+"#+OPTIONS: LaTeX:verbatim   @r{Verbatim export, for jsMath or so}\n"
 
 #+glossary: fragment ( フラグメント )
 #. type: cindex
 #: org.texi:9180
 #, no-wrap
 msgid "LaTeX fragments, preview"
-msgstr ""
+msgstr "LaTeXのコード片，プレビュー"
 
 #+glossary: fragment ( フラグメント ) / image ( 画像 )
 #. type: Plain text
 #: org.texi:9184
 msgid "If you have @file{dvipng} installed, @LaTeX{} fragments can be processed to produce preview images of the typeset expressions:"
-msgstr ""
+msgstr "もしあなたが@file{dvipng}をインストールしているのであれば，@LaTeX{}のコード片は出力された組版において画像として処理されます:"
 
 #. type: item
 #: org.texi:9186
@@ -19035,81 +19054,82 @@ msgstr "C-c C-x C-l"
 #. type: table
 #: org.texi:9194
 msgid "Produce a preview image of the @LaTeX{} fragment at point and overlay it over the source code.  If there is no fragment at point, process all fragments in the current entry (between two headlines).  When called with a prefix argument, process the entire subtree.  When called with two prefix arguments, or when the cursor is before the first headline, process the entire buffer."
-msgstr ""
+msgstr "ポイント位置の@LaTeX{}コード片の画像プレビューの提供とソースコード上のオーバレイ．もしポイント位置にコード片がないのであれば，現在のエントリ(2つの見出しの間)の全てのコード片を処理します．前置引数を付けて呼ばれた時は，サブツリー全体を処理します．前置引数を2つ付けて呼ばれた時，またはカーソルが最初の見出しの前にある時は，バッファ全体を処理します．"
 
 #+glossary: image ( 画像 )
 #. type: table
 #: org.texi:9197
 msgid "Remove the overlay preview images."
-msgstr ""
+msgstr "オーバレイされたプレビュー画像を消去します．"
 
 #+glossary: customize ( カスタマイズ ) / export ( エクスポート ) / image ( 画像 ) / influence ( 変更する ) / property ( プロパティ ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:9204
 msgid "You can customize the variable @code{org-format-latex-options} to influence some aspects of the preview. In particular, the @code{:scale} (and for HTML export, @code{:html-scale}) property can be used to adjust the size of the preview images."
-msgstr ""
+msgstr "プレビューの外観を変更するために，あなたは@code{org-format-latex-optins}変数をカスタマイズすることができます．とりわけ，@code{:scale}(そしてHTMLへのエクスポートでは@code{:html-scale})プロパティは画像のプレビューサイズの調整に使われます．"
 
 #+glossary: math ( 数学 )
 #. type: subsection
 #: org.texi:9206
 #, no-wrap
 msgid "Using CDLa@TeX{} to enter math"
-msgstr ""
+msgstr "CDLa@TeX{}を数学の入力に使う"
 
 #. type: cindex
 #: org.texi:9207
 #, no-wrap
 msgid "CDLa@TeX{}"
-msgstr ""
+msgstr "CDLa@TeX{}"
 
 #+glossary: current buffer ( カレントバッファ ) / minor mode ( マイナーモード ) / feature ( 機能 ) / file ( ファイル ) / install ( インストール ) / major ( メジャー ) / math ( 数学 ) / mode ( モード|モード ) / org ( Org-mode ) / org-mode ( Org-mode ) / template ( テンプレート ) / version ( バージョン )
 #. type: Plain text
 #: org.texi:9219
 msgid "CDLa@TeX{} mode is a minor mode that is normally used in combination with a major @LaTeX{} mode like AUC@TeX{} in order to speed-up insertion of environments and math templates.  Inside Org-mode, you can make use of some of the features of CDLa@TeX{} mode.  You need to install @file{cdlatex.el} and @file{texmathp.el} (the latter comes also with AUC@TeX{}) from @url{http://www.astro.uva.nl/~dominik/Tools/cdlatex}.  Don't use CDLa@TeX{} mode itself under Org-mode, but use the light version @code{org-cdlatex-mode} that comes as part of Org-mode.  Turn it on for the current buffer with @code{M-x org-cdlatex-mode}, or for all Org files with"
-msgstr ""
+msgstr "CDLa@TeX{}モードは環境や数学テンプレートの挿入をスピードアップするためにAUC@TeX{}に似たメジャーモードである@LaTeX{}モードと併用して通常使われるマイナーモードです．Org-modeでは，あなたはCDLa@TeX{}モードのいくつかの機能を使用できます．あなたは@url{http://www.astro.uva.nl/~dominik/Tools/cdlatex}から@file{cdlatex.el}と@file{texmathp.el}(最近AUC@TeX{}に追加されました)をインストールする必要があります．Org-mode中ではCDLa@TeX{}モード自身は使わないでください，代わりにOrg-modeに一部である，より軽量なバージョンの@code{org-cdlatex-mode}を使ってください．@code{M-x org-cdlatex-mode}をカレントバッファで実行して有効にするか，全てのOrg-modeファイルで有効するために次の設定を行います:"
 
 #. type: lisp
 #: org.texi:9222
 #, no-wrap
 msgid "(add-hook 'org-mode-hook 'turn-on-org-cdlatex)\n"
-msgstr ""
+msgstr "(add-hook 'org-mode-hook 'turn-on-org-cdlatex)\n"
 
 #+glossary: feature ( 機能 ) / mode ( モード|モード )
 #. type: Plain text
 #: org.texi:9226
 msgid "When this mode is enabled, the following features are present (for more details see the documentation of CDLa@TeX{} mode):"
-msgstr ""
+msgstr "このモードが有効である時，以下の機能が提供されます(詳細はCD@LaTeX{}モードのドキュメントを参照してください)::"
 
 #+glossary: template ( テンプレート )
 #. type: itemize
 #: org.texi:9230
 msgid "Environment templates can be inserted with @kbd{C-c @{}."
-msgstr ""
+msgstr "@kbd{C-c @{}による環境テンプレートの挿入．"
 
 #+glossary: abbreviation ( 省略記法 ) / cursor ( カーソル ) / example ( 例 ) / expansion ( 拡張|展開 ) / fragment ( フラグメント ) / function ( 機能|関数 ) / key ( キー ) / line ( 行|ライン|線 ) / list ( リスト ) / template ( テンプレート ) / type ( タイプ|入力する )
 #. type: itemize
 #: org.texi:9243
 msgid "The @key{TAB} key will do template expansion if the cursor is inside a @LaTeX{} fragment@footnote{Org-mode has a method to test if the cursor is inside such a fragment, see the documentation of the function @code{org-inside-LaTeX-fragment-p}.}.  For example, @key{TAB} will expand @code{fr} to @code{\\frac@{@}@{@}} and position the cursor correctly inside the first brace.  Another @key{TAB} will get you into the second brace.  Even outside fragments, @key{TAB} will expand environment abbreviations at the beginning of a line.  For example, if you write @samp{equ} at the beginning of a line and press @key{TAB}, this abbreviation will be expanded to an @code{equation} environment.  To get a list of all abbreviations, type @kbd{M-x cdlatex-command-help}."
-msgstr ""
+msgstr "カーソルが@LaTeX{}のコード片@footnote{カーソルがコード片の中にあるときにOrg-modeはテストを行うためのメソッドを持ちます．詳細は@code{org-inside-LaTeX-fragment-p}関数のドキュメントを参照してください．}の中にある場合，@key{TAB}キーはテンプレートの展開を行います．例えば，@key{TAB}は@code{fr}を@code{\\\\frac@{@}@{@}}に展開しカーソルを最初の括弧に移動します．もう一度@key{TAB}を押すと2つ目の括弧にカーソルが移動します．コード片の外だと，@key{TAB}は行の先頭にある環境の略語を展開します．例えば，もしあなたが行頭に@samp{equ}と書いていて@key{TAB}を押すと，この略語は@code{equation}環境に展開されます．全ての略語を見るには，@kbd{M-x cdlatex-command-help}をタイプしてください．"
 
 #. type: vindex
 #: org.texi:9246
 #, no-wrap
 msgid "cdlatex-simplify-sub-super-scripts"
-msgstr ""
+msgstr "cdlatex-simplify-sub-super-scripts"
 
 #+glossary: characters ( 文字 ) / fragment ( フラグメント ) / insert ( 挿入 ) / macro ( マクロ ) / variable ( 変数 )
 #. type: itemize
 #: org.texi:9252
 msgid "Pressing @kbd{_} and @kbd{^} inside a @LaTeX{} fragment will insert these characters together with a pair of braces.  If you use @key{TAB} to move out of the braces, and if the braces surround only a single character or macro, they are removed again (depending on the variable @code{cdlatex-simplify-sub-super-scripts})."
-msgstr ""
+msgstr "@LaTeX{}コード片の中で@kbd{_}と@kbd{^}を押すと，それらの文字が括弧のペアと一緒に挿入されます．もしあなたが@key{TAB}を括弧から抜け出すために使うなら，また括弧が1文字の文字かマクロのみを囲っているなら，それらは再び消去されます(@code{cdlatex-simplify-sub-super-script}変数に依存します)．"
 
 #. type: kindex
 #: org.texi:9253
 #, no-wrap
 msgid "`"
-msgstr ""
+msgstr "`"
 
+# @LaTeX{}のコード片以外の文字に続いて@kbd{TAB}を押すと，数学のマクロが挿入されます．もしあなたがバッククォートを押して1.5秒以上待つと，ヘルプウィンドウがポップアップします．
 #+glossary: fragment ( フラグメント ) / insert ( 挿入 ) / macro ( マクロ ) / math ( 数学 ) / window ( ウインドウ )
 #. type: itemize
 #: org.texi:9257
@@ -19120,13 +19140,13 @@ msgstr ""
 #: org.texi:9258
 #, no-wrap
 msgid "'"
-msgstr ""
+msgstr "'"
 
 #+glossary: font ( フォント ) / point ( ポイント ) / quote ( 引用 ) / symbol ( 記号 ) / window ( ウインドウ ) / work ( 作業 )
 #. type: itemize
 #: org.texi:9264
 msgid "Pressing the single-quote @kbd{'} followed by another character modifies the symbol before point with an accent or a font.  If you wait more than 1.5 seconds after the single-quote, a help window will pop up.  Character modification will work only inside @LaTeX{} fragments; outside the quote is normal."
-msgstr ""
+msgstr "別の文字に続いてシングルクォート@kbd{'}を押すと，強調やフォントでポイント前のシンボルが変更されます．もしシングルクォートを入力した後1.5秒以上待つと，ヘルプウィンドウがポップアップします．文字の変更は@LaTeX{}コード片の中でのみ働きます; それ以外ではクォートは通常通りの働きをします．"
 
 #+glossary: exporting ( エクスポート )
 #. type: cindex
@@ -25467,189 +25487,189 @@ msgstr ""
 #. type: Plain text
 #: org.texi:12799
 msgid "Emacs would not be Emacs without completion, and Org-mode uses it whenever it makes sense.  If you prefer an @i{iswitchb}- or @i{ido}-like interface for some of the completion prompts, you can specify your preference by setting at most one of the variables @code{org-completion-use-iswitchb} @code{org-completion-use-ido}."
-msgstr ""
+msgstr "Emacsは補完無しではEmacsとはいえません，そしてorg-modeはそれが意味をなすたびに使用します．もしあなたが@i{iswitchb}- か@i{ido}-のようなインタフェースを補完のプロンプトとして好むのであれば，あなたは@code{org-completion-use-iswitchb}や@code{org-completion-use-ido}変数のいずれかを設定することで指定することができます．"
 
 #+glossary: buffer ( バッファ ) / completion ( 補完 ) / key ( キー ) / minibuffer ( ミニバッファ ) / org ( Org-mode ) / text ( テキスト|文章 ) / type ( タイプ|入力する )
 #. type: Plain text
 #: org.texi:12803
 msgid "Org supports in-buffer completion.  This type of completion does not make use of the minibuffer.  You simply type a few letters into the buffer and use the key to complete text right there."
-msgstr ""
+msgstr "Org-modeはバッファ中の補完をサポートします．この種類の補完はミニバッファを活用します．あなたは簡単に数文字をバッファに入力し，補完キーを補完するテキストの右側で押します．"
 
 #+glossary: point ( ポイント )
 #. type: table
 #: org.texi:12808
 msgid "Complete word at point"
-msgstr ""
+msgstr "ポイント位置での補完"
 
 #+glossary: TODO keywords ( TODOキーワード ) / headline ( 見出し )
 #. type: itemize
 #: org.texi:12811
 msgid "At the beginning of a headline, complete TODO keywords."
-msgstr ""
+msgstr "見出しの先頭では，TODOキーワードを補完します．"
 
 #+glossary: exporter ( エクスポート機能 ) / symbol ( 記号 )
 #. type: itemize
 #: org.texi:12813
 msgid "After @samp{\\}, complete @TeX{} symbols supported by the exporter."
-msgstr ""
+msgstr "@samp{\\\\}の後では，エクスポート機能によりサポートされる@TeX{}のシンボルを補完します．"
 
 #+glossary: current buffer ( カレントバッファ ) / headline ( 見出し ) / link ( リンク ) / search ( 検索 )
 #. type: itemize
 #: org.texi:12816
 msgid "After @samp{*}, complete headlines in the current buffer so that they can be used in search links like @samp{[[*find this headline]]}."
-msgstr ""
+msgstr "@samp{*}の後では，@samp{[[*find this headline]]}のようにリンクを検索できるように，カレントバッファで見出しを補完します．"
 
 #+glossary: current buffer ( カレントバッファ ) / headline ( 見出し ) / list ( リスト ) / option ( オプション ) / tag ( タグ ) / variable ( 変数 )
 #. type: itemize
 #: org.texi:12821
 msgid "After @samp{:} in a headline, complete tags.  The list of tags is taken from the variable @code{org-tag-alist} (possibly set through the @samp{#+TAGS} in-buffer option, @pxref{Setting tags}), or it is created dynamically from all tags used in the current buffer."
-msgstr ""
+msgstr "見出し中の@samp{:}の後では，タグを補完します．タグのリストは@code{org-tag-alist}変数(@pxref{Setting tags}より，もしかすると，バッファ中の@samp{#+TAGS}オプションでも設定されているかもしれません．)から与えられるか，カレントバッファで使われている全てのタグから動的に生成されます．"
 
 #+glossary: current buffer ( カレントバッファ ) / headline ( 見出し ) / key ( キー ) / list ( リスト ) / property ( プロパティ )
 #. type: itemize
 #: org.texi:12825
 msgid "After @samp{:} and not in a headline, complete property keys.  The list of keys is constructed dynamically from all keys used in the current buffer."
-msgstr ""
+msgstr "見出しの外にある@samp{:}の後では，プロパティキーを補完します．キーのリストは現在のバッファで使われている全てのキーから動的に構築されます．"
 
 #+glossary: link abbreviations ( リンクの省略記法 )
 #. type: itemize
 #: org.texi:12827
 msgid "After @samp{[}, complete link abbreviations (@pxref{Link abbreviations})."
-msgstr ""
+msgstr "@samp{[}の後では，リンクの省略記法を補完します(@xpref{Link abbreviations})．\n"
 
 #+glossary: example ( 例 ) / insert ( 挿入 ) / keyword ( キーワード ) / option ( オプション ) / org-mode ( Org-mode ) / setting ( 設定 )
 #. type: itemize
 #: org.texi:12832
 msgid "After @samp{#+}, complete the special keywords like @samp{TYP_TODO} or @samp{OPTIONS} which set file-specific options for Org-mode.  When the option keyword is already complete, pressing @kbd{M-@key{TAB}} again will insert example settings for this keyword."
-msgstr ""
+msgstr "@samp{+}の後では，Org-mode向けのファイル固有の設定としてセットする@samp{TYP_TODO}や@samp{OPTIONS}のようなスペシャルキーワードを補完します．オプションキーワードが既に補完されているなら，@kbd{M-@key{TAB}}を再び押すことでこのキーワードの設定の例を挿入します．"
 
 #+glossary: STARTUP keyword ( STARTUPキーワード ) / key ( キー ) / line ( 行|ライン|線 )
 #. type: itemize
 #: org.texi:12835
 msgid "In the line after @samp{#+STARTUP: }, complete startup keywords, i.e.@: valid keys for this line."
-msgstr ""
+msgstr "@samp{#+STARTUP: }の後の行の中では，STARTUPキーワードを補完します，すなわち，@:はこの行では正しいキーです．"
 
 #. type: itemize
 #: org.texi:12837
 msgid "Elsewhere, complete dictionary words using Ispell."
-msgstr ""
+msgstr "他の場所では，Ispellを用いた辞書補完が行われます．"
 
 #+glossary: template ( テンプレート )
 #. type: cindex
 #: org.texi:12842
 #, no-wrap
 msgid "template insertion"
-msgstr ""
+msgstr "テンプレートの挿入"
 
 #+glossary: template ( テンプレート )
 #. type: cindex
 #: org.texi:12843
 #, no-wrap
 msgid "insertion, of templates"
-msgstr ""
+msgstr "テンプレートの挿入"
 
 #+glossary: example ( 例 ) / expansion ( 拡張|展開 ) / key ( キー ) / note ( ノート ) / org-mode ( Org-mode ) / template ( テンプレート )
 #. type: Plain text
 #: org.texi:12850
 msgid "Org-mode supports insertion of empty structural elements (like @code{#+BEGIN_SRC} and @code{#+END_SRC} pairs) with just a few key strokes.  This is achieved through a native template expansion mechanism.  Note that Emacs has several other template mechanisms which could be used in a similar way, for example @file{yasnippet}."
-msgstr ""
+msgstr "Org-modeは僅かなキーストロークのみによる空の構造の(@code{#+BEGIN_SRC}や@code{#+END_SRC}のような)要素の挿入をサポートします．これはネイティブなテンプレート拡張機構を通じて得られるものです．ここで留意すべきこととして，Emacsは例えば@file{yasnippet}のような同じように使うことができるいくつかの他のテンプレート機構を持ちます．"
 
 #+glossary: completion ( 補完 ) / insert ( 挿入 ) / line ( 行|ライン|線 ) / template ( テンプレート ) / type ( タイプ|入力する )
 #. type: Plain text
 #: org.texi:12854
 msgid "To insert a structural element, type a @samp{<}, followed by a template selector and @kbd{@key{TAB}}.  Completion takes effect only when the above keystrokes are typed on a line by itself."
-msgstr ""
+msgstr "構造要素の挿入には，@samp{<}をタイプし，続いてテンプレートセレクタと@kbd{@key{TAB}}をタイプします．補完は上記のキーストロークが単独で行に入力されている場合のみ働きます．"
 
 #+glossary: template ( テンプレート )
 #. type: Plain text
 #: org.texi:12856
 msgid "The following template selectors are currently supported."
-msgstr ""
+msgstr "以下のテンプレートセレクタが現在サポートされています．"
 
 #. type: item
 #: org.texi:12858
 #, no-wrap
 msgid "@kbd{s} @tab @code{#+begin_src     ... #+end_src}"
-msgstr ""
+msgstr "@kbd{s} @tab @code{#+begin_src     ... #+end_src}"
 
 #. type: item
 #: org.texi:12859
 #, no-wrap
 msgid "@kbd{e} @tab @code{#+begin_example ... #+end_example}"
-msgstr ""
+msgstr "@kbd{e} @tab @code{#+begin_example ... #+end_example}"
 
 #. type: item
 #: org.texi:12860
 #, no-wrap
 msgid "@kbd{q} @tab @code{#+begin_quote   ... #+end_quote}"
-msgstr ""
+msgstr "@kbd{q} @tab @code{#+begin_quote   ... #+end_quote}"
 
 #. type: item
 #: org.texi:12861
 #, no-wrap
 msgid "@kbd{v} @tab @code{#+begin_verse   ... #+end_verse}"
-msgstr ""
+msgstr "@kbd{v} @tab @code{#+begin_verse   ... #+end_verse}"
 
 #. type: item
 #: org.texi:12862
 #, no-wrap
 msgid "@kbd{c} @tab @code{#+begin_center  ... #+end_center}"
-msgstr ""
+msgstr "@kbd{c} @tab @code{#+begin_center  ... #+end_center}"
 
 #. type: item
 #: org.texi:12863
 #, no-wrap
 msgid "@kbd{l} @tab @code{#+begin_latex   ... #+end_latex}"
-msgstr ""
+msgstr "@kbd{l} @tab @code{#+begin_latex   ... #+end_latex}"
 
 #. type: item
 #: org.texi:12864
 #, no-wrap
 msgid "@kbd{L} @tab @code{#+latex:}"
-msgstr ""
+msgstr "@kbd{L} @tab @code{#+latex:}"
 
 #. type: item
 #: org.texi:12865
 #, no-wrap
 msgid "@kbd{h} @tab @code{#+begin_html    ... #+end_html}"
-msgstr ""
+msgstr "@kbd{h} @tab @code{#+begin_html    ... #+end_html}"
 
 #. type: item
 #: org.texi:12866
 #, no-wrap
 msgid "@kbd{H} @tab @code{#+html:}"
-msgstr ""
+msgstr "@kbd{H} @tab @code{#+html:}"
 
 #. type: item
 #: org.texi:12867
 #, no-wrap
 msgid "@kbd{a} @tab @code{#+begin_ascii   ... #+end_ascii}"
-msgstr ""
+msgstr "@kbd{a} @tab @code{#+begin_ascii   ... #+end_ascii}"
 
 #. type: item
 #: org.texi:12868
 #, no-wrap
 msgid "@kbd{A} @tab @code{#+ascii:}"
-msgstr ""
+msgstr "@kbd{A} @tab @code{#+ascii:}"
 
 #+glossary: line ( 行|ライン|線 )
 #. type: item
 #: org.texi:12869
 #, no-wrap
 msgid "@kbd{i} @tab @code{#+include:} line"
-msgstr ""
+msgstr "@kbd{i} @tab @code{#+include:} line"
 
 #+glossary: example ( 例 ) / line ( 行|ライン|線 ) / tab ( TAB|タブ ) / template ( テンプレート )
 #. type: Plain text
 #: org.texi:12874
 msgid "For example, on an empty line, typing \"<e\" and then pressing TAB, will expand into a complete EXAMPLE template."
-msgstr ""
+msgstr "例えば，空の行で\\\"<e\\\"と入力し，その後TABを入力すると，EXAMPLEテンプレートが補完されます．"
 
 #+glossary: customizing ( カスタマイズする ) / docstring ( ドキュメント文字列 ) / install ( インストール ) / template ( テンプレート ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:12878
 msgid "You can install additional templates by customizing the variable @code{org-structure-template-alist}. See the docstring of the variable for additional details."
-msgstr ""
+msgstr "あなたは@code{org-structure-template-list}変数をカスタマイズすることで追加のテンプレートをインストールすることができます．詳細は変数のdocstringを参照してください．"
 
 #+glossary: key ( キー )
 #. type: cindex
