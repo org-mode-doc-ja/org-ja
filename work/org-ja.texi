@@ -8541,58 +8541,47 @@ HTMLはエクスポート時にテキストエリア,@xref{Text areas in HTML ex
 @table @kbd
 @kindex C-c '
 @item C-c '
-Edit the source code example at point in its native mode.  This works by
-switching to a temporary buffer with the source code.  You need to exit by
-pressing @kbd{C-c '} again@footnote{Upon exit, lines starting with @samp{*}
-or @samp{#} will get a comma prepended, to keep them from being interpreted
-by Org as outline nodes or special comments.  These commas will be stripped
-for editing with @kbd{C-c '}, and also for export.}.  The edited version
-will then replace the old version in the Org buffer.  Fixed-width regions
-(where each line starts with a colon followed by a space) will be edited
-using @code{artist-mode}@footnote{You may select a different-mode with the variable @code{org-edit-fixed-width-region-mode}.} to allow creating ASCII
-drawings easily.  Using this command in an empty line will create a new
-fixed-width region.
+カーソル位置のソースコード例をそのネイティブモードで編集します．これはソース
+コードを一時バッファに表示し，切り替えることで働きます．あなたは@kbd{C-c '}をもう
+一度押すことで編集を終了します
+@footnote{固定幅のリージョン(それぞれの行はコロンとスペースから始まります)}は@code{artist-mode}
+@footnote{あなたは異なる@code{org-edit-fixed-width-region-mode}変数により，モードを選ぶこともできます．}によって編集されます．空行でこのコマン
+ドを使うことで，新しい固定幅のリージョンを作成します．
 @kindex C-c l
 @item C-c l
-Calling @code{org-store-link} while editing a source code example in a
-temporary buffer created with @kbd{C-c '} will prompt for a label.  Make
-sure that it is unique in the current buffer, and insert it with the proper
-formatting like @samp{(ref:label)} at the end of the current line.  Then the
-label is stored as a link @samp{(label)}, for retrieval with @kbd{C-c C-l}.
+@kbd{C-c '}によって作成した一時バッファでのソースコード例の編集中に@code{org-store-link}の
+呼び出しはラベルを指示します．現在のバッファがユニークであることを確認し，現
+在の行の最後に@samp{(ref:label)}のように適切にフォーマットされたものが挿入されます
+．ラベルは@samp{(label)}のようなリンクを記憶し，@kbd{C-c C-l}検索する．
 @end table
 
 
 @node Include files, Index entries, Literal examples, Markup
 @section Include files
-@cindex include files, markup rules
+@cindex ファイルのインクルード，マークアップのルール
 
-During export, you can include the content of another file.  For example, to
-include your @file{.emacs} file, you could use:
+エクスポート中，あなたは別のファイルの内容をインクルードすることができます．
+例えば，@file{.emacs}をインクルードするなら，あなたは次のようにします:
 @cindex #+INCLUDE
 
 @example
 #+INCLUDE: "~/.emacs" src emacs-lisp
 @end example
 @noindent
-The optional second and third parameter are the markup (e.g.@: @samp{quote},
-@samp{example}, or @samp{src}), and, if the markup is @samp{src}, the
-language for formatting the contents.  The markup is optional; if it is not
-given, the text will be assumed to be in Org-mode format and will be
-processed normally.  The include line will also allow additional keyword
-parameters @code{:prefix1} and @code{:prefix} to specify prefixes for the
-first line and for each following line, @code{:minlevel} in order to get
-org-mode content demoted to a specified level, as well as any options
-accepted by the selected markup.  For example, to include a file as an item,
-use
+2つ目のオプションは(e.g.@:
+@samp{quote}や@samp{example}，@samp{src})のようなマークアップで，3つ目はマークアップが@samp{src}な
+らコンテンツの言語を表します．マークアップはオプションです;
+もし与えられなければ，Org-modeフォーマットのテキストと仮定される．インクルー
+ドの行は最初の行とそれに続く行のプレフィクスの指定のための追加キーワードパラ
+メータの@code{:prefix1}と@code{:prefix}を，Org-modeのコンテンツを指定したレベル下げるた
+めの@code{:minilevel}を，同様に選択したマークアップ固有のオプションを持ちます．例
+えば，ファイルをインクルードするには:
 
 @example
 #+INCLUDE: "~/snippets/xx" :prefix1 "   + " :prefix "     "
 @end example
 
-You can also include a portion of a file by specifying a lines range using
-the @code{:lines} parameter.  The line at the upper end of the range will
-not be included.  The start and/or the end of the range may be omitted to
-use the obvious defaults.
+@code{:line}パラメータを使うことで，ファイルの指定した範囲の行のみをインクルードすることができます．範囲外の行はインクルードされません．範囲の開始と，または終了は明らかにデフォルトを使いません．
 
 @example
 #+INCLUDE: "~/.emacs" :lines "5-10"   @r{Include lines 5 to 10, 10 excluded}
@@ -8603,17 +8592,17 @@ use the obvious defaults.
 @table @kbd
 @kindex C-c '
 @item C-c '
-Visit the include file at point.
+ポイント位置のインクルードされたファイルに移動します．
 @end table
 
 @node Index entries, Macro replacement, Include files, Markup
 @section Index entries
-@cindex index entries, for publishing
+@cindex 公開のためのインデックスのエントリ
 
-You can specify entries that will be used for generating an index during
-publishing.  This is done by lines starting with @code{#+INDEX}.  An entry
-the contains an exclamation mark will create a sub item.  See
-@ref{Generating an index} for more information.
+あなたは公開した文書のインデックスに用いるエントリーを規定することができます
+．これは@code{#+INDEX}から始まる行により設定します．感嘆符を含むエントリーはサブア
+イテムを作るでしょう．さらなる情報を見るには@ref{Generating an index}を参照してく
+ださい．
 
 @example
 * Curriculum Vitae
@@ -8626,10 +8615,10 @@ the contains an exclamation mark will create a sub item.  See
 
 @node Macro replacement, Embedded LaTeX, Index entries, Markup
 @section Macro replacement
-@cindex macro replacement, during export
+@cindex エクスポート中のマクロによる置き換え
 @cindex #+MACRO
 
-You can define text snippets with
+あなたはこのようにして
 
 @example
 #+MACRO: name   replacement text $1, $2 are arguments
@@ -8645,24 +8634,21 @@ time and to the modification time of the file being exported, respectively.
 @var{FORMAT} should be a format string understood by
 @code{format-time-string}.
 
-Macro expansion takes place during export, and some people use it to
-construct complex HTML code.
+マクロ展開はエクスポート中に行われ，一部の人々は複雑なHTMLコードの構築に用い
+る．
 
 
 @node Embedded LaTeX, , Macro replacement, Markup
 @section Embedded @LaTeX{}
-@cindex @TeX{} interpretation
-@cindex @LaTeX{} interpretation
+@cindex @TeX{}の解釈
+@cindex @LaTeX{}の解釈
 
-Plain ASCII is normally sufficient for almost all note taking.  Exceptions
-include scientific notes, which often require mathematical symbols and the
-occasional formula.  @LaTeX{}@footnote{@LaTeX{} is a macro system based on
-Donald E. Knuth's @TeX{} system.  Many of the features described here as
-``@LaTeX{}'' are really from @TeX{}, but for simplicity I am blurring this
-distinction.} is widely used to typeset scientific documents. Org-mode
-supports embedding @LaTeX{} code into its files, because many academics are
-used to writing and reading @LaTeX{} source code, and because it can be
-readily processed to produce pretty output for a number of export backends.
+プレーンなASCIIはほとんどの場合ノートをとるのに十分です．例外は数学の記号や時
+々出てくる数式を必要とする科学に関するノートのようなものです．@LaTeX{}
+@footnote{@LaTeX{}はドナルド・クヌースの@TeX{}システムを基としたマクロシステムです．``@LaTeX{}''で説明される多くの機能は@TeX{}からのものですが，違いはそれほどありません}は
+科学に関する文書の組版に広く使われています．多くのacademicsは@LaTeX{}のソースコード
+の読み書きに使われていて，すぐに多くのエクスポートバックエンドに対応できるた
+め，Org-modeは@LaTeX{}コードのファイルへの組込みをサポートしています．
 
 @menu
 * Special symbols::          ギリシャ文字や他の記号
@@ -8674,60 +8660,53 @@ readily processed to produce pretty output for a number of export backends.
 
 @node Special symbols, Subscripts and superscripts, Embedded LaTeX, Embedded LaTeX
 @subsection Special symbols
-@cindex math symbols
-@cindex special symbols
+@cindex 数学記号
+@cindex 特殊記号
 @cindex @TeX{}マクロ
-@cindex @LaTeX{} fragments, markup rules
-@cindex HTML entities
-@cindex @LaTeX{} entities
+@cindex @LaTeX{}の断片，マークアップのルール
+@cindex HTMLのエントリ
+@cindex @LaTeX{}のエントリ
 
-You can use @LaTeX{} macros to insert special symbols like @samp{\alpha} to
-indicate the Greek letter, or @samp{\to} to indicate an arrow.  Completion
-for these macros is available, just type @samp{\} and maybe a few letters,
-and press @kbd{M-@key{TAB}} to see possible completions.  Unlike @LaTeX{}
-code, Org-mode allows these macros to be present without surrounding math
-delimiters, for example:
+あなたは@LaTeX{}マクロをギリシャ文字を表す@samp{\\alpha}や矢印を表す@samp{\\tpo}のような特殊
+記号の挿入に使うことができます．これらのマクロは補完が可能で，@samp{\\}まで入力し
+，その後に何文字か入力して@kbd{M-@key{TAB}}を押すことで補完が可能です．@LaTeX{}のコードとは違い，
+Org-modeは数学の区切り文字を囲まないようなマクロも使うことができます．以下に
+例を挙げます:
 
 @example
-Angles are written as Greek letters \alpha, \beta and \gamma.
-@end example
+Angles are written as Geek letters \\alpha, \\beta and \\gamma.@end example
 
 @vindex org-entities
-During export, these symbols will be transformed into the native format of
-the exporter backend.  Strings like @code{\alpha} will be exported as
-@code{&alpha;} in the HTML output, and as @code{$\alpha$} in the @LaTeX{}
-output.  Similarly, @code{\nbsp} will become @code{&nbsp;} in HTML and
-@code{~} in @LaTeX{}.  If you need such a symbol inside a word, terminate it
-like this: @samp{\Aacute@{@}stor}.
+エクスポート時，これらのシンボルはエクスポート先のネイティブフォーマットに変
+換されます．HTMLでは@code{\\alpha}のような文字列は@code{&alpha;}にエクスポートされ，@LaTeX{}で
+は@code{$\\alpha$}となります．同様に，@code{\\nbsp}はHTMLでは@code{&nbsp;}に，@LaTeX{}では@code{~}とな
+ります．もしあなたが記号を単語の中に含めたいのであれば，次のようにします:
+@samp{\Aacute@{@}stor}．
 
-A large number of entities is provided, with names taken from both HTML and
-@LaTeX{}; see the variable @code{org-entities} for the complete list.
-@samp{\-} is treated as a shy hyphen, and @samp{--}, @samp{---}, and
-@samp{...} are all converted into special commands creating hyphens of
-different lengths or a compact set of dots.
+非常に多くのエンティティが提供されていて，HTMLと@LaTeX{}からその名前を引き継いでい
+ます;完全なリストは@code{org-entities}変数を見てください．@samp{\\-}はシャイなハイフン
+として扱われていて，@samp{--}や@samp{---}，@samp{...}は異なる長さのハイフンかドットの集合を
+作成するための全て特殊コマンドに変換されます．
 
-If you would like to see entities displayed as UTF8 characters, use the
-following command@footnote{You can turn this on by default by setting the variable @code{org-pretty-entities}, or on a per-file base with the
-@code{#+STARTUP} option @code{entitiespretty}.}:
+もしあなたがUTF-8文字でエンティティを表示したいのなら，以下のコマンド
+@footnote{あなたは @code{org-pretty-entities}変数または@code{#+STARTUP}オプション@code{entitiespretty}にデフォルトを設定することができます}:
 
 @table @kbd
 @kindex C-c C-x \
 @item C-c C-x \
-Toggle display of entities as UTF-8 characters.  This does not change the
-buffer content which remains plain ASCII, but it overlays the UTF-8
-character for display purposes only.
+エンティティのUTF-8での表示をトグルします．これはバッファの内容を変更せず，UTF-8の
+文字を表示するためにオーバレイを用いています．
 @end table
 
 @node Subscripts and superscripts, LaTeX fragments, Special symbols, Embedded LaTeX
 @subsection Subscripts and superscripts
-@cindex subscript
-@cindex superscript
+@cindex 下付き文字
+@cindex 上付き文字
 
-Just like in @LaTeX{}, @samp{^} and @samp{_} are used to indicate super- and
-subscripts.  Again, these can be used without embedding them in math-mode
-delimiters.  To increase the readability of ASCII text, it is not necessary
-(but OK) to surround multi-character sub- and superscripts with curly
-braces.  For example
+@LaTeX{}と同じように，@samp{^}と@samp{_}が下付き文字と上付き文字を示しています．さらに，それ
+らはmath-modeにの区切り文字に組込まずに使うことができます．ASCIIテキストの可
+読性の向上のため，複数文字の下付き文字と上付き文字を波括弧で囲む必要はありま
+せん(囲んでもかまいませんが)．例
 
 @example
 The mass of the sun is M_sun = 1.989 x 10^30 kg.  The radius of
@@ -8735,12 +8714,12 @@ the sun is R_@{sun@} = 6.96 x 10^8 m.
 @end example
 
 @vindex org-export-with-sub-superscripts
-To avoid interpretation as raised or lowered text, you can quote @samp{^}
-and @samp{_} with a backslash: @samp{\^} and @samp{\_}.  If you write a text
-where the underscore is often used in a different context, Org's convention
-to always interpret these as subscripts can get in your way.  Configure the
-variable @code{org-export-with-sub-superscripts} to globally change this
-convention, or use, on a per-file basis:
+上付きテキスト，下付きテキストの説明を避けるため，あなたはバックスラッシュを
+つけた@samp{^}と@samp{_}を引用できます:
+@samp{\\^}と@samp{\\_}です．異なる文脈でしばしば使われるアンダーラインのテキストを書く
+なら，常にこれらの下付き文字として解釈するOrg-modeの慣習はあなたのやり方で得
+ることができます．この慣習を変更するには@code{org-export-with-sb-superscripts}変数
+を設定するか，ファイルに次のように書いてください．
 
 @example
 #+OPTIONS: ^:@{@}
@@ -8752,8 +8731,8 @@ subscript, but @samp{a_@{b@}} will.
 @table @kbd
 @kindex C-c C-x \
 @item C-c C-x \
-In addition to showing entities as UTF-8 characters, this command will also
-format sub- and superscripts in a WYSIWYM way.
+さらにUTF-8のエンティティを見るため，このコマンドは下付き文字と上付き文字をWYSISYMで
+形成する．
 @end table
 
 @node LaTeX fragments, Previewing LaTeX fragments, Subscripts and superscripts, Embedded LaTeX
@@ -8761,36 +8740,25 @@ format sub- and superscripts in a WYSIWYM way.
 @cindex @LaTeX{}の断片的なコード
 
 @vindex org-format-latex-header
-Going beyond symbols and sub- and superscripts, a full formula language is
-needed.  Org-mode can contain @LaTeX{} math fragments, and it supports ways
-to process these for several export backends.  When exporting to @LaTeX{},
-the code is obviously left as it is.  When exporting to HTML, Org invokes
-the @uref{http://www.mathjax.org, MathJax library} (@pxref{Math formatting in HTML export}) to process and display the math@footnote{If you plan to use this regularly or on pages with significant page views, you should install
-@file{MathJax} on your own server in order to limit the load of our
-server.}.  Finally, it can also process the mathematical expressions into
-images@footnote{For this to work you need to be on a system with a working @LaTeX{} installation. You also need the @file{dvipng} program, available at
-@url{http://sourceforge.net/projects/dvipng/}.  The @LaTeX{} header that
-will be used when processing a fragment can be configured with the variable
-@code{org-format-latex-header}.} that can be displayed in a browser or in
-DocBook documents.
+シンボルと上付き，下付き，完全な式を越えることが必要です．Org-modeは@LaTeX{}の数式
+を含むことができ，各エクスポート先への変換もサポートしています．@LaTeX{}にエクスポ
+ートするとき，コードは明らかに残っています．HTMLへエクスポートするとき，Org-modeは
+数式@footnote{}の処理と描画のために@uref{http://www.mathjax.org, MathJax library} (@pxref{Math formatting in HTML export})を
+呼び出します．最後に，数式表現はブラウザかDocBook文書で描画可能な画像
+@footnote{これを行うには，あなたのシステムに@LaTeX{}をインストールする必要があります．そしてまた，@url{http://sourceforge.net/projects/dvipng/}で入手できる@file{dvipng}プログラムも必要です．}へ
+と処理されます．
 
-@LaTeX{} fragments don't need any special marking at all.  The following
-snippets will be identified as @LaTeX{} source code:
+@LaTeX{}のコード片は，特別なマークは全く必要ありません．以下のコード片は@LaTeX{}のソース
+コードとして知られています:
 @itemize @bullet
 @item
-Environments of any kind@footnote{When @file{MathJax} is used, only the
-environment recognized by @file{MathJax} will be processed.  When
-@file{dvipng} is used to create images, any @LaTeX{} environments will be
-handled.}.  The only requirement is that the @code{\begin} statement appears
-on a new line, preceded by only whitespace.
+あらゆる種類の環境
+@footnote{@file{MathJax}が使われている時，@file{MathJax}によって認識されている環境が処理されます．@file{dvipng}を画像の生成に用いる時，@LaTeX{}環境が扱われます．}．
+唯一必要なことは@code{\\begin}文は空白のみがある行に表示されることです．
 @item
-Text within the usual @LaTeX{} math delimiters.  To avoid conflicts with
-currency specifications, single @samp{$} characters are only recognized as
-math delimiters if the enclosed text contains at most two line breaks, is
-directly attached to the @samp{$} characters with no whitespace in between,
-and if the closing @samp{$} is followed by whitespace, punctuation or a
-dash.  For the other delimiters, there is no such restriction, so when in
-doubt, use @samp{\(...\)} as inline math delimiters.
+通常の@LaTeX{}の数学の区切り文字内部のテキスト．流通仕様との衝突を避けるために，囲
+まれたテキストに最大2つの改行が含まれている場合，@samp{$}文字は数学区切り文字のみ
+として認識され，@samp{$}文字がの間に空白がない，そして
 @end itemize
 
 @noindent For example:
@@ -8806,16 +8774,15 @@ either $$ a=+\sqrt@{2@} $$ or \[ a=-\sqrt@{2@} \].
 
 @noindent
 @vindex org-format-latex-options
-If you need any of the delimiter ASCII sequences for other purposes, you can
-configure the option @code{org-format-latex-options} to deselect the ones
-you do not wish to have interpreted by the @LaTeX{} converter.
+もしあなたが他の目的にASCIIの区切り文字が必要なら，@LaTeX{}コンバータに邪魔されえる
+ことを望まない文字を除外するために@code{org-format-latex-options}オプションを設定
+することができます．
 
 @vindex org-export-with-LaTeX-fragments
-LaTeX processing can be configured with the variable
-@code{org-export-with-LaTeX-fragments}.  The default setting is @code{t}
-which means @file{MathJax} for HTML, and no processing for DocBook, ASCII
-and LaTeX backends.  You can also set this variable on a per-file basis
-using one of these lines:
+@LaTeX{}の処理は@code{org-export-with-LaTeX-fragments}変数を設定することができます．デフ
+ォルトの設定は@code{t}で，HTMLには@file{MathJax}を用い，DocBookとASCII，@LaTeX{}では処理しま
+せん．あなたはこの変数をファイルの冒頭部分に書くことで設定することもできます
+:
 
 @example
 #+OPTIONS: LaTeX:t          @r{Do the right thing automatically (MathJax)}
@@ -8826,76 +8793,67 @@ using one of these lines:
 
 @node Previewing LaTeX fragments, CDLaTeX mode, LaTeX fragments, Embedded LaTeX
 @subsection Previewing LaTeX fragments
-@cindex LaTeX fragments, preview
+@cindex LaTeXのコード片，プレビュー
 
-If you have @file{dvipng} installed, @LaTeX{} fragments can be processed to
-produce preview images of the typeset expressions:
+もしあなたが@file{dvipng}をインストールしているのであれば，@LaTeX{}のコード片は出力され
+た組版において画像として処理されます:
 
 @table @kbd
 @kindex C-c C-x C-l
 @item C-c C-x C-l
-Produce a preview image of the @LaTeX{} fragment at point and overlay it
-over the source code.  If there is no fragment at point, process all
-fragments in the current entry (between two headlines).  When called with a
-prefix argument, process the entire subtree.  When called with two prefix
-arguments, or when the cursor is before the first headline, process the
-entire buffer.
+ポイント位置の@LaTeX{}コード片の画像プレビューの提供とソースコード上のオーバレイ．
+もしポイント位置にコード片がないのであれば，現在のエントリ(2つの見出しの間)の
+全てのコード片を処理します．前置引数を付けて呼ばれた時は，サブツリー全体を処
+理します．前置引数を2つ付けて呼ばれた時，またはカーソルが最初の見出しの前にあ
+る時は，バッファ全体を処理します．
 @kindex C-c C-c
 @item C-c C-c
-Remove the overlay preview images.
+オーバレイされたプレビュー画像を消去します．
 @end table
 
 @vindex org-format-latex-options
-You can customize the variable @code{org-format-latex-options} to influence
-some aspects of the preview. In particular, the @code{:scale} (and for HTML
-export, @code{:html-scale}) property can be used to adjust the size of the
-preview images.
+プレビューの外観を変更するために，あなたは@code{org-format-latex-optins}変数をカス
+タマイズすることができます．とりわけ，@code{:scale}(そしてHTMLへのエクスポートでは
+@code{:html-scale})プロパティは画像のプレビューサイズの調整に使われます．
 
 @node CDLaTeX mode, , Previewing LaTeX fragments, Embedded LaTeX
-@subsection Using CDLa@TeX{} to enter math
+@subsection CDLa@TeX{}を数学の入力に使う
 @cindex CDLa@TeX{}
 
-CDLa@TeX{} mode is a minor mode that is normally used in combination with a
-major @LaTeX{} mode like AUC@TeX{} in order to speed-up insertion of
-environments and math templates.  Inside Org-mode, you can make use of some
-of the features of CDLa@TeX{} mode.  You need to install @file{cdlatex.el}
-and @file{texmathp.el} (the latter comes also with AUC@TeX{}) from
-@url{http://www.astro.uva.nl/~dominik/Tools/cdlatex}.  Don't use CDLa@TeX{}
-mode itself under Org-mode, but use the light version
-@code{org-cdlatex-mode} that comes as part of Org-mode.  Turn it on for the
-current buffer with @code{M-x org-cdlatex-mode}, or for all Org files with
+CDLa@TeX{}モードは環境や数学テンプレートの挿入をスピードアップするためにAUC@TeX{}に似
+たメジャーモードである@LaTeX{}モードと併用して通常使われるマイナーモードです．Org-modeで
+は，あなたはCDLa@TeX{}モードのいくつかの機能を使用できます．あなたは@url{http://www.astro.uva.nl/~dominik/Tools/cdlatex}か
+ら@file{cdlatex.el}と@file{texmathp.el}(最近AUC@TeX{}に追加されました)をインストールする必
+要があります．Org-mode中ではCDLa@TeX{}モード自身は使わないでください，代わりにOrg-modeに
+一部である，より軽量なバージョンの@code{org-cdlatex-mode}を使ってください．@code{M-x org-cdlatex-mode}を
+カレントバッファで実行して有効にするか，全てのOrg-modeファイルで有効するため
+に次の設定を行います:
 
 @lisp
 (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
 @end lisp
 
-When this mode is enabled, the following features are present (for more
-details see the documentation of CDLa@TeX{} mode):
+このモードが有効である時，以下の機能が提供されます(詳細はCD@LaTeX{}モードのドキュメ
+ントを参照してください)::
 @itemize @bullet
 @kindex C-c @{
 @item
-Environment templates can be inserted with @kbd{C-c @{}.
+@kbd{C-c @{}による環境テンプレートの挿入．
 @item
 @kindex @key{TAB}
-The @key{TAB} key will do template expansion if the cursor is inside a
-@LaTeX{} fragment@footnote{Org-mode has a method to test if the cursor is inside such a fragment, see the documentation of the function
-@code{org-inside-LaTeX-fragment-p}.}.  For example, @key{TAB} will expand
-@code{fr} to @code{\frac@{@}@{@}} and position the cursor correctly inside
-the first brace.  Another @key{TAB} will get you into the second brace.
-Even outside fragments, @key{TAB} will expand environment abbreviations at
-the beginning of a line.  For example, if you write @samp{equ} at the
-beginning of a line and press @key{TAB}, this abbreviation will be expanded
-to an @code{equation} environment.  To get a list of all abbreviations, type
-@kbd{M-x cdlatex-command-help}.
+カーソルが@LaTeX{}のコード片
+@footnote{カーソルがコード片の中にあるときにOrg-modeはテストを行うためのメソッドを持ちます．詳細は@code{org-inside-LaTeX-fragment-p}関数のドキュメントを参照してください．}の
+中にある場合，@key{TAB}キーはテンプレートの展開を行います．例えば，@key{TAB}は@code{fr}を
+@code{\\frac
+@{@}@{@}}に展開しカーソルを最初の括弧に移動します．もう一度@key{TAB}を押すと2つ目の括弧にカーソルが移動します．コード片の外だと，@key{TAB}は行の先頭にある環境の略語を展開します．例えば，もしあなたが行頭に@samp{equ}と書いていて@key{TAB}を押すと，この略語は@code{equation}環境に展開されます．全ての略語を見るには，@kbd{M-x cdlatex-command-help}をタイプしてください．
 @item
 @kindex _
 @kindex ^
 @vindex cdlatex-simplify-sub-super-scripts
-Pressing @kbd{_} and @kbd{^} inside a @LaTeX{} fragment will insert these
-characters together with a pair of braces.  If you use @key{TAB} to move out
-of the braces, and if the braces surround only a single character or macro,
-they are removed again (depending on the variable
-@code{cdlatex-simplify-sub-super-scripts}).
+@LaTeX{}コード片の中で@kbd{_}と@kbd{^}を押すと，それらの文字が括弧のペアと一緒に挿入されま
+す．もしあなたが@key{TAB}を括弧から抜け出すために使うなら，また括弧が1文字の文字
+かマクロのみを囲っているなら，それらは再び消去されます(@code{cdlatex-simplify-sub-super-script}変
+数に依存します)．
 @item
 @kindex `
 Pressing the backquote @kbd{`} followed by a character inserts math macros,
@@ -8903,11 +8861,10 @@ also outside @LaTeX{} fragments.  If you wait more than 1.5 seconds after
 the backquote, a help window will pop up.
 @item
 @kindex '
-Pressing the single-quote @kbd{'} followed by another character modifies the
-symbol before point with an accent or a font.  If you wait more than 1.5
-seconds after the single-quote, a help window will pop up.  Character
-modification will work only inside @LaTeX{} fragments; outside the quote is
-normal.
+別の文字に続いてシングルクォート@kbd{'}を押すと，強調やフォントでポイント前のシン
+ボルが変更されます．もしシングルクォートを入力した後1.5秒以上待つと，ヘルプウ
+ィンドウがポップアップします．文字の変更は@LaTeX{}コード片の中でのみ働きます;
+それ以外ではクォートは通常通りの働きをします．
 @end itemize
 
 @node Exporting, Publishing, Markup, Top
@@ -12412,67 +12369,63 @@ emacs -Q --batch -l $ORGINSTALL \
 @cindex tag completion
 @cindex link abbreviations, completion of
 
-Emacs would not be Emacs without completion, and Org-mode uses it whenever
-it makes sense.  If you prefer an @i{iswitchb}- or @i{ido}-like interface
-for some of the completion prompts, you can specify your preference by
-setting at most one of the variables @code{org-completion-use-iswitchb}
-@code{org-completion-use-ido}.
+Emacsは補完無しではEmacsとはいえません，そしてorg-modeはそれが意味をなすたび
+に使用します．もしあなたが@i{iswitchb}-
+か@i{ido}-のようなインタフェースを補完のプロンプトとして好むのであれば，あなた
+は@code{org-completion-use-iswitchb}や@code{org-completion-use-ido}変数のいずれかを設定
+することで指定することができます．
 
-Org supports in-buffer completion.  This type of completion does not make
-use of the minibuffer.  You simply type a few letters into the buffer and
-use the key to complete text right there.
+Org-modeはバッファ中の補完をサポートします．この種類の補完はミニバッファを活
+用します．あなたは簡単に数文字をバッファに入力し，補完キーを補完するテキスト
+の右側で押します．
 
 @table @kbd
 @kindex M-@key{TAB}
 @item M-@key{TAB}
-Complete word at point
+ポイント位置での補完
 @itemize @bullet
 @item
-At the beginning of a headline, complete TODO keywords.
+見出しの先頭では，TODOキーワードを補完します．
 @item
-After @samp{\}, complete @TeX{} symbols supported by the exporter.
+@samp{\\}の後では，エクスポート機能によりサポートされる@TeX{}のシンボルを補完します．
 @item
-After @samp{*}, complete headlines in the current buffer so that they can be
-used in search links like @samp{[[*find this headline]]}.
+@samp{*}の後では，@samp{[[*find this headline]]}のようにリンクを検索できるように，カレ
+ントバッファで見出しを補完します．
 @item
-After @samp{:} in a headline, complete tags.  The list of tags is taken from
-the variable @code{org-tag-alist} (possibly set through the @samp{#+TAGS}
-in-buffer option, @pxref{Setting tags}), or it is created dynamically from
-all tags used in the current buffer.
+見出し中の@samp{:}の後では，タグを補完します．タグのリストは@code{org-tag-alist}変数(@pxref{Setting tags}よ
+り，もしかすると，バッファ中の@samp{#+TAGS}オプションでも設定されているかもしれま
+せん．)から与えられるか，カレントバッファで使われている全てのタグから動的に生
+成されます．
 @item
-After @samp{:} and not in a headline, complete property keys.  The list of
-keys is constructed dynamically from all keys used in the current buffer.
+見出しの外にある@samp{:}の後では，プロパティキーを補完します．キーのリストは現在の
+バッファで使われている全てのキーから動的に構築されます．
 @item
-After @samp{[}, complete link abbreviations (@pxref{Link abbreviations}).
+@samp{[}の後では，リンクの省略記法を補完します(@pxref{Link abbreviations})．
 @item
-After @samp{#+}, complete the special keywords like @samp{TYP_TODO} or
-@samp{OPTIONS} which set file-specific options for Org-mode.  When the
-option keyword is already complete, pressing @kbd{M-@key{TAB}} again will
-insert example settings for this keyword.
+@samp{+}の後では，Org-mode向けのファイル固有の設定としてセットする@samp{TYP_TODO}や@samp{OPTIONS}の
+ようなスペシャルキーワードを補完します．オプションキーワードが既に補完されて
+いるなら，@kbd{M-@key{TAB}}を再び押すことでこのキーワードの設定の例を挿入します．
 @item
-In the line after @samp{#+STARTUP: }, complete startup keywords, i.e.@:
-valid keys for this line.
+@samp{#+STARTUP: }の後の行の中では，STARTUPキーワードを補完します，すなわち，@:はこの行では正しいキーです．
 @item
-Elsewhere, complete dictionary words using Ispell.
+他の場所では，Ispellを用いた辞書補完が行われます．
 @end itemize
 @end table
 
 @node Easy Templates, Speed keys, Completion, Miscellaneous
 @section Easy Templates
-@cindex template insertion
-@cindex insertion, of templates
+@cindex テンプレートの挿入
+@cindex テンプレートの挿入
 
-Org-mode supports insertion of empty structural elements (like
-@code{#+BEGIN_SRC} and @code{#+END_SRC} pairs) with just a few key strokes.
-This is achieved through a native template expansion mechanism.  Note that
-Emacs has several other template mechanisms which could be used in a similar
-way, for example @file{yasnippet}.
+Org-modeは僅かなキーストロークのみによる空の構造の(@code{#+BEGIN_SRC}や@code{#+END_SRC}の
+ような)要素の挿入をサポートします．これはネイティブなテンプレート拡張機構を通
+じて得られるものです．ここで留意すべきこととして，Emacsは例えば@file{yasnippet}の
+ような同じように使うことができるいくつかの他のテンプレート機構を持ちます．
 
-To insert a structural element, type a @samp{<}, followed by a template
-selector and @kbd{@key{TAB}}.  Completion takes effect only when the above
-keystrokes are typed on a line by itself.
+構造要素の挿入には，@samp{<}をタイプし，続いてテンプレートセレクタと@kbd{@key{TAB}}をタイプしま
+す．補完は上記のキーストロークが単独で行に入力されている場合のみ働きます．
 
-The following template selectors are currently supported.
+以下のテンプレートセレクタが現在サポートされています．
 
 @multitable @columnfractions 0.1 0.9
 @item @kbd{s} @tab @code{#+begin_src     ... #+end_src}
@@ -12489,12 +12442,12 @@ The following template selectors are currently supported.
 @item @kbd{i} @tab @code{#+include:} line
 @end multitable
 
-For example, on an empty line, typing "<e" and then pressing TAB, will
-expand into a complete EXAMPLE template.
+例えば，空の行で\"<e\"と入力し，その後TABを入力すると，EXAMPLEテンプレートが
+補完されます．
 
-You can install additional templates by customizing the variable
-@code{org-structure-template-alist}. See the docstring of the variable for
-additional details.
+あなたは@code{org-structure-template-list}変数をカスタマイズすることで追加のテンプ
+レートをインストールすることができます．詳細は変数のdocstringを参照してくださ
+い．
 
 @node Speed keys, Code evaluation security, Easy Templates, Miscellaneous
 @section Speed keys
