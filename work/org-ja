@@ -11114,76 +11114,53 @@ File: org-ja,  Node: Speed keys,  Next: Code evaluation security,  Prev: Easy Te
 15.3 Speed keys
 ===============
 
-Single keys can be made to execute commands when the cursor is at the
-beginning of a headline, i.e. before the first star.  Configure the
-variable `org-use-speed-commands' to activate this feature.  There is a
-pre-defined list of commands, and you can add more such commands using the
-variable `org-speed-commands-user'.  Speed keys do not only speed up
-navigation and other commands, but they also provide an alternative way to
-execute commands bound to keys that are not or not easily available on a
-TTY, or on a small mobile device with a limited keyboard.
+最初のアスタリスクの前のように，カーソルが見出しの先頭にある時，シングルキーはコマンドを実行できるようになっています．`org-use-speed-commands'変数を設定することでこの機能を有効にします．あらかじめ定義されているコマンドのリストを挙げます．そして，`org-speed-commans-user'変数にコマンドを追加することもできます．Speed
+keysは操作や他のコマンドを使うスピードを上げるだけではなく，TTYやキーボードに限界があるモバイル端末上で実行できない，または簡単に実行できないキーに割り当てられたコマンドを実行するための別の可能性を提供します．
 
-   To see which commands are available, activate the feature and press `?'
-with the cursor at the beginning of a headline.
+コマンドが実行可能かどうかを見るには，機能を有効にして見出しの先頭にカーソルを置いて`?'を押します．
 
 
 File: org-ja,  Node: Code evaluation security,  Next: Customization,  Prev: Speed keys,  Up: Miscellaneous
 
-15.4 Code evaluation and security issues
-========================================
+15.4 コードの評価とセキュリティの問題
+=====================================================
 
-Org provides tools to work with the code snippets, including evaluating
-them.
+Org-modeは評価を含むコードのスニペットを使って作業をするためのツールを提供します．
 
-   Running code on your machine always comes with a security risk.  Badly
-written or malicious code can be executed on purpose or by accident.  Org
-has default settings which will only evaluate such code if you give explicit
-permission to do so, and as a casual user of these features you should leave
-these precautions intact.
+あなたのマシン上でコードが動くことは常にセキュリティのリスクをもたらします．目的のため，またはアクシデントによって良くないコードや悪意のあるコードは実行されます．Org-modeはあなたが明確に実行の許可を与える場合のみそのようなコードを評価するデフォルトの設定を持っていて，そしてカジュアルなユーザに対してはこれらの機能は予防措置として保つべきです．
 
-   For people who regularly work with such code, the confirmation prompts
-can become annoying, and you might want to turn them off.  This can be
-done, but you must be aware of the risks that are involved.
+そのようなコードを通常用いる人々のために，確認用のプロンプトが表示され，そしてあなたはそれをオフにするかもしれません．これを行うことは可能ですが，あなたはリスクとかかわることを承知しなくてはなりません．
 
-   Code evaluation can happen under the following circumstances:
+   コードの評価は以下に挙げる状況を引き起こします:
 
-Source code blocks
-     Source code blocks can be evaluated during export, or when pressing
-     `C-c C-c' in the block.  The most important thing to realize here is
-     that Org mode files which contain code snippets are, in a certain
-     sense, like executable files.  So you should accept them and load them
-     into Emacs only from trusted sources--just like you would do with a
-     program you install on your computer.
+ソースコードブロック
+     ソースコードブロックはエクスポート中かブロック中で`C-c
+     C-c'を押した時に評価されます．ここで最も重要な事はコードスニペットを含むOrg-modeのファイルがある意味で，実行可能なファイルに似ているということです．それで，あたはそれらに対応し正しいソースのみをEmacsにロードすべきです-
+     あなたがコンピュータ上にインストールしたプログラムのように．
 
-     Make sure you know what you are doing before customizing the variables
-     which take off the default security brakes.
+     デフォルトのセキュリティー装置を切る変数をカスタマイズする前にあなたがしていることを確かめてください．
 
       -- User Option: org-confirm-babel-evaluate
-          When t (the default), the user is asked before every code block
-          evaluation.  When nil, the user is not asked.  When set to a
-          function, it is called with two arguments (language and body of
-          the code block) and should return t to ask and nil not to ask.
+          t(これがデフォルトです)の時，ユーザはコードブロックを評価する前に毎回確認されます．nilの時，ユーザは確認されません．関数をセットすると，それは2つの引数(言語とコードブロックの本体)を伴って呼ばれ，tを返せば尋ね，nilならば尋ねません．
 
-     For example, here is how to execute "ditaa" code (which is considered
-     safe) without asking:
+     例えば，これは\"ditaa\"コード(安全性は考慮されています)を確認無しで実行する方法です:
           (defun my-org-confirm-babel-evaluate (lang body)
             (not (string= lang "ditaa")))  ; don't ask for ditaa
           (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
 
-Following `shell' and `elisp' links
-     Org has two link types that can directly evaluate code (*note External
-     links::).  These links can be problematic because the code to be
-     evaluated is not visible.
+以下の`shell'と`elisp'はリンクしています．
+     Org-modeはコードを直接評価できる2つのリンクタイプ(*note External
+     links::)を持っています．実行されるコードが見えないため，これらのリンクは問題がありえます．
 
       -- User Option: org-confirm-shell-link-function
-          Function to queries user about shell link execution.
+          シェルへのリンクを実行するための問い合わせを行う関数．
 
       -- User Option: org-confirm-elisp-link-function
-          Functions to query user for Emacs Lisp link execution.
+          Emacs Lispへのリンクを実行するための問い合わせを行う関数．
 
-Formulas in tables
-     Formulas in tables (*note The spreadsheet::) are code that is evaluated
-     either by the calc interpreter, or by the Emacs Lisp interpreter.
+表中の式
+     表中の式(*note The spreadsheet::)はcalcインタプリタでもEmacs
+     Lispインタプリタでも実行できるコードです．
 
 
 File: org-ja,  Node: Customization,  Next: In-buffer settings,  Prev: Code evaluation security,  Up: Miscellaneous
@@ -11191,197 +11168,142 @@ File: org-ja,  Node: Customization,  Next: In-buffer settings,  Prev: Code evalu
 15.5 Customization
 ==================
 
-There are more than 180 variables that can be used to customize Org.  For
-the sake of compactness of the manual, I am not describing the variables
-here.  A structured overview of customization variables is available with
-`M-x org-customize'.  Or select `Browse Org Group' from the
-`Org->Customization' menu.  Many settings can also be activated on a
-per-file basis, by putting special lines into the buffer (*note In-buffer
-settings::).
+Org-modeをカスタマイズするために使われる変数は180以上あります．マニュアルの圧縮のため，私はここで変数の説明はしません．変数のカスタマイズの構造化された概要は`M-x
+org-customize'で見ることができます．もしくは，`Org->Customization'から`Browse
+Org
+Group'を選択してください．多くの設定はバッファに特別な行を書くこと(*note
+In-buffer settings::)でそのファイル中で有効にすることができます．
 
 
 File: org-ja,  Node: In-buffer settings,  Next: The very busy C-c C-c key,  Prev: Customization,  Up: Miscellaneous
 
-15.6 Summary of in-buffer settings
-==================================
+15.6 バッファ中での設定の要約
+=========================================
 
-Org-mode uses special lines in the buffer to define settings on a per-file
-basis.  These lines start with a `#+' followed by a keyword, a colon, and
-then individual words defining a setting.  Several setting words can be in
-the same line, but you can also have multiple lines for the keyword.  While
-these settings are described throughout the manual, here is a summary.
-After changing any of those lines in the buffer, press `C-c C-c' with the
-cursor still in the line to activate the changes immediately.  Otherwise
-they become effective only when the file is visited again in a new Emacs
-session.
+Org-modeはファイル単位で設定を定義するために，バッファ内の特別な行を使用します．これらの行は`#+'に続くキーワードとコロン，そして設定を定義する語句でできています．いくつかの設定用語句は同じ行に書くことも，分けて書くこともできます．これらの設定はマニュアルを通じて説明されており，ここには要約を載せています．バッファ中の行を編集した後は，カーソル位置の変更をすぐに反映するために`C-c
+C-c'を押しれください．そうでなければ，新しいEmacsのセッションでファイルを再び開いた時のみ反映されます．
 
 `#+ARCHIVE: %s_done::'
-     This line sets the archive location for the agenda file.  It applies
-     for all subsequent lines until the next `#+ARCHIVE' line, or the end
-     of the file.  The first such line also applies to any entries before
-     it.  The corresponding variable is `org-archive-location'.
+     この行はこの行はアジェンダファイルのアーカイブ場所を設定します．次の`#+ARCHIVE'行まで，もしくはファイルの末尾までの全ての行で適用されます．最初の行はまた，それより前の全てのエントリにも適用されます．関係する変数は`org-archive-location'です．
 
 `#+CATEGORY:'
-     This line sets the category for the agenda file.  The category applies
-     for all subsequent lines until the next `#+CATEGORY' line, or the end
-     of the file.  The first such line also applies to any entries before
-     it.
+     この行はアジェンダファイルのカテゴリを設定します．カテゴリは次の`#+CATEGORY'行か，ファイル末尾までの全ての行で適用されます．また，それより前の全ての行にも適用されます．
 
 `#+COLUMNS: %25ITEM .....'
-     Set the default format for columns view.  This format applies when
-     columns view is invoked in locations where no `COLUMNS' property
-     applies.
+     カラムビューのデフォルトフォーマットを設定します．`COLUMNS'プロパティが適用されていない箇所でカラムビューが呼ばれた場合，このフォーマットが適用されます．
 
 `#+CONSTANTS: name1=value1 ...'
-     Set file-local values for constants to be used in table formulas.
-     This line sets the local variable `org-table-formula-constants-local'.
-     The global version of this variable is `org-table-formula-constants'.
+     テーブル式の中で使われる定数として，ファイルローカルな値を設定します．この行はローカル変数`org-table-formula-constants-local'を設定します．グローバルバージョンは`org-table-formula-constants'です．
 
 `#+FILETAGS: :tag1:tag2:tag3:'
-     Set tags that can be inherited by any entry in the file, including the
-     top-level entries.
+     ファイル中のエントリトップレベルエントリを含めたエントリが引き継ぐタグを設定します．
 
 `#+DRAWERS: NAME1 .....'
-     Set the file-local set of drawers.  The corresponding global variable
-     is `org-drawers'.
+     ファイルローカルな引き出しのセットを設定します．関係するグローバル変数が`org-drawers'です．
 
 `#+LINK:  linkword replace'
-     These lines (several are allowed) specify link abbreviations.  *Note
-     Link abbreviations::.  The corresponding variable is
-     `org-link-abbrev-alist'.
+     これらの行初はリンクの省略記法を指定します．*Note Link
+     abbreviations::．関係する変数は`org-link-abbrev-alist'です．
 
 `#+PRIORITIES: highest lowest default'
-     This line sets the limits and the default for the priorities.  All
-     three must be either letters A-Z or numbers 0-9.  The highest priority
-     must have a lower ASCII number than the lowest priority.
+     これらの行は優先順位の上限と初期値を設定します．3つ全てが，AからZまでの文字か，0から9までの数字のどれかでなくてはいけません．最も高い優先順位は最も低い優先順位より低いASCIIの数値を持つ必要があります．
 
 `#+PROPERTY: Property_Name Value'
-     This line sets a default inheritance value for entries in the current
-     buffer, most useful for specifying the allowed values of a property.  
+     この行は現在のバッファ中のエントリがデフォルトで引き継ぐ値を設定します．与えられたプロパティの値を指定するのに，最も便利です． 
 
 `#+SETUPFILE: file'
-     This line defines a file that holds more in-buffer setup.  Normally
-     this is entirely ignored.  Only when the buffer is parsed for
-     option-setting lines (i.e. when starting Org-mode for a file, when
-     pressing `C-c C-c' in a settings line, or when exporting), then the
-     contents of this file are parsed as if they had been included in the
-     buffer.  In particular, the file can be any other Org-mode file with
-     internal setup.  You can visit the file the cursor is in the line with
-     `C-c ''.
+     この行はバッファ内の設定を持つファイルを定義します．通常は，これは完全に無視されます．バッファのオプションの設定行をパースされた時のみ，バッファにそれらが含まれていればこのファイルのコンテンツはパースされます．特に，ファイルは内部設定の別のOrg-modeファイルとすることができます．カーソルをこの行に置き，`C-c
+     ''を押すことであなたはこのファイルを開くことができます．
 
 `#+STARTUP:'
-     This line sets options to be used at startup of Org-mode, when an Org
-     file is being visited.
+     この行はOrg-modeのファイルが開かれた時にに使われるオプションを設定します．
 
-     The first set of options deals with the initial visibility of the
-     outline tree.  The corresponding variable for global default settings
-     is `org-startup-folded', with a default value `t', which means
-     `overview'.  
-          overview         top-level headlines only
-          content          all headlines
-          showall          no folding of any entries
-          showeverything   show even drawer contents
+     最初のオプションセットはアウトラインツリーの初期表示を設定します．グローバルなデフォルトの設定に関係する変数は`org-startup-folded'で，初期値は`t'で，それはすなわち`overview'です． 
+          overview         トップレベルの見出しのみ
+          content          全ての見出し
+          showall          全てのエントリを畳み込まない
+          showeverything   コンテンツの引き出しも表示する
 
-     Dynamic virtual indentation is controlled by the variable
-     `org-startup-indented'(1)
+     動的な仮想インデントは変数`org-startup-idented'(1)によって制御されます．
           indent     start with `org-indent-mode' turned on
           noindent   start with `org-indent-mode' turned off
 
-     Then there are options for aligning tables upon visiting a file.  This
-     is useful in files containing narrowed table columns.  The
-     corresponding variable is `org-startup-align-all-tables', with a
-     default value `nil'.  
+     それから，開いたファイルの表を整列させつオプションがあります．これはファイルがナローされた表を含む時に役に立ちます．関係する変数は`org-startup-align-all-tables'で，デフォルトでは`nil'です． 
           align      align all tables
           noalign    don't align tables on startup
 
-     When visiting a file, inline images can be automatically displayed.
-     The corresponding variable is `org-startup-with-inline-images', with a
-     default value `nil' to avoid delays when visiting a file.  
+     ファイルを開いたとき，インライン画像は自動的に表示されます．関係する変数は`org-startup-with-inine-images'で，ファイルを開いた際の遅延を避けるためにデフォルトでは`nil'になっています． 
           inlineimages   show inline images
           noinlineimages don't show inline images on startup
 
-     Logging the closing and reopening of TODO items and clock intervals
-     can be configured using these options (see variables `org-log-done',
-     `org-log-note-clock-out' and `org-log-repeat') 
-          logdone            record a timestamp when an item is marked DONE
-          lognotedone        record timestamp and a note when DONE
-          nologdone          don't record when items are marked DONE
-          logrepeat          record a time when reinstating a repeating item
-          lognoterepeat      record a note when reinstating a repeating item
-          nologrepeat        do not record when reinstating repeating item
-          lognoteclock-out   record a note when clocking out
-          nolognoteclock-out don't record a note when clocking out
-          logreschedule      record a timestamp when scheduling time changes
-          lognotereschedule  record a note when scheduling time changes
-          nologreschedule    do not record when a scheduling date changes
-          logredeadline      record a timestamp when deadline changes
-          lognoteredeadline  record a note when deadline changes
-          nologredeadline    do not record when a deadline date changes
-          logrefile          record a timestamp when refiling
-          lognoterefile      record a note when refiling
-          nologrefile        do not record when refiling
-     Here are the options for hiding leading stars in outline headings, and
-     for indenting outlines.  The corresponding variables are
-     `org-hide-leading-stars' and `org-odd-levels-only', both with a
-     default setting `nil' (meaning `showstars' and `oddeven').  
-          hidestars  make all but one of the stars starting a headline invisible.
-          showstars  show all stars starting a headline
+     TODOアイテムの完了と再開のログを取ることとその感覚はこれらのオプションによって設定することが可能です(変数`org-log-done'と`org-log-note-clock-out'，`org-log-repeat'を参照してください)． 
+          logdone            アイテムにDONEマークがついたとき，タイムスタンプを記録します
+          lognotedone        ノートにDONEマークがついたとき，タイムスタンプを記録します
+          nologdone          アイテムにDONEマークがついたとき，タイムスタンプを記録しません
+          logrepeat          アイテムが再開されたとき，時刻を記録します
+          lognoterepeat      アイテムが再開されたとき，ノートをを記録します
+          nologrepeat        アイテムが再開されたとき，記録を行わいません
+          lognoteclock-out   時間測定が終了したとき，ノートを記録します
+          nolognoteclock-out 時間測定が終了したとき，ノートを記録しません
+          logreschedule      スケジューリングが変わったとき，タイムスタンプを記録します
+          lognotereschedule  スケジューリングが変わったとき，ノートを記録します
+          nologreschedule    スケジューリングが変わったとき，記録しません
+          logredeadline      デッドラインが変更されたとき，タイムスタンプを記録します
+          lognoteredeadline  デッドラインが変更されたとき，ノートを記録します
+          nologredeadline    デッドラインが変更されたとき，記録しません
+          logrefile          リファイル時にタイムスタンプを記録します
+          lognoterefile      リファイル時にノートを記録します
+          nologrefile        リファイル時に記録しません
+     ここは，インデントされたアウトラインの見出しを隠すオプションです．関係する変数は`org-hide-leading-stars'と`org-odd-levels-only'で，デフォルトの設定は両方とも`nil'(`showstars'と`oddeven')を意味します． 
+          hidestars  全てのヘッドラインの「*」を見えなくします
+          showstars  全てのヘッドラインの「*」を見えるようにします
           indent     virtual indentation according to outline level
-          noindent   no virtual indentation according to outline level
-          odd        allow only odd outline levels (1,3,...)
-          oddeven    allow all outline levels
-     To turn on custom format overlays over timestamps (variables
-     `org-put-time-stamp-overlays' and `org-time-stamp-overlay-formats'),
-     use 
-          customtime overlay custom time format
-     The following options influence the table spreadsheet (variable
-     `constants-unit-system').  
+          noindent   アウトラインのレベルに一致する仮想インデントを行いません
+          odd        奇数のアウトラインレベル(1，3……)のみ
+          oddeven    全てのアウトラインレベル
+     タイムスタンプ(`org-put-time-stamp-overlays'と`org-time-stamp-overlay-formats'変数)のカスタムフォーマットオーバレイを切り替えます， 
+          customtime カスタマイズされたタイムフォーマットで覆います
+     以下のオプションは表計算(`constants-unit-system'変数)に影響を与えます． 
           constcgs   `constants.el' should use the c-g-s unit system
           constSI    `constants.el' should use the SI unit system
-     To influence footnote settings, use the following keywords.  The
-     corresponding variables are `org-footnote-define-inline',
-     `org-footnote-auto-label', and `org-footnote-auto-adjust'.  
-          fninline    define footnotes inline
-          fnnoinline  define footnotes in separate section
-          fnlocal     define footnotes near first reference, but not inline
-          fnprompt    prompt for footnote labels
-          fnauto      create `[fn:1]'-like labels automatically (default)
-          fnconfirm   offer automatic label for editing or confirmation
-          fnplain     create `[1]'-like labels automatically
-          fnadjust    automatically renumber and sort footnotes
-          nofnadjust  do not renumber and sort automatically
-     To hide blocks on startup, use these keywords. The corresponding
-     variable is `org-hide-block-startup'.  
-          hideblocks   Hide all begin/end blocks on startup
-          nohideblocks Do not hide blocks on startup
-     The display of entities as UTF-8 characters is governed by the variable
-     `org-pretty-entities' and the keywords 
-          entitiespretty  Show entities as UTF-8 characters where possible
-          entitiesplain   Leave entities plain
+     脚注の設定を行うには，以下のキーワードを使います．関係する変数は`org-footnote-define-inline'と`org-footnote-auto-label'，`org-footnote-auto-adjust'です． 
+          fninline    脚注のインラインを定義します
+          fnnoinline  分割されたセクションでの脚注を定義します
+          fnlocal     最初の言及元の近くの脚注を定義しますが，インラインではありません
+          fnprompt    脚注ラベルのプロンプト
+          fnauto      `[fn:1]'のようなラベルを自動的に作成します(これがデフォルトです)
+          fnconfirm   編集と確認用の自動ラベルを用意します
+          fnplain     `[1]'のようなラベルを自動的に作成します
+          fnadjust    自動的に脚注の番号を振り直し，ソートします
+          nofnadjust  自動的に番号の振り直しとソートを行いません
+     開始時にブロックを見えなくするには，これらのキーワードを使います．関連する変数は`org-hide-block-startup'です． 
+          hideblocks   開始時に全ての開始/終了ブロックを見えなくします
+          nohideblocks 開始時にブロックを見えなくしません
+     UTF-8の文字の表示は変数`org-pretty-entities'と以下のキーワードにより制御されます． 
+          entitiespretty  可能な時，UTF-8の文字を表示します
+          entitiesplain   空白にします
 
 `#+TAGS:  TAG1(c1) TAG2(c2)'
-     These lines (several such lines are allowed) specify the valid tags in
-     this file, and (potentially) the corresponding _fast tag selection_
-     keys.  The corresponding variable is `org-tag-alist'.
+     これらの行はファイル中の正しいタグと関連する_fast tag
+     selection_キーを指定します．関連する変数は`org-tag-alist'です．
 
 `#+TBLFM:'
-     This line contains the formulas for the table directly above the line.
+     この行には行上にある表の数式が含まれます．
 
 `#+TITLE:, #+AUTHOR:, #+EMAIL:, #+LANGUAGE:, #+TEXT:, #+DATE:,'
 `#+OPTIONS:, #+BIND:, #+XSLT:,'
 `#+DESCRIPTION:, #+KEYWORDS:,'
 `#+LATEX_HEADER:, #+STYLE:, #+LINK_UP:, #+LINK_HOME:,'
 `#+EXPORT_SELECT_TAGS:, #+EXPORT_EXCLUDE_TAGS:'
-     These lines provide settings for exporting files.  For more details see
-     *note Export options::.
+     これらの行はエクスポートするファイルの設定を提供します．詳細については*note
+     Export options::を参照してください．
 
 `#+TODO:    #+SEQ_TODO:   #+TYP_TODO:'
-     These lines set the TODO keywords and their interpretation in the
-     current file.  The corresponding variable is `org-todo-keywords'.
+     これらの行は現在のファイルでのTODOキーワードとそれらの説明をセットします．関連する変数は`org-todo-keywords'です．
 
    ---------- Footnotes ----------
 
-   (1) Emacs 23 and Org-mode 6.29 are required
+   (1) Emacs22とOrg-mode6.29が必要です
 
 
 File: org-ja,  Node: The very busy C-c C-c key,  Next: Clean view,  Prev: In-buffer settings,  Up: Miscellaneous
@@ -13093,8 +13015,8 @@ Concept index
 * #+PRIORITIES:                          Priorities.              (line  42)
 * #+PROPERTY:                            Property syntax.         (line  37)
 * #+SEQ_TODO:                            Per-file keywords.       (line   6)
-* #+SETUPFILE:                           In-buffer settings.      (line  58)
-* #+STARTUP::                            In-buffer settings.      (line  71)
+* #+SETUPFILE:                           In-buffer settings.      (line  35)
+* #+STARTUP::                            In-buffer settings.      (line  42)
 * #+STYLE:                               CSS support.             (line  39)
 * #+TAGS:                                Setting tags.            (line  28)
 * #+TBLFM:                               Field and range formulas.
@@ -13124,7 +13046,6 @@ Concept index
 * agenda, pipe:                          Extracting agenda information.
                                                                   (line   6)
 * agenda, with block views:              Block agenda.            (line   6)
-* align, STARTUP keyword:                In-buffer settings.      (line  91)
 * alignment in tables:                   Column width and alignment.
                                                                   (line   6)
 * anniversaries, from BBDB:              Weekly/daily agenda.     (line  49)
@@ -13196,9 +13117,7 @@ Concept index
 * completion, of property keys:          Completion.              (line   6)
 * completion, of TeX symbols:            Completion.              (line   6)
 * constants.el:                          Cooperation.             (line  17)
-* constcgs, STARTUP keyword:             In-buffer settings.      (line 136)
-* constSI, STARTUP keyword:              In-buffer settings.      (line 136)
-* content, STARTUPキーワード <1>:        In-buffer settings.      (line  77)
+* content, STARTUPキーワード <1>:        In-buffer settings.      (line  44)
 * content, STARTUPキーワード:            Visibility cycling.      (line  54)
 * contents, global visibility state:     Visibility cycling.      (line  22)
 * context-sensitive commands, hooks:     Context-sensitive commands.
@@ -13212,8 +13131,6 @@ Concept index
 * custom agenda views:                   Custom agenda views.     (line   6)
 * custom date/time format:               Custom time format.      (line   6)
 * custom search strings:                 Custom searches.         (line   6)
-* customization:                         Customization.           (line   6)
-* customtime, STARTUP keyword:           In-buffer settings.      (line 133)
 * cutting, of subtrees:                  Structure editing.       (line   6)
 * cycling, visibility:                   Visibility cycling.      (line   6)
 * date format, custom:                   Custom time format.      (line   6)
@@ -13258,10 +13175,9 @@ Concept index
 * effort filtering, in agenda:           Agenda commands.         (line 149)
 * Elisp links:                           External links.          (line   6)
 * emacsserver:                           Protocols.               (line   6)
-* entitiesplain, STARTUP keyword:        In-buffer settings.      (line 156)
-* entitiespretty, STARTUP keyword:       In-buffer settings.      (line 156)
+* entitiesplain, STARTUPキーワード:      In-buffer settings.      (line 105)
+* entitiespretty, STARTUPキーワード:     In-buffer settings.      (line 105)
 * evaluate time range:                   Creating timestamps.     (line  56)
-* even, STARTUP keyword:                 In-buffer settings.      (line 124)
 * external archiving:                    Moving subtrees.         (line   6)
 * external links:                        External links.          (line   6)
 * FAQ:                                   Summary.                 (line  36)
@@ -13275,13 +13191,13 @@ Concept index
 * file name completion:                  Handling links.          (line  85)
 * files, selecting for publishing:       Selecting files.         (line   6)
 * filtering, by tag and effort, in agenda: Agenda commands.       (line 149)
-* fnadjust, STARTUP keyword:             In-buffer settings.      (line 141)
-* fnauto, STARTUP keyword:               In-buffer settings.      (line 141)
-* fnconfirm, STARTUP keyword:            In-buffer settings.      (line 141)
-* fninline, STARTUP keyword:             In-buffer settings.      (line 141)
-* fnlocal, STARTUP keyword:              In-buffer settings.      (line 141)
-* fnplain, STARTUP keyword:              In-buffer settings.      (line 141)
-* fnprompt, STARTUP keyword:             In-buffer settings.      (line 141)
+* fnadjust, STARTUPキーワード:           In-buffer settings.      (line  92)
+* fnauto, STARTUPキーワード:             In-buffer settings.      (line  92)
+* fnconfirm, STARTUPキーワード:          In-buffer settings.      (line  92)
+* fninline, STARTUPキーワード:           In-buffer settings.      (line  92)
+* fnlocal, STARTUPキーワード:            In-buffer settings.      (line  92)
+* fnplain, STARTUPキーワード:            In-buffer settings.      (line  92)
+* fnprompt,キーワード:                   In-buffer settings.      (line  92)
 * folded, subtree visibility state:      Visibility cycling.      (line  10)
 * folding, sparse trees:                 Sparse trees.            (line   6)
 * following links:                       Handling links.          (line  96)
@@ -13319,9 +13235,8 @@ Concept index
 * headline, promotion and demotion:      Structure editing.       (line   6)
 * headlines:                             Headlines.               (line   6)
 * hide text:                             Visibility cycling.      (line   6)
-* hideblocks, STARTUP keyword <1>:       In-buffer settings.      (line 152)
+* hideblocks, STARTUP keyword <1>:       In-buffer settings.      (line 102)
 * hideblocks, STARTUP keyword:           Blocks.                  (line  13)
-* hidestars, STARTUP keyword:            In-buffer settings.      (line 124)
 * hiding leading stars:                  Clean view.              (line   6)
 * history:                               History and Acknowledgments.
                                                                   (line   6)
@@ -13339,14 +13254,12 @@ Concept index
                                                                   (line   6)
 * images, inlining:                      Handling links.          (line 131)
 * imenu.el:                              Cooperation.             (line  32)
-* in-buffer settings:                    In-buffer settings.      (line   6)
 * inactive timestamp:                    Timestamps.              (line  47)
-* indent, STARTUP keyword:               In-buffer settings.      (line  83)
 * index, in a publishing project:        Generating an index.     (line   6)
 * Info links:                            External links.          (line   6)
 * inheritance, of properties:            Property inheritance.    (line   6)
 * inheritance, of tags:                  Tag inheritance.         (line   6)
-* inlineimages, STARTUP keyword <1>:     In-buffer settings.      (line  97)
+* inlineimages, STARTUP keyword <1>:     In-buffer settings.      (line  58)
 * inlineimages, STARTUP keyword:         Handling links.          (line 131)
 * inlining images:                       Handling links.          (line 131)
 * inlining images in DocBook:            Images in DocBook export.
@@ -13389,18 +13302,7 @@ Concept index
                                                                   (line   6)
 * lists, ordered:                        Plain lists.             (line   6)
 * lists, plain:                          Plain lists.             (line   6)
-* logdone, STARTUP keyword:              In-buffer settings.      (line 103)
 * logging, of progress:                  Progress logging.        (line   6)
-* lognoteclock-out, STARTUP keyword:     In-buffer settings.      (line 103)
-* lognotedone, STARTUP keyword:          In-buffer settings.      (line 103)
-* lognoteredeadline, STARTUP keyword:    In-buffer settings.      (line 103)
-* lognoterefile, STARTUP keyword:        In-buffer settings.      (line 103)
-* lognoterepeat, STARTUP keyword:        In-buffer settings.      (line 103)
-* lognotereschedule, STARTUP keyword:    In-buffer settings.      (line 103)
-* logredeadline, STARTUP keyword:        In-buffer settings.      (line 103)
-* logrefile, STARTUP keyword:            In-buffer settings.      (line 103)
-* logrepeat, STARTUP keyword:            In-buffer settings.      (line 103)
-* logreschedule, STARTUP keyword:        In-buffer settings.      (line 103)
 * Ludlam, Eric M.:                       Cooperation.             (line  43)
 * maintainer:                            Feedback.                (line   6)
 * mapping entries, API:                  マッピングAPIを使う.     (line   6)
@@ -13426,33 +13328,23 @@ Concept index
 * named references:                      References.              (line 103)
 * narrow columns in tables:              Column width and alignment.
                                                                   (line   6)
-* noalign, STARTUP keyword:              In-buffer settings.      (line  91)
-* nofnadjust, STARTUP keyword:           In-buffer settings.      (line 141)
-* nofninline, STARTUP keyword:           In-buffer settings.      (line 141)
-* nohideblocks, STARTUP keyword <1>:     In-buffer settings.      (line 152)
+* nofnadjust, STARTUPキーワード:         In-buffer settings.      (line  92)
+* nofninline, STARTUPキーワード:         In-buffer settings.      (line  92)
+* nohideblocks, STARTUP keyword <1>:     In-buffer settings.      (line 102)
 * nohideblocks, STARTUP keyword:         Blocks.                  (line  13)
-* noindent, STARTUP keyword:             In-buffer settings.      (line  83)
-* noinlineimages, STARTUP keyword <1>:   In-buffer settings.      (line  97)
+* noinlineimages, STARTUP keyword <1>:   In-buffer settings.      (line  58)
 * noinlineimages, STARTUP keyword:       Handling links.          (line 131)
-* nologdone, STARTUP keyword:            In-buffer settings.      (line 103)
-* nolognoteclock-out, STARTUP keyword:   In-buffer settings.      (line 103)
-* nologredeadline, STARTUP keyword:      In-buffer settings.      (line 103)
-* nologrefile, STARTUP keyword:          In-buffer settings.      (line 103)
-* nologrepeat, STARTUP keyword:          In-buffer settings.      (line 103)
-* nologreschedule, STARTUP keyword:      In-buffer settings.      (line 103)
 * occur, command:                        Sparse trees.            (line   6)
-* odd, STARTUP keyword:                  In-buffer settings.      (line 124)
 * odd-levels-only outlines:              Clean view.              (line   6)
 * option keyword completion:             Completion.              (line   6)
 * options, for custom agenda views:      Setting Options.         (line   6)
-* options, for customization:            Customization.           (line   6)
 * options, for publishing:               Publishing options.      (line   6)
 * ordered lists:                         Plain lists.             (line   6)
 * org-agenda, command:                   Weekly/daily agenda.     (line   8)
-* org-hide-block-startup:                In-buffer settings.      (line 151)
+* org-hide-block-startup:                In-buffer settings.      (line 102)
 * org-list-insert-radio-list:            ラジオリスト.            (line   6)
 * Org-mode, turning on:                  Activation.              (line  21)
-* org-pretty-entities:                   In-buffer settings.      (line 155)
+* org-pretty-entities:                   In-buffer settings.      (line 105)
 * org-publish-project-alist:             Project alist.           (line   6)
 * Orgstruct mode:                        Orgstruct mode.          (line   6)
 * Orgtbl mode <1>:                       Tables in arbitrary syntax.
@@ -13463,7 +13355,7 @@ Concept index
 * outline tree:                          Headlines.               (line   6)
 * outlines:                              Outlines.                (line   6)
 * overview, global visibility state:     Visibility cycling.      (line  22)
-* overview, STARTUPキーワード <1>:       In-buffer settings.      (line  77)
+* overview, STARTUPキーワード <1>:       In-buffer settings.      (line  44)
 * overview, STARTUPキーワード:           Visibility cycling.      (line  54)
 * packages, interaction with other:      Interaction.             (line   6)
 * pasting, of subtrees:                  Structure editing.       (line   6)
@@ -13582,11 +13474,10 @@ Concept index
 * show all, command:                     Visibility cycling.      (line  33)
 * show all, global visibility state:     Visibility cycling.      (line  22)
 * show hidden text:                      Visibility cycling.      (line   6)
-* showall, STARTUPキーワード <1>:        In-buffer settings.      (line  77)
+* showall, STARTUPキーワード <1>:        In-buffer settings.      (line  44)
 * showall, STARTUPキーワード:            Visibility cycling.      (line  54)
-* showeverything, STARTUPキーワード <1>: In-buffer settings.      (line  77)
+* showeverything, STARTUPキーワード <1>: In-buffer settings.      (line  44)
 * showeverything, STARTUPキーワード:     Visibility cycling.      (line  54)
-* showstars, STARTUP keyword:            In-buffer settings.      (line 124)
 * sitemap, of published pages:           Sitemap.                 (line   6)
 * sorting, of agenda items:              agendaの項目をソートする.
                                                                   (line   6)
@@ -13609,13 +13500,40 @@ Concept index
                                                                   (line  33)
 * sparse tree, tag based:                Tags.                    (line   6)
 * sparse trees:                          Sparse trees.            (line   6)
-* special keywords:                      In-buffer settings.      (line   6)
 * speed keys:                            Speed keys.              (line   6)
 * speedbar.el:                           Cooperation.             (line  43)
 * spreadsheet capabilities:              The spreadsheet.         (line   6)
 * square brackets, around links:         External links.          (line  59)
+* STARTUP keyword，constcgs:             In-buffer settings.      (line  89)
+* STARTUP keyword，constSI:              In-buffer settings.      (line  89)
+* STARTUP keyword，customtime:           In-buffer settings.      (line  87)
+* STARTUP keyword，even:                 In-buffer settings.      (line  80)
+* STARTUP keyword，hidestars:            In-buffer settings.      (line  80)
+* STARTUP keyword，odd:                  In-buffer settings.      (line  80)
+* STARTUP keyword，showstars:            In-buffer settings.      (line  80)
+* STARTUPキーワード，<nologrefile:       In-buffer settings.      (line  62)
+* STARTUPキーワード，align:              In-buffer settings.      (line  54)
+* STARTUPキーワード，indent:             In-buffer settings.      (line  50)
+* STARTUPキーワード，logdone:            In-buffer settings.      (line  62)
+* STARTUPキーワード，lognoredeadline:    In-buffer settings.      (line  62)
+* STARTUPキーワード，lognoteclock-out:   In-buffer settings.      (line  62)
+* STARTUPキーワード，lognotedone:        In-buffer settings.      (line  62)
+* STARTUPキーワード，lognoterefile:      In-buffer settings.      (line  62)
+* STARTUPキーワード，lognoterepeat:      In-buffer settings.      (line  62)
+* STARTUPキーワード，lognotereschedule:  In-buffer settings.      (line  62)
+* STARTUPキーワード，logredeadline:      In-buffer settings.      (line  62)
+* STARTUPキーワード，logrefile:          In-buffer settings.      (line  62)
+* STARTUPキーワード，logrepeat:          In-buffer settings.      (line  62)
+* STARTUPキーワード，logschedule:        In-buffer settings.      (line  62)
+* STARTUPキーワード，noalign:            In-buffer settings.      (line  54)
+* STARTUPキーワード，noindent:           In-buffer settings.      (line  50)
+* STARTUPキーワード，nologdone:          In-buffer settings.      (line  62)
+* STARTUPキーワード，nologredeadline:    In-buffer settings.      (line  62)
+* STARTUPキーワード，nologrepeat:        In-buffer settings.      (line  62)
+* STARTUPキーワード，nologreschedule:    In-buffer settings.      (line  62)
 * statistics, for checkboxes:            Checkboxes.              (line  29)
 * statistics, for TODO items:            Breaking down tasks.     (line   6)
+* STATUPキーワード，nolognoteclock-out:  In-buffer settings.      (line  62)
 * storing links:                         Handling links.          (line  10)
 * Storm, Kim. F.:                        Conflicts.               (line  19)
 * structure editing:                     Structure editing.       (line   6)
@@ -13707,7 +13625,6 @@ Concept index
 * USENET links:                          External links.          (line   6)
 * UTF-8でのエクスポート:                 ASCII/Latin-1/UTF-8 export.
                                                                   (line   6)
-* variables, for customization:          Customization.           (line   6)
 * vectors, in table calculations:        Formula syntax for Calc. (line  11)
 * viper.el:                              Conflicts.               (line  78)
 * visibility cycling:                    Visibility cycling.      (line   6)
@@ -13750,6 +13667,9 @@ Concept index
 * オプションのキーワードの補完 <2>:      Export options.          (line   6)
 * オプションのキーワードの補完:          Per-file keywords.       (line  19)
 * カウントダウンタイマ:                  カウントダウンタイマ.    (line   6)
+* カスタマイズ:                          Customization.           (line   6)
+* カスタマイズのオプション:              Customization.           (line   6)
+* カスタマイズの変数:                    Customization.           (line   6)
 * カレンダーの統合:                      Weekly/daily agenda.     (line  24)
 * キャプチャ <1>:                        Capture.                 (line   6)
 * キャプチャ:                            Capture - Refile - Archive.
@@ -13761,6 +13681,7 @@ Concept index
 * コードのテキスト，マークアップのルール: Emphasis and monospace. (line   6)
 * コードラインのリファレンス，マークアップのルール: Literal examples.
                                                                   (line   6)
+* スペシャルキーワード:                  In-buffer settings.      (line   6)
 * ソースコードのフォーマット，マークアップのルール: Literal examples.
                                                                   (line  19)
 * タイムスタンプ <1>:                    Timestamps.              (line  14)
@@ -13772,6 +13693,7 @@ Concept index
 * テーブルの中での計算 <1>:              The spreadsheet.         (line   6)
 * テーブルの中での計算:                  Built-in table editor.   (line 155)
 * ハイパーリンク:                        Hyperlinks.              (line   6)
+* バッファ中での設定:                    In-buffer settings.      (line   6)
 * ファイル、アジェンダリストに追加する:  Agenda files.            (line  11)
 * ファイルのインクルード，マークアップのルール: Include files.    (line   6)
 * ファイル毎のキーワード:                Per-file keywords.       (line   6)
@@ -13789,7 +13711,7 @@ Concept index
 * プロパティ（ARCHIVE）:                 Property inheritance.    (line  33)
 * プロパティ（CATEGORY） <1>:            Categories.              (line  10)
 * プロパティ（CATEGORY）:                Property inheritance.    (line  29)
-* プロパティ（COLUMNS） <1>:             In-buffer settings.      (line  29)
+* プロパティ（COLUMNS） <1>:             In-buffer settings.      (line  16)
 * プロパティ（COLUMNS）:                 Property inheritance.    (line  21)
 * プロパティ，EXPORT_TITLE:              Document title.          (line  12)
 * リスト，マークアップのルール:          Lists.                   (line   6)
@@ -14814,7 +14736,7 @@ mentioned in the manual.  For a more complete list, use `M-x org-customize
 * Menu:
 
 * cdlatex-simplify-sub-super-scripts:    CDLaTeX mode.            (line  17)
-* constants-unit-system <1>:             In-buffer settings.      (line 135)
+* constants-unit-system <1>:             In-buffer settings.      (line  89)
 * constants-unit-system:                 References.              (line 110)
 * htmlize-output-type:                   Exporting Agenda Views.  (line  11)
 * LaTeX-verbatim-environments:           A LaTeX example.         (line  20)
@@ -14881,7 +14803,7 @@ mentioned in the manual.  For a more complete list, use `M-x org-customize
 * org-alphabetical-lists:                Plain lists.             (line  14)
 * org-archive-default-command <1>:       Agenda commands.         (line 210)
 * org-archive-default-command:           Archiving.               (line  12)
-* org-archive-location <1>:              In-buffer settings.      (line  16)
+* org-archive-location <1>:              In-buffer settings.      (line   9)
 * org-archive-location:                  Moving subtrees.         (line  10)
 * org-archive-save-context-info:         Moving subtrees.         (line  32)
 * org-attach-directory:                  Attachments.             (line   6)
@@ -14904,11 +14826,11 @@ mentioned in the manual.  For a more complete list, use `M-x org-customize
                                                                   (line  31)
 * org-combined-agenda-icalendar-file:    iCalendarエクスポート.   (line  39)
 * org-confirm-babel-evaluate:            Code evaluation security.
-                                                                  (line  33)
+                                                                  (line  22)
 * org-confirm-elisp-link-function:       Code evaluation security.
-                                                                  (line  53)
+                                                                  (line  37)
 * org-confirm-shell-link-function:       Code evaluation security.
-                                                                  (line  50)
+                                                                  (line  34)
 * org-create-file-search-functions:      Custom searches.         (line  12)
 * org-ctrl-c-ctrl-c-hook:                Context-sensitive commands.
                                                                   (line   6)
@@ -14925,14 +14847,14 @@ mentioned in the manual.  For a more complete list, use `M-x org-customize
                                                                   (line  12)
 * org-default-notes-file <1>:            Template elements.       (line  47)
 * org-default-notes-file:                Setting up capture.      (line   9)
-* org-default-priority <1>:              In-buffer settings.      (line  52)
+* org-default-priority <1>:              In-buffer settings.      (line  32)
 * org-default-priority:                  Priorities.              (line  36)
 * org-display-custom-times <1>:          Publishing options.      (line  12)
 * org-display-custom-times:              Custom time format.      (line   6)
 * org-display-internal-link-with-indirect-buffer: Handling links. (line 125)
 * org-disputed-keys:                     Conflicts.               (line  34)
 * org-done (フェイス):                   Faces for TODO keywords. (line   6)
-* org-drawers <1>:                       In-buffer settings.      (line  43)
+* org-drawers <1>:                       In-buffer settings.      (line  25)
 * org-drawers:                           Drawers.                 (line   6)
 * org-effort-property:                   Effort estimates.        (line   6)
 * org-empty-line-terminates-plain-lists: Plain lists.             (line  30)
@@ -15028,11 +14950,11 @@ mentioned in the manual.  For a more complete list, use `M-x org-customize
 * org-fast-tag-selection-single-key:     Setting tags.            (line 135)
 * org-file-apps <1>:                     Attachments.             (line  48)
 * org-file-apps:                         Handling links.          (line  99)
-* org-footnote-auto-adjust <1>:          In-buffer settings.      (line 139)
+* org-footnote-auto-adjust <1>:          In-buffer settings.      (line  92)
 * org-footnote-auto-adjust:              Footnotes.               (line  56)
-* org-footnote-auto-label <1>:           In-buffer settings.      (line 139)
+* org-footnote-auto-label <1>:           In-buffer settings.      (line  92)
 * org-footnote-auto-label:               Footnotes.               (line  43)
-* org-footnote-define-inline <1>:        In-buffer settings.      (line 139)
+* org-footnote-define-inline <1>:        In-buffer settings.      (line  92)
 * org-footnote-define-inline:            Footnotes.               (line  56)
 * org-footnote-section:                  Footnotes.               (line  56)
 * org-format-latex-header:               LaTeX fragments.         (line   6)
@@ -15047,10 +14969,10 @@ mentioned in the manual.  For a more complete list, use `M-x org-customize
 * org-hide (face):                       Clean view.              (line  63)
 * org-hide-block-startup:                Blocks.                  (line   6)
 * org-hide-leading-stars <1>:            Clean view.              (line  48)
-* org-hide-leading-stars:                In-buffer settings.      (line 121)
+* org-hide-leading-stars:                In-buffer settings.      (line  80)
 * org-hierarchical-checkbox-statistics:  Checkboxes.              (line  29)
 * org-hierarchical-todo-statistics:      Breaking down tasks.     (line  25)
-* org-highest-priority <1>:              In-buffer settings.      (line  52)
+* org-highest-priority <1>:              In-buffer settings.      (line  32)
 * org-highest-priority:                  Priorities.              (line  36)
 * org-icalendar-alarm-time:              iCalendarエクスポート.   (line   6)
 * org-icalendar-categories:              iCalendarエクスポート.   (line   6)
@@ -15066,7 +14988,7 @@ mentioned in the manual.  For a more complete list, use `M-x org-customize
 * org-keep-stored-link-after-insertion:  Handling links.          (line  63)
 * org-latex-low-levels:                  LaTeX/PDF export commands.
                                                                   (line  30)
-* org-link-abbrev-alist <1>:             In-buffer settings.      (line  47)
+* org-link-abbrev-alist <1>:             In-buffer settings.      (line  28)
 * org-link-abbrev-alist:                 Link abbreviations.      (line  12)
 * org-link-to-org-use-id:                Handling links.          (line  21)
 * org-list-automatic-rules <1>:          Checkboxes.              (line   6)
@@ -15074,27 +14996,27 @@ mentioned in the manual.  For a more complete list, use `M-x org-customize
 * org-list-demote-modify-bullet:         Plain lists.             (line  57)
 * org-list-end-regexp:                   Plain lists.             (line  30)
 * org-list-ending-method:                Plain lists.             (line  30)
-* org-log-done <1>:                      In-buffer settings.      (line 101)
+* org-log-done <1>:                      In-buffer settings.      (line  62)
 * org-log-done <2>:                      Agenda commands.         (line  92)
 * org-log-done:                          Tracking TODO state changes.
                                                                   (line  25)
 * org-log-into-drawer <1>:               Agenda commands.         (line 245)
 * org-log-into-drawer:                   Tracking TODO state changes.
                                                                   (line   6)
-* org-log-note-clock-out <1>:            In-buffer settings.      (line 101)
+* org-log-note-clock-out <1>:            In-buffer settings.      (line  62)
 * org-log-note-clock-out:                Clocking commands.       (line  34)
 * org-log-refile:                        Refiling notes.          (line  12)
-* org-log-repeat <1>:                    In-buffer settings.      (line 101)
+* org-log-repeat <1>:                    In-buffer settings.      (line  62)
 * org-log-repeat:                        Repeated tasks.          (line  31)
 * org-log-states-order-reversed:         Tracking TODO state changes.
                                                                   (line   6)
-* org-lowest-priority <1>:               In-buffer settings.      (line  52)
+* org-lowest-priority <1>:               In-buffer settings.      (line  32)
 * org-lowest-priority:                   Priorities.              (line  36)
 * org-M-RET-may-split-line <1>:          Plain lists.             (line  77)
 * org-M-RET-may-split-line:              Structure editing.       (line   7)
 * org-odd-levels-only <1>:               Special agenda views.    (line  47)
 * org-odd-levels-only <2>:               Clean view.              (line  70)
-* org-odd-levels-only <3>:               In-buffer settings.      (line 121)
+* org-odd-levels-only <3>:               In-buffer settings.      (line  80)
 * org-odd-levels-only:                   Matching tags and properties.
                                                                   (line  47)
 * org-outline-path-complete-in-steps:    Refiling notes.          (line  12)
@@ -15107,7 +15029,7 @@ mentioned in the manual.  For a more complete list, use `M-x org-customize
 * org-publish-project-alist <1>:         Publishing options.      (line  66)
 * org-publish-project-alist:             Project alist.           (line   6)
 * org-publish-use-timestamps-flag:       公開の開始.              (line  21)
-* org-put-time-stamp-overlays:           In-buffer settings.      (line 131)
+* org-put-time-stamp-overlays:           In-buffer settings.      (line  87)
 * org-read-date-display-live:            The date/time prompt.    (line  83)
 * org-read-date-prefer-future:           The date/time prompt.    (line   6)
 * org-refile-allow-creating-parent-nodes: Refiling notes.         (line  12)
@@ -15129,13 +15051,13 @@ mentioned in the manual.  For a more complete list, use `M-x org-customize
 * org-special-ctrl-a/e:                  Headlines.               (line   6)
 * org-special-ctrl-k:                    Headlines.               (line   6)
 * org-speed-commands-user:               Speed keys.              (line   6)
-* org-startup-align-all-tables <1>:      In-buffer settings.      (line  88)
+* org-startup-align-all-tables <1>:      In-buffer settings.      (line  54)
 * org-startup-align-all-tables:          Column width and alignment.
                                                                   (line  33)
-* org-startup-folded <1>:                In-buffer settings.      (line  77)
+* org-startup-folded <1>:                In-buffer settings.      (line  44)
 * org-startup-folded:                    Visibility cycling.      (line  54)
-* org-startup-indented:                  In-buffer settings.      (line  83)
-* org-startup-with-inline-images <1>:    In-buffer settings.      (line  95)
+* org-startup-indented:                  In-buffer settings.      (line  50)
+* org-startup-with-inline-images <1>:    In-buffer settings.      (line  58)
 * org-startup-with-inline-images:        Handling links.          (line 131)
 * org-store-link-functions:              Adding hyperlink types.  (line  63)
 * org-stuck-projects:                    Stuck projects.          (line  13)
@@ -15144,14 +15066,14 @@ mentioned in the manual.  For a more complete list, use `M-x org-customize
 * org-table-auto-blank-field:            Built-in table editor.   (line  29)
 * org-table-copy-increment:              Built-in table editor.   (line 161)
 * org-table-export-default-format:       Built-in table editor.   (line 194)
-* org-table-formula:                     In-buffer settings.      (line  34)
+* org-table-formula:                     In-buffer settings.      (line  19)
 * org-table-formula-constants <1>:       Cooperation.             (line  17)
-* org-table-formula-constants <2>:       In-buffer settings.      (line  34)
+* org-table-formula-constants <2>:       In-buffer settings.      (line  19)
 * org-table-formula-constants:           References.              (line 103)
 * org-table-use-standard-references <1>: Editing and debugging formulas.
                                                                   (line   6)
 * org-table-use-standard-references:     References.              (line  19)
-* org-tag-alist <1>:                     In-buffer settings.      (line 161)
+* org-tag-alist <1>:                     In-buffer settings.      (line 110)
 * org-tag-alist:                         Setting tags.            (line  22)
 * org-tag-faces:                         Tags.                    (line  10)
 * org-tag-persistent-alist:              Setting tags.            (line  37)
@@ -15163,11 +15085,11 @@ mentioned in the manual.  For a more complete list, use `M-x org-customize
 * org-tags-match-list-sublevels <3>:     Tag searches.            (line  18)
 * org-tags-match-list-sublevels:         Tag inheritance.         (line  26)
 * org-time-stamp-custom-formats:         Custom time format.      (line   6)
-* org-time-stamp-overlay-formats:        In-buffer settings.      (line 131)
+* org-time-stamp-overlay-formats:        In-buffer settings.      (line  87)
 * org-time-stamp-rounding-minutes:       Creating timestamps.     (line  21)
 * org-todo (フェイス):                   Faces for TODO keywords. (line   6)
 * org-todo-keyword-faces:                Faces for TODO keywords. (line   6)
-* org-todo-keywords <1>:                 In-buffer settings.      (line 177)
+* org-todo-keywords <1>:                 In-buffer settings.      (line 125)
 * org-todo-keywords <2>:                 Global TODO list.        (line  15)
 * org-todo-keywords <3>:                 TODO extensions.         (line   6)
 * org-todo-keywords:                     TODO basics.             (line  34)
@@ -15569,56 +15491,56 @@ Node: Miscellaneous559576
 Node: Completion560469
 Node: Easy Templates563034
 Node: Speed keys564705
-Node: Code evaluation security565534
-Node: Customization568227
-Node: In-buffer settings568822
-Ref: In-buffer settings-Footnote-1578034
-Node: The very busy C-c C-c key578082
-Node: Clean view579987
-Ref: Clean view-Footnote-1583955
-Ref: Clean view-Footnote-2584016
-Ref: Clean view-Footnote-3584200
-Ref: Clean view-Footnote-4584261
-Ref: Clean view-Footnote-5584373
-Ref: Clean view-Footnote-6584428
-Node: TTY keys584553
-Node: Interaction586353
-Node: Cooperation586737
-Node: Conflicts590537
-Node: Hacking594552
-Node: Hooks595514
-Node: Add-on packages595933
-Node: Adding hyperlink types596477
-Node: Context-sensitive commands600395
-Ref: Context-sensitive commands-Footnote-1601974
-Node: Tables in arbitrary syntax602108
-Node: Radio tables603574
-Node: A LaTeX example606118
-Ref: A LaTeX example-Footnote-1610036
-Ref: A LaTeX example-Footnote-2610185
-Node: Translator functions610621
-Ref: Translator functions-Footnote-1613854
-Node: ラジオリスト613942
-Node: Dynamic blocks615095
-Node: Special agenda views617314
-Ref: Special agenda views-Footnote-1621568
-Node: Extracting agenda information621703
-Node: Using the property API625778
-Node: マッピングAPIを使う629038
-Node: MobileOrg633385
-Node: Setting up the staging area635509
-Ref: Setting up the staging area-Footnote-1637018
-Ref: Setting up the staging area-Footnote-2637440
-Node: Pushing to MobileOrg637782
-Ref: Pushing to MobileOrg-Footnote-1639369
-Ref: Pushing to MobileOrg-Footnote-2640095
-Node: MobileOrgからpullする640182
-Ref: MobileOrgからpullする-Footnote-1643908
-Ref: MobileOrgからpullする-Footnote-2643980
-Node: History and Acknowledgments644569
-Node: Main Index655715
-Node: Key Index721997
-Node: Command and Function Index762899
-Node: Variable Index792149
+Node: Code evaluation security565757
+Node: Customization569155
+Node: In-buffer settings569839
+Ref: In-buffer settings-Footnote-1580856
+Node: The very busy C-c C-c key580902
+Node: Clean view582807
+Ref: Clean view-Footnote-1586775
+Ref: Clean view-Footnote-2586836
+Ref: Clean view-Footnote-3587020
+Ref: Clean view-Footnote-4587081
+Ref: Clean view-Footnote-5587193
+Ref: Clean view-Footnote-6587248
+Node: TTY keys587373
+Node: Interaction589173
+Node: Cooperation589557
+Node: Conflicts593357
+Node: Hacking597372
+Node: Hooks598334
+Node: Add-on packages598753
+Node: Adding hyperlink types599297
+Node: Context-sensitive commands603215
+Ref: Context-sensitive commands-Footnote-1604794
+Node: Tables in arbitrary syntax604928
+Node: Radio tables606394
+Node: A LaTeX example608938
+Ref: A LaTeX example-Footnote-1612856
+Ref: A LaTeX example-Footnote-2613005
+Node: Translator functions613441
+Ref: Translator functions-Footnote-1616674
+Node: ラジオリスト616762
+Node: Dynamic blocks617915
+Node: Special agenda views620134
+Ref: Special agenda views-Footnote-1624388
+Node: Extracting agenda information624523
+Node: Using the property API628598
+Node: マッピングAPIを使う631858
+Node: MobileOrg636205
+Node: Setting up the staging area638329
+Ref: Setting up the staging area-Footnote-1639838
+Ref: Setting up the staging area-Footnote-2640260
+Node: Pushing to MobileOrg640602
+Ref: Pushing to MobileOrg-Footnote-1642189
+Ref: Pushing to MobileOrg-Footnote-2642915
+Node: MobileOrgからpullする643002
+Ref: MobileOrgからpullする-Footnote-1646728
+Ref: MobileOrgからpullする-Footnote-2646800
+Node: History and Acknowledgments647389
+Node: Main Index658535
+Node: Key Index725051
+Node: Command and Function Index765953
+Node: Variable Index795203
 
 End Tag Table

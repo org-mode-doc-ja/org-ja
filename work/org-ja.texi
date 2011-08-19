@@ -11696,208 +11696,146 @@ Org-modeは僅かなキーストロークのみによる空の構造の(@code{#+
 @vindex org-use-speed-commands
 @vindex org-speed-commands-user
 
-Single keys can be made to execute commands when the cursor is at the
-beginning of a headline, i.e.@: before the first star.  Configure the
-variable @code{org-use-speed-commands} to activate this feature.  There is a
-pre-defined list of commands, and you can add more such commands using the
-variable @code{org-speed-commands-user}.  Speed keys do not only speed up
-navigation and other commands, but they also provide an alternative way to
-execute commands bound to keys that are not or not easily available on a
-TTY, or on a small mobile device with a limited keyboard.
+最初のアスタリスクの前のように，カーソルが見出しの先頭にある時，シングルキーはコマンドを実行できるようになっています．@code{org-use-speed-commands}変数を設定することでこの機能を有効にします．あらかじめ定義されているコマンドのリストを挙げます．そして，@code{org-speed-commans-user}変数にコマンドを追加することもできます．Speed
+keysは操作や他のコマンドを使うスピードを上げるだけではなく，TTYやキーボードに限界があるモバイル端末上で実行できない，または簡単に実行できないキーに割り当てられたコマンドを実行するための別の可能性を提供します．
 
-To see which commands are available, activate the feature and press @kbd{?}
-with the cursor at the beginning of a headline.
+コマンドが実行可能かどうかを見るには，機能を有効にして見出しの先頭にカーソルを置いて@kbd{?}を押します．
 
 @node Code evaluation security, Customization, Speed keys, Miscellaneous
-@section Code evaluation and security issues
+@section コードの評価とセキュリティの問題
 
-Org provides tools to work with the code snippets, including evaluating
-them.
+Org-modeは評価を含むコードのスニペットを使って作業をするためのツールを提供します．
 
-Running code on your machine always comes with a security risk.  Badly
-written or malicious code can be executed on purpose or by accident.  Org
-has default settings which will only evaluate such code if you give explicit
-permission to do so, and as a casual user of these features you should leave
-these precautions intact.
+あなたのマシン上でコードが動くことは常にセキュリティのリスクをもたらします．目的のため，またはアクシデントによって良くないコードや悪意のあるコードは実行されます．Org-modeはあなたが明確に実行の許可を与える場合のみそのようなコードを評価するデフォルトの設定を持っていて，そしてカジュアルなユーザに対してはこれらの機能は予防措置として保つべきです．
 
-For people who regularly work with such code, the confirmation prompts can
-become annoying, and you might want to turn them off.  This can be done, but
-you must be aware of the risks that are involved.
+そのようなコードを通常用いる人々のために，確認用のプロンプトが表示され，そしてあなたはそれをオフにするかもしれません．これを行うことは可能ですが，あなたはリスクとかかわることを承知しなくてはなりません．
 
-Code evaluation can happen under the following circumstances:
+コードの評価は以下に挙げる状況を引き起こします:
 
 @table @i
-@item Source code blocks
-Source code blocks can be evaluated during export, or when pressing @kbd{C-c
-C-c} in the block.  The most important thing to realize here is that Org
-mode files which contain code snippets are, in a certain sense, like
-executable files.  So you should accept them and load them into Emacs only
-from trusted sources---just like you would do with a program you install on
-your computer.
+@item ソースコードブロック
+ソースコードブロックはエクスポート中かブロック中で@kbd{C-c
+C-c}を押した時に評価されます．ここで最も重要な事はコードスニペットを含むOrg-modeのファイルがある意味で，実行可能なファイルに似ているということです．それで，あたはそれらに対応し正しいソースのみをEmacsにロードすべきです--
+あなたがコンピュータ上にインストールしたプログラムのように．
 
-Make sure you know what you are doing before customizing the variables which
-take off the default security brakes.
+デフォルトのセキュリティー装置を切る変数をカスタマイズする前にあなたがしていることを確かめてください．
 
 @defopt org-confirm-babel-evaluate
-When t (the default), the user is asked before every code block evaluation.
-When nil, the user is not asked.  When set to a function, it is called with
-two arguments (language and body of the code block) and should return t to
-ask and nil not to ask.
+t(これがデフォルトです)の時，ユーザはコードブロックを評価する前に毎回確認されます．nilの時，ユーザは確認されません．関数をセットすると，それは2つの引数(言語とコードブロックの本体)を伴って呼ばれ，tを返せば尋ね，nilならば尋ねません．
 @end defopt
 
-For example, here is how to execute "ditaa" code (which is considered safe)
-without asking:
+例えば，これは\"ditaa\"コード(安全性は考慮されています)を確認無しで実行する方法です:
 @example
 (defun my-org-confirm-babel-evaluate (lang body)
   (not (string= lang "ditaa")))  ; don't ask for ditaa
 (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
 @end example
 
-@item Following @code{shell} and @code{elisp} links
-Org has two link types that can directly evaluate code (@pxref{External
-links}).  These links can be problematic because the code to be evaluated is
-not visible.
+@item 以下の@code{shell}と@code{elisp}はリンクしています．
+Org-modeはコードを直接評価できる2つのリンクタイプ(@pxref{External
+links})を持っています．実行されるコードが見えないため，これらのリンクは問題がありえます．
 
 @defopt org-confirm-shell-link-function
-Function to queries user about shell link execution.
+シェルへのリンクを実行するための問い合わせを行う関数．
 @end defopt
 @defopt org-confirm-elisp-link-function
-Functions to query user for Emacs Lisp link execution.
+Emacs Lispへのリンクを実行するための問い合わせを行う関数．
 @end defopt
 
-@item Formulas in tables
-Formulas in tables (@pxref{The spreadsheet}) are code that is evaluated
-either by the @i{calc} interpreter, or by the @i{Emacs Lisp} interpreter.
+@item 表中の式
+表中の式(@pxref{The spreadsheet})は@i{calc}インタプリタでも@i{Emacs
+Lisp}インタプリタでも実行できるコードです．
 @end table
 
 @node Customization, In-buffer settings, Code evaluation security, Miscellaneous
 @section Customization
-@cindex customization
-@cindex options, for customization
-@cindex variables, for customization
+@cindex カスタマイズ
+@cindex カスタマイズのオプション
+@cindex カスタマイズの変数
 
-There are more than 180 variables that can be used to customize Org.  For
-the sake of compactness of the manual, I am not describing the variables
-here.  A structured overview of customization variables is available with
-@kbd{M-x org-customize}.  Or select @code{Browse Org Group} from the
-@code{Org->Customization} menu.  Many settings can also be activated on a
-per-file basis, by putting special lines into the buffer (@pxref{In-buffer
-settings}).
+Org-modeをカスタマイズするために使われる変数は180以上あります．マニュアルの圧縮のため，私はここで変数の説明はしません．変数のカスタマイズの構造化された概要は@kbd{M-x
+org-customize}で見ることができます．もしくは，@code{Org->Customization}から@code{Browse Org
+Group}を選択してください．多くの設定はバッファに特別な行を書くこと(@pxref{In-buffer
+settings})でそのファイル中で有効にすることができます．
 
 @node In-buffer settings, The very busy C-c C-c key, Customization, Miscellaneous
-@section Summary of in-buffer settings
-@cindex in-buffer settings
-@cindex special keywords
+@section バッファ中での設定の要約
+@cindex バッファ中での設定
+@cindex スペシャルキーワード
 
-Org-mode uses special lines in the buffer to define settings on a per-file
-basis.  These lines start with a @samp{#+} followed by a keyword, a colon,
-and then individual words defining a setting.  Several setting words can be
-in the same line, but you can also have multiple lines for the keyword.
-While these settings are described throughout the manual, here is a
-summary.  After changing any of those lines in the buffer, press @kbd{C-c
-C-c} with the cursor still in the line to activate the changes immediately.
-Otherwise they become effective only when the file is visited again in a new
-Emacs session.
+Org-modeはファイル単位で設定を定義するために，バッファ内の特別な行を使用します．これらの行は@samp{#+}に続くキーワードとコロン，そして設定を定義する語句でできています．いくつかの設定用語句は同じ行に書くことも，分けて書くこともできます．これらの設定はマニュアルを通じて説明されており，ここには要約を載せています．バッファ中の行を編集した後は，カーソル位置の変更をすぐに反映するために@kbd{C-c
+C-c}を押しれください．そうでなければ，新しいEmacsのセッションでファイルを再び開いた時のみ反映されます．
 
 @vindex org-archive-location
 @table @kbd
 @item #+ARCHIVE: %s_done::
-This line sets the archive location for the agenda file.  It applies for all
-subsequent lines until the next @samp{#+ARCHIVE} line, or the end of the
-file.  The first such line also applies to any entries before it.  The
-corresponding variable is @code{org-archive-location}.
+この行はこの行はアジェンダファイルのアーカイブ場所を設定します．次の@samp{#+ARCHIVE}行まで，もしくはファイルの末尾までの全ての行で適用されます．最初の行はまた，それより前の全てのエントリにも適用されます．関係する変数は@code{org-archive-location}です．
 @item #+CATEGORY:
-This line sets the category for the agenda file.  The category applies for
-all subsequent lines until the next @samp{#+CATEGORY} line, or the end of
-the file.  The first such line also applies to any entries before it.
+この行はアジェンダファイルのカテゴリを設定します．カテゴリは次の@samp{#+CATEGORY}行か，ファイル末尾までの全ての行で適用されます．また，それより前の全ての行にも適用されます．
 @item #+COLUMNS: %25ITEM .....
 @cindex プロパティ（COLUMNS）
-Set the default format for columns view.  This format applies when columns
-view is invoked in locations where no @code{COLUMNS} property applies.
+カラムビューのデフォルトフォーマットを設定します．@code{COLUMNS}プロパティが適用されていない箇所でカラムビューが呼ばれた場合，このフォーマットが適用されます．
 @item #+CONSTANTS: name1=value1 ...
 @vindex org-table-formula-constants
 @vindex org-table-formula
-Set file-local values for constants to be used in table formulas.  This line
-sets the local variable @code{org-table-formula-constants-local}.  The
-global version of this variable is @code{org-table-formula-constants}.
+テーブル式の中で使われる定数として，ファイルローカルな値を設定します．この行はローカル変数@code{org-table-formula-constants-local}を設定します．グローバルバージョンは@code{org-table-formula-constants}です．
 @item #+FILETAGS: :tag1:tag2:tag3:
-Set tags that can be inherited by any entry in the file, including the
-top-level entries.
+ファイル中のエントリトップレベルエントリを含めたエントリが引き継ぐタグを設定します．
 @item #+DRAWERS: NAME1 .....
 @vindex org-drawers
-Set the file-local set of drawers.  The corresponding global variable is
-@code{org-drawers}.
+ファイルローカルな引き出しのセットを設定します．関係するグローバル変数が@code{org-drawers}です．
 @item #+LINK:  linkword replace
 @vindex org-link-abbrev-alist
-These lines (several are allowed) specify link abbreviations.  @xref{Link
-abbreviations}.  The corresponding variable is @code{org-link-abbrev-alist}.
+これらの行初はリンクの省略記法を指定します．@xref{Link
+abbreviations}．関係する変数は@code{org-link-abbrev-alist}です．
 @item #+PRIORITIES: highest lowest default
 @vindex org-highest-priority
 @vindex org-lowest-priority
 @vindex org-default-priority
-This line sets the limits and the default for the priorities.  All three
-must be either letters A-Z or numbers 0-9.  The highest priority must have a
-lower ASCII number than the lowest priority.
+これらの行は優先順位の上限と初期値を設定します．3つ全てが，AからZまでの文字か，0から9までの数字のどれかでなくてはいけません．最も高い優先順位は最も低い優先順位より低いASCIIの数値を持つ必要があります．
 @item #+PROPERTY: Property_Name Value
-This line sets a default inheritance value for entries in the current
-buffer, most useful for specifying the allowed values of a property.
+この行は現在のバッファ中のエントリがデフォルトで引き継ぐ値を設定します．与えられたプロパティの値を指定するのに，最も便利です．
 @cindex #+SETUPFILE
 @item #+SETUPFILE: file
-This line defines a file that holds more in-buffer setup.  Normally this is
-entirely ignored.  Only when the buffer is parsed for option-setting lines
-(i.e.@: when starting Org-mode for a file, when pressing @kbd{C-c C-c} in a
-settings line, or when exporting), then the contents of this file are parsed
-as if they had been included in the buffer.  In particular, the file can be
-any other Org-mode file with internal setup.  You can visit the file the
-cursor is in the line with @kbd{C-c '}.
+この行はバッファ内の設定を持つファイルを定義します．通常は，これは完全に無視されます．バッファのオプションの設定行をパースされた時のみ，バッファにそれらが含まれていればこのファイルのコンテンツはパースされます．特に，ファイルは内部設定の別のOrg-modeファイルとすることができます．カーソルをこの行に置き，@kbd{C-c
+'}を押すことであなたはこのファイルを開くことができます．
 @item #+STARTUP:
 @cindex #+STARTUP:
-This line sets options to be used at startup of Org-mode, when an Org file
-is being visited.
+この行はOrg-modeのファイルが開かれた時にに使われるオプションを設定します．
 
-The first set of options deals with the initial visibility of the outline
-tree.  The corresponding variable for global default settings is
-@code{org-startup-folded}, with a default value @code{t}, which means
-@code{overview}.
+最初のオプションセットはアウトラインツリーの初期表示を設定します．グローバルなデフォルトの設定に関係する変数は@code{org-startup-folded}で，初期値は@code{t}で，それはすなわち@code{overview}です．
 @vindex org-startup-folded
 @cindex @code{overview}, STARTUPキーワード
 @cindex @code{content}, STARTUPキーワード
 @cindex @code{showall}, STARTUPキーワード
 @cindex @code{showeverything}, STARTUPキーワード
 @example
-overview         @r{top-level headlines only}
-content          @r{all headlines}
-showall          @r{no folding of any entries}
-showeverything   @r{show even drawer contents}
+overview         @r{トップレベルの見出しのみ}
+content          @r{全ての見出し}
+showall          @r{全てのエントリを畳み込まない}
+showeverything   @r{コンテンツの引き出しも表示する}
 @end example
 
 @vindex org-startup-indented
-@cindex @code{indent}, STARTUP keyword
-@cindex @code{noindent}, STARTUP keyword
-Dynamic virtual indentation is controlled by the variable
-@code{org-startup-indented}@footnote{Emacs 23 and Org-mode 6.29 are
-required}
+@cindex STARTUPキーワード，@code{indent}
+@cindex STARTUPキーワード，@code{noindent}
+動的な仮想インデントは変数@code{org-startup-idented}@footnote{Emacs22とOrg-mode6.29が必要です}によって制御されます．
 @example
 indent     @r{start with @code{org-indent-mode} turned on}
 noindent   @r{start with @code{org-indent-mode} turned off}
 @end example
 
 @vindex org-startup-align-all-tables
-Then there are options for aligning tables upon visiting a file.  This is
-useful in files containing narrowed table columns.  The corresponding
-variable is @code{org-startup-align-all-tables}, with a default value
-@code{nil}.
-@cindex @code{align}, STARTUP keyword
-@cindex @code{noalign}, STARTUP keyword
+それから，開いたファイルの表を整列させつオプションがあります．これはファイルがナローされた表を含む時に役に立ちます．関係する変数は@code{org-startup-align-all-tables}で，デフォルトでは@code{nil}です．
+@cindex STARTUPキーワード，@code{align}
+@cindex STARTUPキーワード，@code{noalign}
 @example
 align      @r{align all tables}
 noalign    @r{don't align tables on startup}
 @end example
 
 @vindex org-startup-with-inline-images
-When visiting a file, inline images can be automatically displayed.  The
-corresponding variable is @code{org-startup-with-inline-images}, with a
-default value @code{nil} to avoid delays when visiting a file.
+ファイルを開いたとき，インライン画像は自動的に表示されます．関係する変数は@code{org-startup-with-inine-images}で，ファイルを開いた際の遅延を避けるためにデフォルトでは@code{nil}になっています．
 @cindex @code{inlineimages}, STARTUP keyword
 @cindex @code{noinlineimages}, STARTUP keyword
 @example
@@ -11908,77 +11846,68 @@ noinlineimages @r{don't show inline images on startup}
 @vindex org-log-done
 @vindex org-log-note-clock-out
 @vindex org-log-repeat
-Logging the closing and reopening of TODO items and clock intervals can be
-configured using these options (see variables @code{org-log-done},
-@code{org-log-note-clock-out} and @code{org-log-repeat})
-@cindex @code{logdone}, STARTUP keyword
-@cindex @code{lognotedone}, STARTUP keyword
-@cindex @code{nologdone}, STARTUP keyword
-@cindex @code{lognoteclock-out}, STARTUP keyword
-@cindex @code{nolognoteclock-out}, STARTUP keyword
-@cindex @code{logrepeat}, STARTUP keyword
-@cindex @code{lognoterepeat}, STARTUP keyword
-@cindex @code{nologrepeat}, STARTUP keyword
-@cindex @code{logreschedule}, STARTUP keyword
-@cindex @code{lognotereschedule}, STARTUP keyword
-@cindex @code{nologreschedule}, STARTUP keyword
-@cindex @code{logredeadline}, STARTUP keyword
-@cindex @code{lognoteredeadline}, STARTUP keyword
-@cindex @code{nologredeadline}, STARTUP keyword
-@cindex @code{logrefile}, STARTUP keyword
-@cindex @code{lognoterefile}, STARTUP keyword
-@cindex @code{nologrefile}, STARTUP keyword
+TODOアイテムの完了と再開のログを取ることとその感覚はこれらのオプションによって設定することが可能です(変数@code{org-log-done}と@code{org-log-note-clock-out}，@code{org-log-repeat}を参照してください)．
+@cindex STARTUPキーワード，@code{logdone}
+@cindex STARTUPキーワード，@code{lognotedone}
+@cindex STARTUPキーワード，@code{nologdone}
+@cindex STARTUPキーワード，@code{lognoteclock-out}
+@cindex STATUPキーワード，@code{nolognoteclock-out}
+@cindex STARTUPキーワード，@code{logrepeat}
+@cindex STARTUPキーワード，@code{lognoterepeat}
+@cindex STARTUPキーワード，@code{nologrepeat}
+@cindex STARTUPキーワード，@code{logschedule}
+@cindex STARTUPキーワード，@code{lognotereschedule}
+@cindex STARTUPキーワード，@code{nologreschedule}
+@cindex STARTUPキーワード，@code{logredeadline}
+@cindex STARTUPキーワード，@code{lognoredeadline}
+@cindex STARTUPキーワード，@code{nologredeadline}
+@cindex STARTUPキーワード，@code{logrefile}
+@cindex STARTUPキーワード，@code{lognoterefile}
+@cindex STARTUPキーワード，<@code{nologrefile}
 @example
-logdone            @r{record a timestamp when an item is marked DONE}
-lognotedone        @r{record timestamp and a note when DONE}
-nologdone          @r{don't record when items are marked DONE}
-logrepeat          @r{record a time when reinstating a repeating item}
-lognoterepeat      @r{record a note when reinstating a repeating item}
-nologrepeat        @r{do not record when reinstating repeating item}
-lognoteclock-out   @r{record a note when clocking out}
-nolognoteclock-out @r{don't record a note when clocking out}
-logreschedule      @r{record a timestamp when scheduling time changes}
-lognotereschedule  @r{record a note when scheduling time changes}
-nologreschedule    @r{do not record when a scheduling date changes}
-logredeadline      @r{record a timestamp when deadline changes}
-lognoteredeadline  @r{record a note when deadline changes}
-nologredeadline    @r{do not record when a deadline date changes}
-logrefile          @r{record a timestamp when refiling}
-lognoterefile      @r{record a note when refiling}
-nologrefile        @r{do not record when refiling}
+logdone            @r{アイテムにDONEマークがついたとき，タイムスタンプを記録します}
+lognotedone        @r{ノートにDONEマークがついたとき，タイムスタンプを記録します}
+nologdone          @r{アイテムにDONEマークがついたとき，タイムスタンプを記録しません}
+logrepeat          @r{アイテムが再開されたとき，時刻を記録します}
+lognoterepeat      @r{アイテムが再開されたとき，ノートをを記録します}
+nologrepeat        @r{アイテムが再開されたとき，記録を行わいません}
+lognoteclock-out   @r{時間測定が終了したとき，ノートを記録します}
+nolognoteclock-out @r{時間測定が終了したとき，ノートを記録しません}
+logreschedule      @r{スケジューリングが変わったとき，タイムスタンプを記録します}
+lognotereschedule  @r{スケジューリングが変わったとき，ノートを記録します}
+nologreschedule    @r{スケジューリングが変わったとき，記録しません}
+logredeadline      @r{デッドラインが変更されたとき，タイムスタンプを記録します}
+lognoteredeadline  @r{デッドラインが変更されたとき，ノートを記録します}
+nologredeadline    @r{デッドラインが変更されたとき，記録しません}
+logrefile          @r{リファイル時にタイムスタンプを記録します}
+lognoterefile      @r{リファイル時にノートを記録します}
+nologrefile        @r{リファイル時に記録しません}
 @end example
 @vindex org-hide-leading-stars
 @vindex org-odd-levels-only
-Here are the options for hiding leading stars in outline headings, and for
-indenting outlines.  The corresponding variables are
-@code{org-hide-leading-stars} and @code{org-odd-levels-only}, both with a
-default setting @code{nil} (meaning @code{showstars} and @code{oddeven}).
-@cindex @code{hidestars}, STARTUP keyword
-@cindex @code{showstars}, STARTUP keyword
-@cindex @code{odd}, STARTUP keyword
-@cindex @code{even}, STARTUP keyword
+ここは，インデントされたアウトラインの見出しを隠すオプションです．関係する変数は@code{org-hide-leading-stars}と@code{org-odd-levels-only}で，デフォルトの設定は両方とも@code{nil}(@code{showstars}と@code{oddeven})を意味します．
+@cindex STARTUP keyword，@code{hidestars}
+@cindex STARTUP keyword，@code{showstars}
+@cindex STARTUP keyword，@code{odd}
+@cindex STARTUP keyword，@code{even}
 @example
-hidestars  @r{make all but one of the stars starting a headline invisible.}
-showstars  @r{show all stars starting a headline}
+hidestars  @r{全てのヘッドラインの「*」を見えなくします}
+showstars  @r{全てのヘッドラインの「*」を見えるようにします}
 indent     @r{virtual indentation according to outline level}
-noindent   @r{no virtual indentation according to outline level}
-odd        @r{allow only odd outline levels (1,3,...)}
-oddeven    @r{allow all outline levels}
+noindent   @r{アウトラインのレベルに一致する仮想インデントを行いません}
+odd        @r{奇数のアウトラインレベル(1，3……)のみ}
+oddeven    @r{全てのアウトラインレベル}
 @end example
 @vindex org-put-time-stamp-overlays
 @vindex org-time-stamp-overlay-formats
-To turn on custom format overlays over timestamps (variables
-@code{org-put-time-stamp-overlays} and
-@code{org-time-stamp-overlay-formats}), use
-@cindex @code{customtime}, STARTUP keyword
+タイムスタンプ(@code{org-put-time-stamp-overlays}と@code{org-time-stamp-overlay-formats}変数)のカスタムフォーマットオーバレイを切り替えます，
+@cindex STARTUP keyword，@code{customtime}
 @example
-customtime @r{overlay custom time format}
-@end example
+customtime @r{カスタマイズされたタイムフォーマットで覆います}@end example
 @vindex constants-unit-system
-The following options influence the table spreadsheet (variable
-@code{constants-unit-system}).
-@cindex @code{constcgs}, STARTUP keyword
-@cindex @code{constSI}, STARTUP keyword
+以下のオプションは表計算(@code{constants-unit-system}変数)に影響を与えます．
+@cindex STARTUP keyword，@code{constcgs}
+@cindex STARTUP keyword，@code{constSI}
 @example
 constcgs   @r{@file{constants.el} should use the c-g-s unit system}
 constSI    @r{@file{constants.el} should use the SI unit system}
@@ -11986,65 +11915,57 @@ constSI    @r{@file{constants.el} should use the SI unit system}
 @vindex org-footnote-define-inline
 @vindex org-footnote-auto-label
 @vindex org-footnote-auto-adjust
-To influence footnote settings, use the following keywords.  The
-corresponding variables are @code{org-footnote-define-inline},
-@code{org-footnote-auto-label}, and @code{org-footnote-auto-adjust}.
-@cindex @code{fninline}, STARTUP keyword
-@cindex @code{nofninline}, STARTUP keyword
-@cindex @code{fnlocal}, STARTUP keyword
-@cindex @code{fnprompt}, STARTUP keyword
-@cindex @code{fnauto}, STARTUP keyword
-@cindex @code{fnconfirm}, STARTUP keyword
-@cindex @code{fnplain}, STARTUP keyword
-@cindex @code{fnadjust}, STARTUP keyword
-@cindex @code{nofnadjust}, STARTUP keyword
+脚注の設定を行うには，以下のキーワードを使います．関係する変数は@code{org-footnote-define-inline}と@code{org-footnote-auto-label}，@code{org-footnote-auto-adjust}です．
+@cindex @code{fninline}, STARTUPキーワード
+@cindex @code{nofninline}, STARTUPキーワード
+@cindex @code{fnlocal}, STARTUPキーワード
+@cindex @code{fnprompt},キーワード
+@cindex @code{fnauto}, STARTUPキーワード
+@cindex @code{fnconfirm}, STARTUPキーワード
+@cindex @code{fnplain}, STARTUPキーワード
+@cindex @code{fnadjust}, STARTUPキーワード
+@cindex @code{nofnadjust}, STARTUPキーワード
 @example
-fninline    @r{define footnotes inline}
-fnnoinline  @r{define footnotes in separate section}
-fnlocal     @r{define footnotes near first reference, but not inline}
-fnprompt    @r{prompt for footnote labels}
-fnauto      @r{create @code{[fn:1]}-like labels automatically (default)}
-fnconfirm   @r{offer automatic label for editing or confirmation}
-fnplain     @r{create @code{[1]}-like labels automatically}
-fnadjust    @r{automatically renumber and sort footnotes}
-nofnadjust  @r{do not renumber and sort automatically}
+fninline    @r{脚注のインラインを定義します}
+fnnoinline  @r{分割されたセクションでの脚注を定義します}
+fnlocal     @r{最初の言及元の近くの脚注を定義しますが，インラインではありません}
+fnprompt    @r{脚注ラベルのプロンプト}
+fnauto      @r{@code{[fn:1]}のようなラベルを自動的に作成します(これがデフォルトです)}
+fnconfirm   @r{編集と確認用の自動ラベルを用意します}
+fnplain     @r{@code{[1]}のようなラベルを自動的に作成します}
+fnadjust    @r{自動的に脚注の番号を振り直し，ソートします}
+nofnadjust  @r{自動的に番号の振り直しとソートを行いません}
 @end example
 @cindex org-hide-block-startup
-To hide blocks on startup, use these keywords. The corresponding variable is
-@code{org-hide-block-startup}.
+開始時にブロックを見えなくするには，これらのキーワードを使います．関連する変数は@code{org-hide-block-startup}です．
 @cindex @code{hideblocks}, STARTUP keyword
 @cindex @code{nohideblocks}, STARTUP keyword
 @example
-hideblocks   @r{Hide all begin/end blocks on startup}
-nohideblocks @r{Do not hide blocks on startup}
-@end example
+hideblocks   @r{開始時に全ての開始/終了ブロックを見えなくします}
+nohideblocks @r{開始時にブロックを見えなくしません}@end example
 @cindex org-pretty-entities
-The display of entities as UTF-8 characters is governed by the variable
-@code{org-pretty-entities} and the keywords
-@cindex @code{entitiespretty}, STARTUP keyword
-@cindex @code{entitiesplain}, STARTUP keyword
+UTF-8の文字の表示は変数@code{org-pretty-entities}と以下のキーワードにより制御されます．
+@cindex @code{entitiespretty}, STARTUPキーワード
+@cindex @code{entitiesplain}, STARTUPキーワード
 @example
-entitiespretty  @r{Show entities as UTF-8 characters where possible}
-entitiesplain   @r{Leave entities plain}
+entitiespretty  @r{可能な時，UTF-8の文字を表示します}
+entitiesplain   @r{空白にします}
 @end example
 @item #+TAGS:  TAG1(c1) TAG2(c2)
 @vindex org-tag-alist
-These lines (several such lines are allowed) specify the valid tags in this
-file, and (potentially) the corresponding @emph{fast tag selection} keys.
-The corresponding variable is @code{org-tag-alist}.
+これらの行はファイル中の正しいタグと関連する@emph{fast tag
+selection}キーを指定します．関連する変数は@code{org-tag-alist}です．
 @item #+TBLFM:
-This line contains the formulas for the table directly above the line.
+この行には行上にある表の数式が含まれます．
 @item #+TITLE:, #+AUTHOR:, #+EMAIL:, #+LANGUAGE:, #+TEXT:, #+DATE:,
 @itemx #+OPTIONS:, #+BIND:, #+XSLT:,
 @itemx #+DESCRIPTION:, #+KEYWORDS:,
 @itemx #+LATEX_HEADER:, #+STYLE:, #+LINK_UP:, #+LINK_HOME:,
 @itemx #+EXPORT_SELECT_TAGS:, #+EXPORT_EXCLUDE_TAGS:
-These lines provide settings for exporting files.  For more details see
-@ref{Export options}.
+これらの行はエクスポートするファイルの設定を提供します．詳細については@ref{Export options}を参照してください．
 @item #+TODO:    #+SEQ_TODO:   #+TYP_TODO:
 @vindex org-todo-keywords
-These lines set the TODO keywords and their interpretation in the current
-file.  The corresponding variable is @code{org-todo-keywords}.
+これらの行は現在のファイルでのTODOキーワードとそれらの説明をセットします．関連する変数は@code{org-todo-keywords}です．
 @end table
 
 @node The very busy C-c C-c key, Clean view, In-buffer settings, Miscellaneous
