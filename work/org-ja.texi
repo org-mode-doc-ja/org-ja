@@ -2969,79 +2969,48 @@ HTMLのように、Org-modeはファイル内でリンクしたり、他のフ�
 @node Link format, Internal links, Hyperlinks, Hyperlinks
 @section Link format
 @cindex リンクのフォーマット
-@cindex format, of links
+@cindex フォーマット,リンクの
 
-Org will recognize plain URL-like links and activate them as clickable
-links.  The general link format, however, looks like this:
+Org-modeはURLのようなリンクを認識して、クリック可能なリンクにしてくれます。Org-mode上での一般的なリンクのフォーマットは以下のようなものです:
 
 @example
-[[link][description]]       @r{or alternatively}           [[link]]
-@end example
+[[リンク][項目名]]       @r{または}           [[リンク]]\n@end example
 
 @noindent
-Once a link in the buffer is complete (all brackets present), Org will
-change the display so that @samp{description} is displayed instead of
-@samp{[[link][description]]} and @samp{link} is displayed instead of
-@samp{[[link]]}.  Links will be highlighted in the face @code{org-link},
-which by default is an underlined face.  You can directly edit the visible
-part of a link.  Note that this can be either the @samp{link} part (if there
-is no description) or the @samp{description} part.  To edit also the
-invisible @samp{link} part, use @kbd{C-c C-l} with the cursor on the link.
+べての括弧を入力し終えてリンクが完成すると、Org-modeは、@samp{[[リンク][項目名]]}のかわりに@samp{項目名}を、@samp{[[リンク]]}のかわりに@samp{リンク}を表示します。リンクは@code{org-link}で設定されたフェイスでハイライトされます。なおデフォルトのフェイスはアンダーラインになっています。表示されている部分については、直接編集することができます。項目名がない場合はリンクの編集になり、項目名がある場合は項目名の編集になることに注意してください。表示されていないリンクを編集するには、該当するリンクの上で@kbd{C-c
+C-l}を実行します。
 
-If you place the cursor at the beginning or just behind the end of the
-displayed text and press @key{BACKSPACE}, you will remove the (invisible)
-bracket at that location.  This makes the link incomplete and the internals
-are again displayed as plain text.  Inserting the missing bracket hides the
-link internals again.  To show the internal structure of all links, use the
-menu entry @code{Org->Hyperlinks->Literal links}.
+表示されたテキストの始端もしくは終端にカーソルを置いて@key{BACKSPACE}を押すと、その場所にある（表示されていない）括弧を取り除くことができます。これによってリンクは不完全なものになり、リンクの内部は再びプレーンなテキストとして表示されます。取り除かれた括弧を再度挿入することでリンクは再び内部化され隠されます。すべてのリンクの内部的な構造を表示するには、@code{Org->Hyperlinks->Literal
+links}というメニューを使用します。
 
 @node Internal links, External links, Link format, Hyperlinks
 @section Internal links
-@cindex internal links
+@cindex 内部リンク
 @cindex links, internal
-@cindex targets, for links
+@cindex ターゲット,リンクの
 
 @cindex property, CUSTOM_ID
-If the link does not look like a URL, it is considered to be internal in the
-current file.  The most important case is a link like
-@samp{[[#my-custom-id]]} which will link to the entry with the
-@code{CUSTOM_ID} property @samp{my-custom-id}.  Such custom IDs are very
-good for HTML export (@pxref{HTML export}) where they produce pretty section
-links.  You are responsible yourself to make sure these custom IDs are
-unique in a file.
+もしもリンクがURLのようなものではない場合、現在使用しているファイル内へのリンクだとみなされます。最も重要なケースは、@samp{[[#my-custom-id]]}のようなリンクで、@samp{my-custom-id}という@code{CUSTOM_ID}プロパティのついた見出しへリンクします。このようなカスタムIDは、HTMLでのエクスポート(@pxref{HTML
+export})時にセクション毎のリンクを書き出してくれるので、大変便利です。ただし、各カスタムID名がファイル内で重複しないようにする必要があります。
 
-Links such as @samp{[[My Target]]} or @samp{[[My Target][Find my target]]}
-lead to a text search in the current file.
+@samp{[[My Target]]}や@samp{[[My Target][Find my
+target]]}のようなリンクは、現在使用しているファイル内でのテキスト検索になります。
 
-The link can be followed with @kbd{C-c C-o} when the cursor is on the link,
-or with a mouse click (@pxref{Handling links}).  Links to custom IDs will
-point to the corresponding headline.  The preferred match for a text link is
-a @i{dedicated target}: the same string in double angular brackets.  Targets
-may be located anywhere; sometimes it is convenient to put them into a
-comment line. For example
+マウスのクリック、またはリンク上にカーソルがあるときは@kbd{C-c C-o}で、リンクを開くことができます(@pxref{Handling
+links})。カスタムIDへのリンクは、対応する見出しを指し示します。テキストへのリンクには、@i{専用のターゲット}を用意する方が良いでしょう。同じ文字列を二重の角付きの括弧でくくるとか。ターゲットはどこに置かれていてもかまいません。しかし、コメント行のようなところに置いたほうが便利なことが多いでしょう。たとえば、以下のように。
 
 @example
-# <<My Target>>
-@end example
+# <<My Target>>\n@end example
 
 @noindent In HTML export (@pxref{HTML export}), such targets will become
-named anchors for direct access through @samp{http} links@footnote{Note that
-text before the first headline is usually not exported, so the first such
-target should be after the first headline, or in the line directly before
-the first headline.}.
+HTMLでのエクスポート（@pxref{HTML
+export}）では、このようなターゲットは、@samp{http}で直接アクセスできる名前つきのアンカーになります@footnote{一番最初の見出しより前の文はエクスポートされないことに注意してください。このためそのようなターゲットの一番最初のものは、最初の見出しより後にある必要があります。}。
 
-If no dedicated target exists, Org will search for a headline that is
-exactly the link text but may also include a TODO keyword and
-tags@footnote{To insert a link targeting a headline, in-buffer completion
-can be used.  Just type a star followed by a few optional letters into the
-buffer and press @kbd{M-@key{TAB}}.  All headlines in the current buffer
-will be offered as completions.}.  In non-Org files, the search will look
-for the words in the link text.  In the above example the search would be
-for @samp{my target}.
+もしも専用のターゲットが存在しない場合には、Org-modeはそのリンクにある語句と同じ見出しを検索しますが、TODOキーワードやタグ@footnote{見出しへのリンクを挿入するときは、バッファー内補完をすることができます。*印の後にいくつか文字を入力し、@kbd{M-@key{TAB}}を実行してください。現在のバッファー内にあるすべての見出しが補完候補として表示されます。}も検索されます。Org-mode以外のファイルでは、リンクのテキストにある語句を検索します。上記の例では、@samp{my
+target}が検索されます。
 
-Following a link pushes a mark onto Org's own mark ring.  You can return to
-the previous position with @kbd{C-c &}.  Using this command several times in
-direct succession goes back to positions recorded earlier.
+リンクをたどると、Org-mode自身のマークリングにマークが格納されます。@kbd{C-c
+&}で、ひとつ前のポジションに戻ります。このコマンドを連続して使うことにより、更に前のポジションへと戻ることができます。
 
 @menu
 * Radio targets::            プレーンテキストのリンクをターゲットに起動させる
@@ -3049,43 +3018,35 @@ direct succession goes back to positions recorded earlier.
 
 @node Radio targets, , Internal links, Internal links
 @subsection Radio targets
-@cindex radio targets
-@cindex targets, radio
-@cindex links, radio targets
+@cindex ラジオターゲット
+@cindex ターゲット,ラジオ
+@cindex リンク,ラジオターゲット
 
-Org can automatically turn any occurrences of certain target names in normal
-text into a link.  So without explicitly creating a link, the text connects
-to the target radioing its position.  Radio targets are enclosed by triple
-angular brackets.  For example, a target @samp{<<<My Target>>>} causes each
-occurrence of @samp{my target} in normal text to become activated as a
-link.  The Org file is scanned automatically for radio targets only when the
-file is first loaded into Emacs.  To update the target list during editing,
-press @kbd{C-c C-c} with the cursor on or at a target.
+Org-modeは、通常のテキスト部分に書かれたターゲット名を、自動でリンクにすることができます。ですから、わざわざ個別のリンクを作成することなく、それぞれのテキストがターゲットにリンクされます。ラジオターゲットは、３つの角括弧で囲まれたものです。例えば、@samp{<<<My
+Target>>>}というターゲットは、通常のテキスト部分に@samp{my
+target}が登場する度にアクティブなリンクにしてくれます。Org-modeファイル内のラジオターゲットは、最初の読み込み時のみ自動的にスキャンされます。編集中にターゲットをアップデートしてリンクするには、ターゲットのところで@kbd{C-c
+C-c}を実行します。
 
 @node External links, Handling links, Internal links, Hyperlinks
 @section External links
 @cindex links, external
-@cindex external links
+@cindex 外部リンク
 @cindex links, external
-@cindex Gnus links
-@cindex BBDB links
-@cindex IRC links
-@cindex URL links
-@cindex file links
-@cindex VM links
-@cindex RMAIL links
-@cindex WANDERLUST links
-@cindex MH-E links
-@cindex USENET links
-@cindex SHELL links
-@cindex Info links
-@cindex Elisp links
+@cindex Gnusリンク
+@cindex BBDBリンク
+@cindex IRCリンク
+@cindex URLリンク
+@cindex ファイルリンク
+@cindex VMリンク
+@cindex RMAILリンク
+@cindex WANDERLUSTリンク
+@cindex MH-Eリンク
+@cindex USENETリンク
+@cindex SHELLリンク
+@cindex Infoリンク
+@cindex ELispリンク
 
-Org supports links to files, websites, Usenet and email messages, BBDB
-database entries and links to both IRC conversations and their logs.
-External links are URL-like locators.  They start with a short identifying
-string followed by a colon.  There can be no space after the colon.  The
-following list shows examples for each link type.
+Org-modeは次のようなリンクをサポートしています。ファイル、webサイト、ネットニュース、emailのメッセージ、BBDBデータベースの項目、IRCの会話とログなど。外部リンクはURLを記載するような方法でリンクします。それらはコロンの前に短い定義用の文字列をつけて表記します。コロンのあとに空白をとってはいけません。以下に例とそれぞれのリンクのタイプの一覧を示します。
 
 @example
 http://www.astro.uva.nl/~dominik          @r{on the web}
@@ -3125,202 +3086,120 @@ elisp:(find-file-other-frame "Elisp.org") @r{Elisp form to evaluate}
 
 For customizing Org to add new link types @ref{Adding hyperlink types}.
 
-A link should be enclosed in double brackets and may contain a descriptive
-text to be displayed instead of the URL (@pxref{Link format}), for example:
+リンクは二重括弧で囲んだ方が良いでしょう。URLの代わりにテキストを表示することもできます(@pxref{Link
+format})。たとえば、以下のように。
 
 @example
-[[http://www.gnu.org/software/emacs/][GNU Emacs]]
-@end example
+[[http://www.gnu.org/software/emacs/][GNU Emacs]]\n@end example
 
 @noindent
-If the description is a file name or URL that points to an image, HTML
-export (@pxref{HTML export}) will inline the image as a clickable button.
-If there is no description at all and the link points to an image, that
-image will be inlined into the exported HTML file.
+項目名が画像を指し示すファイル名やURLの場合、HTMLエクスポート(@pxref{HTML
+export})によって、画像はクリック可能なボタンとして書き出されます。項目名がない画像の場合には、インライン画像として書き出されます。
 
-@cindex square brackets, around links
-@cindex plain text external links
-Org also finds external links in the normal text and activates them as
-links.  If spaces must be part of the link (for example in
-@samp{bbdb:Richard Stallman}), or if you need to remove ambiguities about
-the end of the link, enclose them in square brackets.
+@cindex 大括弧,リンクの周辺
+@cindex プレーンテキスト外部リンク
+Org-modeは、通常のテキスト内のリンクを見つけ出し、外部リンクとします。もしスペースがリンクの一部として必要な場合(たとえば、@samp{bbdb:Richard
+Stallman})や、リンクの末端であいまいさをなくしたい場合、角括弧で囲みます。
 
 @node Handling links, Using links outside Org, External links, Hyperlinks
 @section Handling links
-@cindex links, handling
+@cindex リンク,扱い
 
-Org provides methods to create a link in the correct syntax, to insert it
-into an Org file, and to follow the link.
+Org-modeは正しい構文でリンクを作成したり、Org-modeのファイルにリンクを挿入したり、そのリンクをたどったりする方法を提供しています。
 
 @table @kbd
 @orgcmd{C-c l,org-store-link}
-@cindex storing links
-Store a link to the current location.  This is a @emph{global} command (you
-must create the key binding yourself) which can be used in any buffer to
-create a link.  The link will be stored for later insertion into an Org
-buffer (see below).  What kind of link will be created depends on the
-current buffer:
+@cindex リンクの保存
+現在の位置へのリンクを一時保管します。これはリンクを作成するときに、どのバッファーでも使用できる@emph{グローバルな}コマンド(あなた自身でキーバインドを作成しなければなりません。)です。リンクは一時保管され、後からOrg-modeのバッファーへ挿入することができます(下記参照)。どの種類のリンクが作成されるかは、現在のバッファーが何であるかによります。
 
-@b{Org-mode buffers}@* For Org files, if there is a @samp{<<target>>} at the
-cursor, the link points to the target.  Otherwise it points to the current
-headline, which will also be the description.
+@b{Org-modeバッファー}@*もしカーソル位置に@samp{<<target>>}がある場合、リンクはそのターゲットを指します。それ以外の場合は、見出しを指し、見出しは項目名にもなります。
 
 @vindex org-link-to-org-use-id
 @cindex property, CUSTOM_ID
 @cindex property, ID
-If the headline has a @code{CUSTOM_ID} property, a link to this custom ID
-will be stored.  In addition or alternatively (depending on the value of
-@code{org-link-to-org-use-id}), a globally unique @code{ID} property will be
-created and/or used to construct a link.  So using this command in Org
-buffers will potentially create two links: a human-readable from the custom
-ID, and one that is globally unique and works even if the entry is moved
-from file to file.  Later, when inserting the link, you need to decide which
-one to use.
+もし見出しに@code{CUSTOM_ID}プロパティがある場合、このカスタムIDプロパティへのリンクが一時保管されます。また、(@code{org-link-to-org-use-id}の値によりますが)グローバルに固有の@code{ID}プロパティが、リンクを作成するために作られます。ですから、このコマンドをOrg-modeバッファー内で使うと、潜在的にふたつのリンクを作成することになります。つまり、Org-modeバッファー内でこのコマンドを使用することにより、人間が読むことのできるカスタムIDと、グローバルに固有で、エントリーがファイル間を移動しても動作するリンクが作成されます。後にリンクを挿入するときには、どのリンクを挿入するかを決めなければなりません。
 
-@b{Email/News clients: VM, Rmail, Wanderlust, MH-E, Gnus}@* Pretty much all
-Emacs mail clients are supported.  The link will point to the current
-article, or, in some GNUS buffers, to the group.  The description is
-constructed from the author and the subject.
+@b{メール/ニュースクライアント:VM, Rmail, Wanderlust, MH-E,
+Gnus}@*ほとんどすべてのEmacsのメールクライアントがサポートされています。リンクは現在の記事を指し示します。Gnusバッファーでは、グループを指し示すこともあるでしょう。項目名は筆者名と題名から作成されます。
 
-@b{Web browsers: W3 and W3M}@* Here the link will be the current URL, with
-the page title as description.
+@b{ウェブブラウザー:W3 and W3M}@*現在のURLがリンクになり、ページのタイトルが項目名になります。
 
-@b{Contacts: BBDB}@* Links created in a BBDB buffer will point to the
-current entry.
+@b{連絡先:BBDB}@*BBDBバッファー内で作成されたリンクは、現在のエントリーへのリンクになります。
 
 @b{Chat: IRC}@*
 @vindex org-irc-link-to-logs
-For IRC links, if you set the variable @code{org-irc-link-to-logs} to
-@code{t}, a @samp{file:/} style link to the relevant point in the logs for
-the current conversation is created.  Otherwise an @samp{irc:/} style link
-to the user/channel/server under the point will be stored.
+IRCリンクの場合、@code{org-irc-link-to-logs}変数を@code{t}にした場合は、ログファイル内に、現在の会話に相当する部分への@samp{file:/}形式のリンクが作成されます。それ以外の場合は、user/channel/serverへの@samp{irc:/}スタイルのリンクが一時保管されます。
 
-@b{Other files}@* For any other files, the link will point to the file, with
-a search string (@pxref{Search options}) pointing to the contents of the
-current line.  If there is an active region, the selected words will form
-the basis of the search string.  If the automatically created link is not
-working correctly or accurately enough, you can write custom functions to
-select the search string and to do the search for particular file
-types---see @ref{Custom searches}.  The key binding @kbd{C-c l} is only a
-suggestion---see @ref{Installation}.
+@b{その他のファイル}@*その他のファイルの場合、リンクは、現在の行を指ししめす検索語句(@pxref{Search
+options})を伴って作成されます。もし、アクティブなリージョンがある場合は、選択された言葉が検索語句の基本となります。自動的に作成されたリンクがうまく働かなかったり、不正確であったりする場合は、カスタム関数を書いて、検索語句を選択したり、特定のファイル形式を検索したりすることがきます。@ref{Custom
+searches}を参照してください。@kbd{C-c l}というキーバインディングはひとつの提案に過ぎません@ref{Installation})。
 
-@b{Agenda view}@* When the cursor is in an agenda view, the created link
-points to the entry referenced by the current line.
+@b{アジェンダビュー}@*カーソルがアジェンダビューにあるときは、作成されたリンクは現在の行が参照するエントリーを指し示します。
 
 @c
 @orgcmd{C-c C-l,org-insert-link}
-@cindex link completion
-@cindex completion, of links
-@cindex inserting links
+@cindex リンクの補完
+@cindex 補完,リンクの
+@cindex リンクの挿入
 @vindex org-keep-stored-link-after-insertion
-Insert a link@footnote{ Note that you don't have to use this command to
-insert a link.  Links in Org are plain text, and you can type or paste them
-straight into the buffer.  By using this command, the links are
-automatically enclosed in double brackets, and you will be asked for the
-optional descriptive text.}.  This prompts for a link to be inserted into
-the buffer.  You can just type a link, using text for an internal link, or
-one of the link type prefixes mentioned in the examples above.  The link
-will be inserted into the buffer@footnote{After insertion of a stored link,
-the link will be removed from the list of stored links.  To keep it in the
-list later use, use a triple @kbd{C-u} prefix argument to @kbd{C-c C-l}, or
-configure the option @code{org-keep-stored-link-after-insertion}.}, along
-with a descriptive text.  If some text was selected when this command is
-called, the selected text becomes the default description.
+リンク@footnote{リンクを挿入するのに、このコマンドを使わなければならないわけではないことに注意してください。Org-modeでのリンクはプレーンテキストですので、リンクはタイプしたりペーストしたりして直接バッファーへ入力することができます。このコマンドを使うことによって、リンクは自動的に二重括弧に入れられ、オプションとして項目名を入力するかどうかをたずねられます。}を挿入します。そうすると、プロンプトによって、バッファーに挿入するリンクをたずねられます。テキストを使った内部リンクや、既に述べましたリンクタイプのいずれかへのリンクを入力するだけです。リンクは項目名とともに、バッファー@footnote{一時保管されたリンクを挿入した後は、そのリンクは一時保管リストから削除されます。後で使用するためにリンクを保存したままにしておきたい場合は、@kbd{C-c
+C-l}の前に3回@kbd{C-u}をタイプするか、@code{org-keep-stored-link-after-insertion}オプションを設定してください。}に挿入されます。もし、このコマンドの呼び出し時にテキストが選択されていた場合には、選択されたテキストがデフォルトの項目名になります。
 
-@b{Inserting stored links}@* All links stored during the current session are
-part of the history for this prompt, so you can access them with @key{up}
-and @key{down} (or @kbd{M-p/n}).
+@b{一時保管されたリンクを挿入}@*<現在のセッションで一時保管されたすべてのリンクは、このプロンプトの履歴となっていますので、@key{up}や@key{down}(あるいは、@kbd{M-p/n})を使ってこれらにアクセスすることができます。
 
-@b{Completion support}@* Completion with @key{TAB} will help you to insert
-valid link prefixes like @samp{http:} or @samp{ftp:}, including the prefixes
-defined through link abbreviations (@pxref{Link abbreviations}).  If you
-press @key{RET} after inserting only the @var{prefix}, Org will offer
-specific completion support for some link types@footnote{This works by
-calling a special function @code{org-PREFIX-complete-link}.} For example, if
-you type @kbd{file @key{RET}}, file name completion (alternative access:
-@kbd{C-u C-c C-l}, see below) will be offered, and after @kbd{bbdb
-@key{RET}} you can complete contact names.  @orgkey C-u C-c C-l
-@cindex file name completion
-@cindex completion, of file names
+@b{補完の支援}@*@key{TAB}を使用した補完機能によって、リンクの省略記法で定義された接頭辞(@pxref{Link
+abbreviations})を含む、@samp{http}や@samp{ftp}などのリンクを適切に挿入することができるでしょう。もし、@var{接頭辞}のみをタイプした後に@key{RET}を押すと、Org-modeは、いくつかのリンク形式@footnote{これは@code{org-PREFIX-complete-link}という特別な関数を呼び出すことによって行います。}に対して詳細な補完の支援を行います。たとえば、@kbd{file
+@key{RET}}をタイプすると、ファイル名の補完((または、@kbd{C-u C-c
+C-l}をタイプします。以下を参照。)を行い、@kbd{bbdb
+@key{RET}}をタイプすると、連絡先の名前を補完することができます。@orgkey C-u C-c C-l
+@cindex ファイル名の補完
+@cindex 補完,ファイル名の
 @c
-When @kbd{C-c C-l} is called with a @kbd{C-u} prefix argument, a link to a
-file will be inserted and you may use file name completion to select the
-name of the file.  The path to the file is inserted relative to the
-directory of the current Org file, if the linked file is in the current
-directory or in a sub-directory of it, or if the path is written relative to
-the current directory using @samp{../}.  Otherwise an absolute path is used,
-if possible with @samp{~/} for your home directory.  You can force an
-absolute path with two @kbd{C-u} prefixes.
-@item C-c C-l @ @r{(with cursor on existing link)}
+接頭辞@kbd{C-u}を付けて@kbd{C-c
+C-l}が呼び出されたときは、ファイルへのリンクが挿入され、ファイル名の補完を利用することができます。リンクされたファイルがカレントディレクトリにあるときや、カレントディレクトリのサブディレクトリにあるとき、あるいはパスが@samp{../}を使って相対パスで書かれているときは、ファイルへのパスは、現在のOrg-modeファイルからの相対パスとして挿入されます。それ以外の場合は絶対パスが使われ、可能であれば、ホームディレクトリには@samp{~/}が使われます。2つの@kbd{C-u}を付けることによって、絶対パス表記を明確に指定することができます。
+@item C-c C-l @ @r{(カーソルがリンク上にある場合)}
 @c
-When the cursor is on an existing link, @kbd{C-c C-l} allows you to edit the
-link and description parts of the link.
-@cindex following links
+リンク上にカーソルがある場合、@kbd{C-c C-l}を実行すると、リンクと項目名を編集することができます。
+@cindex リンクをたどる
 @orgcmd{C-c C-o,org-open-at-point}
 @vindex org-file-apps
-Open link at point.  This will launch a web browser for URLs (using
-@command{browse-url-at-point}), run VM/MH-E/Wanderlust/Rmail/Gnus/BBDB for
-the corresponding links, and execute the command in a shell link.  When the
-cursor is on an internal link, this command runs the corresponding search.
-When the cursor is on a TAG list in a headline, it creates the corresponding
-TAGS view.  If the cursor is on a timestamp, it compiles the agenda for that
-date.  Furthermore, it will visit text and remote files in @samp{file:}
-links with Emacs and select a suitable application for local non-text
-files.  Classification of files is based on file extension only.  See option
-@code{org-file-apps}.  If you want to override the default application and
-visit the file with Emacs, use a @kbd{C-u} prefix.  If you want to avoid
-opening in Emacs, use a @kbd{C-u C-u} prefix.@* If the cursor is on a
-headline, but not on a link, offer all links in the headline and entry
-text.  @orgkey @key{RET}
+その場所にあるリンクを開きます。リンクがURLならば、(@command{browse-url-at-point}を使って)ウェブブラウザーを開きますし、それぞれ対応するリンクにより、VM/MH-E/Wanderlust/Rmail/Gnus/BBDBが起動し、シェルへのリンクの場合はコマンドを実行します。カーソルが内部リンク上にあるときは、対応する検索を行います。カーソルが見出しのタグ上にあるときは、対応するタグビューを作成します。カーソルがタイムスタンプ上にあるときは、その日のアジェンダを表示します。さらに、@samp{file:}リンクの場合、テキストファイルやリモートマシン上のファイルはEmacsで、非テキストファイルは適切なアプリケーションで、ファイルを開きます。ファイルの分類は、拡張子のみによって判断されます。@code{org-file-apps}を参照してください。もし、デフォルトのアプリケーションではなくEmacsでファイルを開きたい場合は、接頭辞@kbd{C-u}を付け、Emacsで開くことを避けたい場合は、接頭辞@kbd{C-u
+C-u}を付けてください。カーソルがリンクではない見出し上にあるときは、見出し上のすべてのリンクとエントリーテキストを表示します。@orgkey
+@key{RET}
 @vindex org-return-follows-link
 @c
-When @code{org-return-follows-link} is set, @kbd{@key{RET}} will also follow
-the link at point.
+@code{org-return-follows-link}が設定されているときは、@kbd{@key{RET}}もポイント上のリンクを開きます。
 @kindex mouse-2
 @kindex mouse-1
 @item mouse-2
 @itemx mouse-1
 @c
-On links, @kbd{mouse-2} will open the link just as @kbd{C-c C-o} would.
-Under Emacs 22 and later, @kbd{mouse-1} will also follow a link.
+リンク上では、@kbd{mouse-2}は@kbd{C-c C-o}と同様にリンクを開きます。Emacs
+22以降では、@kbd{mouse-1}もリンクを開きます。
 @kindex mouse-3
 @item mouse-3
 @vindex org-display-internal-link-with-indirect-buffer
 @c
-Like @kbd{mouse-2}, but force file links to be opened with Emacs, and
-internal links to be displayed in another window@footnote{See the variable
-@code{org-display-internal-link-with-indirect-buffer}}.  @orgcmd{C-c C-x
-C-v,org-toggle-inline-images}
-@cindex inlining images
-@cindex images, inlining
+@kbd{mouse-2}と同様にリンクを開きますが、ファイルのリンクを強制的にEmacsで開き、内部リンクは別のウインドウ@footnote{@code{org-display-internal-link-with-indirect-buffer}変数を参照してください。}で開きます。@orgcmd{C-c
+C-x C-v,org-toggle-inline-images}
+@cindex インライン画像
+@cindex 画像,インライン
 @vindex org-startup-with-inline-images
 @cindex @code{inlineimages}, STARTUP keyword
 @cindex @code{noinlineimages}, STARTUP keyword
-Toggle the inline display of linked images.  Normally this will only inline
-images that have no description part in the link, i.e.@: images that will
-also be inlined during export.  When called with a prefix argument, also
-display images that do have a link description.  You can ask for inline
-images to be displayed at startup by configuring the variable
-@code{org-startup-with-inline-images}@footnote{with corresponding
-@code{#+STARTUP} keywords @code{inlineimages} and @code{inlineimages}}.
-@orgcmd{C-c %,org-mark-ring-push}
-@cindex mark ring
+リンクされた画像のインライン表示をトグルします。通常これはリンクに項目名がない画像のみをインライン表示するものです。すなわち、エクスポート時にインラインになる画像のことです。@code{org-startup-with-inline-images}変数@footnote{対応する@code{#+STARTUP}@code{inlineimages}と@code{inlineimages}と共に。}を設定することにより、インライン画像を起動時に表示されることができます。@orgcmd{C-c
+%,org-mark-ring-push}
+@cindex マークリング
 @c
-Push the current position onto the mark ring, to be able to return
-easily. Commands following an internal link do this automatically.
-@orgcmd{C-c &,org-mark-ring-goto}
-@cindex links, returning to
+現在のポジションをマークリングに格納し、現在のポジションに簡単に戻ってこられるようにします。ファイル内部でのリンクをたどるときは、自動的にこれが行われます。@orgcmd{C-c
+&,org-mark-ring-goto}
+@cindex リンク,戻る
 @c
-Jump back to a recorded position.  A position is recorded by the commands
-following internal links, and by @kbd{C-c %}.  Using this command several
-times in direct succession moves through a ring of previously recorded
-positions.  @orgcmdkkcc{C-c C-x C-n,C-c C-x
-C-p,org-next-link,org-previous-link}
-@cindex links, finding next/previous
-Move forward/backward to the next link in the buffer.  At the limit of the
-buffer, the search fails once, and then wraps around.  The key bindings for
-this are really too long; you might want to bind this also to @kbd{C-n} and
-@kbd{C-p}
+記録されたポジションへ戻ります。ポジションは、内部リンクをたどるコマンドと@kbd{C-c
+%}によって記録されます。このコマンドを連続して何回か使うと、記録されたポジション間を移動することができます。@orgcmdkkcc{C-c C-x
+C-n,C-c C-x C-p,org-next-link,org-previous-link}
+@cindex リンク,次/前を探す
+バッファー内の前後のリンクへ移動します。バッファーの端では、移動は、いったんエラーになり、もう一度行うと回り込みます。このキーバインドはとても長いので、@kbd{C-n}と@kbd{C-p}に設定したいと考えるかもしれません。
 @lisp
 (add-hook 'org-load-hook
   (lambda ()
@@ -3332,9 +3211,7 @@ this are really too long; you might want to bind this also to @kbd{C-n} and
 @node Using links outside Org, Link abbreviations, Handling links, Hyperlinks
 @section Using links outside Org
 
-You can insert and follow links that have Org syntax not only in Org, but in
-any Emacs buffer.  For this, you should create two global commands, like
-this (please select suitable global keys yourself):
+Org-modeだけでなく、どのEmacsのバッファーでも、Org-mode構文を持つリンクを挿入し、たどることができます。このためには、次のような2つのグローバルコマンドを作成しなければなりません(自分に適したグローバルなキーを設定してください)。
 
 @lisp
 (global-set-key "\C-c L" 'org-insert-link-global)
@@ -3343,24 +3220,17 @@ this (please select suitable global keys yourself):
 
 @node Link abbreviations, Search options, Using links outside Org, Hyperlinks
 @section Link abbreviations
-@cindex link abbreviations
-@cindex abbreviation, links
+@cindex リンクの省略記法
+@cindex 省略記法,リンクの
 
-Long URLs can be cumbersome to type, and often many similar links are needed
-in a document.  For this you can use link abbreviations.  An abbreviated
-link looks like this
+長いURLをタイプするのは面倒ですが、往々にしてひとつの文章には似たようなリンクが数多く登場するものです。このような場合には、リンクの省略記法を使うことができます。省略記法されたリンクは次のようなものです。
 
 @example
-[[linkword:tag][description]]
-@end example
+[[リンク語句:タグ][項目名]]\n@end example
 
 @noindent
 @vindex org-link-abbrev-alist
-where the tag is optional.  The @i{linkword} must be a word, starting with a
-letter, followed by letters, numbers, @samp{-}, and @samp{_}.  Abbreviations
-are resolved according to the information in the variable
-@code{org-link-abbrev-alist} that relates the linkwords to replacement
-text.  Here is an example:
+タグはなくても構いません。@i{リンク語句}は文字で始まる語句、数字、@samp{-}、@samp{_}を使うことができます。省略記法は、リンク語句とリンクテキストを関連づける@code{org-link-abbrev-alist}変数の値にしたがって展開されます。以下に例を示します。
 
 @smalllisp
 @group
@@ -3373,21 +3243,14 @@ text.  Here is an example:
 @end group
 @end smalllisp
 
-If the replacement text contains the string @samp{%s}, it will be replaced
-with the tag.  Otherwise the tag will be appended to the string in order to
-create the link.  You may also specify a function that will be called with
-the tag as the only argument to create the link.
+置き換えるテキストに@samp{%s}が含まれている場合は、タグに置き換えられます。それ以外の場合は、タグはリンクを作成するために文字列に付け加えられます。リンクを作成する引数としてタグと一緒に呼び出される機能を指定したほうがよいかもしれません。
 
-With the above setting, you could link to a specific bug with
-@code{[[bugzilla:129]]}, search the web for @samp{OrgMode} with
-@code{[[google:OrgMode]]}, show the map location of the Free Software
-Foundation @code{[[gmap:51 Franklin Street, Boston]]} or of Carsten office
-@code{[[omap:Science Park 904, Amsterdam, The Netherlands]]} and find out
-what the Org author is doing besides Emacs hacking with
-@code{[[ads:Dominik,C]]}.
+上記の設定だと、@code{[[bugzilla:129]]}で特定のバグへリンクすることができ、@code{[[google:OrgMode]]}で@samp{OrgMode}をウェブ検索することができ、@code{[[gmap:51
+Franklin Street, Boston]]}でFree Software Foundationの、@code{[[omap:Science
+Park 904, Amsterdam, The
+Netherlands]]}でCarstenのオフィスの地図上の位置を表示することができ、@code{[[ads:Dominik,C]]}でOrg-modeの作者がEmacsのハッキングの他に何をしているかを見つけることができます。
 
-If you need special abbreviations just for a single Org buffer, you can
-define them in the file with
+ある特定のOrg-modeバッファーでだけリンクの省略記法を使いたい場合は、次のようにすることで定義できます。
 
 @cindex #+LINK
 @example
@@ -3403,21 +3266,15 @@ support for inserting such a link with @kbd{C-c C-l}.  Such a function
 should not accept any arguments, and return the full link with prefix.
 
 @node Search options, Custom searches, Link abbreviations, Hyperlinks
-@section Search options in file links
-@cindex search option in file links
-@cindex file links, searching
+@section ファイルリンクにおける検索オプション
+@cindex ファイルリンクにおける検索オプション
+@cindex ファイルリンク,検索
 
-File links can contain additional information to make Emacs jump to a
-particular location in the file when following a link.  This can be a line
-number or a search option after a double@footnote{For backward
-compatibility, line numbers can also follow a single colon.} colon. For
-example, when the command @kbd{C-c l} creates a link (@pxref{Handling
-links}) to a file, it encodes the words in the current line as a search
-string that can be used to find this line back later when following the link
-with @kbd{C-c C-o}.
+ファイルへのリンクには、ファイル内の特定の場所へジャンプするリンクを含ませることができます。これは、ダブルコロン@footnote{下方互換性のために、行番号はシングルコロンの後に置くこともできます。}の後に行番号や検索語句を置くことによって行います。たとえば、@kbd{C-c
+l}コマンドをタイプして、あるファイルへのリンクを作成する場合(@pxref{Handling
+links})、現在の行の言葉を検索語句としてリンクに含めることができ、@kbd{C-c C-o}コマンドで開くことができます。
 
-Here is the syntax of the different ways to attach a search to a file link,
-together with an explanation:
+説明と共に、あるファイルリンクへの検索語句を付加する様々な構文の方法を示します。
 
 @example
 [[file:~/code/main.c::255]]
@@ -3429,51 +3286,34 @@ together with an explanation:
 
 @table @code
 @item 255
-Jump to line 255.
+255行目へジャンプします。
 @item My Target
-Search for a link target @samp{<<My Target>>}, or do a text search for
-@samp{my target}, similar to the search in internal links, see @ref{Internal
-links}.  In HTML export (@pxref{HTML export}), such a file link will become
-an HTML reference to the corresponding named anchor in the linked file.
+内部リンクの検索と同様に、@samp{<<My Target>>}という名前のリンクターゲット、あるいは@samp{my
+target}というテキストを検索します(@ref{Internal links}を参照してください。)。HTMLエクスポート(@pxref{HTML
+export})では、このようなファイルへのリンクは、リンク先のファイル内にある、一致する名前のアンカーへのHTMLリンクになります。
 @item *My Target
-In an Org file, restrict search to headlines.
+Org-modeファイルの中で見出しの検索に限定されます。
 @item #my-custom-id
-Link to a heading with a @code{CUSTOM_ID} property
+@code{CUSTOM_ID}プロパティを持つ見出しへリンクします。
 @item /regexp/
 @c If the target file is a directory,
 @c @code{grep} will be used to search all files in the directory.
-Do a regular expression search for @code{regexp}.  This uses the Emacs
-command @code{occur} to list all matches in a separate window.  If the
-target file is in Org-mode, @code{org-occur} is used to create a sparse tree
-with the matches.
+@code{regexp}を正規表現検索します。これは、Emacsの@code{occur}コマンドを使って、一致するすべてを別ウインドウでリスト表示します。ターゲットがOrg-modeファイルならば、@code{org-occur}が使われ、一致した部分について、ツリーの抽出を行います。
 @end table
 
-As a degenerate case, a file link with an empty file name can be used to
-search the current file.  For example, @code{[[file:::find me]]} does a
-search for @samp{find me} in the current file, just as @samp{[[find me]]}
-would.
+特殊なケースとして、ファイル名が指定されていないファイルのリンクは、現在のファイルの検索となります。たとえば、@code{[[file:::find
+me]]}は、@samp{[[find me]]}と同様に、現在のファイルで@samp{find me}を検索します。
 
 @node Custom searches, , Search options, Hyperlinks
-@section Custom Searches
-@cindex custom search strings
-@cindex search strings, custom
+@section カスタム検索
+@cindex カスタム検索文字列
+@cindex 検索文字列,カスタム
 
-The default mechanism for creating search strings and for doing the actual
-search related to a file link may not work correctly in all cases.  For
-example, Bib@TeX{} database files have many entries like @samp{year="1993"}
-which would not result in good search strings, because the only unique
-identification for a Bib@TeX{} entry is the citation key.
+デフォルトの検索文字列作成のメカニズムと、実際のファイル検索のメカニズムは、すべての場合でうまく動作するとは限りません。たとえば、Bib@TeX{}データベースのファイルは、@samp{year=\"1993\"}のようなエントリーをたくさん有していますが、これは良い検索文字列であるとは言えません。なぜならば、Bib@TeX{}のエントリーでは、唯一の識別情報は引用キーだからです。
 
 @vindex org-create-file-search-functions
 @vindex org-execute-file-search-functions
-If you come across such a problem, you can write custom functions to set the
-right search string for a particular file type, and to do the search for the
-string in the file.  Using @code{add-hook}, these functions need to be added
-to the hook variables @code{org-create-file-search-functions} and
-@code{org-execute-file-search-functions}.  See the docstring for these
-variables for more information.  Org actually uses this mechanism for
-Bib@TeX{} database files, and you can use the corresponding code as an
-implementation example.  See the file @file{org-bibtex.el}.
+このような問題に直面した場合は、特定のファイルタイプに適した検索文字列を設定し、そのファイルで検索を行うカスタム関数を書くことができます。@code{add-hook}を使用して、これらの関数は、@code{org-create-file-search-functions}、@code{org-execute-file-search-functions}というフック変数に付け加えられる必要があります。これらの変数についてのより詳しい情報は、ドキュメント文字列を参照してください。Org-modeは、実際にこのメカニズムをBib@TeX{}データベースファイルに使用しており、該当するコードを実装のサンプルとして使うことができます。@file{org-bibtex.el}というファイルを参照してください。
 
 @node TODO Items, Tags, Hyperlinks, Top
 @chapter TODOアイテム
