@@ -852,37 +852,25 @@ views}を生成します．
 
 Org-modeは，Org-Babel環境を含んでいます．この環境はあなたに次のようなことを許可します．すなわち，ファイルの中に組み込まれたソースコードのブロックを動作させること，コードの評価，文書化，そして，文芸的プログラミングを容易にすることです．
 
-Org's automatic, context-sensitive table editor with spreadsheet
-capabilities can be integrated into any major mode by activating the minor
-Orgtbl mode.  Using a translation step, it can be used to maintain tables in
-arbitrary file types, for example in @LaTeX{}.  The structure editing and
-list creation capabilities can be used outside Org with the minor Orgstruct
-mode.
+表計算ソフトと互換性のあるOrg-modeの自動的で文脈依存な表編集機能は，マイナーモードのOrgtblを動かすことで，どのようなメジャーモードにも組み込むことができます．表を変換することで，たとえば@LaTeX{}の表のように，任意のファイルタイプで表を維持することができます．構造編集とリスト生成の機能は，マイナーモードのOrgstructによって，Org-modeの外部で利用することができます．
 
-Org keeps simple things simple.  When first fired up, it should feel like a
-straightforward, easy to use outliner.  Complexity is not imposed, but a
-large amount of functionality is available when you need it.  Org is a
-toolbox and can be used in different ways and for different ends, for
-example:
+Org-modeは，単純なものは単純なまま保持します．初めて起動したOrg-modeは，わかりやすく，簡単に使えるアウトライナーのように感じるはずです．Org-modeに複雑さはありませんが，数多くの機能が必要とする時に使えます．Org-modeはツールボックスであり，様々な方法で，そして様々な目的で利用できます．例えば，
 
 @example
-@r{@bullet{} an outline extension with visibility cycling and structure editing}
-@r{@bullet{} an ASCII system and table editor for taking structured notes}
-@r{@bullet{} a TODO list editor}
-@r{@bullet{} a full agenda and planner with deadlines and work scheduling}
+@r{@bullet{} 視覚的に表示が循環し，構造を編集するように拡張されたアウトライナー}
+@r{@bullet{} 構造化されたノートを取るためのアスキーシステムと表編集機能}
+@r{@bullet{} TODOリストの編集機能}
+@r{@bullet{} 締切日とスケジュールを含む完全なアジェンダと予定表}
 @pindex GTD, Getting Things Done
-@r{@bullet{} an environment in which to implement David Allen's GTD system}
-@r{@bullet{} a simple hypertext system, with HTML and @LaTeX{} export}
-@r{@bullet{} a publishing tool to create a set of interlinked webpages}
-@r{@bullet{} an environment for literate programming}
+@r{@bullet{} Devid Allen 氏のGTDシステムを実行するための環境}
+@r{@bullet{} シンプルなハイパーテキストシステム（HTMLと@LaTeX{}エクスポートを含む）}
+@r{@bullet{} 内部リンクで構成されたウェブページ群を生成するための公開ツール}
+@r{@bullet{} 文芸的プログラミングのための環境}
 @end example
 
 
 @cindex FAQ
-There is a website for Org which provides links to the newest version of
-Org, as well as additional information, frequently asked questions (FAQ),
-links to tutorials, etc@.  This page is located at
-@uref{http://orgmode.org}.
+最新のOrg-modeへのリンクを提供するOrg-modeのためのウェブページがあります．追加情報やFAQ，チュートリアルなどがあります．@uref{http://orgmode.org}で公開されています．
 
 @cindex print edition
 このマニュアルのバージョン7.3は@uref{http://www.network-theory.co.uk/org/manual/,
@@ -907,8 +895,7 @@ load-library RET org}を実行してから，@kbd{M-x org-version}を実行し�
 @end example
 
 @noindent
-If you plan to use code from the @file{contrib} subdirectory, do a similar
-step for this directory:
+もし@file{contrib}サブディレクトリのコードを使うのならば，このディレクトリについても同様のステップを実行します．
 
 @example
 (setq load-path (cons "~/path/to/orgdir/contrib/lisp" load-path))
@@ -921,56 +908,47 @@ make
 @end example
 
 @noindent If you are running Org from the distribution directory, this is
-all.  If you want to install Org into the system directories, use (as
-administrator)
+これですべてです．もしOrg-modeをシステムディレクトリにインストールしたい場合には，管理者権限で次のコマンドを使います．
 
 @example
 make install
 @end example
 
-Installing Info files is system dependent, because of differences in the
-@file{install-info} program.  In Debian it copies the info files into the
-correct directory and modifies the info directory file.  In many other
-systems, the files need to be copied to the correct directory separately,
-and @file{install-info} then only modifies the directory file.  Check your
-system documentation to find out which of the following commands you need:
+INFOファイルのインストールは，システムに依存します．これは，@file{install-info}プログラムにおける違いに原因があります．Debianであれば，INFOファイルはカレントディレクトリにインストールされ，INFO
+directory
+ファイルを変更します．その他の多くのシステムでは，それぞれのファイルは，別々に正しいディレクトリにコピーされる必要があります．そして，@file{install-info}がディレクトリファイルだけを修正します．次のコマンドのうち必要なものをシステムの文書を参考に調べてください．
 
 @example
 make install-info
 make install-info-debian
 @end example
 
-Then add the following line to @file{.emacs}.  It is needed so that Emacs
-can autoload functions that are located in files not immediately loaded when
-Org-mode starts.
+次に，以下の一行を@file{.emacs}に追加します．これはEmacsが，Org-modeが開始する時には即座に読み込まれないファイルに含まれる関数を自動的に読み込めるようにするために必要です．
 @lisp
 (require 'org-install)
 @end lisp
 
-Do not forget to activate Org as described in the following section.
+次節の解説ようにOrg-modeをアクティベーションすることを忘れないでください．
 @page
 
 @node Activation, Feedback, Installation, Introduction
 @section Activation
 @cindex activation
 @cindex autoload
-@cindex global key bindings
-@cindex key bindings, global
+@cindex グローバルなキーバインド
+@cindex キーバインド（グローバル）
 
-To make sure files with extension @file{.org} use Org mode, add the
-following line to your @file{.emacs} file.
+拡張子が@file{.org}のファイルがOrg-modeを利用することを確実にするために，次の行を@file{.emacs}に追加します．
 @lisp
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 @end lisp
 @noindent Org mode buffers need font-lock to be turned on - this is the
-default in Emacs@footnote{If you don't use font-lock globally, turn it on in
-Org buffer with @code{(add-hook 'org-mode-hook 'turn-on-font-lock)}}.
+これはEmacsで標準の設定です@footnote{もしグローバルにfont-lockを使わない場合は，@code{(add-hook
+'org-mode-hook 'turn-on-font-lock)}を使いOrg-modeのバッファについて有効化してください．}．
 
-The four Org commands @command{org-store-link}, @command{org-capture},
-@command{org-agenda}, and @command{org-iswitchb} should be accessible
-through global keys (i.e.@: anywhere in Emacs, not just in Org buffers).
-Here are suggested bindings for these keys, please modify the keys to your
-own liking.
+Org-modeの4つのコマンド（@command{org-store-link}, @command{org-capture},
+@command{org-agenda},
+@command{org-iswitchb}）は，グローバルキーを割り当てて使いやすくするべきでしょう．言い換えれば，Org-modeのバッファだけではなく，Emcasでいつでも使えるようにします．これらのキーバインドとして以下を割り当てることをお勧めします．自分の環境に応じて適当にキーを変更してください．
 @lisp
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
@@ -978,9 +956,8 @@ own liking.
 (global-set-key "\C-cb" 'org-iswitchb)
 @end lisp
 
-@cindex Org-mode, turning on
-With this setup, all files with extension @samp{.org} will be put into
-Org-mode.  As an alternative, make the first line of a file look like this:
+@cindex Org-mode（利用開始）
+この設定をすると，拡張子が@samp{.org}のファイルは，Org-modeに設定されます．別の方法として，ファイルの一行目に次のような一文を追加することでも，Org-modeに設定できます．
 
 @example
 MY PROJECTS    -*- mode: org; -*-
@@ -988,123 +965,85 @@ MY PROJECTS    -*- mode: org; -*-
 
 @vindex org-insert-mode-line-in-empty-file
 @noindent which will select Org-mode for this buffer no matter what
-the file's name is.  See also the variable
-@code{org-insert-mode-line-in-empty-file}.
+（nonintent問題箇所）変数@code{org-insert-mode-line-in-empty-file}も確認してください．
 
-Many commands in Org work on the region if the region is @i{active}.  To
-make use of this, you need to have @code{transient-mark-mode}
-(@code{zmacs-regions} in XEmacs) turned on.  In Emacs 23 this is the
-default, in Emacs 22 you need to do this yourself with
+Org-modeの多くのコマンドは，リージョンが@i{active}な場合に動作します．アクティブなリージョンをハイライトするためには，@code{transient-mark-mode}（XEmacsでは@code{zmacs-regions}）を有効にする必要があります．Emacs23では標準で有効になていますが，Emacs22では次のコマンドを使う必要があります．
 @lisp
 (transient-mark-mode 1)
 @end lisp
 @noindent If you do not like @code{transient-mark-mode}, you can create an
-active region by using the mouse to select a region, or pressing
-@kbd{C-@key{SPC}} twice before moving the cursor.
+（nointent問題箇所）リージョンを選択するためにマウスを利用できます．もしくは，カーソルを移動する前に@kbd{C-@key{SPC}}を二回押します．
 
 @node Feedback, Conventions, Activation, Introduction
 @section Feedback
-@cindex feedback
-@cindex bug reports
-@cindex maintainer
-@cindex author
+@cindex フィードバック
+@cindex バグレポート
+@cindex メンテナー
+@cindex 著者
 
-If you find problems with Org, or if you have questions, remarks, or ideas
-about it, please mail to the Org mailing list
-@email{emacs-orgmode@@gnu.org}.  If you are not a member of the mailing
-list, your mail will be passed to the list after a moderator has approved
-it@footnote{Please consider subscribing to the mailing list, in order to
-minimize the work the mailing list moderators have to do.}.
+Org-modeで問題を発見した場合，あるいは質問や意見，アイディアがある場合には，Org-modeのメーリングリスト@email{emacs-orgmode@@gnu.org}へメールしてください．あなたがメーリングリストのメンバーでないと，メールは管理者が承認した後にメーリングリストへ転送されます@footnote{メーリングリストの管理者の仕事量を最小化するために，ぜひメーリングリストの購読を検討してください．}．
 
-For bug reports, please first try to reproduce the bug with the latest
-version of Org available---if you are running an outdated version, it is
-quite possible that the bug has been fixed already.  If the bug persists,
-prepare a report and provide as much information as possible, including the
-version information of Emacs (@kbd{M-x emacs-version @key{RET}}) and Org
-(@kbd{M-x org-version @key{RET}}), as well as the Org related setup in
-@file{.emacs}.  The easiest way to do this is to use the command
+バグをレポートする時は，まず始めに最新バージョンのOrg-modeを利用して該当のバグが再現されるか試してください．古いバージョンを利用している場合，すでにそのバグが修正されている可能性が高いです．バグの再現性が確認できたならば，レポートを準備して可能な限り多くの情報を提供してください．具体的には，Emacsのバージョン情報（@kbd{M-x
+emacs-version @key{RET}}）とOrg-modeのバージョン情報（@kbd{M-x org-version
+@key{RET}}），また，Org-modeに関連する@file{.emacs}の設定をバグレポートに記載してください．このようなバグレポートの形式を守るための最も簡単な方法は，次のコマンドを利用します．
 @example
 @kbd{M-x org-submit-bug-report}
 @end example
 @noindent which will put all this information into an Emacs mail buffer so
-that you only need to add your description.  If you re not sending the Email
-from within Emacs, please copy and paste the content into your Email
-program.
+（nointent問題箇所）あなたがバグについての説明を書き加えればよいだけの状態．Emacsを利用してメールを送信しない場合は，テンプレートの内容をメールクライアントにコピー＆ペーストしてください．
 
-If an error occurs, a backtrace can be very useful (see below on how to
-create one).  Often a small example file helps, along with clear information
-about:
+もしもエラーが発生したら，バックトレースが非常に便利です（どのように作るのかは以下を参照してください）．しばしば次の明瞭な情報を含む小さな凡例ファイルが手助けになります．
 
 @enumerate
-@item What exactly did you do?
-@item What did you expect to happen?
-@item What happened instead?
+@item 正確に何を実行したのか
+@item 何が起きることを期待していたのか
+@item 期待と異なり何が起こったのか
 @end enumerate
 @noindent Thank you for helping to improve this program.
 
-@subsubheading How to create a useful backtrace
+@subsubheading 便利なバックトレースを生成する方法
 
-@cindex backtrace of an error
-If working with Org produces an error with a message you don't understand,
-you may have hit a bug.  The best way to report this is by providing, in
-addition to what was mentioned above, a @emph{backtrace}.  This is
-information from the built-in debugger about where and how the error
-occurred.  Here is how to produce a useful backtrace:
+@cindex エラーのバックトレース
+Org-modeを利用している時に，理解できないメッセージのエラーが発生したら，バグを発見した可能性があります．エラーを報告する最良の方法は，すでに説明したバグレポートの書式に加えて，@emph{backtrace}を提供することです．バックトレースは，ビルトインされたデバッガーによるエラーの発生箇所とどのように発生したかについての情報です．以下に，有用なバックトレースを生成する手順を示します．
 
 @enumerate
 @item
-Reload uncompiled versions of all Org-mode Lisp files.  The backtrace
-contains much more information if it is produced with uncompiled code.  To
-do this, use
+コンパイルされていないOrg-modeのLispファイル群を再読み込みする．バックトレースは，コンパイルされていないコードを利用して生成したバックトレースは，より多くの情報を含みます．これを実行するためには，次のコマンドを実行します．
 @example
 C-u M-x org-reload RET
 @end example
 @noindent
-or select @code{Org -> Refresh/Reload -> Reload Org uncompiled} from the
-menu.
+もしくは，@code{Org -> Refresh/Reload -> Reload Org uncompiled}をメニューから選択します．
 @item
-Go to the @code{Options} menu and select @code{Enter Debugger on Error}
-(XEmacs has this option in the @code{Troubleshooting} sub-menu).
+オプションメニュー@code{Options}から，@code{Enter Debugger on
+Error}（XEmacsでは，このオプションは@code{Troubleshooting}サブメニューにあります）を選択する．
 @item
-Do whatever you have to do to hit the error.  Don't forget to document the
-steps you take.
+エラーを再現するために必要な操作を行なってください．実行した操作を忘れずにメモしておいてください．
 @item
-When you hit the error, a @file{*Backtrace*} buffer will appear on the
-screen.  Save this buffer to a file (for example using @kbd{C-x C-w}) and
-attach it to your bug report.
+エラーが再現されると，@file{*Backtrace*}バッファが画面上に表示されます．このバッファを別のファイルとして保存し（例えば@kbd{C-x
+C-w}を使って），バグレポートに添付します．
 @end enumerate
 
 @node Conventions, , Feedback, Introduction
-@section Typesetting conventions used in this manual
+@section 本マニュアルで使われる植字の置き換え
 
-Org uses three types of keywords: TODO keywords, tags, and property names.
-In this manual we use the following conventions:
+Org-modeは，3種類のキーワードを使います．TODOキーワード，タグ，プロパティです．このマニュアルでは次のように植字を使い分けます．
 
 @table @code
 @item TODO
 @itemx WAITING
-TODO keywords are written with all capitals, even if they are user-defined.
+TODOキーワードは，すべて大文字で記述されます．ユーザが定義する場合も同様です．
 @item boss
 @itemx ARCHIVE
-User-defined tags are written in lowercase; built-in tags with special
-meaning are written with all capitals.
+ユーザ定義のタグは，小文字で記述されます．特別な意味を持つビルトインされたタグは，すべて大文字で記述されます．
 @item Release
 @itemx PRIORITY
-User-defined properties are capitalized; built-in properties with special
-meaning are written with all capitals.
+ユーザ定義のプロパティは，大文字で始めて他を小文字で記述されます．特別な意味を持つビルトインされたプロパティは，すべて大文字で記述されます．
 @end table
 
-The manual lists both the keys and the corresponding commands for accessing
-functionality.  Org mode often uses the same key for different functions,
-depending on context.  The command that is bound to such keys has a generic
-name, like @code{org-metaright}.  In the manual we will, wherever possible,
-give the function that is internally called by the generic command.  For
-example, in the chapter on document structure, @kbd{M-@key{right}} will be
-listed to call @code{org-do-demote}, while in the chapter on tables, it will
-be listed to call org-table-move-column-right.
+このマニュアルでは，Org-modeの機能を利用するためのキーバインドと，対応するコマンドの両方を表記します．Org-modeは，しばしば異なる関数に対して同じキーバインドを使います（これはコンテクストに依存しています）．そのようなキーバインドが割り振られたコマンドには，@code{org-metaright}のような一般的な名称があります．このマニュアルでは，可能な限り一般的なコマンドを用いて内部的に呼び出される関数の名称を提示します．例えば，ドキュメントの構造についての章では，@kbd{M-@key{right}}は@code{org-do-demote}を呼び出すように表記します．一方で，テーブルについての章では，@code{org-table-move-column-right}を呼び出すように表記します．
 
-If you prefer, you can compile the manual without the command names by
-unsetting the flag @code{cmdnames} in @file{org.texi}.
+もし望むならば，@file{org.texi}にある@code{cmdnames}フラグの設定を外すことで，コマンドの名称を表示しないようにマニュアルをコンパイルすることができます．
 
 @node Document Structure, Tables, Introduction, Top
 @chapter ドキュメントの構造
@@ -2977,8 +2916,8 @@ Org-modeはURLのようなリンクを認識して、クリック可能なリン
 [[リンク][項目名]]       @r{または}           [[リンク]]\n@end example
 
 @noindent
-べての括弧を入力し終えてリンクが完成すると、Org-modeは、@samp{[[リンク][項目名]]}のかわりに@samp{項目名}を、@samp{[[リンク]]}のかわりに@samp{リンク}を表示します。リンクは@code{org-link}で設定されたフェイスでハイライトされます。なおデフォルトのフェイスはアンダーラインになっています。表示されている部分については、直接編集することができます。項目名がない場合はリンクの編集になり、項目名がある場合は項目名の編集になることに注意してください。表示されていないリンクを編集するには、該当するリンクの上で@kbd{C-c
-C-l}を実行します。
+すべての括弧を入力し終えてリンクが完成すると、Org-modeは、[[リンク][項目名]]のかわりに「項目名」を、[[リンク]]のかわりに「リンク」を表示します。リンクは「org-link」で設定されたフェイスでハイライトされます。なおデフォルトのフェイスはアンダーラインになっています。表示されている部分については、直接編集することができます。項目名がない場合はリンクの編集になり、項目名がある場合は項目名の編集になることに注意してください。表示されていないリンクを編集するには、該当するリンクの上で「C-c
+C-l」を実行します。
 
 表示されたテキストの始端もしくは終端にカーソルを置いて@key{BACKSPACE}を押すと、その場所にある（表示されていない）括弧を取り除くことができます。これによってリンクは不完全なものになり、リンクの内部は再びプレーンなテキストとして表示されます。取り除かれた括弧を再度挿入することでリンクは再び内部化され隠されます。すべてのリンクの内部的な構造を表示するには、@code{Org->Hyperlinks->Literal
 links}というメニューを使用します。
@@ -3049,42 +2988,42 @@ C-c}を実行します。
 Org-modeは次のようなリンクをサポートしています。ファイル、webサイト、ネットニュース、emailのメッセージ、BBDBデータベースの項目、IRCの会話とログなど。外部リンクはURLを記載するような方法でリンクします。それらはコロンの前に短い定義用の文字列をつけて表記します。コロンのあとに空白をとってはいけません。以下に例とそれぞれのリンクのタイプの一覧を示します。
 
 @example
-http://www.astro.uva.nl/~dominik          @r{on the web}
-doi:10.1000/182                           @r{DOI for an electronic resource}
-file:/home/dominik/images/jupiter.jpg     @r{file, absolute path}
-/home/dominik/images/jupiter.jpg          @r{same as above}
-file:papers/last.pdf                      @r{file, relative path}
+http://www.astro.uva.nl/~dominik          @r{ウェブへのリンク}
+doi:10.1000/182                           @r{電子文献のためのDOI}
+file:/home/dominik/images/jupiter.jpg     @r{ファイルへの絶対パス}
+/home/dominik/images/jupiter.jpg          @r{上に同じ}
+file:papers/last.pdf                      @r{ファイルへの相対パス}
 ./papers/last.pdf                         @r{same as above}
-file:/myself@@some.where:papers/last.pdf   @r{file, path on remote machine}
+file:/myself@@some.where:papers/last.pdf   @r{リモートマシン上のファイルへのパス}
 /myself@@some.where:papers/last.pdf        @r{same as above}
-file:sometextfile::NNN                    @r{file with line number to jump to}
-file:projects.org                         @r{another Org file}
-file:projects.org::some words             @r{text search in Org file}
-file:projects.org::*task title            @r{heading search in Org file}
-docview:papers/last.pdf::NNN              @r{open file in doc-view mode at page NNN}
-id:B7423F4D-2E8A-471B-8810-C40F074717E9   @r{Link to heading by ID}
-news:comp.emacs                           @r{Usenet link}
-mailto:adent@@galaxy.net                   @r{Mail link}
-vm:folder                                 @r{VM folder link}
-vm:folder#id                              @r{VM message link}
-vm://myself@@some.where.org/folder#id      @r{VM on remote machine}
-wl:folder                                 @r{WANDERLUST folder link}
-wl:folder#id                              @r{WANDERLUST message link}
-mhe:folder                                @r{MH-E folder link}
-mhe:folder#id                             @r{MH-E message link}
-rmail:folder                              @r{RMAIL folder link}
-rmail:folder#id                           @r{RMAIL message link}
-gnus:group                                @r{Gnus group link}
-gnus:group#id                             @r{Gnus article link}
-bbdb:R.*Stallman                          @r{BBDB link (with regexp)}
-irc:/irc.com/#emacs/bob                   @r{IRC link}
-info:org#External%20links                 @r{Info node link (with encoded space)}
-shell:ls *.org                            @r{A shell command}
-elisp:org-agenda                          @r{Interactive Elisp command}
-elisp:(find-file-other-frame "Elisp.org") @r{Elisp form to evaluate}
+file:sometextfile::NNN                    @r{ジャンプ先の行番号付きファイル}
+file:projects.org                         @r{他のOrg-modeファイルへのリンク}
+file:projects.org::some words             @r{Org-modeファイル内でのテキスト検索}
+file:projects.org::*task title            @r{Org-modeファイル内での見出し検索}
+docview:papers/last.pdf::NNN              @r{ファイルをページ指定して開く}
+id:B7423F4D-2E8A-471B-8810-C40F074717E9   @r{IDのついた見出しへのリンク}
+news:comp.emacs                           @r{Usenetへのリンク}
+mailto:adent@@galaxy.net                   @r{メールリンク}
+vm:folder                                 @r{VMのフォルダーへのリンク}
+vm:folder#id                              @r{VMのメールメッセージへのリンク}
+vm://myself@@some.where.org/folder#id      @r{リモートマシン上のVMのメールメッセージへのリンク}
+wl:folder                                 @r{WANDERLUSTのフォルダーへのリンク}
+wl:folder#id                              @r{WANDERLUSTのメールメッセージへのリンク}
+mhe:folder                                @r{MH-Eのフォルダーへのリンク}
+mhe:folder#id                             @r{MH-Eのメールメッセージへのリンク}
+rmail:folder                              @r{RMAILのフォルダーへのリンク}
+rmail:folder#id                           @r{RMAILのメールメッセージへのリンク}
+gnus:group                                @r{Gnusグループへのリンク}
+gnus:group#id                             @r{Gnusの記事へのリンク}
+bbdb:R.*Stallman                          @r{BBDBへのリンク(正規表現)}
+irc:/irc.com/#emacs/bob                   @r{IRCへのリンク}
+info:org#External%20links                 @r{Infoノードへのリンク(空白をエンコード)}
+shell:ls *.org                            @r{シェルコマンドへのリンク}
+elisp:org-agenda                          @r{Elispコマンドへのリンク}
+elisp:(find-file-other-frame "Elisp.org") @r{Elispフォームを評価}
 @end example
 
-For customizing Org to add new link types @ref{Adding hyperlink types}.
+Org-modeをカスタマイズして、新しいリンクのタイプを付け加えるには、@ref{Adding hyperlink types}を参照してください。
 
 リンクは二重括弧で囲んだ方が良いでしょう。URLの代わりにテキストを表示することもできます(@pxref{Link
 format})。たとえば、以下のように。
