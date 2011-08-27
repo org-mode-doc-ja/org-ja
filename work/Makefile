@@ -36,6 +36,7 @@ $(TEXI_JA): $(PO)
 
 $(INFO): $(TEXI_JA)
 	makeinfo --no-split $(TEXI_JA) -o $(INFO) --fill-column=76
+	makeinfo --no-split --html $(TEXI_JA) -o $(INFO).html --fill-column=76
 
 $(POT): $(TEXI)
 	$(GETTEXTIZE) -f texinfo -m $(TEXI) -M UTF-8 -p $(POT)
