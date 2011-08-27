@@ -31,8 +31,8 @@ $(TARGET): $(TEXI) $(PO) $(TEXI_JA) texinfo.tex
 $(TEXI_JA): $(PO)
 	$(TRANSLATE) -f texinfo -m $(TEXI) -M UTF-8 -p $(PO) -l $(TEXI_JA) -k 0  -w 1000
 	patch -p0 < org-ja.texi.patch
-	$(PERL) $(TEXIFMT) > texifmt.log
-	patch -p0 < temp-texi.patch
+	$(PERL) $(TEXIFMT) >& texifmt.log
+#	patch -p0 < temp-texi.patch
 
 $(INFO): $(TEXI_JA)
 	makeinfo --no-split $(TEXI_JA) -o $(INFO) --fill-column=76
