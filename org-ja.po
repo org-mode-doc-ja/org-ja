@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-08-25 14:12+0900\n"
+"PO-Revision-Date: 2011-08-31 09:56+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -26873,41 +26873,41 @@ msgstr "カーソルは．動的なブロックの@code{#+BEGIN}行上にある�
 #: org.texi:13289
 #, no-wrap
 msgid "A cleaner outline view"
-msgstr ""
+msgstr "より見やすいアウトラインビュー"
 
 #+glossary: stars ( 「＊」 )
 #. type: cindex
 #: org.texi:13290
 #, no-wrap
 msgid "hiding leading stars"
-msgstr ""
+msgstr "先頭の「*」を隠す"
 
 #+glossary: dynamic ( 動的な )
 #. type: cindex
 #: org.texi:13291
 #, no-wrap
 msgid "dynamic indentation"
-msgstr ""
+msgstr "動的なインデント"
 
 #+glossary: outline ( アウトライン|outline )
 #. type: cindex
 #: org.texi:13292
 #, no-wrap
 msgid "odd-levels-only outlines"
-msgstr ""
+msgstr "奇数レベルのみのアウトライン"
 
 #+glossary: outline ( アウトライン|outline ) / view ( ビュー )
 #. type: cindex
 #: org.texi:13293
 #, no-wrap
 msgid "clean outline view"
-msgstr ""
+msgstr "アウトラインビューを見やすくする"
 
 #+glossary: document ( ドキュメント|文書 ) / heading ( 見出し ) / headline ( 見出し ) / org ( Org-mode ) / outline ( アウトライン|outline ) / section ( セクション ) / stars ( 「＊」 ) / structure ( 構造 ) / text ( テキスト|文章 ) / writing ( 書き出す )
 #. type: Plain text
 #: org.texi:13300
 msgid "Some people find it noisy and distracting that the Org headlines start with a potentially large number of stars, and that text below the headlines is not indented.  While this is no problem when writing a @emph{book-like} document where the outline headings are really section headings, in a more @emph{list-oriented} outline, indented structure is a lot cleaner:"
-msgstr ""
+msgstr "多くの人々はOrg-modeの見出しについている「*」の数が増えたときや見出しの下のテキストがインデントされていないことを不快に感じます．アウトラインの見出しが本当のセクションの見出しの場所で@emph{本のように}文書を書く時，これは問題ではありませんが，さらに@emph{正しい位置のリスト}アウトライン中では，インデント構造はより見やすくなります．"
 
 #+glossary: headline ( 見出し ) / level ( レベル|階層 ) / text ( テキスト|文章 )
 #. type: group
@@ -26922,30 +26922,37 @@ msgid ""
 "more text                        |          more text\n"
 "* Another top level headline     |    * Another top level headline\n"
 msgstr ""
+"* Top level headline             |    * Top level headline\n"
+"** Second level                  |      * Second level\n"
+"*** 3rd level                    |        * 3rd level\n"
+"some text                        |          some text\n"
+"*** 3rd level                    |        * 3rd level\n"
+"more text                        |          more text\n"
+"* Another top level headline     |    * Another top level headline\n"
 
 #+glossary: minor mode ( マイナーモード ) / customizing ( カスタマイズする ) / display ( ディスプレイ|表示 ) / file ( ファイル ) / headline ( 見出し ) / information ( 情報 ) / invisible ( 非表示 ) / level ( レベル|階層 ) / line ( 行|ライン|線 ) / org ( Org-mode ) / property ( プロパティ ) / setting ( 設定 ) / stars ( 「＊」 ) / time ( 時刻|時間|回 ) / variable ( 変数 ) / version ( バージョン ) / view ( ビュー ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:13332
 msgid "If you are using at least Emacs 23.2@footnote{Emacs 23.1 can actually crash with @code{org-indent-mode}} and version 6.29 of Org, this kind of view can be achieved dynamically at display time using @code{org-indent-mode}.  In this minor mode, all lines are prefixed for display with the necessary amount of space@footnote{@code{org-indent-mode} also sets the @code{wrap-prefix} property, such that @code{visual-line-mode} (or purely setting @code{word-wrap}) wraps long lines (including headlines) correctly indented.  }.  Also headlines are prefixed with additional stars, so that the amount of indentation shifts by two@footnote{See the variable @code{org-indent-indentation-per-level}.} spaces per level.  All headline stars but the last one are made invisible using the @code{org-hide} face@footnote{Turning on @code{org-indent-mode} sets @code{org-hide-leading-stars} to @code{t} and @code{org-adapt-indentation} to @code{nil}.} - see below under @samp{2.} for more information on how this works.  You can turn on @code{org-indent-mode} for all files by customizing the variable @code{org-startup-indented}, or you can turn it on for individual files using"
-msgstr ""
+msgstr "もしあなたが少なくともEmacs23.2@footnote{Emacs23.1は@code{org-indent-mode}がクラッシュします}とOrg-modeのバージョン6.29を使っているのなら，この主のビューは@code{org-indent-mode}を使って表示する時間を動的に実現できます．このマイナーモードでは，全ての行は必要なスペース@footnote{@code{org-indent-mode}は@code{visual-line-mode}(または純粋に@code{word-wrap}をセットします)が(見出しを含めた)長い行を正しいインデントでラップするように@code{wrap-prefix}プロパティをセットします}が前について表示されます．見出しはまた追加の「*」が前に置かれていて，それで1レベルにつき2@footnote{@code{org-indent-indentation-per-level}変数を参照してください}スペースシフトしてインデントします．全ての見出しの「*」の最後の1個だけは@code{org-hide}フェイス@footnote{@code{org-indent-mode}を有効にすると，@code{org-hide-leading-stars}に@code{t}が，@code{org-adapt-indentation-hige}に@code{nil}がセットされます}を使うことで見えなくなります - これについてのさらなる情報は@samp{2.}を見てください．あなたは@code{org-indent-mode}を有効にするか@code{org-startup-indented}変数で全てのファイルについて設定するか，ファイル毎に独立して設定することができます．"
 
 #. type: example
 #: org.texi:13335
 #, no-wrap
 msgid "#+STARTUP: indent\n"
-msgstr ""
+msgstr "#+STARTUP: indent\n"
 
 #+glossary: plain text ( プレーンテキスト|単純なテキスト ) / characters ( 文字 ) / display ( ディスプレイ|表示 ) / file ( ファイル ) / org ( Org-mode ) / version ( バージョン )
 #. type: Plain text
 #: org.texi:13341
 msgid "If you want a similar effect in an earlier version of Emacs and/or Org, or if you want the indentation to be hard space characters so that the plain text file looks as similar as possible to the Emacs display, Org supports you in the following way:"
-msgstr ""
+msgstr "もしあなたがEmacs/Org-modeの古いバージョンでも同じような効果を得たいのであれば，またはもしあなたがプレーンテキストの見た目がEmacsでの表示と同様になるようにスペース文字でインデントしたいのであれば，Org-modeは以下の方法であなたをサポートします:"
 
 #+glossary: headline ( 見出し ) / line ( 行|ライン|線 ) / text ( テキスト|文章 )
 #. type: enumerate
 #: org.texi:13347
 msgid "@emph{Indentation of text below headlines}@* You may indent text below each headline to make the left boundary line up with the headline, like"
-msgstr ""
+msgstr "@emph{見出しの下のテキストのインデント}@* 以下のように，あなたは各見出しの下のテキストを見出しと同じ位置にインデントできます．"
 
 #+glossary: text ( テキスト|文章 )
 #. type: example
@@ -26955,18 +26962,20 @@ msgid ""
 "*** 3rd level\n"
 "    more text, now indented\n"
 msgstr ""
+"*** 3rd level\n"
+"    more text, now indented\n"
 
 #. type: vindex
 #: org.texi:13353
 #, no-wrap
 msgid "org-adapt-indentation"
-msgstr ""
+msgstr "org-adapt-indentation"
 
 #+glossary: line ( 行|ライン|線 ) / org ( Org-mode ) / structure ( 構造 ) / variable ( 変数 )
 #. type: enumerate
 #: org.texi:13357
 msgid "Org supports this with paragraph filling, line wrapping, and structure editing@footnote{See also the variable @code{org-adapt-indentation}.}, preserving or adapting the indentation as appropriate."
-msgstr ""
+msgstr "Org-modeは段落詰め，行の折り返し，構造の編集，適切なインデントの保存と適合と同時にこれをサポートします．"
 
 #+glossary: display ( ディスプレイ|表示 ) / global ( グローバルな ) / invisible ( 非表示 ) / modify ( 修正 ) / stars ( 「＊」 ) / variable ( 変数 )
 #. type: enumerate
@@ -26981,12 +26990,14 @@ msgid ""
 "#+STARTUP: hidestars\n"
 "#+STARTUP: showstars\n"
 msgstr ""
+"#+STARTUP: hidestars\n"
+"#+STARTUP: showstars\n"
 
 #+glossary: stars ( 「＊」 ) / tree ( ツリー )
 #. type: enumerate
 #: org.texi:13371
 msgid "With hidden stars, the tree becomes:"
-msgstr ""
+msgstr "「*」を隠した状態だと，ツリーはこうなります:"
 
 #+glossary: level ( レベル|階層 )
 #. type: group
@@ -26998,24 +27009,28 @@ msgid ""
 "  * 3rd level\n"
 "  ...\n"
 msgstr ""
+"* Top level headline\n"
+" * Second level\n"
+"  * 3rd level\n"
+"  ...\n"
 
 #. type: vindex
 #: org.texi:13382
 #, no-wrap
 msgid "org-hide @r{(face)}"
-msgstr ""
+msgstr "org-hide @r{(face)}"
 
 #+glossary: customize ( カスタマイズ ) / example ( 例 ) / font ( フォント ) / invisible ( 非表示 ) / stars ( 「＊」 )
 #. type: enumerate
 #: org.texi:13389
 msgid "The leading stars are not truly replaced by whitespace, they are only fontified with the face @code{org-hide} that uses the background color as font color.  If you are not using either white or black background, you may have to customize this face to get the wanted effect.  Another possibility is to set this font such that the extra stars are @i{almost} invisible, for example using the color @code{grey90} on a white background."
-msgstr ""
+msgstr "先頭の「*」は本当に空白スペースに置き換えられたわけではなく，それらは文字色を背景色にする@code{org-hide}フェイスによって見えているだけです．もしあなたが白か黒の背景色を使っていないのであれば，あなたはこのフェイスを必要な効果が得られるようにカスタマイズする必要があるでしょう．別の方法として，このフォントは余分な「*」が色を用いて，例えば，白い背景色の上に@code{gray90}を使うことで目に見えなくするというものがあります．"
 
 #+glossary: structure editing ( 構造の編集 ) / cleaner ( より見やすい ) / command ( コマンド ) / export ( エクスポート ) / level ( レベル|階層 ) / outline ( アウトライン|outline ) / property ( プロパティ ) / search ( 検索 ) / section ( セクション ) / stars ( 「＊」 ) / variable ( 変数 ) / view ( ビュー )
 #. type: enumerate
 #: org.texi:13400
 msgid "Things become cleaner still if you skip all the even levels and use only odd levels 1, 3, 5..., effectively adding two stars to go from one outline level to the next@footnote{When you need to specify a level for a property search or refile targets, @samp{LEVEL=2} will correspond to 3 stars, etc@.}.  In this way we get the outline view shown at the beginning of this section.  In order to make the structure editing and export commands handle this convention correctly, configure the variable @code{org-odd-levels-only}, or set this on a per-file basis with one of the following lines:"
-msgstr ""
+msgstr " あなたが全ての偶数レベルをスキップし，1，3，5といった奇数レベルのみを使い，効果的にある見出しレベルから次@footnote{あなたがプロパティの検索やリファイルの対象のためにレベルを指定する必要がある時，@samp{LEVEL=2}は3つの「*」などにも対応します}に行くために2つの「*」を追加するのであれば，物事はより見やすくなります．この方法で，私達はこのセクションの冒頭で見られるアウトラインビューを得ます．構造の編集とこの慣例を正しく操作するエクスポートコマンドを作成すうために，@code{org-odd-levels-only}変数を設定するか，各ファイルに以下のような行を追加します．"
 
 #. type: example
 #: org.texi:13404
@@ -27024,12 +27039,14 @@ msgid ""
 "#+STARTUP: odd\n"
 "#+STARTUP: oddeven\n"
 msgstr ""
+"#+STARTUP: odd\n"
+"#+STARTUP: oddeven\n"
 
 #+glossary: file ( ファイル ) / org ( Org-mode )
 #. type: enumerate
 #: org.texi:13410
 msgid "You can convert an Org file from single-star-per-level to the double-star-per-level convention with @kbd{M-x org-convert-to-odd-levels RET} in that file.  The reverse operation is @kbd{M-x org-convert-to-oddeven-levels}."
-msgstr ""
+msgstr "あなたは@kbd{M-x org-convert-to-odd-levels RET}によりOrg-modeのファイルを1レベル1スターから1レベル2スターに変換することができます．逆の操作は．@kbd{M-x org-convert-to-oddeven-levels}です．"
 
 #+glossary: key ( キー ) / tty ( tty端末 )
 #. type: cindex
