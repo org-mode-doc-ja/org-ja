@@ -1,43 +1,41 @@
-*** org-ja.texi	2011-08-25 20:57:37.000000000 +0900
---- org-ja.texi.fix	2011-08-25 21:00:29.000000000 +0900
+*** org-ja.texi	2011-09-02 00:08:14.000000000 +0900
+--- org-ja.texi.fix	2011-09-02 00:08:58.000000000 +0900
 ***************
-*** 1181,1189 ****
-  C-k,show-branches} Expose all the headings of the subtree, CONTENT view for
+*** 1288,1294 ****
+  a prefix argument show, on each level, all sibling headings.  With double
+  prefix arg, also show the entire subtree of the parent.  @orgcmd{C-c C-k,show-branches} Expose all the headings of the subtree, CONTENT view for
   just one subtree.  @orgcmd{C-c C-x b,org-tree-to-indirect-buffer} Show the
-  current subtree in an indirect buffer@footnote{The indirect buffer @ifinfo
-! (@pxref{Indirect Buffers,,,emacs,GNU Emacs Manual})  @end ifinfo @ifnotinfo
-! (see the Emacs manual for more information about indirect buffers)  @end
-! ifnotinfo will contain the entire buffer, but will be narrowed to the
-  current tree.  Editing the indirect buffer will also change the original
-  buffer, but without affecting visibility in that buffer.}.  With a numeric
+! current subtree in an indirect buffer@footnote{The indirect buffer @ifinfo (@pxref{Indirect Buffers,,,emacs,GNU Emacs Manual})  @end ifinfo @ifnotinfo (see the Emacs manual for more information about indirect buffers)  @end ifnotinfo will contain the entire buffer, but will be narrowed to the current tree.  Editing the indirect buffer will also change the original buffer, but without affecting visibility in that buffer.}.  With a numeric
   prefix argument N, go up to level N and then take that tree.  If N is
---- 1181,1192 ----
-  C-k,show-branches} Expose all the headings of the subtree, CONTENT view for
+  negative then go up that many levels.  With a @kbd{C-u} prefix, do not
+  remove the previously used indirect buffer.
+--- 1288,1299 ----
+  a prefix argument show, on each level, all sibling headings.  With double
+  prefix arg, also show the entire subtree of the parent.  @orgcmd{C-c C-k,show-branches} Expose all the headings of the subtree, CONTENT view for
   just one subtree.  @orgcmd{C-c C-x b,org-tree-to-indirect-buffer} Show the
-  current subtree in an indirect buffer@footnote{The indirect buffer @ifinfo
-! (@pxref{Indirect Buffers,,,emacs,GNU Emacs Manual})
+! current subtree in an indirect buffer@footnote{The indirect buffer
+! @ifinfo (@pxref{Indirect Buffers,,,emacs,GNU Emacs Manual})
 ! @end ifinfo
-! @ifnotinfo
-! (see the Emacs manual for more information about indirect buffers)
+! @ifnotinfo (see the Emacs manual for more information about indirect buffers)
 ! @end ifnotinfo
-! will contain the entire buffer, but will be narrowed to the
-  current tree.  Editing the indirect buffer will also change the original
-  buffer, but without affecting visibility in that buffer.}.  With a numeric
+! will contain the entire buffer, but will be narrowed to the current tree.  Editing the indirect buffer will also change the original buffer, but without affecting visibility in that buffer.}.  With a numeric
   prefix argument N, go up to level N and then take that tree.  If N is
+  negative then go up that many levels.  With a @kbd{C-u} prefix, do not
+  remove the previously used indirect buffer.
 ***************
-*** 7098,7104 ****
+*** 7583,7589 ****
   @end group
   @end lisp
   
-! @orgcmd{\,org-agenda-filter-by-tag-refine}追加の条件によってカレントのアジェンダフィルターをナローイングします。前置引数を用いてコマンドを呼び出したときは、まさにタグがついているエントリー、あるいは工数の基準にまさに合致するエントリーを削除する。@kbd{/}コマンドのあとの最初のキーとして、@kbd{+}あるいは@kbd{-}を押すことで同様の効果を達成することができる。
-  
-  @c
-  @kindex [
---- 7101,7107 ----
+! @orgcmd{\,org-agenda-filter-by-tag-refine}追加の条件によってカレントのアジェンダフ
+  ィルターをナローイングします。前置引数を用いてコマンドを呼び出したときは、ま
+  さにタグがついているエントリー、あるいは工数の基準にまさに合致するエントリー
+  を削除する。@kbd{/}コマンドのあとの最初のキーとして、@kbd{+}あるいは@kbd{-}を押すことで
+--- 7588,7594 ----
   @end group
   @end lisp
   
-! @orgcmd{\\,org-agenda-filter-by-tag-refine}追加の条件によってカレントのアジェンダフィルターをナローイングします。前置引数を用いてコマンドを呼び出したときは、まさにタグがついているエントリー、あるいは工数の基準にまさに合致するエントリーを削除する。@kbd{/}コマンドのあとの最初のキーとして、@kbd{+}あるいは@kbd{-}を押すことで同様の効果を達成することができる。
-  
-  @c
-  @kindex [
+! @orgcmd{\\,org-agenda-filter-by-tag-refine}追加の条件によってカレントのアジェンダフ
+  ィルターをナローイングします。前置引数を用いてコマンドを呼び出したときは、ま
+  さにタグがついているエントリー、あるいは工数の基準にまさに合致するエントリー
+  を削除する。@kbd{/}コマンドのあとの最初のキーとして、@kbd{+}あるいは@kbd{-}を押すことで

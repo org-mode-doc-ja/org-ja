@@ -13,6 +13,7 @@ TEXOPTION = '-kanji=utf8'
 POT = org.pot
 PO = ../org-ja.po
 INFO = org-ja
+INFO_LINE = 76
 TRANSLATE = po4a-translate
 GETTEXTIZE = po4a-gettextize
 TEXIFMT = texifmt.pl
@@ -30,13 +31,12 @@ $(TARGET): $(TEXI) $(PO) $(TEXI_JA) texinfo.tex
 
 $(TEXI_JA): $(PO)
 	$(TRANSLATE) -f texinfo -m $(TEXI) -M UTF-8 -p $(PO) -l $(TEXI_JA) -k 0  -w 1000
+	$(PERL) $(TEXIFMT) > texifmt.log
 	patch -p0 < org-ja.texi.patch
-	$(PERL) $(TEXIFMT) >& texifmt.log
-#	patch -p0 < temp-texi.patch
 
 $(INFO): $(TEXI_JA)
-	makeinfo --no-split $(TEXI_JA) -o $(INFO) --fill-column=76
-	makeinfo --no-split --html $(TEXI_JA) -o $(INFO).html --fill-column=76
+	makeinfo --no-split $(TEXI_JA) -o $(INFO) --fill-column=$(INFO_LINE)
+	makeinfo --no-split --html $(TEXI_JA) -o $(INFO).html --fill-column=$(INFO_LINE)
 
 $(POT): $(TEXI)
 	$(GETTEXTIZE) -f texinfo -m $(TEXI) -M UTF-8 -p $(POT)
