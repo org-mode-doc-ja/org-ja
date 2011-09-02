@@ -1265,20 +1265,21 @@ Thank you for helping to improve this program.
 の情報です。以下に、有用なバックトレースを生成する手順を示します。
 
      <ol type=1 start=1>
-<li>コンパイルされていないOrg-modeのLispファイル群を再読み込みする。バックトレー
-スは、コンパイルされていないコードを利用して生成したバックトレースは、より多
-くの情報を含みます。これを実行するためには、次のコマンドを実行します。
+<li>コンパイルされていないOrg-modeのLispファイル群を再読み込みする。バック
+トレースは、コンパイルされていないコードを利用して生成したバックトレー
+スは、より多くの情報を含みます。これを実行するためには、次のコマンドを
+実行します。
      <pre class="example">          C-u M-x org-reload RET
 </pre>
-     <p class="noindent">もしくは、<code>Org -&gt; Refresh/Reload -&gt; Reload Org uncompiled</code>をメニューから選択
-します。
-<li>オプションメニュー<code>Options</code>から、<code>Enter Debugger on Error</code>（XEmacsでは、この
-オプションは<code>Troubleshooting</code>サブメニューにあります）を選択する。
-<li>エラーを再現するために必要な操作を行なってください。実行した操作を忘れずにメ
-モしておいてください。
-<li>エラーが再現されると、<samp><span class="file">*Backtrace*</span></samp>バッファが画面上に表示されます。このバッ
-ファを別のファイルとして保存し（例えば<kbd>C-x C-w</kbd>を使って）、バグレポートに添
-付します。
+     <p class="noindent">もしくは、<code>Org -&gt; Refresh/Reload -&gt; Reload Org uncompiled</code>をメニューか
+ら選択します。
+<li>オプションメニュー<code>Options</code>から、<code>Enter Debugger on Error</code>（XEmacsでは
+、このオプションは<code>Troubleshooting</code>サブメニューにあります）を選択する。
+<li>エラーを再現するために必要な操作を行なってください。実行した操作を忘れ
+ずにメモしておいてください。
+<li>エラーが再現されると、<samp><span class="file">*Backtrace*</span></samp>バッファが画面上に表示されます。こ
+のバッファを別のファイルとして保存し（例えば<kbd>C-x C-w</kbd>を使って）、バグ
+レポートに添付します。
         </ol>
 
 <div class="node">
@@ -1295,12 +1296,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
 す。このマニュアルでは次のように植字を使い分けます。
 
      <dl>
-<dt><code>TODO</code><dt><code>WAITING</code><dd>TODOキーワードは、すべて大文字で記述されます。ユーザが定義する場合も同様です
-。
-<br><dt><code>boss</code><dt><code>ARCHIVE</code><dd>ユーザ定義のタグは、小文字で記述されます。特別な意味を持つビルトインされたタ
-グは、すべて大文字で記述されます。
-<br><dt><code>Release</code><dt><code>PRIORITY</code><dd>ユーザ定義のプロパティは、大文字で始めて他を小文字で記述されます。特別な意味
-を持つビルトインされたプロパティは、すべて大文字で記述されます。
+<dt><code>TODO</code><dt><code>WAITING</code><dd>TODOキーワードは、すべて大文字で記述されます。ユーザが定義する場合も同
+様です。
+<br><dt><code>boss</code><dt><code>ARCHIVE</code><dd>ユーザ定義のタグは、小文字で記述されます。特別な意味を持つビルトインさ
+れたタグは、すべて大文字で記述されます。
+<br><dt><code>Release</code><dt><code>PRIORITY</code><dd>ユーザ定義のプロパティは、大文字で始めて他を小文字で記述されます。特別
+な意味を持つビルトインされたプロパティは、すべて大文字で記述されます。
 </dl>
 
    <p>このマニュアルでは、Org-modeの機能を利用するためのキーバインドと、対応するコ
@@ -2868,8 +2869,7 @@ alone by this command.
 <br><dt>&lsquo;<samp><span class="samp">*</span></samp>&rsquo;<dd>Selects this line for global recalculation with <kbd>C-u C-c *</kbd>, but not for
 automatic recalculation.  Use this when automatic recalculation slows down
 editing too much. 
-<br><dt>&lsquo;<samp></samp>&rsquo;<dd>Unmarked lines are exempt from recalculation with <kbd>C-u C-c *</kbd>.  All
-lines that should be recalculated should be marked with &lsquo;<samp><span class="samp">#</span></samp>&rsquo; or
+<br><dt>&lsquo;<samp><span class="samp">Unmarked lines are exempt from recalculation with </span><kbd>C-u C-c *</kbd><span class="samp">.  All</span></samp>&rsquo;<dd>lines that should be recalculated should be marked with &lsquo;<samp><span class="samp">#</span></samp>&rsquo; or
 &lsquo;<samp><span class="samp">*</span></samp>&rsquo;. 
 <br><dt>&lsquo;<samp><span class="samp">/</span></samp>&rsquo;<dd>Do not export this line.  Useful for lines that contain the narrowing
 &lsquo;<samp><span class="samp">&lt;N&gt;</span></samp>&rsquo; markers or column group markers. 
@@ -3116,8 +3116,7 @@ Org-modeは次のようなリンクをサポートしています。ファイル
      /home/dominik/images/jupiter.jpg          <span class="roman">上に同じ</span>
      file:papers/last.pdf                      <span class="roman">ファイルへの相対パス</span>
      ./papers/last.pdf                         <span class="roman">same as above</span>
-     file:/myself@some.where:papers/last.pdf   <span class="roman">リモートマシン上のファイルへのパス
-     </span>
+     file:/myself@some.where:papers/last.pdf   <span class="roman">リモートマシン上のファイルへのパス</span>
      /myself@some.where:papers/last.pdf        <span class="roman">same as above</span>
      file:sometextfile::NNN                    <span class="roman">ジャンプ先の行番号付きファイル</span>
      file:projects.org                         <span class="roman">他のOrg-modeファイルへのリンク</span>
@@ -3129,8 +3128,7 @@ Org-modeは次のようなリンクをサポートしています。ファイル
      mailto:adent@galaxy.net                   <span class="roman">メールリンク</span>
      vm:folder                                 <span class="roman">VMのフォルダーへのリンク</span>
      vm:folder#id                              <span class="roman">VMのメールメッセージへのリンク</span>
-     vm://myself@some.where.org/folder#id      <span class="roman">リモートマシン上のVMのメールメッセ
-     ージへのリンク</span>
+     vm://myself@some.where.org/folder#id      <span class="roman">リモートマシン上のVMのメールメッセージへのリンク</span>
      wl:folder                                 <span class="roman">WANDERLUSTのフォルダーへのリンク</span>
      wl:folder#id                              <span class="roman">WANDERLUSTのメールメッセージへのリ
      ンク</span>
@@ -3182,115 +3180,120 @@ Org-modeは正しい構文でリンクを作成したり、Org-modeのファイ�
 <a name="index-C_002dc-l-439"></a>
 <a name="index-org_002dstore_002dlink-440"></a>
 <dl><dt><kbd>C-c l &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-store-link</code><kbd>)</kbd><dd>
-<a name="index-g_t_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae_00e4_00bf_009d_00e5_00ad_0098-441"></a>現在の位置へのリンクを一時保管します。これはリンクを作成するときに、どのバッ
-ファーでも使用できる<em>グローバルな</em>コマンド(あなた自身でキーバインドを作成し
-なければなりません。)です。リンクは一時保管され、後からOrg-modeのバッファー
-へ挿入することができます(下記参照)。どの種類のリンクが作成されるかは、現在の
-バッファーが何であるかによります。
+<a name="index-g_t_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae_00e4_00bf_009d_00e5_00ad_0098-441"></a>現在の位置へのリンクを一時保管します。これはリンクを作成するときに、ど
+のバッファーでも使用できる<em>グローバルな</em>コマンド(あなた自身でキーバイ
+ンドを作成しなければなりません。)です。リンクは一時保管され、後から
+Org-modeのバッファーへ挿入することができます(下記参照)。どの種類のリン
+クが作成されるかは、現在のバッファーが何であるかによります。
 
-     <p><b>Org-modeバッファー</b><br>もしカーソル位置に&lsquo;<samp><span class="samp">&lt;&lt;target&gt;&gt;</span></samp>&rsquo;がある場合、リンクはその
-ターゲットを指します。それ以外の場合は、見出しを指し、見出しは項目名にもなり
-ます。
+     <p><b>Org-modeバッファー</b><br>もしカーソル位置に&lsquo;<samp><span class="samp">&lt;&lt;target&gt;&gt;</span></samp>&rsquo;がある場合、リンクはそのターゲットを指しま
+す。それ以外の場合は、見出しを指し、見出しは項目名にもなります。
 
-     <p><a name="index-org_002dlink_002dto_002dorg_002duse_002did-442"></a><a name="index-property_002c-CUSTOM_005fID-443"></a><a name="index-property_002c-ID-444"></a>もし見出しに<code>CUSTOM_ID</code>プロパティがある場合、このカスタムIDプロパティへのリ
-ンクが一時保管されます。また、(<code>org-link-to-org-use-id</code>の値によりますが)グロ
-ーバルに固有の<code>ID</code>プロパティが、リンクを作成するために作られます。ですから、
-このコマンドをOrg-modeバッファー内で使うと、潜在的にふたつのリンクを作成する
-ことになります。つまり、Org-modeバッファー内でこのコマンドを使用することによ
-り、人間が読むことのできるカスタムIDと、グローバルに固有で、エントリーがファ
-イル間を移動しても動作するリンクが作成されます。後にリンクを挿入するときには
-、どのリンクを挿入するかを決めなければなりません。
+     <p><a name="index-org_002dlink_002dto_002dorg_002duse_002did-442"></a><a name="index-property_002c-CUSTOM_005fID-443"></a><a name="index-property_002c-ID-444"></a>もし見出しに<code>CUSTOM_ID</code>プロパティがある場合、このカスタムIDプロパティ
+へのリンクが一時保管されます。また、(<code>org-link-to-org-use-id</code>の値によ
+りますが)グローバルに固有の<code>ID</code>プロパティが、リンクを作成するために作
+られます。ですから、このコマンドをOrg-modeバッファー内で使うと、潜在的
+にふたつのリンクを作成することになります。つまり、Org-modeバッファー内
+でこのコマンドを使用することにより、人間が読むことのできるカスタムIDと
+、グローバルに固有で、エントリーがファイル間を移動しても動作するリンク
+が作成されます。後にリンクを挿入するときには、どのリンクを挿入するかを
+決めなければなりません。
 
-     <p><b>メール/ニュースクライアント:VM, Rmail, Wanderlust, MH-E, Gnus</b><br>ほとんどす
-べてのEmacsのメールクライアントがサポートされています。リンクは現在の記事を
-指し示します。Gnusバッファーでは、グループを指し示すこともあるでしょう。項目
-名は筆者名と題名から作成されます。
+     <p><b>メール/ニュースクライアント:VM, Rmail, Wanderlust, MH-E, Gnus</b><br>ほとんどすべてのEmacsのメールクライアントがサポートされています。リン
+クは現在の記事を指し示します。Gnusバッファーでは、グループを指し示すこ
+ともあるでしょう。項目名は筆者名と題名から作成されます。
 
-     <p><b>ウェブブラウザー:W3 and W3M</b><br>現在のURLがリンクになり、ページのタイトルが項
-目名になります。
+     <p><b>ウェブブラウザー:W3 and W3M</b><br>現在のURLがリンクになり、ページのタイトルが項目名になります。
 
-     <p><b>連絡先:BBDB</b><br>BBDBバッファー内で作成されたリンクは、現在のエントリーへのリ
-ンクになります。
+     <p><b>連絡先:BBDB</b><br>BBDBバッファー内で作成されたリンクは、現在のエントリーへのリンクになりま
+す。
 
      <p><b>Chat: IRC</b><br>
-<a name="index-org_002dirc_002dlink_002dto_002dlogs-445"></a>IRCリンクの場合、<code>org-irc-link-to-logs</code>変数を<code>t</code>にした場合は、ログファイル内
-に、現在の会話に相当する部分への&lsquo;<samp><span class="samp">file:/</span></samp>&rsquo;形式のリンクが作成されます。それ以外
-の場合は、user/channel/serverへの&lsquo;<samp><span class="samp">irc:/</span></samp>&rsquo;スタイルのリンクが一時保管されます。
+<a name="index-org_002dirc_002dlink_002dto_002dlogs-445"></a>IRCリンクの場合、<code>org-irc-link-to-logs</code>変数を<code>t</code>にした場合は、ログファ
+イル内に、現在の会話に相当する部分への&lsquo;<samp><span class="samp">file:/</span></samp>&rsquo;形式のリンクが作成されま
+す。それ以外の場合は、user/channel/serverへの&lsquo;<samp><span class="samp">irc:/</span></samp>&rsquo;スタイルのリンクが
+一時保管されます。
 
-     <p><b>その他のファイル</b><br>その他のファイルの場合、リンクは、現在の行を指ししめす検
-索語句(see <a href="#Search-options">Search options</a>)を伴って作成されます。もし、アクティブなリージョンが
-ある場合は、選択された言葉が検索語句の基本となります。自動的に作成されたリン
-クがうまく働かなかったり、不正確であったりする場合は、カスタム関数を書いて、
-検索語句を選択したり、特定のファイル形式を検索したりすることがきます。
-<a href="#Custom-searches">Custom searches</a>を参照してください。<kbd>C-c l</kbd>というキーバインディングはひとつ
-の提案に過ぎません<a href="#Installation">Installation</a>)。
+     <p><b>その他のファイル</b><br>その他のファイルの場合、リンクは、現在の行を指ししめす検索語句
+(see <a href="#Search-options">Search options</a>)を伴って作成されます。もし、アクティブなリージョンが
+ある場合は、選択された言葉が検索語句の基本となります。自動的に作成され
+たリンクがうまく働かなかったり、不正確であったりする場合は、カスタム関
+数を書いて、検索語句を選択したり、特定のファイル形式を検索したりするこ
+とがきます。<a href="#Custom-searches">Custom searches</a>を参照してください。<kbd>C-c l</kbd>というキーバイ
+ンディングはひとつの提案に過ぎません<a href="#Installation">Installation</a>)。
 
-     <p><b>アジェンダビュー</b><br>カーソルがアジェンダビューにあるときは、作成されたリンク
-は現在の行が参照するエントリーを指し示します。
+     <p><b>アジェンダビュー</b><br>カーソルがアジェンダビューにあるときは、作成されたリンクは現在の行が参照
+するエントリーを指し示します。
 
      <p><a name="index-C_002dc-C_002dl-446"></a><a name="index-org_002dinsert_002dlink-447"></a><br><dt><kbd>C-c C-l &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-insert-link</code><kbd>)</kbd><dd>
-<a name="index-g_t_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-448"></a><a name="index-g_t_00e8_00a3_009c_00e5_00ae_008c_002c_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae-449"></a><a name="index-g_t_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae_00e6_008c_00bf_00e5_0085_00a5-450"></a><a name="index-org_002dkeep_002dstored_002dlink_002dafter_002dinsertion-451"></a>リンク<a rel="footnote" href="#fn-33" name="fnd-33"><sup>33</sup></a>を挿入します。そうすると、プ
-ロンプトによって、バッファーに挿入するリンクをたずねられます。テキストを使っ
-た内部リンクや、既に述べましたリンクタイプのいずれかへのリンクを入力するだけ
-です。リンクは項目名とともに、バッファー<a rel="footnote" href="#fn-34" name="fnd-34"><sup>34</sup></a>に挿入
-されます。もし、このコマンドの呼び出し時にテキストが選択されていた場合には、
-選択されたテキストがデフォルトの項目名になります。
+<a name="index-g_t_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-448"></a><a name="index-g_t_00e8_00a3_009c_00e5_00ae_008c_002c_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae-449"></a><a name="index-g_t_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae_00e6_008c_00bf_00e5_0085_00a5-450"></a><a name="index-org_002dkeep_002dstored_002dlink_002dafter_002dinsertion-451"></a>リンク<a rel="footnote" href="#fn-33" name="fnd-33"><sup>33</sup></a>を挿入します。そうすると、プロンプトによって、バッファーに挿入するリ
+ンクをたずねられます。テキストを使った内部リンクや、既に述べましたリン
+クタイプのいずれかへのリンクを入力するだけです。リンクは項目名とともに
+、バッファー<a rel="footnote" href="#fn-34" name="fnd-34"><sup>34</sup></a>
+に挿入されます。もし、このコマンドの呼び出し時にテキストが選択されてい
+た場合には、選択されたテキストがデフォルトの項目名になります。
 
-     <p><b>一時保管されたリンクを挿入</b><br>&lt;現在のセッションで一時保管されたすべてのリン
-クは、このプロンプトの履歴となっていますので、&lt;up&gt;や&lt;down&gt;(あるいは、
-<kbd>M-p/n</kbd>)を使ってこれらにアクセスすることができます。
+     <p><b>一時保管されたリンクを挿入</b><br>&lt;現在のセッションで一時保管されたすべてのリンクは、このプロンプトの履歴
+となっていますので、&lt;up&gt;や&lt;down&gt;(あるいは、<kbd>M-p/n</kbd>)を使ってこれらにア
+クセスすることができます。
 
-     <p><b>補完の支援</b><br>&lt;TAB&gt;を使用した補完機能によって、リンクの省略記法で定義された
-接頭辞(see <a href="#Link-abbreviations">Link abbreviations</a>)を含む、&lsquo;<samp><span class="samp">http</span></samp>&rsquo;や&lsquo;<samp><span class="samp">ftp</span></samp>&rsquo;などのリンクを適切に挿入す
-ることができるでしょう。もし、<var>接頭辞</var>のみをタイプした後に&lt;RET&gt;を押すと、
-Org-modeは、いくつかのリンク形式<a rel="footnote" href="#fn-35" name="fnd-35"><sup>35</sup></a>に対して詳細な補完の支援を行います。
-たとえば、<kbd>file &lt;RET&gt;</kbd>をタイプすると、ファイル名の補完((または、
-<kbd>C-u C-c C-l</kbd>をタイプします。以下を参照。)を行い、<kbd>bbdb &lt;RET&gt;</kbd>をタイプすると
-、連絡先の名前を補完することができます。<a name="index-C_002du-C_002dc-C_002dl-452"></a><br><dt><kbd>C-u C-c C-l</kbd><dd>
-<a name="index-g_t_00e3_0083_0095_00e3_0082_00a1_00e3_0082_00a4_00e3_0083_00ab_00e5_0090_008d_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-453"></a><a name="index-g_t_00e8_00a3_009c_00e5_00ae_008c_002c_00e3_0083_0095_00e3_0082_00a1_00e3_0082_00a4_00e3_0083_00ab_00e5_0090_008d_00e3_0081_00ae-454"></a>接頭辞<kbd>C-u</kbd>を付けて<kbd>C-c C-l</kbd>が呼び出されたときは、ファイルへのリンクが挿入さ
-れ、ファイル名の補完を利用することができます。リンクされたファイルがカレント
-ディレクトリにあるときや、カレントディレクトリのサブディレクトリにあるとき、
-あるいはパスが&lsquo;<samp><span class="samp">../</span></samp>&rsquo;を使って相対パスで書かれているときは、ファイルへのパスは
-、現在のOrg-modeファイルからの相対パスとして挿入されます。それ以外の場合は絶
-対パスが使われ、可能であれば、ホームディレクトリには&lsquo;<samp><span class="samp">~/</span></samp>&rsquo;が使われます。2つの
-<kbd>C-u</kbd>を付けることによって、絶対パス表記を明確に指定することができます。
-<br><dt><kbd>C-c C-l  </kbd><span class="roman">(カーソルがリンク上にある場合)</span><dd>リンク上にカーソルがある場合、<kbd>C-c C-l</kbd>を実行すると、リンクと項目名を編集す
-ることができます。
+     <p><b>補完の支援</b><br>&lt;TAB&gt;を使用した補完機能によって、リンクの省略記法で定義された接頭辞
+(see <a href="#Link-abbreviations">Link abbreviations</a>)を含む、&lsquo;<samp><span class="samp">http</span></samp>&rsquo;や&lsquo;<samp><span class="samp">ftp</span></samp>&rsquo;などのリンクを適切に挿入す
+ることができるでしょう。もし、<var>接頭辞</var>のみをタイプした後に&lt;RET&gt;を押す
+と、Org-modeは、いくつかのリンク形式<a rel="footnote" href="#fn-35" name="fnd-35"><sup>35</sup></a>に対して詳細な補完の
+支援を行います。たとえば、<kbd>file &lt;RET&gt;</kbd>をタイプすると、ファイル名の補完
+((または、<kbd>C-u C-c C-l</kbd>をタイプします。以下を参照。)を行い、
+<kbd>bbdb &lt;RET&gt;</kbd>をタイプすると、連絡先の名前を補完することができます。
+<a name="index-C_002du-C_002dc-C_002dl-452"></a><br><dt><kbd>C-u C-c C-l</kbd><dd>
+<a name="index-g_t_00e3_0083_0095_00e3_0082_00a1_00e3_0082_00a4_00e3_0083_00ab_00e5_0090_008d_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-453"></a><a name="index-g_t_00e8_00a3_009c_00e5_00ae_008c_002c_00e3_0083_0095_00e3_0082_00a1_00e3_0082_00a4_00e3_0083_00ab_00e5_0090_008d_00e3_0081_00ae-454"></a>接頭辞<kbd>C-u</kbd>を付けて<kbd>C-c C-l</kbd>が呼び出されたときは、ファイルへのリンクが
+挿入され、ファイル名の補完を利用することができます。リンクされたファイ
+ルがカレントディレクトリにあるときや、カレントディレクトリのサブディレ
+クトリにあるとき、あるいはパスが&lsquo;<samp><span class="samp">../</span></samp>&rsquo;を使って相対パスで書かれていると
+きは、ファイルへのパスは、現在のOrg-modeファイルからの相対パスとして挿
+入されます。それ以外の場合は絶対パスが使われ、可能であれば、ホームディ
+レクトリには&lsquo;<samp><span class="samp">~/</span></samp>&rsquo;が使われます。2つの<kbd>C-u</kbd>を付けることによって、絶対パス
+表記を明確に指定することができます。
+<br><dt><kbd>C-c C-l  </kbd><span class="roman">(カーソルがリンク上にある場合)</span><dd>リンク上にカーソルがある場合、<kbd>C-c C-l</kbd>を実行すると、リンクと項目名を
+編集することができます。
 <a name="index-g_t_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0082_0092_00e3_0081_009f_00e3_0081_00a9_00e3_0082_008b-455"></a><a name="index-C_002dc-C_002do-456"></a><a name="index-org_002dopen_002dat_002dpoint-457"></a><br><dt><kbd>C-c C-o &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-open-at-point</code><kbd>)</kbd><dd>
-<a name="index-org_002dfile_002dapps-458"></a>その場所にあるリンクを開きます。リンクがURLならば、(<samp><span class="command">browse-url-at-point</span></samp>を
-使って)ウェブブラウザーを開きますし、それぞれ対応するリンクにより、
-VM/MH-E/Wanderlust/Rmail/Gnus/BBDBが起動し、シェルへのリンクの場合はコマンド
-を実行します。カーソルが内部リンク上にあるときは、対応する検索を行います。カ
-ーソルが見出しのタグ上にあるときは、対応するタグビューを作成します。カーソル
-がタイムスタンプ上にあるときは、その日のアジェンダを表示します。さらに、
-&lsquo;<samp><span class="samp">file:</span></samp>&rsquo;リンクの場合、テキストファイルやリモートマシン上のファイルはEmacsで、
-非テキストファイルは適切なアプリケーションで、ファイルを開きます。ファイルの
-分類は、拡張子のみによって判断されます。<code>org-file-apps</code>を参照してください。
-もし、デフォルトのアプリケーションではなくEmacsでファイルを開きたい場合は、
-接頭辞<kbd>C-u</kbd>を付け、Emacsで開くことを避けたい場合は、接頭辞<kbd>C-u C-u</kbd>を付けて
-ください。カーソルがリンクではない見出し上にあるときは、見出し上のすべてのリ
-ンクとエントリーテキストを表示します。<a name="index--459"></a><br><dt><dd>
+<a name="index-org_002dfile_002dapps-458"></a>その場所にあるリンクを開きます。リンクがURLならば、
+(<samp><span class="command">browse-url-at-point</span></samp>を使って)ウェブブラウザーを開きますし、それぞれ
+対応するリンクにより、VM/MH-E/Wanderlust/Rmail/Gnus/BBDBが起動し、シェ
+ルへのリンクの場合はコマンドを実行します。カーソルが内部リンク上にある
+ときは、対応する検索を行います。カーソルが見出しのタグ上にあるときは、
+対応するタグビューを作成します。カーソルがタイムスタンプ上にあるときは
+、その日のアジェンダを表示します。さらに、&lsquo;<samp><span class="samp">file:</span></samp>&rsquo;リンクの場合、テキス
+トファイルやリモートマシン上のファイルはEmacsで、非テキストファイルは
+適切なアプリケーションで、ファイルを開きます。ファイルの分類は、拡張子
+のみによって判断されます。<code>org-file-apps</code>を参照してください。もし、デ
+フォルトのアプリケーションではなくEmacsでファイルを開きたい場合は、接
+頭辞<kbd>C-u</kbd>を付け、Emacsで開くことを避けたい場合は、接頭辞<kbd>C-u C-u</kbd>を付
+けてください。カーソルがリンクではない見出し上にあるときは、見出し上の
+すべてのリンクとエントリーテキストを表示します。<a name="index--459"></a><br><dt><dd>
 &lt;RET&gt;
-<a name="index-org_002dreturn_002dfollows_002dlink-460"></a><code>org-return-follows-link</code>が設定されているときは、<kbd>&lt;RET&gt;</kbd>もポイント上のリンク
-を開きます。
+<a name="index-org_002dreturn_002dfollows_002dlink-460"></a><code>org-return-follows-link</code>が設定されているときは、<kbd>&lt;RET&gt;</kbd>もポイント上の
+リンクを開きます。
 <a name="index-mouse_002d2-461"></a><a name="index-mouse_002d1-462"></a><br><dt><kbd>mouse-2</kbd><dt><kbd>mouse-1</kbd><dd>リンク上では、<kbd>mouse-2</kbd>は<kbd>C-c C-o</kbd>と同様にリンクを開きます。Emacs
 22以降では、<kbd>mouse-1</kbd>もリンクを開きます。
-<a name="index-mouse_002d3-463"></a><br><dt><kbd>mouse-3</kbd><dd><a name="index-org_002ddisplay_002dinternal_002dlink_002dwith_002dindirect_002dbuffer-464"></a><kbd>mouse-2</kbd>と同様にリンクを開きますが、ファイルのリンクを強制的にEmacsで開き、
-内部リンクは別のウインドウ<a rel="footnote" href="#fn-36" name="fnd-36"><sup>36</sup></a>で開きます。<a name="index-C_002dc-C_002dx-C_002dv-465"></a><a name="index-org_002dtoggle_002dinline_002dimages-466"></a><br><dt><kbd>C-c C-x C-v &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-toggle-inline-images</code><kbd>)</kbd><dd>
-<a name="index-g_t_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e7_0094_00bb_00e5_0083_008f-467"></a><a name="index-g_t_00e7_0094_00bb_00e5_0083_008f_002c_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3-468"></a><a name="index-org_002dstartup_002dwith_002dinline_002dimages-469"></a><a name="index-g_t_0040code_007binlineimages_007d_002c-STARTUP-keyword-470"></a><a name="index-g_t_0040code_007bnoinlineimages_007d_002c-STARTUP-keyword-471"></a>リンクされた画像のインライン表示をトグルします。通常これはリンクに項目名がな
-い画像のみをインライン表示するものです。すなわち、エクスポート時にインライン
-になる画像のことです。<code>org-startup-with-inline-images</code>変数<a rel="footnote" href="#fn-37" name="fnd-37"><sup>37</sup></a>を設定することにより、イン
-ライン画像を起動時に表示されることができます。<a name="index-C_002dc-_0025-472"></a><a name="index-org_002dmark_002dring_002dpush-473"></a><br><dt><kbd>C-c % &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-mark-ring-push</code><kbd>)</kbd><dd>
-<a name="index-g_t_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00b0-474"></a>現在のポジションをマークリングに格納し、現在のポジションに簡単に戻ってこられ
-るようにします。ファイル内部でのリンクをたどるときは、自動的にこれが行われま
-す。<a name="index-C_002dc-_0026-475"></a><a name="index-org_002dmark_002dring_002dgoto-476"></a><br><dt><kbd>C-c &amp; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-mark-ring-goto</code><kbd>)</kbd><dd>
-<a name="index-g_t_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_002c_00e6_0088_00bb_00e3_0082_008b-477"></a>記録されたポジションへ戻ります。ポジションは、内部リンクをたどるコマンドと
-<kbd>C-c %</kbd>によって記録されます。このコマンドを連続して何回か使うと、記録された
-ポジション間を移動することができます。
+<a name="index-mouse_002d3-463"></a><br><dt><kbd>mouse-3</kbd><dd><a name="index-org_002ddisplay_002dinternal_002dlink_002dwith_002dindirect_002dbuffer-464"></a><kbd>mouse-2</kbd>と同様にリンクを開きますが、ファイルのリンクを強制的にEmacsで
+開き、内部リンクは別のウインドウ
+<a rel="footnote" href="#fn-36" name="fnd-36"><sup>36</sup></a>で開きます。<a name="index-C_002dc-C_002dx-C_002dv-465"></a><a name="index-org_002dtoggle_002dinline_002dimages-466"></a><br><dt><kbd>C-c C-x C-v &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-toggle-inline-images</code><kbd>)</kbd><dd>
+<a name="index-g_t_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e7_0094_00bb_00e5_0083_008f-467"></a><a name="index-g_t_00e7_0094_00bb_00e5_0083_008f_002c_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3-468"></a><a name="index-org_002dstartup_002dwith_002dinline_002dimages-469"></a><a name="index-g_t_0040code_007binlineimages_007d_002c-STARTUP-keyword-470"></a><a name="index-g_t_0040code_007bnoinlineimages_007d_002c-STARTUP-keyword-471"></a>リンクされた画像のインライン表示をトグルします。通常これはリンクに項目
+名がない画像のみをインライン表示するものです。すなわち、エクスポート時
+にインラインになる画像のことです。<code>org-startup-with-inline-images</code>変数
+<a rel="footnote" href="#fn-37" name="fnd-37"><sup>37</sup></a>を設定する
+ことにより、インライン画像を起動時に表示されることができます。
+<a name="index-C_002dc-_0025-472"></a><a name="index-org_002dmark_002dring_002dpush-473"></a><br><dt><kbd>C-c % &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-mark-ring-push</code><kbd>)</kbd><dd>
+<a name="index-g_t_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00b0-474"></a>現在のポジションをマークリングに格納し、現在のポジションに簡単に戻って
+こられるようにします。ファイル内部でのリンクをたどるときは、自動的にこ
+れが行われます。<a name="index-C_002dc-_0026-475"></a><a name="index-org_002dmark_002dring_002dgoto-476"></a><br><dt><kbd>C-c &amp; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-mark-ring-goto</code><kbd>)</kbd><dd>
+<a name="index-g_t_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_002c_00e6_0088_00bb_00e3_0082_008b-477"></a>記録されたポジションへ戻ります。ポジションは、内部リンクをたどるコマン
+ドと<kbd>C-c %</kbd>によって記録されます。このコマンドを連続して何回か使うと、
+記録されたポジション間を移動することができます。
 <a name="index-C_002dc-C_002dx-C_002dn-478"></a><a name="index-C_002dc-C_002dx-C_002dp-479"></a><a name="index-org_002dnext_002dlink-480"></a><a name="index-org_002dprevious_002dlink-481"></a><br><dt><kbd>C-c C-x C-n &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-next-link</code><kbd>)</kbd><dt><kbd>C-c C-x C-p &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-previous-link</code><kbd>)</kbd><dd>
-<a name="index-g_t_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_002c_00e6_00ac_00a1_002f_00e5_0089_008d_00e3_0082_0092_00e6_008e_00a2_00e3_0081_0099-482"></a>バッファー内の前後のリンクへ移動します。バッファーの端では、移動は、いったん
-エラーになり、もう一度行うと回り込みます。このキーバインドはとても長いので、
-<kbd>C-n</kbd>と<kbd>C-p</kbd>に設定したいと考えるかもしれません。
+<a name="index-g_t_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_002c_00e6_00ac_00a1_002f_00e5_0089_008d_00e3_0082_0092_00e6_008e_00a2_00e3_0081_0099-482"></a>バッファー内の前後のリンクへ移動します。バッファーの端では、移動は、い
+ったんエラーになり、もう一度行うと回り込みます。このキーバインドはとて
+も長いので、<kbd>C-n</kbd>と<kbd>C-p</kbd>に設定したいと考えるかもしれません。
      <pre class="lisp">          (add-hook 'org-load-hook
             (lambda ()
               (define-key org-mode-map "\C-n" 'org-next-link)
@@ -3399,17 +3402,19 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Hyperlinks">Hyperlinks</a>
 </pre>
      <dl>
 <dt><code>255</code><dd>255行目へジャンプします。
-<br><dt><code>My Target</code><dd>内部リンクの検索と同様に、&lsquo;<samp><span class="samp">&lt;&lt;My Target&gt;&gt;</span></samp>&rsquo;という名前のリンクターゲット、ある
-いは&lsquo;<samp><span class="samp">my target</span></samp>&rsquo;というテキストを検索します(<a href="#Internal-links">Internal links</a>を参照してください
-。)。HTMLエクスポート(see <a href="#HTML-export">HTML export</a>)では、このようなファイルへのリンクは、リ
-ンク先のファイル内にある、一致する名前のアンカーへのHTMLリンクになります。
+<br><dt><code>My Target</code><dd>内部リンクの検索と同様に、&lsquo;<samp><span class="samp">&lt;&lt;My Target&gt;&gt;</span></samp>&rsquo;という名前のリンクターゲット
+、あるいは&lsquo;<samp><span class="samp">my target</span></samp>&rsquo;というテキストを検索します(<a href="#Internal-links">Internal links</a>を参照
+してください。)。HTMLエクスポート(see <a href="#HTML-export">HTML export</a>)では、このようなファイ
+ルへのリンクは、リンク先のファイル内にある、一致する名前のアンカーへの
+HTMLリンクになります。
 <br><dt><code>*My Target</code><dd>Org-modeファイルの中で見出しの検索に限定されます。
 <br><dt><code>#my-custom-id</code><dd><code>CUSTOM_ID</code>プロパティを持つ見出しへリンクします。
 <br><dt><code>/regexp/</code><dd><!-- If the target file is a directory, -->
 <!-- @code{grep} will be used to search all files in the directory. -->
-<code>regexp</code>を正規表現検索します。これは、Emacsの<code>occur</code>コマンドを使って、一致す
-るすべてを別ウインドウでリスト表示します。ターゲットがOrg-modeファイルならば
-、<code>org-occur</code>が使われ、一致した部分について、ツリーの抽出を行います。
+<code>regexp</code>を正規表現検索します。これは、Emacsの<code>occur</code>コマンドを使って、
+一致するすべてを別ウインドウでリスト表示します。ターゲットがOrg-modeフ
+ァイルならば、<code>org-occur</code>が使われ、一致した部分について、ツリーの抽出
+を行います。
 </dl>
 
    <p>特殊なケースとして、ファイル名が指定されていないファイルのリンクは、現在のフ
@@ -3501,34 +3506,38 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#TODO-Items">TODO Items</a>
      <pre class="example">          ,-&gt; (マーク無し) -&gt; TODO -&gt; DONE --.
           '----------------------------------'
 </pre>
-     <p>同じような状態の切り替えは、タイムラインとアジェンダバッファで<kbd>t</kbd>コマンドキ
-ー（see <a href="#Agenda-commands">Agenda commands</a>参照）を入力することで「リモートで」完了にすることもで
-きます。
+     <p>同じような状態の切り替えは、タイムラインとアジェンダバッファで<kbd>t</kbd>コマ
+ンドキー（see <a href="#Agenda-commands">Agenda commands</a>参照）を入力することで「リモートで」完了に
+することもできます。
 
-     <p><a name="index-C_002du-C_002dc-C_002dt-497"></a><br><dt><kbd>C-u C-c C-t</kbd><dd>補完や「すでに設定されていれば」さらに速い選択方法を提供するイ
-ンターフェイスを使用して特定のキーワードを選択します。後者の方法では、TODOの
-状態に対してキーを割り振る必要があります。詳細は、<a href="#Per_002dfile-keywords">Per-file keywords</a>と
-<a href="#Setting-tags">Setting tags</a>を参照してください。
+     <p><a name="index-C_002du-C_002dc-C_002dt-497"></a><br><dt><kbd>C-u C-c C-t</kbd><dd>補完や「すでに設定されていれば」さらに速い選択方法を提供
+するインターフェイスを使用して特定のキーワードを選択します。後者の方法
+では、TODOの状態に対してキーを割り振る必要があります。詳細は、
+<a href="#Per_002dfile-keywords">Per-file keywords</a>と<a href="#Setting-tags">Setting tags</a>を参照してください。
 
-     <p><a name="index-S_002d_0040key_007bright_007d-498"></a><a name="index-S_002d_0040key_007bleft_007d-499"></a><br><dt><kbd>S-&lt;right&gt;  </kbd><span class="roman">/</span><kbd>  S-&lt;left&gt;</kbd><dd><a name="index-org_002dtreat_002dS_002dcursor_002dtodo_002dselection_002das_002dstate_002dchange-500"></a>切り替えの機能に似て、後にくるTODOの状態、あるいは前にくるものを選択します。
-もっとも役に立つのはTODOの状態が２段階以上の場合です。
-(see <a href="#TODO-extensions">TODO extensions</a>).<code>shift-selection-mode</code>との連携については、<a href="#Conflicts">Conflicts</a>も
-参照してください。変数<code>org-treat-S-cursor-todo-selection-as-state-change</code>. 
+     <p><a name="index-S_002d_0040key_007bright_007d-498"></a><a name="index-S_002d_0040key_007bleft_007d-499"></a><br><dt><kbd>S-&lt;right&gt;  </kbd><span class="roman">/</span><kbd>  S-&lt;left&gt;</kbd><dd><a name="index-org_002dtreat_002dS_002dcursor_002dtodo_002dselection_002das_002dstate_002dchange-500"></a>切り替えの機能に似て、後にくるTODOの状態、あるいは前にくるものを選択し
+ます。もっとも役に立つのはTODOの状態が２段階以上の場合です。
+(see <a href="#TODO-extensions">TODO extensions</a>).<code>shift-selection-mode</code>との連携については、
+<a href="#Conflicts">Conflicts</a>も参照してください。変数
+<code>org-treat-S-cursor-todo-selection-as-state-change</code>. 
 <a name="index-C_002dc-_002f-t-501"></a><a name="index-org_002dshow_002dtodo_002dkey-502"></a><br><dt><kbd>C-c / t &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-show-todo-key</code><kbd>)</kbd><dd>も参照してください。
-<a name="index-TODO_00e3_0081_00ae_00e3_0081_009f_00e3_0082_0081_00e3_0081_00ae_00e3_0083_0084_00e3_0083_00aa_00e3_0083_00bc_00e3_0081_00ae_00e6_008a_00bd_00e5_0087_00ba-503"></a><a name="index-org_002dtodo_002dkeywords-504"></a><em>ツリーの抽出</em>機能を使ってTODOを確認します（see <a href="#Sparse-trees">Sparse trees</a>）参照。バッファ全
-体を折り畳みますが、全てのTODO項目「DONE状態以外の」とその階層の見出しを表示
-します。接頭辞をつけることで(もしくは、キーバインド<kbd>C-c / T</kbd>)、ある特定の
-DONE状態の項目も表示させることができます。検索用のキーワードを入力するための
-プロンプトが表示されます。さらにキーワードのリストを次のように入力することも
-でき<code>KWD1|KWD2|...</code>、この内のどれかに一致するものが表示されます。前置引数Nを
-使って、変数<code>org-todo-keywords</code>内のN番目のキーワードを含むツリーを表示するこ
-ともできます。２回の前置引数を指定すると、すべてのTODO状態「DONEとそれ以外を
-含む」を見つけることができます。<a name="index-C_002dc-a-t-505"></a><a name="index-org_002dtodo_002dlist-506"></a><br><dt><kbd>C-c a t &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-todo-list</code><kbd>)</kbd><dd>グローバルTODOリスト
-を表示します。すべての「DONE状態以外の」TODOアイテムをすべてのアジェンダファ
-イル(see <a href="#Agenda-Views">Agenda Views</a>)から集めて、一つのバッファに表示します。その新しくできた
-バッファは、<code>agenda-mode</code>で表示され、確認や修正を加えるためのコマンドも提供
-されます。(see <a href="#Agenda-commands">Agenda commands</a>). See <a href="#Global-TODO-list">Global TODO list</a>.を参照してください。
-<a name="index-S_002dM_002d_0040key_007bRET_007d-507"></a><a name="index-org_002dinsert_002dtodo_002dheading-508"></a><br><dt><kbd>S-M-&lt;RET&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-insert-todo-heading</code><kbd>)</kbd><dd>新しいTODOを現在の位置に入力します。
+<a name="index-TODO_00e3_0081_00ae_00e3_0081_009f_00e3_0082_0081_00e3_0081_00ae_00e3_0083_0084_00e3_0083_00aa_00e3_0083_00bc_00e3_0081_00ae_00e6_008a_00bd_00e5_0087_00ba-503"></a><a name="index-org_002dtodo_002dkeywords-504"></a><em>ツリーの抽出</em>機能を使ってTODOを確認します（see <a href="#Sparse-trees">Sparse trees</a>）参照。バッ
+ファ全体を折り畳みますが、全てのTODO項目「DONE状態以外の」とその階層の
+見出しを表示します。接頭辞をつけることで(もしくは、キーバインド
+<kbd>C-c / T</kbd>)、ある特定のDONE状態の項目も表示させることができます。検索用
+のキーワードを入力するためのプロンプトが表示されます。さらにキーワード
+のリストを次のように入力することもでき<code>KWD1|KWD2|...</code>、この内のどれか
+に一致するものが表示されます。前置引数Nを使って、変数
+<code>org-todo-keywords</code>内のN番目のキーワードを含むツリーを表示することもで
+きます。２回の前置引数を指定すると、すべてのTODO状態「DONEとそれ以外を
+含む」を見つけることができます。<a name="index-C_002dc-a-t-505"></a><a name="index-org_002dtodo_002dlist-506"></a><br><dt><kbd>C-c a t &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-todo-list</code><kbd>)</kbd><dd>グローバルTODO
+リストを表示します。すべての「DONE状態以外の」TODOアイテムをすべてのア
+ジェンダファイル(see <a href="#Agenda-Views">Agenda Views</a>)から集めて、一つのバッファに表示します
+。その新しくできたバッファは、<code>agenda-mode</code>で表示され、確認や修正を加
+えるためのコマンドも提供されます。
+(see <a href="#Agenda-commands">Agenda commands</a>). See <a href="#Global-TODO-list">Global TODO list</a>.を参照してください。
+<a name="index-S_002dM_002d_0040key_007bRET_007d-507"></a><a name="index-org_002dinsert_002dtodo_002dheading-508"></a><br><dt><kbd>S-M-&lt;RET&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-insert-todo-heading</code><kbd>)</kbd><dd>新しいTODOを現在の位置に入力します
+。
 </dl>
 
 <p class="noindent"><a name="index-org_002dtodo_002dstate_002dtags_002dtriggers-509"></a>Changing a TODO state can also trigger tag changes.  See the docstring of
@@ -3668,10 +3677,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#TODO-extensions">TODO extensions</a>
 or <code>DONE</code> to <code>REPORT</code>, and any of the words in the second row to
 <code>CANCELED</code>.  Note that the <kbd>C-S-</kbd> key binding conflict with
 <code>shift-selection-mode</code> (see <a href="#Conflicts">Conflicts</a>). 
-<a name="index-S_002d_0040key_007bright_007d-522"></a><a name="index-S_002d_0040key_007bleft_007d-523"></a><br><dt><kbd>S-&lt;right&gt;</kbd><dt><kbd>S-&lt;left&gt;</kbd><dd><kbd>S-&lt;&lt;left&gt;&gt;</kbd>と<kbd>S-&lt;&lt;right&gt;&gt;</kbd>は、すべてのサブグループの<em>すべて</em>のキーワード切
-り替えいきます。例えば、上記の例では、<kbd>S-&lt;&lt;right&gt;&gt;</kbd>は、<code>DONE</code>に切り替えられ
-、さらに<code>REPORT</code>になります。<code>shift-selection-mode</code>と連携させる方法については
-、<a href="#Conflicts">Conflicts</a>を参照してください。
+<a name="index-S_002d_0040key_007bright_007d-522"></a><a name="index-S_002d_0040key_007bleft_007d-523"></a><br><dt><kbd>S-&lt;right&gt;</kbd><dt><kbd>S-&lt;left&gt;</kbd><dd><kbd>S-&lt;&lt;left&gt;&gt;</kbd>と<kbd>S-&lt;&lt;right&gt;&gt;</kbd>は、すべてのサブグループの<em>すべて</em>のキーワ
+ード切り替えいきます。例えば、上記の例では、<kbd>S-&lt;&lt;right&gt;&gt;</kbd>は、<code>DONE</code>に
+切り替えられ、さらに<code>REPORT</code>になります。<code>shift-selection-mode</code>と連携さ
+せる方法については、<a href="#Conflicts">Conflicts</a>を参照してください。
 </dl>
 
 <div class="node">
@@ -6628,14 +6637,14 @@ Org-modeで作業した結果、TODOアイテム、タイムスタンプのつ�
      <ul>
 <li><em>アジェンダ</em>　カレンダーのように指定した日付の情報を表示します、
 <li><em>TODOリスト</em>　未完了のアクションアイテムをカバーします、
-<li><em>マッチビュー</em>　関連づけられているタグやプロパティ、TODOの状態に基づいて見出
-しを表示します、
-<li><em>タイムラインビュー</em>　1つのOrg-modeのファイルの中に含まれている全てのイベン
-トを時間順のビューに表示します、
-<li>a <em>テキストの検索ビュー</em>　複数のファイルの中かから、指定したキーワードを含ん
-でいるすべてのエントリーを表示します、
-<li>a <em>詳細が未決定のプロジェクトビュー</em>　現在作業が進んでいないプロジェクトを表
-示します。そして、
+<li><em>マッチビュー</em>　関連づけられているタグやプロパティ、TODOの状態に基づい
+て見出しを表示します、
+<li><em>タイムラインビュー</em>　1つのOrg-modeのファイルの中に含まれている全ての
+イベントを時間順のビューに表示します、
+<li>a <em>テキストの検索ビュー</em>　複数のファイルの中かから、指定したキーワード
+を含んでいるすべてのエントリーを表示します、
+<li>a <em>詳細が未決定のプロジェクトビュー</em>　現在作業が進んでいないプロジェク
+トを表示します。そして、
 <li><em>カスタムビュー</em>　特別な検索や異なるビューの組合せによるビューです。
 </ul>
 
@@ -6687,16 +6696,16 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Agenda-Views">Agenda Views</a>
      
 <a name="index-C_002dc-_005b-1004"></a>
 <a name="index-org_002dagenda_002dfile_002dto_002dfront-1005"></a>
-<dl><dt><kbd>C-c [ &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-file-to-front</code><kbd>)</kbd><dd>　アジェンダファイルのリストに編集中のファイ
-ルを追加する。そのファイルは、リストの先頭に追加される。もしも既にリストに存
-在していたら、先頭に移動する。前置引数をつけることで、リストの最後に追加／移
-動する。<a name="index-C_002dc-_005d-1006"></a><a name="index-org_002dremove_002dfile-1007"></a><br><dt><kbd>C-c ] &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-remove-file</code><kbd>)</kbd><dd>　編集中のファイルをアジェンダファイルのリス
-トから削除する。
+<dl><dt><kbd>C-c [ &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-file-to-front</code><kbd>)</kbd><dd>　アジェンダファイルのリストに編集中の
+ファイルを追加する。そのファイルは、リストの先頭に追加される。もしも既
+にリストに存在していたら、先頭に移動する。前置引数をつけることで、リス
+トの最後に追加／移動する。<a name="index-C_002dc-_005d-1006"></a><a name="index-org_002dremove_002dfile-1007"></a><br><dt><kbd>C-c ] &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-remove-file</code><kbd>)</kbd><dd>　編集中のファイルを
+アジェンダファイルのリストから削除する。
 <a name="index-C_002d_002c-1008"></a><a name="index-C_002d_0027-1009"></a><a name="index-org_002dcycle_002dagenda_002dfiles-1010"></a><br><dt><kbd>C-' &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-cycle-agenda-files</code><kbd>)</kbd>
-<dt><kbd>C-,</kbd><dd>アジェンダファイルのリストに従って、1つのファイルから次のファイルへと切り替
-える。
-<a name="index-M_002dx-org_002diswitchb-1011"></a><br><dt><kbd>M-x org-iswitchb</kbd><dd><code>iswitchb</code>と似たようなインターフェースでOrg-modeのバッファの間を切り替えるコ
-マンド。
+<dt><kbd>C-,</kbd><dd>アジェンダファイルのリストに従って、1つのファイルから次のファイルへと
+切り替える。
+<a name="index-M_002dx-org_002diswitchb-1011"></a><br><dt><kbd>M-x org-iswitchb</kbd><dd><code>iswitchb</code>と似たようなインターフェースでOrg-modeのバッファの間を切り替
+えるコマンド。
 </dl>
 
 <p class="noindent">Org-modeメニューには、現時点のファイルのリストが含まれており、その中のファイ
@@ -6713,14 +6722,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Agenda-Views">Agenda Views</a>
      
 <a name="index-C_002dc-C_002dx-_003c-1012"></a>
 <a name="index-org_002dagenda_002dset_002drestriction_002dlock-1013"></a>
-<dl><dt><kbd>C-c C-x &lt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-set-restriction-lock</code><kbd>)</kbd><dd>アジェンダの対象を現在カーソルが
-置かれているサブツリーに固定的に制限します。前置引数をつけたり、ファイルの最
-初の見出しよりも前にカーソルが置かれているときには、アジェンダの対象範囲はフ
-ァイル全体になります。この制約は<kbd>C-c C-x &gt;</kbd>を実行して取り除くか、<kbd>&lt;</kbd>または
-<kbd>&gt;</kbd>をアジェンダのコマンド選択画面上で入力するまでは維持します。もしもウイン
-ドウ上にアジェンダビューが表示されているならば、あたらしい制約が即座に効果を
-及ぼします。<a name="index-C_002dc-C_002dx-_003e-1014"></a><a name="index-org_002dagenda_002dremove_002drestriction_002dlock-1015"></a><br><dt><kbd>C-c C-x &gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-remove-restriction-lock</code><kbd>)</kbd><dd><kbd>C-c C-x &lt;</kbd>で作成
-された固定する制限を削除します。
+<dl><dt><kbd>C-c C-x &lt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-set-restriction-lock</code><kbd>)</kbd><dd>アジェンダの対象を現在カー
+ソルが置かれているサブツリーに固定的に制限します。前置引数をつけたり、
+ファイルの最初の見出しよりも前にカーソルが置かれているときには、アジェ
+ンダの対象範囲はファイル全体になります。この制約は<kbd>C-c C-x &gt;</kbd>を実行し
+て取り除くか、<kbd>&lt;</kbd>または<kbd>&gt;</kbd>をアジェンダのコマンド選択画面上で入力するま
+では維持します。もしもウインドウ上にアジェンダビューが表示されているな
+らば、あたらしい制約が即座に効果を及ぼします。
+<a name="index-C_002dc-C_002dx-_003e-1014"></a><a name="index-org_002dagenda_002dremove_002drestriction_002dlock-1015"></a><br><dt><kbd>C-c C-x &gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-remove-restriction-lock</code><kbd>)</kbd><dd><kbd>C-c C-x &lt;</kbd>で作成された
+固定する制限を削除します。
 </dl>
 
 <p class="noindent"><samp><span class="file">speedbar.el</span></samp>を併用しているときは、Speedbarのフレームの中で以下のコマンドを
@@ -6728,13 +6738,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Agenda-Views">Agenda Views</a>
      
 <a name="index-g_t_003c-1016"></a>
 <a name="index-org_002dspeedbar_002dset_002dagenda_002drestriction-1017"></a>
-<dl><dt><kbd>&lt; </kbd><span class="roman">in the speedbar frame</span><kbd> &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-speedbar-set-agenda-restriction</code><kbd>)</kbd><dd>　Speedbarの
-フレームの中で、1つのOrg-modeファイルか、そのファイルのサブツリーの一つか、
-カーソルの置かれているアイテムに対応してアジェンダを恒久的に限定します。もし
-もアジェンダビューが表示されているウインドウがあるならば、限定箇所が変更され
-ると即座に反映する。
-<a name="index-g_t_003e-1018"></a><a name="index-org_002dagenda_002dremove_002drestriction_002dlock-1019"></a><br><dt><kbd>&gt; </kbd><span class="roman">in the speedbar frame</span><kbd> &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-remove-restriction-lock</code><kbd>)</kbd><dd>　制限をふたた
-び解除する。
+<dl><dt><kbd>&lt; </kbd><span class="roman">in the speedbar frame</span><kbd> &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-speedbar-set-agenda-restriction</code><kbd>)</kbd><dd>　
+Speedbarのフレームの中で、1つのOrg-modeファイルか、そのファイルのサブ
+ツリーの一つか、カーソルの置かれているアイテムに対応してアジェンダを恒
+久的に限定します。もしもアジェンダビューが表示されているウインドウがあ
+るならば、限定箇所が変更されると即座に反映する。
+<a name="index-g_t_003e-1018"></a><a name="index-org_002dagenda_002dremove_002drestriction_002dlock-1019"></a><br><dt><kbd>&gt; </kbd><span class="roman">in the speedbar frame</span><kbd> &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-remove-restriction-lock</code><kbd>)</kbd><dd>　制限を
+ふたたび解除する。
 </dl>
 
 <div class="node">
@@ -6761,18 +6771,20 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Agenda-Views">Agenda Views</a>
 <br><dt><kbd>m </kbd><span class="roman">/</span><kbd> M</kbd><dd>タグの表記にマッチした見出しのリストを作成します。
 (see <a href="#Matching-tags-and-properties">Matching tags and properties</a>)
 <br><dt><kbd>L</kbd><dd>カレントバッファ用のタイムラインのビューを作成します。(see <a href="#Timeline">Timeline</a>)
-<br><dt><kbd>s</kbd><dd>そのエントリーに存在するしないにかかわらず、and/orという正規表現によるキーワ
-ードの論理式で選択したエントリのリストを作成します。
-<br><dt><kbd>/</kbd><dd><a name="index-org_002dagenda_002dtext_002dsearch_002dextra_002dfiles-1022"></a>すべてのアジェンダファイルと<code>org-agenda-text-search-extra-files</code>の中でリスト
-化かれているファイルの中から正規表現を用いて検索します。これはEmacsの
-<code>multi-occur</code>というコマンドを使用します。前置引数をつけると、それぞれのマッ
-チした行の状況の数をしていすることができます。デフォルトは1となっています。
+<br><dt><kbd>s</kbd><dd>そのエントリーに存在するしないにかかわらず、and/orという正規表現による
+キーワードの論理式で選択したエントリのリストを作成します。
+<br><dt><kbd>/</kbd><dd><a name="index-org_002dagenda_002dtext_002dsearch_002dextra_002dfiles-1022"></a>すべてのアジェンダファイルと<code>org-agenda-text-search-extra-files</code>の中で
+リスト化かれているファイルの中から正規表現を用いて検索します。これは
+Emacsの<code>multi-occur</code>というコマンドを使用します。前置引数をつけると、そ
+れぞれのマッチした行の状況の数をしていすることができます。デフォルトは
+1となっています。
 <br><dt><kbd># </kbd><span class="roman">/</span><kbd> !</kbd><dd>詳細が未決定のプロジェクトのリストを作成します。(see <a href="#Stuck-projects">Stuck projects</a>)
-<br><dt><kbd>&lt;</kbd><dd>カレントバッファ<a rel="footnote" href="#fn-86" name="fnd-86"><sup>86</sup></a>に対してアジェンダコマンドを制限します。<kbd>&lt;</kbd>を入力したあ
-と、コマンドを選択するために文字を入力する必要があります。
-<br><dt><kbd>&lt; &lt;</kbd><dd>もしもアクティブなリージョンがあるときは、以下のようなアジェンダコマンドがそ
-のリージョンに限定されます。一方、カレントのサブツリー<a rel="footnote" href="#fn-87" name="fnd-87"><sup>87</sup></a>に限定することもできます。<kbd>&lt; &lt;</kbd>を入力したあと、コマンドを選択す
-る文字を入力する必要があります。
+<br><dt><kbd>&lt;</kbd><dd>カレントバッファ<a rel="footnote" href="#fn-86" name="fnd-86"><sup>86</sup></a>に対してアジェンダコマンドを制限します。
+<kbd>&lt;</kbd>を入力したあと、コマンドを選択するために文字を入力する必要がありま
+す。
+<br><dt><kbd>&lt; &lt;</kbd><dd>もしもアクティブなリージョンがあるときは、以下のようなアジェンダコマン
+ドがそのリージョンに限定されます。一方、カレントのサブツリー<a rel="footnote" href="#fn-87" name="fnd-87"><sup>87</sup></a>に限定することもできます。<kbd>&lt; &lt;</kbd>を入力し
+たあと、コマンドを選択する文字を入力する必要があります。
 </dl>
 
    <p>あなたは、あたかもデフォルトのコマンドのように、コマンド選択画面でアクセスす
@@ -6824,10 +6836,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Built_002din-agenda-views">Built-in ag
 <a name="index-org_002dagenda_002c-command-1026"></a>
 <a name="index-C_002dc-a-a-1027"></a>
 <a name="index-org_002dagenda_002dlist-1028"></a>
-<dl><dt><kbd>C-c a a &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-list</code><kbd>)</kbd><dd>　Org-modeのファイルのリストの中からその週の予定を
-収集するものです。予定はそれぞれの日に表示されます。（<kbd>C-u 2 1 C-c a a</kbd>のよ
-うに)前置引数に数字をつけて<a rel="footnote" href="#fn-88" name="fnd-88"><sup>88</sup></a>表示する日数を設定す
-ることができます。
+<dl><dt><kbd>C-c a a &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-list</code><kbd>)</kbd><dd>　Org-modeのファイルのリストの中からその週の
+予定を収集するものです。予定はそれぞれの日に表示されます。（
+<kbd>C-u 2 1 C-c a a</kbd>のように)前置引数に数字をつけて<a rel="footnote" href="#fn-88" name="fnd-88"><sup>88</sup></a>表示する日数を設定することができます。
 </dl>
 
    <p><a name="index-org_002dagenda_002dspan-1029"></a><a name="index-org_002dagenda_002dndays-1030"></a>表示されるデフォルトの日数は、<code>org-agenda-span</code>(あるいは古くさくなってしまい
@@ -6944,21 +6955,23 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Built_002din-agenda-views">Built-in ag
      
 <a name="index-C_002dc-a-t-1039"></a>
 <a name="index-org_002dtodo_002dlist-1040"></a>
-<dl><dt><kbd>C-c a t &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-todo-list</code><kbd>)</kbd><dd>　グローバルなTODOリストを表示します。これはすべての
-アジェンダファイル(see <a href="#Agenda-Views">Agenda Views</a>)からTODOアイテムを１つのバッファに集約しま
-す。デフォルトでは、このアイテムのリストはDONEという状態ではないアイテムです
-。そのバッファは<code>agenda-mode</code>となり、そのバッファからTODOアイテムを直接調べ
-たり操作したりするコマンドが用意されています(see <a href="#Agenda-commands">Agenda commands</a>)。
-<a name="index-TODO-keyword-matching-1041"></a><a name="index-org_002dtodo_002dkeywords-1042"></a>上と似ていますが、指定したTODOキーワードと合致したものを表示します。同じこと
-を前置引数をつけて<kbd>C-c a t</kbd>を実行することでも指定できます。キーワードの入力
-を促す指示が表示され、そして複数のキーワードを論理式ORという意味で&lsquo;<samp><span class="samp">|</span></samp>&rsquo;で区切
-って指定することができます。数字付きの前置引数をつけると<code>org-todo-keywords</code>
-の中のN番目のキーワードを選択することができます。
-<a name="index-r-1043"></a><kbd>r</kbd>キーをアジェンダバッファで使用するとバッファの再構成が行われます。たとえ
-ば<kbd>3 r</kbd>というように、前置引数をつけてこのコマンドを実行すると選択したTODOキ
-ーワードが変更することができます。もしも特定のキーワードを使って検索すること
-が多い場合は、カスタムコマンドを定義することもできます(see <a href="#Agenda-dispatcher">Agenda dispatcher</a>)
-。<br>特定のTODOキーワードと合致するものを検索するのは、タグ検索の１機能として
+<dl><dt><kbd>C-c a t &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-todo-list</code><kbd>)</kbd><dd>　グローバルなTODOリストを表示します。これはす
+べてのアジェンダファイル(see <a href="#Agenda-Views">Agenda Views</a>)からTODOアイテムを１つのバッフ
+ァに集約します。デフォルトでは、このアイテムのリストはDONEという状態で
+はないアイテムです。そのバッファは<code>agenda-mode</code>となり、そのバッファか
+らTODOアイテムを直接調べたり操作したりするコマンドが用意されています
+(see <a href="#Agenda-commands">Agenda commands</a>)。
+<a name="index-TODO-keyword-matching-1041"></a><a name="index-org_002dtodo_002dkeywords-1042"></a>上と似ていますが、指定したTODOキーワードと合致したものを表示します。同
+じことを前置引数をつけて<kbd>C-c a t</kbd>を実行することでも指定できます。キー
+ワードの入力を促す指示が表示され、そして複数のキーワードを論理式ORとい
+う意味で&lsquo;<samp><span class="samp">|</span></samp>&rsquo;で区切って指定することができます。数字付きの前置引数をつけ
+ると<code>org-todo-keywords</code>の中のN番目のキーワードを選択することができます
+。
+<a name="index-r-1043"></a><kbd>r</kbd>キーをアジェンダバッファで使用するとバッファの再構成が行われます。
+たとえば<kbd>3 r</kbd>というように、前置引数をつけてこのコマンドを実行すると選
+択したTODOキーワードが変更することができます。もしも特定のキーワードを
+使って検索することが多い場合は、カスタムコマンドを定義することもできま
+す(see <a href="#Agenda-dispatcher">Agenda dispatcher</a>)。<br>特定のTODOキーワードと合致するものを検索するのは、タグ検索の１機能として
 行うこともできます(see <a href="#Tag-searches">Tag searches</a>)。
 </dl>
 
@@ -6970,16 +6983,17 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Built_002din-agenda-views">Built-in ag
 ます。このリストは大変長いものになる場合もあります。それをコンパクトにするに
 は２つの方法があります。
      <ul>
-<li><a name="index-org_002dagenda_002dtodo_002dignore_002dscheduled-1045"></a><a name="index-org_002dagenda_002dtodo_002dignore_002ddeadlines-1046"></a><a name="index-org_002dagenda_002dtodo_002dignore_002dtimestamp-1047"></a><a name="index-org_002dagenda_002dtodo_002dignore_002dwith_002ddate-1048"></a>TODOアイテムが、実行するために<em>scheduled</em>となっている、あるいは、もはや
-<em>open</em>となっている<em>deadline</em>(see <a href="#Timestamps">Timestamps</a>)を持っているかどうかを確認したい人
-もいるでしょう。<code>org-agenda-todo-ignore-scheduled</code>、
+<li><a name="index-org_002dagenda_002dtodo_002dignore_002dscheduled-1045"></a><a name="index-org_002dagenda_002dtodo_002dignore_002ddeadlines-1046"></a><a name="index-org_002dagenda_002dtodo_002dignore_002dtimestamp-1047"></a><a name="index-org_002dagenda_002dtodo_002dignore_002dwith_002ddate-1048"></a>TODOアイテムが、実行するために<em>scheduled</em>となっている、あるいは、もは
+や<em>open</em>となっている<em>deadline</em>(see <a href="#Timestamps">Timestamps</a>)を持っているかどうかを確認
+したい人もいるでしょう。<code>org-agenda-todo-ignore-scheduled</code>、
 <code>org-agenda-todo-ignore-deadlines</code>、<code>org-agenda-todo-ignore-timestamp</code>
-および／または<code>org-agenda-todo-ignore-with-date</code>という変数を設定し、グローバ
-ルなTODOリストから取り除くことができます。
-<li><a name="index-org_002dagenda_002dtodo_002dlist_002dsublevels-1049"></a>TODOアイテムがサブタスクにブレイクダウンされた下位のレベルを持っているかもし
-れません。そういった場合は、最上位のTODOの見出しを表示すれば十分で、グローバ
-ルなリストからは下位のレベルの項目は省略してもよい場合があります。そういった
-ときは<code>org-agenda-todo-list-sublevels</code>変数を設定することで可能となります
+および／または<code>org-agenda-todo-ignore-with-date</code>という変数を設定し、グ
+ローバルなTODOリストから取り除くことができます。
+<li><a name="index-org_002dagenda_002dtodo_002dlist_002dsublevels-1049"></a>TODOアイテムがサブタスクにブレイクダウンされた下位のレベルを持っている
+かもしれません。そういった場合は、最上位のTODOの見出しを表示すれば十分
+で、グローバルなリストからは下位のレベルの項目は省略してもよい場合があ
+ります。そういったときは<code>org-agenda-todo-list-sublevels</code>変数を設定する
+ことで可能となります
 </ul>
 
 <div class="node">
@@ -7002,17 +7016,19 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Built_002din-agenda-views">Built-in ag
      
 <a name="index-C_002dc-a-m-1054"></a>
 <a name="index-org_002dtags_002dview-1055"></a>
-<dl><dt><kbd>C-c a m &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-tags-view</code><kbd>)</kbd><dd>　一組のタグのセットに合致したすべての見出しのリスト
-を作成します。選択の基準の入力を指示するコマンドでタグのついた論理式による表
-現で記入します。例えば、&lsquo;<samp><span class="samp">+work+urgent-withboss</span></samp>&rsquo;あるいは&lsquo;<samp><span class="samp">work|home</span></samp>&rsquo;
-というように(see <a href="#Tags">Tags</a>)。もしも特定の検索をよく行うならばそのためのカスタムコマ
-ンドを定義することができます(see <a href="#Agenda-dispatcher">Agenda dispatcher</a>)。<a name="index-C_002dc-a-M-1056"></a><a name="index-org_002dtags_002dview-1057"></a><br><dt><kbd>C-c a M &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-tags-view</code><kbd>)</kbd><dd>
-<a name="index-org_002dtags_002dmatch_002dlist_002dsublevels-1058"></a><a name="index-org_002dagenda_002dtags_002dtodo_002dhonor_002dignore_002doptions-1059"></a><kbd>C-c a m</kbd>と似ていますが、not-DONEの状態にあるTODOアイテムの見出しから選択す
-るもので、自動的にサブアイテムもチェックします
-(<code>org-tags-match-list-sublevels</code>変数参照)。予定／期限のついたアイテムを除外
-するには<code>org-agenda-tags-todo-honor-ignore-options</code>の変数を参照してください
-。特定のTODOキーワードをタグの一致と一緒に指定することも可能です。
-<a href="#Tag-searches">Tag searches</a>を参照してください。
+<dl><dt><kbd>C-c a m &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-tags-view</code><kbd>)</kbd><dd>　一組のタグのセットに合致したすべての見出しの
+リストを作成します。選択の基準の入力を指示するコマンドでタグのついた論
+理式による表現で記入します。例えば、&lsquo;<samp><span class="samp">+work+urgent-withboss</span></samp>&rsquo;あるいは
+&lsquo;<samp><span class="samp">work|home</span></samp>&rsquo;
+というように(see <a href="#Tags">Tags</a>)。もしも特定の検索をよく行うならばそのためのカスタ
+ムコマンドを定義することができます(see <a href="#Agenda-dispatcher">Agenda dispatcher</a>)。
+<a name="index-C_002dc-a-M-1056"></a><a name="index-org_002dtags_002dview-1057"></a><br><dt><kbd>C-c a M &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-tags-view</code><kbd>)</kbd><dd>
+<a name="index-org_002dtags_002dmatch_002dlist_002dsublevels-1058"></a><a name="index-org_002dagenda_002dtags_002dtodo_002dhonor_002dignore_002doptions-1059"></a><kbd>C-c a m</kbd>と似ていますが、not-DONEの状態にあるTODOアイテムの見出しから
+選択するもので、自動的にサブアイテムもチェックします
+(<code>org-tags-match-list-sublevels</code>変数参照)。予定／期限のついたアイテム
+を除外するには<code>org-agenda-tags-todo-honor-ignore-options</code>の変数を参照
+してください。特定のTODOキーワードをタグの一致と一緒に指定することも可
+能です。<a href="#Tag-searches">Tag searches</a>を参照してください。
 </dl>
 
    <p>タグのリストで利用できるコマンドは<a href="#Agenda-commands">Agenda commands</a>のところで説明しています
@@ -7031,11 +7047,11 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Built_002din-agenda-views">Built-in ag
 。
 
      <dl>
-<dt>&lsquo;<samp><span class="samp">+work-boss</span></samp>&rsquo;<dd>&lsquo;<samp><span class="samp">:work:</span></samp>&rsquo;というタグがついているが、&lsquo;<samp><span class="samp">:boss:</span></samp>&rsquo;というタグがついていない見出しを選
-択します。
+<dt>&lsquo;<samp><span class="samp">+work-boss</span></samp>&rsquo;<dd>&lsquo;<samp><span class="samp">:work:</span></samp>&rsquo;というタグがついているが、&lsquo;<samp><span class="samp">:boss:</span></samp>&rsquo;というタグがついていない見出
+しを選択します。
 <br><dt>&lsquo;<samp><span class="samp">work|laptop</span></samp>&rsquo;<dd>&lsquo;<samp><span class="samp">:work:</span></samp>&rsquo;または&lsquo;<samp><span class="samp">:laptop:</span></samp>&rsquo;というタグがついたものを選択します。
-<br><dt>&lsquo;<samp><span class="samp">work|laptop+night</span></samp>&rsquo;<dd>前の文と同じですが、&lsquo;<samp><span class="samp">:laptop:</span></samp>&rsquo;の行には、同時に&lsquo;<samp><span class="samp">:night:</span></samp>&rsquo;というタグが付いてい
-る必要があります。
+<br><dt>&lsquo;<samp><span class="samp">work|laptop+night</span></samp>&rsquo;<dd>前の文と同じですが、&lsquo;<samp><span class="samp">:laptop:</span></samp>&rsquo;の行には、同時に&lsquo;<samp><span class="samp">:night:</span></samp>&rsquo;というタグが付
+いている必要があります。
 </dl>
 
    <p><a name="index-regular-expressions_002c-with-tags-search-1061"></a>タグの代わりに、大括弧でくくられた正規表現により指定をすることもできます。例
@@ -7055,8 +7071,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Built_002din-agenda-views">Built-in ag
 
    <p>いくつかの例を紹介します。
      <dl>
-<dt>&lsquo;<samp><span class="samp">work+TODO="WAITING"</span></samp>&rsquo;<dd>&lsquo;<samp><span class="samp">:work:</span></samp>&rsquo;というタグがあるTODO行のうち、特にTODOキーワードが&lsquo;<samp><span class="samp">WAITING</span></samp>&rsquo;となって
-いる行を選択します。
+<dt>&lsquo;<samp><span class="samp">work+TODO="WAITING"</span></samp>&rsquo;<dd>&lsquo;<samp><span class="samp">:work:</span></samp>&rsquo;というタグがあるTODO行のうち、特にTODOキーワードが&lsquo;<samp><span class="samp">WAITING</span></samp>&rsquo;と
+なっている行を選択します。
 <br><dt>&lsquo;<samp><span class="samp">work+TODO="WAITING"|home+TODO="WAITING"</span></samp>&rsquo;<dd>workとhomeというタグがついているWaitingとなっているタスク
 </dl>
 
@@ -7068,19 +7084,21 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Built_002din-agenda-views">Built-in ag
 </pre>
    <p class="noindent">比較のタイプは比較の値がどのように書かれているかによります。
      <ul>
-<li>比較する値が普通の数字ならば、数値の比較が行われ、&lsquo;<samp><span class="samp">&lt;</span></samp>&rsquo;、&lsquo;<samp><span class="samp">=</span></samp>&rsquo;、&lsquo;<samp><span class="samp">&gt;</span></samp>&rsquo;、&lsquo;<samp><span class="samp">&lt;=</span></samp>&rsquo;、&lsquo;<samp><span class="samp">&gt;=</span></samp>&rsquo;
-、および&lsquo;<samp><span class="samp">&lt;&gt;</span></samp>&rsquo;という操作が可能です。
-<li>比較する対象がダブルクォーテーションで囲まれている場合は、文字列の比較が行わ
-れ、前項と同じ操作が可能です。
-<li>もしも比較対象が、(&lsquo;<samp><span class="samp">DEADLINE&lt;="&lt;2008-12-24 18:30&gt;"</span></samp>&rsquo;のように)、ダブルクォーテ
-ーション<em>および</em>角括弧&lt;&gt;で囲まれていた場合は、両方の値がOrg-mode流の標準的な
-日付・時刻の指定であると仮定し、それにそって比較を行います。いくつかの特別な
-値があります。<code>"&lt;now&gt;"</code>は（時刻も含めた）現在を示し、<code>"&lt;today&gt;"</code>、
-<code>"&lt;tomorrow&gt;"</code>はそれらの日の0:00つまり、時刻の指定がないことを表します。同
-様に、<code>"&lt;+5d&gt;"</code>または<code>"&lt;-2m&gt;"</code>というような文字列は、それぞれ日、週、月、年を
-示す、<code>d</code>、<code>w</code>、<code>m</code>、<code>y</code>という単位がついているものとして使用されます。
-<li>もしも比較対象が中括弧｛｝でくくられていて、正規表現での比較がなされるときは
-、&lsquo;<samp><span class="samp">=</span></samp>&rsquo;は一致していることを示し、&lsquo;<samp><span class="samp">&lt;&gt;</span></samp>&rsquo;は一致していないことを示します。
+<li>比較する値が普通の数字ならば、数値の比較が行われ、&lsquo;<samp><span class="samp">&lt;</span></samp>&rsquo;、&lsquo;<samp><span class="samp">=</span></samp>&rsquo;、&lsquo;<samp><span class="samp">&gt;</span></samp>&rsquo;、&lsquo;<samp><span class="samp">&lt;=</span></samp>&rsquo;
+、&lsquo;<samp><span class="samp">&gt;=</span></samp>&rsquo;、および&lsquo;<samp><span class="samp">&lt;&gt;</span></samp>&rsquo;という操作が可能です。
+<li>比較する対象がダブルクォーテーションで囲まれている場合は、文字列の比較
+が行われ、前項と同じ操作が可能です。
+<li>もしも比較対象が、(&lsquo;<samp><span class="samp">DEADLINE&lt;="&lt;2008-12-24 18:30&gt;"</span></samp>&rsquo;のように)、ダブルク
+ォーテーション<em>および</em>角括弧&lt;&gt;で囲まれていた場合は、両方の値がOrg-mode
+流の標準的な日付・時刻の指定であると仮定し、それにそって比較を行います
+。いくつかの特別な値があります。<code>"&lt;now&gt;"</code>は（時刻も含めた）現在を示し
+、<code>"&lt;today&gt;"</code>、<code>"&lt;tomorrow&gt;"</code>はそれらの日の0:00つまり、時刻の指定が
+ないことを表します。同様に、<code>"&lt;+5d&gt;"</code>または<code>"&lt;-2m&gt;"</code>というような文字列
+は、それぞれ日、週、月、年を示す、<code>d</code>、<code>w</code>、<code>m</code>、<code>y</code>という単位がついて
+いるものとして使用されます。
+<li>もしも比較対象が中括弧｛｝でくくられていて、正規表現での比較がなされる
+ときは、&lsquo;<samp><span class="samp">=</span></samp>&rsquo;は一致していることを示し、&lsquo;<samp><span class="samp">&lt;&gt;</span></samp>&rsquo;は一致していないことを示しま
+す。
 </ul>
 
    <p>そのため、例に掲げた検索文字列の意味は、&lsquo;<samp><span class="samp">:work:</span></samp>&rsquo;というタグがつけられているが
@@ -7112,9 +7130,10 @@ TODOキーワードが存在することを検索するには論理式のANDで�
 
      <dl>
 <dt>&lsquo;<samp><span class="samp">work/WAITING</span></samp>&rsquo;<dd>&lsquo;<samp><span class="samp">work+TODO="WAITING"</span></samp>&rsquo;と同じ
-<br><dt>&lsquo;<samp><span class="samp">work/!-WAITING-NEXT</span></samp>&rsquo;<dd>&lsquo;<samp><span class="samp">:work:</span></samp>&rsquo;を選択。ただしTODO行では&lsquo;<samp><span class="samp">WAITING</span></samp>&rsquo;と&lsquo;<samp><span class="samp">NEXT</span></samp>&rsquo;のどちらのタグもついていな
-いもの
-<br><dt>&lsquo;<samp><span class="samp">work/!+WAITING|+NEXT</span></samp>&rsquo;<dd>&lsquo;<samp><span class="samp">:work:</span></samp>&rsquo;を選択。TODO行に&lsquo;<samp><span class="samp">WAITING</span></samp>&rsquo;か&lsquo;<samp><span class="samp">NEXT</span></samp>&rsquo;かどちらかのタグがついているもの。
+<br><dt>&lsquo;<samp><span class="samp">work/!-WAITING-NEXT</span></samp>&rsquo;<dd>&lsquo;<samp><span class="samp">:work:</span></samp>&rsquo;を選択。ただしTODO行では&lsquo;<samp><span class="samp">WAITING</span></samp>&rsquo;と&lsquo;<samp><span class="samp">NEXT</span></samp>&rsquo;のどちらのタグもつい
+ていないもの
+<br><dt>&lsquo;<samp><span class="samp">work/!+WAITING|+NEXT</span></samp>&rsquo;<dd>&lsquo;<samp><span class="samp">:work:</span></samp>&rsquo;を選択。TODO行に&lsquo;<samp><span class="samp">WAITING</span></samp>&rsquo;か&lsquo;<samp><span class="samp">NEXT</span></samp>&rsquo;かどちらかのタグがついている
+もの。
 </dl>
 
 <div class="node">
@@ -7138,9 +7157,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Built_002din-agenda-views">Built-in ag
 <a name="index-C_002dc-a-L-1068"></a>
 <a name="index-org_002dtimeline-1069"></a>
 <dl><dt><kbd>C-c a L &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-timeline</code><kbd>)</kbd><dd>すべてのタイムスタンプの付いたアイテムについて、
-Org-modeファイルの中で時間順のビューを提供します。<kbd>C-u</kbd>という前置引数をつけ
-て呼び出したときは、現在の日付の時点で、すべての未完了のTODOエントリー（予約
-されているものも、そうでないものも）を一覧にします。
+Org-modeファイルの中で時間順のビューを提供します。<kbd>C-u</kbd>という前置引数
+をつけて呼び出したときは、現在の日付の時点で、すべての未完了のTODOエン
+トリー（予約されているものも、そうでないものも）を一覧にします。
 </dl>
 
 <p class="noindent">タイムラインのバッファで利用できるコマンドは、<a href="#Agenda-commands">Agenda commands</a>にリスト化さ
@@ -7164,8 +7183,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Built_002din-agenda-views">Built-in ag
      
 <a name="index-C_002dc-a-s-1073"></a>
 <a name="index-org_002dsearch_002dview-1074"></a>
-<dl><dt><kbd>C-c a s &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-search-view</code><kbd>)</kbd><dd>　このコマンドは特別な検索のためのもので、論理式を
-使って、文字列または特定の単語に合致するエントリーを選択します。
+<dl><dt><kbd>C-c a s &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-search-view</code><kbd>)</kbd><dd>　このコマンドは特別な検索のためのもので、論
+理式を使って、文字列または特定の単語に合致するエントリーを選択します。
 </dl>
    例えば、&lsquo;<samp><span class="samp">computer equipment</span></samp>&rsquo;という検索文字列は、&lsquo;<samp><span class="samp">computer equipment</span></samp>&rsquo;という1
 つの文字列が含まれているエントリーを検索するでしょう。もしも、２つの単語が、
@@ -7206,10 +7225,11 @@ Allen氏のGTDのようなシステムであなたの仕事を管理している
      
 <a name="index-C_002dc-a-_0023-1077"></a>
 <a name="index-org_002dagenda_002dlist_002dstuck_002dprojects-1078"></a>
-<dl><dt><kbd>C-c a # &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-list-stuck-projects</code><kbd>)</kbd><dd>　詳細が未決定のプロジェクトリスト
-<a name="index-C_002dc-a-_0021-1079"></a><br><dt><kbd>C-c a !</kbd><dd><a name="index-org_002dstuck_002dprojects-1080"></a><code>org-stuck-projects</code>の変数をカスタマイズすることで何が詳細が未決定のプロジェ
-クトで、どうやったらそういうプロジェクトを発見できるかを定義することができま
-す。
+<dl><dt><kbd>C-c a # &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-list-stuck-projects</code><kbd>)</kbd><dd>　詳細が未決定のプロジェクトリ
+スト
+<a name="index-C_002dc-a-_0021-1079"></a><br><dt><kbd>C-c a !</kbd><dd><a name="index-org_002dstuck_002dprojects-1080"></a><code>org-stuck-projects</code>の変数をカスタマイズすることで何が詳細が未決定のプ
+ロジェクトで、どうやったらそういうプロジェクトを発見できるかを定義する
+ことができます。
 </dl>
 
    <p>あなたは九分九厘このコマンドが機能するために、このビューを定義する必要があり
@@ -7359,21 +7379,22 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Presentation-and-sorting">Presentation
 <p><a name="index-sorting_002c-of-agenda-items-1091"></a><a name="index-priorities_002c-of-agenda-items-1092"></a>ビューに書き出される前に、各アイテムは並び替えが行われます。この並び替えはビ
 ューのタイプによって決まります。
      <ul>
-<li><a name="index-org_002dagenda_002dfiles-1093"></a>一日／一週間のアジェンダでは、それぞれの日の各アイテムは順番に並びます。デフ
-ォルトの順番は、明示的に日付と時刻の指定を含んでいるアイテムを、最初に集めま
-す。これらのアイテムは、その日の<em>スケジュール</em>に応じて、リストの最初から順番
-に表示されます。その次に、各アイテムは
-<code>org-agenda-files</code>によって決められた順番に、カテゴリーごとにグループ分けされ
-ます。それぞれのカテゴリーの中で、各アイテムは優先順位(see <a href="#Priorities">Priorities</a>)に従って
-並び替えられます。優先順位は基本的な優先順位で構成されます（優先順位&lsquo;<samp><span class="samp">A</span></samp>&rsquo;なら
-ば2000、&lsquo;<samp><span class="samp">B</span></samp>&rsquo;ならば1000、&lsquo;<samp><span class="samp">C</span></samp>&rsquo;ならば0として）。さらに、予定あるいはデッドライン
-を過ぎているアイテムのウエイトが追加されます。
-<li>TODOリストでは、各アイテムはカテゴリーの順番に並び替えられますが、各カテゴリ
-ーの中では、優先順位(see <a href="#Priorities">Priorities</a>)によって並び替えられます。優先順位は、優先
-順位の記号に従って並べ替えられます。さらに、アイテムが実行する日あるいは予約
-した日にどれだけ近いかということも考慮されます。
-<li>タグでの一致については、項目は並び替えは行われず、アジェンダファイルの中で一
-致した項目が発見された順番に従って表示されるのみです。
+<li><a name="index-org_002dagenda_002dfiles-1093"></a>一日／一週間のアジェンダでは、それぞれの日の各アイテムは順番に並びます
+。デフォルトの順番は、明示的に日付と時刻の指定を含んでいるアイテムを、
+最初に集めます。これらのアイテムは、その日の<em>スケジュール</em>に応じて、リ
+ストの最初から順番に表示されます。その次に、各アイテムは
+<code>org-agenda-files</code>によって決められた順番に、カテゴリーごとにグループ分
+けされます。それぞれのカテゴリーの中で、各アイテムは優先順位
+(see <a href="#Priorities">Priorities</a>)に従って並び替えられます。優先順位は基本的な優先順位で構
+成されます（優先順位&lsquo;<samp><span class="samp">A</span></samp>&rsquo;ならば2000、&lsquo;<samp><span class="samp">B</span></samp>&rsquo;ならば1000、&lsquo;<samp><span class="samp">C</span></samp>&rsquo;ならば0として）。
+さらに、予定あるいはデッドラインを過ぎているアイテムのウエイトが追加さ
+れます。
+<li>TODOリストでは、各アイテムはカテゴリーの順番に並び替えられますが、各カ
+テゴリーの中では、優先順位(see <a href="#Priorities">Priorities</a>)によって並び替えられます。優先
+順位は、優先順位の記号に従って並べ替えられます。さらに、アイテムが実行
+する日あるいは予約した日にどれだけ近いかということも考慮されます。
+<li>タグでの一致については、項目は並び替えは行われず、アジェンダファイルの
+中で一致した項目が発見された順番に従って表示されるのみです。
 </ul>
 
    <p><a name="index-org_002dagenda_002dsorting_002dstrategy-1094"></a>並び替えは、<code>org-agenda-sorting-strategy</code>変数でカスタマイズすることができま
@@ -7406,144 +7427,152 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Agenda-Views">Agenda Views</a>
 <dt><b>Motion</b><dd>
 <a name="index-motion-commands-in-agenda-1096"></a><a name="index-n-1097"></a><a name="index-org_002dagenda_002dnext_002dline-1098"></a><br><dt><kbd>n &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-next-line</code><kbd>)</kbd><dd>　次の行へ(&lt;up&gt;及び<kbd>C-p</kbd>と同じ)。
 <a name="index-p-1099"></a><a name="index-org_002dagenda_002dprevious_002dline-1100"></a><br><dt><kbd>p &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-previous-line</code><kbd>)</kbd><dd>　次の行へ(&lt;down&gt;及び<kbd>C-n</kbd>と同じ)。
-<br><dt><b>View/Go to Org file</b><dd>　<a name="index-g_t_0040key_007bSPC_007d-1101"></a><a name="index-mouse_002d3-1102"></a><a name="index-org_002dagenda_002dshow_002dand_002dscroll_002dup-1103"></a><br><dt><kbd>&lt;SPC&gt;  </kbd><span class="roman">or</span><kbd>  mouse-3 &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-show-and-scroll-up</code><kbd>)</kbd><dd>　そのア
-イテムのオリジナルの場所を別のウインドウで表示する。前置引数を使うことで、見
-出しだけでなく、アウトライン上にエントリー全体を明確に表示する。
-<a name="index-L-1104"></a><a name="index-org_002dagenda_002drecenter-1105"></a><br><dt><kbd>L &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-recenter</code><kbd>)</kbd><dd>　オリジナルの場所を表示し、ウインドウのセンターに再
-配置する。<a name="index-g_t_0040key_007bTAB_007d-1106"></a><a name="index-mouse_002d2-1107"></a><a name="index-org_002dagenda_002dgoto-1108"></a><br><dt><kbd>&lt;TAB&gt;  </kbd><span class="roman">or</span><kbd>  mouse-2 &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-goto</code><kbd>)</kbd><dd>　別のウインドウでそのアイテムのオ
-リジナルの場所に移動する。<a name="index-g_t_0040key_007bRET_007d-1109"></a><a name="index-org_002dagenda_002dswitch_002dto-1110"></a><br><dt><kbd>&lt;RET&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-switch-to</code><kbd>)</kbd><dd>　そのアイテムのオリジ
-ナルの場所に移動し、他のウインドウは削除する。<a name="index-F-1111"></a><a name="index-org_002dagenda_002dfollow_002dmode-1112"></a><br><dt><kbd>F &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-follow-mode</code><kbd>)</kbd><dd>
-<a name="index-org_002dagenda_002dstart_002dwith_002dfollow_002dmode-1113"></a>Followモードをトグルする。Followモードではアジェンダバッファ上でカーソルを動
-かすと、Org-modeファイルの中で、別のウインドウ上で対応する場所を表示する。新
-しいアジェンダバッファの中でこのモードの初期設定値は、
+<br><dt><b>View/Go to Org file</b><dd>　<a name="index-g_t_0040key_007bSPC_007d-1101"></a><a name="index-mouse_002d3-1102"></a><a name="index-org_002dagenda_002dshow_002dand_002dscroll_002dup-1103"></a><br><dt><kbd>&lt;SPC&gt;  </kbd><span class="roman">or</span><kbd>  mouse-3 &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-show-and-scroll-up</code><kbd>)</kbd><dd>　
+そのアイテムのオリジナルの場所を別のウインドウで表示する。前置引数を使
+うことで、見出しだけでなく、アウトライン上にエントリー全体を明確に表示
+する。<a name="index-L-1104"></a><a name="index-org_002dagenda_002drecenter-1105"></a><br><dt><kbd>L &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-recenter</code><kbd>)</kbd><dd>　オリジナルの場所を表示し、ウインドウの
+センターに再配置する。<a name="index-g_t_0040key_007bTAB_007d-1106"></a><a name="index-mouse_002d2-1107"></a><a name="index-org_002dagenda_002dgoto-1108"></a><br><dt><kbd>&lt;TAB&gt;  </kbd><span class="roman">or</span><kbd>  mouse-2 &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-goto</code><kbd>)</kbd><dd>　別のウインドウ
+でそのアイテムのオリジナルの場所に移動する。
+<a name="index-g_t_0040key_007bRET_007d-1109"></a><a name="index-org_002dagenda_002dswitch_002dto-1110"></a><br><dt><kbd>&lt;RET&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-switch-to</code><kbd>)</kbd><dd>　そのアイテムのオリジナルの場所に移動し、
+他のウインドウは削除する。<a name="index-F-1111"></a><a name="index-org_002dagenda_002dfollow_002dmode-1112"></a><br><dt><kbd>F &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-follow-mode</code><kbd>)</kbd><dd>
+<a name="index-org_002dagenda_002dstart_002dwith_002dfollow_002dmode-1113"></a>Followモードをトグルする。Followモードではアジェンダバッファ上でカーソ
+ルを動かすと、Org-modeファイルの中で、別のウインドウ上で対応する場所を
+表示する。新しいアジェンダバッファの中でこのモードの初期設定値は、
 <code>org-agenda-start-with-follow-mode</code>変数で設定することができる。
-<a name="index-C_002dc-C_002dx-b-1114"></a><a name="index-org_002dagenda_002dtree_002dto_002dindirect_002dbuffer-1115"></a><br><dt><kbd>C-c C-x b &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-tree-to-indirect-buffer</code><kbd>)</kbd><dd>　間接的なバッファの中で可憐と
-アイテムのサブツリー全体を表示する。数値付きの前置引数Nをつけると、第N階層ま
-で階層を上がり、そのツリーを取得する。もしもNがマイナスならば、多くの階層ま
-で上がる。<kbd>C-u</kbd>という前置引数を付けた場合は、既に使われた間接的バッファは消
-去されない。
+<a name="index-C_002dc-C_002dx-b-1114"></a><a name="index-org_002dagenda_002dtree_002dto_002dindirect_002dbuffer-1115"></a><br><dt><kbd>C-c C-x b &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-tree-to-indirect-buffer</code><kbd>)</kbd><dd>　間接的なバッファの中で
+可憐とアイテムのサブツリー全体を表示する。数値付きの前置引数Nをつける
+と、第N階層まで階層を上がり、そのツリーを取得する。もしもNがマイナスな
+らば、多くの階層まで上がる。<kbd>C-u</kbd>という前置引数を付けた場合は、既に使
+われた間接的バッファは消去されない。
 
-     <p><a name="index-C_002dc-C_002do-1116"></a><a name="index-org_002dagenda_002dopen_002dlink-1117"></a><br><dt><kbd>C-c C-o &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-open-link</code><kbd>)</kbd><dd>　エントリーの中にあるリンクをフォローする。こ
-の機能は、参照されているOrg-modeのノードに属しているテキストの中に含まれてい
-るいくつかのリンクの中から選択するという機能を提供する。もしもリンクが1つし
-かない場合は、選択画面を表示せずに、そこにリンクを貼る。
+     <p><a name="index-C_002dc-C_002do-1116"></a><a name="index-org_002dagenda_002dopen_002dlink-1117"></a><br><dt><kbd>C-c C-o &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-open-link</code><kbd>)</kbd><dd>　エントリーの中にあるリンクをフォローす
+る。この機能は、参照されているOrg-modeのノードに属しているテキストの中
+に含まれているいくつかのリンクの中から選択するという機能を提供する。も
+しもリンクが1つしかない場合は、選択画面を表示せずに、そこにリンクを貼る。
 
      <br><dt><b>Change display</b><dd>
 <a name="index-display-changing_002c-in-agenda-1118"></a><a name="index-o-1119"></a><br><dt><kbd>o</kbd><dd>他のウインドウを削除します。
 <a name="index-v-d-1120"></a><a name="index-d-1121"></a><a name="index-org_002daganda_002dday_002dview-1122"></a><br><dt><kbd>v d  </kbd><span class="roman">or short</span><kbd>  d &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-aganda-day-view</code><kbd>)</kbd><dd> <a name="index-v-w-1123"></a><a name="index-w-1124"></a><a name="index-org_002daganda_002dday_002dview-1125"></a><dt><kbd>v w  </kbd><span class="roman">or short</span><kbd>  w &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-aganda-day-view</code><kbd>)</kbd><dd> <a name="index-v-m-1126"></a><a name="index-org_002dagenda_002dmonth_002dview-1127"></a><dt><kbd>v m &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-month-view</code><kbd>)</kbd><dd> <a name="index-v-y-1128"></a><a name="index-org_002dagenda_002dmonth_002dyear-1129"></a><dt><kbd>v y &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-month-year</code><kbd>)</kbd><dd> <a name="index-v-SPC-1130"></a><a name="index-org_002dagenda_002dreset_002dview-1131"></a><dt><kbd>v SPC &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-reset-view</code><kbd>)</kbd><dd>
-<a name="index-org_002dagenda_002dspan-1132"></a>日／週／月／年のビューを切り替えます。日または週にビューを切り替えたときは、
-この設定は、それに続くアジェンダの更新ついてのデフォルトの設定となります。月
-および年のビューは、作成するために時間を要するので、デフォルトとはしていませ
-ん。数字の付いた前置引数をつけると、その年、ISOの週、月、年の指定した日に直
-接ジャンプします。例えば<kbd>32 d</kbd>と書いたときは2月1日、<kbd>9 w</kbd>と書いたらISOの週番
-号が9を指します。日、週あるいは月のビューを設定したときは、1年は同様に前置引
-数の中でコード化されます。例えば、<kbd>200712 w</kbd>と書いたときは2007年の第12週にジ
-ャンプするでしょう。もしもそのような年の指定を、1桁もしくは2桁の数字で行いた
-いたときは、1938年から2037年の間に位置づけられます。<kbd>v &lt;SPC&gt;</kbd>によって、
-<code>org-agenda-span</code>での設定をリセットすることができます。<a name="index-f-1133"></a><a name="index-org_002dagenda_002dlater-1134"></a><br><dt><kbd>f &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-later</code><kbd>)</kbd><dd>
-　時間を前の日付の表示へと遡ります。<a name="index-g_t_002e-1135"></a><a name="index-org_002dagenda_002dgoto_002dtoday-1136"></a><br><dt><kbd>. &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-goto-today</code><kbd>)</kbd><dd>　今日へ移動し
-ます。<a name="index-j-1137"></a><a name="index-org_002dagenda_002dgoto_002ddate-1138"></a><br><dt><kbd>j &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-goto-date</code><kbd>)</kbd><dd>　日付の選択画面でその日に移動します。
-<a name="index-J-1139"></a><a name="index-org_002dagenda_002dclock_002dgoto-1140"></a><br><dt><kbd>J &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-clock-goto</code><kbd>)</kbd><dd>　<i>アジェンダバッファの中</i>で現在時間を計測中のタスク
-に移動します。<a name="index-D-1141"></a><a name="index-org_002dagenda_002dtoggle_002ddiary-1142"></a><br><dt><kbd>D &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-toggle-diary</code><kbd>)</kbd><dd>　日記のエントリーに含めるかどうか
-トグルします。参照<a href="#Weekly_002fdaily-agenda">Weekly/daily agenda</a>.<a name="index-v-l-1143"></a><a name="index-l-1144"></a><a name="index-org_002dagenda_002dlog_002dmode-1145"></a><br><dt><kbd>v l  </kbd><span class="roman">or short</span><kbd>  l &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-log-mode</code><kbd>)</kbd><dd>
-<a name="index-v-L-1146"></a><a name="index-org_002dlog_002ddone-1147"></a><a name="index-org_002dagenda_002dlog_002dmode_002ditems-1148"></a>Logbook modeにするかどうかをトグルします。Logbook modeの中では、ログの取得中
-に(変数
-<code>org-log-done</code>)DONEと印が付けられたエントリーが、その日の時刻を持っているエ
-ントリーとして、アジェンダの中に表示されます。<code>org-agenda-log-mode-items</code>変
-数を用いてlogモードに含まれるエントリーのタイプを設定することができます。
-<kbd>C-u</kbd>という前置引数をつけて呼び出すと、状態の変化を含め、すべてのおこりうる
-logbookのエントリーを表示できるでしょう。<kbd>C-u C-u</kbd>という2つの前置引数をつけ
-て呼び出すと、ログの情報のみが表示され、それ以外は表示されません。<kbd>v L</kbd>は、
-<kbd>C-u v l</kbd>と等価です。<a name="index-v-_005b-1149"></a><a name="index-g_t_005b-1150"></a><a name="index-org_002dagenda_002dmanipulate_002dquery_002dadd-1151"></a><br><dt><kbd>v [  </kbd><span class="roman">or short</span><kbd>  [ &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-manipulate-query-add</code><kbd>)</kbd><dd>　現在のビューに
-、不活性のタイムスタンプを含めます。週／日のアジェンダとタイムラインビューの
-みです。<a name="index-v-a-1152"></a><a name="index-org_002dagenda_002darchives_002dmode-1153"></a><br><dt><kbd>v a &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-archives-mode</code><kbd>)</kbd><dd> <a name="index-v-A-1154"></a><a name="index-org_002dagenda_002darchives_002dmode-_0027files-1155"></a><dt><kbd>v A &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-archives-mode 'files</code><kbd>)</kbd><dd>
-　Archivesモードをトグルします。Archivesモードでは、<code>ARCHIVED</code>と印されたツリ
-ーもまたアジェンダを作成するときにスキャンされます。大文字の<kbd>A</kbd>を使用したと
-きは、全てのアーカイブファイルを含みます。archives
+<a name="index-org_002dagenda_002dspan-1132"></a>日／週／月／年のビューを切り替えます。日または週にビューを切り替えたと
+きは、この設定は、それに続くアジェンダの更新ついてのデフォルトの設定と
+なります。月および年のビューは、作成するために時間を要するので、デフォ
+ルトとはしていません。数字の付いた前置引数をつけると、その年、ISOの週
+、月、年の指定した日に直接ジャンプします。例えば<kbd>32 d</kbd>と書いたときは2
+月1日、<kbd>9 w</kbd>と書いたらISOの週番号が9を指します。日、週あるいは月のビュ
+ーを設定したときは、1年は同様に前置引数の中でコード化されます。例えば
+、<kbd>200712 w</kbd>と書いたときは2007年の第12週にジャンプするでしょう。もしも
+そのような年の指定を、1桁もしくは2桁の数字で行いたいたときは、1938年か
+ら2037年の間に位置づけられます。<kbd>v &lt;SPC&gt;</kbd>によって、<code>org-agenda-span</code>で
+の設定をリセットすることができます。<a name="index-f-1133"></a><a name="index-org_002dagenda_002dlater-1134"></a><br><dt><kbd>f &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-later</code><kbd>)</kbd><dd>　時間を前の日
+付の表示へと遡ります。<a name="index-g_t_002e-1135"></a><a name="index-org_002dagenda_002dgoto_002dtoday-1136"></a><br><dt><kbd>. &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-goto-today</code><kbd>)</kbd><dd>　今日へ移動します。
+<a name="index-j-1137"></a><a name="index-org_002dagenda_002dgoto_002ddate-1138"></a><br><dt><kbd>j &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-goto-date</code><kbd>)</kbd><dd>　日付の選択画面でその日に移動します。
+<a name="index-J-1139"></a><a name="index-org_002dagenda_002dclock_002dgoto-1140"></a><br><dt><kbd>J &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-clock-goto</code><kbd>)</kbd><dd>　<i>アジェンダバッファの中</i>で現在時間を計測中の
+タスクに移動します。<a name="index-D-1141"></a><a name="index-org_002dagenda_002dtoggle_002ddiary-1142"></a><br><dt><kbd>D &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-toggle-diary</code><kbd>)</kbd><dd>　日記のエントリーに含
+めるかどうかトグルします。参照
+<a href="#Weekly_002fdaily-agenda">Weekly/daily agenda</a>.<a name="index-v-l-1143"></a><a name="index-l-1144"></a><a name="index-org_002dagenda_002dlog_002dmode-1145"></a><br><dt><kbd>v l  </kbd><span class="roman">or short</span><kbd>  l &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-log-mode</code><kbd>)</kbd><dd>
+<a name="index-v-L-1146"></a><a name="index-org_002dlog_002ddone-1147"></a><a name="index-org_002dagenda_002dlog_002dmode_002ditems-1148"></a>Logbook modeにするかどうかをトグルします。Logbook modeの中では、ログの
+取得中に(変数
+<code>org-log-done</code>)DONEと印が付けられたエントリーが、その日の時刻を持って
+いるエントリーとして、アジェンダの中に表示されます。
+<code>org-agenda-log-mode-items</code>変数を用いてlogモードに含まれるエントリーの
+タイプを設定することができます。<kbd>C-u</kbd>という前置引数をつけて呼び出すと
+、状態の変化を含め、すべてのおこりうるlogbookのエントリーを表示できる
+でしょう。<kbd>C-u C-u</kbd>という2つの前置引数をつけて呼び出すと、ログの情報の
+みが表示され、それ以外は表示されません。<kbd>v L</kbd>は、<kbd>C-u v l</kbd>と等価です。
+<a name="index-v-_005b-1149"></a><a name="index-g_t_005b-1150"></a><a name="index-org_002dagenda_002dmanipulate_002dquery_002dadd-1151"></a><br><dt><kbd>v [  </kbd><span class="roman">or short</span><kbd>  [ &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-manipulate-query-add</code><kbd>)</kbd><dd>　現在のビューに、不活性のタイ
+ムスタンプを含めます。週／日のアジェンダとタイムラインビューのみです。
+<a name="index-v-a-1152"></a><a name="index-org_002dagenda_002darchives_002dmode-1153"></a><br><dt><kbd>v a &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-archives-mode</code><kbd>)</kbd><dd> <a name="index-v-A-1154"></a><a name="index-org_002dagenda_002darchives_002dmode-_0027files-1155"></a><dt><kbd>v A &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-archives-mode 'files</code><kbd>)</kbd><dd>　
+Archivesモードをトグルします。Archivesモードでは、<code>ARCHIVED</code>と印された
+ツリーもまたアジェンダを作成するときにスキャンされます。大文字の<kbd>A</kbd>を
+使用したときは、全てのアーカイブファイルを含みます。archives
 modeから出るためには、再度<kbd>v a</kbd>を押してください。
 <a name="index-v-R-1156"></a><a name="index-R-1157"></a><a name="index-org_002dagenda_002dclockreport_002dmode-1158"></a><br><dt><kbd>v R  </kbd><span class="roman">or short</span><kbd>  R &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-clockreport-mode</code><kbd>)</kbd><dd>
-<a name="index-org_002dagenda_002dstart_002dwith_002dclockreport_002dmode-1159"></a>Clockreportモードをトグルします。Clockreportモードでは、日／週のアジェンダは
-、時間軸のための時刻のついた表を表示し、カレントのアジェンダビューでカバーさ
-れる範囲をファイルします。新しいアジェンダバッファの中で、このモードの初期設
-定は、<code>org-agenda-start-with-clockreport-mode</code>変数で設定することができます。
-このモードをトグル(すなわち
+<a name="index-org_002dagenda_002dstart_002dwith_002dclockreport_002dmode-1159"></a>Clockreportモードをトグルします。Clockreportモードでは、日／週のアジェ
+ンダは、時間軸のための時刻のついた表を表示し、カレントのアジェンダビュ
+ーでカバーされる範囲をファイルします。新しいアジェンダバッファの中で、
+このモードの初期設定は、<code>org-agenda-start-with-clockreport-mode</code>変数で
+設定することができます。このモードをトグル(すなわち
 <kbd>C-u R</kbd>)している時に、前置引数を使用することで、アジェンダフィルター
-<a rel="footnote" href="#fn-92" name="fnd-92"><sup>92</sup></a>によ
-って隠されているエントリーからの情報を表示しないでしょう。
+<a rel="footnote" href="#fn-92" name="fnd-92"><sup>92</sup></a>によって隠されているエントリーからの情報を表示しないでしょう。
 <a name="index-v-E-1160"></a><a name="index-E-1161"></a><a name="index-org_002dagenda_002dentry_002dtext_002dmode-1162"></a><br><dt><kbd>v E  </kbd><span class="roman">or short</span><kbd>  E &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-entry-text-mode</code><kbd>)</kbd><dd>
 <a name="index-org_002dagenda_002dstart_002dwith_002dentry_002dtext_002dmode-1163"></a><a name="index-org_002dagenda_002dentry_002dtext_002dmaxlines-1164"></a>entry text modeをトグルします。entry text
-modeでは、アジェンダ行によって参照されているOrg-modeのアウトラインのノードか
-ら、多数の行が、その行の下に表示されるでしょう。最大の行数は、
-<code>org-agenda-entry-text-maxlines</code>変数で指定します。数値付きの前置引数を付けて
-、このコマンドを呼び出すと、前置引数の値の数によって、即座に修正されます。
-<a name="index-G-1165"></a><a name="index-org_002dagenda_002dtoggle_002dtime_002dgrid-1166"></a><br><dt><kbd>G &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-toggle-time-grid</code><kbd>)</kbd><dd>
+modeでは、アジェンダ行によって参照されているOrg-modeのアウトラインのノ
+ードから、多数の行が、その行の下に表示されるでしょう。最大の行数は、
+<code>org-agenda-entry-text-maxlines</code>変数で指定します。数値付きの前置引数を
+付けて、このコマンドを呼び出すと、前置引数の値の数によって、即座に修正
+されます。<a name="index-G-1165"></a><a name="index-org_002dagenda_002dtoggle_002dtime_002dgrid-1166"></a><br><dt><kbd>G &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-toggle-time-grid</code><kbd>)</kbd><dd>
 <a name="index-org_002dagenda_002duse_002dtime_002dgrid-1167"></a><a name="index-org_002dagenda_002dtime_002dgrid-1168"></a>時間のグリッドの表示をトグルします。<code>org-agenda-use-time-grid</code>と
-<code>org-agenda-time-grid</code>変数を参照してください。<a name="index-r-1169"></a><a name="index-org_002dagenda_002drodo-1170"></a><br><dt><kbd>r &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-rodo</code><kbd>)</kbd><dd>　アジェン
-ダバッファを再構築する。例えば、<kbd>S-&lt;left&gt;</kbd>と<kbd>S-&lt;right&gt;</kbd>を使って、アイテムの
-タイムスタンプを改修したあと、その変更を反映するために。そのバッファがグロー
-バルなTODOリストの場合は、指定したTODOキーワードを選択できるリストを作成する
-ために、前置引数を解釈します。<a name="index-g-1171"></a><a name="index-org_002dagenda_002drodo-1172"></a><br><dt><kbd>g &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-rodo</code><kbd>)</kbd><dd>　カレントのEmacsのセッショ
-ンにおいて、すべてのOrg-modeのバッファを保存します。あわせてIDの場所も。
+<code>org-agenda-time-grid</code>変数を参照してください。<a name="index-r-1169"></a><a name="index-org_002dagenda_002drodo-1170"></a><br><dt><kbd>r &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-rodo</code><kbd>)</kbd><dd>　ア
+ジェンダバッファを再構築する。例えば、<kbd>S-&lt;left&gt;</kbd>と<kbd>S-&lt;right&gt;</kbd>を使って
+、アイテムのタイムスタンプを改修したあと、その変更を反映するために。そ
+のバッファがグローバルなTODOリストの場合は、指定したTODOキーワードを選
+択できるリストを作成するために、前置引数を解釈します。
+<a name="index-g-1171"></a><a name="index-org_002dagenda_002drodo-1172"></a><br><dt><kbd>g &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-rodo</code><kbd>)</kbd><dd>　カレントのEmacsのセッションにおいて、すべての
+Org-modeのバッファを保存します。あわせてIDの場所も。
 <a name="index-C_002dc-C_002dx-C_002dc-1173"></a><a name="index-org_002dagenda_002dcolumns-1174"></a><br><dt><kbd>C-c C-x C-c &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-columns</code><kbd>)</kbd><dd>
-<a name="index-org_002dcolumns_002ddefault_002dformat-1175"></a>アジェンダバッファの中でカラムビュー(see <a href="#Column-view">Column view</a>)を作成します。カラムビュ
-ーのフォーマットは、その時点のエントリーから作成され、あるいは(もしも、その
-時点でエントリーが存在しないなら)、アジェンダビューの最初のエントリーから作
-成されます。そのエントリーのためのフォーマットが何であれ、(プロパティーから
-、<code>#+COLUMNS</code>という行から、あるいは<code>org-columns-default-format</code>変数のデフォ
-ルトから作成された)オリジナルのバッファに存在しているエントリーのフォーマッ
-トがアジェンダで使用されます。
+<a name="index-org_002dcolumns_002ddefault_002dformat-1175"></a>アジェンダバッファの中でカラムビュー(see <a href="#Column-view">Column view</a>)を作成します。カラ
+ムビューのフォーマットは、その時点のエントリーから作成され、あるいは(
+もしも、その時点でエントリーが存在しないなら)、アジェンダビューの最初
+のエントリーから作成されます。そのエントリーのためのフォーマットが何で
+あれ、(プロパティーから、<code>#+COLUMNS</code>という行から、あるいは
+<code>org-columns-default-format</code>変数のデフォルトから作成された)オリジナル
+のバッファに存在しているエントリーのフォーマットがアジェンダで使用されます。
 
-     <p><a name="index-C_002dc-C_002dx-_003e-1176"></a><a name="index-org_002dagenda_002dremove_002drestriction_002dlock-1177"></a><br><dt><kbd>C-c C-x &gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-remove-restriction-lock</code><kbd>)</kbd><dd>　もしもファイルまたはサブツリ
-ーをその時点で制限しているならば、アジェンダをロックする制限を取り除きます。
+     <p><a name="index-C_002dc-C_002dx-_003e-1176"></a><a name="index-org_002dagenda_002dremove_002drestriction_002dlock-1177"></a><br><dt><kbd>C-c C-x &gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-remove-restriction-lock</code><kbd>)</kbd><dd>　もしもファイルまたはサ
+ブツリーをその時点で制限しているならば、アジェンダをロックする制限を取
+り除きます。
 (see <a href="#Agenda-files">Agenda files</a>).
 
      <br><dt><b>Secondary filtering and query editing</b><dd>
 <a name="index-filtering_002c-by-tag-and-effort_002c-in-agenda-1178"></a><a name="index-tag-filtering_002c-in-agenda-1179"></a><a name="index-effort-filtering_002c-in-agenda-1180"></a><a name="index-query-editing_002c-in-agenda-1181"></a>
 <a name="index-g_t_002f-1182"></a><a name="index-org_002dagenda_002dfilter_002dby_002dtag-1183"></a><br><dt><kbd>/ &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-filter-by-tag</code><kbd>)</kbd><dd>
-<a name="index-org_002dagenda_002dfilter_002dpreset-1184"></a>タグおよび（または）工数の見積りに対して、カレントのアジェンダビューにフィル
-ターをかけます。これとカスタムなアジェンダコマンドとの間の差異は、このフィル
-ターが非常に早いということです。このため、あなたは、アジェンダ（注１）を再表
-示することなく、異なるフィルターの間を素早く切り替えることができます。
-<a rel="footnote" href="#fn-93" name="fnd-93"><sup>93</sup></a>
+<a name="index-org_002dagenda_002dfilter_002dpreset-1184"></a>タグおよび（または）工数の見積りに対して、カレントのアジェンダビューに
+フィルターをかけます。これとカスタムなアジェンダコマンドとの間の差異は
+、このフィルターが非常に早いということです。このため、あなたは、アジェ
+ンダ（注１）を再表示することなく、異なるフィルターの間を素早く切り替え
+ることができます。<a rel="footnote" href="#fn-93" name="fnd-93"><sup>93</sup></a>
 
-     <p>タグ選択の文字を入力しましょう。&lt;SPC&gt;はタグの全てを意味しています。入力部分
-で&lt;TAB&gt;を押すと、選択するタグの補完機能を使用できます(すべてのタグに選択用の
-文字が指定されているとはかぎりません)。そして、そのコマンドは、このタグを含
-んでいないか継承していないエントリーを全て隠します。前置引数をつけて呼び出し
-た場合は、そのタグを持っているエントリーを削除さえしてしまいます。入力部で2
-番目の<kbd>/</kbd>はフィルターを終了し、隠されているエントリーを再度出現させます。も
-しも最初に入力したキーが、<kbd>+</kbd>または<kbd>-</kbd>ならば、前のフィルターは、選択された新
-たなタグの要求あるいは禁止に応じて、幅を狭くします。<kbd>/</kbd>の後に、<kbd>+</kbd>あるいは
-<kbd>-</kbd>を入力する代わりに、<kbd>\</kbd>
+     <p>タグ選択の文字を入力しましょう。&lt;SPC&gt;はタグの全てを意味しています。入
+力部分で&lt;TAB&gt;を押すと、選択するタグの補完機能を使用できます(すべてのタ
+グに選択用の文字が指定されているとはかぎりません)。そして、そのコマン
+ドは、このタグを含んでいないか継承していないエントリーを全て隠します。
+前置引数をつけて呼び出した場合は、そのタグを持っているエントリーを削除
+さえしてしまいます。入力部で2番目の<kbd>/</kbd>はフィルターを終了し、隠されてい
+るエントリーを再度出現させます。もしも最初に入力したキーが、<kbd>+</kbd>または
+<kbd>-</kbd>ならば、前のフィルターは、選択された新たなタグの要求あるいは禁止に
+応じて、幅を狭くします。<kbd>/</kbd>の後に、<kbd>+</kbd>あるいは<kbd>-</kbd>を入力する代わりに、
+<kbd>\</kbd>
 コマンドを即座に使用することもできます。
 
-     <p><a name="index-org_002dsort_002dagenda_002dnoeffort_002dis_002dhigh-1185"></a>工数見積のフィルターをかけるために、予め認められている汎用的な工数を設定すべ
-きです。例えば
+     <p><a name="index-org_002dsort_002dagenda_002dnoeffort_002dis_002dhigh-1185"></a>工数見積のフィルターをかけるために、予め認められている汎用的な工数を設
+定すべきです。例えば
      <pre class="lisp">          (setq org-global-properties
               '(("Effort_ALL". "0 0:10 0:30 1:00 2:00 3:00 4:00")))
 </pre>
-     <p>あなたは、<kbd>&lt;</kbd>、<kbd>&gt;</kbd>および<kbd>=</kbd>のひとつの操作を最初に入力することで、工数のため
-のフィルターをかけることができます。それから、あらかじめ認められた値のリスト
-の中で、工数見積りのインデックスの数字を入力します。そこでは<kbd>0</kbd>は１０番目の
-値を意味します。フィルターは選択された値よりも、以下、イコール、以上であるか
-によって限定されます。もしも0-9のキーがタグへのアクセスキーとして使用されて
-いないならば、単純にあなたは操作コマンドを利用することなく、直接インデックス
-となる数字を入力するだけです。この場合<kbd>&lt;</kbd>が仮定されます。操作のアプリケーシ
-ョンのために、定義された工数がないエントリーでは、
-<code>org-sort-agenda-noeffort-is-high</code>変数の値に従って取り扱われます。工数の定義
-のないタスクにフィルターをかけるには、<kbd>?</kbd>を操作の値として入力します。
+     <p>あなたは、<kbd>&lt;</kbd>、<kbd>&gt;</kbd>および<kbd>=</kbd>のひとつの操作を最初に入力することで、工数
+のためのフィルターをかけることができます。それから、あらかじめ認められ
+た値のリストの中で、工数見積りのインデックスの数字を入力します。そこで
+は<kbd>0</kbd>は１０番目の値を意味します。フィルターは選択された値よりも、以下
+、イコール、以上であるかによって限定されます。もしも0-9のキーがタグへ
+のアクセスキーとして使用されていないならば、単純にあなたは操作コマンド
+を利用することなく、直接インデックスとなる数字を入力するだけです。この
+場合<kbd>&lt;</kbd>が仮定されます。操作のアプリケーションのために、定義された工数
+がないエントリーでは、<code>org-sort-agenda-noeffort-is-high</code>変数の値に従っ
+て取り扱われます。工数の定義のないタスクにフィルターをかけるには、<kbd>?</kbd>
+を操作の値として入力します。
 
-     <p>Org-modeはまた、コンテクストに対応したタグのフィルターを自動的にサポートして
-います。もしも、<code>org-agenda-auto-exclude-function</code>変数の値が、ユーザが定義し
-た機能に設定されているときは、その機能によって、どのようなタグがアジェンダか
-ら自動的に排除されるかを決定します。一度この機能が設定されると、それによって
-、<kbd>/</kbd>コマンドは、<kbd>RET</kbd>
-をサブのオプションキーとして受け付け、自動的に排除ロジックを走らせます。例え
-ば、いってみれば、ネットワークへのアクセスを必要とするタスクを定義するために
-<code>Net</code>というタグ、街での用事のために<code>Errand</code>というタグ、電話を掛けなければな
-らないときに<code>Call</code>というタグを使用しているとします。あなたは、インターネット
-を利用できるかどうか、仕事時間外にあるかどうか、このような状況に基づいて、こ
-れらのタグを自動的に排除することができるのです。
+     <p>Org-modeはまた、コンテクストに対応したタグのフィルターを自動的にサポー
+トしています。もしも、<code>org-agenda-auto-exclude-function</code>変数の値が、ユ
+ーザが定義した機能に設定されているときは、その機能によって、どのような
+タグがアジェンダから自動的に排除されるかを決定します。一度この機能が設
+定されると、それによって、<kbd>/</kbd>コマンドは、<kbd>RET</kbd>
+をサブのオプションキーとして受け付け、自動的に排除ロジックを走らせます
+。例えば、いってみれば、ネットワークへのアクセスを必要とするタスクを定
+義するために<code>Net</code>というタグ、街での用事のために<code>Errand</code>というタグ、電
+話を掛けなければならないときに<code>Call</code>というタグを使用しているとします。
+あなたは、インターネットを利用できるかどうか、仕事時間外にあるかどうか
+、このような状況に基づいて、これらのタグを自動的に排除することができる
+のです。
 
      <pre class="lisp">          (defun org-my-auto-exclude-function (tag)
             (and (cond
@@ -7557,19 +7586,20 @@ modeでは、アジェンダ行によって参照されているOrg-modeのア�
           
           (setq org-agenda-auto-exclude-function 'org-my-auto-exclude-function)
 </pre>
-     <p><a name="index-g_t_005c-1186"></a><a name="index-org_002dagenda_002dfilter_002dby_002dtag_002drefine-1187"></a><br><dt><kbd>\ &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-filter-by-tag-refine</code><kbd>)</kbd><dd>追加の条件によってカレントのアジェンダフ
-ィルターをナローイングします。前置引数を用いてコマンドを呼び出したときは、ま
-さにタグがついているエントリー、あるいは工数の基準にまさに合致するエントリー
-を削除する。<kbd>/</kbd>コマンドのあとの最初のキーとして、<kbd>+</kbd>あるいは<kbd>-</kbd>を押すことで
-同様の効果を達成することができる。
+     <p><a name="index-g_t_005c-1186"></a><a name="index-org_002dagenda_002dfilter_002dby_002dtag_002drefine-1187"></a><br><dt><kbd>\ &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-filter-by-tag-refine</code><kbd>)</kbd><dd>追加の条件によってカレントのアジェ
+ンダフィルターをナローイングします。前置引数を用いてコマンドを呼び出し
+たときは、まさにタグがついているエントリー、あるいは工数の基準にまさに
+合致するエントリーを削除する。<kbd>/</kbd>コマンドのあとの最初のキーとして、
+<kbd>+</kbd>あるいは<kbd>-</kbd>を押すことで同様の効果を達成することができる。
 
      <p><a name="index-g_t_005b-1188"></a><a name="index-g_t_005d-1189"></a><a name="index-g_t_0040_007b-1190"></a><a name="index-g_t_0040_007d-1191"></a><br><dt><kbd>[ ] { }</kbd><dd>
           <dl>
-<dt><span class="roman">in</span><i> search view</i><dd>新しい検索の単語(<kbd>[</kbd>と<kbd>]</kbd>)、あるいは新しい正規表現(<kbd>{</kbd>と<kbd>}</kbd>)をクエリー文字
-列に追加する。開いた角括弧／大括弧は、&lsquo;<samp><span class="samp">+</span></samp>&rsquo;という接頭辞のついたポジティブな検
-索用語を追加する。この検索用語は、<i>必ず</i>そのエントリーに発生／合致しなければな
-らないことを示す。閉じた角括弧／大括弧は、ネガティブな検索用語を追加し、それ
-は、選択されているエントリーの中で、<i>絶対に</i>発生／合致しないということである。
+<dt><span class="roman">in</span><i> search view</i><dd>新しい検索の単語(<kbd>[</kbd>と<kbd>]</kbd>)、あるいは新しい正規表現(<kbd>{</kbd>と<kbd>}</kbd>)をクエリ
+ー文字列に追加する。開いた角括弧／大括弧は、&lsquo;<samp><span class="samp">+</span></samp>&rsquo;という接頭辞のついたポ
+ジティブな検索用語を追加する。この検索用語は、<i>必ず</i>そのエントリーに発生
+／合致しなければならないことを示す。閉じた角括弧／大括弧は、ネガティブ
+な検索用語を追加し、それは、選択されているエントリーの中で、<i>絶対に</i>発生
+／合致しないということである。
 </dl>
 
      <br><dt><b>Remote editing</b><dd>
@@ -7795,21 +7825,23 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Custom-agenda-views">Custom agenda vie
 上の例ではそれゆえ以下のように定義します。
 
      <dl>
-<dt><kbd>C-c a w</kbd><dd>TODOのキーワードとして、&lsquo;<samp><span class="samp">WAITING</span></samp>&rsquo;となっているTODOエントリーのためのグローバ
-ルな検索として。す。
-<br><dt><kbd>C-c a W</kbd><dd>同じような検索であるが、カレントバッファにのみ適用され、ツリーの抽出として検
-索結果を表示する。
-<br><dt><kbd>C-c a u</kbd><dd>&lsquo;<samp><span class="samp">:urgent:</span></samp>&rsquo;ではなく&lsquo;<samp><span class="samp">:boss:</span></samp>&rsquo;というタグがつけられた見出しのための、グローバルな
-タグ検索を行う。
-<br><dt><kbd>C-c a v</kbd><dd><kbd>C-c a u</kbd>と同じ検索を行うが、TODOアイテムである見出しに対してのみ検索を行う
-という制限がある。
-<br><dt><kbd>C-c a U</kbd><dd><kbd>C-c a u</kbd>と同じ検索を行うが、カレントバッファに対してのみ検索を行い、結果を
-ツリーの抽出として表示する。
-<br><dt><kbd>C-c a f</kbd><dd>すべてのエントリーのうちで&lsquo;<samp><span class="samp">FIXME</span></samp>&rsquo;という言葉を含んでいるものを検索してツリー
-の抽出を行う（くどいかもしれませんが、カレントバッファだけが対象です）。
-<br><dt><kbd>C-c a h</kbd><dd>HOMEというタグ検索のためのコマンドの前置引数として、そこでは、タグ検索の追加
-として、一つの名前(Lisa、Peter、またはKim)を選択するために、あなたはさらに
-(<kbd>l</kbd>、<kbd>p</kbd>、または<kbd>k</kbd>)というキーを追加入力する必要があります。
+<dt><kbd>C-c a w</kbd><dd>TODOのキーワードとして、&lsquo;<samp><span class="samp">WAITING</span></samp>&rsquo;となっているTODOエントリーのためのグ
+ローバルな検索として。す。
+<br><dt><kbd>C-c a W</kbd><dd>同じような検索であるが、カレントバッファにのみ適用され、ツリーの抽出と
+して検索結果を表示する。
+<br><dt><kbd>C-c a u</kbd><dd>&lsquo;<samp><span class="samp">:urgent:</span></samp>&rsquo;ではなく&lsquo;<samp><span class="samp">:boss:</span></samp>&rsquo;というタグがつけられた見出しのための、グロー
+バルなタグ検索を行う。
+<br><dt><kbd>C-c a v</kbd><dd><kbd>C-c a u</kbd>と同じ検索を行うが、TODOアイテムである見出しに対してのみ検索
+を行うという制限がある。
+<br><dt><kbd>C-c a U</kbd><dd><kbd>C-c a u</kbd>と同じ検索を行うが、カレントバッファに対してのみ検索を行い、
+結果をツリーの抽出として表示する。
+<br><dt><kbd>C-c a f</kbd><dd>すべてのエントリーのうちで&lsquo;<samp><span class="samp">FIXME</span></samp>&rsquo;という言葉を含んでいるものを検索して
+ツリーの抽出を行う（くどいかもしれませんが、カレントバッファだけが対象
+です）。
+<br><dt><kbd>C-c a h</kbd><dd>HOMEというタグ検索のためのコマンドの前置引数として、そこでは、タグ検索
+の追加として、一つの名前(Lisa、Peter、またはKim)を選択するために、あな
+たはさらに(<kbd>l</kbd>、<kbd>p</kbd>、または<kbd>k</kbd>)というキーを追加入力する必要があります
+。
 </dl>
 
 <div class="node">
@@ -7938,12 +7970,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Agenda-Views">Agenda Views</a>
 <a name="index-C_002dx-C_002dw-1305"></a>
 <a name="index-org_002dwrite_002dagenda-1306"></a>
 <dl><dt><kbd>C-x C-w &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-write-agenda</code><kbd>)</kbd><dd>
-<a name="index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00e3_0081_00ae_00e5_0087_00ba_00e5_008a_009b-1307"></a><a name="index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00ef_00bc_0088_00e5_0087_00ba_00e5_008a_009b_00ef_00bc_0089-1308"></a><a name="index-org_002dagenda_002dexporter_002dsettings-1309"></a>アジェンダビューを１つのファイルに書き出します。選択したファイル名の拡張子に
-より、そのビューはHTML（拡張子が<samp><span class="file">.html</span></samp>または<samp><span class="file">.htm</span></samp>）、Postscript（拡張子が
-<samp><span class="file">.ps</span></samp>）、iCalendar（拡張子が<samp><span class="file">.ics</span></samp>）、あるいはプレーンなテキスト（何かほかの
-拡張子）としてエクスポートされます。エクスポートの間に、<samp><span class="file">ps-print</span></samp>のため、お
-よび<samp><span class="file">htmlize</span></samp>のためにオプションを設定するには、
-<code>org-agenda-exporter-settings</code>変数を使用します。例えば
+<a name="index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00e3_0081_00ae_00e5_0087_00ba_00e5_008a_009b-1307"></a><a name="index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00ef_00bc_0088_00e5_0087_00ba_00e5_008a_009b_00ef_00bc_0089-1308"></a><a name="index-org_002dagenda_002dexporter_002dsettings-1309"></a>アジェンダビューを１つのファイルに書き出します。選択したファイル名の拡
+張子により、そのビューはHTML（拡張子が<samp><span class="file">.html</span></samp>または<samp><span class="file">.htm</span></samp>）、
+Postscript（拡張子が<samp><span class="file">.ps</span></samp>）、iCalendar（拡張子が<samp><span class="file">.ics</span></samp>）、あるいはプレ
+ーンなテキスト（何かほかの拡張子）としてエクスポートされます。エクスポ
+ートの間に、<samp><span class="file">ps-print</span></samp>のため、および<samp><span class="file">htmlize</span></samp>のためにオプションを設定
+するには、<code>org-agenda-exporter-settings</code>変数を使用します。例えば
 
      <p><a name="index-org_002dagenda_002dadd_002dentry_002dtext_002dmaxlines-1310"></a><a name="index-htmlize_002doutput_002dtype-1311"></a><a name="index-ps_002dnumber_002dof_002dcolumns-1312"></a><a name="index-ps_002dlandscape_002dmode-1313"></a>
      <pre class="lisp">          (setq org-agenda-exporter-settings
@@ -7995,8 +8027,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Agenda-Views">Agenda Views</a>
      
 <a name="index-C_002dc-a-e-1314"></a>
 <a name="index-org_002dstore_002dagenda_002dviews-1315"></a>
-<dl><dt><kbd>C-c a e &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-store-agenda-views</code><kbd>)</kbd><dd>　アジェンダに関連するエクスポートファイル名
-を持つすべてのアジェンダビューをエクスポートします。
+<dl><dt><kbd>C-c a e &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-store-agenda-views</code><kbd>)</kbd><dd>　アジェンダに関連するエクスポートファ
+イル名を持つすべてのアジェンダビューをエクスポートします。
 </dl>
 
    <p>あなたは、エクスポートコマンドのためのオプションの設定をするために。カスタム
@@ -8056,8 +8088,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Agenda-Views">Agenda Views</a>
      
 <a name="index-C_002dc-C_002dx-C_002dc-1318"></a>
 <a name="index-org_002dagenda_002dcolumns-1319"></a>
-<dl><dt><kbd>C-c C-x C-c &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-columns</code><kbd>)</kbd><dd>　アジェンダの中でカラムビューに切り替えます
-。
+<dl><dt><kbd>C-c C-x C-c &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-agenda-columns</code><kbd>)</kbd><dd>　アジェンダの中でカラムビューに切り替
+えます。
 </dl>
 
    <p>この属性がどのようなものか理解するために、アジェンダのエントリーはもはや適切
@@ -8065,34 +8097,34 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Agenda-Views">Agenda Views</a>
 下のようなことが生じます。
 
      <ol type=1 start=1>
-<li><a name="index-org_002dcolumns_002ddefault_002dformat-1320"></a><a name="index-org_002doverriding_002dcolumns_002dformat-1321"></a>Org-modeでは、どの<code>COLUMNS</code>のフォーマットを使用するか、決定する必要がありま
-す。アジェンダの中のエントリーは、異なるファイルから集められるということと、
-ファイルが異なると<code>COLUMNS</code>のフォーマットも異なるということから、このことは
-些細な問題であるとはいえないのです。Org-modeは最初に、
-<code>org-overriding-columns-format</code>変数がカレントで設定されているかどうか、また
-そこからフォーマットを取り出すことができるかどうかチェックします。一方、アジ
-ェンダの最初のアイテムに関連したフォーマットを使用するか、もしもそのアイテム
-が特別なフォーマット（属性もしくはファイルの中で定義された）を持たないならば
-、<code>org-columns-default-format</code>を使用します。
-<li><a name="index-g_t_00e7_0089_00b9_00e5_0088_00a5_00e3_0081_00aa_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088CLOCKSUM_00ef_00bc_0089-1322"></a>もしも、どれかカラムに要約形式(see <a href="#Column-attributes">Column attributes</a>)が定義されているならば、
-アジェンダでカラムビューに切り替えるときに、すべての関連するアジェンダファイ
-ルを確認して、この属性の計算の更新を確実に行います。このことは、特別な
-<code>CLOCKSUM</code>の属性が真であると設定されているということです。Org-modeはアジェン
-ダの中で表示された値を合計するでしょう。一日／週間アジェンダの中で、合計は1
-日をカバーしています。他のビューでは、ブロック全体をカバーするのです。アジェ
-ンダでは同じエントリーを<em>２度</em>表示したり（例えばスケジュールと期限というよう
-に）、同じ階層（例えば<em>親</em>と<em>子</em>）から<em>２つ</em>のエントリーを表示したりするかも
-しれない、ということを理解することは重要なことです。これらの場合、アジェンダ
-の中での要約は、いくつかの値が二重にカウントされるという間違った結果を導く可
-能性があります。
-<li>アジェンダの中のカラムビューが、<code>CLOCKSUM</code>を表示するときは、このアイテムのた
-めにいつでも時間計測全体に対応します。そのため1日/週間アジェンダにおいて、カ
-ラムビューでリスト化された時間合計は、カレントのビューの外側の時間から発生す
-ることになるかもしれません。この機能によって、あるタスクについて、計画された
-総工数を1つのカラムにリストにして、その値を比較することができるので、優位性
-を持ちます。この機能はアジェンダのカラムビューにおける重要なアプリケーション
-のひとつです。もしもあなたが表示されている期間の中の作業時間についての情報を
-得たいならば、clock
+<li><a name="index-org_002dcolumns_002ddefault_002dformat-1320"></a><a name="index-org_002doverriding_002dcolumns_002dformat-1321"></a>Org-modeでは、どの<code>COLUMNS</code>のフォーマットを使用するか、決定する必要が
+あります。アジェンダの中のエントリーは、異なるファイルから集められると
+いうことと、ファイルが異なると<code>COLUMNS</code>のフォーマットも異なるというこ
+とから、このことは些細な問題であるとはいえないのです。Org-modeは最初に
+、<code>org-overriding-columns-format</code>変数がカレントで設定されているかどう
+か、またそこからフォーマットを取り出すことができるかどうかチェックしま
+す。一方、アジェンダの最初のアイテムに関連したフォーマットを使用するか
+、もしもそのアイテムが特別なフォーマット（属性もしくはファイルの中で定
+義された）を持たないならば、<code>org-columns-default-format</code>を使用します。
+<li><a name="index-g_t_00e7_0089_00b9_00e5_0088_00a5_00e3_0081_00aa_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088CLOCKSUM_00ef_00bc_0089-1322"></a>もしも、どれかカラムに要約形式(see <a href="#Column-attributes">Column attributes</a>)が定義されているな
+らば、アジェンダでカラムビューに切り替えるときに、すべての関連するアジ
+ェンダファイルを確認して、この属性の計算の更新を確実に行います。このこ
+とは、特別な<code>CLOCKSUM</code>の属性が真であると設定されているということです。
+Org-modeはアジェンダの中で表示された値を合計するでしょう。一日／週間ア
+ジェンダの中で、合計は1日をカバーしています。他のビューでは、ブロック
+全体をカバーするのです。アジェンダでは同じエントリーを<em>２度</em>表示したり
+（例えばスケジュールと期限というように）、同じ階層（例えば<em>親</em>と<em>子</em>）
+から<em>２つ</em>のエントリーを表示したりするかもしれない、ということを理解す
+ることは重要なことです。これらの場合、アジェンダの中での要約は、いくつ
+かの値が二重にカウントされるという間違った結果を導く可能性があります。
+<li>アジェンダの中のカラムビューが、<code>CLOCKSUM</code>を表示するときは、このアイテ
+ムのためにいつでも時間計測全体に対応します。そのため1日/週間アジェンダ
+において、カラムビューでリスト化された時間合計は、カレントのビューの外
+側の時間から発生することになるかもしれません。この機能によって、あるタ
+スクについて、計画された総工数を1つのカラムにリストにして、その値を比
+較することができるので、優位性を持ちます。この機能はアジェンダのカラム
+ビューにおける重要なアプリケーションのひとつです。もしもあなたが表示さ
+れている期間の中の作業時間についての情報を得たいならば、clock
 table mode（<kbd>R</kbd>をアジェンダの中で入力する）を使用してください。
         </ol>
 
@@ -8336,9 +8368,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Structural-markup-elements">Structural
 
 <h4 class="subheading">Emphasis and monospace</h4>
 
-<p><a name="index-g_t_00e4_00b8_008b_00e7_00b7_009a_00e3_0081_00ae_00e3_0081_0082_00e3_0082_008b_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1341"></a><a name="index-g_t_00e5_00a4_00aa_00e5_00ad_0097_00e3_0081_00ae_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0083_0083_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1342"></a><a name="index-g_t_00e6_0096_009c_00e4_00bd_0093_00e3_0081_00ae_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0083_0083_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1343"></a><a name="index-g_t_00e6_0096_0087_00e5_00ad_0097_00e9_0080_009a_00e3_0082_008a_00e3_0081_00ae_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0083_0083_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1344"></a><a name="index-g_t_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1345"></a><a name="index-g_t_00e5_008f_0096_00e3_0082_008a_00e6_00b6_0088_00e3_0081_0095_00e3_0082_008c_00e3_0081_009f_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0083_0083_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1346"></a>あなたは<b>*bold*</b>と<i>/italic/</i>、_underlined_、<code>=code=</code>、<code>~verbatim~</code>、そして必要
-なら&lsquo;<samp><span class="samp">+strile-through+</span></samp>&rsquo;を単語に適用することができます。codeとverbatim文字列の
-中のテキストはOrg-modeの明確な構文ではありません;
+<p><a name="index-g_t_00e4_00b8_008b_00e7_00b7_009a_00e3_0081_00ae_00e3_0081_0082_00e3_0082_008b_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1341"></a><a name="index-g_t_00e5_00a4_00aa_00e5_00ad_0097_00e3_0081_00ae_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0083_0083_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1342"></a><a name="index-g_t_00e6_0096_009c_00e4_00bd_0093_00e3_0081_00ae_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0083_0083_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1343"></a><a name="index-g_t_00e6_0096_0087_00e5_00ad_0097_00e9_0080_009a_00e3_0082_008a_00e3_0081_00ae_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0083_0083_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1344"></a><a name="index-g_t_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1345"></a><a name="index-g_t_00e5_008f_0096_00e3_0082_008a_00e6_00b6_0088_00e3_0081_0095_00e3_0082_008c_00e3_0081_009f_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0083_0083_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1346"></a>あなたは<b>*bold*</b>と<i>/italic/</i>、_underlined_、<code>=code=</code>、<code>~verbatim~</code>、そして必要な
+ら&lsquo;<samp><span class="samp">+strile-through+</span></samp>&rsquo;を単語に適用することができます。codeとverbatim文字列の中
+のテキストはOrg-modeの明確な構文ではありません;
 それはverbatimにエクスポートされます。
 
 <div class="node">
@@ -8483,18 +8515,18 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Markup">Markup</a>
 
      
 <a name="index-C_002dc-_0027-1362"></a>
-<dl><dt><kbd>C-c '</kbd><dd>カーソル位置のソースコード例をそのネイティブモードで編集します。これはソース
-コードを一時バッファに表示し、切り替えることで働きます。あなたは<kbd>C-c '</kbd>をも
-う一度押すことで編集を終了します<a rel="footnote" href="#fn-102" name="fnd-102"><sup>102</sup></a>。
-編集されたバージョンはOrg-modeバッファ上の古いバージョンを置き換えます。固定
-幅のリージョンは簡単にASCIIでイラストを書くための
-<code>artist-mode</code><a rel="footnote" href="#fn-103" name="fnd-103"><sup>103</sup></a>を使うことで編集されます。空行でこのコマンドを使うこ
-とで、新しい固定幅のリージョンを作成します。
+<dl><dt><kbd>C-c '</kbd><dd>カーソル位置のソースコード例をそのネイティブモードで編集します。これは
+ソースコードを一時バッファに表示し、切り替えることで働きます。あなたは
+<kbd>C-c '</kbd>をもう一度押すことで編集を終了します<a rel="footnote" href="#fn-102" name="fnd-102"><sup>102</sup></a>。
+編集されたバージョンはOrg-modeバッファ上の古いバージョンを置き換えます
+。固定幅のリージョンは簡単にASCIIでイラストを書くための
+<code>artist-mode</code><a rel="footnote" href="#fn-103" name="fnd-103"><sup>103</sup></a>を使うことで編集されます。空行でこのコマ
+ンドを使うことで、新しい固定幅のリージョンを作成します。
 <a name="index-C_002dc-l-1363"></a><br><dt><kbd>C-c l</kbd><dd><kbd>C-c '</kbd>によって作成した一時バッファでのソースコード例の編集中に
-<code>org-store-link</code>の呼び出しはラベルを指示します。現在のバッファがユニークであ
-ることを確認し、現在の行の最後に&lsquo;<samp><span class="samp">(ref:label)</span></samp>&rsquo;のように適切にフォーマットされ
-たものが挿入されます。ラベルは&lsquo;<samp><span class="samp">(label)</span></samp>&rsquo;のようなリンクを記憶し、<kbd>C-c C-l</kbd>検索
-する。
+<code>org-store-link</code>の呼び出しはラベルを指示します。現在のバッファがユニー
+クであることを確認し、現在の行の最後に&lsquo;<samp><span class="samp">(ref:label)</span></samp>&rsquo;のように適切にフォ
+ーマットされたものが挿入されます。ラベルは&lsquo;<samp><span class="samp">(label)</span></samp>&rsquo;のようなリンクを記
+憶し、<kbd>C-c C-l</kbd>検索する。
 </dl>
 
 <div class="node">
@@ -8650,8 +8682,8 @@ LaTeXでは<code>$\\alpha$</code>となります。同様に、<code>\\nbsp</cod
 
      
 <a name="index-C_002dc-C_002dx-_005c-1379"></a>
-<dl><dt><kbd>C-c C-x \</kbd><dd>エンティティのUTF-8での表示をトグルします。これはバッファの内容を変更せず、
-UTF-8の文字を表示するためにオーバレイを用いています。
+<dl><dt><kbd>C-c C-x \</kbd><dd>エンティティのUTF-8での表示をトグルします。これはバッファの内容を変更
+せず、UTF-8の文字を表示するためにオーバレイを用いています。
 </dl>
 
 <div class="node">
@@ -8688,8 +8720,8 @@ subscript, but &lsquo;<samp><span class="samp">a_{b}</span></samp>&rsquo; will.
 
      
 <a name="index-C_002dc-C_002dx-_005c-1383"></a>
-<dl><dt><kbd>C-c C-x \</kbd><dd>さらにUTF-8のエンティティを見るため、このコマンドは下付き文字と上付き文字を
-WYSISYMで形成する。
+<dl><dt><kbd>C-c C-x \</kbd><dd>さらにUTF-8のエンティティを見るため、このコマンドは下付き文字と上付き
+文字をWYSISYMで形成する。
 </dl>
 
 <div class="node">
@@ -8715,10 +8747,11 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Embedded-LaTeX">Embedded LaTeX</a>
    <p>LaTeXのコード片は、特別なマークは全く必要ありません。以下のコード片はLaTeXの
 ソースコードとして知られています:
      <ul>
-<li>あらゆる種類の環境<a rel="footnote" href="#fn-108" name="fnd-108"><sup>108</sup></a>。唯一必要なことは<code>\\begin</code>文は空白のみがある行に表示されることです。
-<li>通常のLaTeXの数学の区切り文字内部のテキスト。流通仕様との衝突を避けるために
-、囲まれたテキストに最大2つの改行が含まれている場合、&lsquo;<samp><span class="samp">$</span></samp>&rsquo;文字は数学区切り文字
-のみとして認識され、&lsquo;<samp><span class="samp">$</span></samp>&rsquo;文字がの間に空白がない、そして
+<li>あらゆる種類の環境<a rel="footnote" href="#fn-108" name="fnd-108"><sup>108</sup></a>。唯一必要なことは<code>\\begin</code>文は空白のみがある行に表示さ
+れることです。
+<li>通常のLaTeXの数学の区切り文字内部のテキスト。流通仕様との衝突を避ける
+ために、囲まれたテキストに最大2つの改行が含まれている場合、&lsquo;<samp><span class="samp">$</span></samp>&rsquo;文字は数
+学区切り文字のみとして認識され、&lsquo;<samp><span class="samp">$</span></samp>&rsquo;文字がの間に空白がない、そして
 </ul>
 
 <p class="noindent">For example:
@@ -8761,11 +8794,11 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Embedded-LaTeX">Embedded LaTeX</a>
 
      
 <a name="index-C_002dc-C_002dx-C_002dl-1389"></a>
-<dl><dt><kbd>C-c C-x C-l</kbd><dd>ポイント位置のLaTeXコード片の画像プレビューの提供とソースコード上のオーバレ
-イ。もしポイント位置にコード片がないのであれば、現在のエントリ(2つの見出しの
-間)の全てのコード片を処理します。前置引数を付けて呼ばれた時は、サブツリー全
-体を処理します。前置引数を2つ付けて呼ばれた時、またはカーソルが最初の見出し
-の前にある時は、バッファ全体を処理します。
+<dl><dt><kbd>C-c C-x C-l</kbd><dd>ポイント位置のLaTeXコード片の画像プレビューの提供とソースコード上のオ
+ーバレイ。もしポイント位置にコード片がないのであれば、現在のエントリ(2
+つの見出しの間)の全てのコード片を処理します。前置引数を付けて呼ばれた
+時は、サブツリー全体を処理します。前置引数を2つ付けて呼ばれた時、また
+はカーソルが最初の見出しの前にある時は、バッファ全体を処理します。
 <a name="index-C_002dc-C_002dc-1390"></a><br><dt><kbd>C-c C-c</kbd><dd>オーバレイされたプレビュー画像を消去します。
 </dl>
 
@@ -8801,23 +8834,25 @@ Org-modeファイルで有効するために次の設定を行います:
      
 <a name="index-C_002dc-_0040_007b-1393"></a>
 <ul><li><kbd>C-c {</kbd>による環境テンプレートの挿入。
-<li><a name="index-g_t_0040key_007bTAB_007d-1394"></a>カーソルがLaTeXのコード片<a rel="footnote" href="#fn-109" name="fnd-109"><sup>109</sup></a>の中にある場合、&lt;TAB&gt;キーはテンプレートの展開
-を行います。例えば、&lt;TAB&gt;は<code>fr</code>を<code>\\frac{}{}</code>に展開しカーソルを最初の括
-弧に移動します。もう一度&lt;TAB&gt;を押すと2つ目の括弧にカーソルが移動します。コー
-ド片の外だと、&lt;TAB&gt;は行の先頭にある環境の略語を展開します。例えば、もしあな
-たが行頭に&lsquo;<samp><span class="samp">equ</span></samp>&rsquo;と書いていて&lt;TAB&gt;を押すと、この略語は<code>equation</code>環境に展開され
-ます。全ての略語を見るには、<kbd>M-x cdlatex-command-help</kbd>をタイプしてください。
-<li><a name="index-g_t_005f-1395"></a><a name="index-g_t_005e-1396"></a><a name="index-cdlatex_002dsimplify_002dsub_002dsuper_002dscripts-1397"></a>LaTeXコード片の中で<kbd>_</kbd>と<kbd>^</kbd>を押すと、それらの文字が括弧のペアと一緒に挿入さ
-れます。もしあなたが&lt;TAB&gt;を括弧から抜け出すために使うなら、また括弧が1文字の
-文字かマクロのみを囲っているなら、それらは再び消去されます
-(<code>cdlatex-simplify-sub-super-script</code>変数に依存します)。
+<li><a name="index-g_t_0040key_007bTAB_007d-1394"></a>カーソルがLaTeXのコード片<a rel="footnote" href="#fn-109" name="fnd-109"><sup>109</sup></a>の
+中にある場合、&lt;TAB&gt;キーはテンプレートの展開を行います。例えば、&lt;TAB&gt;は
+<code>fr</code>を<code>\\frac{}{}</code>に展開しカーソルを最初の括弧に移動します。もう一
+度&lt;TAB&gt;を押すと2つ目の括弧にカーソルが移動します。コード片の外だと、
+&lt;TAB&gt;は行の先頭にある環境の略語を展開します。例えば、もしあなたが行頭
+に&lsquo;<samp><span class="samp">equ</span></samp>&rsquo;と書いていて&lt;TAB&gt;を押すと、この略語は<code>equation</code>環境に展開されま
+す。全ての略語を見るには、<kbd>M-x cdlatex-command-help</kbd>をタイプしてくださ
+い。
+<li><a name="index-g_t_005f-1395"></a><a name="index-g_t_005e-1396"></a><a name="index-cdlatex_002dsimplify_002dsub_002dsuper_002dscripts-1397"></a>LaTeXコード片の中で<kbd>_</kbd>と<kbd>^</kbd>を押すと、それらの文字が括弧のペアと一緒に
+挿入されます。もしあなたが&lt;TAB&gt;を括弧から抜け出すために使うなら、また
+括弧が1文字の文字かマクロのみを囲っているなら、それらは再び消去されま
+す(<code>cdlatex-simplify-sub-super-script</code>変数に依存します)。
 <li><a name="index-g_t_0060-1398"></a>Pressing the backquote <kbd>`</kbd> followed by a character inserts math macros,
 also outside LaTeX fragments.  If you wait more than 1.5 seconds after
 the backquote, a help window will pop up. 
-<li><a name="index-g_t_0027-1399"></a>別の文字に続いてシングルクォート<kbd>'</kbd>を押すと、強調やフォントでポイント前のシ
-ンボルが変更されます。もしシングルクォートを入力した後1.5秒以上待つと、ヘル
-プウィンドウがポップアップします。文字の変更はLaTeXコード片の中でのみ働きま
-す;
+<li><a name="index-g_t_0027-1399"></a>別の文字に続いてシングルクォート<kbd>'</kbd>を押すと、強調やフォントでポイント
+前のシンボルが変更されます。もしシングルクォートを入力した後1.5秒以上
+待つと、ヘルプウィンドウがポップアップします。文字の変更はLaTeXコード
+片の中でのみ働きます;
 それ以外ではクォートは通常通りの働きをします。
 </ul>
 
@@ -9026,19 +9061,19 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Exporting">Exporting</a>
 <a name="index-C_002dc-C_002de-1443"></a>
 <a name="index-org_002dexport-1444"></a>
 <dl><dt><kbd>C-c C-e &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export</code><kbd>)</kbd><dd>
-<a name="index-org_002dexport_002drun_002din_002dbackground-1445"></a>エクスポート、または公開のコマンド選択画面です。エクスポート、または公開のコ
-マンドを起動するのに必要なキーがヘルプウィンドウに表示されます。
-前置引数として、入力すると、直接エクスポート機能となります。二重の前置引数
- <kbd>C-u C-u</kbd>
-を入力することで、コマンドは別のEmacsプロセスにおいてバックグラウンドで実行
-されます。<a rel="footnote" href="#fn-111" name="fnd-111"><sup>111</sup></a>.  <a name="index-C_002dc-C_002de-v-1446"></a><a name="index-org_002dexport_002dvisible-1447"></a><br><dt><kbd>C-c C-e v &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-visible</code><kbd>)</kbd><dd> <kbd>C-c C-e</kbd> のように動作しますが、 今見え
-ている文章だけがエクスポートされます。
+<a name="index-org_002dexport_002drun_002din_002dbackground-1445"></a>エクスポート、または公開のコマンド選択画面です。エクスポート、または公
+開のコマンドを起動するのに必要なキーがヘルプウィンドウに表示されます。
+前置引数として、入力すると、直接エクスポート機能となります。二重の前置
+引数 <kbd>C-u C-u</kbd>
+を入力することで、コマンドは別のEmacsプロセスにおいてバックグラウンド
+で実行されます。<a rel="footnote" href="#fn-111" name="fnd-111"><sup>111</sup></a>.  <a name="index-C_002dc-C_002de-v-1446"></a><a name="index-org_002dexport_002dvisible-1447"></a><br><dt><kbd>C-c C-e v &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-visible</code><kbd>)</kbd><dd> <kbd>C-c C-e</kbd> のように動作しますが、
+今見えている文章だけがエクスポートされます。
 (i.e. アウトライン表示により、隠されていない文章
 ).  <a name="index-C_002du-C_002du-C_002dc-C_002de-1448"></a><a name="index-org_002dexport-1449"></a><br><dt><kbd>C-u C-u C-c C-e &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export</code><kbd>)</kbd><dd>
-<a name="index-org_002dexport_002drun_002din_002dbackground-1450"></a>エクスポート機能が呼ばれますが、 <code>org-export-run-in-background</code> の設定と逆の
-挙動となります。 i.e. 
-動いていないバックグラウンドプロセスを呼びだしたり, 現在のEmacsのプロセスで
-強制的に実行したりします。
+<a name="index-org_002dexport_002drun_002din_002dbackground-1450"></a>エクスポート機能が呼ばれますが、 <code>org-export-run-in-background</code> の設定
+と逆の挙動となります。 i.e. 
+動いていないバックグラウンドプロセスを呼びだしたり, 現在のEmacsのプロ
+セスで強制的に実行したりします。
 </dl>
 
 <div class="node">
@@ -9063,25 +9098,23 @@ ASCII形式へのエクスポートは、org-modeのファイルをASCIIのみ�
 <a name="index-C_002dc-C_002de-a-1457"></a>
 <a name="index-org_002dexport_002das_002dascii-1458"></a>
 <dl><dt><kbd>C-c C-e a &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-ascii</code><kbd>)</kbd><dd>
-<a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fFILE_005fNAME-1459"></a>ASCII形式のファイルをエクスポートします。 Orgファイルを <samp><span class="file">myfile.org</span></samp> だとす
-ると、ASCII形式のファイルは
-<samp><span class="file">myfile.txt</span></samp> となるでしょう。 そのファイルは警告なしに上書きされます。もしア
-クティブなリージョン
+<a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fFILE_005fNAME-1459"></a>ASCII形式のファイルをエクスポートします。 Orgファイルを <samp><span class="file">myfile.org</span></samp>
+だとすると、ASCII形式のファイルは
+<samp><span class="file">myfile.txt</span></samp> となるでしょう。 そのファイルは警告なしに上書きされます。
+もしアクティブなリージョン
 <a rel="footnote" href="#fn-112" name="fnd-112"><sup>112</sup></a> があった場合,
-そのリージョンのみがエクスポートされます。 選択したリージョンが一つのツリー
- <a rel="footnote" href="#fn-113" name="fnd-113"><sup>113</sup></a>を含んでい
-た場合、そのツリーの見出しがドキュメントのタイトルとなるでしょう. 見出しがあ
-るか、または
-<code>EXPORT_FILE_NAME</code> プロパティを継承していた場合、 エクスポートする際にはその
-名前が使われるでしょう。
-<a name="index-C_002dc-C_002de-A-1460"></a><a name="index-org_002dexport_002das_002dascii_002dto_002dbuffer-1461"></a><br><dt><kbd>C-c C-e A &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-ascii-to-buffer</code><kbd>)</kbd><dd> 一時的なバッファに出力し、ファイル
-を作成しません。
-<a name="index-C_002dc-C_002de-n-1462"></a><a name="index-org_002dexport_002das_002dlatin1-1463"></a><br><dt><kbd>C-c C-e n &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-latin1</code><kbd>)</kbd><dd> <a name="index-C_002dc-C_002de-N-1464"></a><a name="index-org_002dexport_002das_002dlatin1_002dto_002dbuffer-1465"></a><dt><kbd>C-c C-e N &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-latin1-to-buffer</code><kbd>)</kbd><dd>
-上に示したコマンドのような動作をしますが,
+そのリージョンのみがエクスポートされます。 選択したリージョンが一つの
+ツリー <a rel="footnote" href="#fn-113" name="fnd-113"><sup>113</sup></a>を含んでいた場合、そのツリーの見出しがドキュメントのタイトルとなるで
+しょう. 見出しがあるか、または
+<code>EXPORT_FILE_NAME</code> プロパティを継承していた場合、 エクスポートする際に
+はその名前が使われるでしょう。
+<a name="index-C_002dc-C_002de-A-1460"></a><a name="index-org_002dexport_002das_002dascii_002dto_002dbuffer-1461"></a><br><dt><kbd>C-c C-e A &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-ascii-to-buffer</code><kbd>)</kbd><dd> 一時的なバッファに出力し、フ
+ァイルを作成しません。
+<a name="index-C_002dc-C_002de-n-1462"></a><a name="index-org_002dexport_002das_002dlatin1-1463"></a><br><dt><kbd>C-c C-e n &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-latin1</code><kbd>)</kbd><dd> <a name="index-C_002dc-C_002de-N-1464"></a><a name="index-org_002dexport_002das_002dlatin1_002dto_002dbuffer-1465"></a><dt><kbd>C-c C-e N &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-latin1-to-buffer</code><kbd>)</kbd><dd> 上に示したコマンドのような動作をしますが,
 Latin-1でエンコーディングされたものが出力されます。
   <a name="index-C_002dc-C_002de-u-1466"></a><a name="index-org_002dexport_002das_002dutf8-1467"></a><br><dt><kbd>C-c C-e u &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-utf8</code><kbd>)</kbd><dd>
-<a name="index-C_002dc-C_002de-U-1468"></a><a name="index-org_002dexport_002das_002dutf8_002dto_002dbuffer-1469"></a><dt><kbd>C-c C-e U &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-utf8-to-buffer</code><kbd>)</kbd><dd> 上に示したコマンドのような動作をし
-ますが,
+<a name="index-C_002dc-C_002de-U-1468"></a><a name="index-org_002dexport_002das_002dutf8_002dto_002dbuffer-1469"></a><dt><kbd>C-c C-e U &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-utf8-to-buffer</code><kbd>)</kbd><dd> 上に示したコマンドのような動
+作をしますが,
 UTF-8でエンコーディングされたものが出力されます。
 <br><dt><kbd>C-c C-e v a/n/u</kbd><dd>文書の中で、バッファで表示されている部分だけを出力する。
 </dl>
@@ -9152,28 +9185,30 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#HTML-export">HTML export</a>
 <a name="index-C_002dc-C_002de-h-1476"></a>
 <a name="index-org_002dexport_002das_002dhtml-1477"></a>
 <dl><dt><kbd>C-c C-e h &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-html</code><kbd>)</kbd><dd>
-<a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fFILE_005fNAME-1478"></a>HTMLファイル<samp><span class="file">myfile.html</span></samp>をエクスポートします。Orgファイル<samp><span class="file">myfile.org</span></samp>をエク
-スポートすると、ASCII形式のファイルは<samp><span class="file">myfile.html</span></samp>となるでしょう。
+<a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fFILE_005fNAME-1478"></a>HTMLファイル<samp><span class="file">myfile.html</span></samp>をエクスポートします。Orgファイル<samp><span class="file">myfile.org</span></samp>
+をエクスポートすると、ASCII形式のファイルは<samp><span class="file">myfile.html</span></samp>となるでしょう
+。
 そのファイルは警告なしに上書きされます。もしアクティブなリージョン
- <a rel="footnote" href="#fn-114" name="fnd-114"><sup>114</sup></a> があった場合, そのリー
-ジョンのみがエクスポートされます。 選択したリージョンが一つのツリー
-<a rel="footnote" href="#fn-115" name="fnd-115"><sup>115</sup></a>を含んでいた
-場合、そのツリーの見出しがドキュメントのタイトルとなるでしょう. 見出しがある
-か、または
-<code>EXPORT_FILE_NAME</code> プロパティを継承していた場合、 エクスポートする際にはその
-名前が使われるでしょう。<a name="index-C_002dc-C_002de-b-1479"></a><a name="index-org_002dexport_002das_002dhtml_002dand_002dopen-1480"></a><br><dt><kbd>C-c C-e b &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-html-and-open</code><kbd>)</kbd><dd> HTMLファイル
-をエクスポートし、そのファイルをブラウザで開きます。
-<a name="index-C_002dc-C_002de-H-1481"></a><a name="index-org_002dexport_002das_002dhtml_002dto_002dbuffer-1482"></a><br><dt><kbd>C-c C-e H &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-html-to-buffer</code><kbd>)</kbd><dd> 一時的なバッファに出力し、ファイル
-を作成しません。
+ <a rel="footnote" href="#fn-114" name="fnd-114"><sup>114</sup></a> があった場合, そ
+のリージョンのみがエクスポートされます。 選択したリージョンが一つのツリー
+<a rel="footnote" href="#fn-115" name="fnd-115"><sup>115</sup></a>を含ん
+でいた場合、そのツリーの見出しがドキュメントのタイトルとなるでしょう. 
+見出しがあるか、または
+<code>EXPORT_FILE_NAME</code> プロパティを継承していた場合、 エクスポートする際に
+はその名前が使われるでしょう。
+<a name="index-C_002dc-C_002de-b-1479"></a><a name="index-org_002dexport_002das_002dhtml_002dand_002dopen-1480"></a><br><dt><kbd>C-c C-e b &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-html-and-open</code><kbd>)</kbd><dd> HTMLファイルをエクスポートし、
+そのファイルをブラウザで開きます。
+<a name="index-C_002dc-C_002de-H-1481"></a><a name="index-org_002dexport_002das_002dhtml_002dto_002dbuffer-1482"></a><br><dt><kbd>C-c C-e H &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-html-to-buffer</code><kbd>)</kbd><dd> 一時的なバッファに出力し、フ
+ァイルを作成しません。
 <a name="index-C_002dc-C_002de-R-1483"></a><a name="index-org_002dexport_002dregion_002das_002dhtml-1484"></a><br><dt><kbd>C-c C-e R &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-region-as-html</code><kbd>)</kbd><dd>
-アクティブなリージョンを一時的なバッファに出力します。前置引数があるとヘッダ
-ーとフッターを出力せずに、リージョンのHTMLのみを出力します。これはカットアン
-ドペーストで編集する際に便利です
+アクティブなリージョンを一時的なバッファに出力します。前置引数があると
+ヘッダーとフッターを出力せずに、リージョンのHTMLのみを出力します。これ
+はカットアンドペーストで編集する際に便利です
 <br><dt><kbd>C-c C-e v h/b/H/R</kbd><dd>文書の中で、バッファで表示されている部分だけを出力する。
-<br><dt><kbd>M-x org-export-region-as-html</kbd><dd>org-modeの記法が使われているという前提でリージョンをHTMLに変換します。これは
-どのバッファでも起動するグローバルなコマンドです。
-<br><dt><kbd>M-x org-replace-region-by-HTML</kbd><dd>org-modeの記法が使われているという前提でアクティブなリージョンをHTMLに変換し
-ます。
+<br><dt><kbd>M-x org-export-region-as-html</kbd><dd>org-modeの記法が使われているという前提でリージョンをHTMLに変換します。
+これはどのバッファでも起動するグローバルなコマンドです。
+<br><dt><kbd>M-x org-replace-region-by-HTML</kbd><dd>org-modeの記法が使われているという前提でアクティブなリージョンをHTMLに
+変換します。
 </dl>
 
    <p><a name="index-g_t_00ef_00bc_0088_00e5_00a4_0096_00e9_0083_00a8_00e5_0087_00ba_00e5_008a_009b_00e3_0081_00ab_00e7_0094_00a8_00e3_0081_0084_00e3_0082_008b_00ef_00bc_0089_00e3_0083_0098_00e3_0083_0083_00e3_0083_0089_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00ac_00e3_0083_0099_00e3_0083_00ab-1485"></a>エクスポートされたものでは、 最初の3つのアウトラインの階層が一般的な文書の構
@@ -9199,8 +9234,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#HTML-export">HTML export</a>
 
 <p>HTMLにエクスポートする際、プレインな&lsquo;<samp><span class="samp">&lt;</span></samp>&rsquo; and &lsquo;<samp><span class="samp">&gt;</span></samp>&rsquo;は常に
 &lsquo;<samp><span class="samp">&amp;lt;</span></samp>&rsquo;と&lsquo;<samp><span class="samp">&amp;gt;</span></samp>&rsquo;に変換されます。もし単純なHTMLタグをそのまま含めたい時は
-, &lsquo;<samp><span class="samp">@&lt;b&gt;bold text@&lt;/b&gt;</span></samp>&rsquo;のようにma&lsquo;<samp><span class="samp">@</span></samp>&rsquo;でマークします。これは単純なHTMLタグで
-しか動作しませんので注意してください。
+, &lsquo;<samp><span class="samp">@&lt;b&gt;bold text@&lt;/b&gt;</span></samp>&rsquo;のようにma&lsquo;<samp><span class="samp">@</span></samp>&rsquo;でマークします。これは単純なHTMLタグでしか動作
+しませんので注意してください。
 エクスポートするファイルにさらに広範囲なHTMLをそのままコピーするには次のよう
 なブロックが使えます。
 
@@ -9317,8 +9352,8 @@ LaTeXの数学用スニペット(see <a href="#LaTeX-fragments">LaTeX fragments<
 <a href="http://www.mathjax.org">MathJax system</a>が使えるようになっています。
 <code>http://orgmode.org</code>は<samp><span class="file">MathJax</span></samp>がOrg-modeユーザ、小さなアプリケーション、そ
 してテストにとって便利だと考えているからです。
-<b>もし特定のページで、あるいは常に</b><samp><span class="file">MathJax</span></samp><b>を使うのであれば、私達のサーバでの
-読みこみを減らすためにMathJaxをあなたのサーバにインストール<a rel="footnote" href="#fn-117" name="fnd-117"><sup>117</sup></a> してください。</b>
+<b>もし特定のページで、あるいは常に</b><samp><span class="file">MathJax</span></samp><b>を使うのであれば、私達のサーバでの読
+みこみを減らすためにMathJaxをあなたのサーバにインストール<a rel="footnote" href="#fn-117" name="fnd-117"><sup>117</sup></a> してください。</b>
 <samp><span class="file">MathJax</span></samp>について設定するには、<code>org-export-html-mathjax-options</code>を使うか、バ
 ッファに次のような行を挿入してください。
 
@@ -9545,22 +9580,24 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#LaTeX-and-PDF-export">LaTeX and PDF ex
 <a name="index-C_002dc-C_002de-l-1525"></a>
 <a name="index-org_002dexport_002das_002dlatex-1526"></a>
 <dl><dt><kbd>C-c C-e l &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-latex</code><kbd>)</kbd><dd>
-<a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fFILE_005fNAME-1527"></a>LaTeXファイル<samp><span class="file">myfile.tex</span></samp>を出力します。Orgファイルに対して<samp><span class="file">myfile.org</span></samp>,、
-ASCIIファイルは<samp><span class="file">myfile.tex</span></samp>となるでしょう。そのファイルは警告なしに上書きさ
-れます。アクティブなリージョン<a rel="footnote" href="#fn-121" name="fnd-121"><sup>121</sup></a>があれば、そのリージョンのみが出力されるでしょう。選択したリージョンが
-一つのツリー<a rel="footnote" href="#fn-122" name="fnd-122"><sup>122</sup></a>で
-あった場合、ツリーの見出しがタイトルになります。ツリーの見出しのエントリーが
-<code>EXPORT_FILE_NAME</code>プロパティを継承、または持っている場合、エクスポートされる
-際には、その名前が使われるでしょう。
-<a name="index-C_002dc-C_002de-L-1528"></a><a name="index-org_002dexport_002das_002dlatex_002dto_002dbuffer-1529"></a><br><dt><kbd>C-c C-e L &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-latex-to-buffer</code><kbd>)</kbd><dd> 一時バッファに出力します。ファイル
-を作りません。
+<a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fFILE_005fNAME-1527"></a>LaTeXファイル<samp><span class="file">myfile.tex</span></samp>を出力します。Orgファイルに対して
+<samp><span class="file">myfile.org</span></samp>,、ASCIIファイルは<samp><span class="file">myfile.tex</span></samp>となるでしょう。そのファイル
+は警告なしに上書きされます。アクティブなリージョン
+<a rel="footnote" href="#fn-121" name="fnd-121"><sup>121</sup></a>があれば、そのリー
+ジョンのみが出力されるでしょう。選択したリージョンが一つのツリー
+<a rel="footnote" href="#fn-122" name="fnd-122"><sup>122</sup></a>であった
+場合、ツリーの見出しがタイトルになります。ツリーの見出しのエントリーが
+<code>EXPORT_FILE_NAME</code>プロパティを継承、または持っている場合、エクスポート
+される際には、その名前が使われるでしょう。
+<a name="index-C_002dc-C_002de-L-1528"></a><a name="index-org_002dexport_002das_002dlatex_002dto_002dbuffer-1529"></a><br><dt><kbd>C-c C-e L &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-latex-to-buffer</code><kbd>)</kbd><dd> 一時バッファに出力します。フ
+ァイルを作りません。
 <br><dt><kbd>C-c C-e v l/L</kbd><dd>文書の中で、バッファで表示されている部分だけを出力する。
-<br><dt><kbd>M-x org-export-region-as-latex</kbd><dd>Org-modeの記法が使われているという前提でリージョンをLaTeXに変換します。これ
-はどのバッファでも起動するグローバルなコマンドです。
-<br><dt><kbd>M-x org-replace-region-by-latex</kbd><dd>アクティブなリージョンを(Org-modeの記法が使われている前提で)LaTeXコードに置
-き変えます。<a name="index-C_002dc-C_002de-p-1530"></a><a name="index-org_002dexport_002das_002dpdf-1531"></a><br><dt><kbd>C-c C-e p &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-pdf</code><kbd>)</kbd><dd> LaTeXに出力し、PDFにも変換します。
-<a name="index-C_002dc-C_002de-d-1532"></a><a name="index-org_002dexport_002das_002dpdf_002dand_002dopen-1533"></a><br><dt><kbd>C-c C-e d &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-pdf-and-open</code><kbd>)</kbd><dd> LaTeXに出力し、PDFにも変換します。そ
-の際出力されたPDFファイルを開きます。
+<br><dt><kbd>M-x org-export-region-as-latex</kbd><dd>Org-modeの記法が使われているという前提でリージョンをLaTeXに変換します
+。これはどのバッファでも起動するグローバルなコマンドです。
+<br><dt><kbd>M-x org-replace-region-by-latex</kbd><dd>アクティブなリージョンを(Org-modeの記法が使われている前提で)LaTeXコー
+ドに置き変えます。<a name="index-C_002dc-C_002de-p-1530"></a><a name="index-org_002dexport_002das_002dpdf-1531"></a><br><dt><kbd>C-c C-e p &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-pdf</code><kbd>)</kbd><dd> LaTeXに出力し、PDFにも
+変換します。<a name="index-C_002dc-C_002de-d-1532"></a><a name="index-org_002dexport_002das_002dpdf_002dand_002dopen-1533"></a><br><dt><kbd>C-c C-e d &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-export-as-pdf-and-open</code><kbd>)</kbd><dd> LaTeXに出力し、PDF
+にも変換します。その際出力されたPDFファイルを開きます。
 </dl>
 
    <p><a name="index-g_t_00ef_00bc_0088_00e5_00a4_0096_00e9_0083_00a8_00e5_0087_00ba_00e5_008a_009b_00e3_0081_00ab_00e7_0094_00a8_00e3_0081_0084_00e3_0082_008b_00ef_00bc_0089_00e3_0083_0098_00e3_0083_0083_00e3_0083_0089_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00ac_00e3_0083_0099_00e3_0083_00ab-1534"></a><a name="index-org_002dlatex_002dlow_002dlevels-1535"></a>エクスポートされたものでは、 最初の3つのアウトラインの階層が一般的な文書の構
@@ -12621,22 +12658,23 @@ Emacsは補完無しではEmacsとはいえません、そしてorg-modeはそ�
 <dl><dt><kbd>M-&lt;TAB&gt;</kbd><dd>ポイント位置での補完
           <ul>
 <li>見出しの先頭では、TODOキーワードを補完します。
-<li>&lsquo;<samp><span class="samp">\\</span></samp>&rsquo;の後では、エクスポート機能によりサポートされるTeXのシンボルを補完します。
-<li>&lsquo;<samp><span class="samp">*</span></samp>&rsquo;の後では、&lsquo;<samp><span class="samp">[[*find this headline]]</span></samp>&rsquo;のようにリンクを検索できるように、カレ
-ントバッファで見出しを補完します。
-<li>見出し中の&lsquo;<samp><span class="samp">:</span></samp>&rsquo;の後では、タグを補完します。タグのリストは<code>org-tag-alist</code>変数
-(see <a href="#Setting-tags">Setting tags</a>より、もしかすると、バッファ中の&lsquo;<samp><span class="samp">#+TAGS</span></samp>&rsquo;オプションでも設定さ
-れているかもしれません。)から与えられるか、カレントバッファで使われている全
-てのタグから動的に生成されます。
-<li>見出しの外にある&lsquo;<samp><span class="samp">:</span></samp>&rsquo;の後では、プロパティキーを補完します。キーのリストは現在
-のバッファで使われている全てのキーから動的に構築されます。
+<li>&lsquo;<samp><span class="samp">\\</span></samp>&rsquo;の後では、エクスポート機能によりサポートされるTeXのシンボルを補完し
+ます。
+<li>&lsquo;<samp><span class="samp">*</span></samp>&rsquo;の後では、&lsquo;<samp><span class="samp">[[*find this headline]]</span></samp>&rsquo;のようにリンクを検索できるように
+、カレントバッファで見出しを補完します。
+<li>見出し中の&lsquo;<samp><span class="samp">:</span></samp>&rsquo;の後では、タグを補完します。タグのリストは<code>org-tag-alist</code>
+変数(see <a href="#Setting-tags">Setting tags</a>より、もしかすると、バッファ中の&lsquo;<samp><span class="samp">#+TAGS</span></samp>&rsquo;オプション
+でも設定されているかもしれません。)から与えられるか、カレントバッファ
+で使われている全てのタグから動的に生成されます。
+<li>見出しの外にある&lsquo;<samp><span class="samp">:</span></samp>&rsquo;の後では、プロパティキーを補完します。キーのリスト
+は現在のバッファで使われている全てのキーから動的に構築されます。
 <li>&lsquo;<samp><span class="samp">[</span></samp>&rsquo;の後では、リンクの省略記法を補完します(see <a href="#Link-abbreviations">Link abbreviations</a>)。
-<li>&lsquo;<samp><span class="samp">+</span></samp>&rsquo;の後では、Org-mode向けのファイル固有の設定としてセットする&lsquo;<samp><span class="samp">TYP_TODO</span></samp>&rsquo;や
-&lsquo;<samp><span class="samp">OPTIONS</span></samp>&rsquo;のようなスペシャルキーワードを補完します。オプションキーワードが既
-に補完されているなら、<kbd>M-&lt;TAB&gt;</kbd>を再び押すことでこのキーワードの設定の例を挿
-入します。
-<li>&lsquo;<samp><span class="samp">#+STARTUP: </span></samp>&rsquo;の後の行の中では、STARTUPキーワードを補完します、すなわち、は
-この行では正しいキーです。
+<li>&lsquo;<samp><span class="samp">+</span></samp>&rsquo;の後では、Org-mode向けのファイル固有の設定としてセットする
+&lsquo;<samp><span class="samp">TYP_TODO</span></samp>&rsquo;や&lsquo;<samp><span class="samp">OPTIONS</span></samp>&rsquo;のようなスペシャルキーワードを補完します。オプシ
+ョンキーワードが既に補完されているなら、<kbd>M-&lt;TAB&gt;</kbd>を再び押すことでこの
+キーワードの設定の例を挿入します。
+<li>&lsquo;<samp><span class="samp">#+STARTUP: </span></samp>&rsquo;の後の行の中では、STARTUPキーワードを補完します、すなわち
+、はこの行では正しいキーです。
 <li>他の場所では、Ispellを用いた辞書補完が行われます。
 </ul>
      </dl>
@@ -12737,31 +12775,32 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Miscellaneous">Miscellaneous</a>
    <p>コードの評価は以下に挙げる状況を引き起こします:
 
      <dl>
-<dt><i>ソースコードブロック</i><dd>ソースコードブロックはエクスポート中かブロック中で<kbd>C-c C-c</kbd>を押した時に評価
-されます。ここで最も重要な事はコードスニペットを含むOrg-modeのファイルがある
-意味で、実行可能なファイルに似ているということです。それで、あたはそれらに対
-応し正しいソースのみをEmacsにロードすべきです&ndash;
+<dt><i>ソースコードブロック</i><dd>ソースコードブロックはエクスポート中かブロック中で<kbd>C-c C-c</kbd>を押した時
+に評価されます。ここで最も重要な事はコードスニペットを含むOrg-modeのフ
+ァイルがある意味で、実行可能なファイルに似ているということです。それで
+、あたはそれらに対応し正しいソースのみをEmacsにロードすべきです&ndash;
 あなたがコンピュータ上にインストールしたプログラムのように。
 
-     <p>デフォルトのセキュリティー装置を切る変数をカスタマイズする前にあなたがしてい
-ることを確かめてください。
+     <p>デフォルトのセキュリティー装置を切る変数をカスタマイズする前にあなたが
+していることを確かめてください。
 
      <div class="defun">
 &mdash; User Option: <b>org-confirm-babel-evaluate</b><var><a name="index-org_002dconfirm_002dbabel_002devaluate-1781"></a></var><br>
-<blockquote> <p>t(これがデフォルトです)の時、ユーザはコードブロックを評価する前に毎回確認さ
-れます。nilの時、ユーザは確認されません。関数をセットすると、それは2つの引数
-(言語とコードブロックの本体)を伴って呼ばれ、tを返せば尋ね、nilならば尋ねませ
-ん。
+<blockquote> <p>t(これがデフォルトです)の時、ユーザはコードブロックを評価する前に毎回
+確認されます。nilの時、ユーザは確認されません。関数をセットすると、そ
+れは2つの引数(言語とコードブロックの本体)を伴って呼ばれ、tを返せば尋ね
+、nilならば尋ねません。
 </p></blockquote></div>
 
-     <p>例えば、これは\"ditaa\"コード(安全性は考慮されています)を確認無しで実行する
-方法です:
+     <p>例えば、これは\"ditaa\"コード(安全性は考慮されています)を確認無しで実
+行する方法です:
      <pre class="example">          (defun my-org-confirm-babel-evaluate (lang body)
             (not (string= lang "ditaa")))  ; don't ask for ditaa
           (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
 </pre>
-     <br><dt><i>以下の</i><code>shell</code><i>と</i><code>elisp</code><i>はリンクしています。</i><dd>Org-modeはコードを直接評価できる2つのリンクタイプ(see <a href="#External-links">External links</a>)を持って
-います。実行されるコードが見えないため、これらのリンクは問題がありえます。
+     <br><dt><i>以下の</i><code>shell</code><i>と</i><code>elisp</code><i>はリンクしています。</i><dd>Org-modeはコードを直接評価できる2つのリンクタイプ(see <a href="#External-links">External links</a>)を
+持っています。実行されるコードが見えないため、これらのリンクは問題があ
+りえます。
 
      <div class="defun">
 &mdash; User Option: <b>org-confirm-shell-link-function</b><var><a name="index-org_002dconfirm_002dshell_002dlink_002dfunction-1782"></a></var><br>
@@ -12773,8 +12812,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Miscellaneous">Miscellaneous</a>
 <blockquote> <p>Emacs Lispへのリンクを実行するための問い合わせを行う関数。
 </p></blockquote></div>
 
-     <br><dt><i>表中の式</i><dd>表中の式(see <a href="#The-spreadsheet">The spreadsheet</a>)は<i>calc</i>インタプリタでも<i>Emacs Lisp</i>インタプリタでも
-実行できるコードです。
+     <br><dt><i>表中の式</i><dd>表中の式(see <a href="#The-spreadsheet">The spreadsheet</a>)は<i>calc</i>インタプリタでも<i>Emacs Lisp</i>インタプリ
+タでも実行できるコードです。
 </dl>
 
 <div class="node">
@@ -12820,39 +12859,40 @@ Org-modeはファイル単位で設定を定義するために、バッファ内
    <p><a name="index-org_002darchive_002dlocation-1789"></a>
      <dl>
 <dt><kbd>#+ARCHIVE: %s_done::</kbd><dd>この行はこの行はアジェンダファイルのアーカイブ場所を設定します。次の
-&lsquo;<samp><span class="samp">#+ARCHIVE</span></samp>&rsquo;行まで、もしくはファイルの末尾までの全ての行で適用されます。最初
-の行はまた、それより前の全てのエントリにも適用されます。関係する変数は
-<code>org-archive-location</code>です。
-<br><dt><kbd>#+CATEGORY:</kbd><dd>この行はアジェンダファイルのカテゴリを設定します。カテゴリは次の&lsquo;<samp><span class="samp">#+CATEGORY</span></samp>&rsquo;
-行か、ファイル末尾までの全ての行で適用されます。また、それより前の全ての行に
-も適用されます。
-<br><dt><kbd>#+COLUMNS: %25ITEM .....</kbd><dd><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088COLUMNS_00ef_00bc_0089-1790"></a>カラムビューのデフォルトフォーマットを設定します。<code>COLUMNS</code>プロパティが適用
-されていない箇所でカラムビューが呼ばれた場合、このフォーマットが適用されます
-。
-<br><dt><kbd>#+CONSTANTS: name1=value1 ...</kbd><dd><a name="index-org_002dtable_002dformula_002dconstants-1791"></a><a name="index-org_002dtable_002dformula-1792"></a>テーブル式の中で使われる定数として、ファイルローカルな値を設定します。この行
-はローカル変数<code>org-table-formula-constants-local</code>を設定します。グローバルバ
-ージョンは<code>org-table-formula-constants</code>です。
-<br><dt><kbd>#+FILETAGS: :tag1:tag2:tag3:</kbd><dd>ファイル中のエントリトップレベルエントリを含めたエントリが引き継ぐタグを設定
-します。
-<br><dt><kbd>#+DRAWERS: NAME1 .....</kbd><dd><a name="index-org_002ddrawers-1793"></a>ファイルローカルな引き出しのセットを設定します。関係するグローバル変数が
-<code>org-drawers</code>です。
-<br><dt><kbd>#+LINK:  linkword replace</kbd><dd><a name="index-org_002dlink_002dabbrev_002dalist-1794"></a>これらの行初はリンクの省略記法を指定します。See <a href="#Link-abbreviations">Link abbreviations</a>. 関係する変
-数は<code>org-link-abbrev-alist</code>です。
-<br><dt><kbd>#+PRIORITIES: highest lowest default</kbd><dd><a name="index-org_002dhighest_002dpriority-1795"></a><a name="index-org_002dlowest_002dpriority-1796"></a><a name="index-org_002ddefault_002dpriority-1797"></a>これらの行は優先順位の上限と初期値を設定します。3つ全てが、AからZまでの文字
-か、0から9までの数字のどれかでなくてはいけません。最も高い優先順位は最も低い
-優先順位より低いASCIIの数値を持つ必要があります。
-<br><dt><kbd>#+PROPERTY: Property_Name Value</kbd><dd>この行は現在のバッファ中のエントリがデフォルトで引き継ぐ値を設定します。与え
-られたプロパティの値を指定するのに、最も便利です。
-<a name="index-g_t_0023_002bSETUPFILE-1798"></a><br><dt><kbd>#+SETUPFILE: file</kbd><dd>この行はバッファ内の設定を持つファイルを定義します。通常は、これは完全に無視
-されます。バッファのオプションの設定行をパースされた時のみ、バッファにそれら
-が含まれていればこのファイルのコンテンツはパースされます。特に、ファイルは内
-部設定の別のOrg-modeファイルとすることができます。カーソルをこの行に置き、
-<kbd>C-c '</kbd>を押すことであなたはこのファイルを開くことができます。
+&lsquo;<samp><span class="samp">#+ARCHIVE</span></samp>&rsquo;行まで、もしくはファイルの末尾までの全ての行で適用されます
+。最初の行はまた、それより前の全てのエントリにも適用されます。関係する
+変数は<code>org-archive-location</code>です。
+<br><dt><kbd>#+CATEGORY:</kbd><dd>この行はアジェンダファイルのカテゴリを設定します。カテゴリは次の
+&lsquo;<samp><span class="samp">#+CATEGORY</span></samp>&rsquo;行か、ファイル末尾までの全ての行で適用されます。また、それ
+より前の全ての行にも適用されます。
+<br><dt><kbd>#+COLUMNS: %25ITEM .....</kbd><dd><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088COLUMNS_00ef_00bc_0089-1790"></a>カラムビューのデフォルトフォーマットを設定します。<code>COLUMNS</code>プロパティ
+が適用されていない箇所でカラムビューが呼ばれた場合、このフォーマットが
+適用されます。
+<br><dt><kbd>#+CONSTANTS: name1=value1 ...</kbd><dd><a name="index-org_002dtable_002dformula_002dconstants-1791"></a><a name="index-org_002dtable_002dformula-1792"></a>テーブル式の中で使われる定数として、ファイルローカルな値を設定します。
+この行はローカル変数<code>org-table-formula-constants-local</code>を設定します。
+グローバルバージョンは<code>org-table-formula-constants</code>です。
+<br><dt><kbd>#+FILETAGS: :tag1:tag2:tag3:</kbd><dd>ファイル中のエントリトップレベルエントリを含めたエントリが引き継ぐタグ
+を設定します。
+<br><dt><kbd>#+DRAWERS: NAME1 .....</kbd><dd><a name="index-org_002ddrawers-1793"></a>ファイルローカルな引き出しのセットを設定します。関係するグローバル変数
+が<code>org-drawers</code>です。
+<br><dt><kbd>#+LINK:  linkword replace</kbd><dd><a name="index-org_002dlink_002dabbrev_002dalist-1794"></a>これらの行初はリンクの省略記法を指定します。See <a href="#Link-abbreviations">Link abbreviations</a>. 関係
+する変数は<code>org-link-abbrev-alist</code>です。
+<br><dt><kbd>#+PRIORITIES: highest lowest default</kbd><dd><a name="index-org_002dhighest_002dpriority-1795"></a><a name="index-org_002dlowest_002dpriority-1796"></a><a name="index-org_002ddefault_002dpriority-1797"></a>これらの行は優先順位の上限と初期値を設定します。3つ全てが、AからZまで
+の文字か、0から9までの数字のどれかでなくてはいけません。最も高い優先順
+位は最も低い優先順位より低いASCIIの数値を持つ必要があります。
+<br><dt><kbd>#+PROPERTY: Property_Name Value</kbd><dd>この行は現在のバッファ中のエントリがデフォルトで引き継ぐ値を設定します
+。与えられたプロパティの値を指定するのに、最も便利です。
+<a name="index-g_t_0023_002bSETUPFILE-1798"></a><br><dt><kbd>#+SETUPFILE: file</kbd><dd>この行はバッファ内の設定を持つファイルを定義します。通常は、これは完全
+に無視されます。バッファのオプションの設定行をパースされた時のみ、バッ
+ファにそれらが含まれていればこのファイルのコンテンツはパースされます。
+特に、ファイルは内部設定の別のOrg-modeファイルとすることができます。カ
+ーソルをこの行に置き、<kbd>C-c '</kbd>を押すことであなたはこのファイルを開くこ
+とができます。
 <br><dt><kbd>#+STARTUP:</kbd><dd><a name="index-g_t_0023_002bSTARTUP_003a-1799"></a>この行はOrg-modeのファイルが開かれた時にに使われるオプションを設定します。
 
-     <p>最初のオプションセットはアウトラインツリーの初期表示を設定します。グローバル
-なデフォルトの設定に関係する変数は<code>org-startup-folded</code>で、初期値は<code>t</code>で、そ
-れはすなわち<code>overview</code>です。
+     <p>最初のオプションセットはアウトラインツリーの初期表示を設定します。グロ
+ーバルなデフォルトの設定に関係する変数は<code>org-startup-folded</code>で、初期値
+は<code>t</code>で、それはすなわち<code>overview</code>です。
 <a name="index-org_002dstartup_002dfolded-1800"></a><a name="index-g_t_0040code_007boverview_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1801"></a><a name="index-g_t_0040code_007bcontent_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1802"></a><a name="index-g_t_0040code_007bshowall_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1803"></a><a name="index-g_t_0040code_007bshoweverything_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1804"></a>
      <pre class="example">          overview         <span class="roman">トップレベルの見出しのみ</span>
           content          <span class="roman">全ての見出し</span>
@@ -12863,49 +12903,50 @@ Org-modeはファイル単位で設定を定義するために、バッファ内
      <pre class="example">          indent     <span class="roman">start with </span><code>org-indent-mode</code><span class="roman"> turned on</span>
           noindent   <span class="roman">start with </span><code>org-indent-mode</code><span class="roman"> turned off</span>
 </pre>
-     <p><a name="index-org_002dstartup_002dalign_002dall_002dtables-1808"></a>それから、開いたファイルの表を整列させつオプションがあります。これはファイル
-がナローされた表を含む時に役に立ちます。関係する変数は
+     <p><a name="index-org_002dstartup_002dalign_002dall_002dtables-1808"></a>それから、開いたファイルの表を整列させつオプションがあります。これはフ
+ァイルがナローされた表を含む時に役に立ちます。関係する変数は
 <code>org-startup-align-all-tables</code>で、デフォルトでは<code>nil</code>です。
 <a name="index-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_0040code_007balign_007d-1809"></a><a name="index-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_0040code_007bnoalign_007d-1810"></a>
      <pre class="example">          align      <span class="roman">align all tables</span>
           noalign    <span class="roman">don't align tables on startup</span>
 </pre>
-     <p><a name="index-org_002dstartup_002dwith_002dinline_002dimages-1811"></a>ファイルを開いたとき、インライン画像は自動的に表示されます。関係する変数は
-<code>org-startup-with-inine-images</code>で、ファイルを開いた際の遅延を避けるためにデ
-フォルトでは<code>nil</code>になっています。
+     <p><a name="index-org_002dstartup_002dwith_002dinline_002dimages-1811"></a>ファイルを開いたとき、インライン画像は自動的に表示されます。関係する変
+数は<code>org-startup-with-inine-images</code>で、ファイルを開いた際の遅延を避け
+るためにデフォルトでは<code>nil</code>になっています。
 <a name="index-g_t_0040code_007binlineimages_007d_002c-STARTUP-keyword-1812"></a><a name="index-g_t_0040code_007bnoinlineimages_007d_002c-STARTUP-keyword-1813"></a>
      <pre class="example">          inlineimages   <span class="roman">show inline images</span>
           noinlineimages <span class="roman">don't show inline images on startup</span>
 </pre>
-     <p><a name="index-org_002dlog_002ddone-1814"></a><a name="index-org_002dlog_002dnote_002dclock_002dout-1815"></a><a name="index-org_002dlog_002drepeat-1816"></a>TODOアイテムの完了と再開のログを取ることとその感覚はこれらのオプションによっ
-て設定することが可能です(変数<code>org-log-done</code>と<code>org-log-note-clock-out</code>、
-<code>org-log-repeat</code>を参照してください)。
+     <p><a name="index-org_002dlog_002ddone-1814"></a><a name="index-org_002dlog_002dnote_002dclock_002dout-1815"></a><a name="index-org_002dlog_002drepeat-1816"></a>TODOアイテムの完了と再開のログを取ることとその感覚はこれらのオプション
+によって設定することが可能です(変数<code>org-log-done</code>と
+<code>org-log-note-clock-out</code>、<code>org-log-repeat</code>を参照してください)。
 <a name="index-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_0040code_007blogdone_007d-1817"></a><a name="index-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_0040code_007blognotedone_007d-1818"></a><a name="index-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_0040code_007bnologdone_007d-1819"></a><a name="index-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_0040code_007blognoteclock_002dout_007d-1820"></a><a name="index-STATUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_0040code_007bnolognoteclock_002dout_007d-1821"></a><a name="index-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_0040code_007blogrepeat_007d-1822"></a><a name="index-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_0040code_007blognoterepeat_007d-1823"></a><a name="index-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_0040code_007bnologrepeat_007d-1824"></a><a name="index-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_0040code_007blogschedule_007d-1825"></a><a name="index-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_0040code_007blognotereschedule_007d-1826"></a><a name="index-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_0040code_007bnologreschedule_007d-1827"></a><a name="index-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_0040code_007blogredeadline_007d-1828"></a><a name="index-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_0040code_007blognoredeadline_007d-1829"></a><a name="index-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_0040code_007bnologredeadline_007d-1830"></a><a name="index-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_0040code_007blogrefile_007d-1831"></a><a name="index-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_0040code_007blognoterefile_007d-1832"></a><a name="index-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_003c_0040code_007bnologrefile_007d-1833"></a>
-     <pre class="example">          logdone            <span class="roman">アイテムにDONEマークがついたとき、タイムスタンプを記録しま
-          す</span>
-          lognotedone        <span class="roman">ノートにDONEマークがついたとき、タイムスタンプを記録します
-          </span>
-          nologdone          <span class="roman">アイテムにDONEマークがついたとき、タイムスタンプを記録しま
-          せん</span>
+     <pre class="example">          logdone            <span class="roman">アイテムにDONEマークがついたとき、タイムスタンプを記
+          録します</span>
+          lognotedone        <span class="roman">ノートにDONEマークがついたとき、タイムスタンプを記録
+          します</span>
+          nologdone          <span class="roman">アイテムにDONEマークがついたとき、タイムスタンプを記
+          録しません</span>
           logrepeat          <span class="roman">アイテムが再開されたとき、時刻を記録します</span>
           lognoterepeat      <span class="roman">アイテムが再開されたとき、ノートをを記録します</span>
           nologrepeat        <span class="roman">アイテムが再開されたとき、記録を行わいません</span>
           lognoteclock-out   <span class="roman">時間測定が終了したとき、ノートを記録します</span>
           nolognoteclock-out <span class="roman">時間測定が終了したとき、ノートを記録しません</span>
-          logreschedule      <span class="roman">スケジューリングが変わったとき、タイムスタンプを記録します
-          </span>
+          logreschedule      <span class="roman">スケジューリングが変わったとき、タイムスタンプを記録
+          します</span>
           lognotereschedule  <span class="roman">スケジューリングが変わったとき、ノートを記録します</span>
           nologreschedule    <span class="roman">スケジューリングが変わったとき、記録しません</span>
-          logredeadline      <span class="roman">デッドラインが変更されたとき、タイムスタンプを記録します</span>
+          logredeadline      <span class="roman">デッドラインが変更されたとき、タイムスタンプを記録し
+          ます</span>
           lognoteredeadline  <span class="roman">デッドラインが変更されたとき、ノートを記録します</span>
           nologredeadline    <span class="roman">デッドラインが変更されたとき、記録しません</span>
           logrefile          <span class="roman">リファイル時にタイムスタンプを記録します</span>
           lognoterefile      <span class="roman">リファイル時にノートを記録します</span>
           nologrefile        <span class="roman">リファイル時に記録しません</span>
 </pre>
-     <p><a name="index-org_002dhide_002dleading_002dstars-1834"></a><a name="index-org_002dodd_002dlevels_002donly-1835"></a>ここは、インデントされたアウトラインの見出しを隠すオプションです。関係する変
-数は<code>org-hide-leading-stars</code>と<code>org-odd-levels-only</code>で、デフォルトの設定は両
-方とも<code>nil</code>(<code>showstars</code>と<code>oddeven</code>)を意味します。
+     <p><a name="index-org_002dhide_002dleading_002dstars-1834"></a><a name="index-org_002dodd_002dlevels_002donly-1835"></a>ここは、インデントされたアウトラインの見出しを隠すオプションです。関係
+する変数は<code>org-hide-leading-stars</code>と<code>org-odd-levels-only</code>で、デフォル
+トの設定は両方とも<code>nil</code>(<code>showstars</code>と<code>oddeven</code>)を意味します。
 <a name="index-STARTUP-keyword_00e3_0080_0081_0040code_007bhidestars_007d-1836"></a><a name="index-STARTUP-keyword_00e3_0080_0081_0040code_007bshowstars_007d-1837"></a><a name="index-STARTUP-keyword_00e3_0080_0081_0040code_007bodd_007d-1838"></a><a name="index-STARTUP-keyword_00e3_0080_0081_0040code_007beven_007d-1839"></a>
      <pre class="example">          hidestars  <span class="roman">全てのヘッドラインの「*」を見えなくします</span>
           showstars  <span class="roman">全てのヘッドラインの「*」を見えるようにします</span>
@@ -12915,8 +12956,8 @@ Org-modeはファイル単位で設定を定義するために、バッファ内
           oddeven    <span class="roman">全てのアウトラインレベル</span>
 </pre>
      <p><a name="index-org_002dput_002dtime_002dstamp_002doverlays-1840"></a><a name="index-org_002dtime_002dstamp_002doverlay_002dformats-1841"></a>タイムスタンプ(<code>org-put-time-stamp-overlays</code>と
-<code>org-time-stamp-overlay-formats</code>変数)のカスタムフォーマットオーバレイを切り
-替えます、
+<code>org-time-stamp-overlay-formats</code>変数)のカスタムフォーマットオーバレイ
+を切り替えます、
 <a name="index-STARTUP-keyword_00e3_0080_0081_0040code_007bcustomtime_007d-1842"></a>
      <pre class="example">          customtime <span class="roman">カスタマイズされたタイムフォーマットで覆います</span></pre>
      <p><a name="index-constants_002dunit_002dsystem-1843"></a>以下のオプションは表計算(<code>constants-unit-system</code>変数)に影響を与えます。
@@ -12930,32 +12971,34 @@ Org-modeはファイル単位で設定を定義するために、バッファ内
 <a name="index-g_t_0040code_007bfninline_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1849"></a><a name="index-g_t_0040code_007bnofninline_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1850"></a><a name="index-g_t_0040code_007bfnlocal_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1851"></a><a name="index-g_t_0040code_007bfnprompt_007d_002c_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1852"></a><a name="index-g_t_0040code_007bfnauto_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1853"></a><a name="index-g_t_0040code_007bfnconfirm_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1854"></a><a name="index-g_t_0040code_007bfnplain_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1855"></a><a name="index-g_t_0040code_007bfnadjust_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1856"></a><a name="index-g_t_0040code_007bnofnadjust_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1857"></a>
      <pre class="example">          fninline    <span class="roman">脚注のインラインを定義します</span>
           fnnoinline  <span class="roman">分割されたセクションでの脚注を定義します</span>
-          fnlocal     <span class="roman">最初の言及元の近くの脚注を定義しますが、インラインではありません</span>
+          fnlocal     <span class="roman">最初の言及元の近くの脚注を定義しますが、インラインではあり
+          ません</span>
           fnprompt    <span class="roman">脚注ラベルのプロンプト</span>
-          fnauto      <code>[fn:1]</code><span class="roman">のようなラベルを自動的に作成します(これがデフォルトです)</span>
+          fnauto      <code>[fn:1]</code><span class="roman">のようなラベルを自動的に作成します(これがデフォルト
+          です)</span>
           fnconfirm   <span class="roman">編集と確認用の自動ラベルを用意します</span>
           fnplain     <code>[1]</code><span class="roman">のようなラベルを自動的に作成します</span>
           fnadjust    <span class="roman">自動的に脚注の番号を振り直し、ソートします</span>
           nofnadjust  <span class="roman">自動的に番号の振り直しとソートを行いません</span>
 </pre>
-     <p><a name="index-org_002dhide_002dblock_002dstartup-1858"></a>開始時にブロックを見えなくするには、これらのキーワードを使います。関連する変
-数は<code>org-hide-block-startup</code>です。
+     <p><a name="index-org_002dhide_002dblock_002dstartup-1858"></a>開始時にブロックを見えなくするには、これらのキーワードを使います。関連
+する変数は<code>org-hide-block-startup</code>です。
 <a name="index-g_t_0040code_007bhideblocks_007d_002c-STARTUP-keyword-1859"></a><a name="index-g_t_0040code_007bnohideblocks_007d_002c-STARTUP-keyword-1860"></a>
      <pre class="example">          hideblocks   <span class="roman">開始時に全ての開始/終了ブロックを見えなくします</span>
           nohideblocks <span class="roman">開始時にブロックを見えなくしません</span></pre>
-     <p><a name="index-org_002dpretty_002dentities-1861"></a>UTF-8の文字の表示は変数<code>org-pretty-entities</code>と以下のキーワードにより制御され
-ます。
+     <p><a name="index-org_002dpretty_002dentities-1861"></a>UTF-8の文字の表示は変数<code>org-pretty-entities</code>と以下のキーワードにより制
+御されます。
 <a name="index-g_t_0040code_007bentitiespretty_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1862"></a><a name="index-g_t_0040code_007bentitiesplain_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1863"></a>
      <pre class="example">          entitiespretty  <span class="roman">可能な時、UTF-8の文字を表示します</span>
           entitiesplain   <span class="roman">空白にします</span>
 </pre>
-     <br><dt><kbd>#+TAGS:  TAG1(c1) TAG2(c2)</kbd><dd><a name="index-org_002dtag_002dalist-1864"></a>これらの行はファイル中の正しいタグと関連する<em>fast tag selection</em>キーを指定し
-ます。関連する変数は<code>org-tag-alist</code>です。
+     <br><dt><kbd>#+TAGS:  TAG1(c1) TAG2(c2)</kbd><dd><a name="index-org_002dtag_002dalist-1864"></a>これらの行はファイル中の正しいタグと関連する<em>fast tag selection</em>キーを
+指定します。関連する変数は<code>org-tag-alist</code>です。
 <br><dt><kbd>#+TBLFM:</kbd><dd>この行には行上にある表の数式が含まれます。
 <br><dt><kbd>#+TITLE:, #+AUTHOR:, #+EMAIL:, #+LANGUAGE:, #+TEXT:, #+DATE:,</kbd><dt><kbd>#+OPTIONS:, #+BIND:, #+XSLT:,</kbd><dt><kbd>#+DESCRIPTION:, #+KEYWORDS:,</kbd><dt><kbd>#+LATEX_HEADER:, #+STYLE:, #+LINK_UP:, #+LINK_HOME:,</kbd><dt><kbd>#+EXPORT_SELECT_TAGS:, #+EXPORT_EXCLUDE_TAGS:</kbd><dd>これらの行はエクスポートするファイルの設定を提供します。詳細については
 <a href="#Export-options">Export options</a>を参照してください。
-<br><dt><kbd>#+TODO:    #+SEQ_TODO:   #+TYP_TODO:</kbd><dd><a name="index-org_002dtodo_002dkeywords-1865"></a>これらの行は現在のファイルでのTODOキーワードとそれらの説明をセットします。関
-連する変数は<code>org-todo-keywords</code>です。
+<br><dt><kbd>#+TODO:    #+SEQ_TODO:   #+TYP_TODO:</kbd><dd><a name="index-org_002dtodo_002dkeywords-1865"></a>これらの行は現在のファイルでのTODOキーワードとそれらの説明をセットしま
+す。関連する変数は<code>org-todo-keywords</code>です。
 </dl>
 
 <div class="node">
@@ -12978,25 +13021,27 @@ Org-modeでは<kbd>C-c C-c</kbd>キーは多くの目的を持っていて、そ
 でそれが何を意味するかの概要です。
 
      <ul>
-<li>ツリーの抽出か時間表示からバッファ中のハイライトがあるなら、それらのハイライ
-トを消去します。
-<li>カーソルが特別な行である<code>#+KEYWORD</code>行上にあるなら、このトリガはバッファをこ
-の行でスキャンし情報を更新します。
-<li>カーソルが表の中にあるなら、表を再調整します。もし自動テーブルエディタがオフ
-になっていても、このコマンドは同じように働きます。
+<li>ツリーの抽出か時間表示からバッファ中のハイライトがあるなら、それらのハ
+イライトを消去します。
+<li>カーソルが特別な行である<code>#+KEYWORD</code>行上にあるなら、このトリガはバッフ
+ァをこの行でスキャンし情報を更新します。
+<li>カーソルが表の中にあるなら、表を再調整します。もし自動テーブルエディタ
+がオフになっていても、このコマンドは同じように働きます。
 <li>カーソルが<code>#+TBLFM</code>行にあるなら、全ての表に式を再適用します。
-<li>カレントバッファがキャプチャバッファの場合、ノートを閉じファイルします。接頭
-辞引数を付けると相互作用せずにデフォルトの場所にファイルします。
-<li>カーソルが<code>&lt;&lt;&lt;target&gt;&gt;&gt;</code>上にあるなら、ラジオターゲットとバッファ中の関係する
-リンクを更新します。
-<li>カーソルがプロパティ行かプロパティ引き出しの開始か終了行にあるなら、プロパテ
-ィコマンドを提供します。
-<li>カーソルが脚注参照上にあるなら、関係する定義部に行きます。反対も同様です。
+<li>カレントバッファがキャプチャバッファの場合、ノートを閉じファイルします
+。接頭辞引数を付けると相互作用せずにデフォルトの場所にファイルします。
+<li>カーソルが<code>&lt;&lt;&lt;target&gt;&gt;&gt;</code>上にあるなら、ラジオターゲットとバッファ中の関
+係するリンクを更新します。
+<li>カーソルがプロパティ行かプロパティ引き出しの開始か終了行にあるなら、プ
+ロパティコマンドを提供します。
+<li>カーソルが脚注参照上にあるなら、関係する定義部に行きます。反対も同様で
+す。
 <li>カーソルが統計データクッキー上にあるなら、それを更新します。
-<li>カーソルがチェックボックス付きのプレーンリスト上にあるなら、チェックボックス
-のステータスをトグルします。
+<li>カーソルがチェックボックス付きのプレーンリスト上にあるなら、チェックボ
+ックスのステータスをトグルします。
 <li>カーソルが数字付きリスト上にあるなら、順序を整理しなおします。
-<li>カーソルは。動的なブロックの<code>#+BEGIN</code>行上にあるなら、ブロックを更新します。
+<li>カーソルは。動的なブロックの<code>#+BEGIN</code>行上にあるなら、ブロックを更新し
+ます。
 </ul>
 
 <div class="node">
@@ -13046,14 +13091,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Miscellaneous">Miscellaneous</a>
 サポートします:
 
      <ol type=1 start=1>
-<li><em>見出しの下のテキストのインデント</em><br> 以下のように、あなたは各見出しの下のテ
-キストを見出しと同じ位置にインデントできます。
+<li><em>見出しの下のテキストのインデント</em><br> 以下のように、あなたは各見出しの下のテキストを見出しと同じ位置にインデントでき
+ます。
 
      <pre class="example">          *** 3rd level
               more text, now indented
 </pre>
-     <p><a name="index-org_002dadapt_002dindentation-1872"></a>Org-modeは段落詰め、行の折り返し、構造の編集、適切なインデントの保存と適合と
-同時にこれをサポートします。
+     <p><a name="index-org_002dadapt_002dindentation-1872"></a>Org-modeは段落詰め、行の折り返し、構造の編集、適切なインデントの保存と
+適合と同時にこれをサポートします。
 
      <li><a name="index-org_002dhide_002dleading_002dstars-1873"></a><em>Hiding leading stars</em><br> You can modify the display in such a way that
 all leading stars become invisible.  To do this in a global way, configure
@@ -13070,27 +13115,26 @@ basis with
             * 3rd level
             ...
 </pre>
-     <p class="noindent"><a name="index-org_002dhide-_0040r_007b_0028face_0029_007d-1874"></a>先頭の「*」は本当に空白スペースに置き換えられたわけではなく、それらは文字色
-を背景色にする<code>org-hide</code>フェイスによって見えているだけです。もしあなたが白か
-黒の背景色を使っていないのであれば、あなたはこのフェイスを必要な効果が得られ
-るようにカスタマイズする必要があるでしょう。別の方法として、このフォントは余
-分な「*」が色を用いて、例えば、白い背景色の上に<code>gray90</code>を使うことで目に見え
-なくするというものがあります。
+     <p class="noindent"><a name="index-org_002dhide-_0040r_007b_0028face_0029_007d-1874"></a>先頭の「*」は本当に空白スペースに置き換えられたわけではなく、それらは
+文字色を背景色にする<code>org-hide</code>フェイスによって見えているだけです。もし
+あなたが白か黒の背景色を使っていないのであれば、あなたはこのフェイスを
+必要な効果が得られるようにカスタマイズする必要があるでしょう。別の方法
+として、このフォントは余分な「*」が色を用いて、例えば、白い背景色の上
+に<code>gray90</code>を使うことで目に見えなくするというものがあります。
 
      <li><a name="index-org_002dodd_002dlevels_002donly-1875"></a>
-あなたが全ての偶数レベルをスキップし、1、3、5といった奇数レベルのみを使い、
-効果的にある見出しレベルから次<a rel="footnote" href="#fn-137" name="fnd-137"><sup>137</sup></a>
-に行くために2つの「*」を追加するのであれば、物事はより見やすくなります。この
-方法で、私達はこのセクションの冒頭で見られるアウトラインビューを得ます。構造
-の編集とこの慣例を正しく操作するエクスポートコマンドを作成すうために、
-<code>org-odd-levels-only</code>変数を設定するか、各ファイルに以下のような行を追加しま
-す。
+あなたが全ての偶数レベルをスキップし、1、3、5といった奇数レベルのみを
+使い、効果的にある見出しレベルから次<a rel="footnote" href="#fn-137" name="fnd-137"><sup>137</sup></a>に行くために2つの「*」を追加するのであれば、物事は
+より見やすくなります。この方法で、私達はこのセクションの冒頭で見られる
+アウトラインビューを得ます。構造の編集とこの慣例を正しく操作するエクス
+ポートコマンドを作成すうために、<code>org-odd-levels-only</code>変数を設定するか
+、各ファイルに以下のような行を追加します。
 
      <pre class="example">          #+STARTUP: odd
           #+STARTUP: oddeven
 </pre>
-     <p>あなたは<kbd>M-x org-convert-to-odd-levels RET</kbd>によりOrg-modeのファイルを1レベル
-1スターから1レベル2スターに変換することができます。逆の操作は。
+     <p>あなたは<kbd>M-x org-convert-to-odd-levels RET</kbd>によりOrg-modeのファイルを1
+レベル1スターから1レベル2スターに変換することができます。逆の操作は。
 <kbd>M-x org-convert-to-oddeven-levels</kbd>です。
         </ol>
 
@@ -14399,34 +14443,34 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#MobileOrg">MobileOrg</a>
 いう<em>pull</em>の操作機能をもっています。どのように動作するのでしょうか。
 
      <ol type=1 start=1>
-<li>Org-modeは、<samp><span class="file">mobileorg.org</span></samp><a rel="footnote" href="#fn-147" name="fnd-147"><sup>147</sup></a>
-の中で発見した全てのエントリーを移動し、<code>org-mobile-inbox-for-pull</code>変数によ
-って、ポインターが付けられたファイルに追加します。記録されたエントリと編集さ
-れたイベントは、それぞれInBoxファイル中でトップレベルのエントリーとして位置
-づけられるでしょう。
-<li>エントリーを移動したあと、Org-modeは、<i>MobileOrg</i>の中で作られた変更を実行する
-ことを試みます。いくつかの変更は直接、ユーザーの確認無しに適用されます。例で
-は、タグ、TODOの状態、見出しそして本文に対するすべての変更がはっきりと適用さ
-れるというものです。将来の行動のために、フラグを付けられたエントリーは、
-<code>:FLAGGED:</code>というタグが付けられるでしょう。そのため、再び簡単に見つけること
-ができるでしょう。あるエントリを探したり、変更を適用するさいに問題があれば、
-ポインターのついたエントリーはinboxに残され、エラーメッセージの印がつけられ
-るでしょう。あなたはあとでこれらの案件を手動で解決する必要があります。
-<li>Org-modeでは、その際にフラグがつけられたすべてのエントリーとともに、アジェン
-ダビューを作成できます。そしてユーザーはそれらの項目をやり終えたり、必要な行
-動を実行するでしょう。<i>MobileOrg</i>のエントリーにフラグが付けられている間に、ノ
-ートが保存されていたら、そのノートは、カーソルがアジェンダの行の上に置かれた
-時に、エコーエリア上に表示されるでしょう。
+<li>Org-modeは、<samp><span class="file">mobileorg.org</span></samp><a rel="footnote" href="#fn-147" name="fnd-147"><sup>147</sup></a>の中で発見した全てのエントリーを移動し、
+<code>org-mobile-inbox-for-pull</code>変数によって、ポインターが付けられたファイ
+ルに追加します。記録されたエントリと編集されたイベントは、それぞれ
+InBoxファイル中でトップレベルのエントリーとして位置づけられるでしょう。
+<li>エントリーを移動したあと、Org-modeは、<i>MobileOrg</i>の中で作られた変更を実
+行することを試みます。いくつかの変更は直接、ユーザーの確認無しに適用さ
+れます。例では、タグ、TODOの状態、見出しそして本文に対するすべての変更
+がはっきりと適用されるというものです。将来の行動のために、フラグを付け
+られたエントリーは、<code>:FLAGGED:</code>というタグが付けられるでしょう。そのた
+め、再び簡単に見つけることができるでしょう。あるエントリを探したり、変
+更を適用するさいに問題があれば、ポインターのついたエントリーはinboxに
+残され、エラーメッセージの印がつけられるでしょう。あなたはあとでこれら
+の案件を手動で解決する必要があります。
+<li>Org-modeでは、その際にフラグがつけられたすべてのエントリーとともに、ア
+ジェンダビューを作成できます。そしてユーザーはそれらの項目をやり終えた
+り、必要な行動を実行するでしょう。<i>MobileOrg</i>のエントリーにフラグが付け
+られている間に、ノートが保存されていたら、そのノートは、カーソルがアジ
+ェンダの行の上に置かれた時に、エコーエリア上に表示されるでしょう。
           
 <a name="index-g_t_003f-1973"></a>
-<dl><dt><kbd>?</kbd><dd>そういう特別なアジェンダの中で、<kbd>?</kbd>が入力されたときには、別のウインドウでフ
-ラグの付けられたノートの全てが表示され、キルリング上に内容がコピーされます。
-そして、<kbd>? z C-y C-c C-c</kbd>を使用することで、フラグのつけられたノートを、その
-エントリーの通常のノートとして保存することができます。<kbd>?</kbd>を２度続けて入力す
-ると、（プロパティの中に保存されていた）記録されているフラグの付いたノートと
-一緒に、<code>:FLAGGED:</code>というタグを削除するよう指示したことになります。この方法
-で、あなたはこのフラグの付けられたエントリーを意図したプロセスで完了させると
-いう指示をすることになります。
+<dl><dt><kbd>?</kbd><dd>そういう特別なアジェンダの中で、<kbd>?</kbd>が入力されたときには、別のウインド
+ウでフラグの付けられたノートの全てが表示され、キルリング上に内容がコピ
+ーされます。そして、<kbd>? z C-y C-c C-c</kbd>を使用することで、フラグのつけら
+れたノートを、そのエントリーの通常のノートとして保存することができます
+。<kbd>?</kbd>を２度続けて入力すると、（プロパティの中に保存されていた）記録さ
+れているフラグの付いたノートと一緒に、<code>:FLAGGED:</code>というタグを削除する
+よう指示したことになります。この方法で、あなたはこのフラグの付けられた
+エントリーを意図したプロセスで完了させるという指示をすることになります。
 </dl>
      </ol>
 
@@ -16698,25 +16742,25 @@ will contain the entire buffer, but will be narrowed to the current tree.  Editi
 <kbd>M-&lt;TAB&gt;</kbd>を実行してください。現在のバッファー内にあるすべての見出しが補完候
 補として表示されます。</p>
 
-   <p class="footnote"><small>[<a name="fn-33" href="#fnd-33">33</a>]</small> リンクを挿入するのに、このコマンドを使わなければならないわけではない
-ことに注意してください。Org-modeでのリンクはプレーンテキストですので、リンク
-はタイプしたりペーストしたりして直接バッファーへ入力することができます。この
-コマンドを使うことによって、リンクは自動的に二重括弧に入れられ、オプションと
-して項目名を入力するかどうかをたずねられます。</p>
+   <p class="footnote"><small>[<a name="fn-33" href="#fnd-33">33</a>]</small> リンクを挿入するのに、このコマンドを使わなければならないわけで
+はないことに注意してください。Org-modeでのリンクはプレーンテキストです
+ので、リンクはタイプしたりペーストしたりして直接バッファーへ入力するこ
+とができます。このコマンドを使うことによって、リンクは自動的に二重括弧
+に入れられ、オプションとして項目名を入力するかどうかをたずねられます。
+</p>
 
-   <p class="footnote"><small>[<a name="fn-34" href="#fnd-34">34</a>]</small> 一時保管されたリンクを挿入した後は
-、そのリンクは一時保管リストから削除されます。後で使用するためにリンクを保存
-したままにしておきたい場合は、<kbd>C-c C-l</kbd>の前に3回<kbd>C-u</kbd>をタイプするか、
+   <p class="footnote"><small>[<a name="fn-34" href="#fnd-34">34</a>]</small> 一時保管されたリンクを挿入した後は、そのリンクは一時保管
+リストから削除されます。後で使用するためにリンクを保存したままにしてお
+きたい場合は、<kbd>C-c C-l</kbd>の前に3回<kbd>C-u</kbd>をタイプするか、
 <code>org-keep-stored-link-after-insertion</code>オプションを設定してください。</p>
 
-   <p class="footnote"><small>[<a name="fn-35" href="#fnd-35">35</a>]</small> これは<code>org-PREFIX-complete-link</code>という特別
-な関数を呼び出すことによって行います。</p>
+   <p class="footnote"><small>[<a name="fn-35" href="#fnd-35">35</a>]</small> これは<code>org-PREFIX-complete-link</code>
+という特別な関数を呼び出すことによって行います。</p>
 
-   <p class="footnote"><small>[<a name="fn-36" href="#fnd-36">36</a>]</small> <code>org-display-internal-link-with-indirect-buffer</code>
-変数を参照してください。</p>
+   <p class="footnote"><small>[<a name="fn-36" href="#fnd-36">36</a>]</small> <code>org-display-internal-link-with-indirect-buffer</code>変数を参照してくださ
+い。</p>
 
-   <p class="footnote"><small>[<a name="fn-37" href="#fnd-37">37</a>]</small> 対応する
-<code>#+STARTUP</code><code>inlineimages</code>と<code>inlineimages</code>と共に。</p>
+   <p class="footnote"><small>[<a name="fn-37" href="#fnd-37">37</a>]</small> 対応する<code>#+STARTUP</code><code>inlineimages</code>と<code>inlineimages</code>と共に。</p>
 
    <p class="footnote"><small>[<a name="fn-38" href="#fnd-38">38</a>]</small> 下方互換性のために、行番号はシングルコ
 ロンの後に置くこともできます。</p>
@@ -16828,17 +16872,18 @@ will contain the entire buffer, but will be narrowed to the current tree.  Editi
 コマンド選択画面でコマンドが入力されるまで、<code>org-agenda-files</code>は無視されます
 。</p>
 
-   <p class="footnote"><small>[<a name="fn-86" href="#fnd-86">86</a>]</small> 逆の互換性として、<kbd>1</kbd>をカレントバッファを制限するために入力
-することもできます。</p>
+   <p class="footnote"><small>[<a name="fn-86" href="#fnd-86">86</a>]</small> 逆の互換性として、<kbd>1</kbd>をカレントバッファを制限するため
+に入力することもできます。</p>
 
-   <p class="footnote"><small>[<a name="fn-87" href="#fnd-87">87</a>]</small> 逆の互換性として、カ
-レントリージョンまたはカレントサブツリーに限定するために<kbd>0</kbd>を入力することも
-できます。.</p>
+   <p class="footnote"><small>[<a name="fn-87" href="#fnd-87">87</a>]</small> 逆の互換
+性として、カレントリージョンまたはカレントサブツリーに限定するために
+<kbd>0</kbd>を入力することもできます。.</p>
 
-   <p class="footnote"><small>[<a name="fn-88" href="#fnd-88">88</a>]</small> 逆方向の互換性のために、普遍的な前置引数<kbd>C-u</kbd>を
-つけることでアジェンダ（予定表）より上に、TODOリストを書き出すことができます
-。この機能は軽視されており、専用のTODOリストやブロックアジェンダ
-(see <a href="#Block-agenda">Block agenda</a>).をその代わりに利用することが多いです。</p>
+   <p class="footnote"><small>[<a name="fn-88" href="#fnd-88">88</a>]</small> 逆方向の互換性のため
+に、普遍的な前置引数<kbd>C-u</kbd>をつけることでアジェンダ（予定表）より上に、
+TODOリストを書き出すことができます。この機能は軽視されており、専用の
+TODOリストやブロックアジェンダ(see <a href="#Block-agenda">Block agenda</a>).をその代わりに利用する
+ことが多いです。</p>
 
    <p class="footnote"><small>[<a name="fn-89" href="#fnd-89">89</a>]</small> Note that the order of the arguments (month, day, year) depends on the setting of <code>calendar-date-style</code>.</p>
 
@@ -16853,15 +16898,16 @@ will contain the entire buffer, but will be narrowed to the current tree.  Editi
 なります。複数のカテゴリーをバッファの中で設定する正しい方法は属性を使用する
 ことです。.</p>
 
-   <p class="footnote"><small>[<a name="fn-92" href="#fnd-92">92</a>]</small> ここではタグフィルターだけが有効です。工数のフィルターは無視されます。</p>
+   <p class="footnote"><small>[<a name="fn-92" href="#fnd-92">92</a>]</small> ここではタグフィルターだけが有効です。工数のフィルターは無視されます
+。</p>
 
-   <p class="footnote"><small>[<a name="fn-93" href="#fnd-93">93</a>]</small> カスタムコマンドによって、オプションとして<code>org-agenda-filter-preset</code>変数と
-結びつけることで、フィルターを事前にセットすることができます。このフィルター
-は、ビューに適用されます。そして、リフレッシュや２番目のフィルターを通して、
-基本的なフィルターとして存続します。このフィルターは、アジェンダのブロックの
-中で、アジェンダビュー全体のグローバルなプロパティです。この設定を行うために
-は、個別のブロックのセクションではなく、グローバルオプションのセクションで行
-います。</p>
+   <p class="footnote"><small>[<a name="fn-93" href="#fnd-93">93</a>]</small> カスタムコマンドによって、オプションとして
+<code>org-agenda-filter-preset</code>変数と結びつけることで、フィルターを事前にセ
+ットすることができます。このフィルターは、ビューに適用されます。そして
+、リフレッシュや２番目のフィルターを通して、基本的なフィルターとして存
+続します。このフィルターは、アジェンダのブロックの中で、アジェンダビュ
+ー全体のグローバルなプロパティです。この設定を行うためには、個別のブロ
+ックのセクションではなく、グローバルオプションのセクションで行います。</p>
 
    <p class="footnote"><small>[<a name="fn-94" href="#fnd-94">94</a>]</small> <code>org-agenda-include-diary</code>が設定されているときは、このファイルはアジェン
 ダ用に解析されます。</p>
@@ -16902,12 +16948,12 @@ TODOリストなどのような標準的なビューを保存したいならば�
    <p class="footnote"><small>[<a name="fn-101" href="#fnd-101">101</a>]</small> Org-modeの例で説明するのに便利なリンクに行番号を使う間、
 <code>-k</code>を<code>-n -r</code>に追加することでソースコードのラベルを<i>維持</i>します。</p>
 
-   <p class="footnote"><small>[<a name="fn-102" href="#fnd-102">102</a>]</small> 終了時、Org-modeによってアウトラインの見出
-しや特別なコメントと間違えられないようにするために、&lsquo;<samp><span class="samp">*</span></samp>&rsquo;か&lsquo;<samp><span class="samp">#</span></samp>&rsquo;から始まる行はカ
-ンマが銭湯に追加されます。</p>
+   <p class="footnote"><small>[<a name="fn-102" href="#fnd-102">102</a>]</small> 終了時、Org-modeによってア
+ウトラインの見出しや特別なコメントと間違えられないようにするために、
+&lsquo;<samp><span class="samp">*</span></samp>&rsquo;か&lsquo;<samp><span class="samp">#</span></samp>&rsquo;から始まる行はカンマが銭湯に追加されます。</p>
 
-   <p class="footnote"><small>[<a name="fn-103" href="#fnd-103">103</a>]</small> <code>org-edit-fixed-width-region-mode</code>変数により、異なるモードを選
-択することもできます。</p>
+   <p class="footnote"><small>[<a name="fn-103" href="#fnd-103">103</a>]</small> <code>org-edit-fixed-width-region-mode</code>変数により、異なるモー
+ドを選択することもできます。</p>
 
    <p class="footnote"><small>[<a name="fn-104" href="#fnd-104">104</a>]</small> LaTeXはドナルド・クヌースのTeXシステムを基としたマクロシステムです。
 &ldquo;LaTeX&rdquo;で説明される多くの機能はTeXからのものですが、違いはそれほどありませ
@@ -16922,13 +16968,13 @@ TODOリストなどのような標準的なビューを保存したいならば�
 してまた、<a href="http://sourceforge.net/projects/dvipng/">http://sourceforge.net/projects/dvipng/</a>で入手できる<samp><span class="file">dvipng</span></samp>プロ
 グラムも必要です。</p>
 
-   <p class="footnote"><small>[<a name="fn-108" href="#fnd-108">108</a>]</small> <samp><span class="file">MathJax</span></samp>が使われている時、<samp><span class="file">MathJax</span></samp>によって認識されてい
-る環境が処理されます。<samp><span class="file">dvipng</span></samp>を画像の生成に用いる時、LaTeX環境が扱われます
-。</p>
+   <p class="footnote"><small>[<a name="fn-108" href="#fnd-108">108</a>]</small> <samp><span class="file">MathJax</span></samp>が使われている時、<samp><span class="file">MathJax</span></samp>によって認識さ
+れている環境が処理されます。<samp><span class="file">dvipng</span></samp>を画像の生成に用いる時、LaTeX環境
+が扱われます。</p>
 
-   <p class="footnote"><small>[<a name="fn-109" href="#fnd-109">109</a>]</small> カーソルがコード片の中にあるときにOrg-modeはテスト
-を行うためのメソッドを持ちます。詳細は<code>org-inside-LaTeX-fragment-p</code>関数のド
-キュメントを参照してください。</p>
+   <p class="footnote"><small>[<a name="fn-109" href="#fnd-109">109</a>]</small> カーソルがコード片の中にあるときにOrg-modeは
+テストを行うためのメソッドを持ちます。詳細は
+<code>org-inside-LaTeX-fragment-p</code>関数のドキュメントを参照してください。</p>
 
    <p class="footnote"><small>[<a name="fn-110" href="#fnd-110">110</a>]</small> もし、このように多くのオプションを設定したい時は, それぞれオプション行を作
 りことができます。</p>
@@ -16939,7 +16985,8 @@ TODOリストなどのような標準的なビューを保存したいならば�
 
    <p class="footnote"><small>[<a name="fn-112" href="#fnd-112">112</a>]</small> <code>transient-mark-mode</code> が有効である必要があります。</p>
 
-   <p class="footnote"><small>[<a name="fn-113" href="#fnd-113">113</a>]</small> 現在のサブツリーの選択するには、 <kbd>C-c @</kbd> と入力してください。</p>
+   <p class="footnote"><small>[<a name="fn-113" href="#fnd-113">113</a>]</small> 現在のサブツリーの選択するには、 <kbd>C-c @</kbd> と入力してください。
+</p>
 
    <p class="footnote"><small>[<a name="fn-114" href="#fnd-114">114</a>]</small> <code>transient-mark-mode</code> が有効である必要があります。</p>
 
@@ -16948,8 +16995,8 @@ TODOリストなどのような標準的なビューを保存したいならば�
    <p class="footnote"><small>[<a name="fn-116" href="#fnd-116">116</a>]</small> ただし、<code>org-export-html-inline-images</code>を確認してください。
 </p>
 
-   <p class="footnote"><small>[<a name="fn-117" href="#fnd-117">117</a>]</small> インストール方法
-については、MathJaxのウェブサイトにあります。
+   <p class="footnote"><small>[<a name="fn-117" href="#fnd-117">117</a>]</small> インストール方法に
+ついては、MathJaxのウェブサイトにあります。
 <a href="http://www.mathjax.org/resources/docs/?installation.html">http://www.mathjax.org/resources/docs/?installation.html</a>を参照してください
 。</p>
 
@@ -16966,8 +17013,7 @@ TODOリストなどのような標準的なビューを保存したいならば�
 います。<code>org-export-latex-default-packages-alist</code>や
 <code>org-export-latex-packages-alist</code>を参照してください。</p>
 
-   <p class="footnote"><small>[<a name="fn-121" href="#fnd-121">121</a>]</small> <code>transient-mark-mode</code>が有効である必要がありま
-す。</p>
+   <p class="footnote"><small>[<a name="fn-121" href="#fnd-121">121</a>]</small> <code>transient-mark-mode</code>が有効である必要があります。</p>
 
    <p class="footnote"><small>[<a name="fn-122" href="#fnd-122">122</a>]</small> 現在のサブツリーを選択するには、<kbd>C-c @</kbd>を入力してください。</p>
 
@@ -16990,8 +17036,8 @@ TODOリストなどのような標準的なビューを保存したいならば�
 
    <p class="footnote"><small>[<a name="fn-131" href="#fnd-131">131</a>]</small> The <code>org-babel-no-eval-on-ctrl-c-ctrl-c</code> variable can be used to remove code evaluation from the <kbd>C-c C-c</kbd> key binding.</p>
 
-   <p class="footnote"><small>[<a name="fn-132" href="#fnd-132">132</a>]</small> Emacs22とOrg-mode6.29が必要
-です</p>
+   <p class="footnote"><small>[<a name="fn-132" href="#fnd-132">132</a>]</small> Emacs22とOrg-mode6.29
+が必要です</p>
 
    <p class="footnote"><small>[<a name="fn-133" href="#fnd-133">133</a>]</small> Emacs23.1は<code>org-indent-mode</code>がクラッシュしま
 す</p>
@@ -17005,8 +17051,9 @@ TODOリストなどのような標準的なビューを保存したいならば�
    <p class="footnote"><small>[<a name="fn-136" href="#fnd-136">136</a>]</small> <code>org-indent-mode</code>を有効にすると、<code>org-hide-leading-stars</code>に<code>t</code>が、
 <code>org-adapt-indentation-hige</code>に<code>nil</code>がセットされます</p>
 
-   <p class="footnote"><small>[<a name="fn-137" href="#fnd-137">137</a>]</small> あなたがプロパティの検索やリファイルの対象の
-ためにレベルを指定する必要がある時、&lsquo;<samp><span class="samp">LEVEL=2</span></samp>&rsquo;は3つの「*」などにも対応します</p>
+   <p class="footnote"><small>[<a name="fn-137" href="#fnd-137">137</a>]</small> あなたがプロパティの検索やリファ
+イルの対象のためにレベルを指定する必要がある時、&lsquo;<samp><span class="samp">LEVEL=2</span></samp>&rsquo;は3つの「*」
+などにも対応します</p>
 
    <p class="footnote"><small>[<a name="fn-138" href="#fnd-138">138</a>]</small> <samp><span class="file">org-R.el</span></samp> has been replaced by the org-mode functionality described in <a href="#Working-With-Source-Code">Working With Source Code</a> and is now obsolete.</p>
 
@@ -17040,7 +17087,8 @@ webdavサーバが利用できます。詳しい情報を得るには、MobileOr
 
    <p class="footnote"><small>[<a name="fn-146" href="#fnd-146">146</a>]</small> <samp><span class="file">checksums.dat</span></samp>というファイルの中に自動的に保存されます。</p>
 
-   <p class="footnote"><small>[<a name="fn-147" href="#fnd-147">147</a>]</small> <samp><span class="file">mobileorg.org</span></samp>はこの操作のあとで空になります。</p>
+   <p class="footnote"><small>[<a name="fn-147" href="#fnd-147">147</a>]</small> <samp><span class="file">mobileorg.org</span></samp>はこの操作のあとで空になり
+ます。</p>
 
    <p class="footnote"><small>[<a name="fn-148" href="#fnd-148">148</a>]</small> しかしながら、微妙な差があるこ
 とに注意してください。<kbd>M-x org-mobile-pull &lt;RET&gt;</kbd>によって、自動的に作成され

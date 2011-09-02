@@ -1103,26 +1103,23 @@ Org-modeを利用している時に、理解できないメッセージのエラ
 の情報です。以下に、有用なバックトレースを生成する手順を示します。
 
 @enumerate
-@item
-コンパイルされていないOrg-modeのLispファイル群を再読み込みする。バックトレー
-スは、コンパイルされていないコードを利用して生成したバックトレースは、より多
-くの情報を含みます。これを実行するためには、次のコマンドを実行します。
+@item コンパイルされていないOrg-modeのLispファイル群を再読み込みする。バック
+トレースは、コンパイルされていないコードを利用して生成したバックトレー
+スは、より多くの情報を含みます。これを実行するためには、次のコマンドを
+実行します。
 @example
 C-u M-x org-reload RET
 @end example
 @noindent
-もしくは、@code{Org -> Refresh/Reload -> Reload Org uncompiled}をメニューから選択
-します。
-@item
-オプションメニュー@code{Options}から、@code{Enter Debugger on Error}（XEmacsでは、この
-オプションは@code{Troubleshooting}サブメニューにあります）を選択する。
-@item
-エラーを再現するために必要な操作を行なってください。実行した操作を忘れずにメ
-モしておいてください。
-@item
-エラーが再現されると、@file{*Backtrace*}バッファが画面上に表示されます。このバッ
-ファを別のファイルとして保存し（例えば@kbd{C-x C-w}を使って）、バグレポートに添
-付します。
+もしくは、@code{Org -> Refresh/Reload -> Reload Org uncompiled}をメニューか
+ら選択します。
+@item オプションメニュー@code{Options}から、@code{Enter Debugger on Error}（XEmacsでは
+、このオプションは@code{Troubleshooting}サブメニューにあります）を選択する。
+@item エラーを再現するために必要な操作を行なってください。実行した操作を忘れ
+ずにメモしておいてください。
+@item エラーが再現されると、@file{*Backtrace*}バッファが画面上に表示されます。こ
+のバッファを別のファイルとして保存し（例えば@kbd{C-x C-w}を使って）、バグ
+レポートに添付します。
 @end enumerate
 
 @node Conventions, , Feedback, Introduction
@@ -1134,16 +1131,16 @@ Org-modeは、3種類のキーワードを使います。TODOキーワード、�
 @table @code
 @item TODO
 @itemx WAITING
-TODOキーワードは、すべて大文字で記述されます。ユーザが定義する場合も同様です
-。
+TODOキーワードは、すべて大文字で記述されます。ユーザが定義する場合も同
+様です。
 @item boss
 @itemx ARCHIVE
-ユーザ定義のタグは、小文字で記述されます。特別な意味を持つビルトインされたタ
-グは、すべて大文字で記述されます。
+ユーザ定義のタグは、小文字で記述されます。特別な意味を持つビルトインさ
+れたタグは、すべて大文字で記述されます。
 @item Release
 @itemx PRIORITY
-ユーザ定義のプロパティは、大文字で始めて他を小文字で記述されます。特別な意味
-を持つビルトインされたプロパティは、すべて大文字で記述されます。
+ユーザ定義のプロパティは、大文字で始めて他を小文字で記述されます。特別
+な意味を持つビルトインされたプロパティは、すべて大文字で記述されます。
 @end table
 
 このマニュアルでは、Org-modeの機能を利用するためのキーバインドと、対応するコ
@@ -1544,12 +1541,10 @@ additional structure.  They also provide a way to create lists of checkboxes
 
 Org knows ordered lists, unordered lists, and description lists.
 @itemize @bullet
-@item
-@emph{Unordered} list items start with @samp{-}, @samp{+}, or
+@item @emph{Unordered} list items start with @samp{-}, @samp{+}, or
 @samp{*}@footnote{When using @samp{*} as a bullet, lines must be indented or they will be seen as top-level headlines.  Also, when you are hiding leading stars to get a clean outline view, plain list items starting with a star may be hard to distinguish from true headlines.  In short: even though @samp{*} is supported, it may be better to not use it for plain list items.} as
 bullets.
-@item
-@vindex org-plain-list-ordered-item-terminator
+@item @vindex org-plain-list-ordered-item-terminator
 @vindex org-alphabetical-lists
 @emph{Ordered} list items start with a numeral followed by either a period
 or a right parenthesis@footnote{You can filter out any of them by configuring @code{org-plain-list-ordered-item-terminator}.}, such as
@@ -1557,8 +1552,7 @@ or a right parenthesis@footnote{You can filter out any of them by configuring @c
 If you want a list to start with a different value (e.g.@: 20), start the
 text of the item with @code{[@@20]}@footnote{If there's a checkbox in the item, the cookie must be put @emph{before} the checkbox.  If you have activated alphabetical lists, you can also use counters like @code{[@@b]}.}.  Those constructs can be used in any item of the list in
 order to enforce a particular numbering.
-@item
-@emph{Description} list items are unordered list items, and contain the
+@item @emph{Description} list items are unordered list items, and contain the
 separator @samp{ :: } to distinguish the description @emph{term} from the
 description.
 @end itemize
@@ -2809,8 +2803,7 @@ alone by this command.
 Selects this line for global recalculation with @kbd{C-u C-c *}, but not for
 automatic recalculation.  Use this when automatic recalculation slows down
 editing too much.
-@item
-Unmarked lines are exempt from recalculation with @kbd{C-u C-c *}.  All
+@item Unmarked lines are exempt from recalculation with @kbd{C-u C-c *}.  All
 lines that should be recalculated should be marked with @samp{#} or
 @samp{*}.
 @item /
@@ -3066,8 +3059,7 @@ file:/home/dominik/images/jupiter.jpg     @r{ファイルへの絶対パス}
 /home/dominik/images/jupiter.jpg          @r{上に同じ}
 file:papers/last.pdf                      @r{ファイルへの相対パス}
 ./papers/last.pdf                         @r{same as above}
-file:/myself@@some.where:papers/last.pdf   @r{リモートマシン上のファイルへのパス
-}
+file:/myself@@some.where:papers/last.pdf   @r{リモートマシン上のファイルへのパス}
 /myself@@some.where:papers/last.pdf        @r{same as above}
 file:sometextfile::NNN                    @r{ジャンプ先の行番号付きファイル}
 file:projects.org                         @r{他のOrg-modeファイルへのリンク}
@@ -3079,8 +3071,7 @@ news:comp.emacs                           @r{Usenetへのリンク}
 mailto:adent@@galaxy.net                   @r{メールリンク}
 vm:folder                                 @r{VMのフォルダーへのリンク}
 vm:folder#id                              @r{VMのメールメッセージへのリンク}
-vm://myself@@some.where.org/folder#id      @r{リモートマシン上のVMのメールメッセ
-ージへのリンク}
+vm://myself@@some.where.org/folder#id      @r{リモートマシン上のVMのメールメッセージへのリンク}
 wl:folder                                 @r{WANDERLUSTのフォルダーへのリンク}
 wl:folder#id                              @r{WANDERLUSTのメールメッセージへのリ
 ンク}
@@ -3129,55 +3120,54 @@ Org-modeは正しい構文でリンクを作成したり、Org-modeのファイ�
 @table @kbd
 @orgcmd{C-c l,org-store-link}
 @cindex リンクの保存
-現在の位置へのリンクを一時保管します。これはリンクを作成するときに、どのバッ
-ファーでも使用できる@emph{グローバルな}コマンド(あなた自身でキーバインドを作成し
-なければなりません。)です。リンクは一時保管され、後からOrg-modeのバッファー
-へ挿入することができます(下記参照)。どの種類のリンクが作成されるかは、現在の
-バッファーが何であるかによります。
+現在の位置へのリンクを一時保管します。これはリンクを作成するときに、ど
+のバッファーでも使用できる@emph{グローバルな}コマンド(あなた自身でキーバイ
+ンドを作成しなければなりません。)です。リンクは一時保管され、後から
+Org-modeのバッファーへ挿入することができます(下記参照)。どの種類のリン
+クが作成されるかは、現在のバッファーが何であるかによります。
 
-@b{Org-modeバッファー}@*もしカーソル位置に@samp{<<target>>}がある場合、リンクはその
-ターゲットを指します。それ以外の場合は、見出しを指し、見出しは項目名にもなり
-ます。
+@b{Org-modeバッファー}@*もしカーソル位置に@samp{<<target>>}がある場合、リンクはそのターゲットを指しま
+す。それ以外の場合は、見出しを指し、見出しは項目名にもなります。
 
 @vindex org-link-to-org-use-id
 @cindex property, CUSTOM_ID
 @cindex property, ID
-もし見出しに@code{CUSTOM_ID}プロパティがある場合、このカスタムIDプロパティへのリ
-ンクが一時保管されます。また、(@code{org-link-to-org-use-id}の値によりますが)グロ
-ーバルに固有の@code{ID}プロパティが、リンクを作成するために作られます。ですから、
-このコマンドをOrg-modeバッファー内で使うと、潜在的にふたつのリンクを作成する
-ことになります。つまり、Org-modeバッファー内でこのコマンドを使用することによ
-り、人間が読むことのできるカスタムIDと、グローバルに固有で、エントリーがファ
-イル間を移動しても動作するリンクが作成されます。後にリンクを挿入するときには
-、どのリンクを挿入するかを決めなければなりません。
+もし見出しに@code{CUSTOM_ID}プロパティがある場合、このカスタムIDプロパティ
+へのリンクが一時保管されます。また、(@code{org-link-to-org-use-id}の値によ
+りますが)グローバルに固有の@code{ID}プロパティが、リンクを作成するために作
+られます。ですから、このコマンドをOrg-modeバッファー内で使うと、潜在的
+にふたつのリンクを作成することになります。つまり、Org-modeバッファー内
+でこのコマンドを使用することにより、人間が読むことのできるカスタムIDと
+、グローバルに固有で、エントリーがファイル間を移動しても動作するリンク
+が作成されます。後にリンクを挿入するときには、どのリンクを挿入するかを
+決めなければなりません。
 
-@b{メール/ニュースクライアント:VM, Rmail, Wanderlust, MH-E, Gnus}@*ほとんどす
-べてのEmacsのメールクライアントがサポートされています。リンクは現在の記事を
-指し示します。Gnusバッファーでは、グループを指し示すこともあるでしょう。項目
-名は筆者名と題名から作成されます。
+@b{メール/ニュースクライアント:VM, Rmail, Wanderlust, MH-E, Gnus}@*ほとんどすべてのEmacsのメールクライアントがサポートされています。リン
+クは現在の記事を指し示します。Gnusバッファーでは、グループを指し示すこ
+ともあるでしょう。項目名は筆者名と題名から作成されます。
 
-@b{ウェブブラウザー:W3 and W3M}@*現在のURLがリンクになり、ページのタイトルが項
-目名になります。
+@b{ウェブブラウザー:W3 and W3M}@*現在のURLがリンクになり、ページのタイトルが項目名になります。
 
-@b{連絡先:BBDB}@*BBDBバッファー内で作成されたリンクは、現在のエントリーへのリ
-ンクになります。
+@b{連絡先:BBDB}@*BBDBバッファー内で作成されたリンクは、現在のエントリーへのリンクになりま
+す。
 
 @b{Chat: IRC}@*
 @vindex org-irc-link-to-logs
-IRCリンクの場合、@code{org-irc-link-to-logs}変数を@code{t}にした場合は、ログファイル内
-に、現在の会話に相当する部分への@samp{file:/}形式のリンクが作成されます。それ以外
-の場合は、user/channel/serverへの@samp{irc:/}スタイルのリンクが一時保管されます。
+IRCリンクの場合、@code{org-irc-link-to-logs}変数を@code{t}にした場合は、ログファ
+イル内に、現在の会話に相当する部分への@samp{file:/}形式のリンクが作成されま
+す。それ以外の場合は、user/channel/serverへの@samp{irc:/}スタイルのリンクが
+一時保管されます。
 
-@b{その他のファイル}@*その他のファイルの場合、リンクは、現在の行を指ししめす検
-索語句(@pxref{Search options})を伴って作成されます。もし、アクティブなリージョンが
-ある場合は、選択された言葉が検索語句の基本となります。自動的に作成されたリン
-クがうまく働かなかったり、不正確であったりする場合は、カスタム関数を書いて、
-検索語句を選択したり、特定のファイル形式を検索したりすることがきます。
-@ref{Custom searches}を参照してください。@kbd{C-c l}というキーバインディングはひとつ
-の提案に過ぎません@ref{Installation})。
+@b{その他のファイル}@*その他のファイルの場合、リンクは、現在の行を指ししめす検索語句
+(@pxref{Search options})を伴って作成されます。もし、アクティブなリージョンが
+ある場合は、選択された言葉が検索語句の基本となります。自動的に作成され
+たリンクがうまく働かなかったり、不正確であったりする場合は、カスタム関
+数を書いて、検索語句を選択したり、特定のファイル形式を検索したりするこ
+とがきます。@ref{Custom searches}を参照してください。@kbd{C-c l}というキーバイ
+ンディングはひとつの提案に過ぎません@ref{Installation})。
 
-@b{アジェンダビュー}@*カーソルがアジェンダビューにあるときは、作成されたリンク
-は現在の行が参照するエントリーを指し示します。
+@b{アジェンダビュー}@*カーソルがアジェンダビューにあるときは、作成されたリンクは現在の行が参照
+するエントリーを指し示します。
 
 @c
 @orgcmd{C-c C-l,org-insert-link}
@@ -3185,67 +3175,71 @@ IRCリンクの場合、@code{org-irc-link-to-logs}変数を@code{t}にした場
 @cindex 補完,リンクの
 @cindex リンクの挿入
 @vindex org-keep-stored-link-after-insertion
-リンク@footnote{リンクを挿入するのに、このコマンドを使わなければならないわけではない
-ことに注意してください。Org-modeでのリンクはプレーンテキストですので、リンク
-はタイプしたりペーストしたりして直接バッファーへ入力することができます。この
-コマンドを使うことによって、リンクは自動的に二重括弧に入れられ、オプションと
-して項目名を入力するかどうかをたずねられます。}を挿入します。そうすると、プ
-ロンプトによって、バッファーに挿入するリンクをたずねられます。テキストを使っ
-た内部リンクや、既に述べましたリンクタイプのいずれかへのリンクを入力するだけ
-です。リンクは項目名とともに、バッファー@footnote{一時保管されたリンクを挿入した後は
-、そのリンクは一時保管リストから削除されます。後で使用するためにリンクを保存
-したままにしておきたい場合は、@kbd{C-c C-l}の前に3回@kbd{C-u}をタイプするか、
-@code{org-keep-stored-link-after-insertion}オプションを設定してください。}に挿入
-されます。もし、このコマンドの呼び出し時にテキストが選択されていた場合には、
-選択されたテキストがデフォルトの項目名になります。
+リンク@footnote{リンクを挿入するのに、このコマンドを使わなければならないわけで
+はないことに注意してください。Org-modeでのリンクはプレーンテキストです
+ので、リンクはタイプしたりペーストしたりして直接バッファーへ入力するこ
+とができます。このコマンドを使うことによって、リンクは自動的に二重括弧
+に入れられ、オプションとして項目名を入力するかどうかをたずねられます。
+}を挿入します。そうすると、プロンプトによって、バッファーに挿入するリ
+ンクをたずねられます。テキストを使った内部リンクや、既に述べましたリン
+クタイプのいずれかへのリンクを入力するだけです。リンクは項目名とともに
+、バッファー@footnote{一時保管されたリンクを挿入した後は、そのリンクは一時保管
+リストから削除されます。後で使用するためにリンクを保存したままにしてお
+きたい場合は、@kbd{C-c C-l}の前に3回@kbd{C-u}をタイプするか、
+@code{org-keep-stored-link-after-insertion}オプションを設定してください。}
+に挿入されます。もし、このコマンドの呼び出し時にテキストが選択されてい
+た場合には、選択されたテキストがデフォルトの項目名になります。
 
-@b{一時保管されたリンクを挿入}@*<現在のセッションで一時保管されたすべてのリン
-クは、このプロンプトの履歴となっていますので、@key{up}や@key{down}(あるいは、
-@kbd{M-p/n})を使ってこれらにアクセスすることができます。
+@b{一時保管されたリンクを挿入}@*<現在のセッションで一時保管されたすべてのリンクは、このプロンプトの履歴
+となっていますので、@key{up}や@key{down}(あるいは、@kbd{M-p/n})を使ってこれらにア
+クセスすることができます。
 
-@b{補完の支援}@*@key{TAB}を使用した補完機能によって、リンクの省略記法で定義された
-接頭辞(@pxref{Link abbreviations})を含む、@samp{http}や@samp{ftp}などのリンクを適切に挿入す
-ることができるでしょう。もし、@var{接頭辞}のみをタイプした後に@key{RET}を押すと、
-Org-modeは、いくつかのリンク形式@footnote{これは@code{org-PREFIX-complete-link}という特別
-な関数を呼び出すことによって行います。}に対して詳細な補完の支援を行います。
-たとえば、@kbd{file @key{RET}}をタイプすると、ファイル名の補完((または、
-@kbd{C-u C-c C-l}をタイプします。以下を参照。)を行い、@kbd{bbdb @key{RET}}をタイプすると
-、連絡先の名前を補完することができます。@orgkey C-u C-c C-l
+@b{補完の支援}@*@key{TAB}を使用した補完機能によって、リンクの省略記法で定義された接頭辞
+(@pxref{Link abbreviations})を含む、@samp{http}や@samp{ftp}などのリンクを適切に挿入す
+ることができるでしょう。もし、@var{接頭辞}のみをタイプした後に@key{RET}を押す
+と、Org-modeは、いくつかのリンク形式@footnote{これは@code{org-PREFIX-complete-link}
+という特別な関数を呼び出すことによって行います。}に対して詳細な補完の
+支援を行います。たとえば、@kbd{file @key{RET}}をタイプすると、ファイル名の補完
+((または、@kbd{C-u C-c C-l}をタイプします。以下を参照。)を行い、
+@kbd{bbdb @key{RET}}をタイプすると、連絡先の名前を補完することができます。
+@orgkey C-u C-c C-l
 @cindex ファイル名の補完
 @cindex 補完,ファイル名の
 @c
-接頭辞@kbd{C-u}を付けて@kbd{C-c C-l}が呼び出されたときは、ファイルへのリンクが挿入さ
-れ、ファイル名の補完を利用することができます。リンクされたファイルがカレント
-ディレクトリにあるときや、カレントディレクトリのサブディレクトリにあるとき、
-あるいはパスが@samp{../}を使って相対パスで書かれているときは、ファイルへのパスは
-、現在のOrg-modeファイルからの相対パスとして挿入されます。それ以外の場合は絶
-対パスが使われ、可能であれば、ホームディレクトリには@samp{~/}が使われます。2つの
-@kbd{C-u}を付けることによって、絶対パス表記を明確に指定することができます。
+接頭辞@kbd{C-u}を付けて@kbd{C-c C-l}が呼び出されたときは、ファイルへのリンクが
+挿入され、ファイル名の補完を利用することができます。リンクされたファイ
+ルがカレントディレクトリにあるときや、カレントディレクトリのサブディレ
+クトリにあるとき、あるいはパスが@samp{../}を使って相対パスで書かれていると
+きは、ファイルへのパスは、現在のOrg-modeファイルからの相対パスとして挿
+入されます。それ以外の場合は絶対パスが使われ、可能であれば、ホームディ
+レクトリには@samp{~/}が使われます。2つの@kbd{C-u}を付けることによって、絶対パス
+表記を明確に指定することができます。
 @item C-c C-l @ @r{(カーソルがリンク上にある場合)}
 @c
-リンク上にカーソルがある場合、@kbd{C-c C-l}を実行すると、リンクと項目名を編集す
-ることができます。
+リンク上にカーソルがある場合、@kbd{C-c C-l}を実行すると、リンクと項目名を
+編集することができます。
 @cindex リンクをたどる
 @orgcmd{C-c C-o,org-open-at-point}
 @vindex org-file-apps
-その場所にあるリンクを開きます。リンクがURLならば、(@command{browse-url-at-point}を
-使って)ウェブブラウザーを開きますし、それぞれ対応するリンクにより、
-VM/MH-E/Wanderlust/Rmail/Gnus/BBDBが起動し、シェルへのリンクの場合はコマンド
-を実行します。カーソルが内部リンク上にあるときは、対応する検索を行います。カ
-ーソルが見出しのタグ上にあるときは、対応するタグビューを作成します。カーソル
-がタイムスタンプ上にあるときは、その日のアジェンダを表示します。さらに、
-@samp{file:}リンクの場合、テキストファイルやリモートマシン上のファイルはEmacsで、
-非テキストファイルは適切なアプリケーションで、ファイルを開きます。ファイルの
-分類は、拡張子のみによって判断されます。@code{org-file-apps}を参照してください。
-もし、デフォルトのアプリケーションではなくEmacsでファイルを開きたい場合は、
-接頭辞@kbd{C-u}を付け、Emacsで開くことを避けたい場合は、接頭辞@kbd{C-u C-u}を付けて
-ください。カーソルがリンクではない見出し上にあるときは、見出し上のすべてのリ
-ンクとエントリーテキストを表示します。@orgkey
+その場所にあるリンクを開きます。リンクがURLならば、
+(@command{browse-url-at-point}を使って)ウェブブラウザーを開きますし、それぞれ
+対応するリンクにより、VM/MH-E/Wanderlust/Rmail/Gnus/BBDBが起動し、シェ
+ルへのリンクの場合はコマンドを実行します。カーソルが内部リンク上にある
+ときは、対応する検索を行います。カーソルが見出しのタグ上にあるときは、
+対応するタグビューを作成します。カーソルがタイムスタンプ上にあるときは
+、その日のアジェンダを表示します。さらに、@samp{file:}リンクの場合、テキス
+トファイルやリモートマシン上のファイルはEmacsで、非テキストファイルは
+適切なアプリケーションで、ファイルを開きます。ファイルの分類は、拡張子
+のみによって判断されます。@code{org-file-apps}を参照してください。もし、デ
+フォルトのアプリケーションではなくEmacsでファイルを開きたい場合は、接
+頭辞@kbd{C-u}を付け、Emacsで開くことを避けたい場合は、接頭辞@kbd{C-u C-u}を付
+けてください。カーソルがリンクではない見出し上にあるときは、見出し上の
+すべてのリンクとエントリーテキストを表示します。@orgkey
 @key{RET}
 @vindex org-return-follows-link
 @c
-@code{org-return-follows-link}が設定されているときは、@kbd{@key{RET}}もポイント上のリンク
-を開きます。
+@code{org-return-follows-link}が設定されているときは、@kbd{@key{RET}}もポイント上の
+リンクを開きます。
 @kindex mouse-2
 @kindex mouse-1
 @item mouse-2
@@ -3257,34 +3251,36 @@ VM/MH-E/Wanderlust/Rmail/Gnus/BBDBが起動し、シェルへのリンクの場�
 @item mouse-3
 @vindex org-display-internal-link-with-indirect-buffer
 @c
-@kbd{mouse-2}と同様にリンクを開きますが、ファイルのリンクを強制的にEmacsで開き、
-内部リンクは別のウインドウ@footnote{@code{org-display-internal-link-with-indirect-buffer}
-変数を参照してください。}で開きます。@orgcmd{C-c C-x C-v,org-toggle-inline-images}
+@kbd{mouse-2}と同様にリンクを開きますが、ファイルのリンクを強制的にEmacsで
+開き、内部リンクは別のウインドウ
+@footnote{@code{org-display-internal-link-with-indirect-buffer}変数を参照してくださ
+い。}で開きます。@orgcmd{C-c C-x C-v,org-toggle-inline-images}
 @cindex インライン画像
 @cindex 画像,インライン
 @vindex org-startup-with-inline-images
 @cindex @code{inlineimages}, STARTUP keyword
 @cindex @code{noinlineimages}, STARTUP keyword
-リンクされた画像のインライン表示をトグルします。通常これはリンクに項目名がな
-い画像のみをインライン表示するものです。すなわち、エクスポート時にインライン
-になる画像のことです。@code{org-startup-with-inline-images}変数@footnote{対応する
-@code{#+STARTUP}@code{inlineimages}と@code{inlineimages}と共に。}を設定することにより、イン
-ライン画像を起動時に表示されることができます。@orgcmd{C-c %,org-mark-ring-push}
+リンクされた画像のインライン表示をトグルします。通常これはリンクに項目
+名がない画像のみをインライン表示するものです。すなわち、エクスポート時
+にインラインになる画像のことです。@code{org-startup-with-inline-images}変数
+@footnote{対応する@code{#+STARTUP}@code{inlineimages}と@code{inlineimages}と共に。}を設定する
+ことにより、インライン画像を起動時に表示されることができます。
+@orgcmd{C-c %,org-mark-ring-push}
 @cindex マークリング
 @c
-現在のポジションをマークリングに格納し、現在のポジションに簡単に戻ってこられ
-るようにします。ファイル内部でのリンクをたどるときは、自動的にこれが行われま
-す。@orgcmd{C-c &,org-mark-ring-goto}
+現在のポジションをマークリングに格納し、現在のポジションに簡単に戻って
+こられるようにします。ファイル内部でのリンクをたどるときは、自動的にこ
+れが行われます。@orgcmd{C-c &,org-mark-ring-goto}
 @cindex リンク,戻る
 @c
-記録されたポジションへ戻ります。ポジションは、内部リンクをたどるコマンドと
-@kbd{C-c %}によって記録されます。このコマンドを連続して何回か使うと、記録された
-ポジション間を移動することができます。
+記録されたポジションへ戻ります。ポジションは、内部リンクをたどるコマン
+ドと@kbd{C-c %}によって記録されます。このコマンドを連続して何回か使うと、
+記録されたポジション間を移動することができます。
 @orgcmdkkcc{C-c C-x C-n,C-c C-x C-p,org-next-link,org-previous-link}
 @cindex リンク,次/前を探す
-バッファー内の前後のリンクへ移動します。バッファーの端では、移動は、いったん
-エラーになり、もう一度行うと回り込みます。このキーバインドはとても長いので、
-@kbd{C-n}と@kbd{C-p}に設定したいと考えるかもしれません。
+バッファー内の前後のリンクへ移動します。バッファーの端では、移動は、い
+ったんエラーになり、もう一度行うと回り込みます。このキーバインドはとて
+も長いので、@kbd{C-n}と@kbd{C-p}に設定したいと考えるかもしれません。
 @lisp
 (add-hook 'org-load-hook
   (lambda ()
@@ -3390,10 +3386,11 @@ should not accept any arguments, and return the full link with prefix.
 @item 255
 255行目へジャンプします。
 @item My Target
-内部リンクの検索と同様に、@samp{<<My Target>>}という名前のリンクターゲット、ある
-いは@samp{my target}というテキストを検索します(@ref{Internal links}を参照してください
-。)。HTMLエクスポート(@pxref{HTML export})では、このようなファイルへのリンクは、リ
-ンク先のファイル内にある、一致する名前のアンカーへのHTMLリンクになります。
+内部リンクの検索と同様に、@samp{<<My Target>>}という名前のリンクターゲット
+、あるいは@samp{my target}というテキストを検索します(@ref{Internal links}を参照
+してください。)。HTMLエクスポート(@pxref{HTML export})では、このようなファイ
+ルへのリンクは、リンク先のファイル内にある、一致する名前のアンカーへの
+HTMLリンクになります。
 @item *My Target
 Org-modeファイルの中で見出しの検索に限定されます。
 @item #my-custom-id
@@ -3401,9 +3398,10 @@ Org-modeファイルの中で見出しの検索に限定されます。
 @item /regexp/
 @c If the target file is a directory,
 @c @code{grep} will be used to search all files in the directory.
-@code{regexp}を正規表現検索します。これは、Emacsの@code{occur}コマンドを使って、一致す
-るすべてを別ウインドウでリスト表示します。ターゲットがOrg-modeファイルならば
-、@code{org-occur}が使われ、一致した部分について、ツリーの抽出を行います。
+@code{regexp}を正規表現検索します。これは、Emacsの@code{occur}コマンドを使って、
+一致するすべてを別ウインドウでリスト表示します。ターゲットがOrg-modeフ
+ァイルならば、@code{org-occur}が使われ、一致した部分について、ツリーの抽出
+を行います。
 @end table
 
 特殊なケースとして、ファイル名が指定されていないファイルのリンクは、現在のフ
@@ -3480,40 +3478,44 @@ TODO項目を入力するときの重要なコマンドは以下のとおりで�
 '----------------------------------'
 @end example
 
-同じような状態の切り替えは、タイムラインとアジェンダバッファで@kbd{t}コマンドキ
-ー（@pxref{Agenda commands}参照）を入力することで「リモートで」完了にすることもで
-きます。
+同じような状態の切り替えは、タイムラインとアジェンダバッファで@kbd{t}コマ
+ンドキー（@pxref{Agenda commands}参照）を入力することで「リモートで」完了に
+することもできます。
 
-@orgkey{C-u C-c C-t}補完や「すでに設定されていれば」さらに速い選択方法を提供するイ
-ンターフェイスを使用して特定のキーワードを選択します。後者の方法では、TODOの
-状態に対してキーを割り振る必要があります。詳細は、@ref{Per-file keywords}と
-@ref{Setting tags}を参照してください。
+@orgkey{C-u C-c C-t}補完や「すでに設定されていれば」さらに速い選択方法を提供
+するインターフェイスを使用して特定のキーワードを選択します。後者の方法
+では、TODOの状態に対してキーを割り振る必要があります。詳細は、
+@ref{Per-file keywords}と@ref{Setting tags}を参照してください。
 
 @kindex S-@key{right}
 @kindex S-@key{left}
 @item S-@key{right} @ @r{/} @ S-@key{left}
 @vindex org-treat-S-cursor-todo-selection-as-state-change
-切り替えの機能に似て、後にくるTODOの状態、あるいは前にくるものを選択します。
-もっとも役に立つのはTODOの状態が２段階以上の場合です。
-(@pxref{TODO extensions}).@code{shift-selection-mode}との連携については、@ref{Conflicts}も
-参照してください。変数@code{org-treat-S-cursor-todo-selection-as-state-change}.
+切り替えの機能に似て、後にくるTODOの状態、あるいは前にくるものを選択し
+ます。もっとも役に立つのはTODOの状態が２段階以上の場合です。
+(@pxref{TODO extensions}).@code{shift-selection-mode}との連携については、
+@ref{Conflicts}も参照してください。変数
+@code{org-treat-S-cursor-todo-selection-as-state-change}.
 @orgcmd{C-c / t,org-show-todo-key}も参照してください。
 @cindex TODOのためのツリーの抽出
 @vindex org-todo-keywords
-@emph{ツリーの抽出}機能を使ってTODOを確認します（@pxref{Sparse trees}）参照。バッファ全
-体を折り畳みますが、全てのTODO項目「DONE状態以外の」とその階層の見出しを表示
-します。接頭辞をつけることで(もしくは、キーバインド@kbd{C-c / T})、ある特定の
-DONE状態の項目も表示させることができます。検索用のキーワードを入力するための
-プロンプトが表示されます。さらにキーワードのリストを次のように入力することも
-でき@code{KWD1|KWD2|...}、この内のどれかに一致するものが表示されます。前置引数Nを
-使って、変数@code{org-todo-keywords}内のN番目のキーワードを含むツリーを表示するこ
-ともできます。２回の前置引数を指定すると、すべてのTODO状態「DONEとそれ以外を
-含む」を見つけることができます。@orgcmd{C-c a t,org-todo-list}グローバルTODOリスト
-を表示します。すべての「DONE状態以外の」TODOアイテムをすべてのアジェンダファ
-イル(@pxref{Agenda Views})から集めて、一つのバッファに表示します。その新しくできた
-バッファは、@code{agenda-mode}で表示され、確認や修正を加えるためのコマンドも提供
-されます。(@pxref{Agenda commands}). @xref{Global TODO list}.を参照してください。
-@orgcmd{S-M-@key{RET},org-insert-todo-heading}新しいTODOを現在の位置に入力します。
+@emph{ツリーの抽出}機能を使ってTODOを確認します（@pxref{Sparse trees}）参照。バッ
+ファ全体を折り畳みますが、全てのTODO項目「DONE状態以外の」とその階層の
+見出しを表示します。接頭辞をつけることで(もしくは、キーバインド
+@kbd{C-c / T})、ある特定のDONE状態の項目も表示させることができます。検索用
+のキーワードを入力するためのプロンプトが表示されます。さらにキーワード
+のリストを次のように入力することもでき@code{KWD1|KWD2|...}、この内のどれか
+に一致するものが表示されます。前置引数Nを使って、変数
+@code{org-todo-keywords}内のN番目のキーワードを含むツリーを表示することもで
+きます。２回の前置引数を指定すると、すべてのTODO状態「DONEとそれ以外を
+含む」を見つけることができます。@orgcmd{C-c a t,org-todo-list}グローバルTODO
+リストを表示します。すべての「DONE状態以外の」TODOアイテムをすべてのア
+ジェンダファイル(@pxref{Agenda Views})から集めて、一つのバッファに表示します
+。その新しくできたバッファは、@code{agenda-mode}で表示され、確認や修正を加
+えるためのコマンドも提供されます。
+(@pxref{Agenda commands}). @xref{Global TODO list}.を参照してください。
+@orgcmd{S-M-@key{RET},org-insert-todo-heading}新しいTODOを現在の位置に入力します
+。
 @end table
 
 @noindent
@@ -3643,10 +3645,10 @@ or @code{DONE} to @code{REPORT}, and any of the words in the second row to
 @kindex S-@key{left}
 @item S-@key{right}
 @itemx S-@key{left}
-@kbd{S-@key{<left>}}と@kbd{S-@key{<right>}}は、すべてのサブグループの@emph{すべて}のキーワード切
-り替えいきます。例えば、上記の例では、@kbd{S-@key{<right>}}は、@code{DONE}に切り替えられ
-、さらに@code{REPORT}になります。@code{shift-selection-mode}と連携させる方法については
-、@ref{Conflicts}を参照してください。
+@kbd{S-@key{<left>}}と@kbd{S-@key{<right>}}は、すべてのサブグループの@emph{すべて}のキーワ
+ード切り替えいきます。例えば、上記の例では、@kbd{S-@key{<right>}}は、@code{DONE}に
+切り替えられ、さらに@code{REPORT}になります。@code{shift-selection-mode}と連携さ
+せる方法については、@ref{Conflicts}を参照してください。
 @end table
 
 @node Fast access to TODO states, Per-file keywords, Multiple sets in one file, TODO extensions
@@ -3930,24 +3932,18 @@ Org has the ability to track the consistency of a special category of TODOs,
 called ``habits''.  A habit has the following properties:
 
 @enumerate
-@item
-You have enabled the @code{habits} module by customizing the variable
+@item You have enabled the @code{habits} module by customizing the variable
 @code{org-modules}.
-@item
-The habit is a TODO, with a TODO keyword representing an open state.
-@item
-The property @code{STYLE} is set to the value @code{habit}.
-@item
-The TODO has a scheduled date, usually with a @code{.+} style repeat
+@item The habit is a TODO, with a TODO keyword representing an open state.
+@item The property @code{STYLE} is set to the value @code{habit}.
+@item The TODO has a scheduled date, usually with a @code{.+} style repeat
 interval.  A @code{++} style may be appropriate for habits with time
 constraints, e.g., must be done on weekends, or a @code{+} style for an
 unusual habit that can have a backlog, e.g., weekly reports.
-@item
-The TODO may also have minimum and maximum ranges specified by using the
+@item The TODO may also have minimum and maximum ranges specified by using the
 syntax @samp{.+2d/3d}, which says that you want to do the task at least
 every three days, but at most every two days.
-@item
-You must also have state logging for the @code{DONE} state enabled, in order
+@item You must also have state logging for the @code{DONE} state enabled, in order
 for historical data to be represented in the consistency graph.  If it's not
 enabled it's not an error, but the consistency graphs will be largely
 meaningless.
@@ -4204,15 +4200,12 @@ arg) checkbox presence at point.  With double prefix argument, set it to
 checkbox presence at point.  With double prefix argument, set it to
 @samp{[-]}, which is considered to be an intermediate state.
 @itemize @minus
-@item
-If there is an active region, toggle the first checkbox in the region and
+@item If there is an active region, toggle the first checkbox in the region and
 set all remaining boxes to the same status as the first.  With a prefix arg,
 add or remove the checkbox for all items in the region.
-@item
-If the cursor is in a headline, toggle checkboxes in the region between this
+@item If the cursor is in a headline, toggle checkboxes in the region between this
 headline and the next (so @emph{not} the entire subtree).
-@item
-If there is no active region, just toggle the checkbox at point.
+@item If there is no active region, just toggle the checkbox at point.
 @end itemize
 @orgcmd{M-S-@key{RET},org-insert-todo-heading} Insert a new item with a
 checkbox.  This works only if the cursor is already in a plain list item
@@ -5304,23 +5297,18 @@ format does not @emph{replace} the default format---instead it is put
 @emph{over} the default format using text properties.  This has the
 following consequences:
 @itemize @bullet
-@item
-You cannot place the cursor onto a timestamp anymore, only before or after.
-@item
-The @kbd{S-@key{up}/@key{down}} keys can no longer be used to adjust each
+@item You cannot place the cursor onto a timestamp anymore, only before or after.
+@item The @kbd{S-@key{up}/@key{down}} keys can no longer be used to adjust each
 component of a timestamp.  If the cursor is at the beginning of the stamp,
 @kbd{S-@key{up}/@key{down}} will change the stamp by one day, just like
 @kbd{S-@key{left}/@key{right}}.  At the end of the stamp, the time will be
 changed by one minute.
-@item
-If the timestamp contains a range of clock times or a repeater, these will
+@item If the timestamp contains a range of clock times or a repeater, these will
 not be overlaid, but remain in the buffer as they were.
-@item
-When you delete a timestamp character-by-character, it will only disappear
+@item When you delete a timestamp character-by-character, it will only disappear
 from the buffer after @emph{all} (invisible) characters belonging to the ISO
 timestamp have been removed.
-@item
-If the custom timestamp format is longer than the default and you are using
+@item If the custom timestamp format is longer than the default and you are using
 dates in tables, table alignment will be messed up.  If the custom format is
 shorter, things do work as expected.
 @end itemize
@@ -6538,32 +6526,27 @@ moving them to a different file, you can use the @code{ARCHIVE tag}.
 A headline that is marked with the ARCHIVE tag (@pxref{Tags}) stays at its
 location in the outline tree, but behaves in the following way:
 @itemize @minus
-@item
-@vindex org-cycle-open-archived-trees
+@item @vindex org-cycle-open-archived-trees
 It does not open when you attempt to do so with a visibility cycling command
 (@pxref{Visibility cycling}).  You can force cycling archived subtrees with
 @kbd{C-@key{TAB}}, or by setting the option
 @code{org-cycle-open-archived-trees}.  Also normal outline commands like
 @code{show-all} will open archived subtrees.
-@item
-@vindex org-sparse-tree-open-archived-trees
+@item @vindex org-sparse-tree-open-archived-trees
 During sparse tree construction (@pxref{Sparse trees}), matches in archived
 subtrees are not exposed, unless you configure the option
 @code{org-sparse-tree-open-archived-trees}.
-@item
-@vindex org-agenda-skip-archived-trees
+@item @vindex org-agenda-skip-archived-trees
 During agenda view construction (@pxref{Agenda Views}), the content of
 archived trees is ignored unless you configure the option
 @code{org-agenda-skip-archived-trees}, in which case these trees will always
 be included.  In the agenda you can press @kbd{v a} to get archives
 temporarily included.
-@item
-@vindex org-export-with-archived-trees
+@item @vindex org-export-with-archived-trees
 Archived trees are not exported (@pxref{Exporting}), only the headline is.
 Configure the details using the variable
 @code{org-export-with-archived-trees}.
-@item
-@vindex org-columns-skip-archived-trees
+@item @vindex org-columns-skip-archived-trees
 Archived trees are excluded from column view unless the variable
 @code{org-columns-skip-archived-trees} is configured to @code{nil}.
 @end itemize
@@ -6602,24 +6585,17 @@ Org-modeでは、いろいろな基準によってアイテムを選択するこ
 のタイプが用意されています。：
 
 @itemize @bullet
-@item
-@emph{アジェンダ}　カレンダーのように指定した日付の情報を表示します、
-@item
-@emph{TODOリスト}　未完了のアクションアイテムをカバーします、
-@item
-@emph{マッチビュー}　関連づけられているタグやプロパティ、TODOの状態に基づいて見出
-しを表示します、
-@item
-@emph{タイムラインビュー}　1つのOrg-modeのファイルの中に含まれている全てのイベン
-トを時間順のビューに表示します、
-@item
-a @emph{テキストの検索ビュー}　複数のファイルの中かから、指定したキーワードを含ん
-でいるすべてのエントリーを表示します、
-@item
-a @emph{詳細が未決定のプロジェクトビュー}　現在作業が進んでいないプロジェクトを表
-示します。そして、
-@item
-@emph{カスタムビュー}　特別な検索や異なるビューの組合せによるビューです。
+@item @emph{アジェンダ}　カレンダーのように指定した日付の情報を表示します、
+@item @emph{TODOリスト}　未完了のアクションアイテムをカバーします、
+@item @emph{マッチビュー}　関連づけられているタグやプロパティ、TODOの状態に基づい
+て見出しを表示します、
+@item @emph{タイムラインビュー}　1つのOrg-modeのファイルの中に含まれている全ての
+イベントを時間順のビューに表示します、
+@item a @emph{テキストの検索ビュー}　複数のファイルの中かから、指定したキーワード
+を含んでいるすべてのエントリーを表示します、
+@item a @emph{詳細が未決定のプロジェクトビュー}　現在作業が進んでいないプロジェク
+トを表示します。そして、
+@item @emph{カスタムビュー}　特別な検索や異なるビューの組合せによるビューです。
 @end itemize
 
 @noindent
@@ -6670,20 +6646,20 @@ a @emph{詳細が未決定のプロジェクトビュー}　現在作業が進�
 
 @cindex ファイル、アジェンダリストに追加する
 @table @kbd
-@orgcmd{C-c [,org-agenda-file-to-front}　アジェンダファイルのリストに編集中のファイ
-ルを追加する。そのファイルは、リストの先頭に追加される。もしも既にリストに存
-在していたら、先頭に移動する。前置引数をつけることで、リストの最後に追加／移
-動する。@orgcmd{C-c ],org-remove-file}　編集中のファイルをアジェンダファイルのリス
-トから削除する。
+@orgcmd{C-c [,org-agenda-file-to-front}　アジェンダファイルのリストに編集中の
+ファイルを追加する。そのファイルは、リストの先頭に追加される。もしも既
+にリストに存在していたら、先頭に移動する。前置引数をつけることで、リス
+トの最後に追加／移動する。@orgcmd{C-c ],org-remove-file}　編集中のファイルを
+アジェンダファイルのリストから削除する。
 @kindex C-,
 @orgcmd{C-',org-cycle-agenda-files}
 @itemx C-,
-アジェンダファイルのリストに従って、1つのファイルから次のファイルへと切り替
-える。
+アジェンダファイルのリストに従って、1つのファイルから次のファイルへと
+切り替える。
 @kindex M-x org-iswitchb
 @item M-x org-iswitchb
-@code{iswitchb}と似たようなインターフェースでOrg-modeのバッファの間を切り替えるコ
-マンド。
+@code{iswitchb}と似たようなインターフェースでOrg-modeのバッファの間を切り替
+えるコマンド。
 @end table
 
 @noindent
@@ -6699,27 +6675,28 @@ Org-modeメニューには、現時点のファイルのリストが含まれて
 をある限定した期間に絞り込むために以下のコマンドが用意されています。：
 
 @table @kbd
-@orgcmd{C-c C-x <,org-agenda-set-restriction-lock}アジェンダの対象を現在カーソルが
-置かれているサブツリーに固定的に制限します。前置引数をつけたり、ファイルの最
-初の見出しよりも前にカーソルが置かれているときには、アジェンダの対象範囲はフ
-ァイル全体になります。この制約は@kbd{C-c C-x >}を実行して取り除くか、@kbd{<}または
-@kbd{>}をアジェンダのコマンド選択画面上で入力するまでは維持します。もしもウイン
-ドウ上にアジェンダビューが表示されているならば、あたらしい制約が即座に効果を
-及ぼします。@orgcmd{C-c C-x >,org-agenda-remove-restriction-lock}@kbd{C-c C-x <}で作成
-された固定する制限を削除します。
+@orgcmd{C-c C-x <,org-agenda-set-restriction-lock}アジェンダの対象を現在カー
+ソルが置かれているサブツリーに固定的に制限します。前置引数をつけたり、
+ファイルの最初の見出しよりも前にカーソルが置かれているときには、アジェ
+ンダの対象範囲はファイル全体になります。この制約は@kbd{C-c C-x >}を実行し
+て取り除くか、@kbd{<}または@kbd{>}をアジェンダのコマンド選択画面上で入力するま
+では維持します。もしもウインドウ上にアジェンダビューが表示されているな
+らば、あたらしい制約が即座に効果を及ぼします。
+@orgcmd{C-c C-x >,org-agenda-remove-restriction-lock}@kbd{C-c C-x <}で作成された
+固定する制限を削除します。
 @end table
 
 @noindent
 @file{speedbar.el}を併用しているときは、Speedbarのフレームの中で以下のコマンドを
 使用することができます。
 @table @kbd
-@orgcmdtkc{< @r{in the speedbar frame},<,org-speedbar-set-agenda-restriction}　Speedbarの
-フレームの中で、1つのOrg-modeファイルか、そのファイルのサブツリーの一つか、
-カーソルの置かれているアイテムに対応してアジェンダを恒久的に限定します。もし
-もアジェンダビューが表示されているウインドウがあるならば、限定箇所が変更され
-ると即座に反映する。
-@orgcmdtkc{> @r{in the speedbar frame},>,org-agenda-remove-restriction-lock}　制限をふたた
-び解除する。
+@orgcmdtkc{< @r{in the speedbar frame},<,org-speedbar-set-agenda-restriction}　
+Speedbarのフレームの中で、1つのOrg-modeファイルか、そのファイルのサブ
+ツリーの一つか、カーソルの置かれているアイテムに対応してアジェンダを恒
+久的に限定します。もしもアジェンダビューが表示されているウインドウがあ
+るならば、限定箇所が変更されると即座に反映する。
+@orgcmdtkc{> @r{in the speedbar frame},>,org-agenda-remove-restriction-lock}　制限を
+ふたたび解除する。
 @end table
 
 @node Agenda dispatcher, Built-in agenda views, Agenda files, Agenda Views
@@ -6744,26 +6721,28 @@ Org-modeメニューには、現時点のファイルのリストが含まれて
 @item L
 カレントバッファ用のタイムラインのビューを作成します。(@pxref{Timeline})
 @item s
-そのエントリーに存在するしないにかかわらず、and/orという正規表現によるキーワ
-ードの論理式で選択したエントリのリストを作成します。
+そのエントリーに存在するしないにかかわらず、and/orという正規表現による
+キーワードの論理式で選択したエントリのリストを作成します。
 @item /
 @vindex org-agenda-text-search-extra-files
-すべてのアジェンダファイルと@code{org-agenda-text-search-extra-files}の中でリスト
-化かれているファイルの中から正規表現を用いて検索します。これはEmacsの
-@code{multi-occur}というコマンドを使用します。前置引数をつけると、それぞれのマッ
-チした行の状況の数をしていすることができます。デフォルトは1となっています。
+すべてのアジェンダファイルと@code{org-agenda-text-search-extra-files}の中で
+リスト化かれているファイルの中から正規表現を用いて検索します。これは
+Emacsの@code{multi-occur}というコマンドを使用します。前置引数をつけると、そ
+れぞれのマッチした行の状況の数をしていすることができます。デフォルトは
+1となっています。
 @item # @r{/} !
 詳細が未決定のプロジェクトのリストを作成します。(@pxref{Stuck projects})
 @item <
-カレントバッファ@footnote{逆の互換性として、@kbd{1}をカレントバッファを制限するために入力
-することもできます。}に対してアジェンダコマンドを制限します。@kbd{<}を入力したあ
-と、コマンドを選択するために文字を入力する必要があります。
+カレントバッファ@footnote{逆の互換性として、@kbd{1}をカレントバッファを制限するため
+に入力することもできます。}に対してアジェンダコマンドを制限します。
+@kbd{<}を入力したあと、コマンドを選択するために文字を入力する必要がありま
+す。
 @item < <
-もしもアクティブなリージョンがあるときは、以下のようなアジェンダコマンドがそ
-のリージョンに限定されます。一方、カレントのサブツリー@footnote{逆の互換性として、カ
-レントリージョンまたはカレントサブツリーに限定するために@kbd{0}を入力することも
-できます。.}に限定することもできます。@kbd{< <}を入力したあと、コマンドを選択す
-る文字を入力する必要があります。
+もしもアクティブなリージョンがあるときは、以下のようなアジェンダコマン
+ドがそのリージョンに限定されます。一方、カレントのサブツリー@footnote{逆の互換
+性として、カレントリージョンまたはカレントサブツリーに限定するために
+@kbd{0}を入力することもできます。.}に限定することもできます。@kbd{< <}を入力し
+たあと、コマンドを選択する文字を入力する必要があります。
 @end table
 
 あなたは、あたかもデフォルトのコマンドのように、コマンド選択画面でアクセスす
@@ -6797,13 +6776,13 @@ Org-modeメニューには、現時点のファイルのリストが含まれて
 
 @table @kbd
 @cindex org-agenda, command
-@orgcmd{C-c a a,org-agenda-list}　Org-modeのファイルのリストの中からその週の予定を
-収集するものです。予定はそれぞれの日に表示されます。（@kbd{C-u 2 1 C-c a a}のよ
-うに)前置引数に数字をつけて@footnote{逆方向の互換性のために、普遍的な前置引数@kbd{C-u}を
-つけることでアジェンダ（予定表）より上に、TODOリストを書き出すことができます
-。この機能は軽視されており、専用のTODOリストやブロックアジェンダ
-(@pxref{Block agenda}).をその代わりに利用することが多いです。}表示する日数を設定す
-ることができます。
+@orgcmd{C-c a a,org-agenda-list}　Org-modeのファイルのリストの中からその週の
+予定を収集するものです。予定はそれぞれの日に表示されます。（
+@kbd{C-u 2 1 C-c a a}のように)前置引数に数字をつけて@footnote{逆方向の互換性のため
+に、普遍的な前置引数@kbd{C-u}をつけることでアジェンダ（予定表）より上に、
+TODOリストを書き出すことができます。この機能は軽視されており、専用の
+TODOリストやブロックアジェンダ(@pxref{Block agenda}).をその代わりに利用する
+ことが多いです。}表示する日数を設定することができます。
 @end table
 
 @vindex org-agenda-span
@@ -6924,24 +6903,26 @@ Org-modeはEmacsの予定を通知する機能と連携しています。あな�
 完了のTODOアイテムが含まれています。
 
 @table @kbd
-@orgcmd{C-c a t,org-todo-list}　グローバルなTODOリストを表示します。これはすべての
-アジェンダファイル(@pxref{Agenda Views})からTODOアイテムを１つのバッファに集約しま
-す。デフォルトでは、このアイテムのリストはDONEという状態ではないアイテムです
-。そのバッファは@code{agenda-mode}となり、そのバッファからTODOアイテムを直接調べ
-たり操作したりするコマンドが用意されています(@pxref{Agenda commands})。
+@orgcmd{C-c a t,org-todo-list}　グローバルなTODOリストを表示します。これはす
+べてのアジェンダファイル(@pxref{Agenda Views})からTODOアイテムを１つのバッフ
+ァに集約します。デフォルトでは、このアイテムのリストはDONEという状態で
+はないアイテムです。そのバッファは@code{agenda-mode}となり、そのバッファか
+らTODOアイテムを直接調べたり操作したりするコマンドが用意されています
+(@pxref{Agenda commands})。
 @cindex TODO keyword matching
 @vindex org-todo-keywords
-上と似ていますが、指定したTODOキーワードと合致したものを表示します。同じこと
-を前置引数をつけて@kbd{C-c a t}を実行することでも指定できます。キーワードの入力
-を促す指示が表示され、そして複数のキーワードを論理式ORという意味で@samp{|}で区切
-って指定することができます。数字付きの前置引数をつけると@code{org-todo-keywords}
-の中のN番目のキーワードを選択することができます。
+上と似ていますが、指定したTODOキーワードと合致したものを表示します。同
+じことを前置引数をつけて@kbd{C-c a t}を実行することでも指定できます。キー
+ワードの入力を促す指示が表示され、そして複数のキーワードを論理式ORとい
+う意味で@samp{|}で区切って指定することができます。数字付きの前置引数をつけ
+ると@code{org-todo-keywords}の中のN番目のキーワードを選択することができます
+。
 @kindex r
-@kbd{r}キーをアジェンダバッファで使用するとバッファの再構成が行われます。たとえ
-ば@kbd{3 r}というように、前置引数をつけてこのコマンドを実行すると選択したTODOキ
-ーワードが変更することができます。もしも特定のキーワードを使って検索すること
-が多い場合は、カスタムコマンドを定義することもできます(@pxref{Agenda dispatcher})
-。@*特定のTODOキーワードと合致するものを検索するのは、タグ検索の１機能として
+@kbd{r}キーをアジェンダバッファで使用するとバッファの再構成が行われます。
+たとえば@kbd{3 r}というように、前置引数をつけてこのコマンドを実行すると選
+択したTODOキーワードが変更することができます。もしも特定のキーワードを
+使って検索することが多い場合は、カスタムコマンドを定義することもできま
+す(@pxref{Agenda dispatcher})。@*特定のTODOキーワードと合致するものを検索するのは、タグ検索の１機能として
 行うこともできます(@pxref{Tag searches})。
 @end table
 
@@ -6954,23 +6935,22 @@ Org-modeはEmacsの予定を通知する機能と連携しています。あな�
 ます。このリストは大変長いものになる場合もあります。それをコンパクトにするに
 は２つの方法があります。
 @itemize @minus
-@item
-@vindex org-agenda-todo-ignore-scheduled
+@item @vindex org-agenda-todo-ignore-scheduled
 @vindex org-agenda-todo-ignore-deadlines
 @vindex org-agenda-todo-ignore-timestamp
 @vindex org-agenda-todo-ignore-with-date
-TODOアイテムが、実行するために@emph{scheduled}となっている、あるいは、もはや
-@emph{open}となっている@emph{deadline}(@pxref{Timestamps})を持っているかどうかを確認したい人
-もいるでしょう。@code{org-agenda-todo-ignore-scheduled}、
+TODOアイテムが、実行するために@emph{scheduled}となっている、あるいは、もは
+や@emph{open}となっている@emph{deadline}(@pxref{Timestamps})を持っているかどうかを確認
+したい人もいるでしょう。@code{org-agenda-todo-ignore-scheduled}、
 @code{org-agenda-todo-ignore-deadlines}、@code{org-agenda-todo-ignore-timestamp}
-および／または@code{org-agenda-todo-ignore-with-date}という変数を設定し、グローバ
-ルなTODOリストから取り除くことができます。
-@item
-@vindex org-agenda-todo-list-sublevels
-TODOアイテムがサブタスクにブレイクダウンされた下位のレベルを持っているかもし
-れません。そういった場合は、最上位のTODOの見出しを表示すれば十分で、グローバ
-ルなリストからは下位のレベルの項目は省略してもよい場合があります。そういった
-ときは@code{org-agenda-todo-list-sublevels}変数を設定することで可能となります
+および／または@code{org-agenda-todo-ignore-with-date}という変数を設定し、グ
+ローバルなTODOリストから取り除くことができます。
+@item @vindex org-agenda-todo-list-sublevels
+TODOアイテムがサブタスクにブレイクダウンされた下位のレベルを持っている
+かもしれません。そういった場合は、最上位のTODOの見出しを表示すれば十分
+で、グローバルなリストからは下位のレベルの項目は省略してもよい場合があ
+ります。そういったときは@code{org-agenda-todo-list-sublevels}変数を設定する
+ことで可能となります
 @end itemize
 
 @node Matching tags and properties, Timeline, Global TODO list, Built-in agenda views
@@ -6986,19 +6966,21 @@ TODOアイテムがサブタスクにブレイクダウンされた下位のレ�
 構文は@kbd{C-c / m}を用いたツリーの抽出を行うときも適用できます。
 
 @table @kbd
-@orgcmd{C-c a m,org-tags-view}　一組のタグのセットに合致したすべての見出しのリスト
-を作成します。選択の基準の入力を指示するコマンドでタグのついた論理式による表
-現で記入します。例えば、@samp{+work+urgent-withboss}あるいは@samp{work|home}
-というように(@pxref{Tags})。もしも特定の検索をよく行うならばそのためのカスタムコマ
-ンドを定義することができます(@pxref{Agenda dispatcher})。@orgcmd{C-c a M,org-tags-view}
+@orgcmd{C-c a m,org-tags-view}　一組のタグのセットに合致したすべての見出しの
+リストを作成します。選択の基準の入力を指示するコマンドでタグのついた論
+理式による表現で記入します。例えば、@samp{+work+urgent-withboss}あるいは
+@samp{work|home}
+というように(@pxref{Tags})。もしも特定の検索をよく行うならばそのためのカスタ
+ムコマンドを定義することができます(@pxref{Agenda dispatcher})。
+@orgcmd{C-c a M,org-tags-view}
 @vindex org-tags-match-list-sublevels
 @vindex org-agenda-tags-todo-honor-ignore-options
-@kbd{C-c a m}と似ていますが、not-DONEの状態にあるTODOアイテムの見出しから選択す
-るもので、自動的にサブアイテムもチェックします
-(@code{org-tags-match-list-sublevels}変数参照)。予定／期限のついたアイテムを除外
-するには@code{org-agenda-tags-todo-honor-ignore-options}の変数を参照してください
-。特定のTODOキーワードをタグの一致と一緒に指定することも可能です。
-@ref{Tag searches}を参照してください。
+@kbd{C-c a m}と似ていますが、not-DONEの状態にあるTODOアイテムの見出しから
+選択するもので、自動的にサブアイテムもチェックします
+(@code{org-tags-match-list-sublevels}変数参照)。予定／期限のついたアイテム
+を除外するには@code{org-agenda-tags-todo-honor-ignore-options}の変数を参照
+してください。特定のTODOキーワードをタグの一致と一緒に指定することも可
+能です。@ref{Tag searches}を参照してください。
 @end table
 
 タグのリストで利用できるコマンドは@ref{Agenda commands}のところで説明しています
@@ -7019,13 +7001,13 @@ TODOアイテムがサブタスクにブレイクダウンされた下位のレ�
 
 @table @samp
 @item +work-boss
-@samp{:work:}というタグがついているが、@samp{:boss:}というタグがついていない見出しを選
-択します。
+@samp{:work:}というタグがついているが、@samp{:boss:}というタグがついていない見出
+しを選択します。
 @item work|laptop
 @samp{:work:}または@samp{:laptop:}というタグがついたものを選択します。
 @item work|laptop+night
-前の文と同じですが、@samp{:laptop:}の行には、同時に@samp{:night:}というタグが付いてい
-る必要があります。
+前の文と同じですが、@samp{:laptop:}の行には、同時に@samp{:night:}というタグが付
+いている必要があります。
 @end table
 
 @cindex regular expressions, with tags search
@@ -7051,8 +7033,8 @@ TODOアイテムがサブタスクにブレイクダウンされた下位のレ�
 いくつかの例を紹介します。
 @table @samp
 @item work+TODO="WAITING"
-@samp{:work:}というタグがあるTODO行のうち、特にTODOキーワードが@samp{WAITING}となって
-いる行を選択します。
+@samp{:work:}というタグがあるTODO行のうち、特にTODOキーワードが@samp{WAITING}と
+なっている行を選択します。
 @item work+TODO="WAITING"|home+TODO="WAITING"
 workとhomeというタグがついているWaitingとなっているタスク
 @end table
@@ -7068,23 +7050,21 @@ workとhomeというタグがついているWaitingとなっているタスク
 @noindent
 比較のタイプは比較の値がどのように書かれているかによります。
 @itemize @minus
-@item
-比較する値が普通の数字ならば、数値の比較が行われ、@samp{<}、@samp{=}、@samp{>}、@samp{<=}、@samp{>=}
-、および@samp{<>}という操作が可能です。
-@item
-比較する対象がダブルクォーテーションで囲まれている場合は、文字列の比較が行わ
-れ、前項と同じ操作が可能です。
-@item
-もしも比較対象が、(@samp{DEADLINE<="<2008-12-24 18:30>"}のように)、ダブルクォーテ
-ーション@emph{および}角括弧<>で囲まれていた場合は、両方の値がOrg-mode流の標準的な
-日付・時刻の指定であると仮定し、それにそって比較を行います。いくつかの特別な
-値があります。@code{"<now>"}は（時刻も含めた）現在を示し、@code{"<today>"}、
-@code{"<tomorrow>"}はそれらの日の0:00つまり、@:時刻の指定がないことを表します。同
-様に、@code{"<+5d>"}または@code{"<-2m>"}というような文字列は、それぞれ日、週、月、年を
-示す、@code{d}、@code{w}、@code{m}、@code{y}という単位がついているものとして使用されます。
-@item
-もしも比較対象が中括弧｛｝でくくられていて、正規表現での比較がなされるときは
-、@samp{=}は一致していることを示し、@samp{<>}は一致していないことを示します。
+@item 比較する値が普通の数字ならば、数値の比較が行われ、@samp{<}、@samp{=}、@samp{>}、@samp{<=}
+、@samp{>=}、および@samp{<>}という操作が可能です。
+@item 比較する対象がダブルクォーテーションで囲まれている場合は、文字列の比較
+が行われ、前項と同じ操作が可能です。
+@item もしも比較対象が、(@samp{DEADLINE<="<2008-12-24 18:30>"}のように)、ダブルク
+ォーテーション@emph{および}角括弧<>で囲まれていた場合は、両方の値がOrg-mode
+流の標準的な日付・時刻の指定であると仮定し、それにそって比較を行います
+。いくつかの特別な値があります。@code{"<now>"}は（時刻も含めた）現在を示し
+、@code{"<today>"}、@code{"<tomorrow>"}はそれらの日の0:00つまり、@:時刻の指定が
+ないことを表します。同様に、@code{"<+5d>"}または@code{"<-2m>"}というような文字列
+は、それぞれ日、週、月、年を示す、@code{d}、@code{w}、@code{m}、@code{y}という単位がついて
+いるものとして使用されます。
+@item もしも比較対象が中括弧｛｝でくくられていて、正規表現での比較がなされる
+ときは、@samp{=}は一致していることを示し、@samp{<>}は一致していないことを示しま
+す。
 @end itemize
 
 そのため、例に掲げた検索文字列の意味は、@samp{:work:}というタグがつけられているが
@@ -7118,10 +7098,11 @@ TODOキーワードが存在することを検索するには論理式のANDで�
 @item work/WAITING
 @samp{work+TODO="WAITING"}と同じ
 @item work/!-WAITING-NEXT
-@samp{:work:}を選択。ただしTODO行では@samp{WAITING}と@samp{NEXT}のどちらのタグもついていな
-いもの
+@samp{:work:}を選択。ただしTODO行では@samp{WAITING}と@samp{NEXT}のどちらのタグもつい
+ていないもの
 @item work/!+WAITING|+NEXT
-@samp{:work:}を選択。TODO行に@samp{WAITING}か@samp{NEXT}かどちらかのタグがついているもの。
+@samp{:work:}を選択。TODO行に@samp{WAITING}か@samp{NEXT}かどちらかのタグがついている
+もの。
 @end table
 
 @node Timeline, Search view, Matching tags and properties, Built-in agenda views
@@ -7136,9 +7117,9 @@ TODOキーワードが存在することを検索するには論理式のANDで�
 
 @table @kbd
 @orgcmd{C-c a L,org-timeline}すべてのタイムスタンプの付いたアイテムについて、
-Org-modeファイルの中で時間順のビューを提供します。@kbd{C-u}という前置引数をつけ
-て呼び出したときは、現在の日付の時点で、すべての未完了のTODOエントリー（予約
-されているものも、そうでないものも）を一覧にします。
+Org-modeファイルの中で時間順のビューを提供します。@kbd{C-u}という前置引数
+をつけて呼び出したときは、現在の日付の時点で、すべての未完了のTODOエン
+トリー（予約されているものも、そうでないものも）を一覧にします。
 @end table
 
 @noindent
@@ -7155,8 +7136,8 @@ Org-modeファイルの中で時間順のビューを提供します。@kbd{C-u}
 持っています。これはノートを探すのに特に役に立ちます。
 
 @table @kbd
-@orgcmd{C-c a s,org-search-view}　このコマンドは特別な検索のためのもので、論理式を
-使って、文字列または特定の単語に合致するエントリーを選択します。
+@orgcmd{C-c a s,org-search-view}　このコマンドは特別な検索のためのもので、論
+理式を使って、文字列または特定の単語に合致するエントリーを選択します。
 @end table
 例えば、@samp{computer equipment}という検索文字列は、@samp{computer equipment}という1
 つの文字列が含まれているエントリーを検索するでしょう。もしも、２つの単語が、
@@ -7189,13 +7170,14 @@ Allen氏のGTDのようなシステムであなたの仕事を管理している
 それらのプロジェクトための次の行動を定義することが必要です。
 
 @table @kbd
-@orgcmd{C-c a #,org-agenda-list-stuck-projects}　詳細が未決定のプロジェクトリスト
+@orgcmd{C-c a #,org-agenda-list-stuck-projects}　詳細が未決定のプロジェクトリ
+スト
 @kindex C-c a !
 @item C-c a !
 @vindex org-stuck-projects
-@code{org-stuck-projects}の変数をカスタマイズすることで何が詳細が未決定のプロジェ
-クトで、どうやったらそういうプロジェクトを発見できるかを定義することができま
-す。
+@code{org-stuck-projects}の変数をカスタマイズすることで何が詳細が未決定のプ
+ロジェクトで、どうやったらそういうプロジェクトを発見できるかを定義する
+ことができます。
 @end table
 
 あなたは九分九厘このコマンドが機能するために、このビューを定義する必要があり
@@ -7340,25 +7322,23 @@ Org-modeは時刻の仕様に基づいて、それぞれのアジェンダアイ
 ビューに書き出される前に、各アイテムは並び替えが行われます。この並び替えはビ
 ューのタイプによって決まります。
 @itemize @bullet
-@item
-@vindex org-agenda-files
-一日／一週間のアジェンダでは、それぞれの日の各アイテムは順番に並びます。デフ
-ォルトの順番は、明示的に日付と時刻の指定を含んでいるアイテムを、最初に集めま
-す。これらのアイテムは、その日の@emph{スケジュール}に応じて、リストの最初から順番
-に表示されます。その次に、各アイテムは
-@code{org-agenda-files}によって決められた順番に、カテゴリーごとにグループ分けされ
-ます。それぞれのカテゴリーの中で、各アイテムは優先順位(@pxref{Priorities})に従って
-並び替えられます。優先順位は基本的な優先順位で構成されます（優先順位@samp{A}なら
-ば2000、@samp{B}ならば1000、@samp{C}ならば0として）。さらに、予定あるいはデッドライン
-を過ぎているアイテムのウエイトが追加されます。
-@item
-TODOリストでは、各アイテムはカテゴリーの順番に並び替えられますが、各カテゴリ
-ーの中では、優先順位(@pxref{Priorities})によって並び替えられます。優先順位は、優先
-順位の記号に従って並べ替えられます。さらに、アイテムが実行する日あるいは予約
-した日にどれだけ近いかということも考慮されます。
-@item
-タグでの一致については、項目は並び替えは行われず、アジェンダファイルの中で一
-致した項目が発見された順番に従って表示されるのみです。
+@item @vindex org-agenda-files
+一日／一週間のアジェンダでは、それぞれの日の各アイテムは順番に並びます
+。デフォルトの順番は、明示的に日付と時刻の指定を含んでいるアイテムを、
+最初に集めます。これらのアイテムは、その日の@emph{スケジュール}に応じて、リ
+ストの最初から順番に表示されます。その次に、各アイテムは
+@code{org-agenda-files}によって決められた順番に、カテゴリーごとにグループ分
+けされます。それぞれのカテゴリーの中で、各アイテムは優先順位
+(@pxref{Priorities})に従って並び替えられます。優先順位は基本的な優先順位で構
+成されます（優先順位@samp{A}ならば2000、@samp{B}ならば1000、@samp{C}ならば0として）。
+さらに、予定あるいはデッドラインを過ぎているアイテムのウエイトが追加さ
+れます。
+@item TODOリストでは、各アイテムはカテゴリーの順番に並び替えられますが、各カ
+テゴリーの中では、優先順位(@pxref{Priorities})によって並び替えられます。優先
+順位は、優先順位の記号に従って並べ替えられます。さらに、アイテムが実行
+する日あるいは予約した日にどれだけ近いかということも考慮されます。
+@item タグでの一致については、項目は並び替えは行われず、アジェンダファイルの
+中で一致した項目が発見された順番に従って表示されるのみです。
 @end itemize
 
 @vindex org-agenda-sorting-strategy
@@ -7389,29 +7369,30 @@ TODOリストでは、各アイテムはカテゴリーの順番に並び替え�
 @c
 @orgcmd{n,org-agenda-next-line}　次の行へ(@key{up}及び@kbd{C-p}と同じ)。
 @orgcmd{p,org-agenda-previous-line}　次の行へ(@key{down}及び@kbd{C-n}と同じ)。
-@tsubheading{View/Go to Org file}　@orgcmdkkc{@key{SPC},mouse-3,org-agenda-show-and-scroll-up}　そのア
-イテムのオリジナルの場所を別のウインドウで表示する。前置引数を使うことで、見
-出しだけでなく、アウトライン上にエントリー全体を明確に表示する。
-@orgcmd{L,org-agenda-recenter}　オリジナルの場所を表示し、ウインドウのセンターに再
-配置する。@orgcmdkkc{@key{TAB},mouse-2,org-agenda-goto}　別のウインドウでそのアイテムのオ
-リジナルの場所に移動する。@orgcmd{@key{RET},org-agenda-switch-to}　そのアイテムのオリジ
-ナルの場所に移動し、他のウインドウは削除する。@orgcmd{F,org-agenda-follow-mode}
+@tsubheading{View/Go to Org file}　@orgcmdkkc{@key{SPC},mouse-3,org-agenda-show-and-scroll-up}　
+そのアイテムのオリジナルの場所を別のウインドウで表示する。前置引数を使
+うことで、見出しだけでなく、アウトライン上にエントリー全体を明確に表示
+する。@orgcmd{L,org-agenda-recenter}　オリジナルの場所を表示し、ウインドウの
+センターに再配置する。@orgcmdkkc{@key{TAB},mouse-2,org-agenda-goto}　別のウインドウ
+でそのアイテムのオリジナルの場所に移動する。
+@orgcmd{@key{RET},org-agenda-switch-to}　そのアイテムのオリジナルの場所に移動し、
+他のウインドウは削除する。@orgcmd{F,org-agenda-follow-mode}
 @vindex org-agenda-start-with-follow-mode
 @c
-Followモードをトグルする。Followモードではアジェンダバッファ上でカーソルを動
-かすと、Org-modeファイルの中で、別のウインドウ上で対応する場所を表示する。新
-しいアジェンダバッファの中でこのモードの初期設定値は、
+Followモードをトグルする。Followモードではアジェンダバッファ上でカーソ
+ルを動かすと、Org-modeファイルの中で、別のウインドウ上で対応する場所を
+表示する。新しいアジェンダバッファの中でこのモードの初期設定値は、
 @code{org-agenda-start-with-follow-mode}変数で設定することができる。
-@orgcmd{C-c C-x b,org-agenda-tree-to-indirect-buffer}　間接的なバッファの中で可憐と
-アイテムのサブツリー全体を表示する。数値付きの前置引数Nをつけると、第N階層ま
-で階層を上がり、そのツリーを取得する。もしもNがマイナスならば、多くの階層ま
-で上がる。@kbd{C-u}という前置引数を付けた場合は、既に使われた間接的バッファは消
-去されない。
+@orgcmd{C-c C-x b,org-agenda-tree-to-indirect-buffer}　間接的なバッファの中で
+可憐とアイテムのサブツリー全体を表示する。数値付きの前置引数Nをつける
+と、第N階層まで階層を上がり、そのツリーを取得する。もしもNがマイナスな
+らば、多くの階層まで上がる。@kbd{C-u}という前置引数を付けた場合は、既に使
+われた間接的バッファは消去されない。
 
-@orgcmd{C-c C-o,org-agenda-open-link}　エントリーの中にあるリンクをフォローする。こ
-の機能は、参照されているOrg-modeのノードに属しているテキストの中に含まれてい
-るいくつかのリンクの中から選択するという機能を提供する。もしもリンクが1つし
-かない場合は、選択画面を表示せずに、そこにリンクを貼る。
+@orgcmd{C-c C-o,org-agenda-open-link}　エントリーの中にあるリンクをフォローす
+る。この機能は、参照されているOrg-modeのノードに属しているテキストの中
+に含まれているいくつかのリンクの中から選択するという機能を提供する。も
+しもリンクが1つしかない場合は、選択画面を表示せずに、そこにリンクを貼る。
 
 @tsubheading{Change display}
 @cindex display changing, in agenda
@@ -7428,87 +7409,92 @@ Followモードをトグルする。Followモードではアジェンダバッ�
 @c
 @c
 @c
-日／週／月／年のビューを切り替えます。日または週にビューを切り替えたときは、
-この設定は、それに続くアジェンダの更新ついてのデフォルトの設定となります。月
-および年のビューは、作成するために時間を要するので、デフォルトとはしていませ
-ん。数字の付いた前置引数をつけると、その年、ISOの週、月、年の指定した日に直
-接ジャンプします。例えば@kbd{32 d}と書いたときは2月1日、@kbd{9 w}と書いたらISOの週番
-号が9を指します。日、週あるいは月のビューを設定したときは、1年は同様に前置引
-数の中でコード化されます。例えば、@kbd{200712 w}と書いたときは2007年の第12週にジ
-ャンプするでしょう。もしもそのような年の指定を、1桁もしくは2桁の数字で行いた
-いたときは、1938年から2037年の間に位置づけられます。@kbd{v @key{SPC}}によって、
-@code{org-agenda-span}での設定をリセットすることができます。@orgcmd{f,org-agenda-later}
-　時間を前の日付の表示へと遡ります。@orgcmd{.,org-agenda-goto-today}　今日へ移動し
-ます。@orgcmd{j,org-agenda-goto-date}　日付の選択画面でその日に移動します。
-@orgcmd{J,org-agenda-clock-goto}　@i{アジェンダバッファの中}で現在時間を計測中のタスク
-に移動します。@orgcmd{D,org-agenda-toggle-diary}　日記のエントリーに含めるかどうか
-トグルします。参照@ref{Weekly/daily agenda}.@orgcmdkskc{v l,l,org-agenda-log-mode}
+日／週／月／年のビューを切り替えます。日または週にビューを切り替えたと
+きは、この設定は、それに続くアジェンダの更新ついてのデフォルトの設定と
+なります。月および年のビューは、作成するために時間を要するので、デフォ
+ルトとはしていません。数字の付いた前置引数をつけると、その年、ISOの週
+、月、年の指定した日に直接ジャンプします。例えば@kbd{32 d}と書いたときは2
+月1日、@kbd{9 w}と書いたらISOの週番号が9を指します。日、週あるいは月のビュ
+ーを設定したときは、1年は同様に前置引数の中でコード化されます。例えば
+、@kbd{200712 w}と書いたときは2007年の第12週にジャンプするでしょう。もしも
+そのような年の指定を、1桁もしくは2桁の数字で行いたいたときは、1938年か
+ら2037年の間に位置づけられます。@kbd{v @key{SPC}}によって、@code{org-agenda-span}で
+の設定をリセットすることができます。@orgcmd{f,org-agenda-later}　時間を前の日
+付の表示へと遡ります。@orgcmd{.,org-agenda-goto-today}　今日へ移動します。
+@orgcmd{j,org-agenda-goto-date}　日付の選択画面でその日に移動します。
+@orgcmd{J,org-agenda-clock-goto}　@i{アジェンダバッファの中}で現在時間を計測中の
+タスクに移動します。@orgcmd{D,org-agenda-toggle-diary}　日記のエントリーに含
+めるかどうかトグルします。参照
+@ref{Weekly/daily agenda}.@orgcmdkskc{v l,l,org-agenda-log-mode}
 @kindex v L
 @vindex org-log-done
 @vindex org-agenda-log-mode-items
 @c
 @c
 @c
-Logbook modeにするかどうかをトグルします。Logbook modeの中では、ログの取得中
-に(変数
-@code{org-log-done})DONEと印が付けられたエントリーが、その日の時刻を持っているエ
-ントリーとして、アジェンダの中に表示されます。@code{org-agenda-log-mode-items}変
-数を用いてlogモードに含まれるエントリーのタイプを設定することができます。
-@kbd{C-u}という前置引数をつけて呼び出すと、状態の変化を含め、すべてのおこりうる
-logbookのエントリーを表示できるでしょう。@kbd{C-u C-u}という2つの前置引数をつけ
-て呼び出すと、ログの情報のみが表示され、それ以外は表示されません。@kbd{v L}は、
-@kbd{C-u v l}と等価です。@orgcmdkskc{v [,[,org-agenda-manipulate-query-add}　現在のビューに
-、不活性のタイムスタンプを含めます。週／日のアジェンダとタイムラインビューの
-みです。@orgcmd{v a,org-agenda-archives-mode} @xorgcmd{v A,org-agenda-archives-mode 'files}
-　Archivesモードをトグルします。Archivesモードでは、@code{ARCHIVED}と印されたツリ
-ーもまたアジェンダを作成するときにスキャンされます。大文字の@kbd{A}を使用したと
-きは、全てのアーカイブファイルを含みます。archives
+Logbook modeにするかどうかをトグルします。Logbook modeの中では、ログの
+取得中に(変数
+@code{org-log-done})DONEと印が付けられたエントリーが、その日の時刻を持って
+いるエントリーとして、アジェンダの中に表示されます。
+@code{org-agenda-log-mode-items}変数を用いてlogモードに含まれるエントリーの
+タイプを設定することができます。@kbd{C-u}という前置引数をつけて呼び出すと
+、状態の変化を含め、すべてのおこりうるlogbookのエントリーを表示できる
+でしょう。@kbd{C-u C-u}という2つの前置引数をつけて呼び出すと、ログの情報の
+みが表示され、それ以外は表示されません。@kbd{v L}は、@kbd{C-u v l}と等価です。
+@orgcmdkskc{v [,[,org-agenda-manipulate-query-add}　現在のビューに、不活性のタイ
+ムスタンプを含めます。週／日のアジェンダとタイムラインビューのみです。
+@orgcmd{v a,org-agenda-archives-mode} @xorgcmd{v A,org-agenda-archives-mode 'files}　
+Archivesモードをトグルします。Archivesモードでは、@code{ARCHIVED}と印された
+ツリーもまたアジェンダを作成するときにスキャンされます。大文字の@kbd{A}を
+使用したときは、全てのアーカイブファイルを含みます。archives
 modeから出るためには、再度@kbd{v a}を押してください。
 @orgcmdkskc{v R,R,org-agenda-clockreport-mode}
 @vindex org-agenda-start-with-clockreport-mode
 @c
-Clockreportモードをトグルします。Clockreportモードでは、日／週のアジェンダは
-、時間軸のための時刻のついた表を表示し、カレントのアジェンダビューでカバーさ
-れる範囲をファイルします。新しいアジェンダバッファの中で、このモードの初期設
-定は、@code{org-agenda-start-with-clockreport-mode}変数で設定することができます。
-このモードをトグル(すなわち@:
+Clockreportモードをトグルします。Clockreportモードでは、日／週のアジェ
+ンダは、時間軸のための時刻のついた表を表示し、カレントのアジェンダビュ
+ーでカバーされる範囲をファイルします。新しいアジェンダバッファの中で、
+このモードの初期設定は、@code{org-agenda-start-with-clockreport-mode}変数で
+設定することができます。このモードをトグル(すなわち@:
 @kbd{C-u R})している時に、前置引数を使用することで、アジェンダフィルター
-@footnote{ここではタグフィルターだけが有効です。工数のフィルターは無視されます。}によ
-って隠されているエントリーからの情報を表示しないでしょう。
+@footnote{ここではタグフィルターだけが有効です。工数のフィルターは無視されます
+。}によって隠されているエントリーからの情報を表示しないでしょう。
 @orgcmdkskc{v E,E,org-agenda-entry-text-mode}
 @vindex org-agenda-start-with-entry-text-mode
 @vindex org-agenda-entry-text-maxlines
 @c
 entry text modeをトグルします。entry text
-modeでは、アジェンダ行によって参照されているOrg-modeのアウトラインのノードか
-ら、多数の行が、その行の下に表示されるでしょう。最大の行数は、
-@code{org-agenda-entry-text-maxlines}変数で指定します。数値付きの前置引数を付けて
-、このコマンドを呼び出すと、前置引数の値の数によって、即座に修正されます。
-@orgcmd{G,org-agenda-toggle-time-grid}
+modeでは、アジェンダ行によって参照されているOrg-modeのアウトラインのノ
+ードから、多数の行が、その行の下に表示されるでしょう。最大の行数は、
+@code{org-agenda-entry-text-maxlines}変数で指定します。数値付きの前置引数を
+付けて、このコマンドを呼び出すと、前置引数の値の数によって、即座に修正
+されます。@orgcmd{G,org-agenda-toggle-time-grid}
 @vindex org-agenda-use-time-grid
 @vindex org-agenda-time-grid
 @c
 @c
 @c
 時間のグリッドの表示をトグルします。@code{org-agenda-use-time-grid}と
-@code{org-agenda-time-grid}変数を参照してください。@orgcmd{r,org-agenda-rodo}　アジェン
-ダバッファを再構築する。例えば、@kbd{S-@key{left}}と@kbd{S-@key{right}}を使って、アイテムの
-タイムスタンプを改修したあと、その変更を反映するために。そのバッファがグロー
-バルなTODOリストの場合は、指定したTODOキーワードを選択できるリストを作成する
-ために、前置引数を解釈します。@orgcmd{g,org-agenda-rodo}　カレントのEmacsのセッショ
-ンにおいて、すべてのOrg-modeのバッファを保存します。あわせてIDの場所も。
+@code{org-agenda-time-grid}変数を参照してください。@orgcmd{r,org-agenda-rodo}　ア
+ジェンダバッファを再構築する。例えば、@kbd{S-@key{left}}と@kbd{S-@key{right}}を使って
+、アイテムのタイムスタンプを改修したあと、その変更を反映するために。そ
+のバッファがグローバルなTODOリストの場合は、指定したTODOキーワードを選
+択できるリストを作成するために、前置引数を解釈します。
+@orgcmd{g,org-agenda-rodo}　カレントのEmacsのセッションにおいて、すべての
+Org-modeのバッファを保存します。あわせてIDの場所も。
 @orgcmd{C-c C-x C-c,org-agenda-columns}
 @vindex org-columns-default-format
-アジェンダバッファの中でカラムビュー(@pxref{Column view})を作成します。カラムビュ
-ーのフォーマットは、その時点のエントリーから作成され、あるいは(もしも、その
-時点でエントリーが存在しないなら)、アジェンダビューの最初のエントリーから作
-成されます。そのエントリーのためのフォーマットが何であれ、(プロパティーから
-、@code{#+COLUMNS}という行から、あるいは@code{org-columns-default-format}変数のデフォ
-ルトから作成された)オリジナルのバッファに存在しているエントリーのフォーマッ
-トがアジェンダで使用されます。
+アジェンダバッファの中でカラムビュー(@pxref{Column view})を作成します。カラ
+ムビューのフォーマットは、その時点のエントリーから作成され、あるいは(
+もしも、その時点でエントリーが存在しないなら)、アジェンダビューの最初
+のエントリーから作成されます。そのエントリーのためのフォーマットが何で
+あれ、(プロパティーから、@code{#+COLUMNS}という行から、あるいは
+@code{org-columns-default-format}変数のデフォルトから作成された)オリジナル
+のバッファに存在しているエントリーのフォーマットがアジェンダで使用されます。
 
-@orgcmd{C-c C-x >,org-agenda-remove-restriction-lock}　もしもファイルまたはサブツリ
-ーをその時点で制限しているならば、アジェンダをロックする制限を取り除きます。
+@orgcmd{C-c C-x >,org-agenda-remove-restriction-lock}　もしもファイルまたはサ
+ブツリーをその時点で制限しているならば、アジェンダをロックする制限を取
+り除きます。
 (@pxref{Agenda files}).
 
 @tsubheading{Secondary filtering and query editing}
@@ -7519,58 +7505,61 @@ modeでは、アジェンダ行によって参照されているOrg-modeのア�
 
 @orgcmd{/,org-agenda-filter-by-tag}
 @vindex org-agenda-filter-preset
-タグおよび（または）工数の見積りに対して、カレントのアジェンダビューにフィル
-ターをかけます。これとカスタムなアジェンダコマンドとの間の差異は、このフィル
-ターが非常に早いということです。このため、あなたは、アジェンダ（注１）を再表
-示することなく、異なるフィルターの間を素早く切り替えることができます。
-@footnote{カスタムコマンドによって、オプションとして@code{org-agenda-filter-preset}変数と
-結びつけることで、フィルターを事前にセットすることができます。このフィルター
-は、ビューに適用されます。そして、リフレッシュや２番目のフィルターを通して、
-基本的なフィルターとして存続します。このフィルターは、アジェンダのブロックの
-中で、アジェンダビュー全体のグローバルなプロパティです。この設定を行うために
-は、個別のブロックのセクションではなく、グローバルオプションのセクションで行
-います。}
+タグおよび（または）工数の見積りに対して、カレントのアジェンダビューに
+フィルターをかけます。これとカスタムなアジェンダコマンドとの間の差異は
+、このフィルターが非常に早いということです。このため、あなたは、アジェ
+ンダ（注１）を再表示することなく、異なるフィルターの間を素早く切り替え
+ることができます。@footnote{カスタムコマンドによって、オプションとして
+@code{org-agenda-filter-preset}変数と結びつけることで、フィルターを事前にセ
+ットすることができます。このフィルターは、ビューに適用されます。そして
+、リフレッシュや２番目のフィルターを通して、基本的なフィルターとして存
+続します。このフィルターは、アジェンダのブロックの中で、アジェンダビュ
+ー全体のグローバルなプロパティです。この設定を行うためには、個別のブロ
+ックのセクションではなく、グローバルオプションのセクションで行います。}
 
-タグ選択の文字を入力しましょう。@key{SPC}はタグの全てを意味しています。入力部分
-で@key{TAB}を押すと、選択するタグの補完機能を使用できます(すべてのタグに選択用の
-文字が指定されているとはかぎりません)。そして、そのコマンドは、このタグを含
-んでいないか継承していないエントリーを全て隠します。前置引数をつけて呼び出し
-た場合は、そのタグを持っているエントリーを削除さえしてしまいます。入力部で2
-番目の@kbd{/}はフィルターを終了し、隠されているエントリーを再度出現させます。も
-しも最初に入力したキーが、@kbd{+}または@kbd{-}ならば、前のフィルターは、選択された新
-たなタグの要求あるいは禁止に応じて、幅を狭くします。@kbd{/}の後に、@kbd{+}あるいは
-@kbd{-}を入力する代わりに、@kbd{\}
+タグ選択の文字を入力しましょう。@key{SPC}はタグの全てを意味しています。入
+力部分で@key{TAB}を押すと、選択するタグの補完機能を使用できます(すべてのタ
+グに選択用の文字が指定されているとはかぎりません)。そして、そのコマン
+ドは、このタグを含んでいないか継承していないエントリーを全て隠します。
+前置引数をつけて呼び出した場合は、そのタグを持っているエントリーを削除
+さえしてしまいます。入力部で2番目の@kbd{/}はフィルターを終了し、隠されてい
+るエントリーを再度出現させます。もしも最初に入力したキーが、@kbd{+}または
+@kbd{-}ならば、前のフィルターは、選択された新たなタグの要求あるいは禁止に
+応じて、幅を狭くします。@kbd{/}の後に、@kbd{+}あるいは@kbd{-}を入力する代わりに、
+@kbd{\}
 コマンドを即座に使用することもできます。
 
 @vindex org-sort-agenda-noeffort-is-high
-工数見積のフィルターをかけるために、予め認められている汎用的な工数を設定すべ
-きです。例えば
+工数見積のフィルターをかけるために、予め認められている汎用的な工数を設
+定すべきです。例えば
 @lisp
 (setq org-global-properties
     '(("Effort_ALL". "0 0:10 0:30 1:00 2:00 3:00 4:00")))
 @end lisp
-あなたは、@kbd{<}、@kbd{>}および@kbd{=}のひとつの操作を最初に入力することで、工数のため
-のフィルターをかけることができます。それから、あらかじめ認められた値のリスト
-の中で、工数見積りのインデックスの数字を入力します。そこでは@kbd{0}は１０番目の
-値を意味します。フィルターは選択された値よりも、以下、イコール、以上であるか
-によって限定されます。もしも0-9のキーがタグへのアクセスキーとして使用されて
-いないならば、単純にあなたは操作コマンドを利用することなく、直接インデックス
-となる数字を入力するだけです。この場合@kbd{<}が仮定されます。操作のアプリケーシ
-ョンのために、定義された工数がないエントリーでは、
-@code{org-sort-agenda-noeffort-is-high}変数の値に従って取り扱われます。工数の定義
-のないタスクにフィルターをかけるには、@kbd{?}を操作の値として入力します。
+あなたは、@kbd{<}、@kbd{>}および@kbd{=}のひとつの操作を最初に入力することで、工数
+のためのフィルターをかけることができます。それから、あらかじめ認められ
+た値のリストの中で、工数見積りのインデックスの数字を入力します。そこで
+は@kbd{0}は１０番目の値を意味します。フィルターは選択された値よりも、以下
+、イコール、以上であるかによって限定されます。もしも0-9のキーがタグへ
+のアクセスキーとして使用されていないならば、単純にあなたは操作コマンド
+を利用することなく、直接インデックスとなる数字を入力するだけです。この
+場合@kbd{<}が仮定されます。操作のアプリケーションのために、定義された工数
+がないエントリーでは、@code{org-sort-agenda-noeffort-is-high}変数の値に従っ
+て取り扱われます。工数の定義のないタスクにフィルターをかけるには、@kbd{?}
+を操作の値として入力します。
 
-Org-modeはまた、コンテクストに対応したタグのフィルターを自動的にサポートして
-います。もしも、@code{org-agenda-auto-exclude-function}変数の値が、ユーザが定義し
-た機能に設定されているときは、その機能によって、どのようなタグがアジェンダか
-ら自動的に排除されるかを決定します。一度この機能が設定されると、それによって
-、@kbd{/}コマンドは、@kbd{RET}
-をサブのオプションキーとして受け付け、自動的に排除ロジックを走らせます。例え
-ば、いってみれば、ネットワークへのアクセスを必要とするタスクを定義するために
-@code{Net}というタグ、街での用事のために@code{Errand}というタグ、電話を掛けなければな
-らないときに@code{Call}というタグを使用しているとします。あなたは、インターネット
-を利用できるかどうか、仕事時間外にあるかどうか、このような状況に基づいて、こ
-れらのタグを自動的に排除することができるのです。
+Org-modeはまた、コンテクストに対応したタグのフィルターを自動的にサポー
+トしています。もしも、@code{org-agenda-auto-exclude-function}変数の値が、ユ
+ーザが定義した機能に設定されているときは、その機能によって、どのような
+タグがアジェンダから自動的に排除されるかを決定します。一度この機能が設
+定されると、それによって、@kbd{/}コマンドは、@kbd{RET}
+をサブのオプションキーとして受け付け、自動的に排除ロジックを走らせます
+。例えば、いってみれば、ネットワークへのアクセスを必要とするタスクを定
+義するために@code{Net}というタグ、街での用事のために@code{Errand}というタグ、電
+話を掛けなければならないときに@code{Call}というタグを使用しているとします。
+あなたは、インターネットを利用できるかどうか、仕事時間外にあるかどうか
+、このような状況に基づいて、これらのタグを自動的に排除することができる
+のです。
 
 @lisp
 @group
@@ -7588,11 +7577,11 @@ Org-modeはまた、コンテクストに対応したタグのフィルターを
 @end group
 @end lisp
 
-@orgcmd{\\,org-agenda-filter-by-tag-refine}追加の条件によってカレントのアジェンダフ
-ィルターをナローイングします。前置引数を用いてコマンドを呼び出したときは、ま
-さにタグがついているエントリー、あるいは工数の基準にまさに合致するエントリー
-を削除する。@kbd{/}コマンドのあとの最初のキーとして、@kbd{+}あるいは@kbd{-}を押すことで
-同様の効果を達成することができる。
+@orgcmd{\\,org-agenda-filter-by-tag-refine}追加の条件によってカレントのアジェ
+ンダフィルターをナローイングします。前置引数を用いてコマンドを呼び出し
+たときは、まさにタグがついているエントリー、あるいは工数の基準にまさに
+合致するエントリーを削除する。@kbd{/}コマンドのあとの最初のキーとして、
+@kbd{+}あるいは@kbd{-}を押すことで同様の効果を達成することができる。
 
 @c
 @kindex [
@@ -7602,11 +7591,12 @@ Org-modeはまた、コンテクストに対応したタグのフィルターを
 @item [ ] @{ @}
 @table @i
 @item @r{in} search view
-新しい検索の単語(@kbd{[}と@kbd{]})、あるいは新しい正規表現(@kbd{@{}と@kbd{@}})をクエリー文字
-列に追加する。開いた角括弧／大括弧は、@samp{+}という接頭辞のついたポジティブな検
-索用語を追加する。この検索用語は、@i{必ず}そのエントリーに発生／合致しなければな
-らないことを示す。閉じた角括弧／大括弧は、ネガティブな検索用語を追加し、それ
-は、選択されているエントリーの中で、@i{絶対に}発生／合致しないということである。
+新しい検索の単語(@kbd{[}と@kbd{]})、あるいは新しい正規表現(@kbd{@{}と@kbd{@}})をクエリ
+ー文字列に追加する。開いた角括弧／大括弧は、@samp{+}という接頭辞のついたポ
+ジティブな検索用語を追加する。この検索用語は、@i{必ず}そのエントリーに発生
+／合致しなければならないことを示す。閉じた角括弧／大括弧は、ネガティブ
+な検索用語を追加し、それは、選択されているエントリーの中で、@i{絶対に}発生
+／合致しないということである。
 @end table
 
 @tsubheading{Remote editing}
@@ -7890,27 +7880,29 @@ d  @r{指定した日をデッドラインとして設定する。}
 
 @table @kbd
 @item C-c a w
-TODOのキーワードとして、@samp{WAITING}となっているTODOエントリーのためのグローバ
-ルな検索として。す。
+TODOのキーワードとして、@samp{WAITING}となっているTODOエントリーのためのグ
+ローバルな検索として。す。
 @item C-c a W
-同じような検索であるが、カレントバッファにのみ適用され、ツリーの抽出として検
-索結果を表示する。
+同じような検索であるが、カレントバッファにのみ適用され、ツリーの抽出と
+して検索結果を表示する。
 @item C-c a u
-@samp{:urgent:}ではなく@samp{:boss:}というタグがつけられた見出しのための、グローバルな
-タグ検索を行う。
+@samp{:urgent:}ではなく@samp{:boss:}というタグがつけられた見出しのための、グロー
+バルなタグ検索を行う。
 @item C-c a v
-@kbd{C-c a u}と同じ検索を行うが、TODOアイテムである見出しに対してのみ検索を行う
-という制限がある。
+@kbd{C-c a u}と同じ検索を行うが、TODOアイテムである見出しに対してのみ検索
+を行うという制限がある。
 @item C-c a U
-@kbd{C-c a u}と同じ検索を行うが、カレントバッファに対してのみ検索を行い、結果を
-ツリーの抽出として表示する。
+@kbd{C-c a u}と同じ検索を行うが、カレントバッファに対してのみ検索を行い、
+結果をツリーの抽出として表示する。
 @item C-c a f
-すべてのエントリーのうちで@samp{FIXME}という言葉を含んでいるものを検索してツリー
-の抽出を行う（くどいかもしれませんが、カレントバッファだけが対象です）。
+すべてのエントリーのうちで@samp{FIXME}という言葉を含んでいるものを検索して
+ツリーの抽出を行う（くどいかもしれませんが、カレントバッファだけが対象
+です）。
 @item C-c a h
-HOMEというタグ検索のためのコマンドの前置引数として、そこでは、タグ検索の追加
-として、一つの名前(Lisa、Peter、またはKim)を選択するために、あなたはさらに
-(@kbd{l}、@kbd{p}、または@kbd{k})というキーを追加入力する必要があります。
+HOMEというタグ検索のためのコマンドの前置引数として、そこでは、タグ検索
+の追加として、一つの名前(Lisa、Peter、またはKim)を選択するために、あな
+たはさらに(@kbd{l}、@kbd{p}、または@kbd{k})というキーを追加入力する必要があります
+。
 @end table
 
 @node Block agenda, Setting Options, Storing searches, Custom agenda views
@@ -8039,12 +8031,12 @@ Org-modeはたくさんのアジェンダの構築や表示について調整す
 @cindex アジェンダビューの出力
 @cindex アジェンダビュー（出力）
 @vindex org-agenda-exporter-settings
-アジェンダビューを１つのファイルに書き出します。選択したファイル名の拡張子に
-より、そのビューはHTML（拡張子が@file{.html}または@file{.htm}）、Postscript（拡張子が
-@file{.ps}）、iCalendar（拡張子が@file{.ics}）、あるいはプレーンなテキスト（何かほかの
-拡張子）としてエクスポートされます。エクスポートの間に、@file{ps-print}のため、お
-よび@file{htmlize}のためにオプションを設定するには、
-@code{org-agenda-exporter-settings}変数を使用します。例えば
+アジェンダビューを１つのファイルに書き出します。選択したファイル名の拡
+張子により、そのビューはHTML（拡張子が@file{.html}または@file{.htm}）、
+Postscript（拡張子が@file{.ps}）、iCalendar（拡張子が@file{.ics}）、あるいはプレ
+ーンなテキスト（何かほかの拡張子）としてエクスポートされます。エクスポ
+ートの間に、@file{ps-print}のため、および@file{htmlize}のためにオプションを設定
+するには、@code{org-agenda-exporter-settings}変数を使用します。例えば
 
 @vindex org-agenda-add-entry-text-maxlines
 @vindex htmlize-output-type
@@ -8105,8 +8097,8 @@ TODOリストなどのような標準的なビューを保存したいならば�
 て}の指定されたファイルを出力する特別なコマンドが用意されています。
 
 @table @kbd
-@orgcmd{C-c a e,org-store-agenda-views}　アジェンダに関連するエクスポートファイル名
-を持つすべてのアジェンダビューをエクスポートします。
+@orgcmd{C-c a e,org-store-agenda-views}　アジェンダに関連するエクスポートファ
+イル名を持つすべてのアジェンダビューをエクスポートします。
 @end table
 
 あなたは、エクスポートコマンドのためのオプションの設定をするために。カスタム
@@ -8168,8 +8160,8 @@ emacs -eval '(org-batch-store-agenda-views                      \
 準で収集されているアジェンダから、カラムビューを使用することは大変便利です。
 
 @table @kbd
-@orgcmd{C-c C-x C-c,org-agenda-columns}　アジェンダの中でカラムビューに切り替えます
-。
+@orgcmd{C-c C-x C-c,org-agenda-columns}　アジェンダの中でカラムビューに切り替
+えます。
 @end table
 
 この属性がどのようなものか理解するために、アジェンダのエントリーはもはや適切
@@ -8177,40 +8169,37 @@ emacs -eval '(org-batch-store-agenda-views                      \
 下のようなことが生じます。
 
 @enumerate
-@item
-@vindex org-columns-default-format
+@item @vindex org-columns-default-format
 @vindex org-overriding-columns-format
-Org-modeでは、どの@code{COLUMNS}のフォーマットを使用するか、決定する必要がありま
-す。アジェンダの中のエントリーは、異なるファイルから集められるということと、
-ファイルが異なると@code{COLUMNS}のフォーマットも異なるということから、このことは
-些細な問題であるとはいえないのです。Org-modeは最初に、
-@code{org-overriding-columns-format}変数がカレントで設定されているかどうか、また
-そこからフォーマットを取り出すことができるかどうかチェックします。一方、アジ
-ェンダの最初のアイテムに関連したフォーマットを使用するか、もしもそのアイテム
-が特別なフォーマット（属性もしくはファイルの中で定義された）を持たないならば
-、@code{org-columns-default-format}を使用します。
-@item
-@cindex 特別なプロパティ（CLOCKSUM）
-もしも、どれかカラムに要約形式(@pxref{Column attributes})が定義されているならば、
-アジェンダでカラムビューに切り替えるときに、すべての関連するアジェンダファイ
-ルを確認して、この属性の計算の更新を確実に行います。このことは、特別な
-@code{CLOCKSUM}の属性が真であると設定されているということです。Org-modeはアジェン
-ダの中で表示された値を合計するでしょう。一日／週間アジェンダの中で、合計は1
-日をカバーしています。他のビューでは、ブロック全体をカバーするのです。アジェ
-ンダでは同じエントリーを@emph{２度}表示したり（例えばスケジュールと期限というよう
-に）、同じ階層（例えば@emph{親}と@emph{子}）から@emph{２つ}のエントリーを表示したりするかも
-しれない、ということを理解することは重要なことです。これらの場合、アジェンダ
-の中での要約は、いくつかの値が二重にカウントされるという間違った結果を導く可
-能性があります。
-@item
-アジェンダの中のカラムビューが、@code{CLOCKSUM}を表示するときは、このアイテムのた
-めにいつでも時間計測全体に対応します。そのため1日/週間アジェンダにおいて、カ
-ラムビューでリスト化された時間合計は、カレントのビューの外側の時間から発生す
-ることになるかもしれません。この機能によって、あるタスクについて、計画された
-総工数を1つのカラムにリストにして、その値を比較することができるので、優位性
-を持ちます。この機能はアジェンダのカラムビューにおける重要なアプリケーション
-のひとつです。もしもあなたが表示されている期間の中の作業時間についての情報を
-得たいならば、clock
+Org-modeでは、どの@code{COLUMNS}のフォーマットを使用するか、決定する必要が
+あります。アジェンダの中のエントリーは、異なるファイルから集められると
+いうことと、ファイルが異なると@code{COLUMNS}のフォーマットも異なるというこ
+とから、このことは些細な問題であるとはいえないのです。Org-modeは最初に
+、@code{org-overriding-columns-format}変数がカレントで設定されているかどう
+か、またそこからフォーマットを取り出すことができるかどうかチェックしま
+す。一方、アジェンダの最初のアイテムに関連したフォーマットを使用するか
+、もしもそのアイテムが特別なフォーマット（属性もしくはファイルの中で定
+義された）を持たないならば、@code{org-columns-default-format}を使用します。
+@item @cindex 特別なプロパティ（CLOCKSUM）
+もしも、どれかカラムに要約形式(@pxref{Column attributes})が定義されているな
+らば、アジェンダでカラムビューに切り替えるときに、すべての関連するアジ
+ェンダファイルを確認して、この属性の計算の更新を確実に行います。このこ
+とは、特別な@code{CLOCKSUM}の属性が真であると設定されているということです。
+Org-modeはアジェンダの中で表示された値を合計するでしょう。一日／週間ア
+ジェンダの中で、合計は1日をカバーしています。他のビューでは、ブロック
+全体をカバーするのです。アジェンダでは同じエントリーを@emph{２度}表示したり
+（例えばスケジュールと期限というように）、同じ階層（例えば@emph{親}と@emph{子}）
+から@emph{２つ}のエントリーを表示したりするかもしれない、ということを理解す
+ることは重要なことです。これらの場合、アジェンダの中での要約は、いくつ
+かの値が二重にカウントされるという間違った結果を導く可能性があります。
+@item アジェンダの中のカラムビューが、@code{CLOCKSUM}を表示するときは、このアイテ
+ムのためにいつでも時間計測全体に対応します。そのため1日/週間アジェンダ
+において、カラムビューでリスト化された時間合計は、カレントのビューの外
+側の時間から発生することになるかもしれません。この機能によって、あるタ
+スクについて、計画された総工数を1つのカラムにリストにして、その値を比
+較することができるので、優位性を持ちます。この機能はアジェンダのカラム
+ビューにおける重要なアプリケーションのひとつです。もしもあなたが表示さ
+れている期間の中の作業時間についての情報を得たいならば、clock
 table mode（@kbd{R}をアジェンダの中で入力する）を使用してください。
 @end enumerate
 
@@ -8405,9 +8394,9 @@ but not any simpler
 @cindex 文字通りのテキスト、マーックアップのルール
 @cindex コードのテキスト、マークアップのルール
 @cindex 取り消されたテキスト、マーックアップのルール
-あなたは@b{*bold*}と@i{/italic/}、_underlined_、@code{=code=}、@code{~verbatim~}、そして必要
-なら@samp{+strile-through+}を単語に適用することができます。codeとverbatim文字列の
-中のテキストはOrg-modeの明確な構文ではありません;
+あなたは@b{*bold*}と@i{/italic/}、_underlined_、@code{=code=}、@code{~verbatim~}、そして必要な
+ら@samp{+strile-through+}を単語に適用することができます。codeとverbatim文字列の中
+のテキストはOrg-modeの明確な構文ではありません;
 それはverbatimにエクスポートされます。
 
 @node Horizontal rules, コメント行, Emphasis and monospace, Structural markup elements
@@ -8558,23 +8547,23 @@ HTMLはエクスポート時にテキストエリア,@xref{Text areas in HTML ex
 @table @kbd
 @kindex C-c '
 @item C-c '
-カーソル位置のソースコード例をそのネイティブモードで編集します。これはソース
-コードを一時バッファに表示し、切り替えることで働きます。あなたは@kbd{C-c '}をも
-う一度押すことで編集を終了します@footnote{終了時、Org-modeによってアウトラインの見出
-しや特別なコメントと間違えられないようにするために、@samp{*}か@samp{#}から始まる行はカ
-ンマが銭湯に追加されます。}。
-編集されたバージョンはOrg-modeバッファ上の古いバージョンを置き換えます。固定
-幅のリージョンは簡単にASCIIでイラストを書くための
-@code{artist-mode}@footnote{@code{org-edit-fixed-width-region-mode}変数により、異なるモードを選
-択することもできます。}を使うことで編集されます。空行でこのコマンドを使うこ
-とで、新しい固定幅のリージョンを作成します。
+カーソル位置のソースコード例をそのネイティブモードで編集します。これは
+ソースコードを一時バッファに表示し、切り替えることで働きます。あなたは
+@kbd{C-c '}をもう一度押すことで編集を終了します@footnote{終了時、Org-modeによってア
+ウトラインの見出しや特別なコメントと間違えられないようにするために、
+@samp{*}か@samp{#}から始まる行はカンマが銭湯に追加されます。}。
+編集されたバージョンはOrg-modeバッファ上の古いバージョンを置き換えます
+。固定幅のリージョンは簡単にASCIIでイラストを書くための
+@code{artist-mode}@footnote{@code{org-edit-fixed-width-region-mode}変数により、異なるモー
+ドを選択することもできます。}を使うことで編集されます。空行でこのコマ
+ンドを使うことで、新しい固定幅のリージョンを作成します。
 @kindex C-c l
 @item C-c l
 @kbd{C-c '}によって作成した一時バッファでのソースコード例の編集中に
-@code{org-store-link}の呼び出しはラベルを指示します。現在のバッファがユニークであ
-ることを確認し、現在の行の最後に@samp{(ref:label)}のように適切にフォーマットされ
-たものが挿入されます。ラベルは@samp{(label)}のようなリンクを記憶し、@kbd{C-c C-l}検索
-する。
+@code{org-store-link}の呼び出しはラベルを指示します。現在のバッファがユニー
+クであることを確認し、現在の行の最後に@samp{(ref:label)}のように適切にフォ
+ーマットされたものが挿入されます。ラベルは@samp{(label)}のようなリンクを記
+憶し、@kbd{C-c C-l}検索する。
 @end table
 
 
@@ -8722,8 +8711,8 @@ Angles are written as Geek letters \\alpha, \\beta and \\gamma.@end example
 @table @kbd
 @kindex C-c C-x \
 @item C-c C-x \
-エンティティのUTF-8での表示をトグルします。これはバッファの内容を変更せず、
-UTF-8の文字を表示するためにオーバレイを用いています。
+エンティティのUTF-8での表示をトグルします。これはバッファの内容を変更
+せず、UTF-8の文字を表示するためにオーバレイを用いています。
 @end table
 
 @node Subscripts and superscripts, LaTeX fragments, Special symbols, Embedded LaTeX
@@ -8759,8 +8748,8 @@ subscript, but @samp{a_@{b@}} will.
 @table @kbd
 @kindex C-c C-x \
 @item C-c C-x \
-さらにUTF-8のエンティティを見るため、このコマンドは下付き文字と上付き文字を
-WYSISYMで形成する。
+さらにUTF-8のエンティティを見るため、このコマンドは下付き文字と上付き
+文字をWYSISYMで形成する。
 @end table
 
 @node LaTeX fragments, Previewing LaTeX fragments, Subscripts and superscripts, Embedded LaTeX
@@ -8781,14 +8770,13 @@ WYSISYMで形成する。
 @LaTeX{}のコード片は、特別なマークは全く必要ありません。以下のコード片は@LaTeX{}の
 ソースコードとして知られています:
 @itemize @bullet
-@item
-あらゆる種類の環境@footnote{@file{MathJax}が使われている時、@file{MathJax}によって認識されてい
-る環境が処理されます。@file{dvipng}を画像の生成に用いる時、@LaTeX{}環境が扱われます
-。}。唯一必要なことは@code{\\begin}文は空白のみがある行に表示されることです。
-@item
-通常の@LaTeX{}の数学の区切り文字内部のテキスト。流通仕様との衝突を避けるために
-、囲まれたテキストに最大2つの改行が含まれている場合、@samp{$}文字は数学区切り文字
-のみとして認識され、@samp{$}文字がの間に空白がない、そして
+@item あらゆる種類の環境@footnote{@file{MathJax}が使われている時、@file{MathJax}によって認識さ
+れている環境が処理されます。@file{dvipng}を画像の生成に用いる時、@LaTeX{}環境
+が扱われます。}。唯一必要なことは@code{\\begin}文は空白のみがある行に表示さ
+れることです。
+@item 通常の@LaTeX{}の数学の区切り文字内部のテキスト。流通仕様との衝突を避ける
+ために、囲まれたテキストに最大2つの改行が含まれている場合、@samp{$}文字は数
+学区切り文字のみとして認識され、@samp{$}文字がの間に空白がない、そして
 @end itemize
 
 @noindent For example:
@@ -8831,11 +8819,11 @@ either $$ a=+\sqrt@{2@} $$ or \[ a=-\sqrt@{2@} \].
 @table @kbd
 @kindex C-c C-x C-l
 @item C-c C-x C-l
-ポイント位置の@LaTeX{}コード片の画像プレビューの提供とソースコード上のオーバレ
-イ。もしポイント位置にコード片がないのであれば、現在のエントリ(2つの見出しの
-間)の全てのコード片を処理します。前置引数を付けて呼ばれた時は、サブツリー全
-体を処理します。前置引数を2つ付けて呼ばれた時、またはカーソルが最初の見出し
-の前にある時は、バッファ全体を処理します。
+ポイント位置の@LaTeX{}コード片の画像プレビューの提供とソースコード上のオ
+ーバレイ。もしポイント位置にコード片がないのであれば、現在のエントリ(2
+つの見出しの間)の全てのコード片を処理します。前置引数を付けて呼ばれた
+時は、サブツリー全体を処理します。前置引数を2つ付けて呼ばれた時、また
+はカーソルが最初の見出しの前にある時は、バッファ全体を処理します。
 @kindex C-c C-c
 @item C-c C-c
 オーバレイされたプレビュー画像を消去します。
@@ -8868,37 +8856,34 @@ Org-modeファイルで有効するために次の設定を行います:
 ュメントを参照してください)::
 @itemize @bullet
 @kindex C-c @{
-@item
-@kbd{C-c @{}による環境テンプレートの挿入。
-@item
-@kindex @key{TAB}
-カーソルが@LaTeX{}のコード片@footnote{カーソルがコード片の中にあるときにOrg-modeはテスト
-を行うためのメソッドを持ちます。詳細は@code{org-inside-LaTeX-fragment-p}関数のド
-キュメントを参照してください。}の中にある場合、@key{TAB}キーはテンプレートの展開
-を行います。例えば、@key{TAB}は@code{fr}を@code{\\frac@{@}@{@}}に展開しカーソルを最初の括
-弧に移動します。もう一度@key{TAB}を押すと2つ目の括弧にカーソルが移動します。コー
-ド片の外だと、@key{TAB}は行の先頭にある環境の略語を展開します。例えば、もしあな
-たが行頭に@samp{equ}と書いていて@key{TAB}を押すと、この略語は@code{equation}環境に展開され
-ます。全ての略語を見るには、@kbd{M-x cdlatex-command-help}をタイプしてください。
-@item
-@kindex _
+@item @kbd{C-c @{}による環境テンプレートの挿入。
+@item @kindex @key{TAB}
+カーソルが@LaTeX{}のコード片@footnote{カーソルがコード片の中にあるときにOrg-modeは
+テストを行うためのメソッドを持ちます。詳細は
+@code{org-inside-LaTeX-fragment-p}関数のドキュメントを参照してください。}の
+中にある場合、@key{TAB}キーはテンプレートの展開を行います。例えば、@key{TAB}は
+@code{fr}を@code{\\frac@{@}@{@}}に展開しカーソルを最初の括弧に移動します。もう一
+度@key{TAB}を押すと2つ目の括弧にカーソルが移動します。コード片の外だと、
+@key{TAB}は行の先頭にある環境の略語を展開します。例えば、もしあなたが行頭
+に@samp{equ}と書いていて@key{TAB}を押すと、この略語は@code{equation}環境に展開されま
+す。全ての略語を見るには、@kbd{M-x cdlatex-command-help}をタイプしてくださ
+い。
+@item @kindex _
 @kindex ^
 @vindex cdlatex-simplify-sub-super-scripts
-@LaTeX{}コード片の中で@kbd{_}と@kbd{^}を押すと、それらの文字が括弧のペアと一緒に挿入さ
-れます。もしあなたが@key{TAB}を括弧から抜け出すために使うなら、また括弧が1文字の
-文字かマクロのみを囲っているなら、それらは再び消去されます
-(@code{cdlatex-simplify-sub-super-script}変数に依存します)。
-@item
-@kindex `
+@LaTeX{}コード片の中で@kbd{_}と@kbd{^}を押すと、それらの文字が括弧のペアと一緒に
+挿入されます。もしあなたが@key{TAB}を括弧から抜け出すために使うなら、また
+括弧が1文字の文字かマクロのみを囲っているなら、それらは再び消去されま
+す(@code{cdlatex-simplify-sub-super-script}変数に依存します)。
+@item @kindex `
 Pressing the backquote @kbd{`} followed by a character inserts math macros,
 also outside @LaTeX{} fragments.  If you wait more than 1.5 seconds after
 the backquote, a help window will pop up.
-@item
-@kindex '
-別の文字に続いてシングルクォート@kbd{'}を押すと、強調やフォントでポイント前のシ
-ンボルが変更されます。もしシングルクォートを入力した後1.5秒以上待つと、ヘル
-プウィンドウがポップアップします。文字の変更は@LaTeX{}コード片の中でのみ働きま
-す;
+@item @kindex '
+別の文字に続いてシングルクォート@kbd{'}を押すと、強調やフォントでポイント
+前のシンボルが変更されます。もしシングルクォートを入力した後1.5秒以上
+待つと、ヘルプウィンドウがポップアップします。文字の変更は@LaTeX{}コード
+片の中でのみ働きます;
 それ以外ではクォートは通常通りの働きをします。
 @end itemize
 
@@ -9115,22 +9100,22 @@ d:         @r{drawerを出力するかどうか}
 @table @kbd
 @orgcmd{C-c C-e,org-export}
 @vindex org-export-run-in-background
-エクスポート、または公開のコマンド選択画面です。エクスポート、または公開のコ
-マンドを起動するのに必要なキーがヘルプウィンドウに表示されます。
-前置引数として、入力すると、直接エクスポート機能となります。二重の前置引数
- @kbd{C-u C-u}
-を入力することで、コマンドは別のEmacsプロセスにおいてバックグラウンドで実行
-されます。@footnote{このような挙動をデフォルトにするには、
+エクスポート、または公開のコマンド選択画面です。エクスポート、または公
+開のコマンドを起動するのに必要なキーがヘルプウィンドウに表示されます。
+前置引数として、入力すると、直接エクスポート機能となります。二重の前置
+引数 @kbd{C-u C-u}
+を入力することで、コマンドは別のEmacsプロセスにおいてバックグラウンド
+で実行されます。@footnote{このような挙動をデフォルトにするには、
  @code{org-export-run-in-background}変数を設定してください
-.}.  @orgcmd{C-c C-e v,org-export-visible} @kbd{C-c C-e} のように動作しますが、 今見え
-ている文章だけがエクスポートされます。
+.}.  @orgcmd{C-c C-e v,org-export-visible} @kbd{C-c C-e} のように動作しますが、 
+今見えている文章だけがエクスポートされます。
 (i.e.@: アウトライン表示により、隠されていない文章
 ).  @orgcmd{C-u C-u C-c C-e,org-export}
 @vindex org-export-run-in-background
-エクスポート機能が呼ばれますが、 @code{org-export-run-in-background} の設定と逆の
-挙動となります。 i.e.@:
-動いていないバックグラウンドプロセスを呼びだしたり, 現在のEmacsのプロセスで
-強制的に実行したりします。
+エクスポート機能が呼ばれますが、 @code{org-export-run-in-background} の設定
+と逆の挙動となります。 i.e.@:
+動いていないバックグラウンドプロセスを呼びだしたり, 現在のEmacsのプロ
+セスで強制的に実行したりします。
 @end table
 
 @node ASCII/Latin-1/UTF-8 export, HTML export, The export dispatcher, Exporting
@@ -9149,25 +9134,24 @@ ASCII形式へのエクスポートは、org-modeのファイルをASCIIのみ�
 @table @kbd
 @orgcmd{C-c C-e a,org-export-as-ascii}
 @cindex プロパティ、EXPORT_FILE_NAME
-ASCII形式のファイルをエクスポートします。 Orgファイルを @file{myfile.org} だとす
-ると、ASCII形式のファイルは
-@file{myfile.txt} となるでしょう。 そのファイルは警告なしに上書きされます。もしア
-クティブなリージョン
+ASCII形式のファイルをエクスポートします。 Orgファイルを @file{myfile.org} 
+だとすると、ASCII形式のファイルは
+@file{myfile.txt} となるでしょう。 そのファイルは警告なしに上書きされます。
+もしアクティブなリージョン
 @footnote{@code{transient-mark-mode} が有効である必要があります。} があった場合,
-そのリージョンのみがエクスポートされます。 選択したリージョンが一つのツリー
- @footnote{現在のサブツリーの選択するには、 @kbd{C-c @@} と入力してください。}を含んでい
-た場合、そのツリーの見出しがドキュメントのタイトルとなるでしょう. 見出しがあ
-るか、または
-@code{EXPORT_FILE_NAME} プロパティを継承していた場合、 エクスポートする際にはその
-名前が使われるでしょう。
-@orgcmd{C-c C-e A,org-export-as-ascii-to-buffer} 一時的なバッファに出力し、ファイル
-を作成しません。
-@orgcmd{C-c C-e n,org-export-as-latin1} @xorgcmd{C-c C-e N,org-export-as-latin1-to-buffer} 
-上に示したコマンドのような動作をしますが,
+そのリージョンのみがエクスポートされます。 選択したリージョンが一つの
+ツリー @footnote{現在のサブツリーの選択するには、 @kbd{C-c @@} と入力してください。
+}を含んでいた場合、そのツリーの見出しがドキュメントのタイトルとなるで
+しょう. 見出しがあるか、または
+@code{EXPORT_FILE_NAME} プロパティを継承していた場合、 エクスポートする際に
+はその名前が使われるでしょう。
+@orgcmd{C-c C-e A,org-export-as-ascii-to-buffer} 一時的なバッファに出力し、フ
+ァイルを作成しません。
+@orgcmd{C-c C-e n,org-export-as-latin1} @xorgcmd{C-c C-e N,org-export-as-latin1-to-buffer} 上に示したコマンドのような動作をしますが,
 Latin-1でエンコーディングされたものが出力されます。
   @orgcmd{C-c C-e u,org-export-as-utf8}
-@xorgcmd{C-c C-e U,org-export-as-utf8-to-buffer} 上に示したコマンドのような動作をし
-ますが,
+@xorgcmd{C-c C-e U,org-export-as-utf8-to-buffer} 上に示したコマンドのような動
+作をしますが,
 UTF-8でエンコーディングされたものが出力されます。
 @item C-c C-e v a/n/u
 文書の中で、バッファで表示されている部分だけを出力する。
@@ -9229,31 +9213,33 @@ Gruberが開発した @emph{markdown} 言語に似ていますが、org-modeで�
 @table @kbd
 @orgcmd{C-c C-e h,org-export-as-html}
 @cindex プロパティ、EXPORT_FILE_NAME
-HTMLファイル@file{myfile.html}をエクスポートします。Orgファイル@file{myfile.org}をエク
-スポートすると、ASCII形式のファイルは@file{myfile.html}となるでしょう。
+HTMLファイル@file{myfile.html}をエクスポートします。Orgファイル@file{myfile.org}
+をエクスポートすると、ASCII形式のファイルは@file{myfile.html}となるでしょう
+。
 そのファイルは警告なしに上書きされます。もしアクティブなリージョン
- @footnote{@code{transient-mark-mode} が有効である必要があります。} があった場合, そのリー
-ジョンのみがエクスポートされます。 選択したリージョンが一つのツリー
-@footnote{現在のサブツリーの選択するには、 @kbd{C-c @@} と入力してください。}を含んでいた
-場合、そのツリーの見出しがドキュメントのタイトルとなるでしょう. 見出しがある
-か、または
-@code{EXPORT_FILE_NAME} プロパティを継承していた場合、 エクスポートする際にはその
-名前が使われるでしょう。@orgcmd{C-c C-e b,org-export-as-html-and-open} HTMLファイル
-をエクスポートし、そのファイルをブラウザで開きます。
-@orgcmd{C-c C-e H,org-export-as-html-to-buffer} 一時的なバッファに出力し、ファイル
-を作成しません。
+ @footnote{@code{transient-mark-mode} が有効である必要があります。} があった場合, そ
+のリージョンのみがエクスポートされます。 選択したリージョンが一つのツリー
+@footnote{現在のサブツリーの選択するには、 @kbd{C-c @@} と入力してください。}を含ん
+でいた場合、そのツリーの見出しがドキュメントのタイトルとなるでしょう. 
+見出しがあるか、または
+@code{EXPORT_FILE_NAME} プロパティを継承していた場合、 エクスポートする際に
+はその名前が使われるでしょう。
+@orgcmd{C-c C-e b,org-export-as-html-and-open} HTMLファイルをエクスポートし、
+そのファイルをブラウザで開きます。
+@orgcmd{C-c C-e H,org-export-as-html-to-buffer} 一時的なバッファに出力し、フ
+ァイルを作成しません。
 @orgcmd{C-c C-e R,org-export-region-as-html}
-アクティブなリージョンを一時的なバッファに出力します。前置引数があるとヘッダ
-ーとフッターを出力せずに、リージョンのHTMLのみを出力します。これはカットアン
-ドペーストで編集する際に便利です
+アクティブなリージョンを一時的なバッファに出力します。前置引数があると
+ヘッダーとフッターを出力せずに、リージョンのHTMLのみを出力します。これ
+はカットアンドペーストで編集する際に便利です
 @item C-c C-e v h/b/H/R
 文書の中で、バッファで表示されている部分だけを出力する。
 @item M-x org-export-region-as-html
-org-modeの記法が使われているという前提でリージョンをHTMLに変換します。これは
-どのバッファでも起動するグローバルなコマンドです。
+org-modeの記法が使われているという前提でリージョンをHTMLに変換します。
+これはどのバッファでも起動するグローバルなコマンドです。
 @item M-x org-replace-region-by-HTML
-org-modeの記法が使われているという前提でアクティブなリージョンをHTMLに変換し
-ます。
+org-modeの記法が使われているという前提でアクティブなリージョンをHTMLに
+変換します。
 @end table
 
 @cindex （外部出力に用いる）ヘッドラインレベル
@@ -9275,8 +9261,8 @@ org-modeの記法が使われているという前提でアクティブなリー
 
 HTMLにエクスポートする際、プレインな@samp{<} and @samp{>}は常に
 @samp{&lt;}と@samp{&gt;}に変換されます。もし単純なHTMLタグをそのまま含めたい時は
-, @samp{@@<b>bold text@@</b>}のようにma@samp{@@}でマークします。これは単純なHTMLタグで
-しか動作しませんので注意してください。
+, @samp{@@<b>bold text@@</b>}のようにma@samp{@@}でマークします。これは単純なHTMLタグでしか動作
+しませんので注意してください。
 エクスポートするファイルにさらに広範囲なHTMLをそのままコピーするには次のよう
 なブロックが使えます。
 
@@ -9388,9 +9374,9 @@ descriptionの部分が@code{file:}リンクか画像を示す@code{http:}のURL
 @uref{http://www.mathjax.org, MathJax system}が使えるようになっています。
 @code{http://orgmode.org}は@file{MathJax}がOrg-modeユーザ、小さなアプリケーション、そ
 してテストにとって便利だと考えているからです。
-@b{もし特定のページで、あるいは常に@file{MathJax}を使うのであれば、私達のサーバでの
-読みこみを減らすためにMathJaxをあなたのサーバにインストール@footnote{インストール方法
-については、MathJaxのウェブサイトにあります。
+@b{もし特定のページで、あるいは常に@file{MathJax}を使うのであれば、私達のサーバでの読
+みこみを減らすためにMathJaxをあなたのサーバにインストール@footnote{インストール方法に
+ついては、MathJaxのウェブサイトにあります。
 @uref{http://www.mathjax.org/resources/docs/?installation.html}を参照してください
 。} してください。}
 @file{MathJax}について設定するには、@code{org-export-html-mathjax-options}を使うか、バ
@@ -9619,26 +9605,27 @@ Guerryによって書かれた@LaTeX{}のエクスポート機能があります
 @table @kbd
 @orgcmd{C-c C-e l,org-export-as-latex}
 @cindex プロパティ、EXPORT_FILE_NAME
-@LaTeX{}ファイル@file{myfile.tex}を出力します。Orgファイルに対して@file{myfile.org},、
-ASCIIファイルは@file{myfile.tex}となるでしょう。そのファイルは警告なしに上書きさ
-れます。アクティブなリージョン@footnote{@code{transient-mark-mode}が有効である必要がありま
-す。}があれば、そのリージョンのみが出力されるでしょう。選択したリージョンが
-一つのツリー@footnote{現在のサブツリーを選択するには、@kbd{C-c @@}を入力してください。}で
-あった場合、ツリーの見出しがタイトルになります。ツリーの見出しのエントリーが
-@code{EXPORT_FILE_NAME}プロパティを継承、または持っている場合、エクスポートされる
-際には、その名前が使われるでしょう。
-@orgcmd{C-c C-e L,org-export-as-latex-to-buffer} 一時バッファに出力します。ファイル
-を作りません。
+@LaTeX{}ファイル@file{myfile.tex}を出力します。Orgファイルに対して
+@file{myfile.org},、ASCIIファイルは@file{myfile.tex}となるでしょう。そのファイル
+は警告なしに上書きされます。アクティブなリージョン
+@footnote{@code{transient-mark-mode}が有効である必要があります。}があれば、そのリー
+ジョンのみが出力されるでしょう。選択したリージョンが一つのツリー
+@footnote{現在のサブツリーを選択するには、@kbd{C-c @@}を入力してください。}であった
+場合、ツリーの見出しがタイトルになります。ツリーの見出しのエントリーが
+@code{EXPORT_FILE_NAME}プロパティを継承、または持っている場合、エクスポート
+される際には、その名前が使われるでしょう。
+@orgcmd{C-c C-e L,org-export-as-latex-to-buffer} 一時バッファに出力します。フ
+ァイルを作りません。
 @item C-c C-e v l/L
 文書の中で、バッファで表示されている部分だけを出力する。
 @item M-x org-export-region-as-latex
-Org-modeの記法が使われているという前提でリージョンを@LaTeX{}に変換します。これ
-はどのバッファでも起動するグローバルなコマンドです。
+Org-modeの記法が使われているという前提でリージョンを@LaTeX{}に変換します
+。これはどのバッファでも起動するグローバルなコマンドです。
 @item M-x org-replace-region-by-latex
-アクティブなリージョンを(Org-modeの記法が使われている前提で)@LaTeX{}コードに置
-き変えます。@orgcmd{C-c C-e p,org-export-as-pdf} @LaTeX{}に出力し、PDFにも変換します。
-@orgcmd{C-c C-e d,org-export-as-pdf-and-open} @LaTeX{}に出力し、PDFにも変換します。そ
-の際出力されたPDFファイルを開きます。
+アクティブなリージョンを(Org-modeの記法が使われている前提で)@LaTeX{}コー
+ドに置き変えます。@orgcmd{C-c C-e p,org-export-as-pdf} @LaTeX{}に出力し、PDFにも
+変換します。@orgcmd{C-c C-e d,org-export-as-pdf-and-open} @LaTeX{}に出力し、PDF
+にも変換します。その際出力されたPDFファイルを開きます。
 @end table
 
 @cindex （外部出力に用いる）ヘッドラインレベル
@@ -11644,15 +11631,12 @@ There are three classes of @code{:results} header argument.  Only one option
 per class may be supplied per code block.
 
 @itemize @bullet
-@item
-@b{collection} header arguments specify how the results should be collected
+@item @b{collection} header arguments specify how the results should be collected
 from the code block
-@item
-@b{type} header arguments specify what type of result the code block will
+@item @b{type} header arguments specify what type of result the code block will
 return---which has implications for how they will be inserted into the
 Org-mode buffer
-@item
-@b{handling} header arguments specify how the results of evaluating the code
+@item @b{handling} header arguments specify how the results of evaluating the code
 block should be handled.
 @end itemize
 
@@ -11811,13 +11795,11 @@ correctly.
 @subsubheading Further points
 
 @itemize @bullet
-@item
-If @code{:dir} is used in conjunction with @code{:session}, although it will
+@item If @code{:dir} is used in conjunction with @code{:session}, although it will
 determine the starting directory for a new session as expected, no attempt
 is currently made to alter the directory associated with an existing
 session.
-@item
-@code{:dir} should typically not be used to create files during export with
+@item @code{:dir} should typically not be used to create files during export with
 @code{:exports results} or @code{:exports both}. The reason is that, in
 order to retain portability of exported material between machines, during
 export links inserted into the buffer will *not* be expanded against
@@ -12435,33 +12417,25 @@ Org-modeはバッファ中の補完をサポートします。この種類の補
 @item M-@key{TAB}
 ポイント位置での補完
 @itemize @bullet
-@item
-見出しの先頭では、TODOキーワードを補完します。
-@item
-@samp{\\}の後では、エクスポート機能によりサポートされる@TeX{}のシンボルを補完します。
-@item
-@samp{*}の後では、@samp{[[*find this headline]]}のようにリンクを検索できるように、カレ
-ントバッファで見出しを補完します。
-@item
-見出し中の@samp{:}の後では、タグを補完します。タグのリストは@code{org-tag-alist}変数
-(@pxref{Setting tags}より、もしかすると、バッファ中の@samp{#+TAGS}オプションでも設定さ
-れているかもしれません。)から与えられるか、カレントバッファで使われている全
-てのタグから動的に生成されます。
-@item
-見出しの外にある@samp{:}の後では、プロパティキーを補完します。キーのリストは現在
-のバッファで使われている全てのキーから動的に構築されます。
-@item
-@samp{[}の後では、リンクの省略記法を補完します(@pxref{Link abbreviations})。
-@item
-@samp{+}の後では、Org-mode向けのファイル固有の設定としてセットする@samp{TYP_TODO}や
-@samp{OPTIONS}のようなスペシャルキーワードを補完します。オプションキーワードが既
-に補完されているなら、@kbd{M-@key{TAB}}を再び押すことでこのキーワードの設定の例を挿
-入します。
-@item
-@samp{#+STARTUP: }の後の行の中では、STARTUPキーワードを補完します、すなわち、@:は
-この行では正しいキーです。
-@item
-他の場所では、Ispellを用いた辞書補完が行われます。
+@item 見出しの先頭では、TODOキーワードを補完します。
+@item @samp{\\}の後では、エクスポート機能によりサポートされる@TeX{}のシンボルを補完し
+ます。
+@item @samp{*}の後では、@samp{[[*find this headline]]}のようにリンクを検索できるように
+、カレントバッファで見出しを補完します。
+@item 見出し中の@samp{:}の後では、タグを補完します。タグのリストは@code{org-tag-alist}
+変数(@pxref{Setting tags}より、もしかすると、バッファ中の@samp{#+TAGS}オプション
+でも設定されているかもしれません。)から与えられるか、カレントバッファ
+で使われている全てのタグから動的に生成されます。
+@item 見出しの外にある@samp{:}の後では、プロパティキーを補完します。キーのリスト
+は現在のバッファで使われている全てのキーから動的に構築されます。
+@item @samp{[}の後では、リンクの省略記法を補完します(@pxref{Link abbreviations})。
+@item @samp{+}の後では、Org-mode向けのファイル固有の設定としてセットする
+@samp{TYP_TODO}や@samp{OPTIONS}のようなスペシャルキーワードを補完します。オプシ
+ョンキーワードが既に補完されているなら、@kbd{M-@key{TAB}}を再び押すことでこの
+キーワードの設定の例を挿入します。
+@item @samp{#+STARTUP: }の後の行の中では、STARTUPキーワードを補完します、すなわち
+、@:はこの行では正しいキーです。
+@item 他の場所では、Ispellを用いた辞書補完が行われます。
 @end itemize
 @end table
 
@@ -12542,24 +12516,24 @@ Org-modeは評価を含むコードのスニペットを使って作業をする
 
 @table @i
 @item ソースコードブロック
-ソースコードブロックはエクスポート中かブロック中で@kbd{C-c C-c}を押した時に評価
-されます。ここで最も重要な事はコードスニペットを含むOrg-modeのファイルがある
-意味で、実行可能なファイルに似ているということです。それで、あたはそれらに対
-応し正しいソースのみをEmacsにロードすべきです--
+ソースコードブロックはエクスポート中かブロック中で@kbd{C-c C-c}を押した時
+に評価されます。ここで最も重要な事はコードスニペットを含むOrg-modeのフ
+ァイルがある意味で、実行可能なファイルに似ているということです。それで
+、あたはそれらに対応し正しいソースのみをEmacsにロードすべきです--
 あなたがコンピュータ上にインストールしたプログラムのように。
 
-デフォルトのセキュリティー装置を切る変数をカスタマイズする前にあなたがしてい
-ることを確かめてください。
+デフォルトのセキュリティー装置を切る変数をカスタマイズする前にあなたが
+していることを確かめてください。
 
 @defopt org-confirm-babel-evaluate
-t(これがデフォルトです)の時、ユーザはコードブロックを評価する前に毎回確認さ
-れます。nilの時、ユーザは確認されません。関数をセットすると、それは2つの引数
-(言語とコードブロックの本体)を伴って呼ばれ、tを返せば尋ね、nilならば尋ねませ
-ん。
+t(これがデフォルトです)の時、ユーザはコードブロックを評価する前に毎回
+確認されます。nilの時、ユーザは確認されません。関数をセットすると、そ
+れは2つの引数(言語とコードブロックの本体)を伴って呼ばれ、tを返せば尋ね
+、nilならば尋ねません。
 @end defopt
 
-例えば、これは\"ditaa\"コード(安全性は考慮されています)を確認無しで実行する
-方法です:
+例えば、これは\"ditaa\"コード(安全性は考慮されています)を確認無しで実
+行する方法です:
 @example
 (defun my-org-confirm-babel-evaluate (lang body)
   (not (string= lang "ditaa")))  ; don't ask for ditaa
@@ -12567,8 +12541,9 @@ t(これがデフォルトです)の時、ユーザはコードブロックを�
 @end example
 
 @item 以下の@code{shell}と@code{elisp}はリンクしています。
-Org-modeはコードを直接評価できる2つのリンクタイプ(@pxref{External links})を持って
-います。実行されるコードが見えないため、これらのリンクは問題がありえます。
+Org-modeはコードを直接評価できる2つのリンクタイプ(@pxref{External links})を
+持っています。実行されるコードが見えないため、これらのリンクは問題があ
+りえます。
 
 @defopt org-confirm-shell-link-function
 シェルへのリンクを実行するための問い合わせを行う関数。
@@ -12578,8 +12553,8 @@ Emacs Lispへのリンクを実行するための問い合わせを行う関数�
 @end defopt
 
 @item 表中の式
-表中の式(@pxref{The spreadsheet})は@i{calc}インタプリタでも@i{Emacs Lisp}インタプリタでも
-実行できるコードです。
+表中の式(@pxref{The spreadsheet})は@i{calc}インタプリタでも@i{Emacs Lisp}インタプリ
+タでも実行できるコードです。
 @end table
 
 @node Customization, In-buffer settings, Code evaluation security, Miscellaneous
@@ -12612,59 +12587,60 @@ Org-modeはファイル単位で設定を定義するために、バッファ内
 @table @kbd
 @item #+ARCHIVE: %s_done::
 この行はこの行はアジェンダファイルのアーカイブ場所を設定します。次の
-@samp{#+ARCHIVE}行まで、もしくはファイルの末尾までの全ての行で適用されます。最初
-の行はまた、それより前の全てのエントリにも適用されます。関係する変数は
-@code{org-archive-location}です。
+@samp{#+ARCHIVE}行まで、もしくはファイルの末尾までの全ての行で適用されます
+。最初の行はまた、それより前の全てのエントリにも適用されます。関係する
+変数は@code{org-archive-location}です。
 @item #+CATEGORY:
-この行はアジェンダファイルのカテゴリを設定します。カテゴリは次の@samp{#+CATEGORY}
-行か、ファイル末尾までの全ての行で適用されます。また、それより前の全ての行に
-も適用されます。
+この行はアジェンダファイルのカテゴリを設定します。カテゴリは次の
+@samp{#+CATEGORY}行か、ファイル末尾までの全ての行で適用されます。また、それ
+より前の全ての行にも適用されます。
 @item #+COLUMNS: %25ITEM .....
 @cindex プロパティ（COLUMNS）
-カラムビューのデフォルトフォーマットを設定します。@code{COLUMNS}プロパティが適用
-されていない箇所でカラムビューが呼ばれた場合、このフォーマットが適用されます
-。
+カラムビューのデフォルトフォーマットを設定します。@code{COLUMNS}プロパティ
+が適用されていない箇所でカラムビューが呼ばれた場合、このフォーマットが
+適用されます。
 @item #+CONSTANTS: name1=value1 ...
 @vindex org-table-formula-constants
 @vindex org-table-formula
-テーブル式の中で使われる定数として、ファイルローカルな値を設定します。この行
-はローカル変数@code{org-table-formula-constants-local}を設定します。グローバルバ
-ージョンは@code{org-table-formula-constants}です。
+テーブル式の中で使われる定数として、ファイルローカルな値を設定します。
+この行はローカル変数@code{org-table-formula-constants-local}を設定します。
+グローバルバージョンは@code{org-table-formula-constants}です。
 @item #+FILETAGS: :tag1:tag2:tag3:
-ファイル中のエントリトップレベルエントリを含めたエントリが引き継ぐタグを設定
-します。
+ファイル中のエントリトップレベルエントリを含めたエントリが引き継ぐタグ
+を設定します。
 @item #+DRAWERS: NAME1 .....
 @vindex org-drawers
-ファイルローカルな引き出しのセットを設定します。関係するグローバル変数が
-@code{org-drawers}です。
+ファイルローカルな引き出しのセットを設定します。関係するグローバル変数
+が@code{org-drawers}です。
 @item #+LINK:  linkword replace
 @vindex org-link-abbrev-alist
-これらの行初はリンクの省略記法を指定します。@xref{Link abbreviations}. 関係する変
-数は@code{org-link-abbrev-alist}です。
+これらの行初はリンクの省略記法を指定します。@xref{Link abbreviations}. 関係
+する変数は@code{org-link-abbrev-alist}です。
 @item #+PRIORITIES: highest lowest default
 @vindex org-highest-priority
 @vindex org-lowest-priority
 @vindex org-default-priority
-これらの行は優先順位の上限と初期値を設定します。3つ全てが、AからZまでの文字
-か、0から9までの数字のどれかでなくてはいけません。最も高い優先順位は最も低い
-優先順位より低いASCIIの数値を持つ必要があります。
+これらの行は優先順位の上限と初期値を設定します。3つ全てが、AからZまで
+の文字か、0から9までの数字のどれかでなくてはいけません。最も高い優先順
+位は最も低い優先順位より低いASCIIの数値を持つ必要があります。
 @item #+PROPERTY: Property_Name Value
-この行は現在のバッファ中のエントリがデフォルトで引き継ぐ値を設定します。与え
-られたプロパティの値を指定するのに、最も便利です。
+この行は現在のバッファ中のエントリがデフォルトで引き継ぐ値を設定します
+。与えられたプロパティの値を指定するのに、最も便利です。
 @cindex #+SETUPFILE
 @item #+SETUPFILE: file
-この行はバッファ内の設定を持つファイルを定義します。通常は、これは完全に無視
-されます。バッファのオプションの設定行をパースされた時のみ、バッファにそれら
-が含まれていればこのファイルのコンテンツはパースされます。特に、ファイルは内
-部設定の別のOrg-modeファイルとすることができます。カーソルをこの行に置き、
-@kbd{C-c '}を押すことであなたはこのファイルを開くことができます。
+この行はバッファ内の設定を持つファイルを定義します。通常は、これは完全
+に無視されます。バッファのオプションの設定行をパースされた時のみ、バッ
+ファにそれらが含まれていればこのファイルのコンテンツはパースされます。
+特に、ファイルは内部設定の別のOrg-modeファイルとすることができます。カ
+ーソルをこの行に置き、@kbd{C-c '}を押すことであなたはこのファイルを開くこ
+とができます。
 @item #+STARTUP:
 @cindex #+STARTUP:
 この行はOrg-modeのファイルが開かれた時にに使われるオプションを設定します。
 
-最初のオプションセットはアウトラインツリーの初期表示を設定します。グローバル
-なデフォルトの設定に関係する変数は@code{org-startup-folded}で、初期値は@code{t}で、そ
-れはすなわち@code{overview}です。
+最初のオプションセットはアウトラインツリーの初期表示を設定します。グロ
+ーバルなデフォルトの設定に関係する変数は@code{org-startup-folded}で、初期値
+は@code{t}で、それはすなわち@code{overview}です。
 @vindex org-startup-folded
 @cindex @code{overview}, STARTUPキーワード
 @cindex @code{content}, STARTUPキーワード
@@ -12680,16 +12656,16 @@ showeverything   @r{コンテンツの引き出しも表示する}
 @vindex org-startup-indented
 @cindex STARTUPキーワード、@code{indent}
 @cindex STARTUPキーワード、@code{noindent}
-動的な仮想インデントは変数@code{org-startup-idented}@footnote{Emacs22とOrg-mode6.29が必要
-です}によって制御されます。
+動的な仮想インデントは変数@code{org-startup-idented}@footnote{Emacs22とOrg-mode6.29
+が必要です}によって制御されます。
 @example
 indent     @r{start with @code{org-indent-mode} turned on}
 noindent   @r{start with @code{org-indent-mode} turned off}
 @end example
 
 @vindex org-startup-align-all-tables
-それから、開いたファイルの表を整列させつオプションがあります。これはファイル
-がナローされた表を含む時に役に立ちます。関係する変数は
+それから、開いたファイルの表を整列させつオプションがあります。これはフ
+ァイルがナローされた表を含む時に役に立ちます。関係する変数は
 @code{org-startup-align-all-tables}で、デフォルトでは@code{nil}です。
 @cindex STARTUPキーワード、@code{align}
 @cindex STARTUPキーワード、@code{noalign}
@@ -12699,9 +12675,9 @@ noalign    @r{don't align tables on startup}
 @end example
 
 @vindex org-startup-with-inline-images
-ファイルを開いたとき、インライン画像は自動的に表示されます。関係する変数は
-@code{org-startup-with-inine-images}で、ファイルを開いた際の遅延を避けるためにデ
-フォルトでは@code{nil}になっています。
+ファイルを開いたとき、インライン画像は自動的に表示されます。関係する変
+数は@code{org-startup-with-inine-images}で、ファイルを開いた際の遅延を避け
+るためにデフォルトでは@code{nil}になっています。
 @cindex @code{inlineimages}, STARTUP keyword
 @cindex @code{noinlineimages}, STARTUP keyword
 @example
@@ -12712,9 +12688,9 @@ noinlineimages @r{don't show inline images on startup}
 @vindex org-log-done
 @vindex org-log-note-clock-out
 @vindex org-log-repeat
-TODOアイテムの完了と再開のログを取ることとその感覚はこれらのオプションによっ
-て設定することが可能です(変数@code{org-log-done}と@code{org-log-note-clock-out}、
-@code{org-log-repeat}を参照してください)。
+TODOアイテムの完了と再開のログを取ることとその感覚はこれらのオプション
+によって設定することが可能です(変数@code{org-log-done}と
+@code{org-log-note-clock-out}、@code{org-log-repeat}を参照してください)。
 @cindex STARTUPキーワード、@code{logdone}
 @cindex STARTUPキーワード、@code{lognotedone}
 @cindex STARTUPキーワード、@code{nologdone}
@@ -12733,22 +12709,23 @@ TODOアイテムの完了と再開のログを取ることとその感覚はこ�
 @cindex STARTUPキーワード、@code{lognoterefile}
 @cindex STARTUPキーワード、<@code{nologrefile}
 @example
-logdone            @r{アイテムにDONEマークがついたとき、タイムスタンプを記録しま
-す}
-lognotedone        @r{ノートにDONEマークがついたとき、タイムスタンプを記録します
-}
-nologdone          @r{アイテムにDONEマークがついたとき、タイムスタンプを記録しま
-せん}
+logdone            @r{アイテムにDONEマークがついたとき、タイムスタンプを記
+録します}
+lognotedone        @r{ノートにDONEマークがついたとき、タイムスタンプを記録
+します}
+nologdone          @r{アイテムにDONEマークがついたとき、タイムスタンプを記
+録しません}
 logrepeat          @r{アイテムが再開されたとき、時刻を記録します}
 lognoterepeat      @r{アイテムが再開されたとき、ノートをを記録します}
 nologrepeat        @r{アイテムが再開されたとき、記録を行わいません}
 lognoteclock-out   @r{時間測定が終了したとき、ノートを記録します}
 nolognoteclock-out @r{時間測定が終了したとき、ノートを記録しません}
-logreschedule      @r{スケジューリングが変わったとき、タイムスタンプを記録します
-}
+logreschedule      @r{スケジューリングが変わったとき、タイムスタンプを記録
+します}
 lognotereschedule  @r{スケジューリングが変わったとき、ノートを記録します}
 nologreschedule    @r{スケジューリングが変わったとき、記録しません}
-logredeadline      @r{デッドラインが変更されたとき、タイムスタンプを記録します}
+logredeadline      @r{デッドラインが変更されたとき、タイムスタンプを記録し
+ます}
 lognoteredeadline  @r{デッドラインが変更されたとき、ノートを記録します}
 nologredeadline    @r{デッドラインが変更されたとき、記録しません}
 logrefile          @r{リファイル時にタイムスタンプを記録します}
@@ -12757,9 +12734,9 @@ nologrefile        @r{リファイル時に記録しません}
 @end example
 @vindex org-hide-leading-stars
 @vindex org-odd-levels-only
-ここは、インデントされたアウトラインの見出しを隠すオプションです。関係する変
-数は@code{org-hide-leading-stars}と@code{org-odd-levels-only}で、デフォルトの設定は両
-方とも@code{nil}(@code{showstars}と@code{oddeven})を意味します。
+ここは、インデントされたアウトラインの見出しを隠すオプションです。関係
+する変数は@code{org-hide-leading-stars}と@code{org-odd-levels-only}で、デフォル
+トの設定は両方とも@code{nil}(@code{showstars}と@code{oddeven})を意味します。
 @cindex STARTUP keyword、@code{hidestars}
 @cindex STARTUP keyword、@code{showstars}
 @cindex STARTUP keyword、@code{odd}
@@ -12775,8 +12752,8 @@ oddeven    @r{全てのアウトラインレベル}
 @vindex org-put-time-stamp-overlays
 @vindex org-time-stamp-overlay-formats
 タイムスタンプ(@code{org-put-time-stamp-overlays}と
-@code{org-time-stamp-overlay-formats}変数)のカスタムフォーマットオーバレイを切り
-替えます、
+@code{org-time-stamp-overlay-formats}変数)のカスタムフォーマットオーバレイ
+を切り替えます、
 @cindex STARTUP keyword、@code{customtime}
 @example
 customtime @r{カスタマイズされたタイムフォーマットで覆います}@end example
@@ -12806,25 +12783,27 @@ constSI    @r{@file{constants.el} should use the SI unit system}
 @example
 fninline    @r{脚注のインラインを定義します}
 fnnoinline  @r{分割されたセクションでの脚注を定義します}
-fnlocal     @r{最初の言及元の近くの脚注を定義しますが、インラインではありません}
+fnlocal     @r{最初の言及元の近くの脚注を定義しますが、インラインではあり
+ません}
 fnprompt    @r{脚注ラベルのプロンプト}
-fnauto      @r{@code{[fn:1]}のようなラベルを自動的に作成します(これがデフォルトです)}
+fnauto      @r{@code{[fn:1]}のようなラベルを自動的に作成します(これがデフォルト
+です)}
 fnconfirm   @r{編集と確認用の自動ラベルを用意します}
 fnplain     @r{@code{[1]}のようなラベルを自動的に作成します}
 fnadjust    @r{自動的に脚注の番号を振り直し、ソートします}
 nofnadjust  @r{自動的に番号の振り直しとソートを行いません}
 @end example
 @cindex org-hide-block-startup
-開始時にブロックを見えなくするには、これらのキーワードを使います。関連する変
-数は@code{org-hide-block-startup}です。
+開始時にブロックを見えなくするには、これらのキーワードを使います。関連
+する変数は@code{org-hide-block-startup}です。
 @cindex @code{hideblocks}, STARTUP keyword
 @cindex @code{nohideblocks}, STARTUP keyword
 @example
 hideblocks   @r{開始時に全ての開始/終了ブロックを見えなくします}
 nohideblocks @r{開始時にブロックを見えなくしません}@end example
 @cindex org-pretty-entities
-UTF-8の文字の表示は変数@code{org-pretty-entities}と以下のキーワードにより制御され
-ます。
+UTF-8の文字の表示は変数@code{org-pretty-entities}と以下のキーワードにより制
+御されます。
 @cindex @code{entitiespretty}, STARTUPキーワード
 @cindex @code{entitiesplain}, STARTUPキーワード
 @example
@@ -12833,8 +12812,8 @@ entitiesplain   @r{空白にします}
 @end example
 @item #+TAGS:  TAG1(c1) TAG2(c2)
 @vindex org-tag-alist
-これらの行はファイル中の正しいタグと関連する@emph{fast tag selection}キーを指定し
-ます。関連する変数は@code{org-tag-alist}です。
+これらの行はファイル中の正しいタグと関連する@emph{fast tag selection}キーを
+指定します。関連する変数は@code{org-tag-alist}です。
 @item #+TBLFM:
 この行には行上にある表の数式が含まれます。
 @item #+TITLE:, #+AUTHOR:, #+EMAIL:, #+LANGUAGE:, #+TEXT:, #+DATE:,
@@ -12846,8 +12825,8 @@ entitiesplain   @r{空白にします}
 @ref{Export options}を参照してください。
 @item #+TODO:    #+SEQ_TODO:   #+TYP_TODO:
 @vindex org-todo-keywords
-これらの行は現在のファイルでのTODOキーワードとそれらの説明をセットします。関
-連する変数は@code{org-todo-keywords}です。
+これらの行は現在のファイルでのTODOキーワードとそれらの説明をセットしま
+す。関連する変数は@code{org-todo-keywords}です。
 @end table
 
 @node The very busy C-c C-c key, Clean view, In-buffer settings, Miscellaneous
@@ -12862,37 +12841,27 @@ Org-modeでは@kbd{C-c C-c}キーは多くの目的を持っていて、それ�
 でそれが何を意味するかの概要です。
 
 @itemize @minus
-@item
-ツリーの抽出か時間表示からバッファ中のハイライトがあるなら、それらのハイライ
-トを消去します。
-@item
-カーソルが特別な行である@code{#+KEYWORD}行上にあるなら、このトリガはバッファをこ
-の行でスキャンし情報を更新します。
-@item
-カーソルが表の中にあるなら、表を再調整します。もし自動テーブルエディタがオフ
-になっていても、このコマンドは同じように働きます。
-@item
-カーソルが@code{#+TBLFM}行にあるなら、全ての表に式を再適用します。
-@item
-カレントバッファがキャプチャバッファの場合、ノートを閉じファイルします。接頭
-辞引数を付けると相互作用せずにデフォルトの場所にファイルします。
-@item
-カーソルが@code{<<<target>>>}上にあるなら、ラジオターゲットとバッファ中の関係する
-リンクを更新します。
-@item
-カーソルがプロパティ行かプロパティ引き出しの開始か終了行にあるなら、プロパテ
-ィコマンドを提供します。
-@item
-カーソルが脚注参照上にあるなら、関係する定義部に行きます。反対も同様です。
-@item
-カーソルが統計データクッキー上にあるなら、それを更新します。
-@item
-カーソルがチェックボックス付きのプレーンリスト上にあるなら、チェックボックス
-のステータスをトグルします。
-@item
-カーソルが数字付きリスト上にあるなら、順序を整理しなおします。
-@item
-カーソルは。動的なブロックの@code{#+BEGIN}行上にあるなら、ブロックを更新します。
+@item ツリーの抽出か時間表示からバッファ中のハイライトがあるなら、それらのハ
+イライトを消去します。
+@item カーソルが特別な行である@code{#+KEYWORD}行上にあるなら、このトリガはバッフ
+ァをこの行でスキャンし情報を更新します。
+@item カーソルが表の中にあるなら、表を再調整します。もし自動テーブルエディタ
+がオフになっていても、このコマンドは同じように働きます。
+@item カーソルが@code{#+TBLFM}行にあるなら、全ての表に式を再適用します。
+@item カレントバッファがキャプチャバッファの場合、ノートを閉じファイルします
+。接頭辞引数を付けると相互作用せずにデフォルトの場所にファイルします。
+@item カーソルが@code{<<<target>>>}上にあるなら、ラジオターゲットとバッファ中の関
+係するリンクを更新します。
+@item カーソルがプロパティ行かプロパティ引き出しの開始か終了行にあるなら、プ
+ロパティコマンドを提供します。
+@item カーソルが脚注参照上にあるなら、関係する定義部に行きます。反対も同様で
+す。
+@item カーソルが統計データクッキー上にあるなら、それを更新します。
+@item カーソルがチェックボックス付きのプレーンリスト上にあるなら、チェックボ
+ックスのステータスをトグルします。
+@item カーソルが数字付きリスト上にあるなら、順序を整理しなおします。
+@item カーソルは。動的なブロックの@code{#+BEGIN}行上にあるなら、ブロックを更新し
+ます。
 @end itemize
 
 @node Clean view, TTY keys, The very busy C-c C-c key, Miscellaneous
@@ -12949,9 +12918,8 @@ more text                        |          more text
 サポートします:
 
 @enumerate
-@item
-@emph{見出しの下のテキストのインデント}@* 以下のように、あなたは各見出しの下のテ
-キストを見出しと同じ位置にインデントできます。
+@item @emph{見出しの下のテキストのインデント}@* 以下のように、あなたは各見出しの下のテキストを見出しと同じ位置にインデントでき
+ます。
 
 @example
 *** 3rd level
@@ -12959,11 +12927,10 @@ more text                        |          more text
 @end example
 
 @vindex org-adapt-indentation
-Org-modeは段落詰め、行の折り返し、構造の編集、適切なインデントの保存と適合と
-同時にこれをサポートします。
+Org-modeは段落詰め、行の折り返し、構造の編集、適切なインデントの保存と
+適合と同時にこれをサポートします。
 
-@item
-@vindex org-hide-leading-stars
+@item @vindex org-hide-leading-stars
 @emph{Hiding leading stars}@* You can modify the display in such a way that
 all leading stars become invisible.  To do this in a global way, configure
 the variable @code{org-hide-leading-stars} or change this on a per-file
@@ -12987,32 +12954,31 @@ basis with
 
 @noindent
 @vindex org-hide @r{(face)}
-先頭の「*」は本当に空白スペースに置き換えられたわけではなく、それらは文字色
-を背景色にする@code{org-hide}フェイスによって見えているだけです。もしあなたが白か
-黒の背景色を使っていないのであれば、あなたはこのフェイスを必要な効果が得られ
-るようにカスタマイズする必要があるでしょう。別の方法として、このフォントは余
-分な「*」が色を用いて、例えば、白い背景色の上に@code{gray90}を使うことで目に見え
-なくするというものがあります。
+先頭の「*」は本当に空白スペースに置き換えられたわけではなく、それらは
+文字色を背景色にする@code{org-hide}フェイスによって見えているだけです。もし
+あなたが白か黒の背景色を使っていないのであれば、あなたはこのフェイスを
+必要な効果が得られるようにカスタマイズする必要があるでしょう。別の方法
+として、このフォントは余分な「*」が色を用いて、例えば、白い背景色の上
+に@code{gray90}を使うことで目に見えなくするというものがあります。
 
-@item
-@vindex org-odd-levels-only
+@item @vindex org-odd-levels-only
 
-あなたが全ての偶数レベルをスキップし、1、3、5といった奇数レベルのみを使い、
-効果的にある見出しレベルから次@footnote{あなたがプロパティの検索やリファイルの対象の
-ためにレベルを指定する必要がある時、@samp{LEVEL=2}は3つの「*」などにも対応します}
-に行くために2つの「*」を追加するのであれば、物事はより見やすくなります。この
-方法で、私達はこのセクションの冒頭で見られるアウトラインビューを得ます。構造
-の編集とこの慣例を正しく操作するエクスポートコマンドを作成すうために、
-@code{org-odd-levels-only}変数を設定するか、各ファイルに以下のような行を追加しま
-す。
+あなたが全ての偶数レベルをスキップし、1、3、5といった奇数レベルのみを
+使い、効果的にある見出しレベルから次@footnote{あなたがプロパティの検索やリファ
+イルの対象のためにレベルを指定する必要がある時、@samp{LEVEL=2}は3つの「*」
+などにも対応します}に行くために2つの「*」を追加するのであれば、物事は
+より見やすくなります。この方法で、私達はこのセクションの冒頭で見られる
+アウトラインビューを得ます。構造の編集とこの慣例を正しく操作するエクス
+ポートコマンドを作成すうために、@code{org-odd-levels-only}変数を設定するか
+、各ファイルに以下のような行を追加します。
 
 @example
 #+STARTUP: odd
 #+STARTUP: oddeven
 @end example
 
-あなたは@kbd{M-x org-convert-to-odd-levels RET}によりOrg-modeのファイルを1レベル
-1スターから1レベル2スターに変換することができます。逆の操作は。
+あなたは@kbd{M-x org-convert-to-odd-levels RET}によりOrg-modeのファイルを1
+レベル1スターから1レベル2スターに変換することができます。逆の操作は。
 @kbd{M-x org-convert-to-oddeven-levels}です。
 @end enumerate
 
@@ -13361,15 +13327,12 @@ You would activate this new link type in @file{.emacs} with
 @noindent
 Let's go through the file and see what it does.
 @enumerate
-@item
-It does @code{(require 'org)} to make sure that @file{org.el} has been
+@item It does @code{(require 'org)} to make sure that @file{org.el} has been
 loaded.
-@item
-The next line calls @code{org-add-link-type} to define a new link type with
+@item The next line calls @code{org-add-link-type} to define a new link type with
 prefix @samp{man}.  The call also contains the name of a function that will
 be called to follow such a link.
-@item
-@vindex org-store-link-functions
+@item @vindex org-store-link-functions
 The next line adds a function to @code{org-store-link-functions}, in order
 to allow the command @kbd{C-c l} to record a useful link in a buffer
 displaying a man page.
@@ -13520,16 +13483,13 @@ compilation of a C file or processing of a @LaTeX{} file.  There are a
 number of different solutions:
 
 @itemize @bullet
-@item
-The table could be placed in a block comment if that is supported by the
+@item The table could be placed in a block comment if that is supported by the
 language.  For example, in C mode you could wrap the table between @samp{/*}
 and @samp{*/} lines.
-@item
-Sometimes it is possible to put the table after some kind of @i{END}
+@item Sometimes it is possible to put the table after some kind of @i{END}
 statement, for example @samp{\bye} in @TeX{} and @samp{\end@{document@}} in
 @LaTeX{}.
-@item
-You can just comment the table line-by-line whenever you want to process the
+@item You can just comment the table line-by-line whenever you want to process the
 file, and uncomment it whenever you need to edit the table.  This only
 sounds tedious---the command @kbd{M-x orgtbl-toggle-comment} makes this
 comment-toggling very easy, in particular if you bind it to a key.
@@ -13718,14 +13678,10 @@ insert radio list templates in HTML, @LaTeX{} and Texinfo modes by calling
 Here are the differences with radio tables:
 
 @itemize @minus
-@item
-Orgstruct mode must be active.
-@item
-Use the @code{ORGLST} keyword instead of @code{ORGTBL}.
-@item
-The available translation functions for radio lists don't take parameters.
-@item
-@kbd{C-c C-c} will work when pressed on the first item of the list.
+@item Orgstruct mode must be active.
+@item Use the @code{ORGLST} keyword instead of @code{ORGTBL}.
+@item The available translation functions for radio lists don't take parameters.
+@item @kbd{C-c C-c} will work when pressed on the first item of the list.
 @end itemize
 
 Here is a @LaTeX{} example.  Let's say that you have this in your @LaTeX{}
@@ -14300,38 +14256,36 @@ Org-modeはそのディレクトリの中に、@i{MobileOrg}用のファイル�
 いう@emph{pull}の操作機能をもっています。どのように動作するのでしょうか。
 
 @enumerate
-@item
-Org-modeは、@file{mobileorg.org}@footnote{@file{mobileorg.org}はこの操作のあとで空になります。}
-の中で発見した全てのエントリーを移動し、@code{org-mobile-inbox-for-pull}変数によ
-って、ポインターが付けられたファイルに追加します。記録されたエントリと編集さ
-れたイベントは、それぞれInBoxファイル中でトップレベルのエントリーとして位置
-づけられるでしょう。
-@item
-エントリーを移動したあと、Org-modeは、@i{MobileOrg}の中で作られた変更を実行する
-ことを試みます。いくつかの変更は直接、ユーザーの確認無しに適用されます。例で
-は、タグ、TODOの状態、見出しそして本文に対するすべての変更がはっきりと適用さ
-れるというものです。将来の行動のために、フラグを付けられたエントリーは、
-@code{:FLAGGED:}というタグが付けられるでしょう。そのため、再び簡単に見つけること
-ができるでしょう。あるエントリを探したり、変更を適用するさいに問題があれば、
-ポインターのついたエントリーはinboxに残され、エラーメッセージの印がつけられ
-るでしょう。あなたはあとでこれらの案件を手動で解決する必要があります。
-@item
-Org-modeでは、その際にフラグがつけられたすべてのエントリーとともに、アジェン
-ダビューを作成できます。そしてユーザーはそれらの項目をやり終えたり、必要な行
-動を実行するでしょう。@i{MobileOrg}のエントリーにフラグが付けられている間に、ノ
-ートが保存されていたら、そのノートは、カーソルがアジェンダの行の上に置かれた
-時に、エコーエリア上に表示されるでしょう。
+@item Org-modeは、@file{mobileorg.org}@footnote{@file{mobileorg.org}はこの操作のあとで空になり
+ます。}の中で発見した全てのエントリーを移動し、
+@code{org-mobile-inbox-for-pull}変数によって、ポインターが付けられたファイ
+ルに追加します。記録されたエントリと編集されたイベントは、それぞれ
+InBoxファイル中でトップレベルのエントリーとして位置づけられるでしょう。
+@item エントリーを移動したあと、Org-modeは、@i{MobileOrg}の中で作られた変更を実
+行することを試みます。いくつかの変更は直接、ユーザーの確認無しに適用さ
+れます。例では、タグ、TODOの状態、見出しそして本文に対するすべての変更
+がはっきりと適用されるというものです。将来の行動のために、フラグを付け
+られたエントリーは、@code{:FLAGGED:}というタグが付けられるでしょう。そのた
+め、再び簡単に見つけることができるでしょう。あるエントリを探したり、変
+更を適用するさいに問題があれば、ポインターのついたエントリーはinboxに
+残され、エラーメッセージの印がつけられるでしょう。あなたはあとでこれら
+の案件を手動で解決する必要があります。
+@item Org-modeでは、その際にフラグがつけられたすべてのエントリーとともに、ア
+ジェンダビューを作成できます。そしてユーザーはそれらの項目をやり終えた
+り、必要な行動を実行するでしょう。@i{MobileOrg}のエントリーにフラグが付け
+られている間に、ノートが保存されていたら、そのノートは、カーソルがアジ
+ェンダの行の上に置かれた時に、エコーエリア上に表示されるでしょう。
 @table @kbd
 @kindex ?
 @item ?
-そういう特別なアジェンダの中で、@kbd{?}が入力されたときには、別のウインドウでフ
-ラグの付けられたノートの全てが表示され、キルリング上に内容がコピーされます。
-そして、@kbd{? z C-y C-c C-c}を使用することで、フラグのつけられたノートを、その
-エントリーの通常のノートとして保存することができます。@kbd{?}を２度続けて入力す
-ると、（プロパティの中に保存されていた）記録されているフラグの付いたノートと
-一緒に、@code{:FLAGGED:}というタグを削除するよう指示したことになります。この方法
-で、あなたはこのフラグの付けられたエントリーを意図したプロセスで完了させると
-いう指示をすることになります。
+そういう特別なアジェンダの中で、@kbd{?}が入力されたときには、別のウインド
+ウでフラグの付けられたノートの全てが表示され、キルリング上に内容がコピ
+ーされます。そして、@kbd{? z C-y C-c C-c}を使用することで、フラグのつけら
+れたノートを、そのエントリーの通常のノートとして保存することができます
+。@kbd{?}を２度続けて入力すると、（プロパティの中に保存されていた）記録さ
+れているフラグの付いたノートと一緒に、@code{:FLAGGED:}というタグを削除する
+よう指示したことになります。この方法で、あなたはこのフラグの付けられた
+エントリーを意図したプロセスで完了させるという指示をすることになります。
 @end table
 @end enumerate
 
@@ -14409,223 +14363,141 @@ know what I am missing here!
 
 @itemize @bullet
 
-@item
-@i{Russel Adams} came up with the idea for drawers.
-@item
-@i{Thomas Baumann} wrote @file{org-bbdb.el} and @file{org-mhe.el}.
-@item
-@i{Christophe Bataillon} created the great unicorn logo that we use on the
+@item @i{Russel Adams} came up with the idea for drawers.
+@item @i{Thomas Baumann} wrote @file{org-bbdb.el} and @file{org-mhe.el}.
+@item @i{Christophe Bataillon} created the great unicorn logo that we use on the
 Org-mode website.
-@item
-@i{Alex Bochannek} provided a patch for rounding timestamps.
-@item
-@i{Jan Böcker} wrote @file{org-docview.el}.
-@item
-@i{Brad Bozarth} showed how to pull RSS feed data into Org-mode files.
-@item
-@i{Tom Breton} wrote @file{org-choose.el}.
-@item
-@i{Charles Cave}'s suggestion sparked the implementation of templates for
+@item @i{Alex Bochannek} provided a patch for rounding timestamps.
+@item @i{Jan Böcker} wrote @file{org-docview.el}.
+@item @i{Brad Bozarth} showed how to pull RSS feed data into Org-mode files.
+@item @i{Tom Breton} wrote @file{org-choose.el}.
+@item @i{Charles Cave}'s suggestion sparked the implementation of templates for
 Remember, which are now templates for capture.
-@item
-@i{Pavel Chalmoviansky} influenced the agenda treatment of items with
+@item @i{Pavel Chalmoviansky} influenced the agenda treatment of items with
 specified time.
-@item
-@i{Gregory Chernov} patched support for Lisp forms into table calculations
+@item @i{Gregory Chernov} patched support for Lisp forms into table calculations
 and improved XEmacs compatibility, in particular by porting
 @file{nouline.el} to XEmacs.
-@item
-@i{Sacha Chua} suggested copying some linking code from Planner.
-@item
-@i{Baoqiu Cui} contributed the DocBook exporter.
-@item
-@i{Eddward DeVilla} proposed and tested checkbox statistics.  He also came
+@item @i{Sacha Chua} suggested copying some linking code from Planner.
+@item @i{Baoqiu Cui} contributed the DocBook exporter.
+@item @i{Eddward DeVilla} proposed and tested checkbox statistics.  He also came
 up with the idea of properties, and that there should be an API for them.
-@item
-@i{Nick Dokos} tracked down several nasty bugs.
-@item
-@i{Kees Dullemond} used to edit projects lists directly in HTML and so
+@item @i{Nick Dokos} tracked down several nasty bugs.
+@item @i{Kees Dullemond} used to edit projects lists directly in HTML and so
 inspired some of the early development, including HTML export.  He also
 asked for a way to narrow wide table columns.
-@item
-@i{Thomas S. Dye} contributed documentation on Worg and helped integrating
+@item @i{Thomas S. Dye} contributed documentation on Worg and helped integrating
 the Org-Babel documentation into the manual.
-@item
-@i{Christian Egli} converted the documentation into Texinfo format, inspired
+@item @i{Christian Egli} converted the documentation into Texinfo format, inspired
 the agenda, patched CSS formatting into the HTML exporter, and wrote
 @file{org-taskjuggler.el}.
-@item
-@i{David Emery} provided a patch for custom CSS support in exported HTML
+@item @i{David Emery} provided a patch for custom CSS support in exported HTML
 agendas.
-@item
-@i{Nic Ferrier} contributed mailcap and XOXO support.
-@item
-@i{Miguel A. Figueroa-Villanueva} implemented hierarchical checkboxes.
-@item
-@i{John Foerch} figured out how to make incremental search show context
+@item @i{Nic Ferrier} contributed mailcap and XOXO support.
+@item @i{Miguel A. Figueroa-Villanueva} implemented hierarchical checkboxes.
+@item @i{John Foerch} figured out how to make incremental search show context
 around a match in a hidden outline tree.
-@item
-@i{Raimar Finken} wrote @file{org-git-line.el}.
-@item
-@i{Mikael Fornius} works as a mailing list moderator.
-@item
-@i{Austin Frank} works as a mailing list moderator.
-@item
-@i{Eric Fraga} drove the development of BEAMER export with ideas and
+@item @i{Raimar Finken} wrote @file{org-git-line.el}.
+@item @i{Mikael Fornius} works as a mailing list moderator.
+@item @i{Austin Frank} works as a mailing list moderator.
+@item @i{Eric Fraga} drove the development of BEAMER export with ideas and
 testing.
-@item
-@i{Barry Gidden} did proofreading the manual in preparation for the book
+@item @i{Barry Gidden} did proofreading the manual in preparation for the book
 publication through Network Theory Ltd.
-@item
-@i{Niels Giesen} had the idea to automatically archive DONE trees.
-@item
-@i{Nicolas Goaziou} rewrote much of the plain list code.
-@item
-@i{Kai Grossjohann} pointed out key-binding conflicts with other packages.
-@item
-@i{Brian Gough} of Network Theory Ltd publishes the Org mode manual as a
+@item @i{Niels Giesen} had the idea to automatically archive DONE trees.
+@item @i{Nicolas Goaziou} rewrote much of the plain list code.
+@item @i{Kai Grossjohann} pointed out key-binding conflicts with other packages.
+@item @i{Brian Gough} of Network Theory Ltd publishes the Org mode manual as a
 book.
-@item
-@i{Bernt Hansen} has driven much of the support for auto-repeating tasks,
+@item @i{Bernt Hansen} has driven much of the support for auto-repeating tasks,
 task state change logging, and the clocktable.  His clear explanations have
 been critical when we started to adopt the Git version control system.
-@item
-@i{Manuel Hermenegildo} has contributed various ideas, small fixes and
+@item @i{Manuel Hermenegildo} has contributed various ideas, small fixes and
 patches.
-@item
-@i{Phil Jackson} wrote @file{org-irc.el}.
-@item
-@i{Scott Jaderholm} proposed footnotes, control over whitespace between
+@item @i{Phil Jackson} wrote @file{org-irc.el}.
+@item @i{Scott Jaderholm} proposed footnotes, control over whitespace between
 folded entries, and column view for properties.
-@item
-@i{Matt Jones} wrote @i{MobileOrg Android}.
-@item
-@i{Tokuya Kameshima} wrote @file{org-wl.el} and @file{org-mew.el}.
-@item
-@i{Shidai Liu} ("Leo") asked for embedded @LaTeX{} and tested it.  He also
+@item @i{Matt Jones} wrote @i{MobileOrg Android}.
+@item @i{Tokuya Kameshima} wrote @file{org-wl.el} and @file{org-mew.el}.
+@item @i{Shidai Liu} ("Leo") asked for embedded @LaTeX{} and tested it.  He also
 provided frequent feedback and some patches.
-@item
-@i{Matt Lundin} has proposed last-row references for table formulas and
+@item @i{Matt Lundin} has proposed last-row references for table formulas and
 named invisible anchors.  He has also worked a lot on the FAQ.
-@item
-@i{David Maus} wrote @file{org-atom.el}, maintains the issues file for Org,
+@item @i{David Maus} wrote @file{org-atom.el}, maintains the issues file for Org,
 and is a prolific contributor on the mailing list with competent replies,
 small fixes and patches.
-@item
-@i{Jason F. McBrayer} suggested agenda export to CSV format.
-@item
-@i{Max Mikhanosha} came up with the idea of refiling.
-@item
-@i{Dmitri Minaev} sent a patch to set priority limits on a per-file basis.
-@item
-@i{Stefan Monnier} provided a patch to keep the Emacs-Lisp compiler happy.
-@item
-@i{Richard Moreland} wrote @i{MobileOrg} for the iPhone.
-@item
-@i{Rick Moynihan} proposed allowing multiple TODO sequences in a file and
+@item @i{Jason F. McBrayer} suggested agenda export to CSV format.
+@item @i{Max Mikhanosha} came up with the idea of refiling.
+@item @i{Dmitri Minaev} sent a patch to set priority limits on a per-file basis.
+@item @i{Stefan Monnier} provided a patch to keep the Emacs-Lisp compiler happy.
+@item @i{Richard Moreland} wrote @i{MobileOrg} for the iPhone.
+@item @i{Rick Moynihan} proposed allowing multiple TODO sequences in a file and
 being able to quickly restrict the agenda to a subtree.
-@item
-@i{Todd Neal} provided patches for links to Info files and Elisp forms.
-@item
-@i{Greg Newman} refreshed the unicorn logo into its current form.
-@item
-@i{Tim O'Callaghan} suggested in-file links, search options for general file
+@item @i{Todd Neal} provided patches for links to Info files and Elisp forms.
+@item @i{Greg Newman} refreshed the unicorn logo into its current form.
+@item @i{Tim O'Callaghan} suggested in-file links, search options for general file
 links, and TAGS.
-@item
-@i{Osamu Okano} wrote @file{orgcard2ref.pl}, a Perl program to create a text
+@item @i{Osamu Okano} wrote @file{orgcard2ref.pl}, a Perl program to create a text
 version of the reference card.
-@item
-@i{Takeshi Okano} translated the manual and David O'Toole's tutorial into
+@item @i{Takeshi Okano} translated the manual and David O'Toole's tutorial into
 Japanese.
-@item
-@i{Oliver Oppitz} suggested multi-state TODO items.
-@item
-@i{Scott Otterson} sparked the introduction of descriptive text for links,
+@item @i{Oliver Oppitz} suggested multi-state TODO items.
+@item @i{Scott Otterson} sparked the introduction of descriptive text for links,
 among other things.
-@item
-@i{Pete Phillips} helped during the development of the TAGS feature, and
+@item @i{Pete Phillips} helped during the development of the TAGS feature, and
 provided frequent feedback.
-@item
-@i{Martin Pohlack} provided the code snippet to bundle character insertion
+@item @i{Martin Pohlack} provided the code snippet to bundle character insertion
 into bundles of 20 for undo.
-@item
-@i{T.V. Raman} reported bugs and suggested improvements.
-@item
-@i{Matthias Rempe} (Oelde) provided ideas, Windows support, and quality
+@item @i{T.V. Raman} reported bugs and suggested improvements.
+@item @i{Matthias Rempe} (Oelde) provided ideas, Windows support, and quality
 control.
-@item
-@i{Paul Rivier} provided the basic implementation of named footnotes.  He
+@item @i{Paul Rivier} provided the basic implementation of named footnotes.  He
 also acted as mailing list moderator for some time.
-@item
-@i{Kevin Rogers} contributed code to access VM files on remote hosts.
-@item
-@i{Frank Ruell} solved the mystery of the @code{keymapp nil} bug, a conflict
+@item @i{Kevin Rogers} contributed code to access VM files on remote hosts.
+@item @i{Frank Ruell} solved the mystery of the @code{keymapp nil} bug, a conflict
 with @file{allout.el}.
-@item
-@i{Jason Riedy} generalized the send-receive mechanism for Orgtbl tables
+@item @i{Jason Riedy} generalized the send-receive mechanism for Orgtbl tables
 with extensive patches.
-@item
-@i{Philip Rooke} created the Org reference card, provided lots of feedback,
+@item @i{Philip Rooke} created the Org reference card, provided lots of feedback,
 developed and applied standards to the Org documentation.
-@item
-@i{Christian Schlauer} proposed angular brackets around links, among other
+@item @i{Christian Schlauer} proposed angular brackets around links, among other
 things.
-@item
-@i{Paul Sexton} wrote @file{org-ctags.el}.
-@item
-Linking to VM/BBDB/Gnus was first inspired by @i{Tom Shannon}'s
+@item @i{Paul Sexton} wrote @file{org-ctags.el}.
+@item Linking to VM/BBDB/Gnus was first inspired by @i{Tom Shannon}'s
 @file{organizer-mode.el}.
-@item
-@i{Ilya Shlyakhter} proposed the Archive Sibling, line numbering in literal
+@item @i{Ilya Shlyakhter} proposed the Archive Sibling, line numbering in literal
 examples, and remote highlighting for referenced code lines.
-@item
-@i{Stathis Sideris} wrote the @file{ditaa.jar} ASCII to PNG converter that
+@item @i{Stathis Sideris} wrote the @file{ditaa.jar} ASCII to PNG converter that
 is now packaged into Org's @file{contrib} directory.
-@item
-@i{Daniel Sinder} came up with the idea of internal archiving by locking
+@item @i{Daniel Sinder} came up with the idea of internal archiving by locking
 subtrees.
-@item
-@i{Dale Smith} proposed link abbreviations.
-@item
-@i{James TD Smith} has contributed a large number of patches for useful
+@item @i{Dale Smith} proposed link abbreviations.
+@item @i{James TD Smith} has contributed a large number of patches for useful
 tweaks and features.
-@item
-@i{Adam Spiers} asked for global linking commands, inspired the link
+@item @i{Adam Spiers} asked for global linking commands, inspired the link
 extension system, added support for mairix, and proposed the mapping API.
-@item
-@i{Ulf Stegemann} created the table to translate special symbols to HTML,
+@item @i{Ulf Stegemann} created the table to translate special symbols to HTML,
 LaTeX, UTF-8, Latin-1 and ASCII.
-@item
-@i{Andy Stewart} contributed code to @file{org-w3m.el}, to copy HTML content
+@item @i{Andy Stewart} contributed code to @file{org-w3m.el}, to copy HTML content
 with links transformation to Org syntax.
-@item
-@i{David O'Toole} wrote @file{org-publish.el} and drafted the manual chapter
+@item @i{David O'Toole} wrote @file{org-publish.el} and drafted the manual chapter
 about publishing.
-@item
-@i{Sebastien Vauban} reported many issues with LaTeX and BEAMER export and
+@item @i{Sebastien Vauban} reported many issues with LaTeX and BEAMER export and
 enabled source code highlighling in Gnus.
-@item
-@i{Stefan Vollmar} organized a video-recorded talk at the
+@item @i{Stefan Vollmar} organized a video-recorded talk at the
 Max-Planck-Institute for Neurology.  He also inspired the creation of a
 concept index for HTML export.
-@item
-@i{J@"urgen Vollmer} contributed code generating the table of contents in
+@item @i{J@"urgen Vollmer} contributed code generating the table of contents in
 HTML output.
-@item
-@i{Samuel Wales} has provided important feedback and bug reports.
-@item
-@i{Chris Wallace} provided a patch implementing the @samp{QUOTE} keyword.
-@item
-@i{David Wainberg} suggested archiving, and improvements to the linking
+@item @i{Samuel Wales} has provided important feedback and bug reports.
+@item @i{Chris Wallace} provided a patch implementing the @samp{QUOTE} keyword.
+@item @i{David Wainberg} suggested archiving, and improvements to the linking
 system.
-@item
-@i{Carsten Wimmer} suggested some changes and helped fix a bug in linking to
+@item @i{Carsten Wimmer} suggested some changes and helped fix a bug in linking to
 Gnus.
-@item
-@i{Roland Winkler} requested additional key bindings to make Org work on a
+@item @i{Roland Winkler} requested additional key bindings to make Org work on a
 tty.
-@item
-@i{Piotr Zielinski} wrote @file{org-mouse.el}, proposed agenda blocks and
+@item @i{Piotr Zielinski} wrote @file{org-mouse.el}, proposed agenda blocks and
 contributed various ideas and code snippets.
 @end itemize
 
@@ -14662,10 +14534,8 @@ mentioned in the manual.  For a more complete list, use @kbd{M-x org-customize @
 @c Local variables:
 @c fill-column: 77
 @c indent-tabs-mode: nil
-@c paragraph-start:    "
-\\|^@[a-zA-Z]*[ \n]\\|^@x?org\\(key\\|cmd\\)\\|\f\\|[ 	]*$"
-@c paragraph-separate: "\\|^@[a-zA-Z]*[ \n]\\|^@x?org\\(key\\|cmd\\)\\|[ 
-	\f]*$"
+@c paragraph-start:    "\\|^@[a-zA-Z]*[ \n]\\|^@x?org\\(key\\|cmd\\)\\|\f\\|[ 	]*$"
+@c paragraph-separate: "\\|^@[a-zA-Z]*[ \n]\\|^@x?org\\(key\\|cmd\\)\\|[ 	\f]*$"
 @c End:
 
 
