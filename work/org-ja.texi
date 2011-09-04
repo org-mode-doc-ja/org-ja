@@ -5005,16 +5005,17 @@ features based on them.  For more information see @ref{Using the property API}.
 
 @node Date and Times, Capture - Refile - Archive, Properties and Columns, Top
 @chapter 日付と時刻
-@cindex dates
-@cindex times
+@cindex 日付
+@cindex 時刻
 @cindex タイムスタンプ
-@cindex date stamp
+@cindex 日付スタンプ
 
-To assist project planning, TODO items can be labeled with a date and/or a
-time.  The specially formatted string carrying the date and time information
-is called a @emph{timestamp} in Org-mode.  This may be a little confusing
-because timestamp is often used as indicating when something was created or
-last changed.  However, in Org-mode this term is used in a much wider sense.
+プロジェクトのプランニングを補助するため、TODOアイテムは日付または時刻でラベ
+リングすることができます。このような形でフォーマットされた日付および時刻の情
+報を含む文字列はOrg-modeでは@emph{タイムスタンプ}と呼ばれています。一般的な用法で
+は、タイムスタンプは何かを作成したときや最後に変更したときの記録を示しますの
+で、若干紛らわしいかもしれませんが、Org-modeではタイムスタンプという用語をよ
+り広い意味で用います。
 
 @menu
 * Timestamps::               ツリーに時間の割り当て
@@ -5028,96 +5029,100 @@ last changed.  However, in Org-mode this term is used in a much wider sense.
 
 
 @node Timestamps, Creating timestamps, Date and Times, Date and Times
-@section Timestamps, deadlines, and scheduling
-@cindex timestamps
-@cindex ranges, time
-@cindex date stamps
-@cindex deadlines
-@cindex scheduling
+@section タイムスタンプ、デッドラインおよびスケジューリング
+@cindex タイムスタンプ
+@cindex 時間間隔、時刻
+@cindex 日付スタンプ
+@cindex デッドライン
+@cindex スケジューリング
 
-A timestamp is a specification of a date (possibly with a time or a range of
-times) in a special format, either @samp{<2003-09-16 Tue>} or
-@samp{<2003-09-16 Tue 09:39>} or @samp{<2003-09-16 Tue 12:00-12:30>}@footnote{This is inspired by the standard ISO 8601 date/time format.  To use an alternative format, see @ref{Custom time format}.}.  A
-timestamp can appear anywhere in the headline or body of an Org tree entry.
-Its presence causes entries to be shown on specific dates in the agenda
-(@pxref{Weekly/daily agenda}).  We distinguish:
+タイムスタンプは、例えば@samp{<2003-09-16 Tue>}、@samp{<2003-09-16 Tue 09:39>}、
+@samp{<2003-09-16 Tue 12:00-12:30>}といった独自形式での日付（場合によっては時刻お
+よび時間間隔を含む）の指定方法です@footnote{この表記は標準的なISO8601の日付、時刻フォ
+ーマットをもとに考案されています。代替フォーマットの使用については、
+@ref{Custom time format}を参照してください。}。タイムスタンプはOrgツリー構造の見
+出し、本文のいずれにも挿入できます。タイムスタンプを指定することにより、指定
+された日付のアジェンダ(@pxref{Weekly/daily agenda})にそのエントリーが表示されます
+。その際には以下の区別が行われます。
 
 @table @var
-@item Plain timestamp; Event; Appointment
+@item プレーンなタイムスタンプ、イベント、アポイント
 @cindex タイムスタンプ
-A simple timestamp just assigns a date/time to an item.  This is just like
-writing down an appointment or event in a paper agenda.  In the timeline and
-agenda displays, the headline of an entry associated with a plain timestamp
-will be shown exactly on that date.
+項目に対して単一の日付または時刻を割り当てるシンプルなタイムスタンプで
+す。紙の予定表に予定あるいはイベントを記入するのとほぼ同じ感覚です。タ
+イムラインおよびアジェンダを表示すると、プレーンなタイムスタンプが指定
+されたエントリーの見出しはまさにその指定された日付に表示されます。
 
 @example
-* Meet Peter at the movies <2006-11-01 Wed 19:15>
-* Discussion on climate change <2006-11-02 Thu 20:00-22:00>
+* ピーターと映画を見に行く<2006-11-01 Wed 19:15>
+* 気候変動についてのディスカッション<2006-11-02 Thu 20:00-22:00>
 @end example
 
-@item Timestamp with repeater interval
-@cindex timestamp, with repeater interval
-A timestamp may contain a @emph{repeater interval}, indicating that it
-applies not only on the given date, but again and again after a certain
-interval of N days (d), weeks (w), months (m), or years (y).  The following
-will show up in the agenda every Wednesday:
+@item リピート間隔を指定したタイムスタンプ
+@cindex タイムスタンプ、リピート間隔
+タイムスタンプには@emph{リピート間隔}を含めることができます。すなわち単一の
+日時だけでなく、N日(d)、N週間(w)、Nヶ月(m)あるいはN年(y)といった一定の
+間隔で繰り返すようなケースに対応しています。例えば、毎週水曜日のアジェ
+ンダに表示する場合は以下のようになります。
 
 @example
-* Pick up Sam at school <2007-05-16 Wed 12:30 +1w>
+* 学校までサムを迎えに行く<2007-05-16 Wed 12:30 +1w>
 @end example
 
-@item Diary-style sexp entries
-For more complex date specifications, Org-mode supports using the special
-sexp diary entries implemented in the Emacs calendar/diary package.  For
-example
+@item ダイアリー形式のS式項目
+より複雑な日付の指定方法として、Org-modeではEmacsのcalendarまたはdiary
+パッケージで実装されているS式のダイアリー項目を使用することができます
+。例えば以下のような形式です。
 
 @example
-* The nerd meeting on every 2nd Thursday of the month
+* 毎月第2木曜日のオタクの集まり
   <%%(diary-float t 4 2)>
 @end example
 
-@item Time/Date range
-@cindex timerange
-@cindex date range
-Two timestamps connected by @samp{--} denote a range.  The headline will be
-shown on the first and last day of the range, and on any dates that are
-displayed and fall in the range.  Here is an example:
+@item 日付または時刻の間隔
+@cindex 時間間隔
+@cindex 日付の間隔
+2つのタイムスタンプを@samp{--}でつなげることにより、時間間隔を表現できます
+。時間間隔の指定されたヘッドラインは、間隔の始めと終わりの日、およびそ
+の間の現在表示されている日付の項目に表示されます。以下のような形です。
 
 @example
-** Meeting in Amsterdam
+** アムステルダムでのミーティング
    <2004-08-23 Mon>--<2004-08-26 Thu>
 @end example
 
-@item Inactive timestamp
-@cindex timestamp, inactive
-@cindex inactive timestamp
-Just like a plain timestamp, but with square brackets instead of angular
-ones.  These timestamps are inactive in the sense that they do @emph{not}
-trigger an entry to show up in the agenda.
+@item アクティブでないタイムスタンプ
+@cindex タイムスタンプ、アクティブでない
+@cindex アクティブでないタイムスタンプ
+プレーンなタイムスタンプと同様ですが、<>ではなく[]で囲むことによりアク
+ティブでないタイムスタンプとなります。このようなタイムスタンプが指定さ
+れたエントリーは、アジェンダに表示@emph{されません}。
 
 @example
-* Gillian comes late for the fifth time [2006-11-01 Wed]
+* ジリアンが5度目の遅刻　[2006-11-01 Wed]
 @end example
 
 @end table
 
 @node Creating timestamps, Deadlines and scheduling, Timestamps, Date and Times
 @section Creating timestamps
-@cindex creating timestamps
-@cindex timestamps, creating
+@cindex タイムスタンプの作成
+@cindex タイムスタンプ、作成
 
-For Org-mode to recognize timestamps, they need to be in the specific
-format.  All commands listed below produce timestamps in the correct format.
+Org-modeがタイムスタンプを認識するためには、特定のフォーマットを用いる必要が
+あります。以下のコマンドのいずれを用いても正しいフォーマットでタイムスタンプ
+を生成することができます。
 
 @table @kbd
 @c
 @c
-@orgcmd{C-c .,org-time-stamp} Prompt for a date and insert a corresponding
-timestamp.  When the cursor is at an existing timestamp in the buffer, the
-command is used to modify this timestamp instead of inserting a new one.
-When this command is used twice in succession, a time range is inserted.
-@orgcmd{C-c !,org-time-stamp-inactive} Like @kbd{C-c .}, but insert an
-inactive timestamp that will not cause an agenda entry.
+@orgcmd{C-c .,org-time-stamp}日付を入力して、それに対応するタイムスタンプを挿
+入します。既にバッファ内に存在するタイムスタンプにカーソルが置かれてい
+る場合は、このコマンドは新たなタイムスタンプを挿入する代わりに、既にあ
+るタイムスタンプを変更します。このコマンドを2回連続で使用すると、時間
+間隔を指定することができます。@orgcmd{C-c !,org-time-stamp-inactive}コマンド
+@kbd{C-c .}と同様ですが、アクティブでない（アジェンダのエントリーに反映さ
+れない）タイムスタンプを生成します。
 @kindex C-u C-c .
 @kindex C-u C-c !
 @item C-u C-c .
@@ -5129,30 +5134,32 @@ inactive timestamp that will not cause an agenda entry.
 @c
 @c
 @c
-Like @kbd{C-c .} and @kbd{C-c !}, but use the alternative format which
-contains date and time.  The default time can be rounded to multiples of 5
-minutes, see the option @code{org-time-stamp-rounding-minutes}.  @orgcmd{C-c <,org-date-from-calendar} Insert a timestamp corresponding to the cursor
-date in the Calendar.  @orgcmd{C-c >,org-goto-calendar} Access the Emacs
-calendar for the current date.  If there is a timestamp in the current line,
-go to the corresponding date instead.  @orgcmd{C-c C-o,org-open-at-point}
-Access the agenda for the date given by the timestamp or -range at point
-(@pxref{Weekly/daily agenda}).
-@orgcmdkkcc{S-@key{left},S-@key{right},org-timestamp-down-day,org-timestamp-up-day}
-Change date at cursor by one day.  These key bindings conflict with
-shift-selection and related modes (@pxref{Conflicts}).
-@orgcmdkkcc{S-@key{up},S-@key{down},org-timestamp-up,org-timestamp-down-down}
-Change the item under the cursor in a timestamp.  The cursor can be on a
-year, month, day, hour or minute.  When the timestamp contains a time range
-like @samp{15:30-16:30}, modifying the first time will also shift the
-second, shifting the time block with constant length.  To change the length,
-modify the second time.  Note that if the cursor is in a headline and not at
-a timestamp, these same keys modify the priority of an item.
-(@pxref{Priorities}). The key bindings also conflict with shift-selection
-and related modes (@pxref{Conflicts}).  @orgcmd{C-c C-y,org-evaluate-time-range}
-@cindex evaluate time range
-Evaluate a time range by computing the difference between start and end.
-With a prefix argument, insert result after the time range (in a table: into
-the following column).
+@kbd{C-c .}および@kbd{C-c !}と同様ですが、日付と時刻を含む代替フォーマットを使
+用します。標準では、時刻は5分間隔で丸められます。
+@code{org-time-stamp-rounding-minutes}のオプションを参照して下さい。
+@orgcmd{C-c <,org-date-from-calendar}カレンダーのカーソルに対応したタイムスタ
+ンプを挿入します。@orgcmd{C-c >,org-goto-calendar}現在時刻のEmacカレンダーに
+アクセスします。現在の行に既にタイムスタンプが存在する場合は、それに対
+応する日付にアクセスします。@orgcmd{C-c C-o,org-open-at-point}タイムスタンプ
+および時間間隔で指定された日付でアジェンダにアクセスします
+(@pxref{Weekly/daily agenda})。
+@orgcmdkkcc{S-@key{left},S-@key{right},org-timestamp-down-day,org-timestamp-up-day}カーソ
+ル一の日付を1日変更します。このキーバインドはシフト選択およびそれに関
+連するモードと衝突します(@pxref{Conflicts})。
+@orgcmdkkcc{S-@key{up},S-@key{down},org-timestamp-up,org-timestamp-down-down}カーソルのあ
+るタイムスタンプの項目を変更します。カーソルが年、月、日、時間あるいは
+分の上に置かれている場合に使用できます。例えば、タイムスタンプが
+@samp{15:30-16:30}のように時間間隔を含む場合、左の時刻を変更すると自動的に
+右の時刻も変更され、間隔は一定の長さに保たれます。間隔の長さを変更する
+には、右の時刻を変更して下さい。ただし、カーソルがタイムスタンプではな
+く見出し上にある時には、同じキー操作により項目の優先度が変更されますの
+で気をつけて下さい(@pxref{Priorities})。このキーバインドはシフト選択および関
+連するモードとも衝突します(@pxref{Conflicts})。
+@orgcmd{C-c C-y,org-evaluate-time-range}
+@cindex 時間間隔の評価
+開始日時と終了日時の差を計算することにより、時間間隔を計算します。前置
+引数を指定することにより、計算結果をタイムスタンプの後に挿入できます（
+テーブルの中では隣の列に挿入されます）。
 @end table
 
 
@@ -5163,27 +5170,28 @@ the following column).
 
 @node The date/time prompt, Custom time format, Creating timestamps, Creating timestamps
 @subsection The date/time prompt
-@cindex date, reading in minibuffer
-@cindex time, reading in minibuffer
+@cindex 日付、ミニバッファでの読み込み
+@cindex 時刻、ミニバッファでの読み込み
 
 @vindex org-read-date-prefer-future
-When Org-mode prompts for a date/time, the default is shown in default
-date/time format, and the prompt therefore seems to ask for a specific
-format.  But it will in fact accept any string containing some date and/or
-time information, and it is really smart about interpreting your input.  You
-can, for example, use @kbd{C-y} to paste a (possibly multi-line) string
-copied from an email message.  Org-mode will find whatever information is in
-there and derive anything you have not specified from the @emph{default date and time}.  The default is usually the current date and time, but when
-modifying an existing timestamp, or when entering the second stamp of a
-range, it is taken from the stamp in the buffer.  When filling in
-information, Org-mode assumes that most of the time you will want to enter a
-date in the future: if you omit the month/year and the given day/month is
-@i{before} today, it will assume that you mean a future date@footnote{See the variable @code{org-read-date-prefer-future}.  You may set that variable to the symbol @code{time} to even make a time before now shift the date to tomorrow.}.  If the date has been automatically shifted into the future, the
-time prompt will show this with @samp{(=>F).}
+Org-modeが日付または時刻をプロンプトに表示するとき、標準では標準フォーマット
+による形式が表示されるため、そのフォーマットで入力することが必須だと勘違いし
+そうになります。ところが、実際には日付または時刻の情報を含む任意の文字列を入
+力することができ、Org-modeはかなり利口に入力された時間情報を解釈します。例え
+ば、@kbd{C-y}により電子メールの文面からコピーした文字列（複数行でも可）を挿入す
+ることができます。Org-modeは文面の中の時間情報を見つけ出し、そこで指定されて
+いない情報は@emph{デフォルトの日付時刻}を用います。デフォルトは通常は現在の日付お
+よび時刻ですが、既にあるタイムスタンプを変更する場合や、時間間隔の2つ目の項
+目を入力する場合には、バッファ内のタイムスタンプから情報が取得されます。情報
+を解釈する際に、Org-modeは多くの場合では入力したい時間が未来の時間であると推
+測します。例えば年月の情報を省略して、今日@i{より前}の時刻を指定しようとすると、
+Org-modeは未来の時刻を意図しているものと推測します
+@footnote{@code{org-read-date-prefer-future}の変数を参照。この変数@code{time}に該当する変数を変
+更することにより、現在時刻より前の時刻を明日にシフトすることも可能です。}。
+日付が自動的に未来にシフトされた場合、プロンプトには@samp{(=>F)}が表示されます。
 
-For example, let's assume that today is @b{June 13, 2006}.  Here is how
-various inputs will be interpreted, the items filled in by Org-mode are in
-@b{bold}.
+例えば、今日が@b{2006年6月13日}であるとしたとき、以下の左ような入力は右のように
+解釈されます。Org-modeにより推定された部分を@b{太字}で示します。
 
 @example
 3-2-5         @result{} 2003-02-05
@@ -5191,57 +5199,58 @@ various inputs will be interpreted, the items filled in by Org-mode are in
 14            @result{} @b{2006}-@b{06}-14
 12            @result{} @b{2006}-@b{07}-12
 2/5           @result{} @b{2007}-02-05
-Fri           @result{} nearest Friday (default date or later)
+Fri           @result{} 直近の金曜日(基準日かそれより後)
 sep 15        @result{} @b{2006}-09-15
 feb 15        @result{} @b{2007}-02-15
 sep 12 9      @result{} 2009-09-12
 12:45         @result{} @b{2006}-@b{06}-@b{13} 12:45
 22 sept 0:34  @result{} @b{2006}-09-22 0:34
-w4            @result{} ISO week for of the current year @b{2006}
-2012 w4 fri   @result{} Friday of ISO week 4 in 2012
-2012-w04-5    @result{} Same as above
+w4            @result{} 現在の年（@b{2006}年）のISO週番号
+2012 w4 fri   @result{} 2012年のISO4週目の火曜日の日付
+2012-w04-5    @result{} 上と同様
 @end example
 
-Furthermore you can specify a relative date by giving, as the @emph{first}
-thing in the input: a plus/minus sign, a number and a letter ([dwmy]) to
-indicate change in days, weeks, months, or years.  With a single plus or
-minus, the date is always relative to today.  With a double plus or minus,
-it is relative to the default date.  If instead of a single letter, you use
-the abbreviation of day name, the date will be the Nth such day.  e.g.@:
+さらに、相対的な日付を入力するための方法として、入力の@emph{最初に}プラスまたはマ
+イナス記号、数値および文字([dwmy])により日、週、月あるいは年の変化を指定する
+方法があります。単一のプラス/マイナスを入力すると、常に今日に対する相対的な
+日付が指定されます。2つのプラスまたはマイナスが入力されると、標準の日付に対
+する相対値となります。一文字の代わりに時間に関する省略文字列を指定すると、N
+番目の該当する日が指定されます。以下に例を示します。@:
 
 @example
-+0            @result{} today
-.             @result{} today
-+4d           @result{} four days from today
-+4            @result{} same as above
-+2w           @result{} two weeks from today
-++5           @result{} five days from default date
-+2tue         @result{} second Tuesday from now.
++0            @result{} 今日
+.             @result{} 今日
++4d           @result{} 今日から4日後
++4            @result{} 上と同様
++2w           @result{} 今日から2週間後
+++5           @result{} 標準日時から5日後
++2tue         @result{} 今日から数えて2回目の火曜日
 @end example
 
 @vindex parse-time-months
 @vindex parse-time-weekdays
-The function understands English month and weekday abbreviations.  If you
-want to use unabbreviated names and/or other languages, configure the
-variables @code{parse-time-months} and @code{parse-time-weekdays}.
+この機能では、英語の月および曜日の省略記法に対応しています。省略しない記法や
+他の言語の記法を使用したい場合には、変数@code{parse-time-months}および
+@code{parse-time-weekdays}を変更して下さい。
 
-You can specify a time range by giving start and end times or by giving a
-start time and a duration (in HH:MM format). Use `-' or `-@{@}-' as the
-separator in the former case and use '+' as the separator in the latter
-case. E.g.@:
+時間間隔は、開始時刻と終了時刻を入力するか、開始時刻とその継続時間(HH:MMの形
+式)を入力することにより指定できます。前者の場合は分離記号として`-'あるいは
+`-@{@}-'を使用し、後者の場合は分離記号として'+'を使用して下さい。例えば以下
+の通りです。@:
 
 @example
 11am-1:15pm    @result{} 11:00-13:15
-11am--1:15pm   @result{} same as above
-11am+2:15      @result{} same as above
+11am--1:15pm   @result{} 上と同様
+11am+2:15      @result{} 上と同様
 @end example
 
-@cindex calendar, for selecting date
+@cindex カレンダー、日付選択のため
 @vindex org-popup-calendar-for-date-prompt
-Parallel to the minibuffer prompt, a calendar is popped up@footnote{If you don't need/want the calendar, configure the variable @code{org-popup-calendar-for-date-prompt}.}.  When you exit the date prompt,
-either by clicking on a date in the calendar, or by pressing @key{RET}, the
-date selected in the calendar will be combined with the information entered
-at the prompt.  You can control the calendar fully from the minibuffer:
+ミニバッファのプロンプトと並行して、カレンダーがポップアップします@footnote{カレンダ
+ーの表示が不要の場合、変数@code{org-popup-calendar-for-date-prompt}を変更して下さ
+い。}。カレンダー内の日付をクリックするか、@key{RET}を入力することにより日付のプ
+ロンプトを抜けると、カレンダーで選択した日付とプロンプトで入力された情報が組
+み合わされます。カレンダーはミニバッファから自由に操作することがきます。
 
 @kindex <
 @kindex >
@@ -5256,127 +5265,131 @@ at the prompt.  You can control the calendar fully from the minibuffer:
 @kindex M-S-@key{left}
 @kindex @key{RET}
 @example
-@key{RET}           @r{Choose date at cursor in calendar.}
-mouse-1        @r{Select date by clicking on it.}
-S-@key{right}/@key{left}     @r{One day forward/backward.}
-S-@key{down}/@key{up}     @r{One week forward/backward.}
-M-S-@key{right}/@key{left}   @r{One month forward/backward.}
-> / <          @r{Scroll calendar forward/backward by one month.}
-M-v / C-v      @r{Scroll calendar forward/backward by 3 months.}
+@key{RET}           @r{カレンダーのカーソル地点の日付を選択する。}
+mouse-1        @r{クリックにより日付を選択する。}
+S-@key{right}/@key{left}     @r{1日分進める/戻る}
+S-@key{down}/@key{up}     @r{1週間分進める/戻る}
+M-S-@key{right}/@key{left}   @r{1ヶ月分進める/戻る}
+> / <          @r{カレンダーを1ヶ月前/後ろにスクロールする}
+M-v / C-v      @r{カレンダーを3ヶ月前/後ろにスクロールする}
 @end example
 
 @vindex org-read-date-display-live
-The actions of the date/time prompt may seem complex, but I assure you they
-will grow on you, and you will start getting annoyed by pretty much any
-other way of entering a date/time out there.  To help you understand what is
-going on, the current interpretation of your input will be displayed live in
-the minibuffer@footnote{If you find this distracting, turn the display of with @code{org-read-date-display-live}.}.
+文章の説明では、日付時刻プロンプトの動作は複雑に思えるかもしれませんが、徐々
+に慣れてくると、これ以外の方法で日付および時刻を入力することのほうが面倒に感
+じることでしょう。動作の仕組みに対する理解を助けるため、入力された情報に対す
+るその時点での解釈がミニバッファに表示されます。@footnote{もしミニバッファの表示が目
+障りな場合は、@code{org-read-date-display-live}で表示しないよう設定することができ
+ます。}。
 
 @node Custom time format, , The date/time prompt, Creating timestamps
 @subsection Custom time format
-@cindex custom date/time format
-@cindex time format, custom
-@cindex date format, custom
+@cindex カスタム日付時間フォーマット
+@cindex 時間フォーマット、カスタム
+@cindex 日付フォーマット、カスタム
 
 @vindex org-display-custom-times
 @vindex org-time-stamp-custom-formats
-Org-mode uses the standard ISO notation for dates and times as it is defined
-in ISO 8601.  If you cannot get used to this and require another
-representation of date and time to keep you happy, you can get it by
-customizing the variables @code{org-display-custom-times} and
-@code{org-time-stamp-custom-formats}.
+日付や時間を表現するため、Org-modeはISO8601で定義されているような標準的なISO
+の記法を使用しています。もしこの記法に不慣れで、別の日付や時間の記法のほうが
+好みである場合は、変数@code{org-display-custom-times}および
+@code{org-time-stamp-custom-formats}をカスタマイズすることができます。
 
 @table @kbd
-@orgcmd{C-c C-x C-t,org-toggle-time-stamp-overlays} Toggle the display of
-custom formats for dates and times.
+@orgcmd{C-c C-x C-t,org-toggle-time-stamp-overlays}カスタムフォーマットの日付
+および時間の表示をトグルします。
 @end table
 
 @noindent
-Org-mode needs the default format for scanning, so the custom date/time
-format does not @emph{replace} the default format---instead it is put
-@emph{over} the default format using text properties.  This has the
-following consequences:
+Org-modeは文字列のスキャンニングのためにデフォルトのフォーマットを必要とする
+ため、カスタムフォーマットの日付および時刻は標準フォーマットを@emph{置き換えませ
+ん}。その代わりに、テキストのプロパティを用いて標準フォーマットに@emph{上書きされ
+ます}。これが原因で以下のような動作が生じます。
 @itemize @bullet
-@item You cannot place the cursor onto a timestamp anymore, only before or after.
-@item The @kbd{S-@key{up}/@key{down}} keys can no longer be used to adjust each
-component of a timestamp.  If the cursor is at the beginning of the stamp,
-@kbd{S-@key{up}/@key{down}} will change the stamp by one day, just like
-@kbd{S-@key{left}/@key{right}}.  At the end of the stamp, the time will be
-changed by one minute.
-@item If the timestamp contains a range of clock times or a repeater, these will
-not be overlaid, but remain in the buffer as they were.
-@item When you delete a timestamp character-by-character, it will only disappear
-from the buffer after @emph{all} (invisible) characters belonging to the ISO
-timestamp have been removed.
-@item If the custom timestamp format is longer than the default and you are using
-dates in tables, table alignment will be messed up.  If the custom format is
-shorter, things do work as expected.
+@item タイムスタンプの上にカーソルを置くことはできなくなり、その前後にしかカ
+ーソルが移動しなくなります。
+@item @kbd{S-@key{up}/@key{down}}のキー操作は、タイムスタンプの各要素を変更するために使
+用できなくなります。カーソルがスタンプの前にある場合、@kbd{S-@key{up}/@key{down}}
+によりスタンプを1日だけ変更します。これは@kbd{S-@key{left}/@key{right}}と同様です
+。スタンプの後ろにある場合、時間が1ヶ月ずつ変更されます。
+@item タイムスタンプが時間間隔や繰り返し時刻を含む場合、これらは上書きされず
+に元の形式のままバッファに表示されます。
+@item タイムスタンプを一文字ずつ消去した場合、(隠れた)ISO標準フォーマット文
+字列の@emph{全て}を削除した場合のみカスタムフォーマットのタイムスタンプが消
+去されます。
+@item もし、カスタムフォーマットのタイムスタンプが標準フォーマットより長く、
+テーブル内で用いられている場合、テーブルの整形が崩れます。標準フォーマ
+ットより短い場合には、期待通りに動作します。
 @end itemize
 
 
 @node Deadlines and scheduling, Clocking work time, Creating timestamps, Date and Times
 @section Deadlines and scheduling
 
-A timestamp may be preceded by special keywords to facilitate planning:
+プランニングを補助するため、タイムスタンプの前に所定のキーワードを置くことが
+できます。
 
 @table @var
 @item DEADLINE
-@cindex DEADLINE keyword
+@cindex DEADLINEキーワード
 
-Meaning: the task (most likely a TODO item, though not necessarily) is
-supposed to be finished on that date.
+意味:タスク(多くの場合はTODOアイテムですが、それに限りません)はタイム
+スタンプで示された日のうちに終了するものと見なされます。
 
 @vindex org-deadline-warning-days
-On the deadline date, the task will be listed in the agenda.  In addition,
-the agenda for @emph{today} will carry a warning about the approaching or
-missed deadline, starting @code{org-deadline-warning-days} before the due
-date, and continuing until the entry is marked DONE.  An example:
+デッドラインが付けられた場合は、そのタスクはアジェンダの中に記載されま
+す。それに加えて、@emph{今日}のアジェンダはデッドラインが近づいたり、それを
+超過したりした場合に警告を発します。警告は期限の
+@code{org-deadline-warning-days}だけ前から表示され、エントリがDONEとされる
+までは消えません。以下に例を示します。
 
 @example
-*** TODO write article about the Earth for the Guide
-    The editor in charge is [[bbdb:Ford Prefect]]
+*** TODO ガイド誌の地球についての記事を書く。
+    担当編集者は[[bbdb:Ford Prefect]]
     DEADLINE: <2004-02-29 Sun>
 @end example
 
-You can specify a different lead time for warnings for a specific deadlines
-using the following syntax.  Here is an example with a warning period of 5
-days @code{DEADLINE: <2004-02-29 Sun -5d>}.
+以下の構文を用いることにより、個別のデッドラインについて異なる警告のリ
+ードタイムを指定することができます。以下は5日間の警告期間を指定する場
+合の例です@code{DEADLINE: <2004-02-29 Sun -5d>}。
 
 @item SCHEDULED
-@cindex SCHEDULED keyword
+@cindex SCHEDULEDキーワード
 
-Meaning: you are planning to start working on that task on the given date.
+意味:指定された日に、そのタスクに取りかかる予定であることを示します。
 
 @vindex org-agenda-skip-scheduled-if-done
-The headline will be listed under the given date@footnote{It will still be listed on that date after it has been marked DONE.  If you don't like this, set the variable @code{org-agenda-skip-scheduled-if-done}.}.  In addition, a
-reminder that the scheduled date has passed will be present in the
-compilation for @emph{today}, until the entry is marked DONE, i.e.@: the
-task will automatically be forwarded until completed.
+見出しは指定された日付の下に記載されます@footnote{項目がDONEとマークされた場合
+でも、指定日の項目に表示され続けます。この設定が好みでなければ、変数
+@code{org-agenda-skip-scheduled-if-done}を指定して下さい}。それに加えて、ス
+ケジューリングされた日付を超過した場合には@emph{今日}のリストにエントリが
+DONEとなるまでリマインダが表示され続けます。すなわち、タスクは完了する
+まで自動的に後回しにされます。
 
 @example
-*** TODO Call Trillian for a date on New Years Eve.
+*** TODO トリリアンに大晦日のデートについて電話する。
     SCHEDULED: <2004-12-25 Sat>
 @end example
 
 @noindent
-@b{Important:} Scheduling an item in Org-mode should @i{not} be understood
-in the same way that we understand @i{scheduling a meeting}.  Setting a date
-for a meeting is just a simple appointment, you should mark this entry with
-a simple plain timestamp, to get this item shown on the date where it
-applies.  This is a frequent misunderstanding by Org users.  In Org-mode,
-@i{scheduling} means setting a date when you want to start working on an
-action item.
+@b{重要:}Org-modeで項目をスケジューリングすることは、@i{ミーティングをスケジュ
+ーリングする}ことと同様であるという理解は正しく@i{ありません}。ミーティン
+グをセットするのは単なるアポイントですが、このような場合はエントリーに
+はプレーンなタイムスタンプを使用し、日付が来れば項目が表示されるように
+設定するべきです。これはユーザーがしばしば誤解する点です。Org-modeでは
+@i{スケジューリング}は何らかのアクションアイテムに取りかかる際に、日付を設
+定することを意味します。
 @end table
 
 @c
 @c
-You may use timestamps with repeaters in scheduling and deadline entries.
-Org-mode will issue early and late warnings based on the assumption that the
-timestamp represents the @i{nearest instance} of the repeater.  However, the
-use of diary sexp entries like @code{<%%(diary-float t 42)>} in scheduling
-and deadline timestamps is limited.  Org-mode does not know enough about the
-internals of each sexp function to issue early and late warnings.  However,
-it will show the item on each day where the sexp entry matches.
+スケジューリングやデッドラインの項目には、繰り返しを含むタイムスタンプを使用
+することが可能です。Org-modeは、タイムスタンプが繰り返し日付の@i{直近}の日付を表
+すものと推測して事前あるいは事後の警告を発します。しかし、スケジューリングや
+デッドラインにおいては@code{<%%(diary-float t 42)>}のような日記のS式項目は限定的
+にしか使用できません。Org-modeはこれらS式項目の内部構造について十分理解して
+いないため、事前および事後の警告を発することはできません。ただし、S式項目と
+一致したそれぞれの日付に項目を表示することは行われます。
 
 @menu
 * Inserting deadline/schedule::  計画項目
@@ -5384,146 +5397,153 @@ it will show the item on each day where the sexp entry matches.
 @end menu
 
 @node Inserting deadline/schedule, Repeated tasks, Deadlines and scheduling, Deadlines and scheduling
-@subsection Inserting deadlines or schedules
+@subsection デッドラインおよびスケジュールの挿入
 
-The following commands allow you to quickly insert@footnote{The @samp{SCHEDULED} and @samp{DEADLINE} dates are inserted on the line right below the headline.  Don't put any text between this line and the headline.}
-a deadline or to schedule an item:
+以下のコマンドにより、項目にデッドラインまたはスケジュールを瞬時に挿入
+@footnote{@samp{SCHEDULED}あるいは@samp{DEADLINE}の付いた日付が見出しのすぐ下の行に挿入されます
+。見出しとこの行の間には文字を記入してはいけません。}することができます。
 
 @table @kbd
 @c
 @c FIXME Any CLOSED timestamp will be removed.????????
 @c
 @c
-@orgcmd{C-c C-d,org-deadline} Insert @samp{DEADLINE} keyword along with a
-stamp.  The insertion will happen in the line directly following the
-headline.  When called with a prefix arg, an existing deadline will be
-removed from the entry.  Depending on the variable
-@code{org-log-redeadline}@footnote{with corresponding @code{#+STARTUP} keywords @code{logredeadline}, @code{lognoteredeadline}, and @code{nologredeadline}}, a note will be taken when changing an existing
-deadline.  @orgcmd{C-c C-s,org-schedule} Insert @samp{SCHEDULED} keyword
-along with a stamp.  The insertion will happen in the line directly
-following the headline.  Any CLOSED timestamp will be removed.  When called
-with a prefix argument, remove the scheduling date from the entry.
-Depending on the variable @code{org-log-reschedule}@footnote{with corresponding @code{#+STARTUP} keywords @code{logreschedule}, @code{lognotereschedule}, and @code{nologreschedule}}, a note will be taken
-when changing an existing scheduling time.  @orgcmd{C-c C-x C-k,org-mark-entry-for-agenda-action}
+@orgcmd{C-c C-d,org-deadline}タイムスタンプと@samp{DEADLINE}キーワードを挿入します
+。挿入は見出しの直下の行に対して行われます。前置引数を伴って呼ばれた場
+合は、エントリーから既に存在するデッドラインが消去されます。変数
+@code{org-log-redeadline}@footnote{対応する@code{#+STARTUP}キーワード@code{logredeadline}、
+@code{lognoteredeadline}、および@code{nologredeadline}}に対応して、既に存在する
+デッドラインを変更する際にノートをとることができます。
+@orgcmd{C-c C-s,org-schedule}タイムスタンプと@samp{SCHEDULED}キーワードを挿入しま
+す。挿入は見出しの直下の行に対して行われます。CLOSEDのタイムスタンプは
+全て消去されます。前置引数を伴って呼ばれた場合は、エントリーからスケジ
+ューリングの日付が消去されます。変数@code{org-log-reschedule}@footnote{対応する
+@code{#+STARTUP}キーワード@code{logredeadline}、@code{lognoteredeadline}、および
+@code{nologredeadline}}に対応して、既に存在するスケジューリングを変更する際
+にノートをとることができます。
+@orgcmd{C-c C-x C-k,org-mark-entry-for-agenda-action}
 @kindex k a
 @kindex k s
 @c
-Mark the current entry for agenda action.  After you have marked the entry
-like this, you can open the agenda or the calendar to find an appropriate
-date.  With the cursor on the selected date, press @kbd{k s} or @kbd{k d} to
-schedule the marked item.  @orgcmd{C-c / d,org-check-deadlines}
-@cindex sparse tree, for deadlines
+現在の項目をアジェンダのアクションのためにマークします。このように項目
+をマークした後で、アジェンダまたはカレンダーを開いて適切な日を探すこと
+ができます。選択した日付の上にカーソルを置いて@kbd{k s}あるいは@kbd{k d}を入力
+することにより、マークされた項目にスケジュールを設定できます。
+@orgcmd{C-c / d,org-check-deadlines}
+@cindex 抽出されたツリー、デッドラインのため
 @vindex org-deadline-warning-days
 @c
 @c
-Create a sparse tree with all deadlines that are either past-due, or which
-will become due within @code{org-deadline-warning-days}.  With @kbd{C-u}
-prefix, show all deadlines in the file.  With a numeric prefix, check that
-many days.  For example, @kbd{C-1 C-c / d} shows all deadlines due
-tomorrow.  @orgcmd{C-c / b,org-check-before-date} Sparse tree for deadlines
-and scheduled items before a given date.  @orgcmd{C-c / a,org-check-after-date} Sparse tree for deadlines and scheduled items after
-a given date.
+全てのデッドラインのうち、既に過ぎているものと
+@code{org-deadline-warning-days}以内に期限となるものを抽出したツリーを作成
+します。前置引数@kbd{C-u}により、ファイル内の全てのデッドラインを表示しま
+す。前置引数で数値を指定すると、指定した分だけ先のデッドラインを表示し
+ます。例えば、@kbd{C-1 C-c / d}とすると明日期限となる全てのデッドラインを
+表示します。@orgcmd{C-c / b,org-check-before-date}指定された日より前のデッド
+ラインを抽出したツリーを作成します。@orgcmd{C-c / a,org-check-after-date}指定
+された日より後のデッドラインを抽出したツリーを作成します。
 @end table
 
 @node Repeated tasks, , Inserting deadline/schedule, Deadlines and scheduling
 @subsection Repeated tasks
-@cindex tasks, repeated
-@cindex repeated tasks
+@cindex タスク、繰り返し
+@cindex 繰り返しタスク
 
-Some tasks need to be repeated again and again.  Org-mode helps to organize
-such tasks using a so-called repeater in a DEADLINE, SCHEDULED, or plain
-timestamp.  In the following example
+タスクの中には、何度も繰り返し行うものがあります。Org-modeでは、そのようなタ
+スクの管理を助けるため、通常あるいはDEADLINE、SCHEDULEDのタイムスタンプに対
+してリピーターと呼ばれる機能を提供しています。以下の例を参照して下さい。
 @example
-** TODO Pay the rent
+** TODO 家賃の支払い
    DEADLINE: <2005-10-01 Sat +1m>
 @end example
 @noindent
-the @code{+1m} is a repeater; the intended interpretation is that the task
-has a deadline on <2005-10-01> and repeats itself every (one) month starting
-from that time.  If you need both a repeater and a special warning period in
-a deadline entry, the repeater should come first and the warning period
-last: @code{DEADLINE: <2005-10-01 Sat +1m -3d>}.
+この中で@code{+1m}がリピーターと呼ばれるもので、そのタスクが<2005-10-01>のデッド
+ラインを持つと同時に、その日から一週間ごとに繰り返すことを意味します。デッド
+ラインエントリーに対してリピーターと警告期間の両方を指定する必要がある場合に
+は、@code{DEADLINE: <2005-10-01 Sat +1m -3d>}のようにリピータを先に書き、警告期間
+を後に書きます。
 
 @vindex org-todo-repeat-to-state
-Deadlines and scheduled items produce entries in the agenda when they are
-over-due, so it is important to be able to mark such an entry as completed
-once you have done so.  When you mark a DEADLINE or a SCHEDULE with the TODO
-keyword DONE, it will no longer produce entries in the agenda.  The problem
-with this is, however, that then also the @emph{next} instance of the
-repeated entry will not be active.  Org-mode deals with this in the
-following way: When you try to mark such an entry DONE (using @kbd{C-c C-t}), it will shift the base date of the repeating timestamp by the
-repeater interval, and immediately set the entry state back to
-TODO@footnote{In fact, the target state is taken from, in this sequence, the @code{REPEAT_TO_STATE} property or the variable @code{org-todo-repeat-to-state}.  If neither of these is specified, the target state defaults to the first state of the TODO state sequence.}.  In
-the example above, setting the state to DONE would actually switch the date
-like this:
+デッドラインおよびスケジューリングされた項目は期限を過ぎた場合にはアジェンダ
+上にエントリーが作成されるため、項目が終了した場合にはそのようなエントリは実
+施済みとマークできることが必要です。DEADLINEあるいはSCHEDULEDのTODOエントリ
+ーをDONEとマークした時には、アジェンダ上でのエントリーは作成されなくなります
+。一方で、問題となるのは繰り返し項目の@emph{次の}日時も同時にアクティブでなくなっ
+てしまうことです。Org-modeでは、このような状況に対して以下のように対処します
+。繰り返しのエントリーをDONEに変更しようとした場合(@kbd{C-c C-t}などにより)、繰
+り返しタイムスタンプの基準時刻が一つ分シフトされ、すぐにエントリーの状態が
+TODOに戻されます@footnote{実際には、変更される状態は@code{REPEAT_TO_STATE}プロパティ或いは
+変数@code{org-todo-repeat-to-state}によって決められます。これらが指定されていない
+場合は、デフォルトとしてTODO状態に戻ります。}。上の例では、DONEの状態にする
+ことにより日付が以下のように変更されます。
 
 @example
-** TODO Pay the rent
+** TODO 家賃の支払い
    DEADLINE: <2005-11-01 Tue +1m>
 @end example
 
 @vindex org-log-repeat
-A timestamp@footnote{You can change this using the option @code{org-log-repeat}, or the @code{#+STARTUP} options @code{logrepeat}, @code{lognoterepeat}, and @code{nologrepeat}.  With @code{lognoterepeat}, you will also be prompted for a note.} will be added under the deadline, to
-keep a record that you actually acted on the previous instance of this
-deadline.
+デッドラインの下にタイムスタンプが追加され@footnote{この部分の動作は、オプション
+@code{org-log-repeat}、あるいは@code{#+STARTUP}オプションの@code{logrepeat}、
+@code{lognoterepeat}、@code{nologrepeat}により変更することができます。@code{lognoterepeat}
+を指定した場合には、メモを入力するように促されます。}、これにより前の時刻の
+デッドラインについて実際に行動したことが記録されます。
 
-As a consequence of shifting the base date, this entry will no longer be
-visible in the agenda when checking past dates, but all future instances
-will be visible.
+日付がシフトされた結果として、このエントリーはアジェンダ上の過去の日付からは
+見えなくなりますが、将来の日付はアジェンダ上で確認することができます。
 
-With the @samp{+1m} cookie, the date shift will always be exactly one
-month.  So if you have not paid the rent for three months, marking this
-entry DONE will still keep it as an overdue deadline.  Depending on the
-task, this may not be the best way to handle it.  For example, if you forgot
-to call your father for 3 weeks, it does not make sense to call him 3 times
-in a single day to make up for it.  Finally, there are tasks like changing
-batteries which should always repeat a certain time @i{after} the last time
-you did it.  For these tasks, Org-mode has special repeaters @samp{++} and
-@samp{.+}.  For example:
+@samp{+1m}の繰り返し指定により、日付は常に1ヶ月きっちりシフトされます。そのため、
+例えば家賃を3ヶ月支払っていない場合には、一度このエントリーをDONEにしたとし
+ても、相変わらず期限を過ぎたデッドラインと判断されます。タスクの性質によって
+、この方法が常に適切な処理方法とは限りません。例えば、父親と連絡をとるのを3
+週間忘れてしまった場合、それを埋め合わせるために一日に3回電話をすることはな
+いでしょう。さらに、バッテリーの充電のように、最後に行ってから一定時間@i{経過後}
+に常に繰り返す必要がある場合もあります。このようなタスクについてはOrg-modeは
+専用の反復演算子@code{++}および@code{.+}を用意しています。例えば以下の通りです。
 
 @example
-** TODO Call Father
+** TODO 父に電話
    DEADLINE: <2008-02-10 Sun ++1w>
-   Marking this DONE will shift the date by at least one week,
-   but also by as many weeks as it takes to get this date into
-   the future.  However, it stays on a Sunday, even if you called
-   and marked it done on Saturday.
-** TODO Check the batteries in the smoke detectors
+   この項目をDONEとすると、日付が一週間シフトされ、同時にタスクが
+   行われるまでは将来の全ての日曜日に対して項目がシフトされます。
+   土曜日に電話をしたとしても、次の日曜日にシフトされます。
+** TODO 火災報知器の電池をチェックする
    DEADLINE: <2005-11-01 Tue .+1m>
-   Marking this DONE will shift the date to one month after
-   today.
+   この項目をDONEとすると、確認した日のちょうど1ヶ月後にシフトされます。
 @end example
 
-You may have both scheduling and deadline information for a specific
-task---just make sure that the repeater intervals on both are the same.
+同じタスクに対して、スケジューリングとデッドラインの情報を両方付けることがで
+きます。この場合には、両方の繰り返し間隔は同じになりますので、注意して下さい
+。
 
-An alternative to using a repeater is to create a number of copies of a task
-subtree, with dates shifted in each copy.  The command @kbd{C-c C-x c} was
-created for this purpose, it is described in @ref{Structure editing}.
+繰り返し演算子を使わない代替的な方法の一つとして、タスクサブツリーのコピーを
+いくつか作成し、それぞれのコピーに対してシフトされた時刻を指定する方法があり
+ます。そのために@kbd{C-c C-x c}コマンドがあります。この機能は@ref{Structure editing}
+で解説されています。
 
 
 @node Clocking work time, Effort estimates, Deadlines and scheduling, Date and Times
 @section Clocking work time
-@cindex clocking time
-@cindex time clocking
+@cindex 時間を計測する
+@cindex 時間の計測
 
-Org-mode allows you to clock the time you spend on specific tasks in a
-project.  When you start working on an item, you can start the clock.  When
-you stop working on that task, or when you mark the task done, the clock is
-stopped and the corresponding time interval is recorded.  It also computes
-the total time spent on each subtree of a project.  And it remembers a
-history or tasks recently clocked, to that you can jump quickly between a
-number of tasks absorbing your time.
+Org-modeでは、プロジェクトの中で特定のタスクを実行するのにかかった時間を計測
+することができます。ある項目について取りかかる時に、計測を開始します。そのタ
+スクを中断するときやタスクが終了した時に計測が終了し、対応する時間間隔が記録
+されます。同時に、あるプロジェクトの全てのサブツリーでかかった時間の合計が計
+算されます。さらに、最近に時間が計測されたタスクが記憶されているため、その時
+点で取りかかっている複数のタスク間を素早く移動することができます。
 
-To save the clock history across Emacs sessions, use
+Emacsセッションでの経過時間の履歴を保存するためには、以下のコマンドを使いま
+す。
 @lisp
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
 @end lisp
-When you clock into a new task after resuming Emacs, the incomplete
-clock@footnote{To resume the clock under the assumption that you have worked on this task while outside Emacs, use @code{(setq org-clock-persist t)}.}
-will be found (@pxref{Resolving idle time}) and you will be prompted about
-what to do with it.
+Emacsの再開後に新しいタスクの計測を始めると、不完全な時計@footnote{Emacsの外でタスク
+に取りかかっていたという想定で時計を再開する場合は、
+@code{(setq org-clock-persist t)}を使用して下さい。}が表示され
+(@pxref{Resolving idle time})、それについて何をするかを入力するように促されます。
 
 @menu
 * Clocking commands::        時計の開始と終了
@@ -5537,91 +5557,95 @@ what to do with it.
 @table @kbd
 @orgcmd{C-c C-x C-i,org-clock-in}
 @vindex org-clock-into-drawer
-Start the clock on the current item (clock-in).  This inserts the CLOCK
-keyword together with a timestamp.  If this is not the first clocking of
-this item, the multiple CLOCK lines will be wrapped into a @code{:LOGBOOK:}
-drawer (see also the variable @code{org-clock-into-drawer}).  When called
-with a @kbd{C-u} prefix argument, select the task from a list of recently
-clocked tasks.  With two @kbd{C-u C-u} prefixes, clock into the task at
-point and mark it as the default task.  The default task will always be
-available when selecting a clocking task, with letter @kbd{d}.@*
-@cindex property: CLOCK_MODELINE_TOTAL
-@cindex property: LAST_REPEAT
+現在の項目に対して、時間の計測を開始します（クロックイン）。これにより
+CLOCKキーワードとともにタイムスタンプが挿入されます。最初の計測でない
+場合には、複数のCLOCK行が表示され、@code{:LOGBOOK:}という引き出しに格納され
+ます(変数@code{org-clock-into-drawer}についても参照のこと)。前置引数@kbd{C-u}と
+共に呼ばれた場合は、最近時間が計測されたタスクのリストからタスクを選択
+します。2個の前置引数@kbd{C-u C-u}が入力された場合は、現在位置のタスクの計
+測を開始し、そのタスクをデフォルトに指定します。デフォルトのタスクは、
+時間計測の選択をする場合に常にリストの中に表示され、文字@kbd{d}が付けられ
+ます。@*
+@cindex プロパティ:CLOCK_MODELINE_TOTAL
+@cindex プロパティ:LAST_REPEAT
 @vindex org-clock-modeline-total
 @c
-While the clock is running, the current clocking time is shown in the mode
-line, along with the title of the task.  The clock time shown will be all
-time ever clocked for this task and its children.  If the task has an effort
-estimate (@pxref{Effort estimates}), the mode line displays the current
-clocking time against it@footnote{To add an effort estimate ``on the fly'', hook a function doing this to @code{org-clock-in-prepare-hook}.} If the task
-is a repeating one (@pxref{Repeated tasks}), only the time since the last
-reset of the task @footnote{as recorded by the @code{LAST_REPEAT} property}
-will be shown.  More control over what time is shown can be exercised with
-the @code{CLOCK_MODELINE_TOTAL} property.  It may have the values
-@code{current} to show only the current clocking instance, @code{today} to
-show all time clocked on this tasks today (see also the variable
-@code{org-extend-today-until}), @code{all} to include all time, or
-@code{auto} which is the default@footnote{See also the variable @code{org-clock-modeline-total}.}.@* Clicking with @kbd{mouse-1} onto the
-mode line entry will pop up a menu with clocking options.  @orgcmd{C-c C-x C-o,org-clock-out}
+時間を計測している間は、現在の計測時間とタスクの名前がモード行に表示さ
+れます。表示される計測時間はこのタスクとその子タスクについての全ての時
+間です。タスクが工数の見積もり(@pxref{Effort estimates})を含む場合には、モー
+ド行は見積もりに対する現在の経過時間を表示します@footnote{「その場で」工数の見
+積もりを追加するには、その機能を持つ関数を変数
+@code{org-clock-in-prepare-hook}にフックして下さい}。タスクが繰り返しを含む
+場合には、そのタスクの最近のリセットからの経過時間@footnote{プロパティ
+@code{LAST_REPEAT}により記録}のみが計測されます。表示される時間について変更
+したい場合には、プロパティ@code{CLOCK_MODELINE_TOTAL}を変更します。この中に
+は現在計測中の時刻のみ表示する@code{current}、今日計測された全ての時間を表
+示する@code{today}(変数@code{org-extend-today-until}についても参照)、全ての時間
+を表示する@code{all}、デフォルトの設定である@code{auto}などがあります@footnote{変数
+@code{org-clock-modeline-total}についても参照}。@*モード行を@kbd{mouse-1}でクリックすることにより、メニューと時間計測のオプシ
+ョンがポップアップします。@orgcmd{C-c C-x C-o,org-clock-out}
 @vindex org-log-note-clock-out
-Stop the clock (clock-out).  This inserts another timestamp at the same
-location where the clock was last started.  It also directly computes the
-resulting time in inserts it after the time range as @samp{=> HH:MM}.  See
-the variable @code{org-log-note-clock-out} for the possibility to record an
-additional note together with the clock-out timestamp@footnote{The corresponding in-buffer setting is: @code{#+STARTUP: lognoteclock-out}}.
-@orgcmd{C-c C-x C-e,org-clock-modify-effort-estimate} Update the effort
-estimate for the current clock task.
+時間の計測を終了します（クロックアウト）。これにより、時間計測が開始さ
+れたのと同じ場所にもう一つのタイムスタンプが挿入されます。同時に、計測
+された時間間隔が開始時刻と終了時刻の後に@samp{=> HH:MM}の形式で挿入されます
+。クロックアウトのタイムスタンプ作成時にノートを追加するには、変数
+@code{org-log-note-clock-out}を参照して下さい@footnote{これに対応するバッファ内の設
+定は@code{#+STARTUP: lognoteclock-out}です。}。
+@orgcmd{C-c C-x C-e,org-clock-modify-effort-estimate}現在時間を計測しているタ
+スクについて、工数見積もりをアップデートします。
 @kindex C-c C-y
 @kindex C-c C-c
-@orgcmdkkc{C-c C-c,C-c C-y,org-evaluate-time-range} Recompute the time
-interval after changing one of the timestamps.  This is only necessary if
-you edit the timestamps directly.  If you change them with
-@kbd{S-@key{cursor}} keys, the update is automatic.  @orgcmd{C-c C-t,org-todo} Changing the TODO state of an item to DONE automatically stops
-the clock if it is running in this same item.  @orgcmd{C-c C-x C-x,org-clock-cancel} Cancel the current clock.  This is useful if a clock
-was started by mistake, or if you ended up working on something else.
-@orgcmd{C-c C-x C-j,org-clock-goto} Jump to the headline of the currently
-clocked in task.  With a @kbd{C-u} prefix arg, select the target task from a
-list of recently clocked tasks.  @orgcmd{C-c C-x C-d,org-clock-display}
+@orgcmdkkc{C-c C-c,C-c C-y,org-evaluate-time-range}タイムスタンプの一つを変更し
+た後で、時間間隔を更新します。これはタイムスタンプを手動で変更した場合
+にのみ必要です。@kbd{S-@key{cursor}}キーにより変更した場合には、自動的に再計算
+されます。@orgcmd{C-c C-t,org-todo}TODOの項目をDONEに変更することにより、その
+項目で時間が計測されている場合には自動的に停止します。
+@orgcmd{C-c C-x C-x,org-clock-cancel}現在の時間計測をキャンセルします。これは
+間違って時間を計り始めてしまった場合や、結果的に意図したタスク以外を行
+ってしまった場合に便利です。@orgcmd{C-c C-x C-j,org-clock-goto}現在クロックイ
+ン中のタスクの見出しにジャンプします。前置引数@kbd{C-u}により、最近時間が
+計測されたタスクから目的のタスクを選択します。
+@orgcmd{C-c C-x C-d,org-clock-display}
 @vindex org-remove-highlights-with-change
-Display time summaries for each subtree in the current buffer.  This puts
-overlays at the end of each headline, showing the total time recorded under
-that heading, including the time of any subheadings. You can use visibility
-cycling to study the tree, but the overlays disappear when you change the
-buffer (see variable @code{org-remove-highlights-with-change}) or press
-@kbd{C-c C-c}.
+現在のバッファの各サブツリーからの時間のサマリーを作成します。これによ
+りそれぞれの見出しの後ろに時間が上書きされ、その見出しの中で下位の見出
+しも含めて記録された時間の合計が表示されます。表示の切り替えにより、ツ
+リーの各項目を確認できますが、バッファを変更した場合や@kbd{C-c C-c}を入力
+した場合は時間の上書きは消えてしまいます(変数
+@code{org-remove-highlights-with-change})を参照)。
 @end table
 
-The @kbd{l} key may be used in the timeline (@pxref{Timeline}) and in the
-agenda (@pxref{Weekly/daily agenda}) to show which tasks have been worked on
-or closed during a day.
+タイムライン(@pxref{Timeline})およびアジェンダ(@pxref{Weekly/daily agenda})の中でキー
+@kbd{l}を入力することにより、その日のうちに完了したタスクがどれかを表示すること
+ができます。
 
 @node The clock table, Resolving idle time, Clocking commands, Clocking work time
 @subsection The clock table
-@cindex clocktable, dynamic block
-@cindex report, of clocked time
+@cindex クロックテーブル、動的なブロック
+@cindex レポート、計測された時間
 
-Org mode can produce quite complex reports based on the time clocking
-information.  Such a report is called a @emph{clock table}, because it is
-formatted as one or several Org tables.
+Org-modeは、時間計測の情報をもとにかなり詳細なレポートを作成することができま
+す。このようなレポートは@emph{クロックテーブル}と呼ばれており、その名の通り
+Org-modeのテーブルまたはその組み合わせにより作成されます。
 
 @table @kbd
-@orgcmd{C-c C-x C-r,org-clock-report} Insert a dynamic block (@pxref{Dynamic blocks}) containing a clock report as an Org-mode table into the current
-file.  When the cursor is at an existing clock table, just update it.  When
-called with a prefix argument, jump to the first clock report in the current
-document and update it.  @orgcmdkkc{C-c C-c,C-c C-x C-u,org-dblock-update}
-Update dynamic block at point.  The cursor needs to be in the @code{#+BEGIN}
-line of the dynamic block.  @orgkey{C-u C-c C-x C-u} Update all dynamic
-blocks (@pxref{Dynamic blocks}).  This is useful if you have several clock
-table blocks in a buffer.
-@orgcmdkxkc{S-@key{left},S-@key{right},org-clocktable-try-shift} Shift the
-current @code{:block} interval and update the table.  The cursor needs to be
-in the @code{#+BEGIN: clocktable} line for this command.  If @code{:block}
-is @code{today}, it will be shifted to @code{today-1} etc.
+@orgcmd{C-c C-x C-r,org-clock-report}現在のファイルにOrg-modeテーブル形式の計
+測時間レポートを含む動的ブロック(@pxref{Dynamic blocks})を挿入します。前置引
+数とともに呼ばれた場合は、現在の文書の最初のクロックテーブルに移動し、
+それを更新します。@orgcmdkkc{C-c C-c,C-c C-x C-u,org-dblock-update}現在位置の動
+的ブロックを更新します。カーソル位置は動的ブロックの@code{#+BEGIN}行の中に
+位置している必要があります。@orgkey{C-u C-c C-x C-u}全ての動的ブロックを更新
+します(@pxref{Dynamic blocks})。この機能はバッファ内で複数のクロックテーブル
+が存在する場合に有用です。
+@orgcmdkxkc{S-@key{left},S-@key{right},org-clocktable-try-shift}現在の@code{:block}の時間間隔
+を変更し、テーブルを更新します。このコマンドを使用するには、カーソルが
+@code{#+BEGIN: clocktable}行にある必要があります。例えば@code{:block}が@code{today}の
+場合、このコマンドにより@code{today-1}にシフトされます。
 @end table
 
 
-Here is an example of the frame for a clock table as it is inserted into the
-buffer with the @kbd{C-c C-x C-r} command:
+以下に、@kbd{C-c C-x C-r}コマンドによりバッファに挿入されるクロックテーブルのフ
+レームの例を示します。
 
 @cindex #+BEGIN, clocktable
 @example
@@ -5630,91 +5654,102 @@ buffer with the @kbd{C-c C-x C-r} command:
 @end example
 @noindent
 @vindex org-clocktable-defaults
-The @samp{BEGIN} line and specify a number of options to define the scope,
-structure, and formatting of the report.  Defaults for all these options can
-be configured in the variable @code{org-clocktable-defaults}.
+@samp{BEGIN}行には、レポートの対象範囲、構造およびフォーマットを定めるオプション
+を指定します。これらのデフォルト値は変数@code{org-clocktable-defaults}により変更
+することができます。
 
 @noindent First there are options that determine which clock entries are to
-be selected:
+まず、時間が計測されたエントリのうちどれが選択されるかを定めるオプションがあ
+ります。
 @example
-:maxlevel    @r{Maximum level depth to which times are listed in the table.}
-             @r{Clocks at deeper levels will be summed into the upper level.}
-:scope       @r{The scope to consider.  This can be any of the following:}
-             nil        @r{the current buffer or narrowed region}
-             file       @r{the full current buffer}
-             subtree    @r{the subtree where the clocktable is located}
-             tree@var{N}      @r{the surrounding level @var{N} tree, for example @code{tree3}}
-             tree       @r{the surrounding level 1 tree}
-             agenda     @r{all agenda files}
-             ("file"..) @r{scan these files}
-             file-with-archives    @r{current file and its archives}
-             agenda-with-archives  @r{all agenda files, including archives}
-:block       @r{The time block to consider.  This block is specified either}
-             @r{absolute, or relative to the current time and may be any of}
-             @r{these formats:}
-             2007-12-31    @r{New year eve 2007}
-             2007-12       @r{December 2007}
-             2007-W50      @r{ISO-week 50 in 2007}
-             2007-Q2       @r{2nd quarter in 2007}
-             2007          @r{the year 2007}
-             today, yesterday, today-@var{N}          @r{a relative day}
-             thisweek, lastweek, thisweek-@var{N}     @r{a relative week}
-             thismonth, lastmonth, thismonth-@var{N}  @r{a relative month}
-             thisyear, lastyear, thisyear-@var{N}     @r{a relative year}
-             @r{Use @kbd{S-@key{left}/@key{right}} keys to shift the time interval.}
-:tstart      @r{A time string specifying when to start considering times.}
-:tend        @r{A time string specifying when to stop considering times.}
-:step        @r{@code{week} or @code{day}, to split the table into chunks.}
-             @r{To use this, @code{:block} or @code{:tstart}, @code{:tend} are needed.}
-:stepskip0   @r{Do not show steps that have zero time.}
-:fileskip0   @r{Do not show table sections from files which did not contribute.}
-:tags        @r{A tags match to select entries that should contribute}.
+:maxlevel    @r{テーブルに表示される最大の深さレベル。}
+             @r{これより深いレベルの時間は上位レベルに積算されて表示される。}
+:scope       @r{対象とするスコープ。以下のうちいずれかを指定する。}
+             nil        @r{現在のバッファ、或いはナローされた領域}
+             file       @r{現在のバッファ全体}
+             subtree    @r{クロックテーブルのあるサブツリー内}
+             tree@var{N}      @r{周囲のレベル@var{N}のツリー、例えば@code{tree3}}
+             tree       @r{周囲のレベル1のツリー}
+             agenda     @r{アジェンダファイル群の全体}
+             (\"file\"..) @r{指定されたファイルをスキャンする}
+             file-with-archives    @r{現在のファイルとそのアーカイブ}
+             agenda-with-archives  @r{アーカイブを含む全てのアジェンダファイル}
+:block       @r{対象とする時間範囲、この範囲は絶対時間または現在からの相対時間}
+             @r{で表記され、以下のいずれかのフォーマットに従う。}
+             2007-12-31    @r{2007年の大晦日}
+             2007-12       @r{2007年12月}
+             2007-W50      @r{2007年のISO週で50週目}
+             2007-Q2       @r{2007年の第二四半期}
+             2007          @r{2007年}
+             today, yesterday, today-@var{N}          @r{相対的な日指定}
+             thisweek, lastweek, thisweek-@var{N}     @r{相対的な週指定}
+             thismonth, lastmonth, thismonth-@var{N}  @r{相対的な月指定}
+             thisyear, lastyear, thisyear-@var{N}     @r{相対的な年指定}
+             @r{@kbd{S-@key{left}/@key{right}}キーにより間隔をシフトすることができる。}
+:tstart      @r{対象となる時間の始まりを示す文字列}
+:tend        @r{対象となる時間の終わりを示す文字列}
+:step        @r{テーブルをまとめる間隔。@code{week}または@code{day}を指定。}
+             @r{この機能を使うには、@code{:block}、@code{:tstart}、@code{:tend}のいずれかを指定
+する必要がある。}
+:stepskip0   @r{時間間隔がゼロの項目を表示しない。}
+:fileskip0   @r{時間間隔がゼロのファイルについて、テーブルに表示しない。}
+:tags        @r{特定のタグがついたエントリのみ収集の対象とする。}
 @end example
 
-Then there are options which determine the formatting of the table.  There
-options are interpreted by the function @code{org-clocktable-write-default},
-but you can specify your own function using the @code{:formatter} parameter.
+さらに、テーブルのフォーマットを指定するためのオプションがあります。これらの
+オプションは関数@code{org-clocktable-write-default}により解釈されますが、パラメー
+タ@code{:formatter}により解釈のためのユーザ独自の関数を指定することができます。
 @example
-:emphasize   @r{When @code{t}, emphasize level one and level two items.}
-:lang        @r{Language@footnote{Language terms can be set through the variable @code{org-clock-clocktable-language-setup}.} to use for descriptive cells like "Task".}
-:link        @r{Link the item headlines in the table to their origins.}
-:narrow      @r{An integer to limit the width of the headline column in}
-             @r{the org table.  If you write it like @samp{50!}, then the}
-             @r{headline will also be shortened in export.}
-:indent      @r{Indent each headline field according to its level.}
-:tcolumns    @r{Number of columns to be used for times.  If this is smaller}
-             @r{than @code{:maxlevel}, lower levels will be lumped into one column.}
-:level       @r{Should a level number column be included?}
-:compact     @r{Abbreviation for @code{:level nil :indent t :narrow 40! :tcolumns 1}}
-             @r{All are overwritten except if there is an explicit @code{:narrow}}
-:timestamp   @r{A timestamp for the entry, when available.  Look for SCHEDULED,}
-             @r{DEADLINE, TIMESTAMP and TIMESTAMP_IA, in this order.}
-:formula     @r{Content of a @code{#+TBLFM} line to be added and evaluated.}
-             @r{As a special case, @samp{:formula %} adds a column with % time.}
-             @r{If you do not specify a formula here, any existing formula}
-             @r{below the clock table will survive updates and be evaluated.}
-:formatter   @r{A function to format clock data and insert it into the buffer.}
+:emphasize   @r{値が@code{t}の場合、レベル1およびレベル2の項目を強調表示します。}
+:lang        @r{項目名のセル(例えば"Task")で用いる言語@footnote{言語に関する項目は、変数
+@code{org-clock-clocktable-language-setup}により設定することができます。}。}
+:link        @r{テーブルの見出しの項目と元のファイルでの位置をリンクする。}
+:narrow      @r{Org-modeのテーブルの見出し列の幅を上限を決める整数。}
+             @r{@samp{50!}のように指定すると、エクスポート時にも見出しが短縮表示され
+る。}
+:indent      @r{各見出しフィールドをそのレベルに合わせてインデントする。}
+:tcolumns    @r{時間を表示するために使われる列の数。この値が@code{:maxlevel}より小さ
+い場合、}
+             @r{それより下位のレベルは一つの列に合わせて表示される。}
+:level       @r{レベル番号を示す列を含めるかどうか指定する。}
+:compact     @r{コンパクトに表示する。
+@code{:level nil :indent t :narrow 40! :tcolumns 1}}
+             @r{の短縮表現で、明示的に@code{:narrow}で指定されなければ、全ての変数は
+上書きされる。}
+:timestamp   @r{エントリのタイムスタンプが存在する場合には、それを表示する。
+SCHEDULED、}
+             @r{DEADLINE、TIMESTAMP、TIMESTAMP_IAの順に探索される。}
+:formula     @r{追加的な@code{#+TBLFM}の内容。通常の形式に追加されて評価される。}
+             @r{特殊なケースとして、@samp{:formula %}を追加すると経過時間の割合行が追
+加される。}
+             @r{ここで形式をしていしない場合は、クロックテーブルの下に存在する形
+式が}
+             @r{アップデートされずに評価される。}
+:formatter   @r{時刻データをフォーマットし、バッファに表示するための関数。}
 @end example
-To get a clock summary of the current level 1 tree, for the current day, you
-could write
+現在のレベル1のツリーについて、当日分の時間サマリーを得る場合は以下のように
+指定します。
 @example
 #+BEGIN: clocktable :maxlevel 2 :block today :scope tree1 :link t
 #+END: clocktable
 @end example
 @noindent
-and to use a specific time range you could write@footnote{Note that all parameters must be specified in a single line---the line is broken here only to fit it into the manual.}
+明示的に時間間隔を指定する場合には、以下のように記述します@footnote{全てのパラメータ
+は単一行で指定する必要があるので注意して下さい。この例ではマニュアルの文字幅
+の制約のために改行が入っています。}。
 @example
 #+BEGIN: clocktable :tstart "<2006-08-10 Thu 10:00>"
                     :tend "<2006-08-10 Thu 12:00>"
 #+END: clocktable
 @end example
-A summary of the current subtree with % times would be
+現在のサブツリーでの経過時間のまとめを%表示するには、以下のように記述します
+。
 @example
 #+BEGIN: clocktable :scope subtree :link t :formula %
 #+END: clocktable
 @end example
-A horizontally compact representation of everything clocked during last week
-would be
+ここ1週間で計測された時間をコンパクトな幅で表示するには、以下のようにします
+。
 @example
 #+BEGIN: clocktable :scope agenda :block lastweek :compact t
 #+END: clocktable
@@ -5722,95 +5757,96 @@ would be
 
 @node Resolving idle time, , The clock table, Clocking work time
 @subsection Resolving idle time
-@cindex resolve idle time
+@cindex 休止時間を解決する
 
-@cindex idle, resolve, dangling
-If you clock in on a work item, and then walk away from your
-computer---perhaps to take a phone call---you often need to ``resolve'' the
-time you were away by either subtracting it from the current clock, or
-applying it to another one.
+@cindex 休止、解決、空き時間
+ある項目について作業を開始したあとで、例えば電話を取る場合などで一時的にコン
+ピュータの前を離れると、その時間について現在の経過時間から差し引いたり、他の
+項目に加えたりして「解決」する必要が生じます。
 
 @vindex org-clock-idle-time
-By customizing the variable @code{org-clock-idle-time} to some integer, such
-as 10 or 15, Emacs can alert you when you get back to your computer after
-being idle for that many minutes@footnote{On computers using Mac OS X, idleness is based on actual user idleness, not just Emacs' idle time.  For X11, you can install a utility program @file{x11idle.c}, available in the UTILITIES directory of the Org git distribution, to get the same general treatment of idleness.  On other systems, idle time refers to Emacs idle time only.}, and ask what you want to do with the idle time.  There will be
-a question waiting for you when you get back, indicating how much idle time
-has passed (constantly updated with the current amount), as well as a set of
-choices to correct the discrepancy:
+変数@code{org-clock-idle-time}を適当な整数値(例えば10や15)に設定することにより、
+設定時間を超える休止のあとで戻ってきた場合にEmacsはアラートを出し、その休止
+時間をどのように処理するか尋ねます@footnote{Mac OS Xのコンピュータでは、Emacsの休止時
+間だけでなくユーザーが実際に休止した時間を計測します。X11では、Org-modeのgit
+ディストリビューションから入手できるユーティリティプログラム@file{x11idle.c}をイ
+ンストールすることにより、同様に全体の休止時間を計測することができます。その
+他のシステムでは、休止時間はEmacsが休止していた時間のみを表します。}。休止か
+ら戻った時点で幾つか質問が表示され、実際にどの程度休止時間があったか（その時
+点までの計測時間が随時表示されます）を入力すると同時に、休止の扱いについて以
+下のような選択が可能です。
 
 @table @kbd
 @item k
-To keep some or all of the minutes and stay clocked in, press @kbd{k}.  Org
-will ask how many of the minutes to keep.  Press @key{RET} to keep them all,
-effectively changing nothing, or enter a number to keep that many minutes.
+休止時間として計測された時間の一部または全てをタスクの計測時間として保
+持する場合には、@kbd{k}を押します。Org-modeは何分間保持するか尋ねます。
+@key{RET}キーを押すことにより全ての時間が保持され、タスクの計測時間は変更
+されません。数値を指定すると、指定した分数だけ時間が保持されます。
 @item K
-If you use the shift key and press @kbd{K}, it will keep however many
-minutes you request and then immediately clock out of that task.  If you
-keep all of the minutes, this is the same as just clocking out of the
-current task.
+シフトキーと共に@kbd{K}を押した場合、入力された分数だけ時間を保持すると同
+時にただちに現在のタスクの計測を中止します。全ての休止時間を保持する場
+合、これは単にタスクの計測を中止したのと同じことになります。
 @item s
-To keep none of the minutes, use @kbd{s} to subtract all the away time from
-the clock, and then check back in from the moment you returned.
+休止時間を保持しない場合には、@kbd{s}を押すことにより計測時間から全ての休
+止時間が差し引かれ、戻ってきた時点から再開されます。
 @item S
-To keep none of the minutes and just clock out at the start of the away
-time, use the shift key and press @kbd{S}.  Remember that using shift will
-always leave you clocked out, no matter which option you choose.
+休止時間を保持せず、休止開始時の時刻で時間の計測を止める場合には、シフ
+トキーと共に@kbd{S}を押して下さい。シフトキーを使うと、いずれのオプション
+でも時間の計測が中止されるということを覚えておいて下さい。
 @item C
-To cancel the clock altogether, use @kbd{C}.  Note that if instead of
-canceling you subtract the away time, and the resulting clock amount is less
-than a minute, the clock will still be canceled rather than clutter up the
-log with an empty entry.
+時間計測そのものをキャンセルする場合は、@kbd{C}を押して下さい。キャンセル
+しない場合でも、時間が引かれた結果の残り時間が1分未満である場合には、
+中身の無いエントリでログが見づらくなるのを防ぐため、時間計測はやはりキ
+ャンセルされますので注意して下さい。
 @end table
 
-What if you subtracted those away minutes from the current clock, and now
-want to apply them to a new clock? Simply clock in to any task immediately
-after the subtraction.  Org will notice that you have subtracted time ``on
-the books'', so to speak, and will ask if you want to apply those minutes to
-the next task you clock in on.
+空き時間について、現在の計測時間から差し引いたあとで別の計測項目に追加したい
+場合にはどうすれば良いでしょうか。その場合は、差し引いたあとに単純に次のタス
+クの計測を開始して下さい。Org-modeは差し引かれた時間があることを記憶していて
+、次の時間計測を始める際にその時間を足し込むかを尋ねます。
 
-There is one other instance when this clock resolution magic occurs.  Say
-you were clocked in and hacking away, and suddenly your cat chased a mouse
-who scared a hamster that crashed into your UPS's power button! You suddenly
-lose all your buffers, but thanks to auto-save you still have your recent
-Org mode changes, including your last clock in.
+次のようなケースでも、時間解決機能が魔法のような働きをします。あなたがタスク
+の時間計測をしながらご機嫌に作業をすすめていると、突然飼い猫がネズミを追いか
+けて、それを見たハムスターが驚いてUPSの電源装置に衝突してしまったとしましょ
+う!あなたは全てのバッファを失うことになりますが、オートセーブ機能のおかげで
+Org-modeで行った最近の変更は保持され、途中であった時間計測の時間も保持されて
+います。
 
-If you restart Emacs and clock into any task, Org will notice that you have
-a dangling clock which was never clocked out from your last session.  Using
-that clock's starting time as the beginning of the unaccounted-for period,
-Org will ask how you want to resolve that time.  The logic and behavior is
-identical to dealing with away time due to idleness; it's just happening due
-to a recovery event rather than a set amount of idle time.
+Emacsを再開してタスクの計測を開始すると、Org-modeは最後のセッションで計測が
+終了されていない半端の時間計測があることに気がつきます。そのようなタスクにつ
+いては、計測の開始時刻を不明な時刻の始点として、その間の時間をどのように解決
+するかについて尋ねます。その際の考え方や挙動は空き時間の処理方法と全く同じで
+、単に空き時間ではなくリカバリの際に発生しているだけなのです。
 
-You can also check all the files visited by your Org agenda for dangling
-clocks at any time using @kbd{M-x org-resolve-clocks}.
+Org-modeのアジェンダが半端時間を絶えずチェックしているファイルのリストは、
+@kbd{M-x org-resolve-clocks}により確認することができます。
 
 @node Effort estimates, Relative timer, Clocking work time, Date and Times
 @section Effort estimates
-@cindex effort estimates
+@cindex 工数の見積もり
 
-@cindex property, Effort
+@cindex プロパティ、工数
 @vindex org-effort-property
-If you want to plan your work in a very detailed way, or if you need to
-produce offers with quotations of the estimated work effort, you may want to
-assign effort estimates to entries.  If you are also clocking your work, you
-may later want to compare the planned effort with the actual working time, a
-great way to improve planning estimates.  Effort estimates are stored in a
-special property @samp{Effort}@footnote{You may change the property being used with the variable @code{org-effort-property}.}.  You can set the effort
-for an entry with the following commands:
+詳細な作業計画を立てて仕事を行いたい場合や、仕事の工数の見積もりを作成する必
+要がある場合には、エントリに工数見積もりを割り当てたいと思うかもしれません。
+また、同時に時間の計測を行う場合には、あとで見積もった時間数と実際にかかった
+時間を比較したいと思うかもしれません。それは見積もりの精度を上げる良い方法で
+もあります。工数の見積もりは専用のプロパティである@samp{Effort}に保存されます
+@footnote{使用されるプロパティは、変数@code{org-effort-property}で変更することができます}
+。エントリに工数を追加するには、以下のようなコマンドを用います。
 
 @table @kbd
-@orgcmd{C-c C-x e,org-set-effort} Set the effort estimate for the current
-entry.  With a numeric prefix argument, set it to the Nth allowed value (see
-below).  This command is also accessible from the agenda with the @kbd{e}
-key.  @orgcmd{C-c C-x C-e,org-clock-modify-effort-estimate} Modify the
-effort estimate of the item currently being clocked.
+@orgcmd{C-c C-x e,org-set-effort}現在のエントリについて工数の見積もりを行いま
+す。前置引数に数値を指定することにより、N番目の数値に指定します(下記の
+例を参照)。このコマンドはアジェンダからも@kbd{e}キーを押すことによりアクセ
+スできます。@orgcmd{C-c C-x C-e,org-clock-modify-effort-estimate}現在時間が計
+測されている項目の工数見積もりを変更します。
 @end table
 
-Clearly the best way to work with effort estimates is through column view
-(@pxref{Column view}).  You should start by setting up discrete values for
-effort estimates, and a @code{COLUMNS} format that displays these values
-together with clock sums (if you want to clock your time).  For a specific
-buffer you can use
+明らかなように、工数見積もりを行う最善の方法はカラムビュー(@pxref{Column view})を
+用いることです。個別の項目についての工数見積もりから始めて、@code{COLUMNS}フォー
+マットによりこれらの値と実際の計測時間(時間の計測を行いたい場合)を同時に表示
+します。例えば、あるバッファについて以下のように指定できます。
 
 @example
 #+PROPERTY: Effort_ALL 0 0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00 8:00
@@ -5820,64 +5856,66 @@ buffer you can use
 @noindent
 @vindex org-global-properties
 @vindex org-columns-default-format
-or, even better, you can set up these values globally by customizing the
-variables @code{org-global-properties} and
-@code{org-columns-default-format}.  In particular if you want to use this
-setup also in the agenda, a global setup may be advised.
+さらに良い方法としては、変数@code{org-global-properties}あるいは
+@code{org-columns-default-format}をカスタマイズすることにより、これらの数値をグロ
+ーバルに指定できます。特にこの指定をアジェンダで使用したい場合には、グローバ
+ルな指定を行うことが推奨されます。
 
-The way to assign estimates to individual items is then to switch to column
-mode, and to use @kbd{S-@key{right}} and @kbd{S-@key{left}} to change the
-value.  The values you enter will immediately be summed up in the
-hierarchy.  In the column next to it, any clocked time will be displayed.
+個別の項目について見積もりを割り当てるには、カラムモードに移行し、
+@kbd{S-@key{right}}および@kbd{S-@key{left}}を使うことにより値を変更します。入力された数値は
+すぐに階層構造で足し合わされます。その隣の列には計測された時間が表示されるこ
+とになります。
 
 @vindex org-agenda-columns-add-appointments-to-effort-sum
-If you switch to column view in the daily/weekly agenda, the effort column
-will summarize the estimated work effort for each day@footnote{Please note the pitfalls of summing hierarchical data in a flat list (@pxref{Agenda column view}).}, and you can use this to find space in your schedule.  To
-get an overview of the entire part of the day that is committed, you can set
-the option @code{org-agenda-columns-add-appointments-to-effort-sum}.  The
-appointments on a day that take place over a specified time interval will
-then also be added to the load estimate of the day.
+日別あるいは週別のアジェンダでカラムビューに移行すると、工数の列は各日につい
+ての工数見積もりを足し合わせて表示され@footnote{単準なリストを階層的に足し合わせる際
+には落とし穴があります(@pxref{Agenda column view})。}、これを用いてスケジュールの
+空きを見つけることができます。その日の作業について全体像をつかみたい場合には
+、オプション@code{org-agenda-columns-add-appointments-to-effort-sum}を指定するこ
+とができます。時間間隔が指定されているアポイントで、その日に発生するものにつ
+いても負荷見積もりに加算して表示されます。
 
-Effort estimates can be used in secondary agenda filtering that is triggered
-with the @kbd{/} key in the agenda (@pxref{Agenda commands}).  If you have
-these estimates defined consistently, two or three key presses will narrow
-down the list to stuff that fits into an available time slot.
+工数見積もりは、アジェンダ内で@kbd{/}を押すことによりアジェンダの2次的なフィルタ
+リングに用いることができます(@pxref{Agenda commands})。このような見積もりを確実に
+行えば、2、3回キーを押すことにより空いている時間間隔に合うように項目を絞り込
+むことができます。
 
 @node Relative timer, カウントダウンタイマ, Effort estimates, Date and Times
-@section Taking notes with a relative timer
-@cindex relative timer
+@section 相対時間タイマーを使ったノート作成
+@cindex 相対時間タイマー
 
-When taking notes during, for example, a meeting or a video viewing, it can
-be useful to have access to times relative to a starting time.  Org provides
-such a relative timer and make it easy to create timed notes.
+例えば会議やビデオ閲覧時にノートをとる際など、開始時からの経過時間がわかると
+便利な場合があります。Org-modeはそのような場合に使える相対時間タイマー機能を
+持っており、時間を含むノートを簡単に作ることができます。
 
 @table @kbd
 @c for key sequences with a comma, command name macros fail :(
-@orgcmd{C-c C-x .,org-timer} Insert a relative time into the buffer.  The
-first time you use this, the timer will be started.  When called with a
-prefix argument, the timer is restarted.  @orgcmd{C-c C-x -,org-timer-item}
-Insert a description list item with the current relative time.  With a
-prefix argument, first reset the timer to 0.
-@orgcmd{M-@key{RET},org-insert-heading} Once the timer list is started, you
-can also use @kbd{M-@key{RET}} to insert new timer items.
+@orgcmd{C-c C-x .,org-timer}バッファに相対時間タイマーを挿入します。最初に使
+う際にはタイマーが開始されます。前置引数と共に呼ばれた場合には、タイマ
+ーがリスタートされます。@orgcmd{C-c C-x -,org-timer-item}現在の相対時刻での記
+述項目を挿入します。前置引数と共に呼ばれた場合は、タイマーの時刻が0に
+リセットされます。@orgcmd{M-@key{RET},org-insert-heading}タイマーリストが既に開始
+されている場合は@kbd{M-@key{RET}}で新しいタイマー項目を追加することもできます
+。
 @kindex C-c C-x ,
 @item C-c C-x ,
 @c removed the sentence because it is redundant to the following item
-Pause the timer, or continue it if it is already paused
-(@command{org-timer-pause-or-continue}).
+タイマーを一時停止します。一時停止されている場合には再開します
+ (@command{org-timer-pause-or-continue})。
 @kindex C-u C-c C-x ,
 @item C-u C-c C-x ,
-Stop the timer.  After this, you can only start a new timer, not continue
-the old one.  This command also removes the timer from the mode line.
-@orgcmd{C-c C-x 0,org-timer-start} Reset the timer without inserting
-anything into the buffer.  By default, the timer is reset to 0.  When called
-with a @kbd{C-u} prefix, reset the timer to specific starting offset.  The
-user is prompted for the offset, with a default taken from a timer string at
-point, if any, So this can be used to restart taking notes after a break in
-the process.  When called with a double prefix argument @kbd{C-u C-u},
-change all timer strings in the active region by a certain amount.  This can
-be used to fix timer strings if the timer was not started at exactly the
-right moment.
+タイマーを停止します。これを実行した後には古いタイマーを再開することは
+できず、新しいタイマーの作成のみが可能です。このコマンドによりモード行
+からもタイマーが削除されます。@orgcmd{C-c C-x 0,org-timer-start}バッファに何
+も挿入せずにタイマーをリセットします。デフォルトではタイマーは0にリセ
+ットされますが、前置引数@kbd{C-u}と共に呼ばれた場合は、指定された時間から
+タイマーが始められます。ユーザーは開始時間を入力するよう促されます。同
+じ位置に既にタイマー文字列がある場合には、その時間がデフォルトとして指
+定されます。そのため、このコマンドは休憩時間のあとなどでノート取りを再
+開する場合などに用いることができます。2つの前置引数@kbd{C-u C-u}と共に呼ば
+れた場合は、アクティブなリージョンにある全てのタイマー文字列を一定の時
+間だけ変化させます。これはタイマーを正しい時刻に開始できなかった場合、
+タイマー文字列を一度に修正する場合に使用できます。
 @end table
 
 @node カウントダウンタイマ, , Relative timer, Date and Times
@@ -5886,13 +5924,14 @@ right moment.
 @kindex C-c C-x ;
 @kindex ;
 
-Calling @code{org-timer-set-timer} from an Org-mode buffer runs a countdown
-timer.  Use @key{;} from agenda buffers, @key{C-c C-x ;} everwhere else.
+Org-modeバッファから@code{org-timer-set-timer}を呼ぶことにより、カウントダウンタ
+イマーが利用できます。アジェンダバッファの場合は@key{;}、その他は@key{C-c C-x ;}によ
+り実行できます。
 
-@code{org-timer-set-timer} prompts the user for a duration and displays a
-countdown timer in the modeline.  @code{org-timer-default-timer} sets the
-default countdown value.  Giving a prefix numeric argument overrides this
-default value.
+@code{org-timer-set-timer}により、ユーザーに時間間隔を入力するように促し、モード
+行にカウントダウンタイマーを表示します。@code{org-timer-default-timer}によりデフ
+ォルトのカウントダウン値を設定します。前置引数で数値を指定することで、デフォ
+ルトの値が上書きされます。
 
 @node Capture - Refile - Archive, Agenda Views, Date and Times, Top
 @chapter Capture - Refile - Archive
@@ -6922,8 +6961,8 @@ Org-modeはEmacsの予定を通知する機能と連携しています。あな�
 たとえば@kbd{3 r}というように、前置引数をつけてこのコマンドを実行すると選
 択したTODOキーワードが変更することができます。もしも特定のキーワードを
 使って検索することが多い場合は、カスタムコマンドを定義することもできま
-す(@pxref{Agenda dispatcher})。@*特定のTODOキーワードと合致するものを検索するのは、タグ検索の１機能として
-行うこともできます(@pxref{Tag searches})。
+す(@pxref{Agenda dispatcher})。@*特定のTODOキーワードと合致するものを検索するのは、タグ検索の１機能として行
+うこともできます(@pxref{Tag searches})。
 @end table
 
 リモートでTODOアイテムを編集するということの意味は、1つのキーを入力すること

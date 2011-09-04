@@ -4710,11 +4710,12 @@ File: org-ja,  Node: Date and Times,  Next: Capture - Refile - Archive,  Prev: P
 8 日付と時刻
 *****************
 
-To assist project planning, TODO items can be labeled with a date and/or a
-time.  The specially formatted string carrying the date and time information
-is called a _timestamp_ in Org-mode.  This may be a little confusing
-because timestamp is often used as indicating when something was created or
-last changed.  However, in Org-mode this term is used in a much wider sense.
+プロジェクトのプランニングを補助するため、TODOアイテムは日付または時刻でラベ
+リングすることができます。このような形でフォーマットされた日付および時刻の情
+報を含む文字列はOrg-modeでは_タイムスタンプ_と呼ばれています。一般的な用法で
+は、タイムスタンプは何かを作成したときや最後に変更したときの記録を示しますの
+で、若干紛らわしいかもしれませんが、Org-modeではタイムスタンプという用語をよ
+り広い意味で用います。
 
 * Menu:
 
@@ -4729,61 +4730,62 @@ last changed.  However, in Org-mode this term is used in a much wider sense.
 
 File: org-ja,  Node: Timestamps,  Next: Creating timestamps,  Prev: Date and Times,  Up: Date and Times
 
-8.1 Timestamps, deadlines, and scheduling
-=========================================
+8.1 タイムスタンプ、デッドラインおよびスケジューリング
+===============================================================================
 
-A timestamp is a specification of a date (possibly with a time or a range of
-times) in a special format, either `<2003-09-16 Tue>' or `<2003-09-16 Tue
-09:39>' or `<2003-09-16 Tue 12:00-12:30>'(1).  A timestamp can appear
-anywhere in the headline or body of an Org tree entry.  Its presence causes
-entries to be shown on specific dates in the agenda (*note Weekly/daily
-agenda::).  We distinguish:
+タイムスタンプは、例えば`<2003-09-16 Tue>'、`<2003-09-16 Tue 09:39>'、
+`<2003-09-16 Tue 12:00-12:30>'といった独自形式での日付（場合によっては時刻お
+よび時間間隔を含む）の指定方法です(1)。タイムスタンプはOrgツリー構造の見
+出し、本文のいずれにも挿入できます。タイムスタンプを指定することにより、指定
+された日付のアジェンダ(*note Weekly/daily
+agenda::)にそのエントリーが表示されます 。その際には以下の区別が行われます。
 
-PLAIN TIMESTAMP; EVENT; APPOINTMENT
-     A simple timestamp just assigns a date/time to an item.  This is just
-     like writing down an appointment or event in a paper agenda.  In the
-     timeline and agenda displays, the headline of an entry associated with
-     a plain timestamp will be shown exactly on that date.
+Ã�Ã�Ã�Ã�Á�Â�Â�Ã�Â�Â�Ã�Ã�À�Â�Ã�Ã�Ã�À�Â�Ã�Â�Ã�Ã�
+     項目に対して単一の日付または時刻を割り当てるシンプルなタイムスタンプで
+     す。紙の予定表に予定あるいはイベントを記入するのとほぼ同じ感覚です。タ
+     イムラインおよびアジェンダを表示すると、プレーンなタイムスタンプが指定
+     されたエントリーの見出しはまさにその指定された日付に表示されます。
 
-          * Meet Peter at the movies <2006-11-01 Wed 19:15>
-          * Discussion on climate change <2006-11-02 Thu 20:00-22:00>
+          * ピーターと映画を見に行く<2006-11-01 Wed 19:15>
+          * 気候変動についてのディスカッション<2006-11-02 Thu 20:00-22:00>
 
-TIMESTAMP WITH REPEATER INTERVAL
-     A timestamp may contain a _repeater interval_, indicating that it
-     applies not only on the given date, but again and again after a certain
-     interval of N days (d), weeks (w), months (m), or years (y).  The
-     following will show up in the agenda every Wednesday:
+Ã�Ã�Ã�Ã�ɖ�ɚ�Â�ƌ�Ů�Á�Á�Â�Â�Ã�Â�Â�Ã�Ã�
+     タイムスタンプには_リピート間隔_を含めることができます。すなわち単一の
+     日時だけでなく、N日(d)、N週間(w)、Nヶ月(m)あるいはN年(y)といった一定の
+     間隔で繰り返すようなケースに対応しています。例えば、毎週水曜日のアジェ
+     ンダに表示する場合は以下のようになります。
 
-          * Pick up Sam at school <2007-05-16 Wed 12:30 +1w>
+          * 学校までサムを迎えに行く<2007-05-16 Wed 12:30 +1w>
 
-DIARY-STYLE SEXP ENTRIES
-     For more complex date specifications, Org-mode supports using the
-     special sexp diary entries implemented in the Emacs calendar/diary
-     package.  For example
+Ã�Â�Â�Ã�Ã�Ž�ż�Á�Sż�ɠ�Ǜ�
+     より複雑な日付の指定方法として、Org-modeではEmacsのcalendarまたはdiary
+     パッケージで実装されているS式のダイアリー項目を使用することができます
+     。例えば以下のような形式です。
 
-          * The nerd meeting on every 2nd Thursday of the month
+          * 毎月第2木曜日のオタクの集まり
             <%%(diary-float t 4 2)>
 
-TIME/DATE RANGE
-     Two timestamps connected by `--' denote a range.  The headline will be
-     shown on the first and last day of the range, and on any dates that are
-     displayed and fall in the range.  Here is an example:
+Ɨ�Ļ�Á�Á�Á�ƙ�ň�Á�ɖ�ɚ�
+     2つのタイムスタンプを`--'でつなげることにより、時間間隔を表現できます
+     。時間間隔の指定されたヘッドラインは、間隔の始めと終わりの日、およびそ
+     の間の現在表示されている日付の項目に表示されます。以下のような形です。
 
-          ** Meeting in Amsterdam
+          ** アムステルダムでのミーティング
              <2004-08-23 Mon>--<2004-08-26 Thu>
 
-INACTIVE TIMESTAMP
-     Just like a plain timestamp, but with square brackets instead of
-     angular ones.  These timestamps are inactive in the sense that they do
-     _not_ trigger an entry to show up in the agenda.
+Â�Â�Ã�Â�Ã�Á�Á�Á�Â�Â�Ã�Â�Â�Ã�Ã�
+     プレーンなタイムスタンプと同様ですが、<>ではなく[]で囲むことによりアク
+     ティブでないタイムスタンプとなります。このようなタイムスタンプが指定さ
+     れたエントリーは、アジェンダに表示_されません_。
 
-          * Gillian comes late for the fifth time [2006-11-01 Wed]
+          * ジリアンが5度目の遅刻　[2006-11-01 Wed]
 
 
    ---------- Footnotes ----------
 
-   (1) This is inspired by the standard ISO 8601 date/time format.  To use
-an alternative format, see *note Custom time format::.
+   (1) この表記は標準的なISO8601の日付、時刻フォ
+ーマットをもとに考案されています。代替フォーマットの使用については、 *note
+Custom time format::を参照してください。
 
 
 File: org-ja,  Node: Creating timestamps,  Next: Deadlines and scheduling,  Prev: Timestamps,  Up: Date and Times
@@ -4791,56 +4793,64 @@ File: org-ja,  Node: Creating timestamps,  Next: Deadlines and scheduling,  Prev
 8.2 Creating timestamps
 =======================
 
-For Org-mode to recognize timestamps, they need to be in the specific
-format.  All commands listed below produce timestamps in the correct format.
+Org-modeがタイムスタンプを認識するためには、特定のフォーマットを用いる必要が
+あります。以下のコマンドのいずれを用いても正しいフォーマットでタイムスタンプ
+を生成することができます。
 
 `C-c .     (`org-time-stamp')'
-     Prompt for a date and insert a corresponding timestamp.  When the
-     cursor is at an existing timestamp in the buffer, the command is used
-     to modify this timestamp instead of inserting a new one.  When this
-     command is used twice in succession, a time range is inserted.  
+     日付を入力して、それに対応するタイムスタンプを挿
+     入します。既にバッファ内に存在するタイムスタンプにカーソルが置かれてい
+     る場合は、このコマンドは新たなタイムスタンプを挿入する代わりに、既にあ
+     るタイムスタンプを変更します。このコマンドを2回連続で使用すると、時間
+     間隔を指定することができます。
 
 `C-c !     (`org-time-stamp-inactive')'
-     Like `C-c .', but insert an inactive timestamp that will not cause an
-     agenda entry.  
+     コマンド `C-c
+     .'と同様ですが、アクティブでない（アジェンダのエントリーに反映さ
+     れない）タイムスタンプを生成します。 
 
 `C-u C-c .'
 `C-u C-c !'
-     Like `C-c .' and `C-c !', but use the alternative format which
-     contains date and time.  The default time can be rounded to multiples
-     of 5 minutes, see the option `org-time-stamp-rounding-minutes'.  
+     `C-c .'および`C-c !'と同様ですが、日付と時刻を含む代替フォーマットを使
+     用します。標準では、時刻は5分間隔で丸められます。
+     `org-time-stamp-rounding-minutes'のオプションを参照して下さい。 
 
 `C-c <     (`org-date-from-calendar')'
-     Insert a timestamp corresponding to the cursor date in the Calendar.  
+     カレンダーのカーソルに対応したタイムスタ ンプを挿入します。
 
 `C-c >     (`org-goto-calendar')'
-     Access the Emacs calendar for the current date.  If there is a
-     timestamp in the current line, go to the corresponding date instead.  
+     現在時刻のEmacカレンダーに
+     アクセスします。現在の行に既にタイムスタンプが存在する場合は、それに対
+     応する日付にアクセスします。
 
 `C-c C-o     (`org-open-at-point')'
-     Access the agenda for the date given by the timestamp or -range at
-     point (*note Weekly/daily agenda::).  
+     タイムスタンプ
+     および時間間隔で指定された日付でアジェンダにアクセスします (*note
+     Weekly/daily agenda::)。 
 
 `S-<left>     (`org-timestamp-down-day')'
 `S-<right>     (`org-timestamp-up-day')'
-     Change date at cursor by one day.  These key bindings conflict with
-     shift-selection and related modes (*note Conflicts::).  
+     カーソ
+     ル一の日付を1日変更します。このキーバインドはシフト選択およびそれに関
+     連するモードと衝突します(*note Conflicts::)。 
 
 `S-<up>     (`org-timestamp-up')'
 `S-<down>     (`org-timestamp-down-down')'
-     Change the item under the cursor in a timestamp.  The cursor can be on
-     a year, month, day, hour or minute.  When the timestamp contains a
-     time range like `15:30-16:30', modifying the first time will also
-     shift the second, shifting the time block with constant length.  To
-     change the length, modify the second time.  Note that if the cursor is
-     in a headline and not at a timestamp, these same keys modify the
-     priority of an item.  (*note Priorities::). The key bindings also
-     conflict with shift-selection and related modes (*note Conflicts::).  
+     カーソルのあ
+     るタイムスタンプの項目を変更します。カーソルが年、月、日、時間あるいは
+     分の上に置かれている場合に使用できます。例えば、タイムスタンプが
+     `15:30-16:30'のように時間間隔を含む場合、左の時刻を変更すると自動的に
+     右の時刻も変更され、間隔は一定の長さに保たれます。間隔の長さを変更する
+     には、右の時刻を変更して下さい。ただし、カーソルがタイムスタンプではな
+     く見出し上にある時には、同じキー操作により項目の優先度が変更されますの
+     で気をつけて下さい(*note
+     Priorities::)。このキーバインドはシフト選択および関
+     連するモードとも衝突します(*note Conflicts::)。 
 
 `C-c C-y     (`org-evaluate-time-range')'
-     Evaluate a time range by computing the difference between start and
-     end.  With a prefix argument, insert result after the time range (in a
-     table: into the following column).
+     開始日時と終了日時の差を計算することにより、時間間隔を計算します。前置
+     引数を指定することにより、計算結果をタイムスタンプの後に挿入できます（
+     テーブルの中では隣の列に挿入されます）。
 
 * Menu:
 
@@ -4853,100 +4863,96 @@ File: org-ja,  Node: The date/time prompt,  Next: Custom time format,  Prev: Cre
 8.2.1 The date/time prompt
 --------------------------
 
-When Org-mode prompts for a date/time, the default is shown in default
-date/time format, and the prompt therefore seems to ask for a specific
-format.  But it will in fact accept any string containing some date and/or
-time information, and it is really smart about interpreting your input.  You
-can, for example, use `C-y' to paste a (possibly multi-line) string copied
-from an email message.  Org-mode will find whatever information is in there
-and derive anything you have not specified from the _default date and
-time_.  The default is usually the current date and time, but when
-modifying an existing timestamp, or when entering the second stamp of a
-range, it is taken from the stamp in the buffer.  When filling in
-information, Org-mode assumes that most of the time you will want to enter a
-date in the future: if you omit the month/year and the given day/month is
-before today, it will assume that you mean a future date(1).  If the date
-has been automatically shifted into the future, the time prompt will show
-this with `(=>F).'
+Org-modeが日付または時刻をプロンプトに表示するとき、標準では標準フォーマット
+による形式が表示されるため、そのフォーマットで入力することが必須だと勘違いし
+そうになります。ところが、実際には日付または時刻の情報を含む任意の文字列を入
+力することができ、Org-modeはかなり利口に入力された時間情報を解釈します。例え
+ば、`C-y'により電子メールの文面からコピーした文字列（複数行でも可）を挿入す
+ることができます。Org-modeは文面の中の時間情報を見つけ出し、そこで指定されて
+いない情報は_デフォルトの日付時刻_を用います。デフォルトは通常は現在の日付お
+よび時刻ですが、既にあるタイムスタンプを変更する場合や、時間間隔の2つ目の項
+目を入力する場合には、バッファ内のタイムスタンプから情報が取得されます。情報
+を解釈する際に、Org-modeは多くの場合では入力したい時間が未来の時間であると推
+測します。例えば年月の情報を省略して、今日より前の時刻を指定しようとすると、
+Org-modeは未来の時刻を意図しているものと推測します (1)。
+日付が自動的に未来にシフトされた場合、プロンプトには`(=>F)'が表示されます。
 
-   For example, let's assume that today is June 13, 2006.  Here is how
-various inputs will be interpreted, the items filled in by Org-mode are in
-bold.
+例えば、今日が2006年6月13日であるとしたとき、以下の左ような入力は右のように
+解釈されます。Org-modeにより推定された部分を太字で示します。
 
      3-2-5         => 2003-02-05
      2/5/3         => 2003-02-05
      14            => 2006-06-14
      12            => 2006-07-12
      2/5           => 2007-02-05
-     Fri           => nearest Friday (default date or later)
+     Fri           => 直近の金曜日(基準日かそれより後)
      sep 15        => 2006-09-15
      feb 15        => 2007-02-15
      sep 12 9      => 2009-09-12
      12:45         => 2006-06-13 12:45
      22 sept 0:34  => 2006-09-22 0:34
-     w4            => ISO week for of the current year 2006
-     2012 w4 fri   => Friday of ISO week 4 in 2012
-     2012-w04-5    => Same as above
+     w4            => 現在の年（2006年）のISO週番号
+     2012 w4 fri   => 2012年のISO4週目の火曜日の日付
+     2012-w04-5    => 上と同様
 
-   Furthermore you can specify a relative date by giving, as the _first_
-thing in the input: a plus/minus sign, a number and a letter ([dwmy]) to
-indicate change in days, weeks, months, or years.  With a single plus or
-minus, the date is always relative to today.  With a double plus or minus,
-it is relative to the default date.  If instead of a single letter, you use
-the abbreviation of day name, the date will be the Nth such day.  e.g.
+さらに、相対的な日付を入力するための方法として、入力の_最初に_プラスまたはマ
+イナス記号、数値および文字([dwmy])により日、週、月あるいは年の変化を指定する
+方法があります。単一のプラス/マイナスを入力すると、常に今日に対する相対的な
+日付が指定されます。2つのプラスまたはマイナスが入力されると、標準の日付に対
+する相対値となります。一文字の代わりに時間に関する省略文字列を指定すると、N
+番目の該当する日が指定されます。以下に例を示します。
 
-     +0            => today
-     .             => today
-     +4d           => four days from today
-     +4            => same as above
-     +2w           => two weeks from today
-     ++5           => five days from default date
-     +2tue         => second Tuesday from now.
+     +0            => 今日
+     .             => 今日
+     +4d           => 今日から4日後
+     +4            => 上と同様
+     +2w           => 今日から2週間後
+     ++5           => 標準日時から5日後
+     +2tue         => 今日から数えて2回目の火曜日
 
-   The function understands English month and weekday abbreviations.  If you
-want to use unabbreviated names and/or other languages, configure the
-variables `parse-time-months' and `parse-time-weekdays'.
+この機能では、英語の月および曜日の省略記法に対応しています。省略しない記法や
+他の言語の記法を使用したい場合には、変数`parse-time-months'および
+`parse-time-weekdays'を変更して下さい。
 
-   You can specify a time range by giving start and end times or by giving a
-start time and a duration (in HH:MM format). Use `-' or `-{}-' as the
-separator in the former case and use '+' as the separator in the latter
-case. E.g.
+時間間隔は、開始時刻と終了時刻を入力するか、開始時刻とその継続時間(HH:MMの形
+式)を入力することにより指定できます。前者の場合は分離記号として`-'あるいは
+`-{}-'を使用し、後者の場合は分離記号として'+'を使用して下さい。例えば以下
+の通りです。
 
      11am-1:15pm    => 11:00-13:15
-     11am--1:15pm   => same as above
-     11am+2:15      => same as above
+     11am--1:15pm   => 上と同様
+     11am+2:15      => 上と同様
 
-   Parallel to the minibuffer prompt, a calendar is popped up(2).  When you
-exit the date prompt, either by clicking on a date in the calendar, or by
-pressing <RET>, the date selected in the calendar will be combined with the
-information entered at the prompt.  You can control the calendar fully from
-the minibuffer:
+ミニバッファのプロンプトと並行して、カレンダーがポップアップします(2)。カレンダー内の日付をクリックするか、<RET>を入力することにより日付のプ
+ロンプトを抜けると、カレンダーで選択した日付とプロンプトで入力された情報が組
+み合わされます。カレンダーはミニバッファから自由に操作することがきます。
 
-     <RET>           Choose date at cursor in calendar.
-     mouse-1        Select date by clicking on it.
-     S-<right>/<left>     One day forward/backward.
-     S-<down>/<up>     One week forward/backward.
-     M-S-<right>/<left>   One month forward/backward.
-     > / <          Scroll calendar forward/backward by one month.
-     M-v / C-v      Scroll calendar forward/backward by 3 months.
+     <RET>           カレンダーのカーソル地点の日付を選択する。
+     mouse-1        クリックにより日付を選択する。
+     S-<right>/<left>     1日分進める/戻る
+     S-<down>/<up>     1週間分進める/戻る
+     M-S-<right>/<left>   1ヶ月分進める/戻る
+     > / <          カレンダーを1ヶ月前/後ろにスクロールする
+     M-v / C-v      カレンダーを3ヶ月前/後ろにスクロールする
 
-   The actions of the date/time prompt may seem complex, but I assure you
-they will grow on you, and you will start getting annoyed by pretty much any
-other way of entering a date/time out there.  To help you understand what is
-going on, the current interpretation of your input will be displayed live in
-the minibuffer(3).
+文章の説明では、日付時刻プロンプトの動作は複雑に思えるかもしれませんが、徐々
+に慣れてくると、これ以外の方法で日付および時刻を入力することのほうが面倒に感
+じることでしょう。動作の仕組みに対する理解を助けるため、入力された情報に対す
+るその時点での解釈がミニバッファに表示されます。(3)。
 
    ---------- Footnotes ----------
 
-   (1) See the variable `org-read-date-prefer-future'.  You may set that
-variable to the symbol `time' to even make a time before now shift the date
-to tomorrow.
+   (1)
+`org-read-date-prefer-future'の変数を参照。この変数`time'に該当する変数を変
+更することにより、現在時刻より前の時刻を明日にシフトすることも可能です。
 
-   (2) If you don't need/want the calendar, configure the variable
-`org-popup-calendar-for-date-prompt'.
+   (2) カレンダ
+ーの表示が不要の場合、変数`org-popup-calendar-for-date-prompt'を変更して下さ
+い。
 
-   (3) If you find this distracting, turn the display of with
-`org-read-date-display-live'.
+   (3) もしミニバッファの表示が目
+障りな場合は、`org-read-date-display-live'で表示しないよう設定することができ
+ます。
 
 
 File: org-ja,  Node: Custom time format,  Prev: The date/time prompt,  Up: Creating timestamps
@@ -4954,37 +4960,36 @@ File: org-ja,  Node: Custom time format,  Prev: The date/time prompt,  Up: Creat
 8.2.2 Custom time format
 ------------------------
 
-Org-mode uses the standard ISO notation for dates and times as it is defined
-in ISO 8601.  If you cannot get used to this and require another
-representation of date and time to keep you happy, you can get it by
-customizing the variables `org-display-custom-times' and
-`org-time-stamp-custom-formats'.
+日付や時間を表現するため、Org-modeはISO8601で定義されているような標準的なISO
+の記法を使用しています。もしこの記法に不慣れで、別の日付や時間の記法のほうが
+好みである場合は、変数`org-display-custom-times'および
+`org-time-stamp-custom-formats'をカスタマイズすることができます。
 
 `C-c C-x C-t     (`org-toggle-time-stamp-overlays')'
-     Toggle the display of custom formats for dates and times.
+     カスタムフォーマットの日付 および時間の表示をトグルします。
 
-Org-mode needs the default format for scanning, so the custom date/time
-format does not _replace_ the default format--instead it is put _over_ the
-default format using text properties.  This has the following consequences:
-   * You cannot place the cursor onto a timestamp anymore, only before or
-     after.
+Org-modeは文字列のスキャンニングのためにデフォルトのフォーマットを必要とする
+ため、カスタムフォーマットの日付および時刻は標準フォーマットを_置き換えませ
+ん_。その代わりに、テキストのプロパティを用いて標準フォーマットに_上書きされ
+ます_。これが原因で以下のような動作が生じます。
+   * タイムスタンプの上にカーソルを置くことはできなくなり、その前後にしかカ
+     ーソルが移動しなくなります。
 
-   * The `S-<up>/<down>' keys can no longer be used to adjust each
-     component of a timestamp.  If the cursor is at the beginning of the
-     stamp, `S-<up>/<down>' will change the stamp by one day, just like
-     `S-<left>/<right>'.  At the end of the stamp, the time will be changed
-     by one minute.
+   * `S-<up>/<down>'のキー操作は、タイムスタンプの各要素を変更するために使
+     用できなくなります。カーソルがスタンプの前にある場合、`S-<up>/<down>'
+     によりスタンプを1日だけ変更します。これは`S-<left>/<right>'と同様です
+     。スタンプの後ろにある場合、時間が1ヶ月ずつ変更されます。
 
-   * If the timestamp contains a range of clock times or a repeater, these
-     will not be overlaid, but remain in the buffer as they were.
+   * タイムスタンプが時間間隔や繰り返し時刻を含む場合、これらは上書きされず
+     に元の形式のままバッファに表示されます。
 
-   * When you delete a timestamp character-by-character, it will only
-     disappear from the buffer after _all_ (invisible) characters belonging
-     to the ISO timestamp have been removed.
+   * タイムスタンプを一文字ずつ消去した場合、(隠れた)ISO標準フォーマット文
+     字列の_全て_を削除した場合のみカスタムフォーマットのタイムスタンプが消
+     去されます。
 
-   * If the custom timestamp format is longer than the default and you are
-     using dates in tables, table alignment will be messed up.  If the
-     custom format is shorter, things do work as expected.
+   * もし、カスタムフォーマットのタイムスタンプが標準フォーマットより長く、
+     テーブル内で用いられている場合、テーブルの整形が崩れます。標準フォーマ
+     ットより短い場合には、期待通りに動作します。
 
 
 File: org-ja,  Node: Deadlines and scheduling,  Next: Clocking work time,  Prev: Creating timestamps,  Up: Date and Times
@@ -4992,53 +4997,53 @@ File: org-ja,  Node: Deadlines and scheduling,  Next: Clocking work time,  Prev:
 8.3 Deadlines and scheduling
 ============================
 
-A timestamp may be preceded by special keywords to facilitate planning:
+プランニングを補助するため、タイムスタンプの前に所定のキーワードを置くことが
+できます。
 
 DEADLINE
-     Meaning: the task (most likely a TODO item, though not necessarily) is
-     supposed to be finished on that date.
+     意味:タスク(多くの場合はTODOアイテムですが、それに限りません)はタイム
+     スタンプで示された日のうちに終了するものと見なされます。
 
-     On the deadline date, the task will be listed in the agenda.  In
-     addition, the agenda for _today_ will carry a warning about the
-     approaching or missed deadline, starting `org-deadline-warning-days'
-     before the due date, and continuing until the entry is marked DONE.
-     An example:
+     デッドラインが付けられた場合は、そのタスクはアジェンダの中に記載されま
+     す。それに加えて、_今日_のアジェンダはデッドラインが近づいたり、それを
+     超過したりした場合に警告を発します。警告は期限の
+     `org-deadline-warning-days'だけ前から表示され、エントリがDONEとされる
+     までは消えません。以下に例を示します。
 
-          *** TODO write article about the Earth for the Guide
-              The editor in charge is [[bbdb:Ford Prefect]]
+          *** TODO ガイド誌の地球についての記事を書く。
+              担当編集者は[[bbdb:Ford Prefect]]
               DEADLINE: <2004-02-29 Sun>
 
-     You can specify a different lead time for warnings for a specific
-     deadlines using the following syntax.  Here is an example with a
-     warning period of 5 days `DEADLINE: <2004-02-29 Sun -5d>'.
+     以下の構文を用いることにより、個別のデッドラインについて異なる警告のリ
+     ードタイムを指定することができます。以下は5日間の警告期間を指定する場
+     合の例です`DEADLINE: <2004-02-29 Sun -5d>'。
 
 SCHEDULED
-     Meaning: you are planning to start working on that task on the given
-     date.
+     意味:指定された日に、そのタスクに取りかかる予定であることを示します。
 
-     The headline will be listed under the given date(1).  In addition, a
-     reminder that the scheduled date has passed will be present in the
-     compilation for _today_, until the entry is marked DONE, i.e. the task
-     will automatically be forwarded until completed.
+     見出しは指定された日付の下に記載されます(1)。それに加えて、ス
+     ケジューリングされた日付を超過した場合には_今日_のリストにエントリが
+     DONEとなるまでリマインダが表示され続けます。すなわち、タスクは完了する
+     まで自動的に後回しにされます。
 
-          *** TODO Call Trillian for a date on New Years Eve.
+          *** TODO トリリアンに大晦日のデートについて電話する。
               SCHEDULED: <2004-12-25 Sat>
 
-     Important: Scheduling an item in Org-mode should not be understood in
-     the same way that we understand scheduling a meeting.  Setting a date
-     for a meeting is just a simple appointment, you should mark this entry
-     with a simple plain timestamp, to get this item shown on the date
-     where it applies.  This is a frequent misunderstanding by Org users.
-     In Org-mode, scheduling means setting a date when you want to start
-     working on an action item.
+     重要:Org-modeで項目をスケジューリングすることは、ミーティングをスケジュ
+     ーリングすることと同様であるという理解は正しくありません。ミーティン
+     グをセットするのは単なるアポイントですが、このような場合はエントリーに
+     はプレーンなタイムスタンプを使用し、日付が来れば項目が表示されるように
+     設定するべきです。これはユーザーがしばしば誤解する点です。Org-modeでは
+     スケジューリングは何らかのアクションアイテムに取りかかる際に、日付を設
+     定することを意味します。
 
-   You may use timestamps with repeaters in scheduling and deadline entries.
-Org-mode will issue early and late warnings based on the assumption that the
-timestamp represents the nearest instance of the repeater.  However, the
-use of diary sexp entries like `<%%(diary-float t 42)>' in scheduling and
-deadline timestamps is limited.  Org-mode does not know enough about the
-internals of each sexp function to issue early and late warnings.  However,
-it will show the item on each day where the sexp entry matches.
+スケジューリングやデッドラインの項目には、繰り返しを含むタイムスタンプを使用
+することが可能です。Org-modeは、タイムスタンプが繰り返し日付の直近の日付を表
+すものと推測して事前あるいは事後の警告を発します。しかし、スケジューリングや
+デッドラインにおいては`<%%(diary-float t 42)>'のような日記のS式項目は限定的
+にしか使用できません。Org-modeはこれらS式項目の内部構造について十分理解して
+いないため、事前および事後の警告を発することはできません。ただし、S式項目と
+一致したそれぞれの日付に項目を表示することは行われます。
 
 * Menu:
 
@@ -5047,63 +5052,65 @@ it will show the item on each day where the sexp entry matches.
 
    ---------- Footnotes ----------
 
-   (1) It will still be listed on that date after it has been marked DONE.
-If you don't like this, set the variable
-`org-agenda-skip-scheduled-if-done'.
+   (1) 項目がDONEとマークされた場合
+でも、指定日の項目に表示され続けます。この設定が好みでなければ、変数
+`org-agenda-skip-scheduled-if-done'を指定して下さい
 
 
 File: org-ja,  Node: Inserting deadline/schedule,  Next: Repeated tasks,  Prev: Deadlines and scheduling,  Up: Deadlines and scheduling
 
-8.3.1 Inserting deadlines or schedules
---------------------------------------
+8.3.1 デッドラインおよびスケジュールの挿入
+------------------------------------------------------------
 
-The following commands allow you to quickly insert(1) a deadline or to
-schedule an item:
+以下のコマンドにより、項目にデッドラインまたはスケジュールを瞬時に挿入
+(1)することができます。
 
 `C-c C-d     (`org-deadline')'
-     Insert `DEADLINE' keyword along with a stamp.  The insertion will
-     happen in the line directly following the headline.  When called with
-     a prefix arg, an existing deadline will be removed from the entry.
-     Depending on the variable `org-log-redeadline'(2), a note will be
-     taken when changing an existing deadline.  
+     タイムスタンプと`DEADLINE'キーワードを挿入します
+     。挿入は見出しの直下の行に対して行われます。前置引数を伴って呼ばれた場
+     合は、エントリーから既に存在するデッドラインが消去されます。変数
+     `org-log-redeadline'(2)に対応して、既に存在する
+     デッドラインを変更する際にノートをとることができます。 
 
 `C-c C-s     (`org-schedule')'
-     Insert `SCHEDULED' keyword along with a stamp.  The insertion will
-     happen in the line directly following the headline.  Any CLOSED
-     timestamp will be removed.  When called with a prefix argument, remove
-     the scheduling date from the entry.  Depending on the variable
-     `org-log-reschedule'(3), a note will be taken when changing an
-     existing scheduling time.  
+     タイムスタンプと`SCHEDULED'キーワードを挿入しま
+     す。挿入は見出しの直下の行に対して行われます。CLOSEDのタイムスタンプは
+     全て消去されます。前置引数を伴って呼ばれた場合は、エントリーからスケジ
+     ューリングの日付が消去されます。変数`org-log-reschedule'(3)に対応して、既に存在するスケジューリングを変更する際
+     にノートをとることができます。 
 
 `C-c C-x C-k     (`org-mark-entry-for-agenda-action')'
-     Mark the current entry for agenda action.  After you have marked the
-     entry like this, you can open the agenda or the calendar to find an
-     appropriate date.  With the cursor on the selected date, press `k s'
-     or `k d' to schedule the marked item.  
+     現在の項目をアジェンダのアクションのためにマークします。このように項目
+     をマークした後で、アジェンダまたはカレンダーを開いて適切な日を探すこと
+     ができます。選択した日付の上にカーソルを置いて`k s'あるいは`k d'を入力
+     することにより、マークされた項目にスケジュールを設定できます。 
 
 `C-c / d     (`org-check-deadlines')'
-     Create a sparse tree with all deadlines that are either past-due, or
-     which will become due within `org-deadline-warning-days'.  With `C-u'
-     prefix, show all deadlines in the file.  With a numeric prefix, check
-     that many days.  For example, `C-1 C-c / d' shows all deadlines due
-     tomorrow.  
+     全てのデッドラインのうち、既に過ぎているものと
+     `org-deadline-warning-days'以内に期限となるものを抽出したツリーを作成
+     します。前置引数`C-u'により、ファイル内の全てのデッドラインを表示しま
+     す。前置引数で数値を指定すると、指定した分だけ先のデッドラインを表示し
+     ます。例えば、`C-1 C-c / d'とすると明日期限となる全てのデッドラインを
+     表示します。
 
 `C-c / b     (`org-check-before-date')'
-     Sparse tree for deadlines and scheduled items before a given date.  
+     指定された日より前のデッド ラインを抽出したツリーを作成します。
 
 `C-c / a     (`org-check-after-date')'
-     Sparse tree for deadlines and scheduled items after a given date.
+     指定 された日より後のデッドラインを抽出したツリーを作成します。
 
    ---------- Footnotes ----------
 
-   (1) The `SCHEDULED' and `DEADLINE' dates are inserted on the line right
-below the headline.  Don't put any text between this line and the headline.
+   (1)
+`SCHEDULED'あるいは`DEADLINE'の付いた日付が見出しのすぐ下の行に挿入されます
+。見出しとこの行の間には文字を記入してはいけません。
 
-   (2) with corresponding `#+STARTUP' keywords `logredeadline',
-`lognoteredeadline', and `nologredeadline'
+   (2) 対応する`#+STARTUP'キーワード`logredeadline'、
+`lognoteredeadline'、および`nologredeadline'
 
-   (3) with corresponding `#+STARTUP' keywords `logreschedule',
-`lognotereschedule', and `nologreschedule'
+   (3) 対応する
+`#+STARTUP'キーワード`logredeadline'、`lognoteredeadline'、および
+`nologredeadline'
 
 
 File: org-ja,  Node: Repeated tasks,  Prev: Inserting deadline/schedule,  Up: Deadlines and scheduling
@@ -5111,75 +5118,74 @@ File: org-ja,  Node: Repeated tasks,  Prev: Inserting deadline/schedule,  Up: De
 8.3.2 Repeated tasks
 --------------------
 
-Some tasks need to be repeated again and again.  Org-mode helps to organize
-such tasks using a so-called repeater in a DEADLINE, SCHEDULED, or plain
-timestamp.  In the following example
-     ** TODO Pay the rent
+タスクの中には、何度も繰り返し行うものがあります。Org-modeでは、そのようなタ
+スクの管理を助けるため、通常あるいはDEADLINE、SCHEDULEDのタイムスタンプに対
+してリピーターと呼ばれる機能を提供しています。以下の例を参照して下さい。
+     ** TODO 家賃の支払い
         DEADLINE: <2005-10-01 Sat +1m>
-   the `+1m' is a repeater; the intended interpretation is that the task
-has a deadline on <2005-10-01> and repeats itself every (one) month starting
-from that time.  If you need both a repeater and a special warning period in
-a deadline entry, the repeater should come first and the warning period
-last: `DEADLINE: <2005-10-01 Sat +1m -3d>'.
+この中で`+1m'がリピーターと呼ばれるもので、そのタスクが<2005-10-01>のデッド
+ラインを持つと同時に、その日から一週間ごとに繰り返すことを意味します。デッド
+ラインエントリーに対してリピーターと警告期間の両方を指定する必要がある場合に
+は、`DEADLINE: <2005-10-01 Sat +1m -3d>'のようにリピータを先に書き、警告期間
+を後に書きます。
 
-   Deadlines and scheduled items produce entries in the agenda when they are
-over-due, so it is important to be able to mark such an entry as completed
-once you have done so.  When you mark a DEADLINE or a SCHEDULE with the TODO
-keyword DONE, it will no longer produce entries in the agenda.  The problem
-with this is, however, that then also the _next_ instance of the repeated
-entry will not be active.  Org-mode deals with this in the following way:
-When you try to mark such an entry DONE (using `C-c C-t'), it will shift
-the base date of the repeating timestamp by the repeater interval, and
-immediately set the entry state back to TODO(1).  In the example above,
-setting the state to DONE would actually switch the date like this:
+デッドラインおよびスケジューリングされた項目は期限を過ぎた場合にはアジェンダ
+上にエントリーが作成されるため、項目が終了した場合にはそのようなエントリは実
+施済みとマークできることが必要です。DEADLINEあるいはSCHEDULEDのTODOエントリ
+ーをDONEとマークした時には、アジェンダ上でのエントリーは作成されなくなります
+。一方で、問題となるのは繰り返し項目の_次の_日時も同時にアクティブでなくなっ
+てしまうことです。Org-modeでは、このような状況に対して以下のように対処します
+。繰り返しのエントリーをDONEに変更しようとした場合(`C-c C-t'などにより)、繰
+り返しタイムスタンプの基準時刻が一つ分シフトされ、すぐにエントリーの状態が
+TODOに戻されます(1)。上の例では、DONEの状態にする
+ことにより日付が以下のように変更されます。
 
-     ** TODO Pay the rent
+     ** TODO 家賃の支払い
         DEADLINE: <2005-11-01 Tue +1m>
 
-   A timestamp(2) will be added under the deadline, to keep a record that
-you actually acted on the previous instance of this deadline.
+   デッドラインの下にタイムスタンプが追加され(2)、これにより前の時刻の
+デッドラインについて実際に行動したことが記録されます。
 
-   As a consequence of shifting the base date, this entry will no longer be
-visible in the agenda when checking past dates, but all future instances
-will be visible.
+日付がシフトされた結果として、このエントリーはアジェンダ上の過去の日付からは
+見えなくなりますが、将来の日付はアジェンダ上で確認することができます。
 
-   With the `+1m' cookie, the date shift will always be exactly one month.
-So if you have not paid the rent for three months, marking this entry DONE
-will still keep it as an overdue deadline.  Depending on the task, this may
-not be the best way to handle it.  For example, if you forgot to call your
-father for 3 weeks, it does not make sense to call him 3 times in a single
-day to make up for it.  Finally, there are tasks like changing batteries
-which should always repeat a certain time after the last time you did it.
-For these tasks, Org-mode has special repeaters `++' and `.+'.  For example:
+`+1m'の繰り返し指定により、日付は常に1ヶ月きっちりシフトされます。そのため、
+例えば家賃を3ヶ月支払っていない場合には、一度このエントリーをDONEにしたとし
+ても、相変わらず期限を過ぎたデッドラインと判断されます。タスクの性質によって
+、この方法が常に適切な処理方法とは限りません。例えば、父親と連絡をとるのを3
+週間忘れてしまった場合、それを埋め合わせるために一日に3回電話をすることはな
+いでしょう。さらに、バッテリーの充電のように、最後に行ってから一定時間経過後
+に常に繰り返す必要がある場合もあります。このようなタスクについてはOrg-modeは
+専用の反復演算子`++'および`.+'を用意しています。例えば以下の通りです。
 
-     ** TODO Call Father
+     ** TODO 父に電話
         DEADLINE: <2008-02-10 Sun ++1w>
-        Marking this DONE will shift the date by at least one week,
-        but also by as many weeks as it takes to get this date into
-        the future.  However, it stays on a Sunday, even if you called
-        and marked it done on Saturday.
-     ** TODO Check the batteries in the smoke detectors
+        この項目をDONEとすると、日付が一週間シフトされ、同時にタスクが
+        行われるまでは将来の全ての日曜日に対して項目がシフトされます。
+        土曜日に電話をしたとしても、次の日曜日にシフトされます。
+     ** TODO 火災報知器の電池をチェックする
         DEADLINE: <2005-11-01 Tue .+1m>
-        Marking this DONE will shift the date to one month after
-        today.
+        この項目をDONEとすると、確認した日のちょうど1ヶ月後にシフトされます。
 
-   You may have both scheduling and deadline information for a specific
-task--just make sure that the repeater intervals on both are the same.
+同じタスクに対して、スケジューリングとデッドラインの情報を両方付けることがで
+きます。この場合には、両方の繰り返し間隔は同じになりますので、注意して下さい
+。
 
-   An alternative to using a repeater is to create a number of copies of a
-task subtree, with dates shifted in each copy.  The command `C-c C-x c' was
-created for this purpose, it is described in *note Structure editing::.
+繰り返し演算子を使わない代替的な方法の一つとして、タスクサブツリーのコピーを
+いくつか作成し、それぞれのコピーに対してシフトされた時刻を指定する方法があり
+ます。そのために`C-c C-x c'コマンドがあります。この機能は*note Structure
+editing:: で解説されています。
 
    ---------- Footnotes ----------
 
-   (1) In fact, the target state is taken from, in this sequence, the
-`REPEAT_TO_STATE' property or the variable `org-todo-repeat-to-state'.  If
-neither of these is specified, the target state defaults to the first state
-of the TODO state sequence.
+   (1) 実際には、変更される状態は`REPEAT_TO_STATE'プロパティ或いは
+変数`org-todo-repeat-to-state'によって決められます。これらが指定されていない
+場合は、デフォルトとしてTODO状態に戻ります。
 
-   (2) You can change this using the option `org-log-repeat', or the
-`#+STARTUP' options `logrepeat', `lognoterepeat', and `nologrepeat'.  With
-`lognoterepeat', you will also be prompted for a note.
+   (2) この部分の動作は、オプション
+`org-log-repeat'、あるいは`#+STARTUP'オプションの`logrepeat'、
+`lognoterepeat'、`nologrepeat'により変更することができます。`lognoterepeat'
+を指定した場合には、メモを入力するように促されます。
 
 
 File: org-ja,  Node: Clocking work time,  Next: Effort estimates,  Prev: Deadlines and scheduling,  Up: Date and Times
@@ -5187,20 +5193,20 @@ File: org-ja,  Node: Clocking work time,  Next: Effort estimates,  Prev: Deadlin
 8.4 Clocking work time
 ======================
 
-Org-mode allows you to clock the time you spend on specific tasks in a
-project.  When you start working on an item, you can start the clock.  When
-you stop working on that task, or when you mark the task done, the clock is
-stopped and the corresponding time interval is recorded.  It also computes
-the total time spent on each subtree of a project.  And it remembers a
-history or tasks recently clocked, to that you can jump quickly between a
-number of tasks absorbing your time.
+Org-modeでは、プロジェクトの中で特定のタスクを実行するのにかかった時間を計測
+することができます。ある項目について取りかかる時に、計測を開始します。そのタ
+スクを中断するときやタスクが終了した時に計測が終了し、対応する時間間隔が記録
+されます。同時に、あるプロジェクトの全てのサブツリーでかかった時間の合計が計
+算されます。さらに、最近に時間が計測されたタスクが記憶されているため、その時
+点で取りかかっている複数のタスク間を素早く移動することができます。
 
-   To save the clock history across Emacs sessions, use
+Emacsセッションでの経過時間の履歴を保存するためには、以下のコマンドを使いま
+す。
      (setq org-clock-persist 'history)
      (org-clock-persistence-insinuate)
-   When you clock into a new task after resuming Emacs, the incomplete
-clock(1) will be found (*note Resolving idle time::) and you will be
-prompted about what to do with it.
+   Emacsの再開後に新しいタスクの計測を始めると、不完全な時計(1)が表示され
+(*note Resolving idle
+time::)、それについて何をするかを入力するように促されます。
 
 * Menu:
 
@@ -5210,8 +5216,9 @@ prompted about what to do with it.
 
    ---------- Footnotes ----------
 
-   (1) To resume the clock under the assumption that you have worked on
-this task while outside Emacs, use `(setq org-clock-persist t)'.
+   (1) Emacsの外でタスク
+に取りかかっていたという想定で時計を再開する場合は、 `(setq
+org-clock-persist t)'を使用して下さい。
 
 
 File: org-ja,  Node: Clocking commands,  Next: The clock table,  Prev: Clocking work time,  Up: Clocking work time
@@ -5220,80 +5227,82 @@ File: org-ja,  Node: Clocking commands,  Next: The clock table,  Prev: Clocking 
 -----------------------
 
 `C-c C-x C-i     (`org-clock-in')'
-     Start the clock on the current item (clock-in).  This inserts the CLOCK
-     keyword together with a timestamp.  If this is not the first clocking
-     of this item, the multiple CLOCK lines will be wrapped into a
-     `:LOGBOOK:' drawer (see also the variable `org-clock-into-drawer').
-     When called with a `C-u' prefix argument, select the task from a list
-     of recently clocked tasks.  With two `C-u C-u' prefixes, clock into
-     the task at point and mark it as the default task.  The default task
-     will always be available when selecting a clocking task, with letter
-     `d'.
-     While the clock is running, the current clocking time is shown in the
-     mode line, along with the title of the task.  The clock time shown
-     will be all time ever clocked for this task and its children.  If the
-     task has an effort estimate (*note Effort estimates::), the mode line
-     displays the current clocking time against it(1) If the task is a
-     repeating one (*note Repeated tasks::), only the time since the last
-     reset of the task (2) will be shown.  More control over what time is
-     shown can be exercised with the `CLOCK_MODELINE_TOTAL' property.  It
-     may have the values `current' to show only the current clocking
-     instance, `today' to show all time clocked on this tasks today (see
-     also the variable `org-extend-today-until'), `all' to include all
-     time, or `auto' which is the default(3).
-     Clicking with `mouse-1' onto the mode line entry will pop up a menu
-     with clocking options.  
+     現在の項目に対して、時間の計測を開始します（クロックイン）。これにより
+     CLOCKキーワードとともにタイムスタンプが挿入されます。最初の計測でない
+     場合には、複数のCLOCK行が表示され、`:LOGBOOK:'という引き出しに格納され
+     ます(変数`org-clock-into-drawer'についても参照のこと)。前置引数`C-u'と
+     共に呼ばれた場合は、最近時間が計測されたタスクのリストからタスクを選択
+     します。2個の前置引数`C-u C-u'が入力された場合は、現在位置のタスクの計
+     測を開始し、そのタスクをデフォルトに指定します。デフォルトのタスクは、
+     時間計測の選択をする場合に常にリストの中に表示され、文字`d'が付けられ
+     ます。
+     時間を計測している間は、現在の計測時間とタスクの名前がモード行に表示さ
+     れます。表示される計測時間はこのタスクとその子タスクについての全ての時
+     間です。タスクが工数の見積もり(*note Effort
+     estimates::)を含む場合には、モー
+     ド行は見積もりに対する現在の経過時間を表示します(1)。タスクが繰り返しを含む
+     場合には、そのタスクの最近のリセットからの経過時間(2)のみが計測されます。表示される時間について変更
+     したい場合には、プロパティ`CLOCK_MODELINE_TOTAL'を変更します。この中に
+     は現在計測中の時刻のみ表示する`current'、今日計測された全ての時間を表
+     示する`today'(変数`org-extend-today-until'についても参照)、全ての時間
+     を表示する`all'、デフォルトの設定である`auto'などがあります(3)。
+     モード行を`mouse-1'でクリックすることにより、メニューと時間計測のオプシ
+     ョンがポップアップします。
 
 `C-c C-x C-o     (`org-clock-out')'
-     Stop the clock (clock-out).  This inserts another timestamp at the same
-     location where the clock was last started.  It also directly computes
-     the resulting time in inserts it after the time range as `=> HH:MM'.
-     See the variable `org-log-note-clock-out' for the possibility to
-     record an additional note together with the clock-out timestamp(4).  
+     時間の計測を終了します（クロックアウト）。これにより、時間計測が開始さ
+     れたのと同じ場所にもう一つのタイムスタンプが挿入されます。同時に、計測
+     された時間間隔が開始時刻と終了時刻の後に`=> HH:MM'の形式で挿入されます
+     。クロックアウトのタイムスタンプ作成時にノートを追加するには、変数
+     `org-log-note-clock-out'を参照して下さい(4)。 
 
 `C-c C-x C-e     (`org-clock-modify-effort-estimate')'
-     Update the effort estimate for the current clock task.  
+     現在時間を計測しているタ
+     スクについて、工数見積もりをアップデートします。 
 
 `C-c C-c  or  C-c C-y     (`org-evaluate-time-range')'
-     Recompute the time interval after changing one of the timestamps.
-     This is only necessary if you edit the timestamps directly.  If you
-     change them with `S-<cursor>' keys, the update is automatic.  
+     タイムスタンプの一つを変更し
+     た後で、時間間隔を更新します。これはタイムスタンプを手動で変更した場合
+     にのみ必要です。`S-<cursor>'キーにより変更した場合には、自動的に再計算
+     されます。
 
 `C-c C-t     (`org-todo')'
-     Changing the TODO state of an item to DONE automatically stops the
-     clock if it is running in this same item.  
+     TODOの項目をDONEに変更することにより、その
+     項目で時間が計測されている場合には自動的に停止します。 
 
 `C-c C-x C-x     (`org-clock-cancel')'
-     Cancel the current clock.  This is useful if a clock was started by
-     mistake, or if you ended up working on something else.  
+     現在の時間計測をキャンセルします。これは
+     間違って時間を計り始めてしまった場合や、結果的に意図したタスク以外を行
+     ってしまった場合に便利です。
 
 `C-c C-x C-j     (`org-clock-goto')'
-     Jump to the headline of the currently clocked in task.  With a `C-u'
-     prefix arg, select the target task from a list of recently clocked
-     tasks.  
+     現在クロックイ
+     ン中のタスクの見出しにジャンプします。前置引数`C-u'により、最近時間が
+     計測されたタスクから目的のタスクを選択します。 
 
 `C-c C-x C-d     (`org-clock-display')'
-     Display time summaries for each subtree in the current buffer.  This
-     puts overlays at the end of each headline, showing the total time
-     recorded under that heading, including the time of any subheadings.
-     You can use visibility cycling to study the tree, but the overlays
-     disappear when you change the buffer (see variable
-     `org-remove-highlights-with-change') or press `C-c C-c'.
+     現在のバッファの各サブツリーからの時間のサマリーを作成します。これによ
+     りそれぞれの見出しの後ろに時間が上書きされ、その見出しの中で下位の見出
+     しも含めて記録された時間の合計が表示されます。表示の切り替えにより、ツ
+     リーの各項目を確認できますが、バッファを変更した場合や`C-c C-c'を入力
+     した場合は時間の上書きは消えてしまいます(変数
+     `org-remove-highlights-with-change')を参照)。
 
-   The `l' key may be used in the timeline (*note Timeline::) and in the
-agenda (*note Weekly/daily agenda::) to show which tasks have been worked on
-or closed during a day.
+   タイムライン(*note Timeline::)およびアジェンダ(*note Weekly/daily
+agenda::)の中でキー
+`l'を入力することにより、その日のうちに完了したタスクがどれかを表示すること
+ができます。
 
    ---------- Footnotes ----------
 
-   (1) To add an effort estimate "on the fly", hook a function doing this
-to `org-clock-in-prepare-hook'.
+   (1) 「その場で」工数の見 積もりを追加するには、その機能を持つ関数を変数
+`org-clock-in-prepare-hook'にフックして下さい
 
-   (2) as recorded by the `LAST_REPEAT' property
+   (2) プロパティ `LAST_REPEAT'により記録
 
-   (3) See also the variable `org-clock-modeline-total'.
+   (3) 変数 `org-clock-modeline-total'についても参照
 
-   (4) The corresponding in-buffer setting is: `#+STARTUP: lognoteclock-out'
+   (4) これに対応するバッファ内の設 定は`#+STARTUP: lognoteclock-out'です。
 
 
 File: org-ja,  Node: The clock table,  Next: Resolving idle time,  Prev: Clocking commands,  Up: Clocking work time
@@ -5301,121 +5310,133 @@ File: org-ja,  Node: The clock table,  Next: Resolving idle time,  Prev: Clockin
 8.4.2 The clock table
 ---------------------
 
-Org mode can produce quite complex reports based on the time clocking
-information.  Such a report is called a _clock table_, because it is
-formatted as one or several Org tables.
+Org-modeは、時間計測の情報をもとにかなり詳細なレポートを作成することができま
+す。このようなレポートは_クロックテーブル_と呼ばれており、その名の通り
+Org-modeのテーブルまたはその組み合わせにより作成されます。
 
 `C-c C-x C-r     (`org-clock-report')'
-     Insert a dynamic block (*note Dynamic blocks::) containing a clock
-     report as an Org-mode table into the current file.  When the cursor is
-     at an existing clock table, just update it.  When called with a prefix
-     argument, jump to the first clock report in the current document and
-     update it.  
+     現在のファイルにOrg-modeテーブル形式の計
+     測時間レポートを含む動的ブロック(*note Dynamic
+     blocks::)を挿入します。前置引
+     数とともに呼ばれた場合は、現在の文書の最初のクロックテーブルに移動し、
+     それを更新します。
 
 `C-c C-c  or  C-c C-x C-u     (`org-dblock-update')'
-     Update dynamic block at point.  The cursor needs to be in the `#+BEGIN'
-     line of the dynamic block.  
+     現在位置の動
+     的ブロックを更新します。カーソル位置は動的ブロックの`#+BEGIN'行の中に
+     位置している必要があります。
 
 `C-u C-c C-x C-u'
-     Update all dynamic blocks (*note Dynamic blocks::).  This is useful if
-     you have several clock table blocks in a buffer.  
+     全ての動的ブロックを更新 します(*note Dynamic
+     blocks::)。この機能はバッファ内で複数のクロックテーブル
+     が存在する場合に有用です。 
 
 `S-<left>'
 `S-<right>     (`org-clocktable-try-shift')'
-     Shift the current `:block' interval and update the table.  The cursor
-     needs to be in the `#+BEGIN: clocktable' line for this command.  If
-     `:block' is `today', it will be shifted to `today-1' etc.
+     現在の`:block'の時間間隔
+     を変更し、テーブルを更新します。このコマンドを使用するには、カーソルが
+     `#+BEGIN: clocktable'行にある必要があります。例えば`:block'が`today'の
+     場合、このコマンドにより`today-1'にシフトされます。
 
-   Here is an example of the frame for a clock table as it is inserted into
-the buffer with the `C-c C-x C-r' command:
+   以下に、`C-c C-x
+C-r'コマンドによりバッファに挿入されるクロックテーブルのフ
+レームの例を示します。
 
      #+BEGIN: clocktable :maxlevel 2 :emphasize nil :scope file
      #+END: clocktable
-   The `BEGIN' line and specify a number of options to define the scope,
-structure, and formatting of the report.  Defaults for all these options can
-be configured in the variable `org-clocktable-defaults'.
+   `BEGIN'行には、レポートの対象範囲、構造およびフォーマットを定めるオプション
+を指定します。これらのデフォルト値は変数`org-clocktable-defaults'により変更
+することができます。
 
-First there are options that determine which clock entries are to be
-selected:
-     :maxlevel    Maximum level depth to which times are listed in the table.
-                  Clocks at deeper levels will be summed into the upper level.
-     :scope       The scope to consider.  This can be any of the following:
-                  nil        the current buffer or narrowed region
-                  file       the full current buffer
-                  subtree    the subtree where the clocktable is located
-                  treeN      the surrounding level N tree, for example `tree3'
-                  tree       the surrounding level 1 tree
-                  agenda     all agenda files
-                  ("file"..) scan these files
-                  file-with-archives    current file and its archives
-                  agenda-with-archives  all agenda files, including archives
-     :block       The time block to consider.  This block is specified either
-                  absolute, or relative to the current time and may be any of
-                  these formats:
-                  2007-12-31    New year eve 2007
-                  2007-12       December 2007
-                  2007-W50      ISO-week 50 in 2007
-                  2007-Q2       2nd quarter in 2007
-                  2007          the year 2007
-                  today, yesterday, today-N          a relative day
-                  thisweek, lastweek, thisweek-N     a relative week
-                  thismonth, lastmonth, thismonth-N  a relative month
-                  thisyear, lastyear, thisyear-N     a relative year
-                  Use `S-<left>/<right>' keys to shift the time interval.
-     :tstart      A time string specifying when to start considering times.
-     :tend        A time string specifying when to stop considering times.
-     :step        `week' or `day', to split the table into chunks.
-                  To use this, `:block' or `:tstart', `:tend' are needed.
-     :stepskip0   Do not show steps that have zero time.
-     :fileskip0   Do not show table sections from files which did not contribute.
-     :tags        A tags match to select entries that should contribute.
+First there are options that determine which clock entries are to
+まず、時間が計測されたエントリのうちどれが選択されるかを定めるオプションがあ
+ります。
+     :maxlevel    テーブルに表示される最大の深さレベル。
+                  これより深いレベルの時間は上位レベルに積算されて表示される。
+     :scope       対象とするスコープ。以下のうちいずれかを指定する。
+                  nil        現在のバッファ、或いはナローされた領域
+                  file       現在のバッファ全体
+                  subtree    クロックテーブルのあるサブツリー内
+                  treeN      周囲のレベルNのツリー、例えば`tree3'
+                  tree       周囲のレベル1のツリー
+                  agenda     アジェンダファイル群の全体
+                  (\"file\"..) 指定されたファイルをスキャンする
+                  file-with-archives    現在のファイルとそのアーカイブ
+                  agenda-with-archives  アーカイブを含む全てのアジェンダファイル
+     :block       対象とする時間範囲、この範囲は絶対時間または現在からの相対時間
+                  で表記され、以下のいずれかのフォーマットに従う。
+                  2007-12-31    2007年の大晦日
+                  2007-12       2007年12月
+                  2007-W50      2007年のISO週で50週目
+                  2007-Q2       2007年の第二四半期
+                  2007          2007年
+                  today, yesterday, today-N          相対的な日指定
+                  thisweek, lastweek, thisweek-N     相対的な週指定
+                  thismonth, lastmonth, thismonth-N  相対的な月指定
+                  thisyear, lastyear, thisyear-N     相対的な年指定
+                  `S-<left>/<right>'キーにより間隔をシフトすることができる。
+     :tstart      対象となる時間の始まりを示す文字列
+     :tend        対象となる時間の終わりを示す文字列
+     :step        テーブルをまとめる間隔。`week'または`day'を指定。
+                  この機能を使うには、`:block'、`:tstart'、`:tend'のいずれかを指定
+     する必要がある。
+     :stepskip0   時間間隔がゼロの項目を表示しない。
+     :fileskip0   時間間隔がゼロのファイルについて、テーブルに表示しない。
+     :tags        特定のタグがついたエントリのみ収集の対象とする。
 
-   Then there are options which determine the formatting of the table.
-There options are interpreted by the function
-`org-clocktable-write-default', but you can specify your own function using
-the `:formatter' parameter.
-     :emphasize   When `t', emphasize level one and level two items.
-     :lang        Language(1) to use for descriptive cells like "Task".
-     :link        Link the item headlines in the table to their origins.
-     :narrow      An integer to limit the width of the headline column in
-                  the org table.  If you write it like `50!', then the
-                  headline will also be shortened in export.
-     :indent      Indent each headline field according to its level.
-     :tcolumns    Number of columns to be used for times.  If this is smaller
-                  than `:maxlevel', lower levels will be lumped into one column.
-     :level       Should a level number column be included?
-     :compact     Abbreviation for `:level nil :indent t :narrow 40! :tcolumns 1'
-                  All are overwritten except if there is an explicit `:narrow'
-     :timestamp   A timestamp for the entry, when available.  Look for SCHEDULED,
-                  DEADLINE, TIMESTAMP and TIMESTAMP_IA, in this order.
-     :formula     Content of a `#+TBLFM' line to be added and evaluated.
-                  As a special case, `:formula %' adds a column with % time.
-                  If you do not specify a formula here, any existing formula
-                  below the clock table will survive updates and be evaluated.
-     :formatter   A function to format clock data and insert it into the buffer.
-   To get a clock summary of the current level 1 tree, for the current day,
-you could write
+さらに、テーブルのフォーマットを指定するためのオプションがあります。これらの
+オプションは関数`org-clocktable-write-default'により解釈されますが、パラメー
+タ`:formatter'により解釈のためのユーザ独自の関数を指定することができます。
+     :emphasize   値が`t'の場合、レベル1およびレベル2の項目を強調表示します。
+     :lang        項目名のセル(例えば"Task")で用いる言語(1)。
+     :link        テーブルの見出しの項目と元のファイルでの位置をリンクする。
+     :narrow      Org-modeのテーブルの見出し列の幅を上限を決める整数。
+                  `50!'のように指定すると、エクスポート時にも見出しが短縮表示され
+     る。
+     :indent      各見出しフィールドをそのレベルに合わせてインデントする。
+     :tcolumns    時間を表示するために使われる列の数。この値が`:maxlevel'より小さ
+     い場合、
+                  それより下位のレベルは一つの列に合わせて表示される。
+     :level       レベル番号を示す列を含めるかどうか指定する。
+     :compact     コンパクトに表示する。
+     `:level nil :indent t :narrow 40! :tcolumns 1'
+                  の短縮表現で、明示的に`:narrow'で指定されなければ、全ての変数は
+     上書きされる。
+     :timestamp   エントリのタイムスタンプが存在する場合には、それを表示する。
+     SCHEDULED、
+                  DEADLINE、TIMESTAMP、TIMESTAMP_IAの順に探索される。
+     :formula     追加的な`#+TBLFM'の内容。通常の形式に追加されて評価される。
+                  特殊なケースとして、`:formula %'を追加すると経過時間の割合行が追
+     加される。
+                  ここで形式をしていしない場合は、クロックテーブルの下に存在する形
+     式が
+                  アップデートされずに評価される。
+     :formatter   時刻データをフォーマットし、バッファに表示するための関数。
+現在のレベル1のツリーについて、当日分の時間サマリーを得る場合は以下のように
+指定します。
      #+BEGIN: clocktable :maxlevel 2 :block today :scope tree1 :link t
      #+END: clocktable
-   and to use a specific time range you could write(2)
+   明示的に時間間隔を指定する場合には、以下のように記述します(2)。
      #+BEGIN: clocktable :tstart "<2006-08-10 Thu 10:00>"
                          :tend "<2006-08-10 Thu 12:00>"
      #+END: clocktable
-   A summary of the current subtree with % times would be
+現在のサブツリーでの経過時間のまとめを%表示するには、以下のように記述します
+。
      #+BEGIN: clocktable :scope subtree :link t :formula %
      #+END: clocktable
-   A horizontally compact representation of everything clocked during last
-week would be
+ここ1週間で計測された時間をコンパクトな幅で表示するには、以下のようにします
+。
      #+BEGIN: clocktable :scope agenda :block lastweek :compact t
      #+END: clocktable
 
    ---------- Footnotes ----------
 
-   (1) Language terms can be set through the variable
-`org-clock-clocktable-language-setup'.
+   (1) 言語に関する項目は、変数
+`org-clock-clocktable-language-setup'により設定することができます。
 
-   (2) Note that all parameters must be specified in a single line--the
-line is broken here only to fit it into the manual.
+   (2) 全てのパラメータ
+は単一行で指定する必要があるので注意して下さい。この例ではマニュアルの文字幅
+の制約のために改行が入っています。
 
 
 File: org-ja,  Node: Resolving idle time,  Prev: The clock table,  Up: Clocking work time
@@ -5423,74 +5444,71 @@ File: org-ja,  Node: Resolving idle time,  Prev: The clock table,  Up: Clocking 
 8.4.3 Resolving idle time
 -------------------------
 
-If you clock in on a work item, and then walk away from your
-computer--perhaps to take a phone call--you often need to "resolve" the
-time you were away by either subtracting it from the current clock, or
-applying it to another one.
+ある項目について作業を開始したあとで、例えば電話を取る場合などで一時的にコン
+ピュータの前を離れると、その時間について現在の経過時間から差し引いたり、他の
+項目に加えたりして「解決」する必要が生じます。
 
-   By customizing the variable `org-clock-idle-time' to some integer, such
-as 10 or 15, Emacs can alert you when you get back to your computer after
-being idle for that many minutes(1), and ask what you want to do with the
-idle time.  There will be a question waiting for you when you get back,
-indicating how much idle time has passed (constantly updated with the
-current amount), as well as a set of choices to correct the discrepancy:
+変数`org-clock-idle-time'を適当な整数値(例えば10や15)に設定することにより、
+設定時間を超える休止のあとで戻ってきた場合にEmacsはアラートを出し、その休止
+時間をどのように処理するか尋ねます(1)。休止か
+ら戻った時点で幾つか質問が表示され、実際にどの程度休止時間があったか（その時
+点までの計測時間が随時表示されます）を入力すると同時に、休止の扱いについて以
+下のような選択が可能です。
 
 `k'
-     To keep some or all of the minutes and stay clocked in, press `k'.  Org
-     will ask how many of the minutes to keep.  Press <RET> to keep them
-     all, effectively changing nothing, or enter a number to keep that many
-     minutes.
+     休止時間として計測された時間の一部または全てをタスクの計測時間として保
+     持する場合には、`k'を押します。Org-modeは何分間保持するか尋ねます。
+     <RET>キーを押すことにより全ての時間が保持され、タスクの計測時間は変更
+     されません。数値を指定すると、指定した分数だけ時間が保持されます。
 
 `K'
-     If you use the shift key and press `K', it will keep however many
-     minutes you request and then immediately clock out of that task.  If
-     you keep all of the minutes, this is the same as just clocking out of
-     the current task.
+     シフトキーと共に`K'を押した場合、入力された分数だけ時間を保持すると同
+     時にただちに現在のタスクの計測を中止します。全ての休止時間を保持する場
+     合、これは単にタスクの計測を中止したのと同じことになります。
 
 `s'
-     To keep none of the minutes, use `s' to subtract all the away time from
-     the clock, and then check back in from the moment you returned.
+     休止時間を保持しない場合には、`s'を押すことにより計測時間から全ての休
+     止時間が差し引かれ、戻ってきた時点から再開されます。
 
 `S'
-     To keep none of the minutes and just clock out at the start of the away
-     time, use the shift key and press `S'.  Remember that using shift will
-     always leave you clocked out, no matter which option you choose.
+     休止時間を保持せず、休止開始時の時刻で時間の計測を止める場合には、シフ
+     トキーと共に`S'を押して下さい。シフトキーを使うと、いずれのオプション
+     でも時間の計測が中止されるということを覚えておいて下さい。
 
 `C'
-     To cancel the clock altogether, use `C'.  Note that if instead of
-     canceling you subtract the away time, and the resulting clock amount
-     is less than a minute, the clock will still be canceled rather than
-     clutter up the log with an empty entry.
+     時間計測そのものをキャンセルする場合は、`C'を押して下さい。キャンセル
+     しない場合でも、時間が引かれた結果の残り時間が1分未満である場合には、
+     中身の無いエントリでログが見づらくなるのを防ぐため、時間計測はやはりキ
+     ャンセルされますので注意して下さい。
 
-   What if you subtracted those away minutes from the current clock, and now
-want to apply them to a new clock? Simply clock in to any task immediately
-after the subtraction.  Org will notice that you have subtracted time "on
-the books", so to speak, and will ask if you want to apply those minutes to
-the next task you clock in on.
+空き時間について、現在の計測時間から差し引いたあとで別の計測項目に追加したい
+場合にはどうすれば良いでしょうか。その場合は、差し引いたあとに単純に次のタス
+クの計測を開始して下さい。Org-modeは差し引かれた時間があることを記憶していて
+、次の時間計測を始める際にその時間を足し込むかを尋ねます。
 
-   There is one other instance when this clock resolution magic occurs.  Say
-you were clocked in and hacking away, and suddenly your cat chased a mouse
-who scared a hamster that crashed into your UPS's power button! You suddenly
-lose all your buffers, but thanks to auto-save you still have your recent
-Org mode changes, including your last clock in.
+次のようなケースでも、時間解決機能が魔法のような働きをします。あなたがタスク
+の時間計測をしながらご機嫌に作業をすすめていると、突然飼い猫がネズミを追いか
+けて、それを見たハムスターが驚いてUPSの電源装置に衝突してしまったとしましょ
+う!あなたは全てのバッファを失うことになりますが、オートセーブ機能のおかげで
+Org-modeで行った最近の変更は保持され、途中であった時間計測の時間も保持されて
+います。
 
-   If you restart Emacs and clock into any task, Org will notice that you
-have a dangling clock which was never clocked out from your last session.
-Using that clock's starting time as the beginning of the unaccounted-for
-period, Org will ask how you want to resolve that time.  The logic and
-behavior is identical to dealing with away time due to idleness; it's just
-happening due to a recovery event rather than a set amount of idle time.
+Emacsを再開してタスクの計測を開始すると、Org-modeは最後のセッションで計測が
+終了されていない半端の時間計測があることに気がつきます。そのようなタスクにつ
+いては、計測の開始時刻を不明な時刻の始点として、その間の時間をどのように解決
+するかについて尋ねます。その際の考え方や挙動は空き時間の処理方法と全く同じで
+、単に空き時間ではなくリカバリの際に発生しているだけなのです。
 
-   You can also check all the files visited by your Org agenda for dangling
-clocks at any time using `M-x org-resolve-clocks'.
+Org-modeのアジェンダが半端時間を絶えずチェックしているファイルのリストは、
+`M-x org-resolve-clocks'により確認することができます。
 
    ---------- Footnotes ----------
 
-   (1) On computers using Mac OS X, idleness is based on actual user
-idleness, not just Emacs' idle time.  For X11, you can install a utility
-program `x11idle.c', available in the UTILITIES directory of the Org git
-distribution, to get the same general treatment of idleness.  On other
-systems, idle time refers to Emacs idle time only.
+   (1) Mac OS Xのコンピュータでは、Emacsの休止時
+間だけでなくユーザーが実際に休止した時間を計測します。X11では、Org-modeのgit
+ディストリビューションから入手できるユーティリティプログラム`x11idle.c'をイ
+ンストールすることにより、同様に全体の休止時間を計測することができます。その
+他のシステムでは、休止時間はEmacsが休止していた時間のみを表します。
 
 
 File: org-ja,  Node: Effort estimates,  Next: Relative timer,  Prev: Clocking work time,  Up: Date and Times
@@ -5498,104 +5516,107 @@ File: org-ja,  Node: Effort estimates,  Next: Relative timer,  Prev: Clocking wo
 8.5 Effort estimates
 ====================
 
-If you want to plan your work in a very detailed way, or if you need to
-produce offers with quotations of the estimated work effort, you may want to
-assign effort estimates to entries.  If you are also clocking your work, you
-may later want to compare the planned effort with the actual working time, a
-great way to improve planning estimates.  Effort estimates are stored in a
-special property `Effort'(1).  You can set the effort for an entry with the
-following commands:
+詳細な作業計画を立てて仕事を行いたい場合や、仕事の工数の見積もりを作成する必
+要がある場合には、エントリに工数見積もりを割り当てたいと思うかもしれません。
+また、同時に時間の計測を行う場合には、あとで見積もった時間数と実際にかかった
+時間を比較したいと思うかもしれません。それは見積もりの精度を上げる良い方法で
+もあります。工数の見積もりは専用のプロパティである`Effort'に保存されます (1)
+。エントリに工数を追加するには、以下のようなコマンドを用います。
 
 `C-c C-x e     (`org-set-effort')'
-     Set the effort estimate for the current entry.  With a numeric prefix
-     argument, set it to the Nth allowed value (see below).  This command
-     is also accessible from the agenda with the `e' key.  
+     現在のエントリについて工数の見積もりを行いま
+     す。前置引数に数値を指定することにより、N番目の数値に指定します(下記の
+     例を参照)。このコマンドはアジェンダからも`e'キーを押すことによりアクセ
+     スできます。
 
 `C-c C-x C-e     (`org-clock-modify-effort-estimate')'
-     Modify the effort estimate of the item currently being clocked.
+     現在時間が計 測されている項目の工数見積もりを変更します。
 
-   Clearly the best way to work with effort estimates is through column view
-(*note Column view::).  You should start by setting up discrete values for
-effort estimates, and a `COLUMNS' format that displays these values
-together with clock sums (if you want to clock your time).  For a specific
-buffer you can use
+   明らかなように、工数見積もりを行う最善の方法はカラムビュー(*note Column
+view::)を
+用いることです。個別の項目についての工数見積もりから始めて、`COLUMNS'フォー
+マットによりこれらの値と実際の計測時間(時間の計測を行いたい場合)を同時に表示
+します。例えば、あるバッファについて以下のように指定できます。
 
      #+PROPERTY: Effort_ALL 0 0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00 8:00
      #+COLUMNS: %40ITEM(Task) %17Effort(Estimated Effort){:} %CLOCKSUM
 
-or, even better, you can set up these values globally by customizing the
-variables `org-global-properties' and `org-columns-default-format'.  In
-particular if you want to use this setup also in the agenda, a global setup
-may be advised.
+さらに良い方法としては、変数`org-global-properties'あるいは
+`org-columns-default-format'をカスタマイズすることにより、これらの数値をグロ
+ーバルに指定できます。特にこの指定をアジェンダで使用したい場合には、グローバ
+ルな指定を行うことが推奨されます。
 
-   The way to assign estimates to individual items is then to switch to
-column mode, and to use `S-<right>' and `S-<left>' to change the value.
-The values you enter will immediately be summed up in the hierarchy.  In
-the column next to it, any clocked time will be displayed.
+   個別の項目について見積もりを割り当てるには、カラムモードに移行し、
+`S-<right>'および`S-<left>'を使うことにより値を変更します。入力された数値は
+すぐに階層構造で足し合わされます。その隣の列には計測された時間が表示されるこ
+とになります。
 
-   If you switch to column view in the daily/weekly agenda, the effort
-column will summarize the estimated work effort for each day(2), and you
-can use this to find space in your schedule.  To get an overview of the
-entire part of the day that is committed, you can set the option
-`org-agenda-columns-add-appointments-to-effort-sum'.  The appointments on a
-day that take place over a specified time interval will then also be added
-to the load estimate of the day.
+日別あるいは週別のアジェンダでカラムビューに移行すると、工数の列は各日につい
+ての工数見積もりを足し合わせて表示され(2)、これを用いてスケジュールの
+空きを見つけることができます。その日の作業について全体像をつかみたい場合には
+、オプション`org-agenda-columns-add-appointments-to-effort-sum'を指定するこ
+とができます。時間間隔が指定されているアポイントで、その日に発生するものにつ
+いても負荷見積もりに加算して表示されます。
 
-   Effort estimates can be used in secondary agenda filtering that is
-triggered with the `/' key in the agenda (*note Agenda commands::).  If you
-have these estimates defined consistently, two or three key presses will
-narrow down the list to stuff that fits into an available time slot.
+工数見積もりは、アジェンダ内で`/'を押すことによりアジェンダの2次的なフィルタ
+リングに用いることができます(*note Agenda
+commands::)。このような見積もりを確実に
+行えば、2、3回キーを押すことにより空いている時間間隔に合うように項目を絞り込
+むことができます。
 
    ---------- Footnotes ----------
 
-   (1) You may change the property being used with the variable
-`org-effort-property'.
+   (1)
+使用されるプロパティは、変数`org-effort-property'で変更することができます
 
-   (2) Please note the pitfalls of summing hierarchical data in a flat list
-(*note Agenda column view::).
+   (2) 単準なリストを階層的に足し合わせる際 には落とし穴があります(*note
+Agenda column view::)。
 
 
 File: org-ja,  Node: Relative timer,  Next: カウントダウンタイマ,  Prev: Effort estimates,  Up: Date and Times
 
-8.6 Taking notes with a relative timer
-======================================
+8.6 相対時間タイマーを使ったノート作成
+=======================================================
 
-When taking notes during, for example, a meeting or a video viewing, it can
-be useful to have access to times relative to a starting time.  Org provides
-such a relative timer and make it easy to create timed notes.
+例えば会議やビデオ閲覧時にノートをとる際など、開始時からの経過時間がわかると
+便利な場合があります。Org-modeはそのような場合に使える相対時間タイマー機能を
+持っており、時間を含むノートを簡単に作ることができます。
 
 `C-c C-x .     (`org-timer')'
-     Insert a relative time into the buffer.  The first time you use this,
-     the timer will be started.  When called with a prefix argument, the
-     timer is restarted.  
+     バッファに相対時間タイマーを挿入します。最初に使
+     う際にはタイマーが開始されます。前置引数と共に呼ばれた場合には、タイマ
+     ーがリスタートされます。
 
 `C-c C-x -     (`org-timer-item')'
-     Insert a description list item with the current relative time.  With a
-     prefix argument, first reset the timer to 0.  
+     現在の相対時刻での記
+     述項目を挿入します。前置引数と共に呼ばれた場合は、タイマーの時刻が0に
+     リセットされます。
 
 `M-<RET>     (`org-insert-heading')'
-     Once the timer list is started, you can also use `M-<RET>' to insert
-     new timer items.  
+     タイマーリストが既に開始
+     されている場合は`M-<RET>'で新しいタイマー項目を追加することもできます
+     。 
 
 `C-c C-x ,'
-     Pause the timer, or continue it if it is already paused
-     (`org-timer-pause-or-continue').  
+     タイマーを一時停止します。一時停止されている場合には再開します
+     (`org-timer-pause-or-continue')。 
 
 `C-u C-c C-x ,'
-     Stop the timer.  After this, you can only start a new timer, not
-     continue the old one.  This command also removes the timer from the
-     mode line.  
+     タイマーを停止します。これを実行した後には古いタイマーを再開することは
+     できず、新しいタイマーの作成のみが可能です。このコマンドによりモード行
+     からもタイマーが削除されます。
 
 `C-c C-x 0     (`org-timer-start')'
-     Reset the timer without inserting anything into the buffer.  By
-     default, the timer is reset to 0.  When called with a `C-u' prefix,
-     reset the timer to specific starting offset.  The user is prompted for
-     the offset, with a default taken from a timer string at point, if any,
-     So this can be used to restart taking notes after a break in the
-     process.  When called with a double prefix argument `C-u C-u', change
-     all timer strings in the active region by a certain amount.  This can
-     be used to fix timer strings if the timer was not started at exactly
-     the right moment.
+     バッファに何
+     も挿入せずにタイマーをリセットします。デフォルトではタイマーは0にリセ
+     ットされますが、前置引数`C-u'と共に呼ばれた場合は、指定された時間から
+     タイマーが始められます。ユーザーは開始時間を入力するよう促されます。同
+     じ位置に既にタイマー文字列がある場合には、その時間がデフォルトとして指
+     定されます。そのため、このコマンドは休憩時間のあとなどでノート取りを再
+     開する場合などに用いることができます。2つの前置引数`C-u C-u'と共に呼ば
+     れた場合は、アクティブなリージョンにある全てのタイマー文字列を一定の時
+     間だけ変化させます。これはタイマーを正しい時刻に開始できなかった場合、
+     タイマー文字列を一度に修正する場合に使用できます。
 
 
 File: org-ja,  Node: カウントダウンタイマ,  Prev: Relative timer,  Up: Date and Times
@@ -5603,13 +5624,14 @@ File: org-ja,  Node: カウントダウンタイマ,  Prev: Relative timer,  Up:
 8.7 カウントダウンタイマ
 ==================================
 
-Calling `org-timer-set-timer' from an Org-mode buffer runs a countdown
-timer.  Use <;> from agenda buffers, <C-c C-x ;> everwhere else.
+Org-modeバッファから`org-timer-set-timer'を呼ぶことにより、カウントダウンタ
+イマーが利用できます。アジェンダバッファの場合は<;>、その他は<C-c C-x ;>によ
+り実行できます。
 
-   `org-timer-set-timer' prompts the user for a duration and displays a
-countdown timer in the modeline.  `org-timer-default-timer' sets the
-default countdown value.  Giving a prefix numeric argument overrides this
-default value.
+`org-timer-set-timer'により、ユーザーに時間間隔を入力するように促し、モード
+行にカウントダウンタイマーを表示します。`org-timer-default-timer'によりデフ
+ォルトのカウントダウン値を設定します。前置引数で数値を指定することで、デフォ
+ルトの値が上書きされます。
 
 
 File: org-ja,  Node: Capture - Refile - Archive,  Next: Agenda Views,  Prev: Date and Times,  Up: Top
@@ -6665,8 +6687,8 @@ File: org-ja,  Node: Global TODO list,  Next: Matching tags and properties,  Pre
      択したTODOキーワードが変更することができます。もしも特定のキーワードを
      使って検索することが多い場合は、カスタムコマンドを定義することもできま
      す(*note Agenda dispatcher::)。
-     特定のTODOキーワードと合致するものを検索するのは、タグ検索の１機能として
-     行うこともできます(*note Tag searches::)。
+     特定のTODOキーワードと合致するものを検索するのは、タグ検索の１機能として行
+     うこともできます(*note Tag searches::)。
 
 リモートでTODOアイテムを編集するということの意味は、1つのキーを入力すること
 でTODOエントリーの状態を変更できるということです。TODOリストの中で利用できる
@@ -13946,33 +13968,33 @@ Concept index
 * #+ARCHIVE:                             Moving subtrees.         (line  26)
 * #+ATTR_DOCBOOK:                        Images in DocBook export.
                                                                   (line  28)
-* #+ATTR_HTML <1>:                       Links in HTML export.    (line  21)
-* #+ATTR_HTML <2>:                       Images in HTML export.   (line  23)
+* #+ATTR_HTML <1>:                       Images in HTML export.   (line  23)
+* #+ATTR_HTML <2>:                       Links in HTML export.    (line  21)
 * #+ATTR_HTML:                           Tables in HTML export.   (line  12)
-* #+ATTR_LaTeX <1>:                      Tables in LaTeX export.  (line  13)
-* #+ATTR_LaTeX <2>:                      Images in LaTeX export.  (line  24)
+* #+ATTR_LaTeX <1>:                      Images in LaTeX export.  (line  24)
 * #+ATTR_LaTeX:                          Tables in LaTeX export.  (line  21)
 * #+AUTHOR:                              Export options.          (line  20)
-* #+BEGIN, clocktable:                   The clock table.         (line  34)
+* #+BEGIN, clocktable:                   The clock table.         (line  38)
 * #+BEGIN, columnview:                   カラム表示の保存.        (line  11)
 * #+BEGIN:dynamic block:                 Dynamic blocks.          (line  15)
 * #+BEGIN_CENTER:                        Paragraphs.              (line  29)
 * #+BEGIN_COMMENT:                       コメント行.              (line   6)
-* #+BEGIN_DOCBOOK:                       Quoting DocBook code.    (line   9)
+* #+BEGIN_DOCBOOK:                       Quoting DocBook code.    (line  11)
 * #+BEGIN_EXAMPLE:                       Literal examples.        (line   7)
 * #+BEGIN_HTML:                          Quoting HTML tags.       (line  16)
-* #+BEGIN_LaTeX:                         Quoting LaTeX code.      (line  12)
+* #+BEGIN_LaTeX:                         Quoting LaTeX code.      (line  14)
 * #+BEGIN_QUOTE:                         Paragraphs.              (line  24)
 * #+BEGIN_SRC:                           Literal examples.        (line  25)
 * #+BEGIN_VERSE:                         Paragraphs.              (line  13)
 * #+BIND:                                Export options.          (line  20)
-* #+CAPTION <1>:                         Tables in HTML export.   (line  12)
-* #+CAPTION <2>:                         Images in DocBook export.
+* #+CAPTION <1>:                         Images and tables.       (line   6)
+* #+CAPTION <2>:                         Images in HTML export.   (line  23)
+* #+CAPTION <3>:                         Images in LaTeX export.  (line  24)
+* #+CAPTION <4>:                         Tables in LaTeX export.  (line  21)
+* #+CAPTION <5>:                         Images in DocBook export.
                                                                   (line  28)
-* #+CAPTION <3>:                         Images and tables.       (line   6)
-* #+CAPTION <4>:                         Tables in LaTeX export.  (line  13)
-* #+CAPTION <5>:                         Images in HTML export.   (line  23)
-* #+CAPTION:                             Images in LaTeX export.  (line  24)
+* #+CAPTION <6>:                         Tables in LaTeX export.  (line  13)
+* #+CAPTION:                             Tables in HTML export.   (line  12)
 * #+CATEGORY:                            Categories.              (line   6)
 * #+COLUMNS:                             Scope of column definitions.
                                                                   (line   8)
@@ -13989,17 +14011,18 @@ Concept index
 * #+INCLUDE:                             Include files.           (line   7)
 * #+INFOJS_OPT:                          JavaScript support.      (line  26)
 * #+KEYWORDS:                            Export options.          (line  20)
-* #+LABEL <1>:                           Images and tables.       (line   6)
-* #+LABEL <2>:                           Tables in LaTeX export.  (line  21)
-* #+LABEL <3>:                           Images in LaTeX export.  (line  24)
-* #+LABEL:                               Images in DocBook export.
+* #+LABEL <1>:                           Tables in LaTeX export.  (line  21)
+* #+LABEL <2>:                           Images in DocBook export.
                                                                   (line  28)
+* #+LABEL <3>:                           Tables in LaTeX export.  (line  13)
+* #+LABEL <4>:                           Images and tables.       (line   6)
+* #+LABEL:                               Images in LaTeX export.  (line  24)
 * #+LANGUAGE:                            Export options.          (line  20)
 * #+LaTeX:                               Quoting LaTeX code.      (line  12)
 * #+LATEX_CLASS:                         Header and sectioning.   (line   8)
 * #+LATEX_CLASS_OPTIONS:                 Header and sectioning.   (line   8)
-* #+LATEX_HEADER <1>:                    Header and sectioning.   (line   8)
-* #+LATEX_HEADER:                        Export options.          (line  20)
+* #+LATEX_HEADER <1>:                    Export options.          (line  20)
+* #+LATEX_HEADER:                        Header and sectioning.   (line   8)
 * #+LINK:                                Link abbreviations.      (line  39)
 * #+LINK_HOME:                           Export options.          (line  20)
 * #+LINK_UP:                             Export options.          (line  20)
@@ -14020,10 +14043,10 @@ Concept index
 * #+TBLFM:                               Field and range formulas.
                                                                   (line  12)
 * #+TBLNAME:                             References.              (line 123)
-* #+TEXT <1>:                            Export options.          (line  20)
-* #+TEXT:                                Initial text.            (line   6)
-* #+TITLE <1>:                           Document title.          (line   8)
-* #+TITLE:                               Export options.          (line  20)
+* #+TEXT <1>:                            Initial text.            (line   6)
+* #+TEXT:                                Export options.          (line  20)
+* #+TITLE <1>:                           Export options.          (line  20)
+* #+TITLE:                               Document title.          (line   8)
 * #+TODO:                                Per-file keywords.       (line   6)
 * #+TYP_TODO:                            Per-file keywords.       (line   6)
 * #+XSLT:                                Export options.          (line  20)
@@ -14071,7 +14094,6 @@ Concept index
 * calc package:                          The spreadsheet.         (line   6)
 * calc.el:                               Cooperation.             (line   6)
 * calendar commands, from agenda:        Agenda commands.         (line 431)
-* calendar, for selecting date:          The date/time prompt.    (line  69)
 * category:                              Categories.              (line   6)
 * category, require for tags/property match: Matching tags and properties.
                                                                   (line  59)
@@ -14082,8 +14104,6 @@ Concept index
 * checkboxes:                            Checkboxes.              (line   6)
 * checkboxes and TODO dependencies:      TODO dependencies.       (line  43)
 * children, subtree visibility state:    Visibility cycling.      (line  10)
-* clocking time:                         Clocking work time.      (line   6)
-* clocktable, dynamic block:             The clock table.         (line   6)
 * code block, batch execution:           バッチ処理.              (line   6)
 * code block, editing:                   Editing source code.     (line   6)
 * code block, evaluating:                Evaluating code blocks.  (line   6)
@@ -14108,33 +14128,24 @@ Concept index
 * completion, of property keys:          Completion.              (line   6)
 * completion, of TeX symbols:            Completion.              (line   6)
 * constants.el:                          Cooperation.             (line  17)
-* content, STARTUPキーワード <1>:        In-buffer settings.      (line  69)
-* content, STARTUPキーワード:            Visibility cycling.      (line  54)
+* content, STARTUPキーワード <1>:        Visibility cycling.      (line  54)
+* content, STARTUPキーワード:            In-buffer settings.      (line  69)
 * contents, global visibility state:     Visibility cycling.      (line  22)
 * context-sensitive commands, hooks:     Context-sensitive commands.
                                                                   (line   6)
 * coordinates, of field:                 References.              (line  88)
 * copying, of subtrees:                  Structure editing.       (line   6)
-* creating timestamps:                   Creating timestamps.     (line   6)
 * CSS、HTMLエクスポートに関する:         CSS support.             (line   6)
 * CUA.el:                                Conflicts.               (line  19)
 * Cui, Baoqiu:                           DocBook export.          (line   6)
 * custom agenda views:                   Custom agenda views.     (line   6)
-* custom date/time format:               Custom time format.      (line   6)
 * cutting, of subtrees:                  Structure editing.       (line   6)
 * cycling, visibility:                   Visibility cycling.      (line   6)
-* date format, custom:                   Custom time format.      (line   6)
-* date range:                            Timestamps.              (line  39)
-* date stamp:                            Date and Times.          (line   6)
-* date stamps:                           Timestamps.              (line   6)
 * date tree:                             Using capture.           (line   9)
-* date, reading in minibuffer:           The date/time prompt.    (line   6)
-* dates:                                 Date and Times.          (line   6)
 * Davison, Dan:                          Working With Source Code.
                                                                   (line   6)
-* DEADLINE keyword:                      Deadlines and scheduling.
-                                                                  (line   9)
-* deadlines:                             Timestamps.              (line   6)
+* DEADLINEキーワード:                    Deadlines and scheduling.
+                                                                  (line  10)
 * debugging, of table formulas:          Editing and debugging formulas.
                                                                   (line  94)
 * demotion, of subtrees:                 Structure editing.       (line   6)
@@ -14160,13 +14171,11 @@ Concept index
 * editing tables:                        Tables.                  (line   6)
 * editing, of table formulas:            Editing and debugging formulas.
                                                                   (line   6)
-* effort estimates:                      Effort estimates.        (line   6)
 * effort filtering, in agenda:           Agenda commands.         (line 177)
 * ELispリンク:                           External links.          (line   6)
 * emacsserver:                           Protocols.               (line   6)
 * entitiesplain, STARTUPキーワード:      In-buffer settings.      (line 151)
 * entitiespretty, STARTUPキーワード:     In-buffer settings.      (line 151)
-* evaluate time range:                   Creating timestamps.     (line  53)
 * external archiving:                    Moving subtrees.         (line   6)
 * FAQ:                                   Summary.                 (line  55)
 * field coordinates:                     References.              (line  88)
@@ -14184,8 +14193,8 @@ Concept index
 * fnprompt,キーワード:                   In-buffer settings.      (line 134)
 * folded, subtree visibility state:      Visibility cycling.      (line  10)
 * folding, sparse trees:                 Sparse trees.            (line   6)
-* footnote.el <1>:                       Cooperation.             (line  72)
-* footnote.el:                           Footnote markup.         (line   6)
+* footnote.el <1>:                       Footnote markup.         (line   6)
+* footnote.el:                           Cooperation.             (line  72)
 * footnotes <1>:                         Footnotes.               (line   6)
 * footnotes:                             Export options.          (line  43)
 * format specifier:                      Formula syntax for Calc. (line  14)
@@ -14216,8 +14225,8 @@ Concept index
 * headline, promotion and demotion:      Structure editing.       (line   6)
 * headlines:                             Headlines.               (line   6)
 * hide text:                             Visibility cycling.      (line   6)
-* hideblocks, STARTUP keyword <1>:       In-buffer settings.      (line 147)
-* hideblocks, STARTUP keyword:           Blocks.                  (line  13)
+* hideblocks, STARTUP keyword <1>:       Blocks.                  (line  13)
+* hideblocks, STARTUP keyword:           In-buffer settings.      (line 147)
 * history:                               History and Acknowledgments.
                                                                   (line   6)
 * hooks:                                 Hooks.                   (line   6)
@@ -14229,11 +14238,9 @@ Concept index
 * HTMLエクスポート、CSS:                 CSS support.             (line   6)
 * hyperlinks, adding new types:          Adding hyperlink types.  (line   6)
 * iCalendarエクスポート:                 iCalendarエクスポート.   (line   6)
-* idle, resolve, dangling:               Resolving idle time.     (line   6)
 * images, inline in DocBook:             Images in DocBook export.
                                                                   (line   6)
 * imenu.el:                              Cooperation.             (line  32)
-* inactive timestamp:                    Timestamps.              (line  47)
 * index, in a publishing project:        Generating an index.     (line   6)
 * Infoリンク:                            External links.          (line   6)
 * inheritance, of properties:            Property inheritance.    (line   6)
@@ -14252,8 +14259,8 @@ Concept index
                                                                   (line   6)
 * LaTeXの中のインライン画像:             Images in LaTeX export.  (line   6)
 * LaTeXの断片、マークアップのルール:     Special symbols.         (line   6)
-* LaTeXの断片的なコード <1>:             Export options.          (line  43)
-* LaTeXの断片的なコード:                 LaTeX fragments.         (line   6)
+* LaTeXの断片的なコード <1>:             LaTeX fragments.         (line   6)
+* LaTeXの断片的なコード:                 Export options.          (line  43)
 * LaTeXの構造の分割:                     Header and sectioning.   (line   6)
 * LaTeXの見出し:                         Header and sectioning.   (line   6)
 * LaTeXの解釈:                           Embedded LaTeX.          (line   6)
@@ -14297,8 +14304,8 @@ Concept index
                                                                   (line   6)
 * nofnadjust, STARTUPキーワード:         In-buffer settings.      (line 134)
 * nofninline, STARTUPキーワード:         In-buffer settings.      (line 134)
-* nohideblocks, STARTUP keyword <1>:     In-buffer settings.      (line 147)
-* nohideblocks, STARTUP keyword:         Blocks.                  (line  13)
+* nohideblocks, STARTUP keyword <1>:     Blocks.                  (line  13)
+* nohideblocks, STARTUP keyword:         In-buffer settings.      (line 147)
 * noinlineimages, STARTUP keyword <1>:   In-buffer settings.      (line  87)
 * noinlineimages, STARTUP keyword:       Handling links.          (line 129)
 * occur, command:                        Sparse trees.            (line   6)
@@ -14324,8 +14331,8 @@ Concept index
 * overview, STARTUPキーワード <1>:       Visibility cycling.      (line  54)
 * overview, STARTUPキーワード:           In-buffer settings.      (line  69)
 * pasting, of subtrees:                  Structure editing.       (line   6)
-* PDF出力 <1>:                           DocBook export.          (line   6)
-* PDF出力:                               LaTeX and PDF export.    (line   6)
+* PDF出力 <1>:                           LaTeX and PDF export.    (line   6)
+* PDF出力:                               DocBook export.          (line   6)
 * plain lists:                           Plain lists.             (line   6)
 * plot tables using Gnuplot:             Org-Plot.                (line   6)
 * presentation, of agenda items:         Presentation and sorting.
@@ -14351,10 +14358,9 @@ Concept index
 * property, CUSTOM_ID <1>:               Handling links.          (line  20)
 * property, CUSTOM_ID:                   Internal links.          (line   6)
 * property, DESCRIPTION:                 iCalendarエクスポート.   (line  43)
-* property, Effort:                      Effort estimates.        (line   6)
-* property, ID <1>:                      iCalendarエクスポート.   (line  20)
-* property, ID <2>:                      カラム表示の保存.        (line  22)
-* property, ID:                          Handling links.          (line  20)
+* property, ID <1>:                      Handling links.          (line  20)
+* property, ID <2>:                      iCalendarエクスポート.   (line  20)
+* property, ID:                          カラム表示の保存.        (line  22)
 * property, LATEX_CLASS:                 Header and sectioning.   (line   8)
 * property, LATEX_CLASS_OPTIONS:         Header and sectioning.   (line   8)
 * property, LOCATION:                    iCalendarエクスポート.   (line  43)
@@ -14375,8 +14381,6 @@ Concept index
 * property, special, TODO:               Special properties.      (line  13)
 * property, SUMMARY:                     iCalendarエクスポート.   (line  43)
 * property, VISIBILITY:                  Visibility cycling.      (line  64)
-* property: CLOCK_MODELINE_TOTAL:        Clocking commands.       (line  16)
-* property: LAST_REPEAT:                 Clocking commands.       (line  16)
 * protocols, for external access:        Protocols.               (line   6)
 * publishing:                            Publishing.              (line   6)
 * query editing, in agenda:              Agenda commands.         (line 177)
@@ -14385,7 +14389,6 @@ Concept index
 * range formula:                         Field and range formulas.
                                                                   (line   6)
 * range references:                      References.              (line  65)
-* ranges, time:                          Timestamps.              (line   6)
 * recomputing table fields:              Updating the table.      (line   6)
 * references:                            References.              (line   6)
 * references, named:                     References.              (line 103)
@@ -14394,33 +14397,28 @@ Concept index
 * references, to fields:                 References.              (line  15)
 * references, to ranges:                 References.              (line  65)
 * refiling notes:                        Refiling notes.          (line   6)
-* region, active <1>:                    Built-in table editor.   (line 152)
-* region, active <2>:                    LaTeX/PDF export commands.
+* region, active <1>:                    LaTeX/PDF export commands.
                                                                   (line   6)
-* region, active <3>:                    Structure editing.       (line 124)
-* region, active <4>:                    ASCII/Latin-1/UTF-8 export.
+* region, active <2>:                    Structure editing.       (line 124)
+* region, active <3>:                    ASCII/Latin-1/UTF-8 export.
                                                                   (line  10)
-* region, active <5>:                    HTML Export commands.    (line   6)
+* region, active <4>:                    HTML Export commands.    (line   6)
+* region, active <5>:                    Built-in table editor.   (line 152)
 * region, active:                        DocBook export commands. (line   6)
 * regular expressions, with tags search: Matching tags and properties.
                                                                   (line  55)
-* relative timer:                        Relative timer.          (line   6)
 * remember.el:                           Cooperation.             (line  40)
 * remote editing, bulk, from agenda:     Agenda commands.         (line 391)
 * remote editing, from agenda:           Agenda commands.         (line 256)
 * remote editing, undo:                  Agenda commands.         (line 257)
 * remote references:                     References.              (line 123)
-* repeated tasks:                        Repeated tasks.          (line   6)
-* report, of clocked time:               The clock table.         (line   6)
-* resolve idle time:                     Resolving idle time.     (line   6)
 * RMAILリンク:                           External links.          (line   6)
 * Rose, Sebastian:                       JavaScript support.      (line   6)
 * row, of field coordinates:             References.              (line  88)
 * RSSフィード:                           RSS Feeds.               (line   6)
 * rsync:                                 Uploading files.         (line   6)
-* SCHEDULED keyword:                     Deadlines and scheduling.
-                                                                  (line  27)
-* scheduling:                            Timestamps.              (line   6)
+* SCHEDULEDキーワード:                   Deadlines and scheduling.
+                                                                  (line  28)
 * Schulte, Eric:                         Working With Source Code.
                                                                   (line   6)
 * Scripts, for agenda processing:        Extracting agenda information.
@@ -14430,13 +14428,13 @@ Concept index
 * searching, of properties:              Property searches.       (line   6)
 * setting tags:                          Setting tags.            (line   6)
 * SHELLリンク:                           External links.          (line   6)
-* shift-selection-mode <1>:              Plain lists.             (line  94)
-* shift-selection-mode:                  Conflicts.               (line   6)
+* shift-selection-mode <1>:              Conflicts.               (line   6)
+* shift-selection-mode:                  Plain lists.             (line  94)
 * show all, command:                     Visibility cycling.      (line  33)
 * show all, global visibility state:     Visibility cycling.      (line  22)
 * show hidden text:                      Visibility cycling.      (line   6)
-* showall, STARTUPキーワード <1>:        In-buffer settings.      (line  69)
-* showall, STARTUPキーワード:            Visibility cycling.      (line  54)
+* showall, STARTUPキーワード <1>:        Visibility cycling.      (line  54)
+* showall, STARTUPキーワード:            In-buffer settings.      (line  69)
 * showeverything, STARTUPキーワード <1>: Visibility cycling.      (line  54)
 * showeverything, STARTUPキーワード:     In-buffer settings.      (line  69)
 * sitemap, of published pages:           Sitemap.                 (line   6)
@@ -14457,8 +14455,6 @@ Concept index
 * source code, results of evaluation:    Results of evaluation.   (line   6)
 * source code, working with:             Working With Source Code.
                                                                   (line   6)
-* sparse tree, for deadlines:            Inserting deadline/schedule.
-                                                                  (line  31)
 * sparse tree, tag based:                Tags.                    (line   6)
 * sparse trees:                          Sparse trees.            (line   6)
 * speed keys:                            Speed keys.              (line   6)
@@ -14508,9 +14504,9 @@ Concept index
 * syntax, of formulas:                   Formula syntax for Calc. (line   6)
 * table editor, built-in:                Built-in table editor.   (line   6)
 * table editor, table.el:                Cooperation.             (line  50)
-* table.el:                              Cooperation.             (line  47)
-* tables <1>:                            Tables.                  (line   6)
-* tables:                                Export options.          (line  43)
+* table.el:                              Cooperation.             (line  50)
+* tables <1>:                            Export options.          (line  43)
+* tables:                                Tables.                  (line   6)
 * tables, in DocBook export:             Tables in DocBook export.
                                                                   (line   6)
 * tables, in LaTeX export:               Tables in LaTeX export.  (line   6)
@@ -14527,29 +14523,19 @@ Concept index
 * tangling:                              Extracting source code.  (line   6)
 * TaskJuggler export:                    TaskJuggler export.      (line   6)
 * tasks, breaking down:                  Breaking down tasks.     (line   6)
-* tasks, repeated:                       Repeated tasks.          (line   6)
 * templates, for Capture:                Capture templates.       (line   6)
 * TeX symbol completion:                 Completion.              (line   6)
 * text search:                           Search view.             (line   6)
 * TeXの解釈:                             Embedded LaTeX.          (line   6)
-* TeXマクロ <1>:                         Export options.          (line  43)
-* TeXマクロ:                             Special symbols.         (line   6)
+* TeXマクロ <1>:                         Special symbols.         (line   6)
+* TeXマクロ:                             Export options.          (line  43)
 * thanks:                                History and Acknowledgments.
                                                                   (line   6)
-* time clocking:                         Clocking work time.      (line   6)
-* time format, custom:                   Custom time format.      (line   6)
 * time grid:                             Time-of-day specifications.
                                                                   (line  27)
-* time, reading in minibuffer:           The date/time prompt.    (line   6)
 * time-of-day specification:             Time-of-day specifications.
                                                                   (line   6)
 * timeline, single file:                 Timeline.                (line   6)
-* timerange:                             Timestamps.              (line  39)
-* times:                                 Date and Times.          (line   6)
-* timestamp, inactive:                   Timestamps.              (line  47)
-* timestamp, with repeater interval:     Timestamps.              (line  23)
-* timestamps:                            Timestamps.              (line   6)
-* timestamps, creating:                  Creating timestamps.     (line   6)
 * TODO dependencies:                     TODO dependencies.       (line   6)
 * TODO keyword matching:                 Global TODO list.        (line  16)
 * TODO keyword matching, with tags search: Matching tags and properties.
@@ -14566,11 +14552,11 @@ Concept index
                                                                   (line   6)
 * TODOワークフロー:                      Workflow states.         (line   6)
 * transient-mark-mode <1>:               HTML Export commands.    (line   6)
-* transient-mark-mode <2>:               DocBook export commands. (line   6)
-* transient-mark-mode <3>:               LaTeX/PDF export commands.
+* transient-mark-mode <2>:               LaTeX/PDF export commands.
                                                                   (line   6)
-* transient-mark-mode:                   ASCII/Latin-1/UTF-8 export.
+* transient-mark-mode <3>:               ASCII/Latin-1/UTF-8 export.
                                                                   (line  10)
+* transient-mark-mode:                   DocBook export commands. (line   6)
 * translator function:                   Translator functions.    (line   6)
 * trees, sparse:                         Sparse trees.            (line   6)
 * trees, visibility:                     Visibility cycling.      (line   6)
@@ -14596,22 +14582,23 @@ Concept index
 * yasnippet.el:                          Conflicts.               (line  39)
 * はじめに:                              Introduction.            (line   6)
 * アウトラインビューを見やすくする:      Clean view.              (line   6)
-* アクティブなリージョン <1>:            DocBook export commands. (line   6)
-* アクティブなリージョン <2>:            ASCII/Latin-1/UTF-8 export.
-                                                                  (line  10)
+* アクティブでないタイムスタンプ:        Timestamps.              (line  47)
+* アクティブなリージョン <1>:            Built-in table editor.   (line 152)
+* アクティブなリージョン <2>:            HTML Export commands.    (line   6)
 * アクティブなリージョン <3>:            LaTeX/PDF export commands.
                                                                   (line   6)
-* アクティブなリージョン <4>:            Structure editing.       (line 124)
-* アクティブなリージョン <5>:            HTML Export commands.    (line   6)
-* アクティブなリージョン:                Built-in table editor.   (line 152)
+* アクティブなリージョン <4>:            ASCII/Latin-1/UTF-8 export.
+                                                                  (line  10)
+* アクティブなリージョン <5>:            DocBook export commands. (line   6)
+* アクティブなリージョン:                Structure editing.       (line 124)
 * アジェンダ:                            Weekly/daily agenda.     (line   6)
 * アジェンダのコマンドを選択する:        Agenda dispatcher.       (line   6)
 * アジェンダのコマンド選択画面:          Agenda dispatcher.       (line   6)
 * アジェンダビュー:                      Agenda Views.            (line   6)
-* アジェンダビューの出力 <1>:            Exporting Agenda Views.  (line  12)
-* アジェンダビューの出力:                Agenda commands.         (line 484)
+* アジェンダビューの出力 <1>:            Agenda commands.         (line 484)
+* アジェンダビューの出力:                Exporting Agenda Views.  (line  12)
 * アジェンダビュー（出力） <1>:          Agenda commands.         (line 484)
-* アジェンダビュー（出力）:              Exporting Agenda Views.  (line   6)
+* アジェンダビュー（出力）:              Exporting Agenda Views.  (line  12)
 * アジェンダファイル:                    Agenda files.            (line   6)
 * アジェンダ用のファイル:                Agenda files.            (line   6)
 * インストール:                          Installation.            (line   6)
@@ -14623,20 +14610,23 @@ Concept index
 * エクスポートのオプション:              Export options.          (line   6)
 * エクスポート中のマクロによる置き換え:  Macro replacement.       (line   6)
 * エラーのバックトレース:                Feedback.                (line  39)
-* オプションのキーワードの補完 <1>:      Per-file keywords.       (line  23)
-* オプションのキーワードの補完 <2>:      Completion.              (line   6)
-* オプションのキーワードの補完:          Export options.          (line   6)
+* オプションのキーワードの補完 <1>:      Export options.          (line   6)
+* オプションのキーワードの補完 <2>:      Per-file keywords.       (line  23)
+* オプションのキーワードの補完:          Completion.              (line   6)
 * カウントダウンタイマ:                  カウントダウンタイマ.    (line   6)
 * カスタマイズ:                          Customization.           (line   6)
 * カスタマイズのオプション:              Customization.           (line   6)
 * カスタマイズの変数:                    Customization.           (line   6)
+* カスタム日付時間フォーマット:          Custom time format.      (line   6)
 * カスタム検索文字列:                    Custom searches.         (line   6)
+* カレンダー、日付選択のため:            The date/time prompt.    (line  66)
 * カレンダーの統合:                      Weekly/daily agenda.     (line  28)
 * キャプチャ <1>:                        Capture.                 (line   6)
 * キャプチャ:                            Capture - Refile - Archive.
                                                                   (line   6)
 * キーバインド（グローバル）:            Activation.              (line   6)
 * キーワードオプション:                  Per-file keywords.       (line   6)
+* クロックテーブル、動的なブロック:      The clock table.         (line   6)
 * グローバルなキーバインド:              Activation.              (line   6)
 * コマンド選択画面、エクスポートコマンドのための: The export dispatcher.
                                                                   (line   6)
@@ -14644,11 +14634,17 @@ Concept index
 * コードのテキスト、マークアップのルール: Emphasis and monospace. (line   6)
 * コードラインのリファレンス、マークアップのルール: Literal examples.
                                                                   (line   6)
+* スケジューリング:                      Timestamps.              (line   6)
 * スペシャルキーワード:                  In-buffer settings.      (line   6)
 * ソースコードのフォーマット、マークアップのルール: Literal examples.
                                                                   (line  22)
 * タイムスタンプ <1>:                    Date and Times.          (line   6)
-* タイムスタンプ:                        Timestamps.              (line  14)
+* タイムスタンプ:                        Timestamps.              (line   6)
+* タイムスタンプ、アクティブでない:      Timestamps.              (line  47)
+* タイムスタンプ、リピート間隔:          Timestamps.              (line  23)
+* タイムスタンプ、作成:                  Creating timestamps.     (line   6)
+* タイムスタンプの作成:                  Creating timestamps.     (line   6)
+* タスク、繰り返し:                      Repeated tasks.          (line   6)
 * ターゲット,ラジオ:                     Radio targets.           (line   6)
 * ターゲット,リンクの:                   Internal links.          (line   6)
 * テキストエリア、HTMLの中の:            Text areas in HTML export.
@@ -14657,6 +14653,7 @@ Concept index
 * テーブル、HTMLの:                      Tables in HTML export.   (line   6)
 * テーブルの中での計算 <1>:              Built-in table editor.   (line 152)
 * テーブルの中での計算:                  The spreadsheet.         (line   6)
+* デッドライン:                          Timestamps.              (line   6)
 * ハイパーリンク:                        Hyperlinks.              (line   6)
 * バグレポート:                          Feedback.                (line   6)
 * バッファ中での設定:                    In-buffer settings.      (line   6)
@@ -14671,19 +14668,22 @@ Concept index
 * フィードバック:                        Feedback.                (line   6)
 * フォーマット,リンクの:                 Link format.             (line   6)
 * プレーンテキスト外部リンク:            External links.          (line  61)
-* プロパティ、EXPORT_FILE_NAME <1>:      HTML Export commands.    (line   7)
+* プロパティ:CLOCK_MODELINE_TOTAL:       Clocking commands.       (line  16)
+* プロパティ:LAST_REPEAT:                Clocking commands.       (line  16)
+* プロパティ、EXPORT_FILE_NAME <1>:      LaTeX/PDF export commands.
+                                                                  (line   7)
 * プロパティ、EXPORT_FILE_NAME <2>:      ASCII/Latin-1/UTF-8 export.
                                                                   (line  11)
 * プロパティ、EXPORT_FILE_NAME <3>:      DocBook export commands. (line   7)
-* プロパティ、EXPORT_FILE_NAME:          LaTeX/PDF export commands.
-                                                                  (line   7)
+* プロパティ、EXPORT_FILE_NAME:          HTML Export commands.    (line   7)
 * プロパティ、EXPORT_TITLE:              Document title.          (line  15)
-* プロパティのためのAPI <1>:             Using the property API.  (line   6)
-* プロパティのためのAPI:                 Property API.            (line   6)
+* プロパティ、工数:                      Effort estimates.        (line   6)
+* プロパティのためのAPI <1>:             Property API.            (line   6)
+* プロパティのためのAPI:                 Using the property API.  (line   6)
 * プロパティ（API） <1>:                 Property API.            (line   6)
 * プロパティ（API）:                     Using the property API.  (line   6)
-* プロパティ（ARCHIVE） <1>:             Moving subtrees.         (line  28)
-* プロパティ（ARCHIVE）:                 Property inheritance.    (line  33)
+* プロパティ（ARCHIVE） <1>:             Property inheritance.    (line  33)
+* プロパティ（ARCHIVE）:                 Moving subtrees.         (line  28)
 * プロパティ（CATEGORY） <1>:            Property inheritance.    (line  29)
 * プロパティ（CATEGORY）:                Categories.              (line  12)
 * プロパティ（COLUMNS） <1>:             In-buffer settings.      (line  26)
@@ -14704,6 +14704,7 @@ Concept index
 * リンクの省略記法:                      Link abbreviations.      (line   6)
 * リンクの補完:                          Handling links.          (line  63)
 * リンクをたどる:                        Handling links.          (line  97)
+* レポート、計測された時間:              The clock table.         (line   6)
 * 上付き、下付き文字を示す TeX のようなシンタックス: Export options.
                                                                   (line  43)
 * 上付き文字:                            Subscripts and superscripts.
@@ -14712,6 +14713,8 @@ Concept index
                                                                   (line   6)
 * 下線のあるテキスト、マークアップのルール: Emphasis and monospace.
                                                                   (line   6)
+* 休止、解決、空き時間:                  Resolving idle time.     (line   6)
+* 休止時間を解決する:                    Resolving idle time.     (line   6)
 * 先頭の「*」を隠す:                     Clean view.              (line   6)
 * 公開のためのインデックスのエントリ:    Index entries.           (line   6)
 * 内部リンク:                            Internal links.          (line   6)
@@ -14720,7 +14723,7 @@ Concept index
 * 取り消されたテキスト、マーックアップのルール: Emphasis and monospace.
                                                                   (line   6)
 * 名前をTODOキーワードとして:            TODO types.              (line   6)
-* 名前（列やフィールド）:                References.              (line 103)
+* 名前（列やフィールド）:                References.              (line 123)
 * 固定幅の段落:                          Export options.          (line  43)
 * 外部リンク:                            External links.          (line   6)
 * 外部リンク、出力するHTMLの:            Links in HTML export.    (line   6)
@@ -14729,17 +14732,20 @@ Concept index
 * 奇数レベルのみのアウトライン:          Clean view.              (line   6)
 * 完了、TODOキーワードの <1>:            Completion.              (line   6)
 * 完了、TODOキーワードの:                Workflow states.         (line  14)
-* 完了、タグの <1>:                      Completion.              (line   6)
-* 完了、タグの:                          Setting tags.            (line  11)
+* 完了、タグの <1>:                      Setting tags.            (line  11)
+* 完了、タグの:                          Completion.              (line   6)
 * 属性、COOKIE_DATA <1>:                 Breaking down tasks.     (line  21)
 * 属性、COOKIE_DATA:                     Checkboxes.              (line  29)
 * 属性、ログをとる <1>:                  Property inheritance.    (line  37)
 * 属性、ログをとる:                      Tracking TODO state changes.
                                                                   (line  40)
-* 属性、並び順 <1>:                      Checkboxes.              (line  44)
-* 属性、並び順 <2>:                      TODO dependencies.       (line   6)
-* 属性、並び順:                          Checkboxes.              (line  74)
+* 属性、並び順 <1>:                      TODO dependencies.       (line   6)
+* 属性、並び順 <2>:                      Checkboxes.              (line  44)
+* 属性、並び順:                          TODO dependencies.       (line  30)
+* 工数の見積もり:                        Effort estimates.        (line   6)
 * 強調されたテキスト:                    Export options.          (line  43)
+* 抽出されたツリー、デッドラインのため:  Inserting deadline/schedule.
+                                                                  (line  30)
 * 拡張されたTODOキーワード:              TODO extensions.         (line   6)
 * 改行の維持:                            Export options.          (line  43)
 * 数学記号:                              Special symbols.         (line   6)
@@ -14747,11 +14753,25 @@ Concept index
                                                                   (line   6)
 * 文書のタイトル、マークアップのルール:  Document title.          (line   6)
 * 斜体のテキスト、マーックアップのルール: Emphasis and monospace. (line   6)
+* 日付:                                  Date and Times.          (line   6)
+* 日付、ミニバッファでの読み込み:        The date/time prompt.    (line   6)
+* 日付の間隔:                            Timestamps.              (line  39)
+* 日付スタンプ <1>:                      Timestamps.              (line   6)
+* 日付スタンプ:                          Date and Times.          (line   6)
+* 日付フォーマット、カスタム:            Custom time format.      (line   6)
 * 日記の統合:                            Weekly/daily agenda.     (line  28)
+* 時刻:                                  Date and Times.          (line   6)
+* 時刻、ミニバッファでの読み込み:        The date/time prompt.    (line   6)
 * 時間の情報、エクスポートの中で:        Export options.          (line  43)
+* 時間の計測:                            Clocking work time.      (line   6)
+* 時間を計測する:                        Clocking work time.      (line   6)
+* 時間フォーマット、カスタム:            Custom time format.      (line   6)
+* 時間間隔:                              Timestamps.              (line  39)
+* 時間間隔、時刻:                        Timestamps.              (line   6)
+* 時間間隔の評価:                        Creating timestamps.     (line  61)
 * 時間順に並べたビュー:                  Timeline.                (line   6)
-* 暫定マークモード <1>:                  Built-in table editor.   (line 152)
-* 暫定マークモード:                      Structure editing.       (line 124)
+* 暫定マークモード <1>:                  Structure editing.       (line 124)
+* 暫定マークモード:                      Built-in table editor.   (line 152)
 * 最初の見出しより前のテキスト、マークアップのルール: Initial text.
                                                                   (line   6)
 * 検索ビュー:                            Search view.             (line   6)
@@ -14760,8 +14780,8 @@ Concept index
 * 構造の分割、LaTeXエクスポートのための: Header and sectioning.   (line   6)
 * 段落、マークアップのルール:            Paragraphs.              (line   6)
 * 水平線、マーックアップのルール:        Horizontal rules.        (line   6)
-* 特別なプロパティ（CLOCKSUM） <1>:      Special properties.      (line  13)
-* 特別なプロパティ（CLOCKSUM）:          Agenda column view.      (line  28)
+* 特別なプロパティ（CLOCKSUM） <1>:      Agenda column view.      (line  28)
+* 特別なプロパティ（CLOCKSUM）:          Special properties.      (line  13)
 * 特別な文字列:                          Export options.          (line  43)
 * 特殊記号:                              Special symbols.         (line   6)
 * 画像,インライン:                       Handling links.          (line 129)
@@ -14769,9 +14789,11 @@ Concept index
 * 画像、LaTeXに中のインライン:           Images in LaTeX export.  (line   6)
 * 目次:                                  Export options.          (line  43)
 * 目次、マークアップのルール:            Table of contents.       (line   6)
+* 相対時間タイマー:                      Relative timer.          (line   6)
 * 省略記法,リンクの:                     Link abbreviations.      (line   6)
 * 種類をTODOキーワードとして:            TODO types.              (line   6)
 * 章の番号:                              Export options.          (line  43)
+* 繰り返しタスク:                        Repeated tasks.          (line   6)
 * 脚注、マークアップのルール:            Footnote markup.         (line   6)
 * 著者:                                  Feedback.                (line   6)
 * 著者の情報、エクスポートの中で:        Export options.          (line  43)
@@ -14783,11 +14805,12 @@ Concept index
                                                                   (line   6)
 * 見出しの階層:                          Export options.          (line  43)
 * 計算中の定数:                          References.              (line 123)
-* （外部出力に用いる）ヘッドラインレベル <1>: ASCII/Latin-1/UTF-8 export.
-                                                                  (line  37)
+* （外部出力に用いる）ヘッドラインレベル <1>: HTML Export commands.
+                                                                  (line  39)
 * （外部出力に用いる）ヘッドラインレベル <2>: LaTeX/PDF export commands.
                                                                   (line  38)
-* （外部出力に用いる）ヘッドラインレベル: HTML Export commands.   (line  39)
+* （外部出力に用いる）ヘッドラインレベル: ASCII/Latin-1/UTF-8 export.
+                                                                  (line  37)
 
 
 File: org-ja,  Node: Key Index,  Next: Command and Function Index,  Prev: Main Index,  Up: Top
@@ -14809,10 +14832,10 @@ Key index
 * ::                                     Agenda commands.         (line 302)
 * ;:                                     カウントダウンタイマ.    (line   6)
 * < <1>:                                 Using column view.       (line  69)
-* < <2>:                                 The date/time prompt.    (line  75)
+* < <2>:                                 The date/time prompt.    (line  70)
 * <:                                     Agenda files.            (line  60)
 * <RET> <1>:                             Built-in table editor.   (line  64)
-* <RET> <2>:                             The date/time prompt.    (line  75)
+* <RET> <2>:                             The date/time prompt.    (line  70)
 * <RET> <3>:                             Setting tags.            (line 109)
 * <RET>:                                 Agenda commands.         (line  41)
 * <SPC> <1>:                             Agenda commands.         (line  29)
@@ -14829,7 +14852,7 @@ Key index
 * > <1>:                                 Using column view.       (line  69)
 * > <2>:                                 Agenda files.            (line  65)
 * > <3>:                                 Agenda commands.         (line 367)
-* >:                                     The date/time prompt.    (line  75)
+* >:                                     The date/time prompt.    (line  70)
 * ?:                                     MobileOrgからpullする.   (line  33)
 * [:                                     Agenda commands.         (line 243)
 * \:                                     Agenda commands.         (line 236)
@@ -14849,7 +14872,7 @@ Key index
 * C-0 C-c C-w:                           Refiling notes.          (line  39)
 * C-<RET>:                               Structure editing.       (line  17)
 * C-_:                                   Agenda commands.         (line 257)
-* C-c !:                                 Creating timestamps.     (line  13)
+* C-c !:                                 Creating timestamps.     (line  15)
 * C-c #:                                 Checkboxes.              (line  79)
 * C-c $:                                 Moving subtrees.         (line   9)
 * C-c %:                                 Handling links.          (line 133)
@@ -14868,7 +14891,7 @@ Key index
 * C-c ,org-match-sparse-tree:            Property searches.       (line   8)
 * C-c - <1>:                             Built-in table editor.   (line 100)
 * C-c -:                                 Plain lists.             (line 125)
-* C-c .:                                 Creating timestamps.     (line   9)
+* C-c .:                                 Creating timestamps.     (line  10)
 * C-c / <1>:                             Sparse trees.            (line  15)
 * C-c /:                                 Conflicts.               (line  78)
 * C-c / a:                               Inserting deadline/schedule.
@@ -14876,19 +14899,19 @@ Key index
 * C-c / b:                               Inserting deadline/schedule.
                                                                   (line  35)
 * C-c / d:                               Inserting deadline/schedule.
-                                                                  (line  28)
+                                                                  (line  27)
 * C-c / m <1>:                           Property searches.       (line   8)
 * C-c / m:                               Tag searches.            (line   9)
 * C-c / p:                               Property searches.       (line  27)
 * C-c / r:                               Sparse trees.            (line  17)
 * C-c / t:                               TODO basics.             (line  35)
 * C-c ;:                                 コメント行.              (line  12)
-* C-c <:                                 Creating timestamps.     (line  23)
+* C-c <:                                 Creating timestamps.     (line  26)
 * C-c <RET>:                             Built-in table editor.   (line 104)
 * C-c = <1>:                             Column formulas.         (line  28)
 * C-c =:                                 Editing and debugging formulas.
                                                                   (line  13)
-* C-c >:                                 Creating timestamps.     (line  26)
+* C-c >:                                 Creating timestamps.     (line  29)
 * C-c ?:                                 Editing and debugging formulas.
                                                                   (line  22)
 * C-c [:                                 Agenda files.            (line  17)
@@ -14949,7 +14972,7 @@ Key index
                                                                   (line  14)
 * C-c C-c <7>:                           Using capture.           (line  15)
 * C-c C-c <8>:                           The clock table.         (line  15)
-* C-c C-c <9>:                           Clocking commands.       (line  39)
+* C-c C-c <9>:                           Clocking commands.       (line  38)
 * C-c C-c <10>:                          カラム表示の保存.        (line  51)
 * C-c C-c <11>:                          Using column view.       (line  51)
 * C-c C-c <12>:                          Property syntax.         (line  56)
@@ -15017,7 +15040,7 @@ Key index
 * C-c C-n:                               Motion.                  (line   8)
 * C-c C-o <1>:                           Handling links.          (line  97)
 * C-c C-o <2>:                           Footnotes.               (line  89)
-* C-c C-o <3>:                           Creating timestamps.     (line  30)
+* C-c C-o <3>:                           Creating timestamps.     (line  34)
 * C-c C-o <4>:                           Key bindings and useful functions.
                                                                   (line  10)
 * C-c C-o:                               Agenda commands.         (line  59)
@@ -15076,10 +15099,10 @@ Key index
 * C-c C-w <2>:                           Using capture.           (line  22)
 * C-c C-w <3>:                           Agenda commands.         (line 277)
 * C-c C-w:                               Structure editing.       (line  88)
-* C-c C-x ,:                             Relative timer.          (line  21)
+* C-c C-x ,:                             Relative timer.          (line  23)
 * C-c C-x -:                             Relative timer.          (line  13)
 * C-c C-x .:                             Relative timer.          (line  10)
-* C-c C-x 0:                             Relative timer.          (line  30)
+* C-c C-x 0:                             Relative timer.          (line  32)
 * C-c C-x ;:                             カウントダウンタイマ.    (line   6)
 * C-c C-x <:                             Agenda files.            (line  46)
 * C-c C-x > <1>:                         Agenda files.            (line  53)
@@ -15102,22 +15125,22 @@ Key index
 * C-c C-x C-c <1>:                       Using column view.       (line   9)
 * C-c C-x C-c <2>:                       Agenda column view.      (line  11)
 * C-c C-x C-c:                           Agenda commands.         (line 157)
-* C-c C-x C-d:                           Clocking commands.       (line  57)
+* C-c C-x C-d:                           Clocking commands.       (line  58)
 * C-c C-x C-e <1>:                       Effort estimates.        (line  17)
-* C-c C-x C-e:                           Clocking commands.       (line  36)
+* C-c C-x C-e:                           Clocking commands.       (line  34)
 * C-c C-x C-i:                           Clocking commands.       (line   6)
-* C-c C-x C-j:                           Clocking commands.       (line  52)
+* C-c C-x C-j:                           Clocking commands.       (line  53)
 * C-c C-x C-k:                           Inserting deadline/schedule.
-                                                                  (line  22)
+                                                                  (line  21)
 * C-c C-x C-l:                           Previewing LaTeX fragments.
                                                                   (line   9)
 * C-c C-x C-n:                           Handling links.          (line 143)
-* C-c C-x C-o:                           Clocking commands.       (line  29)
+* C-c C-x C-o:                           Clocking commands.       (line  27)
 * C-c C-x C-p:                           Handling links.          (line 143)
 * C-c C-x C-r:                           The clock table.         (line  10)
 * C-c C-x C-s <1>:                       Agenda commands.         (line 292)
 * C-c C-x C-s:                           Moving subtrees.         (line   9)
-* C-c C-x C-t:                           Custom time format.      (line  12)
+* C-c C-x C-t:                           Custom time format.      (line  11)
 * C-c C-x C-u <1>:                       Dynamic blocks.          (line  21)
 * C-c C-x C-u <2>:                       The clock table.         (line  15)
 * C-c C-x C-u:                           カラム表示の保存.        (line  51)
@@ -15127,7 +15150,7 @@ Key index
 * C-c C-x C-x:                           Clocking commands.       (line  48)
 * C-c C-x C-y <1>:                       Built-in table editor.   (line 132)
 * C-c C-x C-y:                           Structure editing.       (line  62)
-* C-c C-x e:                             Effort estimates.        (line  14)
+* C-c C-x e:                             Effort estimates.        (line  13)
 * C-c C-x f:                             Footnotes.               (line  50)
 * C-c C-x g:                             RSS Feeds.               (line  22)
 * C-c C-x G:                             RSS Feeds.               (line  26)
@@ -15139,8 +15162,8 @@ Key index
 * C-c C-x p <1>:                         Property syntax.         (line  47)
 * C-c C-x p:                             Header arguments in Org-mode properties.
                                                                   (line  22)
-* C-c C-y <1>:                           Creating timestamps.     (line  50)
-* C-c C-y:                               Clocking commands.       (line  39)
+* C-c C-y <1>:                           Creating timestamps.     (line  58)
+* C-c C-y:                               Clocking commands.       (line  38)
 * C-c C-z <1>:                           Agenda commands.         (line 323)
 * C-c C-z:                               Drawers.                 (line  28)
 * C-c l <1>:                             Literal examples.        (line  67)
@@ -15162,9 +15185,9 @@ Key index
                                                                   (line  24)
 * C-TAB:                                 ファイル内部でのアーカイブ.
                                                                   (line  46)
-* C-u C-c !:                             Creating timestamps.     (line  17)
+* C-u C-c !:                             Creating timestamps.     (line  20)
 * C-u C-c *:                             Updating the table.      (line  16)
-* C-u C-c .:                             Creating timestamps.     (line  17)
+* C-u C-c .:                             Creating timestamps.     (line  20)
 * C-u C-c = <1>:                         Editing and debugging formulas.
                                                                   (line  13)
 * C-u C-c =:                             Field and range formulas.
@@ -15174,13 +15197,13 @@ Key index
 * C-u C-c C-l:                           Handling links.          (line  83)
 * C-u C-c C-t:                           TODO basics.             (line  24)
 * C-u C-c C-w:                           Refiling notes.          (line  27)
-* C-u C-c C-x ,:                         Relative timer.          (line  25)
+* C-u C-c C-x ,:                         Relative timer.          (line  27)
 * C-u C-c C-x a:                         ファイル内部でのアーカイブ.
                                                                   (line  39)
 * C-u C-c C-x C-s:                       Moving subtrees.         (line  11)
 * C-u C-c C-x C-u <1>:                   Dynamic blocks.          (line  22)
 * C-u C-c C-x C-u <2>:                   カラム表示の保存.        (line  55)
-* C-u C-c C-x C-u:                       The clock table.         (line  19)
+* C-u C-c C-x C-u:                       The clock table.         (line  20)
 * C-u C-u <TAB>:                         Visibility cycling.      (line  67)
 * C-u C-u C-c *:                         Updating the table.      (line  21)
 * C-u C-u C-c =:                         Editing and debugging formulas.
@@ -15195,7 +15218,7 @@ Key index
 * C-u C-u C-u C-c C-t:                   TODO dependencies.       (line  34)
 * C-up:                                  Key bindings and useful functions.
                                                                   (line  11)
-* C-v:                                   The date/time prompt.    (line  75)
+* C-v:                                   The date/time prompt.    (line  70)
 * C-x C-s:                               Editing and debugging formulas.
                                                                   (line  44)
 * C-x C-w <1>:                           Exporting Agenda Views.  (line  11)
@@ -15221,9 +15244,9 @@ Key index
 * J:                                     Agenda commands.         (line 383)
 * k:                                     Agenda commands.         (line 339)
 * k a:                                   Inserting deadline/schedule.
-                                                                  (line  25)
+                                                                  (line  24)
 * k s:                                   Inserting deadline/schedule.
-                                                                  (line  25)
+                                                                  (line  24)
 * l:                                     Agenda commands.         (line 102)
 * L:                                     Agenda commands.         (line  35)
 * M:                                     Agenda commands.         (line 458)
@@ -15235,7 +15258,7 @@ Key index
 * M-<left> <2>:                          Built-in table editor.   (line  81)
 * M-<left>:                              Plain lists.             (line 102)
 * M-<RET> <1>:                           Plain lists.             (line  74)
-* M-<RET> <2>:                           Relative timer.          (line  17)
+* M-<RET> <2>:                           Relative timer.          (line  18)
 * M-<RET> <3>:                           Built-in table editor.   (line 138)
 * M-<RET>:                               Structure editing.       (line   6)
 * M-<right> <1>:                         Structure editing.       (line  39)
@@ -15266,23 +15289,23 @@ Key index
 * M-S-<left> <1>:                        Plain lists.             (line 106)
 * M-S-<left> <2>:                        Built-in table editor.   (line  83)
 * M-S-<left> <3>:                        Structure editing.       (line  42)
-* M-S-<left>:                            The date/time prompt.    (line  75)
+* M-S-<left>:                            The date/time prompt.    (line  70)
 * M-S-<RET> <1>:                         Plain lists.             (line  81)
 * M-S-<RET> <2>:                         Structure editing.       (line  22)
 * M-S-<RET>:                             Checkboxes.              (line  68)
 * M-S-<right> <1>:                       Plain lists.             (line 106)
 * M-S-<right> <2>:                       Built-in table editor.   (line  86)
-* M-S-<right> <3>:                       The date/time prompt.    (line  75)
+* M-S-<right> <3>:                       The date/time prompt.    (line  70)
 * M-S-<right>:                           Structure editing.       (line  45)
 * M-S-<up> <1>:                          Plain lists.             (line  96)
 * M-S-<up> <2>:                          Editing and debugging formulas.
                                                                   (line  67)
 * M-S-<up> <3>:                          Built-in table editor.   (line  93)
 * M-S-<up>:                              Structure editing.       (line  48)
-* M-v:                                   The date/time prompt.    (line  75)
+* M-v:                                   The date/time prompt.    (line  70)
 * M-x org-iswitchb:                      Agenda files.            (line  29)
 * mouse-1 <1>:                           Handling links.          (line 117)
-* mouse-1 <2>:                           The date/time prompt.    (line  75)
+* mouse-1 <2>:                           The date/time prompt.    (line  70)
 * mouse-1:                               Footnotes.               (line  89)
 * mouse-2 <1>:                           Agenda commands.         (line  38)
 * mouse-2 <2>:                           Footnotes.               (line  89)
@@ -15306,26 +15329,26 @@ Key index
 * S-<down> <1>:                          Agenda commands.         (line 320)
 * S-<down> <2>:                          Priorities.              (line  27)
 * S-<down> <3>:                          Plain lists.             (line  90)
-* S-<down> <4>:                          Creating timestamps.     (line  39)
-* S-<down> <5>:                          The date/time prompt.    (line  75)
+* S-<down> <4>:                          Creating timestamps.     (line  45)
+* S-<down> <5>:                          The date/time prompt.    (line  70)
 * S-<down>:                              Editing and debugging formulas.
                                                                   (line  62)
 * S-<left> <1>:                          Multiple sets in one file.
                                                                   (line  31)
 * S-<left> <2>:                          TODO basics.             (line  30)
-* S-<left> <3>:                          The date/time prompt.    (line  75)
+* S-<left> <3>:                          The date/time prompt.    (line  70)
 * S-<left> <4>:                          Property syntax.         (line  64)
-* S-<left> <5>:                          The clock table.         (line  23)
+* S-<left> <5>:                          The clock table.         (line  25)
 * S-<left> <6>:                          Plain lists.             (line 147)
 * S-<left> <7>:                          Agenda commands.         (line 364)
 * S-<left> <8>:                          Using column view.       (line  34)
-* S-<left> <9>:                          Creating timestamps.     (line  34)
+* S-<left> <9>:                          Creating timestamps.     (line  39)
 * S-<left>:                              Editing and debugging formulas.
                                                                   (line  62)
 * S-<RET>:                               Built-in table editor.   (line 155)
-* S-<right> <1>:                         The clock table.         (line  23)
-* S-<right> <2>:                         Creating timestamps.     (line  34)
-* S-<right> <3>:                         The date/time prompt.    (line  75)
+* S-<right> <1>:                         The clock table.         (line  25)
+* S-<right> <2>:                         Creating timestamps.     (line  39)
+* S-<right> <3>:                         The date/time prompt.    (line  70)
 * S-<right> <4>:                         Plain lists.             (line 147)
 * S-<right> <5>:                         Using column view.       (line  34)
 * S-<right> <6>:                         Agenda commands.         (line 351)
@@ -15338,8 +15361,8 @@ Key index
 * S-<TAB> <1>:                           Visibility cycling.      (line  22)
 * S-<TAB>:                               Built-in table editor.   (line  61)
 * S-<up> <1>:                            Agenda commands.         (line 315)
-* S-<up> <2>:                            The date/time prompt.    (line  75)
-* S-<up> <3>:                            Creating timestamps.     (line  39)
+* S-<up> <2>:                            The date/time prompt.    (line  70)
+* S-<up> <3>:                            Creating timestamps.     (line  45)
 * S-<up> <4>:                            Editing and debugging formulas.
                                                                   (line  62)
 * S-<up>:                                Priorities.              (line  27)
@@ -15486,16 +15509,16 @@ Command and function index
 * org-check-before-date:                 Inserting deadline/schedule.
                                                                   (line  35)
 * org-check-deadlines:                   Inserting deadline/schedule.
-                                                                  (line  28)
+                                                                  (line  27)
 * org-clock-cancel:                      Clocking commands.       (line  48)
-* org-clock-display:                     Clocking commands.       (line  57)
-* org-clock-goto:                        Clocking commands.       (line  52)
+* org-clock-display:                     Clocking commands.       (line  58)
+* org-clock-goto:                        Clocking commands.       (line  53)
 * org-clock-in:                          Clocking commands.       (line   6)
-* org-clock-modify-effort-estimate <1>:  Clocking commands.       (line  36)
+* org-clock-modify-effort-estimate <1>:  Clocking commands.       (line  34)
 * org-clock-modify-effort-estimate:      Effort estimates.        (line  17)
-* org-clock-out:                         Clocking commands.       (line  29)
+* org-clock-out:                         Clocking commands.       (line  27)
 * org-clock-report:                      The clock table.         (line  10)
-* org-clocktable-try-shift:              The clock table.         (line  23)
+* org-clocktable-try-shift:              The clock table.         (line  25)
 * org-clone-subtree-with-time-shift:     Structure editing.       (line  80)
 * org-columns:                           Using column view.       (line   9)
 * org-columns-delete:                    Using column view.       (line  74)
@@ -15517,7 +15540,7 @@ Command and function index
 * org-cycle <2>:                         Structure editing.       (line  30)
 * org-cycle:                             Visibility cycling.      (line  10)
 * org-cycle-agenda-files:                Agenda files.            (line  24)
-* org-date-from-calendar:                Creating timestamps.     (line  23)
+* org-date-from-calendar:                Creating timestamps.     (line  26)
 * org-dblock-update <1>:                 The clock table.         (line  15)
 * org-dblock-update <2>:                 Dynamic blocks.          (line  21)
 * org-dblock-update:                     カラム表示の保存.        (line  51)
@@ -15541,8 +15564,8 @@ Command and function index
 * org-entry-put-multivalued-property:    Using the property API.  (line  40)
 * org-entry-remove-from-multivalued-property: Using the property API.
                                                                   (line  52)
-* org-evaluate-time-range <1>:           Clocking commands.       (line  39)
-* org-evaluate-time-range:               Creating timestamps.     (line  50)
+* org-evaluate-time-range <1>:           Clocking commands.       (line  38)
+* org-evaluate-time-range:               Creating timestamps.     (line  58)
 * org-export:                            The export dispatcher.   (line  14)
 * org-export-as-ascii:                   ASCII/Latin-1/UTF-8 export.
                                                                   (line  10)
@@ -15586,10 +15609,10 @@ Command and function index
 * org-forward-same-level:                Motion.                  (line  12)
 * org-global-cycle:                      Visibility cycling.      (line  22)
 * org-goto:                              Motion.                  (line  21)
-* org-goto-calendar:                     Creating timestamps.     (line  26)
+* org-goto-calendar:                     Creating timestamps.     (line  29)
 * org-insert-columns-dblock:             カラム表示の保存.        (line  49)
 * org-insert-export-options-template:    Export options.          (line  17)
-* org-insert-heading <1>:                Relative timer.          (line  17)
+* org-insert-heading <1>:                Relative timer.          (line  18)
 * org-insert-heading <2>:                Structure editing.       (line   6)
 * org-insert-heading:                    Plain lists.             (line  74)
 * org-insert-heading-respect-content:    Structure editing.       (line  17)
@@ -15602,7 +15625,7 @@ Command and function index
 * org-insert-todo-heading-respect-content: Structure editing.     (line  26)
 * org-map-entries:                       マッピングAPIを使う.     (line  13)
 * org-mark-entry-for-agenda-action:      Inserting deadline/schedule.
-                                                                  (line  22)
+                                                                  (line  21)
 * org-mark-ring-goto:                    Handling links.          (line 138)
 * org-mark-ring-push:                    Handling links.          (line 133)
 * org-match-sparse-tree:                 Tag searches.            (line   9)
@@ -15613,7 +15636,7 @@ Command and function index
 * org-next-link:                         Handling links.          (line 143)
 * org-occur:                             Sparse trees.            (line  17)
 * org-open-at-point <1>:                 Handling links.          (line  97)
-* org-open-at-point:                     Creating timestamps.     (line  30)
+* org-open-at-point:                     Creating timestamps.     (line  34)
 * org-paste-subtree:                     Structure editing.       (line  62)
 * org-previous-link:                     Handling links.          (line 143)
 * org-priority <1>:                      マッピングAPIを使う.     (line  69)
@@ -15638,7 +15661,7 @@ Command and function index
 * org-schedule:                          Inserting deadline/schedule.
                                                                   (line  14)
 * org-search-view:                       Search view.             (line   9)
-* org-set-effort:                        Effort estimates.        (line  14)
+* org-set-effort:                        Effort estimates.        (line  13)
 * org-set-property:                      Property syntax.         (line  47)
 * org-set-startup-visibility:            Visibility cycling.      (line  67)
 * org-set-tags-command:                  Setting tags.            (line  17)
@@ -15721,16 +15744,16 @@ Command and function index
 * org-tags-view <2>:                     Matching tags and properties.
                                                                   (line  18)
 * org-tags-view:                         Property searches.       (line  14)
-* org-time-stamp:                        Creating timestamps.     (line   9)
-* org-time-stamp-inactive:               Creating timestamps.     (line  13)
+* org-time-stamp:                        Creating timestamps.     (line  10)
+* org-time-stamp-inactive:               Creating timestamps.     (line  15)
 * org-timeline:                          Timeline.                (line  11)
 * org-timer:                             Relative timer.          (line  10)
 * org-timer-item:                        Relative timer.          (line  13)
-* org-timer-start:                       Relative timer.          (line  30)
-* org-timestamp-down-day:                Creating timestamps.     (line  34)
-* org-timestamp-down-down:               Creating timestamps.     (line  39)
-* org-timestamp-up:                      Creating timestamps.     (line  39)
-* org-timestamp-up-day:                  Creating timestamps.     (line  34)
+* org-timer-start:                       Relative timer.          (line  32)
+* org-timestamp-down-day:                Creating timestamps.     (line  39)
+* org-timestamp-down-down:               Creating timestamps.     (line  45)
+* org-timestamp-up:                      Creating timestamps.     (line  45)
+* org-timestamp-up-day:                  Creating timestamps.     (line  39)
 * org-todo <1>:                          マッピングAPIを使う.     (line  65)
 * org-todo <2>:                          TODO basics.             (line  13)
 * org-todo:                              Clocking commands.       (line  44)
@@ -15744,7 +15767,7 @@ Command and function index
 * org-toggle-ordered-property <1>:       Checkboxes.              (line  71)
 * org-toggle-ordered-property:           TODO dependencies.       (line  29)
 * org-toggle-tag:                        マッピングAPIを使う.     (line  73)
-* org-toggle-time-stamp-overlays:        Custom time format.      (line  12)
+* org-toggle-time-stamp-overlays:        Custom time format.      (line  11)
 * org-tree-to-indirect-buffer:           Visibility cycling.      (line  46)
 * org-update-all-dblocks:                カラム表示の保存.        (line  55)
 * org-update-statistics-cookies:         Checkboxes.              (line  79)
@@ -15852,10 +15875,10 @@ mentioned in the manual.  For a more complete list, use `M-x org-customize
 * org-babel-default-header-args:         System-wide header arguments.
                                                                   (line   6)
 * org-calc-default-modes:                Formula syntax for Calc. (line  14)
-* org-clock-idle-time:                   Resolving idle time.     (line  11)
+* org-clock-idle-time:                   Resolving idle time.     (line  10)
 * org-clock-into-drawer:                 Clocking commands.       (line   7)
 * org-clock-modeline-total:              Clocking commands.       (line  16)
-* org-clocktable-defaults:               The clock table.         (line  36)
+* org-clocktable-defaults:               The clock table.         (line  40)
 * org-coderef-label-format:              Literal examples.        (line  53)
 * org-columns-default-format <1>:        Agenda commands.         (line 160)
 * org-columns-default-format <2>:        Agenda column view.      (line  18)
@@ -15881,9 +15904,9 @@ mentioned in the manual.  For a more complete list, use `M-x org-customize
                                                                   (line  11)
 * org-cycle-separator-lines:             Headlines.               (line  22)
 * org-deadline-warning-days <1>:         Inserting deadline/schedule.
-                                                                  (line  31)
+                                                                  (line  30)
 * org-deadline-warning-days:             Deadlines and scheduling.
-                                                                  (line  12)
+                                                                  (line  13)
 * org-default-notes-file <1>:            Template elements.       (line  47)
 * org-default-notes-file:                Setting up capture.      (line   9)
 * org-default-priority <1>:              In-buffer settings.      (line  48)
@@ -16042,7 +16065,7 @@ mentioned in the manual.  For a more complete list, use `M-x org-customize
 * org-log-into-drawer:                   Tracking TODO state changes.
                                                                   (line   6)
 * org-log-note-clock-out <1>:            In-buffer settings.      (line  91)
-* org-log-note-clock-out:                Clocking commands.       (line  32)
+* org-log-note-clock-out:                Clocking commands.       (line  30)
 * org-log-refile:                        Refiling notes.          (line  12)
 * org-log-repeat <1>:                    In-buffer settings.      (line  91)
 * org-log-repeat:                        Repeated tasks.          (line  31)
@@ -16060,7 +16083,7 @@ mentioned in the manual.  For a more complete list, use `M-x org-customize
 * org-outline-path-complete-in-steps:    Refiling notes.          (line  12)
 * org-overriding-columns-format:         Agenda column view.      (line  18)
 * org-plain-list-ordered-item-terminator: Plain lists.            (line  14)
-* org-popup-calendar-for-date-prompt:    The date/time prompt.    (line  69)
+* org-popup-calendar-for-date-prompt:    The date/time prompt.    (line  66)
 * org-priority-faces:                    Priorities.              (line  12)
 * org-priority-start-cycle-with-default: Priorities.              (line  31)
 * org-property-allowed-value-functions:  Using the property API.  (line  60)
@@ -16068,14 +16091,14 @@ mentioned in the manual.  For a more complete list, use `M-x org-customize
 * org-publish-project-alist:             Publishing options.      (line  66)
 * org-publish-use-timestamps-flag:       公開の開始.              (line  21)
 * org-put-time-stamp-overlays:           In-buffer settings.      (line 125)
-* org-read-date-display-live:            The date/time prompt.    (line  83)
+* org-read-date-display-live:            The date/time prompt.    (line  78)
 * org-read-date-prefer-future:           The date/time prompt.    (line   6)
 * org-refile-allow-creating-parent-nodes: Refiling notes.         (line  12)
 * org-refile-targets:                    Refiling notes.          (line  12)
 * org-refile-use-cache:                  Refiling notes.          (line  12)
 * org-refile-use-outline-path:           Refiling notes.          (line  12)
 * org-remove-highlights-with-change <1>: Sparse trees.            (line  20)
-* org-remove-highlights-with-change:     Clocking commands.       (line  60)
+* org-remove-highlights-with-change:     Clocking commands.       (line  61)
 * org-replace-disputed-keys:             Conflicts.               (line  19)
 * org-return-follows-link:               Handling links.          (line 116)
 * org-reverse-note-order:                Refiling notes.          (line  12)
@@ -16125,7 +16148,7 @@ mentioned in the manual.  For a more complete list, use `M-x org-customize
 * org-tags-match-list-sublevels:         Tag searches.            (line  18)
 * org-time-stamp-custom-formats:         Custom time format.      (line   6)
 * org-time-stamp-overlay-formats:        In-buffer settings.      (line 125)
-* org-time-stamp-rounding-minutes:       Creating timestamps.     (line  21)
+* org-time-stamp-rounding-minutes:       Creating timestamps.     (line  24)
 * org-todo (フェイス):                   Faces for TODO keywords. (line   6)
 * org-todo-keyword-faces:                Faces for TODO keywords. (line   6)
 * org-todo-keywords <1>:                 Global TODO list.        (line  16)
@@ -16146,8 +16169,8 @@ mentioned in the manual.  For a more complete list, use `M-x org-customize
 * org-use-tag-inheritance:               Tag inheritance.         (line  22)
 * org-yank-adjusted-subtrees:            Structure editing.       (line  71)
 * org-yank-folded-subtrees:              Structure editing.       (line  71)
-* parse-time-months:                     The date/time prompt.    (line  56)
-* parse-time-weekdays:                   The date/time prompt.    (line  56)
+* parse-time-months:                     The date/time prompt.    (line  53)
+* parse-time-weekdays:                   The date/time prompt.    (line  53)
 * ps-landscape-mode:                     Exporting Agenda Views.  (line  19)
 * ps-number-of-columns:                  Exporting Agenda Views.  (line  19)
 * user-full-name <1>:                    Export options.          (line  20)
@@ -16292,293 +16315,293 @@ Node: カラム表示の保存218366
 Ref: カラム表示の保存-Footnote-1221370
 Node: Property API221506
 Node: Date and Times221863
-Node: Timestamps222894
-Ref: Timestamps-Footnote-1225244
-Node: Creating timestamps225375
-Node: The date/time prompt228090
-Ref: The date/time prompt-Footnote-1232354
-Ref: The date/time prompt-Footnote-2232517
-Ref: The date/time prompt-Footnote-3232623
-Node: Custom time format232716
-Node: Deadlines and scheduling234443
-Ref: Deadlines and scheduling-Footnote-1237120
-Node: Inserting deadline/schedule237274
-Ref: Inserting deadline/schedule-Footnote-1239307
-Ref: Inserting deadline/schedule-Footnote-2239459
-Ref: Inserting deadline/schedule-Footnote-3239567
-Node: Repeated tasks239675
-Ref: Repeated tasks-Footnote-1243021
-Ref: Repeated tasks-Footnote-2243271
-Node: Clocking work time243471
-Ref: Clocking work time-Footnote-1244642
-Node: Clocking commands244780
-Ref: Clocking commands-Footnote-1248509
-Ref: Clocking commands-Footnote-2248616
-Ref: Clocking commands-Footnote-3248666
-Ref: Clocking commands-Footnote-4248724
-Node: The clock table248802
-Ref: The clock table-Footnote-1255035
-Ref: The clock table-Footnote-2255129
-Node: Resolving idle time255254
-Ref: Resolving idle time-Footnote-1258503
-Node: Effort estimates258841
-Ref: Effort estimates-Footnote-1261614
-Ref: Effort estimates-Footnote-2261702
-Node: Relative timer261809
-Node: カウントダウンタイマ263674
-Node: Capture - Refile - Archive264212
-Node: Capture265287
-Node: Setting up capture266664
-Ref: Setting up capture-Footnote-1267091
-Node: Using capture267157
-Node: Capture templates269316
-Node: Template elements271225
-Node: テンプレートの拡張276549
-Ref: テンプレートの拡張-Footnote-1279755
-Ref: テンプレートの拡張-Footnote-2279842
-Ref: テンプレートの拡張-Footnote-3280024
-Node: Attachments280122
-Ref: Attachments-Footnote-1283507
-Node: RSS Feeds283657
-Node: Protocols285256
-Node: Refiling notes285973
-Ref: Refiling notes-Footnote-1288110
-Node: Archiving288206
-Node: Moving subtrees288955
-Ref: Moving subtrees-Footnote-1290691
-Node: ファイル内部でのアーカイブ291133
-Node: Agenda Views293828
-Node: Agenda files297022
-Ref: Agenda files-Footnote-1301311
-Ref: Agenda files-Footnote-2301526
-Node: Agenda dispatcher301832
-Ref: Agenda dispatcher-Footnote-1304971
-Ref: Agenda dispatcher-Footnote-2305098
-Node: Built-in agenda views305266
-Node: Weekly/daily agenda306080
-Ref: Weekly/daily agenda-Footnote-1312900
-Ref: Weekly/daily agenda-Footnote-2313267
-Node: Global TODO list313380
-Node: Matching tags and properties317046
-Node: Timeline326073
-Node: Search view327173
-Node: Stuck projects329120
-Ref: Stuck projects-Footnote-1332604
-Node: Presentation and sorting332634
-Node: Categories333777
-Ref: Categories-Footnote-1334934
-Node: Time-of-day specifications335653
-Node: agendaの項目をソートする338176
-Node: Agenda commands340373
-Ref: Agenda commands-Footnote-1370846
-Ref: Agenda commands-Footnote-2370961
-Ref: Agenda commands-Footnote-3371656
-Node: Custom agenda views371791
-Node: Storing searches372646
-Ref: Storing searches-Footnote-1376238
-Node: Block agenda376426
-Node: Setting Options378128
-Node: Exporting Agenda Views382388
-Ref: Exporting Agenda Views-Footnote-1389173
-Ref: Exporting Agenda Views-Footnote-2389277
-Ref: Exporting Agenda Views-Footnote-3389542
-Ref: Exporting Agenda Views-Footnote-4389873
-Node: Agenda column view390009
-Node: Markup394019
-Node: Structural markup elements395218
-Node: Document title395995
-Node: Headings and sections397033
-Node: Table of contents397627
-Node: Initial text398500
-Node: Lists399956
-Node: Paragraphs400341
-Node: Footnote markup401648
-Node: Emphasis and monospace402061
-Node: Horizontal rules402551
-Node: コメント行402878
-Node: Images and tables403548
-Node: Literal examples405264
-Ref: Literal examples-Footnote-1409591
-Ref: Literal examples-Footnote-2410709
-Ref: Literal examples-Footnote-3410888
-Ref: Literal examples-Footnote-4411108
-Node: Include files411227
-Node: Index entries413017
-Node: Macro replacement413579
-Node: Embedded LaTeX414431
-Ref: Embedded LaTeX-Footnote-1415512
-Node: Special symbols415730
-Ref: Special symbols-Footnote-1417657
-Node: Subscripts and superscripts417812
-Node: LaTeX fragments419321
-Ref: LaTeX fragments-Footnote-1421964
-Ref: LaTeX fragments-Footnote-2421972
-Ref: LaTeX fragments-Footnote-3422208
-Node: Previewing LaTeX fragments422403
-Node: CDLaTeX mode423709
-Ref: CDLaTeX mode-Footnote-1426754
-Node: Exporting426979
-Node: Selective export429528
-Node: Export options430634
-Ref: Export options-Footnote-1436326
-Node: The export dispatcher436473
-Ref: The export dispatcher-Footnote-1438345
-Node: ASCII/Latin-1/UTF-8 export438477
-Ref: ASCII/Latin-1/UTF-8 export-Footnote-1441832
-Ref: ASCII/Latin-1/UTF-8 export-Footnote-2441905
-Node: HTML export442001
-Node: HTML Export commands443170
-Ref: HTML Export commands-Footnote-1445874
-Ref: HTML Export commands-Footnote-2445947
-Node: Quoting HTML tags446043
-Node: Links in HTML export446817
-Node: Tables in HTML export448274
-Node: Images in HTML export448952
-Ref: Images in HTML export-Footnote-1450557
-Node: Math formatting in HTML export450639
-Ref: Math formatting in HTML export-Footnote-1452376
-Node: Text areas in HTML export452564
-Node: CSS support453731
-Ref: CSS support-Footnote-1457202
-Ref: CSS support-Footnote-2457446
-Node: JavaScript support457672
-Node: LaTeX and PDF export462447
-Ref: LaTeX and PDF export-Footnote-1463729
-Node: LaTeX/PDF export commands464061
-Ref: LaTeX/PDF export commands-Footnote-1466648
-Ref: LaTeX/PDF export commands-Footnote-2466720
-Node: Header and sectioning466814
-Ref: Header and sectioning-Footnote-1468257
-Node: Quoting LaTeX code468377
-Node: Tables in LaTeX export469189
-Node: Images in LaTeX export470422
-Node: Beamerクラスのエクスポート472148
-Node: DocBook export477892
-Node: DocBook export commands478801
-Ref: DocBook export commands-Footnote-1480352
-Ref: DocBook export commands-Footnote-2480412
-Node: Quoting DocBook code480464
-Node: Recursive sections481516
-Node: Tables in DocBook export482246
-Node: Images in DocBook export482714
-Node: Special characters484651
-Node: TaskJuggler export485698
-Node: Freemind export490990
-Node: XOXO export491281
-Node: iCalendarエクスポート491768
-Ref: iCalendarエクスポート-Footnote-1494498
-Ref: iCalendarエクスポート-Footnote-2494588
-Ref: iCalendarエクスポート-Footnote-3494688
-Node: Publishing494825
-Node: Configuration495750
-Node: Project alist496548
-Node: Sources and destinations497713
-Node: Selecting files499252
-Node: Publishing action500265
-Ref: Publishing action-Footnote-1502065
-Node: Publishing options502419
-Node: Publishing links506097
-Node: Sitemap507782
-Node: Generating an index510669
-Node: Uploading files511259
-Node: Sample configuration513027
-Node: Simple example513519
-Node: Complex example514195
-Node: 公開の開始516250
-Node: Working With Source Code517216
-Node: Structure of code blocks519069
-Node: Editing source code520462
-Node: Exporting code blocks522004
-Node: Extracting source code523728
-Node: Evaluating code blocks525089
-Ref: Evaluating code blocks-Footnote-1527815
-Ref: Evaluating code blocks-Footnote-2528123
-Node: Library of Babel528251
-Node: Languages529064
-Node: Header arguments531284
-Node: Using header arguments531790
-Node: System-wide header arguments532622
-Node: Language-specific header arguments533448
-Node: Buffer-wide header arguments533854
-Node: Header arguments in Org-mode properties534632
-Node: Code block specific header arguments535659
-Node: Header arguments in function calls537467
-Node: Specific header arguments538221
-Node: var540044
-Node: results545728
-Node: file549950
-Node: dir550859
-Node: exports553774
-Node: 抽出554429
-Node: mkdirp555141
-Node: comments555475
-Node: no-expand556608
-Node: session557102
-Node: noweb557552
-Node: cache559028
-Node: sep560528
-Node: hlines561103
-Node: colnames562612
-Node: rownames563830
-Node: shebang564840
-Node: eval565239
-Node: Results of evaluation565785
-Node: Noweb reference syntax569037
-Node: Key bindings and useful functions570035
-Node: バッチ処理571284
-Node: Miscellaneous572382
-Node: Completion573276
-Node: Easy Templates575936
-Node: Speed keys577616
-Node: Code evaluation security578675
-Node: Customization582151
-Node: In-buffer settings582840
-Ref: In-buffer settings-Footnote-1594153
-Node: The very busy C-c C-c key594200
-Node: Clean view596637
-Ref: Clean view-Footnote-1601529
-Ref: Clean view-Footnote-2601595
-Ref: Clean view-Footnote-3601834
-Ref: Clean view-Footnote-4601910
-Ref: Clean view-Footnote-5602057
-Node: TTY keys602241
-Node: Interaction604104
-Node: Cooperation604500
-Node: Conflicts608287
-Node: Hacking612302
-Node: Hooks613264
-Node: Add-on packages613683
-Node: Adding hyperlink types614227
-Node: Context-sensitive commands618145
-Ref: Context-sensitive commands-Footnote-1619724
-Node: Tables in arbitrary syntax619858
-Node: Radio tables621324
-Node: A LaTeX example623868
-Ref: A LaTeX example-Footnote-1627786
-Ref: A LaTeX example-Footnote-2627935
-Node: Translator functions628371
-Ref: Translator functions-Footnote-1631604
-Node: ラジオリスト631692
-Node: Dynamic blocks632845
-Node: Special agenda views635064
-Ref: Special agenda views-Footnote-1639318
-Node: Extracting agenda information639453
-Node: Using the property API643528
-Node: マッピングAPIを使う646788
-Node: MobileOrg651135
-Node: Setting up the staging area653272
-Ref: Setting up the staging area-Footnote-1654789
-Ref: Setting up the staging area-Footnote-2655215
-Node: Pushing to MobileOrg655561
-Ref: Pushing to MobileOrg-Footnote-1657162
-Ref: Pushing to MobileOrg-Footnote-2657894
-Node: MobileOrgからpullする657981
-Ref: MobileOrgからpullする-Footnote-1661856
-Ref: MobileOrgからpullする-Footnote-2661929
-Node: History and Acknowledgments662523
-Node: Main Index673669
-Node: Key Index740685
-Node: Command and Function Index784501
-Node: Variable Index813905
+Node: Timestamps223118
+Ref: Timestamps-Footnote-1226455
+Node: Creating timestamps226682
+Node: The date/time prompt230373
+Ref: The date/time prompt-Footnote-1235762
+Ref: The date/time prompt-Footnote-2235975
+Ref: The date/time prompt-Footnote-3236100
+Node: Custom time format236259
+Node: Deadlines and scheduling238610
+Ref: Deadlines and scheduling-Footnote-1242244
+Node: Inserting deadline/schedule242456
+Ref: Inserting deadline/schedule-Footnote-1245221
+Ref: Inserting deadline/schedule-Footnote-2245411
+Ref: Inserting deadline/schedule-Footnote-3245525
+Node: Repeated tasks245640
+Ref: Repeated tasks-Footnote-1250249
+Ref: Repeated tasks-Footnote-2250505
+Node: Clocking work time250802
+Ref: Clocking work time-Footnote-1252264
+Node: Clocking commands252431
+Ref: Clocking commands-Footnote-1257278
+Ref: Clocking commands-Footnote-2257442
+Ref: Clocking commands-Footnote-3257495
+Ref: Clocking commands-Footnote-4257558
+Node: The clock table257654
+Ref: The clock table-Footnote-1265554
+Ref: The clock table-Footnote-2265682
+Node: Resolving idle time265882
+Ref: Resolving idle time-Footnote-1270306
+Node: Effort estimates270800
+Ref: Effort estimates-Footnote-1274399
+Ref: Effort estimates-Footnote-2274507
+Node: Relative timer274635
+Node: カウントダウンタイマ277317
+Node: Capture - Refile - Archive278080
+Node: Capture279155
+Node: Setting up capture280532
+Ref: Setting up capture-Footnote-1280959
+Node: Using capture281025
+Node: Capture templates283184
+Node: Template elements285093
+Node: テンプレートの拡張290417
+Ref: テンプレートの拡張-Footnote-1293623
+Ref: テンプレートの拡張-Footnote-2293710
+Ref: テンプレートの拡張-Footnote-3293892
+Node: Attachments293990
+Ref: Attachments-Footnote-1297375
+Node: RSS Feeds297525
+Node: Protocols299124
+Node: Refiling notes299841
+Ref: Refiling notes-Footnote-1301978
+Node: Archiving302074
+Node: Moving subtrees302823
+Ref: Moving subtrees-Footnote-1304559
+Node: ファイル内部でのアーカイブ305001
+Node: Agenda Views307696
+Node: Agenda files310890
+Ref: Agenda files-Footnote-1315179
+Ref: Agenda files-Footnote-2315394
+Node: Agenda dispatcher315700
+Ref: Agenda dispatcher-Footnote-1318839
+Ref: Agenda dispatcher-Footnote-2318966
+Node: Built-in agenda views319134
+Node: Weekly/daily agenda319948
+Ref: Weekly/daily agenda-Footnote-1326768
+Ref: Weekly/daily agenda-Footnote-2327135
+Node: Global TODO list327248
+Node: Matching tags and properties330914
+Node: Timeline339941
+Node: Search view341041
+Node: Stuck projects342988
+Ref: Stuck projects-Footnote-1346472
+Node: Presentation and sorting346502
+Node: Categories347645
+Ref: Categories-Footnote-1348802
+Node: Time-of-day specifications349521
+Node: agendaの項目をソートする352044
+Node: Agenda commands354241
+Ref: Agenda commands-Footnote-1384714
+Ref: Agenda commands-Footnote-2384829
+Ref: Agenda commands-Footnote-3385524
+Node: Custom agenda views385659
+Node: Storing searches386514
+Ref: Storing searches-Footnote-1390106
+Node: Block agenda390294
+Node: Setting Options391996
+Node: Exporting Agenda Views396256
+Ref: Exporting Agenda Views-Footnote-1403041
+Ref: Exporting Agenda Views-Footnote-2403145
+Ref: Exporting Agenda Views-Footnote-3403410
+Ref: Exporting Agenda Views-Footnote-4403741
+Node: Agenda column view403877
+Node: Markup407887
+Node: Structural markup elements409086
+Node: Document title409863
+Node: Headings and sections410901
+Node: Table of contents411495
+Node: Initial text412368
+Node: Lists413824
+Node: Paragraphs414209
+Node: Footnote markup415516
+Node: Emphasis and monospace415929
+Node: Horizontal rules416419
+Node: コメント行416746
+Node: Images and tables417416
+Node: Literal examples419132
+Ref: Literal examples-Footnote-1423459
+Ref: Literal examples-Footnote-2424577
+Ref: Literal examples-Footnote-3424756
+Ref: Literal examples-Footnote-4424976
+Node: Include files425095
+Node: Index entries426885
+Node: Macro replacement427447
+Node: Embedded LaTeX428299
+Ref: Embedded LaTeX-Footnote-1429380
+Node: Special symbols429598
+Ref: Special symbols-Footnote-1431525
+Node: Subscripts and superscripts431680
+Node: LaTeX fragments433189
+Ref: LaTeX fragments-Footnote-1435832
+Ref: LaTeX fragments-Footnote-2435840
+Ref: LaTeX fragments-Footnote-3436076
+Node: Previewing LaTeX fragments436271
+Node: CDLaTeX mode437577
+Ref: CDLaTeX mode-Footnote-1440622
+Node: Exporting440847
+Node: Selective export443396
+Node: Export options444502
+Ref: Export options-Footnote-1450194
+Node: The export dispatcher450341
+Ref: The export dispatcher-Footnote-1452213
+Node: ASCII/Latin-1/UTF-8 export452345
+Ref: ASCII/Latin-1/UTF-8 export-Footnote-1455700
+Ref: ASCII/Latin-1/UTF-8 export-Footnote-2455773
+Node: HTML export455869
+Node: HTML Export commands457038
+Ref: HTML Export commands-Footnote-1459742
+Ref: HTML Export commands-Footnote-2459815
+Node: Quoting HTML tags459911
+Node: Links in HTML export460685
+Node: Tables in HTML export462142
+Node: Images in HTML export462820
+Ref: Images in HTML export-Footnote-1464425
+Node: Math formatting in HTML export464507
+Ref: Math formatting in HTML export-Footnote-1466244
+Node: Text areas in HTML export466432
+Node: CSS support467599
+Ref: CSS support-Footnote-1471070
+Ref: CSS support-Footnote-2471314
+Node: JavaScript support471540
+Node: LaTeX and PDF export476315
+Ref: LaTeX and PDF export-Footnote-1477597
+Node: LaTeX/PDF export commands477929
+Ref: LaTeX/PDF export commands-Footnote-1480516
+Ref: LaTeX/PDF export commands-Footnote-2480588
+Node: Header and sectioning480682
+Ref: Header and sectioning-Footnote-1482125
+Node: Quoting LaTeX code482245
+Node: Tables in LaTeX export483057
+Node: Images in LaTeX export484290
+Node: Beamerクラスのエクスポート486016
+Node: DocBook export491760
+Node: DocBook export commands492669
+Ref: DocBook export commands-Footnote-1494220
+Ref: DocBook export commands-Footnote-2494280
+Node: Quoting DocBook code494332
+Node: Recursive sections495384
+Node: Tables in DocBook export496114
+Node: Images in DocBook export496582
+Node: Special characters498519
+Node: TaskJuggler export499566
+Node: Freemind export504858
+Node: XOXO export505149
+Node: iCalendarエクスポート505636
+Ref: iCalendarエクスポート-Footnote-1508366
+Ref: iCalendarエクスポート-Footnote-2508456
+Ref: iCalendarエクスポート-Footnote-3508556
+Node: Publishing508693
+Node: Configuration509618
+Node: Project alist510416
+Node: Sources and destinations511581
+Node: Selecting files513120
+Node: Publishing action514133
+Ref: Publishing action-Footnote-1515933
+Node: Publishing options516287
+Node: Publishing links519965
+Node: Sitemap521650
+Node: Generating an index524537
+Node: Uploading files525127
+Node: Sample configuration526895
+Node: Simple example527387
+Node: Complex example528063
+Node: 公開の開始530118
+Node: Working With Source Code531084
+Node: Structure of code blocks532937
+Node: Editing source code534330
+Node: Exporting code blocks535872
+Node: Extracting source code537596
+Node: Evaluating code blocks538957
+Ref: Evaluating code blocks-Footnote-1541683
+Ref: Evaluating code blocks-Footnote-2541991
+Node: Library of Babel542119
+Node: Languages542932
+Node: Header arguments545152
+Node: Using header arguments545658
+Node: System-wide header arguments546490
+Node: Language-specific header arguments547316
+Node: Buffer-wide header arguments547722
+Node: Header arguments in Org-mode properties548500
+Node: Code block specific header arguments549527
+Node: Header arguments in function calls551335
+Node: Specific header arguments552089
+Node: var553912
+Node: results559596
+Node: file563818
+Node: dir564727
+Node: exports567642
+Node: 抽出568297
+Node: mkdirp569009
+Node: comments569343
+Node: no-expand570476
+Node: session570970
+Node: noweb571420
+Node: cache572896
+Node: sep574396
+Node: hlines574971
+Node: colnames576480
+Node: rownames577698
+Node: shebang578708
+Node: eval579107
+Node: Results of evaluation579653
+Node: Noweb reference syntax582905
+Node: Key bindings and useful functions583903
+Node: バッチ処理585152
+Node: Miscellaneous586250
+Node: Completion587144
+Node: Easy Templates589804
+Node: Speed keys591484
+Node: Code evaluation security592543
+Node: Customization596019
+Node: In-buffer settings596708
+Ref: In-buffer settings-Footnote-1608021
+Node: The very busy C-c C-c key608068
+Node: Clean view610505
+Ref: Clean view-Footnote-1615397
+Ref: Clean view-Footnote-2615463
+Ref: Clean view-Footnote-3615702
+Ref: Clean view-Footnote-4615778
+Ref: Clean view-Footnote-5615925
+Node: TTY keys616109
+Node: Interaction617972
+Node: Cooperation618368
+Node: Conflicts622155
+Node: Hacking626170
+Node: Hooks627132
+Node: Add-on packages627551
+Node: Adding hyperlink types628095
+Node: Context-sensitive commands632013
+Ref: Context-sensitive commands-Footnote-1633592
+Node: Tables in arbitrary syntax633726
+Node: Radio tables635192
+Node: A LaTeX example637736
+Ref: A LaTeX example-Footnote-1641654
+Ref: A LaTeX example-Footnote-2641803
+Node: Translator functions642239
+Ref: Translator functions-Footnote-1645472
+Node: ラジオリスト645560
+Node: Dynamic blocks646713
+Node: Special agenda views648932
+Ref: Special agenda views-Footnote-1653186
+Node: Extracting agenda information653321
+Node: Using the property API657396
+Node: マッピングAPIを使う660656
+Node: MobileOrg665003
+Node: Setting up the staging area667140
+Ref: Setting up the staging area-Footnote-1668657
+Ref: Setting up the staging area-Footnote-2669083
+Node: Pushing to MobileOrg669429
+Ref: Pushing to MobileOrg-Footnote-1671030
+Ref: Pushing to MobileOrg-Footnote-2671762
+Node: MobileOrgからpullする671849
+Ref: MobileOrgからpullする-Footnote-1675724
+Ref: MobileOrgからpullする-Footnote-2675797
+Node: History and Acknowledgments676391
+Node: Main Index687537
+Node: Key Index754953
+Node: Command and Function Index798769
+Node: Variable Index828173
 
 End Tag Table
