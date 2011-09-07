@@ -8677,14 +8677,13 @@ HTMLはエクスポート時にテキストエリア,@xref{Text areas in HTML ex
 @end example
 
 @noindent which can be referenced anywhere in the document (even in
-code examples) with @code{@{@{@{name(arg1,arg2)@}@}@}}.  In addition to
-defined macros, @code{@{@{@{title@}@}@}}, @code{@{@{@{author@}@}@}}, etc.,
-will reference information set by the @code{#+TITLE:}, @code{#+AUTHOR:}, and
-similar lines.  Also, @code{@{@{@{date(@var{FORMAT})@}@}@}} and
-@code{@{@{@{modification-time(@var{FORMAT})@}@}@}} refer to current date
-time and to the modification time of the file being exported, respectively.
-@var{FORMAT} should be a format string understood by
-@code{format-time-string}.
+code examples) with
+@code{@{@{@{name(arg1,arg2)@}@}@}}.
+マクロの定義に加えて、@code{@{@{@{title@}@}@}}、@code{@{@{@{author@}@}@}}など、
+@code{#+TITLE:}や@code{#+AUTHOR:}、似たような行によりセットされる情報を参照します。ま
+た、@code{@{@{@{date(@var{FORMAT})@}@}@}}と@code{@{@{@{modification-time(@var{FORMAT})@}@}@}}
+は現在の日付とファイルがエクスポートされて変更された時刻をそれぞれ参照します
+。@var{FORMAT}は@code{format-time-string}で認識した文字列をフォーマットします。
 
 マクロ展開はエクスポート中に行われ、一部の人々は複雑なHTMLコードの構築に用い
 る。
@@ -8915,9 +8914,9 @@ Org-modeファイルで有効するために次の設定を行います:
 括弧が1文字の文字かマクロのみを囲っているなら、それらは再び消去されま
 す(@code{cdlatex-simplify-sub-super-script}変数に依存します)。
 @item @kindex `
-Pressing the backquote @kbd{`} followed by a character inserts math macros,
-also outside @LaTeX{} fragments.  If you wait more than 1.5 seconds after
-the backquote, a help window will pop up.
+@LaTeX{}のコード片以外の文字に続いて@kbd{TAB}を押すと、数学のマクロが挿入され
+ます。もしあなたがバッククォートを押して1.5秒以上待つと、ヘルプウィン
+ドウがポップアップします。
 @item @kindex '
 別の文字に続いてシングルクォート@kbd{'}を押すと、強調やフォントでポイント
 前のシンボルが変更されます。もしシングルクォートを入力した後1.5秒以上
@@ -12427,19 +12426,19 @@ emacs -Q --batch -l $ORGINSTALL \
 
 @node Completion, Easy Templates, Miscellaneous, Miscellaneous
 @section Completion
-@cindex completion, of @TeX{} symbols
+@cindex 補完、@TeX{}の記号
 @cindex 完了、TODOキーワードの
-@cindex completion, of dictionary words
+@cindex 補完、辞書の単語
 @cindex オプションのキーワードの補完
 @cindex 完了、タグの
-@cindex completion, of property keys
-@cindex completion, of link abbreviations
-@cindex @TeX{} symbol completion
-@cindex TODO keywords completion
-@cindex dictionary word completion
-@cindex option keyword completion
-@cindex tag completion
-@cindex link abbreviations, completion of
+@cindex 補完、プロパティキー
+@cindex 補完、リンクの省略記法
+@cindex @TeX{}シンボルの補完
+@cindex TODOキーワードの補完
+@cindex 辞書単語の補完
+@cindex オプションキーワードの補完
+@cindex タグの補完
+@cindex リンクの省略記法の補完
 
 Emacsは補完無しではEmacsとはいえません、そしてorg-modeはそれが意味をなすたび
 に使用します。もしあなたが@i{iswitchb}-
@@ -12970,10 +12969,10 @@ Org-modeは段落詰め、行の折り返し、構造の編集、適切なイン
 適合と同時にこれをサポートします。
 
 @item @vindex org-hide-leading-stars
-@emph{Hiding leading stars}@* You can modify the display in such a way that
-all leading stars become invisible.  To do this in a global way, configure
-the variable @code{org-hide-leading-stars} or change this on a per-file
-basis with
+@emph{先頭の「*」を隠す}@*
+あなたは先頭の「*」を非表示にするという方法で変更することができます。
+これを行うグローバルな方法は、@code{org-hide-leading-stars}変数を設定するか
+、以下のようにファイル毎に設定するかです。
 
 @example
 #+STARTUP: hidestars
@@ -13069,59 +13068,60 @@ Org-modeはGNU Emacsの世界に生きていて、他のコードと様々な方
 @end menu
 
 @node Cooperation, Conflicts, Interaction, Interaction
-@subsection Packages that Org cooperates with
+@subsection Org-modeと強調して動くパッケージ
 
 @table @asis
 @cindex @file{calc.el}
 @cindex Gillespie, Dave
 @item @file{calc.el} by Dave Gillespie
-Org uses the Calc package for implementing spreadsheet functionality in its
-tables (@pxref{The spreadsheet}).  Org checks for the availability of Calc
-by looking for the function @code{calc-eval} which will have been autoloaded
-during setup if Calc has been installed properly.  As of Emacs 22, Calc is
-part of the Emacs distribution.  Another possibility for interaction between
-the two packages is using Calc for embedded calculations. @xref{Embedded Mode, , Embedded Mode, Calc, GNU Emacs Calc Manual}.
+Org-modeはテーブル(@pxref{The spreadsheet})中の表計算関数の実装にCalcパッケ
+ージを使います。Org-modeはCalcが適切にインストールされている場合、設定
+中に自動で読み込まれる@code{calc-eval}関数を探し、Calcが利用できることを確
+認します。Emacs22現在で、CalcはEmacsに最初から組込まれています。2つの
+パッケージの連携の別の方法はCalcを組込み計算に使うことです。
+@xref{Embedded Mode, , Embedded Mode, Calc, GNU Emacs Calc Manual}.
 @item @file{constants.el} by Carsten Dominik
 @cindex @file{constants.el}
 @cindex Dominik, Carsten
 @vindex org-table-formula-constants
-In a table formula (@pxref{The spreadsheet}), it is possible to use names
-for natural constants or units.  Instead of defining your own constants in
-the variable @code{org-table-formula-constants}, install the
-@file{constants} package which defines a large number of constants and
-units, and lets you use unit prefixes like @samp{M} for @samp{Mega}, etc@.
-You will need version 2.0 of this package, available at
-@url{http://www.astro.uva.nl/~dominik/Tools}. Org checks for the function
-@code{constants-get}, which has to be autoloaded in your setup.  See the
-installation instructions in the file @file{constants.el}.
+テーブル関数中(@pxref{The spreadsheet})で、自然定数や単位に名前を使うことが
+できるようになります。あなたが自分で@code{org-table-formula-constants}変数
+に定数を定義する代わりに、多くの定数や単位を定義している@file{constants}パ
+ッケージをインストールすることで、あなたは@samp{Mega}に@samp{M}のような表現を使
+うことができるようになります。このパッケージのバージョン2.0が必要で、
+@url{http://www.astro.uva.nl/~dominik/Tools}から利用できます。Org-modeは設
+定中に自動で読み込まれる@code{constants-get}関数をチェックします。
+@file{constants.el}のインストール説明を参照してください。
 @item @file{cdlatex.el} by Carsten Dominik
 @cindex @file{cdlatex.el}
 @cindex Dominik, Carsten
-Org-mode can make use of the CDLa@TeX{} package to efficiently enter
-@LaTeX{} fragments into Org files.  See @ref{CDLaTeX mode}.
+Org-modeは@LaTeX{}フラグメントをOrg-modeファイルに効率的に入力するために
+CDLa@TeX{}パッケージを活用できます。@ref{CDLaTeX mode}を参照してください。
 @item @file{imenu.el} by Ake Stenhoff and Lars Lindberg
 @cindex @file{imenu.el}
-Imenu allows menu access to an index of items in a file.  Org-mode supports
-Imenu---all you need to do to get the index is the following:
+Imenuはファイル中のアイテムのインデックスへのアクセスメニューを提供し
+ます。Org-modeはImenuをサポートします---インデックスを得るために、あな
+たは以下のようにする必要があります:
 @lisp
 (add-hook 'org-mode-hook
           (lambda () (imenu-add-to-menubar "Imenu")))
 @end lisp
 @vindex org-imenu-depth
-By default the index is two levels deep---you can modify the depth using the
-option @code{org-imenu-depth}.
+デフォルトではインデックスは2レベルの深さです---あなたは
+@code{org-imenu-depth}オプションを用いることで深さを変更できます。
 @item @file{remember.el} by John Wiegley
 @cindex @file{remember.el}
 @cindex Wiegley, John
-Org used to use this package for capture, but no longer does.
+Org-modeはこのパッケージをキャプチャに使用します、しかし、もはやそうで
+はありません。
 @item @file{speedbar.el} by Eric M. Ludlam
 @cindex @file{speedbar.el}
 @cindex Ludlam, Eric M.
-Speedbar is a package that creates a special frame displaying files and
-index items in files.  Org-mode supports Speedbar and allows you to drill
-into Org files directly from the Speedbar.  It also allows you to restrict
-the scope of agenda commands to a file or a subtree by using the command
-@kbd{<} in the Speedbar frame.
+Speedbarはファイルとファイル中のインデックスを表示するためのスペシャル
+フレームを作成するパッケージです。Org-modeはSpeedbarをサポートし、
+SpeedbarからOrg-modeファイルへ直接繋げます。Speedbarフレームで@kbd{<}コマ
+ンドを使うことでファイルまたはサブツリーへのアジェンダコマンドの範囲を
+制限します。
 @cindex @file{table.el}
 @item @file{table.el} by Takaaki Ota
 @kindex C-c C-c
@@ -13129,64 +13129,66 @@ the scope of agenda commands to a file or a subtree by using the command
 @cindex @file{table.el}
 @cindex Ota, Takaaki
 
-Complex ASCII tables with automatic line wrapping, column- and row-spanning,
-and alignment can be created using the Emacs table package by Takaaki Ota
-(@uref{http://sourceforge.net/projects/table}, and also part of Emacs 22).
-Org-mode will recognize these tables and export them properly.  Because of
-interference with other Org-mode functionality, you unfortunately cannot
-edit these tables directly in the buffer.  Instead, you need to use the
-command @kbd{C-c '} to edit them, similar to source code snippets.
+自動的な行の折り返し、列、行の広がり、調整を伴なう複雑なASCIIテーブルはOta
+Takaaki(@uref{http://sourceforge.net/projects/table}、もしくはEmacs22に含ま
+れています)によるEmacsのテーブルパッケージを用いることで作成可能です。
+Org-modはこれらのテーブルを認識し、適切にセクスポートします。Org-mode
+の別の機能による干渉のために、あなたは不幸にもこれらのテーブルをバッフ
+ァ中で直接編集することができません。代わりに、あなたはこのテーブルの編
+集のためにソースコードスニペットに似た@kbd{C-c '}コマンドを使う必要があり
+ます。
 
 @table @kbd
 @c
-@orgcmd{C-c ',org-edit-special} Edit a @file{table.el} table.  Works when
-the cursor is in a table.el table.  @orgcmd{C-c ~,org-table-create-with-table.el} Insert a @file{table.el} table.  If there
-is already a table at point, this command converts it between the
-@file{table.el} format and the Org-mode format.  See the documentation
-string of the command @code{org-convert-table} for the restrictions under
-which this is possible.
+@orgcmd{C-c ',org-edit-special}
+@file{table.el}のテーブルを編集します。カーソルがtable.elのテーブル上の時動
+作します。@orgcmd{C-c ~, org-table-create-with-table.el}
+@file{table.el}のテーブルを挿入します。ポイント位置が既にテーブルなら、この
+コマンドは@file{table.el}のフォーマットとOrg-modeのフォーマットで相互変換し
+ます。これが可能なことと制限については、@code{org-convert-table}コマンドの
+ドキュメントを参照してください。
 @end table
-@file{table.el} is part of Emacs since Emacs 22.
+@file{table.el}はEmacs22以降のEmacsでは内蔵されています。
 @item @file{footnote.el} by Steven L. Baur
 @cindex @file{footnote.el}
 @cindex Baur, Steven L.
-Org-mode recognizes numerical footnotes as provided by this package.
-However, Org-mode also has its own footnote support (@pxref{Footnotes}),
-which makes using @file{footnote.el} unnecessary.
+Org-modeはこのパッケージが提供する数字の脚注を認識します。しかしながら、
+Org-modeは自身の脚注(@pxref{Footnotes})もサポートしているため、@file{footnote.el}を使う
+必要はありません。
 @end table
 
 @node Conflicts, , Cooperation, Interaction
-@subsection Packages that lead to conflicts with Org-mode
+@subsection Org-modeとの衝突に繋がるパッケージ
 
 @table @asis
 
 @cindex @code{shift-selection-mode}
 @vindex org-support-shift-select
-In Emacs 23, @code{shift-selection-mode} is on by default, meaning that
-cursor motions combined with the shift key should start or enlarge regions.
-This conflicts with the use of @kbd{S-@key{cursor}} commands in Org to
-change timestamps, TODO keywords, priorities, and item bullet types if the
-cursor is at such a location.  By default, @kbd{S-@key{cursor}} commands
-outside special contexts don't do anything, but you can customize the
-variable @code{org-support-shift-select}.  Org-mode then tries to
-accommodate shift selection by (i) using it outside of the special contexts
-where special commands apply, and by (ii) extending an existing active
-region even if the cursor moves across a special context.
+Emacs23では、Shiftキーと組み合わせたカーソルの動きを開始するかリージョ
+ンを広げるための@code{shift-selection-mode}がデフォルトで有効になっています
+。カーソルがそのような位置にある場合、Org-modeでのタイムスタンプ、TODO
+キーワード、プライオリティ、アイテムbulletタイプの変更と@kbd{S-@key{cursor}}コ
+マンドは衝突します。デフォルトでは、@kbd{S-@key{cursor}}コマンドは特別なコンテ
+クスト以外では何も起きませんが、@code{org-support-shift-select}変数をカスタ
+マイズすることができます。Org-modeはスペシャルコマンドが適用される特別
+なコンテクストの外で(i)使用することによりShift選択を提供しようとし、ま
+た(ii)アクティブなリージョンを拡張することによっても特別なコンテクスト
+を通してカーソルが移動します。
 
 @item @file{CUA.el} by Kim. F. Storm
 @cindex @file{CUA.el}
 @cindex Storm, Kim. F.
 @vindex org-replace-disputed-keys
-Key bindings in Org conflict with the @kbd{S-<cursor>} keys used by CUA mode
-(as well as @code{pc-select-mode} and @code{s-region-mode}) to select and
-extend the region.  In fact, Emacs 23 has this built-in in the form of
-@code{shift-selection-mode}, see previous paragraph.  If you are using Emacs
-23, you probably don't want to use another package for this purpose.
-However, if you prefer to leave these keys to a different package while
-working in Org-mode, configure the variable
-@code{org-replace-disputed-keys}.  When set, Org will move the following key
-bindings in Org files, and in the agenda buffer (but not during date
-selection).
+リージョンの選択と拡張について、Org-modeでのキーバインディングは
+(@code{pc-select-mode}や@code{s-region-mode}と同様に)CUAモードで使われる
+@kbd{S-<cursor>}と衝突します。実際、前の段落を見れば分かりますが、Emacs23
+は@code{shift-selection-mode}の形でこのビルトインを持ちますます。あなたが
+Emacs23を使っているのであれば、まず間違いなくこの目的のための別のパッ
+ケージは使いたくないでしょう。しかし、Org-modeでの作業中に別のパッケー
+ジにこれらのキーを渡すことを選ぶのであれば、
+@code{org-replace-disputed-keys}変数を設定してください。設定したとき、
+Org-modeはOrg-modeファイルとアジェンダバッファ(日付の選択を除きます)中
+で以下のキーバインディングを変えるでしょう。
 
 @example
 S-UP      @result{}  M-p             S-DOWN     @result{}  M-n
@@ -13195,14 +13197,14 @@ C-S-LEFT  @result{}  M-S--           C-S-RIGHT  @result{}  M-S-+
 @end example
 
 @vindex org-disputed-keys
-Yes, these are unfortunately more difficult to remember.  If you want to
-have other replacement keys, look at the variable @code{org-disputed-keys}.
+はい、残念ながら覚えることがより困難です。もしあなたが他の代わりのキー
+を持ちたいのであえれば、@code{org-disputed-keys}変数を見てください。
 
 @item @file{yasnippet.el}
 @cindex @file{yasnippet.el}
-The way Org mode binds the TAB key (binding to @code{[tab]} instead of
-@code{"\t"}) overrules YASnippet's access to this key.  The following code
-fixed this problem:
+Org-modeはTABキー(@code{\"\\t\"}の代わりに。@code{[tab]}をバインドします)をバイ
+ンドするこのキーでYASnippetsのアクセスを優先します。以下のコードはこの
+問題を修正します:
 
 @lisp
 (add-hook 'org-mode-hook
@@ -13211,16 +13213,15 @@ fixed this problem:
             (define-key yas/keymap [tab] 'yas/next-field-group)))
 @end lisp
 
-The latest version of yasnippet doesn't play well with Org mode. If the
-above code does not fix the conflict, start by defining the following
-function:
+yasnippetの最新のバージョンはOrg-modeと相性がよくありません。上記のコ
+ードが衝突を修正しないなら、以下の関数を定義してください:
 
 @lisp
 (defun yas/org-very-safe-expand ()
        (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
 @end lisp
 
-Then, tell Org mode what to do with the new function:
+それから、Org-modeに実行すべき新しい関数を教えてくさい:
 
 @lisp
 (add-hook 'org-mode-hook
@@ -13233,10 +13234,10 @@ Then, tell Org mode what to do with the new function:
 
 @item @file{windmove.el} by Hovav Shacham
 @cindex @file{windmove.el}
-This package also uses the @kbd{S-<cursor>} keys, so everything written in
-the paragraph above about CUA mode also applies here.  If you want make the
-windmove function active in locations where Org-mode does not have special
-functionality on @kbd{S-@key{cursor}}, add this to your configuration:
+このパッケージも、@kbd{S-<cursor>}キーを使用し。そしてCUAモードが適用され
+ている状態の段落で全てが書かれます。もし、Org-modeが@kbd{S-@key{cursor}}上に特
+別な関数を持たない場所であなたがwindmove関数を有効にしたいのであれば、
+設定に以下を追加します:
 
 @lisp
 ;; Make windmove work in org-mode:
@@ -13249,10 +13250,10 @@ functionality on @kbd{S-@key{cursor}}, add this to your configuration:
 @item @file{viper.el} by Michael Kifer
 @cindex @file{viper.el}
 @kindex C-c /
-Viper uses @kbd{C-c /} and therefore makes this key not access the
-corresponding Org-mode command @code{org-sparse-tree}.  You need to find
-another key for this command, or override the key in
-@code{viper-vi-global-user-map} with
+Viperは@kbd{C-c /}を使い、それ故にOrg-modeの@code{org-sparse-tree}コマンドに対
+応しているキーを使えないようにします。あなたはこのコマンドに別のキーを
+割り当てるか、@code{viper-vi-global-user-map}でキーを上書きする必要がありま
+す:
 
 @lisp
 (define-key viper-vi-global-user-map "C-c /" 'org-sparse-tree)
