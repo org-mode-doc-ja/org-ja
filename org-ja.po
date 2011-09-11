@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-09-07 12:36+0900\n"
+"PO-Revision-Date: 2011-09-11 22:07+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -12180,32 +12180,32 @@ msgstr "properties"
 #. type: Plain text
 #: org.texi:4640
 msgid "Properties are a set of key-value pairs associated with an entry.  There are two main applications for properties in Org-mode.  First, properties are like tags, but with a value.  Second, you can use properties to implement (very basic) database capabilities in an Org buffer.  For an example of the first application, imagine maintaining a file where you document bugs and plan releases for a piece of software.  Instead of using tags like @code{:release_1:}, @code{:release_2:}, one can use a property, say @code{:Release:}, that in different subtrees has different values, such as @code{1.0} or @code{2.0}.  For an example of the second application of properties, imagine keeping track of your music CDs, where properties could be things such as the album, artist, date of release, number of tracks, and so on."
-msgstr ""
+msgstr "プロパティは、エントリーに関連付けられたキーと値を持つペアの集合です。Org-modeでは、プロパティのための2つの主要なアプリケショーンがあります。一番目に、プロパティはタグのようですが値を持ちます。二番目に、Org-modeのバッファで(とても基本的な)データベース機能を実装するためにプロパティを使う事ができます。一番目のアプリケショーンの例のために、ソフトウェアのリリース計画とバグを文章化するファイルを管理する事を想像して下さい。@code{:release_1:}、@code{:release_2:}のようなタグを使う代わりに、@code{:Release:}というプロパティを使い、異なるサブツリーの中に@code{1.0}や@code{2.0}のような異なる値を持たせれば良いのです。プロパティの二番目のアプリケーションの例のために、音楽CDのトラックを管理する事を想像して下さい。そこではアルバム名、アーティスト名、リリース日、トラックの数などがプロパティとなるでしょう。"
 
 #+glossary: column view ( カラムビュー )
 #. type: Plain text
 #: org.texi:4643
 msgid "Properties can be conveniently edited and viewed in column view (@pxref{Column view})."
-msgstr ""
+msgstr "プロパティは、カラムビューで便利に編集、閲覧できます(@pxref{Column view})。"
 
 #+glossary: property ( プロパティ ) / syntax ( 構文|シンタックス )
 #. type: cindex
 #: org.texi:4655
 #, no-wrap
 msgid "property syntax"
-msgstr ""
+msgstr "プロパティシンタックス"
 
 #. type: cindex
 #: org.texi:4656
-#, no-wrap
+#, no-wrap, fuzzy
 msgid "drawer, for properties"
-msgstr ""
+msgstr "引き出し、プロパティ用"
 
 #+glossary: key ( キー ) / line ( 行|ライン|線 ) / property ( プロパティ ) / value ( 値 )
 #. type: Plain text
 #: org.texi:4662
 msgid "Properties are key-value pairs.  They need to be inserted into a special drawer (@pxref{Drawers}) with the name @code{PROPERTIES}.  Each property is specified on a single line, with the key (surrounded by colons)  first, and the value after it.  Here is an example:"
-msgstr ""
+msgstr "プロパティは、キーと値のペアです。それらは、名前@code{PROPERTIES}を持つ特別な引き出し(@pxref{Drawers})の中に入る必要があります。各プロパティは最初に(コロンで囲われた)キーを持ち、その後に値を持つ1行で記述されます。以下に例を示します。"
 
 #. type: example
 #: org.texi:4674
@@ -12222,12 +12222,22 @@ msgid ""
 "    :NDisks:    1\n"
 "    :END:\n"
 msgstr ""
+"* CD collection\n"
+"** Classic\n"
+"*** Goldberg Variations\n"
+"    :PROPERTIES:\n"
+"    :Title:     Goldberg Variations\n"
+"    :Composer:  J.S. Bach\n"
+"    :Artist:    Glen Gould\n"
+"    :Publisher: Deutsche Grammophon\n"
+"    :NDisks:    1\n"
+"    :END:"
 
 #+glossary: entry ( エントリー|文|入力 ) / error ( エラー ) / example ( 例 ) / level ( レベル|階層 ) / property ( プロパティ ) / setting ( 設定 ) / tree ( ツリー ) / value ( 値 )
 #. type: Plain text
 #: org.texi:4683
 msgid "You may define the allowed values for a particular property @samp{:Xyz:} by setting a property @samp{:Xyz_ALL:}.  This special property is @emph{inherited}, so if you set it in a level 1 entry, it will apply to the entire tree.  When allowed values are defined, setting the corresponding property becomes easier and is less prone to typing errors.  For the example with the CD collection, we can predefine publishers and the number of disks in a box like this:"
-msgstr ""
+msgstr "プロパティ@samp{:Xyz_ALL:}のように設定する事で、特定のプロパティ@samp{:Xyz:}のため許容値を定義できます。この特別なプロパティは、もしレベル1のエントリに設定されたならば、全てのツリーに適用されるように@emph{継承}されます。許可値を定義すると、対応するプロパティの設定が簡単になり、入力ミスを防ぐ事ができます。CDコレクションの例では、以下のように1つのボックスの中に発売元とディスクの数を予め定義できます。"
 
 #. type: example
 #: org.texi:4690
@@ -12239,31 +12249,36 @@ msgid ""
 "  :Publisher_ALL: \"Deutsche Grammophon\" Philips EMI\n"
 "  :END:\n"
 msgstr ""
+"* CD collection\n"
+"  :PROPERTIES:\n"
+"  :NDisks_ALL:  1 2 3 4\n"
+"  :Publisher_ALL: \\\"Deutsche Grammophon\\\" Philips EMI\n"
+"  :END:"
 
 #+glossary: entry ( エントリー|文|入力 ) / file ( ファイル ) / line ( 行|ライン|線 )
 #. type: Plain text
 #: org.texi:4694
 msgid "If you want to set properties that can be inherited by any entry in a file, use a line like"
-msgstr ""
+msgstr "1つのファイル全体で継承されるプロパティを設定したいならば、以下の行のように使います。"
 
 #+glossary: property ( プロパティ )
 #. type: cindex
 #: org.texi:4694
 #, no-wrap
 msgid "property, _ALL"
-msgstr ""
+msgstr "プロパティ、_ALL"
 
 #. type: cindex
 #: org.texi:4695
 #, no-wrap
 msgid "#+PROPERTY"
-msgstr ""
+msgstr "#+PROPERTY"
 
 #. type: example
 #: org.texi:4698
 #, no-wrap
 msgid "#+PROPERTY: NDisks_ALL 1 2 3 4\n"
-msgstr ""
+msgstr "#+PROPERTY: NDisks_ALL 1 2 3 4\n"
 
 #. type: vindex
 #: org.texi:4700
@@ -12276,25 +12291,25 @@ msgstr "org-global-properties"
 #. type: Plain text
 #: org.texi:4704
 msgid "Property values set with the global variable @code{org-global-properties} can be inherited by all entries in all Org files."
-msgstr ""
+msgstr "グローバル変数@code{org-global-properties}に設定するプロパティの値は全てのOrg-modeのファイルに継承されます。"
 
 #+glossary: following commands ( 以下に述べるコマンド ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:4707
 msgid "The following commands help to work with properties:"
-msgstr ""
+msgstr "以下のコマンドはプロパティを操作する助けとなります。"
 
 #+glossary: completion ( 補完 ) / current ( カレント|現在の ) / file ( ファイル ) / key ( キー ) / line ( 行|ライン|線 ) / prompt ( 入力 ) / property ( プロパティ ) / value ( 値 )
 #. type: table
 #: org.texi:4715
 msgid "@orgcmd{M-@key{TAB},pcomplete} After an initial colon in a line, complete property keys.  All keys used in the current file will be offered as possible completions.  @orgcmd{C-c C-x p,org-set-property} Set a property.  This prompts for a property name and a value.  If necessary, the property drawer is created as well."
-msgstr ""
+msgstr "@orgcmd{M-@key{TAB},pcomplete}行の最初のコロンの後で、プロパティのキーを補完します。現在のファイルで使われた全てのキーは、可能な補完候補として提供されます。@orgcmd{C-c C-x p,org-set-property}プロパティを設定します。プロパティ名と値の入力を促します。必要なら、プロパティの引き出しがさらに作られます。"
 
 #. type: item
 #: org.texi:4715
 #, no-wrap
 msgid "M-x org-insert-property-drawer"
-msgstr ""
+msgstr "M-x org-insert-property-drawer"
 
 #. type: defun
 #: org.texi:4716
@@ -12307,89 +12322,89 @@ msgstr "org-insert-property-drawer"
 #. type: table
 #: org.texi:4734
 msgid "Insert a property drawer into the current entry.  The drawer will be inserted early in the entry, but after the lines with planning information like deadlines.  @orgcmd{C-c C-c,org-property-action} With the cursor in a property drawer, this executes property commands.  @orgcmd{C-c C-c s,org-set-property} Set a property in the current entry.  Both the property and the value can be inserted using completion.  @orgcmdkkcc{S-@key{right},S-@key{left},org-property-next-allowed-value,org-property-previous-allowed-value} Switch property at point to the next/previous allowed value.  @orgcmd{C-c C-c d,org-delete-property} Remove a property from the current entry.  @orgcmd{C-c C-c D,org-delete-property-globally} Globally remove a property, from all entries in the current file.  @orgcmd{C-c C-c c,org-compute-property-at-point} Compute the property at point, using the operator and scope from the nearest column format definition."
-msgstr ""
+msgstr "現在のエントリーの中にプロパティの引き出しを入れます。引き出しはエントリーのはじめに入りますが、デッドラインのような計画情報を持つ行の後となります。@orgcmd{C-c C-c,org-property-action}プロパティの引き出しの中にカーソルがあるとき、プロパティコマンドを実行します。@orgcmd{C-c C-c s,org-set-property}現在のエントリにプロパティを設定します。プロパティと値の両方共、補完を使って入力できます。@orgcmdkkcc{S-@key{right},S-@key{left},org-property-next-allowed-value,org-property-previous-allowed-value}ポイントのプロパティを次/前の許可値に切り替えます。@orgcmd{C-c C-c d,org-delete-property}現在のエントリからプロパティを削除します。@orgcmd{C-c C-c D,org-delete-property-globally}プロパティを現在のファイルにある全てのエントリからグローバルに削除します。@orgcmd{C-c C-c c,org-compute-property-at-point}ポイントにあるプロパティを最も近い列のフォーマット定義からオペレータやスコープを使って計算します。"
 
 #. type: cindex
 #: org.texi:4738
 #, no-wrap
 msgid "properties, special"
-msgstr ""
+msgstr "プロパティ、スペシャル"
 
 #+glossary: column view ( カラムビュー ) / chapter ( 章 ) / entry ( エントリー|文|入力 ) / feature ( 機能 ) / key ( キー ) / org-mode ( Org-mode ) / previous ( 前の ) / priority ( 優先順位|プライオリティ ) / property ( プロパティ ) / provide ( 用意する )
 #. type: Plain text
 #: org.texi:4746
 msgid "Special properties provide an alternative access method to Org-mode features, like the TODO state or the priority of an entry, discussed in the previous chapters.  This interface exists so that you can include these states in a column view (@pxref{Column view}), or to use them in queries.  The following property names are special and (except for @code{:CATEGORY:}) should not be used as keys in the properties drawer:"
-msgstr ""
+msgstr "以前の章で述べたTODO状態や、エントリの優先度のようなスペシャルプロパティは、Org-modeの機能への別のアクセス方法を提供します。このインターフェイスは、カラムビュー(@pxref{Column view})にそれらの状態を含めたり、クエリにそれらを使ったりする事で生じます。次のプロパティ名は特別(@code{:CATEGORY:}を除いて)で、プロパティの引き出しでキーとして使われません。"
 
 #+glossary: property ( プロパティ )
 #. type: cindex
 #: org.texi:4747
 #, no-wrap
 msgid "property, special, TODO"
-msgstr ""
+msgstr "プロパティ、スペシャル，TODO"
 
 #+glossary: property ( プロパティ ) / tag ( タグ )
 #. type: cindex
 #: org.texi:4748
 #, no-wrap
 msgid "property, special, TAGS"
-msgstr ""
+msgstr "プロパティ、スペシャル、TAGS"
 
 #+glossary: property ( プロパティ )
 #. type: cindex
 #: org.texi:4749
 #, no-wrap
 msgid "property, special, ALLTAGS"
-msgstr ""
+msgstr "プロパティ、スペシャル、ALLTAGS"
 
 #+glossary: category ( カテゴリー ) / property ( プロパティ )
 #. type: cindex
 #: org.texi:4750
 #, no-wrap
 msgid "property, special, CATEGORY"
-msgstr ""
+msgstr "プロパティ、スペシャル、CATEGORY"
 
 #+glossary: priority ( 優先順位|プライオリティ ) / property ( プロパティ )
 #. type: cindex
 #: org.texi:4751
 #, no-wrap
 msgid "property, special, PRIORITY"
-msgstr ""
+msgstr "プロパティ、スペシャル、PRIORITY"
 
 #+glossary: deadline ( デッドライン ) / property ( プロパティ )
 #. type: cindex
 #: org.texi:4752
 #, no-wrap
 msgid "property, special, DEADLINE"
-msgstr ""
+msgstr "プロパティ、スペシャル、DEADLINE"
 
 #+glossary: property ( プロパティ ) / scheduled ( スケジューリングされる )
 #. type: cindex
 #: org.texi:4753
 #, no-wrap
 msgid "property, special, SCHEDULED"
-msgstr ""
+msgstr "プロパティ、スペシャル、SCHEDULED"
 
 #+glossary: property ( プロパティ )
 #. type: cindex
 #: org.texi:4754
 #, no-wrap
 msgid "property, special, CLOSED"
-msgstr ""
+msgstr "プロパティ、スペシャル、CLOSED"
 
 #+glossary: property ( プロパティ ) / timestamp ( タイムスタンプ )
 #. type: cindex
 #: org.texi:4755
 #, no-wrap
 msgid "property, special, TIMESTAMP"
-msgstr ""
+msgstr "プロパティ、スペシャル、TIMESTAMP"
 
 #+glossary: property ( プロパティ )
 #. type: cindex
 #: org.texi:4756
 #, no-wrap
 msgid "property, special, TIMESTAMP_IA"
-msgstr ""
+msgstr "プロパティ、スペシャル、TIMESTAMP_IA"
 
 #+glossary: property ( プロパティ )
 #. type: cindex
@@ -12404,21 +12419,21 @@ msgstr "特別なプロパティ（CLOCKSUM）"
 #: org.texi:4758
 #, no-wrap
 msgid "property, special, BLOCKED"
-msgstr ""
+msgstr "プロパティ、スペシャル、BLOCKED"
 
 #+glossary: item ( アイテム|項目 ) / property ( プロパティ )
 #. type: cindex
 #: org.texi:4760
 #, no-wrap
 msgid "property, special, ITEM"
-msgstr ""
+msgstr "プロパティ、スペシャル、ITEM"
 
 #+glossary: file ( ファイル ) / property ( プロパティ )
 #. type: cindex
 #: org.texi:4761
 #, no-wrap
 msgid "property, special, FILE"
-msgstr ""
+msgstr "プロパティ、スペシャル、FILE"
 
 #+glossary: category ( カテゴリー ) / content ( コンテンツ|内容 ) / deadline ( デッドライン ) / entry ( エントリー|文|入力 ) / file ( ファイル ) / item ( アイテム|項目 ) / keyword ( キーワード ) / priority ( 優先順位|プライオリティ ) / scheduled ( スケジューリングされる ) / scheduling ( スケジューリング ) / string ( 文字列 ) / subtree ( サブツリー ) / tag ( タグ ) / task ( タスク ) / time ( 時刻|時間|回 ) / timestamp ( タイムスタンプ )
 #. type: example
@@ -12441,75 +12456,90 @@ msgid ""
 "ITEM         @r{The content of the entry.}\n"
 "FILE         @r{The filename the entry is located in.}\n"
 msgstr ""
+"TODO         @r{エントリのTODOキーワード}\n"
+"TAGS         @r{見出しに直接定義されたタグ}\n"
+"ALLTAGS      @r{継承されたタグも含む全てのタグ}\n"
+"CATEGORY     @r{エントリのカテゴリ}\n"
+"PRIORITY     @r{1文字の文字列である、エントリの優先度}\n"
+"DEADLINE     @r{山括弧(<>)のないデッドライン時刻文字列}\n"
+"SCHEDULED    @r{山括弧(<>)のないスケジュールタイムスタンプ}\n"
+"CLOSED       @r{いつこのエントリがクローズされたか}\n"
+"TIMESTAMP    @r{エントリで最初のキーワードのないタイムスタンプ}\n"
+"TIMESTAMP_IA @r{エントリで最初のアクティブでないタイムスタンプ}\n"
+"CLOCKSUM     @r{サブツリーでのCLOCKインターバルの合計。@code{org-clock-sum}が値を計算するために最初に実行されなければならない。}\n"
+"BLOCKED      @r{\\t\\ であれば、タスクが子供や兄弟に現在ブロックされている}\n"
+"ITEM         @r{エントリの内容}\n"
+"FILE         @r{エントリのあるファイル名}"
 
 #. type: cindex
 #: org.texi:4782
 #, no-wrap
 msgid "properties, searching"
-msgstr ""
+msgstr "プロパティ、検索"
 
 #. type: cindex
 #: org.texi:4783
 #, no-wrap
 msgid "searching, of properties"
-msgstr ""
+msgstr "検索、プロパティの"
 
 #+glossary: sparse tree ( ツリーの抽出 ) / tag searches ( タグの検索 ) / command ( コマンド ) / list ( リスト )
 #. type: Plain text
 #: org.texi:4787
 msgid "To create sparse trees and special lists with selection based on properties, the same commands are used as for tag searches (@pxref{Tag searches})."
-msgstr ""
+msgstr "プロパティに基いて選択した特別なリストやツリーの抽出を作成するために、タグ検索(@pxref{Tag searches})の場合と同じコマンドが使えます。"
 
 #+glossary: agenda files ( アジェンダファイル ) / sparse tree ( ツリーの抽出 ) / argument ( 引数 ) / entries ( エントリー|文|入力 ) / global ( グローバルな ) / headline ( 見出し ) / line ( 行|ライン|線 ) / list ( リスト ) / matches ( 一致 ) / prefix ( 接頭辞 ) / tag ( タグ )
 #. type: table
 #: org.texi:4795
 msgid "@orgcmdkkc{C-c / m,C-c \\,org-match-sparse-tree} Create a sparse tree with all matching entries.  With a @kbd{C-u} prefix argument, ignore headlines that are not a TODO line.  @orgcmd{C-c a m,org-tags-view} Create a global list of tag/property matches from all agenda files.  @xref{Matching tags and properties}.  @orgcmd{C-c a M,org-tags-view}"
-msgstr ""
+msgstr "@orgcmdkkc{C-c / m,C-c \\\\,org-match-sparse-tree} 全てのマッチしたエントリについて抽出したツリーを作成します。前置引数@kbd{C-u}をつけると、TODO行でない見出しは無視されます。  @orgcmd{C-c a m,org-tags-view} 全てのアジェンダファイルからタグ・プロパティにマッチしたグローバルなリストを作成します。  @xref{Matching tags and properties}.  @orgcmd{C-c a M,org-tags-view}"
 
 #+glossary: agenda files ( アジェンダファイル ) / TODO items ( TODOアイテム ) / check ( チェック ) / global ( グローバルな ) / list ( リスト ) / matches ( 一致 ) / tag ( タグ ) / variable ( 変数 )
 #. type: table
 #: org.texi:4799
 msgid "Create a global list of tag matches from all agenda files, but check only TODO items and force checking of subitems (see variable @code{org-tags-match-list-sublevels})."
-msgstr ""
+msgstr "全てのアジェンダファイルからタグにマッチするグローバルなリストを作成します。しかし、TODO 項目と下位項目の強制チェック(変数@code{org-tags-match-list-sublevels}参照)のみチェックします。\n"
 
 #+glossary: search ( 検索 ) / string ( 文字列 ) / syntax ( 構文|シンタックス ) / tag ( タグ )
 #. type: Plain text
 #: org.texi:4803
 msgid "The syntax for the search string is described in @ref{Matching tags and properties}."
-msgstr ""
+msgstr "検索文字列のための文法は、@ref{Matching tags and properties}で説明されています。"
 
 #+glossary: sparse tree ( ツリーの抽出 ) / command ( コマンド ) / creating ( 作成 )
 #. type: Plain text
 #: org.texi:4806
 msgid "There is also a special command for creating sparse trees based on a single property:"
-msgstr ""
+msgstr "1つのプロパティに基いて抽出したツリーを作成するための特別なコマンドもあります。"
 
 #+glossary: curly braces ( 中括弧{} ) / sparse tree ( ツリーの抽出 ) / entries ( エントリー|文|入力 ) / prompt ( 入力 ) / property ( プロパティ ) / value ( 値 )
 #. type: table
 #: org.texi:4814
+#, fuzzy
 msgid "@orgkey{C-c / p} Create a sparse tree based on the value of a property.  This first prompts for the name of a property, and then for a value.  A sparse tree is created with all entries that define this property with the given value.  If you enclose the value in curly braces, it is interpreted as a regular expression and matched against the property values."
-msgstr ""
+msgstr "@orgkey{C-c / p}プロパティの値に基いて抽出したツリーを作成します。これは最初にプロパティ名、次にその値の入力を促します。抽出したツリーは、与えられた値を持つこのプロパティを定義されている全てのエントリで作られます。その値を大括弧で括っていたならば、正規表現として解釈され、プロパティ値に対してマッチします。"
 
 #+glossary: inheritance ( 継承 ) / property ( プロパティ )
 #. type: section
 #: org.texi:4817
 #, no-wrap
 msgid "Property Inheritance"
-msgstr ""
+msgstr "プロパティの継承"
 
 #+glossary: inheritance ( 継承 )
 #. type: cindex
 #: org.texi:4818
 #, no-wrap
 msgid "properties, inheritance"
-msgstr ""
+msgstr "プロパティ、継承"
 
 #+glossary: inheritance ( 継承 )
 #. type: cindex
 #: org.texi:4819
 #, no-wrap
 msgid "inheritance, of properties"
-msgstr ""
+msgstr "継承、プロパティの"
 
 #. type: vindex
 #: org.texi:4821
@@ -12523,13 +12553,13 @@ msgstr "org-use-property-inheritance"
 #. type: Plain text
 #: org.texi:4834
 msgid "The outline structure of Org-mode documents lends itself to an inheritance model of properties: if the parent in a tree has a certain property, the children can inherit this property.  Org-mode does not turn this on by default, because it can slow down property searches significantly and is often not needed.  However, if you find inheritance useful, you can turn it on by setting the variable @code{org-use-property-inheritance}.  It may be set to @code{t} to make all properties inherited from the parent, to a list of properties that should be inherited, or to a regular expression that matches inherited properties.  If a property has the value @samp{nil}, this is interpreted as an explicit undefine of the property, so that inheritance search will stop at this value and return @code{nil}."
-msgstr ""
+msgstr "Org-mode文章のアウトライン構造はプロパティの継承モデルを適用しています。ツリーの親があるプロパティを持っているならば、子はこのプロパティを継承します。Org-modeはこれをデフォルトで有効としていません。これはプロパティの検索を遅くしてしまうためとあまり必要とされないためです。しかしながら、継承が役立つ場面があるならば、変数@code{org-use-property-inheritance}を設定する事で有効とできます。この変数は、全てのプロパティを親から継承する@code{t}、継承されるべきプロパティのリスト、継承されるプロパティにマッチする正規表現を設定できます。もしプロパティが値@samp{nil}を持つならば、継承検索がこの値で停止し@code{nil}を返すように、明示的に未定義のプロパティであると解釈されます。"
 
 #+glossary: inheritance ( 継承 ) / org-mode ( Org-mode )
 #. type: Plain text
 #: org.texi:4837
 msgid "Org-mode has a few properties for which inheritance is hard-coded, at least for the special applications for which they are used:"
-msgstr ""
+msgstr "Org-modeは、継承がハードコードされているプロパティがいくつかあります。少くともそれらを使う特別なアプリケーションがあります。"
 
 #+glossary: column ( 列 ) / property ( プロパティ )
 #. type: cindex
@@ -12544,20 +12574,21 @@ msgstr "プロパティ（COLUMNS）"
 #: org.texi:4840
 #, no-wrap
 msgid "COLUMNS"
-msgstr ""
+msgstr "COLUMNS"
 
 #+glossary: column view ( カラムビュー ) / column ( 列 ) / format ( フォーマット|形成 ) / level ( レベル|階層 ) / point ( ポイント ) / property ( プロパティ ) / subtree ( サブツリー ) / table ( テーブル ) / view ( ビュー )
 #. type: table
 #: org.texi:4846
+#, fuzzy
 msgid "The @code{:COLUMNS:} property defines the format of column view (@pxref{Column view}).  It is inherited in the sense that the level where a @code{:COLUMNS:} property is defined is used as the starting point for a column view table, independently of the location in the subtree from where columns view is turned on."
-msgstr ""
+msgstr "@code{:COLUMNS:}プロパティは、カラムビュー(@pxref{Column view})のフォーマットを定義します。@code{:COLUMNS:}プロパティが定義されているレベルがカラムビューテーブルの開始地点として使われるという意味で継承されます。そして、列表示が有効である場所とサブツリーの場所とは無関係です。"
 
 #+glossary: category ( カテゴリー )
 #. type: item
 #: org.texi:4846
 #, no-wrap
 msgid "CATEGORY"
-msgstr ""
+msgstr "CATEGORIES"
 
 #+glossary: category ( カテゴリー ) / property ( プロパティ )
 #. type: cindex
@@ -12571,7 +12602,7 @@ msgstr "プロパティ（CATEGORY）"
 #. type: table
 #: org.texi:4850
 msgid "For agenda view, a category set through a @code{:CATEGORY:} property applies to the entire subtree."
-msgstr ""
+msgstr "アジェンダビュー用えす。@code{:CATEGORY:}プロパティを通して設定されたカテゴリがサブツリー全体に適用されます。"
 
 #+glossary: archive ( アーカイブ ) / property ( プロパティ )
 #. type: cindex
@@ -12585,70 +12616,70 @@ msgstr "プロパティ（ARCHIVE）"
 #. type: table
 #: org.texi:4854
 msgid "For archiving, the @code{:ARCHIVE:} property may define the archive location for the entire subtree (@pxref{Moving subtrees})."
-msgstr ""
+msgstr "アーカイブ用です。@code{:ARCHIVE:}プロパティは、サブツリー全体のアーカイブ位置を定義します(@pxref{Moving subtrees})。"
 
 #+glossary: logging ( 記録|ログ|ログを取る )
 #. type: item
 #: org.texi:4854
 #, no-wrap
 msgid "LOGGING"
-msgstr ""
+msgstr "LOGGING"
 
 #+glossary: entry ( エントリー|文|入力 ) / logging ( 記録|ログ|ログを取る ) / property ( プロパティ ) / setting ( 設定 ) / subtree ( サブツリー )
 #. type: table
 #: org.texi:4858
 msgid "The LOGGING property may define logging settings for an entry or a subtree (@pxref{Tracking TODO state changes})."
-msgstr ""
+msgstr "LOGGINGプロパティは、エントリやサブツリーのログ取得設定について定義します(@pxref{Tracking TODO state changes})。"
 
 #+glossary: access to ( アクセスする ) / column view ( カラムビュー ) / sparse tree ( ツリーの抽出 ) / agenda ( アジェンダ ) / buffer ( バッファ ) / column ( 列 ) / command ( コマンド ) / content ( コンテンツ|内容 ) / entries ( エントリー|文|入力 ) / entry ( エントリー|文|入力 ) / example ( 例 ) / file ( ファイル ) / headline ( 見出し ) / item ( アイテム|項目 ) / node ( ノード ) / org-mode ( Org-mode ) / outline ( アウトライン|outline ) / provide ( 用意する ) / row ( 行 ) / structure ( 構造 ) / table ( テーブル ) / tree ( ツリー ) / view ( ビュー ) / visibility ( 表示 ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:4876
 msgid "A great way to view and edit properties in an outline tree is @emph{column view}.  In column view, each outline node is turned into a table row.  Columns in this table provide access to properties of the entries.  Org-mode implements columns by overlaying a tabular structure over the headline of each item.  While the headlines have been turned into a table row, you can still change the visibility of the outline tree.  For example, you get a compact table by switching to CONTENTS view (@kbd{S-@key{TAB} S-@key{TAB}}, or simply @kbd{c} while column view is active), but you can still open, read, and edit the entry below each headline.  Or, you can switch to column view after executing a sparse tree command and in this way get a table only for the selected items.  Column view also works in agenda buffers (@pxref{Agenda Views}) where queries have collected selected items, possibly from a number of files."
-msgstr ""
+msgstr "アウトラインツリーにあるプロパティを閲覧、編集するための最も良い方法は@emph{カラムビュー}です。カラムビューでは、各アウトラインノードがテーブル行に変換されます。このテーブルにある列がエントリのプロパティへのアクセスです。Org-modeは、各項目の見出し上にテーブル構造をオーバレイすることで列を実装します。見出しはテーブル列に変換されますが、アウトラインツリーの見た目もまだ変えられます。例えば、CONTENTS ビュー(@kbd{S-@key{TAB}S-@key{TAB}}、もしくは、カラムビューがアクティブであるときに単純に@kbd{c})にスイッチする事でコンパクトなテーブルを得られますが、まだ各見出し以下のエントリを開いたり、読んだり、編集したりもできます。また、ツリーの抽出コマンドを実行した後にカラムビューに切り替える事もでき、この方法では選択した項目のみのテーブルを得ます。カラムビューは利用可能な複数のファイルから選択した項目を集めたクエリのあるアジェンダバッファ(@pxref{Agenda Views})でも動作します。"
 
 #+glossary: column view ( カラムビュー )
 #. type: cindex
 #: org.texi:4885
 #, no-wrap
 msgid "column view, for properties"
-msgstr ""
+msgstr "カラムビュー、プロパティ用"
 
 #+glossary: column view ( カラムビュー )
 #. type: cindex
 #: org.texi:4886
 #, no-wrap
 msgid "properties, column view"
-msgstr ""
+msgstr "プロパティ、カラムビュー"
 
 #+glossary: column view ( カラムビュー ) / column ( 列 ) / format ( フォーマット|形成 ) / line ( 行|ライン|線 ) / setting ( 設定 )
 #. type: Plain text
 #: org.texi:4890
 msgid "Setting up a column view first requires defining the columns.  This is done by defining a column format line."
-msgstr ""
+msgstr "最初にカラムビューを設定するために、カラムを定義する必要があります。これはカラムフォーマット行を定義する事によってなされます。"
 
 #+glossary: column ( 列 ) / file ( ファイル ) / format ( フォーマット|形成 ) / line ( 行|ライン|線 )
 #. type: Plain text
 #: org.texi:4900
 msgid "To define a column format for an entire file, use a line like"
-msgstr ""
+msgstr "カラムフォーマットを定義するために、次のように行を記載します。"
 
 #. type: cindex
 #: org.texi:4901
 #, no-wrap
 msgid "#+COLUMNS"
-msgstr ""
+msgstr "#+COLUMNS"
 
 #. type: example
 #: org.texi:4904
 #, no-wrap
 msgid "#+COLUMNS: %25ITEM %TAGS %PRIORITY %TODO\n"
-msgstr ""
+msgstr "#+COLUMNS: %25ITEM %TAGS %PRIORITY %TODO\\n"
 
 #+glossary: format ( フォーマット|形成 ) / node ( ノード ) / property ( プロパティ ) / tree ( ツリー )
 #. type: Plain text
 #: org.texi:4908
 msgid "To specify a format that only applies to a specific tree, add a @code{:COLUMNS:} property to the top node of that tree, for example:"
-msgstr ""
+msgstr "指定したツリーに適用するだけのフォーマットを指定するために、@code{:COLUMNS:}プロパティをそのツリーの一番上のノードに追加します。例えば、"
 
 #+glossary: column ( 列 ) / node ( ノード )
 #. type: example
@@ -12660,30 +12691,35 @@ msgid ""
 "   :COLUMNS: %25ITEM %TAGS %PRIORITY %TODO\n"
 "   :END:\n"
 msgstr ""
+"** カラムビューの一番最初のノード\n"
+"   :PROPERTIES:\n"
+"   :COLUMNS: %25ITEM %TAGS %PRIORITY %TODO\n"
+"   :END:"
 
 #+glossary: column ( 列 ) / document ( ドキュメント|文書 ) / entry ( エントリー|文|入力 ) / level ( レベル|階層 ) / property ( プロパティ ) / structure ( 構造 ) / subtree ( サブツリー ) / tree ( ツリー )
 #. type: Plain text
 #: org.texi:4922
+#, fuzzy
 msgid "If a @code{:COLUMNS:} property is present in an entry, it defines columns for the entry itself, and for the entire subtree below it.  Since the column definition is part of the hierarchical structure of the document, you can define columns on level 1 that are general enough for all sublevels, and more specific columns further down, when you edit a deeper part of the tree."
-msgstr ""
+msgstr "もし@code{:COLUMNS:}プロパティがエントリに現れると、そのエントリ自身とそれ以下のサブツリー全体の列を定義します。列定義は文章の階層構造の一部なので、全てのサブレベルに十分一般的なレベル1の列を定義でき、また、ツリーのより深い部分を編集するとき、より下位の指定された列を定義できます。"
 
 #+glossary: column ( 列 )
 #. type: Plain text
 #: org.texi:4927
 msgid "A column definition sets the attributes of a column.  The general definition looks like this:"
-msgstr ""
+msgstr "列定義は、列の属性の集りです。一般的な定義は以下のようになります。"
 
 #. type: example
 #: org.texi:4930
 #, no-wrap
 msgid " %[@var{width}]@var{property}[(@var{title})][@{@var{summary-type}@}]\n"
-msgstr ""
+msgstr " %[@var{width}]@var{property}[(@var{title})][@{@var{summary-type}@}]"
 
 #+glossary: item ( アイテム|項目 ) / property ( プロパティ )
 #. type: Plain text
 #: org.texi:4935
 msgid "Except for the percent sign and the property name, all items are optional.  The individual parts have the following meaning:"
-msgstr ""
+msgstr "パーセントとプロパティ名を除いて、全ての項目はオプションです。個々のパーツは次の意味を持ちます。"
 
 #+glossary: column ( 列 ) / data ( データ ) / format ( フォーマット|形成 ) / header ( ヘッダー ) / node ( ノード ) / plain ( プレーン ) / property ( プロパティ ) / summary ( 概要 ) / text ( テキスト|文章 ) / time ( 時刻|時間|回 ) / type ( タイプ|入力する ) / value ( 値 ) / width ( 幅 )
 #. type: example
@@ -12718,30 +12754,55 @@ msgid ""
 "                @{@@mean@}   @r{Arithmetic mean of ages (in days/hours/mins/seconds).}\n"
 "                @{est+@}    @r{Add low-high estimates.}\n"
 msgstr ""
+"@var{width}           @r{列の幅を文字数で指定する整数。}\n"
+"                @r{省略すると、幅は自動的に決定されます。}\n"
+"@var{property}        @r{この列で編集できるプロパティ。}\n"
+"                @r{メタデータを示す特別なプロパティがここで許容されます。}\n"
+"                @r{(@pxref{Special properties})}\n"
+"@var{title}     @r{列の見出しテキスト。省略するとプロパティ名が使われます。}\n"
+"@{@var{summary-type}@}  @r{サマリタイプ。指定すると親ノードの列の値は子から計算されます。}\n"
+"                @r{サポートされる概要のタイプは以下です。}\n"
+"                @{+@}       @r{この列にある数の和。}\n"
+"                @{+;%.1f@}  @r{@samp{+}と似ているが、フォーマットが@samp{%.1f}となる。}\n"
+"                @{$@}       @r{通貨。@samp{+;%.2f}の略。}\n"
+"                @{:@}       @r{時刻の合計。HH:MM。数値は時間。}\n"
+"                @{X@}       @r{チェックボックスの状態。子が全て@samp{[X]}ならば、@samp{[X]}。}\n"
+"                @{X/@}      @r{チェックボックスの状態。@samp{[n/m]}。}\n"
+"                @{X%@}      @r{チェックボックスの状態。@samp{[n%]}。}\n"
+"                @{min@}     @r{列の最も小さい数値。}\n"
+"                @{max@}     @r{最も大きい数値。}\n"
+"                @{mean@}    @r{数の算術平均。}\n"
+"                @{:min@}    @r{列に最も小さい時間数値。}\n"
+"                @{:max@}    @r{最も大きい時間数値。}\n"
+"                @{:mean@}   @r{時刻の算術平均。}\n"
+"                @{@@min@}    @r{最小時刻(日/時間/分/秒)。}\n"
+"                @{@@max@}    @r{最大時刻(日/時間/分/秒)。}\n"
+"                @{@@mean@}   @r{時刻の算術平均(日/時間/分/秒)。}\n"
+"                @{est+@}    @r{低-高見積りを追加。}"
 
 #+glossary: column ( 列 ) / display ( ディスプレイ|表示 ) / information ( 情報 ) / property ( プロパティ ) / summary ( 概要 ) / type ( タイプ|入力する )
 #. type: Plain text
 #: org.texi:4970
 msgid "Be aware that you can only have one summary type for any property you include. Subsequent columns referencing the same property will all display the same summary information."
-msgstr ""
+msgstr "含めるあらゆるプロパティに1つのサマリタイプしかを持てないという事に気をつけて下さい。同じプロパティを参照する後にくる列は全て同じサマリの情報を表示します。"
 
 #+glossary: day ( 日付|日にち ) / example ( 例 ) / summary ( 概要 ) / task ( タスク ) / type ( タイプ|入力する ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:4977
 msgid "The @code{est+} summary type requires further explanation.  It is used for combining estimates, expressed as low-high ranges.  For example, instead of estimating a particular task will take 5 days, you might estimate it as 5-6 days if you're fairly confident you know how much work is required, or 1-10 days if you don't really know what needs to be done.  Both ranges average at 5.5 days, but the first represents a more predictable delivery."
-msgstr ""
+msgstr "@code{est+}サマリタイプはもう少し説明が必要です。それは低-高の幅で表現される見積りを組み合わせるために使われます。例えば、特定のタスクが5日必要であると見積る代わりに、どのくらいの仕事が必要とされるか公正に確実に見積もるならば5日から6日と、それをなすのに必要な時間が本当に分からないならば、1-10日と見積るでしょう。両者の幅の平均は5.5日ですが、前者はより予測可能な発言を示しています。"
 
 #+glossary: day ( 日付|日にち ) / example ( 例 ) / task ( タスク ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:4986
 msgid "When combining a set of such estimates, simply adding the lows and highs produces an unrealistically wide result. Instead, @code{est+} adds the statistical mean and variance of the sub-tasks, generating a final estimate from the sum.  For example, suppose you had ten tasks, each of which was estimated at 0.5 to 2 days of work.  Straight addition produces an estimate of 5 to 20 days, representing what to expect if everything goes either extremely well or extremely poorly. In contrast, @code{est+} estimates the full job more realistically, at 10-15 days."
-msgstr ""
+msgstr "そのような見積りを組み合わせるとき、単純に低と高を追加すると非現実的な幅の結果を作ります。代わりに、@code{est+}は合計から最終的な見積りを生成する事で統計的意味やサブタスクの分散を追加します。例えば、10個のタスクがあるとき、各々が0.5から2日の仕事であると見積られました。全てが非常によく進む、もしくは悪く進むと期待する事による計算で、ストレートな追加は5日から20日の見積りであると生成します。対照的に、@code{est+}は全ての仕事より現実的に10日から15日であると見積ります。"
 
 #+glossary: column ( 列 ) / example ( 例 ) / value ( 値 )
 #. type: Plain text
 #: org.texi:4989
 msgid "Here is an example for a complete columns definition, along with allowed values."
-msgstr ""
+msgstr "以下は許容値にそって列定義を計算する例です。"
 
 #+glossary: column ( 列 ) / mark ( マーク ) / note ( ノート|メモ )
 #. type: example
@@ -12754,18 +12815,23 @@ msgid ""
 ":Status_ALL:   \"In progress\" \"Not started yet\" \"Finished\" \"\"\n"
 ":Approved_ALL: \"[ ]\" \"[X]\"\n"
 msgstr ""
+":COLUMNS:  %25ITEM %9Approved(Approved?)@{X@} %Owner %11Status \\\\@footnote{Please note that the COLUMNS definition must be on a single line---it is wrapped here only because of formatting constraints.}\n"
+"                   %10Time_Estimate@{:@} %CLOCKSUM\n"
+":Owner_ALL:    Tammy Mark Karl Lisa Don\n"
+":Status_ALL:   \\\"In progress\\\" \\\"Not started yet\\\" \\\"Finished\\\" \\\"\\\"\n"
+":Approved_ALL: \\\"[ ]\\\" \\\"[X]\\\""
 
 #+glossary: characters ( 文字 ) / checkbox ( チェックボックス ) / checked ( チェックされた ) / column ( 列 ) / display ( ディスプレイ|表示 ) / field ( フィールド ) / headline ( 見出し ) / item ( アイテム|項目 ) / list ( リスト ) / subtree ( サブツリー ) / time ( 時刻|時間|回 ) / value ( 値 ) / width ( 幅 )
 #. type: Plain text
 #: org.texi:5013
 msgid "The first column, @samp{%25ITEM}, means the first 25 characters of the item itself, i.e.@: of the headline.  You probably always should start the column definition with the @samp{ITEM} specifier.  The other specifiers create columns @samp{Owner} with a list of names as allowed values, for @samp{Status} with four different possible values, and for a checkbox field @samp{Approved}.  When no width is given after the @samp{%} character, the column will be exactly as wide as it needs to be in order to fully display all values.  The @samp{Approved} column does have a modified title (@samp{Approved?}, with a question mark).  Summaries will be created for the @samp{Time_Estimate} column by adding time duration expressions like HH:MM, and for the @samp{Approved} column, by providing an @samp{[X]} status if all children have been checked.  The @samp{CLOCKSUM} column is special, it lists the sum of CLOCK intervals in the subtree."
-msgstr ""
+msgstr "最初の列、@samp{%25ITEM}はその項目の25文字を意味します。すなわち見出しの\\@:です。おそらく常に@samp{ITEM}指示子を持つ列定義をはじめるべきでしょう。その他の指示子は許容値の名前のリストを持つ列@samp{Owner}、4つの異なる利用可能な値を持つ@samp{Status}、チェックボックスフィールドを持つ@samp{Approved}を生成します。@samp{%}文字の後に幅が与えられていないとき、列は全ての値を完全に表示するために必要な幅と同じぐらい正確に広くなります。@samp{Approved}列は修正れたタイトル(クエスチョンマークのある@samp{Approved?})を持っています。サマリはHH:MMのように表現される持続時間を追加した@samp{Time_Estimate}列と子が全てチェックされているならば、@samp{[X]}状態を持った@samp{Approved}列で作られます。@samp{CLOCKSUM}は特別で、サブツリーにあるCLOCKインターバルの合計をリストします。"
 
 #+glossary: column view ( カラムビュー )
 #. type: table
 #: org.texi:5020
 msgid "@tsubheading{Turning column view on and off} @orgcmd{C-c C-x C-c,org-columns}"
-msgstr ""
+msgstr "@tsubheading{カラムビューのオン・オフ} @orgcmd{C-c C-x C-c,org-columns}"
 
 #. type: vindex
 #: org.texi:5020
@@ -12780,49 +12846,49 @@ msgstr "org-columns-default-format"
 #. type: table
 #: org.texi:5037
 msgid "Turn on column view.  If the cursor is before the first headline in the file, column view is turned on for the entire file, using the @code{#+COLUMNS} definition.  If the cursor is somewhere inside the outline, this command searches the hierarchy, up from point, for a @code{:COLUMNS:} property that defines a format.  When one is found, the column view table is established for the tree starting at the entry that contains the @code{:COLUMNS:} property.  If no such property is found, the format is taken from the @code{#+COLUMNS} line or from the variable @code{org-columns-default-format}, and column view is established for the current entry and its subtree.  @orgcmd{r,org-columns-redo} Recreate the column view, to include recent changes made in the buffer.  @orgcmd{g,org-columns-redo} Same as @kbd{r}.  @orgcmd{q,org-columns-quit} Exit column view.  @tsubheading{Editing values}"
-msgstr ""
+msgstr "カラムビューを有効とします。カーソルがそのファイルの最初の見出しより前にあるならば、カラムビューは@code{#+COLUMNS}定義を使う事によりファイル全体に対して有効となります。カーソルがアウトラインの内側のどこかにあるならば、このコマンドはフォーマットを定義する@code{:COLUMNS:}プロパティをポイントから上部の階層に向かって検索します。1つ見つかったとき、カラムビューテーブルは@code{:COLUMNS:}プロパティを含むエントリではじまるツリー用に設立されます。そのようなプロパティが見付からないときは、フォーマットは@code{#+COLUMNS}行もしくは、変数@code{org-columns-default-format}から取得され、カラムビューは現在のエントリとそのサブツリーのために設立されます。@orgcmd{r,org-columns-redo}バッファにある最近作られた変更を反映するためにカラムビューを再生成します。@orgcmd{g,org-columns-redo}@kbd{r}と同じです。@orgcmd{q,org-columns-quit}カラムビュー抜けます。@tsubheading{値を編集する}"
 
 #. type: item
 #: org.texi:5037
 #, no-wrap
 msgid "@key{left} @key{right} @key{up} @key{down}"
-msgstr ""
+msgstr "@key{left} @key{right} @key{up} @key{down}"
 
 #+glossary: column view ( カラムビュー ) / field ( フィールド )
 #. type: table
 #: org.texi:5039
 msgid "Move through the column view from field to field."
-msgstr ""
+msgstr "フィールドからフィールドへカラムビューを通じて移動します。"
 
 #+glossary: field ( フィールド ) / property ( プロパティ ) / value ( 値 )
 #. type: table
 #: org.texi:5044
 msgid "Switch to the next/previous allowed value of the field.  For this, you have to have specified allowed values for a property."
-msgstr ""
+msgstr "フィールドの次と前の許容値を切り替えます。このために、プロパティの指定された許容値を持つ必要があります。"
 
 #. type: item
 #: org.texi:5044
 #, no-wrap
 msgid "1..9,0"
-msgstr ""
+msgstr "1..9,0"
 
 #+glossary: column view ( カラムビュー ) / checkbox ( チェックボックス ) / column ( 列 ) / completion ( 補完 ) / current ( カレント|現在の ) / editing ( 編集 ) / entry ( エントリー|文|入力 ) / example ( 例 ) / hierarchy ( 階層 ) / insert ( 挿入 ) / list ( リスト ) / point ( ポイント ) / property ( プロパティ ) / table ( テーブル ) / tag ( タグ ) / toggle ( トグル ) / value ( 値 ) / view ( ビュー ) / width ( 幅 )
 #. type: table
 #: org.texi:5070
 msgid "Directly select the Nth allowed value, @kbd{0} selects the 10th value.  @orgcmdkkcc{n,p,org-columns-next-allowed-value,org-columns-previous-allowed-value} Same as @kbd{S-@key{left}/@key{right}} @orgcmd{e,org-columns-edit-value} Edit the property at point.  For the special properties, this will invoke the same interface that you normally use to change that property.  For example, when editing a TAGS property, the tag completion or fast selection interface will pop up.  @orgcmd{C-c C-c,org-columns-set-tags-or-toggle} When there is a checkbox at point, toggle it.  @orgcmd{v,org-columns-show-value} View the full value of this property.  This is useful if the width of the column is smaller than that of the value.  @orgcmd{a,org-columns-edit-allowed} Edit the list of allowed values for this property.  If the list is found in the hierarchy, the modified values is stored there.  If no list is found, the new value is stored in the first entry that is part of the current column view.  @tsubheading{Modifying the table structure} @orgcmdkkcc{<,>,org-columns-narrow,org-columns-widen} Make the column narrower/wider by one character.  @orgcmd{S-M-@key{right},org-columns-new} Insert a new column, to the left of the current column.  @orgcmd{S-M-@key{left},org-columns-delete} Delete the current column."
-msgstr ""
+msgstr "直接にN番目の許容値を選択します。@kbd{0}は10番目の値を選択します。@orgcmdkkcc{n,p,org-columns-next-allowed-value,org-columns-previous-allowed-value}@kbd{S-@key{left}/@key{right}}と同じです。@orgcmd{e,org-columns-edit-value}ポイント下のプロパティを編集します。特別なプロパティでは通常そのプロパティを変更するために使うのと同じインタフェースを呼び出します。例えば、TAGSプロパティを編集するとき、タグ補完や高速選択インタフェースがポップアップします。@orgcmd{C-c C-c,org-columns-set-tags-or-toggle}チェックボックスがあるならば、それを切り替えます。@orgcmd{v,org-columns-show-value}このプロパティの完全な値を表示します。列の幅がその値よりも小さいときに便利です。@orgcmd{a,org-columns-edit-allowed}このプロパティの許容値のリストを編集します。リストが階層に見つかるならば、修正値はそこに保存されます。リストが見つからないならば、新しい値は現在のカラムビューの一部えある最初のエントリに保存されます。@tsubheading{テーブル構造を編集する}@orgcmdkkcc{<,>,org-columns-narrow,org-columns-widen}1文字分列を狭く・広くする@orgcmd{S-M-@key{right},org-columns-new}現在の列の左に新しい列を挿入する。@orgcmd{S-M-@key{left},org-columns-delete}現在の列を削除する。"
 
 #+glossary: column view ( カラムビュー ) / block ( ブロック ) / buffer ( バッファ ) / capture ( キャプチャ ) / dynamic ( 動的な ) / exported ( エクスポート|出力された )
 #. type: Plain text
 #: org.texi:5079
 msgid "Since column view is just an overlay over a buffer, it cannot be exported or printed directly.  If you want to capture a column view, use a @code{columnview} dynamic block (@pxref{Dynamic blocks}).  The frame of this block looks like this:"
-msgstr ""
+msgstr "カラムビューはバッファへのオーバレイのみなので、直接にエクスポートや印字ができません。カラムビューをキャプチャしたいならば、@code{columnview}ダイナミックビュー(@pxref{Dynamic blocks})を使って下さい。このブロックのフレームは以下のように見えます。"
 
 #. type: cindex
 #: org.texi:5080
 #, no-wrap
 msgid "#+BEGIN, columnview"
-msgstr ""
+msgstr "#+BEGIN, columnview"
 
 #+glossary: column ( 列 )
 #. type: example
@@ -12832,7 +12898,7 @@ msgid ""
 "* The column view\n"
 "#+BEGIN: columnview :hlines 1 :id \"label\"\n"
 "\n"
-msgstr ""
+msgstr "#+BEGIN: columnview :hlines 1 :id \\\"label\\\"\\n\n"
 
 #. type: example
 #: org.texi:5086
@@ -12846,13 +12912,13 @@ msgstr "#+END:\n"
 #: org.texi:5091
 #, no-wrap
 msgid ":id"
-msgstr ""
+msgstr ":id"
 
 #+glossary: column view ( カラムビュー ) / block ( ブロック ) / capture ( キャプチャ ) / feature ( 機能 ) / file ( ファイル ) / tree ( ツリー ) / view ( ビュー )
 #. type: table
 #: org.texi:5096
 msgid "This is the most important parameter.  Column view is a feature that is often localized to a certain (sub)tree, and the capture block might be at a different location in the file.  To identify the tree whose view to capture, you can use 4 values:"
-msgstr ""
+msgstr "これは最も重要なパラメータです。カラムビューはあるツリーによくローカライズされる機能であり、キャプチャブロックはファイル内の異なる位置にあるかもしれません。キャプチャへのビューのツリーを識別するために、4つの値を使えます。"
 
 #+glossary: column view ( カラムビュー ) / block ( ブロック ) / capture ( キャプチャ ) / copy ( コピー ) / current ( カレント|現在の ) / entry ( エントリー|文|入力 ) / global ( グローバルな ) / heading ( 見出し ) / tree ( ツリー ) / value ( 値 ) / view ( ビュー )
 #. type: example
@@ -12868,6 +12934,13 @@ msgid ""
 "          @r{@kbd{M-x org-id-copy} to create a globally unique ID for}\n"
 "          @r{the current entry and copy it to the kill-ring.}\n"
 msgstr ""
+"local     @r{キャプチャブロックに位置するツリーを使います。}\n"
+"global    @r{そのファイル内の全ての見出しを含む、グローバルビューを作ります。}\n"
+"\\\"file:@var{path-to-file}\\\"\n"
+"          @r{このファイルの一番上のカラムビューを実行します。}\n"
+"\\\"@var{ID}\\\"      @r{@code{:ID:}を持つツリーにあるカラムビューを呼び出します。}\n"
+"          @r{値@i{label}を持つプロパティ。現在のエントリ用にグローバルにユニークな}\n"
+"          @r{IDを作るために@kbd{M-x org-id-copy}を使い、それをkill-ringにコピーします。}\n"
 
 #. type: code{#1}
 #: org.texi:5107
@@ -12880,74 +12953,74 @@ msgstr ":hlines"
 #. type: table
 #: org.texi:5110
 msgid "When @code{t}, insert an hline after every line.  When a number @var{N}, insert an hline before each headline with level @code{<= @var{N}}."
-msgstr ""
+msgstr "@code{t}のとき、全ての行の後に横線を挿入します。数値@var{N}のとき、レベル@code{<= @var{N}}を持つ各見出しの前に縦線を挿入します。"
 
 #. type: item
 #: org.texi:5110
 #, no-wrap
 msgid ":vlines"
-msgstr ""
+msgstr ":vlines"
 
 #+glossary: column ( 列 ) / line ( 行|ライン|線 )
 #. type: table
 #: org.texi:5112
 msgid "When set to @code{t}, force column groups to get vertical lines."
-msgstr ""
+msgstr "@code{t}に設定するとき、列グループに縦線を強制します。"
 
 #. type: item
 #: org.texi:5112
 #, no-wrap
 msgid ":maxlevel"
-msgstr ""
+msgstr ":maxlevel"
 
 #+glossary: capture ( キャプチャ ) / entries ( エントリー|文|入力 ) / level ( レベル|階層 )
 #. type: table
 #: org.texi:5114
 msgid "When set to a number, don't capture entries below this level."
-msgstr ""
+msgstr "数値を設定すると、そのレベル以下のエントリをキャプチャしません。"
 
 #. type: item
 #: org.texi:5114
 #, no-wrap
 msgid ":skip-empty-rows"
-msgstr ""
+msgstr ":skip-empty-rows"
 
 #+glossary: column view ( カラムビュー ) / row ( 行 )
 #. type: table
 #: org.texi:5117
 msgid "When set to @code{t}, skip rows where the only non-empty specifier of the column view is @code{ITEM}."
-msgstr ""
+msgstr "@code{t}に設定すると、カラムビューが@code{ITEM}である空でない識別子のみの行をスキップします。"
 
 #+glossary: following commands ( 以下に述べるコマンド ) / dynamic ( 動的な ) / insert ( 挿入 ) / update ( アップデート|更新 )
 #. type: Plain text
 #: org.texi:5122
 msgid "The following commands insert or update the dynamic block:"
-msgstr ""
+msgstr "次のコマンドはダイナミックブロックを挿入、更新します。"
 
 #+glossary: column view ( カラムビュー ) / block ( ブロック ) / buffer ( バッファ ) / cursor ( カーソル ) / dynamic ( 動的な ) / insert ( 挿入 ) / line ( 行|ライン|線 ) / point ( ポイント ) / table ( テーブル ) / update ( アップデート|更新 ) / view ( ビュー )
 #. type: table
 #: org.texi:5134
 msgid "@orgcmd{C-c C-x i,org-insert-columns-dblock} Insert a dynamic block capturing a column view.  You will be prompted for the scope or ID of the view.  @orgcmdkkc{C-c C-c,C-c C-x C-u,org-dblock-update} Update dynamic block at point.  The cursor needs to be in the @code{#+BEGIN} line of the dynamic block.  @orgcmd{C-u C-c C-x C-u,org-update-all-dblocks} Update all dynamic blocks (@pxref{Dynamic blocks}).  This is useful if you have several clock table blocks, column-capturing blocks or other dynamic blocks in a buffer."
-msgstr ""
+msgstr "@orgcmd{C-c C-x i,org-insert-columns-dblock}カラムビューをキャプチャするダイナミックブロックを挿入します。そのビューのスコープやIDの入力を促されます。@orgcmdkkc{C-c C-c,C-c C-x C-u,org-dblock-update}ポイント下のダイナミックブロックを更新します。カーソルはダイナミックブロクの@code{#+BEGIN}行にある必要があります。@orgcmd{C-u C-c C-x C-u,org-update-all-dblocks}全てのダイナミックブロックを更新します(@pxref{Dynamic blocks})。複数のクロックテーブルブロックや列キャプチャブロック、その他のダイナミックブロックがバッファにあるとき便利です。"
 
 #+glossary: column view ( カラムビュー ) / block ( ブロック ) / formula ( 数式 ) / table ( テーブル ) / update ( アップデート|更新 )
 #. type: Plain text
 #: org.texi:5140
 msgid "You can add formulas to the column view table and you may add plotting instructions in front of the table---these will survive an update of the block.  If there is a @code{#+TBLFM:} after the table, the table will actually be recalculated automatically after an update."
-msgstr ""
+msgstr "カラムビューテーブルに計算式を追加し、テーブルの前にプロットする命令を追加できます。これらはブロックの更新があっても生き残ります。テーブルの後に@code{#+TBLFM:}があるならば、テーブルは実際に更新の後に自動的に実際に再計算されます。"
 
 #+glossary: an alternative way ( 別の方法 ) / block ( ブロック ) / capture ( キャプチャ ) / dynamic ( 動的な ) / entries ( エントリー|文|入力 ) / org ( Org-mode ) / package ( パッケージ ) / property ( プロパティ ) / provide ( 用意する ) / table ( テーブル ) / value ( 値 )
 #. type: Plain text
 #: org.texi:5148
 msgid "An alternative way to capture and process property values into a table is provided by Eric Schulte's @file{org-collector.el} which is a contributed package@footnote{Contributed packages are not part of Emacs, but are distributed with the main distribution of Org (visit @uref{http://orgmode.org}).}.  It provides a general API to collect properties from entries in a certain scope, and arbitrary Lisp expressions to process these values before inserting them into a table or a dynamic block."
-msgstr ""
+msgstr "テーブルの中でプロパティ値を処理したりキャプチャする別の方法はEric Schulteの@file{org-collector.el}によりできます。それは寄付されたパッケージ@footnote{寄付されたパッケージはEmacsの一部ではありませんがOrgのメインの配布物と共に配布されます(@uref{http://orgmode.org}を訪ずれて下さい)。}です。あるスコープにあるエントリからプロパティを集めるための一般的なAPIやテーブルやダイナミックブロックの中に挿入する前にそれらの値を処理する任意のLisp式を提供します。"
 
 #+glossary: property ( プロパティ )
 #. type: section
 #: org.texi:5150
 #, no-wrap
 msgid "The Property API"
-msgstr ""
+msgstr "プロパティAPI"
 
 #. type: cindex
 #: org.texi:5151
@@ -12967,7 +13040,7 @@ msgstr "プロパティのためのAPI"
 #. type: Plain text
 #: org.texi:5158
 msgid "There is a full API for accessing and changing properties.  This API can be used by Emacs Lisp programs to work with properties and to implement features based on them.  For more information see @ref{Using the property API}."
-msgstr ""
+msgstr "プロパティにアクセス、変更するための完全なAPIがあります。このAPIはプロパティと共に動作するために、また、それらを元とした機能を実装するためにEmacs Lispプログラムから使われます。詳細な情報は@ref{Using the property API}を参照して下さい。"
 
 #+glossary: date ( 日付 )
 #. type: cindex
