@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-09-13 00:45+0900\n"
+"PO-Revision-Date: 2011-09-13 02:03+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -9343,7 +9343,7 @@ msgstr "Org-modeはURLのようなリンクを認識して、クリック可能�
 #: org.texi:2983
 #, no-wrap
 msgid "[[link][description]]       @r{or alternatively}           [[link]]\n"
-msgstr "[[リンク][項目名]]       @r{または}           [[リンク]]\\n"
+msgstr "[[リンク][項目名]]       @r{または}           [[リンク]]\n"
 
 #+glossary: brackets ( 角括弧 ) / buffer ( バッファ ) / cursor ( カーソル ) / default ( デフォルト|初期値 ) / display ( ディスプレイ|表示 ) / invisible ( 非表示 ) / link ( リンク ) / note ( ノート|メモ ) / org ( Org-mode ) / visible ( 表示 )
 #. type: Plain text
@@ -9408,7 +9408,7 @@ msgstr "マウスのクリック、またはリンク上にカーソルがある
 #: org.texi:3031
 #, no-wrap
 msgid "# <<My Target>>\n"
-msgstr "# <<My Target>>\\n"
+msgstr "# <<My Target>>\n"
 
 #+glossary: exported ( エクスポート|出力された ) / headline ( 見出し ) / line ( 行|ライン|線 ) / named ( 名前付き ) / text ( テキスト|文章 )
 #. type: Plain text
@@ -9656,7 +9656,7 @@ msgstr "リンクは二重括弧で囲んだ方が良いでしょう。URLの代
 #: org.texi:3141
 #, no-wrap
 msgid "[[http://www.gnu.org/software/emacs/][GNU Emacs]]\n"
-msgstr "[[http://www.gnu.org/software/emacs/][GNU Emacs]]\\n"
+msgstr "[[http://www.gnu.org/software/emacs/][GNU Emacs]]\n"
 
 #+glossary: export ( エクスポート ) / exported ( エクスポート|出力された ) / file ( ファイル ) / image ( 画像 ) / inline ( インライン ) / link ( リンク ) / point ( ポイント )
 #. type: Plain text
@@ -10030,35 +10030,11 @@ msgstr ""
 "    (define-key org-mode-map \"\\C-n\" 'org-next-link)\n"
 "    (define-key org-mode-map \"\\C-p\" 'org-previous-link)))\n"
 
-#. type: lisp
-#: org.texi:3343
-#, no-wrap
-msgid ""
-"(add-hook 'org-load-hook\n"
-"  (lambda ()\n"
-"    (define-key org-mode-map \"\\C-n\" 'org-next-link)\n"
-"    (define-key org-mode-map \"\\C-p\" 'org-previous-link)))\n"
-msgstr ""
-"(add-hook 'org-load-hook\n"
-"  (lambda ()\n"
-"    (define-key org-mode-map \"\\C-n\" 'org-next-link)\n"
-"    (define-key org-mode-map \"\\C-p\" 'org-previous-link)))\n"
-
 #+glossary: buffer ( バッファ ) / command ( コマンド ) / global ( グローバルな ) / insert ( 挿入 ) / key ( キー ) / link ( リンク ) / org ( Org-mode ) / syntax ( 構文|シンタックス )
 #. type: Plain text
 #: org.texi:3353
 msgid "You can insert and follow links that have Org syntax not only in Org, but in any Emacs buffer.  For this, you should create two global commands, like this (please select suitable global keys yourself):"
 msgstr "Org-modeだけでなく、どのEmacsのバッファーでも、Org-mode構文を持つリンクを挿入し、たどることができます。このためには、次のような2つのグローバルコマンドを作成しなければなりません(自分に適したグローバルなキーを設定してください)。"
-
-#. type: lisp
-#: org.texi:3357
-#, no-wrap
-msgid ""
-"(global-set-key \"\\C-c L\" 'org-insert-link-global)\n"
-"(global-set-key \"\\C-c o\" 'org-open-at-point-global)\n"
-msgstr ""
-"(global-set-key \"\\C-c L\" 'org-insert-link-global)\n"
-"(global-set-key \"\\C-c o\" 'org-open-at-point-global)\n"
 
 #. type: lisp
 #: org.texi:3357
@@ -10094,7 +10070,7 @@ msgstr "長いURLをタイプするのは面倒ですが、往々にしてひと
 #: org.texi:3370
 #, no-wrap
 msgid "[[linkword:tag][description]]\n"
-msgstr "[[リンク語句:タグ][項目名]]\\n"
+msgstr "[[リンク語句:タグ][項目名]]\n"
 
 #. type: vindex
 #: org.texi:3373
@@ -10108,24 +10084,6 @@ msgstr "org-link-abbrev-alist"
 #: org.texi:3379
 msgid "where the tag is optional.  The @i{linkword} must be a word, starting with a letter, followed by letters, numbers, @samp{-}, and @samp{_}.  Abbreviations are resolved according to the information in the variable @code{org-link-abbrev-alist} that relates the linkwords to replacement text.  Here is an example:"
 msgstr "タグはなくても構いません。@i{リンク語句}は文字で始まる語句、数字、@samp{-}、@samp{_}を使うことができます。省略記法は、リンク語句とリンクテキストを関連づける@code{org-link-abbrev-alist}変数の値にしたがって展開されます。以下に例を示します。"
-
-#. type: group
-#: org.texi:3388
-#, no-wrap
-msgid ""
-"(setq org-link-abbrev-alist\n"
-"  '((\"bugzilla\" . \"http://10.1.2.9/bugzilla/show_bug.cgi?id=\")\n"
-"    (\"google\"   . \"http://www.google.com/search?q=\")\n"
-"    (\"gmap\"     . \"http://maps.google.com/maps?q=%s\")\n"
-"    (\"omap\"     . \"http://nominatim.openstreetmap.org/search?q=%s&polygon=1\")\n"
-"    (\"ads\"      . \"http://adsabs.harvard.edu/cgi-bin/nph-abs_connect?author=%s&db_key=AST\")))\n"
-msgstr ""
-"(setq org-link-abbrev-alist\n"
-"  '((\"bugzilla\" . \"http://10.1.2.9/bugzilla/show_bug.cgi?id=\")\n"
-"    (\"google\"   . \"http://www.google.com/search?q=\")\n"
-"    (\"gmap\"     . \"http://maps.google.com/maps?q=%s\")\n"
-"    (\"omap\"     . \"http://nominatim.openstreetmap.org/search?q=%s&polygon=1\")\n"
-"    (\"ads\"      . \"http://adsabs.harvard.edu/cgi-bin/nph-abs_connect?author=%s&db_key=AST\")))\n"
 
 #. type: group
 #: org.texi:3388
@@ -10179,16 +10137,6 @@ msgstr ""
 "#+LINK: bugzilla  http://10.1.2.9/bugzilla/show_bug.cgi?id=\n"
 "#+LINK: google    http://www.google.com/search?q=%s\n"
 
-#. type: example
-#: org.texi:3411
-#, no-wrap
-msgid ""
-"#+LINK: bugzilla  http://10.1.2.9/bugzilla/show_bug.cgi?id=\n"
-"#+LINK: google    http://www.google.com/search?q=%s\n"
-msgstr ""
-"#+LINK: bugzilla  http://10.1.2.9/bugzilla/show_bug.cgi?id=\n"
-"#+LINK: google    http://www.google.com/search?q=%s\n"
-
 #+glossary: link abbreviations ( リンクの省略記法 ) / argument ( 引数 ) / completion ( 補完 ) / function ( 機能|関数 ) / link ( リンク ) / prefix ( 接頭辞 )
 #. type: Plain text
 #: org.texi:3419
@@ -10227,22 +10175,6 @@ msgstr "ファイルへのリンクには、ファイル内の特定の場所へ
 #: org.texi:3436
 msgid "Here is the syntax of the different ways to attach a search to a file link, together with an explanation:"
 msgstr "説明と共に、あるファイルリンクへの検索語句を付加する様々な構文の方法を示します。"
-
-#. type: example
-#: org.texi:3443
-#, no-wrap
-msgid ""
-"[[file:~/code/main.c::255]]\n"
-"[[file:~/xx.org::My Target]]\n"
-"[[file:~/xx.org::*My Target]]\n"
-"[[file:~/xx.org::#my-custom-id]]\n"
-"[[file:~/xx.org::/regexp/]]\n"
-msgstr ""
-"[[file:~/code/main.c::255]]\n"
-"[[file:~/xx.org::My Target]]\n"
-"[[file:~/xx.org::*My Target]]\n"
-"[[file:~/xx.org::#my-custom-id]]\n"
-"[[file:~/xx.org::/regexp/]]\n"
 
 #. type: example
 #: org.texi:3443
@@ -12237,7 +12169,7 @@ msgstr ""
 "    :Artist:    Glen Gould\n"
 "    :Publisher: Deutsche Grammophon\n"
 "    :NDisks:    1\n"
-"    :END:"
+"    :END:\n"
 
 #+glossary: entry ( エントリー|文|入力 ) / error ( エラー ) / example ( 例 ) / level ( レベル|階層 ) / property ( プロパティ ) / setting ( 設定 ) / tree ( ツリー ) / value ( 値 )
 #. type: Plain text
@@ -12258,8 +12190,8 @@ msgstr ""
 "* CD collection\n"
 "  :PROPERTIES:\n"
 "  :NDisks_ALL:  1 2 3 4\n"
-"  :Publisher_ALL: \\\"Deutsche Grammophon\\\" Philips EMI\n"
-"  :END:"
+"  :Publisher_ALL: \"Deutsche Grammophon\" Philips EMI\n"
+"  :END:\n"
 
 #+glossary: entry ( エントリー|文|入力 ) / file ( ファイル ) / line ( 行|ライン|線 )
 #. type: Plain text
@@ -12475,7 +12407,7 @@ msgstr ""
 "CLOCKSUM     @r{サブツリーでのCLOCKインターバルの合計。@code{org-clock-sum}が値を計算するために最初に実行されなければならない。}\n"
 "BLOCKED      @r{\\t\\ であれば、タスクが子供や兄弟に現在ブロックされている}\n"
 "ITEM         @r{エントリの内容}\n"
-"FILE         @r{エントリのあるファイル名}"
+"FILE         @r{エントリのあるファイル名}\n"
 
 #. type: cindex
 #: org.texi:4782
@@ -12499,13 +12431,13 @@ msgstr "プロパティに基いて選択した特別なリストやツリーの
 #. type: table
 #: org.texi:4795
 msgid "@orgcmdkkc{C-c / m,C-c \\,org-match-sparse-tree} Create a sparse tree with all matching entries.  With a @kbd{C-u} prefix argument, ignore headlines that are not a TODO line.  @orgcmd{C-c a m,org-tags-view} Create a global list of tag/property matches from all agenda files.  @xref{Matching tags and properties}.  @orgcmd{C-c a M,org-tags-view}"
-msgstr "@orgcmdkkc{C-c / m,C-c \\\\,org-match-sparse-tree} 全てのマッチしたエントリについて抽出したツリーを作成します。前置引数@kbd{C-u}をつけると、TODO行でない見出しは無視されます。  @orgcmd{C-c a m,org-tags-view} 全てのアジェンダファイルからタグ・プロパティにマッチしたグローバルなリストを作成します。  @xref{Matching tags and properties}.  @orgcmd{C-c a M,org-tags-view}"
+msgstr "@orgcmdkkc{C-c / m,C-c \\,org-match-sparse-tree} 全てのマッチしたエントリについて抽出したツリーを作成します。前置引数@kbd{C-u}をつけると、TODO行でない見出しは無視されます。  @orgcmd{C-c a m,org-tags-view} 全てのアジェンダファイルからタグ・プロパティにマッチしたグローバルなリストを作成します。  @xref{Matching tags and properties}.  @orgcmd{C-c a M,org-tags-view}"
 
 #+glossary: agenda files ( アジェンダファイル ) / TODO items ( TODOアイテム ) / check ( チェック ) / global ( グローバルな ) / list ( リスト ) / matches ( 一致 ) / tag ( タグ ) / variable ( 変数 )
 #. type: table
 #: org.texi:4799
 msgid "Create a global list of tag matches from all agenda files, but check only TODO items and force checking of subitems (see variable @code{org-tags-match-list-sublevels})."
-msgstr "全てのアジェンダファイルからタグにマッチするグローバルなリストを作成します。しかし、TODO 項目と下位項目の強制チェック(変数@code{org-tags-match-list-sublevels}参照)のみチェックします。\n"
+msgstr "全てのアジェンダファイルからタグにマッチするグローバルなリストを作成します。しかし、TODO 項目と下位項目の強制チェック(変数@code{org-tags-match-list-sublevels}参照)のみチェックします。"
 
 #+glossary: search ( 検索 ) / string ( 文字列 ) / syntax ( 構文|シンタックス ) / tag ( タグ )
 #. type: Plain text
@@ -12679,7 +12611,7 @@ msgstr "#+COLUMNS"
 #: org.texi:4904
 #, no-wrap
 msgid "#+COLUMNS: %25ITEM %TAGS %PRIORITY %TODO\n"
-msgstr "#+COLUMNS: %25ITEM %TAGS %PRIORITY %TODO\\n"
+msgstr "#+COLUMNS: %25ITEM %TAGS %PRIORITY %TODO\n"
 
 #+glossary: format ( フォーマット|形成 ) / node ( ノード ) / property ( プロパティ ) / tree ( ツリー )
 #. type: Plain text
@@ -12700,7 +12632,7 @@ msgstr ""
 "** カラムビューの一番最初のノード\n"
 "   :PROPERTIES:\n"
 "   :COLUMNS: %25ITEM %TAGS %PRIORITY %TODO\n"
-"   :END:"
+"   :END:\n"
 
 #+glossary: column ( 列 ) / document ( ドキュメント|文書 ) / entry ( エントリー|文|入力 ) / level ( レベル|階層 ) / property ( プロパティ ) / structure ( 構造 ) / subtree ( サブツリー ) / tree ( ツリー )
 #. type: Plain text
@@ -12719,7 +12651,7 @@ msgstr "列定義は、列の属性の集りです。一般的な定義は以下
 #: org.texi:4930
 #, no-wrap
 msgid " %[@var{width}]@var{property}[(@var{title})][@{@var{summary-type}@}]\n"
-msgstr " %[@var{width}]@var{property}[(@var{title})][@{@var{summary-type}@}]"
+msgstr " %[@var{width}]@var{property}[(@var{title})][@{@var{summary-type}@}]\n"
 
 #+glossary: item ( アイテム|項目 ) / property ( プロパティ )
 #. type: Plain text
@@ -12784,7 +12716,7 @@ msgstr ""
 "                @{@@min@}    @r{最小時刻(日/時間/分/秒)。}\n"
 "                @{@@max@}    @r{最大時刻(日/時間/分/秒)。}\n"
 "                @{@@mean@}   @r{時刻の算術平均(日/時間/分/秒)。}\n"
-"                @{est+@}    @r{低-高見積りを追加。}"
+"                @{est+@}    @r{低-高見積りを追加。}\n"
 
 #+glossary: column ( 列 ) / display ( ディスプレイ|表示 ) / information ( 情報 ) / property ( プロパティ ) / summary ( 概要 ) / type ( タイプ|入力する )
 #. type: Plain text
@@ -12821,11 +12753,11 @@ msgid ""
 ":Status_ALL:   \"In progress\" \"Not started yet\" \"Finished\" \"\"\n"
 ":Approved_ALL: \"[ ]\" \"[X]\"\n"
 msgstr ""
-":COLUMNS:  %25ITEM %9Approved(Approved?)@{X@} %Owner %11Status \\\\@footnote{Please note that the COLUMNS definition must be on a single line---it is wrapped here only because of formatting constraints.}\n"
+":COLUMNS:  %25ITEM %9Approved(Approved?)@{X@} %Owner %11Status \\@footnote{Please note that the COLUMNS definition must be on a single line---it is wrapped here only because of formatting constraints.}\n"
 "                   %10Time_Estimate@{:@} %CLOCKSUM\n"
 ":Owner_ALL:    Tammy Mark Karl Lisa Don\n"
-":Status_ALL:   \\\"In progress\\\" \\\"Not started yet\\\" \\\"Finished\\\" \\\"\\\"\n"
-":Approved_ALL: \\\"[ ]\\\" \\\"[X]\\\""
+":Status_ALL:   \"In progress\" \"Not started yet\" \"Finished\" \"\"\n"
+":Approved_ALL: \"[ ]\" \"[X]\"\n"
 
 #+glossary: characters ( 文字 ) / checkbox ( チェックボックス ) / checked ( チェックされた ) / column ( 列 ) / display ( ディスプレイ|表示 ) / field ( フィールド ) / headline ( 見出し ) / item ( アイテム|項目 ) / list ( リスト ) / subtree ( サブツリー ) / time ( 時刻|時間|回 ) / value ( 値 ) / width ( 幅 )
 #. type: Plain text
@@ -12905,7 +12837,8 @@ msgid ""
 "#+BEGIN: columnview :hlines 1 :id \"label\"\n"
 "\n"
 msgstr ""
-"#+BEGIN: columnview :hlines 1 :id \\\"label\\\"\\n"
+"* The column view\n"
+"#+BEGIN: columnview :hlines 1 :id \"label\"\n"
 "\n"
 
 #. type: example
@@ -12944,9 +12877,9 @@ msgid ""
 msgstr ""
 "local     @r{キャプチャブロックに位置するツリーを使います。}\n"
 "global    @r{そのファイル内の全ての見出しを含む、グローバルビューを作ります。}\n"
-"\\\"file:@var{path-to-file}\\\"\n"
+"\"file:@var{path-to-file}\"\n"
 "          @r{このファイルの一番上のカラムビューを実行します。}\n"
-"\\\"@var{ID}\\\"      @r{@code{:ID:}を持つツリーにあるカラムビューを呼び出します。}\n"
+"\"@var{ID}\"      @r{@code{:ID:}を持つツリーにあるカラムビューを呼び出します。}\n"
 "          @r{値@i{label}を持つプロパティ。現在のエントリ用にグローバルにユニークな}\n"
 "          @r{IDを作るために@kbd{M-x org-id-copy}を使い、それをkill-ringにコピーします。}\n"
 
@@ -14143,7 +14076,7 @@ msgstr ""
 "             tree@var{N}      @r{周囲のレベル@var{N}のツリー、例えば@code{tree3}}\n"
 "             tree       @r{周囲のレベル1のツリー}\n"
 "             agenda     @r{アジェンダファイル群の全体}\n"
-"             (\\\"file\\\"..) @r{指定されたファイルをスキャンする}\n"
+"             (\"file\"..) @r{指定されたファイルをスキャンする}\n"
 "             file-with-archives    @r{現在のファイルとそのアーカイブ}\n"
 "             agenda-with-archives  @r{アーカイブを含む全てのアジェンダファイル}\n"
 ":block       @r{対象とする時間範囲、この範囲は絶対時間または現在からの相対時間}\n"
@@ -18483,7 +18416,7 @@ msgstr "段落，マークアップのルール"
 #. type: Plain text
 #: org.texi:8668
 msgid "Paragraphs are separated by at least one empty line.  If you need to enforce a line break within a paragraph, use @samp{\\\\} at the end of a line."
-msgstr "段落は最低1つの空白行で区切られます．もしあなたが強制的に段落の中で改行しないなら，@samp{\\\\\\\\}を行の末尾に書いてください．"
+msgstr "段落は最低1つの空白行で区切られます．もしあなたが強制的に段落の中で改行しないなら，@samp{\\\\}を行の末尾に書いてください．"
 
 #+glossary: line break ( 改行 ) / format ( フォーマット|形成 ) / region ( リージョン|領域 )
 #. type: Plain text
@@ -18654,7 +18587,7 @@ msgstr "水平線，マーックアップのルール"
 #. type: Plain text
 #: org.texi:8733
 msgid "A line consisting of only dashes, and at least 5 of them, will be exported as a horizontal line (@samp{<hr/>} in HTML and @code{\\hrule} in @LaTeX{})."
-msgstr "少なくとも5文字のダッシュ文字のみで行成される線は水平線(HTMLでは@samp{<hr/>}，@LaTeX{}では@code{\\\\hrule})にエクスポートされます．"
+msgstr "少なくとも5文字のダッシュ文字のみで行成される線は水平線(HTMLでは@samp{<hr/>}，@LaTeX{}では@code{\\hrule})にエクスポートされます．"
 
 #+glossary: comment lines ( コメント行 )
 #. type: cindex
@@ -18735,7 +18668,7 @@ msgstr "#+LABEL"
 #. type: Plain text
 #: org.texi:8765
 msgid "Both the native Org-mode tables (@pxref{Tables}) and tables formatted with the @file{table.el} package will be exported properly.  For Org-mode tables, the lines before the first horizontal separator line will become table header lines.  You can use the following lines somewhere before the table to assign a caption and a label for cross references, and in the text you can refer to the object with @code{\\ref@{tab:basic-data@}}:"
-msgstr "Org-modeネイティブなテーブル(@pxref{Tables})と@file{table.el}パッケージを用いたテーブルの両方が適切にエクスポートされます．Org-modeの表では，最初の水平線の前の行が表のヘッダ行となります．あなたはキャプションと相互参照の指定を表の直前に，参照のための@code{\\\\ref@{tab:basic-data@}}オブジェクトをテキストのどこかに書くことができます．"
+msgstr "Org-modeネイティブなテーブル(@pxref{Tables})と@file{table.el}パッケージを用いたテーブルの両方が適切にエクスポートされます．Org-modeの表では，最初の水平線の前の行が表のヘッダ行となります．あなたはキャプションと相互参照の指定を表の直前に，参照のための@code{\\ref@{tab:basic-data@}}オブジェクトをテキストのどこかに書くことができます．"
 
 #+glossary: table ( テーブル )
 #. type: example
@@ -18923,7 +18856,7 @@ msgstr "org-coderef-label-format"
 #. type: Plain text
 #: org.texi:8882
 msgid "If the syntax for the label format conflicts with the language syntax, use a @code{-l} switch to change the format, for example @samp{#+BEGIN_SRC pascal -n -r -l \"((%s))\"}.  See also the variable @code{org-coderef-label-format}."
-msgstr "もし，ラベルの構文が言語の構文と衝突した場合，@code{-l}を使うことで@samp{#+BEGIN_SRC pascal -n -r -l \\\"((%s))\\\"}のようにフォーマットを変更できます．@code{org-coderef-label-format}変数を見てください．"
+msgstr "もし，ラベルの構文が言語の構文と衝突した場合，@code{-l}を使うことで@samp{#+BEGIN_SRC pascal -n -r -l \"((%s))\"}のようにフォーマットを変更できます．@code{org-coderef-label-format}変数を見てください．"
 
 #+glossary: example ( 例 ) / export ( エクスポート ) / published ( 公開 ) / text ( テキスト|文章 )
 #. type: Plain text
@@ -18945,7 +18878,7 @@ msgstr "C-c '"
 #. type: table
 #: org.texi:8901
 msgid "Edit the source code example at point in its native mode.  This works by switching to a temporary buffer with the source code.  You need to exit by pressing @kbd{C-c '} again@footnote{Upon exit, lines starting with @samp{*} or @samp{#} will get a comma prepended, to keep them from being interpreted by Org as outline nodes or special comments.  These commas will be stripped for editing with @kbd{C-c '}, and also for export.}.  The edited version will then replace the old version in the Org buffer.  Fixed-width regions (where each line starts with a colon followed by a space) will be edited using @code{artist-mode}@footnote{You may select a different-mode with the variable @code{org-edit-fixed-width-region-mode}.} to allow creating ASCII drawings easily.  Using this command in an empty line will create a new fixed-width region."
-msgstr "カーソル位置のソースコード例をそのネイティブモードで編集します．これはソースコードを一時バッファに表示し，切り替えることで働きます．あなたは@kbd{C-c '}をもう一度押すことで編集を終了します@footnote{終了時，Org-modeによってアウトラインの見出しや特別なコメントと間違えられないようにするために，@samp{*}か@samp{#}から始まる行はカンマが銭湯に追加されます．}． 編集されたバージョンはOrg-modeバッファ上の古いバージョンを置き換えます．固定幅のリージョンは簡単にASCIIでイラストを書くための@code{artist-mode}@footnote{@code{org-edit-fixed-width-region-mode}変数により，異なるモードを選択することもできます．}を使うことで編集されます．空行でこのコマンドを使うことで，新しい固定幅のリージョンを作成します．\n"
+msgstr "カーソル位置のソースコード例をそのネイティブモードで編集します．これはソースコードを一時バッファに表示し，切り替えることで働きます．あなたは@kbd{C-c '}をもう一度押すことで編集を終了します@footnote{終了時，Org-modeによってアウトラインの見出しや特別なコメントと間違えられないようにするために，@samp{*}か@samp{#}から始まる行はカンマが銭湯に追加されます．}． 編集されたバージョンはOrg-modeバッファ上の古いバージョンを置き換えます．固定幅のリージョンは簡単にASCIIでイラストを書くための@code{artist-mode}@footnote{@code{org-edit-fixed-width-region-mode}変数により，異なるモードを選択することもできます．}を使うことで編集されます．空行でこのコマンドを使うことで，新しい固定幅のリージョンを作成します．"
 
 #. type: item
 #: org.texi:8901
@@ -19148,13 +19081,13 @@ msgstr "@LaTeX{}のエントリ"
 #. type: Plain text
 #: org.texi:9036
 msgid "You can use @LaTeX{} macros to insert special symbols like @samp{\\alpha} to indicate the Greek letter, or @samp{\\to} to indicate an arrow.  Completion for these macros is available, just type @samp{\\} and maybe a few letters, and press @kbd{M-@key{TAB}} to see possible completions.  Unlike @LaTeX{} code, Org-mode allows these macros to be present without surrounding math delimiters, for example:"
-msgstr "あなたは@LaTeX{}マクロをギリシャ文字を表す@samp{\\\\alpha}や矢印を表す@samp{\\\\tpo}のような特殊記号の挿入に使うことができます．これらのマクロは補完が可能で，@samp{\\\\}まで入力し，その後に何文字か入力して@kbd{M-@key{TAB}}を押すことで補完が可能です．@LaTeX{}のコードとは違い，Org-modeは数学の区切り文字を囲まないようなマクロも使うことができます．以下に例を挙げます:"
+msgstr "あなたは@LaTeX{}マクロをギリシャ文字を表す@samp{\\alpha}や矢印を表す@samp{\\to}のような特殊記号の挿入に使うことができます．これらのマクロは補完が可能で，@samp{\\}まで入力し，その後に何文字か入力して@kbd{M-@key{TAB}}を押すことで補完が可能です．@LaTeX{}のコードとは違い，Org-modeは数学の区切り文字を囲まないようなマクロも使うことができます．以下に例を挙げます:"
 
 #. type: example
 #: org.texi:9039
 #, no-wrap
 msgid "Angles are written as Greek letters \\alpha, \\beta and \\gamma.\n"
-msgstr "Angles are written as Geek letters \\\\alpha, \\\\beta and \\\\gamma."
+msgstr "Angles are written as Geek letters \\alpha, \\beta and \\gamma.\n"
 
 #. type: vindex
 #: org.texi:9041
@@ -19170,14 +19103,14 @@ msgid ""
 "During export, these symbols will be transformed into the native format of the exporter backend.  Strings like @code{\\alpha} will be exported as @code{&alpha;} in the HTML output, and as @code{$\\alpha$} in the @LaTeX{} output.  Similarly, @code{\\n"
 "bsp} will become @code{&nbsp;} in HTML and @code{~} in @LaTeX{}.  If you need such a symbol inside a word, terminate it like this: @samp{\\Aacute@{@}stor}."
 msgstr ""
-"エクスポート時，これらのシンボルはエクスポート先のネイティブフォーマットに変換されます．HTMLでは@code{\\\\alpha}のような文字列は@code{&alpha;}にエクスポートされ，@LaTeX{}では@code{$\\\\alpha$}となります．同様に，@code{\\\\n"
+"エクスポート時，これらのシンボルはエクスポート先のネイティブフォーマットに変換されます．HTMLでは@code{\\alpha}のような文字列は@code{&alpha;}にエクスポートされ，@LaTeX{}では@code{$\\alpha$}となります．同様に，@code{\\n"
 "bsp}はHTMLでは@code{&nbsp;}に，@LaTeX{}では@code{~}となります．もしあなたが記号を単語の中に含めたいのであれば，次のようにします: @samp{\\Aacute@{@}stor}．"
 
 #+glossary: command ( コマンド ) / creating ( 作成 ) / list ( リスト ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:9054
 msgid "A large number of entities is provided, with names taken from both HTML and @LaTeX{}; see the variable @code{org-entities} for the complete list.  @samp{\\-} is treated as a shy hyphen, and @samp{--}, @samp{---}, and @samp{...} are all converted into special commands creating hyphens of different lengths or a compact set of dots."
-msgstr "非常に多くのエンティティが提供されていて，HTMLと@LaTeX{}からその名前を引き継いでいます;完全なリストは@code{org-entities}変数を見てください．@samp{\\\\-}はシャイなハイフンとして扱われていて，@samp{--}や@samp{---}，@samp{...}は異なる長さのハイフンかドットの集合を作成するための全て特殊コマンドに変換されます．"
+msgstr "非常に多くのエンティティが提供されていて，HTMLと@LaTeX{}からその名前を引き継いでいます;完全なリストは@code{org-entities}変数を見てください．@samp{\\-}はシャイなハイフンとして扱われていて，@samp{--}や@samp{---}，@samp{...}は異なる長さのハイフンかドットの集合を作成するための全て特殊コマンドに変換されます．"
 
 #+glossary: characters ( 文字 ) / default ( デフォルト|初期値 ) / option ( オプション ) / setting ( 設定 ) / variable ( 変数 )
 #. type: Plain text
@@ -19240,7 +19173,7 @@ msgstr "org-export-with-sub-superscripts"
 #. type: Plain text
 #: org.texi:9091
 msgid "To avoid interpretation as raised or lowered text, you can quote @samp{^} and @samp{_} with a backslash: @samp{\\^} and @samp{\\_}.  If you write a text where the underscore is often used in a different context, Org's convention to always interpret these as subscripts can get in your way.  Configure the variable @code{org-export-with-sub-superscripts} to globally change this convention, or use, on a per-file basis:"
-msgstr "上付きテキスト，下付きテキストの説明を避けるため，あなたはバックスラッシュをつけた@samp{^}と@samp{_}を引用できます: @samp{\\\\^}と@samp{\\\\_}です．異なる文脈でしばしば使われるアンダーラインのテキストを書くなら，常にこれらの下付き文字として解釈するOrg-modeの慣習はあなたのやり方で得ることができます．この慣習を変更するには@code{org-export-with-sb-superscripts}変数を設定するか，ファイルに次のように書いてください．"
+msgstr "上付きテキスト，下付きテキストの説明を避けるため，あなたはバックスラッシュをつけた@samp{^}と@samp{_}を引用できます: @samp{\\^}と@samp{\\_}です．異なる文脈でしばしば使われるアンダーラインのテキストを書くなら，常にこれらの下付き文字として解釈するOrg-modeの慣習はあなたのやり方で得ることができます．この慣習を変更するには@code{org-export-with-sb-superscripts}変数を設定するか，ファイルに次のように書いてください．"
 
 #. type: example
 #: org.texi:9094
@@ -19290,7 +19223,7 @@ msgstr "@LaTeX{}のコード片は，特別なマークは全く必要ありま�
 #. type: itemize
 #: org.texi:9137
 msgid "Environments of any kind@footnote{When @file{MathJax} is used, only the environment recognized by @file{MathJax} will be processed.  When @file{dvipng} is used to create images, any @LaTeX{} environments will be handled.}.  The only requirement is that the @code{\\begin} statement appears on a new line, preceded by only whitespace."
-msgstr "あらゆる種類の環境@footnote{@file{MathJax}が使われている時，@file{MathJax}によって認識されている環境が処理されます．@file{dvipng}を画像の生成に用いる時，@LaTeX{}環境が扱われます．}．唯一必要なことは@code{\\\\begin}文は空白のみがある行に表示されることです．"
+msgstr "あらゆる種類の環境@footnote{@file{MathJax}が使われている時，@file{MathJax}によって認識されている環境が処理されます．@file{dvipng}を画像の生成に用いる時，@LaTeX{}環境が扱われます．}．唯一必要なことは@code{\\begin}文は空白のみがある行に表示されることです．"
 
 #+glossary: line break ( 改行 ) / characters ( 文字 ) / closing ( 完了 ) / conflict ( 衝突する ) / inline ( インライン ) / math ( 数学 ) / specification ( 指定 ) / text ( テキスト|文章 )
 #. type: itemize
@@ -19443,7 +19376,7 @@ msgstr "@kbd{C-c @{}による環境テンプレートの挿入．"
 #. type: itemize
 #: org.texi:9243
 msgid "The @key{TAB} key will do template expansion if the cursor is inside a @LaTeX{} fragment@footnote{Org-mode has a method to test if the cursor is inside such a fragment, see the documentation of the function @code{org-inside-LaTeX-fragment-p}.}.  For example, @key{TAB} will expand @code{fr} to @code{\\frac@{@}@{@}} and position the cursor correctly inside the first brace.  Another @key{TAB} will get you into the second brace.  Even outside fragments, @key{TAB} will expand environment abbreviations at the beginning of a line.  For example, if you write @samp{equ} at the beginning of a line and press @key{TAB}, this abbreviation will be expanded to an @code{equation} environment.  To get a list of all abbreviations, type @kbd{M-x cdlatex-command-help}."
-msgstr "カーソルが@LaTeX{}のコード片@footnote{カーソルがコード片の中にあるときにOrg-modeはテストを行うためのメソッドを持ちます．詳細は@code{org-inside-LaTeX-fragment-p}関数のドキュメントを参照してください．}の中にある場合，@key{TAB}キーはテンプレートの展開を行います．例えば，@key{TAB}は@code{fr}を@code{\\\\frac@{@}@{@}}に展開しカーソルを最初の括弧に移動します．もう一度@key{TAB}を押すと2つ目の括弧にカーソルが移動します．コード片の外だと，@key{TAB}は行の先頭にある環境の略語を展開します．例えば，もしあなたが行頭に@samp{equ}と書いていて@key{TAB}を押すと，この略語は@code{equation}環境に展開されます．全ての略語を見るには，@kbd{M-x cdlatex-command-help}をタイプしてください．"
+msgstr "カーソルが@LaTeX{}のコード片@footnote{カーソルがコード片の中にあるときにOrg-modeはテストを行うためのメソッドを持ちます．詳細は@code{org-inside-LaTeX-fragment-p}関数のドキュメントを参照してください．}の中にある場合，@key{TAB}キーはテンプレートの展開を行います．例えば，@key{TAB}は@code{fr}を@code{\\frac@{@}@{@}}に展開しカーソルを最初の括弧に移動します．もう一度@key{TAB}を押すと2つ目の括弧にカーソルが移動します．コード片の外だと，@key{TAB}は行の先頭にある環境の略語を展開します．例えば，もしあなたが行頭に@samp{equ}と書いていて@key{TAB}を押すと，この略語は@code{equation}環境に展開されます．全ての略語を見るには，@kbd{M-x cdlatex-command-help}をタイプしてください．"
 
 #. type: vindex
 #: org.texi:9246
@@ -25845,7 +25778,7 @@ msgstr "見出しの先頭では，TODOキーワードを補完します．"
 #. type: itemize
 #: org.texi:12813
 msgid "After @samp{\\}, complete @TeX{} symbols supported by the exporter."
-msgstr "@samp{\\\\}の後では，エクスポート機能によりサポートされる@TeX{}のシンボルを補完します．"
+msgstr "@samp{\\}の後では，エクスポート機能によりサポートされる@TeX{}のシンボルを補完します．"
 
 #+glossary: current buffer ( カレントバッファ ) / headline ( 見出し ) / link ( リンク ) / search ( 検索 )
 #. type: itemize
@@ -25869,7 +25802,7 @@ msgstr "見出しの外にある@samp{:}の後では，プロパティキーを�
 #. type: itemize
 #: org.texi:12827
 msgid "After @samp{[}, complete link abbreviations (@pxref{Link abbreviations})."
-msgstr "@samp{[}の後では，リンクの省略記法を補完します(@pxref{Link abbreviations})．\n"
+msgstr "@samp{[}の後では，リンクの省略記法を補完します(@pxref{Link abbreviations})．"
 
 #+glossary: example ( 例 ) / insert ( 挿入 ) / keyword ( キーワード ) / option ( オプション ) / org-mode ( Org-mode ) / setting ( 設定 )
 #. type: itemize
@@ -25997,7 +25930,7 @@ msgstr "@kbd{i} @tab @code{#+include:} line"
 #. type: Plain text
 #: org.texi:12874
 msgid "For example, on an empty line, typing \"<e\" and then pressing TAB, will expand into a complete EXAMPLE template."
-msgstr "例えば，空の行で\\\"<e\\\"と入力し，その後TABを入力すると，EXAMPLEテンプレートが補完されます．"
+msgstr "例えば，空の行で\"<e\"と入力し，その後TABを入力すると，EXAMPLEテンプレートが補完されます．"
 
 #+glossary: customizing ( カスタマイズする ) / docstring ( ドキュメント文字列 ) / install ( インストール ) / template ( テンプレート ) / variable ( 変数 )
 #. type: Plain text
@@ -26102,7 +26035,7 @@ msgstr "t(これがデフォルトです)の時，ユーザはコードブロッ
 #. type: table
 #: org.texi:12934
 msgid "For example, here is how to execute \"ditaa\" code (which is considered safe)  without asking:"
-msgstr "例えば，これは\\\"ditaa\\\"コード(安全性は考慮されています)を確認無しで実行する方法です:"
+msgstr "例えば，これは\"ditaa\"コード(安全性は考慮されています)を確認無しで実行する方法です:"
 
 #. type: example
 #: org.texi:12938
@@ -26730,7 +26663,7 @@ msgstr "STARTUP keyword，@code{customtime}"
 #: org.texi:13162
 #, no-wrap
 msgid "customtime @r{overlay custom time format}\n"
-msgstr "customtime @r{カスタマイズされたタイムフォーマットで覆います}"
+msgstr "customtime @r{カスタマイズされたタイムフォーマットで覆います}\n"
 
 #+glossary: influence ( 変更する ) / option ( オプション ) / table ( テーブル )
 #. type: table
@@ -26871,7 +26804,7 @@ msgid ""
 "nohideblocks @r{Do not hide blocks on startup}\n"
 msgstr ""
 "hideblocks   @r{開始時に全ての開始/終了ブロックを見えなくします}\n"
-"nohideblocks @r{開始時にブロックを見えなくしません}"
+"nohideblocks @r{開始時にブロックを見えなくしません}\n"
 
 #. type: cindex
 #: org.texi:13207
@@ -27682,7 +27615,7 @@ msgstr "yasnippet.el"
 #. type: table
 #: org.texi:13602
 msgid "The way Org mode binds the TAB key (binding to @code{[tab]} instead of @code{\"\\t\"}) overrules YASnippet's access to this key.  The following code fixed this problem:"
-msgstr "Org-modeはTABキー(@code{\\\"\\\\t\\\"}の代わりに．@code{[tab]}をバインドします)をバインドするこのキーでYASnippetsのアクセスを優先します．以下のコードはこの問題を修正します:"
+msgstr "Org-modeはTABキー(@code{\"\\t\"}の代わりに．@code{[tab]}をバインドします)をバインドするこのキーでYASnippetsのアクセスを優先します．以下のコードはこの問題を修正します:"
 
 #. type: lisp
 #: org.texi:13608
