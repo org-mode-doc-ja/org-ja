@@ -1907,14 +1907,13 @@ item.
 @cindex tables
 @cindex editing tables
 
-Org comes with a fast and intuitive table editor.  Spreadsheet-like
-calculations are supported using the Emacs @file{calc} package
+Org-modeは、高速で直感的なテーブルエディタを備えています。Emacsの@file{calc}パッ
+ケージを用いることで、スプレッドシートのような計算がサポートされています。
 @ifinfo
 (@pxref{Top,Calc,,Calc,Gnu Emacs Calculator Manual}).
 @end ifinfo
 @ifnotinfo
-(see the Emacs Calculator manual for more information about the Emacs
-calculator).
+（Emacs Calculatorの詳細は、同パッケージのマニュアルを参照してください。）
 @end ifnotinfo
 
 @menu
@@ -1927,56 +1926,61 @@ calculator).
 @end menu
 
 @node Built-in table editor, Column width and alignment, Tables, Tables
-@section The built-in table editor
-@cindex table editor, built-in
+@section 組み込まれたテーブルエディタ
+@cindex テーブルエディタ（組み込み）
 
-Org makes it easy to format tables in plain ASCII.  Any line with @samp{|}
-as the first non-whitespace character is considered part of a table.
-@samp{|} is also the column separator.  A table might look like this:
+Org-modeはプレーンなASCII形式でのテーブル編集を容易にします。どのような行で
+も、空白文字を除く最初の文字が@samp{|}であるとき、テーブルの一部であるとみなされ
+ます。@samp{|}は、列を区分するセパレータとしても使われます。Org-modeのテーブルは
+、次のような見た目になるでしょう。
 
 @example
-| Name  | Phone | Age |
-|-------+-------+-----|
-| Peter |  1234 |  17 |
-| Anna  |  4321 |  25 |
+| 名前  | 電話番号  | 年齢  |
+|------+----------+------|
+| 佐藤  | １２３４  | １７  |
+| 田中  | ４３２１  | ２５  |
 @end example
 
-A table is re-aligned automatically each time you press @key{TAB} or
-@key{RET} or @kbd{C-c C-c} inside the table.  @key{TAB} also moves to the
-next field (@key{RET} to the next row) and creates new table rows at the end
-of the table or before horizontal lines.  The indentation of the table is
-set by the first line.  Any line starting with @samp{|-} is considered as a
-horizontal separator line and will be expanded on the next re-align to span
-the whole table width.  So, to create the above table, you would only type
+テーブルの中で@key{TAB}や@key{RET}、もしくは@kbd{C-c C-c}を押す度に、テーブルは自動的に
+表示が更新されます。@key{TAB}を押すとカーソルが次のフィールドに移ります（@key{RET}の
+場合は次の行へ）。また、テーブルの端もしくは水平ラインの直前の行で押せば、テ
+ーブルに新しい行が追加されます。テーブルのインデントは一行目によって設定され
+ます。@samp{|-}で開始するどんな行も水平ラインとして解釈され、次にテーブルが更新さ
+れる時に、テーブル幅いっぱいに水平ラインは拡張されます。つまり、上記のテーブ
+ルを作成するために、次のように入力するだけでよかったのです。
 
 @example
-|Name|Phone|Age|
+|名前|電話番号|年齢|
 |-
 @end example
 
 @noindent and then press @key{TAB} to align the table and start filling in
-fields.  Even faster would be to type @code{|Name|Phone|Age} followed by
-@kbd{C-c @key{RET}}.
+（indent問題箇所）さらに素早いテーブルの作成方法は、@code{|名前|電話番号|年齢}に
+続いて@kbd{C-c @key{RET}}を入力することです。
 
 @vindex org-enable-table-editor
 @vindex org-table-auto-blank-field
-When typing text into a field, Org treats @key{DEL}, @key{Backspace}, and
-all character keys in a special way, so that inserting and deleting avoids
-shifting other fields.  Also, when typing @emph{immediately after the cursor was moved into a new field with @kbd{@key{TAB}}, @kbd{S-@key{TAB}} or @kbd{@key{RET}}}, the field is automatically made blank.  If this behavior
-is too unpredictable for you, configure the variables
-@code{org-enable-table-editor} and @code{org-table-auto-blank-field}.
+フィールドに文字を入力すると、Org-modeは@key{DEL}と@key{Backspace}、そしてすべての文
+字キーを特別な方法で扱います。文字の挿入と削除によって他のフィールドがズレて
+しまうことを避けるためです。また、@emph{@kbd{@key{TAB}}、@kbd{S-@key{TAB}}もしくは@kbd{@key{RET}}によって
+新しいフィールドへカーソルが移動した直後に}文字を入力すると、自動的空白が挿
+入されます。もしもこの動作が気に入らない場合には、変数
+@code{org-enable-table-editor}と@code{org-table-auto-blank-field}を調節してください。
 
 @table @kbd
-@tsubheading{Creation and conversion} @orgcmd{C-c |,org-table-create-or-convert-from-region} Convert the active region to
-table. If every line contains at least one TAB character, the function
-assumes that the material is tab separated.  If every line contains a comma,
-comma-separated values (CSV) are assumed.  If not, lines are split at
-whitespace into fields.  You can use a prefix argument to force a specific
-separator: @kbd{C-u} forces CSV, @kbd{C-u C-u} forces TAB, and a numeric
-argument N indicates that at least N consecutive spaces, or alternatively a
-TAB will be the separator.  @* If there is no active region, this command
-creates an empty Org table.  But it's easier just to start typing, like
-@kbd{|Name|Phone|Age @key{RET} |- @key{TAB}}.
+@tsubheading{テーブルの作成と変換} @orgcmd{C-c |,org-table-create-or-convert-from-region}
+アクティブリージョンをテーブルに変換します。もし全ての行が少なくとも一
+つのタブを含んでいるならば、この関数は処理対象をタブ区切りの表であると
+想定します。もし全ての行がコンマを含んでいるならば、コンマ区切り（いわ
+ゆるCSV）であると想定されます。それ以外の場合は空白文字で区切られてい
+ると想定します。プレフィックスを用いることで、区切り文字を強制できます
+。すなわち、@kbd{C-u}でCSV、@kbd{C-u C-u}でTAB区切りを指定できます。また、プレ
+フィックスの引き数として整数値Nを用いれば、少なくともN個の連続した空白
+を区切りとして指定できます。条件に合わなければ、代わりとしてTABが区切
+りとして使われるでしょう。@*
+もしアクティブリージョンが存在しないならば、このコマンドは空のテーブル
+を生成します。しかし、@kbd{|名前|電話番号|年齢 @key{RET} |- @key{TAB}}のようにタイ
+プしてテーブル作成を始める方が簡単です。
 
 @c
 @c
@@ -2944,7 +2948,8 @@ Org-modeはURLのようなリンクを認識して、クリック可能なリン
 Org-mode上での一般的なリンクのフォーマットは以下のようなものです:
 
 @example
-[[リンク][項目名]]       @r{または}           [[リンク]]\n@end example
+[[リンク][項目名]]       @r{または}           [[リンク]]
+@end example
 
 @noindent
 すべての括弧を入力し終えてリンクが完成すると、Org-modeは、[[リンク][項目名]]
@@ -2988,7 +2993,8 @@ C-l」を実行します。
 とが多いでしょう。たとえば、以下のように。
 
 @example
-# <<My Target>>\n@end example
+# <<My Target>>
+@end example
 
 @noindent In HTML export (@pxref{HTML export}), such targets will become
 HTMLでのエクスポート（@pxref{HTML export}）では、このようなターゲットは、@samp{http}で
@@ -3097,7 +3103,8 @@ Org-modeをカスタマイズして、新しいリンクのタイプを付け加
 ともできます(@pxref{Link format})。たとえば、以下のように。
 
 @example
-[[http://www.gnu.org/software/emacs/][GNU Emacs]]\n@end example
+[[http://www.gnu.org/software/emacs/][GNU Emacs]]
+@end example
 
 @noindent
 項目名が画像を指し示すファイル名やURLの場合、HTMLエクスポート(@pxref{HTML export})
@@ -3311,7 +3318,8 @@ Org-modeだけでなく、どのEmacsのバッファーでも、Org-mode構文�
 できます。省略記法されたリンクは次のようなものです。
 
 @example
-[[リンク語句:タグ][項目名]]\n@end example
+[[リンク語句:タグ][項目名]]
+@end example
 
 @noindent
 @vindex org-link-abbrev-alist
@@ -4505,21 +4513,19 @@ description with many examples, see @ref{Matching tags and properties}.
 @chapter プロパティ（属性）とカラム（列）
 @cindex properties
 
-Properties are a set of key-value pairs associated with an entry.  There are
-two main applications for properties in Org-mode.  First, properties are
-like tags, but with a value.  Second, you can use properties to implement
-(very basic) database capabilities in an Org buffer.  For an example of the
-first application, imagine maintaining a file where you document bugs and
-plan releases for a piece of software.  Instead of using tags like
-@code{:release_1:}, @code{:release_2:}, one can use a property, say
-@code{:Release:}, that in different subtrees has different values, such as
-@code{1.0} or @code{2.0}.  For an example of the second application of
-properties, imagine keeping track of your music CDs, where properties could
-be things such as the album, artist, date of release, number of tracks, and
-so on.
+プロパティは、エントリーに関連付けられたキーと値を持つペアの集合です。
+Org-modeでは、プロパティのための2つの主要なアプリケショーンがあります。一番
+目に、プロパティはタグのようですが値を持ちます。二番目に、Org-modeのバッファ
+で(とても基本的な)データベース機能を実装するためにプロパティを使う事ができま
+す。一番目のアプリケショーンの例のために、ソフトウェアのリリース計画とバグを
+文章化するファイルを管理する事を想像して下さい。@code{:release_1:}、@code{:release_2:}
+のようなタグを使う代わりに、@code{:Release:}というプロパティを使い、異なるサブツ
+リーの中に@code{1.0}や@code{2.0}のような異なる値を持たせれば良いのです。プロパティの二
+番目のアプリケーションの例のために、音楽CDのトラックを管理する事を想像して下
+さい。そこではアルバム名、アーティスト名、リリース日、トラックの数などがプロ
+パティとなるでしょう。
 
-Properties can be conveniently edited and viewed in column view
-(@pxref{Column view}).
+プロパティは、カラムビューで便利に編集、閲覧できます(@pxref{Column view})。
 
 @menu
 * Property syntax::          プロパティの表記の仕方
@@ -4532,13 +4538,12 @@ Properties can be conveniently edited and viewed in column view
 
 @node Property syntax, Special properties, Properties and Columns, Properties and Columns
 @section Property syntax
-@cindex property syntax
+@cindex プロパティシンタックス
 @cindex drawer, for properties
 
-Properties are key-value pairs.  They need to be inserted into a special
-drawer (@pxref{Drawers}) with the name @code{PROPERTIES}.  Each property is
-specified on a single line, with the key (surrounded by colons)  first, and
-the value after it.  Here is an example:
+プロパティは、キーと値のペアです。それらは、名前@code{PROPERTIES}を持つ特別な引き
+出し(@pxref{Drawers})の中に入る必要があります。各プロパティは最初に(コロンで囲われ
+た)キーを持ち、その後に値を持つ1行で記述されます。以下に例を示します。
 
 @example
 * CD collection
@@ -4553,13 +4558,12 @@ the value after it.  Here is an example:
     :END:
 @end example
 
-You may define the allowed values for a particular property @samp{:Xyz:} by
-setting a property @samp{:Xyz_ALL:}.  This special property is
-@emph{inherited}, so if you set it in a level 1 entry, it will apply to the
-entire tree.  When allowed values are defined, setting the corresponding
-property becomes easier and is less prone to typing errors.  For the example
-with the CD collection, we can predefine publishers and the number of disks
-in a box like this:
+プロパティ@samp{:Xyz_ALL:}のように設定する事で、特定のプロパティ@samp{:Xyz:}のため許容
+値を定義できます。この特別なプロパティは、もしレベル1のエントリに設定された
+ならば、全てのツリーに適用されるように@emph{継承}されます。許可値を定義すると、対
+応するプロパティの設定が簡単になり、入力ミスを防ぐ事ができます。CDコレクショ
+ンの例では、以下のように1つのボックスの中に発売元とディスクの数を予め定義で
+きます。
 
 @example
 * CD collection
@@ -4569,107 +4573,105 @@ in a box like this:
   :END:
 @end example
 
-If you want to set properties that can be inherited by any entry in a file,
-use a line like
-@cindex property, _ALL
+1つのファイル全体で継承されるプロパティを設定したいならば、以下の行のように
+使います。
+@cindex プロパティ、_ALL
 @cindex #+PROPERTY
 @example
 #+PROPERTY: NDisks_ALL 1 2 3 4
 @end example
 
 @vindex org-global-properties
-Property values set with the global variable @code{org-global-properties}
-can be inherited by all entries in all Org files.
+グローバル変数@code{org-global-properties}に設定するプロパティの値は全ての
+Org-modeのファイルに継承されます。
 
 @noindent
-The following commands help to work with properties:
+以下のコマンドはプロパティを操作する助けとなります。
 
 @table @kbd
-@orgcmd{M-@key{TAB},pcomplete} After an initial colon in a line, complete
-property keys.  All keys used in the current file will be offered as
-possible completions.  @orgcmd{C-c C-x p,org-set-property} Set a property.
-This prompts for a property name and a value.  If necessary, the property
-drawer is created as well.
+@orgcmd{M-@key{TAB},pcomplete}行の最初のコロンの後で、プロパティのキーを補完しま
+す。現在のファイルで使われた全てのキーは、可能な補完候補として提供され
+ます。@orgcmd{C-c C-x p,org-set-property}プロパティを設定します。プロパティ名
+と値の入力を促します。必要なら、プロパティの引き出しがさらに作られます。
 @item M-x org-insert-property-drawer
 @findex org-insert-property-drawer
-Insert a property drawer into the current entry.  The drawer will be
-inserted early in the entry, but after the lines with planning information
-like deadlines.  @orgcmd{C-c C-c,org-property-action} With the cursor in a
-property drawer, this executes property commands.  @orgcmd{C-c C-c s,org-set-property} Set a property in the current entry.  Both the property
-and the value can be inserted using completion.
-@orgcmdkkcc{S-@key{right},S-@key{left},org-property-next-allowed-value,org-property-previous-allowed-value}
-Switch property at point to the next/previous allowed value.  @orgcmd{C-c C-c d,org-delete-property} Remove a property from the current entry.
-@orgcmd{C-c C-c D,org-delete-property-globally} Globally remove a property,
-from all entries in the current file.  @orgcmd{C-c C-c c,org-compute-property-at-point} Compute the property at point, using the
-operator and scope from the nearest column format definition.
+現在のエントリーの中にプロパティの引き出しを入れます。引き出しはエント
+リーのはじめに入りますが、デッドラインのような計画情報を持つ行の後とな
+ります。@orgcmd{C-c C-c,org-property-action}プロパティの引き出しの中にカーソ
+ルがあるとき、プロパティコマンドを実行します。
+@orgcmd{C-c C-c s,org-set-property}現在のエントリにプロパティを設定します。プ
+ロパティと値の両方共、補完を使って入力できます。
+@orgcmdkkcc{S-@key{right},S-@key{left},org-property-next-allowed-value,org-property-previous-allowed-value}ポイントのプロパティを次/前の許可値に切り替えます。@orgcmd{C-c C-c d,org-delete-property}現在のエントリからプロパティを削除します。@orgcmd{C-c C-c D,org-delete-property-globally}プロパティを現在のファイルにある全てのエントリからグローバルに削除します。@orgcmd{C-c C-c c,org-compute-property-at-point}ポイントにあるプロパティを最も近い列のフォーマット定義からオペレータやスコープを使って計算します。
 @end table
 
 @node Special properties, Property searches, Property syntax, Properties and Columns
 @section Special properties
-@cindex properties, special
+@cindex プロパティ、スペシャル
 
-Special properties provide an alternative access method to Org-mode
-features, like the TODO state or the priority of an entry, discussed in the
-previous chapters.  This interface exists so that you can include these
-states in a column view (@pxref{Column view}), or to use them in queries.
-The following property names are special and (except for @code{:CATEGORY:})
-should not be used as keys in the properties drawer:
+以前の章で述べたTODO状態や、エントリの優先度のようなスペシャルプロパティは、
+Org-modeの機能への別のアクセス方法を提供します。このインターフェイスは、カラ
+ムビュー(@pxref{Column view})にそれらの状態を含めたり、クエリにそれらを使ったりす
+る事で生じます。次のプロパティ名は特別(@code{:CATEGORY:}を除いて)で、プロパティの
+引き出しでキーとして使われません。
 
-@cindex property, special, TODO
-@cindex property, special, TAGS
-@cindex property, special, ALLTAGS
-@cindex property, special, CATEGORY
-@cindex property, special, PRIORITY
-@cindex property, special, DEADLINE
-@cindex property, special, SCHEDULED
-@cindex property, special, CLOSED
-@cindex property, special, TIMESTAMP
-@cindex property, special, TIMESTAMP_IA
+@cindex プロパティ、スペシャル、TODO
+@cindex プロパティ、スペシャル、TAGS
+@cindex プロパティ、スペシャル、ALLTAGS
+@cindex プロパティ、スペシャル、CATEGORY
+@cindex プロパティ、スペシャル、PRIORITY
+@cindex プロパティ、スペシャル、DEADLINE
+@cindex プロパティ、スペシャル、SCHEDULED
+@cindex プロパティ、スペシャル、CLOSED
+@cindex プロパティ、スペシャル、TIMESTAMP
+@cindex プロパティ、スペシャル、TIMESTAMP_IA
 @cindex 特別なプロパティ（CLOCKSUM）
-@cindex property, special, BLOCKED
+@cindex プロパティ、スペシャル、BLOCKED
 @c guessing that ITEM is needed in this area; also, should this list be sorted?
-@cindex property, special, ITEM
-@cindex property, special, FILE
+@cindex プロパティ、スペシャル、ITEM
+@cindex プロパティ、スペシャル、FILE
 @example
-TODO         @r{The TODO keyword of the entry.}
-TAGS         @r{The tags defined directly in the headline.}
-ALLTAGS      @r{All tags, including inherited ones.}
-CATEGORY     @r{The category of an entry.}
-PRIORITY     @r{The priority of the entry, a string with a single letter.}
-DEADLINE     @r{The deadline time string, without the angular brackets.}
-SCHEDULED    @r{The scheduling timestamp, without the angular brackets.}
-CLOSED       @r{When was this entry closed?}
-TIMESTAMP    @r{The first keyword-less timestamp in the entry.}
-TIMESTAMP_IA @r{The first inactive timestamp in the entry.}
-CLOCKSUM     @r{The sum of CLOCK intervals in the subtree.  @code{org-clock-sum}}
-             @r{must be run first to compute the values.}
-BLOCKED      @r{"t" if task is currently blocked by children or siblings}
-ITEM         @r{The content of the entry.}
-FILE         @r{The filename the entry is located in.}
+TODO         @r{エントリのTODOキーワード}
+TAGS         @r{見出しに直接定義されたタグ}
+ALLTAGS      @r{継承されたタグも含む全てのタグ}
+CATEGORY     @r{エントリのカテゴリ}
+PRIORITY     @r{1文字の文字列である、エントリの優先度}
+DEADLINE     @r{山括弧(<>)のないデッドライン時刻文字列}
+SCHEDULED    @r{山括弧(<>)のないスケジュールタイムスタンプ}
+CLOSED       @r{いつこのエントリがクローズされたか}
+TIMESTAMP    @r{エントリで最初のキーワードのないタイムスタンプ}
+TIMESTAMP_IA @r{エントリで最初のアクティブでないタイムスタンプ}
+CLOCKSUM     @r{サブツリーでのCLOCKインターバルの合計。@code{org-clock-sum}が値を計算
+するために最初に実行されなければならない。}
+BLOCKED      @r{\t\ であれば、タスクが子供や兄弟に現在ブロックされている}
+ITEM         @r{エントリの内容}
+FILE         @r{エントリのあるファイル名}
 @end example
 
 @node Property searches, Property inheritance, Special properties, Properties and Columns
 @section Property searches
-@cindex properties, searching
-@cindex searching, of properties
+@cindex プロパティ、検索
+@cindex 検索、プロパティの
 
-To create sparse trees and special lists with selection based on properties,
-the same commands are used as for tag searches (@pxref{Tag searches}).
+プロパティに基いて選択した特別なリストやツリーの抽出を作成するために、タグ検
+索(@pxref{Tag searches})の場合と同じコマンドが使えます。
 @table @kbd
-@orgcmdkkc{C-c / m,C-c \,org-match-sparse-tree} Create a sparse tree with
-all matching entries.  With a @kbd{C-u} prefix argument, ignore headlines
-that are not a TODO line.  @orgcmd{C-c a m,org-tags-view} Create a global
-list of tag/property matches from all agenda files.  @xref{Matching tags and properties}.  @orgcmd{C-c a M,org-tags-view}
+@orgcmdkkc{C-c / m,C-c \\,org-match-sparse-tree}
+全てのマッチしたエントリについて抽出したツリーを作成します。前置引数
+@kbd{C-u}をつけると、TODO行でない見出しは無視されます。
+@orgcmd{C-c a m,org-tags-view} 全てのアジェンダファイルからタグ・プロパティに
+マッチしたグローバルなリストを作成します。
+@xref{Matching tags and properties}.  @orgcmd{C-c a M,org-tags-view}
 @vindex org-tags-match-list-sublevels
-Create a global list of tag matches from all agenda files, but check only
-TODO items and force checking of subitems (see variable
-@code{org-tags-match-list-sublevels}).
+全てのアジェンダファイルからタグにマッチするグローバルなリストを作成し
+ます。しかし、TODO
+項目と下位項目の強制チェック(変数@code{org-tags-match-list-sublevels}参照)
+のみチェックします。
 @end table
 
-The syntax for the search string is described in @ref{Matching tags and properties}.
+makThe syntax for the search string is described in @ref{Matching tags and properties}.
 
-There is also a special command for creating sparse trees based on a single
-property:
+1つのプロパティに基いて抽出したツリーを作成するための特別なコマンドもありま
+す。
 
 @table @kbd
 @orgkey{C-c / p} Create a sparse tree based on the value of a property.
@@ -4680,25 +4682,23 @@ a regular expression and matched against the property values.
 @end table
 
 @node Property inheritance, Column view, Property searches, Properties and Columns
-@section Property Inheritance
-@cindex properties, inheritance
-@cindex inheritance, of properties
+@section プロパティの継承
+@cindex プロパティ、継承
+@cindex 継承、プロパティの
 
 @vindex org-use-property-inheritance
-The outline structure of Org-mode documents lends itself to an inheritance
-model of properties: if the parent in a tree has a certain property, the
-children can inherit this property.  Org-mode does not turn this on by
-default, because it can slow down property searches significantly and is
-often not needed.  However, if you find inheritance useful, you can turn it
-on by setting the variable @code{org-use-property-inheritance}.  It may be
-set to @code{t} to make all properties inherited from the parent, to a list
-of properties that should be inherited, or to a regular expression that
-matches inherited properties.  If a property has the value @samp{nil}, this
-is interpreted as an explicit undefine of the property, so that inheritance
-search will stop at this value and return @code{nil}.
+Org-mode文章のアウトライン構造はプロパティの継承モデルを適用しています。ツリ
+ーの親があるプロパティを持っているならば、子はこのプロパティを継承します。
+Org-modeはこれをデフォルトで有効としていません。これはプロパティの検索を遅く
+してしまうためとあまり必要とされないためです。しかしながら、継承が役立つ場面
+があるならば、変数@code{org-use-property-inheritance}を設定する事で有効とできます
+。この変数は、全てのプロパティを親から継承する@code{t}、継承されるべきプロパティ
+のリスト、継承されるプロパティにマッチする正規表現を設定できます。もしプロパ
+ティが値@samp{nil}を持つならば、継承検索がこの値で停止し@code{nil}を返すように、明示的
+に未定義のプロパティであると解釈されます。
 
-Org-mode has a few properties for which inheritance is hard-coded, at least
-for the special applications for which they are used:
+Org-modeは、継承がハードコードされているプロパティがいくつかあります。少くと
+もそれらを使う特別なアプリケーションがあります。
 
 @cindex プロパティ（COLUMNS）
 @table @code
@@ -4708,35 +4708,35 @@ The @code{:COLUMNS:} property defines the format of column view
 @code{:COLUMNS:} property is defined is used as the starting point for a
 column view table, independently of the location in the subtree from where
 columns view is turned on.
-@item CATEGORY
+@item CATEGORIES
 @cindex プロパティ（CATEGORY）
-For agenda view, a category set through a @code{:CATEGORY:} property applies
-to the entire subtree.
+アジェンダビュー用えす。@code{:CATEGORY:}プロパティを通して設定されたカテゴ
+リがサブツリー全体に適用されます。
 @item ARCHIVE
 @cindex プロパティ（ARCHIVE）
-For archiving, the @code{:ARCHIVE:} property may define the archive location
-for the entire subtree (@pxref{Moving subtrees}).
+アーカイブ用です。@code{:ARCHIVE:}プロパティは、サブツリー全体のアーカイブ
+位置を定義します(@pxref{Moving subtrees})。
 @item LOGGING
 @cindex 属性、ログをとる
-The LOGGING property may define logging settings for an entry or a subtree
-(@pxref{Tracking TODO state changes}).
+LOGGINGプロパティは、エントリやサブツリーのログ取得設定について定義し
+ます(@pxref{Tracking TODO state changes})。
 @end table
 
 @node Column view, Property API, Property inheritance, Properties and Columns
 @section Column view
 
-A great way to view and edit properties in an outline tree is @emph{column view}.  In column view, each outline node is turned into a table row.
-Columns in this table provide access to properties of the entries.  Org-mode
-implements columns by overlaying a tabular structure over the headline of
-each item.  While the headlines have been turned into a table row, you can
-still change the visibility of the outline tree.  For example, you get a
-compact table by switching to CONTENTS view (@kbd{S-@key{TAB} S-@key{TAB}},
-or simply @kbd{c} while column view is active), but you can still open,
-read, and edit the entry below each headline.  Or, you can switch to column
-view after executing a sparse tree command and in this way get a table only
-for the selected items.  Column view also works in agenda buffers
-(@pxref{Agenda Views}) where queries have collected selected items, possibly
-from a number of files.
+アウトラインツリーにあるプロパティを閲覧、編集するための最も良い方法は@emph{カラ
+ムビュー}です。カラムビューでは、各アウトラインノードがテーブル行に変換され
+ます。このテーブルにある列がエントリのプロパティへのアクセスです。Org-modeは
+、各項目の見出し上にテーブル構造をオーバレイすることで列を実装します。見出し
+はテーブル列に変換されますが、アウトラインツリーの見た目もまだ変えられます。
+例えば、CONTENTS
+ビュー(@kbd{S-@key{TAB}S-@key{TAB}}、もしくは、カラムビューがアクティブであるときに単純
+に@kbd{c})にスイッチする事でコンパクトなテーブルを得られますが、まだ各見出し以下
+のエントリを開いたり、読んだり、編集したりもできます。また、ツリーの抽出コマ
+ンドを実行した後にカラムビューに切り替える事もでき、この方法では選択した項目
+のみのテーブルを得ます。カラムビューは利用可能な複数のファイルから選択した項
+目を集めたクエリのあるアジェンダバッファ(@pxref{Agenda Views})でも動作します。
 
 @menu
 * Defining columns::         カラムの書式のプロパティ
@@ -4746,11 +4746,11 @@ from a number of files.
 
 @node Defining columns, Using column view, Column view, Column view
 @subsection Defining columns
-@cindex column view, for properties
-@cindex properties, column view
+@cindex カラムビュー、プロパティ用
+@cindex プロパティ、カラムビュー
 
-Setting up a column view first requires defining the columns.  This is done
-by defining a column format line.
+最初にカラムビューを設定するために、カラムを定義する必要があります。これはカ
+ラムフォーマット行を定義する事によってなされます。
 
 @menu
 * Scope of column definitions::  カラム設定の定義範囲の指定方法は？
@@ -4760,18 +4760,18 @@ by defining a column format line.
 @node Scope of column definitions, Column attributes, Defining columns, Defining columns
 @subsubsection Scope of column definitions
 
-To define a column format for an entire file, use a line like
+カラムフォーマットを定義するために、次のように行を記載します。
 
 @cindex #+COLUMNS
 @example
 #+COLUMNS: %25ITEM %TAGS %PRIORITY %TODO
 @end example
 
-To specify a format that only applies to a specific tree, add a
-@code{:COLUMNS:} property to the top node of that tree, for example:
+指定したツリーに適用するだけのフォーマットを指定するために、@code{:COLUMNS:}プロ
+パティをそのツリーの一番上のノードに追加します。例えば、
 
 @example
-** Top node for columns view
+** カラムビューの一番最初のノード
    :PROPERTIES:
    :COLUMNS: %25ITEM %TAGS %PRIORITY %TODO
    :END:
@@ -4785,70 +4785,67 @@ more specific columns further down, when you edit a deeper part of the tree.
 
 @node Column attributes, , Scope of column definitions, Defining columns
 @subsubsection Column attributes
-A column definition sets the attributes of a column.  The general definition
-looks like this:
+列定義は、列の属性の集りです。一般的な定義は以下のようになります。
 
 @example
  %[@var{width}]@var{property}[(@var{title})][@{@var{summary-type}@}]
 @end example
 
 @noindent
-Except for the percent sign and the property name, all items are optional.
-The individual parts have the following meaning:
+パーセントとプロパティ名を除いて、全ての項目はオプションです。個々のパーツは
+次の意味を持ちます。
 
 @example
-@var{width}           @r{An integer specifying the width of the column in characters.}
-                @r{If omitted, the width will be determined automatically.}
-@var{property}        @r{The property that should be edited in this column.}
-                @r{Special properties representing meta data are allowed here}
-                @r{as well (@pxref{Special properties})}
-@var{title}     @r{The header text for the column. If omitted, the property}
-                @r{name is used.}
-@{@var{summary-type}@}  @r{The summary type.  If specified, the column values for}
-                @r{parent nodes are computed from the children.}
-                @r{Supported summary types are:}
-                @{+@}       @r{Sum numbers in this column.}
-                @{+;%.1f@}  @r{Like @samp{+}, but format result with @samp{%.1f}.}
-                @{$@}       @r{Currency, short for @samp{+;%.2f}.}
-                @{:@}       @r{Sum times, HH:MM, plain numbers are hours.}
-                @{X@}       @r{Checkbox status, @samp{[X]} if all children are @samp{[X]}.}
-                @{X/@}      @r{Checkbox status, @samp{[n/m]}.}
-                @{X%@}      @r{Checkbox status, @samp{[n%]}.}
-                @{min@}     @r{Smallest number in column.}
-                @{max@}     @r{Largest number.}
-                @{mean@}    @r{Arithmetic mean of numbers.}
-                @{:min@}    @r{Smallest time value in column.}
-                @{:max@}    @r{Largest time value.}
-                @{:mean@}   @r{Arithmetic mean of time values.}
-                @{@@min@}    @r{Minimum age (in days/hours/mins/seconds).}
-                @{@@max@}    @r{Maximum age (in days/hours/mins/seconds).}
-                @{@@mean@}   @r{Arithmetic mean of ages (in days/hours/mins/seconds).}
-                @{est+@}    @r{Add low-high estimates.}
+@var{width}           @r{列の幅を文字数で指定する整数。}
+                @r{省略すると、幅は自動的に決定されます。}
+@var{property}        @r{この列で編集できるプロパティ。}
+                @r{メタデータを示す特別なプロパティがここで許容されます。}
+                @r{(@pxref{Special properties})}
+@var{title}     @r{列の見出しテキスト。省略するとプロパティ名が使われます。}
+@{@var{summary-type}@}  @r{サマリタイプ。指定すると親ノードの列の値は子から計算され
+ます。}
+                @r{サポートされる概要のタイプは以下です。}
+                @{+@}       @r{この列にある数の和。}
+                @{+;%.1f@}  @r{@samp{+}と似ているが、フォーマットが@samp{%.1f}となる。}
+                @{$@}       @r{通貨。@samp{+;%.2f}の略。}
+                @{:@}       @r{時刻の合計。HH:MM。数値は時間。}
+                @{X@}       @r{チェックボックスの状態。子が全て@samp{[X]}ならば、
+@samp{[X]}。}
+                @{X/@}      @r{チェックボックスの状態。@samp{[n/m]}。}
+                @{X%@}      @r{チェックボックスの状態。@samp{[n%]}。}
+                @{min@}     @r{列の最も小さい数値。}
+                @{max@}     @r{最も大きい数値。}
+                @{mean@}    @r{数の算術平均。}
+                @{:min@}    @r{列に最も小さい時間数値。}
+                @{:max@}    @r{最も大きい時間数値。}
+                @{:mean@}   @r{時刻の算術平均。}
+                @{@@min@}    @r{最小時刻(日/時間/分/秒)。}
+                @{@@max@}    @r{最大時刻(日/時間/分/秒)。}
+                @{@@mean@}   @r{時刻の算術平均(日/時間/分/秒)。}
+                @{est+@}    @r{低-高見積りを追加。}
 @end example
 
 @noindent
-Be aware that you can only have one summary type for any property you
-include. Subsequent columns referencing the same property will all display
-the same summary information.
+含めるあらゆるプロパティに1つのサマリタイプしかを持てないという事に気をつけ
+て下さい。同じプロパティを参照する後にくる列は全て同じサマリの情報を表示しま
+す。
 
-The @code{est+} summary type requires further explanation.  It is used for
-combining estimates, expressed as low-high ranges.  For example, instead of
-estimating a particular task will take 5 days, you might estimate it as 5-6
-days if you're fairly confident you know how much work is required, or 1-10
-days if you don't really know what needs to be done.  Both ranges average at
-5.5 days, but the first represents a more predictable delivery.
+@code{est+}サマリタイプはもう少し説明が必要です。それは低-高の幅で表現される見積
+りを組み合わせるために使われます。例えば、特定のタスクが5日必要であると見積
+る代わりに、どのくらいの仕事が必要とされるか公正に確実に見積もるならば5日か
+ら6日と、それをなすのに必要な時間が本当に分からないならば、1-10日と見積るで
+しょう。両者の幅の平均は5.5日ですが、前者はより予測可能な発言を示しています
+。
 
-When combining a set of such estimates, simply adding the lows and highs
-produces an unrealistically wide result. Instead, @code{est+} adds the
-statistical mean and variance of the sub-tasks, generating a final estimate
-from the sum.  For example, suppose you had ten tasks, each of which was
-estimated at 0.5 to 2 days of work.  Straight addition produces an estimate
-of 5 to 20 days, representing what to expect if everything goes either
-extremely well or extremely poorly. In contrast, @code{est+} estimates the
-full job more realistically, at 10-15 days.
+そのような見積りを組み合わせるとき、単純に低と高を追加すると非現実的な幅の結
+果を作ります。代わりに、@code{est+}は合計から最終的な見積りを生成する事で統計的意
+味やサブタスクの分散を追加します。例えば、10個のタスクがあるとき、各々が0.5
+から2日の仕事であると見積られました。全てが非常によく進む、もしくは悪く進む
+と期待する事による計算で、ストレートな追加は5日から20日の見積りであると生成
+します。対照的に、@code{est+}は全ての仕事より現実的に10日から15日であると見積りま
+す。
 
-Here is an example for a complete columns definition, along with allowed
-values.
+以下は許容値にそって列定義を計算する例です。
 
 @example
 :COLUMNS:  %25ITEM %9Approved(Approved?)@{X@} %Owner %11Status \@footnote{Please note that the COLUMNS definition must be on a single line---it is wrapped here only because of formatting constraints.}
@@ -4859,74 +4856,54 @@ values.
 @end example
 
 @noindent
-The first column, @samp{%25ITEM}, means the first 25 characters of the item
-itself, i.e.@: of the headline.  You probably always should start the column
-definition with the @samp{ITEM} specifier.  The other specifiers create
-columns @samp{Owner} with a list of names as allowed values, for
-@samp{Status} with four different possible values, and for a checkbox field
-@samp{Approved}.  When no width is given after the @samp{%} character, the
-column will be exactly as wide as it needs to be in order to fully display
-all values.  The @samp{Approved} column does have a modified title
-(@samp{Approved?}, with a question mark).  Summaries will be created for the
-@samp{Time_Estimate} column by adding time duration expressions like HH:MM,
-and for the @samp{Approved} column, by providing an @samp{[X]} status if all
-children have been checked.  The @samp{CLOCKSUM} column is special, it lists
-the sum of CLOCK intervals in the subtree.
+最初の列、@samp{%25ITEM}はその項目の25文字を意味します。すなわち見出しの\@:です。
+おそらく常に@samp{ITEM}指示子を持つ列定義をはじめるべきでしょう。その他の指示子は
+許容値の名前のリストを持つ列@samp{Owner}、4つの異なる利用可能な値を持つ@samp{Status}、
+チェックボックスフィールドを持つ@samp{Approved}を生成します。@samp{%}文字の後に幅が与
+えられていないとき、列は全ての値を完全に表示するために必要な幅と同じぐらい正
+確に広くなります。@samp{Approved}列は修正れたタイトル(クエスチョンマークのある
+@samp{Approved?})を持っています。サマリはHH:MMのように表現される持続時間を追加し
+た@samp{Time_Estimate}列と子が全てチェックされているならば、@samp{[X]}状態を持った
+@samp{Approved}列で作られます。@samp{CLOCKSUM}は特別で、サブツリーにあるCLOCKインター
+バルの合計をリストします。
 
 @node Using column view, カラム表示の保存, Defining columns, Column view
 @subsection Using column view
 
 @table @kbd
-@tsubheading{Turning column view on and off} @orgcmd{C-c C-x C-c,org-columns}
+@tsubheading{カラムビューのオン・オフ} @orgcmd{C-c C-x C-c,org-columns}
 @vindex org-columns-default-format
-Turn on column view.  If the cursor is before the first headline in the
-file, column view is turned on for the entire file, using the
-@code{#+COLUMNS} definition.  If the cursor is somewhere inside the outline,
-this command searches the hierarchy, up from point, for a @code{:COLUMNS:}
-property that defines a format.  When one is found, the column view table is
-established for the tree starting at the entry that contains the
-@code{:COLUMNS:} property.  If no such property is found, the format is
-taken from the @code{#+COLUMNS} line or from the variable
-@code{org-columns-default-format}, and column view is established for the
-current entry and its subtree.  @orgcmd{r,org-columns-redo} Recreate the
-column view, to include recent changes made in the buffer.
-@orgcmd{g,org-columns-redo} Same as @kbd{r}.  @orgcmd{q,org-columns-quit}
-Exit column view.  @tsubheading{Editing values}
+カラムビューを有効とします。カーソルがそのファイルの最初の見出しより前
+にあるならば、カラムビューは@code{#+COLUMNS}定義を使う事によりファイル全体
+に対して有効となります。カーソルがアウトラインの内側のどこかにあるなら
+ば、このコマンドはフォーマットを定義する@code{:COLUMNS:}プロパティをポイン
+トから上部の階層に向かって検索します。1つ見つかったとき、カラムビュー
+テーブルは@code{:COLUMNS:}プロパティを含むエントリではじまるツリー用に設立
+されます。そのようなプロパティが見付からないときは、フォーマットは
+@code{#+COLUMNS}行もしくは、変数@code{org-columns-default-format}から取得され、
+カラムビューは現在のエントリとそのサブツリーのために設立されます。
+@orgcmd{r,org-columns-redo}バッファにある最近作られた変更を反映するためにカラ
+ムビューを再生成します。@orgcmd{g,org-columns-redo}@kbd{r}と同じです。
+@orgcmd{q,org-columns-quit}カラムビュー抜けます。@tsubheading{値を編集する}
 @item @key{left} @key{right} @key{up} @key{down}
-Move through the column view from field to field.
+フィールドからフィールドへカラムビューを通じて移動します。
 @kindex S-@key{left}
 @kindex S-@key{right}
 @item S-@key{left}/@key{right}
-Switch to the next/previous allowed value of the field.  For this, you have
-to have specified allowed values for a property.
+フィールドの次と前の許容値を切り替えます。このために、プロパティの指定
+された許容値を持つ必要があります。
 @item 1..9,0
-Directly select the Nth allowed value, @kbd{0} selects the 10th value.
-@orgcmdkkcc{n,p,org-columns-next-allowed-value,org-columns-previous-allowed-value}
-Same as @kbd{S-@key{left}/@key{right}} @orgcmd{e,org-columns-edit-value}
-Edit the property at point.  For the special properties, this will invoke
-the same interface that you normally use to change that property.  For
-example, when editing a TAGS property, the tag completion or fast selection
-interface will pop up.  @orgcmd{C-c C-c,org-columns-set-tags-or-toggle} When
-there is a checkbox at point, toggle it.  @orgcmd{v,org-columns-show-value}
-View the full value of this property.  This is useful if the width of the
-column is smaller than that of the value.
-@orgcmd{a,org-columns-edit-allowed} Edit the list of allowed values for this
-property.  If the list is found in the hierarchy, the modified values is
-stored there.  If no list is found, the new value is stored in the first
-entry that is part of the current column view.  @tsubheading{Modifying the table structure} @orgcmdkkcc{<,>,org-columns-narrow,org-columns-widen} Make
-the column narrower/wider by one character.
-@orgcmd{S-M-@key{right},org-columns-new} Insert a new column, to the left of
-the current column.  @orgcmd{S-M-@key{left},org-columns-delete} Delete the
-current column.
+直接にN番目の許容値を選択します。@kbd{0}は10番目の値を選択します。
+@orgcmdkkcc{n,p,org-columns-next-allowed-value,org-columns-previous-allowed-value}@kbd{S-@key{left}/@key{right}}と同じです。@orgcmd{e,org-columns-edit-value}ポイント下のプロパティを編集します。特別なプロパティでは通常そのプロパティを変更するために使うのと同じインタフェースを呼び出します。例えば、TAGSプロパティを編集するとき、タグ補完や高速選択インタフェースがポップアップします。@orgcmd{C-c C-c,org-columns-set-tags-or-toggle}チェックボックスがあるならば、それを切り替えます。@orgcmd{v,org-columns-show-value}このプロパティの完全な値を表示します。列の幅がその値よりも小さいときに便利です。@orgcmd{a,org-columns-edit-allowed}このプロパティの許容値のリストを編集します。リストが階層に見つかるならば、修正値はそこに保存されます。リストが見つからないならば、新しい値は現在のカラムビューの一部えある最初のエントリに保存されます。@tsubheading{テーブル構造を編集する}@orgcmdkkcc{<,>,org-columns-narrow,org-columns-widen}1文字分列を狭く・広くする@orgcmd{S-M-@key{right},org-columns-new}現在の列の左に新しい列を挿入する。@orgcmd{S-M-@key{left},org-columns-delete}現在の列を削除する。
 @end table
 
 @node カラム表示の保存, , Using column view, Column view
 @subsection カラム表示の保存
 
-Since column view is just an overlay over a buffer, it cannot be exported or
-printed directly.  If you want to capture a column view, use a
-@code{columnview} dynamic block (@pxref{Dynamic blocks}).  The frame of this
-block looks like this:
+カラムビューはバッファへのオーバレイのみなので、直接にエクスポートや印字がで
+きません。カラムビューをキャプチャしたいならば、@code{columnview}ダイナミックビュ
+ー(@pxref{Dynamic blocks})を使って下さい。このブロックのフレームは以下のように見え
+ます。
 
 @cindex #+BEGIN, columnview
 @example
@@ -4940,68 +4917,71 @@ block looks like this:
 
 @table @code
 @item :id
-This is the most important parameter.  Column view is a feature that is
-often localized to a certain (sub)tree, and the capture block might be at a
-different location in the file.  To identify the tree whose view to capture,
-you can use 4 values:
+これは最も重要なパラメータです。カラムビューはあるツリーによくローカラ
+イズされる機能であり、キャプチャブロックはファイル内の異なる位置にある
+かもしれません。キャプチャへのビューのツリーを識別するために、4つの値
+を使えます。
 @cindex property, ID
 @example
-local     @r{use the tree in which the capture block is located}
-global    @r{make a global view, including all headings in the file}
+local     @r{キャプチャブロックに位置するツリーを使います。}
+global    @r{そのファイル内の全ての見出しを含む、グローバルビューを作りま
+す。}
 "file:@var{path-to-file}"
-          @r{run column view at the top of this file}
-"@var{ID}"      @r{call column view in the tree that has an @code{:ID:}}
-          @r{property with the value @i{label}.  You can use}
-          @r{@kbd{M-x org-id-copy} to create a globally unique ID for}
-          @r{the current entry and copy it to the kill-ring.}
+          @r{このファイルの一番上のカラムビューを実行します。}
+"@var{ID}"      @r{@code{:ID:}を持つツリーにあるカラムビューを呼び出します。}
+          @r{値@i{label}を持つプロパティ。現在のエントリ用にグローバルにユニー
+クな}
+          @r{IDを作るために@kbd{M-x org-id-copy}を使い、それをkill-ringにコピ
+ーします。}
 @end example
 @item :hlines
-When @code{t}, insert an hline after every line.  When a number @var{N},
-insert an hline before each headline with level @code{<= @var{N}}.
+@code{t}のとき、全ての行の後に横線を挿入します。数値@var{N}のとき、レベル
+@code{<= @var{N}}を持つ各見出しの前に縦線を挿入します。
 @item :vlines
-When set to @code{t}, force column groups to get vertical lines.
+@code{t}に設定するとき、列グループに縦線を強制します。
 @item :maxlevel
-When set to a number, don't capture entries below this level.
+数値を設定すると、そのレベル以下のエントリをキャプチャしません。
 @item :skip-empty-rows
-When set to @code{t}, skip rows where the only non-empty specifier of the
-column view is @code{ITEM}.
+@code{t}に設定すると、カラムビューが@code{ITEM}である空でない識別子のみの行をス
+キップします。
 
 @end table
 
 @noindent
-The following commands insert or update the dynamic block:
+次のコマンドはダイナミックブロックを挿入、更新します。
 
 @table @kbd
-@orgcmd{C-c C-x i,org-insert-columns-dblock} Insert a dynamic block
-capturing a column view.  You will be prompted for the scope or ID of the
-view.  @orgcmdkkc{C-c C-c,C-c C-x C-u,org-dblock-update} Update dynamic
-block at point.  The cursor needs to be in the @code{#+BEGIN} line of the
-dynamic block.  @orgcmd{C-u C-c C-x C-u,org-update-all-dblocks} Update all
-dynamic blocks (@pxref{Dynamic blocks}).  This is useful if you have several
-clock table blocks, column-capturing blocks or other dynamic blocks in a
-buffer.
+@orgcmd{C-c C-x i,org-insert-columns-dblock}カラムビューをキャプチャするダイ
+ナミックブロックを挿入します。そのビューのスコープやIDの入力を促されま
+す。@orgcmdkkc{C-c C-c,C-c C-x C-u,org-dblock-update}ポイント下のダイナミックブ
+ロックを更新します。カーソルはダイナミックブロクの@code{#+BEGIN}行にある必
+要があります。@orgcmd{C-u C-c C-x C-u,org-update-all-dblocks}全てのダイナミッ
+クブロックを更新します(@pxref{Dynamic blocks})。複数のクロックテーブルブロッ
+クや列キャプチャブロック、その他のダイナミックブロックがバッファにある
+とき便利です。
 @end table
 
-You can add formulas to the column view table and you may add plotting
-instructions in front of the table---these will survive an update of the
-block.  If there is a @code{#+TBLFM:} after the table, the table will
-actually be recalculated automatically after an update.
+カラムビューテーブルに計算式を追加し、テーブルの前にプロットする命令を追加で
+きます。これらはブロックの更新があっても生き残ります。テーブルの後に
+@code{#+TBLFM:}があるならば、テーブルは実際に更新の後に自動的に実際に再計算されま
+す。
 
-An alternative way to capture and process property values into a table is
-provided by Eric Schulte's @file{org-collector.el} which is a contributed
-package@footnote{Contributed packages are not part of Emacs, but are distributed with the main distribution of Org (visit @uref{http://orgmode.org}).}.  It provides a general API to collect
-properties from entries in a certain scope, and arbitrary Lisp expressions
-to process these values before inserting them into a table or a dynamic
-block.
+テーブルの中でプロパティ値を処理したりキャプチャする別の方法はEric
+Schulteの@file{org-collector.el}によりできます。それは寄付されたパッケージ
+@footnote{寄付されたパッケージはEmacsの一部ではありませんがOrgのメインの配布物と共に
+配布されます(@uref{http://orgmode.org}を訪ずれて下さい)。}です。あるスコープにあ
+るエントリからプロパティを集めるための一般的なAPIやテーブルやダイナミックブ
+ロックの中に挿入する前にそれらの値を処理する任意のLisp式を提供します。
 
 @node Property API, , Column view, Properties and Columns
-@section The Property API
+@section プロパティAPI
 @cindex プロパティ（API）
 @cindex プロパティのためのAPI
 
-There is a full API for accessing and changing properties.  This API can be
-used by Emacs Lisp programs to work with properties and to implement
-features based on them.  For more information see @ref{Using the property API}.
+プロパティにアクセス、変更するための完全なAPIがあります。このAPIはプロパティ
+と共に動作するために、また、それらを元とした機能を実装するためにEmacs
+Lispプログラムから使われます。詳細な情報は@ref{Using the property API}を参照して
+下さい。
 
 @node Date and Times, Capture - Refile - Archive, Properties and Columns, Top
 @chapter 日付と時刻
@@ -5671,7 +5651,7 @@ Org-modeのテーブルまたはその組み合わせにより作成されます
              tree@var{N}      @r{周囲のレベル@var{N}のツリー、例えば@code{tree3}}
              tree       @r{周囲のレベル1のツリー}
              agenda     @r{アジェンダファイル群の全体}
-             (\"file\"..) @r{指定されたファイルをスキャンする}
+             ("file"..) @r{指定されたファイルをスキャンする}
              file-with-archives    @r{現在のファイルとそのアーカイブ}
              agenda-with-archives  @r{アーカイブを含む全てのアジェンダファイル}
 :block       @r{対象とする時間範囲、この範囲は絶対時間または現在からの相対時間}
@@ -8377,7 +8357,7 @@ HTMLや@LaTeX{}、DocBookのような<リテラルを含めたい場合、独立
 @cindex 段落、マークアップのルール
 
 段落は最低1つの空白行で区切られます。もしあなたが強制的に段落の中で改行しな
-いなら、@samp{\\\\}を行の末尾に書いてください。
+いなら、@samp{\\}を行の末尾に書いてください。
 
 リージョンで改行を保つためには、しかしそうでなければ通常のフォーマットが使わ
 れるなら、あなたはフォーマット技法として使われるこの構文を使うことができます
@@ -8442,7 +8422,7 @@ but not any simpler
 @subheading Horizontal rules
 @cindex 水平線、マーックアップのルール
 少なくとも5文字のダッシュ文字のみで行成される線は水平線(HTMLでは@samp{<hr/>}、
-@LaTeX{}では@code{\\hrule})にエクスポートされます。
+@LaTeX{}では@code{\hrule})にエクスポートされます。
 
 @node コメント行, , Horizontal rules, Structural markup elements
 @subheading コメント行
@@ -8472,8 +8452,8 @@ but not any simpler
 Org-modeネイティブなテーブル(@pxref{Tables})と@file{table.el}パッケージを用いたテーブル
 の両方が適切にエクスポートされます。Org-modeの表では、最初の水平線の前の行が
 表のヘッダ行となります。あなたはキャプションと相互参照の指定を表の直前に、参
-照のための@code{\\ref@{tab:basic-data@}}オブジェクトをテキストのどこかに書くこと
-ができます。
+照のための@code{\ref@{tab:basic-data@}}オブジェクトをテキストのどこかに書くことが
+できます。
 
 @example
 #+CAPTION: これは次の表(またはリンク)のキャプションです
@@ -8577,7 +8557,7 @@ jumps to point-min.
 
 @vindex org-coderef-label-format
 もし、ラベルの構文が言語の構文と衝突した場合、@code{-l}を使うことで
-@samp{#+BEGIN_SRC pascal -n -r -l \"((%s))\"}のようにフォーマットを変更できます。
+@samp{#+BEGIN_SRC pascal -n -r -l "((%s))"}のようにフォーマットを変更できます。
 @code{org-coderef-label-format}変数を見てください。
 
 HTMLはエクスポート時にテキストエリア,@xref{Text areas in HTML export}.とすること
@@ -8720,25 +8700,26 @@ code examples) with
 @cindex HTMLのエントリ
 @cindex @LaTeX{}のエントリ
 
-あなたは@LaTeX{}マクロをギリシャ文字を表す@samp{\\alpha}や矢印を表す@samp{\\tpo}のような
-特殊記号の挿入に使うことができます。これらのマクロは補完が可能で、@samp{\\}まで入
-力し、その後に何文字か入力して@kbd{M-@key{TAB}}を押すことで補完が可能です。@LaTeX{}のコ
-ードとは違い、Org-modeは数学の区切り文字を囲まないようなマクロも使うことがで
-きます。以下に例を挙げます:
+あなたは@LaTeX{}マクロをギリシャ文字を表す@samp{\alpha}や矢印を表す@samp{\to}のような特殊
+記号の挿入に使うことができます。これらのマクロは補完が可能で、@samp{\}まで入力し
+、その後に何文字か入力して@kbd{M-@key{TAB}}を押すことで補完が可能です。@LaTeX{}のコード
+とは違い、Org-modeは数学の区切り文字を囲まないようなマクロも使うことができま
+す。以下に例を挙げます:
 
 @example
-Angles are written as Geek letters \\alpha, \\beta and \\gamma.@end example
+Angles are written as Geek letters \alpha, \beta and \gamma.
+@end example
 
 @vindex org-entities
 エクスポート時、これらのシンボルはエクスポート先のネイティブフォーマットに変
-換されます。HTMLでは@code{\\alpha}のような文字列は@code{&alpha;}にエクスポートされ、
-@LaTeX{}では@code{$\\alpha$}となります。同様に、@code{\\nbsp}はHTMLでは@code{&nbsp;}に、@LaTeX{}
-では@code{~}となります。もしあなたが記号を単語の中に含めたいのであれば、次のよう
-にします:
+換されます。HTMLでは@code{\alpha}のような文字列は@code{&alpha;}にエクスポートされ、
+@LaTeX{}では@code{$\alpha$}となります。同様に、@code{\nbsp}はHTMLでは@code{&nbsp;}に、@LaTeX{}で
+は@code{~}となります。もしあなたが記号を単語の中に含めたいのであれば、次のように
+します:
 @samp{\Aacute@{@}stor}。
 
 非常に多くのエンティティが提供されていて、HTMLと@LaTeX{}からその名前を引き継い
-でいます;完全なリストは@code{org-entities}変数を見てください。@samp{\\-}はシャイなハイ
+でいます;完全なリストは@code{org-entities}変数を見てください。@samp{\-}はシャイなハイ
 フンとして扱われていて、@samp{--}や@samp{---}、@samp{...}は異なる長さのハイフンかドットの集
 合を作成するための全て特殊コマンドに変換されます。
 
@@ -8771,10 +8752,10 @@ the sun is R_@{sun@} = 6.96 x 10^8 m.
 @vindex org-export-with-sub-superscripts
 上付きテキスト、下付きテキストの説明を避けるため、あなたはバックスラッシュを
 つけた@samp{^}と@samp{_}を引用できます:
-@samp{\\^}と@samp{\\_}です。異なる文脈でしばしば使われるアンダーラインのテキストを書く
-なら、常にこれらの下付き文字として解釈するOrg-modeの慣習はあなたのやり方で得
-ることができます。この慣習を変更するには@code{org-export-with-sb-superscripts}変
-数を設定するか、ファイルに次のように書いてください。
+@samp{\^}と@samp{\_}です。異なる文脈でしばしば使われるアンダーラインのテキストを書くな
+ら、常にこれらの下付き文字として解釈するOrg-modeの慣習はあなたのやり方で得る
+ことができます。この慣習を変更するには@code{org-export-with-sb-superscripts}変数
+を設定するか、ファイルに次のように書いてください。
 
 @example
 #+OPTIONS: ^:@{@}
@@ -8810,7 +8791,7 @@ subscript, but @samp{a_@{b@}} will.
 @itemize @bullet
 @item あらゆる種類の環境@footnote{@file{MathJax}が使われている時、@file{MathJax}によって認識さ
 れている環境が処理されます。@file{dvipng}を画像の生成に用いる時、@LaTeX{}環境
-が扱われます。}。唯一必要なことは@code{\\begin}文は空白のみがある行に表示さ
+が扱われます。}。唯一必要なことは@code{\begin}文は空白のみがある行に表示さ
 れることです。
 @item 通常の@LaTeX{}の数学の区切り文字内部のテキスト。流通仕様との衝突を避ける
 ために、囲まれたテキストに最大2つの改行が含まれている場合、@samp{$}文字は数
@@ -8900,7 +8881,7 @@ Org-modeファイルで有効するために次の設定を行います:
 テストを行うためのメソッドを持ちます。詳細は
 @code{org-inside-LaTeX-fragment-p}関数のドキュメントを参照してください。}の
 中にある場合、@key{TAB}キーはテンプレートの展開を行います。例えば、@key{TAB}は
-@code{fr}を@code{\\frac@{@}@{@}}に展開しカーソルを最初の括弧に移動します。もう一
+@code{fr}を@code{\frac@{@}@{@}}に展開しカーソルを最初の括弧に移動します。もう一
 度@key{TAB}を押すと2つ目の括弧にカーソルが移動します。コード片の外だと、
 @key{TAB}は行の先頭にある環境の略語を展開します。例えば、もしあなたが行頭
 に@samp{equ}と書いていて@key{TAB}を押すと、この略語は@code{equation}環境に展開されま
@@ -12456,7 +12437,7 @@ Org-modeはバッファ中の補完をサポートします。この種類の補
 ポイント位置での補完
 @itemize @bullet
 @item 見出しの先頭では、TODOキーワードを補完します。
-@item @samp{\\}の後では、エクスポート機能によりサポートされる@TeX{}のシンボルを補完し
+@item @samp{\}の後では、エクスポート機能によりサポートされる@TeX{}のシンボルを補完し
 ます。
 @item @samp{*}の後では、@samp{[[*find this headline]]}のようにリンクを検索できるように
 、カレントバッファで見出しを補完します。
@@ -12509,8 +12490,8 @@ Org-modeは僅かなキーストロークのみによる空の構造の(@code{#+
 @item @kbd{i} @tab @code{#+include:} line
 @end multitable
 
-例えば、空の行で\"<e\"と入力し、その後TABを入力すると、EXAMPLEテンプレートが
-補完されます。
+例えば、空の行で"<e"と入力し、その後TABを入力すると、EXAMPLEテンプレートが補
+完されます。
 
 あなたは@code{org-structure-template-list}変数をカスタマイズすることで追加のテン
 プレートをインストールすることができます。詳細は変数のdocstringを参照してく
@@ -12570,8 +12551,8 @@ t(これがデフォルトです)の時、ユーザはコードブロックを�
 、nilならば尋ねません。
 @end defopt
 
-例えば、これは\"ditaa\"コード(安全性は考慮されています)を確認無しで実
-行する方法です:
+例えば、これは"ditaa"コード(安全性は考慮されています)を確認無しで実行
+する方法です:
 @example
 (defun my-org-confirm-babel-evaluate (lang body)
   (not (string= lang "ditaa")))  ; don't ask for ditaa
@@ -12794,7 +12775,8 @@ oddeven    @r{全てのアウトラインレベル}
 を切り替えます、
 @cindex STARTUP keyword、@code{customtime}
 @example
-customtime @r{カスタマイズされたタイムフォーマットで覆います}@end example
+customtime @r{カスタマイズされたタイムフォーマットで覆います}
+@end example
 @vindex constants-unit-system
 以下のオプションは表計算(@code{constants-unit-system}変数)に影響を与えます。
 @cindex STARTUP keyword、@code{constcgs}
@@ -12838,7 +12820,8 @@ nofnadjust  @r{自動的に番号の振り直しとソートを行いません}
 @cindex @code{nohideblocks}, STARTUP keyword
 @example
 hideblocks   @r{開始時に全ての開始/終了ブロックを見えなくします}
-nohideblocks @r{開始時にブロックを見えなくしません}@end example
+nohideblocks @r{開始時にブロックを見えなくしません}
+@end example
 @cindex org-pretty-entities
 UTF-8の文字の表示は変数@code{org-pretty-entities}と以下のキーワードにより制
 御されます。
@@ -13202,9 +13185,9 @@ C-S-LEFT  @result{}  M-S--           C-S-RIGHT  @result{}  M-S-+
 
 @item @file{yasnippet.el}
 @cindex @file{yasnippet.el}
-Org-modeはTABキー(@code{\"\\t\"}の代わりに。@code{[tab]}をバインドします)をバイ
-ンドするこのキーでYASnippetsのアクセスを優先します。以下のコードはこの
-問題を修正します:
+Org-modeはTABキー(@code{"\t"}の代わりに。@code{[tab]}をバインドします)をバインド
+するこのキーでYASnippetsのアクセスを優先します。以下のコードはこの問題
+を修正します:
 
 @lisp
 (add-hook 'org-mode-hook

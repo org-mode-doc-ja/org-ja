@@ -71,7 +71,7 @@ Software Foundation, Inc.
 </li></ul>
 <li><a name="toc_Tables" href="#Tables">3 Tables</a>
 <ul>
-<li><a href="#Built_002din-table-editor">3.1 The built-in table editor</a>
+<li><a href="#Built_002din-table-editor">3.1 組み込まれたテーブルエディタ</a>
 <li><a href="#Column-width-and-alignment">3.2 Column width and alignment</a>
 <li><a href="#Column-groups">3.3 Column groups</a>
 <li><a href="#Orgtbl-mode">3.4 The Orgtbl minor mode</a>
@@ -136,7 +136,7 @@ Software Foundation, Inc.
 <li><a href="#Property-syntax">7.1 Property syntax</a>
 <li><a href="#Special-properties">7.2 Special properties</a>
 <li><a href="#Property-searches">7.3 Property searches</a>
-<li><a href="#Property-inheritance">7.4 Property Inheritance</a>
+<li><a href="#Property-inheritance">7.4 プロパティの継承</a>
 <li><a href="#Column-view">7.5 Column view</a>
 <ul>
 <li><a href="#Defining-columns">7.5.1 Defining columns</a>
@@ -147,7 +147,7 @@ Software Foundation, Inc.
 <li><a href="#Using-column-view">7.5.2 Using column view</a>
 <li><a href="#_00e3_0082_00ab_00e3_0083_00a9_00e3_0083_00a0_00e8_00a1_00a8_00e7_00a4_00ba_00e3_0081_00ae_00e4_00bf_009d_00e5_00ad_0098">7.5.3 カラム表示の保存</a>
 </li></ul>
-<li><a href="#Property-API">7.6 The Property API</a>
+<li><a href="#Property-API">7.6 プロパティAPI</a>
 </li></ul>
 <li><a name="toc_Date-and-Times" href="#Date-and-Times">8 日付と時刻</a>
 <ul>
@@ -374,8 +374,8 @@ Software Foundation, Inc.
 <li><a href="#TTY-keys">15.9 Org-modeをtty端末で使う</a>
 <li><a href="#Interaction">15.10 他のパッケージとの関係</a>
 <ul>
-<li><a href="#Cooperation">15.10.1 Packages that Org cooperates with</a>
-<li><a href="#Conflicts">15.10.2 Packages that lead to conflicts with Org-mode</a>
+<li><a href="#Cooperation">15.10.1 Org-modeと強調して動くパッケージ</a>
+<li><a href="#Conflicts">15.10.2 Org-modeとの衝突に繋がるパッケージ</a>
 </li></ul>
 </li></ul>
 <li><a name="toc_Hacking" href="#Hacking">Appendix A Hacking</a>
@@ -2016,10 +2016,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <h2 class="chapter">3 Tables</h2>
 
 <p><a name="index-tables-229"></a><a name="index-editing-tables-230"></a>
-Org comes with a fast and intuitive table editor.  Spreadsheet-like
-calculations are supported using the Emacs <samp><span class="file">calc</span></samp> package
-(see the Emacs Calculator manual for more information about the Emacs
-calculator).
+Org-modeは、高速で直感的なテーブルエディタを備えています。Emacsの<samp><span class="file">calc</span></samp>パッ
+ケージを用いることで、スプレッドシートのような計算がサポートされています。
+（Emacs Calculatorの詳細は、同パッケージのマニュアルを参照してください。）
 
 <ul class="menu">
 <li><a accesskey="1" href="#Built_002din-table-editor">Built-in table editor</a>:     単純なテーブル
@@ -2040,50 +2039,55 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Tables">Tables</a>
 
 </div>
 
-<h3 class="section">3.1 The built-in table editor</h3>
+<h3 class="section">3.1 組み込まれたテーブルエディタ</h3>
 
-<p><a name="index-table-editor_002c-built_002din-231"></a>
-Org makes it easy to format tables in plain ASCII.  Any line with &lsquo;<samp><span class="samp">|</span></samp>&rsquo;
-as the first non-whitespace character is considered part of a table. 
-&lsquo;<samp><span class="samp">|</span></samp>&rsquo; is also the column separator.  A table might look like this:
+<p><a name="index-g_t_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e3_0082_00a8_00e3_0083_0087_00e3_0082_00a3_00e3_0082_00bf_00ef_00bc_0088_00e7_00b5_0084_00e3_0081_00bf_00e8_00be_00bc_00e3_0081_00bf_00ef_00bc_0089-231"></a>
+Org-modeはプレーンなASCII形式でのテーブル編集を容易にします。どのような行で
+も、空白文字を除く最初の文字が&lsquo;<samp><span class="samp">|</span></samp>&rsquo;であるとき、テーブルの一部であるとみなされ
+ます。&lsquo;<samp><span class="samp">|</span></samp>&rsquo;は、列を区分するセパレータとしても使われます。Org-modeのテーブルは
+、次のような見た目になるでしょう。
 
-<pre class="example">     | Name  | Phone | Age |
-     |-------+-------+-----|
-     | Peter |  1234 |  17 |
-     | Anna  |  4321 |  25 |
+<pre class="example">     | 名前  | 電話番号  | 年齢  |
+     |------+----------+------|
+     | 佐藤  | １２３４  | １７  |
+     | 田中  | ４３２１  | ２５  |
 </pre>
-   <p>A table is re-aligned automatically each time you press &lt;TAB&gt; or
-&lt;RET&gt; or <kbd>C-c C-c</kbd> inside the table.  &lt;TAB&gt; also moves to the
-next field (&lt;RET&gt; to the next row) and creates new table rows at the end
-of the table or before horizontal lines.  The indentation of the table is
-set by the first line.  Any line starting with &lsquo;<samp><span class="samp">|-</span></samp>&rsquo; is considered as a
-horizontal separator line and will be expanded on the next re-align to span
-the whole table width.  So, to create the above table, you would only type
+   <p>テーブルの中で&lt;TAB&gt;や&lt;RET&gt;、もしくは<kbd>C-c C-c</kbd>を押す度に、テーブルは自動的に
+表示が更新されます。&lt;TAB&gt;を押すとカーソルが次のフィールドに移ります（&lt;RET&gt;の
+場合は次の行へ）。また、テーブルの端もしくは水平ラインの直前の行で押せば、テ
+ーブルに新しい行が追加されます。テーブルのインデントは一行目によって設定され
+ます。&lsquo;<samp><span class="samp">|-</span></samp>&rsquo;で開始するどんな行も水平ラインとして解釈され、次にテーブルが更新さ
+れる時に、テーブル幅いっぱいに水平ラインは拡張されます。つまり、上記のテーブ
+ルを作成するために、次のように入力するだけでよかったのです。
 
-<pre class="example">     |Name|Phone|Age|
+<pre class="example">     |名前|電話番号|年齢|
      |-
 </pre>
    <p class="noindent">and then press &lt;TAB&gt; to align the table and start filling in
-fields.  Even faster would be to type <code>|Name|Phone|Age</code> followed by
-<kbd>C-c &lt;RET&gt;</kbd>.
+（indent問題箇所）さらに素早いテーブルの作成方法は、<code>|名前|電話番号|年齢</code>に
+続いて<kbd>C-c &lt;RET&gt;</kbd>を入力することです。
 
-   <p><a name="index-org_002denable_002dtable_002deditor-232"></a><a name="index-org_002dtable_002dauto_002dblank_002dfield-233"></a>When typing text into a field, Org treats &lt;DEL&gt;, &lt;Backspace&gt;, and
-all character keys in a special way, so that inserting and deleting avoids
-shifting other fields.  Also, when typing <em>immediately after the cursor was moved into a new field with </em><kbd>&lt;TAB&gt;</kbd><em>, </em><kbd>S-&lt;TAB&gt;</kbd><em> or </em><kbd>&lt;RET&gt;</kbd>, the field is automatically made blank.  If this behavior
-is too unpredictable for you, configure the variables
-<code>org-enable-table-editor</code> and <code>org-table-auto-blank-field</code>.
+   <p><a name="index-org_002denable_002dtable_002deditor-232"></a><a name="index-org_002dtable_002dauto_002dblank_002dfield-233"></a>フィールドに文字を入力すると、Org-modeは&lt;DEL&gt;と&lt;Backspace&gt;、そしてすべての文
+字キーを特別な方法で扱います。文字の挿入と削除によって他のフィールドがズレて
+しまうことを避けるためです。また、<kbd>&lt;TAB&gt;</kbd><em>、</em><kbd>S-&lt;TAB&gt;</kbd><em>もしくは</em><kbd>&lt;RET&gt;</kbd><em>によって
+新しいフィールドへカーソルが移動した直後に</em>文字を入力すると、自動的空白が挿
+入されます。もしもこの動作が気に入らない場合には、変数
+<code>org-enable-table-editor</code>と<code>org-table-auto-blank-field</code>を調節してください。
 
      <dl>
-<dt><b>Creation and conversion</b><dd> <a name="index-C_002dc-_007c-234"></a><a name="index-org_002dtable_002dcreate_002dor_002dconvert_002dfrom_002dregion-235"></a><br><dt><kbd>C-c | &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-table-create-or-convert-from-region</code><kbd>)</kbd><dd> Convert the active region to
-table. If every line contains at least one TAB character, the function
-assumes that the material is tab separated.  If every line contains a comma,
-comma-separated values (CSV) are assumed.  If not, lines are split at
-whitespace into fields.  You can use a prefix argument to force a specific
-separator: <kbd>C-u</kbd> forces CSV, <kbd>C-u C-u</kbd> forces TAB, and a numeric
-argument N indicates that at least N consecutive spaces, or alternatively a
-TAB will be the separator.  <br> If there is no active region, this command
-creates an empty Org table.  But it's easier just to start typing, like
-<kbd>|Name|Phone|Age &lt;RET&gt; |- &lt;TAB&gt;</kbd>.
+<dt><b>テーブルの作成と変換</b><dd> <a name="index-C_002dc-_007c-234"></a><a name="index-org_002dtable_002dcreate_002dor_002dconvert_002dfrom_002dregion-235"></a><br><dt><kbd>C-c | &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-table-create-or-convert-from-region</code><kbd>)</kbd><dd>
+アクティブリージョンをテーブルに変換します。もし全ての行が少なくとも一
+つのタブを含んでいるならば、この関数は処理対象をタブ区切りの表であると
+想定します。もし全ての行がコンマを含んでいるならば、コンマ区切り（いわ
+ゆるCSV）であると想定されます。それ以外の場合は空白文字で区切られてい
+ると想定します。プレフィックスを用いることで、区切り文字を強制できます
+。すなわち、<kbd>C-u</kbd>でCSV、<kbd>C-u C-u</kbd>でTAB区切りを指定できます。また、プレ
+フィックスの引き数として整数値Nを用いれば、少なくともN個の連続した空白
+を区切りとして指定できます。条件に合わなければ、代わりとしてTABが区切
+りとして使われるでしょう。<br>
+もしアクティブリージョンが存在しないならば、このコマンドは空のテーブル
+を生成します。しかし、<kbd>|名前|電話番号|年齢 &lt;RET&gt; |- &lt;TAB&gt;</kbd>のようにタイ
+プしてテーブル作成を始める方が簡単です。
 
      <br><dt><b>Re-aligning and field motion</b><dd> <a name="index-C_002dc-C_002dc-236"></a><a name="index-org_002dtable_002dalign-237"></a><br><dt><kbd>C-c C-c &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-table-align</code><kbd>)</kbd><dd>
 Re-align the table without moving the cursor. 
@@ -3008,7 +3012,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Hyperlinks">Hyperlinks</a>
 Org-modeはURLのようなリンクを認識して、クリック可能なリンクにしてくれます。
 Org-mode上での一般的なリンクのフォーマットは以下のようなものです:
 
-<pre class="example">     [[リンク][項目名]]       <span class="roman">または</span>           [[リンク]]\n</pre>
+<pre class="example">     [[リンク][項目名]]       <span class="roman">または</span>           [[リンク]]
+</pre>
    <p class="noindent">すべての括弧を入力し終えてリンクが完成すると、Org-modeは、[[リンク][項目名]]
 のかわりに「項目名」を、[[リンク]]のかわりに「リンク」を表示します。リンクは
 「org-link」で設定されたフェイスでハイライトされます。なおデフォルトのフェイ
@@ -3054,7 +3059,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Hyperlinks">Hyperlinks</a>
 ていてもかまいません。しかし、コメント行のようなところに置いたほうが便利なこ
 とが多いでしょう。たとえば、以下のように。
 
-<pre class="example">     # &lt;&lt;My Target&gt;&gt;\n</pre>
+<pre class="example">     # &lt;&lt;My Target&gt;&gt;
+</pre>
    <p class="noindent">In HTML export (see <a href="#HTML-export">HTML export</a>), such targets will become
 HTMLでのエクスポート（see <a href="#HTML-export">HTML export</a>）では、このようなターゲットは、&lsquo;<samp><span class="samp">http</span></samp>&rsquo;で
 直接アクセスできる名前つきのアンカーになります<a rel="footnote" href="#fn-31" name="fnd-31"><sup>31</sup></a>。
@@ -3152,7 +3158,8 @@ Org-modeは次のようなリンクをサポートしています。ファイル
    <p>リンクは二重括弧で囲んだ方が良いでしょう。URLの代わりにテキストを表示するこ
 ともできます(see <a href="#Link-format">Link format</a>)。たとえば、以下のように。
 
-<pre class="example">     [[http://www.gnu.org/software/emacs/][GNU Emacs]]\n</pre>
+<pre class="example">     [[http://www.gnu.org/software/emacs/][GNU Emacs]]
+</pre>
    <p class="noindent">項目名が画像を指し示すファイル名やURLの場合、HTMLエクスポート(see <a href="#HTML-export">HTML export</a>)
 によって、画像はクリック可能なボタンとして書き出されます。項目名がない画像の
 場合には、インライン画像として書き出されます。
@@ -3335,7 +3342,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Hyperlinks">Hyperlinks</a>
 クが数多く登場するものです。このような場合には、リンクの省略記法を使うことが
 できます。省略記法されたリンクは次のようなものです。
 
-<pre class="example">     [[リンク語句:タグ][項目名]]\n</pre>
+<pre class="example">     [[リンク語句:タグ][項目名]]
+</pre>
    <p class="noindent"><a name="index-org_002dlink_002dabbrev_002dalist-485"></a>タグはなくても構いません。<i>リンク語句</i>は文字で始まる語句、数字、&lsquo;<samp><span class="samp">-</span></samp>&rsquo;、&lsquo;<samp><span class="samp">_</span></samp>&rsquo;を使う
 ことができます。省略記法は、リンク語句とリンクテキストを関連づける
 <code>org-link-abbrev-alist</code>変数の値にしたがって展開されます。以下に例を示します
@@ -4510,21 +4518,19 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <h2 class="chapter">7 プロパティ（属性）とカラム（列）</h2>
 
 <p><a name="index-properties-635"></a>
-Properties are a set of key-value pairs associated with an entry.  There are
-two main applications for properties in Org-mode.  First, properties are
-like tags, but with a value.  Second, you can use properties to implement
-(very basic) database capabilities in an Org buffer.  For an example of the
-first application, imagine maintaining a file where you document bugs and
-plan releases for a piece of software.  Instead of using tags like
-<code>:release_1:</code>, <code>:release_2:</code>, one can use a property, say
-<code>:Release:</code>, that in different subtrees has different values, such as
-<code>1.0</code> or <code>2.0</code>.  For an example of the second application of
-properties, imagine keeping track of your music CDs, where properties could
-be things such as the album, artist, date of release, number of tracks, and
-so on.
+プロパティは、エントリーに関連付けられたキーと値を持つペアの集合です。
+Org-modeでは、プロパティのための2つの主要なアプリケショーンがあります。一番
+目に、プロパティはタグのようですが値を持ちます。二番目に、Org-modeのバッファ
+で(とても基本的な)データベース機能を実装するためにプロパティを使う事ができま
+す。一番目のアプリケショーンの例のために、ソフトウェアのリリース計画とバグを
+文章化するファイルを管理する事を想像して下さい。<code>:release_1:</code>、<code>:release_2:</code>
+のようなタグを使う代わりに、<code>:Release:</code>というプロパティを使い、異なるサブツ
+リーの中に<code>1.0</code>や<code>2.0</code>のような異なる値を持たせれば良いのです。プロパティの二
+番目のアプリケーションの例のために、音楽CDのトラックを管理する事を想像して下
+さい。そこではアルバム名、アーティスト名、リリース日、トラックの数などがプロ
+パティとなるでしょう。
 
-   <p>Properties can be conveniently edited and viewed in column view
-(see <a href="#Column-view">Column view</a>).
+   <p>プロパティは、カラムビューで便利に編集、閲覧できます(see <a href="#Column-view">Column view</a>)。
 
 <ul class="menu">
 <li><a accesskey="1" href="#Property-syntax">Property syntax</a>:           プロパティの表記の仕方
@@ -4546,11 +4552,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Properties-and-Columns">Properties and
 
 <h3 class="section">7.1 Property syntax</h3>
 
-<p><a name="index-property-syntax-636"></a><a name="index-drawer_002c-for-properties-637"></a>
-Properties are key-value pairs.  They need to be inserted into a special
-drawer (see <a href="#Drawers">Drawers</a>) with the name <code>PROPERTIES</code>.  Each property is
-specified on a single line, with the key (surrounded by colons)  first, and
-the value after it.  Here is an example:
+<p><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0082_00b7_00e3_0083_00b3_00e3_0082_00bf_00e3_0083_0083_00e3_0082_00af_00e3_0082_00b9-636"></a><a name="index-drawer_002c-for-properties-637"></a>
+プロパティは、キーと値のペアです。それらは、名前<code>PROPERTIES</code>を持つ特別な引き
+出し(see <a href="#Drawers">Drawers</a>)の中に入る必要があります。各プロパティは最初に(コロンで囲われ
+た)キーを持ち、その後に値を持つ1行で記述されます。以下に例を示します。
 
 <pre class="example">     * CD collection
      ** Classic
@@ -4563,13 +4568,12 @@ the value after it.  Here is an example:
          :NDisks:    1
          :END:
 </pre>
-   <p>You may define the allowed values for a particular property &lsquo;<samp><span class="samp">:Xyz:</span></samp>&rsquo; by
-setting a property &lsquo;<samp><span class="samp">:Xyz_ALL:</span></samp>&rsquo;.  This special property is
-<em>inherited</em>, so if you set it in a level 1 entry, it will apply to the
-entire tree.  When allowed values are defined, setting the corresponding
-property becomes easier and is less prone to typing errors.  For the example
-with the CD collection, we can predefine publishers and the number of disks
-in a box like this:
+   <p>プロパティ&lsquo;<samp><span class="samp">:Xyz_ALL:</span></samp>&rsquo;のように設定する事で、特定のプロパティ&lsquo;<samp><span class="samp">:Xyz:</span></samp>&rsquo;のため許容
+値を定義できます。この特別なプロパティは、もしレベル1のエントリに設定された
+ならば、全てのツリーに適用されるように<em>継承</em>されます。許可値を定義すると、対
+応するプロパティの設定が簡単になり、入力ミスを防ぐ事ができます。CDコレクショ
+ンの例では、以下のように1つのボックスの中に発売元とディスクの数を予め定義で
+きます。
 
 <pre class="example">     * CD collection
        :PROPERTIES:
@@ -4577,34 +4581,30 @@ in a box like this:
        :Publisher_ALL: "Deutsche Grammophon" Philips EMI
        :END:
 </pre>
-   <p>If you want to set properties that can be inherited by any entry in a file,
-use a line like
-<a name="index-property_002c-_005fALL-638"></a><a name="index-g_t_0023_002bPROPERTY-639"></a>
+   <p>1つのファイル全体で継承されるプロパティを設定したいならば、以下の行のように
+使います。
+<a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_005fALL-638"></a><a name="index-g_t_0023_002bPROPERTY-639"></a>
 <pre class="example">     #+PROPERTY: NDisks_ALL 1 2 3 4
 </pre>
-   <p><a name="index-org_002dglobal_002dproperties-640"></a>Property values set with the global variable <code>org-global-properties</code>
-can be inherited by all entries in all Org files.
+   <p><a name="index-org_002dglobal_002dproperties-640"></a>グローバル変数<code>org-global-properties</code>に設定するプロパティの値は全ての
+Org-modeのファイルに継承されます。
 
-<p class="noindent">The following commands help to work with properties:
+<p class="noindent">以下のコマンドはプロパティを操作する助けとなります。
 
      
 <a name="index-M_002d_0040key_007bTAB_007d-641"></a>
 <a name="index-pcomplete-642"></a>
-<dl><dt><kbd>M-&lt;TAB&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>pcomplete</code><kbd>)</kbd><dd> After an initial colon in a line, complete
-property keys.  All keys used in the current file will be offered as
-possible completions.  <a name="index-C_002dc-C_002dx-p-643"></a><a name="index-org_002dset_002dproperty-644"></a><br><dt><kbd>C-c C-x p &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-set-property</code><kbd>)</kbd><dd> Set a property. 
-This prompts for a property name and a value.  If necessary, the property
-drawer is created as well. 
-<br><dt><kbd>M-x org-insert-property-drawer</kbd><dd><a name="index-org_002dinsert_002dproperty_002ddrawer-645"></a>Insert a property drawer into the current entry.  The drawer will be
-inserted early in the entry, but after the lines with planning information
-like deadlines.  <a name="index-C_002dc-C_002dc-646"></a><a name="index-org_002dproperty_002daction-647"></a><br><dt><kbd>C-c C-c &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-property-action</code><kbd>)</kbd><dd> With the cursor in a
-property drawer, this executes property commands.  <a name="index-C_002dc-C_002dc-s-648"></a><a name="index-org_002dset_002dproperty-649"></a><br><dt><kbd>C-c C-c s &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-set-property</code><kbd>)</kbd><dd> Set a property in the current entry.  Both the property
-and the value can be inserted using completion. 
-<a name="index-S_002d_0040key_007bright_007d-650"></a><a name="index-S_002d_0040key_007bleft_007d-651"></a><a name="index-org_002dproperty_002dnext_002dallowed_002dvalue-652"></a><a name="index-org_002dproperty_002dprevious_002dallowed_002dvalue-653"></a><br><dt><kbd>S-&lt;right&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-property-next-allowed-value</code><kbd>)</kbd><dt><kbd>S-&lt;left&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-property-previous-allowed-value</code><kbd>)</kbd><dd>
-Switch property at point to the next/previous allowed value.  <a name="index-C_002dc-C_002dc-d-654"></a><a name="index-org_002ddelete_002dproperty-655"></a><br><dt><kbd>C-c C-c d &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-delete-property</code><kbd>)</kbd><dd> Remove a property from the current entry. 
-<a name="index-C_002dc-C_002dc-D-656"></a><a name="index-org_002ddelete_002dproperty_002dglobally-657"></a><br><dt><kbd>C-c C-c D &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-delete-property-globally</code><kbd>)</kbd><dd> Globally remove a property,
-from all entries in the current file.  <a name="index-C_002dc-C_002dc-c-658"></a><a name="index-org_002dcompute_002dproperty_002dat_002dpoint-659"></a><br><dt><kbd>C-c C-c c &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-compute-property-at-point</code><kbd>)</kbd><dd> Compute the property at point, using the
-operator and scope from the nearest column format definition. 
+<dl><dt><kbd>M-&lt;TAB&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>pcomplete</code><kbd>)</kbd><dd>行の最初のコロンの後で、プロパティのキーを補完しま
+す。現在のファイルで使われた全てのキーは、可能な補完候補として提供され
+ます。<a name="index-C_002dc-C_002dx-p-643"></a><a name="index-org_002dset_002dproperty-644"></a><br><dt><kbd>C-c C-x p &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-set-property</code><kbd>)</kbd><dd>プロパティを設定します。プロパティ名
+と値の入力を促します。必要なら、プロパティの引き出しがさらに作られます。
+<br><dt><kbd>M-x org-insert-property-drawer</kbd><dd><a name="index-org_002dinsert_002dproperty_002ddrawer-645"></a>現在のエントリーの中にプロパティの引き出しを入れます。引き出しはエント
+リーのはじめに入りますが、デッドラインのような計画情報を持つ行の後とな
+ります。<a name="index-C_002dc-C_002dc-646"></a><a name="index-org_002dproperty_002daction-647"></a><br><dt><kbd>C-c C-c &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-property-action</code><kbd>)</kbd><dd>プロパティの引き出しの中にカーソ
+ルがあるとき、プロパティコマンドを実行します。
+<a name="index-C_002dc-C_002dc-s-648"></a><a name="index-org_002dset_002dproperty-649"></a><br><dt><kbd>C-c C-c s &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-set-property</code><kbd>)</kbd><dd>現在のエントリにプロパティを設定します。プ
+ロパティと値の両方共、補完を使って入力できます。
+<a name="index-S_002d_0040key_007bright_007d-650"></a><a name="index-S_002d_0040key_007bleft_007d-651"></a><a name="index-org_002dproperty_002dnext_002dallowed_002dvalue-652"></a><a name="index-org_002dproperty_002dprevious_002dallowed_002dvalue-653"></a><br><dt><kbd>S-&lt;right&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-property-next-allowed-value</code><kbd>)</kbd><dt><kbd>S-&lt;left&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-property-previous-allowed-value</code><kbd>)</kbd><dd>ポイントのプロパティを次/前の許可値に切り替えます。<a name="index-C_002dc-C_002dc-d-654"></a><a name="index-org_002ddelete_002dproperty-655"></a><br><dt><kbd>C-c C-c d &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-delete-property</code><kbd>)</kbd><dd>現在のエントリからプロパティを削除します。<a name="index-C_002dc-C_002dc-D-656"></a><a name="index-org_002ddelete_002dproperty_002dglobally-657"></a><br><dt><kbd>C-c C-c D &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-delete-property-globally</code><kbd>)</kbd><dd>プロパティを現在のファイルにある全てのエントリからグローバルに削除します。<a name="index-C_002dc-C_002dc-c-658"></a><a name="index-org_002dcompute_002dproperty_002dat_002dpoint-659"></a><br><dt><kbd>C-c C-c c &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-compute-property-at-point</code><kbd>)</kbd><dd>ポイントにあるプロパティを最も近い列のフォーマット定義からオペレータやスコープを使って計算します。
 </dl>
 
 <div class="node">
@@ -4618,31 +4618,30 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Properties-and-Columns">Properties and
 
 <h3 class="section">7.2 Special properties</h3>
 
-<p><a name="index-properties_002c-special-660"></a>
-Special properties provide an alternative access method to Org-mode
-features, like the TODO state or the priority of an entry, discussed in the
-previous chapters.  This interface exists so that you can include these
-states in a column view (see <a href="#Column-view">Column view</a>), or to use them in queries. 
-The following property names are special and (except for <code>:CATEGORY:</code>)
-should not be used as keys in the properties drawer:
+<p><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab-660"></a>
+以前の章で述べたTODO状態や、エントリの優先度のようなスペシャルプロパティは、
+Org-modeの機能への別のアクセス方法を提供します。このインターフェイスは、カラ
+ムビュー(see <a href="#Column-view">Column view</a>)にそれらの状態を含めたり、クエリにそれらを使ったりす
+る事で生じます。次のプロパティ名は特別(<code>:CATEGORY:</code>を除いて)で、プロパティの
+引き出しでキーとして使われません。
 
-   <p><a name="index-property_002c-special_002c-TODO-661"></a><a name="index-property_002c-special_002c-TAGS-662"></a><a name="index-property_002c-special_002c-ALLTAGS-663"></a><a name="index-property_002c-special_002c-CATEGORY-664"></a><a name="index-property_002c-special_002c-PRIORITY-665"></a><a name="index-property_002c-special_002c-DEADLINE-666"></a><a name="index-property_002c-special_002c-SCHEDULED-667"></a><a name="index-property_002c-special_002c-CLOSED-668"></a><a name="index-property_002c-special_002c-TIMESTAMP-669"></a><a name="index-property_002c-special_002c-TIMESTAMP_005fIA-670"></a><a name="index-g_t_00e7_0089_00b9_00e5_0088_00a5_00e3_0081_00aa_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088CLOCKSUM_00ef_00bc_0089-671"></a><a name="index-property_002c-special_002c-BLOCKED-672"></a><!-- guessing that ITEM is needed in this area; also, should this list be sorted? -->
-<a name="index-property_002c-special_002c-ITEM-673"></a><a name="index-property_002c-special_002c-FILE-674"></a>
-<pre class="example">     TODO         <span class="roman">The TODO keyword of the entry.</span>
-     TAGS         <span class="roman">The tags defined directly in the headline.</span>
-     ALLTAGS      <span class="roman">All tags, including inherited ones.</span>
-     CATEGORY     <span class="roman">The category of an entry.</span>
-     PRIORITY     <span class="roman">The priority of the entry, a string with a single letter.</span>
-     DEADLINE     <span class="roman">The deadline time string, without the angular brackets.</span>
-     SCHEDULED    <span class="roman">The scheduling timestamp, without the angular brackets.</span>
-     CLOSED       <span class="roman">When was this entry closed?</span>
-     TIMESTAMP    <span class="roman">The first keyword-less timestamp in the entry.</span>
-     TIMESTAMP_IA <span class="roman">The first inactive timestamp in the entry.</span>
-     CLOCKSUM     <span class="roman">The sum of CLOCK intervals in the subtree.  </span><code>org-clock-sum</code>
-                  <span class="roman">must be run first to compute the values.</span>
-     BLOCKED      <span class="roman">"t" if task is currently blocked by children or siblings</span>
-     ITEM         <span class="roman">The content of the entry.</span>
-     FILE         <span class="roman">The filename the entry is located in.</span>
+   <p><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081TODO-661"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081TAGS-662"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081ALLTAGS-663"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081CATEGORY-664"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081PRIORITY-665"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081DEADLINE-666"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081SCHEDULED-667"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081CLOSED-668"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081TIMESTAMP-669"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081TIMESTAMP_005fIA-670"></a><a name="index-g_t_00e7_0089_00b9_00e5_0088_00a5_00e3_0081_00aa_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088CLOCKSUM_00ef_00bc_0089-671"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081BLOCKED-672"></a><!-- guessing that ITEM is needed in this area; also, should this list be sorted? -->
+<a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081ITEM-673"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081FILE-674"></a>
+<pre class="example">     TODO         <span class="roman">エントリのTODOキーワード</span>
+     TAGS         <span class="roman">見出しに直接定義されたタグ</span>
+     ALLTAGS      <span class="roman">継承されたタグも含む全てのタグ</span>
+     CATEGORY     <span class="roman">エントリのカテゴリ</span>
+     PRIORITY     <span class="roman">1文字の文字列である、エントリの優先度</span>
+     DEADLINE     <span class="roman">山括弧(&lt;&gt;)のないデッドライン時刻文字列</span>
+     SCHEDULED    <span class="roman">山括弧(&lt;&gt;)のないスケジュールタイムスタンプ</span>
+     CLOSED       <span class="roman">いつこのエントリがクローズされたか</span>
+     TIMESTAMP    <span class="roman">エントリで最初のキーワードのないタイムスタンプ</span>
+     TIMESTAMP_IA <span class="roman">エントリで最初のアクティブでないタイムスタンプ</span>
+     CLOCKSUM     <span class="roman">サブツリーでのCLOCKインターバルの合計。</span><code>org-clock-sum</code><span class="roman">が値を計算
+     するために最初に実行されなければならない。</span>
+     BLOCKED      <span class="roman">\t\ であれば、タスクが子供や兄弟に現在ブロックされている</span>
+     ITEM         <span class="roman">エントリの内容</span>
+     FILE         <span class="roman">エントリのあるファイル名</span>
 </pre>
    <div class="node">
 <a name="Property-searches"></a>
@@ -4655,26 +4654,29 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Properties-and-Columns">Properties and
 
 <h3 class="section">7.3 Property searches</h3>
 
-<p><a name="index-properties_002c-searching-675"></a><a name="index-searching_002c-of-properties-676"></a>
-To create sparse trees and special lists with selection based on properties,
-the same commands are used as for tag searches (see <a href="#Tag-searches">Tag searches</a>).
+<p><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e6_00a4_009c_00e7_00b4_00a2-675"></a><a name="index-g_t_00e6_00a4_009c_00e7_00b4_00a2_00e3_0080_0081_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0081_00ae-676"></a>
+プロパティに基いて選択した特別なリストやツリーの抽出を作成するために、タグ検
+索(see <a href="#Tag-searches">Tag searches</a>)の場合と同じコマンドが使えます。
      
 <a name="index-C_002dc-_002f-m-677"></a>
 <a name="index-C_002dc-_002corg_002dmatch_002dsparse_002dtree-678"></a>
 <a name="index--679"></a>
-<dl><dt><kbd>C-c / m  </kbd><span class="roman">or</span><kbd>  C-c ,org-match-sparse-tree &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><kbd>)</kbd><dd> Create a sparse tree with
-all matching entries.  With a <kbd>C-u</kbd> prefix argument, ignore headlines
-that are not a TODO line.  <a name="index-C_002dc-a-m-680"></a><a name="index-org_002dtags_002dview-681"></a><br><dt><kbd>C-c a m &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-tags-view</code><kbd>)</kbd><dd> Create a global
-list of tag/property matches from all agenda files.  See <a href="#Matching-tags-and-properties">Matching tags and properties</a>.  <a name="index-C_002dc-a-M-682"></a><a name="index-org_002dtags_002dview-683"></a><br><dt><kbd>C-c a M &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-tags-view</code><kbd>)</kbd><dd>
-<a name="index-org_002dtags_002dmatch_002dlist_002dsublevels-684"></a>Create a global list of tag matches from all agenda files, but check only
-TODO items and force checking of subitems (see variable
-<code>org-tags-match-list-sublevels</code>). 
+<dl><dt><kbd>C-c / m  </kbd><span class="roman">or</span><kbd>  C-c ,org-match-sparse-tree &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><kbd>)</kbd><dd>
+全てのマッチしたエントリについて抽出したツリーを作成します。前置引数
+<kbd>C-u</kbd>をつけると、TODO行でない見出しは無視されます。
+<a name="index-C_002dc-a-m-680"></a><a name="index-org_002dtags_002dview-681"></a><br><dt><kbd>C-c a m &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-tags-view</code><kbd>)</kbd><dd> 全てのアジェンダファイルからタグ・プロパティに
+マッチしたグローバルなリストを作成します。
+See <a href="#Matching-tags-and-properties">Matching tags and properties</a>.  <a name="index-C_002dc-a-M-682"></a><a name="index-org_002dtags_002dview-683"></a><br><dt><kbd>C-c a M &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-tags-view</code><kbd>)</kbd><dd>
+<a name="index-org_002dtags_002dmatch_002dlist_002dsublevels-684"></a>全てのアジェンダファイルからタグにマッチするグローバルなリストを作成し
+ます。しかし、TODO
+項目と下位項目の強制チェック(変数<code>org-tags-match-list-sublevels</code>参照)
+のみチェックします。
 </dl>
 
-   <p>The syntax for the search string is described in <a href="#Matching-tags-and-properties">Matching tags and properties</a>.
+   <p>検索文字列のための文法は、<a href="#Matching-tags-and-properties">Matching tags and properties</a>で説明されています。
 
-   <p>There is also a special command for creating sparse trees based on a single
-property:
+   <p>1つのプロパティに基いて抽出したツリーを作成するための特別なコマンドもありま
+す。
 
      
 <a name="index-C_002dc-_002f-p-685"></a>
@@ -4694,23 +4696,21 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Properties-and-Columns">Properties and
 
 </div>
 
-<h3 class="section">7.4 Property Inheritance</h3>
+<h3 class="section">7.4 プロパティの継承</h3>
 
-<p><a name="index-properties_002c-inheritance-686"></a><a name="index-inheritance_002c-of-properties-687"></a>
-<a name="index-org_002duse_002dproperty_002dinheritance-688"></a>The outline structure of Org-mode documents lends itself to an inheritance
-model of properties: if the parent in a tree has a certain property, the
-children can inherit this property.  Org-mode does not turn this on by
-default, because it can slow down property searches significantly and is
-often not needed.  However, if you find inheritance useful, you can turn it
-on by setting the variable <code>org-use-property-inheritance</code>.  It may be
-set to <code>t</code> to make all properties inherited from the parent, to a list
-of properties that should be inherited, or to a regular expression that
-matches inherited properties.  If a property has the value &lsquo;<samp><span class="samp">nil</span></samp>&rsquo;, this
-is interpreted as an explicit undefine of the property, so that inheritance
-search will stop at this value and return <code>nil</code>.
+<p><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e7_00b6_0099_00e6_0089_00bf-686"></a><a name="index-g_t_00e7_00b6_0099_00e6_0089_00bf_00e3_0080_0081_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0081_00ae-687"></a>
+<a name="index-org_002duse_002dproperty_002dinheritance-688"></a>Org-mode文章のアウトライン構造はプロパティの継承モデルを適用しています。ツリ
+ーの親があるプロパティを持っているならば、子はこのプロパティを継承します。
+Org-modeはこれをデフォルトで有効としていません。これはプロパティの検索を遅く
+してしまうためとあまり必要とされないためです。しかしながら、継承が役立つ場面
+があるならば、変数<code>org-use-property-inheritance</code>を設定する事で有効とできます
+。この変数は、全てのプロパティを親から継承する<code>t</code>、継承されるべきプロパティ
+のリスト、継承されるプロパティにマッチする正規表現を設定できます。もしプロパ
+ティが値&lsquo;<samp><span class="samp">nil</span></samp>&rsquo;を持つならば、継承検索がこの値で停止し<code>nil</code>を返すように、明示的
+に未定義のプロパティであると解釈されます。
 
-   <p>Org-mode has a few properties for which inheritance is hard-coded, at least
-for the special applications for which they are used:
+   <p>Org-modeは、継承がハードコードされているプロパティがいくつかあります。少くと
+もそれらを使う特別なアプリケーションがあります。
 
    <p><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088COLUMNS_00ef_00bc_0089-689"></a>
      <dl>
@@ -4719,12 +4719,12 @@ for the special applications for which they are used:
 <code>:COLUMNS:</code> property is defined is used as the starting point for a
 column view table, independently of the location in the subtree from where
 columns view is turned on. 
-<br><dt><code>CATEGORY</code><dd><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088CATEGORY_00ef_00bc_0089-690"></a>For agenda view, a category set through a <code>:CATEGORY:</code> property applies
-to the entire subtree. 
-<br><dt><code>ARCHIVE</code><dd><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088ARCHIVE_00ef_00bc_0089-691"></a>For archiving, the <code>:ARCHIVE:</code> property may define the archive location
-for the entire subtree (see <a href="#Moving-subtrees">Moving subtrees</a>). 
-<br><dt><code>LOGGING</code><dd><a name="index-g_t_00e5_00b1_009e_00e6_0080_00a7_00e3_0080_0081_00e3_0083_00ad_00e3_0082_00b0_00e3_0082_0092_00e3_0081_00a8_00e3_0082_008b-692"></a>The LOGGING property may define logging settings for an entry or a subtree
-(see <a href="#Tracking-TODO-state-changes">Tracking TODO state changes</a>). 
+<br><dt><code>CATEGORIES</code><dd><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088CATEGORY_00ef_00bc_0089-690"></a>アジェンダビュー用えす。<code>:CATEGORY:</code>プロパティを通して設定されたカテゴ
+リがサブツリー全体に適用されます。
+<br><dt><code>ARCHIVE</code><dd><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088ARCHIVE_00ef_00bc_0089-691"></a>アーカイブ用です。<code>:ARCHIVE:</code>プロパティは、サブツリー全体のアーカイブ
+位置を定義します(see <a href="#Moving-subtrees">Moving subtrees</a>)。
+<br><dt><code>LOGGING</code><dd><a name="index-g_t_00e5_00b1_009e_00e6_0080_00a7_00e3_0080_0081_00e3_0083_00ad_00e3_0082_00b0_00e3_0082_0092_00e3_0081_00a8_00e3_0082_008b-692"></a>LOGGINGプロパティは、エントリやサブツリーのログ取得設定について定義し
+ます(see <a href="#Tracking-TODO-state-changes">Tracking TODO state changes</a>)。
 </dl>
 
 <div class="node">
@@ -4738,18 +4738,18 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Properties-and-Columns">Properties and
 
 <h3 class="section">7.5 Column view</h3>
 
-<p>A great way to view and edit properties in an outline tree is <em>column view</em>.  In column view, each outline node is turned into a table row. 
-Columns in this table provide access to properties of the entries.  Org-mode
-implements columns by overlaying a tabular structure over the headline of
-each item.  While the headlines have been turned into a table row, you can
-still change the visibility of the outline tree.  For example, you get a
-compact table by switching to CONTENTS view (<kbd>S-&lt;TAB&gt; S-&lt;TAB&gt;</kbd>,
-or simply <kbd>c</kbd> while column view is active), but you can still open,
-read, and edit the entry below each headline.  Or, you can switch to column
-view after executing a sparse tree command and in this way get a table only
-for the selected items.  Column view also works in agenda buffers
-(see <a href="#Agenda-Views">Agenda Views</a>) where queries have collected selected items, possibly
-from a number of files.
+<p>アウトラインツリーにあるプロパティを閲覧、編集するための最も良い方法は<em>カラ
+ムビュー</em>です。カラムビューでは、各アウトラインノードがテーブル行に変換され
+ます。このテーブルにある列がエントリのプロパティへのアクセスです。Org-modeは
+、各項目の見出し上にテーブル構造をオーバレイすることで列を実装します。見出し
+はテーブル列に変換されますが、アウトラインツリーの見た目もまだ変えられます。
+例えば、CONTENTS
+ビュー(<kbd>S-&lt;TAB&gt;S-&lt;TAB&gt;</kbd>、もしくは、カラムビューがアクティブであるときに単純
+に<kbd>c</kbd>)にスイッチする事でコンパクトなテーブルを得られますが、まだ各見出し以下
+のエントリを開いたり、読んだり、編集したりもできます。また、ツリーの抽出コマ
+ンドを実行した後にカラムビューに切り替える事もでき、この方法では選択した項目
+のみのテーブルを得ます。カラムビューは利用可能な複数のファイルから選択した項
+目を集めたクエリのあるアジェンダバッファ(see <a href="#Agenda-Views">Agenda Views</a>)でも動作します。
 
 <ul class="menu">
 <li><a accesskey="1" href="#Defining-columns">Defining columns</a>:          カラムの書式のプロパティ
@@ -4768,9 +4768,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Column-view">Column view</a>
 
 <h4 class="subsection">7.5.1 Defining columns</h4>
 
-<p><a name="index-column-view_002c-for-properties-693"></a><a name="index-properties_002c-column-view-694"></a>
-Setting up a column view first requires defining the columns.  This is done
-by defining a column format line.
+<p><a name="index-g_t_00e3_0082_00ab_00e3_0083_00a9_00e3_0083_00a0_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00e3_0080_0081_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e7_0094_00a8-693"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00ab_00e3_0083_00a9_00e3_0083_00a0_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc-694"></a>
+最初にカラムビューを設定するために、カラムを定義する必要があります。これはカ
+ラムフォーマット行を定義する事によってなされます。
 
 <ul class="menu">
 <li><a accesskey="1" href="#Scope-of-column-definitions">Scope of column definitions</a>:   カラム設定の定義範囲の指定方法は？
@@ -4788,15 +4788,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Defining-columns">Defining columns</a>
 
 <h5 class="subsubsection">7.5.1.1 Scope of column definitions</h5>
 
-<p>To define a column format for an entire file, use a line like
+<p>カラムフォーマットを定義するために、次のように行を記載します。
 
    <p><a name="index-g_t_0023_002bCOLUMNS-695"></a>
 <pre class="example">     #+COLUMNS: %25ITEM %TAGS %PRIORITY %TODO
 </pre>
-   <p>To specify a format that only applies to a specific tree, add a
-<code>:COLUMNS:</code> property to the top node of that tree, for example:
+   <p>指定したツリーに適用するだけのフォーマットを指定するために、<code>:COLUMNS:</code>プロ
+パティをそのツリーの一番上のノードに追加します。例えば、
 
-<pre class="example">     ** Top node for columns view
+<pre class="example">     ** カラムビューの一番最初のノード
         :PROPERTIES:
         :COLUMNS: %25ITEM %TAGS %PRIORITY %TODO
         :END:
@@ -4817,64 +4817,61 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Defining-columns">Defining columns</a>
 
 <h5 class="subsubsection">7.5.1.2 Column attributes</h5>
 
-<p>A column definition sets the attributes of a column.  The general definition
-looks like this:
+<p>列定義は、列の属性の集りです。一般的な定義は以下のようになります。
 
 <pre class="example">      %[<var>width</var>]<var>property</var>[(<var>title</var>)][{<var>summary-type</var>}]
 </pre>
-   <p class="noindent">Except for the percent sign and the property name, all items are optional. 
-The individual parts have the following meaning:
+   <p class="noindent">パーセントとプロパティ名を除いて、全ての項目はオプションです。個々のパーツは
+次の意味を持ちます。
 
-<pre class="example">     <var>width</var>           <span class="roman">An integer specifying the width of the column in characters.</span>
-                     <span class="roman">If omitted, the width will be determined automatically.</span>
-     <var>property</var>        <span class="roman">The property that should be edited in this column.</span>
-                     <span class="roman">Special properties representing meta data are allowed here</span>
-                     <span class="roman">as well (see <a href="#Special-properties">Special properties</a>)</span>
-     <var>title</var>     <span class="roman">The header text for the column. If omitted, the property</span>
-                     <span class="roman">name is used.</span>
-     {<var>summary-type</var>}  <span class="roman">The summary type.  If specified, the column values for</span>
-                     <span class="roman">parent nodes are computed from the children.</span>
-                     <span class="roman">Supported summary types are:</span>
-                     {+}       <span class="roman">Sum numbers in this column.</span>
-                     {+;%.1f}  <span class="roman">Like &lsquo;</span><samp><span class="samp">+</span></samp><span class="roman">&rsquo;, but format result with &lsquo;</span><samp><span class="samp">%.1f</span></samp><span class="roman">&rsquo;.</span>
-                     {$}       <span class="roman">Currency, short for &lsquo;</span><samp><span class="samp">+;%.2f</span></samp><span class="roman">&rsquo;.</span>
-                     {:}       <span class="roman">Sum times, HH:MM, plain numbers are hours.</span>
-                     {X}       <span class="roman">Checkbox status, &lsquo;</span><samp><span class="samp">[X]</span></samp><span class="roman">&rsquo; if all children are &lsquo;</span><samp><span class="samp">[X]</span></samp><span class="roman">&rsquo;.</span>
-                     {X/}      <span class="roman">Checkbox status, &lsquo;</span><samp><span class="samp">[n/m]</span></samp><span class="roman">&rsquo;.</span>
-                     {X%}      <span class="roman">Checkbox status, &lsquo;</span><samp><span class="samp">[n%]</span></samp><span class="roman">&rsquo;.</span>
-                     {min}     <span class="roman">Smallest number in column.</span>
-                     {max}     <span class="roman">Largest number.</span>
-                     {mean}    <span class="roman">Arithmetic mean of numbers.</span>
-                     {:min}    <span class="roman">Smallest time value in column.</span>
-                     {:max}    <span class="roman">Largest time value.</span>
-                     {:mean}   <span class="roman">Arithmetic mean of time values.</span>
-                     {@min}    <span class="roman">Minimum age (in days/hours/mins/seconds).</span>
-                     {@max}    <span class="roman">Maximum age (in days/hours/mins/seconds).</span>
-                     {@mean}   <span class="roman">Arithmetic mean of ages (in days/hours/mins/seconds).</span>
-                     {est+}    <span class="roman">Add low-high estimates.</span>
+<pre class="example">     <var>width</var>           <span class="roman">列の幅を文字数で指定する整数。</span>
+                     <span class="roman">省略すると、幅は自動的に決定されます。</span>
+     <var>property</var>        <span class="roman">この列で編集できるプロパティ。</span>
+                     <span class="roman">メタデータを示す特別なプロパティがここで許容されます。</span>
+                     <span class="roman">(see <a href="#Special-properties">Special properties</a>)</span>
+     <var>title</var>     <span class="roman">列の見出しテキスト。省略するとプロパティ名が使われます。</span>
+     {<var>summary-type</var>}  <span class="roman">サマリタイプ。指定すると親ノードの列の値は子から計算され
+     ます。</span>
+                     <span class="roman">サポートされる概要のタイプは以下です。</span>
+                     {+}       <span class="roman">この列にある数の和。</span>
+                     {+;%.1f}  <span class="roman">&lsquo;</span><samp><span class="samp">+</span></samp><span class="roman">&rsquo;と似ているが、フォーマットが&lsquo;</span><samp><span class="samp">%.1f</span></samp><span class="roman">&rsquo;となる。</span>
+                     {$}       <span class="roman">通貨。&lsquo;</span><samp><span class="samp">+;%.2f</span></samp><span class="roman">&rsquo;の略。</span>
+                     {:}       <span class="roman">時刻の合計。HH:MM。数値は時間。</span>
+                     {X}       <span class="roman">チェックボックスの状態。子が全て&lsquo;</span><samp><span class="samp">[X]</span></samp><span class="roman">&rsquo;ならば、
+     &lsquo;</span><samp><span class="samp">[X]</span></samp><span class="roman">&rsquo;。</span>
+                     {X/}      <span class="roman">チェックボックスの状態。&lsquo;</span><samp><span class="samp">[n/m]</span></samp><span class="roman">&rsquo;。</span>
+                     {X%}      <span class="roman">チェックボックスの状態。&lsquo;</span><samp><span class="samp">[n%]</span></samp><span class="roman">&rsquo;。</span>
+                     {min}     <span class="roman">列の最も小さい数値。</span>
+                     {max}     <span class="roman">最も大きい数値。</span>
+                     {mean}    <span class="roman">数の算術平均。</span>
+                     {:min}    <span class="roman">列に最も小さい時間数値。</span>
+                     {:max}    <span class="roman">最も大きい時間数値。</span>
+                     {:mean}   <span class="roman">時刻の算術平均。</span>
+                     {@min}    <span class="roman">最小時刻(日/時間/分/秒)。</span>
+                     {@max}    <span class="roman">最大時刻(日/時間/分/秒)。</span>
+                     {@mean}   <span class="roman">時刻の算術平均(日/時間/分/秒)。</span>
+                     {est+}    <span class="roman">低-高見積りを追加。</span>
 </pre>
-   <p class="noindent">Be aware that you can only have one summary type for any property you
-include. Subsequent columns referencing the same property will all display
-the same summary information.
+   <p class="noindent">含めるあらゆるプロパティに1つのサマリタイプしかを持てないという事に気をつけ
+て下さい。同じプロパティを参照する後にくる列は全て同じサマリの情報を表示しま
+す。
 
-   <p>The <code>est+</code> summary type requires further explanation.  It is used for
-combining estimates, expressed as low-high ranges.  For example, instead of
-estimating a particular task will take 5 days, you might estimate it as 5-6
-days if you're fairly confident you know how much work is required, or 1-10
-days if you don't really know what needs to be done.  Both ranges average at
-5.5 days, but the first represents a more predictable delivery.
+   <p><code>est+</code>サマリタイプはもう少し説明が必要です。それは低-高の幅で表現される見積
+りを組み合わせるために使われます。例えば、特定のタスクが5日必要であると見積
+る代わりに、どのくらいの仕事が必要とされるか公正に確実に見積もるならば5日か
+ら6日と、それをなすのに必要な時間が本当に分からないならば、1-10日と見積るで
+しょう。両者の幅の平均は5.5日ですが、前者はより予測可能な発言を示しています
+。
 
-   <p>When combining a set of such estimates, simply adding the lows and highs
-produces an unrealistically wide result. Instead, <code>est+</code> adds the
-statistical mean and variance of the sub-tasks, generating a final estimate
-from the sum.  For example, suppose you had ten tasks, each of which was
-estimated at 0.5 to 2 days of work.  Straight addition produces an estimate
-of 5 to 20 days, representing what to expect if everything goes either
-extremely well or extremely poorly. In contrast, <code>est+</code> estimates the
-full job more realistically, at 10-15 days.
+   <p>そのような見積りを組み合わせるとき、単純に低と高を追加すると非現実的な幅の結
+果を作ります。代わりに、<code>est+</code>は合計から最終的な見積りを生成する事で統計的意
+味やサブタスクの分散を追加します。例えば、10個のタスクがあるとき、各々が0.5
+から2日の仕事であると見積られました。全てが非常によく進む、もしくは悪く進む
+と期待する事による計算で、ストレートな追加は5日から20日の見積りであると生成
+します。対照的に、<code>est+</code>は全ての仕事より現実的に10日から15日であると見積りま
+す。
 
-   <p>Here is an example for a complete columns definition, along with allowed
-values.
+   <p>以下は許容値にそって列定義を計算する例です。
 
 <pre class="example">     :COLUMNS:  %25ITEM %9Approved(Approved?){X} %Owner %11Status \<a rel="footnote" href="#fn-55" name="fnd-55"><sup>55</sup></a>
                         %10Time_Estimate{:} %CLOCKSUM
@@ -4882,19 +4879,16 @@ values.
      :Status_ALL:   "In progress" "Not started yet" "Finished" ""
      :Approved_ALL: "[ ]" "[X]"
 </pre>
-   <p class="noindent">The first column, &lsquo;<samp><span class="samp">%25ITEM</span></samp>&rsquo;, means the first 25 characters of the item
-itself, i.e. of the headline.  You probably always should start the column
-definition with the &lsquo;<samp><span class="samp">ITEM</span></samp>&rsquo; specifier.  The other specifiers create
-columns &lsquo;<samp><span class="samp">Owner</span></samp>&rsquo; with a list of names as allowed values, for
-&lsquo;<samp><span class="samp">Status</span></samp>&rsquo; with four different possible values, and for a checkbox field
-&lsquo;<samp><span class="samp">Approved</span></samp>&rsquo;.  When no width is given after the &lsquo;<samp><span class="samp">%</span></samp>&rsquo; character, the
-column will be exactly as wide as it needs to be in order to fully display
-all values.  The &lsquo;<samp><span class="samp">Approved</span></samp>&rsquo; column does have a modified title
-(&lsquo;<samp><span class="samp">Approved?</span></samp>&rsquo;, with a question mark).  Summaries will be created for the
-&lsquo;<samp><span class="samp">Time_Estimate</span></samp>&rsquo; column by adding time duration expressions like HH:MM,
-and for the &lsquo;<samp><span class="samp">Approved</span></samp>&rsquo; column, by providing an &lsquo;<samp><span class="samp">[X]</span></samp>&rsquo; status if all
-children have been checked.  The &lsquo;<samp><span class="samp">CLOCKSUM</span></samp>&rsquo; column is special, it lists
-the sum of CLOCK intervals in the subtree.
+   <p class="noindent">最初の列、&lsquo;<samp><span class="samp">%25ITEM</span></samp>&rsquo;はその項目の25文字を意味します。すなわち見出しの\です。
+おそらく常に&lsquo;<samp><span class="samp">ITEM</span></samp>&rsquo;指示子を持つ列定義をはじめるべきでしょう。その他の指示子は
+許容値の名前のリストを持つ列&lsquo;<samp><span class="samp">Owner</span></samp>&rsquo;、4つの異なる利用可能な値を持つ&lsquo;<samp><span class="samp">Status</span></samp>&rsquo;、
+チェックボックスフィールドを持つ&lsquo;<samp><span class="samp">Approved</span></samp>&rsquo;を生成します。&lsquo;<samp><span class="samp">%</span></samp>&rsquo;文字の後に幅が与
+えられていないとき、列は全ての値を完全に表示するために必要な幅と同じぐらい正
+確に広くなります。&lsquo;<samp><span class="samp">Approved</span></samp>&rsquo;列は修正れたタイトル(クエスチョンマークのある
+&lsquo;<samp><span class="samp">Approved?</span></samp>&rsquo;)を持っています。サマリはHH:MMのように表現される持続時間を追加し
+た&lsquo;<samp><span class="samp">Time_Estimate</span></samp>&rsquo;列と子が全てチェックされているならば、&lsquo;<samp><span class="samp">[X]</span></samp>&rsquo;状態を持った
+&lsquo;<samp><span class="samp">Approved</span></samp>&rsquo;列で作られます。&lsquo;<samp><span class="samp">CLOCKSUM</span></samp>&rsquo;は特別で、サブツリーにあるCLOCKインター
+バルの合計をリストします。
 
 <div class="node">
 <a name="Using-column-view"></a>
@@ -4908,41 +4902,24 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Column-view">Column view</a>
 <h4 class="subsection">7.5.2 Using column view</h4>
 
      <dl>
-<dt><b>Turning column view on and off</b><dd> <a name="index-C_002dc-C_002dx-C_002dc-696"></a><a name="index-org_002dcolumns-697"></a><br><dt><kbd>C-c C-x C-c &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns</code><kbd>)</kbd><dd>
-<a name="index-org_002dcolumns_002ddefault_002dformat-698"></a>Turn on column view.  If the cursor is before the first headline in the
-file, column view is turned on for the entire file, using the
-<code>#+COLUMNS</code> definition.  If the cursor is somewhere inside the outline,
-this command searches the hierarchy, up from point, for a <code>:COLUMNS:</code>
-property that defines a format.  When one is found, the column view table is
-established for the tree starting at the entry that contains the
-<code>:COLUMNS:</code> property.  If no such property is found, the format is
-taken from the <code>#+COLUMNS</code> line or from the variable
-<code>org-columns-default-format</code>, and column view is established for the
-current entry and its subtree.  <a name="index-r-699"></a><a name="index-org_002dcolumns_002dredo-700"></a><br><dt><kbd>r &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-redo</code><kbd>)</kbd><dd> Recreate the
-column view, to include recent changes made in the buffer. 
-<a name="index-g-701"></a><a name="index-org_002dcolumns_002dredo-702"></a><br><dt><kbd>g &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-redo</code><kbd>)</kbd><dd> Same as <kbd>r</kbd>.  <a name="index-q-703"></a><a name="index-org_002dcolumns_002dquit-704"></a><br><dt><kbd>q &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-quit</code><kbd>)</kbd><dd>
-Exit column view.  <br><dt><b>Editing values</b>
-<br><dt><kbd>&lt;left&gt; &lt;right&gt; &lt;up&gt; &lt;down&gt;</kbd><dd>Move through the column view from field to field. 
-<a name="index-S_002d_0040key_007bleft_007d-705"></a><a name="index-S_002d_0040key_007bright_007d-706"></a><br><dt><kbd>S-&lt;left&gt;/&lt;right&gt;</kbd><dd>Switch to the next/previous allowed value of the field.  For this, you have
-to have specified allowed values for a property. 
-<br><dt><kbd>1..9,0</kbd><dd>Directly select the Nth allowed value, <kbd>0</kbd> selects the 10th value. 
-<a name="index-n-707"></a><a name="index-p-708"></a><a name="index-org_002dcolumns_002dnext_002dallowed_002dvalue-709"></a><a name="index-org_002dcolumns_002dprevious_002dallowed_002dvalue-710"></a><br><dt><kbd>n &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-next-allowed-value</code><kbd>)</kbd><dt><kbd>p &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-previous-allowed-value</code><kbd>)</kbd><dd>
-Same as <kbd>S-&lt;left&gt;/&lt;right&gt;</kbd> <a name="index-e-711"></a><a name="index-org_002dcolumns_002dedit_002dvalue-712"></a><br><dt><kbd>e &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-edit-value</code><kbd>)</kbd><dd>
-Edit the property at point.  For the special properties, this will invoke
-the same interface that you normally use to change that property.  For
-example, when editing a TAGS property, the tag completion or fast selection
-interface will pop up.  <a name="index-C_002dc-C_002dc-713"></a><a name="index-org_002dcolumns_002dset_002dtags_002dor_002dtoggle-714"></a><br><dt><kbd>C-c C-c &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-set-tags-or-toggle</code><kbd>)</kbd><dd> When
-there is a checkbox at point, toggle it.  <a name="index-v-715"></a><a name="index-org_002dcolumns_002dshow_002dvalue-716"></a><br><dt><kbd>v &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-show-value</code><kbd>)</kbd><dd>
-View the full value of this property.  This is useful if the width of the
-column is smaller than that of the value. 
-<a name="index-a-717"></a><a name="index-org_002dcolumns_002dedit_002dallowed-718"></a><br><dt><kbd>a &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-edit-allowed</code><kbd>)</kbd><dd> Edit the list of allowed values for this
-property.  If the list is found in the hierarchy, the modified values is
-stored there.  If no list is found, the new value is stored in the first
-entry that is part of the current column view.  <br><dt><b>Modifying the table structure</b><dd> <a name="index-g_t_003c-719"></a><a name="index-g_t_003e-720"></a><a name="index-org_002dcolumns_002dnarrow-721"></a><a name="index-org_002dcolumns_002dwiden-722"></a><br><dt><kbd>&lt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-narrow</code><kbd>)</kbd><dt><kbd>&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-widen</code><kbd>)</kbd><dd> Make
-the column narrower/wider by one character. 
-<a name="index-S_002dM_002d_0040key_007bright_007d-723"></a><a name="index-org_002dcolumns_002dnew-724"></a><br><dt><kbd>S-M-&lt;right&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-new</code><kbd>)</kbd><dd> Insert a new column, to the left of
-the current column.  <a name="index-S_002dM_002d_0040key_007bleft_007d-725"></a><a name="index-org_002dcolumns_002ddelete-726"></a><br><dt><kbd>S-M-&lt;left&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-delete</code><kbd>)</kbd><dd> Delete the
-current column. 
+<dt><b>カラムビューのオン・オフ</b><dd> <a name="index-C_002dc-C_002dx-C_002dc-696"></a><a name="index-org_002dcolumns-697"></a><br><dt><kbd>C-c C-x C-c &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns</code><kbd>)</kbd><dd>
+<a name="index-org_002dcolumns_002ddefault_002dformat-698"></a>カラムビューを有効とします。カーソルがそのファイルの最初の見出しより前
+にあるならば、カラムビューは<code>#+COLUMNS</code>定義を使う事によりファイル全体
+に対して有効となります。カーソルがアウトラインの内側のどこかにあるなら
+ば、このコマンドはフォーマットを定義する<code>:COLUMNS:</code>プロパティをポイン
+トから上部の階層に向かって検索します。1つ見つかったとき、カラムビュー
+テーブルは<code>:COLUMNS:</code>プロパティを含むエントリではじまるツリー用に設立
+されます。そのようなプロパティが見付からないときは、フォーマットは
+<code>#+COLUMNS</code>行もしくは、変数<code>org-columns-default-format</code>から取得され、
+カラムビューは現在のエントリとそのサブツリーのために設立されます。
+<a name="index-r-699"></a><a name="index-org_002dcolumns_002dredo-700"></a><br><dt><kbd>r &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-redo</code><kbd>)</kbd><dd>バッファにある最近作られた変更を反映するためにカラ
+ムビューを再生成します。<a name="index-g-701"></a><a name="index-org_002dcolumns_002dredo-702"></a><br><dt><kbd>g &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-redo</code><kbd>)</kbd><dd><kbd>r</kbd>と同じです。
+<a name="index-q-703"></a><a name="index-org_002dcolumns_002dquit-704"></a><br><dt><kbd>q &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-quit</code><kbd>)</kbd><dd>カラムビュー抜けます。<br><dt><b>値を編集する</b>
+<br><dt><kbd>&lt;left&gt; &lt;right&gt; &lt;up&gt; &lt;down&gt;</kbd><dd>フィールドからフィールドへカラムビューを通じて移動します。
+<a name="index-S_002d_0040key_007bleft_007d-705"></a><a name="index-S_002d_0040key_007bright_007d-706"></a><br><dt><kbd>S-&lt;left&gt;/&lt;right&gt;</kbd><dd>フィールドの次と前の許容値を切り替えます。このために、プロパティの指定
+された許容値を持つ必要があります。
+<br><dt><kbd>1..9,0</kbd><dd>直接にN番目の許容値を選択します。<kbd>0</kbd>は10番目の値を選択します。
+<a name="index-n-707"></a><a name="index-p-708"></a><a name="index-org_002dcolumns_002dnext_002dallowed_002dvalue-709"></a><a name="index-org_002dcolumns_002dprevious_002dallowed_002dvalue-710"></a><br><dt><kbd>n &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-next-allowed-value</code><kbd>)</kbd><dt><kbd>p &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-previous-allowed-value</code><kbd>)</kbd><dd><kbd>S-&lt;left&gt;/&lt;right&gt;</kbd>と同じです。<a name="index-e-711"></a><a name="index-org_002dcolumns_002dedit_002dvalue-712"></a><br><dt><kbd>e &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-edit-value</code><kbd>)</kbd><dd>ポイント下のプロパティを編集します。特別なプロパティでは通常そのプロパティを変更するために使うのと同じインタフェースを呼び出します。例えば、TAGSプロパティを編集するとき、タグ補完や高速選択インタフェースがポップアップします。<a name="index-C_002dc-C_002dc-713"></a><a name="index-org_002dcolumns_002dset_002dtags_002dor_002dtoggle-714"></a><br><dt><kbd>C-c C-c &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-set-tags-or-toggle</code><kbd>)</kbd><dd>チェックボックスがあるならば、それを切り替えます。<a name="index-v-715"></a><a name="index-org_002dcolumns_002dshow_002dvalue-716"></a><br><dt><kbd>v &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-show-value</code><kbd>)</kbd><dd>このプロパティの完全な値を表示します。列の幅がその値よりも小さいときに便利です。<a name="index-a-717"></a><a name="index-org_002dcolumns_002dedit_002dallowed-718"></a><br><dt><kbd>a &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-edit-allowed</code><kbd>)</kbd><dd>このプロパティの許容値のリストを編集します。リストが階層に見つかるならば、修正値はそこに保存されます。リストが見つからないならば、新しい値は現在のカラムビューの一部えある最初のエントリに保存されます。<br><dt><b>テーブル構造を編集する</b><dd><a name="index-g_t_003c-719"></a><a name="index-g_t_003e-720"></a><a name="index-org_002dcolumns_002dnarrow-721"></a><a name="index-org_002dcolumns_002dwiden-722"></a><br><dt><kbd>&lt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-narrow</code><kbd>)</kbd><dt><kbd>&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-widen</code><kbd>)</kbd><dd>1文字分列を狭く・広くする<a name="index-S_002dM_002d_0040key_007bright_007d-723"></a><a name="index-org_002dcolumns_002dnew-724"></a><br><dt><kbd>S-M-&lt;right&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-new</code><kbd>)</kbd><dd>現在の列の左に新しい列を挿入する。<a name="index-S_002dM_002d_0040key_007bleft_007d-725"></a><a name="index-org_002dcolumns_002ddelete-726"></a><br><dt><kbd>S-M-&lt;left&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-delete</code><kbd>)</kbd><dd>現在の列を削除する。
 </dl>
 
 <div class="node">
@@ -4956,10 +4933,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Column-view">Column view</a>
 
 <h4 class="subsection">7.5.3 カラム表示の保存</h4>
 
-<p>Since column view is just an overlay over a buffer, it cannot be exported or
-printed directly.  If you want to capture a column view, use a
-<code>columnview</code> dynamic block (see <a href="#Dynamic-blocks">Dynamic blocks</a>).  The frame of this
-block looks like this:
+<p>カラムビューはバッファへのオーバレイのみなので、直接にエクスポートや印字がで
+きません。カラムビューをキャプチャしたいならば、<code>columnview</code>ダイナミックビュ
+ー(see <a href="#Dynamic-blocks">Dynamic blocks</a>)を使って下さい。このブロックのフレームは以下のように見え
+ます。
 
    <p><a name="index-g_t_0023_002bBEGIN_002c-columnview-727"></a>
 <pre class="example">     * The column view
@@ -4970,55 +4947,56 @@ block looks like this:
    <p class="noindent">This dynamic block has the following parameters:
 
      <dl>
-<dt><code>:id</code><dd>This is the most important parameter.  Column view is a feature that is
-often localized to a certain (sub)tree, and the capture block might be at a
-different location in the file.  To identify the tree whose view to capture,
-you can use 4 values:
+<dt><code>:id</code><dd>これは最も重要なパラメータです。カラムビューはあるツリーによくローカラ
+イズされる機能であり、キャプチャブロックはファイル内の異なる位置にある
+かもしれません。キャプチャへのビューのツリーを識別するために、4つの値
+を使えます。
 <a name="index-property_002c-ID-728"></a>
-     <pre class="example">          local     <span class="roman">use the tree in which the capture block is located</span>
-          global    <span class="roman">make a global view, including all headings in the file</span>
+     <pre class="example">          local     <span class="roman">キャプチャブロックに位置するツリーを使います。</span>
+          global    <span class="roman">そのファイル内の全ての見出しを含む、グローバルビューを作りま
+          す。</span>
           "file:<var>path-to-file</var>"
-                    <span class="roman">run column view at the top of this file</span>
-          "<var>ID</var>"      <span class="roman">call column view in the tree that has an </span><code>:ID:</code>
-                    <span class="roman">property with the value </span><i>label</i><span class="roman">.  You can use</span>
-                    <kbd>M-x org-id-copy</kbd><span class="roman"> to create a globally unique ID for</span>
-                    <span class="roman">the current entry and copy it to the kill-ring.</span>
+                    <span class="roman">このファイルの一番上のカラムビューを実行します。</span>
+          "<var>ID</var>"      <code>:ID:</code><span class="roman">を持つツリーにあるカラムビューを呼び出します。</span>
+                    <span class="roman">値</span><i>label</i><span class="roman">を持つプロパティ。現在のエントリ用にグローバルにユニー
+          クな</span>
+                    <span class="roman">IDを作るために</span><kbd>M-x org-id-copy</kbd><span class="roman">を使い、それをkill-ringにコピ
+          ーします。</span>
 </pre>
-     <br><dt><code>:hlines</code><dd>When <code>t</code>, insert an hline after every line.  When a number <var>N</var>,
-insert an hline before each headline with level <code>&lt;= </code><var>N</var>. 
-<br><dt><code>:vlines</code><dd>When set to <code>t</code>, force column groups to get vertical lines. 
-<br><dt><code>:maxlevel</code><dd>When set to a number, don't capture entries below this level. 
-<br><dt><code>:skip-empty-rows</code><dd>When set to <code>t</code>, skip rows where the only non-empty specifier of the
-column view is <code>ITEM</code>.
+     <br><dt><code>:hlines</code><dd><code>t</code>のとき、全ての行の後に横線を挿入します。数値<var>N</var>のとき、レベル
+<code>&lt;= </code><var>N</var>を持つ各見出しの前に縦線を挿入します。
+<br><dt><code>:vlines</code><dd><code>t</code>に設定するとき、列グループに縦線を強制します。
+<br><dt><code>:maxlevel</code><dd>数値を設定すると、そのレベル以下のエントリをキャプチャしません。
+<br><dt><code>:skip-empty-rows</code><dd><code>t</code>に設定すると、カラムビューが<code>ITEM</code>である空でない識別子のみの行をス
+キップします。
 
    </dl>
 
-<p class="noindent">The following commands insert or update the dynamic block:
+<p class="noindent">次のコマンドはダイナミックブロックを挿入、更新します。
 
      
 <a name="index-C_002dc-C_002dx-i-729"></a>
 <a name="index-org_002dinsert_002dcolumns_002ddblock-730"></a>
-<dl><dt><kbd>C-c C-x i &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-insert-columns-dblock</code><kbd>)</kbd><dd> Insert a dynamic block
-capturing a column view.  You will be prompted for the scope or ID of the
-view.  <a name="index-C_002dc-C_002dc-731"></a><a name="index-C_002dc-C_002dx-C_002du-732"></a><a name="index-org_002ddblock_002dupdate-733"></a><br><dt><kbd>C-c C-c  </kbd><span class="roman">or</span><kbd>  C-c C-x C-u &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-dblock-update</code><kbd>)</kbd><dd> Update dynamic
-block at point.  The cursor needs to be in the <code>#+BEGIN</code> line of the
-dynamic block.  <a name="index-C_002du-C_002dc-C_002dx-C_002du-734"></a><a name="index-org_002dupdate_002dall_002ddblocks-735"></a><br><dt><kbd>C-u C-c C-x C-u &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-update-all-dblocks</code><kbd>)</kbd><dd> Update all
-dynamic blocks (see <a href="#Dynamic-blocks">Dynamic blocks</a>).  This is useful if you have several
-clock table blocks, column-capturing blocks or other dynamic blocks in a
-buffer. 
+<dl><dt><kbd>C-c C-x i &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-insert-columns-dblock</code><kbd>)</kbd><dd>カラムビューをキャプチャするダイ
+ナミックブロックを挿入します。そのビューのスコープやIDの入力を促されま
+す。<a name="index-C_002dc-C_002dc-731"></a><a name="index-C_002dc-C_002dx-C_002du-732"></a><a name="index-org_002ddblock_002dupdate-733"></a><br><dt><kbd>C-c C-c  </kbd><span class="roman">or</span><kbd>  C-c C-x C-u &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-dblock-update</code><kbd>)</kbd><dd>ポイント下のダイナミックブ
+ロックを更新します。カーソルはダイナミックブロクの<code>#+BEGIN</code>行にある必
+要があります。<a name="index-C_002du-C_002dc-C_002dx-C_002du-734"></a><a name="index-org_002dupdate_002dall_002ddblocks-735"></a><br><dt><kbd>C-u C-c C-x C-u &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-update-all-dblocks</code><kbd>)</kbd><dd>全てのダイナミッ
+クブロックを更新します(see <a href="#Dynamic-blocks">Dynamic blocks</a>)。複数のクロックテーブルブロッ
+クや列キャプチャブロック、その他のダイナミックブロックがバッファにある
+とき便利です。
 </dl>
 
-   <p>You can add formulas to the column view table and you may add plotting
-instructions in front of the table&mdash;these will survive an update of the
-block.  If there is a <code>#+TBLFM:</code> after the table, the table will
-actually be recalculated automatically after an update.
+   <p>カラムビューテーブルに計算式を追加し、テーブルの前にプロットする命令を追加で
+きます。これらはブロックの更新があっても生き残ります。テーブルの後に
+<code>#+TBLFM:</code>があるならば、テーブルは実際に更新の後に自動的に実際に再計算されま
+す。
 
-   <p>An alternative way to capture and process property values into a table is
-provided by Eric Schulte's <samp><span class="file">org-collector.el</span></samp> which is a contributed
-package<a rel="footnote" href="#fn-56" name="fnd-56"><sup>56</sup></a>.  It provides a general API to collect
-properties from entries in a certain scope, and arbitrary Lisp expressions
-to process these values before inserting them into a table or a dynamic
-block.
+   <p>テーブルの中でプロパティ値を処理したりキャプチャする別の方法はEric
+Schulteの<samp><span class="file">org-collector.el</span></samp>によりできます。それは寄付されたパッケージ
+<a rel="footnote" href="#fn-56" name="fnd-56"><sup>56</sup></a>です。あるスコープにあ
+るエントリからプロパティを集めるための一般的なAPIやテーブルやダイナミックブ
+ロックの中に挿入する前にそれらの値を処理する任意のLisp式を提供します。
 
 <div class="node">
 <a name="Property-API"></a>
@@ -5028,12 +5006,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Properties-and-Columns">Properties and
 
 </div>
 
-<h3 class="section">7.6 The Property API</h3>
+<h3 class="section">7.6 プロパティAPI</h3>
 
 <p><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088API_00ef_00bc_0089-736"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0081_00ae_00e3_0081_009f_00e3_0082_0081_00e3_0081_00aeAPI-737"></a>
-There is a full API for accessing and changing properties.  This API can be
-used by Emacs Lisp programs to work with properties and to implement
-features based on them.  For more information see <a href="#Using-the-property-API">Using the property API</a>.
+プロパティにアクセス、変更するための完全なAPIがあります。このAPIはプロパティ
+と共に動作するために、また、それらを元とした機能を実装するためにEmacs
+Lispプログラムから使われます。詳細な情報は<a href="#Using-the-property-API">Using the property API</a>を参照して
+下さい。
 
 <div class="node">
 <a name="Date-and-Times"></a>
@@ -5647,7 +5626,7 @@ Org-modeのテーブルまたはその組み合わせにより作成されます
                   tree<var>N</var>      <span class="roman">周囲のレベル</span><var>N</var><span class="roman">のツリー、例えば</span><code>tree3</code>
                   tree       <span class="roman">周囲のレベル1のツリー</span>
                   agenda     <span class="roman">アジェンダファイル群の全体</span>
-                  (\"file\"..) <span class="roman">指定されたファイルをスキャンする</span>
+                  ("file"..) <span class="roman">指定されたファイルをスキャンする</span>
                   file-with-archives    <span class="roman">現在のファイルとそのアーカイブ</span>
                   agenda-with-archives  <span class="roman">アーカイブを含む全てのアジェンダファイル</span>
      :block       <span class="roman">対象とする時間範囲、この範囲は絶対時間または現在からの相対時間</span>
@@ -8316,7 +8295,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Structural-markup-elements">Structural
 
 <p><a name="index-g_t_00e6_00ae_00b5_00e8_0090_00bd_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1335"></a>
 段落は最低1つの空白行で区切られます。もしあなたが強制的に段落の中で改行しな
-いなら、&lsquo;<samp><span class="samp">\\\\</span></samp>&rsquo;を行の末尾に書いてください。
+いなら、&lsquo;<samp><span class="samp">\\</span></samp>&rsquo;を行の末尾に書いてください。
 
    <p>リージョンで改行を保つためには、しかしそうでなければ通常のフォーマットが使わ
 れるなら、あなたはフォーマット技法として使われるこの構文を使うことができます
@@ -8391,7 +8370,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Structural-markup-elements">Structural
 <h4 class="subheading">Horizontal rules</h4>
 
 <p><a name="index-g_t_00e6_00b0_00b4_00e5_00b9_00b3_00e7_00b7_009a_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0083_0083_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1347"></a>少なくとも5文字のダッシュ文字のみで行成される線は水平線(HTMLでは&lsquo;<samp><span class="samp">&lt;hr/&gt;</span></samp>&rsquo;、
-LaTeXでは<code>\\hrule</code>)にエクスポートされます。
+LaTeXでは<code>\hrule</code>)にエクスポートされます。
 
 <div class="node">
 <a name="%e3%82%b3%e3%83%a1%e3%83%b3%e3%83%88%e8%a1%8c"></a>
@@ -8430,8 +8409,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Markup">Markup</a>
 <p><a name="index-g_t_00e8_00a1_00a8_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1352"></a><a name="index-g_t_0023_002bCAPTION-1353"></a><a name="index-g_t_0023_002bLABEL-1354"></a>Org-modeネイティブなテーブル(see <a href="#Tables">Tables</a>)と<samp><span class="file">table.el</span></samp>パッケージを用いたテーブル
 の両方が適切にエクスポートされます。Org-modeの表では、最初の水平線の前の行が
 表のヘッダ行となります。あなたはキャプションと相互参照の指定を表の直前に、参
-照のための<code>\\ref{tab:basic-data}</code>オブジェクトをテキストのどこかに書くこと
-ができます。
+照のための<code>\ref{tab:basic-data}</code>オブジェクトをテキストのどこかに書くことが
+できます。
 
 <pre class="example">     #+CAPTION: これは次の表(またはリンク)のキャプションです
      #+LABEL:   tbl:basic-data
@@ -8513,7 +8492,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Markup">Markup</a>
      jumps to point-min.
 </pre>
    <p><a name="index-org_002dcoderef_002dlabel_002dformat-1361"></a>もし、ラベルの構文が言語の構文と衝突した場合、<code>-l</code>を使うことで
-&lsquo;<samp><span class="samp">#+BEGIN_SRC pascal -n -r -l \"((%s))\"</span></samp>&rsquo;のようにフォーマットを変更できます。
+&lsquo;<samp><span class="samp">#+BEGIN_SRC pascal -n -r -l "((%s))"</span></samp>&rsquo;のようにフォーマットを変更できます。
 <code>org-coderef-label-format</code>変数を見てください。
 
    <p>HTMLはエクスポート時にテキストエリア,See <a href="#Text-areas-in-HTML-export">Text areas in HTML export</a>.とすること
@@ -8614,14 +8593,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Markup">Markup</a>
 <pre class="example">     #+MACRO: name   replacement text $1, $2 are arguments
 </pre>
    <p class="noindent">which can be referenced anywhere in the document (even in
-code examples) with <code>{{{name(arg1,arg2)}}}</code>.  In addition to
-defined macros, <code>{{{title}}}</code>, <code>{{{author}}}</code>, etc.,
-will reference information set by the <code>#+TITLE:</code>, <code>#+AUTHOR:</code>, and
-similar lines.  Also, <code>{{{date(</code><var>FORMAT</var><code>)}}}</code> and
-<code>{{{modification-time(</code><var>FORMAT</var><code>)}}}</code> refer to current date
-time and to the modification time of the file being exported, respectively. 
-<var>FORMAT</var> should be a format string understood by
-<code>format-time-string</code>.
+code examples) with
+<code>{{{name(arg1,arg2)}}}</code>. 
+マクロの定義に加えて、<code>{{{title}}}</code>、<code>{{{author}}}</code>など、
+<code>#+TITLE:</code>や<code>#+AUTHOR:</code>、似たような行によりセットされる情報を参照します。ま
+た、<code>{{{date(</code><var>FORMAT</var><code>)}}}</code>と<code>{{{modification-time(</code><var>FORMAT</var><code>)}}}</code>
+は現在の日付とファイルがエクスポートされて変更された時刻をそれぞれ参照します
+。<var>FORMAT</var>は<code>format-time-string</code>で認識した文字列をフォーマットします。
 
    <p>マクロ展開はエクスポート中に行われ、一部の人々は複雑なHTMLコードの構築に用い
 る。
@@ -8664,22 +8642,23 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Embedded-LaTeX">Embedded LaTeX</a>
 <h4 class="subsection">11.7.1 Special symbols</h4>
 
 <p><a name="index-g_t_00e6_0095_00b0_00e5_00ad_00a6_00e8_00a8_0098_00e5_008f_00b7-1372"></a><a name="index-g_t_00e7_0089_00b9_00e6_00ae_008a_00e8_00a8_0098_00e5_008f_00b7-1373"></a><a name="index-g_t_0040TeX_007b_007d_00e3_0083_009e_00e3_0082_00af_00e3_0083_00ad-1374"></a><a name="index-g_t_0040LaTeX_007b_007d_00e3_0081_00ae_00e6_0096_00ad_00e7_0089_0087_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1375"></a><a name="index-HTML_00e3_0081_00ae_00e3_0082_00a8_00e3_0083_00b3_00e3_0083_0088_00e3_0083_00aa-1376"></a><a name="index-g_t_0040LaTeX_007b_007d_00e3_0081_00ae_00e3_0082_00a8_00e3_0083_00b3_00e3_0083_0088_00e3_0083_00aa-1377"></a>
-あなたはLaTeXマクロをギリシャ文字を表す&lsquo;<samp><span class="samp">\\alpha</span></samp>&rsquo;や矢印を表す&lsquo;<samp><span class="samp">\\tpo</span></samp>&rsquo;のような
-特殊記号の挿入に使うことができます。これらのマクロは補完が可能で、&lsquo;<samp><span class="samp">\\</span></samp>&rsquo;まで入
-力し、その後に何文字か入力して<kbd>M-&lt;TAB&gt;</kbd>を押すことで補完が可能です。LaTeXのコ
-ードとは違い、Org-modeは数学の区切り文字を囲まないようなマクロも使うことがで
-きます。以下に例を挙げます:
+あなたはLaTeXマクロをギリシャ文字を表す&lsquo;<samp><span class="samp">\alpha</span></samp>&rsquo;や矢印を表す&lsquo;<samp><span class="samp">\to</span></samp>&rsquo;のような特殊
+記号の挿入に使うことができます。これらのマクロは補完が可能で、&lsquo;<samp><span class="samp">\</span></samp>&rsquo;まで入力し
+、その後に何文字か入力して<kbd>M-&lt;TAB&gt;</kbd>を押すことで補完が可能です。LaTeXのコード
+とは違い、Org-modeは数学の区切り文字を囲まないようなマクロも使うことができま
+す。以下に例を挙げます:
 
-<pre class="example">     Angles are written as Geek letters \\alpha, \\beta and \\gamma.</pre>
+<pre class="example">     Angles are written as Geek letters \alpha, \beta and \gamma.
+</pre>
    <p><a name="index-org_002dentities-1378"></a>エクスポート時、これらのシンボルはエクスポート先のネイティブフォーマットに変
-換されます。HTMLでは<code>\\alpha</code>のような文字列は<code>&amp;alpha;</code>にエクスポートされ、
-LaTeXでは<code>$\\alpha$</code>となります。同様に、<code>\\nbsp</code>はHTMLでは<code>&amp;nbsp;</code>に、LaTeX
-では<code>~</code>となります。もしあなたが記号を単語の中に含めたいのであれば、次のよう
-にします:
+換されます。HTMLでは<code>\alpha</code>のような文字列は<code>&amp;alpha;</code>にエクスポートされ、
+LaTeXでは<code>$\alpha$</code>となります。同様に、<code>\nbsp</code>はHTMLでは<code>&amp;nbsp;</code>に、LaTeXで
+は<code>~</code>となります。もしあなたが記号を単語の中に含めたいのであれば、次のように
+します:
 &lsquo;<samp><span class="samp">\Aacute{}stor</span></samp>&rsquo;。
 
    <p>非常に多くのエンティティが提供されていて、HTMLとLaTeXからその名前を引き継い
-でいます;完全なリストは<code>org-entities</code>変数を見てください。&lsquo;<samp><span class="samp">\\-</span></samp>&rsquo;はシャイなハイ
+でいます;完全なリストは<code>org-entities</code>変数を見てください。&lsquo;<samp><span class="samp">\-</span></samp>&rsquo;はシャイなハイ
 フンとして扱われていて、&lsquo;<samp><span class="samp">--</span></samp>&rsquo;や&lsquo;<samp><span class="samp">---</span></samp>&rsquo;、&lsquo;<samp><span class="samp">...</span></samp>&rsquo;は異なる長さのハイフンかドットの集
 合を作成するための全て特殊コマンドに変換されます。
 
@@ -8714,10 +8693,10 @@ LaTeXと同じように、&lsquo;<samp><span class="samp">^</span></samp>&rsquo;
 </pre>
    <p><a name="index-org_002dexport_002dwith_002dsub_002dsuperscripts-1382"></a>上付きテキスト、下付きテキストの説明を避けるため、あなたはバックスラッシュを
 つけた&lsquo;<samp><span class="samp">^</span></samp>&rsquo;と&lsquo;<samp><span class="samp">_</span></samp>&rsquo;を引用できます:
-&lsquo;<samp><span class="samp">\\^</span></samp>&rsquo;と&lsquo;<samp><span class="samp">\\_</span></samp>&rsquo;です。異なる文脈でしばしば使われるアンダーラインのテキストを書く
-なら、常にこれらの下付き文字として解釈するOrg-modeの慣習はあなたのやり方で得
-ることができます。この慣習を変更するには<code>org-export-with-sb-superscripts</code>変
-数を設定するか、ファイルに次のように書いてください。
+&lsquo;<samp><span class="samp">\^</span></samp>&rsquo;と&lsquo;<samp><span class="samp">\_</span></samp>&rsquo;です。異なる文脈でしばしば使われるアンダーラインのテキストを書くな
+ら、常にこれらの下付き文字として解釈するOrg-modeの慣習はあなたのやり方で得る
+ことができます。この慣習を変更するには<code>org-export-with-sb-superscripts</code>変数
+を設定するか、ファイルに次のように書いてください。
 
 <pre class="example">     #+OPTIONS: ^:{}
 </pre>
@@ -8753,7 +8732,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Embedded-LaTeX">Embedded LaTeX</a>
    <p>LaTeXのコード片は、特別なマークは全く必要ありません。以下のコード片はLaTeXの
 ソースコードとして知られています:
      <ul>
-<li>あらゆる種類の環境<a rel="footnote" href="#fn-108" name="fnd-108"><sup>108</sup></a>。唯一必要なことは<code>\\begin</code>文は空白のみがある行に表示さ
+<li>あらゆる種類の環境<a rel="footnote" href="#fn-108" name="fnd-108"><sup>108</sup></a>。唯一必要なことは<code>\begin</code>文は空白のみがある行に表示さ
 れることです。
 <li>通常のLaTeXの数学の区切り文字内部のテキスト。流通仕様との衝突を避ける
 ために、囲まれたテキストに最大2つの改行が含まれている場合、&lsquo;<samp><span class="samp">$</span></samp>&rsquo;文字は数
@@ -8842,7 +8821,7 @@ Org-modeファイルで有効するために次の設定を行います:
 <ul><li><kbd>C-c {</kbd>による環境テンプレートの挿入。
 <li><a name="index-g_t_0040key_007bTAB_007d-1394"></a>カーソルがLaTeXのコード片<a rel="footnote" href="#fn-109" name="fnd-109"><sup>109</sup></a>の
 中にある場合、&lt;TAB&gt;キーはテンプレートの展開を行います。例えば、&lt;TAB&gt;は
-<code>fr</code>を<code>\\frac{}{}</code>に展開しカーソルを最初の括弧に移動します。もう一
+<code>fr</code>を<code>\frac{}{}</code>に展開しカーソルを最初の括弧に移動します。もう一
 度&lt;TAB&gt;を押すと2つ目の括弧にカーソルが移動します。コード片の外だと、
 &lt;TAB&gt;は行の先頭にある環境の略語を展開します。例えば、もしあなたが行頭
 に&lsquo;<samp><span class="samp">equ</span></samp>&rsquo;と書いていて&lt;TAB&gt;を押すと、この略語は<code>equation</code>環境に展開されま
@@ -8852,9 +8831,9 @@ Org-modeファイルで有効するために次の設定を行います:
 挿入されます。もしあなたが&lt;TAB&gt;を括弧から抜け出すために使うなら、また
 括弧が1文字の文字かマクロのみを囲っているなら、それらは再び消去されま
 す(<code>cdlatex-simplify-sub-super-script</code>変数に依存します)。
-<li><a name="index-g_t_0060-1398"></a>Pressing the backquote <kbd>`</kbd> followed by a character inserts math macros,
-also outside LaTeX fragments.  If you wait more than 1.5 seconds after
-the backquote, a help window will pop up. 
+<li><a name="index-g_t_0060-1398"></a>LaTeXのコード片以外の文字に続いて<kbd>TAB</kbd>を押すと、数学のマクロが挿入され
+ます。もしあなたがバッククォートを押して1.5秒以上待つと、ヘルプウィン
+ドウがポップアップします。
 <li><a name="index-g_t_0027-1399"></a>別の文字に続いてシングルクォート<kbd>'</kbd>を押すと、強調やフォントでポイント
 前のシンボルが変更されます。もしシングルクォートを入力した後1.5秒以上
 待つと、ヘルプウィンドウがポップアップします。文字の変更はLaTeXコード
@@ -12648,7 +12627,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Miscellaneous">Miscellaneous</a>
 
 <h3 class="section">15.1 Completion</h3>
 
-<p><a name="index-completion_002c-of-_0040TeX_007b_007d-symbols-1762"></a><a name="index-g_t_00e5_00ae_008c_00e4_00ba_0086_00e3_0080_0081TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae-1763"></a><a name="index-completion_002c-of-dictionary-words-1764"></a><a name="index-g_t_00e3_0082_00aa_00e3_0083_0097_00e3_0082_00b7_00e3_0083_00a7_00e3_0083_00b3_00e3_0081_00ae_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1765"></a><a name="index-g_t_00e5_00ae_008c_00e4_00ba_0086_00e3_0080_0081_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00ae-1766"></a><a name="index-completion_002c-of-property-keys-1767"></a><a name="index-completion_002c-of-link-abbreviations-1768"></a><a name="index-g_t_0040TeX_007b_007d-symbol-completion-1769"></a><a name="index-TODO-keywords-completion-1770"></a><a name="index-dictionary-word-completion-1771"></a><a name="index-option-keyword-completion-1772"></a><a name="index-tag-completion-1773"></a><a name="index-link-abbreviations_002c-completion-of-1774"></a>
+<p><a name="index-g_t_00e8_00a3_009c_00e5_00ae_008c_00e3_0080_0081_0040TeX_007b_007d_00e3_0081_00ae_00e8_00a8_0098_00e5_008f_00b7-1762"></a><a name="index-g_t_00e5_00ae_008c_00e4_00ba_0086_00e3_0080_0081TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae-1763"></a><a name="index-g_t_00e8_00a3_009c_00e5_00ae_008c_00e3_0080_0081_00e8_00be_009e_00e6_009b_00b8_00e3_0081_00ae_00e5_008d_0098_00e8_00aa_009e-1764"></a><a name="index-g_t_00e3_0082_00aa_00e3_0083_0097_00e3_0082_00b7_00e3_0083_00a7_00e3_0083_00b3_00e3_0081_00ae_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1765"></a><a name="index-g_t_00e5_00ae_008c_00e4_00ba_0086_00e3_0080_0081_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00ae-1766"></a><a name="index-g_t_00e8_00a3_009c_00e5_00ae_008c_00e3_0080_0081_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0082_00ad_00e3_0083_00bc-1767"></a><a name="index-g_t_00e8_00a3_009c_00e5_00ae_008c_00e3_0080_0081_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae_00e7_009c_0081_00e7_0095_00a5_00e8_00a8_0098_00e6_00b3_0095-1768"></a><a name="index-g_t_0040TeX_007b_007d_00e3_0082_00b7_00e3_0083_00b3_00e3_0083_009c_00e3_0083_00ab_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1769"></a><a name="index-TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1770"></a><a name="index-g_t_00e8_00be_009e_00e6_009b_00b8_00e5_008d_0098_00e8_00aa_009e_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1771"></a><a name="index-g_t_00e3_0082_00aa_00e3_0083_0097_00e3_0082_00b7_00e3_0083_00a7_00e3_0083_00b3_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1772"></a><a name="index-g_t_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1773"></a><a name="index-g_t_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae_00e7_009c_0081_00e7_0095_00a5_00e8_00a8_0098_00e6_00b3_0095_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1774"></a>
 Emacsは補完無しではEmacsとはいえません、そしてorg-modeはそれが意味をなすたび
 に使用します。もしあなたが<i>iswitchb</i>-
 か<i>ido</i>-のようなインタフェースを補完のプロンプトとして好むのであれば、あなたは
@@ -12664,7 +12643,7 @@ Emacsは補完無しではEmacsとはいえません、そしてorg-modeはそ�
 <dl><dt><kbd>M-&lt;TAB&gt;</kbd><dd>ポイント位置での補完
           <ul>
 <li>見出しの先頭では、TODOキーワードを補完します。
-<li>&lsquo;<samp><span class="samp">\\</span></samp>&rsquo;の後では、エクスポート機能によりサポートされるTeXのシンボルを補完し
+<li>&lsquo;<samp><span class="samp">\</span></samp>&rsquo;の後では、エクスポート機能によりサポートされるTeXのシンボルを補完し
 ます。
 <li>&lsquo;<samp><span class="samp">*</span></samp>&rsquo;の後では、&lsquo;<samp><span class="samp">[[*find this headline]]</span></samp>&rsquo;のようにリンクを検索できるように
 、カレントバッファで見出しを補完します。
@@ -12723,8 +12702,8 @@ Org-modeは僅かなキーストロークのみによる空の構造の(<code>#+
 <br></td></tr><tr align="left"><td valign="top" width="10%"><kbd>i</kbd> </td><td valign="top" width="90%"><code>#+include:</code> line
    <br></td></tr></table>
 
-   <p>例えば、空の行で\"&lt;e\"と入力し、その後TABを入力すると、EXAMPLEテンプレートが
-補完されます。
+   <p>例えば、空の行で"&lt;e"と入力し、その後TABを入力すると、EXAMPLEテンプレートが補
+完されます。
 
    <p>あなたは<code>org-structure-template-list</code>変数をカスタマイズすることで追加のテン
 プレートをインストールすることができます。詳細は変数のdocstringを参照してく
@@ -12798,8 +12777,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Miscellaneous">Miscellaneous</a>
 、nilならば尋ねません。
 </p></blockquote></div>
 
-     <p>例えば、これは\"ditaa\"コード(安全性は考慮されています)を確認無しで実
-行する方法です:
+     <p>例えば、これは"ditaa"コード(安全性は考慮されています)を確認無しで実行
+する方法です:
      <pre class="example">          (defun my-org-confirm-babel-evaluate (lang body)
             (not (string= lang "ditaa")))  ; don't ask for ditaa
           (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
@@ -12965,7 +12944,8 @@ Org-modeはファイル単位で設定を定義するために、バッファ内
 <code>org-time-stamp-overlay-formats</code>変数)のカスタムフォーマットオーバレイ
 を切り替えます、
 <a name="index-STARTUP-keyword_00e3_0080_0081_0040code_007bcustomtime_007d-1842"></a>
-     <pre class="example">          customtime <span class="roman">カスタマイズされたタイムフォーマットで覆います</span></pre>
+     <pre class="example">          customtime <span class="roman">カスタマイズされたタイムフォーマットで覆います</span>
+</pre>
      <p><a name="index-constants_002dunit_002dsystem-1843"></a>以下のオプションは表計算(<code>constants-unit-system</code>変数)に影響を与えます。
 <a name="index-STARTUP-keyword_00e3_0080_0081_0040code_007bconstcgs_007d-1844"></a><a name="index-STARTUP-keyword_00e3_0080_0081_0040code_007bconstSI_007d-1845"></a>
      <pre class="example">          constcgs   <samp><span class="file">constants.el</span></samp><span class="roman"> should use the c-g-s unit system</span>
@@ -12991,7 +12971,8 @@ Org-modeはファイル単位で設定を定義するために、バッファ内
 する変数は<code>org-hide-block-startup</code>です。
 <a name="index-g_t_0040code_007bhideblocks_007d_002c-STARTUP-keyword-1859"></a><a name="index-g_t_0040code_007bnohideblocks_007d_002c-STARTUP-keyword-1860"></a>
      <pre class="example">          hideblocks   <span class="roman">開始時に全ての開始/終了ブロックを見えなくします</span>
-          nohideblocks <span class="roman">開始時にブロックを見えなくしません</span></pre>
+          nohideblocks <span class="roman">開始時にブロックを見えなくしません</span>
+</pre>
      <p><a name="index-org_002dpretty_002dentities-1861"></a>UTF-8の文字の表示は変数<code>org-pretty-entities</code>と以下のキーワードにより制
 御されます。
 <a name="index-g_t_0040code_007bentitiespretty_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1862"></a><a name="index-g_t_0040code_007bentitiesplain_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1863"></a>
@@ -13106,10 +13087,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Miscellaneous">Miscellaneous</a>
      <p><a name="index-org_002dadapt_002dindentation-1872"></a>Org-modeは段落詰め、行の折り返し、構造の編集、適切なインデントの保存と
 適合と同時にこれをサポートします。
 
-     <li><a name="index-org_002dhide_002dleading_002dstars-1873"></a><em>Hiding leading stars</em><br> You can modify the display in such a way that
-all leading stars become invisible.  To do this in a global way, configure
-the variable <code>org-hide-leading-stars</code> or change this on a per-file
-basis with
+     <li><a name="index-org_002dhide_002dleading_002dstars-1873"></a><em>先頭の「*」を隠す</em><br>
+あなたは先頭の「*」を非表示にするという方法で変更することができます。
+これを行うグローバルな方法は、<code>org-hide-leading-stars</code>変数を設定するか
+、以下のようにファイル毎に設定するかです。
 
      <pre class="example">          #+STARTUP: hidestars
           #+STARTUP: showstars
@@ -13213,64 +13194,67 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Interaction">Interaction</a>
 
 </div>
 
-<h4 class="subsection">15.10.1 Packages that Org cooperates with</h4>
+<h4 class="subsection">15.10.1 Org-modeと強調して動くパッケージ</h4>
 
      
 <a name="index-g_t_0040file_007bcalc_002eel_007d-1878"></a>
 <a name="index-Gillespie_002c-Dave-1879"></a>
-<dl><dt><samp><span class="file">calc.el</span></samp> by Dave Gillespie<dd>Org uses the Calc package for implementing spreadsheet functionality in its
-tables (see <a href="#The-spreadsheet">The spreadsheet</a>).  Org checks for the availability of Calc
-by looking for the function <code>calc-eval</code> which will have been autoloaded
-during setup if Calc has been installed properly.  As of Emacs 22, Calc is
-part of the Emacs distribution.  Another possibility for interaction between
-the two packages is using Calc for embedded calculations. See <a href="Calc.html#Embedded-Mode">Embedded Mode</a>. 
-<br><dt><samp><span class="file">constants.el</span></samp> by Carsten Dominik<dd><a name="index-g_t_0040file_007bconstants_002eel_007d-1880"></a><a name="index-Dominik_002c-Carsten-1881"></a><a name="index-org_002dtable_002dformula_002dconstants-1882"></a>In a table formula (see <a href="#The-spreadsheet">The spreadsheet</a>), it is possible to use names
-for natural constants or units.  Instead of defining your own constants in
-the variable <code>org-table-formula-constants</code>, install the
-<samp><span class="file">constants</span></samp> package which defines a large number of constants and
-units, and lets you use unit prefixes like &lsquo;<samp><span class="samp">M</span></samp>&rsquo; for &lsquo;<samp><span class="samp">Mega</span></samp>&rsquo;, etc. 
-You will need version 2.0 of this package, available at
-<a href="http://www.astro.uva.nl/~dominik/Tools">http://www.astro.uva.nl/~dominik/Tools</a>. Org checks for the function
-<code>constants-get</code>, which has to be autoloaded in your setup.  See the
-installation instructions in the file <samp><span class="file">constants.el</span></samp>. 
-<br><dt><samp><span class="file">cdlatex.el</span></samp> by Carsten Dominik<dd><a name="index-g_t_0040file_007bcdlatex_002eel_007d-1883"></a><a name="index-Dominik_002c-Carsten-1884"></a>Org-mode can make use of the CDLaTeX package to efficiently enter
-LaTeX fragments into Org files.  See <a href="#CDLaTeX-mode">CDLaTeX mode</a>. 
-<br><dt><samp><span class="file">imenu.el</span></samp> by Ake Stenhoff and Lars Lindberg<dd><a name="index-g_t_0040file_007bimenu_002eel_007d-1885"></a>Imenu allows menu access to an index of items in a file.  Org-mode supports
-Imenu&mdash;all you need to do to get the index is the following:
+<dl><dt><samp><span class="file">calc.el</span></samp> by Dave Gillespie<dd>Org-modeはテーブル(see <a href="#The-spreadsheet">The spreadsheet</a>)中の表計算関数の実装にCalcパッケ
+ージを使います。Org-modeはCalcが適切にインストールされている場合、設定
+中に自動で読み込まれる<code>calc-eval</code>関数を探し、Calcが利用できることを確
+認します。Emacs22現在で、CalcはEmacsに最初から組込まれています。2つの
+パッケージの連携の別の方法はCalcを組込み計算に使うことです。
+See <a href="Calc.html#Embedded-Mode">Embedded Mode</a>. 
+<br><dt><samp><span class="file">constants.el</span></samp> by Carsten Dominik<dd><a name="index-g_t_0040file_007bconstants_002eel_007d-1880"></a><a name="index-Dominik_002c-Carsten-1881"></a><a name="index-org_002dtable_002dformula_002dconstants-1882"></a>テーブル関数中(see <a href="#The-spreadsheet">The spreadsheet</a>)で、自然定数や単位に名前を使うことが
+できるようになります。あなたが自分で<code>org-table-formula-constants</code>変数
+に定数を定義する代わりに、多くの定数や単位を定義している<samp><span class="file">constants</span></samp>パ
+ッケージをインストールすることで、あなたは&lsquo;<samp><span class="samp">Mega</span></samp>&rsquo;に&lsquo;<samp><span class="samp">M</span></samp>&rsquo;のような表現を使
+うことができるようになります。このパッケージのバージョン2.0が必要で、
+<a href="http://www.astro.uva.nl/~dominik/Tools">http://www.astro.uva.nl/~dominik/Tools</a>から利用できます。Org-modeは設
+定中に自動で読み込まれる<code>constants-get</code>関数をチェックします。
+<samp><span class="file">constants.el</span></samp>のインストール説明を参照してください。
+<br><dt><samp><span class="file">cdlatex.el</span></samp> by Carsten Dominik<dd><a name="index-g_t_0040file_007bcdlatex_002eel_007d-1883"></a><a name="index-Dominik_002c-Carsten-1884"></a>Org-modeはLaTeXフラグメントをOrg-modeファイルに効率的に入力するために
+CDLaTeXパッケージを活用できます。<a href="#CDLaTeX-mode">CDLaTeX mode</a>を参照してください。
+<br><dt><samp><span class="file">imenu.el</span></samp> by Ake Stenhoff and Lars Lindberg<dd><a name="index-g_t_0040file_007bimenu_002eel_007d-1885"></a>Imenuはファイル中のアイテムのインデックスへのアクセスメニューを提供し
+ます。Org-modeはImenuをサポートします&mdash;インデックスを得るために、あな
+たは以下のようにする必要があります:
      <pre class="lisp">          (add-hook 'org-mode-hook
                     (lambda () (imenu-add-to-menubar "Imenu")))
 </pre>
-     <p><a name="index-org_002dimenu_002ddepth-1886"></a>By default the index is two levels deep&mdash;you can modify the depth using the
-option <code>org-imenu-depth</code>. 
-<br><dt><samp><span class="file">remember.el</span></samp> by John Wiegley<dd><a name="index-g_t_0040file_007bremember_002eel_007d-1887"></a><a name="index-Wiegley_002c-John-1888"></a>Org used to use this package for capture, but no longer does. 
-<br><dt><samp><span class="file">speedbar.el</span></samp> by Eric M. Ludlam<dd><a name="index-g_t_0040file_007bspeedbar_002eel_007d-1889"></a><a name="index-Ludlam_002c-Eric-M_002e-1890"></a>Speedbar is a package that creates a special frame displaying files and
-index items in files.  Org-mode supports Speedbar and allows you to drill
-into Org files directly from the Speedbar.  It also allows you to restrict
-the scope of agenda commands to a file or a subtree by using the command
-<kbd>&lt;</kbd> in the Speedbar frame. 
+     <p><a name="index-org_002dimenu_002ddepth-1886"></a>デフォルトではインデックスは2レベルの深さです&mdash;あなたは
+<code>org-imenu-depth</code>オプションを用いることで深さを変更できます。
+<br><dt><samp><span class="file">remember.el</span></samp> by John Wiegley<dd><a name="index-g_t_0040file_007bremember_002eel_007d-1887"></a><a name="index-Wiegley_002c-John-1888"></a>Org-modeはこのパッケージをキャプチャに使用します、しかし、もはやそうで
+はありません。
+<br><dt><samp><span class="file">speedbar.el</span></samp> by Eric M. Ludlam<dd><a name="index-g_t_0040file_007bspeedbar_002eel_007d-1889"></a><a name="index-Ludlam_002c-Eric-M_002e-1890"></a>Speedbarはファイルとファイル中のインデックスを表示するためのスペシャル
+フレームを作成するパッケージです。Org-modeはSpeedbarをサポートし、
+SpeedbarからOrg-modeファイルへ直接繋げます。Speedbarフレームで<kbd>&lt;</kbd>コマ
+ンドを使うことでファイルまたはサブツリーへのアジェンダコマンドの範囲を
+制限します。
 <a name="index-g_t_0040file_007btable_002eel_007d-1891"></a><br><dt><samp><span class="file">table.el</span></samp> by Takaaki Ota<dd><a name="index-C_002dc-C_002dc-1892"></a><a name="index-table-editor_002c-_0040file_007btable_002eel_007d-1893"></a><a name="index-g_t_0040file_007btable_002eel_007d-1894"></a><a name="index-Ota_002c-Takaaki-1895"></a>
-Complex ASCII tables with automatic line wrapping, column- and row-spanning,
-and alignment can be created using the Emacs table package by Takaaki Ota
-(<a href="http://sourceforge.net/projects/table">http://sourceforge.net/projects/table</a>, and also part of Emacs 22). 
-Org-mode will recognize these tables and export them properly.  Because of
-interference with other Org-mode functionality, you unfortunately cannot
-edit these tables directly in the buffer.  Instead, you need to use the
-command <kbd>C-c '</kbd> to edit them, similar to source code snippets.
+自動的な行の折り返し、列、行の広がり、調整を伴なう複雑なASCIIテーブルはOta
+Takaaki(<a href="http://sourceforge.net/projects/table">http://sourceforge.net/projects/table</a>、もしくはEmacs22に含ま
+れています)によるEmacsのテーブルパッケージを用いることで作成可能です。
+Org-modはこれらのテーブルを認識し、適切にセクスポートします。Org-mode
+の別の機能による干渉のために、あなたは不幸にもこれらのテーブルをバッフ
+ァ中で直接編集することができません。代わりに、あなたはこのテーブルの編
+集のためにソースコードスニペットに似た<kbd>C-c '</kbd>コマンドを使う必要があり
+ます。
 
           
 <a name="index-C_002dc-_0027-1896"></a>
 <a name="index-org_002dedit_002dspecial-1897"></a>
-<dl><dt><kbd>C-c ' &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-edit-special</code><kbd>)</kbd><dd> Edit a <samp><span class="file">table.el</span></samp> table.  Works when
-the cursor is in a table.el table.  <a name="index-C_002dc-_007e-1898"></a><a name="index-org_002dtable_002dcreate_002dwith_002dtable_002eel-1899"></a><br><dt><kbd>C-c ~ &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-table-create-with-table.el</code><kbd>)</kbd><dd> Insert a <samp><span class="file">table.el</span></samp> table.  If there
-is already a table at point, this command converts it between the
-<samp><span class="file">table.el</span></samp> format and the Org-mode format.  See the documentation
-string of the command <code>org-convert-table</code> for the restrictions under
-which this is possible. 
+<dl><dt><kbd>C-c ' &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-edit-special</code><kbd>)</kbd><dd>
+<samp><span class="file">table.el</span></samp>のテーブルを編集します。カーソルがtable.elのテーブル上の時動
+作します。<a name="index-C_002dc-_007e-1898"></a><a name="index-org_002dtable_002dcreate_002dwith_002dtable_002eel-1899"></a><br><dt><kbd>C-c ~ &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-table-create-with-table.el</code><kbd>)</kbd><dd>
+<samp><span class="file">table.el</span></samp>のテーブルを挿入します。ポイント位置が既にテーブルなら、この
+コマンドは<samp><span class="file">table.el</span></samp>のフォーマットとOrg-modeのフォーマットで相互変換し
+ます。これが可能なことと制限については、<code>org-convert-table</code>コマンドの
+ドキュメントを参照してください。
 </dl>
-     <samp><span class="file">table.el</span></samp> is part of Emacs since Emacs 22. 
-<br><dt><samp><span class="file">footnote.el</span></samp> by Steven L. Baur<dd><a name="index-g_t_0040file_007bfootnote_002eel_007d-1900"></a><a name="index-Baur_002c-Steven-L_002e-1901"></a>Org-mode recognizes numerical footnotes as provided by this package. 
-However, Org-mode also has its own footnote support (see <a href="#Footnotes">Footnotes</a>),
-which makes using <samp><span class="file">footnote.el</span></samp> unnecessary. 
+     <samp><span class="file">table.el</span></samp>はEmacs22以降のEmacsでは内蔵されています。
+<br><dt><samp><span class="file">footnote.el</span></samp> by Steven L. Baur<dd><a name="index-g_t_0040file_007bfootnote_002eel_007d-1900"></a><a name="index-Baur_002c-Steven-L_002e-1901"></a>Org-modeはこのパッケージが提供する数字の脚注を認識します。しかしながら、
+Org-modeは自身の脚注(see <a href="#Footnotes">Footnotes</a>)もサポートしているため、<samp><span class="file">footnote.el</span></samp>を使う
+必要はありません。
 </dl>
 
 <div class="node">
@@ -13281,57 +13265,56 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Interaction">Interaction</a>
 
 </div>
 
-<h4 class="subsection">15.10.2 Packages that lead to conflicts with Org-mode</h4>
+<h4 class="subsection">15.10.2 Org-modeとの衝突に繋がるパッケージ</h4>
 
      
 <a name="index-g_t_0040code_007bshift_002dselection_002dmode_007d-1902"></a>
 <a name="index-org_002dsupport_002dshift_002dselect-1903"></a>
-<dl>In Emacs 23, <code>shift-selection-mode</code> is on by default, meaning that
-cursor motions combined with the shift key should start or enlarge regions. 
-This conflicts with the use of <kbd>S-&lt;cursor&gt;</kbd> commands in Org to
-change timestamps, TODO keywords, priorities, and item bullet types if the
-cursor is at such a location.  By default, <kbd>S-&lt;cursor&gt;</kbd> commands
-outside special contexts don't do anything, but you can customize the
-variable <code>org-support-shift-select</code>.  Org-mode then tries to
-accommodate shift selection by (i) using it outside of the special contexts
-where special commands apply, and by (ii) extending an existing active
-region even if the cursor moves across a special context.
+<dl>Emacs23では、Shiftキーと組み合わせたカーソルの動きを開始するかリージョ
+ンを広げるための<code>shift-selection-mode</code>がデフォルトで有効になっています
+。カーソルがそのような位置にある場合、Org-modeでのタイムスタンプ、TODO
+キーワード、プライオリティ、アイテムbulletタイプの変更と<kbd>S-&lt;cursor&gt;</kbd>コ
+マンドは衝突します。デフォルトでは、<kbd>S-&lt;cursor&gt;</kbd>コマンドは特別なコンテ
+クスト以外では何も起きませんが、<code>org-support-shift-select</code>変数をカスタ
+マイズすることができます。Org-modeはスペシャルコマンドが適用される特別
+なコンテクストの外で(i)使用することによりShift選択を提供しようとし、ま
+た(ii)アクティブなリージョンを拡張することによっても特別なコンテクスト
+を通してカーソルが移動します。
 
-     <dt><samp><span class="file">CUA.el</span></samp> by Kim. F. Storm<dd><a name="index-g_t_0040file_007bCUA_002eel_007d-1904"></a><a name="index-Storm_002c-Kim_002e-F_002e-1905"></a><a name="index-org_002dreplace_002ddisputed_002dkeys-1906"></a>Key bindings in Org conflict with the <kbd>S-&lt;cursor&gt;</kbd> keys used by CUA mode
-(as well as <code>pc-select-mode</code> and <code>s-region-mode</code>) to select and
-extend the region.  In fact, Emacs 23 has this built-in in the form of
-<code>shift-selection-mode</code>, see previous paragraph.  If you are using Emacs
-23, you probably don't want to use another package for this purpose. 
-However, if you prefer to leave these keys to a different package while
-working in Org-mode, configure the variable
-<code>org-replace-disputed-keys</code>.  When set, Org will move the following key
-bindings in Org files, and in the agenda buffer (but not during date
-selection).
+     <dt><samp><span class="file">CUA.el</span></samp> by Kim. F. Storm<dd><a name="index-g_t_0040file_007bCUA_002eel_007d-1904"></a><a name="index-Storm_002c-Kim_002e-F_002e-1905"></a><a name="index-org_002dreplace_002ddisputed_002dkeys-1906"></a>リージョンの選択と拡張について、Org-modeでのキーバインディングは
+(<code>pc-select-mode</code>や<code>s-region-mode</code>と同様に)CUAモードで使われる
+<kbd>S-&lt;cursor&gt;</kbd>と衝突します。実際、前の段落を見れば分かりますが、Emacs23
+は<code>shift-selection-mode</code>の形でこのビルトインを持ちますます。あなたが
+Emacs23を使っているのであれば、まず間違いなくこの目的のための別のパッ
+ケージは使いたくないでしょう。しかし、Org-modeでの作業中に別のパッケー
+ジにこれらのキーを渡すことを選ぶのであれば、
+<code>org-replace-disputed-keys</code>変数を設定してください。設定したとき、
+Org-modeはOrg-modeファイルとアジェンダバッファ(日付の選択を除きます)中
+で以下のキーバインディングを変えるでしょう。
 
      <pre class="example">          S-UP      &rArr;  M-p             S-DOWN     &rArr;  M-n
           S-LEFT    &rArr;  M--             S-RIGHT    &rArr;  M-+
           C-S-LEFT  &rArr;  M-S--           C-S-RIGHT  &rArr;  M-S-+
 </pre>
-     <p><a name="index-org_002ddisputed_002dkeys-1907"></a>Yes, these are unfortunately more difficult to remember.  If you want to
-have other replacement keys, look at the variable <code>org-disputed-keys</code>.
+     <p><a name="index-org_002ddisputed_002dkeys-1907"></a>はい、残念ながら覚えることがより困難です。もしあなたが他の代わりのキー
+を持ちたいのであえれば、<code>org-disputed-keys</code>変数を見てください。
 
-     <br><dt><samp><span class="file">yasnippet.el</span></samp><dd><a name="index-g_t_0040file_007byasnippet_002eel_007d-1908"></a>The way Org mode binds the TAB key (binding to <code>[tab]</code> instead of
-<code>"\t"</code>) overrules YASnippet's access to this key.  The following code
-fixed this problem:
+     <br><dt><samp><span class="file">yasnippet.el</span></samp><dd><a name="index-g_t_0040file_007byasnippet_002eel_007d-1908"></a>Org-modeはTABキー(<code>"\t"</code>の代わりに。<code>[tab]</code>をバインドします)をバインド
+するこのキーでYASnippetsのアクセスを優先します。以下のコードはこの問題
+を修正します:
 
      <pre class="lisp">          (add-hook 'org-mode-hook
                     (lambda ()
                       (org-set-local 'yas/trigger-key [tab])
                       (define-key yas/keymap [tab] 'yas/next-field-group)))
 </pre>
-     <p>The latest version of yasnippet doesn't play well with Org mode. If the
-above code does not fix the conflict, start by defining the following
-function:
+     <p>yasnippetの最新のバージョンはOrg-modeと相性がよくありません。上記のコ
+ードが衝突を修正しないなら、以下の関数を定義してください:
 
      <pre class="lisp">          (defun yas/org-very-safe-expand ()
                  (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
 </pre>
-     <p>Then, tell Org mode what to do with the new function:
+     <p>それから、Org-modeに実行すべき新しい関数を教えてくさい:
 
      <pre class="lisp">          (add-hook 'org-mode-hook
                     (lambda ()
@@ -13340,10 +13323,10 @@ function:
                         (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
                         (define-key yas/keymap [tab] 'yas/next-field)))
 </pre>
-     <br><dt><samp><span class="file">windmove.el</span></samp> by Hovav Shacham<dd><a name="index-g_t_0040file_007bwindmove_002eel_007d-1909"></a>This package also uses the <kbd>S-&lt;cursor&gt;</kbd> keys, so everything written in
-the paragraph above about CUA mode also applies here.  If you want make the
-windmove function active in locations where Org-mode does not have special
-functionality on <kbd>S-&lt;cursor&gt;</kbd>, add this to your configuration:
+     <br><dt><samp><span class="file">windmove.el</span></samp> by Hovav Shacham<dd><a name="index-g_t_0040file_007bwindmove_002eel_007d-1909"></a>このパッケージも、<kbd>S-&lt;cursor&gt;</kbd>キーを使用し。そしてCUAモードが適用され
+ている状態の段落で全てが書かれます。もし、Org-modeが<kbd>S-&lt;cursor&gt;</kbd>上に特
+別な関数を持たない場所であなたがwindmove関数を有効にしたいのであれば、
+設定に以下を追加します:
 
      <pre class="lisp">          ;; Make windmove work in org-mode:
           (add-hook 'org-shiftup-final-hook 'windmove-up)
@@ -13351,10 +13334,10 @@ functionality on <kbd>S-&lt;cursor&gt;</kbd>, add this to your configuration:
           (add-hook 'org-shiftdown-final-hook 'windmove-down)
           (add-hook 'org-shiftright-final-hook 'windmove-right)
 </pre>
-     <br><dt><samp><span class="file">viper.el</span></samp> by Michael Kifer<dd><a name="index-g_t_0040file_007bviper_002eel_007d-1910"></a><a name="index-C_002dc-_002f-1911"></a>Viper uses <kbd>C-c /</kbd> and therefore makes this key not access the
-corresponding Org-mode command <code>org-sparse-tree</code>.  You need to find
-another key for this command, or override the key in
-<code>viper-vi-global-user-map</code> with
+     <br><dt><samp><span class="file">viper.el</span></samp> by Michael Kifer<dd><a name="index-g_t_0040file_007bviper_002eel_007d-1910"></a><a name="index-C_002dc-_002f-1911"></a>Viperは<kbd>C-c /</kbd>を使い、それ故にOrg-modeの<code>org-sparse-tree</code>コマンドに対
+応しているキーを使えないようにします。あなたはこのコマンドに別のキーを
+割り当てるか、<code>viper-vi-global-user-map</code>でキーを上書きする必要がありま
+す:
 
      <pre class="lisp">          (define-key viper-vi-global-user-map "C-c /" 'org-sparse-tree)
 </pre>
@@ -14701,9 +14684,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <ul class="index-cp" compact>
 <li><a href="#index-g_t_0023_002bARCHIVE-982">#+ARCHIVE</a>: <a href="#Moving-subtrees">Moving subtrees</a></li>
 <li><a href="#index-g_t_0023_002bATTR_005fDOCBOOK-1592">#+ATTR_DOCBOOK</a>: <a href="#Images-in-DocBook-export">Images in DocBook export</a></li>
+<li><a href="#index-g_t_0023_002bATTR_005fHTML-1496">#+ATTR_HTML</a>: <a href="#Tables-in-HTML-export">Tables in HTML export</a></li>
 <li><a href="#index-g_t_0023_002bATTR_005fHTML-1501">#+ATTR_HTML</a>: <a href="#Images-in-HTML-export">Images in HTML export</a></li>
 <li><a href="#index-g_t_0023_002bATTR_005fHTML-1492">#+ATTR_HTML</a>: <a href="#Links-in-HTML-export">Links in HTML export</a></li>
-<li><a href="#index-g_t_0023_002bATTR_005fHTML-1496">#+ATTR_HTML</a>: <a href="#Tables-in-HTML-export">Tables in HTML export</a></li>
+<li><a href="#index-g_t_0023_002bATTR_005fLaTeX-1556">#+ATTR_LaTeX</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
 <li><a href="#index-g_t_0023_002bATTR_005fLaTeX-1564">#+ATTR_LaTeX</a>: <a href="#Images-in-LaTeX-export">Images in LaTeX export</a></li>
 <li><a href="#index-g_t_0023_002bATTR_005fLaTeX-1559">#+ATTR_LaTeX</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
 <li><a href="#index-g_t_0023_002bAUTHOR-1409">#+AUTHOR</a>: <a href="#Export-options">Export options</a></li>
@@ -14720,13 +14704,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_0023_002bBEGIN_005fSRC-1360">#+BEGIN_SRC</a>: <a href="#Literal-examples">Literal examples</a></li>
 <li><a href="#index-g_t_0023_002bBEGIN_005fVERSE-1336">#+BEGIN_VERSE</a>: <a href="#Paragraphs">Paragraphs</a></li>
 <li><a href="#index-g_t_0023_002bBIND-1417">#+BIND</a>: <a href="#Export-options">Export options</a></li>
-<li><a href="#index-g_t_0023_002bCAPTION-1353">#+CAPTION</a>: <a href="#Images-and-tables">Images and tables</a></li>
-<li><a href="#index-g_t_0023_002bCAPTION-1500">#+CAPTION</a>: <a href="#Images-in-HTML-export">Images in HTML export</a></li>
-<li><a href="#index-g_t_0023_002bCAPTION-1562">#+CAPTION</a>: <a href="#Images-in-LaTeX-export">Images in LaTeX export</a></li>
-<li><a href="#index-g_t_0023_002bCAPTION-1557">#+CAPTION</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
 <li><a href="#index-g_t_0023_002bCAPTION-1590">#+CAPTION</a>: <a href="#Images-in-DocBook-export">Images in DocBook export</a></li>
-<li><a href="#index-g_t_0023_002bCAPTION-1554">#+CAPTION</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
+<li><a href="#index-g_t_0023_002bCAPTION-1353">#+CAPTION</a>: <a href="#Images-and-tables">Images and tables</a></li>
 <li><a href="#index-g_t_0023_002bCAPTION-1495">#+CAPTION</a>: <a href="#Tables-in-HTML-export">Tables in HTML export</a></li>
+<li><a href="#index-g_t_0023_002bCAPTION-1562">#+CAPTION</a>: <a href="#Images-in-LaTeX-export">Images in LaTeX export</a></li>
+<li><a href="#index-g_t_0023_002bCAPTION-1500">#+CAPTION</a>: <a href="#Images-in-HTML-export">Images in HTML export</a></li>
+<li><a href="#index-g_t_0023_002bCAPTION-1554">#+CAPTION</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
 <li><a href="#index-g_t_0023_002bCATEGORY-1085">#+CATEGORY</a>: <a href="#Categories">Categories</a></li>
 <li><a href="#index-g_t_0023_002bCOLUMNS-695">#+COLUMNS</a>: <a href="#Scope-of-column-definitions">Scope of column definitions</a></li>
 <li><a href="#index-g_t_0023_002bCONSTANTS-317">#+CONSTANTS</a>: <a href="#References">References</a></li>
@@ -14742,17 +14725,16 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_0023_002bINCLUDE-1365">#+INCLUDE</a>: <a href="#Include-files">Include files</a></li>
 <li><a href="#index-g_t_0023_002bINFOJS_005fOPT-1516">#+INFOJS_OPT</a>: <a href="#JavaScript-support">JavaScript support</a></li>
 <li><a href="#index-g_t_0023_002bKEYWORDS-1413">#+KEYWORDS</a>: <a href="#Export-options">Export options</a></li>
-<li><a href="#index-g_t_0023_002bLABEL-1558">#+LABEL</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
-<li><a href="#index-g_t_0023_002bLABEL-1591">#+LABEL</a>: <a href="#Images-in-DocBook-export">Images in DocBook export</a></li>
-<li><a href="#index-g_t_0023_002bLABEL-1555">#+LABEL</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
-<li><a href="#index-g_t_0023_002bLABEL-1354">#+LABEL</a>: <a href="#Images-and-tables">Images and tables</a></li>
 <li><a href="#index-g_t_0023_002bLABEL-1563">#+LABEL</a>: <a href="#Images-in-LaTeX-export">Images in LaTeX export</a></li>
+<li><a href="#index-g_t_0023_002bLABEL-1591">#+LABEL</a>: <a href="#Images-in-DocBook-export">Images in DocBook export</a></li>
+<li><a href="#index-g_t_0023_002bLABEL-1558">#+LABEL</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
+<li><a href="#index-g_t_0023_002bLABEL-1354">#+LABEL</a>: <a href="#Images-and-tables">Images and tables</a></li>
 <li><a href="#index-g_t_0023_002bLANGUAGE-1414">#+LANGUAGE</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bLaTeX-1550">#+LaTeX</a>: <a href="#Quoting-LaTeX-code">Quoting LaTeX code</a></li>
 <li><a href="#index-g_t_0023_002bLATEX_005fCLASS-1546">#+LATEX_CLASS</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
 <li><a href="#index-g_t_0023_002bLATEX_005fCLASS_005fOPTIONS-1547">#+LATEX_CLASS_OPTIONS</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
-<li><a href="#index-g_t_0023_002bLATEX_005fHEADER-1423">#+LATEX_HEADER</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bLATEX_005fHEADER-1545">#+LATEX_HEADER</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
+<li><a href="#index-g_t_0023_002bLATEX_005fHEADER-1423">#+LATEX_HEADER</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bLINK-486">#+LINK</a>: <a href="#Link-abbreviations">Link abbreviations</a></li>
 <li><a href="#index-g_t_0023_002bLINK_005fHOME-1419">#+LINK_HOME</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bLINK_005fUP-1418">#+LINK_UP</a>: <a href="#Export-options">Export options</a></li>
@@ -14774,8 +14756,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_0023_002bTBLNAME-326">#+TBLNAME</a>: <a href="#References">References</a></li>
 <li><a href="#index-g_t_0023_002bTEXT-1332">#+TEXT</a>: <a href="#Initial-text">Initial text</a></li>
 <li><a href="#index-g_t_0023_002bTEXT-1415">#+TEXT</a>: <a href="#Export-options">Export options</a></li>
-<li><a href="#index-g_t_0023_002bTITLE-1408">#+TITLE</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bTITLE-1324">#+TITLE</a>: <a href="#Document-title">Document title</a></li>
+<li><a href="#index-g_t_0023_002bTITLE-1408">#+TITLE</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bTODO-527">#+TODO</a>: <a href="#Per_002dfile-keywords">Per-file keywords</a></li>
 <li><a href="#index-g_t_0023_002bTYP_005fTODO-528">#+TYP_TODO</a>: <a href="#Per_002dfile-keywords">Per-file keywords</a></li>
 <li><a href="#index-g_t_0023_002bXSLT-1422">#+XSLT</a>: <a href="#Export-options">Export options</a></li>
@@ -14838,17 +14820,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-code-block_002c-results-of-evaluation-1732">code block, results of evaluation</a>: <a href="#Results-of-evaluation">Results of evaluation</a></li>
 <li><a href="#index-code-block_002c-structure-1706">code block, structure</a>: <a href="#Structure-of-code-blocks">Structure of code blocks</a></li>
 <li><a href="#index-column-formula-341">column formula</a>: <a href="#Column-formulas">Column formulas</a></li>
-<li><a href="#index-column-view_002c-for-properties-693">column view, for properties</a>: <a href="#Defining-columns">Defining columns</a></li>
 <li><a href="#index-column-view_002c-in-agenda-1316">column view, in agenda</a>: <a href="#Agenda-column-view">Agenda column view</a></li>
 <li><a href="#index-column_002c-of-field-coordinates-312">column, of field coordinates</a>: <a href="#References">References</a></li>
 <li><a href="#index-commands_002c-in-agenda-buffer-1095">commands, in agenda buffer</a>: <a href="#Agenda-commands">Agenda commands</a></li>
-<li><a href="#index-completion_002c-of-dictionary-words-1764">completion, of dictionary words</a>: <a href="#Completion">Completion</a></li>
-<li><a href="#index-completion_002c-of-link-abbreviations-1768">completion, of link abbreviations</a>: <a href="#Completion">Completion</a></li>
-<li><a href="#index-completion_002c-of-property-keys-1767">completion, of property keys</a>: <a href="#Completion">Completion</a></li>
-<li><a href="#index-completion_002c-of-_0040TeX_007b_007d-symbols-1762">completion, of TeX symbols</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-g_t_0040file_007bconstants_002eel_007d-1880"><samp><span class="file">constants.el</span></samp></a>: <a href="#Cooperation">Cooperation</a></li>
-<li><a href="#index-g_t_0040code_007bcontent_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-61"><code>content</code>, STARTUPキーワード</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-g_t_0040code_007bcontent_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1802"><code>content</code>, STARTUPキーワード</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
+<li><a href="#index-g_t_0040code_007bcontent_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-61"><code>content</code>, STARTUPキーワード</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-contents_002c-global-visibility-state-46">contents, global visibility state</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-context_002dsensitive-commands_002c-hooks-1917">context-sensitive commands, hooks</a>: <a href="#Context_002dsensitive-commands">Context-sensitive commands</a></li>
 <li><a href="#index-coordinates_002c-of-field-310">coordinates, of field</a>: <a href="#References">References</a></li>
@@ -14866,14 +14843,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-demotion_002c-of-subtrees-87">demotion, of subtrees</a>: <a href="#Structure-editing">Structure editing</a></li>
 <li><a href="#index-dependencies_002c-of-TODO-states-538">dependencies, of TODO states</a>: <a href="#TODO-dependencies">TODO dependencies</a></li>
 <li><a href="#index-diary-entries_002c-creating-from-agenda-1273">diary entries, creating from agenda</a>: <a href="#Agenda-commands">Agenda commands</a></li>
-<li><a href="#index-dictionary-word-completion-1771">dictionary word completion</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-directories_002c-for-publishing-1639">directories, for publishing</a>: <a href="#Sources-and-destinations">Sources and destinations</a></li>
 <li><a href="#index-display-changing_002c-in-agenda-1118">display changing, in agenda</a>: <a href="#Agenda-commands">Agenda commands</a></li>
 <li><a href="#index-DocBook-export-1567">DocBook export</a>: <a href="#DocBook-export">DocBook export</a></li>
 <li><a href="#index-DocBook-recursive-sections-1585">DocBook recursive sections</a>: <a href="#Recursive-sections">Recursive sections</a></li>
 <li><a href="#index-DocBook_00e5_0087_00ba_00e5_008a_009b_00e3_0081_00ab_00e3_0081_008a_00e3_0081_0091_00e3_0082_008b_00e7_0089_00b9_00e6_00ae_008a_00e6_0096_0087_00e5_00ad_0097-1594">DocBook出力における特殊文字</a>: <a href="#Special-characters">Special characters</a></li>
 <li><a href="#index-document-structure-19">document structure</a>: <a href="#Document-Structure">Document Structure</a></li>
-<li><a href="#index-Dominik_002c-Carsten-1881">Dominik, Carsten</a>: <a href="#Cooperation">Cooperation</a></li>
+<li><a href="#index-Dominik_002c-Carsten-1884">Dominik, Carsten</a>: <a href="#Cooperation">Cooperation</a></li>
 <li><a href="#index-DONE_00e3_0081_00af_00e6_009c_0080_00e7_00b5_0082_00e3_0081_00aeTODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-532">DONEは最終のTODOキーワード</a>: <a href="#Per_002dfile-keywords">Per-file keywords</a></li>
 <li><a href="#index-drawer_002c-for-properties-637">drawer, for properties</a>: <a href="#Property-syntax">Property syntax</a></li>
 <li><a href="#index-drawer_002c-for-state-change-recording-551">drawer, for state change recording</a>: <a href="#Tracking-TODO-state-changes">Tracking TODO state changes</a></li>
@@ -14905,8 +14881,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-folding_002c-sparse-trees-147">folding, sparse trees</a>: <a href="#Sparse-trees">Sparse trees</a></li>
 <li><a href="#index-g_t_0040file_007bfootnote_002eel_007d-1340"><samp><span class="file">footnote.el</span></samp></a>: <a href="#Footnote-markup">Footnote markup</a></li>
 <li><a href="#index-g_t_0040file_007bfootnote_002eel_007d-1900"><samp><span class="file">footnote.el</span></samp></a>: <a href="#Cooperation">Cooperation</a></li>
-<li><a href="#index-footnotes-217">footnotes</a>: <a href="#Footnotes">Footnotes</a></li>
 <li><a href="#index-footnotes-1435">footnotes</a>: <a href="#Export-options">Export options</a></li>
+<li><a href="#index-footnotes-217">footnotes</a>: <a href="#Footnotes">Footnotes</a></li>
 <li><a href="#index-format-specifier-330">format specifier</a>: <a href="#Formula-syntax-for-Calc">Formula syntax for Calc</a></li>
 <li><a href="#index-formula-debugging-391">formula debugging</a>: <a href="#Editing-and-debugging-formulas">Editing and debugging formulas</a></li>
 <li><a href="#index-formula-editing-345">formula editing</a>: <a href="#Editing-and-debugging-formulas">Editing and debugging formulas</a></li>
@@ -14931,8 +14907,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-headline_002c-promotion-and-demotion-85">headline, promotion and demotion</a>: <a href="#Structure-editing">Structure editing</a></li>
 <li><a href="#index-headlines-23">headlines</a>: <a href="#Headlines">Headlines</a></li>
 <li><a href="#index-hide-text-33">hide text</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
-<li><a href="#index-g_t_0040code_007bhideblocks_007d_002c-STARTUP-keyword-215"><code>hideblocks</code>, STARTUP keyword</a>: <a href="#Blocks">Blocks</a></li>
 <li><a href="#index-g_t_0040code_007bhideblocks_007d_002c-STARTUP-keyword-1859"><code>hideblocks</code>, STARTUP keyword</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
+<li><a href="#index-g_t_0040code_007bhideblocks_007d_002c-STARTUP-keyword-215"><code>hideblocks</code>, STARTUP keyword</a>: <a href="#Blocks">Blocks</a></li>
 <li><a href="#index-history-1976">history</a>: <a href="#History-and-Acknowledgments">History and Acknowledgments</a></li>
 <li><a href="#index-hooks-1913">hooks</a>: <a href="#Hooks">Hooks</a></li>
 <li><a href="#index-HTML-export-1472">HTML export</a>: <a href="#HTML-export">HTML export</a></li>
@@ -14947,7 +14923,6 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_0040file_007bimenu_002eel_007d-1885"><samp><span class="file">imenu.el</span></samp></a>: <a href="#Cooperation">Cooperation</a></li>
 <li><a href="#index-index_002c-in-a-publishing-project-1691">index, in a publishing project</a>: <a href="#Generating-an-index">Generating an index</a></li>
 <li><a href="#index-Info_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af-434">Infoリンク</a>: <a href="#External-links">External links</a></li>
-<li><a href="#index-inheritance_002c-of-properties-687">inheritance, of properties</a>: <a href="#Property-inheritance">Property inheritance</a></li>
 <li><a href="#index-inheritance_002c-of-tags-603">inheritance, of tags</a>: <a href="#Tag-inheritance">Tag inheritance</a></li>
 <li><a href="#index-g_t_0040code_007binlineimages_007d_002c-STARTUP-keyword-1812"><code>inlineimages</code>, STARTUP keyword</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-g_t_0040code_007binlineimages_007d_002c-STARTUP-keyword-470"><code>inlineimages</code>, STARTUP keyword</a>: <a href="#Handling-links">Handling links</a></li>
@@ -14961,15 +14936,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-LaTeX_00e3_0081_00ae_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089_00e7_0089_0087_00e3_0080_0081_00e3_0083_0097_00e3_0083_00ac_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc-1388">LaTeXのコード片、プレビュー</a>: <a href="#Previewing-LaTeX-fragments">Previewing LaTeX fragments</a></li>
 <li><a href="#index-g_t_0040LaTeX_007b_007d_00e3_0081_00ae_00e4_00b8_00ad_00e3_0081_00ae_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e7_0094_00bb_00e5_0083_008f-1561">LaTeXの中のインライン画像</a>: <a href="#Images-in-LaTeX-export">Images in LaTeX export</a></li>
 <li><a href="#index-g_t_0040LaTeX_007b_007d_00e3_0081_00ae_00e6_0096_00ad_00e7_0089_0087_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1375">LaTeXの断片、マークアップのルール</a>: <a href="#Special-symbols">Special symbols</a></li>
-<li><a href="#index-g_t_0040LaTeX_007b_007d_00e3_0081_00ae_00e6_0096_00ad_00e7_0089_0087_00e7_009a_0084_00e3_0081_00aa_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089-1384">LaTeXの断片的なコード</a>: <a href="#LaTeX-fragments">LaTeX fragments</a></li>
 <li><a href="#index-g_t_0040LaTeX_007b_007d_00e3_0081_00ae_00e6_0096_00ad_00e7_0089_0087_00e7_009a_0084_00e3_0081_00aa_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089-1439">LaTeXの断片的なコード</a>: <a href="#Export-options">Export options</a></li>
+<li><a href="#index-g_t_0040LaTeX_007b_007d_00e3_0081_00ae_00e6_0096_00ad_00e7_0089_0087_00e7_009a_0084_00e3_0081_00aa_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089-1384">LaTeXの断片的なコード</a>: <a href="#LaTeX-fragments">LaTeX fragments</a></li>
 <li><a href="#index-g_t_0040LaTeX_007b_007d_00e3_0081_00ae_00e6_00a7_008b_00e9_0080_00a0_00e3_0081_00ae_00e5_0088_0086_00e5_0089_00b2-1537">LaTeXの構造の分割</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
 <li><a href="#index-g_t_0040LaTeX_007b_007d_00e3_0081_00ae_00e8_00a6_008b_00e5_0087_00ba_00e3_0081_0097-1538">LaTeXの見出し</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
 <li><a href="#index-g_t_0040LaTeX_007b_007d_00e3_0081_00ae_00e8_00a7_00a3_00e9_0087_0088-1371">LaTeXの解釈</a>: <a href="#Embedded-LaTeX">Embedded LaTeX</a></li>
 <li><a href="#index-g_t_0040LaTeX_007b_007d_00e3_0082_00af_00e3_0083_00a9_00e3_0082_00b9-1536">LaTeXクラス</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
 <li><a href="#index-Latin_002d1_00e3_0081_00a7_00e3_0081_00ae_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088-1452">Latin-1でのエクスポート</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
 <li><a href="#index-level_002c-require-for-tags_002fproperty-match-1063">level, require for tags/property match</a>: <a href="#Matching-tags-and-properties">Matching tags and properties</a></li>
-<li><a href="#index-link-abbreviations_002c-completion-of-1774">link abbreviations, completion of</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-links_002c-external-422">links, external</a>: <a href="#External-links">External links</a></li>
 <li><a href="#index-links_002c-internal-414">links, internal</a>: <a href="#Internal-links">Internal links</a></li>
 <li><a href="#index-links_002c-publishing-1689">links, publishing</a>: <a href="#Publishing-links">Publishing links</a></li>
@@ -15003,7 +14977,6 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_0040code_007bnoinlineimages_007d_002c-STARTUP-keyword-1813"><code>noinlineimages</code>, STARTUP keyword</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-g_t_0040code_007bnoinlineimages_007d_002c-STARTUP-keyword-471"><code>noinlineimages</code>, STARTUP keyword</a>: <a href="#Handling-links">Handling links</a></li>
 <li><a href="#index-occur_002c-command-148">occur, command</a>: <a href="#Sparse-trees">Sparse trees</a></li>
-<li><a href="#index-option-keyword-completion-1772">option keyword completion</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-options_002c-for-custom-agenda-views-1301">options, for custom agenda views</a>: <a href="#Setting-Options">Setting Options</a></li>
 <li><a href="#index-options_002c-for-publishing-1642">options, for publishing</a>: <a href="#Publishing-options">Publishing options</a></li>
 <li><a href="#index-ordered-lists-171">ordered lists</a>: <a href="#Plain-lists">Plain lists</a></li>
@@ -15014,15 +14987,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-org_002dpretty_002dentities-1861">org-pretty-entities</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-org_002dpublish_002dproject_002dalist-1636">org-publish-project-alist</a>: <a href="#Project-alist">Project alist</a></li>
 <li><a href="#index-Orgstruct-mode-227">Orgstruct mode</a>: <a href="#Orgstruct-mode">Orgstruct mode</a></li>
-<li><a href="#index-Orgtbl-mode-1922">Orgtbl mode</a>: <a href="#Tables-in-arbitrary-syntax">Tables in arbitrary syntax</a></li>
 <li><a href="#index-Orgtbl-mode-298">Orgtbl mode</a>: <a href="#Orgtbl-mode">Orgtbl mode</a></li>
+<li><a href="#index-Orgtbl-mode-1922">Orgtbl mode</a>: <a href="#Tables-in-arbitrary-syntax">Tables in arbitrary syntax</a></li>
 <li><a href="#index-Ota_002c-Takaaki-1895">Ota, Takaaki</a>: <a href="#Cooperation">Cooperation</a></li>
 <li><a href="#index-Outline-mode-22">Outline mode</a>: <a href="#Outlines">Outlines</a></li>
 <li><a href="#index-outline-tree-24">outline tree</a>: <a href="#Headlines">Headlines</a></li>
 <li><a href="#index-outlines-21">outlines</a>: <a href="#Outlines">Outlines</a></li>
 <li><a href="#index-overview_002c-global-visibility-state-45">overview, global visibility state</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
-<li><a href="#index-g_t_0040code_007boverview_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-60"><code>overview</code>, STARTUPキーワード</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-g_t_0040code_007boverview_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1801"><code>overview</code>, STARTUPキーワード</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
+<li><a href="#index-g_t_0040code_007boverview_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-60"><code>overview</code>, STARTUPキーワード</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-pasting_002c-of-subtrees-89">pasting, of subtrees</a>: <a href="#Structure-editing">Structure editing</a></li>
 <li><a href="#index-PDF_00e5_0087_00ba_00e5_008a_009b-1520">PDF出力</a>: <a href="#LaTeX-and-PDF-export">LaTeX and PDF export</a></li>
 <li><a href="#index-PDF_00e5_0087_00ba_00e5_008a_009b-1568">PDF出力</a>: <a href="#DocBook-export">DocBook export</a></li>
@@ -15038,37 +15011,18 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-projects_002c-for-publishing-1637">projects, for publishing</a>: <a href="#Project-alist">Project alist</a></li>
 <li><a href="#index-promotion_002c-of-subtrees-86">promotion, of subtrees</a>: <a href="#Structure-editing">Structure editing</a></li>
 <li><a href="#index-properties-635">properties</a>: <a href="#Properties-and-Columns">Properties and Columns</a></li>
-<li><a href="#index-properties_002c-column-view-694">properties, column view</a>: <a href="#Defining-columns">Defining columns</a></li>
-<li><a href="#index-properties_002c-inheritance-686">properties, inheritance</a>: <a href="#Property-inheritance">Property inheritance</a></li>
-<li><a href="#index-properties_002c-searching-675">properties, searching</a>: <a href="#Property-searches">Property searches</a></li>
-<li><a href="#index-properties_002c-special-660">properties, special</a>: <a href="#Special-properties">Special properties</a></li>
-<li><a href="#index-property-syntax-636">property syntax</a>: <a href="#Property-syntax">Property syntax</a></li>
-<li><a href="#index-property_002c-_005fALL-638">property, _ALL</a>: <a href="#Property-syntax">Property syntax</a></li>
 <li><a href="#index-property_002c-ATTACH_005fDIR-944">property, ATTACH_DIR</a>: <a href="#Attachments">Attachments</a></li>
 <li><a href="#index-property_002c-ATTACH_005fDIR_005fINHERIT-947">property, ATTACH_DIR_INHERIT</a>: <a href="#Attachments">Attachments</a></li>
-<li><a href="#index-property_002c-CUSTOM_005fID-443">property, CUSTOM_ID</a>: <a href="#Handling-links">Handling links</a></li>
 <li><a href="#index-property_002c-CUSTOM_005fID-416">property, CUSTOM_ID</a>: <a href="#Internal-links">Internal links</a></li>
+<li><a href="#index-property_002c-CUSTOM_005fID-443">property, CUSTOM_ID</a>: <a href="#Handling-links">Handling links</a></li>
 <li><a href="#index-property_002c-DESCRIPTION-1633">property, DESCRIPTION</a>: <a href="#iCalendar_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088">iCalendarエクスポート</a></li>
-<li><a href="#index-property_002c-ID-444">property, ID</a>: <a href="#Handling-links">Handling links</a></li>
-<li><a href="#index-property_002c-ID-1621">property, ID</a>: <a href="#iCalendar_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088">iCalendarエクスポート</a></li>
 <li><a href="#index-property_002c-ID-728">property, ID</a>: <a href="#g_t_00e3_0082_00ab_00e3_0083_00a9_00e3_0083_00a0_00e8_00a1_00a8_00e7_00a4_00ba_00e3_0081_00ae_00e4_00bf_009d_00e5_00ad_0098">カラム表示の保存</a></li>
+<li><a href="#index-property_002c-ID-1621">property, ID</a>: <a href="#iCalendar_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088">iCalendarエクスポート</a></li>
+<li><a href="#index-property_002c-ID-444">property, ID</a>: <a href="#Handling-links">Handling links</a></li>
 <li><a href="#index-property_002c-LATEX_005fCLASS-1548">property, LATEX_CLASS</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
 <li><a href="#index-property_002c-LATEX_005fCLASS_005fOPTIONS-1549">property, LATEX_CLASS_OPTIONS</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
 <li><a href="#index-property_002c-LOCATION-1634">property, LOCATION</a>: <a href="#iCalendar_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088">iCalendarエクスポート</a></li>
 <li><a href="#index-property_002c-LOG_005fINTO_005fDRAWER-554">property, LOG_INTO_DRAWER</a>: <a href="#Tracking-TODO-state-changes">Tracking TODO state changes</a></li>
-<li><a href="#index-property_002c-special_002c-ALLTAGS-663">property, special, ALLTAGS</a>: <a href="#Special-properties">Special properties</a></li>
-<li><a href="#index-property_002c-special_002c-BLOCKED-672">property, special, BLOCKED</a>: <a href="#Special-properties">Special properties</a></li>
-<li><a href="#index-property_002c-special_002c-CATEGORY-664">property, special, CATEGORY</a>: <a href="#Special-properties">Special properties</a></li>
-<li><a href="#index-property_002c-special_002c-CLOSED-668">property, special, CLOSED</a>: <a href="#Special-properties">Special properties</a></li>
-<li><a href="#index-property_002c-special_002c-DEADLINE-666">property, special, DEADLINE</a>: <a href="#Special-properties">Special properties</a></li>
-<li><a href="#index-property_002c-special_002c-FILE-674">property, special, FILE</a>: <a href="#Special-properties">Special properties</a></li>
-<li><a href="#index-property_002c-special_002c-ITEM-673">property, special, ITEM</a>: <a href="#Special-properties">Special properties</a></li>
-<li><a href="#index-property_002c-special_002c-PRIORITY-665">property, special, PRIORITY</a>: <a href="#Special-properties">Special properties</a></li>
-<li><a href="#index-property_002c-special_002c-SCHEDULED-667">property, special, SCHEDULED</a>: <a href="#Special-properties">Special properties</a></li>
-<li><a href="#index-property_002c-special_002c-TAGS-662">property, special, TAGS</a>: <a href="#Special-properties">Special properties</a></li>
-<li><a href="#index-property_002c-special_002c-TIMESTAMP-669">property, special, TIMESTAMP</a>: <a href="#Special-properties">Special properties</a></li>
-<li><a href="#index-property_002c-special_002c-TIMESTAMP_005fIA-670">property, special, TIMESTAMP_IA</a>: <a href="#Special-properties">Special properties</a></li>
-<li><a href="#index-property_002c-special_002c-TODO-661">property, special, TODO</a>: <a href="#Special-properties">Special properties</a></li>
 <li><a href="#index-property_002c-SUMMARY-1632">property, SUMMARY</a>: <a href="#iCalendar_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088">iCalendarエクスポート</a></li>
 <li><a href="#index-property_002c-VISIBILITY-64">property, VISIBILITY</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-protocols_002c-for-external-access-954">protocols, for external access</a>: <a href="#Protocols">Protocols</a></li>
@@ -15086,12 +15040,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-references_002c-to-fields-305">references, to fields</a>: <a href="#References">References</a></li>
 <li><a href="#index-references_002c-to-ranges-308">references, to ranges</a>: <a href="#References">References</a></li>
 <li><a href="#index-refiling-notes-956">refiling notes</a>: <a href="#Refiling-notes">Refiling notes</a></li>
-<li><a href="#index-region_002c-active-1522">region, active</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
-<li><a href="#index-region_002c-active-142">region, active</a>: <a href="#Structure-editing">Structure editing</a></li>
 <li><a href="#index-region_002c-active-1454">region, active</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
+<li><a href="#index-region_002c-active-142">region, active</a>: <a href="#Structure-editing">Structure editing</a></li>
 <li><a href="#index-region_002c-active-1473">region, active</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
-<li><a href="#index-region_002c-active-280">region, active</a>: <a href="#Built_002din-table-editor">Built-in table editor</a></li>
 <li><a href="#index-region_002c-active-1570">region, active</a>: <a href="#DocBook-export-commands">DocBook export commands</a></li>
+<li><a href="#index-region_002c-active-1522">region, active</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
+<li><a href="#index-region_002c-active-280">region, active</a>: <a href="#Built_002din-table-editor">Built-in table editor</a></li>
 <li><a href="#index-regular-expressions_002c-with-tags-search-1061">regular expressions, with tags search</a>: <a href="#Matching-tags-and-properties">Matching tags and properties</a></li>
 <li><a href="#index-g_t_0040file_007bremember_002eel_007d-1887"><samp><span class="file">remember.el</span></samp></a>: <a href="#Cooperation">Cooperation</a></li>
 <li><a href="#index-remote-editing_002c-bulk_002c-from-agenda-1259">remote editing, bulk, from agenda</a>: <a href="#Agenda-commands">Agenda commands</a></li>
@@ -15108,18 +15062,17 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-Scripts_002c-for-agenda-processing-1945">Scripts, for agenda processing</a>: <a href="#Extracting-agenda-information">Extracting agenda information</a></li>
 <li><a href="#index-searching-for-tags-626">searching for tags</a>: <a href="#Tag-searches">Tag searches</a></li>
 <li><a href="#index-searching_002c-for-text-1072">searching, for text</a>: <a href="#Search-view">Search view</a></li>
-<li><a href="#index-searching_002c-of-properties-676">searching, of properties</a>: <a href="#Property-searches">Property searches</a></li>
 <li><a href="#index-setting-tags-609">setting tags</a>: <a href="#Setting-tags">Setting tags</a></li>
 <li><a href="#index-SHELL_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af-433">SHELLリンク</a>: <a href="#External-links">External links</a></li>
-<li><a href="#index-g_t_0040code_007bshift_002dselection_002dmode_007d-1902"><code>shift-selection-mode</code></a>: <a href="#Conflicts">Conflicts</a></li>
 <li><a href="#index-shift_002dselection_002dmode-190">shift-selection-mode</a>: <a href="#Plain-lists">Plain lists</a></li>
+<li><a href="#index-g_t_0040code_007bshift_002dselection_002dmode_007d-1902"><code>shift-selection-mode</code></a>: <a href="#Conflicts">Conflicts</a></li>
 <li><a href="#index-show-all_002c-command-50">show all, command</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-show-all_002c-global-visibility-state-47">show all, global visibility state</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-show-hidden-text-32">show hidden text</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-g_t_0040code_007bshowall_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-62"><code>showall</code>, STARTUPキーワード</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-g_t_0040code_007bshowall_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1803"><code>showall</code>, STARTUPキーワード</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
-<li><a href="#index-g_t_0040code_007bshoweverything_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-63"><code>showeverything</code>, STARTUPキーワード</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-g_t_0040code_007bshoweverything_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1804"><code>showeverything</code>, STARTUPキーワード</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
+<li><a href="#index-g_t_0040code_007bshoweverything_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-63"><code>showeverything</code>, STARTUPキーワード</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-sitemap_002c-of-published-pages-1690">sitemap, of published pages</a>: <a href="#Sitemap">Sitemap</a></li>
 <li><a href="#index-sorting_002c-of-agenda-items-1091">sorting, of agenda items</a>: <a href="#agenda_00e3_0081_00ae_00e9_00a0_0085_00e7_009b_00ae_00e3_0082_0092_00e3_0082_00bd_00e3_0083_00bc_00e3_0083_0088_00e3_0081_0099_00e3_0082_008b">agendaの項目をソートする</a></li>
 <li><a href="#index-sorting_002c-of-subtrees-92">sorting, of subtrees</a>: <a href="#Structure-editing">Structure editing</a></li>
@@ -15182,15 +15135,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-subtrees_002c-cut-and-paste-93">subtrees, cut and paste</a>: <a href="#Structure-editing">Structure editing</a></li>
 <li><a href="#index-syntax_002c-noweb-1735">syntax, noweb</a>: <a href="#Noweb-reference-syntax">Noweb reference syntax</a></li>
 <li><a href="#index-syntax_002c-of-formulas-328">syntax, of formulas</a>: <a href="#Formula-syntax-for-Calc">Formula syntax for Calc</a></li>
-<li><a href="#index-table-editor_002c-built_002din-231">table editor, built-in</a>: <a href="#Built_002din-table-editor">Built-in table editor</a></li>
 <li><a href="#index-table-editor_002c-_0040file_007btable_002eel_007d-1893">table editor, <samp><span class="file">table.el</span></samp></a>: <a href="#Cooperation">Cooperation</a></li>
-<li><a href="#index-g_t_0040file_007btable_002eel_007d-1894"><samp><span class="file">table.el</span></samp></a>: <a href="#Cooperation">Cooperation</a></li>
+<li><a href="#index-g_t_0040file_007btable_002eel_007d-1891"><samp><span class="file">table.el</span></samp></a>: <a href="#Cooperation">Cooperation</a></li>
 <li><a href="#index-tables-1433">tables</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-tables-229">tables</a>: <a href="#Tables">Tables</a></li>
 <li><a href="#index-tables_002c-in-DocBook-export-1586">tables, in DocBook export</a>: <a href="#Tables-in-DocBook-export">Tables in DocBook export</a></li>
 <li><a href="#index-tables_002c-in-_0040LaTeX_007b_007d-export-1553">tables, in LaTeX export</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
 <li><a href="#index-tables_002c-in-other-modes-1920">tables, in other modes</a>: <a href="#Tables-in-arbitrary-syntax">Tables in arbitrary syntax</a></li>
-<li><a href="#index-tag-completion-1773">tag completion</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-tag-filtering_002c-in-agenda-1179">tag filtering, in agenda</a>: <a href="#Agenda-commands">Agenda commands</a></li>
 <li><a href="#index-tag-inheritance-602">tag inheritance</a>: <a href="#Tag-inheritance">Tag inheritance</a></li>
 <li><a href="#index-tag-searches-625">tag searches</a>: <a href="#Tag-searches">Tag searches</a></li>
@@ -15201,11 +15152,11 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-TaskJuggler-export-1597">TaskJuggler export</a>: <a href="#TaskJuggler-export">TaskJuggler export</a></li>
 <li><a href="#index-tasks_002c-breaking-down-571">tasks, breaking down</a>: <a href="#Breaking-down-tasks">Breaking down tasks</a></li>
 <li><a href="#index-templates_002c-for-Capture-911">templates, for Capture</a>: <a href="#Capture-templates">Capture templates</a></li>
-<li><a href="#index-g_t_0040TeX_007b_007d-symbol-completion-1769">TeX symbol completion</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-text-search-1071">text search</a>: <a href="#Search-view">Search view</a></li>
 <li><a href="#index-g_t_0040TeX_007b_007d_00e3_0081_00ae_00e8_00a7_00a3_00e9_0087_0088-1370">TeXの解釈</a>: <a href="#Embedded-LaTeX">Embedded LaTeX</a></li>
-<li><a href="#index-g_t_0040TeX_007b_007d_00e3_0083_009e_00e3_0082_00af_00e3_0083_00ad-1374">TeXマクロ</a>: <a href="#Special-symbols">Special symbols</a></li>
+<li><a href="#index-g_t_0040TeX_007b_007d_00e3_0082_00b7_00e3_0083_00b3_00e3_0083_009c_00e3_0083_00ab_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1769">TeXシンボルの補完</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-g_t_0040TeX_007b_007d_00e3_0083_009e_00e3_0082_00af_00e3_0083_00ad-1438">TeXマクロ</a>: <a href="#Export-options">Export options</a></li>
+<li><a href="#index-g_t_0040TeX_007b_007d_00e3_0083_009e_00e3_0082_00af_00e3_0083_00ad-1374">TeXマクロ</a>: <a href="#Special-symbols">Special symbols</a></li>
 <li><a href="#index-thanks-1977">thanks</a>: <a href="#History-and-Acknowledgments">History and Acknowledgments</a></li>
 <li><a href="#index-time-grid-1088">time grid</a>: <a href="#Time_002dof_002dday-specifications">Time-of-day specifications</a></li>
 <li><a href="#index-time_002dof_002dday-specification-1087">time-of-day specification</a>: <a href="#Time_002dof_002dday-specifications">Time-of-day specifications</a></li>
@@ -15213,7 +15164,6 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-TODO-dependencies-537">TODO dependencies</a>: <a href="#TODO-dependencies">TODO dependencies</a></li>
 <li><a href="#index-TODO-keyword-matching-1041">TODO keyword matching</a>: <a href="#Global-TODO-list">Global TODO list</a></li>
 <li><a href="#index-TODO-keyword-matching_002c-with-tags-search-1062">TODO keyword matching, with tags search</a>: <a href="#Matching-tags-and-properties">Matching tags and properties</a></li>
-<li><a href="#index-TODO-keywords-completion-1770">TODO keywords completion</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-TODO-list_002c-global-1038">TODO list, global</a>: <a href="#Global-TODO-list">Global TODO list</a></li>
 <li><a href="#index-TODO-types-515">TODO types</a>: <a href="#TODO-types">TODO types</a></li>
 <li><a href="#index-TODO_00e3_0081_00ae_00e3_0081_009f_00e3_0082_0081_00e3_0081_00ae_00e3_0083_0084_00e3_0083_00aa_00e3_0083_00bc_00e3_0081_00ae_00e6_008a_00bd_00e5_0087_00ba-503">TODOのためのツリーの抽出</a>: <a href="#TODO-basics">TODO basics</a></li>
@@ -15221,12 +15171,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-TODO_00e3_0082_00a2_00e3_0082_00a4_00e3_0083_0086_00e3_0083_00a0-493">TODOアイテム</a>: <a href="#TODO-Items">TODO Items</a></li>
 <li><a href="#index-TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00a8_00e3_0081_0097_00e3_0081_00a6_00e3_0081_00ae_00e3_0083_00af_00e3_0083_00bc_00e3_0082_00af_00e3_0083_0095_00e3_0083_00ad_00e3_0083_00bc_00e3_0081_00ae_00e7_008a_00b6_00e6_0085_008b-513">TODOキーワードとしてのワークフローの状態</a>: <a href="#Workflow-states">Workflow states</a></li>
 <li><a href="#index-TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e3_0083_0095_00e3_0082_00a7_00e3_0082_00a4_00e3_0082_00b9-533">TODOキーワードのフェイス</a>: <a href="#Faces-for-TODO-keywords">Faces for TODO keywords</a></li>
+<li><a href="#index-TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1770">TODOキーワードの補完</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0082_00bb_00e3_0083_0083_00e3_0083_0088-518">TODOキーワードセット</a>: <a href="#Multiple-sets-in-one-file">Multiple sets in one file</a></li>
 <li><a href="#index-TODO_00e3_0083_00af_00e3_0083_00bc_00e3_0082_00af_00e3_0083_0095_00e3_0083_00ad_00e3_0083_00bc-512">TODOワークフロー</a>: <a href="#Workflow-states">Workflow states</a></li>
-<li><a href="#index-transient_002dmark_002dmode-1475">transient-mark-mode</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
-<li><a href="#index-transient_002dmark_002dmode-1524">transient-mark-mode</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
-<li><a href="#index-transient_002dmark_002dmode-1456">transient-mark-mode</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
 <li><a href="#index-transient_002dmark_002dmode-1572">transient-mark-mode</a>: <a href="#DocBook-export-commands">DocBook export commands</a></li>
+<li><a href="#index-transient_002dmark_002dmode-1456">transient-mark-mode</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
+<li><a href="#index-transient_002dmark_002dmode-1524">transient-mark-mode</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
+<li><a href="#index-transient_002dmark_002dmode-1475">transient-mark-mode</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
 <li><a href="#index-translator-function-1929">translator function</a>: <a href="#Translator-functions">Translator functions</a></li>
 <li><a href="#index-trees_002c-sparse-146">trees, sparse</a>: <a href="#Sparse-trees">Sparse trees</a></li>
 <li><a href="#index-trees_002c-visibility-31">trees, visibility</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
@@ -15253,17 +15204,18 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00a6_00e3_0083_0088_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00e3_0082_0092_00e8_00a6_008b_00e3_0082_0084_00e3_0081_0099_00e3_0081_008f_00e3_0081_0099_00e3_0082_008b-1871">アウトラインビューを見やすくする</a>: <a href="#Clean-view">Clean view</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00a7_00e3_0081_00aa_00e3_0081_0084_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097-752">アクティブでないタイムスタンプ</a>: <a href="#Timestamps">Timestamps</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-281">アクティブなリージョン</a>: <a href="#Built_002din-table-editor">Built-in table editor</a></li>
-<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-1474">アクティブなリージョン</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
-<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-1523">アクティブなリージョン</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
-<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-1455">アクティブなリージョン</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-1571">アクティブなリージョン</a>: <a href="#DocBook-export-commands">DocBook export commands</a></li>
+<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-1474">アクティブなリージョン</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-143">アクティブなリージョン</a>: <a href="#Structure-editing">Structure editing</a></li>
+<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-1455">アクティブなリージョン</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
+<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-1523">アクティブなリージョン</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080-1023">アジェンダ</a>: <a href="#Weekly_002fdaily-agenda">Weekly/daily agenda</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0081_00ae_00e3_0082_00b3_00e3_0083_009e_00e3_0083_00b3_00e3_0083_0089_00e3_0082_0092_00e9_0081_00b8_00e6_008a_009e_00e3_0081_0099_00e3_0082_008b-1021">アジェンダのコマンドを選択する</a>: <a href="#Agenda-dispatcher">Agenda dispatcher</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0081_00ae_00e3_0082_00b3_00e3_0083_009e_00e3_0083_00b3_00e3_0083_0089_00e9_0081_00b8_00e6_008a_009e_00e7_0094_00bb_00e9_009d_00a2-1020">アジェンダのコマンド選択画面</a>: <a href="#Agenda-dispatcher">Agenda dispatcher</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc-997">アジェンダビュー</a>: <a href="#Agenda-Views">Agenda Views</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00e3_0081_00ae_00e5_0087_00ba_00e5_008a_009b-1287">アジェンダビューの出力</a>: <a href="#Agenda-commands">Agenda commands</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00e3_0081_00ae_00e5_0087_00ba_00e5_008a_009b-1307">アジェンダビューの出力</a>: <a href="#Exporting-Agenda-Views">Exporting Agenda Views</a></li>
+<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00ef_00bc_0088_00e5_0087_00ba_00e5_008a_009b_00ef_00bc_0089-1304">アジェンダビュー（出力）</a>: <a href="#Exporting-Agenda-Views">Exporting Agenda Views</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00ef_00bc_0088_00e5_0087_00ba_00e5_008a_009b_00ef_00bc_0089-1288">アジェンダビュー（出力）</a>: <a href="#Agenda-commands">Agenda commands</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00ef_00bc_0088_00e5_0087_00ba_00e5_008a_009b_00ef_00bc_0089-1308">アジェンダビュー（出力）</a>: <a href="#Exporting-Agenda-Views">Exporting Agenda Views</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0095_00e3_0082_00a1_00e3_0082_00a4_00e3_0083_00ab-1000">アジェンダファイル</a>: <a href="#Agenda-files">Agenda files</a></li>
@@ -15277,15 +15229,17 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088_00e3_0081_00ae_00e3_0082_00aa_00e3_0083_0097_00e3_0082_00b7_00e3_0083_00a7_00e3_0083_00b3-1404">エクスポートのオプション</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088_00e4_00b8_00ad_00e3_0081_00ae_00e3_0083_009e_00e3_0082_00af_00e3_0083_00ad_00e3_0081_00ab_00e3_0082_0088_00e3_0082_008b_00e7_00bd_00ae_00e3_0081_008d_00e6_008f_009b_00e3_0081_0088-1368">エクスポート中のマクロによる置き換え</a>: <a href="#Macro-replacement">Macro replacement</a></li>
 <li><a href="#index-g_t_00e3_0082_00a8_00e3_0083_00a9_00e3_0083_00bc_00e3_0081_00ae_00e3_0083_0090_00e3_0083_0083_00e3_0082_00af_00e3_0083_0088_00e3_0083_00ac_00e3_0083_00bc_00e3_0082_00b9-18">エラーのバックトレース</a>: <a href="#Feedback">Feedback</a></li>
-<li><a href="#index-g_t_00e3_0082_00aa_00e3_0083_0097_00e3_0082_00b7_00e3_0083_00a7_00e3_0083_00b3_00e3_0081_00ae_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1405">オプションのキーワードの補完</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_00e3_0082_00aa_00e3_0083_0097_00e3_0082_00b7_00e3_0083_00a7_00e3_0083_00b3_00e3_0081_00ae_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-530">オプションのキーワードの補完</a>: <a href="#Per_002dfile-keywords">Per-file keywords</a></li>
 <li><a href="#index-g_t_00e3_0082_00aa_00e3_0083_0097_00e3_0082_00b7_00e3_0083_00a7_00e3_0083_00b3_00e3_0081_00ae_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1765">オプションのキーワードの補完</a>: <a href="#Completion">Completion</a></li>
+<li><a href="#index-g_t_00e3_0082_00aa_00e3_0083_0097_00e3_0082_00b7_00e3_0083_00a7_00e3_0083_00b3_00e3_0081_00ae_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1405">オプションのキーワードの補完</a>: <a href="#Export-options">Export options</a></li>
+<li><a href="#index-g_t_00e3_0082_00aa_00e3_0083_0097_00e3_0082_00b7_00e3_0083_00a7_00e3_0083_00b3_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1772">オプションキーワードの補完</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-g_t_00e3_0082_00ab_00e3_0082_00a6_00e3_0083_00b3_00e3_0083_0088_00e3_0083_0080_00e3_0082_00a6_00e3_0083_00b3_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_009e-894">カウントダウンタイマ</a>: <a href="#g_t_00e3_0082_00ab_00e3_0082_00a6_00e3_0083_00b3_00e3_0083_0088_00e3_0083_0080_00e3_0082_00a6_00e3_0083_00b3_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_009e">カウントダウンタイマ</a></li>
 <li><a href="#index-g_t_00e3_0082_00ab_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_009e_00e3_0082_00a4_00e3_0082_00ba-1784">カスタマイズ</a>: <a href="#Customization">Customization</a></li>
 <li><a href="#index-g_t_00e3_0082_00ab_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_009e_00e3_0082_00a4_00e3_0082_00ba_00e3_0081_00ae_00e3_0082_00aa_00e3_0083_0097_00e3_0082_00b7_00e3_0083_00a7_00e3_0083_00b3-1785">カスタマイズのオプション</a>: <a href="#Customization">Customization</a></li>
 <li><a href="#index-g_t_00e3_0082_00ab_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_009e_00e3_0082_00a4_00e3_0082_00ba_00e3_0081_00ae_00e5_00a4_0089_00e6_0095_00b0-1786">カスタマイズの変数</a>: <a href="#Customization">Customization</a></li>
 <li><a href="#index-g_t_00e3_0082_00ab_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00a0_00e6_0097_00a5_00e4_00bb_0098_00e6_0099_0082_00e9_0096_0093_00e3_0083_0095_00e3_0082_00a9_00e3_0083_00bc_00e3_0083_009e_00e3_0083_0083_00e3_0083_0088-799">カスタム日付時間フォーマット</a>: <a href="#Custom-time-format">Custom time format</a></li>
 <li><a href="#index-g_t_00e3_0082_00ab_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00a0_00e6_00a4_009c_00e7_00b4_00a2_00e6_0096_0087_00e5_00ad_0097_00e5_0088_0097-489">カスタム検索文字列</a>: <a href="#Custom-searches">Custom searches</a></li>
+<li><a href="#index-g_t_00e3_0082_00ab_00e3_0083_00a9_00e3_0083_00a0_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00e3_0080_0081_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e7_0094_00a8-693">カラムビュー、プロパティ用</a>: <a href="#Defining-columns">Defining columns</a></li>
 <li><a href="#index-g_t_00e3_0082_00ab_00e3_0083_00ac_00e3_0083_00b3_00e3_0083_0080_00e3_0083_00bc_00e3_0080_0081_00e6_0097_00a5_00e4_00bb_0098_00e9_0081_00b8_00e6_008a_009e_00e3_0081_00ae_00e3_0081_009f_00e3_0082_0081-784">カレンダー、日付選択のため</a>: <a href="#The-date_002ftime-prompt">The date/time prompt</a></li>
 <li><a href="#index-g_t_00e3_0082_00ab_00e3_0083_00ac_00e3_0083_00b3_00e3_0083_0080_00e3_0083_00bc_00e3_0081_00ae_00e7_00b5_00b1_00e5_0090_0088-1031">カレンダーの統合</a>: <a href="#Weekly_002fdaily-agenda">Weekly/daily agenda</a></li>
 <li><a href="#index-g_t_00e3_0082_00ad_00e3_0083_00a3_00e3_0083_0097_00e3_0083_0081_00e3_0083_00a3-898">キャプチャ</a>: <a href="#Capture">Capture</a></li>
@@ -15301,12 +15255,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_00e3_0082_00b9_00e3_0082_00b1_00e3_0082_00b8_00e3_0083_00a5_00e3_0083_00bc_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00b0-746">スケジューリング</a>: <a href="#Timestamps">Timestamps</a></li>
 <li><a href="#index-g_t_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1788">スペシャルキーワード</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-g_t_00e3_0082_00bd_00e3_0083_00bc_00e3_0082_00b9_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e3_0083_0095_00e3_0082_00a9_00e3_0083_00bc_00e3_0083_009e_00e3_0083_0083_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1359">ソースコードのフォーマット、マークアップのルール</a>: <a href="#Literal-examples">Literal examples</a></li>
+<li><a href="#index-g_t_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097-747">タイムスタンプ</a>: <a href="#Timestamps">Timestamps</a></li>
 <li><a href="#index-g_t_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097-740">タイムスタンプ</a>: <a href="#Date-and-Times">Date and Times</a></li>
-<li><a href="#index-g_t_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097-742">タイムスタンプ</a>: <a href="#Timestamps">Timestamps</a></li>
 <li><a href="#index-g_t_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097_00e3_0080_0081_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00a7_00e3_0081_00aa_00e3_0081_0084-751">タイムスタンプ、アクティブでない</a>: <a href="#Timestamps">Timestamps</a></li>
 <li><a href="#index-g_t_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097_00e3_0080_0081_00e3_0083_00aa_00e3_0083_0094_00e3_0083_00bc_00e3_0083_0088_00e9_0096_0093_00e9_009a_0094-748">タイムスタンプ、リピート間隔</a>: <a href="#Timestamps">Timestamps</a></li>
 <li><a href="#index-g_t_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097_00e3_0080_0081_00e4_00bd_009c_00e6_0088_0090-754">タイムスタンプ、作成</a>: <a href="#Creating-timestamps">Creating timestamps</a></li>
 <li><a href="#index-g_t_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097_00e3_0081_00ae_00e4_00bd_009c_00e6_0088_0090-753">タイムスタンプの作成</a>: <a href="#Creating-timestamps">Creating timestamps</a></li>
+<li><a href="#index-g_t_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1773">タグの補完</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-g_t_00e3_0082_00bf_00e3_0082_00b9_00e3_0082_00af_00e3_0080_0081_00e7_00b9_00b0_00e3_0082_008a_00e8_00bf_0094_00e3_0081_0097-826">タスク、繰り返し</a>: <a href="#Repeated-tasks">Repeated tasks</a></li>
 <li><a href="#index-g_t_00e3_0082_00bf_00e3_0083_00bc_00e3_0082_00b2_00e3_0083_0083_00e3_0083_0088_002c_00e3_0083_00a9_00e3_0082_00b8_00e3_0082_00aa-418">ターゲット,ラジオ</a>: <a href="#Radio-targets">Radio targets</a></li>
 <li><a href="#index-g_t_00e3_0082_00bf_00e3_0083_00bc_00e3_0082_00b2_00e3_0083_0083_00e3_0083_0088_002c_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae-415">ターゲット,リンクの</a>: <a href="#Internal-links">Internal links</a></li>
@@ -15315,6 +15270,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e3_0080_0081HTML_00e3_0081_00ae-1493">テーブル、HTMLの</a>: <a href="#Tables-in-HTML-export">Tables in HTML export</a></li>
 <li><a href="#index-g_t_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e3_0081_00ae_00e4_00b8_00ad_00e3_0081_00a7_00e3_0081_00ae_00e8_00a8_0088_00e7_00ae_0097-279">テーブルの中での計算</a>: <a href="#Built_002din-table-editor">Built-in table editor</a></li>
 <li><a href="#index-g_t_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e3_0081_00ae_00e4_00b8_00ad_00e3_0081_00a7_00e3_0081_00ae_00e8_00a8_0088_00e7_00ae_0097-300">テーブルの中での計算</a>: <a href="#The-spreadsheet">The spreadsheet</a></li>
+<li><a href="#index-g_t_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e3_0082_00a8_00e3_0083_0087_00e3_0082_00a3_00e3_0082_00bf_00ef_00bc_0088_00e7_00b5_0084_00e3_0081_00bf_00e8_00be_00bc_00e3_0081_00bf_00ef_00bc_0089-231">テーブルエディタ（組み込み）</a>: <a href="#Built_002din-table-editor">Built-in table editor</a></li>
 <li><a href="#index-g_t_00e3_0083_0087_00e3_0083_0083_00e3_0083_0089_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3-745">デッドライン</a>: <a href="#Timestamps">Timestamps</a></li>
 <li><a href="#index-g_t_00e3_0083_008f_00e3_0082_00a4_00e3_0083_0091_00e3_0083_00bc_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af-410">ハイパーリンク</a>: <a href="#Hyperlinks">Hyperlinks</a></li>
 <li><a href="#index-g_t_00e3_0083_0090_00e3_0082_00b0_00e3_0083_00ac_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088-15">バグレポート</a>: <a href="#Feedback">Feedback</a></li>
@@ -15332,20 +15288,39 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ac_00e3_0083_00bc_00e3_0083_00b3_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e5_00a4_0096_00e9_0083_00a8_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af-437">プレーンテキスト外部リンク</a>: <a href="#External-links">External links</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_003aCLOCK_005fMODELINE_005fTOTAL-835">プロパティ:CLOCK_MODELINE_TOTAL</a>: <a href="#Clocking-commands">Clocking commands</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_003aLAST_005fREPEAT-836">プロパティ:LAST_REPEAT</a>: <a href="#Clocking-commands">Clocking commands</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_005fALL-638">プロパティ、_ALL</a>: <a href="#Property-syntax">Property syntax</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fFILE_005fNAME-1527">プロパティ、EXPORT_FILE_NAME</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fFILE_005fNAME-1459">プロパティ、EXPORT_FILE_NAME</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
-<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fFILE_005fNAME-1575">プロパティ、EXPORT_FILE_NAME</a>: <a href="#DocBook-export-commands">DocBook export commands</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fFILE_005fNAME-1478">プロパティ、EXPORT_FILE_NAME</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fFILE_005fNAME-1575">プロパティ、EXPORT_FILE_NAME</a>: <a href="#DocBook-export-commands">DocBook export commands</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fTITLE-1325">プロパティ、EXPORT_TITLE</a>: <a href="#Document-title">Document title</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00ab_00e3_0083_00a9_00e3_0083_00a0_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc-694">プロパティ、カラムビュー</a>: <a href="#Defining-columns">Defining columns</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab-660">プロパティ、スペシャル</a>: <a href="#Special-properties">Special properties</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081ALLTAGS-663">プロパティ、スペシャル、ALLTAGS</a>: <a href="#Special-properties">Special properties</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081BLOCKED-672">プロパティ、スペシャル、BLOCKED</a>: <a href="#Special-properties">Special properties</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081CATEGORY-664">プロパティ、スペシャル、CATEGORY</a>: <a href="#Special-properties">Special properties</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081CLOSED-668">プロパティ、スペシャル、CLOSED</a>: <a href="#Special-properties">Special properties</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081DEADLINE-666">プロパティ、スペシャル、DEADLINE</a>: <a href="#Special-properties">Special properties</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081FILE-674">プロパティ、スペシャル、FILE</a>: <a href="#Special-properties">Special properties</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081ITEM-673">プロパティ、スペシャル、ITEM</a>: <a href="#Special-properties">Special properties</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081PRIORITY-665">プロパティ、スペシャル、PRIORITY</a>: <a href="#Special-properties">Special properties</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081SCHEDULED-667">プロパティ、スペシャル、SCHEDULED</a>: <a href="#Special-properties">Special properties</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081TAGS-662">プロパティ、スペシャル、TAGS</a>: <a href="#Special-properties">Special properties</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081TIMESTAMP-669">プロパティ、スペシャル、TIMESTAMP</a>: <a href="#Special-properties">Special properties</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081TIMESTAMP_005fIA-670">プロパティ、スペシャル、TIMESTAMP_IA</a>: <a href="#Special-properties">Special properties</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081TODO-661">プロパティ、スペシャル、TODO</a>: <a href="#Special-properties">Special properties</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e5_00b7_00a5_00e6_0095_00b0-874">プロパティ、工数</a>: <a href="#Effort-estimates">Effort estimates</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e6_00a4_009c_00e7_00b4_00a2-675">プロパティ、検索</a>: <a href="#Property-searches">Property searches</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e7_00b6_0099_00e6_0089_00bf-686">プロパティ、継承</a>: <a href="#Property-inheritance">Property inheritance</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0081_00ae_00e3_0081_009f_00e3_0082_0081_00e3_0081_00aeAPI-737">プロパティのためのAPI</a>: <a href="#Property-API">Property API</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0081_00ae_00e3_0081_009f_00e3_0082_0081_00e3_0081_00aeAPI-1947">プロパティのためのAPI</a>: <a href="#Using-the-property-API">Using the property API</a></li>
-<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088API_00ef_00bc_0089-736">プロパティ（API）</a>: <a href="#Property-API">Property API</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0082_00b7_00e3_0083_00b3_00e3_0082_00bf_00e3_0083_0083_00e3_0082_00af_00e3_0082_00b9-636">プロパティシンタックス</a>: <a href="#Property-syntax">Property syntax</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088API_00ef_00bc_0089-1948">プロパティ（API）</a>: <a href="#Using-the-property-API">Using the property API</a></li>
-<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088ARCHIVE_00ef_00bc_0089-691">プロパティ（ARCHIVE）</a>: <a href="#Property-inheritance">Property inheritance</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088API_00ef_00bc_0089-736">プロパティ（API）</a>: <a href="#Property-API">Property API</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088ARCHIVE_00ef_00bc_0089-983">プロパティ（ARCHIVE）</a>: <a href="#Moving-subtrees">Moving subtrees</a></li>
-<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088CATEGORY_00ef_00bc_0089-690">プロパティ（CATEGORY）</a>: <a href="#Property-inheritance">Property inheritance</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088ARCHIVE_00ef_00bc_0089-691">プロパティ（ARCHIVE）</a>: <a href="#Property-inheritance">Property inheritance</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088CATEGORY_00ef_00bc_0089-1086">プロパティ（CATEGORY）</a>: <a href="#Categories">Categories</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088CATEGORY_00ef_00bc_0089-690">プロパティ（CATEGORY）</a>: <a href="#Property-inheritance">Property inheritance</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088COLUMNS_00ef_00bc_0089-1790">プロパティ（COLUMNS）</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088COLUMNS_00ef_00bc_0089-689">プロパティ（COLUMNS）</a>: <a href="#Property-inheritance">Property inheritance</a></li>
 <li><a href="#index-g_t_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00b0-474">マークリング</a>: <a href="#Handling-links">Handling links</a></li>
@@ -15362,6 +15337,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae_00e4_00bf_009d_00e5_00ad_0098-441">リンクの保存</a>: <a href="#Handling-links">Handling links</a></li>
 <li><a href="#index-g_t_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae_00e6_008c_00bf_00e5_0085_00a5-450">リンクの挿入</a>: <a href="#Handling-links">Handling links</a></li>
 <li><a href="#index-g_t_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae_00e7_009c_0081_00e7_0095_00a5_00e8_00a8_0098_00e6_00b3_0095-483">リンクの省略記法</a>: <a href="#Link-abbreviations">Link abbreviations</a></li>
+<li><a href="#index-g_t_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae_00e7_009c_0081_00e7_0095_00a5_00e8_00a8_0098_00e6_00b3_0095_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1774">リンクの省略記法の補完</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-g_t_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-448">リンクの補完</a>: <a href="#Handling-links">Handling links</a></li>
 <li><a href="#index-g_t_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0082_0092_00e3_0081_009f_00e3_0081_00a9_00e3_0082_008b-455">リンクをたどる</a>: <a href="#Handling-links">Handling links</a></li>
 <li><a href="#index-g_t_00e3_0083_00ac_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088_00e3_0080_0081_00e8_00a8_0088_00e6_00b8_00ac_00e3_0081_0095_00e3_0082_008c_00e3_0081_009f_00e6_0099_0082_00e9_0096_0093-858">レポート、計測された時間</a>: <a href="#The-clock-table">The clock table</a></li>
@@ -15378,15 +15354,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_00e5_008b_0095_00e7_009a_0084_00e3_0081_00aa_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_0087_00e3_0083_00b3_00e3_0083_0088-1869">動的なインデント</a>: <a href="#Clean-view">Clean view</a></li>
 <li><a href="#index-g_t_00e5_008f_0096_00e3_0082_008a_00e6_00b6_0088_00e3_0081_0095_00e3_0082_008c_00e3_0081_009f_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0083_0083_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1346">取り消されたテキスト、マーックアップのルール</a>: <a href="#Emphasis-and-monospace">Emphasis and monospace</a></li>
 <li><a href="#index-g_t_00e5_0090_008d_00e5_0089_008d_00e3_0082_0092TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00a8_00e3_0081_0097_00e3_0081_00a6-516">名前をTODOキーワードとして</a>: <a href="#TODO-types">TODO types</a></li>
-<li><a href="#index-g_t_00e5_0090_008d_00e5_0089_008d_00ef_00bc_0088_00e5_0088_0097_00e3_0082_0084_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00ef_00bc_0089-324">名前（列やフィールド）</a>: <a href="#References">References</a></li>
+<li><a href="#index-g_t_00e5_0090_008d_00e5_0089_008d_00ef_00bc_0088_00e5_0088_0097_00e3_0082_0084_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00ef_00bc_0089-315">名前（列やフィールド）</a>: <a href="#References">References</a></li>
 <li><a href="#index-g_t_00e5_009b_00ba_00e5_00ae_009a_00e5_00b9_0085_00e3_0081_00ae_00e6_00ae_00b5_00e8_0090_00bd-1432">固定幅の段落</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_00e5_00a4_0096_00e9_0083_00a8_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af-421">外部リンク</a>: <a href="#External-links">External links</a></li>
 <li><a href="#index-g_t_00e5_00a4_0096_00e9_0083_00a8_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0080_0081_00e5_0087_00ba_00e5_008a_009b_00e3_0081_0099_00e3_0082_008bHTML_00e3_0081_00ae-1491">外部リンク、出力するHTMLの</a>: <a href="#Links-in-HTML-export">Links in HTML export</a></li>
 <li><a href="#index-g_t_00e5_00a4_00a7_00e6_008b_00ac_00e5_00bc_00a7_002c_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae_00e5_0091_00a8_00e8_00be_00ba-436">大括弧,リンクの周辺</a>: <a href="#External-links">External links</a></li>
 <li><a href="#index-g_t_00e5_00a4_00aa_00e5_00ad_0097_00e3_0081_00ae_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0083_0083_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1342">太字のテキスト、マーックアップのルール</a>: <a href="#Emphasis-and-monospace">Emphasis and monospace</a></li>
 <li><a href="#index-g_t_00e5_00a5_0087_00e6_0095_00b0_00e3_0083_00ac_00e3_0083_0099_00e3_0083_00ab_00e3_0081_00ae_00e3_0081_00bf_00e3_0081_00ae_00e3_0082_00a2_00e3_0082_00a6_00e3_0083_0088_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3-1870">奇数レベルのみのアウトライン</a>: <a href="#Clean-view">Clean view</a></li>
-<li><a href="#index-g_t_00e5_00ae_008c_00e4_00ba_0086_00e3_0080_0081TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae-1763">完了、TODOキーワードの</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-g_t_00e5_00ae_008c_00e4_00ba_0086_00e3_0080_0081TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae-514">完了、TODOキーワードの</a>: <a href="#Workflow-states">Workflow states</a></li>
+<li><a href="#index-g_t_00e5_00ae_008c_00e4_00ba_0086_00e3_0080_0081TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae-1763">完了、TODOキーワードの</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-g_t_00e5_00ae_008c_00e4_00ba_0086_00e3_0080_0081_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00ae-614">完了、タグの</a>: <a href="#Setting-tags">Setting tags</a></li>
 <li><a href="#index-g_t_00e5_00ae_008c_00e4_00ba_0086_00e3_0080_0081_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00ae-1766">完了、タグの</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-g_t_00e5_00b1_009e_00e6_0080_00a7_00e3_0080_0081COOKIE_005fDATA-574">属性、COOKIE_DATA</a>: <a href="#Breaking-down-tasks">Breaking down tasks</a></li>
@@ -15394,7 +15370,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_00e5_00b1_009e_00e6_0080_00a7_00e3_0080_0081_00e3_0083_00ad_00e3_0082_00b0_00e3_0082_0092_00e3_0081_00a8_00e3_0082_008b-692">属性、ログをとる</a>: <a href="#Property-inheritance">Property inheritance</a></li>
 <li><a href="#index-g_t_00e5_00b1_009e_00e6_0080_00a7_00e3_0080_0081_00e3_0083_00ad_00e3_0082_00b0_00e3_0082_0092_00e3_0081_00a8_00e3_0082_008b-556">属性、ログをとる</a>: <a href="#Tracking-TODO-state-changes">Tracking TODO state changes</a></li>
 <li><a href="#index-g_t_00e5_00b1_009e_00e6_0080_00a7_00e3_0080_0081_00e4_00b8_00a6_00e3_0081_00b3_00e9_00a0_0086-540">属性、並び順</a>: <a href="#TODO-dependencies">TODO dependencies</a></li>
-<li><a href="#index-g_t_00e5_00b1_009e_00e6_0080_00a7_00e3_0080_0081_00e4_00b8_00a6_00e3_0081_00b3_00e9_00a0_0086-584">属性、並び順</a>: <a href="#Checkboxes">Checkboxes</a></li>
+<li><a href="#index-g_t_00e5_00b1_009e_00e6_0080_00a7_00e3_0080_0081_00e4_00b8_00a6_00e3_0081_00b3_00e9_00a0_0086-594">属性、並び順</a>: <a href="#Checkboxes">Checkboxes</a></li>
 <li><a href="#index-g_t_00e5_00b1_009e_00e6_0080_00a7_00e3_0080_0081_00e4_00b8_00a6_00e3_0081_00b3_00e9_00a0_0086-544">属性、並び順</a>: <a href="#TODO-dependencies">TODO dependencies</a></li>
 <li><a href="#index-g_t_00e5_00b7_00a5_00e6_0095_00b0_00e3_0081_00ae_00e8_00a6_008b_00e7_00a9_008d_00e3_0082_0082_00e3_0082_008a-873">工数の見積もり</a>: <a href="#Effort-estimates">Effort estimates</a></li>
 <li><a href="#index-g_t_00e5_00bc_00b7_00e8_00aa_00bf_00e3_0081_0095_00e3_0082_008c_00e3_0081_009f_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088-1437">強調されたテキスト</a>: <a href="#Export-options">Export options</a></li>
@@ -15425,6 +15401,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_00e6_009a_00ab_00e5_00ae_009a_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0083_00a2_00e3_0083_00bc_00e3_0083_0089-144">暫定マークモード</a>: <a href="#Structure-editing">Structure editing</a></li>
 <li><a href="#index-g_t_00e6_009a_00ab_00e5_00ae_009a_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0083_00a2_00e3_0083_00bc_00e3_0083_0089-282">暫定マークモード</a>: <a href="#Built_002din-table-editor">Built-in table editor</a></li>
 <li><a href="#index-g_t_00e6_009c_0080_00e5_0088_009d_00e3_0081_00ae_00e8_00a6_008b_00e5_0087_00ba_00e3_0081_0097_00e3_0082_0088_00e3_0082_008a_00e5_0089_008d_00e3_0081_00ae_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1331">最初の見出しより前のテキスト、マークアップのルール</a>: <a href="#Initial-text">Initial text</a></li>
+<li><a href="#index-g_t_00e6_00a4_009c_00e7_00b4_00a2_00e3_0080_0081_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0081_00ae-676">検索、プロパティの</a>: <a href="#Property-searches">Property searches</a></li>
 <li><a href="#index-g_t_00e6_00a4_009c_00e7_00b4_00a2_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc-1070">検索ビュー</a>: <a href="#Search-view">Search view</a></li>
 <li><a href="#index-g_t_00e6_00a4_009c_00e7_00b4_00a2_00e6_0096_0087_00e5_00ad_0097_00e5_0088_0097_002c_00e3_0082_00ab_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00a0-490">検索文字列,カスタム</a>: <a href="#Custom-searches">Custom searches</a></li>
 <li><a href="#index-g_t_00e6_00a6_0082_00e8_00a6_0081-2">概要</a>: <a href="#Summary">Summary</a></li>
@@ -15444,6 +15421,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_00e7_009c_0081_00e7_0095_00a5_00e8_00a8_0098_00e6_00b3_0095_002c_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae-484">省略記法,リンクの</a>: <a href="#Link-abbreviations">Link abbreviations</a></li>
 <li><a href="#index-g_t_00e7_00a8_00ae_00e9_00a1_009e_00e3_0082_0092TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00a8_00e3_0081_0097_00e3_0081_00a6-517">種類をTODOキーワードとして</a>: <a href="#TODO-types">TODO types</a></li>
 <li><a href="#index-g_t_00e7_00ab_00a0_00e3_0081_00ae_00e7_0095_00aa_00e5_008f_00b7-1428">章の番号</a>: <a href="#Export-options">Export options</a></li>
+<li><a href="#index-g_t_00e7_00b6_0099_00e6_0089_00bf_00e3_0080_0081_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0081_00ae-687">継承、プロパティの</a>: <a href="#Property-inheritance">Property inheritance</a></li>
 <li><a href="#index-g_t_00e7_00b9_00b0_00e3_0082_008a_00e8_00bf_0094_00e3_0081_0097_00e3_0082_00bf_00e3_0082_00b9_00e3_0082_00af-827">繰り返しタスク</a>: <a href="#Repeated-tasks">Repeated tasks</a></li>
 <li><a href="#index-g_t_00e8_0084_009a_00e6_00b3_00a8_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1339">脚注、マークアップのルール</a>: <a href="#Footnote-markup">Footnote markup</a></li>
 <li><a href="#index-g_t_00e8_0091_0097_00e8_0080_0085-17">著者</a>: <a href="#Feedback">Feedback</a></li>
@@ -15451,13 +15429,18 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_00e8_00a1_00a8_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1352">表、マークアップのルール</a>: <a href="#Images-and-tables">Images and tables</a></li>
 <li><a href="#index-g_t_00e8_00a3_009c_00e5_00ae_008c_002c_00e3_0083_0095_00e3_0082_00a1_00e3_0082_00a4_00e3_0083_00ab_00e5_0090_008d_00e3_0081_00ae-454">補完,ファイル名の</a>: <a href="#Handling-links">Handling links</a></li>
 <li><a href="#index-g_t_00e8_00a3_009c_00e5_00ae_008c_002c_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae-449">補完,リンクの</a>: <a href="#Handling-links">Handling links</a></li>
+<li><a href="#index-g_t_00e8_00a3_009c_00e5_00ae_008c_00e3_0080_0081_0040TeX_007b_007d_00e3_0081_00ae_00e8_00a8_0098_00e5_008f_00b7-1762">補完、TeXの記号</a>: <a href="#Completion">Completion</a></li>
+<li><a href="#index-g_t_00e8_00a3_009c_00e5_00ae_008c_00e3_0080_0081_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0082_00ad_00e3_0083_00bc-1767">補完、プロパティキー</a>: <a href="#Completion">Completion</a></li>
+<li><a href="#index-g_t_00e8_00a3_009c_00e5_00ae_008c_00e3_0080_0081_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae_00e7_009c_0081_00e7_0095_00a5_00e8_00a8_0098_00e6_00b3_0095-1768">補完、リンクの省略記法</a>: <a href="#Completion">Completion</a></li>
+<li><a href="#index-g_t_00e8_00a3_009c_00e5_00ae_008c_00e3_0080_0081_00e8_00be_009e_00e6_009b_00b8_00e3_0081_00ae_00e5_008d_0098_00e8_00aa_009e-1764">補完、辞書の単語</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-g_t_00e8_00a6_008b_00e5_0087_00ba_00e3_0081_0097_00e3_0080_0081LaTeX_00e3_0083_0095_00e3_0082_00a1_00e3_0082_00a4_00e3_0083_00ab_00e3_0081_00ae_00e3_0081_009f_00e3_0082_0081_00e3_0081_00ae-1539">見出し、LaTeXファイルのための</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
 <li><a href="#index-g_t_00e8_00a6_008b_00e5_0087_00ba_00e3_0081_0097_00e3_0081_00a8_00e3_0082_00bb_00e3_0082_00af_00e3_0082_00b7_00e3_0083_00a7_00e3_0083_00b3_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1326">見出しとセクション、マークアップのルール</a>: <a href="#Headings-and-sections">Headings and sections</a></li>
 <li><a href="#index-g_t_00e8_00a6_008b_00e5_0087_00ba_00e3_0081_0097_00e3_0081_00ae_00e9_009a_008e_00e5_00b1_00a4-1427">見出しの階層</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_00e8_00a8_0088_00e7_00ae_0097_00e4_00b8_00ad_00e3_0081_00ae_00e5_00ae_009a_00e6_0095_00b0-325">計算中の定数</a>: <a href="#References">References</a></li>
-<li><a href="#index-g_t_00ef_00bc_0088_00e5_00a4_0096_00e9_0083_00a8_00e5_0087_00ba_00e5_008a_009b_00e3_0081_00ab_00e7_0094_00a8_00e3_0081_0084_00e3_0082_008b_00ef_00bc_0089_00e3_0083_0098_00e3_0083_0083_00e3_0083_0089_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00ac_00e3_0083_0099_00e3_0083_00ab-1485">（外部出力に用いる）ヘッドラインレベル</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
+<li><a href="#index-g_t_00e8_00be_009e_00e6_009b_00b8_00e5_008d_0098_00e8_00aa_009e_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1771">辞書単語の補完</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-g_t_00ef_00bc_0088_00e5_00a4_0096_00e9_0083_00a8_00e5_0087_00ba_00e5_008a_009b_00e3_0081_00ab_00e7_0094_00a8_00e3_0081_0084_00e3_0082_008b_00ef_00bc_0089_00e3_0083_0098_00e3_0083_0083_00e3_0083_0089_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00ac_00e3_0083_0099_00e3_0083_00ab-1534">（外部出力に用いる）ヘッドラインレベル</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
 <li><a href="#index-g_t_00ef_00bc_0088_00e5_00a4_0096_00e9_0083_00a8_00e5_0087_00ba_00e5_008a_009b_00e3_0081_00ab_00e7_0094_00a8_00e3_0081_0084_00e3_0082_008b_00ef_00bc_0089_00e3_0083_0098_00e3_0083_0083_00e3_0083_0089_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00ac_00e3_0083_0099_00e3_0083_00ab-1470">（外部出力に用いる）ヘッドラインレベル</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
+<li><a href="#index-g_t_00ef_00bc_0088_00e5_00a4_0096_00e9_0083_00a8_00e5_0087_00ba_00e5_008a_009b_00e3_0081_00ab_00e7_0094_00a8_00e3_0081_0084_00e3_0082_008b_00ef_00bc_0089_00e3_0083_0098_00e3_0083_0083_00e3_0083_0089_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00ac_00e3_0083_0099_00e3_0083_00ab-1485">（外部出力に用いる）ヘッドラインレベル</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
    </ul><div class="node">
 <a name="Key-Index"></a>
 <p><hr>
@@ -16813,7 +16796,8 @@ will contain the entire buffer, but will be narrowed to the current tree.  Editi
 
    <p class="footnote"><small>[<a name="fn-55" href="#fnd-55">55</a>]</small> Please note that the COLUMNS definition must be on a single line&mdash;it is wrapped here only because of formatting constraints.</p>
 
-   <p class="footnote"><small>[<a name="fn-56" href="#fnd-56">56</a>]</small> Contributed packages are not part of Emacs, but are distributed with the main distribution of Org (visit <a href="http://orgmode.org">http://orgmode.org</a>).</p>
+   <p class="footnote"><small>[<a name="fn-56" href="#fnd-56">56</a>]</small> 寄付されたパッケージはEmacsの一部ではありませんがOrgのメインの配布物と共に
+配布されます(<a href="http://orgmode.org">http://orgmode.org</a>を訪ずれて下さい)。</p>
 
    <p class="footnote"><small>[<a name="fn-57" href="#fnd-57">57</a>]</small> この表記は標準的なISO8601の日付、時刻フォ
 ーマットをもとに考案されています。代替フォーマットの使用については、
