@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-09-11 22:07+0900\n"
+"PO-Revision-Date: 2011-09-13 00:45+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -7679,44 +7679,44 @@ msgstr "tables"
 #: org.texi:1870
 #, no-wrap
 msgid "editing tables"
-msgstr ""
+msgstr "editing tables"
 
 #+glossary: calculation ( 計算 ) / editor ( エディタ ) / org ( Org-mode ) / package ( パッケージ ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:1874
 msgid "Org comes with a fast and intuitive table editor.  Spreadsheet-like calculations are supported using the Emacs @file{calc} package"
-msgstr ""
+msgstr "Org-modeは，高速で直感的なテーブルエディタを備えています．Emacsの@file{calc}パッケージを用いることで，スプレッドシートのような計算がサポートされています．"
 
 #. type: ifinfo
 #: org.texi:1876
 msgid "(@pxref{Top,Calc,,Calc,Gnu Emacs Calculator Manual})."
-msgstr ""
+msgstr "(@pxref{Top,Calc,,Calc,Gnu Emacs Calculator Manual})."
 
 #+glossary: information ( 情報 ) / manual ( マニュアル )
 #. type: ifnotinfo
 #: org.texi:1880
 msgid "(see the Emacs Calculator manual for more information about the Emacs calculator)."
-msgstr ""
+msgstr "（Emacs Calculatorの詳細は，同パッケージのマニュアルを参照してください．）"
 
 #+glossary: built-in ( ビルトイン ) / editor ( エディタ ) / table ( テーブル )
 #. type: section
 #: org.texi:1892
 #, no-wrap
 msgid "The built-in table editor"
-msgstr ""
+msgstr "組み込まれたテーブルエディタ"
 
 #+glossary: built-in ( ビルトイン ) / editor ( エディタ ) / table ( テーブル )
 #. type: cindex
 #: org.texi:1893
 #, no-wrap
 msgid "table editor, built-in"
-msgstr ""
+msgstr "テーブルエディタ（組み込み）"
 
 #+glossary: column ( 列 ) / format ( フォーマット|形成 ) / line ( 行|ライン|線 ) / org ( Org-mode ) / plain ( プレーン ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:1899
 msgid "Org makes it easy to format tables in plain ASCII.  Any line with @samp{|} as the first non-whitespace character is considered part of a table.  @samp{|} is also the column separator.  A table might look like this:"
-msgstr ""
+msgstr "Org-modeはプレーンなASCII形式でのテーブル編集を容易にします．どのような行でも，空白文字を除く最初の文字が@samp{|}であるとき，テーブルの一部であるとみなされます．@samp{|}は，列を区分するセパレータとしても使われます．Org-modeのテーブルは，次のような見た目になるでしょう．"
 
 #. type: example
 #: org.texi:1905
@@ -7727,12 +7727,16 @@ msgid ""
 "| Peter |  1234 |  17 |\n"
 "| Anna  |  4321 |  25 |\n"
 msgstr ""
+"| 名前  | 電話番号  | 年齢  |\n"
+"|------+----------+------|\n"
+"| 佐藤  | １２３４  | １７  |\n"
+"| 田中  | ４３２１  | ２５  |\n"
 
 #+glossary: field ( フィールド ) / horizontal ( 水平|横線 ) / line ( 行|ライン|線 ) / row ( 行 ) / table ( テーブル ) / time ( 時刻|時間|回 ) / type ( タイプ|入力する ) / width ( 幅 )
 #. type: Plain text
 #: org.texi:1915
 msgid "A table is re-aligned automatically each time you press @key{TAB} or @key{RET} or @kbd{C-c C-c} inside the table.  @key{TAB} also moves to the next field (@key{RET} to the next row) and creates new table rows at the end of the table or before horizontal lines.  The indentation of the table is set by the first line.  Any line starting with @samp{|-} is considered as a horizontal separator line and will be expanded on the next re-align to span the whole table width.  So, to create the above table, you would only type"
-msgstr ""
+msgstr "テーブルの中で@key{TAB}や@key{RET}，もしくは@kbd{C-c C-c}を押す度に，テーブルは自動的に表示が更新されます．@key{TAB}を押すとカーソルが次のフィールドに移ります（@key{RET}の場合は次の行へ）．また，テーブルの端もしくは水平ラインの直前の行で押せば，テーブルに新しい行が追加されます．テーブルのインデントは一行目によって設定されます．@samp{|-}で開始するどんな行も水平ラインとして解釈され，次にテーブルが更新される時に，テーブル幅いっぱいに水平ラインは拡張されます．つまり，上記のテーブルを作成するために，次のように入力するだけでよかったのです．"
 
 #. type: example
 #: org.texi:1919
@@ -7741,36 +7745,38 @@ msgid ""
 "|Name|Phone|Age|\n"
 "|-\n"
 msgstr ""
+"|名前|電話番号|年齢|\n"
+"|-\n"
 
 #+glossary: field ( フィールド ) / type ( タイプ|入力する )
 #. type: Plain text
 #: org.texi:1924
 msgid "fields.  Even faster would be to type @code{|Name|Phone|Age} followed by @kbd{C-c @key{RET}}."
-msgstr ""
+msgstr "（indent問題箇所）さらに素早いテーブルの作成方法は，@code{|名前|電話番号|年齢}に続いて@kbd{C-c @key{RET}}を入力することです．"
 
 #. type: vindex
 #: org.texi:1925
 #, no-wrap
 msgid "org-enable-table-editor"
-msgstr ""
+msgstr "org-enable-table-editor"
 
 #. type: vindex
 #: org.texi:1926
 #, no-wrap
 msgid "org-table-auto-blank-field"
-msgstr ""
+msgstr "org-table-auto-blank-field"
 
 #+glossary: cursor ( カーソル ) / field ( フィールド ) / key ( キー ) / org ( Org-mode ) / text ( テキスト|文章 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:1935
 msgid "When typing text into a field, Org treats @key{DEL}, @key{Backspace}, and all character keys in a special way, so that inserting and deleting avoids shifting other fields.  Also, when typing @emph{immediately after the cursor was moved into a new field with @kbd{@key{TAB}}, @kbd{S-@key{TAB}} or @kbd{@key{RET}}}, the field is automatically made blank.  If this behavior is too unpredictable for you, configure the variables @code{org-enable-table-editor} and @code{org-table-auto-blank-field}."
-msgstr ""
+msgstr "フィールドに文字を入力すると，Org-modeは@key{DEL}と@key{Backspace}，そしてすべての文字キーを特別な方法で扱います．文字の挿入と削除によって他のフィールドがズレてしまうことを避けるためです．また，@emph{@kbd{@key{TAB}}，@kbd{S-@key{TAB}}もしくは@kbd{@key{RET}}によって新しいフィールドへカーソルが移動した直後に}文字を入力すると，自動的空白が挿入されます．もしもこの動作が気に入らない場合には，変数@code{org-enable-table-editor}と@code{org-table-auto-blank-field}を調節してください．"
 
 #+glossary: active region ( アクティブなリージョン ) / argument ( 引数 ) / command ( コマンド ) / field ( フィールド ) / function ( 機能|関数 ) / line ( 行|ライン|線 ) / org ( Org-mode ) / prefix ( 接頭辞 ) / tab ( TAB|タブ ) / table ( テーブル ) / value ( 値 )
 #. type: table
 #: org.texi:1950
 msgid "@tsubheading{Creation and conversion} @orgcmd{C-c |,org-table-create-or-convert-from-region} Convert the active region to table. If every line contains at least one TAB character, the function assumes that the material is tab separated.  If every line contains a comma, comma-separated values (CSV) are assumed.  If not, lines are split at whitespace into fields.  You can use a prefix argument to force a specific separator: @kbd{C-u} forces CSV, @kbd{C-u C-u} forces TAB, and a numeric argument N indicates that at least N consecutive spaces, or alternatively a TAB will be the separator.  @* If there is no active region, this command creates an empty Org table.  But it's easier just to start typing, like @kbd{|Name|Phone|Age @key{RET} |- @key{TAB}}."
-msgstr ""
+msgstr "@tsubheading{テーブルの作成と変換} @orgcmd{C-c |,org-table-create-or-convert-from-region} アクティブリージョンをテーブルに変換します．もし全ての行が少なくとも一つのタブを含んでいるならば，この関数は処理対象をタブ区切りの表であると想定します．もし全ての行がコンマを含んでいるならば，コンマ区切り（いわゆるCSV）であると想定されます．それ以外の場合は空白文字で区切られていると想定します．プレフィックスを用いることで，区切り文字を強制できます．すなわち，@kbd{C-u}でCSV，@kbd{C-u C-u}でTAB区切りを指定できます．また，プレフィックスの引き数として整数値Nを用いれば，少なくともN個の連続した空白を区切りとして指定できます．条件に合わなければ，代わりとしてTABが区切りとして使われるでしょう．@* もしアクティブリージョンが存在しないならば，このコマンドは空のテーブルを生成します．しかし，@kbd{|名前|電話番号|年齢 @key{RET} |- @key{TAB}}のようにタイプしてテーブル作成を始める方が簡単です．"
 
 #+glossary: current ( カレント|現在の ) / cursor ( カーソル ) / field ( フィールド ) / line ( 行|ライン|線 ) / moving ( 移動 ) / previous ( 前の ) / row ( 行 ) / table ( テーブル )
 #. type: table
@@ -12197,7 +12203,7 @@ msgstr "プロパティシンタックス"
 
 #. type: cindex
 #: org.texi:4656
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid "drawer, for properties"
 msgstr "引き出し、プロパティ用"
 
@@ -12898,7 +12904,9 @@ msgid ""
 "* The column view\n"
 "#+BEGIN: columnview :hlines 1 :id \"label\"\n"
 "\n"
-msgstr "#+BEGIN: columnview :hlines 1 :id \\\"label\\\"\\n\n"
+msgstr ""
+"#+BEGIN: columnview :hlines 1 :id \\\"label\\\"\\n"
+"\n"
 
 #. type: example
 #: org.texi:5086
