@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-09-15 18:21+0900\n"
+"PO-Revision-Date: 2011-09-16 23:19+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -7958,7 +7958,7 @@ msgstr "org-startup-align-all-tables"
 #. type: Plain text
 #: org.texi:2148
 msgid "When visiting a file containing a table with narrowed columns, the necessary character hiding has not yet happened, and the table needs to be aligned before it looks nice.  Setting the option @code{org-startup-align-all-tables} will realign all tables in a file upon visiting, but also slow down startup.  You can also set this option on a per-file basis with:"
-msgstr ""
+msgstr "幅を狭くした列のあるテーブルを含むファイルを訪問するとき，文字列の隠蔽はまだ実行されていません．そして，希望する見た目にするにはテーブルを整列する必要があります．オプションの@code{org-startup-align-all-tables} を設定すると，ファイルを訪問するときにファイルにある全てのテーブルが整列されます．ただしスタートアップが少し遅くなります．次を利用すればファイルごとにこのオプションを設定することもできます．"
 
 #. type: example
 #: org.texi:2152
@@ -7967,31 +7967,33 @@ msgid ""
 "#+STARTUP: align\n"
 "#+STARTUP: noalign\n"
 msgstr ""
+"#+STARTUP: align\n"
+"#+STARTUP: noalign\n"
 
 #+glossary: column ( 列 ) / exporting ( エクスポート ) / field ( フィールド ) / width ( 幅 ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:2159
 msgid "If you would like to overrule the automatic alignment of number-rich columns to the right and of string-rich column to the left, you can use @samp{<r>}, @samp{c}@footnote{Centering does not work inside Emacs, but it does have an effect when exporting to HTML.} or @samp{<l>} in a similar fashion.  You may also combine alignment and field width like this: @samp{<l10>}."
-msgstr ""
+msgstr "数値の多い列を右揃えにして，文字列の多い列を左揃えにする自動的な整列を無効にしたいならば，@samp{<r>}，@samp{c}@footnote{Emacsの表示上は中央揃えにはできませんが，HTMLにエクスポートするときに中央揃えにできます}，もしくは@samp{<l>}を似たような方法で利用できます．@samp{<|10>}のようにすれば列の揃えとフィールドの幅を同時に指定できます．"
 
 #+glossary: document ( ドキュメント|文書 ) / exporting ( エクスポート ) / line ( 行|ライン|線 )
 #. type: Plain text
 #: org.texi:2162
 msgid "Lines which only contain these formatting cookies will be removed automatically when exporting the document."
-msgstr ""
+msgstr "書式の設定情報のみを含む行は，ドキュメントをエクスポートするときに自動的に削除されます．"
 
 #+glossary: column ( 列 ) / table ( テーブル )
 #. type: cindex
 #: org.texi:2165
 #, no-wrap
 msgid "grouping columns in tables"
-msgstr ""
+msgstr "列のグルーピング"
 
 #+glossary: column ( 列 ) / default ( デフォルト|初期値 ) / export ( エクスポート ) / field ( フィールド ) / horizontal ( 水平|横線 ) / line ( 行|ライン|線 ) / marked ( マーク ) / org ( Org-mode ) / row ( 行 ) / structure ( 構造 ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:2177
 msgid "When Org exports tables, it does so by default without vertical lines because that is visually more satisfying in general.  Occasionally however, vertical lines can be useful to structure a table into groups of columns, much like horizontal lines can do for groups of rows.  In order to specify column groups, you can use a special row where the first field contains only @samp{/}.  The further fields can either contain @samp{<} to indicate that this column should start a group, @samp{>} to indicate the end of a column, or @samp{<>} to make a column a group of its own.  Boundaries between column groups will upon export be marked with vertical lines.  Here is an example:"
-msgstr ""
+msgstr "org-modeのテーブルをエクスポートすると，標準で垂直ラインを表示しません．これは，一般に視覚的な満足度をより高めるためです．しかし場合によっては，テーブルを列のグループで構造化するために垂直ラインが役に立つます．これは水平ラインがいくつかの行をグループ化するために役立つことと同じです．列のグループを指定するために，最初のフィールドが@samp{/}だけを含む特別な行を使います．それ以降のフィールドについては，@samp{<}を含むとき，その列がグルーピングされる列の始めであることを意味します．@samp{>}を含む場合は，グループの終了を表します．もしくは，@samp{<>}を含む列はこれ自体を一つのグループにします．列のグループの境界は，エクスポート時に垂直ラインが表示されるようになります．以下に例を示します．"
 
 #. type: example
 #: org.texi:2187
@@ -8006,12 +8008,20 @@ msgid ""
 "|---+-----+-----+-----+---------+------------|\n"
 "#+TBLFM: $2=$1^2::$3=$1^3::$4=$1^4::$5=sqrt($1)::$6=sqrt(sqrt(($1)))\n"
 msgstr ""
+"| N | N^2 | N^3 | N^4 | sqrt(n) | sqrt[4](N) |\n"
+"|---+-----+-----+-----+---------+------------|\n"
+"| / |   < |     |   > |       < |          > |\n"
+"| 1 |   1 |   1 |   1 |       1 |          1 |\n"
+"| 2 |   4 |   8 |  16 |  1.4142 |     1.1892 |\n"
+"| 3 |   9 |  27 |  81 |  1.7321 |     1.3161 |\n"
+"|---+-----+-----+-----+---------+------------|\n"
+"#+TBLFM: $2=$1^2::$3=$1^3::$4=$1^4::$5=sqrt($1)::$6=sqrt(sqrt(($1)))\n"
 
 #+glossary: column ( 列 ) / insert ( 挿入 ) / line ( 行|ライン|線 )
 #. type: Plain text
 #: org.texi:2191
 msgid "It is also sufficient to just insert the column group starters after every vertical line you would like to have:"
-msgstr ""
+msgstr "表示させたいすべての垂直ラインの後ろに列のグループ開始を指定するだけでも十分です．"
 
 #. type: example
 #: org.texi:2196
@@ -8021,26 +8031,29 @@ msgid ""
 "|----+-----+-----+-----+---------+------------|\n"
 "| /  | <   |     |     | <       |            |\n"
 msgstr ""
+"|  N | N^2 | N^3 | N^4 | sqrt(n) | sqrt[4](N) |\n"
+"|----+-----+-----+-----+---------+------------|\n"
+"| /  | <   |     |     | <       |            |\n"
 
 #+glossary: minor mode ( マイナーモード ) / orgtbl ( orgtbl )
 #. type: section
 #: org.texi:2199
 #, no-wrap
 msgid "The Orgtbl minor mode"
-msgstr ""
+msgstr "Orgtblマイナーモード"
 
 #+glossary: minor mode ( マイナーモード ) / table ( テーブル )
 #. type: cindex
 #: org.texi:2201
 #, no-wrap
 msgid "minor mode for tables"
-msgstr ""
+msgstr "テーブルのマイナーモード"
 
 #+glossary: minor mode ( マイナーモード ) / default ( デフォルト|初期値 ) / editor ( エディタ ) / example ( 例 ) / message ( メッセージ ) / mode ( モード|モード ) / org ( Org-mode ) / orgtbl ( orgtbl ) / table ( テーブル ) / text ( テキスト|文章 ) / toggle ( トグル ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:2208
 msgid "If you like the intuitive way the Org table editor works, you might also want to use it in other modes like Text mode or Mail mode.  The minor mode Orgtbl mode makes this possible.  You can always toggle the mode with @kbd{M-x orgtbl-mode}.  To turn it on by default, for example in Message mode, use"
-msgstr ""
+msgstr "org-modeのテーブルエディタの直感的な動作を気に入ったら，テキストモードやメールモードのように他のモードで利用したくなるかもしれません．これはマイナーモードのOrgtblモードが実現してくれます．@kbd{M-x orgtbl-mode}でトグルできます．標準でOrgtblモードを有効にするには，たとえばメッセージモードのときに，次の設定を使います．"
 
 #. type: lisp
 #: org.texi:2211
