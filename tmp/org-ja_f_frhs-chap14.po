@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-09-14 17:19+0900\n"
+"PO-Revision-Date: 2011-09-16 12:53+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -23064,76 +23064,78 @@ msgstr "ソースコード、エクスポート"
 #+glossary: code block ( コードブロック ) / content ( コンテンツ|内容 ) / default ( デフォルト|初期値 ) / evaluation ( 評価 ) / export ( エクスポート ) / exporting ( エクスポート ) / information ( 情報 ) / language ( 言語 )
 #. type: Plain text
 #: org.texi:11353
+#, fuzzy
 msgid "It is possible to export the @emph{contents} of code blocks, the @emph{results} of code block evaluation, @emph{neither}, or @emph{both}.  For most languages, the default exports the contents of code blocks. However, for some languages (e.g.@: @code{ditaa}) the default exports the results of code block evaluation.  For information on exporting code block bodies, see @ref{Literal examples}."
-msgstr ""
+msgstr "コードブロックのエクスポートで選択可能なものは、@emph{内容}のエクスポート、評価@emph{結果}のエクスポート、@emph{いずれでもないもの}のエクスポート、内容と結果@emph{両方}のエクスポートの4つです。ほとんどの言語では、デフォルトの設定ではコードブロックの内容をエクスポートします。しかし、ある言語(例えば@: @code{ditaa})では、デフォルトの設定でコードブロックを評価した結果をエクスポートします。コードブロックの本文をエクスポートするには、@ref{Literal examples}を参照してください。"
 
 #+glossary: header argument ( ヘッダー引数 ) / export ( エクスポート )
 #. type: Plain text
 #: org.texi:11356
 msgid "The @code{:exports} header argument can be used to specify export behavior:"
-msgstr ""
+msgstr "ヘッダー引数@code{:exports}を設定することで、エクスポート時の振る舞いを指定できます:"
 
 #+glossary: header ( ヘッダー )
 #. type: subsubheading
 #: org.texi:11357
 #, no-wrap
 msgid "Header arguments:"
-msgstr ""
+msgstr "ヘッダ引数:"
 
 #+glossary: code ( コード )
 #. type: item
 #: org.texi:11359
 #, no-wrap
 msgid ":exports code"
-msgstr ""
+msgstr ":exports code"
 
 #+glossary: code block ( コードブロック ) / default ( デフォルト|初期値 ) / exported ( エクスポート|出力された ) / language ( 言語 )
 #. type: table
 #: org.texi:11362
 msgid "The default in most languages. The body of the code block is exported, as described in @ref{Literal examples}."
-msgstr ""
+msgstr "ほとんどの言語でのデフォルトの設定です。@ref{Literal examples}で述べたように、コードブロックの本文が出力されます。"
 
 #. type: item
 #: org.texi:11362
 #, no-wrap
 msgid ":exports results"
-msgstr ""
+msgstr ":exports results"
 
 #+glossary: code block ( コードブロック ) / buffer ( バッファ ) / export ( エクスポート ) / exported ( エクスポート|出力された ) / org-mode ( Org-mode ) / previous ( 前の )
 #. type: table
 #: org.texi:11368
 msgid "The code block will be evaluated and the results will be placed in the Org-mode buffer for export, either updating previous results of the code block located anywhere in the buffer or, if no previous results exist, placing the results immediately after the code block.  The body of the code block will not be exported."
-msgstr ""
+msgstr "エクスポートするために、コードブロックが評価され、その結果がOrg-modeのバッファに出力されます。バッファ内に以前評価した結果があればその結果を更新し、もし以前に評価した結果がなければ直ちに今回の評価結果をコードブロックの後ろに追記します。コードブロックの本文はエクスポートされません。"
 
 #. type: item
 #: org.texi:11368
 #, no-wrap
 msgid ":exports both"
-msgstr ""
+msgstr ":exports both"
 
 #+glossary: code block ( コードブロック ) / exported ( エクスポート|出力された )
 #. type: table
 #: org.texi:11370
 msgid "Both the code block and its results will be exported."
-msgstr ""
+msgstr "コードブロックとその結果がエクスポートされます。"
 
 #. type: item
 #: org.texi:11370
 #, no-wrap
 msgid ":exports none"
-msgstr ""
+msgstr ":exports none"
 
 #+glossary: code block ( コードブロック ) / exported ( エクスポート|出力された )
 #. type: table
 #: org.texi:11372
 msgid "Neither the code block nor its results will be exported."
-msgstr ""
+msgstr "コードブロックとその結果のいずれもエクスポートされません。"
 
 #+glossary: code block ( コードブロック ) / evaluation ( 評価 ) / example ( 例 ) / export ( エクスポート ) / exported ( エクスポート|出力された ) / file ( ファイル ) / language ( 言語 ) / org-mode ( Org-mode ) / setting ( 設定 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:11380
+#, fuzzy
 msgid "It is possible to inhibit the evaluation of code blocks during export.  Setting the @code{org-export-babel-evaluate} variable to @code{nil} will ensure that no code blocks are evaluated as part of the export process.  This can be useful in situations where potentially untrusted Org-mode files are exported in an automated fashion, for example when Org-mode is used as the markup language for a wiki."
-msgstr ""
+msgstr "エクスポートしている間、コードブロックは評価されません。エクスポートのためにコードブロックの評価が必要な場合でも、変数@code{org-export-babel-evaluate}を@code{nil}に設定することで、コードブロックの評価は抑止されます。例えばwikiなどのマークアップ言語としてOrg-modeを使う場合にOrg-modeのファイルは自動的にエクスポートされます。Org-modeのファイルを安心してエクスポートできない場合には、この設定が役に立ちます。"
 
 #. type: cindex
 #: org.texi:11385
