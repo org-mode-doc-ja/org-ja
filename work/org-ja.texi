@@ -1986,18 +1986,19 @@ Org-modeはプレーンなASCII形式でのテーブル編集を容易にしま�
 @c
 @c
 @c
-@tsubheading{Re-aligning and field motion} @orgcmd{C-c C-c,org-table-align}
-Re-align the table without moving the cursor.
-@orgcmd{<TAB>,org-table-next-field} Re-align the table, move to the next
-field.  Creates a new row if necessary.
-@orgcmd{S-@key{TAB},org-table-previous-field} Re-align, move to previous
-field.  @orgcmd{@key{RET},org-table-next-row} Re-align the table and move
-down to next row.  Creates a new row if necessary.  At the beginning or end
-of a line, @key{RET} still does NEWLINE, so it can be used to split a
-table.  @orgcmd{M-a,org-table-beginning-of-field} Move to beginning of the
-current table field, or on to the previous field.
-@orgcmd{M-e,org-table-end-of-field} Move to end of the current table field,
-or on to the next field.
+@tsubheading{テールの整列とフィールドの動き} @orgcmd{C-c C-c,org-table-align}
+カーソルを動かさずにテーブルを整列する。@orgcmd{<TAB>,org-table-next-field}
+テーブルを整列し、カーソルを次のフィールドに移す。必要ならば新たな行を
+生成する。@orgcmd{S-@key{TAB},org-table-previous-field}
+テーブルを整列し、カーソルを前のフィールドに移す。
+@orgcmd{@key{RET},org-table-next-row}
+テーブルを整列し、次の行にカーソルを下げる。必要ならば新しい行を追加す
+る。行頭もしくは行末にカーソルがあるときの@key{RET}は、NEWLINEを意味し、テ
+ーブルの分割に使われます。@orgcmd{M-a,org-table-beginning-of-field}
+フィールド内の文頭にカーソルを移動する。もしくは、前のフィールドの文頭
+に移動する。@orgcmd{M-e,org-table-end-of-field}
+フィールド内の文末にカーソルを移動する。もしくは、次のフィールドの文末
+に移動する。
 
 @c
 @c
@@ -2007,128 +2008,141 @@ or on to the next field.
 @c
 @c
 @c
-@tsubheading{Column and row editing}
+@tsubheading{テーブルの列と行の編集}
 @orgcmdkkcc{M-@key{left},M-@key{right},org-table-move-column-left,org-table-move-column-right}
-Move the current column left/right.
-@orgcmd{M-S-@key{left},org-table-delete-column} Kill the current column.
-@orgcmd{M-S-@key{right},org-table-insert-column} Insert a new column to the
-left of the cursor position.
+カーソルがある列を左右に移動する。@orgcmd{M-S-@key{left},org-table-delete-column}
+カーソル位置の行を削除する。@orgcmd{M-S-@key{right},org-table-insert-column}
+カーソル位置の左に新しい列を追加する。
 @orgcmdkkcc{M-@key{up},M-@key{down},org-table-move-row-up,org-table-move-row-down}
-Move the current row up/down.  @orgcmd{M-S-@key{up},org-table-kill-row} Kill
-the current row or horizontal line.
-@orgcmd{M-S-@key{down},org-table-insert-row} Insert a new row above the
-current row.  With a prefix argument, the line is created below the current
-one.  @orgcmd{C-c -,org-table-insert-hline} Insert a horizontal line below
-current row.  With a prefix argument, the line is created above the current
-line.  @orgcmd{C-c @key{RET},org-table-hline-and-move} Insert a horizontal
-line below current row, and move the cursor into the row below that line.
-@orgcmd{C-c ^,org-table-sort-lines} Sort the table lines in the region.  The
-position of point indicates the column to be used for sorting, and the range
-of lines is the range between the nearest horizontal separator lines, or the
-entire table.  If point is before the first column, you will be prompted for
-the sorting column.  If there is an active region, the mark specifies the
-first line and the sorting column, while point should be in the last line to
-be included into the sorting.  The command prompts for the sorting type
-(alphabetically, numerically, or by time).  When called with a prefix
-argument, alphabetic sorting will be case-sensitive.
+カーソル位置の行を上下に移動する。@orgcmd{M-S-@key{up},org-table-kill-row}
+カーソル位置の行もしくは水平ラインを削除する。
+@orgcmd{M-S-@key{down},org-table-insert-row}
+カーソル位置の上に新しい行を追加する。プレフィックスを使うと、カーソル
+位置の下に追加される。@orgcmd{C-c -,org-table-insert-hline}
+カーソル位置の下に水平ラインを追加する。プレフィックスを使うと、カーソ
+ル位置の上に追加される。@orgcmd{C-c @key{RET},org-table-hline-and-move}
+カーソル位置の下に水平ラインを追加し、カーソルを追加された水平ラインの
+次の行に移動する。@orgcmd{C-c ^,org-table-sort-lines}
+リージョンに含まれるテーブルの各行をソートする。ポイントのある列の情報
+がソートに利用され、ソート対象となる範囲は、最も近い水平ラインの行まで
+、もしくは、テーブル全体が指定される。カーソル位置がテーブルの第一列よ
+りも前にあるときは、ソートに利用する列を指定するためにプロンプトが表示
+されます。すでにアクティブリージョンが存在する場合、マークは第一行とソ
+ートに利用する列を指定し、同時にポイントは、ソート対象に含まれる最終行
+に位置しなければなりません。このコマンドが表示するプロンプトは、ソート
+の種類（アルファベット順、数値順、もしくは時間順）を指定するものです。
+プレフィックスを利用すると、大文字と小文字が区別されます。
 
 @c
 @c
 @c
-@tsubheading{Regions} @orgcmd{C-c C-x M-w,org-table-copy-region} Copy a
-rectangular region from a table to a special clipboard.  Point and mark
-determine edge fields of the rectangle.  If there is no active region, copy
-just the current field.  The process ignores horizontal separator lines.
-@orgcmd{C-c C-x C-w,org-table-cut-region} Copy a rectangular region from a
-table to a special clipboard, and blank all fields in the rectangle.  So
-this is the ``cut'' operation.  @orgcmd{C-c C-x C-y,org-table-paste-rectangle} Paste a rectangular region into a table.  The
-upper left corner ends up in the current field.  All involved fields will be
-overwritten.  If the rectangle does not fit into the present table, the
-table is enlarged as needed.  The process ignores horizontal separator
-lines.  @orgcmd{M-@key{RET},org-table-wrap-region} Split the current field
-at the cursor position and move the rest to the line below.  If there is an
-active region, and both point and mark are in the same column, the text in
-the column is wrapped to minimum width for the given number of lines.  A
-numeric prefix argument may be used to change the number of desired lines.
-If there is no region, but you specify a prefix argument, the current field
-is made blank, and the content is appended to the field above.
+@tsubheading{リージョン} @orgcmd{C-c C-x M-w,org-table-copy-region}
+テーブルの矩形領域を特別なクリップボードにコピーします。ポイントとマー
+クは、矩形領域を構成する末端となるフィールドを決定します。もしアクティ
+ブリージョンがなければ、カーソル位置のフィールドだけをコピーします。こ
+の処理は、テーブルの水平ラインを無視します。
+@orgcmd{C-c C-x C-w,org-table-cut-region}
+テーブルの矩形領域を特別なクリップボードにコピーし、領域内の全てのフィ
+ールドを空にします。つまりこれは「カット」操作です。
+@orgcmd{C-c C-x C-y,org-table-paste-rectangle}
+テーブルに矩形領域をペーストします。領域の左上がカーソル位置のフィール
+ドに上書きされます。ペーストする領域に重なるすべてのフィールドは上書き
+されます。対象とするテーブルに矩形領域が合わないならば、必要に応じてテ
+ーブルは拡張されます。この処理は、テーブルの水平ラインを無視します。
+@orgcmd{M-@key{RET},org-table-wrap-region}
+カーソル位置でフィールドの文字列を分割し、カーソル以降を一つ下のフィー
+ルドの文頭に移動します。アクティブリージョンが存在し、またポイントとマ
+ークの両方が同じ列にあるとき、列に含まれるテキストは、与えられた行数を
+最小化するように改行されます（訳注：余計な空白が消される）。プレフィッ
+クスで指定する整数値は、希望する行数に合わせるために使われます（訳注：
+M行をN行に圧縮できます）。もし選択領域がない状態でプレフィックスを指定
+すると、カーソル位置のフィールドは空白になり、元々あった文字列は一つ上
+のフィールドの文末に付け加えられます。
 
-@tsubheading{Calculations}
-@cindex formula, in tables
+@tsubheading{計算機能}
+@cindex 数式（テーブル内部）
 @cindex テーブルの中での計算
 @cindex region, active
 @cindex アクティブなリージョン
 @cindex 暫定マークモード
 @c
-@orgcmd{C-c +,org-table-sum} Sum the numbers in the current column, or in
-the rectangle defined by the active region.  The result is shown in the echo
-area and can be inserted with @kbd{C-y}.
-@orgcmd{S-@key{RET},org-table-copy-down}
+@orgcmd{C-c +,org-table-sum}
+カーソル位置の列、もしくは、アクティブリージョンで定められた矩形領域に
+含まれる数値を合計する。計算結果はエコー領域に表示され、@kbd{C-y}で挿入で
+きる。@orgcmd{S-@key{RET},org-table-copy-down}
 @vindex org-table-copy-increment
-When current field is empty, copy from first non-empty field above.  When
-not empty, copy current field down to next row and move cursor along with
-it.  Depending on the variable @code{org-table-copy-increment}, integer
-field values will be incremented during copy.  Integers that are too large
-will not be incremented.  Also, a @code{0} prefix argument temporarily
-disables the increment.  This key is also used by shift-selection and
-related modes (@pxref{Conflicts}).
+カーソル位置のフィールドが空白のとき、上にある空白でないフィールドから
+文字列をコピーする。空白でないときには、値を次の行のフィールドにコピー
+し、カーソルも移動させる。@code{org-table-copy-increment}の値に依存して、フ
+ィールドが整数値のときは値を一つ増やしてからコピーされるでしょう。大き
+すぎる値の整数の場合は値は増やされません。また、プレフィックスで@code{0}を
+用いれば、一時的に値の増加を防げます。このキーバインドは、
+shift-selectionとこれに関連するモードでも使われています（@pxref{Conflicts}）
+。
 
 @c
-@tsubheading{Miscellaneous} @orgcmd{C-c `,org-table-edit-field} Edit the
-current field in a separate window.  This is useful for fields that are not
-fully visible (@pxref{Column width and alignment}).  When called with a
-@kbd{C-u} prefix, just make the full field visible, so that it can be edited
-in place.
+@tsubheading{その他の機能} @orgcmd{C-c `,org-table-edit-field}
+個別のウィンドウでカーソル位置のフィールドを編集する。この昨日は、フィ
+ールド全体が表示されていないときに便利です（
+@pxref{Column width and alignment}）。プレフィックス@kbd{C-u}と伴って関数が呼ば
+れると、フィールドの全ての内容が表示されるため、フィールド内で編集できます。
 @item M-x org-table-import
 @c
-Import a file as a table.  The table should be TAB or whitespace separated.
-Use, for example, to import a spreadsheet table or data from a database,
-because these programs generally can write TAB-separated text files.  This
-command works by inserting the file into the buffer and then converting the
-region to a table.  Any prefix argument is passed on to the converter, which
-uses it to determine the separator.  @orgcmd{C-c |,org-table-create-or-convert-from-region} Tables can also be imported by
-pasting tabular text into the Org buffer, selecting the pasted text with
-@kbd{C-x C-x} and then using the @kbd{C-c |} command (see above under
-@i{Creation and conversion}).
+ファイルをテーブルとしてインポートする。テーブルは、タブもしくは空白で
+区切られている必要があります。たとえば、スプレッドシートのテーブルやデ
+ータベースの情報をインポートするために利用します。というのも、これらの
+プログラムは一般的にタブ区切りのテキストフィールドを書き出すことが可能
+なためです。このコマンドは、ファイルの内容をバッファに挿入することで作
+動し、領域をテーブルに変換します。どのようなプレフィックスがコンバータ
+に与えられても、セパレータを決定するために利用されます。
+@orgcmd{C-c |,org-table-create-or-convert-from-region}
+org-modeのバッファにテーブル状のテキスト（訳注：文字列がタブで区切られ
+ているテキスト領域など）をペーストすることでもorg-modeのテーブルを生成
+することができます。@kbd{C-x C-x}でバッファにペーストされているテキストを
+選択し、@kbd{C-c |}でorg-modeのテーブルに変換します（前述の
+@i{Creation and conversion}を参照してください）。
 @item M-x org-table-export
 @findex org-table-export
 @vindex org-table-export-default-format
-Export the table, by default as a TAB-separated file.  Use for data exchange
-with, for example, spreadsheet or database programs.  The format used to
-export the file can be configured in the variable
-@code{org-table-export-default-format}.  You may also use properties
-@code{TABLE_EXPORT_FILE} and @code{TABLE_EXPORT_FORMAT} to specify the file
-name and the format for table export in a subtree.  Org supports quite
-general formats for exported tables.  The exporter format is the same as the
-format used by Orgtbl radio tables, see @ref{Translator functions}, for a
-detailed description.
+テーブルをエクスポートする。エクスポートされるファイルでは標準でタブ区
+切りが使われる。たとえば、スプレッドシートやデータベースプログラムと情
+報を交換するために使います。ファイルのエクスポートに使われるフォーマッ
+トは、変数@code{org-table-export-default-format}で調節することができます。
+また、ファイル名を指定するためにプロパティ@code{TABLE_EXPORT_FILE}を、サブ
+ツリーでのテーブルエクスポートのフォーマットを指定するためにプロパティ
+@code{TABLE_EXPORT_FORMAT}を指定できます。org-modeはエクスポートされたテー
+ブルについて極めて汎用的なフォーマットをサポートします。エクスポートの
+フォーマットは、Orgtblのラジオテーブルで使われているものと同じです。よ
+り詳しい説明は@ref{Translator functions}を参照してください。
 @end table
 
-If you don't like the automatic table editor because it gets in your way on
-lines which you would like to start with @samp{|}, you can turn it off with
+@samp{|}で始まる行を思い通りに編集すために自動的なテーブルの編集が好みでない場合
+は、次のコマンドでこの機能を停止することができます。
 
 @lisp
 (setq org-enable-table-editor nil)
 @end lisp
 
 @noindent Then the only table command that still works is
-@kbd{C-c C-c} to do a manual re-align.
+（indent問題箇所）手動でテーブルを整列するために@kbd{C-c C-c}をまだ利用できます
+。
 
 @node Column width and alignment, Column groups, Built-in table editor, Tables
 @section Column width and alignment
 @cindex narrow columns in tables
 @cindex alignment in tables
 
-The width of columns is automatically determined by the table editor.  And
-also the alignment of a column is determined automatically from the fraction
-of number-like versus non-number fields in the column.
+テーブルの各列の幅はテーブルエディタによって自動的に決定されます。また、列の
+配置も自動的に決定されます。具体的には、列の中で、数値でないフィールドに対す
+る数値（と解釈できる）フィールドの割合に応じて決まります。
 
-Sometimes a single field or a few fields need to carry more text, leading to
-inconveniently wide columns.  Or maybe you want to make a table with several
-columns having a fixed width, regardless of content.  To set@footnote{This feature does not work on XEmacs.} the width of a column, one field anywhere
-in the column may contain just the string @samp{<N>} where @samp{N} is an
-integer specifying the width of the column in characters.  The next re-align
-will then set the width of this column to this value.
+単一かもしくはごく少数のフィールドでより多くのテキストを扱おうとすると、困っ
+たことに列幅が広がってしまいます。もしくは、フィールドの内容にかかわらず、固
+定幅の列でテーブルを作成したいと思うかもしれません。列の幅を指定するためには
+、列のどこにあってもよいですが、一つのフィールドが文字列@samp{<N>}だけを含む必要
+があります。ここで@samp{N}は、列の幅を指定する整数値の文字列です@footnote{この機能は、
+XEmacsでは動作しません}。次に行なわれるテーブルの整列では、この数値で列の幅
+が設定されます。
 
 @example
 @group
@@ -2143,47 +2157,49 @@ will then set the width of this column to this value.
 @end example
 
 @noindent
-Fields that are wider become clipped and end in the string @samp{=>}.  Note
-that the full text is still in the buffer but is hidden.  To see the full
-text, hold the mouse over the field---a tool-tip window will show the full
-content.  To edit such a field, use the command @kbd{C-c `} (that is
-@kbd{C-c} followed by the backquote).  This will open a new window with the
-full field.  Edit it and finish with @kbd{C-c C-c}.
+指定された幅よりも広いフィールドは一部が切り取られ、文字列@samp{=>}で終わります。
+フィールド内に表示されていたテキストは、バッファ内部にそのまま存在し、表示が
+隠されていることに注意してください。隠されたテキストも含めてすべてを表示する
+ためには、対象とするフィールドにマウスカーソルを合わてください。ツールチップ
+が現われて、フィールドが含むすべての内容を表示されます。このようなフィールド
+を編集するには、@kbd{C-c `}を使います（@kbd{C-c}に続いてバッククオートを入力します）
+。フィールドの全ての内容を表示した新しいウィンドウが開かれます。フィールドの
+内容を編集し、@kbd{C-c C-c}で完了します。
 
 @vindex org-startup-align-all-tables
-When visiting a file containing a table with narrowed columns, the necessary
-character hiding has not yet happened, and the table needs to be aligned
-before it looks nice.  Setting the option
-@code{org-startup-align-all-tables} will realign all tables in a file upon
-visiting, but also slow down startup.  You can also set this option on a
-per-file basis with:
+幅を狭くした列のあるテーブルを含むファイルを訪問するとき、文字列の隠蔽はまだ
+実行されていません。そして、希望する見た目にするにはテーブルを整列する必要が
+あります。オプションの@code{org-startup-align-all-tables}
+を設定すると、ファイルを訪問するときにファイルにある全てのテーブルが整列され
+ます。ただしスタートアップが少し遅くなります。次を利用すればファイルごとにこ
+のオプションを設定することもできます。
 
 @example
 #+STARTUP: align
 #+STARTUP: noalign
 @end example
 
-If you would like to overrule the automatic alignment of number-rich columns
-to the right and of string-rich column to the left, you can use @samp{<r>},
-@samp{c}@footnote{Centering does not work inside Emacs, but it does have an effect when exporting to HTML.} or @samp{<l>} in a similar fashion.  You may
-also combine alignment and field width like this: @samp{<l10>}.
+数値の多い列を右揃えにして、文字列の多い列を左揃えにする自動的な整列を無効に
+したいならば、@samp{<r>}、@samp{c}@footnote{Emacsの表示上は中央揃えにはできませんが、HTMLにエク
+スポートするときに中央揃えにできます}、もしくは@samp{<l>}を似たような方法で利用で
+きます。@samp{<|10>}のようにすれば列の揃えとフィールドの幅を同時に指定できます。
 
-Lines which only contain these formatting cookies will be removed
-automatically when exporting the document.
+書式の設定情報のみを含む行は、ドキュメントをエクスポートするときに自動的に削
+除されます。
 
 @node Column groups, Orgtbl mode, Column width and alignment, Tables
 @section Column groups
-@cindex grouping columns in tables
+@cindex 列のグルーピング
 
-When Org exports tables, it does so by default without vertical lines
-because that is visually more satisfying in general.  Occasionally however,
-vertical lines can be useful to structure a table into groups of columns,
-much like horizontal lines can do for groups of rows.  In order to specify
-column groups, you can use a special row where the first field contains only
-@samp{/}.  The further fields can either contain @samp{<} to indicate that
-this column should start a group, @samp{>} to indicate the end of a column,
-or @samp{<>} to make a column a group of its own.  Boundaries between column
-groups will upon export be marked with vertical lines.  Here is an example:
+org-modeのテーブルをエクスポートすると、標準で垂直ラインを表示しません。これ
+は、一般に視覚的な満足度をより高めるためです。しかし場合によっては、テーブル
+を列のグループで構造化するために垂直ラインが役に立つます。これは水平ラインが
+いくつかの行をグループ化するために役立つことと同じです。列のグループを指定す
+るために、最初のフィールドが@samp{/}だけを含む特別な行を使います。それ以降のフィ
+ールドについては、@samp{<}を含むとき、その列がグルーピングされる列の始めであるこ
+とを意味します。@samp{>}を含む場合は、グループの終了を表します。もしくは、@samp{<>}を
+含む列はこれ自体を一つのグループにします。列のグループの境界は、エクスポート
+時に垂直ラインが表示されるようになります。以下に例を示します。
 
 @example
 | N | N^2 | N^3 | N^4 | sqrt(n) | sqrt[4](N) |
@@ -2196,8 +2212,8 @@ groups will upon export be marked with vertical lines.  Here is an example:
 #+TBLFM: $2=$1^2::$3=$1^3::$4=$1^4::$5=sqrt($1)::$6=sqrt(sqrt(($1)))
 @end example
 
-It is also sufficient to just insert the column group starters after every
-vertical line you would like to have:
+表示させたいすべての垂直ラインの後ろに列のグループ開始を指定するだけでも十分
+です。
 
 @example
 |  N | N^2 | N^3 | N^4 | sqrt(n) | sqrt[4](N) |
@@ -2206,15 +2222,15 @@ vertical line you would like to have:
 @end example
 
 @node Orgtbl mode, The spreadsheet, Column groups, Tables
-@section The Orgtbl minor mode
+@section Orgtblマイナーモード
 @cindex Orgtbl mode
-@cindex minor mode for tables
+@cindex テーブルのマイナーモード
 
-If you like the intuitive way the Org table editor works, you might also
-want to use it in other modes like Text mode or Mail mode.  The minor mode
-Orgtbl mode makes this possible.  You can always toggle the mode with
-@kbd{M-x orgtbl-mode}.  To turn it on by default, for example in Message
-mode, use
+org-modeのテーブルエディタの直感的な動作を気に入ったら、テキストモードやメー
+ルモードのように他のモードで利用したくなるかもしれません。これはマイナーモー
+ドのOrgtblモードが実現してくれます。@kbd{M-x orgtbl-mode}でトグルできます。標準
+でOrgtblモードを有効にするには、たとえばメッセージモードのときに、次の設定を
+使います。
 
 @lisp
 (add-hook 'message-mode-hook 'turn-on-orgtbl)
@@ -10854,12 +10870,12 @@ if files include other files via @code{#+SETUPFILE:} or @code{#+INCLUDE:}.
 
 @node Working With Source Code, Miscellaneous, Publishing, Top
 @chapter ソースコードとの連携
-@cindex Schulte, Eric
-@cindex Davison, Dan
+@cindex Eric Schulte
+@cindex Dan Davidson
 @cindex source code, working with
 
-Source code can be included in Org-mode documents using a @samp{src} block,
-e.g.@:
+@samp{src}ブロックを使う事でOrg-modeの文書にソースコードを含めることができます。
+例えば@:
 
 @example
 #+BEGIN_SRC emacs-lisp
@@ -10869,14 +10885,16 @@ e.g.@:
 #+END_SRC
 @end example
 
-Org-mode provides a number of features for working with live source code,
-including editing of code blocks in their native major-mode, evaluation of
-code blocks, converting code blocks into source files (known as
-@dfn{tangling} in literate programming), and exporting code blocks and their
-results in several formats.  This functionality was contributed by Eric
-Schulte and Dan Davison, and was originally named Org-babel.
+Org-modeでは生のソースコードと連携する幾つかの機能を用意してます。その機能と
+して、コードブロックをそのメジャーモードで編集する機能、コードブロックを評価
+する機能、コードブロックをソースコードへと変換する機能(文芸的プログラミング
+では@dfn{tangling}と知られている機能です)、そしてコードブロックとその結果を幾つ
+かのフォーマットに沿ってエクスポートする機能があります。この機能はもともと
+Org-bablelと名付けられ、Eric
+SchultとDan Davidsonによって開発されました。
 
-The following sections describe Org-mode's code block handling facilities.
+以下のセクションでは、Org-modeでコードブロックを取り扱う機能について説明しま
+す。
 
 @menu
 * Structure of code blocks::  Code block syntax described
@@ -10900,10 +10918,10 @@ The following sections describe Org-mode's code block handling facilities.
 
 @node Structure of code blocks, Editing source code, Working With Source Code, Working With Source Code
 @section Structure of code blocks
-@cindex code block, structure
-@cindex source code, block structure
+@cindex コードブロック、構造
+@cindex ソースコード、ブロック構造
 
-The structure of code blocks is as follows:
+コードブロックの構造は以下の通りです:
 
 @example
 #+srcname: <name>
@@ -10912,14 +10930,14 @@ The structure of code blocks is as follows:
 #+end_src
 @end example
 
-Switches and header arguments are optional. Code can also be embedded in
-text inline using
+スイッチとヘッダー引数は省略できます。次のように、コードも文章にインラインで
+埋め込むことができます。
 
 @example
 src_<language>@{<body>@}
 @end example
 
-or
+もしくは
 
 @example
 src_<language>[<header arguments>]@{<body>@}
@@ -10927,13 +10945,13 @@ src_<language>[<header arguments>]@{<body>@}
 
 @table @code
 @item <name>
-This name is associated with the code block.  This is similar to the
-@samp{#+tblname} lines that can be used to name tables in Org-mode files.
-Referencing the name of a code block makes it possible to evaluate the block
-from other places in the file, other files, or from Org-mode table formulas
-(see @ref{The spreadsheet}).
+この「name」はコードブロックと関連があります。これは、Org-modeのファイ
+ル内でテーブルを名付ける@samp{#+tblname}と似ています。コードブロックの名前
+を参照することで、そのファイル内や別のファイル、さらにはOrg-modeのテー
+ブルの計算式にあるコードブロックを評価することができます。
+(@ref{The spreadsheet}を見て下さい)。
 @item <language>
-The language of the code in the block.
+ブロック内にあるコードの言語です。
 @item <switches>
 Optional switches controlling exportation of the code block (see switches
 discussion in @ref{Literal examples})
@@ -10943,7 +10961,7 @@ tangling of code blocks. See the @ref{Header arguments} section. Header
 arguments can also be set on a per-buffer or per-subtree basis using
 properties.
 @item <body>
-The source code.
+ソースコードです。
 @end table
 
 @comment  node-name,  next,  previous,  up
@@ -10951,8 +10969,8 @@ The source code.
 
 @node Editing source code, Exporting code blocks, Structure of code blocks, Working With Source Code
 @section Editing source code
-@cindex code block, editing
-@cindex source code, editing
+@cindex コードブロック、編集
+@cindex ソースコード、編集
 
 @kindex C-c '
 Use @kbd{C-c '} to edit the current code block. This brings up a language
@@ -10960,10 +10978,9 @@ major-mode edit buffer containing the body of the code block. Saving this
 buffer will write the new contents back to the Org buffer. Use @kbd{C-c '}
 again to exit.
 
-The @code{org-src-mode} minor mode will be active in the edit buffer. The
-following variables can be used to configure the behavior of the edit
-buffer. See also the customization group @code{org-edit-structure} for
-further configuration options.
+編集バッファにて@code{org-src-mode}マイナーモードが起動します。編集バッファの振る
+舞いを設定するには、以下の変数が使えます。詳細な設定オプションについては、カ
+スタマイズグループ@code{org-edit-structure}も見て下さい。
 
 @table @code
 @item org-src-lang-modes
@@ -10972,11 +10989,10 @@ is the language named in the header line of the code block, then the edit
 buffer will be placed in that major-mode. This variable can be used to map
 arbitrary language names to existing major modes.
 @item org-src-window-setup
-Controls the way Emacs windows are rearranged when the edit buffer is
-created.
+編集バッファを新規作成する際の、Emacsのウィンドウ配置方法を管理します。
 @item org-src-preserve-indentation
-This variable is especially useful for tangling languages such as Python, in
-which whitespace indentation in the output is critical.
+Pythonなどのインデント幅が非常に重要な言語をtangling(コード本文を抽出)
+するときに、この変数は特に役に立ちます。
 @item org-src-ask-before-returning-to-edit-buffer
 By default, Org will ask before returning to an open edit buffer. Set this
 variable to nil to switch without asking.
@@ -10990,8 +11006,8 @@ variable @code{org-src-fontify-natively}.
 
 @node Exporting code blocks, Extracting source code, Editing source code, Working With Source Code
 @section Exporting code blocks
-@cindex code block, exporting
-@cindex source code, exporting
+@cindex コードブロック、エクスポート
+@cindex ソースコード、エクスポート
 
 It is possible to export the @emph{contents} of code blocks, the
 @emph{results} of code block evaluation, @emph{neither}, or @emph{both}.
@@ -11000,23 +11016,23 @@ blocks. However, for some languages (e.g.@: @code{ditaa}) the default
 exports the results of code block evaluation.  For information on exporting
 code block bodies, see @ref{Literal examples}.
 
-The @code{:exports} header argument can be used to specify export behavior:
+ヘッダー引数@code{:exports}を設定することで、エクスポート時の振る舞いを指定できま
+す:
 
-@subsubheading Header arguments:
+@subsubheading ヘッダ引数:
 @table @code
 @item :exports code
-The default in most languages. The body of the code block is exported, as
-described in @ref{Literal examples}.
+ほとんどの言語でのデフォルトの設定です。@ref{Literal examples}で述べたよう
+に、コードブロックの本文が出力されます。
 @item :exports results
-The code block will be evaluated and the results will be placed in the
-Org-mode buffer for export, either updating previous results of the code
-block located anywhere in the buffer or, if no previous results exist,
-placing the results immediately after the code block.  The body of the code
-block will not be exported.
+エクスポートするために、コードブロックが評価され、その結果がOrg-modeの
+バッファに出力されます。バッファ内に以前評価した結果があればその結果を
+更新し、もし以前に評価した結果がなければ直ちに今回の評価結果をコードブ
+ロックの後ろに追記します。コードブロックの本文はエクスポートされません。
 @item :exports both
-Both the code block and its results will be exported.
+コードブロックとその結果がエクスポートされます。
 @item :exports none
-Neither the code block nor its results will be exported.
+コードブロックとその結果のいずれもエクスポートされません。
 @end table
 
 It is possible to inhibit the evaluation of code blocks during export.
