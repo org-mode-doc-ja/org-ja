@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-09-16 23:19+0900\n"
+"PO-Revision-Date: 2011-09-18 17:16+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -22828,91 +22828,95 @@ msgstr ""
 #: org.texi:11211
 #, no-wrap
 msgid "Schulte, Eric"
-msgstr ""
+msgstr "Eric Schulte"
 
 #. type: cindex
 #: org.texi:11212
 #, no-wrap
 msgid "Davison, Dan"
-msgstr ""
+msgstr "Dan Davidson"
 
 #+glossary: code ( コード ) / source ( ソース )
 #. type: cindex
 #: org.texi:11213
-#, no-wrap
+#, no-wrap, fuzzy
 msgid "source code, working with"
-msgstr ""
+msgstr "ソースコード、連携する"
 
 #+glossary: block ( ブロック ) / code ( コード ) / document ( ドキュメント|文書 ) / org-mode ( Org-mode ) / source ( ソース )
 #. type: Plain text
 #: org.texi:11217
 msgid "Source code can be included in Org-mode documents using a @samp{src} block, e.g.@:"
-msgstr ""
+msgstr "@samp{src}ブロックを使う事でOrg-modeの文書にソースコードを含めることができます。例えば@:"
 
 #+glossary: code block ( コードブロック ) / code ( コード ) / editing ( 編集 ) / evaluation ( 評価 ) / exporting ( エクスポート ) / feature ( 機能 ) / file ( ファイル ) / format ( フォーマット|形成 ) / functionality ( 機能性 ) / named ( 名前付き ) / org-mode ( Org-mode ) / provide ( 用意する ) / source ( ソース )
 #. type: Plain text
 #: org.texi:11232
 msgid "Org-mode provides a number of features for working with live source code, including editing of code blocks in their native major-mode, evaluation of code blocks, converting code blocks into source files (known as @dfn{tangling} in literate programming), and exporting code blocks and their results in several formats.  This functionality was contributed by Eric Schulte and Dan Davison, and was originally named Org-babel."
-msgstr ""
+msgstr "Org-modeでは生のソースコードと連携する幾つかの機能を用意してます。その機能として、コードブロックをそのメジャーモードで編集する機能、コードブロックを評価する機能、コードブロックをソースコードへと変換する機能(文芸的プログラミングでは@dfn{tangling}と知られている機能です)、そしてコードブロックとその結果を幾つかのフォーマットに沿ってエクスポートする機能があります。この機能はもともとOrg-bablelと名付けられ、Eric SchultとDan Davidsonによって開発されました。"
 
 #+glossary: code block ( コードブロック ) / handling ( 扱い ) / section ( セクション )
 #. type: Plain text
 #: org.texi:11234
 msgid "The following sections describe Org-mode's code block handling facilities."
-msgstr ""
+msgstr "以下のセクションでは、Org-modeでコードブロックを取り扱う機能について説明します。"
 
 #+glossary: code block ( コードブロック ) / structure ( 構造 )
 #. type: cindex
 #: org.texi:11255
 #, no-wrap
 msgid "code block, structure"
-msgstr ""
+msgstr "コードブロック、構造"
 
 #+glossary: code block ( コードブロック ) / source ( ソース ) / structure ( 構造 )
 #. type: cindex
 #: org.texi:11256
 #, no-wrap
 msgid "source code, block structure"
-msgstr ""
+msgstr "ソースコード、ブロック構造"
 
 #+glossary: code block ( コードブロック ) / structure ( 構造 )
 #. type: Plain text
 #: org.texi:11259
 msgid "The structure of code blocks is as follows:"
-msgstr ""
+msgstr "コードブロックの構造は以下の通りです:"
 
 #. type: example
 #: org.texi:11265
-#, no-wrap
+#, no-wrap, fuzzy
 msgid ""
 "#+srcname: <name>\n"
 "#+begin_src <language> <switches> <header arguments>\n"
 "  <body>\n"
 "#+end_src\n"
 msgstr ""
+"#+srcname: <name>\n"
+"#+begin_src <language> <switches> <header arguments>\n"
+"  <body>\n"
+"#+end_src\n"
 
 #+glossary: header argument ( ヘッダー引数 ) / code ( コード ) / embedded ( 組み込み ) / inline ( インライン ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:11269
 msgid "Switches and header arguments are optional. Code can also be embedded in text inline using"
-msgstr ""
+msgstr "スイッチとヘッダー引数は省略できます。次のように、コードも文章にインラインで埋め込むことができます。"
 
 #. type: example
 #: org.texi:11272
-#, no-wrap
+#, no-wrap, fuzzy
 msgid "src_<language>@{<body>@}\n"
-msgstr ""
+msgstr "src_<language>@{<body>@}\n"
 
 #. type: Plain text
 #: org.texi:11275
 msgid "or"
-msgstr ""
+msgstr "もしくは"
 
 #. type: example
 #: org.texi:11278
-#, no-wrap
+#, no-wrap, fuzzy
 msgid "src_<language>[<header arguments>]@{<body>@}\n"
-msgstr ""
+msgstr "src_<language>[<header arguments>]@{<body>@}\n"
 
 #. type: item
 #: org.texi:11281
@@ -22925,31 +22929,32 @@ msgstr "<name>"
 #. type: table
 #: org.texi:11287
 msgid "This name is associated with the code block.  This is similar to the @samp{#+tblname} lines that can be used to name tables in Org-mode files.  Referencing the name of a code block makes it possible to evaluate the block from other places in the file, other files, or from Org-mode table formulas (see @ref{The spreadsheet})."
-msgstr ""
+msgstr "この「name」はコードブロックと関連があります。これは、Org-modeのファイル内でテーブルを名付ける@samp{#+tblname}と似ています。コードブロックの名前を参照することで、そのファイル内や別のファイル、さらにはOrg-modeのテーブルの計算式にあるコードブロックを評価することができます。(@ref{The spreadsheet}を見て下さい)。"
 
 #. type: item
 #: org.texi:11287
-#, no-wrap
+#, no-wrap, fuzzy
 msgid "<language>"
-msgstr ""
+msgstr "<language>"
 
 #+glossary: block ( ブロック ) / code ( コード ) / language ( 言語 )
 #. type: table
 #: org.texi:11289
 msgid "The language of the code in the block."
-msgstr ""
+msgstr "ブロック内にあるコードの言語です。"
 
 #. type: item
 #: org.texi:11289
-#, no-wrap
+#, no-wrap, fuzzy
 msgid "<switches>"
-msgstr ""
+msgstr "<switches>"
 
 #+glossary: code block ( コードブロック )
 #. type: table
 #: org.texi:11292
+#, fuzzy
 msgid "Optional switches controlling exportation of the code block (see switches discussion in @ref{Literal examples})"
-msgstr ""
+msgstr "コードブロックのエクスポートを管理するスイッチフラグです。省略可能です。(@ref{Literal examples}を参照してください。)"
 
 #. type: item
 #: org.texi:11292
@@ -22961,188 +22966,196 @@ msgstr "<header arguments>"
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / evaluation ( 評価 ) / export ( エクスポート ) / section ( セクション )
 #. type: table
 #: org.texi:11297
+#, fuzzy
 msgid "Optional header arguments control many aspects of evaluation, export and tangling of code blocks. See the @ref{Header arguments} section. Header arguments can also be set on a per-buffer or per-subtree basis using properties."
-msgstr ""
+msgstr "コードブロックの評価、エクスポート、タングリング(tangling)での多く外観は、省略可能なヘッダー引数により管理されます。@ref{Header arguments}セクションを見て下さい。プロパティを設定することで、バッファー毎に、サブツリー毎にヘッダー引数を設定できます。"
 
 #. type: item
 #: org.texi:11297
-#, no-wrap
+#, no-wrap, fuzzy
 msgid "<body>"
-msgstr ""
+msgstr "<body>"
 
 #+glossary: code ( コード ) / source ( ソース )
 #. type: table
 #: org.texi:11299
 msgid "The source code."
-msgstr ""
+msgstr "ソースコードです。"
 
 #+glossary: code block ( コードブロック ) / editing ( 編集 )
 #. type: cindex
 #: org.texi:11306
 #, no-wrap
 msgid "code block, editing"
-msgstr ""
+msgstr "コードブロック、編集"
 
 #+glossary: code ( コード ) / editing ( 編集 ) / source ( ソース )
 #. type: cindex
 #: org.texi:11307
 #, no-wrap
 msgid "source code, editing"
-msgstr ""
+msgstr "ソースコード、編集"
 
 #+glossary: code block ( コードブロック ) / buffer ( バッファ ) / content ( コンテンツ|内容 ) / current ( カレント|現在の ) / language ( 言語 ) / org ( Org-mode )
 #. type: Plain text
 #: org.texi:11314
+#, fuzzy
 msgid "Use @kbd{C-c '} to edit the current code block. This brings up a language major-mode edit buffer containing the body of the code block. Saving this buffer will write the new contents back to the Org buffer. Use @kbd{C-c '} again to exit."
-msgstr ""
+msgstr "現在のコードブロックを編集するには@kbd{C-c '}してください。コードブロックのコード本文を含んだ編集バッファが、その言語のメジャーモードで新たに開かれます。そのバッファを保存することで、Orgファイルへ変更内容を上書きし、もとのOrgバッファへと表示が戻ります。コードブロックの編集バッファを閉じるには@kbd{C-c '}を再度押して下さい。"
 
 #+glossary: minor mode ( マイナーモード ) / buffer ( バッファ ) / configuration ( 設定 ) / customization ( カスタマイズ ) / option ( オプション ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:11319
 msgid "The @code{org-src-mode} minor mode will be active in the edit buffer. The following variables can be used to configure the behavior of the edit buffer. See also the customization group @code{org-edit-structure} for further configuration options."
-msgstr ""
+msgstr "編集バッファにて@code{org-src-mode}マイナーモードが起動します。編集バッファの振る舞いを設定するには、以下の変数が使えます。詳細な設定オプションについては、カスタマイズグループ@code{org-edit-structure}も見て下さい。"
 
 #. type: item
 #: org.texi:11321
 #, no-wrap
 msgid "org-src-lang-modes"
-msgstr ""
+msgstr "org-src-lang-modes"
 
 #+glossary: code block ( コードブロック ) / buffer ( バッファ ) / header ( ヘッダー ) / language ( 言語 ) / line ( 行|ライン|線 ) / major ( メジャー ) / mode ( モード|モード ) / named ( 名前付き ) / variable ( 変数 )
 #. type: table
 #: org.texi:11326
+#, fuzzy
 msgid "If an Emacs major-mode named @code{<lang>-mode} exists, where @code{<lang>} is the language named in the header line of the code block, then the edit buffer will be placed in that major-mode. This variable can be used to map arbitrary language names to existing major modes."
-msgstr ""
+msgstr "コードブロックのヘッダー行で宣言した言語名@{<lang>}のメジャーモードがEmacsに存在する場合、そのメジャーモードで編集バッファを開きます。この変数は、存在するメジャーモードに任意の言語名を割り振れます。"
 
 #. type: item
 #: org.texi:11326
 #, no-wrap
 msgid "org-src-window-setup"
-msgstr ""
+msgstr "org-src-window-setup"
 
 #+glossary: buffer ( バッファ ) / window ( ウインドウ )
 #. type: table
 #: org.texi:11328
 msgid "Controls the way Emacs windows are rearranged when the edit buffer is created."
-msgstr ""
+msgstr "編集バッファを新規作成する際の、Emacsのウィンドウ配置方法を管理します。"
 
 #. type: item
 #: org.texi:11328
 #, no-wrap
 msgid "org-src-preserve-indentation"
-msgstr ""
+msgstr "org-src-preserve-indentation"
 
 #+glossary: language ( 言語 ) / output ( アウトプット ) / variable ( 変数 )
 #. type: table
 #: org.texi:11331
 msgid "This variable is especially useful for tangling languages such as Python, in which whitespace indentation in the output is critical."
-msgstr ""
+msgstr "Pythonなどのインデント幅が非常に重要な言語をtangling(コード本文を抽出)するときに、この変数は特に役に立ちます。"
 
 #. type: item
 #: org.texi:11331
 #, no-wrap
 msgid "org-src-ask-before-returning-to-edit-buffer"
-msgstr ""
+msgstr "org-src-ask-before-returning-to-edit-buffer"
 
+# an open editing bufferのopenをどう訳すか? open (adj.)
 #+glossary: buffer ( バッファ ) / default ( デフォルト|初期値 ) / nil ( nil ) / org ( Org-mode ) / variable ( 変数 )
 #. type: table
 #: org.texi:11334
+#, fuzzy
 msgid "By default, Org will ask before returning to an open edit buffer. Set this variable to nil to switch without asking."
-msgstr ""
+msgstr "デフォルトでは、既に開いてある編集バッファへと戻る前に、Org-modeが確認のプロンプトを出します。確認のプロンプトを出さずにバッファを変更するには、この変数をnilに設定してください。"
 
 #+glossary: buffer ( バッファ ) / code ( コード ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:11338
+#, fuzzy
 msgid "To turn on native code fontification in the @emph{Org} buffer, configure the variable @code{org-src-fontify-natively}."
-msgstr ""
+msgstr "@emph{Org}バッファ内にもかかわらず、記述した言語をメジャーモードの配色で表示したい場合には、変数@code{org-src-fontify-natively}を設定してください。"
 
 #+glossary: code block ( コードブロック ) / exporting ( エクスポート )
 #. type: cindex
 #: org.texi:11344
 #, no-wrap
 msgid "code block, exporting"
-msgstr ""
+msgstr "コードブロック、エクスポート"
 
 #+glossary: code ( コード ) / exporting ( エクスポート ) / source ( ソース )
 #. type: cindex
 #: org.texi:11345
 #, no-wrap
 msgid "source code, exporting"
-msgstr ""
+msgstr "ソースコード、エクスポート"
 
 #+glossary: code block ( コードブロック ) / content ( コンテンツ|内容 ) / default ( デフォルト|初期値 ) / evaluation ( 評価 ) / export ( エクスポート ) / exporting ( エクスポート ) / information ( 情報 ) / language ( 言語 )
 #. type: Plain text
 #: org.texi:11353
+#, fuzzy
 msgid "It is possible to export the @emph{contents} of code blocks, the @emph{results} of code block evaluation, @emph{neither}, or @emph{both}.  For most languages, the default exports the contents of code blocks. However, for some languages (e.g.@: @code{ditaa}) the default exports the results of code block evaluation.  For information on exporting code block bodies, see @ref{Literal examples}."
-msgstr ""
+msgstr "コードブロックのエクスポートで選択可能なものは、@emph{内容}のエクスポート、評価@emph{結果}のエクスポート、@emph{いずれでもないもの}のエクスポート、内容と結果@emph{両方}のエクスポートの4つです。ほとんどの言語では、デフォルトの設定ではコードブロックの内容をエクスポートします。しかし、ある言語(例えば@: @code{ditaa})では、デフォルトの設定でコードブロックを評価した結果をエクスポートします。コードブロックの本文をエクスポートするには、@ref{Literal examples}を参照してください。"
 
 #+glossary: header argument ( ヘッダー引数 ) / export ( エクスポート )
 #. type: Plain text
 #: org.texi:11356
 msgid "The @code{:exports} header argument can be used to specify export behavior:"
-msgstr ""
+msgstr "ヘッダー引数@code{:exports}を設定することで、エクスポート時の振る舞いを指定できます:"
 
 #+glossary: header ( ヘッダー )
 #. type: subsubheading
 #: org.texi:11357
 #, no-wrap
 msgid "Header arguments:"
-msgstr ""
+msgstr "ヘッダ引数:"
 
 #+glossary: code ( コード )
 #. type: item
 #: org.texi:11359
 #, no-wrap
 msgid ":exports code"
-msgstr ""
+msgstr ":exports code"
 
 #+glossary: code block ( コードブロック ) / default ( デフォルト|初期値 ) / exported ( エクスポート|出力された ) / language ( 言語 )
 #. type: table
 #: org.texi:11362
 msgid "The default in most languages. The body of the code block is exported, as described in @ref{Literal examples}."
-msgstr ""
+msgstr "ほとんどの言語でのデフォルトの設定です。@ref{Literal examples}で述べたように、コードブロックの本文が出力されます。"
 
 #. type: item
 #: org.texi:11362
 #, no-wrap
 msgid ":exports results"
-msgstr ""
+msgstr ":exports results"
 
 #+glossary: code block ( コードブロック ) / buffer ( バッファ ) / export ( エクスポート ) / exported ( エクスポート|出力された ) / org-mode ( Org-mode ) / previous ( 前の )
 #. type: table
 #: org.texi:11368
 msgid "The code block will be evaluated and the results will be placed in the Org-mode buffer for export, either updating previous results of the code block located anywhere in the buffer or, if no previous results exist, placing the results immediately after the code block.  The body of the code block will not be exported."
-msgstr ""
+msgstr "エクスポートするために、コードブロックが評価され、その結果がOrg-modeのバッファに出力されます。バッファ内に以前評価した結果があればその結果を更新し、もし以前に評価した結果がなければ直ちに今回の評価結果をコードブロックの後ろに追記します。コードブロックの本文はエクスポートされません。"
 
 #. type: item
 #: org.texi:11368
 #, no-wrap
 msgid ":exports both"
-msgstr ""
+msgstr ":exports both"
 
 #+glossary: code block ( コードブロック ) / exported ( エクスポート|出力された )
 #. type: table
 #: org.texi:11370
 msgid "Both the code block and its results will be exported."
-msgstr ""
+msgstr "コードブロックとその結果がエクスポートされます。"
 
 #. type: item
 #: org.texi:11370
 #, no-wrap
 msgid ":exports none"
-msgstr ""
+msgstr ":exports none"
 
 #+glossary: code block ( コードブロック ) / exported ( エクスポート|出力された )
 #. type: table
 #: org.texi:11372
 msgid "Neither the code block nor its results will be exported."
-msgstr ""
+msgstr "コードブロックとその結果のいずれもエクスポートされません。"
 
 #+glossary: code block ( コードブロック ) / evaluation ( 評価 ) / example ( 例 ) / export ( エクスポート ) / exported ( エクスポート|出力された ) / file ( ファイル ) / language ( 言語 ) / org-mode ( Org-mode ) / setting ( 設定 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:11380
+#, fuzzy
 msgid "It is possible to inhibit the evaluation of code blocks during export.  Setting the @code{org-export-babel-evaluate} variable to @code{nil} will ensure that no code blocks are evaluated as part of the export process.  This can be useful in situations where potentially untrusted Org-mode files are exported in an automated fashion, for example when Org-mode is used as the markup language for a wiki."
-msgstr ""
+msgstr "エクスポートしている間、コードブロックは評価されません。エクスポートのためにコードブロックの評価が必要な場合でも、変数@code{org-export-babel-evaluate}を@code{nil}に設定することで、コードブロックの評価は抑止されます。例えばwikiなどのマークアップ言語としてOrg-modeを使う場合にOrg-modeのファイルは自動的にエクスポートされます。Org-modeのファイルを安心してエクスポートできない場合には、この設定が役に立ちます。"
 
 #. type: cindex
 #: org.texi:11385
