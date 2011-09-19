@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-09-17 04:33+0900\n"
+"PO-Revision-Date: 2011-09-20 00:14+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -23141,63 +23141,64 @@ msgstr "エクスポートしている間、コードブロックは評価され
 #: org.texi:11385
 #, no-wrap
 msgid "tangling"
-msgstr ""
+msgstr "tangling"
 
+# 抽出、ソースコード
 #+glossary: code ( コード ) / source ( ソース )
 #. type: cindex
 #: org.texi:11386
 #, no-wrap
 msgid "source code, extracting"
-msgstr ""
+msgstr "抽出、ソースコード"
 
 #+glossary: code block ( コードブロック ) / code ( コード ) / source ( ソース )
 #. type: cindex
 #: org.texi:11387
 #, no-wrap
 msgid "code block, extracting source code"
-msgstr ""
+msgstr "ソースコードの抽出、コードブロック"
 
 #+glossary: code block ( コードブロック ) / literate programming ( 文芸的プログラミング ) / block ( ブロック ) / code ( コード ) / creating ( 作成 ) / file ( ファイル ) / source ( ソース ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:11394
 msgid "Creating pure source code files by extracting code from source blocks is referred to as ``tangling''---a term adopted from the literate programming community.  During ``tangling'' of code blocks their bodies are expanded using @code{org-babel-expand-src-block} which can expand both variable and ``noweb'' style references (see @ref{Noweb reference syntax})."
-msgstr ""
+msgstr "ソースブロックからコードを抽出して純粋なソースコードファイルを作成することを、``tangling''といいます。この用語は文芸的プログラミングコミュニティで使われている専門用語です。コードブロックを``tangling''する時に、変数と``noweb''スタイルの参照点(@ref{Noweb reference syntax}を参照)を展開できる@code{org-babel-expand-src-block}を使ってコード本文を展開します。"
 
 #. type: item
 #: org.texi:11397
 #, no-wrap
 msgid ":tangle no"
-msgstr ""
+msgstr ":tangle no"
 
 #+glossary: code block ( コードブロック ) / default ( デフォルト|初期値 ) / output ( アウトプット )
 #. type: table
 #: org.texi:11399
 msgid "The default.  The code block is not included in the tangled output."
-msgstr ""
+msgstr "デフォルトの設定です。コードブロックはtangleされたアウトプットには含まれません。"
 
 #. type: item
 #: org.texi:11399
 #, no-wrap
 msgid ":tangle yes"
-msgstr ""
+msgstr ":tangle yes"
 
 #+glossary: code block ( コードブロック ) / block ( ブロック ) / extension ( 拡張|拡張子 ) / file ( ファイル ) / language ( 言語 ) / org ( Org-mode ) / output ( アウトプット )
 #. type: table
 #: org.texi:11403
 msgid "Include the code block in the tangled output. The output file name is the name of the org file with the extension @samp{.org} replaced by the extension for the block language."
-msgstr ""
+msgstr "tangleされたアウトプットにコードブロックを含むように設定します。アウトプットされるファイル名は、orgファイルの拡張子@samp{.org}をブロックに記述した言語の拡張子名に置換したものです。"
 
 #. type: item
 #: org.texi:11403
 #, no-wrap
 msgid ":tangle filename"
-msgstr ""
+msgstr ":tangle filename"
 
 #+glossary: code block ( コードブロック ) / file ( ファイル ) / output ( アウトプット )
 #. type: table
 #: org.texi:11405
 msgid "Include the code block in the tangled output to file @samp{filename}."
-msgstr ""
+msgstr "@samp{filename}に出力するアウトプットにコードブロックを含ませます。"
 
 #. type: kindex
 #: org.texi:11407
@@ -23211,43 +23212,43 @@ msgstr "C-c C-v t"
 #: org.texi:11408
 #, no-wrap
 msgid "Functions"
-msgstr ""
+msgstr "関数"
 
 #. type: item
 #: org.texi:11410
 #, no-wrap
 msgid "org-babel-tangle"
-msgstr ""
+msgstr "org-babel-tangle"
 
 #+glossary: current ( カレント|現在の ) / file ( ファイル ) / tangle ( tangle )
 #. type: table
 #: org.texi:11412
 msgid "Tangle the current file.  Bound to @kbd{C-c C-v t}."
-msgstr ""
+msgstr "現在のファイルをtangleします。キーバインドは@kbd{C-c C-v t}です。"
 
 #. type: item
 #: org.texi:11412
 #, no-wrap
 msgid "org-babel-tangle-file"
-msgstr ""
+msgstr "org-babel-tangle-file"
 
 #+glossary: file ( ファイル ) / tangle ( tangle )
 #. type: table
 #: org.texi:11414
 msgid "Choose a file to tangle.  Bound to @kbd{C-c C-v f}."
-msgstr ""
+msgstr "tangleするファイルを選びます。キーバインドは@kbd{C-c C-v f}です。"
 
 #. type: item
 #: org.texi:11418
 #, no-wrap
 msgid "org-babel-post-tangle-hook"
-msgstr ""
+msgstr "org-babel-post-tangle-hook"
 
 #+glossary: code ( コード ) / evaluation ( 評価 ) / example ( 例 ) / file ( ファイル ) / hook ( フック )
 #. type: table
 #: org.texi:11422
 msgid "This hook is run from within code files tangled by @code{org-babel-tangle}.  Example applications could include post-processing, compilation or evaluation of tangled code files."
-msgstr ""
+msgstr "このhook関数は関数@code{org-babel-tangle}によってtangleされたコードファイルの中から呼び出されます。実例応用ではtangleされたコードファイルの後処理、編集や評価を含むことができます。"
 
 #+glossary: code block ( コードブロック )
 #. type: cindex
