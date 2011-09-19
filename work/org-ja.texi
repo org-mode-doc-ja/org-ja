@@ -3219,7 +3219,7 @@ IRCリンクの場合、@code{org-irc-link-to-logs}変数を@code{t}にした場
 
 @b{補完の支援}@*@key{TAB}を使用した補完機能によって、リンクの省略記法で定義された接頭辞
 (@pxref{Link abbreviations})を含む、@samp{http}や@samp{ftp}などのリンクを適切に挿入す
-ることができるでしょう。もし、@var{接頭辞}のみをタイプした後に@key{RET}を押す
+ることができるでしょう。もし、@var{prefix}のみをタイプした後に@key{RET}を押す
 と、Org-modeは、いくつかのリンク形式@footnote{これは@code{org-PREFIX-complete-link}
 という特別な関数を呼び出すことによって行います。}に対して詳細な補完の
 支援を行います。たとえば、@kbd{file @key{RET}}をタイプすると、ファイル名の補完
@@ -5041,7 +5041,7 @@ Lispプログラムから使われます。詳細な情報は@ref{Using the prop
 された日付のアジェンダ(@pxref{Weekly/daily agenda})にそのエントリーが表示されます
 。その際には以下の区別が行われます。
 
-@table @var
+@table @code
 @item プレーンなタイムスタンプ、イベント、アポイント
 @cindex タイムスタンプ
 項目に対して単一の日付または時刻を割り当てるシンプルなタイムスタンプで
@@ -5325,7 +5325,7 @@ Org-modeは文字列のスキャンニングのためにデフォルトのフォ
 プランニングを補助するため、タイムスタンプの前に所定のキーワードを置くことが
 できます。
 
-@table @var
+@table @code
 @item DEADLINE
 @cindex DEADLINEキーワード
 
@@ -6098,7 +6098,7 @@ like this:
 Now lets look at the elements of a template definition.  Each entry in
 @code{org-capture-templates} is a list with the following items: 
 
-@table @var
+@table @code
 @item keys
 The keys that will select the template, as a string, characters only, for
 example @code{"a"} for a template to be selected with a single key, or
@@ -9482,8 +9482,8 @@ p.creator           @r{作成情報, org-modeのバージョン}
 .timestamp-kwd      @r{SCHEDULED等のタイムスタンプに関連するキーワード}
 .timestamp-wrapper  @r{SCHEDULED等のキーワードとタイムスタンプ全体}
 .tag                @r{見出し中のタグ}
-._HOME              @r{各タグはその名前のクラス名も用いることができる("@"は"_"に
-置き換えられる)}
+._HOME              @r{各タグはその名前のクラス名も用いることができる("@@"は"_"
+に置き換えられる)}
 .target             @r{リンクのターゲット}
 .linenr             @r{コード中の行番号}
 .code-highlighted   @r{参照されコード行のハイライト}

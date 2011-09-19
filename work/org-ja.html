@@ -3260,7 +3260,7 @@ Org-modeのバッファーへ挿入することができます(下記参照)。�
 
      <p><b>補完の支援</b><br>&lt;TAB&gt;を使用した補完機能によって、リンクの省略記法で定義された接頭辞
 (see <a href="#Link-abbreviations">Link abbreviations</a>)を含む、&lsquo;<samp><span class="samp">http</span></samp>&rsquo;や&lsquo;<samp><span class="samp">ftp</span></samp>&rsquo;などのリンクを適切に挿入す
-ることができるでしょう。もし、<var>接頭辞</var>のみをタイプした後に&lt;RET&gt;を押す
+ることができるでしょう。もし、<var>prefix</var>のみをタイプした後に&lt;RET&gt;を押す
 と、Org-modeは、いくつかのリンク形式<a rel="footnote" href="#fn-35" name="fnd-35"><sup>35</sup></a>に対して詳細な補完の
 支援を行います。たとえば、<kbd>file &lt;RET&gt;</kbd>をタイプすると、ファイル名の補完
 ((または、<kbd>C-u C-c C-l</kbd>をタイプします。以下を参照。)を行い、
@@ -5077,7 +5077,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Date-and-Times">Date and Times</a>
 。その際には以下の区別が行われます。
 
      <dl>
-<dt><var>プレーンなタイムスタンプ、イベント、アポイント</var><dd><a name="index-g_t_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097-747"></a>項目に対して単一の日付または時刻を割り当てるシンプルなタイムスタンプで
+<dt><code>プレーンなタイムスタンプ、イベント、アポイント</code><dd><a name="index-g_t_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097-747"></a>項目に対して単一の日付または時刻を割り当てるシンプルなタイムスタンプで
 す。紙の予定表に予定あるいはイベントを記入するのとほぼ同じ感覚です。タ
 イムラインおよびアジェンダを表示すると、プレーンなタイムスタンプが指定
 されたエントリーの見出しはまさにその指定された日付に表示されます。
@@ -5085,28 +5085,28 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Date-and-Times">Date and Times</a>
      <pre class="example">          * ピーターと映画を見に行く&lt;2006-11-01 Wed 19:15&gt;
           * 気候変動についてのディスカッション&lt;2006-11-02 Thu 20:00-22:00&gt;
 </pre>
-     <br><dt><var>リピート間隔を指定したタイムスタンプ</var><dd><a name="index-g_t_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097_00e3_0080_0081_00e3_0083_00aa_00e3_0083_0094_00e3_0083_00bc_00e3_0083_0088_00e9_0096_0093_00e9_009a_0094-748"></a>タイムスタンプには<em>リピート間隔</em>を含めることができます。すなわち単一の
+     <br><dt><code>リピート間隔を指定したタイムスタンプ</code><dd><a name="index-g_t_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097_00e3_0080_0081_00e3_0083_00aa_00e3_0083_0094_00e3_0083_00bc_00e3_0083_0088_00e9_0096_0093_00e9_009a_0094-748"></a>タイムスタンプには<em>リピート間隔</em>を含めることができます。すなわち単一の
 日時だけでなく、N日(d)、N週間(w)、Nヶ月(m)あるいはN年(y)といった一定の
 間隔で繰り返すようなケースに対応しています。例えば、毎週水曜日のアジェ
 ンダに表示する場合は以下のようになります。
 
      <pre class="example">          * 学校までサムを迎えに行く&lt;2007-05-16 Wed 12:30 +1w&gt;
 </pre>
-     <br><dt><var>ダイアリー形式のS式項目</var><dd>より複雑な日付の指定方法として、Org-modeではEmacsのcalendarまたはdiary
+     <br><dt><code>ダイアリー形式のS式項目</code><dd>より複雑な日付の指定方法として、Org-modeではEmacsのcalendarまたはdiary
 パッケージで実装されているS式のダイアリー項目を使用することができます
 。例えば以下のような形式です。
 
      <pre class="example">          * 毎月第2木曜日のオタクの集まり
             &lt;%%(diary-float t 4 2)&gt;
 </pre>
-     <br><dt><var>日付または時刻の間隔</var><dd><a name="index-g_t_00e6_0099_0082_00e9_0096_0093_00e9_0096_0093_00e9_009a_0094-749"></a><a name="index-g_t_00e6_0097_00a5_00e4_00bb_0098_00e3_0081_00ae_00e9_0096_0093_00e9_009a_0094-750"></a>2つのタイムスタンプを&lsquo;<samp><span class="samp">--</span></samp>&rsquo;でつなげることにより、時間間隔を表現できます
+     <br><dt><code>日付または時刻の間隔</code><dd><a name="index-g_t_00e6_0099_0082_00e9_0096_0093_00e9_0096_0093_00e9_009a_0094-749"></a><a name="index-g_t_00e6_0097_00a5_00e4_00bb_0098_00e3_0081_00ae_00e9_0096_0093_00e9_009a_0094-750"></a>2つのタイムスタンプを&lsquo;<samp><span class="samp">--</span></samp>&rsquo;でつなげることにより、時間間隔を表現できます
 。時間間隔の指定されたヘッドラインは、間隔の始めと終わりの日、およびそ
 の間の現在表示されている日付の項目に表示されます。以下のような形です。
 
      <pre class="example">          ** アムステルダムでのミーティング
              &lt;2004-08-23 Mon&gt;--&lt;2004-08-26 Thu&gt;
 </pre>
-     <br><dt><var>アクティブでないタイムスタンプ</var><dd><a name="index-g_t_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097_00e3_0080_0081_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00a7_00e3_0081_00aa_00e3_0081_0084-751"></a><a name="index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00a7_00e3_0081_00aa_00e3_0081_0084_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097-752"></a>プレーンなタイムスタンプと同様ですが、&lt;&gt;ではなく[]で囲むことによりアク
+     <br><dt><code>アクティブでないタイムスタンプ</code><dd><a name="index-g_t_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097_00e3_0080_0081_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00a7_00e3_0081_00aa_00e3_0081_0084-751"></a><a name="index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00a7_00e3_0081_00aa_00e3_0081_0084_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097-752"></a>プレーンなタイムスタンプと同様ですが、&lt;&gt;ではなく[]で囲むことによりアク
 ティブでないタイムスタンプとなります。このようなタイムスタンプが指定さ
 れたエントリーは、アジェンダに表示<em>されません</em>。
 
@@ -5323,7 +5323,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Date-and-Times">Date and Times</a>
 できます。
 
      <dl>
-<dt><var>DEADLINE</var><dd><a name="index-DEADLINE_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-806"></a>
+<dt><code>DEADLINE</code><dd><a name="index-DEADLINE_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-806"></a>
 意味:タスク(多くの場合はTODOアイテムですが、それに限りません)はタイム
 スタンプで示された日のうちに終了するものと見なされます。
 
@@ -5341,7 +5341,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Date-and-Times">Date and Times</a>
 ードタイムを指定することができます。以下は5日間の警告期間を指定する場
 合の例です<code>DEADLINE: &lt;2004-02-29 Sun -5d&gt;</code>。
 
-     <br><dt><var>SCHEDULED</var><dd><a name="index-SCHEDULED_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-808"></a>
+     <br><dt><code>SCHEDULED</code><dd><a name="index-SCHEDULED_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-808"></a>
 意味:指定された日に、そのタスクに取りかかる予定であることを示します。
 
      <p><a name="index-org_002dagenda_002dskip_002dscheduled_002dif_002ddone-809"></a>見出しは指定された日付の下に記載されます<a rel="footnote" href="#fn-61" name="fnd-61"><sup>61</sup></a>。それに加えて、ス
@@ -6109,7 +6109,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Capture-templates">Capture templates</
 <code>org-capture-templates</code> is a list with the following items:
 
      <dl>
-<dt><var>keys</var><dd>The keys that will select the template, as a string, characters only, for
+<dt><code>keys</code><dd>The keys that will select the template, as a string, characters only, for
 example <code>"a"</code> for a template to be selected with a single key, or
 <code>"bt"</code> for selection with two keys.  When using several keys, keys
 using the same prefix key must be sequential in the list and preceded by a
@@ -6119,10 +6119,10 @@ using the same prefix key must be sequential in the list and preceded by a
      <p class="noindent">If you do not define a template for the <kbd>C</kbd> key, this key will
 be used to open the customize buffer for this complex variable.
 
-     <br><dt><var>description</var><dd>A short string describing the template, which will be shown during
+     <br><dt><code>description</code><dd>A short string describing the template, which will be shown during
 selection.
 
-     <br><dt><var>type</var><dd>The type of entry, a symbol.  Valid values are:
+     <br><dt><code>type</code><dd>The type of entry, a symbol.  Valid values are:
           <dl>
 <dt><code>entry</code><dd>An Org-mode node, with a headline. Will be filed as the child of the target
 entry or as a top-level entry.  The target file should be an Org-mode file. 
@@ -6136,7 +6136,7 @@ line will be inserted depends on the properties <code>:prepend</code> and
 <br><dt><code>plain</code><dd>Text to be inserted as it is. 
 </dl>
 
-     <br><dt><var>target</var><dd><a name="index-org_002ddefault_002dnotes_002dfile-913"></a>Specification of where the captured item should be placed.  In Org-mode
+     <br><dt><code>target</code><dd><a name="index-org_002ddefault_002dnotes_002dfile-913"></a>Specification of where the captured item should be placed.  In Org-mode
 files, targets usually define a node.  Entries will become children of this
 node.  Other types will be added to the table or list in the body of this
 node.  Most target specifications contain a file name.  If that file name is
@@ -6166,14 +6166,14 @@ also be given as a variable, function, or Emacs Lisp form.
           <br><dt><code>(function function-finding-location)</code><dd>Most general way, write your own function to find both file and location. 
 </dl>
 
-     <br><dt><var>template</var><dd>The template for creating the capture item.  If you leave this empty, an
+     <br><dt><code>template</code><dd>The template for creating the capture item.  If you leave this empty, an
 appropriate default template will be used.  Otherwise this is a string with
 escape codes, which will be replaced depending on time and context of the
 capture call.  The string with escapes may be loaded from a template file,
 using the special syntax <code>(file "path/to/template")</code>.  See below for
 more details.
 
-     <br><dt><var>properties</var><dd>The rest of the entry is a property list of additional options.  Recognized
+     <br><dt><code>properties</code><dd>The rest of the entry is a property list of additional options.  Recognized
 properties are:
           <dl>
 <dt><code>:prepend</code><dd>Normally new captured information will be appended at the target location
@@ -9423,8 +9423,8 @@ CSSクラス<a rel="footnote" href="#fn-118" name="fnd-118"><sup>118</sup></a>�
      .timestamp-kwd      <span class="roman">SCHEDULED等のタイムスタンプに関連するキーワード</span>
      .timestamp-wrapper  <span class="roman">SCHEDULED等のキーワードとタイムスタンプ全体</span>
      .tag                <span class="roman">見出し中のタグ</span>
-     ._HOME              <span class="roman">各タグはその名前のクラス名も用いることができる("&uml;は"_"に
-     置き換えられる)</span>
+     ._HOME              <span class="roman">各タグはその名前のクラス名も用いることができる("@"は"_"
+     に置き換えられる)</span>
      .target             <span class="roman">リンクのターゲット</span>
      .linenr             <span class="roman">コード中の行番号</span>
      .code-highlighted   <span class="roman">参照されコード行のハイライト</span>
