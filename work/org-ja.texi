@@ -2236,26 +2236,26 @@ org-modeのテーブルエディタの直感的な動作を気に入ったら、
 (add-hook 'message-mode-hook 'turn-on-orgtbl)
 @end lisp
 
-Furthermore, with some special setup, it is possible to maintain tables in
-arbitrary syntax with Orgtbl mode.  For example, it is possible to construct
-@LaTeX{} tables with the underlying ease and power of Orgtbl mode, including
-spreadsheet capabilities.  For details, see @ref{Tables in arbitrary syntax}.
+さらに、いくつかの特別な処理を追加することで、orgtblモードの任意のシンタック
+スでテーブルをメンテナンスできます。たとえば、簡単に、そしてorgtblモードの機
+能で@LaTeX{}のテーブルを構築できます。これは表計算機能も含んでいます。さらなる
+詳細は、@ref{Tables in arbitrary syntax}.を参照してください。
 
 @node The spreadsheet, Org-Plot, Orgtbl mode, Tables
 @section The spreadsheet
 @cindex テーブルの中での計算
-@cindex spreadsheet capabilities
-@cindex @file{calc} package
+@cindex 表計算機能
+@cindex @file{calc}パッケージ
 
-The table editor makes use of the Emacs @file{calc} package to implement
-spreadsheet-like capabilities.  It can also evaluate Emacs Lisp forms to
-derive fields from other fields.  While fully featured, Org's implementation
-is not identical to other spreadsheets.  For example, Org knows the concept
-of a @emph{column formula} that will be applied to all non-header fields in
-a column without having to copy the formula to each relevant field.  There
-is also a formula debugger, and a formula editor with features for
-highlighting fields in the table corresponding to the references at the
-point in the formula, moving these references by arrow keys
+org-modeのテーブルエディタは、表計算機能を実装するためにEmacsの@file{calc}を利用
+します。他のフィールドの値から別なフィールドの値を導くためにEmacs
+Lispの書式も評価できます。十分な機能があるものの、org-modeでの実装は他の表計
+算ソフトと全く同等というわけではありません。たとえば、org-modeは@emph{列数式}の概
+念を理解しています。これは、関連する各フィールドに数式をコピーすることなく、
+ヘッダーを除く列の全てのフィールドに適用されます。数式のデバッガもあります。
+また、数式が参照しているフィールドに対応したフィールドを、テーブル内でハイラ
+イトする機能や矢印キーでリファレンスに移動する機能がある数式エディタもありま
+す。
 
 @menu
 * References::               どうやって他のフィールドや範囲を参照するか
@@ -2270,133 +2270,138 @@ point in the formula, moving these references by arrow keys
 
 @node References, Formula syntax for Calc, The spreadsheet, The spreadsheet
 @subsection References
-@cindex references
+@cindex リファレンス
 
-To compute fields in the table from other fields, formulas must reference
-other fields or ranges.  In Org, fields can be referenced by name, by
-absolute coordinates, and by relative coordinates.  To find out what the
-coordinates of a field are, press @kbd{C-c ?} in that field, or press
-@kbd{C-c @}} to toggle the display of a grid.
+テーブル内部のフィールドを他のフィールドの値から計算するためには、必ず数式が
+他のフィールドか範囲を参照していなければなりません。org-modeでは、名前、絶対
+的または相対的な位置によってフィールドを参照することができます。フィールドの
+位置がどこかを特定するためには、そのフィールドで@kbd{C-c ?}を押してください。も
+しくは、グリッド表示をトグルするために@kbd{C-c @}}を使用してください。
 
-@subsubheading Field references
-@cindex field references
-@cindex references, to fields
+@subsubheading フィールドの参照
+@cindex フィールドの参照
+@cindex 参照（フィールド）
 
-Formulas can reference the value of another field in two ways.  Like in any
-other spreadsheet, you may reference fields with a letter/number combination
-like @code{B3}, meaning the 2nd field in the 3rd row.
+数式は別なフィールドの値を2つの方法で参照できます。他の表計算ソフトと同じよ
+うに、@code{B3}のような文字と数値の組み合わせでフィールドを参照できます。三行目の
+第二フィールドを意味しています。
 
 @noindent
 @vindex org-table-use-standard-references
-Org prefers@footnote{Org will understand references typed by the user as @samp{B4}, but it will not use this syntax when offering a formula for editing.  You can customize this behavior using the variable @code{org-table-use-standard-references}.} to use another, more general
-operator that looks like this:
+org-modeでは、もう一つの方法を好みます@footnote{org-modeはユーザが指定する@samp{B4}のよう
+な参照を理解しますが、編集のための数式を提供するときはこのシンタックスは使わ
+れません。変数@code{org-table-use-standard-references}を使うことで、この動作を変
+更できます。}。より一般的な次のような表記です。
 @example
 @@@var{row}$@var{column}
 @end example
 
 @noindent
-and allows relative references, i.e. references relative to the row/column
-of the field whose value is being computed.  These relative references make
-it possible to store a formula only once and use it in many fields without
-copying and modifying it.
+また、相対的な参照も認めています。すなわち、フィールドの列と行に対する値が計
+算されいる参照です。このような相対的な参照は、数式を一度だけ記録すればよく、
+数式のコピーや変更せずにたくさんのフィールドで利用できます。
 
-Column references can be absolute like @samp{1}, @samp{2},...@samp{@var{N}},
-or relative to the current column like @samp{+1} or @samp{-2}.  @code{$>}
-references the last column in the table, and you can use offsets like
-@code{$>-2}, meaning the third column from the right.
+列の参照は、@samp{1}、@samp{2}、...@samp{@var{N}}のように絶対的に表されるか、もしくは、カーソル
+位置の列に対して相対的に@samp{+1}、@samp{-2}のように表されます。@code{$>}はテーブルの最終列
+を参照します。さらに、@code{$>-2}のようなオフセットを指定できます。この場合、一番
+右から三番目の列を表します。
 
-The row specification only counts data lines and ignores horizontal
-separator lines (hlines).  Like with columns, you can use absolute row
-numbers @samp{1}...@samp{@var{N}}, and row numbers relative to the current
-row like @samp{+3} or @samp{-1}, and @code{@@>} references the last row in
-the table@footnote{For backward compatibility you can also use special names like @samp{$LR5} and @samp{$LR12} to refer in a stable way to the 5th and 12th field in the last row of the table.  However, this syntax is deprecated, it should not be used for new documents.}.  You may also specify
-the row relative to one of the hlines: @samp{I} refers to the first
-hline@footnote{Note that only hlines are counted that @emph{separate} table lines.  If the table starts with a hline above the header, it does not count.}, @samp{II} to the second, etc@.  @samp{-I} refers to the first such
-line above the current line, @samp{+I} to the first such line below the
-current line.  You can also write @samp{III+2} which is the second data line
-after the third hline in the table.
+行はデータを含む行のみをカウントして、水平ライン（hline）は無視します。列と
+同様に、@samp{1}...@samp{@var{N}}のように絶対的な行の番号を利用できます。また、@samp{+3}や@samp{-1}
+のようにカーソル位置の行に対する相対的な位置を表し、@code{@@>}でテーブルの最終行
+を参照します@footnote{後方互換のために、@samp{$LR5}や@samp{$LR12}のような特別な名前も利用できま
+す。これらは、テーブル最終行の5番目と12番目への確実な参照です。しかしながら
+、このシンタックスは廃止予定であり、新たな文書で使うべきではありません}。あ
+る水平ラインに対する相対的な行を指定することもできます。@samp{I}は最初のhlineへの
+参照です@footnote{テーブルの各行を@emph{分離している}水平ラインのみカウントされることに注
+意してください。ヘッダーの上に水平ラインがあるテーブルでは、その水平ラインを
+カウントしません}。@samp{II}は二番目の水平ラインというように指定します。@samp{-I}は、
+カーソル位置の行の上方にある最初の水平ラインを参照し、@samp{+I}は下方にある最初の
+水平ラインを参照します。@samp{III+2}のように指定すると、テーブルの三番目の水平ラ
+インから二番目の行を表します。
 
-@samp{0} refers to the current row and column.  Also, if you omit either the
-column or the row part of the reference, the current row/column is implied.
+@samp{0}はカーソル位置の行と列を参照します。また、もし参照について列と行のいずれ
+かを無視すれば、行または列が暗黙に参照されます。
 
-Org's references with @emph{unsigned} numbers are fixed references in the
-sense that if you use the same reference in the formula for two different
-fields, the same field will be referenced each time.  Org's references with
-@emph{signed} numbers are floating references because the same reference
-operator can reference different fields depending on the field being
-calculated by the formula.
+org-modeの@emph{符号無し}数値の参照は、静的な参照です。これは、二つの異なるフィー
+ルドにある数式の中で、同じ参照を利用すれば、常に同じフィールドが参照されます
+。@emph{符号付き}数値の参照は、動的な参照です。これは、見た目上同じ参照であっても
+、数式で計算されるフィールドに依存して、異なるフィールドを参照できるためです
+。
 
 
-Here are a few examples:
+いくつかの例を示します。
 
 @example
-@@2$3      @r{2nd row, 3rd column}
-C2        @r{same as previous}
-$5        @r{column 5 in the current row}
-E&        @r{same as previous}
-@@2        @r{current column, row 2}
-@@-1$-3    @r{the field one row up, three columns to the left}
-@@-I$2     @r{field just under hline above current row, column 2}
+@@2$3      @r{第二行、第三列}
+C2        @r{同上}
+$5        @r{現在行の第五列}
+E&        @r{同上}
+@@2        @r{現在列、第二行}
+@@-1$-3    @r{カーソル位置から一つ上、左に三つ目}
+@@-I$2     @r{カーソル位置の上方の水平ライン直下の第二列}
 @end example
 
-@subsubheading Range references
-@cindex range references
-@cindex references, to ranges
+@subsubheading 範囲参照
+@cindex 範囲参照
+@cindex 参照（範囲指定）
 
-You may reference a rectangular range of fields by specifying two field
-references connected by two dots @samp{..}.  If both fields are in the
-current row, you may simply use @samp{$2..$7}, but if at least one field is
-in a different row, you need to use the general @code{@@row$column} format
-at least for the first field (i.e the reference must start with @samp{@@} in
-order to be interpreted correctly).  Examples:
+複数のフィールドで構成する矩形範囲を参照できます。この範囲は、二つの参照を二
+つのドット@samp{..}で接続することで指定します。二つの参照が共にカーソル位置の行に
+あるとき、単純に@samp{$2..$7}と指定できます。しかし、少なくとも一つのフィールドが
+異なる列にあるときは、少なくとも一方のフィールドについて@code{@@row$column}のよう
+な一般的な形式を使う必要があります（つまり、正しく解釈させるために参照を
+@samp{@@}で始めなければなりません）。具体例は次のようになります。
 
 @example
-$1..$3        @r{First three fields in the current row}
-$P..$Q        @r{Range, using column names (see under Advanced)}
-@@2$1..@@4$3    @r{6 fields between these two fields}
-A2..C4        @r{Same as above}
-@@-1$-2..@@-1   @r{3 numbers from the column to the left, 2 up to current row}
-@@I..II        @r{Between first and second hline, short for @code{@@I..@@II}}
+$1..$3        @r{カーソル位置の行の始めの3フィールド}
+$P..$Q        @r{列の名前を使った範囲（以下の詳細を見てください）}
+@@2$1..@@4$3    @r{二つのフィールド間にある6フィールド}
+A2..C4        @r{同上}
+@@-1$-2..@@-1   @r{カーソル位置の左の列の2つ上方の行の3フィールド}
+@@I..II        @r{第一と第二の水平ラインに挟まれた領域（@code{@@I..@@II}の短縮表記）}
 @end example
 
 @noindent Range references return a vector of values that can be fed
-into Calc vector functions.  Empty fields in ranges are normally suppressed,
-so that the vector contains only the non-empty fields (but see the @samp{E}
-mode switch below).  If there are no non-empty fields, @samp{[0]} is
-returned to avoid syntax errors in formulas.
+（indent問題箇所）範囲参照はCalcのベクトル関数に代入可能な値のベクトルを返し
+ます。範囲に含まれる空のフィールドは、普通は除去されます。これはベクトルが空
+ではないフィールドのみを含むようにするためです（ただし下記の@samp{E}モードスイッ
+チも参照してください）。もし、すべてのフィールドが空ならば、数式のシンタック
+スエラーを避けるために@samp{[0]}が返されます。
 
-@subsubheading Field coordinates in formulas
-@cindex field coordinates
-@cindex coordinates, of field
-@cindex row, of field coordinates
-@cindex column, of field coordinates
+@subsubheading 数式中のフィールドの座標
+@cindex フィールドの座標
+@cindex 座標（フィールド）
+@cindex 行（フィールドの座標）
+@cindex 列（フィールドの座標）
 
-For Calc formulas and Lisp formulas @code{@@#} and @code{$#} can be used to
-get the row or column number of the field where the formula result goes.
-The traditional Lisp formula equivalents are @code{org-table-current-dline}
-and @code{org-table-current-column}.  Examples:
+Calc形式とLisp形式の数式では、数式の演算結果が指すフィールドの行と列の番号を
+取得するために@code{@@#}と@code{$#}を利用できます。伝統的なLispの数式に相当するのは
+@code{org-table-current-dline}と@code{org-table-current-column}です。たとえば、
 
 @example
-if(@@# % 2, $#, string(""))   @r{column number on odd lines only}
-$3 = remote(FOO, @@@@#$2)      @r{copy column 2 from table FOO into}
-                             @r{column 3 of the current table}
+if(@@# % 2, $#, string(""))   @r{奇数行に限定して列の番号を抽出する}
+$3 = remote(FOO, @@@@#$2)      @r{テーブルFOOの二列目をコピーし、}
+                             @r{現在のテーブルの三列目に上書きする}
 @end example
 
 @noindent For the second example, table FOO must have at least as many rows
-as the current table.  Note that this is inefficient@footnote{The computation time scales as O(N^2) because table FOO is parsed for each field to be copied.} for large number of rows.
+（indent問題箇所）二つ目の例では、テーブルFOOは少なくとも、カーソル位置のテ
+ーブルが持つ行数と同じ数の行がなければなりません。たくさんの行があると処理が
+重くなる@footnote{この計算の規模は、O(N^2)のオーダーです。テーブルFOOが、各フィールド
+をコピーするためにパースされるのが原因です。}ことに気を付けてください。
 
-@subsubheading Named references
-@cindex named references
-@cindex references, named
+@subsubheading 名前付き参照
+@cindex 名前付き参照
+@cindex 参照（名前付き）
 @cindex 名前（列やフィールド）
 @cindex 計算中の定数
 @cindex #+CONSTANTS
 
 @vindex org-table-formula-constants
-@samp{$name} is interpreted as the name of a column, parameter or constant.
-Constants are defined globally through the variable
-@code{org-table-formula-constants}, and locally (for the file) through a
-line like
+@samp{$name}は、列の名前として解釈されます。パラメータや定数を扱います。定数は、
+変数@code{org-table-formula-constants}を利用してグローバルに定義されます。また、
+次のような一文を追加して、ファイルのローカル変数として定義されます。
 
 @example
 #+CONSTANTS: c=299792458. pi=3.14 eps=2.4e-6
@@ -2405,186 +2410,184 @@ line like
 @noindent
 @vindex constants-unit-system
 @pindex constants.el
-Also properties (@pxref{Properties and Columns}) can be used as constants in
-table formulas: for a property @samp{:Xyz:} use the name @samp{$PROP_Xyz},
-and the property will be searched in the current outline entry and in the
-hierarchy above it.  If you have the @file{constants.el} package, it will
-also be used to resolve constants, including natural constants like
-@samp{$h} for Planck's constant, and units like @samp{$km} for
-kilometers@footnote{@file{constants.el} can supply the values of constants in two different unit systems, @code{SI} and @code{cgs}.  Which one is used depends on the value of the variable @code{constants-unit-system}.  You can use the @code{#+STARTUP} options @code{constSI} and @code{constcgs} to set this value for the current buffer.}.  Column names and parameters can be
-specified in special table lines.  These are described below, see
-@ref{Advanced features}.  All names must start with a letter, and further
-consist of letters and numbers.
+プロパティ（@pxref{Properties and Columns}）もテーブルの数式で定数として扱われます
+。プロパティ@samp{:Xyz:}については@samp{$PROP_Xyz}という名前を使います。そして、このプ
+ロパティは現在のアウトラインエントリーと上位を階層的に検索されます。もし
+@file{constants.el}パッケージを読み込んでいるならば、これも定数を決めるために使わ
+れます。このパッケージには、プランク定数@samp{$h}のような物理定数、そしてキロメー
+ター@samp{$km}のような単位が含まれています@footnote{@file{constants.el}は、@code{SI}と@code{cgs}の二つの
+異なる単位系で定数の値を提供します。どちらが利用されるかは、変数
+@code{constants-unit-system}の値に依存します。カレントバッファで値を設定するため
+に、@code{#+STARTUP}でオプション@code{constSI}と@code{constcgs}を指定します。}。列の名前と
+パラメータは、特別なテーブルのラインで設定できます。詳細は後述します（
+@ref{Advanced features}.）。すべての名前は文字から始まり、それ以降は文字と数値で
+構成します。
 
-@subsubheading Remote references
-@cindex remote references
-@cindex references, remote
-@cindex references, to a different table
+@subsubheading リモート参照
+@cindex リモート参照
+@cindex 参照（リモート）
+@cindex 参照（異なるテーブルへ）
 @cindex 名前（列やフィールド）
 @cindex 計算中の定数
 @cindex #+TBLNAME
 
-You may also reference constants, fields and ranges from a different table,
-either in the current file or even in a different file.  The syntax is
+異なるテーブルの定数、フィールドそして範囲を参照できます。現在のファイルでも
+、異なるファイルにある場合も参照できます。シンタックスは、
 
 @example
 remote(NAME-OR-ID,REF)
 @end example
 
 @noindent
-where NAME can be the name of a table in the current file as set by a
-@code{#+TBLNAME: NAME} line before the table.  It can also be the ID of an
-entry, even in a different file, and the reference then refers to the first
-table in that entry.  REF is an absolute field or range reference as
-described above for example @code{@@3$3} or @code{$somename}, valid in the
-referenced table.
+で、ここでNAMEは別なファイルにあるテーブルの名前で、テーブルの前の行に
+@code{#+TBLNAME: NAME}と設定しておきます。エントリーのIDも利用でき、別なファイル
+にあるものも指定できます。この場合はエントリーに含まれる最初のテーブルを参照
+します。REFは前述したような絶対的なフィールドか範囲となる参照で、@code{@@3$3}や
+@code{$somename}と表され、参照で指定したテーブルにおいて有効になります。
 
 @node Formula syntax for Calc, Formula syntax for Lisp, References, The spreadsheet
 @subsection Formula syntax for Calc
-@cindex formula syntax, Calc
-@cindex syntax, of formulas
+@cindex 数式のシンタックス（Calc）
+@cindex シンタックス（数式）
 
 @c FIXME:  The link to the Calc manual in HTML does not work.
-A formula can be any algebraic expression understood by the Emacs
-@file{Calc} package.  @b{Note that @file{calc} has the non-standard convention that @samp{/} has lower precedence than @samp{*}, so that @samp{a/b*c} is interpreted as @samp{a/(b*c)}.} Before evaluation by
-@code{calc-eval} (@pxref{Calling Calc from Your Programs,calc-eval,Calling Calc from Your Lisp Programs,Calc,GNU Emacs Calc Manual}), variable
-substitution takes place according to the rules described above.
-@cindex vectors, in table calculations
-The range vectors can be directly fed into the Calc vector functions like
-@samp{vmean} and @samp{vsum}.
+数式は、Emacsの@file{Calc}パッケージが理解できる、任意の代数表現になります。@b{通常の
+計算とは異なる、@file{Calc}の慣例に気を付けてください。@samp{/}は@samp{*}よりも低く優先され
+ます。つまり、@samp{a/b*c}は、@samp{a/(b*c)}として解釈されます。}。@code{calc-eval}（
+@pxref{Calling Calc from Your Programs,calc-eval,Calling Calc from Your Lisp Programs, Calc, GNU Emacs Calc Manual}）で評価される以前に、先ほどのルールに従って変数が代入されます。
+@cindex ベクトル（テーブルでの計算）
+範囲指定するベクトルはCalc@samp{vmean}や@samp{vsum}のようなベクトル関数に直接渡されま
+す。
 
-@cindex format specifier
-@cindex mode, for @file{calc}
+@cindex フォーマット指定
+@cindex モード（@file{Calc}）
 @vindex org-calc-default-modes
-A formula can contain an optional mode string after a semicolon.  This
-string consists of flags to influence Calc and other modes during
-execution.  By default, Org uses the standard Calc modes (precision 12,
-angular units degrees, fraction and symbolic modes off).  The display
-format, however, has been changed to @code{(float 8)} to keep tables
-compact.  The default settings can be configured using the variable
-@code{org-calc-default-modes}.
+数式は、セミコロンの後に続くオプションモードの文字列を含むことができます。こ
+の文字列は実行時にCalcや他のモードに作用するフラグで構成されます。デフォルト
+では、org-modeは標準のCalcモード（精度=12桁、角度単位=度、分数／シンボリック
+モード=OFF）を使います。ただし、表示フォーマットは、テーブルをコンパクトに保
+つために、@code{(float 8)}に変更されています。
 
 @example
-p20           @r{set the internal Calc calculation precision to 20 digits}
-n3 s3 e2 f4   @r{Normal, scientific, engineering, or fixed}
-              @r{format of the result of Calc passed back to Org.}
-              @r{Calc formatting is unlimited in precision as}
-              @r{long as the Calc calculation precision is greater.}
-D R           @r{angle modes: degrees, radians}
-F S           @r{fraction and symbolic modes}
-N             @r{interpret all fields as numbers, use 0 for non-numbers}
-T             @r{force text interpretation}
-E             @r{keep empty fields in ranges}
-L             @r{literal}
+p20           @r{Calcの内部計算精度を20桁に設定}
+n3 s3 e2 f4   @r{通常表記、科学指数、工学指数、固定小数点}
+              @r{のCalcの出力結果がorg-modeに戻る。}
+              @r{Calcの計算精度が表示上の精度よりも高い限り、}
+              @r{Calc表記は精度上の制限を受けない。}
+D R           @r{角度モード（度／ラジアン）}
+F S           @r{分数／シンボリックモード}
+N             @r{全フィールドを数値として解釈。非数値は0を使用}
+T             @r{強制的に文字列として解釈}
+E             @r{領域中のフィールドを空に保つ}
+L             @r{リテラル}
 @end example
 
 @noindent
-Unless you use large integer numbers or high-precision-calculation and
--display for floating point numbers you may alternatively provide a
-@code{printf} format specifier to reformat the Calc result after it has been
-passed back to Org instead of letting Calc already do the
-formatting@footnote{The @code{printf} reformatting is limited in precision because the value passed to it is converted into an @code{integer} or @code{double}.  The @code{integer} is limited in size by truncating the signed value to 32 bits.  The @code{double} is limited in precision to 64 bits overall which leaves approximately 16 significant decimal digits.}.  A
-few examples:
+大きな整数値を使用したり、浮動小数点での高精度な計算と表示を行なわないならば
+、Calcがすでにフォーマットした結果ではなく、org-modeに戻された後のCalcの出力
+結果を再フォーマットするために、@code{printf}によるフォーマット指定を代替として与
+えることができます@footnote{@code{printf}による再フォーマットは、精度の影響を受けます。
+@code{integer}や@code{double}に変換された値が渡されるためです。@code{integer}は、符号付き32
+ビット整数値に丸め込まれます。@code{double}は、全体が64ビット精度に制限され、近似
+的に16ビットの10進数の有意桁数があります。}。いくつかの例を示します。
 
 @example
-$1+$2                @r{Sum of first and second field}
-$1+$2;%.2f           @r{Same, format result to two decimals}
-exp($2)+exp($1)      @r{Math functions can be used}
-$0;%.1f              @r{Reformat current cell to 1 decimal}
-($3-32)*5/9          @r{Degrees F -> C conversion}
-$c/$1/$cm            @r{Hz -> cm conversion, using @file{constants.el}}
-tan($1);Dp3s1        @r{Compute in degrees, precision 3, display SCI 1}
-sin($1);Dp3%.1e      @r{Same, but use printf specifier for display}
-vmean($2..$7)        @r{Compute column range mean, using vector function}
-vmean($2..$7);EN     @r{Same, but treat empty fields as 0}
-taylor($3,x=7,2)     @r{Taylor series of $3, at x=7, second degree}
+$1+$2                @r{第一と第二フィールドの和}
+$1+$2;%.2f           @r{同上。ただし、小数点以下2桁表示}
+exp($2)+exp($1)      @r{関数も利用可能}
+$0;%.1f              @r{小数点以下1桁に再フォーマット}
+($3-32)*5/9          @r{華氏から摂氏への変換}
+$c/$1/$cm            @r{周波数[Hz]から波長[cm]への変換（constants.elを使用）}
+tan($1);Dp3s1        @r{角度計算（3桁精度、科学指数1桁）}
+sin($1);Dp3%.1e      @r{同上。ただし、printfでの表示指定}
+vmean($2..$7)        @r{列の平均値、ベクトルを利用}
+vmean($2..$7);EN     @r{同上。ただし、空フィールドを0とする}
+taylor($3,x=7,2)     @r{$3の2次のテーラー級数でx=7の値}
 @end example
 
-Calc also contains a complete set of logical operations.  For example
+Calcは論理演算の完全な集合も含んでいます。例として次があります。
 
 @example
 if($1<20,teen,string(""))  @r{``teen'' if age $1 less than 20, else empty}
 @end example
 
 @node Formula syntax for Lisp, Field and range formulas, Formula syntax for Calc, The spreadsheet
-@subsection Emacs Lisp forms as formulas
-@cindex Lisp forms, as table formulas
+@subsection 数式としてのEmacs Lisp形式
+@cindex Lisp形式（テーブルの数式として）
 
-It is also possible to write a formula in Emacs Lisp; this can be useful for
-string manipulation and control structures, if Calc's functionality is not
-enough.  If a formula starts with a single-quote followed by an opening
-parenthesis, then it is evaluated as a Lisp form.  The evaluation should
-return either a string or a number.  Just as with @file{calc} formulas, you
-can specify modes and a printf format after a semicolon.  With Emacs Lisp
-forms, you need to be conscious about the way field references are
-interpolated into the form.  By default, a reference will be interpolated as
-a Lisp string (in double-quotes) containing the field.  If you provide the
-@samp{N} mode switch, all referenced elements will be numbers (non-number
-fields will be zero) and interpolated as Lisp numbers, without quotes.  If
-you provide the @samp{L} flag, all fields will be interpolated literally,
-without quotes.  i.e., if you want a reference to be interpreted as a string
-by the Lisp form, enclose the reference operator itself in double-quotes,
-like @code{"$3"}.  Ranges are inserted as space-separated fields, so you can
-embed them in list or vector syntax.  Here are a few examples---note how the
-@samp{N} mode is used when we do computations in Lisp:
+Emacs
+Lispで数式を記述することもできます。Calcの機能が不十分なら、文字列操作と構造
+の制御に役立ちます。開き括弧が後ろに続くシングルクォートで数式が始まるとき、
+Lisp形式として解釈されます。評価値は、文字列か数値で返ります。@file{Calc}の数式と
+同じように、セミコロンの後にモードとprintfフォーマットを指定できます。Emacs
+Lisp形式では、フィールドの参照が、Lisp形式で挿入されることを意識する必要があ
+ります。デフォルトでは、参照はフィールドを含む（ダブルクォートで括られた）
+Lispの文字列として挿入されます。もし@samp{N}モードスイッチが指定すると、全ての参
+照された要素は数値になり（非数値のフィールドは0になる）、クォートなしで、
+Lisp形式の数値として挿入されます。@samp{L}フラッグを指定すると、全てのフィールド
+は、クォートなしで、そのままの内容で挿入されます。すなわち、もし参照がLisp形
+式の文字列として挿入されることを望むならば、@code{"$3"}のように、ダブルクォートで
+参照のオペレータ自体を包んでください。範囲はスペースで区切られたフィールドと
+して挿入されます。そのため、リストやベクトルシンタックスに埋め込んだりできま
+す。いくつかの例を示します。Lispを用いて計算をするときに@samp{N}モードがどのよう
+に使われるかを注意してください。
 
 @example
-@r{Swap the first two characters of the content of column 1}
+@r{一列目の内容について、一文字目と二文字目を入れ替える}
   '(concat (substring $1 1 2) (substring $1 0 1) (substring $1 2))
-@r{Add columns 1 and 2, equivalent to Calc's @code{$1+$2}}
+@r{一列目と二列目を加算する。Calcの@code{$1+$2}と同じ}
   '(+ $1 $2);N
-@r{Compute the sum of columns 1-4, like Calc's @code{vsum($1..$4)}}
+@r{列1から列4の合計を計算。Calcの@code{vsum($1..$4)}と同じ}
   '(apply '+ '($1..$4));N
 @end example
 
 @node Field and range formulas, Column formulas, Formula syntax for Lisp, The spreadsheet
 @subsection Field and range formulas
-@cindex field formula
-@cindex range formula
-@cindex formula, for individual table field
-@cindex formula, for range of fields
+@cindex フィールドの数式
+@cindex 範囲の数式
+@cindex 数式（テーブルの個々のフィールド）
+@cindex 数式（フィールドの範囲）
 
-To assign a formula to a particular field, type it directly into the field,
-preceded by @samp{:=}, for example @samp{:=vsum(@@II..III)}.  When you press
-@key{TAB} or @key{RET} or @kbd{C-c C-c} with the cursor still in the field,
-the formula will be stored as the formula for this field, evaluated, and the
-current field will be replaced with the result.
+特定のフィールドに数式を割り当てるためには、@samp{:=}に続けて、直接フィールドに書
+き込みます。たとえば、@samp{:=vsum(@@II..III)}のようにします。カーソルがフィール
+ドにある状態で、@key{TAB}や@key{RET}、もしくは@kbd{C-c C-c}を押すと、入力した数式はその
+フィールドのための数式として保存され、評価されたのち、フィールドの表示が演算
+結果で置き換わります。
 
 @cindex #+TBLFM
-Formulas are stored in a special line starting with @samp{#+TBLFM:} directly
-below the table.  If you type the equation in the 4th field of the 3rd data
-line in the table, the formula will look like @samp{@@3$4=$1+$2}.  When
-inserting/deleting/swapping column and rows with the appropriate commands,
-@i{absolute references} (but not relative ones) in stored formulas are
-modified in order to still reference the same field.  Of course this is not
-true if you edit the table structure with normal editing commands---then you
-must fix the equations yourself.  Instead of typing an equation into the
-field, you may also use the following command
+数式はテーブルの下にある@samp{#+TBLFM:}で始まる特別な行に保存されます。テーブルの
+中で第三行目の4番目のフィールドで数式を入力すると、この数式は@samp{@@3$4=$1+$2}の
+ように記述されます。適当なコマンドで列と行の挿入／消去／入れ替えを行なうとき
+、保存された数式の中の@i{絶対参照}（相対参照では関係ありません）は、同一のフィー
+ルドを参照するために変更されます。もちろん通常の編集コマンドを用いてテーブル
+の構造を編集するときは正しくありません。したがって、マニュアルで数式を補正し
+なければなりません。フィールドに数式を記入する代わりに、次のコマンドも使用で
+きます。
 
 @table @kbd
-@orgcmd{C-u C-c =,org-table-eval-formula} Install a new formula for the
-current field.  The command prompts for a formula with default taken from
-the @samp{#+TBLFM:} line, applies it to the current field, and stores it.
+@orgcmd{C-u C-c =,org-table-eval-formula}
+現在のフィールドに新しい数式をインストールします。このコマンドは、
+@samp{#+TBLFM:}行から選ばれたデフォルトの数式を表示し、現在のフィールドに適
+用して、さらに保存します。
 @end table
 
-The left-hand side of a formula can also be a special expression in order to
-assign the formula to a number of different fields.  There is no keyboard
-shortcut to enter such range formulas.  To add them, use the formula editor
-(@pxref{Editing and debugging formulas}) or edit the @code{#+TBLFM:} line
-directly.
+数式に異なるフィールドの数値を割り当てるために、等式の左側は特別表現を指定で
+きます。範囲数式を入力するショートカットはありません。これを入力するには、数
+式エディタ（@pxref{Editing and debugging formulas}）を用いるか、@code{#+TBLFM:}行に直接
+記述します。
 
 @table @code
 @item $2=
-Column formula, valid for the entire column.  This is so common that Org
-treats these formulas in a special way, see @ref{Column formulas}.
+列の数式、列の全体に対して有効。よく利用されるため、org-modeはこれらの
+数式を特別な方法で扱います。@ref{Column formulas}.を参照してください。
 @item @@3=
-Row formula, applies to all fields in the specified row.  @code{@@L=} means
-the last row.
+行の数式、特定な行の全てのフィールドに適用する。@code{@@L=}は最終行を意味す
+る。
 @item @@1$2..@@4$3=
-Range formula, applies to all fields in the given rectangular range.  This
-can also be used to assign a formula to some but not all fields in a row.
+範囲数式、与えられた矩形領域の全てのフィールドに適用する。これはある行
+の全てのフィールドではなく一部に対して数式を割り当てることにも利用できます。
 @item $name=
-Named field, see @ref{Advanced features}.
+名前付きフィールド（@ref{Advanced features}を参照）
 @end table
 
 @node Column formulas, Editing and debugging formulas, Field and range formulas, The spreadsheet
@@ -11047,68 +11050,72 @@ the markup language for a wiki.
 @node Extracting source code, Evaluating code blocks, Exporting code blocks, Working With Source Code
 @section Extracting source code
 @cindex tangling
-@cindex source code, extracting
-@cindex code block, extracting source code
+@cindex 抽出、ソースコード
+@cindex ソースコードの抽出、コードブロック
 
-Creating pure source code files by extracting code from source blocks is
-referred to as ``tangling''---a term adopted from the literate programming
-community.  During ``tangling'' of code blocks their bodies are expanded
-using @code{org-babel-expand-src-block} which can expand both variable and
-``noweb'' style references (see @ref{Noweb reference syntax}).
+ソースブロックからコードを抽出して純粋なソースコードファイルを作成することを
+、``tangling''といいます。この用語は文芸的プログラミングコミュニティで使われ
+ている専門用語です。コードブロックを``tangling''する時に、変数と``noweb''ス
+タイルの参照点(@ref{Noweb reference syntax}を参照)を展開できる
+@code{org-babel-expand-src-block}を使ってコード本文を展開します。
 
 @subsubheading Header arguments
 @table @code
 @item :tangle no
-The default.  The code block is not included in the tangled output.
+デフォルトの設定です。コードブロックはtangleされたアウトプットには含ま
+れません。
 @item :tangle yes
-Include the code block in the tangled output. The output file name is the
-name of the org file with the extension @samp{.org} replaced by the
-extension for the block language.
+tangleされたアウトプットにコードブロックを含むように設定します。アウト
+プットされるファイル名は、orgファイルの拡張子@samp{.org}をブロックに記述し
+た言語の拡張子名に置換したものです。
 @item :tangle filename
-Include the code block in the tangled output to file @samp{filename}.
+@samp{filename}に出力するアウトプットにコードブロックを含ませます。
 @end table
 
 @kindex C-c C-v t
-@subsubheading Functions
+@subsubheading 関数
 @table @code
 @item org-babel-tangle
-Tangle the current file.  Bound to @kbd{C-c C-v t}.
+現在のファイルをtangleします。キーバインドは@kbd{C-c C-v t}です。
 @item org-babel-tangle-file
-Choose a file to tangle.  Bound to @kbd{C-c C-v f}.
+tangleするファイルを選びます。キーバインドは@kbd{C-c C-v f}です。
 @end table
 
 @subsubheading Hooks
 @table @code
 @item org-babel-post-tangle-hook
-This hook is run from within code files tangled by @code{org-babel-tangle}.
-Example applications could include post-processing, compilation or
-evaluation of tangled code files.
+このhook関数は関数@code{org-babel-tangle}によってtangleされたコードファイル
+の中から呼び出されます。実例応用ではtangleされたコードファイルの後処理
+、編集や評価を含むことができます。
 @end table
 
 @node Evaluating code blocks, Library of Babel, Extracting source code, Working With Source Code
 @section Evaluating code blocks
-@cindex code block, evaluating
-@cindex source code, evaluating
+@cindex 評価、コードブロック
+@cindex 評価、ソースコード
 
-Code blocks can be evaluated@footnote{Whenever code is evaluated there is a potential for that code to do harm.  Org-mode provides a number of safeguards to ensure that it only evaluates code with explicit confirmation from the user.  For information on these safeguards (and on how to disable them) see @ref{Code evaluation security}.} and the results placed in the
-Org-mode buffer.  By default, evaluation is only turned on for
-@code{emacs-lisp} code blocks, however support exists for evaluating blocks
-in many languages.  See @ref{Languages} for a list of supported languages.
-See @ref{Structure of code blocks} for information on the syntax used to
-define a code block.
+コードブロックを評価し@footnote{コードを評価するときはいつでも、そのコードが害をなす
+可能性があります。Org-modeは、ユーザーから明示的な確認をできたときのみにコー
+ドを評価する安全装置をいくつも用意しています。これらの安全装置について(そし
+てそを無効化する方法について)、@ref{Code evaluation security}を参照してください
+。}、その結果をOrg-modeバッファに表示することが可能です。デフォルトでは、
+@code{emacs-lisp}コードブロックだけを評価しますが、多くの言語を評価できます。サポ
+ートされている言語のリストは、@ref{Languages}で見ることができます。コードブロッ
+クを定義する構文について@ref{Structure of code blocks}を参照してください。
 
 @kindex C-c C-c
-There are a number of ways to evaluate code blocks.  The simplest is to
-press @kbd{C-c C-c} or @kbd{C-c C-v e} with the point on a code
-block@footnote{The @code{org-babel-no-eval-on-ctrl-c-ctrl-c} variable can be used to remove code evaluation from the @kbd{C-c C-c} key binding.}.  This
-will call the @code{org-babel-execute-src-block} function to evaluate the
-block and insert its results into the Org-mode buffer.
+コードブロックを評価する方法は多くあります。一番簡単な方法は、コードブロック
+@footnote{変数@code{org-babel-no-eval-on-ctrl-c-ctrl-c}を設定することで、キーバインド
+@kbd{C-c C-c}からコードの評価を除去できます。}にて@kbd{C-c C-c}もしくは@kbd{C-c C-v e}を
+と入力することです。これが関数@code{org-babel-execute-src-block}をコール、コード
+ブロックを評価し、その結果をOrg-modeバッファに挿入します。
 
-It is also possible to evaluate named code blocks from anywhere in an
-Org-mode buffer or an Org-mode table.  @code{#+call} (or synonymously
-@code{#+function} or @code{#+lob}) lines can be used to remotely execute
-code blocks located in the current Org-mode buffer or in the ``Library of
-Babel'' (see @ref{Library of Babel}).  These lines use the following syntax.
+Org-modeバッファもしくはOrg-modeテーブル内のどこからでも、名前付きコードブロ
+ックを評価できます。現在のOrg-modeバッファや``Library
+of Babel''(@ref{Library of Babel}にあるコードブロックを間接的に実行するには、
+@code{#+call}行
+(もしくは同義語として@code{#+function}行や@code{#+lob}行)が使えます。これらは、以下の
+構文を使います。
 
 @example
 #+call: <name>(<arguments>) <header arguments>
@@ -11118,51 +11125,56 @@ Babel'' (see @ref{Library of Babel}).  These lines use the following syntax.
 
 @table @code
 @item <name>
-The name of the code block to be evaluated.
+評価されるコードブロックの名前です。
 @item <arguments>
-Arguments specified in this section will be passed to the code block.  These
-arguments should relate to @code{:var} header arguments in the called code
-block expressed using standard function call syntax.  For example if the
-original code block named @code{double} has the header argument @code{:var n=2}, then the call line passing the number four to that block would be
-written as @code{#+call: double(n=2)}.
+このセクションで説明されている引数をコードブロックへと渡します。通常の
+関数コールの構文を使ってコールされたコードブロックにおいて、これらの引
+数は@code{:var}というヘッダー引数と関連付けられています。例えば、@code{double}と
+名付けられたもともとのコードブロックがヘッダー引数@code{:var n=2}を持つ場合
+、上記call行により数値の4をブロックに渡すには@code{#+call: double(n=2)}と書
+かれます。英文にてtypo?:number four->number two:"then the call line
+passing the number four to that block would be written as @code{#+call: double(n=2)}."
 @item <header arguments>
-Header arguments can be placed after the function invocation.  See
-@ref{Header arguments} for more information on header arguments.
+関数を起動した後の、ヘッダー引数を指定できます。ヘッダー引数の(更なる
+情報|詳細)については@ref{Header arguments}を参照してください。
 @end table
 
-All header arguments placed in the @code{<header arguments>} section
-described above will be applied to the evaluation of the @code{#+call:}
-line, however it is sometimes desirable to specify header arguments to be
-passed to the code block being evaluated.
+上の@code{<header arguments>}セクションに記述された全てのヘッダー引数は@code{#+call:}
+行の評価に適用されます。しかし、評価されているコードブロックに渡すヘッダー引
+数を指定することが望ましいときもあります。
 
-This is possible through the use of the following optional extended syntax.
+以下に示ように、オプションを拡張した構文も使えます。
 
 @example
 #+call: <name>[<block header arguments>](<arguments>) <header arguments>
 @end example
 
-Any header argument placed between the square brackets in the @code{<block header arguments>} section will be applied to the evaluation of the named
-code block.  For more examples of passing header arguments to @code{#+call:}
-lines see @ref{Header arguments in function calls}.
+@code{<block header arguments>}セクション内の角括弧([])の間にあるヘッダー引数は、
+名前付きコードブロックの評価に適用されます。@code{#+call:}行へヘッダー引数を渡す
+例の更なる紹介は、@ref{Header arguments in function calls}をご覧ください。
 
 @node Library of Babel, Languages, Evaluating code blocks, Working With Source Code
 @section Library of Babel
-@cindex babel, library of
-@cindex source code, library
-@cindex code block, library
+@cindex ライブラリ、babel
+@cindex ライブラリ、ソースコード
+@cindex ライブラリ、コードブロック
 
-The ``Library of Babel'' is a library of code blocks that can be called from
-any Org-mode file.  The library is housed in an Org-mode file located in the
-@samp{contrib} directory of Org-mode.  Org-mode users can deposit functions
-they believe to be generally useful in the library.
+``Library of Babel'' はOrg-modeのファイルから呼び出せるコードブロックのライ
+ブラリです。
+ライブラリは、Org-modeの@samp{contrib}ディレクトリのOrg-modeファイルに格納されて
+います。Org-modeのユーザーは、一般的に有用だと考えられる関数を、ライブラリ内
+に置くことができます。
 
-Code blocks defined in the ``Library of Babel'' can be called remotely as if
-they were in the current Org-mode buffer (see @ref{Evaluating code blocks}
-for information on the syntax of remote code block evaluation).
+``Library of
+Babel''で定義されたコードブロックは、あたかも現在のOrg-modeバッファで処理さ
+れるかのように、リモートで呼び出せます(callできます)。(リモートでコードブロ
+ックを評価する構文についての情報は、@ref{Evaluating code blocks}を参照してくださ
+い。)
 
 @kindex C-c C-v i
-Code blocks located in any Org-mode file can be loaded into the ``Library of
-Babel'' with the @code{org-babel-lob-ingest} function, bound to @kbd{C-c C-v i}.
+どんなOrg-modeファイルに記述されたコードブロックでも、``Library of
+Babel''の関数@code{org-babel-lob-ingest}を使って、ロードできます。キーバインドは
+@kbd{C-c C-v i}です。
 
 @node Languages, Header arguments, Library of Babel, Working With Source Code
 @section Languages

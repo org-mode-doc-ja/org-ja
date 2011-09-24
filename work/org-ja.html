@@ -79,7 +79,7 @@ Software Foundation, Inc.
 <ul>
 <li><a href="#References">3.5.1 References</a>
 <li><a href="#Formula-syntax-for-Calc">3.5.2 Formula syntax for Calc</a>
-<li><a href="#Formula-syntax-for-Lisp">3.5.3 Emacs Lisp forms as formulas</a>
+<li><a href="#Formula-syntax-for-Lisp">3.5.3 数式としてのEmacs Lisp形式</a>
 <li><a href="#Field-and-range-formulas">3.5.4 Field and range formulas</a>
 <li><a href="#Column-formulas">3.5.5 Column formulas</a>
 <li><a href="#Editing-and-debugging-formulas">3.5.6 Editing and debugging formulas</a>
@@ -2319,10 +2319,10 @@ org-modeのテーブルエディタの直感的な動作を気に入ったら、
 
 <pre class="lisp">     (add-hook 'message-mode-hook 'turn-on-orgtbl)
 </pre>
-   <p>Furthermore, with some special setup, it is possible to maintain tables in
-arbitrary syntax with Orgtbl mode.  For example, it is possible to construct
-LaTeX tables with the underlying ease and power of Orgtbl mode, including
-spreadsheet capabilities.  For details, see <a href="#Tables-in-arbitrary-syntax">Tables in arbitrary syntax</a>.
+   <p>さらに、いくつかの特別な処理を追加することで、orgtblモードの任意のシンタック
+スでテーブルをメンテナンスできます。たとえば、簡単に、そしてorgtblモードの機
+能でLaTeXのテーブルを構築できます。これは表計算機能も含んでいます。さらなる
+詳細は、<a href="#Tables-in-arbitrary-syntax">Tables in arbitrary syntax</a>.を参照してください。
 
 <div class="node">
 <a name="The-spreadsheet"></a>
@@ -2335,16 +2335,16 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Tables">Tables</a>
 
 <h3 class="section">3.5 The spreadsheet</h3>
 
-<p><a name="index-g_t_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e3_0081_00ae_00e4_00b8_00ad_00e3_0081_00a7_00e3_0081_00ae_00e8_00a8_0088_00e7_00ae_0097-300"></a><a name="index-spreadsheet-capabilities-301"></a><a name="index-g_t_0040file_007bcalc_007d-package-302"></a>
-The table editor makes use of the Emacs <samp><span class="file">calc</span></samp> package to implement
-spreadsheet-like capabilities.  It can also evaluate Emacs Lisp forms to
-derive fields from other fields.  While fully featured, Org's implementation
-is not identical to other spreadsheets.  For example, Org knows the concept
-of a <em>column formula</em> that will be applied to all non-header fields in
-a column without having to copy the formula to each relevant field.  There
-is also a formula debugger, and a formula editor with features for
-highlighting fields in the table corresponding to the references at the
-point in the formula, moving these references by arrow keys
+<p><a name="index-g_t_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e3_0081_00ae_00e4_00b8_00ad_00e3_0081_00a7_00e3_0081_00ae_00e8_00a8_0088_00e7_00ae_0097-300"></a><a name="index-g_t_00e8_00a1_00a8_00e8_00a8_0088_00e7_00ae_0097_00e6_00a9_009f_00e8_0083_00bd-301"></a><a name="index-g_t_0040file_007bcalc_007d_00e3_0083_0091_00e3_0083_0083_00e3_0082_00b1_00e3_0083_00bc_00e3_0082_00b8-302"></a>
+org-modeのテーブルエディタは、表計算機能を実装するためにEmacsの<samp><span class="file">calc</span></samp>を利用
+します。他のフィールドの値から別なフィールドの値を導くためにEmacs
+Lispの書式も評価できます。十分な機能があるものの、org-modeでの実装は他の表計
+算ソフトと全く同等というわけではありません。たとえば、org-modeは<em>列数式</em>の概
+念を理解しています。これは、関連する各フィールドに数式をコピーすることなく、
+ヘッダーを除く列の全てのフィールドに適用されます。数式のデバッガもあります。
+また、数式が参照しているフィールドに対応したフィールドを、テーブル内でハイラ
+イトする機能や矢印キーでリファレンスに移動する機能がある数式エディタもありま
+す。
 
 <ul class="menu">
 <li><a accesskey="1" href="#References">References</a>:                どうやって他のフィールドや範囲を参照するか
@@ -2368,138 +2368,133 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#The-spreadsheet">The spreadsheet</a>
 
 <h4 class="subsection">3.5.1 References</h4>
 
-<p><a name="index-references-303"></a>
-To compute fields in the table from other fields, formulas must reference
-other fields or ranges.  In Org, fields can be referenced by name, by
-absolute coordinates, and by relative coordinates.  To find out what the
-coordinates of a field are, press <kbd>C-c ?</kbd> in that field, or press
-<kbd>C-c }</kbd> to toggle the display of a grid.
+<p><a name="index-g_t_00e3_0083_00aa_00e3_0083_0095_00e3_0082_00a1_00e3_0083_00ac_00e3_0083_00b3_00e3_0082_00b9-303"></a>
+テーブル内部のフィールドを他のフィールドの値から計算するためには、必ず数式が
+他のフィールドか範囲を参照していなければなりません。org-modeでは、名前、絶対
+的または相対的な位置によってフィールドを参照することができます。フィールドの
+位置がどこかを特定するためには、そのフィールドで<kbd>C-c ?</kbd>を押してください。も
+しくは、グリッド表示をトグルするために<kbd>C-c }</kbd>を使用してください。
 
-<h5 class="subsubheading">Field references</h5>
+<h5 class="subsubheading">フィールドの参照</h5>
 
-<p><a name="index-field-references-304"></a><a name="index-references_002c-to-fields-305"></a>
-Formulas can reference the value of another field in two ways.  Like in any
-other spreadsheet, you may reference fields with a letter/number combination
-like <code>B3</code>, meaning the 2nd field in the 3rd row.
+<p><a name="index-g_t_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00e3_0081_00ae_00e5_008f_0082_00e7_0085_00a7-304"></a><a name="index-g_t_00e5_008f_0082_00e7_0085_00a7_00ef_00bc_0088_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00ef_00bc_0089-305"></a>
+数式は別なフィールドの値を2つの方法で参照できます。他の表計算ソフトと同じよ
+うに、<code>B3</code>のような文字と数値の組み合わせでフィールドを参照できます。三行目の
+第二フィールドを意味しています。
 
-<p class="noindent"><a name="index-org_002dtable_002duse_002dstandard_002dreferences-306"></a>Org prefers<a rel="footnote" href="#fn-25" name="fnd-25"><sup>25</sup></a> to use another, more general
-operator that looks like this:
+<p class="noindent"><a name="index-org_002dtable_002duse_002dstandard_002dreferences-306"></a>org-modeでは、もう一つの方法を好みます<a rel="footnote" href="#fn-25" name="fnd-25"><sup>25</sup></a>。より一般的な次のような表記です。
 <pre class="example">     @<var>row</var>$<var>column</var>
 </pre>
-   <p class="noindent">and allows relative references, i.e. references relative to the row/column
-of the field whose value is being computed.  These relative references make
-it possible to store a formula only once and use it in many fields without
-copying and modifying it.
+   <p class="noindent">また、相対的な参照も認めています。すなわち、フィールドの列と行に対する値が計
+算されいる参照です。このような相対的な参照は、数式を一度だけ記録すればよく、
+数式のコピーや変更せずにたくさんのフィールドで利用できます。
 
-   <p>Column references can be absolute like &lsquo;<samp><span class="samp">1</span></samp>&rsquo;, &lsquo;<samp><span class="samp">2</span></samp>&rsquo;,...&lsquo;<samp><var>N</var></samp>&rsquo;,
-or relative to the current column like &lsquo;<samp><span class="samp">+1</span></samp>&rsquo; or &lsquo;<samp><span class="samp">-2</span></samp>&rsquo;.  <code>$&gt;</code>
-references the last column in the table, and you can use offsets like
-<code>$&gt;-2</code>, meaning the third column from the right.
+   <p>列の参照は、&lsquo;<samp><span class="samp">1</span></samp>&rsquo;、&lsquo;<samp><span class="samp">2</span></samp>&rsquo;、...&lsquo;<samp><var>N</var></samp>&rsquo;のように絶対的に表されるか、もしくは、カーソル
+位置の列に対して相対的に&lsquo;<samp><span class="samp">+1</span></samp>&rsquo;、&lsquo;<samp><span class="samp">-2</span></samp>&rsquo;のように表されます。<code>$&gt;</code>はテーブルの最終列
+を参照します。さらに、<code>$&gt;-2</code>のようなオフセットを指定できます。この場合、一番
+右から三番目の列を表します。
 
-   <p>The row specification only counts data lines and ignores horizontal
-separator lines (hlines).  Like with columns, you can use absolute row
-numbers &lsquo;<samp><span class="samp">1</span></samp>&rsquo;...&lsquo;<samp><var>N</var></samp>&rsquo;, and row numbers relative to the current
-row like &lsquo;<samp><span class="samp">+3</span></samp>&rsquo; or &lsquo;<samp><span class="samp">-1</span></samp>&rsquo;, and <code>@&gt;</code> references the last row in
-the table<a rel="footnote" href="#fn-26" name="fnd-26"><sup>26</sup></a>.  You may also specify
-the row relative to one of the hlines: &lsquo;<samp><span class="samp">I</span></samp>&rsquo; refers to the first
-hline<a rel="footnote" href="#fn-27" name="fnd-27"><sup>27</sup></a>, &lsquo;<samp><span class="samp">II</span></samp>&rsquo; to the second, etc.  &lsquo;<samp><span class="samp">-I</span></samp>&rsquo; refers to the first such
-line above the current line, &lsquo;<samp><span class="samp">+I</span></samp>&rsquo; to the first such line below the
-current line.  You can also write &lsquo;<samp><span class="samp">III+2</span></samp>&rsquo; which is the second data line
-after the third hline in the table.
+   <p>行はデータを含む行のみをカウントして、水平ライン（hline）は無視します。列と
+同様に、&lsquo;<samp><span class="samp">1</span></samp>&rsquo;...&lsquo;<samp><var>N</var></samp>&rsquo;のように絶対的な行の番号を利用できます。また、&lsquo;<samp><span class="samp">+3</span></samp>&rsquo;や&lsquo;<samp><span class="samp">-1</span></samp>&rsquo;
+のようにカーソル位置の行に対する相対的な位置を表し、<code>@&gt;</code>でテーブルの最終行
+を参照します<a rel="footnote" href="#fn-26" name="fnd-26"><sup>26</sup></a>。あ
+る水平ラインに対する相対的な行を指定することもできます。&lsquo;<samp><span class="samp">I</span></samp>&rsquo;は最初のhlineへの
+参照です<a rel="footnote" href="#fn-27" name="fnd-27"><sup>27</sup></a>。&lsquo;<samp><span class="samp">II</span></samp>&rsquo;は二番目の水平ラインというように指定します。&lsquo;<samp><span class="samp">-I</span></samp>&rsquo;は、
+カーソル位置の行の上方にある最初の水平ラインを参照し、&lsquo;<samp><span class="samp">+I</span></samp>&rsquo;は下方にある最初の
+水平ラインを参照します。&lsquo;<samp><span class="samp">III+2</span></samp>&rsquo;のように指定すると、テーブルの三番目の水平ラ
+インから二番目の行を表します。
 
-   <p>&lsquo;<samp><span class="samp">0</span></samp>&rsquo; refers to the current row and column.  Also, if you omit either the
-column or the row part of the reference, the current row/column is implied.
+   <p>&lsquo;<samp><span class="samp">0</span></samp>&rsquo;はカーソル位置の行と列を参照します。また、もし参照について列と行のいずれ
+かを無視すれば、行または列が暗黙に参照されます。
 
-   <p>Org's references with <em>unsigned</em> numbers are fixed references in the
-sense that if you use the same reference in the formula for two different
-fields, the same field will be referenced each time.  Org's references with
-<em>signed</em> numbers are floating references because the same reference
-operator can reference different fields depending on the field being
-calculated by the formula.
+   <p>org-modeの<em>符号無し</em>数値の参照は、静的な参照です。これは、二つの異なるフィー
+ルドにある数式の中で、同じ参照を利用すれば、常に同じフィールドが参照されます
+。<em>符号付き</em>数値の参照は、動的な参照です。これは、見た目上同じ参照であっても
+、数式で計算されるフィールドに依存して、異なるフィールドを参照できるためです
+。
 
-   <p>Here are a few examples:
+   <p>いくつかの例を示します。
 
-<pre class="example">     @2$3      <span class="roman">2nd row, 3rd column</span>
-     C2        <span class="roman">same as previous</span>
-     $5        <span class="roman">column 5 in the current row</span>
-     E&amp;        <span class="roman">same as previous</span>
-     @2        <span class="roman">current column, row 2</span>
-     @-1$-3    <span class="roman">the field one row up, three columns to the left</span>
-     @-I$2     <span class="roman">field just under hline above current row, column 2</span>
+<pre class="example">     @2$3      <span class="roman">第二行、第三列</span>
+     C2        <span class="roman">同上</span>
+     $5        <span class="roman">現在行の第五列</span>
+     E&amp;        <span class="roman">同上</span>
+     @2        <span class="roman">現在列、第二行</span>
+     @-1$-3    <span class="roman">カーソル位置から一つ上、左に三つ目</span>
+     @-I$2     <span class="roman">カーソル位置の上方の水平ライン直下の第二列</span>
 </pre>
-   <h5 class="subsubheading">Range references</h5>
+   <h5 class="subsubheading">範囲参照</h5>
 
-<p><a name="index-range-references-307"></a><a name="index-references_002c-to-ranges-308"></a>
-You may reference a rectangular range of fields by specifying two field
-references connected by two dots &lsquo;<samp><span class="samp">..</span></samp>&rsquo;.  If both fields are in the
-current row, you may simply use &lsquo;<samp><span class="samp">$2..$7</span></samp>&rsquo;, but if at least one field is
-in a different row, you need to use the general <code>@row$column</code> format
-at least for the first field (i.e the reference must start with &lsquo;<samp><span class="samp">@</span></samp>&rsquo; in
-order to be interpreted correctly).  Examples:
+<p><a name="index-g_t_00e7_00af_0084_00e5_009b_00b2_00e5_008f_0082_00e7_0085_00a7-307"></a><a name="index-g_t_00e5_008f_0082_00e7_0085_00a7_00ef_00bc_0088_00e7_00af_0084_00e5_009b_00b2_00e6_008c_0087_00e5_00ae_009a_00ef_00bc_0089-308"></a>
+複数のフィールドで構成する矩形範囲を参照できます。この範囲は、二つの参照を二
+つのドット&lsquo;<samp><span class="samp">..</span></samp>&rsquo;で接続することで指定します。二つの参照が共にカーソル位置の行に
+あるとき、単純に&lsquo;<samp><span class="samp">$2..$7</span></samp>&rsquo;と指定できます。しかし、少なくとも一つのフィールドが
+異なる列にあるときは、少なくとも一方のフィールドについて<code>@row$column</code>のよう
+な一般的な形式を使う必要があります（つまり、正しく解釈させるために参照を
+&lsquo;<samp><span class="samp">@</span></samp>&rsquo;で始めなければなりません）。具体例は次のようになります。
 
-<pre class="example">     $1..$3        <span class="roman">First three fields in the current row</span>
-     $P..$Q        <span class="roman">Range, using column names (see under Advanced)</span>
-     @2$1..@4$3    <span class="roman">6 fields between these two fields</span>
-     A2..C4        <span class="roman">Same as above</span>
-     @-1$-2..@-1   <span class="roman">3 numbers from the column to the left, 2 up to current row</span>
-     @I..II        <span class="roman">Between first and second hline, short for </span><code>@I..@II</code>
+<pre class="example">     $1..$3        <span class="roman">カーソル位置の行の始めの3フィールド</span>
+     $P..$Q        <span class="roman">列の名前を使った範囲（以下の詳細を見てください）</span>
+     @2$1..@4$3    <span class="roman">二つのフィールド間にある6フィールド</span>
+     A2..C4        <span class="roman">同上</span>
+     @-1$-2..@-1   <span class="roman">カーソル位置の左の列の2つ上方の行の3フィールド</span>
+     @I..II        <span class="roman">第一と第二の水平ラインに挟まれた領域（</span><code>@I..@II</code><span class="roman">の短縮表記）</span>
 </pre>
    <p class="noindent">Range references return a vector of values that can be fed
-into Calc vector functions.  Empty fields in ranges are normally suppressed,
-so that the vector contains only the non-empty fields (but see the &lsquo;<samp><span class="samp">E</span></samp>&rsquo;
-mode switch below).  If there are no non-empty fields, &lsquo;<samp><span class="samp">[0]</span></samp>&rsquo; is
-returned to avoid syntax errors in formulas.
+（indent問題箇所）範囲参照はCalcのベクトル関数に代入可能な値のベクトルを返し
+ます。範囲に含まれる空のフィールドは、普通は除去されます。これはベクトルが空
+ではないフィールドのみを含むようにするためです（ただし下記の&lsquo;<samp><span class="samp">E</span></samp>&rsquo;モードスイッ
+チも参照してください）。もし、すべてのフィールドが空ならば、数式のシンタック
+スエラーを避けるために&lsquo;<samp><span class="samp">[0]</span></samp>&rsquo;が返されます。
 
-<h5 class="subsubheading">Field coordinates in formulas</h5>
+<h5 class="subsubheading">数式中のフィールドの座標</h5>
 
-<p><a name="index-field-coordinates-309"></a><a name="index-coordinates_002c-of-field-310"></a><a name="index-row_002c-of-field-coordinates-311"></a><a name="index-column_002c-of-field-coordinates-312"></a>
-For Calc formulas and Lisp formulas <code>@#</code> and <code>$#</code> can be used to
-get the row or column number of the field where the formula result goes. 
-The traditional Lisp formula equivalents are <code>org-table-current-dline</code>
-and <code>org-table-current-column</code>.  Examples:
+<p><a name="index-g_t_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00e3_0081_00ae_00e5_00ba_00a7_00e6_00a8_0099-309"></a><a name="index-g_t_00e5_00ba_00a7_00e6_00a8_0099_00ef_00bc_0088_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00ef_00bc_0089-310"></a><a name="index-g_t_00e8_00a1_008c_00ef_00bc_0088_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00e3_0081_00ae_00e5_00ba_00a7_00e6_00a8_0099_00ef_00bc_0089-311"></a><a name="index-g_t_00e5_0088_0097_00ef_00bc_0088_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00e3_0081_00ae_00e5_00ba_00a7_00e6_00a8_0099_00ef_00bc_0089-312"></a>
+Calc形式とLisp形式の数式では、数式の演算結果が指すフィールドの行と列の番号を
+取得するために<code>@#</code>と<code>$#</code>を利用できます。伝統的なLispの数式に相当するのは
+<code>org-table-current-dline</code>と<code>org-table-current-column</code>です。たとえば、
 
-<pre class="example">     if(@# % 2, $#, string(""))   <span class="roman">column number on odd lines only</span>
-     $3 = remote(FOO, @@#$2)      <span class="roman">copy column 2 from table FOO into</span>
-                                  <span class="roman">column 3 of the current table</span>
+<pre class="example">     if(@# % 2, $#, string(""))   <span class="roman">奇数行に限定して列の番号を抽出する</span>
+     $3 = remote(FOO, @@#$2)      <span class="roman">テーブルFOOの二列目をコピーし、</span>
+                                  <span class="roman">現在のテーブルの三列目に上書きする</span>
 </pre>
    <p class="noindent">For the second example, table FOO must have at least as many rows
-as the current table.  Note that this is inefficient<a rel="footnote" href="#fn-28" name="fnd-28"><sup>28</sup></a> for large number of rows.
+（indent問題箇所）二つ目の例では、テーブルFOOは少なくとも、カーソル位置のテ
+ーブルが持つ行数と同じ数の行がなければなりません。たくさんの行があると処理が
+重くなる<a rel="footnote" href="#fn-28" name="fnd-28"><sup>28</sup></a>ことに気を付けてください。
 
-<h5 class="subsubheading">Named references</h5>
+<h5 class="subsubheading">名前付き参照</h5>
 
-<p><a name="index-named-references-313"></a><a name="index-references_002c-named-314"></a><a name="index-g_t_00e5_0090_008d_00e5_0089_008d_00ef_00bc_0088_00e5_0088_0097_00e3_0082_0084_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00ef_00bc_0089-315"></a><a name="index-g_t_00e8_00a8_0088_00e7_00ae_0097_00e4_00b8_00ad_00e3_0081_00ae_00e5_00ae_009a_00e6_0095_00b0-316"></a><a name="index-g_t_0023_002bCONSTANTS-317"></a>
-<a name="index-org_002dtable_002dformula_002dconstants-318"></a>&lsquo;<samp><span class="samp">$name</span></samp>&rsquo; is interpreted as the name of a column, parameter or constant. 
-Constants are defined globally through the variable
-<code>org-table-formula-constants</code>, and locally (for the file) through a
-line like
+<p><a name="index-g_t_00e5_0090_008d_00e5_0089_008d_00e4_00bb_0098_00e3_0081_008d_00e5_008f_0082_00e7_0085_00a7-313"></a><a name="index-g_t_00e5_008f_0082_00e7_0085_00a7_00ef_00bc_0088_00e5_0090_008d_00e5_0089_008d_00e4_00bb_0098_00e3_0081_008d_00ef_00bc_0089-314"></a><a name="index-g_t_00e5_0090_008d_00e5_0089_008d_00ef_00bc_0088_00e5_0088_0097_00e3_0082_0084_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00ef_00bc_0089-315"></a><a name="index-g_t_00e8_00a8_0088_00e7_00ae_0097_00e4_00b8_00ad_00e3_0081_00ae_00e5_00ae_009a_00e6_0095_00b0-316"></a><a name="index-g_t_0023_002bCONSTANTS-317"></a>
+<a name="index-org_002dtable_002dformula_002dconstants-318"></a>&lsquo;<samp><span class="samp">$name</span></samp>&rsquo;は、列の名前として解釈されます。パラメータや定数を扱います。定数は、
+変数<code>org-table-formula-constants</code>を利用してグローバルに定義されます。また、
+次のような一文を追加して、ファイルのローカル変数として定義されます。
 
 <pre class="example">     #+CONSTANTS: c=299792458. pi=3.14 eps=2.4e-6
 </pre>
-   <p class="noindent"><a name="index-constants_002dunit_002dsystem-319"></a><a name="index-constants_002eel-320"></a>Also properties (see <a href="#Properties-and-Columns">Properties and Columns</a>) can be used as constants in
-table formulas: for a property &lsquo;<samp><span class="samp">:Xyz:</span></samp>&rsquo; use the name &lsquo;<samp><span class="samp">$PROP_Xyz</span></samp>&rsquo;,
-and the property will be searched in the current outline entry and in the
-hierarchy above it.  If you have the <samp><span class="file">constants.el</span></samp> package, it will
-also be used to resolve constants, including natural constants like
-&lsquo;<samp><span class="samp">$h</span></samp>&rsquo; for Planck's constant, and units like &lsquo;<samp><span class="samp">$km</span></samp>&rsquo; for
-kilometers<a rel="footnote" href="#fn-29" name="fnd-29"><sup>29</sup></a>.  Column names and parameters can be
-specified in special table lines.  These are described below, see
-<a href="#Advanced-features">Advanced features</a>.  All names must start with a letter, and further
-consist of letters and numbers.
+   <p class="noindent"><a name="index-constants_002dunit_002dsystem-319"></a><a name="index-constants_002eel-320"></a>プロパティ（see <a href="#Properties-and-Columns">Properties and Columns</a>）もテーブルの数式で定数として扱われます
+。プロパティ&lsquo;<samp><span class="samp">:Xyz:</span></samp>&rsquo;については&lsquo;<samp><span class="samp">$PROP_Xyz</span></samp>&rsquo;という名前を使います。そして、このプ
+ロパティは現在のアウトラインエントリーと上位を階層的に検索されます。もし
+<samp><span class="file">constants.el</span></samp>パッケージを読み込んでいるならば、これも定数を決めるために使わ
+れます。このパッケージには、プランク定数&lsquo;<samp><span class="samp">$h</span></samp>&rsquo;のような物理定数、そしてキロメー
+ター&lsquo;<samp><span class="samp">$km</span></samp>&rsquo;のような単位が含まれています<a rel="footnote" href="#fn-29" name="fnd-29"><sup>29</sup></a>。列の名前と
+パラメータは、特別なテーブルのラインで設定できます。詳細は後述します（
+<a href="#Advanced-features">Advanced features</a>.）。すべての名前は文字から始まり、それ以降は文字と数値で
+構成します。
 
-<h5 class="subsubheading">Remote references</h5>
+<h5 class="subsubheading">リモート参照</h5>
 
-<p><a name="index-remote-references-321"></a><a name="index-references_002c-remote-322"></a><a name="index-references_002c-to-a-different-table-323"></a><a name="index-g_t_00e5_0090_008d_00e5_0089_008d_00ef_00bc_0088_00e5_0088_0097_00e3_0082_0084_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00ef_00bc_0089-324"></a><a name="index-g_t_00e8_00a8_0088_00e7_00ae_0097_00e4_00b8_00ad_00e3_0081_00ae_00e5_00ae_009a_00e6_0095_00b0-325"></a><a name="index-g_t_0023_002bTBLNAME-326"></a>
-You may also reference constants, fields and ranges from a different table,
-either in the current file or even in a different file.  The syntax is
+<p><a name="index-g_t_00e3_0083_00aa_00e3_0083_00a2_00e3_0083_00bc_00e3_0083_0088_00e5_008f_0082_00e7_0085_00a7-321"></a><a name="index-g_t_00e5_008f_0082_00e7_0085_00a7_00ef_00bc_0088_00e3_0083_00aa_00e3_0083_00a2_00e3_0083_00bc_00e3_0083_0088_00ef_00bc_0089-322"></a><a name="index-g_t_00e5_008f_0082_00e7_0085_00a7_00ef_00bc_0088_00e7_0095_00b0_00e3_0081_00aa_00e3_0082_008b_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e3_0081_00b8_00ef_00bc_0089-323"></a><a name="index-g_t_00e5_0090_008d_00e5_0089_008d_00ef_00bc_0088_00e5_0088_0097_00e3_0082_0084_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00ef_00bc_0089-324"></a><a name="index-g_t_00e8_00a8_0088_00e7_00ae_0097_00e4_00b8_00ad_00e3_0081_00ae_00e5_00ae_009a_00e6_0095_00b0-325"></a><a name="index-g_t_0023_002bTBLNAME-326"></a>
+異なるテーブルの定数、フィールドそして範囲を参照できます。現在のファイルでも
+、異なるファイルにある場合も参照できます。シンタックスは、
 
 <pre class="example">     remote(NAME-OR-ID,REF)
 </pre>
-   <p class="noindent">where NAME can be the name of a table in the current file as set by a
-<code>#+TBLNAME: NAME</code> line before the table.  It can also be the ID of an
-entry, even in a different file, and the reference then refers to the first
-table in that entry.  REF is an absolute field or range reference as
-described above for example <code>@3$3</code> or <code>$somename</code>, valid in the
-referenced table.
+   <p class="noindent">で、ここでNAMEは別なファイルにあるテーブルの名前で、テーブルの前の行に
+<code>#+TBLNAME: NAME</code>と設定しておきます。エントリーのIDも利用でき、別なファイル
+にあるものも指定できます。この場合はエントリーに含まれる最初のテーブルを参照
+します。REFは前述したような絶対的なフィールドか範囲となる参照で、<code>@3$3</code>や
+<code>$somename</code>と表され、参照で指定したテーブルにおいて有効になります。
 
 <div class="node">
 <a name="Formula-syntax-for-Calc"></a>
@@ -2512,55 +2507,51 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#The-spreadsheet">The spreadsheet</a>
 
 <h4 class="subsection">3.5.2 Formula syntax for Calc</h4>
 
-<p><a name="index-formula-syntax_002c-Calc-327"></a><a name="index-syntax_002c-of-formulas-328"></a>
+<p><a name="index-g_t_00e6_0095_00b0_00e5_00bc_008f_00e3_0081_00ae_00e3_0082_00b7_00e3_0083_00b3_00e3_0082_00bf_00e3_0083_0083_00e3_0082_00af_00e3_0082_00b9_00ef_00bc_0088Calc_00ef_00bc_0089-327"></a><a name="index-g_t_00e3_0082_00b7_00e3_0083_00b3_00e3_0082_00bf_00e3_0083_0083_00e3_0082_00af_00e3_0082_00b9_00ef_00bc_0088_00e6_0095_00b0_00e5_00bc_008f_00ef_00bc_0089-328"></a>
 <!-- FIXME:  The link to the Calc manual in HTML does not work. -->
-A formula can be any algebraic expression understood by the Emacs
-<samp><span class="file">Calc</span></samp> package.  <b>Note that </b><samp><span class="file">calc</span></samp><b> has the non-standard convention that &lsquo;</b><samp><span class="samp">/</span></samp><b>&rsquo; has lower precedence than &lsquo;</b><samp><span class="samp">*</span></samp><b>&rsquo;, so that &lsquo;</b><samp><span class="samp">a/b*c</span></samp><b>&rsquo; is interpreted as &lsquo;</b><samp><span class="samp">a/(b*c)</span></samp><b>&rsquo;.</b> Before evaluation by
-<code>calc-eval</code> (see <a href="Calc.html#Calling-Calc-from-Your-Programs">calc-eval</a>), variable
-substitution takes place according to the rules described above. 
-<a name="index-vectors_002c-in-table-calculations-329"></a>The range vectors can be directly fed into the Calc vector functions like
-&lsquo;<samp><span class="samp">vmean</span></samp>&rsquo; and &lsquo;<samp><span class="samp">vsum</span></samp>&rsquo;.
+数式は、Emacsの<samp><span class="file">Calc</span></samp>パッケージが理解できる、任意の代数表現になります。<b>通常の
+計算とは異なる、</b><samp><span class="file">Calc</span></samp><b>の慣例に気を付けてください。&lsquo;</b><samp><span class="samp">/</span></samp><b>&rsquo;は&lsquo;</b><samp><span class="samp">*</span></samp><b>&rsquo;よりも低く優先され
+ます。つまり、&lsquo;</b><samp><span class="samp">a/b*c</span></samp><b>&rsquo;は、&lsquo;</b><samp><span class="samp">a/(b*c)</span></samp><b>&rsquo;として解釈されます。</b>。<code>calc-eval</code>（
+see <a href="Calc.html#Calling-Calc-from-Your-Programs">calc-eval</a>）で評価される以前に、先ほどのルールに従って変数が代入されます。
+<a name="index-g_t_00e3_0083_0099_00e3_0082_00af_00e3_0083_0088_00e3_0083_00ab_00ef_00bc_0088_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e3_0081_00a7_00e3_0081_00ae_00e8_00a8_0088_00e7_00ae_0097_00ef_00bc_0089-329"></a>範囲指定するベクトルはCalc&lsquo;<samp><span class="samp">vmean</span></samp>&rsquo;や&lsquo;<samp><span class="samp">vsum</span></samp>&rsquo;のようなベクトル関数に直接渡されま
+す。
 
-   <p><a name="index-format-specifier-330"></a><a name="index-mode_002c-for-_0040file_007bcalc_007d-331"></a><a name="index-org_002dcalc_002ddefault_002dmodes-332"></a>A formula can contain an optional mode string after a semicolon.  This
-string consists of flags to influence Calc and other modes during
-execution.  By default, Org uses the standard Calc modes (precision 12,
-angular units degrees, fraction and symbolic modes off).  The display
-format, however, has been changed to <code>(float 8)</code> to keep tables
-compact.  The default settings can be configured using the variable
-<code>org-calc-default-modes</code>.
+   <p><a name="index-g_t_00e3_0083_0095_00e3_0082_00a9_00e3_0083_00bc_00e3_0083_009e_00e3_0083_0083_00e3_0083_0088_00e6_008c_0087_00e5_00ae_009a-330"></a><a name="index-g_t_00e3_0083_00a2_00e3_0083_00bc_00e3_0083_0089_00ef_00bc_0088_0040file_007bCalc_007d_00ef_00bc_0089-331"></a><a name="index-org_002dcalc_002ddefault_002dmodes-332"></a>数式は、セミコロンの後に続くオプションモードの文字列を含むことができます。こ
+の文字列は実行時にCalcや他のモードに作用するフラグで構成されます。デフォルト
+では、org-modeは標準のCalcモード（精度=12桁、角度単位=度、分数／シンボリック
+モード=OFF）を使います。ただし、表示フォーマットは、テーブルをコンパクトに保
+つために、<code>(float 8)</code>に変更されています。
 
-<pre class="example">     p20           <span class="roman">set the internal Calc calculation precision to 20 digits</span>
-     n3 s3 e2 f4   <span class="roman">Normal, scientific, engineering, or fixed</span>
-                   <span class="roman">format of the result of Calc passed back to Org.</span>
-                   <span class="roman">Calc formatting is unlimited in precision as</span>
-                   <span class="roman">long as the Calc calculation precision is greater.</span>
-     D R           <span class="roman">angle modes: degrees, radians</span>
-     F S           <span class="roman">fraction and symbolic modes</span>
-     N             <span class="roman">interpret all fields as numbers, use 0 for non-numbers</span>
-     T             <span class="roman">force text interpretation</span>
-     E             <span class="roman">keep empty fields in ranges</span>
-     L             <span class="roman">literal</span>
+<pre class="example">     p20           <span class="roman">Calcの内部計算精度を20桁に設定</span>
+     n3 s3 e2 f4   <span class="roman">通常表記、科学指数、工学指数、固定小数点</span>
+                   <span class="roman">のCalcの出力結果がorg-modeに戻る。</span>
+                   <span class="roman">Calcの計算精度が表示上の精度よりも高い限り、</span>
+                   <span class="roman">Calc表記は精度上の制限を受けない。</span>
+     D R           <span class="roman">角度モード（度／ラジアン）</span>
+     F S           <span class="roman">分数／シンボリックモード</span>
+     N             <span class="roman">全フィールドを数値として解釈。非数値は0を使用</span>
+     T             <span class="roman">強制的に文字列として解釈</span>
+     E             <span class="roman">領域中のフィールドを空に保つ</span>
+     L             <span class="roman">リテラル</span>
 </pre>
-   <p class="noindent">Unless you use large integer numbers or high-precision-calculation and
--display for floating point numbers you may alternatively provide a
-<code>printf</code> format specifier to reformat the Calc result after it has been
-passed back to Org instead of letting Calc already do the
-formatting<a rel="footnote" href="#fn-30" name="fnd-30"><sup>30</sup></a>.  A
-few examples:
+   <p class="noindent">大きな整数値を使用したり、浮動小数点での高精度な計算と表示を行なわないならば
+、Calcがすでにフォーマットした結果ではなく、org-modeに戻された後のCalcの出力
+結果を再フォーマットするために、<code>printf</code>によるフォーマット指定を代替として与
+えることができます<a rel="footnote" href="#fn-30" name="fnd-30"><sup>30</sup></a>。いくつかの例を示します。
 
-<pre class="example">     $1+$2                <span class="roman">Sum of first and second field</span>
-     $1+$2;%.2f           <span class="roman">Same, format result to two decimals</span>
-     exp($2)+exp($1)      <span class="roman">Math functions can be used</span>
-     $0;%.1f              <span class="roman">Reformat current cell to 1 decimal</span>
-     ($3-32)*5/9          <span class="roman">Degrees F -&gt; C conversion</span>
-     $c/$1/$cm            <span class="roman">Hz -&gt; cm conversion, using </span><samp><span class="file">constants.el</span></samp>
-     tan($1);Dp3s1        <span class="roman">Compute in degrees, precision 3, display SCI 1</span>
-     sin($1);Dp3%.1e      <span class="roman">Same, but use printf specifier for display</span>
-     vmean($2..$7)        <span class="roman">Compute column range mean, using vector function</span>
-     vmean($2..$7);EN     <span class="roman">Same, but treat empty fields as 0</span>
-     taylor($3,x=7,2)     <span class="roman">Taylor series of $3, at x=7, second degree</span>
+<pre class="example">     $1+$2                <span class="roman">第一と第二フィールドの和</span>
+     $1+$2;%.2f           <span class="roman">同上。ただし、小数点以下2桁表示</span>
+     exp($2)+exp($1)      <span class="roman">関数も利用可能</span>
+     $0;%.1f              <span class="roman">小数点以下1桁に再フォーマット</span>
+     ($3-32)*5/9          <span class="roman">華氏から摂氏への変換</span>
+     $c/$1/$cm            <span class="roman">周波数[Hz]から波長[cm]への変換（constants.elを使用）</span>
+     tan($1);Dp3s1        <span class="roman">角度計算（3桁精度、科学指数1桁）</span>
+     sin($1);Dp3%.1e      <span class="roman">同上。ただし、printfでの表示指定</span>
+     vmean($2..$7)        <span class="roman">列の平均値、ベクトルを利用</span>
+     vmean($2..$7);EN     <span class="roman">同上。ただし、空フィールドを0とする</span>
+     taylor($3,x=7,2)     <span class="roman">$3の2次のテーラー級数でx=7の値</span>
 </pre>
-   <p>Calc also contains a complete set of logical operations.  For example
+   <p>Calcは論理演算の完全な集合も含んでいます。例として次があります。
 
 <pre class="example">     if($1&lt;20,teen,string(""))  <span class="roman">``teen'' if age $1 less than 20, else empty</span>
 </pre>
@@ -2573,32 +2564,31 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#The-spreadsheet">The spreadsheet</a>
 
 </div>
 
-<h4 class="subsection">3.5.3 Emacs Lisp forms as formulas</h4>
+<h4 class="subsection">3.5.3 数式としてのEmacs Lisp形式</h4>
 
-<p><a name="index-Lisp-forms_002c-as-table-formulas-333"></a>
-It is also possible to write a formula in Emacs Lisp; this can be useful for
-string manipulation and control structures, if Calc's functionality is not
-enough.  If a formula starts with a single-quote followed by an opening
-parenthesis, then it is evaluated as a Lisp form.  The evaluation should
-return either a string or a number.  Just as with <samp><span class="file">calc</span></samp> formulas, you
-can specify modes and a printf format after a semicolon.  With Emacs Lisp
-forms, you need to be conscious about the way field references are
-interpolated into the form.  By default, a reference will be interpolated as
-a Lisp string (in double-quotes) containing the field.  If you provide the
-&lsquo;<samp><span class="samp">N</span></samp>&rsquo; mode switch, all referenced elements will be numbers (non-number
-fields will be zero) and interpolated as Lisp numbers, without quotes.  If
-you provide the &lsquo;<samp><span class="samp">L</span></samp>&rsquo; flag, all fields will be interpolated literally,
-without quotes.  i.e., if you want a reference to be interpreted as a string
-by the Lisp form, enclose the reference operator itself in double-quotes,
-like <code>"$3"</code>.  Ranges are inserted as space-separated fields, so you can
-embed them in list or vector syntax.  Here are a few examples&mdash;note how the
-&lsquo;<samp><span class="samp">N</span></samp>&rsquo; mode is used when we do computations in Lisp:
+<p><a name="index-Lisp_00e5_00bd_00a2_00e5_00bc_008f_00ef_00bc_0088_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e3_0081_00ae_00e6_0095_00b0_00e5_00bc_008f_00e3_0081_00a8_00e3_0081_0097_00e3_0081_00a6_00ef_00bc_0089-333"></a>
+Emacs
+Lispで数式を記述することもできます。Calcの機能が不十分なら、文字列操作と構造
+の制御に役立ちます。開き括弧が後ろに続くシングルクォートで数式が始まるとき、
+Lisp形式として解釈されます。評価値は、文字列か数値で返ります。<samp><span class="file">Calc</span></samp>の数式と
+同じように、セミコロンの後にモードとprintfフォーマットを指定できます。Emacs
+Lisp形式では、フィールドの参照が、Lisp形式で挿入されることを意識する必要があ
+ります。デフォルトでは、参照はフィールドを含む（ダブルクォートで括られた）
+Lispの文字列として挿入されます。もし&lsquo;<samp><span class="samp">N</span></samp>&rsquo;モードスイッチが指定すると、全ての参
+照された要素は数値になり（非数値のフィールドは0になる）、クォートなしで、
+Lisp形式の数値として挿入されます。&lsquo;<samp><span class="samp">L</span></samp>&rsquo;フラッグを指定すると、全てのフィールド
+は、クォートなしで、そのままの内容で挿入されます。すなわち、もし参照がLisp形
+式の文字列として挿入されることを望むならば、<code>"$3"</code>のように、ダブルクォートで
+参照のオペレータ自体を包んでください。範囲はスペースで区切られたフィールドと
+して挿入されます。そのため、リストやベクトルシンタックスに埋め込んだりできま
+す。いくつかの例を示します。Lispを用いて計算をするときに&lsquo;<samp><span class="samp">N</span></samp>&rsquo;モードがどのよう
+に使われるかを注意してください。
 
-<pre class="example">     <span class="roman">Swap the first two characters of the content of column 1</span>
+<pre class="example">     <span class="roman">一列目の内容について、一文字目と二文字目を入れ替える</span>
        '(concat (substring $1 1 2) (substring $1 0 1) (substring $1 2))
-     <span class="roman">Add columns 1 and 2, equivalent to Calc's </span><code>$1+$2</code>
+     <span class="roman">一列目と二列目を加算する。Calcの</span><code>$1+$2</code><span class="roman">と同じ</span>
        '(+ $1 $2);N
-     <span class="roman">Compute the sum of columns 1-4, like Calc's </span><code>vsum($1..$4)</code>
+     <span class="roman">列1から列4の合計を計算。Calcの</span><code>vsum($1..$4)</code><span class="roman">と同じ</span>
        '(apply '+ '($1..$4));N
 </pre>
    <div class="node">
@@ -2612,45 +2602,44 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#The-spreadsheet">The spreadsheet</a>
 
 <h4 class="subsection">3.5.4 Field and range formulas</h4>
 
-<p><a name="index-field-formula-334"></a><a name="index-range-formula-335"></a><a name="index-formula_002c-for-individual-table-field-336"></a><a name="index-formula_002c-for-range-of-fields-337"></a>
-To assign a formula to a particular field, type it directly into the field,
-preceded by &lsquo;<samp><span class="samp">:=</span></samp>&rsquo;, for example &lsquo;<samp><span class="samp">:=vsum(@II..III)</span></samp>&rsquo;.  When you press
-&lt;TAB&gt; or &lt;RET&gt; or <kbd>C-c C-c</kbd> with the cursor still in the field,
-the formula will be stored as the formula for this field, evaluated, and the
-current field will be replaced with the result.
+<p><a name="index-g_t_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00e3_0081_00ae_00e6_0095_00b0_00e5_00bc_008f-334"></a><a name="index-g_t_00e7_00af_0084_00e5_009b_00b2_00e3_0081_00ae_00e6_0095_00b0_00e5_00bc_008f-335"></a><a name="index-g_t_00e6_0095_00b0_00e5_00bc_008f_00ef_00bc_0088_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e3_0081_00ae_00e5_0080_008b_00e3_0080_0085_00e3_0081_00ae_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00ef_00bc_0089-336"></a><a name="index-g_t_00e6_0095_00b0_00e5_00bc_008f_00ef_00bc_0088_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00e3_0081_00ae_00e7_00af_0084_00e5_009b_00b2_00ef_00bc_0089-337"></a>
+特定のフィールドに数式を割り当てるためには、&lsquo;<samp><span class="samp">:=</span></samp>&rsquo;に続けて、直接フィールドに書
+き込みます。たとえば、&lsquo;<samp><span class="samp">:=vsum(@II..III)</span></samp>&rsquo;のようにします。カーソルがフィール
+ドにある状態で、&lt;TAB&gt;や&lt;RET&gt;、もしくは<kbd>C-c C-c</kbd>を押すと、入力した数式はその
+フィールドのための数式として保存され、評価されたのち、フィールドの表示が演算
+結果で置き換わります。
 
-   <p><a name="index-g_t_0023_002bTBLFM-338"></a>Formulas are stored in a special line starting with &lsquo;<samp><span class="samp">#+TBLFM:</span></samp>&rsquo; directly
-below the table.  If you type the equation in the 4th field of the 3rd data
-line in the table, the formula will look like &lsquo;<samp><span class="samp">@3$4=$1+$2</span></samp>&rsquo;.  When
-inserting/deleting/swapping column and rows with the appropriate commands,
-<i>absolute references</i> (but not relative ones) in stored formulas are
-modified in order to still reference the same field.  Of course this is not
-true if you edit the table structure with normal editing commands&mdash;then you
-must fix the equations yourself.  Instead of typing an equation into the
-field, you may also use the following command
+   <p><a name="index-g_t_0023_002bTBLFM-338"></a>数式はテーブルの下にある&lsquo;<samp><span class="samp">#+TBLFM:</span></samp>&rsquo;で始まる特別な行に保存されます。テーブルの
+中で第三行目の4番目のフィールドで数式を入力すると、この数式は&lsquo;<samp><span class="samp">@3$4=$1+$2</span></samp>&rsquo;の
+ように記述されます。適当なコマンドで列と行の挿入／消去／入れ替えを行なうとき
+、保存された数式の中の<i>絶対参照</i>（相対参照では関係ありません）は、同一のフィー
+ルドを参照するために変更されます。もちろん通常の編集コマンドを用いてテーブル
+の構造を編集するときは正しくありません。したがって、マニュアルで数式を補正し
+なければなりません。フィールドに数式を記入する代わりに、次のコマンドも使用で
+きます。
 
      
 <a name="index-C_002du-C_002dc-_003d-339"></a>
 <a name="index-org_002dtable_002deval_002dformula-340"></a>
-<dl><dt><kbd>C-u C-c = &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-table-eval-formula</code><kbd>)</kbd><dd> Install a new formula for the
-current field.  The command prompts for a formula with default taken from
-the &lsquo;<samp><span class="samp">#+TBLFM:</span></samp>&rsquo; line, applies it to the current field, and stores it. 
+<dl><dt><kbd>C-u C-c = &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-table-eval-formula</code><kbd>)</kbd><dd>
+現在のフィールドに新しい数式をインストールします。このコマンドは、
+&lsquo;<samp><span class="samp">#+TBLFM:</span></samp>&rsquo;行から選ばれたデフォルトの数式を表示し、現在のフィールドに適
+用して、さらに保存します。
 </dl>
 
-   <p>The left-hand side of a formula can also be a special expression in order to
-assign the formula to a number of different fields.  There is no keyboard
-shortcut to enter such range formulas.  To add them, use the formula editor
-(see <a href="#Editing-and-debugging-formulas">Editing and debugging formulas</a>) or edit the <code>#+TBLFM:</code> line
-directly.
+   <p>数式に異なるフィールドの数値を割り当てるために、等式の左側は特別表現を指定で
+きます。範囲数式を入力するショートカットはありません。これを入力するには、数
+式エディタ（see <a href="#Editing-and-debugging-formulas">Editing and debugging formulas</a>）を用いるか、<code>#+TBLFM:</code>行に直接
+記述します。
 
      <dl>
-<dt><code>$2=</code><dd>Column formula, valid for the entire column.  This is so common that Org
-treats these formulas in a special way, see <a href="#Column-formulas">Column formulas</a>. 
-<br><dt><code>@3=</code><dd>Row formula, applies to all fields in the specified row.  <code>@L=</code> means
-the last row. 
-<br><dt><code>@1$2..@4$3=</code><dd>Range formula, applies to all fields in the given rectangular range.  This
-can also be used to assign a formula to some but not all fields in a row. 
-<br><dt><code>$name=</code><dd>Named field, see <a href="#Advanced-features">Advanced features</a>. 
+<dt><code>$2=</code><dd>列の数式、列の全体に対して有効。よく利用されるため、org-modeはこれらの
+数式を特別な方法で扱います。<a href="#Column-formulas">Column formulas</a>.を参照してください。
+<br><dt><code>@3=</code><dd>行の数式、特定な行の全てのフィールドに適用する。<code>@L=</code>は最終行を意味す
+る。
+<br><dt><code>@1$2..@4$3=</code><dd>範囲数式、与えられた矩形領域の全てのフィールドに適用する。これはある行
+の全てのフィールドではなく一部に対して数式を割り当てることにも利用できます。
+<br><dt><code>$name=</code><dd>名前付きフィールド（<a href="#Advanced-features">Advanced features</a>を参照）
 </dl>
 
 <div class="node">
@@ -11086,38 +11075,39 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Working-With-Source-Code">Working With
 
 <h3 class="section">14.4 Extracting source code</h3>
 
-<p><a name="index-tangling-1713"></a><a name="index-source-code_002c-extracting-1714"></a><a name="index-code-block_002c-extracting-source-code-1715"></a>
-Creating pure source code files by extracting code from source blocks is
-referred to as &ldquo;tangling&rdquo;&mdash;a term adopted from the literate programming
-community.  During &ldquo;tangling&rdquo; of code blocks their bodies are expanded
-using <code>org-babel-expand-src-block</code> which can expand both variable and
-&ldquo;noweb&rdquo; style references (see <a href="#Noweb-reference-syntax">Noweb reference syntax</a>).
+<p><a name="index-tangling-1713"></a><a name="index-g_t_00e6_008a_00bd_00e5_0087_00ba_00e3_0080_0081_00e3_0082_00bd_00e3_0083_00bc_00e3_0082_00b9_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089-1714"></a><a name="index-g_t_00e3_0082_00bd_00e3_0083_00bc_00e3_0082_00b9_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e6_008a_00bd_00e5_0087_00ba_00e3_0080_0081_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089_00e3_0083_0096_00e3_0083_00ad_00e3_0083_0083_00e3_0082_00af-1715"></a>
+ソースブロックからコードを抽出して純粋なソースコードファイルを作成することを
+、&ldquo;tangling&rdquo;といいます。この用語は文芸的プログラミングコミュニティで使われ
+ている専門用語です。コードブロックを&ldquo;tangling&rdquo;する時に、変数と&ldquo;noweb&rdquo;ス
+タイルの参照点(<a href="#Noweb-reference-syntax">Noweb reference syntax</a>を参照)を展開できる
+<code>org-babel-expand-src-block</code>を使ってコード本文を展開します。
 
 <h5 class="subsubheading">Header arguments</h5>
 
      <dl>
-<dt><code>:tangle no</code><dd>The default.  The code block is not included in the tangled output. 
-<br><dt><code>:tangle yes</code><dd>Include the code block in the tangled output. The output file name is the
-name of the org file with the extension &lsquo;<samp><span class="samp">.org</span></samp>&rsquo; replaced by the
-extension for the block language. 
-<br><dt><code>:tangle filename</code><dd>Include the code block in the tangled output to file &lsquo;<samp><span class="samp">filename</span></samp>&rsquo;. 
+<dt><code>:tangle no</code><dd>デフォルトの設定です。コードブロックはtangleされたアウトプットには含ま
+れません。
+<br><dt><code>:tangle yes</code><dd>tangleされたアウトプットにコードブロックを含むように設定します。アウト
+プットされるファイル名は、orgファイルの拡張子&lsquo;<samp><span class="samp">.org</span></samp>&rsquo;をブロックに記述し
+た言語の拡張子名に置換したものです。
+<br><dt><code>:tangle filename</code><dd>&lsquo;<samp><span class="samp">filename</span></samp>&rsquo;に出力するアウトプットにコードブロックを含ませます。
 </dl>
 
    <p><a name="index-C_002dc-C_002dv-t-1716"></a>
 
-<h5 class="subsubheading">Functions</h5>
+<h5 class="subsubheading">関数</h5>
 
      <dl>
-<dt><code>org-babel-tangle</code><dd>Tangle the current file.  Bound to <kbd>C-c C-v t</kbd>. 
-<br><dt><code>org-babel-tangle-file</code><dd>Choose a file to tangle.  Bound to <kbd>C-c C-v f</kbd>. 
+<dt><code>org-babel-tangle</code><dd>現在のファイルをtangleします。キーバインドは<kbd>C-c C-v t</kbd>です。
+<br><dt><code>org-babel-tangle-file</code><dd>tangleするファイルを選びます。キーバインドは<kbd>C-c C-v f</kbd>です。
 </dl>
 
 <h5 class="subsubheading">Hooks</h5>
 
      <dl>
-<dt><code>org-babel-post-tangle-hook</code><dd>This hook is run from within code files tangled by <code>org-babel-tangle</code>. 
-Example applications could include post-processing, compilation or
-evaluation of tangled code files. 
+<dt><code>org-babel-post-tangle-hook</code><dd>このhook関数は関数<code>org-babel-tangle</code>によってtangleされたコードファイル
+の中から呼び出されます。実例応用ではtangleされたコードファイルの後処理
+、編集や評価を含むことができます。
 </dl>
 
 <div class="node">
@@ -11131,53 +11121,52 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Working-With-Source-Code">Working With
 
 <h3 class="section">14.5 Evaluating code blocks</h3>
 
-<p><a name="index-code-block_002c-evaluating-1717"></a><a name="index-source-code_002c-evaluating-1718"></a>
-Code blocks can be evaluated<a rel="footnote" href="#fn-130" name="fnd-130"><sup>130</sup></a> and the results placed in the
-Org-mode buffer.  By default, evaluation is only turned on for
-<code>emacs-lisp</code> code blocks, however support exists for evaluating blocks
-in many languages.  See <a href="#Languages">Languages</a> for a list of supported languages. 
-See <a href="#Structure-of-code-blocks">Structure of code blocks</a> for information on the syntax used to
-define a code block.
+<p><a name="index-g_t_00e8_00a9_0095_00e4_00be_00a1_00e3_0080_0081_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089_00e3_0083_0096_00e3_0083_00ad_00e3_0083_0083_00e3_0082_00af-1717"></a><a name="index-g_t_00e8_00a9_0095_00e4_00be_00a1_00e3_0080_0081_00e3_0082_00bd_00e3_0083_00bc_00e3_0082_00b9_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089-1718"></a>
+コードブロックを評価し<a rel="footnote" href="#fn-130" name="fnd-130"><sup>130</sup></a>、その結果をOrg-modeバッファに表示することが可能です。デフォルトでは、
+<code>emacs-lisp</code>コードブロックだけを評価しますが、多くの言語を評価できます。サポ
+ートされている言語のリストは、<a href="#Languages">Languages</a>で見ることができます。コードブロッ
+クを定義する構文について<a href="#Structure-of-code-blocks">Structure of code blocks</a>を参照してください。
 
-   <p><a name="index-C_002dc-C_002dc-1719"></a>There are a number of ways to evaluate code blocks.  The simplest is to
-press <kbd>C-c C-c</kbd> or <kbd>C-c C-v e</kbd> with the point on a code
-block<a rel="footnote" href="#fn-131" name="fnd-131"><sup>131</sup></a>.  This
-will call the <code>org-babel-execute-src-block</code> function to evaluate the
-block and insert its results into the Org-mode buffer.
+   <p><a name="index-C_002dc-C_002dc-1719"></a>コードブロックを評価する方法は多くあります。一番簡単な方法は、コードブロック
+<a rel="footnote" href="#fn-131" name="fnd-131"><sup>131</sup></a>にて<kbd>C-c C-c</kbd>もしくは<kbd>C-c C-v e</kbd>を
+と入力することです。これが関数<code>org-babel-execute-src-block</code>をコール、コード
+ブロックを評価し、その結果をOrg-modeバッファに挿入します。
 
-   <p>It is also possible to evaluate named code blocks from anywhere in an
-Org-mode buffer or an Org-mode table.  <code>#+call</code> (or synonymously
-<code>#+function</code> or <code>#+lob</code>) lines can be used to remotely execute
-code blocks located in the current Org-mode buffer or in the &ldquo;Library of
-Babel&rdquo; (see <a href="#Library-of-Babel">Library of Babel</a>).  These lines use the following syntax.
+   <p>Org-modeバッファもしくはOrg-modeテーブル内のどこからでも、名前付きコードブロ
+ックを評価できます。現在のOrg-modeバッファや&ldquo;Library
+of Babel&rdquo;(<a href="#Library-of-Babel">Library of Babel</a>にあるコードブロックを間接的に実行するには、
+<code>#+call</code>行
+(もしくは同義語として<code>#+function</code>行や<code>#+lob</code>行)が使えます。これらは、以下の
+構文を使います。
 
 <pre class="example">     #+call: &lt;name&gt;(&lt;arguments&gt;) &lt;header arguments&gt;
      #+function: &lt;name&gt;(&lt;arguments&gt;) &lt;header arguments&gt;
      #+lob: &lt;name&gt;(&lt;arguments&gt;) &lt;header arguments&gt;
 </pre>
      <dl>
-<dt><code>&lt;name&gt;</code><dd>The name of the code block to be evaluated. 
-<br><dt><code>&lt;arguments&gt;</code><dd>Arguments specified in this section will be passed to the code block.  These
-arguments should relate to <code>:var</code> header arguments in the called code
-block expressed using standard function call syntax.  For example if the
-original code block named <code>double</code> has the header argument <code>:var n=2</code>, then the call line passing the number four to that block would be
-written as <code>#+call: double(n=2)</code>. 
-<br><dt><code>&lt;header arguments&gt;</code><dd>Header arguments can be placed after the function invocation.  See
-<a href="#Header-arguments">Header arguments</a> for more information on header arguments. 
+<dt><code>&lt;name&gt;</code><dd>評価されるコードブロックの名前です。
+<br><dt><code>&lt;arguments&gt;</code><dd>このセクションで説明されている引数をコードブロックへと渡します。通常の
+関数コールの構文を使ってコールされたコードブロックにおいて、これらの引
+数は<code>:var</code>というヘッダー引数と関連付けられています。例えば、<code>double</code>と
+名付けられたもともとのコードブロックがヘッダー引数<code>:var n=2</code>を持つ場合
+、上記call行により数値の4をブロックに渡すには<code>#+call: double(n=2)</code>と書
+かれます。英文にてtypo?:number four-&gt;number two:"then the call line
+passing the number four to that block would be written as <code>#+call: double(n=2)</code>." 
+<br><dt><code>&lt;header arguments&gt;</code><dd>関数を起動した後の、ヘッダー引数を指定できます。ヘッダー引数の(更なる
+情報|詳細)については<a href="#Header-arguments">Header arguments</a>を参照してください。
 </dl>
 
-   <p>All header arguments placed in the <code>&lt;header arguments&gt;</code> section
-described above will be applied to the evaluation of the <code>#+call:</code>
-line, however it is sometimes desirable to specify header arguments to be
-passed to the code block being evaluated.
+   <p>上の<code>&lt;header arguments&gt;</code>セクションに記述された全てのヘッダー引数は<code>#+call:</code>
+行の評価に適用されます。しかし、評価されているコードブロックに渡すヘッダー引
+数を指定することが望ましいときもあります。
 
-   <p>This is possible through the use of the following optional extended syntax.
+   <p>以下に示ように、オプションを拡張した構文も使えます。
 
 <pre class="example">     #+call: &lt;name&gt;[&lt;block header arguments&gt;](&lt;arguments&gt;) &lt;header arguments&gt;
 </pre>
-   <p>Any header argument placed between the square brackets in the <code>&lt;block header arguments&gt;</code> section will be applied to the evaluation of the named
-code block.  For more examples of passing header arguments to <code>#+call:</code>
-lines see <a href="#Header-arguments-in-function-calls">Header arguments in function calls</a>.
+   <p><code>&lt;block header arguments&gt;</code>セクション内の角括弧([])の間にあるヘッダー引数は、
+名前付きコードブロックの評価に適用されます。<code>#+call:</code>行へヘッダー引数を渡す
+例の更なる紹介は、<a href="#Header-arguments-in-function-calls">Header arguments in function calls</a>をご覧ください。
 
 <div class="node">
 <a name="Library-of-Babel"></a>
@@ -11190,18 +11179,22 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Working-With-Source-Code">Working With
 
 <h3 class="section">14.6 Library of Babel</h3>
 
-<p><a name="index-babel_002c-library-of-1720"></a><a name="index-source-code_002c-library-1721"></a><a name="index-code-block_002c-library-1722"></a>
-The &ldquo;Library of Babel&rdquo; is a library of code blocks that can be called from
-any Org-mode file.  The library is housed in an Org-mode file located in the
-&lsquo;<samp><span class="samp">contrib</span></samp>&rsquo; directory of Org-mode.  Org-mode users can deposit functions
-they believe to be generally useful in the library.
+<p><a name="index-g_t_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_0096_00e3_0083_00a9_00e3_0083_00aa_00e3_0080_0081babel-1720"></a><a name="index-g_t_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_0096_00e3_0083_00a9_00e3_0083_00aa_00e3_0080_0081_00e3_0082_00bd_00e3_0083_00bc_00e3_0082_00b9_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089-1721"></a><a name="index-g_t_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_0096_00e3_0083_00a9_00e3_0083_00aa_00e3_0080_0081_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089_00e3_0083_0096_00e3_0083_00ad_00e3_0083_0083_00e3_0082_00af-1722"></a>
+&ldquo;Library of Babel&rdquo; はOrg-modeのファイルから呼び出せるコードブロックのライ
+ブラリです。
+ライブラリは、Org-modeの&lsquo;<samp><span class="samp">contrib</span></samp>&rsquo;ディレクトリのOrg-modeファイルに格納されて
+います。Org-modeのユーザーは、一般的に有用だと考えられる関数を、ライブラリ内
+に置くことができます。
 
-   <p>Code blocks defined in the &ldquo;Library of Babel&rdquo; can be called remotely as if
-they were in the current Org-mode buffer (see <a href="#Evaluating-code-blocks">Evaluating code blocks</a>
-for information on the syntax of remote code block evaluation).
+   <p>&ldquo;Library of
+Babel&rdquo;で定義されたコードブロックは、あたかも現在のOrg-modeバッファで処理さ
+れるかのように、リモートで呼び出せます(callできます)。(リモートでコードブロ
+ックを評価する構文についての情報は、<a href="#Evaluating-code-blocks">Evaluating code blocks</a>を参照してくださ
+い。)
 
-   <p><a name="index-C_002dc-C_002dv-i-1723"></a>Code blocks located in any Org-mode file can be loaded into the &ldquo;Library of
-Babel&rdquo; with the <code>org-babel-lob-ingest</code> function, bound to <kbd>C-c C-v i</kbd>.
+   <p><a name="index-C_002dc-C_002dv-i-1723"></a>どんなOrg-modeファイルに記述されたコードブロックでも、&ldquo;Library of
+Babel&rdquo;の関数<code>org-babel-lob-ingest</code>を使って、ロードできます。キーバインドは
+<kbd>C-c C-v i</kbd>です。
 
 <div class="node">
 <a name="Languages"></a>
@@ -14698,12 +14691,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <ul class="index-cp" compact>
 <li><a href="#index-g_t_0023_002bARCHIVE-982">#+ARCHIVE</a>: <a href="#Moving-subtrees">Moving subtrees</a></li>
 <li><a href="#index-g_t_0023_002bATTR_005fDOCBOOK-1592">#+ATTR_DOCBOOK</a>: <a href="#Images-in-DocBook-export">Images in DocBook export</a></li>
-<li><a href="#index-g_t_0023_002bATTR_005fHTML-1492">#+ATTR_HTML</a>: <a href="#Links-in-HTML-export">Links in HTML export</a></li>
-<li><a href="#index-g_t_0023_002bATTR_005fHTML-1496">#+ATTR_HTML</a>: <a href="#Tables-in-HTML-export">Tables in HTML export</a></li>
 <li><a href="#index-g_t_0023_002bATTR_005fHTML-1501">#+ATTR_HTML</a>: <a href="#Images-in-HTML-export">Images in HTML export</a></li>
-<li><a href="#index-g_t_0023_002bATTR_005fLaTeX-1556">#+ATTR_LaTeX</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
-<li><a href="#index-g_t_0023_002bATTR_005fLaTeX-1564">#+ATTR_LaTeX</a>: <a href="#Images-in-LaTeX-export">Images in LaTeX export</a></li>
+<li><a href="#index-g_t_0023_002bATTR_005fHTML-1496">#+ATTR_HTML</a>: <a href="#Tables-in-HTML-export">Tables in HTML export</a></li>
+<li><a href="#index-g_t_0023_002bATTR_005fHTML-1492">#+ATTR_HTML</a>: <a href="#Links-in-HTML-export">Links in HTML export</a></li>
 <li><a href="#index-g_t_0023_002bATTR_005fLaTeX-1559">#+ATTR_LaTeX</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
+<li><a href="#index-g_t_0023_002bATTR_005fLaTeX-1564">#+ATTR_LaTeX</a>: <a href="#Images-in-LaTeX-export">Images in LaTeX export</a></li>
+<li><a href="#index-g_t_0023_002bATTR_005fLaTeX-1556">#+ATTR_LaTeX</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
 <li><a href="#index-g_t_0023_002bAUTHOR-1409">#+AUTHOR</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bBEGIN_002c-clocktable-868">#+BEGIN, clocktable</a>: <a href="#The-clock-table">The clock table</a></li>
 <li><a href="#index-g_t_0023_002bBEGIN_002c-columnview-727">#+BEGIN, columnview</a>: <a href="#g_t_00e3_0082_00ab_00e3_0083_00a9_00e3_0083_00a0_00e8_00a1_00a8_00e7_00a4_00ba_00e3_0081_00ae_00e4_00bf_009d_00e5_00ad_0098">カラム表示の保存</a></li>
@@ -14712,19 +14705,19 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_0023_002bBEGIN_005fCOMMENT-1350">#+BEGIN_COMMENT</a>: <a href="#g_t_00e3_0082_00b3_00e3_0083_00a1_00e3_0083_00b3_00e3_0083_0088_00e8_00a1_008c">コメント行</a></li>
 <li><a href="#index-g_t_0023_002bBEGIN_005fDOCBOOK-1584">#+BEGIN_DOCBOOK</a>: <a href="#Quoting-DocBook-code">Quoting DocBook code</a></li>
 <li><a href="#index-g_t_0023_002bBEGIN_005fEXAMPLE-1358">#+BEGIN_EXAMPLE</a>: <a href="#Literal-examples">Literal examples</a></li>
-<li><a href="#index-g_t_0023_002bBEGIN_005fHTML-1488">#+BEGIN_HTML</a>: <a href="#Quoting-HTML-tags">Quoting HTML tags</a></li>
+<li><a href="#index-g_t_0023_002bBEGIN_005fHTML-1487">#+BEGIN_HTML</a>: <a href="#Quoting-HTML-tags">Quoting HTML tags</a></li>
 <li><a href="#index-g_t_0023_002bBEGIN_005fLaTeX-1552">#+BEGIN_LaTeX</a>: <a href="#Quoting-LaTeX-code">Quoting LaTeX code</a></li>
 <li><a href="#index-g_t_0023_002bBEGIN_005fQUOTE-1337">#+BEGIN_QUOTE</a>: <a href="#Paragraphs">Paragraphs</a></li>
 <li><a href="#index-g_t_0023_002bBEGIN_005fSRC-1360">#+BEGIN_SRC</a>: <a href="#Literal-examples">Literal examples</a></li>
 <li><a href="#index-g_t_0023_002bBEGIN_005fVERSE-1336">#+BEGIN_VERSE</a>: <a href="#Paragraphs">Paragraphs</a></li>
 <li><a href="#index-g_t_0023_002bBIND-1417">#+BIND</a>: <a href="#Export-options">Export options</a></li>
+<li><a href="#index-g_t_0023_002bCAPTION-1562">#+CAPTION</a>: <a href="#Images-in-LaTeX-export">Images in LaTeX export</a></li>
+<li><a href="#index-g_t_0023_002bCAPTION-1590">#+CAPTION</a>: <a href="#Images-in-DocBook-export">Images in DocBook export</a></li>
+<li><a href="#index-g_t_0023_002bCAPTION-1554">#+CAPTION</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
 <li><a href="#index-g_t_0023_002bCAPTION-1500">#+CAPTION</a>: <a href="#Images-in-HTML-export">Images in HTML export</a></li>
 <li><a href="#index-g_t_0023_002bCAPTION-1353">#+CAPTION</a>: <a href="#Images-and-tables">Images and tables</a></li>
-<li><a href="#index-g_t_0023_002bCAPTION-1562">#+CAPTION</a>: <a href="#Images-in-LaTeX-export">Images in LaTeX export</a></li>
-<li><a href="#index-g_t_0023_002bCAPTION-1554">#+CAPTION</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
-<li><a href="#index-g_t_0023_002bCAPTION-1590">#+CAPTION</a>: <a href="#Images-in-DocBook-export">Images in DocBook export</a></li>
-<li><a href="#index-g_t_0023_002bCAPTION-1495">#+CAPTION</a>: <a href="#Tables-in-HTML-export">Tables in HTML export</a></li>
 <li><a href="#index-g_t_0023_002bCAPTION-1557">#+CAPTION</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
+<li><a href="#index-g_t_0023_002bCAPTION-1495">#+CAPTION</a>: <a href="#Tables-in-HTML-export">Tables in HTML export</a></li>
 <li><a href="#index-g_t_0023_002bCATEGORY-1085">#+CATEGORY</a>: <a href="#Categories">Categories</a></li>
 <li><a href="#index-g_t_0023_002bCOLUMNS-695">#+COLUMNS</a>: <a href="#Scope-of-column-definitions">Scope of column definitions</a></li>
 <li><a href="#index-g_t_0023_002bCONSTANTS-317">#+CONSTANTS</a>: <a href="#References">References</a></li>
@@ -14740,17 +14733,16 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_0023_002bINCLUDE-1365">#+INCLUDE</a>: <a href="#Include-files">Include files</a></li>
 <li><a href="#index-g_t_0023_002bINFOJS_005fOPT-1516">#+INFOJS_OPT</a>: <a href="#JavaScript-support">JavaScript support</a></li>
 <li><a href="#index-g_t_0023_002bKEYWORDS-1413">#+KEYWORDS</a>: <a href="#Export-options">Export options</a></li>
-<li><a href="#index-g_t_0023_002bLABEL-1591">#+LABEL</a>: <a href="#Images-in-DocBook-export">Images in DocBook export</a></li>
-<li><a href="#index-g_t_0023_002bLABEL-1555">#+LABEL</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
-<li><a href="#index-g_t_0023_002bLABEL-1354">#+LABEL</a>: <a href="#Images-and-tables">Images and tables</a></li>
 <li><a href="#index-g_t_0023_002bLABEL-1558">#+LABEL</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
+<li><a href="#index-g_t_0023_002bLABEL-1354">#+LABEL</a>: <a href="#Images-and-tables">Images and tables</a></li>
 <li><a href="#index-g_t_0023_002bLABEL-1563">#+LABEL</a>: <a href="#Images-in-LaTeX-export">Images in LaTeX export</a></li>
+<li><a href="#index-g_t_0023_002bLABEL-1591">#+LABEL</a>: <a href="#Images-in-DocBook-export">Images in DocBook export</a></li>
 <li><a href="#index-g_t_0023_002bLANGUAGE-1414">#+LANGUAGE</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bLaTeX-1550">#+LaTeX</a>: <a href="#Quoting-LaTeX-code">Quoting LaTeX code</a></li>
 <li><a href="#index-g_t_0023_002bLATEX_005fCLASS-1546">#+LATEX_CLASS</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
 <li><a href="#index-g_t_0023_002bLATEX_005fCLASS_005fOPTIONS-1547">#+LATEX_CLASS_OPTIONS</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
-<li><a href="#index-g_t_0023_002bLATEX_005fHEADER-1545">#+LATEX_HEADER</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
 <li><a href="#index-g_t_0023_002bLATEX_005fHEADER-1423">#+LATEX_HEADER</a>: <a href="#Export-options">Export options</a></li>
+<li><a href="#index-g_t_0023_002bLATEX_005fHEADER-1545">#+LATEX_HEADER</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
 <li><a href="#index-g_t_0023_002bLINK-486">#+LINK</a>: <a href="#Link-abbreviations">Link abbreviations</a></li>
 <li><a href="#index-g_t_0023_002bLINK_005fHOME-1419">#+LINK_HOME</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bLINK_005fUP-1418">#+LINK_UP</a>: <a href="#Export-options">Export options</a></li>
@@ -14770,8 +14762,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_0023_002bTAGS-619">#+TAGS</a>: <a href="#Setting-tags">Setting tags</a></li>
 <li><a href="#index-g_t_0023_002bTBLFM-338">#+TBLFM</a>: <a href="#Field-and-range-formulas">Field and range formulas</a></li>
 <li><a href="#index-g_t_0023_002bTBLNAME-326">#+TBLNAME</a>: <a href="#References">References</a></li>
-<li><a href="#index-g_t_0023_002bTEXT-1415">#+TEXT</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bTEXT-1332">#+TEXT</a>: <a href="#Initial-text">Initial text</a></li>
+<li><a href="#index-g_t_0023_002bTEXT-1415">#+TEXT</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bTITLE-1408">#+TITLE</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bTITLE-1324">#+TITLE</a>: <a href="#Document-title">Document title</a></li>
 <li><a href="#index-g_t_0023_002bTODO-527">#+TODO</a>: <a href="#Per_002dfile-keywords">Per-file keywords</a></li>
@@ -14802,7 +14794,6 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-attachments-915">attachments</a>: <a href="#Attachments">Attachments</a></li>
 <li><a href="#index-autoload-9">autoload</a>: <a href="#Activation">Activation</a></li>
 <li><a href="#index-babel_002c-languages-1724">babel, languages</a>: <a href="#Languages">Languages</a></li>
-<li><a href="#index-babel_002c-library-of-1720">babel, library of</a>: <a href="#Library-of-Babel">Library of Babel</a></li>
 <li><a href="#index-Baur_002c-Steven-L_002e-1901">Baur, Steven L.</a>: <a href="#Cooperation">Cooperation</a></li>
 <li><a href="#index-BBDB_002c-anniversaries-1033">BBDB, anniversaries</a>: <a href="#Weekly_002fdaily-agenda">Weekly/daily agenda</a></li>
 <li><a href="#index-BBDB_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af-424">BBDBリンク</a>: <a href="#External-links">External links</a></li>
@@ -14811,8 +14802,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-blocks_002c-folding-214">blocks, folding</a>: <a href="#Blocks">Blocks</a></li>
 <li><a href="#index-Boolean-logic_002c-for-tag_002fproperty-searches-1060">Boolean logic, for tag/property searches</a>: <a href="#Matching-tags-and-properties">Matching tags and properties</a></li>
 <li><a href="#index-C_002dc-C_002dc_00e3_0080_0081_00e6_00a6_0082_00e8_00a6_00b3-1867">C-c C-c、概観</a>: <a href="#The-very-busy-C_002dc-C_002dc-key">The very busy C-c C-c key</a></li>
-<li><a href="#index-g_t_0040file_007bcalc_007d-package-302"><samp><span class="file">calc</span></samp> package</a>: <a href="#The-spreadsheet">The spreadsheet</a></li>
 <li><a href="#index-g_t_0040file_007bcalc_002eel_007d-1878"><samp><span class="file">calc.el</span></samp></a>: <a href="#Cooperation">Cooperation</a></li>
+<li><a href="#index-g_t_0040file_007bcalc_007d_00e3_0083_0091_00e3_0083_0083_00e3_0082_00b1_00e3_0083_00bc_00e3_0082_00b8-302"><samp><span class="file">calc</span></samp>パッケージ</a>: <a href="#The-spreadsheet">The spreadsheet</a></li>
 <li><a href="#index-calendar-commands_002c-from-agenda-1268">calendar commands, from agenda</a>: <a href="#Agenda-commands">Agenda commands</a></li>
 <li><a href="#index-category-1084">category</a>: <a href="#Categories">Categories</a></li>
 <li><a href="#index-category_002c-require-for-tags_002fproperty-match-1064">category, require for tags/property match</a>: <a href="#Matching-tags-and-properties">Matching tags and properties</a></li>
@@ -14824,24 +14815,19 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-checkboxes-and-TODO-dependencies-547">checkboxes and TODO dependencies</a>: <a href="#TODO-dependencies">TODO dependencies</a></li>
 <li><a href="#index-children_002c-subtree-visibility-state-37">children, subtree visibility state</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-code-block_002c-batch-execution-1760">code block, batch execution</a>: <a href="#g_t_00e3_0083_0090_00e3_0083_0083_00e3_0083_0081_00e5_0087_00a6_00e7_0090_0086">バッチ処理</a></li>
-<li><a href="#index-code-block_002c-evaluating-1717">code block, evaluating</a>: <a href="#Evaluating-code-blocks">Evaluating code blocks</a></li>
-<li><a href="#index-code-block_002c-extracting-source-code-1715">code block, extracting source code</a>: <a href="#Extracting-source-code">Extracting source code</a></li>
 <li><a href="#index-code-block_002c-header-arguments-1727">code block, header arguments</a>: <a href="#Header-arguments">Header arguments</a></li>
 <li><a href="#index-code-block_002c-key-bindings-1737">code block, key bindings</a>: <a href="#Key-bindings-and-useful-functions">Key bindings and useful functions</a></li>
 <li><a href="#index-code-block_002c-languages-1726">code block, languages</a>: <a href="#Languages">Languages</a></li>
-<li><a href="#index-code-block_002c-library-1722">code block, library</a>: <a href="#Library-of-Babel">Library of Babel</a></li>
 <li><a href="#index-code-block_002c-noweb-reference-1734">code block, noweb reference</a>: <a href="#Noweb-reference-syntax">Noweb reference syntax</a></li>
 <li><a href="#index-code-block_002c-results-of-evaluation-1732">code block, results of evaluation</a>: <a href="#Results-of-evaluation">Results of evaluation</a></li>
 <li><a href="#index-column-formula-341">column formula</a>: <a href="#Column-formulas">Column formulas</a></li>
 <li><a href="#index-column-view_002c-in-agenda-1316">column view, in agenda</a>: <a href="#Agenda-column-view">Agenda column view</a></li>
-<li><a href="#index-column_002c-of-field-coordinates-312">column, of field coordinates</a>: <a href="#References">References</a></li>
 <li><a href="#index-commands_002c-in-agenda-buffer-1095">commands, in agenda buffer</a>: <a href="#Agenda-commands">Agenda commands</a></li>
 <li><a href="#index-g_t_0040file_007bconstants_002eel_007d-1880"><samp><span class="file">constants.el</span></samp></a>: <a href="#Cooperation">Cooperation</a></li>
 <li><a href="#index-g_t_0040code_007bcontent_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-61"><code>content</code>, STARTUPキーワード</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-g_t_0040code_007bcontent_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1802"><code>content</code>, STARTUPキーワード</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-contents_002c-global-visibility-state-46">contents, global visibility state</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-context_002dsensitive-commands_002c-hooks-1917">context-sensitive commands, hooks</a>: <a href="#Context_002dsensitive-commands">Context-sensitive commands</a></li>
-<li><a href="#index-coordinates_002c-of-field-310">coordinates, of field</a>: <a href="#References">References</a></li>
 <li><a href="#index-copying_002c-of-subtrees-91">copying, of subtrees</a>: <a href="#Structure-editing">Structure editing</a></li>
 <li><a href="#index-CSS_00e3_0080_0081HTML_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088_00e3_0081_00ab_00e9_0096_00a2_00e3_0081_0099_00e3_0082_008b-1505">CSS、HTMLエクスポートに関する</a>: <a href="#CSS-support">CSS support</a></li>
 <li><a href="#index-g_t_0040file_007bCUA_002eel_007d-1904"><samp><span class="file">CUA.el</span></samp></a>: <a href="#Conflicts">Conflicts</a></li>
@@ -14879,9 +14865,6 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-Eric-Schulte-1703">Eric Schulte</a>: <a href="#Working-With-Source-Code">Working With Source Code</a></li>
 <li><a href="#index-external-archiving-975">external archiving</a>: <a href="#Moving-subtrees">Moving subtrees</a></li>
 <li><a href="#index-FAQ-4">FAQ</a>: <a href="#Summary">Summary</a></li>
-<li><a href="#index-field-coordinates-309">field coordinates</a>: <a href="#References">References</a></li>
-<li><a href="#index-field-formula-334">field formula</a>: <a href="#Field-and-range-formulas">Field and range formulas</a></li>
-<li><a href="#index-field-references-304">field references</a>: <a href="#References">References</a></li>
 <li><a href="#index-files_002c-selecting-for-publishing-1640">files, selecting for publishing</a>: <a href="#Selecting-files">Selecting files</a></li>
 <li><a href="#index-filtering_002c-by-tag-and-effort_002c-in-agenda-1178">filtering, by tag and effort, in agenda</a>: <a href="#Agenda-commands">Agenda commands</a></li>
 <li><a href="#index-g_t_0040code_007bfnadjust_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1856"><code>fnadjust</code>, STARTUPキーワード</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
@@ -14895,14 +14878,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-folding_002c-sparse-trees-147">folding, sparse trees</a>: <a href="#Sparse-trees">Sparse trees</a></li>
 <li><a href="#index-g_t_0040file_007bfootnote_002eel_007d-1340"><samp><span class="file">footnote.el</span></samp></a>: <a href="#Footnote-markup">Footnote markup</a></li>
 <li><a href="#index-g_t_0040file_007bfootnote_002eel_007d-1900"><samp><span class="file">footnote.el</span></samp></a>: <a href="#Cooperation">Cooperation</a></li>
-<li><a href="#index-footnotes-1435">footnotes</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-footnotes-217">footnotes</a>: <a href="#Footnotes">Footnotes</a></li>
-<li><a href="#index-format-specifier-330">format specifier</a>: <a href="#Formula-syntax-for-Calc">Formula syntax for Calc</a></li>
+<li><a href="#index-footnotes-1435">footnotes</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-formula-debugging-391">formula debugging</a>: <a href="#Editing-and-debugging-formulas">Editing and debugging formulas</a></li>
 <li><a href="#index-formula-editing-345">formula editing</a>: <a href="#Editing-and-debugging-formulas">Editing and debugging formulas</a></li>
-<li><a href="#index-formula-syntax_002c-Calc-327">formula syntax, Calc</a>: <a href="#Formula-syntax-for-Calc">Formula syntax for Calc</a></li>
-<li><a href="#index-formula_002c-for-individual-table-field-336">formula, for individual table field</a>: <a href="#Field-and-range-formulas">Field and range formulas</a></li>
-<li><a href="#index-formula_002c-for-range-of-fields-337">formula, for range of fields</a>: <a href="#Field-and-range-formulas">Field and range formulas</a></li>
 <li><a href="#index-formula_002c-for-table-column-342">formula, for table column</a>: <a href="#Column-formulas">Column formulas</a></li>
 <li><a href="#index-Freemind-export-1606">Freemind export</a>: <a href="#Freemind-export">Freemind export</a></li>
 <li><a href="#index-Gillespie_002c-Dave-1879">Gillespie, Dave</a>: <a href="#Cooperation">Cooperation</a></li>
@@ -14936,8 +14915,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-index_002c-in-a-publishing-project-1691">index, in a publishing project</a>: <a href="#Generating-an-index">Generating an index</a></li>
 <li><a href="#index-Info_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af-434">Infoリンク</a>: <a href="#External-links">External links</a></li>
 <li><a href="#index-inheritance_002c-of-tags-603">inheritance, of tags</a>: <a href="#Tag-inheritance">Tag inheritance</a></li>
-<li><a href="#index-g_t_0040code_007binlineimages_007d_002c-STARTUP-keyword-470"><code>inlineimages</code>, STARTUP keyword</a>: <a href="#Handling-links">Handling links</a></li>
 <li><a href="#index-g_t_0040code_007binlineimages_007d_002c-STARTUP-keyword-1812"><code>inlineimages</code>, STARTUP keyword</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
+<li><a href="#index-g_t_0040code_007binlineimages_007d_002c-STARTUP-keyword-470"><code>inlineimages</code>, STARTUP keyword</a>: <a href="#Handling-links">Handling links</a></li>
 <li><a href="#index-inlining-images-in-DocBook-1588">inlining images in DocBook</a>: <a href="#Images-in-DocBook-export">Images in DocBook export</a></li>
 <li><a href="#index-iPhone-1971">iPhone</a>: <a href="#MobileOrg">MobileOrg</a></li>
 <li><a href="#index-IRC_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af-425">IRCリンク</a>: <a href="#External-links">External links</a></li>
@@ -14956,10 +14935,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_0040LaTeX_007b_007d_00e3_0082_00af_00e3_0083_00a9_00e3_0082_00b9-1536">LaTeXクラス</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
 <li><a href="#index-Latin_002d1_00e3_0081_00a7_00e3_0081_00ae_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088-1452">Latin-1でのエクスポート</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
 <li><a href="#index-level_002c-require-for-tags_002fproperty-match-1063">level, require for tags/property match</a>: <a href="#Matching-tags-and-properties">Matching tags and properties</a></li>
-<li><a href="#index-links_002c-external-422">links, external</a>: <a href="#External-links">External links</a></li>
+<li><a href="#index-links_002c-external-420">links, external</a>: <a href="#External-links">External links</a></li>
 <li><a href="#index-links_002c-internal-414">links, internal</a>: <a href="#Internal-links">Internal links</a></li>
 <li><a href="#index-links_002c-publishing-1689">links, publishing</a>: <a href="#Publishing-links">Publishing links</a></li>
-<li><a href="#index-Lisp-forms_002c-as-table-formulas-333">Lisp forms, as table formulas</a>: <a href="#Formula-syntax-for-Lisp">Formula syntax for Lisp</a></li>
+<li><a href="#index-Lisp_00e5_00bd_00a2_00e5_00bc_008f_00ef_00bc_0088_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e3_0081_00ae_00e6_0095_00b0_00e5_00bc_008f_00e3_0081_00a8_00e3_0081_0097_00e3_0081_00a6_00ef_00bc_0089-333">Lisp形式（テーブルの数式として）</a>: <a href="#Formula-syntax-for-Lisp">Formula syntax for Lisp</a></li>
 <li><a href="#index-lists_002c-in-other-modes-1921">lists, in other modes</a>: <a href="#Tables-in-arbitrary-syntax">Tables in arbitrary syntax</a></li>
 <li><a href="#index-lists_002c-ordered-170">lists, ordered</a>: <a href="#Plain-lists">Plain lists</a></li>
 <li><a href="#index-lists_002c-plain-169">lists, plain</a>: <a href="#Plain-lists">Plain lists</a></li>
@@ -14976,17 +14955,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-mind-map-1607">mind map</a>: <a href="#Freemind-export">Freemind export</a></li>
 <li><a href="#index-minor-mode-for-structure-editing-228">minor mode for structure editing</a>: <a href="#Orgstruct-mode">Orgstruct mode</a></li>
 <li><a href="#index-MobileOrg-1972">MobileOrg</a>: <a href="#MobileOrg">MobileOrg</a></li>
-<li><a href="#index-mode_002c-for-_0040file_007bcalc_007d-331">mode, for <samp><span class="file">calc</span></samp></a>: <a href="#Formula-syntax-for-Calc">Formula syntax for Calc</a></li>
 <li><a href="#index-motion-commands-in-agenda-1096">motion commands in agenda</a>: <a href="#Agenda-commands">Agenda commands</a></li>
 <li><a href="#index-motion_002c-between-headlines-67">motion, between headlines</a>: <a href="#Motion">Motion</a></li>
-<li><a href="#index-named-references-313">named references</a>: <a href="#References">References</a></li>
 <li><a href="#index-narrow-columns-in-tables-294">narrow columns in tables</a>: <a href="#Column-width-and-alignment">Column width and alignment</a></li>
 <li><a href="#index-g_t_0040code_007bnofnadjust_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1857"><code>nofnadjust</code>, STARTUPキーワード</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-g_t_0040code_007bnofninline_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1850"><code>nofninline</code>, STARTUPキーワード</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-g_t_0040code_007bnohideblocks_007d_002c-STARTUP-keyword-216"><code>nohideblocks</code>, STARTUP keyword</a>: <a href="#Blocks">Blocks</a></li>
 <li><a href="#index-g_t_0040code_007bnohideblocks_007d_002c-STARTUP-keyword-1860"><code>nohideblocks</code>, STARTUP keyword</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
-<li><a href="#index-g_t_0040code_007bnoinlineimages_007d_002c-STARTUP-keyword-1813"><code>noinlineimages</code>, STARTUP keyword</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-g_t_0040code_007bnoinlineimages_007d_002c-STARTUP-keyword-471"><code>noinlineimages</code>, STARTUP keyword</a>: <a href="#Handling-links">Handling links</a></li>
+<li><a href="#index-g_t_0040code_007bnoinlineimages_007d_002c-STARTUP-keyword-1813"><code>noinlineimages</code>, STARTUP keyword</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-occur_002c-command-148">occur, command</a>: <a href="#Sparse-trees">Sparse trees</a></li>
 <li><a href="#index-options_002c-for-custom-agenda-views-1301">options, for custom agenda views</a>: <a href="#Setting-Options">Setting Options</a></li>
 <li><a href="#index-options_002c-for-publishing-1642">options, for publishing</a>: <a href="#Publishing-options">Publishing options</a></li>
@@ -15008,8 +14985,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_0040code_007boverview_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-60"><code>overview</code>, STARTUPキーワード</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-g_t_0040code_007boverview_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1801"><code>overview</code>, STARTUPキーワード</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-pasting_002c-of-subtrees-89">pasting, of subtrees</a>: <a href="#Structure-editing">Structure editing</a></li>
-<li><a href="#index-PDF_00e5_0087_00ba_00e5_008a_009b-1520">PDF出力</a>: <a href="#LaTeX-and-PDF-export">LaTeX and PDF export</a></li>
 <li><a href="#index-PDF_00e5_0087_00ba_00e5_008a_009b-1568">PDF出力</a>: <a href="#DocBook-export">DocBook export</a></li>
+<li><a href="#index-PDF_00e5_0087_00ba_00e5_008a_009b-1520">PDF出力</a>: <a href="#LaTeX-and-PDF-export">LaTeX and PDF export</a></li>
 <li><a href="#index-plain-lists-168">plain lists</a>: <a href="#Plain-lists">Plain lists</a></li>
 <li><a href="#index-plot-tables-using-Gnuplot-408">plot tables using Gnuplot</a>: <a href="#Org_002dPlot">Org-Plot</a></li>
 <li><a href="#index-presentation_002c-of-agenda-items-1081">presentation, of agenda items</a>: <a href="#Presentation-and-sorting">Presentation and sorting</a></li>
@@ -15024,12 +15001,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-properties-635">properties</a>: <a href="#Properties-and-Columns">Properties and Columns</a></li>
 <li><a href="#index-property_002c-ATTACH_005fDIR-944">property, ATTACH_DIR</a>: <a href="#Attachments">Attachments</a></li>
 <li><a href="#index-property_002c-ATTACH_005fDIR_005fINHERIT-947">property, ATTACH_DIR_INHERIT</a>: <a href="#Attachments">Attachments</a></li>
-<li><a href="#index-property_002c-CUSTOM_005fID-416">property, CUSTOM_ID</a>: <a href="#Internal-links">Internal links</a></li>
 <li><a href="#index-property_002c-CUSTOM_005fID-443">property, CUSTOM_ID</a>: <a href="#Handling-links">Handling links</a></li>
+<li><a href="#index-property_002c-CUSTOM_005fID-416">property, CUSTOM_ID</a>: <a href="#Internal-links">Internal links</a></li>
 <li><a href="#index-property_002c-DESCRIPTION-1633">property, DESCRIPTION</a>: <a href="#iCalendar_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088">iCalendarエクスポート</a></li>
-<li><a href="#index-property_002c-ID-444">property, ID</a>: <a href="#Handling-links">Handling links</a></li>
 <li><a href="#index-property_002c-ID-728">property, ID</a>: <a href="#g_t_00e3_0082_00ab_00e3_0083_00a9_00e3_0083_00a0_00e8_00a1_00a8_00e7_00a4_00ba_00e3_0081_00ae_00e4_00bf_009d_00e5_00ad_0098">カラム表示の保存</a></li>
 <li><a href="#index-property_002c-ID-1621">property, ID</a>: <a href="#iCalendar_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088">iCalendarエクスポート</a></li>
+<li><a href="#index-property_002c-ID-444">property, ID</a>: <a href="#Handling-links">Handling links</a></li>
 <li><a href="#index-property_002c-LATEX_005fCLASS-1548">property, LATEX_CLASS</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
 <li><a href="#index-property_002c-LATEX_005fCLASS_005fOPTIONS-1549">property, LATEX_CLASS_OPTIONS</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
 <li><a href="#index-property_002c-LOCATION-1634">property, LOCATION</a>: <a href="#iCalendar_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088">iCalendarエクスポート</a></li>
@@ -15041,31 +15018,21 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-query-editing_002c-in-agenda-1181">query editing, in agenda</a>: <a href="#Agenda-commands">Agenda commands</a></li>
 <li><a href="#index-radio-lists-1930">radio lists</a>: <a href="#g_t_00e3_0083_00a9_00e3_0082_00b8_00e3_0082_00aa_00e3_0083_00aa_00e3_0082_00b9_00e3_0083_0088">ラジオリスト</a></li>
 <li><a href="#index-radio-tables-1923">radio tables</a>: <a href="#Radio-tables">Radio tables</a></li>
-<li><a href="#index-range-formula-335">range formula</a>: <a href="#Field-and-range-formulas">Field and range formulas</a></li>
-<li><a href="#index-range-references-307">range references</a>: <a href="#References">References</a></li>
 <li><a href="#index-recomputing-table-fields-393">recomputing table fields</a>: <a href="#Updating-the-table">Updating the table</a></li>
-<li><a href="#index-references-303">references</a>: <a href="#References">References</a></li>
-<li><a href="#index-references_002c-named-314">references, named</a>: <a href="#References">References</a></li>
-<li><a href="#index-references_002c-remote-322">references, remote</a>: <a href="#References">References</a></li>
-<li><a href="#index-references_002c-to-a-different-table-323">references, to a different table</a>: <a href="#References">References</a></li>
-<li><a href="#index-references_002c-to-fields-305">references, to fields</a>: <a href="#References">References</a></li>
-<li><a href="#index-references_002c-to-ranges-308">references, to ranges</a>: <a href="#References">References</a></li>
 <li><a href="#index-refiling-notes-956">refiling notes</a>: <a href="#Refiling-notes">Refiling notes</a></li>
-<li><a href="#index-region_002c-active-280">region, active</a>: <a href="#Built_002din-table-editor">Built-in table editor</a></li>
-<li><a href="#index-region_002c-active-1473">region, active</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
-<li><a href="#index-region_002c-active-142">region, active</a>: <a href="#Structure-editing">Structure editing</a></li>
-<li><a href="#index-region_002c-active-1454">region, active</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
 <li><a href="#index-region_002c-active-1570">region, active</a>: <a href="#DocBook-export-commands">DocBook export commands</a></li>
+<li><a href="#index-region_002c-active-280">region, active</a>: <a href="#Built_002din-table-editor">Built-in table editor</a></li>
+<li><a href="#index-region_002c-active-142">region, active</a>: <a href="#Structure-editing">Structure editing</a></li>
+<li><a href="#index-region_002c-active-1473">region, active</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
+<li><a href="#index-region_002c-active-1454">region, active</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
 <li><a href="#index-region_002c-active-1522">region, active</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
 <li><a href="#index-regular-expressions_002c-with-tags-search-1061">regular expressions, with tags search</a>: <a href="#Matching-tags-and-properties">Matching tags and properties</a></li>
 <li><a href="#index-g_t_0040file_007bremember_002eel_007d-1887"><samp><span class="file">remember.el</span></samp></a>: <a href="#Cooperation">Cooperation</a></li>
 <li><a href="#index-remote-editing_002c-bulk_002c-from-agenda-1259">remote editing, bulk, from agenda</a>: <a href="#Agenda-commands">Agenda commands</a></li>
 <li><a href="#index-remote-editing_002c-from-agenda-1192">remote editing, from agenda</a>: <a href="#Agenda-commands">Agenda commands</a></li>
 <li><a href="#index-remote-editing_002c-undo-1194">remote editing, undo</a>: <a href="#Agenda-commands">Agenda commands</a></li>
-<li><a href="#index-remote-references-321">remote references</a>: <a href="#References">References</a></li>
 <li><a href="#index-RMAIL_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af-429">RMAILリンク</a>: <a href="#External-links">External links</a></li>
 <li><a href="#index-Rose_002c-Sebastian-1515">Rose, Sebastian</a>: <a href="#JavaScript-support">JavaScript support</a></li>
-<li><a href="#index-row_002c-of-field-coordinates-311">row, of field coordinates</a>: <a href="#References">References</a></li>
 <li><a href="#index-RSS_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_0089-948">RSSフィード</a>: <a href="#RSS-Feeds">RSS Feeds</a></li>
 <li><a href="#index-rsync-1692">rsync</a>: <a href="#Uploading-files">Uploading files</a></li>
 <li><a href="#index-SCHEDULED_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-808">SCHEDULEDキーワード</a>: <a href="#Deadlines-and-scheduling">Deadlines and scheduling</a></li>
@@ -15088,10 +15055,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-sorting_002c-of-subtrees-92">sorting, of subtrees</a>: <a href="#Structure-editing">Structure editing</a></li>
 <li><a href="#index-source-code_002c-batch-execution-1761">source code, batch execution</a>: <a href="#g_t_00e3_0083_0090_00e3_0083_0083_00e3_0083_0081_00e5_0087_00a6_00e7_0090_0086">バッチ処理</a></li>
 <li><a href="#index-source-code_002c-block-header-arguments-1728">source code, block header arguments</a>: <a href="#Header-arguments">Header arguments</a></li>
-<li><a href="#index-source-code_002c-evaluating-1718">source code, evaluating</a>: <a href="#Evaluating-code-blocks">Evaluating code blocks</a></li>
-<li><a href="#index-source-code_002c-extracting-1714">source code, extracting</a>: <a href="#Extracting-source-code">Extracting source code</a></li>
 <li><a href="#index-source-code_002c-languages-1725">source code, languages</a>: <a href="#Languages">Languages</a></li>
-<li><a href="#index-source-code_002c-library-1721">source code, library</a>: <a href="#Library-of-Babel">Library of Babel</a></li>
 <li><a href="#index-source-code_002c-noweb-reference-1736">source code, noweb reference</a>: <a href="#Noweb-reference-syntax">Noweb reference syntax</a></li>
 <li><a href="#index-source-code_002c-results-of-evaluation-1733">source code, results of evaluation</a>: <a href="#Results-of-evaluation">Results of evaluation</a></li>
 <li><a href="#index-source-code_002c-working-with-1705">source code, working with</a>: <a href="#Working-With-Source-Code">Working With Source Code</a></li>
@@ -15099,7 +15063,6 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-sparse-trees-145">sparse trees</a>: <a href="#Sparse-trees">Sparse trees</a></li>
 <li><a href="#index-speed-keys-1778">speed keys</a>: <a href="#Speed-keys">Speed keys</a></li>
 <li><a href="#index-g_t_0040file_007bspeedbar_002eel_007d-1889"><samp><span class="file">speedbar.el</span></samp></a>: <a href="#Cooperation">Cooperation</a></li>
-<li><a href="#index-spreadsheet-capabilities-301">spreadsheet capabilities</a>: <a href="#The-spreadsheet">The spreadsheet</a></li>
 <li><a href="#index-STARTUP-keyword_00e3_0080_0081_0040code_007bconstcgs_007d-1844">STARTUP keyword、<code>constcgs</code></a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-STARTUP-keyword_00e3_0080_0081_0040code_007bconstSI_007d-1845">STARTUP keyword、<code>constSI</code></a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-STARTUP-keyword_00e3_0080_0081_0040code_007bcustomtime_007d-1842">STARTUP keyword、<code>customtime</code></a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
@@ -15141,9 +15104,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-subtree_002c-subtree-visibility-state-38">subtree, subtree visibility state</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-subtrees_002c-cut-and-paste-93">subtrees, cut and paste</a>: <a href="#Structure-editing">Structure editing</a></li>
 <li><a href="#index-syntax_002c-noweb-1735">syntax, noweb</a>: <a href="#Noweb-reference-syntax">Noweb reference syntax</a></li>
-<li><a href="#index-syntax_002c-of-formulas-328">syntax, of formulas</a>: <a href="#Formula-syntax-for-Calc">Formula syntax for Calc</a></li>
 <li><a href="#index-table-editor_002c-_0040file_007btable_002eel_007d-1893">table editor, <samp><span class="file">table.el</span></samp></a>: <a href="#Cooperation">Cooperation</a></li>
-<li><a href="#index-g_t_0040file_007btable_002eel_007d-1891"><samp><span class="file">table.el</span></samp></a>: <a href="#Cooperation">Cooperation</a></li>
+<li><a href="#index-g_t_0040file_007btable_002eel_007d-1894"><samp><span class="file">table.el</span></samp></a>: <a href="#Cooperation">Cooperation</a></li>
 <li><a href="#index-tables-229">tables</a>: <a href="#Tables">Tables</a></li>
 <li><a href="#index-tables-1433">tables</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-tables_002c-in-DocBook-export-1586">tables, in DocBook export</a>: <a href="#Tables-in-DocBook-export">Tables in DocBook export</a></li>
@@ -15162,8 +15124,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-text-search-1071">text search</a>: <a href="#Search-view">Search view</a></li>
 <li><a href="#index-g_t_0040TeX_007b_007d_00e3_0081_00ae_00e8_00a7_00a3_00e9_0087_0088-1370">TeXの解釈</a>: <a href="#Embedded-LaTeX">Embedded LaTeX</a></li>
 <li><a href="#index-g_t_0040TeX_007b_007d_00e3_0082_00b7_00e3_0083_00b3_00e3_0083_009c_00e3_0083_00ab_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1769">TeXシンボルの補完</a>: <a href="#Completion">Completion</a></li>
-<li><a href="#index-g_t_0040TeX_007b_007d_00e3_0083_009e_00e3_0082_00af_00e3_0083_00ad-1438">TeXマクロ</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0040TeX_007b_007d_00e3_0083_009e_00e3_0082_00af_00e3_0083_00ad-1374">TeXマクロ</a>: <a href="#Special-symbols">Special symbols</a></li>
+<li><a href="#index-g_t_0040TeX_007b_007d_00e3_0083_009e_00e3_0082_00af_00e3_0083_00ad-1438">TeXマクロ</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-thanks-1977">thanks</a>: <a href="#History-and-Acknowledgments">History and Acknowledgments</a></li>
 <li><a href="#index-time-grid-1088">time grid</a>: <a href="#Time_002dof_002dday-specifications">Time-of-day specifications</a></li>
 <li><a href="#index-time_002dof_002dday-specification-1087">time-of-day specification</a>: <a href="#Time_002dof_002dday-specifications">Time-of-day specifications</a></li>
@@ -15181,10 +15143,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1770">TODOキーワードの補完</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0082_00bb_00e3_0083_0083_00e3_0083_0088-518">TODOキーワードセット</a>: <a href="#Multiple-sets-in-one-file">Multiple sets in one file</a></li>
 <li><a href="#index-TODO_00e3_0083_00af_00e3_0083_00bc_00e3_0082_00af_00e3_0083_0095_00e3_0083_00ad_00e3_0083_00bc-512">TODOワークフロー</a>: <a href="#Workflow-states">Workflow states</a></li>
+<li><a href="#index-transient_002dmark_002dmode-1572">transient-mark-mode</a>: <a href="#DocBook-export-commands">DocBook export commands</a></li>
 <li><a href="#index-transient_002dmark_002dmode-1475">transient-mark-mode</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
 <li><a href="#index-transient_002dmark_002dmode-1524">transient-mark-mode</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
 <li><a href="#index-transient_002dmark_002dmode-1456">transient-mark-mode</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
-<li><a href="#index-transient_002dmark_002dmode-1572">transient-mark-mode</a>: <a href="#DocBook-export-commands">DocBook export commands</a></li>
 <li><a href="#index-translator-function-1929">translator function</a>: <a href="#Translator-functions">Translator functions</a></li>
 <li><a href="#index-trees_002c-sparse-146">trees, sparse</a>: <a href="#Sparse-trees">Sparse trees</a></li>
 <li><a href="#index-trees_002c-visibility-31">trees, visibility</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
@@ -15195,7 +15157,6 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-URL_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af-426">URLリンク</a>: <a href="#External-links">External links</a></li>
 <li><a href="#index-USENET_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af-432">USENETリンク</a>: <a href="#External-links">External links</a></li>
 <li><a href="#index-UTF_002d8_00e3_0081_00a7_00e3_0081_00ae_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088-1453">UTF-8でのエクスポート</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
-<li><a href="#index-vectors_002c-in-table-calculations-329">vectors, in table calculations</a>: <a href="#Formula-syntax-for-Calc">Formula syntax for Calc</a></li>
 <li><a href="#index-g_t_0040file_007bviper_002eel_007d-1910"><samp><span class="file">viper.el</span></samp></a>: <a href="#Conflicts">Conflicts</a></li>
 <li><a href="#index-visibility-cycling-30">visibility cycling</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-visibility-cycling_002c-drawers-210">visibility cycling, drawers</a>: <a href="#Drawers">Drawers</a></li>
@@ -15210,20 +15171,20 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_00e3_0081_00af_00e3_0081_0098_00e3_0082_0081_00e3_0081_00ab-1">はじめに</a>: <a href="#Introduction">Introduction</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00a6_00e3_0083_0088_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00e3_0082_0092_00e8_00a6_008b_00e3_0082_0084_00e3_0081_0099_00e3_0081_008f_00e3_0081_0099_00e3_0082_008b-1871">アウトラインビューを見やすくする</a>: <a href="#Clean-view">Clean view</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00a7_00e3_0081_00aa_00e3_0081_0084_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097-752">アクティブでないタイムスタンプ</a>: <a href="#Timestamps">Timestamps</a></li>
-<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-1571">アクティブなリージョン</a>: <a href="#DocBook-export-commands">DocBook export commands</a></li>
-<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-1455">アクティブなリージョン</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
-<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-1523">アクティブなリージョン</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
-<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-143">アクティブなリージョン</a>: <a href="#Structure-editing">Structure editing</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-281">アクティブなリージョン</a>: <a href="#Built_002din-table-editor">Built-in table editor</a></li>
+<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-1455">アクティブなリージョン</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
+<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-143">アクティブなリージョン</a>: <a href="#Structure-editing">Structure editing</a></li>
+<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-1523">アクティブなリージョン</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
+<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-1571">アクティブなリージョン</a>: <a href="#DocBook-export-commands">DocBook export commands</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-1474">アクティブなリージョン</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080-1023">アジェンダ</a>: <a href="#Weekly_002fdaily-agenda">Weekly/daily agenda</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0081_00ae_00e3_0082_00b3_00e3_0083_009e_00e3_0083_00b3_00e3_0083_0089_00e3_0082_0092_00e9_0081_00b8_00e6_008a_009e_00e3_0081_0099_00e3_0082_008b-1021">アジェンダのコマンドを選択する</a>: <a href="#Agenda-dispatcher">Agenda dispatcher</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0081_00ae_00e3_0082_00b3_00e3_0083_009e_00e3_0083_00b3_00e3_0083_0089_00e9_0081_00b8_00e6_008a_009e_00e7_0094_00bb_00e9_009d_00a2-1020">アジェンダのコマンド選択画面</a>: <a href="#Agenda-dispatcher">Agenda dispatcher</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc-997">アジェンダビュー</a>: <a href="#Agenda-Views">Agenda Views</a></li>
-<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00e3_0081_00ae_00e5_0087_00ba_00e5_008a_009b-1287">アジェンダビューの出力</a>: <a href="#Agenda-commands">Agenda commands</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00e3_0081_00ae_00e5_0087_00ba_00e5_008a_009b-1307">アジェンダビューの出力</a>: <a href="#Exporting-Agenda-Views">Exporting Agenda Views</a></li>
+<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00e3_0081_00ae_00e5_0087_00ba_00e5_008a_009b-1287">アジェンダビューの出力</a>: <a href="#Agenda-commands">Agenda commands</a></li>
+<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00ef_00bc_0088_00e5_0087_00ba_00e5_008a_009b_00ef_00bc_0089-1308">アジェンダビュー（出力）</a>: <a href="#Exporting-Agenda-Views">Exporting Agenda Views</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00ef_00bc_0088_00e5_0087_00ba_00e5_008a_009b_00ef_00bc_0089-1288">アジェンダビュー（出力）</a>: <a href="#Agenda-commands">Agenda commands</a></li>
-<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00ef_00bc_0088_00e5_0087_00ba_00e5_008a_009b_00ef_00bc_0089-1304">アジェンダビュー（出力）</a>: <a href="#Exporting-Agenda-Views">Exporting Agenda Views</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0095_00e3_0082_00a1_00e3_0082_00a4_00e3_0083_00ab-1000">アジェンダファイル</a>: <a href="#Agenda-files">Agenda files</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e7_0094_00a8_00e3_0081_00ae_00e3_0083_0095_00e3_0082_00a1_00e3_0082_00a4_00e3_0083_00ab-1001">アジェンダ用のファイル</a>: <a href="#Agenda-files">Agenda files</a></li>
 <li><a href="#index-g_t_00e3_0082_00a4_00e3_0083_00b3_00e3_0082_00b9_00e3_0083_0088_00e3_0083_00bc_00e3_0083_00ab-6">インストール</a>: <a href="#Installation">Installation</a></li>
@@ -15235,9 +15196,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088_00e3_0081_00ae_00e3_0082_00aa_00e3_0083_0097_00e3_0082_00b7_00e3_0083_00a7_00e3_0083_00b3-1404">エクスポートのオプション</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088_00e4_00b8_00ad_00e3_0081_00ae_00e3_0083_009e_00e3_0082_00af_00e3_0083_00ad_00e3_0081_00ab_00e3_0082_0088_00e3_0082_008b_00e7_00bd_00ae_00e3_0081_008d_00e6_008f_009b_00e3_0081_0088-1368">エクスポート中のマクロによる置き換え</a>: <a href="#Macro-replacement">Macro replacement</a></li>
 <li><a href="#index-g_t_00e3_0082_00a8_00e3_0083_00a9_00e3_0083_00bc_00e3_0081_00ae_00e3_0083_0090_00e3_0083_0083_00e3_0082_00af_00e3_0083_0088_00e3_0083_00ac_00e3_0083_00bc_00e3_0082_00b9-18">エラーのバックトレース</a>: <a href="#Feedback">Feedback</a></li>
-<li><a href="#index-g_t_00e3_0082_00aa_00e3_0083_0097_00e3_0082_00b7_00e3_0083_00a7_00e3_0083_00b3_00e3_0081_00ae_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1405">オプションのキーワードの補完</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_00e3_0082_00aa_00e3_0083_0097_00e3_0082_00b7_00e3_0083_00a7_00e3_0083_00b3_00e3_0081_00ae_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-530">オプションのキーワードの補完</a>: <a href="#Per_002dfile-keywords">Per-file keywords</a></li>
 <li><a href="#index-g_t_00e3_0082_00aa_00e3_0083_0097_00e3_0082_00b7_00e3_0083_00a7_00e3_0083_00b3_00e3_0081_00ae_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1765">オプションのキーワードの補完</a>: <a href="#Completion">Completion</a></li>
+<li><a href="#index-g_t_00e3_0082_00aa_00e3_0083_0097_00e3_0082_00b7_00e3_0083_00a7_00e3_0083_00b3_00e3_0081_00ae_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1405">オプションのキーワードの補完</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_00e3_0082_00aa_00e3_0083_0097_00e3_0082_00b7_00e3_0083_00a7_00e3_0083_00b3_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1772">オプションキーワードの補完</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-g_t_00e3_0082_00ab_00e3_0082_00a6_00e3_0083_00b3_00e3_0083_0088_00e3_0083_0080_00e3_0082_00a6_00e3_0083_00b3_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_009e-894">カウントダウンタイマ</a>: <a href="#g_t_00e3_0082_00ab_00e3_0082_00a6_00e3_0083_00b3_00e3_0083_0088_00e3_0083_0080_00e3_0082_00a6_00e3_0083_00b3_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_009e">カウントダウンタイマ</a></li>
 <li><a href="#index-g_t_00e3_0082_00ab_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_009e_00e3_0082_00a4_00e3_0082_00ba-1784">カスタマイズ</a>: <a href="#Customization">Customization</a></li>
@@ -15261,13 +15222,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089_00e3_0083_0096_00e3_0083_00ad_00e3_0083_0083_00e3_0082_00af_00e3_0080_0081_00e6_00a7_008b_00e9_0080_00a0-1706">コードブロック、構造</a>: <a href="#Structure-of-code-blocks">Structure of code blocks</a></li>
 <li><a href="#index-g_t_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089_00e3_0083_0096_00e3_0083_00ad_00e3_0083_0083_00e3_0082_00af_00e3_0080_0081_00e7_00b7_00a8_00e9_009b_0086-1708">コードブロック、編集</a>: <a href="#Editing-source-code">Editing source code</a></li>
 <li><a href="#index-g_t_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e3_0081_00ae_00e3_0083_00aa_00e3_0083_0095_00e3_0082_00a1_00e3_0083_00ac_00e3_0083_00b3_00e3_0082_00b9_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1357">コードラインのリファレンス、マークアップのルール</a>: <a href="#Literal-examples">Literal examples</a></li>
+<li><a href="#index-g_t_00e3_0082_00b7_00e3_0083_00b3_00e3_0082_00bf_00e3_0083_0083_00e3_0082_00af_00e3_0082_00b9_00ef_00bc_0088_00e6_0095_00b0_00e5_00bc_008f_00ef_00bc_0089-328">シンタックス（数式）</a>: <a href="#Formula-syntax-for-Calc">Formula syntax for Calc</a></li>
 <li><a href="#index-g_t_00e3_0082_00b9_00e3_0082_00b1_00e3_0082_00b8_00e3_0083_00a5_00e3_0083_00bc_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00b0-746">スケジューリング</a>: <a href="#Timestamps">Timestamps</a></li>
 <li><a href="#index-g_t_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1788">スペシャルキーワード</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-g_t_00e3_0082_00bd_00e3_0083_00bc_00e3_0082_00b9_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088-1712">ソースコード、エクスポート</a>: <a href="#Exporting-code-blocks">Exporting code blocks</a></li>
 <li><a href="#index-g_t_00e3_0082_00bd_00e3_0083_00bc_00e3_0082_00b9_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_00e3_0083_0096_00e3_0083_00ad_00e3_0083_0083_00e3_0082_00af_00e6_00a7_008b_00e9_0080_00a0-1707">ソースコード、ブロック構造</a>: <a href="#Structure-of-code-blocks">Structure of code blocks</a></li>
 <li><a href="#index-g_t_00e3_0082_00bd_00e3_0083_00bc_00e3_0082_00b9_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089_00e3_0080_0081_00e7_00b7_00a8_00e9_009b_0086-1709">ソースコード、編集</a>: <a href="#Editing-source-code">Editing source code</a></li>
 <li><a href="#index-g_t_00e3_0082_00bd_00e3_0083_00bc_00e3_0082_00b9_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e3_0083_0095_00e3_0082_00a9_00e3_0083_00bc_00e3_0083_009e_00e3_0083_0083_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1359">ソースコードのフォーマット、マークアップのルール</a>: <a href="#Literal-examples">Literal examples</a></li>
-<li><a href="#index-g_t_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097-747">タイムスタンプ</a>: <a href="#Timestamps">Timestamps</a></li>
+<li><a href="#index-g_t_00e3_0082_00bd_00e3_0083_00bc_00e3_0082_00b9_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e6_008a_00bd_00e5_0087_00ba_00e3_0080_0081_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089_00e3_0083_0096_00e3_0083_00ad_00e3_0083_0083_00e3_0082_00af-1715">ソースコードの抽出、コードブロック</a>: <a href="#Extracting-source-code">Extracting source code</a></li>
 <li><a href="#index-g_t_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097-740">タイムスタンプ</a>: <a href="#Date-and-Times">Date and Times</a></li>
 <li><a href="#index-g_t_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097-742">タイムスタンプ</a>: <a href="#Timestamps">Timestamps</a></li>
 <li><a href="#index-g_t_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097_00e3_0080_0081_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00a7_00e3_0081_00aa_00e3_0081_0084-751">タイムスタンプ、アクティブでない</a>: <a href="#Timestamps">Timestamps</a></li>
@@ -15279,7 +15241,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_00e3_0082_00bf_00e3_0083_00bc_00e3_0082_00b2_00e3_0083_0083_00e3_0083_0088_002c_00e3_0083_00a9_00e3_0082_00b8_00e3_0082_00aa-418">ターゲット,ラジオ</a>: <a href="#Radio-targets">Radio targets</a></li>
 <li><a href="#index-g_t_00e3_0082_00bf_00e3_0083_00bc_00e3_0082_00b2_00e3_0083_0083_00e3_0083_0088_002c_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae-415">ターゲット,リンクの</a>: <a href="#Internal-links">Internal links</a></li>
 <li><a href="#index-g_t_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0082_00a8_00e3_0083_00aa_00e3_0082_00a2_00e3_0080_0081HTML_00e3_0081_00ae_00e4_00b8_00ad_00e3_0081_00ae-1504">テキストエリア、HTMLの中の</a>: <a href="#Text-areas-in-HTML-export">Text areas in HTML export</a></li>
-<li><a href="#index-g_t_00e3_0083_0086_00e3_0083_00b3_00e3_0083_0097_00e3_0083_00ac_00e3_0083_00bc_00e3_0083_0088_00e3_0081_00ae_00e6_008c_00bf_00e5_0085_00a5-1776">テンプレートの挿入</a>: <a href="#Easy-Templates">Easy Templates</a></li>
+<li><a href="#index-g_t_00e3_0083_0086_00e3_0083_00b3_00e3_0083_0097_00e3_0083_00ac_00e3_0083_00bc_00e3_0083_0088_00e3_0081_00ae_00e6_008c_00bf_00e5_0085_00a5-1777">テンプレートの挿入</a>: <a href="#Easy-Templates">Easy Templates</a></li>
 <li><a href="#index-g_t_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e3_0080_0081HTML_00e3_0081_00ae-1493">テーブル、HTMLの</a>: <a href="#Tables-in-HTML-export">Tables in HTML export</a></li>
 <li><a href="#index-g_t_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e3_0081_00ae_00e3_0083_009e_00e3_0082_00a4_00e3_0083_008a_00e3_0083_00bc_00e3_0083_00a2_00e3_0083_00bc_00e3_0083_0089-299">テーブルのマイナーモード</a>: <a href="#Orgtbl-mode">Orgtbl mode</a></li>
 <li><a href="#index-g_t_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e3_0081_00ae_00e4_00b8_00ad_00e3_0081_00a7_00e3_0081_00ae_00e8_00a8_0088_00e7_00ae_0097-279">テーブルの中での計算</a>: <a href="#Built_002din-table-editor">Built-in table editor</a></li>
@@ -15298,15 +15260,19 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_00e3_0083_0095_00e3_0082_00a1_00e3_0082_00a4_00e3_0083_00ab_00e5_0090_008d_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-453">ファイル名の補完</a>: <a href="#Handling-links">Handling links</a></li>
 <li><a href="#index-g_t_00e3_0083_0095_00e3_0082_00a1_00e3_0082_00a4_00e3_0083_00ab_00e6_00af_008e_00e3_0081_00ae_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-526">ファイル毎のキーワード</a>: <a href="#Per_002dfile-keywords">Per-file keywords</a></li>
 <li><a href="#index-g_t_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_0089_00e3_0083_0090_00e3_0083_0083_00e3_0082_00af-14">フィードバック</a>: <a href="#Feedback">Feedback</a></li>
+<li><a href="#index-g_t_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00e3_0081_00ae_00e5_008f_0082_00e7_0085_00a7-304">フィールドの参照</a>: <a href="#References">References</a></li>
+<li><a href="#index-g_t_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00e3_0081_00ae_00e5_00ba_00a7_00e6_00a8_0099-309">フィールドの座標</a>: <a href="#References">References</a></li>
+<li><a href="#index-g_t_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00e3_0081_00ae_00e6_0095_00b0_00e5_00bc_008f-334">フィールドの数式</a>: <a href="#Field-and-range-formulas">Field and range formulas</a></li>
 <li><a href="#index-g_t_00e3_0083_0095_00e3_0082_00a9_00e3_0083_00bc_00e3_0083_009e_00e3_0083_0083_00e3_0083_0088_002c_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae-412">フォーマット,リンクの</a>: <a href="#Link-format">Link format</a></li>
+<li><a href="#index-g_t_00e3_0083_0095_00e3_0082_00a9_00e3_0083_00bc_00e3_0083_009e_00e3_0083_0083_00e3_0083_0088_00e6_008c_0087_00e5_00ae_009a-330">フォーマット指定</a>: <a href="#Formula-syntax-for-Calc">Formula syntax for Calc</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ac_00e3_0083_00bc_00e3_0083_00b3_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e5_00a4_0096_00e9_0083_00a8_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af-437">プレーンテキスト外部リンク</a>: <a href="#External-links">External links</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_003aCLOCK_005fMODELINE_005fTOTAL-835">プロパティ:CLOCK_MODELINE_TOTAL</a>: <a href="#Clocking-commands">Clocking commands</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_003aLAST_005fREPEAT-836">プロパティ:LAST_REPEAT</a>: <a href="#Clocking-commands">Clocking commands</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_005fALL-638">プロパティ、_ALL</a>: <a href="#Property-syntax">Property syntax</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fFILE_005fNAME-1527">プロパティ、EXPORT_FILE_NAME</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
-<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fFILE_005fNAME-1478">プロパティ、EXPORT_FILE_NAME</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fFILE_005fNAME-1575">プロパティ、EXPORT_FILE_NAME</a>: <a href="#DocBook-export-commands">DocBook export commands</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fFILE_005fNAME-1459">プロパティ、EXPORT_FILE_NAME</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fFILE_005fNAME-1478">プロパティ、EXPORT_FILE_NAME</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fTITLE-1325">プロパティ、EXPORT_TITLE</a>: <a href="#Document-title">Document title</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00ab_00e3_0083_00a9_00e3_0083_00a0_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc-694">プロパティ、カラムビュー</a>: <a href="#Defining-columns">Defining columns</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab-660">プロパティ、スペシャル</a>: <a href="#Special-properties">Special properties</a></li>
@@ -15326,22 +15292,29 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e5_00b7_00a5_00e6_0095_00b0-874">プロパティ、工数</a>: <a href="#Effort-estimates">Effort estimates</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e6_00a4_009c_00e7_00b4_00a2-675">プロパティ、検索</a>: <a href="#Property-searches">Property searches</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e7_00b6_0099_00e6_0089_00bf-686">プロパティ、継承</a>: <a href="#Property-inheritance">Property inheritance</a></li>
-<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0081_00ae_00e3_0081_009f_00e3_0082_0081_00e3_0081_00aeAPI-1947">プロパティのためのAPI</a>: <a href="#Using-the-property-API">Using the property API</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0081_00ae_00e3_0081_009f_00e3_0082_0081_00e3_0081_00aeAPI-737">プロパティのためのAPI</a>: <a href="#Property-API">Property API</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0081_00ae_00e3_0081_009f_00e3_0082_0081_00e3_0081_00aeAPI-1947">プロパティのためのAPI</a>: <a href="#Using-the-property-API">Using the property API</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0082_00b7_00e3_0083_00b3_00e3_0082_00bf_00e3_0083_0083_00e3_0082_00af_00e3_0082_00b9-636">プロパティシンタックス</a>: <a href="#Property-syntax">Property syntax</a></li>
-<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088API_00ef_00bc_0089-736">プロパティ（API）</a>: <a href="#Property-API">Property API</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088API_00ef_00bc_0089-1948">プロパティ（API）</a>: <a href="#Using-the-property-API">Using the property API</a></li>
-<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088ARCHIVE_00ef_00bc_0089-983">プロパティ（ARCHIVE）</a>: <a href="#Moving-subtrees">Moving subtrees</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088API_00ef_00bc_0089-736">プロパティ（API）</a>: <a href="#Property-API">Property API</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088ARCHIVE_00ef_00bc_0089-691">プロパティ（ARCHIVE）</a>: <a href="#Property-inheritance">Property inheritance</a></li>
-<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088CATEGORY_00ef_00bc_0089-690">プロパティ（CATEGORY）</a>: <a href="#Property-inheritance">Property inheritance</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088ARCHIVE_00ef_00bc_0089-983">プロパティ（ARCHIVE）</a>: <a href="#Moving-subtrees">Moving subtrees</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088CATEGORY_00ef_00bc_0089-1086">プロパティ（CATEGORY）</a>: <a href="#Categories">Categories</a></li>
-<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088COLUMNS_00ef_00bc_0089-1790">プロパティ（COLUMNS）</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088CATEGORY_00ef_00bc_0089-690">プロパティ（CATEGORY）</a>: <a href="#Property-inheritance">Property inheritance</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088COLUMNS_00ef_00bc_0089-689">プロパティ（COLUMNS）</a>: <a href="#Property-inheritance">Property inheritance</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088COLUMNS_00ef_00bc_0089-1790">プロパティ（COLUMNS）</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
+<li><a href="#index-g_t_00e3_0083_0099_00e3_0082_00af_00e3_0083_0088_00e3_0083_00ab_00ef_00bc_0088_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e3_0081_00a7_00e3_0081_00ae_00e8_00a8_0088_00e7_00ae_0097_00ef_00bc_0089-329">ベクトル（テーブルでの計算）</a>: <a href="#Formula-syntax-for-Calc">Formula syntax for Calc</a></li>
 <li><a href="#index-g_t_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00b0-474">マークリング</a>: <a href="#Handling-links">Handling links</a></li>
 <li><a href="#index-g_t_00e3_0083_00a1_00e3_0083_00b3_00e3_0083_0086_00e3_0083_008a_00e3_0083_00bc-16">メンテナー</a>: <a href="#Feedback">Feedback</a></li>
+<li><a href="#index-g_t_00e3_0083_00a2_00e3_0083_00bc_00e3_0083_0089_00ef_00bc_0088_0040file_007bCalc_007d_00ef_00bc_0089-331">モード（<samp><span class="file">Calc</span></samp>）</a>: <a href="#Formula-syntax-for-Calc">Formula syntax for Calc</a></li>
+<li><a href="#index-g_t_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_0096_00e3_0083_00a9_00e3_0083_00aa_00e3_0080_0081babel-1720">ライブラリ、babel</a>: <a href="#Library-of-Babel">Library of Babel</a></li>
+<li><a href="#index-g_t_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_0096_00e3_0083_00a9_00e3_0083_00aa_00e3_0080_0081_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089_00e3_0083_0096_00e3_0083_00ad_00e3_0083_0083_00e3_0082_00af-1722">ライブラリ、コードブロック</a>: <a href="#Library-of-Babel">Library of Babel</a></li>
+<li><a href="#index-g_t_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_0096_00e3_0083_00a9_00e3_0083_00aa_00e3_0080_0081_00e3_0082_00bd_00e3_0083_00bc_00e3_0082_00b9_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089-1721">ライブラリ、ソースコード</a>: <a href="#Library-of-Babel">Library of Babel</a></li>
 <li><a href="#index-g_t_00e3_0083_00a9_00e3_0082_00b8_00e3_0082_00aa_00e3_0082_00bf_00e3_0083_00bc_00e3_0082_00b2_00e3_0083_0083_00e3_0083_0088-417">ラジオターゲット</a>: <a href="#Radio-targets">Radio targets</a></li>
 <li><a href="#index-g_t_00e3_0083_00aa_00e3_0082_00b9_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1334">リスト、マークアップのルール</a>: <a href="#Lists">Lists</a></li>
 <li><a href="#index-g_t_00e3_0083_00aa_00e3_0083_0086_00e3_0083_00a9_00e3_0083_00ab_00e3_0081_00ae_00e4_00be_008b_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1356">リテラルの例、マークアップのルール</a>: <a href="#Literal-examples">Literal examples</a></li>
+<li><a href="#index-g_t_00e3_0083_00aa_00e3_0083_0095_00e3_0082_00a1_00e3_0083_00ac_00e3_0083_00b3_00e3_0082_00b9-303">リファレンス</a>: <a href="#References">References</a></li>
+<li><a href="#index-g_t_00e3_0083_00aa_00e3_0083_00a2_00e3_0083_00bc_00e3_0083_0088_00e5_008f_0082_00e7_0085_00a7-321">リモート参照</a>: <a href="#References">References</a></li>
 <li><a href="#index-g_t_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_002c_00e3_0083_00a9_00e3_0082_00b8_00e3_0082_00aa_00e3_0082_00bf_00e3_0083_00bc_00e3_0082_00b2_00e3_0083_0083_00e3_0083_0088-419">リンク,ラジオターゲット</a>: <a href="#Radio-targets">Radio targets</a></li>
 <li><a href="#index-g_t_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_002c_00e6_0088_00bb_00e3_0082_008b-477">リンク,戻る</a>: <a href="#Handling-links">Handling links</a></li>
 <li><a href="#index-g_t_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_002c_00e6_0089_00b1_00e3_0081_0084-438">リンク,扱い</a>: <a href="#Handling-links">Handling links</a></li>
@@ -15366,9 +15339,16 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_00e5_0086_0085_00e9_0083_00a8_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af-413">内部リンク</a>: <a href="#Internal-links">Internal links</a></li>
 <li><a href="#index-g_t_00e5_0086_0085_00e9_0083_00a8_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0080_0081_00e5_0087_00ba_00e5_008a_009b_00e3_0081_0099_00e3_0082_008bHTML_00e3_0081_00ae-1490">内部リンク、出力するHTMLの</a>: <a href="#Links-in-HTML-export">Links in HTML export</a></li>
 <li><a href="#index-g_t_00e5_0088_0097_00e3_0081_00ae_00e3_0082_00b0_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_0094_00e3_0083_00b3_00e3_0082_00b0-297">列のグルーピング</a>: <a href="#Column-groups">Column groups</a></li>
+<li><a href="#index-g_t_00e5_0088_0097_00ef_00bc_0088_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00e3_0081_00ae_00e5_00ba_00a7_00e6_00a8_0099_00ef_00bc_0089-312">列（フィールドの座標）</a>: <a href="#References">References</a></li>
 <li><a href="#index-g_t_00e5_008b_0095_00e7_009a_0084_00e3_0081_00aa_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_0087_00e3_0083_00b3_00e3_0083_0088-1869">動的なインデント</a>: <a href="#Clean-view">Clean view</a></li>
+<li><a href="#index-g_t_00e5_008f_0082_00e7_0085_00a7_00ef_00bc_0088_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00ef_00bc_0089-305">参照（フィールド）</a>: <a href="#References">References</a></li>
+<li><a href="#index-g_t_00e5_008f_0082_00e7_0085_00a7_00ef_00bc_0088_00e3_0083_00aa_00e3_0083_00a2_00e3_0083_00bc_00e3_0083_0088_00ef_00bc_0089-322">参照（リモート）</a>: <a href="#References">References</a></li>
+<li><a href="#index-g_t_00e5_008f_0082_00e7_0085_00a7_00ef_00bc_0088_00e5_0090_008d_00e5_0089_008d_00e4_00bb_0098_00e3_0081_008d_00ef_00bc_0089-314">参照（名前付き）</a>: <a href="#References">References</a></li>
+<li><a href="#index-g_t_00e5_008f_0082_00e7_0085_00a7_00ef_00bc_0088_00e7_0095_00b0_00e3_0081_00aa_00e3_0082_008b_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e3_0081_00b8_00ef_00bc_0089-323">参照（異なるテーブルへ）</a>: <a href="#References">References</a></li>
+<li><a href="#index-g_t_00e5_008f_0082_00e7_0085_00a7_00ef_00bc_0088_00e7_00af_0084_00e5_009b_00b2_00e6_008c_0087_00e5_00ae_009a_00ef_00bc_0089-308">参照（範囲指定）</a>: <a href="#References">References</a></li>
 <li><a href="#index-g_t_00e5_008f_0096_00e3_0082_008a_00e6_00b6_0088_00e3_0081_0095_00e3_0082_008c_00e3_0081_009f_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0083_0083_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1346">取り消されたテキスト、マーックアップのルール</a>: <a href="#Emphasis-and-monospace">Emphasis and monospace</a></li>
 <li><a href="#index-g_t_00e5_0090_008d_00e5_0089_008d_00e3_0082_0092TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00a8_00e3_0081_0097_00e3_0081_00a6-516">名前をTODOキーワードとして</a>: <a href="#TODO-types">TODO types</a></li>
+<li><a href="#index-g_t_00e5_0090_008d_00e5_0089_008d_00e4_00bb_0098_00e3_0081_008d_00e5_008f_0082_00e7_0085_00a7-313">名前付き参照</a>: <a href="#References">References</a></li>
 <li><a href="#index-g_t_00e5_0090_008d_00e5_0089_008d_00ef_00bc_0088_00e5_0088_0097_00e3_0082_0084_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00ef_00bc_0089-324">名前（列やフィールド）</a>: <a href="#References">References</a></li>
 <li><a href="#index-g_t_00e5_009b_00ba_00e5_00ae_009a_00e5_00b9_0085_00e3_0081_00ae_00e6_00ae_00b5_00e8_0090_00bd-1432">固定幅の段落</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_00e5_00a4_0096_00e9_0083_00a8_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af-421">外部リンク</a>: <a href="#External-links">External links</a></li>
@@ -15376,25 +15356,29 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_00e5_00a4_00a7_00e6_008b_00ac_00e5_00bc_00a7_002c_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae_00e5_0091_00a8_00e8_00be_00ba-436">大括弧,リンクの周辺</a>: <a href="#External-links">External links</a></li>
 <li><a href="#index-g_t_00e5_00a4_00aa_00e5_00ad_0097_00e3_0081_00ae_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0083_0083_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1342">太字のテキスト、マーックアップのルール</a>: <a href="#Emphasis-and-monospace">Emphasis and monospace</a></li>
 <li><a href="#index-g_t_00e5_00a5_0087_00e6_0095_00b0_00e3_0083_00ac_00e3_0083_0099_00e3_0083_00ab_00e3_0081_00ae_00e3_0081_00bf_00e3_0081_00ae_00e3_0082_00a2_00e3_0082_00a6_00e3_0083_0088_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3-1870">奇数レベルのみのアウトライン</a>: <a href="#Clean-view">Clean view</a></li>
-<li><a href="#index-g_t_00e5_00ae_008c_00e4_00ba_0086_00e3_0080_0081TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae-1763">完了、TODOキーワードの</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-g_t_00e5_00ae_008c_00e4_00ba_0086_00e3_0080_0081TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae-514">完了、TODOキーワードの</a>: <a href="#Workflow-states">Workflow states</a></li>
+<li><a href="#index-g_t_00e5_00ae_008c_00e4_00ba_0086_00e3_0080_0081TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae-1763">完了、TODOキーワードの</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-g_t_00e5_00ae_008c_00e4_00ba_0086_00e3_0080_0081_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00ae-1766">完了、タグの</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-g_t_00e5_00ae_008c_00e4_00ba_0086_00e3_0080_0081_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00ae-614">完了、タグの</a>: <a href="#Setting-tags">Setting tags</a></li>
 <li><a href="#index-g_t_00e5_00b1_009e_00e6_0080_00a7_00e3_0080_0081COOKIE_005fDATA-580">属性、COOKIE_DATA</a>: <a href="#Checkboxes">Checkboxes</a></li>
 <li><a href="#index-g_t_00e5_00b1_009e_00e6_0080_00a7_00e3_0080_0081COOKIE_005fDATA-574">属性、COOKIE_DATA</a>: <a href="#Breaking-down-tasks">Breaking down tasks</a></li>
-<li><a href="#index-g_t_00e5_00b1_009e_00e6_0080_00a7_00e3_0080_0081_00e3_0083_00ad_00e3_0082_00b0_00e3_0082_0092_00e3_0081_00a8_00e3_0082_008b-692">属性、ログをとる</a>: <a href="#Property-inheritance">Property inheritance</a></li>
 <li><a href="#index-g_t_00e5_00b1_009e_00e6_0080_00a7_00e3_0080_0081_00e3_0083_00ad_00e3_0082_00b0_00e3_0082_0092_00e3_0081_00a8_00e3_0082_008b-556">属性、ログをとる</a>: <a href="#Tracking-TODO-state-changes">Tracking TODO state changes</a></li>
+<li><a href="#index-g_t_00e5_00b1_009e_00e6_0080_00a7_00e3_0080_0081_00e3_0083_00ad_00e3_0082_00b0_00e3_0082_0092_00e3_0081_00a8_00e3_0082_008b-692">属性、ログをとる</a>: <a href="#Property-inheritance">Property inheritance</a></li>
+<li><a href="#index-g_t_00e5_00b1_009e_00e6_0080_00a7_00e3_0080_0081_00e4_00b8_00a6_00e3_0081_00b3_00e9_00a0_0086-544">属性、並び順</a>: <a href="#TODO-dependencies">TODO dependencies</a></li>
 <li><a href="#index-g_t_00e5_00b1_009e_00e6_0080_00a7_00e3_0080_0081_00e4_00b8_00a6_00e3_0081_00b3_00e9_00a0_0086-584">属性、並び順</a>: <a href="#Checkboxes">Checkboxes</a></li>
 <li><a href="#index-g_t_00e5_00b1_009e_00e6_0080_00a7_00e3_0080_0081_00e4_00b8_00a6_00e3_0081_00b3_00e9_00a0_0086-540">属性、並び順</a>: <a href="#TODO-dependencies">TODO dependencies</a></li>
-<li><a href="#index-g_t_00e5_00b1_009e_00e6_0080_00a7_00e3_0080_0081_00e4_00b8_00a6_00e3_0081_00b3_00e9_00a0_0086-594">属性、並び順</a>: <a href="#Checkboxes">Checkboxes</a></li>
-<li><a href="#index-g_t_00e5_00b1_009e_00e6_0080_00a7_00e3_0080_0081_00e4_00b8_00a6_00e3_0081_00b3_00e9_00a0_0086-544">属性、並び順</a>: <a href="#TODO-dependencies">TODO dependencies</a></li>
 <li><a href="#index-g_t_00e5_00b7_00a5_00e6_0095_00b0_00e3_0081_00ae_00e8_00a6_008b_00e7_00a9_008d_00e3_0082_0082_00e3_0082_008a-873">工数の見積もり</a>: <a href="#Effort-estimates">Effort estimates</a></li>
+<li><a href="#index-g_t_00e5_00ba_00a7_00e6_00a8_0099_00ef_00bc_0088_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00ef_00bc_0089-310">座標（フィールド）</a>: <a href="#References">References</a></li>
 <li><a href="#index-g_t_00e5_00bc_00b7_00e8_00aa_00bf_00e3_0081_0095_00e3_0082_008c_00e3_0081_009f_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088-1437">強調されたテキスト</a>: <a href="#Export-options">Export options</a></li>
+<li><a href="#index-g_t_00e6_008a_00bd_00e5_0087_00ba_00e3_0080_0081_00e3_0082_00bd_00e3_0083_00bc_00e3_0082_00b9_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089-1714">抽出、ソースコード</a>: <a href="#Extracting-source-code">Extracting source code</a></li>
 <li><a href="#index-g_t_00e6_008a_00bd_00e5_0087_00ba_00e3_0081_0095_00e3_0082_008c_00e3_0081_009f_00e3_0083_0084_00e3_0083_00aa_00e3_0083_00bc_00e3_0080_0081_00e3_0083_0087_00e3_0083_0083_00e3_0083_0089_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e3_0081_00ae_00e3_0081_009f_00e3_0082_0081-820">抽出されたツリー、デッドラインのため</a>: <a href="#Inserting-deadline_002fschedule">Inserting deadline/schedule</a></li>
 <li><a href="#index-g_t_00e6_008b_00a1_00e5_00bc_00b5_00e3_0081_0095_00e3_0082_008c_00e3_0081_009fTODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-510">拡張されたTODOキーワード</a>: <a href="#TODO-extensions">TODO extensions</a></li>
 <li><a href="#index-g_t_00e6_0094_00b9_00e8_00a1_008c_00e3_0081_00ae_00e7_00b6_00ad_00e6_008c_0081-1430">改行の維持</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_00e6_0095_00b0_00e5_00ad_00a6_00e8_00a8_0098_00e5_008f_00b7-1372">数学記号</a>: <a href="#Special-symbols">Special symbols</a></li>
+<li><a href="#index-g_t_00e6_0095_00b0_00e5_00bc_008f_00e3_0081_00ae_00e3_0082_00b7_00e3_0083_00b3_00e3_0082_00bf_00e3_0083_0083_00e3_0082_00af_00e3_0082_00b9_00ef_00bc_0088Calc_00ef_00bc_0089-327">数式のシンタックス（Calc）</a>: <a href="#Formula-syntax-for-Calc">Formula syntax for Calc</a></li>
+<li><a href="#index-g_t_00e6_0095_00b0_00e5_00bc_008f_00ef_00bc_0088_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e3_0081_00ae_00e5_0080_008b_00e3_0080_0085_00e3_0081_00ae_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00ef_00bc_0089-336">数式（テーブルの個々のフィールド）</a>: <a href="#Field-and-range-formulas">Field and range formulas</a></li>
 <li><a href="#index-g_t_00e6_0095_00b0_00e5_00bc_008f_00ef_00bc_0088_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e5_0086_0085_00e9_0083_00a8_00ef_00bc_0089-278">数式（テーブル内部）</a>: <a href="#Built_002din-table-editor">Built-in table editor</a></li>
+<li><a href="#index-g_t_00e6_0095_00b0_00e5_00bc_008f_00ef_00bc_0088_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00e3_0081_00ae_00e7_00af_0084_00e5_009b_00b2_00ef_00bc_0089-337">数式（フィールドの範囲）</a>: <a href="#Field-and-range-formulas">Field and range formulas</a></li>
 <li><a href="#index-g_t_00e6_0096_0087_00e5_00ad_0097_00e9_0080_009a_00e3_0082_008a_00e3_0081_00ae_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0083_0083_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1344">文字通りのテキスト、マーックアップのルール</a>: <a href="#Emphasis-and-monospace">Emphasis and monospace</a></li>
 <li><a href="#index-g_t_00e6_0096_0087_00e6_009b_00b8_00e3_0081_00ae_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_0088_00e3_0083_00ab_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1323">文書のタイトル、マークアップのルール</a>: <a href="#Document-title">Document title</a></li>
 <li><a href="#index-g_t_00e6_0096_009c_00e4_00bd_0093_00e3_0081_00ae_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0083_0083_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1343">斜体のテキスト、マーックアップのルール</a>: <a href="#Emphasis-and-monospace">Emphasis and monospace</a></li>
@@ -15438,12 +15422,16 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_00e7_009c_0081_00e7_0095_00a5_00e8_00a8_0098_00e6_00b3_0095_002c_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae-484">省略記法,リンクの</a>: <a href="#Link-abbreviations">Link abbreviations</a></li>
 <li><a href="#index-g_t_00e7_00a8_00ae_00e9_00a1_009e_00e3_0082_0092TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00a8_00e3_0081_0097_00e3_0081_00a6-517">種類をTODOキーワードとして</a>: <a href="#TODO-types">TODO types</a></li>
 <li><a href="#index-g_t_00e7_00ab_00a0_00e3_0081_00ae_00e7_0095_00aa_00e5_008f_00b7-1428">章の番号</a>: <a href="#Export-options">Export options</a></li>
+<li><a href="#index-g_t_00e7_00af_0084_00e5_009b_00b2_00e3_0081_00ae_00e6_0095_00b0_00e5_00bc_008f-335">範囲の数式</a>: <a href="#Field-and-range-formulas">Field and range formulas</a></li>
+<li><a href="#index-g_t_00e7_00af_0084_00e5_009b_00b2_00e5_008f_0082_00e7_0085_00a7-307">範囲参照</a>: <a href="#References">References</a></li>
 <li><a href="#index-g_t_00e7_00b6_0099_00e6_0089_00bf_00e3_0080_0081_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0081_00ae-687">継承、プロパティの</a>: <a href="#Property-inheritance">Property inheritance</a></li>
 <li><a href="#index-g_t_00e7_00b9_00b0_00e3_0082_008a_00e8_00bf_0094_00e3_0081_0097_00e3_0082_00bf_00e3_0082_00b9_00e3_0082_00af-827">繰り返しタスク</a>: <a href="#Repeated-tasks">Repeated tasks</a></li>
 <li><a href="#index-g_t_00e8_0084_009a_00e6_00b3_00a8_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1339">脚注、マークアップのルール</a>: <a href="#Footnote-markup">Footnote markup</a></li>
 <li><a href="#index-g_t_00e8_0091_0097_00e8_0080_0085-17">著者</a>: <a href="#Feedback">Feedback</a></li>
 <li><a href="#index-g_t_00e8_0091_0097_00e8_0080_0085_00e3_0081_00ae_00e6_0083_0085_00e5_00a0_00b1_00e3_0080_0081_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088_00e3_0081_00ae_00e4_00b8_00ad_00e3_0081_00a7-1440">著者の情報、エクスポートの中で</a>: <a href="#Export-options">Export options</a></li>
+<li><a href="#index-g_t_00e8_00a1_008c_00ef_00bc_0088_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00e3_0081_00ae_00e5_00ba_00a7_00e6_00a8_0099_00ef_00bc_0089-311">行（フィールドの座標）</a>: <a href="#References">References</a></li>
 <li><a href="#index-g_t_00e8_00a1_00a8_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1352">表、マークアップのルール</a>: <a href="#Images-and-tables">Images and tables</a></li>
+<li><a href="#index-g_t_00e8_00a1_00a8_00e8_00a8_0088_00e7_00ae_0097_00e6_00a9_009f_00e8_0083_00bd-301">表計算機能</a>: <a href="#The-spreadsheet">The spreadsheet</a></li>
 <li><a href="#index-g_t_00e8_00a3_009c_00e5_00ae_008c_002c_00e3_0083_0095_00e3_0082_00a1_00e3_0082_00a4_00e3_0083_00ab_00e5_0090_008d_00e3_0081_00ae-454">補完,ファイル名の</a>: <a href="#Handling-links">Handling links</a></li>
 <li><a href="#index-g_t_00e8_00a3_009c_00e5_00ae_008c_002c_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af_00e3_0081_00ae-449">補完,リンクの</a>: <a href="#Handling-links">Handling links</a></li>
 <li><a href="#index-g_t_00e8_00a3_009c_00e5_00ae_008c_00e3_0080_0081_0040TeX_007b_007d_00e3_0081_00ae_00e8_00a8_0098_00e5_008f_00b7-1762">補完、TeXの記号</a>: <a href="#Completion">Completion</a></li>
@@ -15453,11 +15441,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_00e8_00a6_008b_00e5_0087_00ba_00e3_0081_0097_00e3_0080_0081LaTeX_00e3_0083_0095_00e3_0082_00a1_00e3_0082_00a4_00e3_0083_00ab_00e3_0081_00ae_00e3_0081_009f_00e3_0082_0081_00e3_0081_00ae-1539">見出し、LaTeXファイルのための</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
 <li><a href="#index-g_t_00e8_00a6_008b_00e5_0087_00ba_00e3_0081_0097_00e3_0081_00a8_00e3_0082_00bb_00e3_0082_00af_00e3_0082_00b7_00e3_0083_00a7_00e3_0083_00b3_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1326">見出しとセクション、マークアップのルール</a>: <a href="#Headings-and-sections">Headings and sections</a></li>
 <li><a href="#index-g_t_00e8_00a6_008b_00e5_0087_00ba_00e3_0081_0097_00e3_0081_00ae_00e9_009a_008e_00e5_00b1_00a4-1427">見出しの階層</a>: <a href="#Export-options">Export options</a></li>
-<li><a href="#index-g_t_00e8_00a8_0088_00e7_00ae_0097_00e4_00b8_00ad_00e3_0081_00ae_00e5_00ae_009a_00e6_0095_00b0-316">計算中の定数</a>: <a href="#References">References</a></li>
+<li><a href="#index-g_t_00e8_00a8_0088_00e7_00ae_0097_00e4_00b8_00ad_00e3_0081_00ae_00e5_00ae_009a_00e6_0095_00b0-325">計算中の定数</a>: <a href="#References">References</a></li>
+<li><a href="#index-g_t_00e8_00a9_0095_00e4_00be_00a1_00e3_0080_0081_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089_00e3_0083_0096_00e3_0083_00ad_00e3_0083_0083_00e3_0082_00af-1717">評価、コードブロック</a>: <a href="#Evaluating-code-blocks">Evaluating code blocks</a></li>
+<li><a href="#index-g_t_00e8_00a9_0095_00e4_00be_00a1_00e3_0080_0081_00e3_0082_00bd_00e3_0083_00bc_00e3_0082_00b9_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089-1718">評価、ソースコード</a>: <a href="#Evaluating-code-blocks">Evaluating code blocks</a></li>
 <li><a href="#index-g_t_00e8_00be_009e_00e6_009b_00b8_00e5_008d_0098_00e8_00aa_009e_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1771">辞書単語の補完</a>: <a href="#Completion">Completion</a></li>
+<li><a href="#index-g_t_00ef_00bc_0088_00e5_00a4_0096_00e9_0083_00a8_00e5_0087_00ba_00e5_008a_009b_00e3_0081_00ab_00e7_0094_00a8_00e3_0081_0084_00e3_0082_008b_00ef_00bc_0089_00e3_0083_0098_00e3_0083_0083_00e3_0083_0089_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00ac_00e3_0083_0099_00e3_0083_00ab-1470">（外部出力に用いる）ヘッドラインレベル</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
 <li><a href="#index-g_t_00ef_00bc_0088_00e5_00a4_0096_00e9_0083_00a8_00e5_0087_00ba_00e5_008a_009b_00e3_0081_00ab_00e7_0094_00a8_00e3_0081_0084_00e3_0082_008b_00ef_00bc_0089_00e3_0083_0098_00e3_0083_0083_00e3_0083_0089_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00ac_00e3_0083_0099_00e3_0083_00ab-1485">（外部出力に用いる）ヘッドラインレベル</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
 <li><a href="#index-g_t_00ef_00bc_0088_00e5_00a4_0096_00e9_0083_00a8_00e5_0087_00ba_00e5_008a_009b_00e3_0081_00ab_00e7_0094_00a8_00e3_0081_0084_00e3_0082_008b_00ef_00bc_0089_00e3_0083_0098_00e3_0083_0083_00e3_0083_0089_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00ac_00e3_0083_0099_00e3_0083_00ab-1534">（外部出力に用いる）ヘッドラインレベル</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
-<li><a href="#index-g_t_00ef_00bc_0088_00e5_00a4_0096_00e9_0083_00a8_00e5_0087_00ba_00e5_008a_009b_00e3_0081_00ab_00e7_0094_00a8_00e3_0081_0084_00e3_0082_008b_00ef_00bc_0089_00e3_0083_0098_00e3_0083_0083_00e3_0083_0089_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00ac_00e3_0083_0099_00e3_0083_00ab-1470">（外部出力に用いる）ヘッドラインレベル</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
    </ul><div class="node">
 <a name="Key-Index"></a>
 <p><hr>
@@ -16730,17 +16720,31 @@ XEmacsでは動作しません</p>
    <p class="footnote"><small>[<a name="fn-24" href="#fnd-24">24</a>]</small> Emacsの表示上は中央揃えにはできませんが、HTMLにエク
 スポートするときに中央揃えにできます</p>
 
-   <p class="footnote"><small>[<a name="fn-25" href="#fnd-25">25</a>]</small> Org will understand references typed by the user as &lsquo;<samp><span class="samp">B4</span></samp>&rsquo;, but it will not use this syntax when offering a formula for editing.  You can customize this behavior using the variable <code>org-table-use-standard-references</code>.</p>
+   <p class="footnote"><small>[<a name="fn-25" href="#fnd-25">25</a>]</small> org-modeはユーザが指定する&lsquo;<samp><span class="samp">B4</span></samp>&rsquo;のよう
+な参照を理解しますが、編集のための数式を提供するときはこのシンタックスは使わ
+れません。変数<code>org-table-use-standard-references</code>を使うことで、この動作を変
+更できます。</p>
 
-   <p class="footnote"><small>[<a name="fn-26" href="#fnd-26">26</a>]</small> For backward compatibility you can also use special names like &lsquo;<samp><span class="samp">$LR5</span></samp>&rsquo; and &lsquo;<samp><span class="samp">$LR12</span></samp>&rsquo; to refer in a stable way to the 5th and 12th field in the last row of the table.  However, this syntax is deprecated, it should not be used for new documents.</p>
+   <p class="footnote"><small>[<a name="fn-26" href="#fnd-26">26</a>]</small> 後方互換のために、&lsquo;<samp><span class="samp">$LR5</span></samp>&rsquo;や&lsquo;<samp><span class="samp">$LR12</span></samp>&rsquo;のような特別な名前も利用できま
+す。これらは、テーブル最終行の5番目と12番目への確実な参照です。しかしながら
+、このシンタックスは廃止予定であり、新たな文書で使うべきではありません</p>
 
-   <p class="footnote"><small>[<a name="fn-27" href="#fnd-27">27</a>]</small> Note that only hlines are counted that <em>separate</em> table lines.  If the table starts with a hline above the header, it does not count.</p>
+   <p class="footnote"><small>[<a name="fn-27" href="#fnd-27">27</a>]</small> テーブルの各行を<em>分離している</em>水平ラインのみカウントされることに注
+意してください。ヘッダーの上に水平ラインがあるテーブルでは、その水平ラインを
+カウントしません</p>
 
-   <p class="footnote"><small>[<a name="fn-28" href="#fnd-28">28</a>]</small> The computation time scales as O(N^2) because table FOO is parsed for each field to be copied.</p>
+   <p class="footnote"><small>[<a name="fn-28" href="#fnd-28">28</a>]</small> この計算の規模は、O(N^2)のオーダーです。テーブルFOOが、各フィールド
+をコピーするためにパースされるのが原因です。</p>
 
-   <p class="footnote"><small>[<a name="fn-29" href="#fnd-29">29</a>]</small> <samp><span class="file">constants.el</span></samp> can supply the values of constants in two different unit systems, <code>SI</code> and <code>cgs</code>.  Which one is used depends on the value of the variable <code>constants-unit-system</code>.  You can use the <code>#+STARTUP</code> options <code>constSI</code> and <code>constcgs</code> to set this value for the current buffer.</p>
+   <p class="footnote"><small>[<a name="fn-29" href="#fnd-29">29</a>]</small> <samp><span class="file">constants.el</span></samp>は、<code>SI</code>と<code>cgs</code>の二つの
+異なる単位系で定数の値を提供します。どちらが利用されるかは、変数
+<code>constants-unit-system</code>の値に依存します。カレントバッファで値を設定するため
+に、<code>#+STARTUP</code>でオプション<code>constSI</code>と<code>constcgs</code>を指定します。</p>
 
-   <p class="footnote"><small>[<a name="fn-30" href="#fnd-30">30</a>]</small> The <code>printf</code> reformatting is limited in precision because the value passed to it is converted into an <code>integer</code> or <code>double</code>.  The <code>integer</code> is limited in size by truncating the signed value to 32 bits.  The <code>double</code> is limited in precision to 64 bits overall which leaves approximately 16 significant decimal digits.</p>
+   <p class="footnote"><small>[<a name="fn-30" href="#fnd-30">30</a>]</small> <code>printf</code>による再フォーマットは、精度の影響を受けます。
+<code>integer</code>や<code>double</code>に変換された値が渡されるためです。<code>integer</code>は、符号付き32
+ビット整数値に丸め込まれます。<code>double</code>は、全体が64ビット精度に制限され、近似
+的に16ビットの10進数の有意桁数があります。</p>
 
    <p class="footnote"><small>[<a name="fn-31" href="#fnd-31">31</a>]</small> 一番最初の見出しより前の文は
 エクスポートされないことに注意してください。このためそのようなターゲットの一
@@ -17075,9 +17079,14 @@ TODOリストなどのような標準的なビューを保存したいならば�
 
    <p class="footnote"><small>[<a name="fn-129" href="#fnd-129">129</a>]</small> <samp><span class="file">file-source.org</span></samp> and <samp><span class="file">file-source.org.html</span></samp> if source and publishing directories are equal.  Note that with this kind of setup, you need to add <code>:exclude "-source\\.org"</code> to the project definition in <code>org-publish-project-alist</code> to prevent the published source files from being considered as new org files the next time the project is published.</p>
 
-   <p class="footnote"><small>[<a name="fn-130" href="#fnd-130">130</a>]</small> Whenever code is evaluated there is a potential for that code to do harm.  Org-mode provides a number of safeguards to ensure that it only evaluates code with explicit confirmation from the user.  For information on these safeguards (and on how to disable them) see <a href="#Code-evaluation-security">Code evaluation security</a>.</p>
+   <p class="footnote"><small>[<a name="fn-130" href="#fnd-130">130</a>]</small> コードを評価するときはいつでも、そのコードが害をなす
+可能性があります。Org-modeは、ユーザーから明示的な確認をできたときのみにコー
+ドを評価する安全装置をいくつも用意しています。これらの安全装置について(そし
+てそを無効化する方法について)、<a href="#Code-evaluation-security">Code evaluation security</a>を参照してください
+。</p>
 
-   <p class="footnote"><small>[<a name="fn-131" href="#fnd-131">131</a>]</small> The <code>org-babel-no-eval-on-ctrl-c-ctrl-c</code> variable can be used to remove code evaluation from the <kbd>C-c C-c</kbd> key binding.</p>
+   <p class="footnote"><small>[<a name="fn-131" href="#fnd-131">131</a>]</small> 変数<code>org-babel-no-eval-on-ctrl-c-ctrl-c</code>を設定することで、キーバインド
+<kbd>C-c C-c</kbd>からコードの評価を除去できます。</p>
 
    <p class="footnote"><small>[<a name="fn-132" href="#fnd-132">132</a>]</small> Emacs22とOrg-mode6.29
 が必要です</p>
