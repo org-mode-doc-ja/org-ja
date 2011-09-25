@@ -10717,9 +10717,9 @@ File: org-ja,  Node: Languages,  Next: Header arguments,  Prev: Library of Babel
 14.7 Languages
 ==============
 
-Code blocks in the following languages are supported.
+コードブロックでは、以下の言語を使えます。
 
-Language              Identifier              Language          Identifier
+言語                  識別子                  言語              識別子
 Asymptote             asymptote               Emacs Calc        calc
 C                     C                       C++               C++
 Clojure               clojure                 CSS               css
@@ -10737,27 +10737,26 @@ Sass                  sass                    Scheme            scheme
 GNU Screen            screen                  shell             sh
 SQL                   sql                     SQLite            sqlite
 
-   Language-specific documentation is available for some languages.  If
-available, it can be found at
-`http://orgmode.org/worg/org-contrib/babel/languages'.
+   言語特有の文書が存在する場合があります。存在する場合、文書は
+`http://orgmode.org/worg/org-contrib/babel/languages'にて見つけられます。
 
-   The `org-babel-load-languages' controls which languages are enabled for
-evaluation (by default only `emacs-lisp' is enabled).  This variable can be
-set using the customization interface or by adding code like the following
-to your emacs configuration.
+どの言語を評価するかの管理には、関数`org-babel-load-languages'を使います。(
+デフォルトでは`emacs-lisp'のみを評価可能です。)
+この変数を設定するには、カスタマイズのインターフェースを使うか、以下のコード
+をemacsの設定ファイルに追加します。
 
-     The following disables `emacs-lisp' evaluation and enables evaluation
-     of `R' code blocks.
+     次のコードでは、`emacs-lisp'を評価させないように設定し、`R'のコードブロック
+     を評価させるように設定しています。
 
      (org-babel-do-load-languages
       'org-babel-load-languages
       '((emacs-lisp . nil)
         (R . t)))
 
-   It is also possible to enable support for a language by loading the
-related elisp file with `require'.
+上記方法に加えて、`require'関数を使って関連するelispファイルをロードすること
+でも、言語のサポートを有効にできます.
 
-     The following adds support for evaluating `clojure' code blocks.
+     次の例では、`clojure'コードブロックの評価を有効にしています。
 
      (require 'ob-clojure)
 
@@ -13964,33 +13963,32 @@ Concept index
 * #+ARCHIVE:                             Moving subtrees.         (line  26)
 * #+ATTR_DOCBOOK:                        Images in DocBook export.
                                                                   (line  28)
-* #+ATTR_HTML <1>:                       Images in HTML export.   (line  23)
-* #+ATTR_HTML <2>:                       Tables in HTML export.   (line  12)
-* #+ATTR_HTML:                           Links in HTML export.    (line  21)
-* #+ATTR_LaTeX <1>:                      Tables in LaTeX export.  (line  21)
-* #+ATTR_LaTeX <2>:                      Images in LaTeX export.  (line  24)
-* #+ATTR_LaTeX:                          Tables in LaTeX export.  (line  13)
+* #+ATTR_HTML <1>:                       Tables in HTML export.   (line  12)
+* #+ATTR_HTML <2>:                       Links in HTML export.    (line  21)
+* #+ATTR_HTML:                           Images in HTML export.   (line  23)
+* #+ATTR_LaTeX <1>:                      Tables in LaTeX export.  (line  13)
+* #+ATTR_LaTeX:                          Images in LaTeX export.  (line  24)
 * #+AUTHOR:                              Export options.          (line  20)
 * #+BEGIN, clocktable:                   The clock table.         (line  38)
 * #+BEGIN, columnview:                   カラム表示の保存.        (line  11)
 * #+BEGIN:dynamic block:                 Dynamic blocks.          (line  15)
 * #+BEGIN_CENTER:                        Paragraphs.              (line  29)
 * #+BEGIN_COMMENT:                       コメント行.              (line   6)
-* #+BEGIN_DOCBOOK:                       Quoting DocBook code.    (line  11)
+* #+BEGIN_DOCBOOK:                       Quoting DocBook code.    (line   9)
 * #+BEGIN_EXAMPLE:                       Literal examples.        (line   7)
-* #+BEGIN_HTML:                          Quoting HTML tags.       (line  14)
+* #+BEGIN_HTML:                          Quoting HTML tags.       (line  16)
 * #+BEGIN_LaTeX:                         Quoting LaTeX code.      (line  14)
 * #+BEGIN_QUOTE:                         Paragraphs.              (line  24)
 * #+BEGIN_SRC:                           Literal examples.        (line  25)
 * #+BEGIN_VERSE:                         Paragraphs.              (line  13)
 * #+BIND:                                Export options.          (line  20)
-* #+CAPTION <1>:                         Images in LaTeX export.  (line  24)
-* #+CAPTION <2>:                         Images in DocBook export.
+* #+CAPTION <1>:                         Images in DocBook export.
                                                                   (line  28)
-* #+CAPTION <3>:                         Tables in LaTeX export.  (line  13)
-* #+CAPTION <4>:                         Images in HTML export.   (line  23)
+* #+CAPTION <2>:                         Tables in LaTeX export.  (line  21)
+* #+CAPTION <3>:                         Images in LaTeX export.  (line  24)
+* #+CAPTION <4>:                         Tables in LaTeX export.  (line  13)
 * #+CAPTION <5>:                         Images and tables.       (line   6)
-* #+CAPTION <6>:                         Tables in LaTeX export.  (line  21)
+* #+CAPTION <6>:                         Images in HTML export.   (line  23)
 * #+CAPTION:                             Tables in HTML export.   (line  12)
 * #+CATEGORY:                            Categories.              (line   6)
 * #+COLUMNS:                             Scope of column definitions.
@@ -14009,8 +14007,9 @@ Concept index
 * #+INFOJS_OPT:                          JavaScript support.      (line  26)
 * #+KEYWORDS:                            Export options.          (line  20)
 * #+LABEL <1>:                           Tables in LaTeX export.  (line  21)
-* #+LABEL <2>:                           Images and tables.       (line   6)
-* #+LABEL <3>:                           Images in LaTeX export.  (line  24)
+* #+LABEL <2>:                           Images in LaTeX export.  (line  24)
+* #+LABEL <3>:                           Tables in LaTeX export.  (line  13)
+* #+LABEL <4>:                           Images and tables.       (line   6)
 * #+LABEL:                               Images in DocBook export.
                                                                   (line  28)
 * #+LANGUAGE:                            Export options.          (line  20)
@@ -14039,10 +14038,10 @@ Concept index
 * #+TBLFM:                               Field and range formulas.
                                                                   (line  12)
 * #+TBLNAME:                             References.              (line 124)
-* #+TEXT <1>:                            Initial text.            (line   6)
-* #+TEXT:                                Export options.          (line  20)
-* #+TITLE <1>:                           Export options.          (line  20)
-* #+TITLE:                               Document title.          (line   8)
+* #+TEXT <1>:                            Export options.          (line  20)
+* #+TEXT:                                Initial text.            (line   6)
+* #+TITLE <1>:                           Document title.          (line   8)
+* #+TITLE:                               Export options.          (line  20)
 * #+TODO:                                Per-file keywords.       (line   6)
 * #+TYP_TODO:                            Per-file keywords.       (line   6)
 * #+XSLT:                                Export options.          (line  20)
@@ -14075,7 +14074,6 @@ Concept index
 * Atom feeds:                            RSS Feeds.               (line   6)
 * attachments:                           Attachments.             (line   6)
 * autoload:                              Activation.              (line   6)
-* babel, languages:                      Languages.               (line   6)
 * Baur, Steven L.:                       Cooperation.             (line  73)
 * BBDB, anniversaries:                   Weekly/daily agenda.     (line  68)
 * BBDBリンク:                            External links.          (line   6)
@@ -14103,15 +14101,14 @@ Concept index
 * code block, header arguments:          Header arguments.        (line   6)
 * code block, key bindings:              Key bindings and useful functions.
                                                                   (line   6)
-* code block, languages:                 Languages.               (line   6)
 * code block, noweb reference:           Noweb reference syntax.  (line   6)
 * code block, results of evaluation:     Results of evaluation.   (line   6)
 * column formula:                        Column formulas.         (line   6)
 * column view, in agenda:                Agenda column view.      (line   6)
 * commands, in agenda buffer:            Agenda commands.         (line   6)
 * constants.el:                          Cooperation.             (line  16)
-* content, STARTUPキーワード <1>:        Visibility cycling.      (line  54)
-* content, STARTUPキーワード:            In-buffer settings.      (line  69)
+* content, STARTUPキーワード <1>:        In-buffer settings.      (line  69)
+* content, STARTUPキーワード:            Visibility cycling.      (line  54)
 * contents, global visibility state:     Visibility cycling.      (line  22)
 * context-sensitive commands, hooks:     Context-sensitive commands.
                                                                   (line   6)
@@ -14171,8 +14168,8 @@ Concept index
 * fnprompt,キーワード:                   In-buffer settings.      (line 134)
 * folded, subtree visibility state:      Visibility cycling.      (line  10)
 * folding, sparse trees:                 Sparse trees.            (line   6)
-* footnote.el <1>:                       Footnote markup.         (line   6)
-* footnote.el:                           Cooperation.             (line  73)
+* footnote.el <1>:                       Cooperation.             (line  73)
+* footnote.el:                           Footnote markup.         (line   6)
 * footnotes <1>:                         Footnotes.               (line   6)
 * footnotes:                             Export options.          (line  43)
 * formula debugging:                     Editing and debugging formulas.
@@ -14269,10 +14266,10 @@ Concept index
                                                                   (line   6)
 * nofnadjust, STARTUPキーワード:         In-buffer settings.      (line 134)
 * nofninline, STARTUPキーワード:         In-buffer settings.      (line 134)
-* nohideblocks, STARTUP keyword <1>:     Blocks.                  (line  13)
-* nohideblocks, STARTUP keyword:         In-buffer settings.      (line 147)
-* noinlineimages, STARTUP keyword <1>:   Handling links.          (line 129)
-* noinlineimages, STARTUP keyword:       In-buffer settings.      (line  87)
+* nohideblocks, STARTUP keyword <1>:     In-buffer settings.      (line 147)
+* nohideblocks, STARTUP keyword:         Blocks.                  (line  13)
+* noinlineimages, STARTUP keyword <1>:   In-buffer settings.      (line  87)
+* noinlineimages, STARTUP keyword:       Handling links.          (line 129)
 * occur, command:                        Sparse trees.            (line   6)
 * options, for custom agenda views:      Setting Options.         (line   6)
 * options, for publishing:               Publishing options.      (line   6)
@@ -14295,8 +14292,8 @@ Concept index
 * overview, STARTUPキーワード <1>:       Visibility cycling.      (line  54)
 * overview, STARTUPキーワード:           In-buffer settings.      (line  69)
 * pasting, of subtrees:                  Structure editing.       (line   6)
-* PDF出力 <1>:                           DocBook export.          (line   6)
-* PDF出力:                               LaTeX and PDF export.    (line   6)
+* PDF出力 <1>:                           LaTeX and PDF export.    (line   6)
+* PDF出力:                               DocBook export.          (line   6)
 * plain lists:                           Plain lists.             (line   6)
 * plot tables using Gnuplot:             Org-Plot.                (line   6)
 * presentation, of agenda items:         Presentation and sorting.
@@ -14316,9 +14313,9 @@ Concept index
 * property, CUSTOM_ID <1>:               Handling links.          (line  20)
 * property, CUSTOM_ID:                   Internal links.          (line   6)
 * property, DESCRIPTION:                 iCalendarエクスポート.   (line  43)
-* property, ID <1>:                      カラム表示の保存.        (line  22)
+* property, ID <1>:                      Handling links.          (line  20)
 * property, ID <2>:                      iCalendarエクスポート.   (line  20)
-* property, ID:                          Handling links.          (line  20)
+* property, ID:                          カラム表示の保存.        (line  22)
 * property, LATEX_CLASS:                 Header and sectioning.   (line   8)
 * property, LATEX_CLASS_OPTIONS:         Header and sectioning.   (line   8)
 * property, LOCATION:                    iCalendarエクスポート.   (line  43)
@@ -14333,14 +14330,14 @@ Concept index
 * radio tables:                          Radio tables.            (line   6)
 * recomputing table fields:              Updating the table.      (line   6)
 * refiling notes:                        Refiling notes.          (line   6)
-* region, active <1>:                    DocBook export commands. (line   6)
+* region, active <1>:                    HTML Export commands.    (line   6)
 * region, active <2>:                    Built-in table editor.   (line 157)
 * region, active <3>:                    Structure editing.       (line 124)
-* region, active <4>:                    HTML Export commands.    (line   6)
-* region, active <5>:                    ASCII/Latin-1/UTF-8 export.
-                                                                  (line  10)
-* region, active:                        LaTeX/PDF export commands.
+* region, active <4>:                    LaTeX/PDF export commands.
                                                                   (line   6)
+* region, active <5>:                    DocBook export commands. (line   6)
+* region, active:                        ASCII/Latin-1/UTF-8 export.
+                                                                  (line  10)
 * regular expressions, with tags search: Matching tags and properties.
                                                                   (line  55)
 * remember.el:                           Cooperation.             (line  41)
@@ -14374,7 +14371,6 @@ Concept index
 * sorting, of subtrees:                  Structure editing.       (line   6)
 * source code, batch execution:          バッチ処理.              (line   6)
 * source code, block header arguments:   Header arguments.        (line   6)
-* source code, languages:                Languages.               (line   6)
 * source code, noweb reference:          Noweb reference syntax.  (line   6)
 * source code, results of evaluation:    Results of evaluation.   (line   6)
 * source code, working with:             Working With Source Code.
@@ -14426,8 +14422,8 @@ Concept index
 * syntax, noweb:                         Noweb reference syntax.  (line   6)
 * table editor, table.el:                Cooperation.             (line  52)
 * table.el:                              Cooperation.             (line  52)
-* tables <1>:                            Tables.                  (line   6)
-* tables:                                Export options.          (line  43)
+* tables <1>:                            Export options.          (line  43)
+* tables:                                Tables.                  (line   6)
 * tables, in DocBook export:             Tables in DocBook export.
                                                                   (line   6)
 * tables, in LaTeX export:               Tables in LaTeX export.  (line   6)
@@ -14447,8 +14443,8 @@ Concept index
 * text search:                           Search view.             (line   6)
 * TeXの解釈:                             Embedded LaTeX.          (line   6)
 * TeXシンボルの補完:                     Completion.              (line   6)
-* TeXマクロ <1>:                         Special symbols.         (line   6)
-* TeXマクロ:                             Export options.          (line  43)
+* TeXマクロ <1>:                         Export options.          (line  43)
+* TeXマクロ:                             Special symbols.         (line   6)
 * thanks:                                History and Acknowledgments.
                                                                   (line   6)
 * time grid:                             Time-of-day specifications.
@@ -14472,9 +14468,9 @@ Concept index
                                                                   (line   6)
 * TODOワークフロー:                      Workflow states.         (line   6)
 * transient-mark-mode <1>:               DocBook export commands. (line   6)
-* transient-mark-mode <2>:               HTML Export commands.    (line   6)
-* transient-mark-mode <3>:               LaTeX/PDF export commands.
+* transient-mark-mode <2>:               LaTeX/PDF export commands.
                                                                   (line   6)
+* transient-mark-mode <3>:               HTML Export commands.    (line   6)
 * transient-mark-mode:                   ASCII/Latin-1/UTF-8 export.
                                                                   (line  10)
 * translator function:                   Translator functions.    (line   6)
@@ -14502,22 +14498,22 @@ Concept index
 * はじめに:                              Introduction.            (line   6)
 * アウトラインビューを見やすくする:      Clean view.              (line   6)
 * アクティブでないタイムスタンプ:        Timestamps.              (line  47)
-* アクティブなリージョン <1>:            Built-in table editor.   (line 157)
-* アクティブなリージョン <2>:            ASCII/Latin-1/UTF-8 export.
-                                                                  (line  10)
-* アクティブなリージョン <3>:            Structure editing.       (line 124)
-* アクティブなリージョン <4>:            LaTeX/PDF export commands.
+* アクティブなリージョン <1>:            LaTeX/PDF export commands.
                                                                   (line   6)
+* アクティブなリージョン <2>:            HTML Export commands.    (line   6)
+* アクティブなリージョン <3>:            ASCII/Latin-1/UTF-8 export.
+                                                                  (line  10)
+* アクティブなリージョン <4>:            Structure editing.       (line 124)
 * アクティブなリージョン <5>:            DocBook export commands. (line   6)
-* アクティブなリージョン:                HTML Export commands.    (line   6)
+* アクティブなリージョン:                Built-in table editor.   (line 157)
 * アジェンダ:                            Weekly/daily agenda.     (line   6)
 * アジェンダのコマンドを選択する:        Agenda dispatcher.       (line   6)
 * アジェンダのコマンド選択画面:          Agenda dispatcher.       (line   6)
 * アジェンダビュー:                      Agenda Views.            (line   6)
 * アジェンダビューの出力 <1>:            Exporting Agenda Views.  (line  12)
 * アジェンダビューの出力:                Agenda commands.         (line 484)
-* アジェンダビュー（出力） <1>:          Exporting Agenda Views.  (line  12)
-* アジェンダビュー（出力）:              Agenda commands.         (line 484)
+* アジェンダビュー（出力） <1>:          Agenda commands.         (line 484)
+* アジェンダビュー（出力）:              Exporting Agenda Views.  (line  12)
 * アジェンダファイル:                    Agenda files.            (line   6)
 * アジェンダ用のファイル:                Agenda files.            (line   6)
 * インストール:                          Installation.            (line   6)
@@ -14529,9 +14525,9 @@ Concept index
 * エクスポートのオプション:              Export options.          (line   6)
 * エクスポート中のマクロによる置き換え:  Macro replacement.       (line   6)
 * エラーのバックトレース:                Feedback.                (line  39)
-* オプションのキーワードの補完 <1>:      Per-file keywords.       (line  23)
+* オプションのキーワードの補完 <1>:      Export options.          (line   6)
 * オプションのキーワードの補完 <2>:      Completion.              (line   6)
-* オプションのキーワードの補完:          Export options.          (line   6)
+* オプションのキーワードの補完:          Per-file keywords.       (line  23)
 * オプションキーワードの補完:            Completion.              (line   6)
 * カウントダウンタイマ:                  カウントダウンタイマ.    (line   6)
 * カスタマイズ:                          Customization.           (line   6)
@@ -14542,9 +14538,9 @@ Concept index
 * カラムビュー、プロパティ用:            Defining columns.        (line   6)
 * カレンダー、日付選択のため:            The date/time prompt.    (line  66)
 * カレンダーの統合:                      Weekly/daily agenda.     (line  28)
-* キャプチャ <1>:                        Capture - Refile - Archive.
+* キャプチャ <1>:                        Capture.                 (line   6)
+* キャプチャ:                            Capture - Refile - Archive.
                                                                   (line   6)
-* キャプチャ:                            Capture.                 (line   6)
 * キーバインド（グローバル）:            Activation.              (line   6)
 * キーワードオプション:                  Per-file keywords.       (line   6)
 * クロックテーブル、動的なブロック:      The clock table.         (line   6)
@@ -14557,6 +14553,7 @@ Concept index
 * コードブロック、構造:                  Structure of code blocks.
                                                                   (line   6)
 * コードブロック、編集:                  Editing source code.     (line   6)
+* コードブロック、言語:                  Languages.               (line   6)
 * コードラインのリファレンス、マークアップのルール: Literal examples.
                                                                   (line   6)
 * シンタックス（数式）:                  Formula syntax for Calc. (line   6)
@@ -14566,11 +14563,12 @@ Concept index
 * ソースコード、ブロック構造:            Structure of code blocks.
                                                                   (line   6)
 * ソースコード、編集:                    Editing source code.     (line   6)
+* ソースコード、言語:                    Languages.               (line   6)
 * ソースコードのフォーマット、マークアップのルール: Literal examples.
                                                                   (line  22)
 * ソースコードの抽出、コードブロック:    Extracting source code.  (line   6)
 * タイムスタンプ <1>:                    Date and Times.          (line   6)
-* タイムスタンプ:                        Timestamps.              (line   6)
+* タイムスタンプ:                        Timestamps.              (line  14)
 * タイムスタンプ、アクティブでない:      Timestamps.              (line  47)
 * タイムスタンプ、リピート間隔:          Timestamps.              (line  23)
 * タイムスタンプ、作成:                  Creating timestamps.     (line   6)
@@ -14584,8 +14582,8 @@ Concept index
 * テンプレートの挿入:                    Easy Templates.          (line   6)
 * テーブル、HTMLの:                      Tables in HTML export.   (line   6)
 * テーブルのマイナーモード:              Orgtbl mode.             (line   6)
-* テーブルの中での計算 <1>:              Built-in table editor.   (line 157)
-* テーブルの中での計算:                  The spreadsheet.         (line   6)
+* テーブルの中での計算 <1>:              The spreadsheet.         (line   6)
+* テーブルの中での計算:                  Built-in table editor.   (line 157)
 * テーブルエディタ（組み込み）:          Built-in table editor.   (line   6)
 * デッドライン:                          Timestamps.              (line   6)
 * ハイパーリンク:                        Hyperlinks.              (line   6)
@@ -14610,12 +14608,12 @@ Concept index
 * プロパティ:CLOCK_MODELINE_TOTAL:       Clocking commands.       (line  16)
 * プロパティ:LAST_REPEAT:                Clocking commands.       (line  16)
 * プロパティ、_ALL:                      Property syntax.         (line  36)
-* プロパティ、EXPORT_FILE_NAME <1>:      LaTeX/PDF export commands.
-                                                                  (line   7)
-* プロパティ、EXPORT_FILE_NAME <2>:      DocBook export commands. (line   7)
-* プロパティ、EXPORT_FILE_NAME <3>:      ASCII/Latin-1/UTF-8 export.
+* プロパティ、EXPORT_FILE_NAME <1>:      DocBook export commands. (line   7)
+* プロパティ、EXPORT_FILE_NAME <2>:      ASCII/Latin-1/UTF-8 export.
                                                                   (line  11)
-* プロパティ、EXPORT_FILE_NAME:          HTML Export commands.    (line   7)
+* プロパティ、EXPORT_FILE_NAME <3>:      HTML Export commands.    (line   7)
+* プロパティ、EXPORT_FILE_NAME:          LaTeX/PDF export commands.
+                                                                  (line   7)
 * プロパティ、EXPORT_TITLE:              Document title.          (line  15)
 * プロパティ、カラムビュー:              Defining columns.        (line   6)
 * プロパティ、スペシャル:                Special properties.      (line   6)
@@ -14640,10 +14638,10 @@ Concept index
 * プロパティシンタックス:                Property syntax.         (line   6)
 * プロパティ（API） <1>:                 Using the property API.  (line   6)
 * プロパティ（API）:                     Property API.            (line   6)
-* プロパティ（ARCHIVE） <1>:             Property inheritance.    (line  31)
-* プロパティ（ARCHIVE）:                 Moving subtrees.         (line  28)
-* プロパティ（CATEGORY） <1>:            Categories.              (line  12)
-* プロパティ（CATEGORY）:                Property inheritance.    (line  27)
+* プロパティ（ARCHIVE） <1>:             Moving subtrees.         (line  28)
+* プロパティ（ARCHIVE）:                 Property inheritance.    (line  31)
+* プロパティ（CATEGORY） <1>:            Property inheritance.    (line  27)
+* プロパティ（CATEGORY）:                Categories.              (line  12)
 * プロパティ（COLUMNS） <1>:             Property inheritance.    (line  19)
 * プロパティ（COLUMNS）:                 In-buffer settings.      (line  26)
 * ベクトル（テーブルでの計算）:          Formula syntax for Calc. (line  10)
@@ -14706,16 +14704,15 @@ Concept index
 * 奇数レベルのみのアウトライン:          Clean view.              (line   6)
 * 完了、TODOキーワードの <1>:            Workflow states.         (line  14)
 * 完了、TODOキーワードの:                Completion.              (line   6)
-* 完了、タグの <1>:                      Completion.              (line   6)
-* 完了、タグの:                          Setting tags.            (line  11)
-* 属性、COOKIE_DATA <1>:                 Checkboxes.              (line  29)
-* 属性、COOKIE_DATA:                     Breaking down tasks.     (line  21)
+* 完了、タグの <1>:                      Setting tags.            (line  11)
+* 完了、タグの:                          Completion.              (line   6)
+* 属性、COOKIE_DATA <1>:                 Breaking down tasks.     (line  21)
+* 属性、COOKIE_DATA:                     Checkboxes.              (line  29)
 * 属性、ログをとる <1>:                  Tracking TODO state changes.
                                                                   (line  40)
 * 属性、ログをとる:                      Property inheritance.    (line  35)
 * 属性、並び順 <1>:                      TODO dependencies.       (line  30)
-* 属性、並び順 <2>:                      Checkboxes.              (line  44)
-* 属性、並び順:                          TODO dependencies.       (line   6)
+* 属性、並び順:                          Checkboxes.              (line  74)
 * 工数の見積もり:                        Effort estimates.        (line   6)
 * 座標（フィールド）:                    References.              (line  87)
 * 強調されたテキスト:                    Export options.          (line  43)
@@ -14738,8 +14735,8 @@ Concept index
 * 日付:                                  Date and Times.          (line   6)
 * 日付、ミニバッファでの読み込み:        The date/time prompt.    (line   6)
 * 日付の間隔:                            Timestamps.              (line  39)
-* 日付スタンプ <1>:                      Timestamps.              (line   6)
-* 日付スタンプ:                          Date and Times.          (line   6)
+* 日付スタンプ <1>:                      Date and Times.          (line   6)
+* 日付スタンプ:                          Timestamps.              (line   6)
 * 日付フォーマット、カスタム:            Custom time format.      (line   6)
 * 日記の統合:                            Weekly/daily agenda.     (line  28)
 * 時刻:                                  Date and Times.          (line   6)
@@ -14763,8 +14760,8 @@ Concept index
 * 構造の分割、LaTeXエクスポートのための: Header and sectioning.   (line   6)
 * 段落、マークアップのルール:            Paragraphs.              (line   6)
 * 水平線、マーックアップのルール:        Horizontal rules.        (line   6)
-* 特別なプロパティ（CLOCKSUM） <1>:      Agenda column view.      (line  28)
-* 特別なプロパティ（CLOCKSUM）:          Special properties.      (line  13)
+* 特別なプロパティ（CLOCKSUM） <1>:      Special properties.      (line  13)
+* 特別なプロパティ（CLOCKSUM）:          Agenda column view.      (line  28)
 * 特別な文字列:                          Export options.          (line  43)
 * 特殊記号:                              Special symbols.         (line   6)
 * 画像,インライン:                       Handling links.          (line 129)
@@ -14797,16 +14794,16 @@ Concept index
 * 見出しとセクション、マークアップのルール: Headings and sections.
                                                                   (line   6)
 * 見出しの階層:                          Export options.          (line  43)
-* 計算中の定数:                          References.              (line 124)
+* 言語、babel:                           Languages.               (line   6)
+* 計算中の定数:                          References.              (line 103)
 * 評価、コードブロック:                  Evaluating code blocks.  (line   6)
 * 評価、ソースコード:                    Evaluating code blocks.  (line   6)
 * 辞書単語の補完:                        Completion.              (line   6)
 * （外部出力に用いる）ヘッドラインレベル <1>: ASCII/Latin-1/UTF-8 export.
                                                                   (line  37)
-* （外部出力に用いる）ヘッドラインレベル <2>: HTML Export commands.
-                                                                  (line  39)
-* （外部出力に用いる）ヘッドラインレベル: LaTeX/PDF export commands.
+* （外部出力に用いる）ヘッドラインレベル <2>: LaTeX/PDF export commands.
                                                                   (line  38)
+* （外部出力に用いる）ヘッドラインレベル: HTML Export commands.   (line  39)
 
 
 File: org-ja,  Node: Key Index,  Next: Command and Function Index,  Prev: Main Index,  Up: Top
@@ -16515,90 +16512,90 @@ Ref: Evaluating code blocks-Footnote-1559022
 Ref: Evaluating code blocks-Footnote-2559443
 Node: Library of Babel559597
 Node: Languages560686
-Node: Header arguments562906
-Node: Using header arguments563412
-Node: System-wide header arguments564244
-Node: Language-specific header arguments565070
-Node: Buffer-wide header arguments565476
-Node: Header arguments in Org-mode properties566254
-Node: Code block specific header arguments567281
-Node: Header arguments in function calls569089
-Node: Specific header arguments569843
-Node: var571666
-Node: results577350
-Node: file581572
-Node: dir582481
-Node: exports585396
-Node: 抽出586051
-Node: mkdirp586763
-Node: comments587097
-Node: no-expand588230
-Node: session588724
-Node: noweb589174
-Node: cache590650
-Node: sep592150
-Node: hlines592725
-Node: colnames594234
-Node: rownames595452
-Node: shebang596462
-Node: eval596861
-Node: Results of evaluation597407
-Node: Noweb reference syntax600659
-Node: Key bindings and useful functions601657
-Node: バッチ処理602906
-Node: Miscellaneous604004
-Node: Completion604898
-Node: Easy Templates607557
-Node: Speed keys609235
-Node: Code evaluation security610294
-Node: Customization613768
-Node: In-buffer settings614457
-Ref: In-buffer settings-Footnote-1625770
-Node: The very busy C-c C-c key625817
-Node: Clean view628254
-Ref: Clean view-Footnote-1633214
-Ref: Clean view-Footnote-2633280
-Ref: Clean view-Footnote-3633519
-Ref: Clean view-Footnote-4633595
-Ref: Clean view-Footnote-5633742
-Node: TTY keys633926
-Node: Interaction635789
-Node: Cooperation636185
-Node: Conflicts640985
-Node: Hacking645777
-Node: Hooks646739
-Node: Add-on packages647158
-Node: Adding hyperlink types647702
-Node: Context-sensitive commands651620
-Ref: Context-sensitive commands-Footnote-1653199
-Node: Tables in arbitrary syntax653333
-Node: Radio tables654799
-Node: A LaTeX example657343
-Ref: A LaTeX example-Footnote-1661261
-Ref: A LaTeX example-Footnote-2661410
-Node: Translator functions661846
-Ref: Translator functions-Footnote-1665079
-Node: ラジオリスト665167
-Node: Dynamic blocks666320
-Node: Special agenda views668539
-Ref: Special agenda views-Footnote-1672793
-Node: Extracting agenda information672928
-Node: Using the property API677003
-Node: マッピングAPIを使う680263
-Node: MobileOrg684610
-Node: Setting up the staging area686747
-Ref: Setting up the staging area-Footnote-1688264
-Ref: Setting up the staging area-Footnote-2688690
-Node: Pushing to MobileOrg689036
-Ref: Pushing to MobileOrg-Footnote-1690637
-Ref: Pushing to MobileOrg-Footnote-2691369
-Node: MobileOrgからpullする691456
-Ref: MobileOrgからpullする-Footnote-1695331
-Ref: MobileOrgからpullする-Footnote-2695404
-Node: History and Acknowledgments695998
-Node: Main Index707144
-Node: Key Index775306
-Node: Command and Function Index819122
-Node: Variable Index848603
+Node: Header arguments563168
+Node: Using header arguments563674
+Node: System-wide header arguments564506
+Node: Language-specific header arguments565332
+Node: Buffer-wide header arguments565738
+Node: Header arguments in Org-mode properties566516
+Node: Code block specific header arguments567543
+Node: Header arguments in function calls569351
+Node: Specific header arguments570105
+Node: var571928
+Node: results577612
+Node: file581834
+Node: dir582743
+Node: exports585658
+Node: 抽出586313
+Node: mkdirp587025
+Node: comments587359
+Node: no-expand588492
+Node: session588986
+Node: noweb589436
+Node: cache590912
+Node: sep592412
+Node: hlines592987
+Node: colnames594496
+Node: rownames595714
+Node: shebang596724
+Node: eval597123
+Node: Results of evaluation597669
+Node: Noweb reference syntax600921
+Node: Key bindings and useful functions601919
+Node: バッチ処理603168
+Node: Miscellaneous604266
+Node: Completion605160
+Node: Easy Templates607819
+Node: Speed keys609497
+Node: Code evaluation security610556
+Node: Customization614030
+Node: In-buffer settings614719
+Ref: In-buffer settings-Footnote-1626032
+Node: The very busy C-c C-c key626079
+Node: Clean view628516
+Ref: Clean view-Footnote-1633476
+Ref: Clean view-Footnote-2633542
+Ref: Clean view-Footnote-3633781
+Ref: Clean view-Footnote-4633857
+Ref: Clean view-Footnote-5634004
+Node: TTY keys634188
+Node: Interaction636051
+Node: Cooperation636447
+Node: Conflicts641247
+Node: Hacking646039
+Node: Hooks647001
+Node: Add-on packages647420
+Node: Adding hyperlink types647964
+Node: Context-sensitive commands651882
+Ref: Context-sensitive commands-Footnote-1653461
+Node: Tables in arbitrary syntax653595
+Node: Radio tables655061
+Node: A LaTeX example657605
+Ref: A LaTeX example-Footnote-1661523
+Ref: A LaTeX example-Footnote-2661672
+Node: Translator functions662108
+Ref: Translator functions-Footnote-1665341
+Node: ラジオリスト665429
+Node: Dynamic blocks666582
+Node: Special agenda views668801
+Ref: Special agenda views-Footnote-1673055
+Node: Extracting agenda information673190
+Node: Using the property API677265
+Node: マッピングAPIを使う680525
+Node: MobileOrg684872
+Node: Setting up the staging area687009
+Ref: Setting up the staging area-Footnote-1688526
+Ref: Setting up the staging area-Footnote-2688952
+Node: Pushing to MobileOrg689298
+Ref: Pushing to MobileOrg-Footnote-1690899
+Ref: Pushing to MobileOrg-Footnote-2691631
+Node: MobileOrgからpullする691718
+Ref: MobileOrgからpullする-Footnote-1695593
+Ref: MobileOrgからpullする-Footnote-2695666
+Node: History and Acknowledgments696260
+Node: Main Index707406
+Node: Key Index775443
+Node: Command and Function Index819259
+Node: Variable Index848740
 
 End Tag Table

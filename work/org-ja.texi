@@ -11178,14 +11178,14 @@ Babel''の関数@code{org-babel-lob-ingest}を使って、ロードできます�
 
 @node Languages, Header arguments, Library of Babel, Working With Source Code
 @section Languages
-@cindex babel, languages
-@cindex source code, languages
-@cindex code block, languages
+@cindex 言語、babel
+@cindex ソースコード、言語
+@cindex コードブロック、言語
 
-Code blocks in the following languages are supported.
+コードブロックでは、以下の言語を使えます。
 
 @multitable @columnfractions 0.28 0.3 0.22 0.2
-@item @b{Language} @tab @b{Identifier} @tab @b{Language} @tab @b{Identifier}
+@item @b{言語} @tab @b{識別子} @tab @b{言語} @tab @b{識別子}
 @item Asymptote @tab asymptote @tab Emacs Calc @tab calc
 @item C @tab C @tab C++ @tab C++
 @item Clojure @tab clojure @tab CSS @tab css
@@ -11204,18 +11204,17 @@ Code blocks in the following languages are supported.
 @item SQL @tab sql @tab SQLite @tab sqlite
 @end multitable
 
-Language-specific documentation is available for some languages.  If
-available, it can be found at
-@uref{http://orgmode.org/worg/org-contrib/babel/languages}.
+言語特有の文書が存在する場合があります。存在する場合、文書は
+@uref{http://orgmode.org/worg/org-contrib/babel/languages}にて見つけられます。
 
-The @code{org-babel-load-languages} controls which languages are enabled for
-evaluation (by default only @code{emacs-lisp} is enabled).  This variable
-can be set using the customization interface or by adding code like the
-following to your emacs configuration.
+どの言語を評価するかの管理には、関数@code{org-babel-load-languages}を使います。(
+デフォルトでは@code{emacs-lisp}のみを評価可能です。)
+この変数を設定するには、カスタマイズのインターフェースを使うか、以下のコード
+をemacsの設定ファイルに追加します。
 
 @quotation
-The following disables @code{emacs-lisp} evaluation and enables evaluation
-of @code{R} code blocks.
+次のコードでは、@code{emacs-lisp}を評価させないように設定し、@code{R}のコードブロック
+を評価させるように設定しています。
 @end quotation
 
 @lisp
@@ -11225,11 +11224,11 @@ of @code{R} code blocks.
    (R . t)))
 @end lisp
 
-It is also possible to enable support for a language by loading the related
-elisp file with @code{require}.
+上記方法に加えて、@code{require}関数を使って関連するelispファイルをロードすること
+でも、言語のサポートを有効にできます.
 
 @quotation
-The following adds support for evaluating @code{clojure} code blocks.
+次の例では、@code{clojure}コードブロックの評価を有効にしています。
 @end quotation
 
 @lisp
