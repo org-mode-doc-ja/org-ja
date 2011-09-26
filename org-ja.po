@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-09-26 12:36+0900\n"
+"PO-Revision-Date: 2011-09-26 14:19+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -23669,7 +23669,7 @@ msgstr "org-babel-default-header-args"
 #. type: Plain text
 #: org.texi:11605
 msgid "System-wide values of header arguments can be specified by customizing the @code{org-babel-default-header-args} variable:"
-msgstr ""
+msgstr "変数@code{org-babel-default-header-args}をカスタマイズすることで、システム全体にわたるヘッダー引数の値を指定できます。"
 
 #. type: example
 #: org.texi:11612
@@ -23681,12 +23681,17 @@ msgid ""
 ":cache      => \"no\"\n"
 ":noweb      => \"no\"\n"
 msgstr ""
+":session    => \"none\"\n"
+":results    => \"replace\"\n"
+":exports    => \"code\"\n"
+":cache      => \"no\"\n"
+":noweb      => \"no\"\n"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / default ( デフォルト|初期値 ) / example ( 例 ) / source ( ソース ) / value ( 値 )
 #. type: Plain text
 #: org.texi:11632
 msgid "For example, the following example could be used to set the default value of @code{:noweb} header arguments to @code{yes}.  This would have the effect of expanding @code{:noweb} references by default when evaluating source code blocks."
-msgstr ""
+msgstr "次の例のように、ヘッダー引数@code{:noweb}の初期値を@code{yes}と設定できます。ソースコードブロックを評価する時に、デフォルトの設定として@code{:noweb}の参照記号を展開します。"
 
 #. type: lisp
 #: org.texi:11637
@@ -23696,6 +23701,9 @@ msgid ""
 "(cons '(:noweb . \"yes\")\n"
 "(assq-delete-all :noweb org-babel-default-header-args)))\n"
 msgstr ""
+"(setq org-babel-default-header-args\n"
+"(cons '(:noweb . \"yes\")\n"
+"(assq-delete-all :noweb org-babel-default-header-args)))\n"
 
 #+glossary: header argument ( ヘッダー引数 ) / available ( 利用できる ) / default ( デフォルト|初期値 ) / language ( 言語 )
 #. type: Plain text
