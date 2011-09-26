@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-09-25 23:39+0900\n"
+"PO-Revision-Date: 2011-09-26 18:41+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -8726,64 +8726,64 @@ msgstr "名前付きフィールド（@ref{Advanced features}を参照）"
 #: org.texi:2593
 #, no-wrap
 msgid "column formula"
-msgstr ""
+msgstr "列の数式"
 
 #+glossary: column ( 列 ) / formula ( 数式 ) / table ( テーブル )
 #. type: cindex
 #: org.texi:2594
 #, no-wrap
 msgid "formula, for table column"
-msgstr ""
+msgstr "数式（テーブルの列）"
 
 #+glossary: column formula ( 列の数式 ) / column ( 列 ) / field ( フィールド ) / formula ( 数式 ) / horizontal ( 水平|横線 ) / line ( 行|ライン|線 ) / table ( テーブル ) / value ( 値 )
 #. type: Plain text
 #: org.texi:2603
 msgid "When you assign a formula to a simple column reference like @code{$3=}, the same formula will be used in all fields of that column, with the following very convenient exceptions: (i) If the table contains horizontal separator hlines, everything before the first such line is considered part of the table @emph{header} and will not be modified by column formulas.  (ii) Fields that already get a value from a field/range formula will be left alone by column formulas.  These conditions make column formulas very easy to use."
-msgstr ""
+msgstr "数式に@code{$3=}のような単純な列の参照を指定すると，同様の数式がその列の全てのフィールドで使用されます．これには非常に有用な条件があります．（1）テーブルが水平ラインを含む場合は，最初の水平ラインよりも上に存在する全ての行がテーブルの@emph{ヘッダー}の一部であると考えられ，列の数式によって変更されません．フィールドや範囲の数式からすでに値を取得しているフィールドは，列の数式は関与しません．これらの条件によって列の数式はとても使いやすくなっています．"
 
 #+glossary: column formula ( 列の数式 ) / column ( 列 ) / current ( カレント|現在の ) / cursor ( カーソル ) / field ( フィールド ) / formula ( 数式 ) / line ( 行|ライン|線 ) / org ( Org-mode ) / type ( タイプ|入力する )
 #. type: Plain text
 #: org.texi:2614
 msgid "To assign a formula to a column, type it directly into any field in the column, preceded by an equal sign, like @samp{=$1+$2}.  When you press @key{TAB} or @key{RET} or @kbd{C-c C-c} with the cursor still in the field, the formula will be stored as the formula for the current column, evaluated and the current field replaced with the result.  If the field contains only @samp{=}, the previously stored formula for this column is used.  For each column, Org will only remember the most recently used formula.  In the @samp{#+TBLFM:} line, column formulas will look like @samp{$4=$1+$2}.  The left-hand side of a column formula can not be the name of column, it must be the numeric column reference or @code{$>}."
-msgstr ""
+msgstr "列に数式を割り当てるためには，列のフィールドに直接記述します．イコールの後に続くように，@samp{=$1+$2}としまう．同じフィールド内で@key{TAB}や@key{RET}もしくは@kbd{C-c C-c}を押すと，入力した数式はそのフィールドのための数式として保存され，評価されたのち，フィールドの表示が演算結果で置き換わります．フィールドが@samp{=}だけの場合，以前に列で保存した数式が利用されます．各列についてorg-modeは，直前に利用した数式だけを記憶します．@samp{#+TBLFM:}行で，列の数式は@samp{$4=$1+$2}のように保存されます．列数式のイコールの左側には，列の名前を置くことができず，数値の列の参照か@code{$>}を置かなければなりません．"
 
 #+glossary: field ( フィールド )
 #. type: Plain text
 #: org.texi:2617
 msgid "Instead of typing an equation into the field, you may also use the following command:"
-msgstr ""
+msgstr "フィールドに数式を書き入れる代わりに，次のコマンドも利用できます．"
 
 #+glossary: column ( 列 ) / command ( コマンド ) / current ( カレント|現在の ) / default ( デフォルト|初期値 ) / field ( フィールド ) / formula ( 数式 ) / install ( インストール ) / line ( 行|ライン|線 ) / prefix ( 接頭辞 ) / prompt ( 入力 )
 #. type: table
 #: org.texi:2625
 msgid "@orgcmd{C-c =,org-table-eval-formula} Install a new formula for the current column and replace current field with the result of the formula.  The command prompts for a formula, with default taken from the @samp{#+TBLFM} line, applies it to the current field and stores it.  With a numeric prefix argument(e.g.@: @kbd{C-5 C-c =}) the command will apply it to that many consecutive fields in the current column."
-msgstr ""
+msgstr "@orgcmd{C-c =,org-table-eval-formula} 現在の列に新しい数式を書き込み，数式の演算結果で置き換える．このコマンドは@samp{#+TBLFM:}の列から取得したデフォルトの数式を表示し，カーソル位置のフィールドに適用してから保存します．数値のプレフィックス（たとえば@: @kbd{C-5 C-c =}）を用いると，現在の列で連続したフィールドに同じ効果を与えます．"
 
 #+glossary: editing ( 編集 ) / formula ( 数式 )
 #. type: cindex
 #: org.texi:2629
 #, no-wrap
 msgid "formula editing"
-msgstr ""
+msgstr "数式の編集"
 
 #+glossary: editing ( 編集 ) / formula ( 数式 ) / table ( テーブル )
 #. type: cindex
 #: org.texi:2630
 #, no-wrap
 msgid "editing, of table formulas"
-msgstr ""
+msgstr "編集（テーブルの数式）"
 
 #+glossary: buffer ( バッファ ) / editing ( 編集 ) / field ( フィールド ) / format ( フォーマット|形成 ) / formula ( 数式 ) / internal ( 内部 ) / minibuffer ( ミニバッファ ) / org ( Org-mode ) / table ( テーブル ) / variable ( 変数 ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:2640
 msgid "You can edit individual formulas in the minibuffer or directly in the field.  Org can also prepare a special buffer with all active formulas of a table.  When offering a formula for editing, Org converts references to the standard format (like @code{B3} or @code{D&})  if possible.  If you prefer to only work with the internal format (like @code{@@3$2} or @code{$4}), configure the variable @code{org-table-use-standard-references}."
-msgstr ""
+msgstr "ミニバッファか直接フィールド内で，個々の数式を編集できます．org-modeはテーブルに含まれるすべてのアクティブな数式がある特別なバッファも準備しています．数式を編集しようとすると，org-modeは，もし可能ならば参照を標準のフォーマット（@code{B3}や@code{D&}のような記法）に変換します．もし内部フォーマット（@code {@@3$2}や@code{$4}のような記法}）を用いて編集したい場合は，変数@code{org-table-use-standard-references}を設定してください．"
 
 #+glossary: column ( 列 ) / command ( コマンド ) / current ( カレント|現在の ) / cursor ( カーソル ) / editing ( 編集 ) / field ( フィールド ) / formula ( 数式 ) / minibuffer ( ミニバッファ ) / table ( テーブル )
 #. type: table
 #: org.texi:2653
 msgid "@orgcmdkkc{C-c =,C-u C-c =,org-table-eval-formula} Edit the formula associated with the current column/field in the minibuffer.  See @ref{Column formulas}, and @ref{Field and range formulas}.  @orgcmd{C-u C-u C-c =,org-table-eval-formula} Re-insert the active formula (either a field formula, or a column formula) into the current field, so that you can edit it directly in the field.  The advantage over editing in the minibuffer is that you can use the command @kbd{C-c ?}.  @orgcmd{C-c ?,org-table-field-info} While editing a formula in a table field, highlight the field(s)  referenced by the reference at the cursor position in the formula."
-msgstr ""
+msgstr "@orgcmdkkc{C-c =,C-u C-c =,org-table-eval-formula} ミニバッファでカーソル位置の列やフィールドに結びついた数式を編集する．@ref{Column formulas}と@ref{Field and range formulas}を参照してください． @orgcmd{C-u C-u C-c =,org-table-eval-formula} カーソル位置のフィールドにアクティブな数式（フィールドの数式，もしくは列の数式）を再挿入します．これはフィールド内で直接的に編集できるようにするためです．ミニバッファでの編集葉理も有利なのは，@kbd{C-c ?}を使えることです．@orgcmd{C-c ?,org-table-field-info}テーブルのフィールド内で数式を編集するときに，数式内でカーソルが置かれている参照によって指し示されたフィールドをハイライトする．"
 
 #. type: item
 #: org.texi:2653
@@ -8805,7 +8805,7 @@ msgstr "org-table-toggle-coordinate-overlays"
 #. type: table
 #: org.texi:2659
 msgid "Toggle the display of row and column numbers for a table, using overlays (@command{org-table-toggle-coordinate-overlays}).  These are updated each time the table is aligned; you can force it with @kbd{C-c C-c}."
-msgstr ""
+msgstr "オーバーレイ（@command{org-table-toggle-coordinate-overlays}）を使用して，テーブルの行と列の番号を表示するようにトグルする．テーブルが整列される度に表示が変わり，@kbd{C-c C-c}で強制的に表示を更新できます．"
 
 #. type: kindex
 #: org.texi:2659
@@ -8819,7 +8819,7 @@ msgstr "C-c @{"
 #: org.texi:2660
 #, no-wrap
 msgid "org-table-toggle-formula-debugger"
-msgstr ""
+msgstr "org-table-toggle-formula-debugger"
 
 #+glossary: buffer ( バッファ ) / current ( カレント|現在の ) / cursor ( カーソル ) / editor ( エディタ ) / field ( フィールド ) / formula ( 数式 ) / line ( 行|ライン|線 ) / mark ( マーク ) / org ( Org-mode ) / table ( テーブル ) / toggle ( トグル )
 #. type: table
@@ -23205,64 +23205,63 @@ msgstr "エクスポートしている間、コードブロックは評価され
 #: org.texi:11385
 #, no-wrap
 msgid "tangling"
-msgstr "tangling"
+msgstr ""
 
-# 抽出、ソースコード
 #+glossary: code ( コード ) / source ( ソース )
 #. type: cindex
 #: org.texi:11386
 #, no-wrap
 msgid "source code, extracting"
-msgstr "抽出、ソースコード"
+msgstr ""
 
 #+glossary: code block ( コードブロック ) / code ( コード ) / source ( ソース )
 #. type: cindex
 #: org.texi:11387
 #, no-wrap
 msgid "code block, extracting source code"
-msgstr "ソースコードの抽出、コードブロック"
+msgstr ""
 
 #+glossary: code block ( コードブロック ) / literate programming ( 文芸的プログラミング ) / block ( ブロック ) / code ( コード ) / creating ( 作成 ) / file ( ファイル ) / source ( ソース ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:11394
 msgid "Creating pure source code files by extracting code from source blocks is referred to as ``tangling''---a term adopted from the literate programming community.  During ``tangling'' of code blocks their bodies are expanded using @code{org-babel-expand-src-block} which can expand both variable and ``noweb'' style references (see @ref{Noweb reference syntax})."
-msgstr "ソースブロックからコードを抽出して純粋なソースコードファイルを作成することを、``tangling''といいます。この用語は文芸的プログラミングコミュニティで使われている専門用語です。コードブロックを``tangling''する時に、変数と``noweb''スタイルの参照点(@ref{Noweb reference syntax}を参照)を展開できる@code{org-babel-expand-src-block}を使ってコード本文を展開します。"
+msgstr ""
 
 #. type: item
 #: org.texi:11397
 #, no-wrap
 msgid ":tangle no"
-msgstr ":tangle no"
+msgstr ""
 
 #+glossary: code block ( コードブロック ) / default ( デフォルト|初期値 ) / output ( アウトプット )
 #. type: table
 #: org.texi:11399
 msgid "The default.  The code block is not included in the tangled output."
-msgstr "デフォルトの設定です。コードブロックはtangleされたアウトプットには含まれません。"
+msgstr ""
 
 #. type: item
 #: org.texi:11399
 #, no-wrap
 msgid ":tangle yes"
-msgstr ":tangle yes"
+msgstr ""
 
 #+glossary: code block ( コードブロック ) / block ( ブロック ) / extension ( 拡張|拡張子 ) / file ( ファイル ) / language ( 言語 ) / org ( Org-mode ) / output ( アウトプット )
 #. type: table
 #: org.texi:11403
 msgid "Include the code block in the tangled output. The output file name is the name of the org file with the extension @samp{.org} replaced by the extension for the block language."
-msgstr "tangleされたアウトプットにコードブロックを含むように設定します。アウトプットされるファイル名は、orgファイルの拡張子@samp{.org}をブロックに記述した言語の拡張子名に置換したものです。"
+msgstr ""
 
 #. type: item
 #: org.texi:11403
 #, no-wrap
 msgid ":tangle filename"
-msgstr ":tangle filename"
+msgstr ""
 
 #+glossary: code block ( コードブロック ) / file ( ファイル ) / output ( アウトプット )
 #. type: table
 #: org.texi:11405
 msgid "Include the code block in the tangled output to file @samp{filename}."
-msgstr "@samp{filename}に出力するアウトプットにコードブロックを含ませます。"
+msgstr ""
 
 #. type: kindex
 #: org.texi:11407
@@ -23276,75 +23275,75 @@ msgstr "C-c C-v t"
 #: org.texi:11408
 #, no-wrap
 msgid "Functions"
-msgstr "関数"
+msgstr ""
 
 #. type: item
 #: org.texi:11410
 #, no-wrap
 msgid "org-babel-tangle"
-msgstr "org-babel-tangle"
+msgstr ""
 
 #+glossary: current ( カレント|現在の ) / file ( ファイル ) / tangle ( tangle )
 #. type: table
 #: org.texi:11412
 msgid "Tangle the current file.  Bound to @kbd{C-c C-v t}."
-msgstr "現在のファイルをtangleします。キーバインドは@kbd{C-c C-v t}です。"
+msgstr ""
 
 #. type: item
 #: org.texi:11412
 #, no-wrap
 msgid "org-babel-tangle-file"
-msgstr "org-babel-tangle-file"
+msgstr ""
 
 #+glossary: file ( ファイル ) / tangle ( tangle )
 #. type: table
 #: org.texi:11414
 msgid "Choose a file to tangle.  Bound to @kbd{C-c C-v f}."
-msgstr "tangleするファイルを選びます。キーバインドは@kbd{C-c C-v f}です。"
+msgstr ""
 
 #. type: item
 #: org.texi:11418
 #, no-wrap
 msgid "org-babel-post-tangle-hook"
-msgstr "org-babel-post-tangle-hook"
+msgstr ""
 
 #+glossary: code ( コード ) / evaluation ( 評価 ) / example ( 例 ) / file ( ファイル ) / hook ( フック )
 #. type: table
 #: org.texi:11422
 msgid "This hook is run from within code files tangled by @code{org-babel-tangle}.  Example applications could include post-processing, compilation or evaluation of tangled code files."
-msgstr "このhook関数は関数@code{org-babel-tangle}によってtangleされたコードファイルの中から呼び出されます。実例応用ではtangleされたコードファイルの後処理、編集や評価を含むことができます。"
+msgstr ""
 
 #+glossary: code block ( コードブロック )
 #. type: cindex
 #: org.texi:11426
 #, no-wrap
 msgid "code block, evaluating"
-msgstr "評価、コードブロック"
+msgstr ""
 
 #+glossary: code ( コード ) / source ( ソース )
 #. type: cindex
 #: org.texi:11427
 #, no-wrap
 msgid "source code, evaluating"
-msgstr "評価、ソースコード"
+msgstr ""
 
 #+glossary: code block ( コードブロック ) / block ( ブロック ) / buffer ( バッファ ) / code ( コード ) / default ( デフォルト|初期値 ) / evaluate ( 評価する ) / evaluation ( 評価 ) / explicit ( 明示的に ) / information ( 情報 ) / language ( 言語 ) / list ( リスト ) / org-mode ( Org-mode ) / provide ( 用意する ) / syntax ( 構文|シンタックス ) / user ( ユーザー )
 #. type: Plain text
 #: org.texi:11438
 msgid "Code blocks can be evaluated@footnote{Whenever code is evaluated there is a potential for that code to do harm.  Org-mode provides a number of safeguards to ensure that it only evaluates code with explicit confirmation from the user.  For information on these safeguards (and on how to disable them) see @ref{Code evaluation security}.} and the results placed in the Org-mode buffer.  By default, evaluation is only turned on for @code{emacs-lisp} code blocks, however support exists for evaluating blocks in many languages.  See @ref{Languages} for a list of supported languages.  See @ref{Structure of code blocks} for information on the syntax used to define a code block."
-msgstr "コードブロックを評価し@footnote{コードを評価するときはいつでも、そのコードが害をなす可能性があります。Org-modeは、ユーザーから明示的な確認をできたときのみにコードを評価する安全装置をいくつも用意しています。これらの安全装置について(そしてそを無効化する方法について)、@ref{Code evaluation security}を参照してください。}、その結果をOrg-modeバッファに表示することが可能です。デフォルトでは、@code{emacs-lisp}コードブロックだけを評価しますが、多くの言語を評価できます。サポートされている言語のリストは、@ref{Languages}で見ることができます。コードブロックを定義する構文について@ref{Structure of code blocks}を参照してください。"
+msgstr ""
 
 #+glossary: code block ( コードブロック ) / block ( ブロック ) / buffer ( バッファ ) / code ( コード ) / evaluate ( 評価する ) / evaluation ( 評価 ) / function ( 機能|関数 ) / insert ( 挿入 ) / key ( キー ) / org-mode ( Org-mode ) / point ( ポイント ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:11446
 msgid "There are a number of ways to evaluate code blocks.  The simplest is to press @kbd{C-c C-c} or @kbd{C-c C-v e} with the point on a code block@footnote{The @code{org-babel-no-eval-on-ctrl-c-ctrl-c} variable can be used to remove code evaluation from the @kbd{C-c C-c} key binding.}.  This will call the @code{org-babel-execute-src-block} function to evaluate the block and insert its results into the Org-mode buffer."
-msgstr "コードブロックを評価する方法は多くあります。一番簡単な方法は、コードブロック@footnote{変数@code{org-babel-no-eval-on-ctrl-c-ctrl-c}を設定することで、キーバインド@kbd{C-c C-c}からコードの評価を除去できます。}にて@kbd{C-c C-c}もしくは@kbd{C-c C-v e}をと入力することです。これが関数@code{org-babel-execute-src-block}をコール、コードブロックを評価し、その結果をOrg-modeバッファに挿入します。"
+msgstr ""
 
 #+glossary: code block ( コードブロック ) / buffer ( バッファ ) / current ( カレント|現在の ) / evaluate ( 評価する ) / line ( 行|ライン|線 ) / named ( 名前付き ) / org-mode ( Org-mode ) / syntax ( 構文|シンタックス ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:11452
 msgid "It is also possible to evaluate named code blocks from anywhere in an Org-mode buffer or an Org-mode table.  @code{#+call} (or synonymously @code{#+function} or @code{#+lob}) lines can be used to remotely execute code blocks located in the current Org-mode buffer or in the ``Library of Babel'' (see @ref{Library of Babel}).  These lines use the following syntax."
-msgstr "Org-modeバッファもしくはOrg-modeテーブル内のどこからでも、名前付きコードブロックを評価できます。現在のOrg-modeバッファや``Library of Babel''(@ref{Library of Babel}にあるコードブロックを間接的に実行するには、@code{#+call}行 (もしくは同義語として@code{#+function}行や@code{#+lob}行)が使えます。これらは、以下の構文を使います。"
+msgstr ""
 
 #. type: example
 #: org.texi:11457
@@ -23354,135 +23353,132 @@ msgid ""
 "#+function: <name>(<arguments>) <header arguments>\n"
 "#+lob: <name>(<arguments>) <header arguments>\n"
 msgstr ""
-"#+call: <name>(<arguments>) <header arguments>\n"
-"#+function: <name>(<arguments>) <header arguments>\n"
-"#+lob: <name>(<arguments>) <header arguments>\n"
 
 #+glossary: code block ( コードブロック )
 #. type: table
 #: org.texi:11462
 msgid "The name of the code block to be evaluated."
-msgstr "評価されるコードブロックの名前です。"
+msgstr ""
 
 #. type: item
 #: org.texi:11462
 #, no-wrap
 msgid "<arguments>"
-msgstr "<arguments>"
+msgstr ""
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / argument ( 引数 ) / block ( ブロック ) / example ( 例 ) / function ( 機能|関数 ) / line ( 行|ライン|線 ) / named ( 名前付き ) / section ( セクション ) / syntax ( 構文|シンタックス )
 #. type: table
 #: org.texi:11469
 msgid "Arguments specified in this section will be passed to the code block.  These arguments should relate to @code{:var} header arguments in the called code block expressed using standard function call syntax.  For example if the original code block named @code{double} has the header argument @code{:var n=2}, then the call line passing the number four to that block would be written as @code{#+call: double(n=2)}."
-msgstr "このセクションで説明されている引数をコードブロックへと渡します。通常の関数コールの構文を使ってコールされたコードブロックにおいて、これらの引数は@code{:var}というヘッダー引数と関連付けられています。例えば、@code{double}と名付けられたもともとのコードブロックがヘッダー引数@code{:var n=2}を持つ場合、上記call行により数値の4をブロックに渡すには@code{#+call: double(n=2)}と書かれます。英文にてtypo?:number four->number two:\"then the call line passing the number four to that block would be written as @code{#+call: double(n=2)}.\""
+msgstr ""
 
 #+glossary: header argument ( ヘッダー引数 ) / function ( 機能|関数 ) / information ( 情報 )
 #. type: table
 #: org.texi:11472
 msgid "Header arguments can be placed after the function invocation.  See @ref{Header arguments} for more information on header arguments."
-msgstr "関数を起動した後の、ヘッダー引数を指定できます。ヘッダー引数の(更なる情報|詳細)については@ref{Header arguments}を参照してください。"
+msgstr ""
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / evaluation ( 評価 ) / line ( 行|ライン|線 ) / section ( セクション )
 #. type: Plain text
 #: org.texi:11478
 msgid "All header arguments placed in the @code{<header arguments>} section described above will be applied to the evaluation of the @code{#+call:} line, however it is sometimes desirable to specify header arguments to be passed to the code block being evaluated."
-msgstr "上の@code{<header arguments>}セクションに記述された全てのヘッダー引数は@code{#+call:}行の評価に適用されます。しかし、評価されているコードブロックに渡すヘッダー引数を指定することが望ましいときもあります。"
+msgstr ""
 
 #+glossary: syntax ( 構文|シンタックス )
 #. type: Plain text
 #: org.texi:11480
 msgid "This is possible through the use of the following optional extended syntax."
-msgstr "以下に示ように、オプションを拡張した構文も使えます。"
+msgstr ""
 
 #+glossary: header ( ヘッダー )
 #. type: example
 #: org.texi:11483
 #, no-wrap
 msgid "#+call: <name>[<block header arguments>](<arguments>) <header arguments>\n"
-msgstr "#+call: <name>[<block header arguments>](<arguments>) <header arguments>\n"
+msgstr ""
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / argument ( 引数 ) / brackets ( 角括弧 ) / evaluation ( 評価 ) / example ( 例 ) / function ( 機能|関数 ) / header ( ヘッダー ) / line ( 行|ライン|線 ) / named ( 名前付き ) / section ( セクション )
 #. type: Plain text
 #: org.texi:11489
 msgid "Any header argument placed between the square brackets in the @code{<block header arguments>} section will be applied to the evaluation of the named code block.  For more examples of passing header arguments to @code{#+call:} lines see @ref{Header arguments in function calls}."
-msgstr "@code{<block header arguments>}セクション内の角括弧([])の間にあるヘッダー引数は、名前付きコードブロックの評価に適用されます。@code{#+call:}行へヘッダー引数を渡す例の更なる紹介は、@ref{Header arguments in function calls}をご覧ください。"
+msgstr ""
 
 #. type: cindex
 #: org.texi:11492
 #, no-wrap
 msgid "babel, library of"
-msgstr "ライブラリ、babel"
+msgstr ""
 
 #+glossary: code ( コード ) / source ( ソース )
 #. type: cindex
 #: org.texi:11493
 #, no-wrap
 msgid "source code, library"
-msgstr "ライブラリ、ソースコード"
+msgstr ""
 
 #+glossary: code block ( コードブロック )
 #. type: cindex
 #: org.texi:11494
 #, no-wrap
 msgid "code block, library"
-msgstr "ライブラリ、コードブロック"
+msgstr ""
 
 #+glossary: code block ( コードブロック ) / directory ( ディレクトリ ) / file ( ファイル ) / function ( 機能|関数 ) / org-mode ( Org-mode ) / user ( ユーザー )
 #. type: Plain text
 #: org.texi:11501
 msgid "The ``Library of Babel'' is a library of code blocks that can be called from any Org-mode file.  The library is housed in an Org-mode file located in the @samp{contrib} directory of Org-mode.  Org-mode users can deposit functions they believe to be generally useful in the library."
-msgstr "``Library of Babel'' はOrg-modeのファイルから呼び出せるコードブロックのライブラリです。 ライブラリは、Org-modeの@samp{contrib}ディレクトリのOrg-modeファイルに格納されています。Org-modeのユーザーは、一般的に有用だと考えられる関数を、ライブラリ内に置くことができます。"
+msgstr ""
 
 #+glossary: code block ( コードブロック ) / buffer ( バッファ ) / code ( コード ) / current ( カレント|現在の ) / information ( 情報 ) / org-mode ( Org-mode ) / syntax ( 構文|シンタックス )
 #. type: Plain text
 #: org.texi:11505
 msgid "Code blocks defined in the ``Library of Babel'' can be called remotely as if they were in the current Org-mode buffer (see @ref{Evaluating code blocks} for information on the syntax of remote code block evaluation)."
-msgstr "``Library of Babel''で定義されたコードブロックは、あたかも現在のOrg-modeバッファで処理されるかのように、リモートで呼び出せます(callできます)。(リモートでコードブロックを評価する構文についての情報は、@ref{Evaluating code blocks}を参照してください。)"
+msgstr ""
 
 #. type: kindex
 #: org.texi:11506
 #, no-wrap
 msgid "C-c C-v i"
-msgstr "C-c C-v i"
+msgstr ""
 
 #+glossary: code block ( コードブロック ) / file ( ファイル ) / function ( 機能|関数 ) / org-mode ( Org-mode )
 #. type: Plain text
 #: org.texi:11510
 msgid "Code blocks located in any Org-mode file can be loaded into the ``Library of Babel'' with the @code{org-babel-lob-ingest} function, bound to @kbd{C-c C-v i}."
-msgstr "どんなOrg-modeファイルに記述されたコードブロックでも、``Library of Babel''の関数@code{org-babel-lob-ingest}を使って、ロードできます。キーバインドは@kbd{C-c C-v i}です。"
+msgstr ""
 
 #+glossary: language ( 言語 )
 #. type: cindex
 #: org.texi:11513
 #, no-wrap
 msgid "babel, languages"
-msgstr "言語、babel"
+msgstr ""
 
 #+glossary: code ( コード ) / language ( 言語 ) / source ( ソース )
 #. type: cindex
 #: org.texi:11514
 #, no-wrap
 msgid "source code, languages"
-msgstr "ソースコード、言語"
+msgstr ""
 
 #+glossary: code block ( コードブロック ) / language ( 言語 )
 #. type: cindex
 #: org.texi:11515
 #, no-wrap
 msgid "code block, languages"
-msgstr "コードブロック、言語"
+msgstr ""
 
 #+glossary: code block ( コードブロック ) / language ( 言語 )
 #. type: Plain text
 #: org.texi:11518
 msgid "Code blocks in the following languages are supported."
-msgstr "コードブロックでは、以下の言語を使えます。"
+msgstr ""
 
 #. type: item
 #: org.texi:11520
 #, no-wrap
 msgid "@b{Language} @tab @b{Identifier} @tab @b{Language} @tab @b{Identifier}"
-msgstr "@b{言語} @tab @b{識別子} @tab @b{言語} @tab @b{識別子}"
+msgstr ""
 
 #+glossary: calc ( calc )
 #. type: item
@@ -23495,110 +23491,110 @@ msgstr ""
 #: org.texi:11522
 #, no-wrap
 msgid "C @tab C @tab C++ @tab C++"
-msgstr "C @tab C @tab C++ @tab C++"
+msgstr ""
 
 #. type: item
 #: org.texi:11523
 #, no-wrap
 msgid "Clojure @tab clojure @tab CSS @tab css"
-msgstr "Clojure @tab clojure @tab CSS @tab css"
+msgstr ""
 
 #. type: item
 #: org.texi:11524
 #, no-wrap
 msgid "ditaa @tab ditaa  @tab Graphviz @tab dot"
-msgstr "ditaa @tab ditaa  @tab Graphviz @tab dot"
+msgstr ""
 
 #. type: item
 #: org.texi:11525
 #, no-wrap
 msgid "Emacs Lisp @tab emacs-lisp  @tab gnuplot @tab gnuplot"
-msgstr "Emacs Lisp @tab emacs-lisp  @tab gnuplot @tab gnuplot"
+msgstr ""
 
 #. type: item
 #: org.texi:11526
 #, no-wrap
 msgid "Haskell @tab haskell @tab Javascript @tab js"
-msgstr "Haskell @tab haskell @tab Javascript @tab js"
+msgstr ""
 
 #. type: item
 #: org.texi:11527
 #, no-wrap
 msgid "LaTeX @tab latex @tab Ledger @tab ledger"
-msgstr "LaTeX @tab latex @tab Ledger @tab ledger"
+msgstr ""
 
 #. type: item
 #: org.texi:11528
 #, no-wrap
 msgid "Lisp @tab lisp @tab MATLAB @tab matlab"
-msgstr "Lisp @tab lisp @tab MATLAB @tab matlab"
+msgstr ""
 
 #. type: item
 #: org.texi:11529
 #, no-wrap
 msgid "Mscgen @tab mscgen @tab Objective Caml @tab ocaml"
-msgstr "Mscgen @tab mscgen @tab Objective Caml @tab ocaml"
+msgstr ""
 
 #+glossary: org ( Org-mode ) / org-mode ( Org-mode )
 #. type: item
 #: org.texi:11530
 #, no-wrap
 msgid "Octave @tab octave @tab Org-mode @tab org"
-msgstr "Octave @tab octave @tab Org-mode @tab org"
+msgstr ""
 
 #. type: item
 #: org.texi:11531
 #, no-wrap
 msgid "Oz @tab oz @tab Perl @tab perl"
-msgstr "Oz @tab oz @tab Perl @tab perl"
+msgstr ""
 
 #. type: item
 #: org.texi:11532
 #, no-wrap
 msgid "Plantuml @tab plantuml @tab Python @tab python"
-msgstr "Plantuml @tab plantuml @tab Python @tab python"
+msgstr ""
 
 #. type: item
 #: org.texi:11533
 #, no-wrap
 msgid "R @tab R @tab Ruby @tab ruby"
-msgstr "R @tab R @tab Ruby @tab ruby"
+msgstr ""
 
 #. type: item
 #: org.texi:11534
 #, no-wrap
 msgid "Sass @tab sass @tab Scheme @tab scheme"
-msgstr "Sass @tab sass @tab Scheme @tab scheme"
+msgstr ""
 
 #. type: item
 #: org.texi:11535
 #, no-wrap
 msgid "GNU Screen @tab screen @tab shell @tab sh"
-msgstr "GNU Screen @tab screen @tab shell @tab sh"
+msgstr ""
 
 #. type: item
 #: org.texi:11536
 #, no-wrap
 msgid "SQL @tab sql @tab SQLite @tab sqlite"
-msgstr "SQL @tab sql @tab SQLite @tab sqlite"
+msgstr ""
 
 #+glossary: available ( 利用できる ) / language ( 言語 )
 #. type: Plain text
 #: org.texi:11542
 msgid "Language-specific documentation is available for some languages.  If available, it can be found at @uref{http://orgmode.org/worg/org-contrib/babel/languages}."
-msgstr "言語特有の文書が存在する場合があります。存在する場合、文書は@uref{http://orgmode.org/worg/org-contrib/babel/languages}にて見つけられます。"
+msgstr ""
 
 #+glossary: code ( コード ) / configuration ( 設定 ) / customization ( カスタマイズ ) / default ( デフォルト|初期値 ) / evaluation ( 評価 ) / language ( 言語 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:11547
 msgid "The @code{org-babel-load-languages} controls which languages are enabled for evaluation (by default only @code{emacs-lisp} is enabled).  This variable can be set using the customization interface or by adding code like the following to your emacs configuration."
-msgstr "どの言語を評価するかの管理には、関数@code{org-babel-load-languages}を使います。(デフォルトでは@code{emacs-lisp}のみを評価可能です。) この変数を設定するには、カスタマイズのインターフェースを使うか、以下のコードをemacsの設定ファイルに追加します。"
+msgstr ""
 
 #+glossary: code block ( コードブロック ) / evaluation ( 評価 )
 #. type: quotation
 #: org.texi:11551
 msgid "The following disables @code{emacs-lisp} evaluation and enables evaluation of @code{R} code blocks."
-msgstr "次のコードでは、@code{emacs-lisp}を評価させないように設定し、@code{R}のコードブロックを評価させるように設定しています。"
+msgstr ""
 
 #. type: lisp
 #: org.texi:11558
@@ -23609,28 +23605,24 @@ msgid ""
 " '((emacs-lisp . nil)\n"
 "   (R . t)))\n"
 msgstr ""
-"(org-babel-do-load-languages\n"
-" 'org-babel-load-languages\n"
-" '((emacs-lisp . nil)\n"
-"   (R . t)))\n"
 
 #+glossary: file ( ファイル ) / language ( 言語 )
 #. type: Plain text
 #: org.texi:11562
 msgid "It is also possible to enable support for a language by loading the related elisp file with @code{require}."
-msgstr "上記方法に加えて、@code{require}関数を使って関連するelispファイルをロードすることでも、言語のサポートを有効にできます."
+msgstr ""
 
 #+glossary: code block ( コードブロック )
 #. type: quotation
 #: org.texi:11565
 msgid "The following adds support for evaluating @code{clojure} code blocks."
-msgstr "次の例では、@code{clojure}コードブロックの評価を有効にしています。"
+msgstr ""
 
 #. type: lisp
 #: org.texi:11569
 #, no-wrap
 msgid "(require 'ob-clojure)\n"
-msgstr "(require 'ob-clojure)\n"
+msgstr ""
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 )
 #. type: cindex
