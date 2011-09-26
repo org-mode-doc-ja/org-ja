@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-09-26 18:41+0900\n"
+"PO-Revision-Date: 2011-09-26 18:47+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -23205,63 +23205,64 @@ msgstr "エクスポートしている間、コードブロックは評価され
 #: org.texi:11385
 #, no-wrap
 msgid "tangling"
-msgstr ""
+msgstr "tangling"
 
+# 抽出、ソースコード
 #+glossary: code ( コード ) / source ( ソース )
 #. type: cindex
 #: org.texi:11386
 #, no-wrap
 msgid "source code, extracting"
-msgstr ""
+msgstr "抽出、ソースコード"
 
 #+glossary: code block ( コードブロック ) / code ( コード ) / source ( ソース )
 #. type: cindex
 #: org.texi:11387
 #, no-wrap
 msgid "code block, extracting source code"
-msgstr ""
+msgstr "ソースコードの抽出、コードブロック"
 
 #+glossary: code block ( コードブロック ) / literate programming ( 文芸的プログラミング ) / block ( ブロック ) / code ( コード ) / creating ( 作成 ) / file ( ファイル ) / source ( ソース ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:11394
 msgid "Creating pure source code files by extracting code from source blocks is referred to as ``tangling''---a term adopted from the literate programming community.  During ``tangling'' of code blocks their bodies are expanded using @code{org-babel-expand-src-block} which can expand both variable and ``noweb'' style references (see @ref{Noweb reference syntax})."
-msgstr ""
+msgstr "ソースブロックからコードを抽出して純粋なソースコードファイルを作成することを、``tangling''といいます。この用語は文芸的プログラミングコミュニティで使われている専門用語です。コードブロックを``tangling''する時に、変数と``noweb''スタイルの参照点(@ref{Noweb reference syntax}を参照)を展開できる@code{org-babel-expand-src-block}を使ってコード本文を展開します。"
 
 #. type: item
 #: org.texi:11397
 #, no-wrap
 msgid ":tangle no"
-msgstr ""
+msgstr ":tangle no"
 
 #+glossary: code block ( コードブロック ) / default ( デフォルト|初期値 ) / output ( アウトプット )
 #. type: table
 #: org.texi:11399
 msgid "The default.  The code block is not included in the tangled output."
-msgstr ""
+msgstr "デフォルトの設定です。コードブロックはtangleされたアウトプットには含まれません。"
 
 #. type: item
 #: org.texi:11399
 #, no-wrap
 msgid ":tangle yes"
-msgstr ""
+msgstr ":tangle yes"
 
 #+glossary: code block ( コードブロック ) / block ( ブロック ) / extension ( 拡張|拡張子 ) / file ( ファイル ) / language ( 言語 ) / org ( Org-mode ) / output ( アウトプット )
 #. type: table
 #: org.texi:11403
 msgid "Include the code block in the tangled output. The output file name is the name of the org file with the extension @samp{.org} replaced by the extension for the block language."
-msgstr ""
+msgstr "tangleされたアウトプットにコードブロックを含むように設定します。アウトプットされるファイル名は、orgファイルの拡張子@samp{.org}をブロックに記述した言語の拡張子名に置換したものです。"
 
 #. type: item
 #: org.texi:11403
 #, no-wrap
 msgid ":tangle filename"
-msgstr ""
+msgstr ":tangle filename"
 
 #+glossary: code block ( コードブロック ) / file ( ファイル ) / output ( アウトプット )
 #. type: table
 #: org.texi:11405
 msgid "Include the code block in the tangled output to file @samp{filename}."
-msgstr ""
+msgstr "@samp{filename}に出力するアウトプットにコードブロックを含ませます。"
 
 #. type: kindex
 #: org.texi:11407
@@ -23275,75 +23276,75 @@ msgstr "C-c C-v t"
 #: org.texi:11408
 #, no-wrap
 msgid "Functions"
-msgstr ""
+msgstr "関数"
 
 #. type: item
 #: org.texi:11410
 #, no-wrap
 msgid "org-babel-tangle"
-msgstr ""
+msgstr "org-babel-tangle"
 
 #+glossary: current ( カレント|現在の ) / file ( ファイル ) / tangle ( tangle )
 #. type: table
 #: org.texi:11412
 msgid "Tangle the current file.  Bound to @kbd{C-c C-v t}."
-msgstr ""
+msgstr "現在のファイルをtangleします。キーバインドは@kbd{C-c C-v t}です。"
 
 #. type: item
 #: org.texi:11412
 #, no-wrap
 msgid "org-babel-tangle-file"
-msgstr ""
+msgstr "org-babel-tangle-file"
 
 #+glossary: file ( ファイル ) / tangle ( tangle )
 #. type: table
 #: org.texi:11414
 msgid "Choose a file to tangle.  Bound to @kbd{C-c C-v f}."
-msgstr ""
+msgstr "tangleするファイルを選びます。キーバインドは@kbd{C-c C-v f}です。"
 
 #. type: item
 #: org.texi:11418
 #, no-wrap
 msgid "org-babel-post-tangle-hook"
-msgstr ""
+msgstr "org-babel-post-tangle-hook"
 
 #+glossary: code ( コード ) / evaluation ( 評価 ) / example ( 例 ) / file ( ファイル ) / hook ( フック )
 #. type: table
 #: org.texi:11422
 msgid "This hook is run from within code files tangled by @code{org-babel-tangle}.  Example applications could include post-processing, compilation or evaluation of tangled code files."
-msgstr ""
+msgstr "このhook関数は関数@code{org-babel-tangle}によってtangleされたコードファイルの中から呼び出されます。実例応用ではtangleされたコードファイルの後処理、編集や評価を含むことができます。"
 
 #+glossary: code block ( コードブロック )
 #. type: cindex
 #: org.texi:11426
 #, no-wrap
 msgid "code block, evaluating"
-msgstr ""
+msgstr "評価、コードブロック"
 
 #+glossary: code ( コード ) / source ( ソース )
 #. type: cindex
 #: org.texi:11427
 #, no-wrap
 msgid "source code, evaluating"
-msgstr ""
+msgstr "評価、ソースコード"
 
 #+glossary: code block ( コードブロック ) / block ( ブロック ) / buffer ( バッファ ) / code ( コード ) / default ( デフォルト|初期値 ) / evaluate ( 評価する ) / evaluation ( 評価 ) / explicit ( 明示的に ) / information ( 情報 ) / language ( 言語 ) / list ( リスト ) / org-mode ( Org-mode ) / provide ( 用意する ) / syntax ( 構文|シンタックス ) / user ( ユーザー )
 #. type: Plain text
 #: org.texi:11438
 msgid "Code blocks can be evaluated@footnote{Whenever code is evaluated there is a potential for that code to do harm.  Org-mode provides a number of safeguards to ensure that it only evaluates code with explicit confirmation from the user.  For information on these safeguards (and on how to disable them) see @ref{Code evaluation security}.} and the results placed in the Org-mode buffer.  By default, evaluation is only turned on for @code{emacs-lisp} code blocks, however support exists for evaluating blocks in many languages.  See @ref{Languages} for a list of supported languages.  See @ref{Structure of code blocks} for information on the syntax used to define a code block."
-msgstr ""
+msgstr "コードブロックを評価し@footnote{コードを評価するときはいつでも、そのコードが害をなす可能性があります。Org-modeは、ユーザーから明示的な確認をできたときのみにコードを評価する安全装置をいくつも用意しています。これらの安全装置について(そしてそを無効化する方法について)、@ref{Code evaluation security}を参照してください。}、その結果をOrg-modeバッファに表示することが可能です。デフォルトでは、@code{emacs-lisp}コードブロックだけを評価しますが、多くの言語を評価できます。サポートされている言語のリストは、@ref{Languages}で見ることができます。コードブロックを定義する構文について@ref{Structure of code blocks}を参照してください。"
 
 #+glossary: code block ( コードブロック ) / block ( ブロック ) / buffer ( バッファ ) / code ( コード ) / evaluate ( 評価する ) / evaluation ( 評価 ) / function ( 機能|関数 ) / insert ( 挿入 ) / key ( キー ) / org-mode ( Org-mode ) / point ( ポイント ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:11446
 msgid "There are a number of ways to evaluate code blocks.  The simplest is to press @kbd{C-c C-c} or @kbd{C-c C-v e} with the point on a code block@footnote{The @code{org-babel-no-eval-on-ctrl-c-ctrl-c} variable can be used to remove code evaluation from the @kbd{C-c C-c} key binding.}.  This will call the @code{org-babel-execute-src-block} function to evaluate the block and insert its results into the Org-mode buffer."
-msgstr ""
+msgstr "コードブロックを評価する方法は多くあります。一番簡単な方法は、コードブロック@footnote{変数@code{org-babel-no-eval-on-ctrl-c-ctrl-c}を設定することで、キーバインド@kbd{C-c C-c}からコードの評価を除去できます。}にて@kbd{C-c C-c}もしくは@kbd{C-c C-v e}をと入力することです。これが関数@code{org-babel-execute-src-block}をコール、コードブロックを評価し、その結果をOrg-modeバッファに挿入します。"
 
 #+glossary: code block ( コードブロック ) / buffer ( バッファ ) / current ( カレント|現在の ) / evaluate ( 評価する ) / line ( 行|ライン|線 ) / named ( 名前付き ) / org-mode ( Org-mode ) / syntax ( 構文|シンタックス ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:11452
 msgid "It is also possible to evaluate named code blocks from anywhere in an Org-mode buffer or an Org-mode table.  @code{#+call} (or synonymously @code{#+function} or @code{#+lob}) lines can be used to remotely execute code blocks located in the current Org-mode buffer or in the ``Library of Babel'' (see @ref{Library of Babel}).  These lines use the following syntax."
-msgstr ""
+msgstr "Org-modeバッファもしくはOrg-modeテーブル内のどこからでも、名前付きコードブロックを評価できます。現在のOrg-modeバッファや``Library of Babel''(@ref{Library of Babel}にあるコードブロックを間接的に実行するには、@code{#+call}行 (もしくは同義語として@code{#+function}行や@code{#+lob}行)が使えます。これらは、以下の構文を使います。"
 
 #. type: example
 #: org.texi:11457
@@ -23353,132 +23354,135 @@ msgid ""
 "#+function: <name>(<arguments>) <header arguments>\n"
 "#+lob: <name>(<arguments>) <header arguments>\n"
 msgstr ""
+"#+call: <name>(<arguments>) <header arguments>\n"
+"#+function: <name>(<arguments>) <header arguments>\n"
+"#+lob: <name>(<arguments>) <header arguments>\n"
 
 #+glossary: code block ( コードブロック )
 #. type: table
 #: org.texi:11462
 msgid "The name of the code block to be evaluated."
-msgstr ""
+msgstr "評価されるコードブロックの名前です。"
 
 #. type: item
 #: org.texi:11462
 #, no-wrap
 msgid "<arguments>"
-msgstr ""
+msgstr "<arguments>"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / argument ( 引数 ) / block ( ブロック ) / example ( 例 ) / function ( 機能|関数 ) / line ( 行|ライン|線 ) / named ( 名前付き ) / section ( セクション ) / syntax ( 構文|シンタックス )
 #. type: table
 #: org.texi:11469
 msgid "Arguments specified in this section will be passed to the code block.  These arguments should relate to @code{:var} header arguments in the called code block expressed using standard function call syntax.  For example if the original code block named @code{double} has the header argument @code{:var n=2}, then the call line passing the number four to that block would be written as @code{#+call: double(n=2)}."
-msgstr ""
+msgstr "このセクションで説明されている引数をコードブロックへと渡します。通常の関数コールの構文を使ってコールされたコードブロックにおいて、これらの引数は@code{:var}というヘッダー引数と関連付けられています。例えば、@code{double}と名付けられたもともとのコードブロックがヘッダー引数@code{:var n=2}を持つ場合、上記call行により数値の4をブロックに渡すには@code{#+call: double(n=2)}と書かれます。英文にてtypo?:number four->number two:\"then the call line passing the number four to that block would be written as @code{#+call: double(n=2)}.\""
 
 #+glossary: header argument ( ヘッダー引数 ) / function ( 機能|関数 ) / information ( 情報 )
 #. type: table
 #: org.texi:11472
 msgid "Header arguments can be placed after the function invocation.  See @ref{Header arguments} for more information on header arguments."
-msgstr ""
+msgstr "関数を起動した後の、ヘッダー引数を指定できます。ヘッダー引数の(更なる情報|詳細)については@ref{Header arguments}を参照してください。"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / evaluation ( 評価 ) / line ( 行|ライン|線 ) / section ( セクション )
 #. type: Plain text
 #: org.texi:11478
 msgid "All header arguments placed in the @code{<header arguments>} section described above will be applied to the evaluation of the @code{#+call:} line, however it is sometimes desirable to specify header arguments to be passed to the code block being evaluated."
-msgstr ""
+msgstr "上の@code{<header arguments>}セクションに記述された全てのヘッダー引数は@code{#+call:}行の評価に適用されます。しかし、評価されているコードブロックに渡すヘッダー引数を指定することが望ましいときもあります。"
 
 #+glossary: syntax ( 構文|シンタックス )
 #. type: Plain text
 #: org.texi:11480
 msgid "This is possible through the use of the following optional extended syntax."
-msgstr ""
+msgstr "以下に示ように、オプションを拡張した構文も使えます。"
 
 #+glossary: header ( ヘッダー )
 #. type: example
 #: org.texi:11483
 #, no-wrap
 msgid "#+call: <name>[<block header arguments>](<arguments>) <header arguments>\n"
-msgstr ""
+msgstr "#+call: <name>[<block header arguments>](<arguments>) <header arguments>\n"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / argument ( 引数 ) / brackets ( 角括弧 ) / evaluation ( 評価 ) / example ( 例 ) / function ( 機能|関数 ) / header ( ヘッダー ) / line ( 行|ライン|線 ) / named ( 名前付き ) / section ( セクション )
 #. type: Plain text
 #: org.texi:11489
 msgid "Any header argument placed between the square brackets in the @code{<block header arguments>} section will be applied to the evaluation of the named code block.  For more examples of passing header arguments to @code{#+call:} lines see @ref{Header arguments in function calls}."
-msgstr ""
+msgstr "@code{<block header arguments>}セクション内の角括弧([])の間にあるヘッダー引数は、名前付きコードブロックの評価に適用されます。@code{#+call:}行へヘッダー引数を渡す例の更なる紹介は、@ref{Header arguments in function calls}をご覧ください。"
 
 #. type: cindex
 #: org.texi:11492
 #, no-wrap
 msgid "babel, library of"
-msgstr ""
+msgstr "ライブラリ、babel"
 
 #+glossary: code ( コード ) / source ( ソース )
 #. type: cindex
 #: org.texi:11493
 #, no-wrap
 msgid "source code, library"
-msgstr ""
+msgstr "ライブラリ、ソースコード"
 
 #+glossary: code block ( コードブロック )
 #. type: cindex
 #: org.texi:11494
 #, no-wrap
 msgid "code block, library"
-msgstr ""
+msgstr "ライブラリ、コードブロック"
 
 #+glossary: code block ( コードブロック ) / directory ( ディレクトリ ) / file ( ファイル ) / function ( 機能|関数 ) / org-mode ( Org-mode ) / user ( ユーザー )
 #. type: Plain text
 #: org.texi:11501
 msgid "The ``Library of Babel'' is a library of code blocks that can be called from any Org-mode file.  The library is housed in an Org-mode file located in the @samp{contrib} directory of Org-mode.  Org-mode users can deposit functions they believe to be generally useful in the library."
-msgstr ""
+msgstr "``Library of Babel'' はOrg-modeのファイルから呼び出せるコードブロックのライブラリです。 ライブラリは、Org-modeの@samp{contrib}ディレクトリのOrg-modeファイルに格納されています。Org-modeのユーザーは、一般的に有用だと考えられる関数を、ライブラリ内に置くことができます。"
 
 #+glossary: code block ( コードブロック ) / buffer ( バッファ ) / code ( コード ) / current ( カレント|現在の ) / information ( 情報 ) / org-mode ( Org-mode ) / syntax ( 構文|シンタックス )
 #. type: Plain text
 #: org.texi:11505
 msgid "Code blocks defined in the ``Library of Babel'' can be called remotely as if they were in the current Org-mode buffer (see @ref{Evaluating code blocks} for information on the syntax of remote code block evaluation)."
-msgstr ""
+msgstr "``Library of Babel''で定義されたコードブロックは、あたかも現在のOrg-modeバッファで処理されるかのように、リモートで呼び出せます(callできます)。(リモートでコードブロックを評価する構文についての情報は、@ref{Evaluating code blocks}を参照してください。)"
 
 #. type: kindex
 #: org.texi:11506
 #, no-wrap
 msgid "C-c C-v i"
-msgstr ""
+msgstr "C-c C-v i"
 
 #+glossary: code block ( コードブロック ) / file ( ファイル ) / function ( 機能|関数 ) / org-mode ( Org-mode )
 #. type: Plain text
 #: org.texi:11510
 msgid "Code blocks located in any Org-mode file can be loaded into the ``Library of Babel'' with the @code{org-babel-lob-ingest} function, bound to @kbd{C-c C-v i}."
-msgstr ""
+msgstr "どんなOrg-modeファイルに記述されたコードブロックでも、``Library of Babel''の関数@code{org-babel-lob-ingest}を使って、ロードできます。キーバインドは@kbd{C-c C-v i}です。"
 
 #+glossary: language ( 言語 )
 #. type: cindex
 #: org.texi:11513
 #, no-wrap
 msgid "babel, languages"
-msgstr ""
+msgstr "言語、babel"
 
 #+glossary: code ( コード ) / language ( 言語 ) / source ( ソース )
 #. type: cindex
 #: org.texi:11514
 #, no-wrap
 msgid "source code, languages"
-msgstr ""
+msgstr "ソースコード、言語"
 
 #+glossary: code block ( コードブロック ) / language ( 言語 )
 #. type: cindex
 #: org.texi:11515
 #, no-wrap
 msgid "code block, languages"
-msgstr ""
+msgstr "コードブロック、言語"
 
 #+glossary: code block ( コードブロック ) / language ( 言語 )
 #. type: Plain text
 #: org.texi:11518
 msgid "Code blocks in the following languages are supported."
-msgstr ""
+msgstr "コードブロックでは、以下の言語を使えます。"
 
 #. type: item
 #: org.texi:11520
 #, no-wrap
 msgid "@b{Language} @tab @b{Identifier} @tab @b{Language} @tab @b{Identifier}"
-msgstr ""
+msgstr "@b{言語} @tab @b{識別子} @tab @b{言語} @tab @b{識別子}"
 
 #+glossary: calc ( calc )
 #. type: item
@@ -23491,110 +23495,110 @@ msgstr ""
 #: org.texi:11522
 #, no-wrap
 msgid "C @tab C @tab C++ @tab C++"
-msgstr ""
+msgstr "C @tab C @tab C++ @tab C++"
 
 #. type: item
 #: org.texi:11523
 #, no-wrap
 msgid "Clojure @tab clojure @tab CSS @tab css"
-msgstr ""
+msgstr "Clojure @tab clojure @tab CSS @tab css"
 
 #. type: item
 #: org.texi:11524
 #, no-wrap
 msgid "ditaa @tab ditaa  @tab Graphviz @tab dot"
-msgstr ""
+msgstr "ditaa @tab ditaa  @tab Graphviz @tab dot"
 
 #. type: item
 #: org.texi:11525
 #, no-wrap
 msgid "Emacs Lisp @tab emacs-lisp  @tab gnuplot @tab gnuplot"
-msgstr ""
+msgstr "Emacs Lisp @tab emacs-lisp  @tab gnuplot @tab gnuplot"
 
 #. type: item
 #: org.texi:11526
 #, no-wrap
 msgid "Haskell @tab haskell @tab Javascript @tab js"
-msgstr ""
+msgstr "Haskell @tab haskell @tab Javascript @tab js"
 
 #. type: item
 #: org.texi:11527
 #, no-wrap
 msgid "LaTeX @tab latex @tab Ledger @tab ledger"
-msgstr ""
+msgstr "LaTeX @tab latex @tab Ledger @tab ledger"
 
 #. type: item
 #: org.texi:11528
 #, no-wrap
 msgid "Lisp @tab lisp @tab MATLAB @tab matlab"
-msgstr ""
+msgstr "Lisp @tab lisp @tab MATLAB @tab matlab"
 
 #. type: item
 #: org.texi:11529
 #, no-wrap
 msgid "Mscgen @tab mscgen @tab Objective Caml @tab ocaml"
-msgstr ""
+msgstr "Mscgen @tab mscgen @tab Objective Caml @tab ocaml"
 
 #+glossary: org ( Org-mode ) / org-mode ( Org-mode )
 #. type: item
 #: org.texi:11530
 #, no-wrap
 msgid "Octave @tab octave @tab Org-mode @tab org"
-msgstr ""
+msgstr "Octave @tab octave @tab Org-mode @tab org"
 
 #. type: item
 #: org.texi:11531
 #, no-wrap
 msgid "Oz @tab oz @tab Perl @tab perl"
-msgstr ""
+msgstr "Oz @tab oz @tab Perl @tab perl"
 
 #. type: item
 #: org.texi:11532
 #, no-wrap
 msgid "Plantuml @tab plantuml @tab Python @tab python"
-msgstr ""
+msgstr "Plantuml @tab plantuml @tab Python @tab python"
 
 #. type: item
 #: org.texi:11533
 #, no-wrap
 msgid "R @tab R @tab Ruby @tab ruby"
-msgstr ""
+msgstr "R @tab R @tab Ruby @tab ruby"
 
 #. type: item
 #: org.texi:11534
 #, no-wrap
 msgid "Sass @tab sass @tab Scheme @tab scheme"
-msgstr ""
+msgstr "Sass @tab sass @tab Scheme @tab scheme"
 
 #. type: item
 #: org.texi:11535
 #, no-wrap
 msgid "GNU Screen @tab screen @tab shell @tab sh"
-msgstr ""
+msgstr "GNU Screen @tab screen @tab shell @tab sh"
 
 #. type: item
 #: org.texi:11536
 #, no-wrap
 msgid "SQL @tab sql @tab SQLite @tab sqlite"
-msgstr ""
+msgstr "SQL @tab sql @tab SQLite @tab sqlite"
 
 #+glossary: available ( 利用できる ) / language ( 言語 )
 #. type: Plain text
 #: org.texi:11542
 msgid "Language-specific documentation is available for some languages.  If available, it can be found at @uref{http://orgmode.org/worg/org-contrib/babel/languages}."
-msgstr ""
+msgstr "言語特有の文書が存在する場合があります。存在する場合、文書は@uref{http://orgmode.org/worg/org-contrib/babel/languages}にて見つけられます。"
 
 #+glossary: code ( コード ) / configuration ( 設定 ) / customization ( カスタマイズ ) / default ( デフォルト|初期値 ) / evaluation ( 評価 ) / language ( 言語 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:11547
 msgid "The @code{org-babel-load-languages} controls which languages are enabled for evaluation (by default only @code{emacs-lisp} is enabled).  This variable can be set using the customization interface or by adding code like the following to your emacs configuration."
-msgstr ""
+msgstr "どの言語を評価するかの管理には、関数@code{org-babel-load-languages}を使います。(デフォルトでは@code{emacs-lisp}のみを評価可能です。) この変数を設定するには、カスタマイズのインターフェースを使うか、以下のコードをemacsの設定ファイルに追加します。"
 
 #+glossary: code block ( コードブロック ) / evaluation ( 評価 )
 #. type: quotation
 #: org.texi:11551
 msgid "The following disables @code{emacs-lisp} evaluation and enables evaluation of @code{R} code blocks."
-msgstr ""
+msgstr "次のコードでは、@code{emacs-lisp}を評価させないように設定し、@code{R}のコードブロックを評価させるように設定しています。"
 
 #. type: lisp
 #: org.texi:11558
@@ -23605,24 +23609,28 @@ msgid ""
 " '((emacs-lisp . nil)\n"
 "   (R . t)))\n"
 msgstr ""
+"(org-babel-do-load-languages\n"
+" 'org-babel-load-languages\n"
+" '((emacs-lisp . nil)\n"
+"   (R . t)))\n"
 
 #+glossary: file ( ファイル ) / language ( 言語 )
 #. type: Plain text
 #: org.texi:11562
 msgid "It is also possible to enable support for a language by loading the related elisp file with @code{require}."
-msgstr ""
+msgstr "上記方法に加えて、@code{require}関数を使って関連するelispファイルをロードすることでも、言語のサポートを有効にできます."
 
 #+glossary: code block ( コードブロック )
 #. type: quotation
 #: org.texi:11565
 msgid "The following adds support for evaluating @code{clojure} code blocks."
-msgstr ""
+msgstr "次の例では、@code{clojure}コードブロックの評価を有効にしています。"
 
 #. type: lisp
 #: org.texi:11569
 #, no-wrap
 msgid "(require 'ob-clojure)\n"
-msgstr ""
+msgstr "(require 'ob-clojure)\n"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 )
 #. type: cindex
