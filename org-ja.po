@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-09-26 19:23+0900\n"
+"PO-Revision-Date: 2011-09-26 21:19+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -23779,7 +23779,7 @@ msgstr "このように設定されたプロパティは、@code{org-babel-defau
 #. type: Plain text
 #: org.texi:11704
 msgid "The most common way to assign values to header arguments is at the code block level.  This can be done by listing a sequence of header arguments and their values as part of the @code{#+begin_src} line.  Properties set in this way override both the values of @code{org-babel-default-header-args} and header arguments specified as properties.  In the following example, the @code{:results} header argument is set to @code{silent}, meaning the results of execution will not be inserted in the buffer, and the @code{:exports} header argument is set to @code{code}, meaning only the body of the code block will be preserved on export to HTML or LaTeX."
-msgstr ""
+msgstr "コードブロックのレベルでヘッダー引数に値を割り当てる方法が最も一般的です。@code{#+begin_src}行の一部として、ヘッダー引数とその値とを並べることによって設定されます。このように設定されたプロパティは変数@code{org-babel-default-header-args}とプロパティとして設定されたヘッダー引数との両方を上書きします。以下に示す例では、実行結果をバッファに挿入しないように、ヘッダー引数@code{:results}を@code{silent}と設定し、加えてHTMLやLaTeXへのエクスポート時にコードブロックの本文だけが保存されるように、ヘッダー引数@code{:exports}を@code{code}と設定しています。"
 
 #+glossary: code ( コード )
 #. type: example
@@ -23792,30 +23792,35 @@ msgid ""
 "fac n = n * fac (n-1)\n"
 "#+end_src\n"
 msgstr ""
+"#+source: factorial\n"
+"#+begin_src haskell :results silent :exports code :var n=0\n"
+"fac 0 = 1\n"
+"fac n = n * fac (n-1)\n"
+"#+end_src\n"
 
 #+glossary: header argument ( ヘッダー引数 ) / code ( コード ) / inline ( インライン )
 #. type: Plain text
 #: org.texi:11713
 msgid "Similarly, it is possible to set header arguments for inline code blocks:"
-msgstr ""
+msgstr "同様に、インラインのコードブロックにヘッダー引数を設定することも可能です:"
 
 #. type: example
 #: org.texi:11716
 #, no-wrap
 msgid "src_haskell[:exports both]@{fac 5@}\n"
-msgstr ""
+msgstr "src_haskell[:exports both]@{fac 5@}\n"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / line ( 行|ライン|線 ) / named ( 名前付き )
 #. type: Plain text
 #: org.texi:11721
 msgid "Code block header arguments can span multiple lines using =#+header:= or =#+headers:= lines preceding a code block or nested in between the name and body of a named code block."
-msgstr ""
+msgstr "コードブロックのヘッダー引数を複数行にわたって記述できます。=#+header:=もしくは=#+headers:=の行を、コードブロックの前に記述するか、名前付きコードブロックの名前とコード本文との間に記述します。"
 
 #+glossary: header argument ( ヘッダー引数 ) / code ( コード )
 #. type: Plain text
 #: org.texi:11723
 msgid "Multi-line header arguments on an un-named code block:"
-msgstr ""
+msgstr "名前を付けていないコードブロックに複数行のヘッダー引数を設定します:"
 
 #. type: example
 #: org.texi:11728
@@ -23827,6 +23832,11 @@ msgid ""
 " #+end_src\n"
 "\n"
 msgstr ""
+" #+headers: :var data1=1\n"
+" #+begin_src emacs-lisp :var data2=2\n"
+"   (message \"data1:%S, data2:%S\" data1 data2)\n"
+" #+end_src\n"
+"\n"
 
 #. type: example
 #: org.texi:11731
@@ -23835,12 +23845,14 @@ msgid ""
 " #+results:\n"
 " : data1:1, data2:2\n"
 msgstr ""
+" #+results:\n"
+" : data1:1, data2:2\n"
 
 #+glossary: header argument ( ヘッダー引数 ) / code ( コード ) / named ( 名前付き )
 #. type: Plain text
 #: org.texi:11734
 msgid "Multi-line header arguments on a named code block:"
-msgstr ""
+msgstr "名前を付けたコードブロックに複数行のヘッダー引数を設定します:"
 
 #. type: example
 #: org.texi:11740
@@ -23853,6 +23865,12 @@ msgid ""
 "   #+end_src\n"
 "\n"
 msgstr ""
+"   #+source: named-block\n"
+"   #+header: :var data=2\n"
+"   #+begin_src emacs-lisp\n"
+"     (message \"data:%S\" data)\n"
+"   #+end_src\n"
+"\n"
 
 #. type: example
 #: org.texi:11743
@@ -23861,6 +23879,8 @@ msgid ""
 "   #+results: named-block\n"
 "   : data:2\n"
 msgstr ""
+"   #+results: named-block\n"
+"   : data:2\n"
 
 #+glossary: header argument ( ヘッダー引数 ) / code ( コード ) / example ( 例 ) / function ( 機能|関数 ) / information ( 情報 ) / level ( レベル|階層 ) / line ( 行|ライン|線 ) / structure ( 構造 )
 #. type: Plain text
