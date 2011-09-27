@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-09-26 18:41+0900\n"
+"PO-Revision-Date: 2011-09-28 00:17+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -8825,67 +8825,67 @@ msgstr "org-table-toggle-formula-debugger"
 #. type: table
 #: org.texi:2671
 msgid "Toggle the formula debugger on and off (@command{org-table-toggle-formula-debugger}).  See below.  @orgcmd{C-c ',org-table-edit-formulas} Edit all formulas for the current table in a special buffer, where the formulas will be displayed one per line.  If the current field has an active formula, the cursor in the formula editor will mark it.  While inside the special buffer, Org will automatically highlight any field or range reference at the cursor position.  You may edit, remove and add formulas, and use the following commands:"
-msgstr ""
+msgstr "数式のデバッガをON／OFFする（@command{org-table-toggle-formula-debugger}）．@orgcmd{C-c ',org-table-edit-formulas} 特別なバッファで現在のテーブルのすべての数式を編集する．バッファでは数式はラインごとに一つずつ表示される．カーソル位置のフィールドにアクティブな数式があるとき，カーソルエディタのカーソルはその数式をマークします．特別なバッファの中では，org-modeは，カーソルがあるどんなフィールドや範囲参照も自動的にハイライトします．数式の編集，削除，追加ができることに加え，次のコマンドが利用できます．"
 
 #+glossary: editor ( エディタ ) / format ( フォーマット|形成 ) / formula ( 数式 ) / internal ( 内部 ) / line ( 行|ライン|線 ) / mode ( モード|モード ) / point ( ポイント ) / prefix ( 接頭辞 ) / symbol ( 記号 ) / table ( テーブル ) / toggle ( トグル )
 #. type: table
 #: org.texi:2687
 msgid "@orgcmdkkc{C-c C-c,C-x C-s,org-table-fedit-finish} Exit the formula editor and store the modified formulas.  With @kbd{C-u} prefix, also apply the new formulas to the entire table.  @orgcmd{C-c C-q,org-table-fedit-abort} Exit the formula editor without installing changes.  @orgcmd{C-c C-r,org-table-fedit-toggle-ref-type} Toggle all references in the formula editor between standard (like @code{B3}) and internal (like @code{@@3$2}).  @orgcmd{@key{TAB},org-table-fedit-lisp-indent} Pretty-print or indent Lisp formula at point.  When in a line containing a Lisp formula, format the formula according to Emacs Lisp rules.  Another @key{TAB} collapses the formula back again.  In the open formula, @key{TAB} re-indents just like in Emacs Lisp mode.  @orgcmd{M-@key{TAB},lisp-complete-symbol} Complete Lisp symbols, just like in Emacs Lisp mode."
-msgstr ""
+msgstr "@orgcmdkkc{C-c C-c,C-x C-s,org-table-fedit-finish} 数式エディタを抜けて，修正された数式を保存する．プレフィックス@kbd{C-u}を使うと，新しい数式をテーブル全体に適用します．@orgcmd{C-c C-q,org-table-fedit-abort} 変更を破棄して数式エディタを抜ける．@orgcmd{C-c C-r,org-table-fedit-toggle-ref-type} 数式エディタの全ての参照について，(@code{B3}のような）標準の記法と（@code{@@3$2}のような）内部の記法についてトグルする．@orgcmd{@key{TAB},org-table-fedit-lisp-indent} カーソル位置のLisp数式を見やすくしたりインテンドする．ラインにLisp数式が含まれると，Emacs Lispのルールに基づいて数式を整える．さらに@key{TAB}を押すと，整えられた数式を崩して元の状態に戻す．開いた数式では，Emacs Lispモードのように@key{TAB}でさらにインテンドする．@orgcmd{M-@key{TAB},lisp-complete-symbol} Emacs LispモードのようにLispの記号を補完する．"
 
 #. type: findex
 #: org.texi:2691
 #, no-wrap
 msgid "org-table-fedit-ref-up"
-msgstr ""
+msgstr "org-table-fedit-ref-up"
 
 #. type: findex
 #: org.texi:2692
 #, no-wrap
 msgid "org-table-fedit-ref-down"
-msgstr ""
+msgstr "org-table-fedit-ref-down"
 
 #. type: findex
 #: org.texi:2693
 #, no-wrap
 msgid "org-table-fedit-ref-left"
-msgstr ""
+msgstr "org-table-fedit-ref-left"
 
 #. type: findex
 #: org.texi:2694
 #, no-wrap
 msgid "org-table-fedit-ref-right"
-msgstr ""
+msgstr "org-table-fedit-ref-right"
 
 #. type: item
 #: org.texi:2695
 #, no-wrap
 msgid "S-@key{up}/@key{down}/@key{left}/@key{right}"
-msgstr ""
+msgstr "S-@key{up}/@key{down}/@key{left}/@key{right}"
 
 #+glossary: column formula ( 列の数式 ) / buffer ( バッファ ) / example ( 例 ) / line ( 行|ライン|線 ) / org ( Org-mode ) / point ( ポイント ) / table ( テーブル ) / window ( ウインドウ ) / work ( 作業 )
 #. type: table
 #: org.texi:2704
 msgid "Shift the reference at point.  For example, if the reference is @code{B3} and you press @kbd{S-@key{right}}, it will become @code{C3}.  This also works for relative references and for hline references.  @orgcmdkkcc{M-S-@key{up},M-S-@key{down},org-table-fedit-line-up,org-table-fedit-line-down} Move the test line for column formulas in the Org buffer up and down.  @orgcmdkkcc{M-@key{up},M-@key{down},org-table-fedit-scroll-down,org-table-fedit-scroll-up} Scroll the window displaying the table."
-msgstr ""
+msgstr "カーソル位置の参照を移動する．たとえば，参照が@code{B3}で@kbd{S-@key{right}}を押すと，@code{C3}に変化する．これは相対参照や水平ラインの参照についても同じように動作する．@orgcmdkkcc{M-S-@key{up},M-S-@key{down},org-table-fedit-line-up,org-table-fedit-line-down} org-modeのバッファにある列の数式へのテストラインを上下に移動する．@orgcmdkkcc{M-@key{up},M-@key{down},org-table-fedit-scroll-down,org-table-fedit-scroll-up} テーブルを表示するウィンドウをスクロールする．"
 
 #+glossary: grid ( グリッド ) / table ( テーブル )
 #. type: table
 #: org.texi:2708
 msgid "Turn the coordinate grid in the table on and off."
-msgstr ""
+msgstr "テーブルの座標グリッドをON／OFFする"
 
 #+glossary: field ( フィールド ) / formula ( 数式 ) / line ( 行|ライン|線 ) / recalculation ( 再計算 ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:2716
 msgid "Making a table field blank does not remove the formula associated with the field, because that is stored in a different line (the @samp{#+TBLFM} line)---during the next recalculation the field will be filled again.  To remove a formula from a field, you have to give an empty reply when prompted for the formula, or to edit the @samp{#+TBLFM} line."
-msgstr ""
+msgstr "テーブルのフィールドを空欄にしても，そのフィールドに結びつけられた数式は削除されません．これは数式が別な行（@samp{#+TBLFM:}行）に保存されているためです．次に再計算が行なわれる際に，再びフィールドに数式の結果が戻ります．フィールドから数式を削除するためには，数式を表示させて空にするか，@samp{#+TBLFM:}行を編集する必要があります．"
 
 #+glossary: command ( コマンド ) / line ( 行|ライン|線 ) / recalculation ( 再計算 ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:2721
 msgid "You may edit the @samp{#+TBLFM} directly and re-apply the changed equations with @kbd{C-c C-c} in that line or with the normal recalculation commands in the table."
-msgstr ""
+msgstr "@samp{#+TBLFM:}行を直接編集することができ，変更した数式を再適用できます．これはラインにおいて@kbd{C-c C-c}を押すか，テーブルで通常の再計算コマンドを発行することで実行できます．"
 
 #+glossary: debugging ( デバッグ ) / formula ( 数式 )
 #. type: subsubheading
