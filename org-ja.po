@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-09-26 18:47+0900\n"
+"PO-Revision-Date: 2011-09-27 12:28+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -23637,26 +23637,26 @@ msgstr "(require 'ob-clojure)\n"
 #: org.texi:11573
 #, no-wrap
 msgid "code block, header arguments"
-msgstr ""
+msgstr "コードブロック、ヘッダー引数"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / source ( ソース )
 #. type: cindex
 #: org.texi:11574
 #, no-wrap
 msgid "source code, block header arguments"
-msgstr ""
+msgstr "ソースコード、ブロックのヘッダー引数"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / functionality ( 機能性 ) / overview ( 概観 ) / provide ( 用意する ) / section ( セクション )
 #. type: Plain text
 #: org.texi:11579
 msgid "Code block functionality can be configured with header arguments.  This section provides an overview of the use of header arguments, and then describes each header argument in detail."
-msgstr ""
+msgstr "ヘッダー引数を通して、コードブロックの機能を設定できます。このセクションではヘッダー引数の使い方を概説し、その後、各ヘッダー引数の詳細について説明します。"
 
 #+glossary: header argument ( ヘッダー引数 ) / value ( 値 )
 #. type: Plain text
 #: org.texi:11590
 msgid "The values of header arguments can be set in six different ways, each more specific (and having higher priority) than the last."
-msgstr ""
+msgstr "ヘッダー引数の値は6通りの方法で設定できます。以下の説明で、後に説明されるものほど、個別の設定として優先されます。"
 
 #. type: vindex
 #: org.texi:11602
@@ -23669,7 +23669,7 @@ msgstr "org-babel-default-header-args"
 #. type: Plain text
 #: org.texi:11605
 msgid "System-wide values of header arguments can be specified by customizing the @code{org-babel-default-header-args} variable:"
-msgstr ""
+msgstr "変数@code{org-babel-default-header-args}をカスタマイズすることで、システム全体にわたるヘッダー引数の値を指定できます。"
 
 #. type: example
 #: org.texi:11612
@@ -23681,12 +23681,17 @@ msgid ""
 ":cache      => \"no\"\n"
 ":noweb      => \"no\"\n"
 msgstr ""
+":session    => \"none\"\n"
+":results    => \"replace\"\n"
+":exports    => \"code\"\n"
+":cache      => \"no\"\n"
+":noweb      => \"no\"\n"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / default ( デフォルト|初期値 ) / example ( 例 ) / source ( ソース ) / value ( 値 )
 #. type: Plain text
 #: org.texi:11632
 msgid "For example, the following example could be used to set the default value of @code{:noweb} header arguments to @code{yes}.  This would have the effect of expanding @code{:noweb} references by default when evaluating source code blocks."
-msgstr ""
+msgstr "次の例のように、ヘッダー引数@code{:noweb}の初期値を@code{yes}と設定できます。ソースコードブロックを評価する時に、デフォルトの設定として@code{:noweb}の参照記号を展開します。"
 
 #. type: lisp
 #: org.texi:11637
@@ -23696,49 +23701,52 @@ msgid ""
 "(cons '(:noweb . \"yes\")\n"
 "(assq-delete-all :noweb org-babel-default-header-args)))\n"
 msgstr ""
+"(setq org-babel-default-header-args\n"
+"(cons '(:noweb . \"yes\")\n"
+"(assq-delete-all :noweb org-babel-default-header-args)))\n"
 
 #+glossary: header argument ( ヘッダー引数 ) / available ( 利用できる ) / default ( デフォルト|初期値 ) / language ( 言語 )
 #. type: Plain text
 #: org.texi:11644
 msgid "Each language can define its own set of default header arguments.  See the language-specific documentation available online at @uref{http://orgmode.org/worg/org-contrib/babel}."
-msgstr ""
+msgstr "それぞれの言語用にデフォルトのヘッダー引数を定義できます。言語の詳細な文書については、オンラインの@uref{http://orgmode.org/worg/org-contrib/babel}を見て下さい。"
 
 #+glossary: header argument ( ヘッダー引数 ) / file ( ファイル ) / keyword ( キーワード ) / line ( 行|ライン|線 ) / org-mode ( Org-mode ) / syntax ( 構文|シンタックス )
 #. type: Plain text
 #: org.texi:11651
 msgid "Buffer-wide header arguments may be specified through the use of a special line placed anywhere in an Org-mode file.  The line consists of the @code{#+BABEL:} keyword followed by a series of header arguments which may be specified using the standard header argument syntax."
-msgstr ""
+msgstr "Org-modeファイルにある特別な行を使って、バッファー全体にわたるヘッダー引数を設定できます。その行では、キーワード@code{#BABEL:}に続いて、普通のヘッダー引数の構文を使って指定された一連のヘッダー引数があります。"
 
 #+glossary: code block ( コードブロック ) / buffer ( バッファ ) / example ( 例 )
 #. type: Plain text
 #: org.texi:11656
 msgid "For example the following would set @code{session} to @code{*R*}, and @code{results} to @code{silent} for every code block in the buffer, ensuring that all execution took place in the same session, and no results would be inserted into the buffer."
-msgstr ""
+msgstr "次の例は、@code{session}を@code{*R*}と設定し、バッファ内にあるコードブロック毎の@code{results}を@code{silent}と指定しています。この設定により、全ての(コードブロックが)同一のセッションで実行されることと、結果はバッファに挿入されないことを確かにしています。"
 
 #. type: example
 #: org.texi:11659
 #, no-wrap
 msgid "#+BABEL: :session *R* :results silent\n"
-msgstr ""
+msgstr "#+BABEL: :session *R* :results silent\n"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / buffer ( バッファ ) / example ( 例 ) / org-mode ( Org-mode ) / setting ( 設定 )
 #. type: Plain text
 #: org.texi:11667
 msgid "Header arguments are also read from Org-mode properties (see @ref{Property syntax}), which can be set on a buffer-wide or per-heading basis. An example of setting a header argument for all code blocks in a buffer is"
-msgstr ""
+msgstr "ヘッダー引数はOrg-modeのプロパティから読み出すこともできます(@ref{Property syntax}を見て下さい)。プロパティはバッファ全体もしくは見出しごとの単位で設定できます。例えば、バッファ内の全コードブロックのヘッダー引数を設定するには、以下のようにします。"
 
 #+glossary: tangle ( tangle )
 #. type: example
 #: org.texi:11670
 #, no-wrap
 msgid "#+property: tangle yes\n"
-msgstr ""
+msgstr "#+property: tangle yes\n"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / default ( デフォルト|初期値 ) / inheritance ( 継承 ) / subtree ( サブツリー ) / value ( 値 )
 #. type: Plain text
 #: org.texi:11676
 msgid "When properties are used to set default header arguments, they are looked up with inheritance, so the value of the @code{:cache} header argument will default to @code{yes} in all code blocks in the subtree rooted at the following heading:"
-msgstr ""
+msgstr "デフォルトのヘッダー引数を設定するためにプロパティを使う場合、プロパティは継承(関係)に沿って参照されます。したがって、以下の見出しにあるサブツリー内の全コードブロックでは、ヘッダー引数@code{:cache}の値はデフォルトの@code{yes}となります:"
 
 #+glossary: outline ( アウトライン|outline )
 #. type: example
@@ -23750,24 +23758,28 @@ msgid ""
 ":cache:    yes\n"
 ":END:\n"
 msgstr ""
+"* アウトライン ヘッダー\n"
+":PROPERTIES:\n"
+":cache:    yes\n"
+":END:\n"
 
 #. type: kindex
 #: org.texi:11684
 #, no-wrap
 msgid "C-c C-x p"
-msgstr ""
+msgstr "C-c C-x p"
 
 #+glossary: document ( ドキュメント|文書 ) / function ( 機能|関数 ) / org-mode ( Org-mode )
 #. type: Plain text
 #: org.texi:11690
 msgid "Properties defined in this way override the properties set in @code{org-babel-default-header-args}.  It is convenient to use the @code{org-set-property} function bound to @kbd{C-c C-x p} to set properties in Org-mode documents."
-msgstr ""
+msgstr "このように設定されたプロパティは、@code{org-babel-default-header-args}に設定されたプロパティを上書きします。Org-modeドキュメント内のプロパティを設定する関数@code{org-set-property}を使うのが便利です。キーバインドは@kbd{C-c C-x p}です。"
 
 #+glossary: code block ( コードブロック ) / export to ( 〜への出力 ) / header argument ( ヘッダー引数 ) / buffer ( バッファ ) / example ( 例 ) / level ( レベル|階層 ) / line ( 行|ライン|線 ) / sequence ( 順序 ) / value ( 値 )
 #. type: Plain text
 #: org.texi:11704
 msgid "The most common way to assign values to header arguments is at the code block level.  This can be done by listing a sequence of header arguments and their values as part of the @code{#+begin_src} line.  Properties set in this way override both the values of @code{org-babel-default-header-args} and header arguments specified as properties.  In the following example, the @code{:results} header argument is set to @code{silent}, meaning the results of execution will not be inserted in the buffer, and the @code{:exports} header argument is set to @code{code}, meaning only the body of the code block will be preserved on export to HTML or LaTeX."
-msgstr ""
+msgstr "コードブロックのレベルでヘッダー引数に値を割り当てる方法が最も一般的です。@code{#+begin_src}行の一部として、ヘッダー引数とその値とを並べることによって設定されます。このように設定されたプロパティは変数@code{org-babel-default-header-args}とプロパティとして設定されたヘッダー引数との両方を上書きします。以下に示す例では、実行結果をバッファに挿入しないように、ヘッダー引数@code{:results}を@code{silent}と設定し、加えてHTMLやLaTeXへのエクスポート時にコードブロックの本文だけが保存されるように、ヘッダー引数@code{:exports}を@code{code}と設定しています。"
 
 #+glossary: code ( コード )
 #. type: example
@@ -23780,30 +23792,35 @@ msgid ""
 "fac n = n * fac (n-1)\n"
 "#+end_src\n"
 msgstr ""
+"#+source: factorial\n"
+"#+begin_src haskell :results silent :exports code :var n=0\n"
+"fac 0 = 1\n"
+"fac n = n * fac (n-1)\n"
+"#+end_src\n"
 
 #+glossary: header argument ( ヘッダー引数 ) / code ( コード ) / inline ( インライン )
 #. type: Plain text
 #: org.texi:11713
 msgid "Similarly, it is possible to set header arguments for inline code blocks:"
-msgstr ""
+msgstr "同様に、インラインのコードブロックにヘッダー引数を設定することも可能です:"
 
 #. type: example
 #: org.texi:11716
 #, no-wrap
 msgid "src_haskell[:exports both]@{fac 5@}\n"
-msgstr ""
+msgstr "src_haskell[:exports both]@{fac 5@}\n"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / line ( 行|ライン|線 ) / named ( 名前付き )
 #. type: Plain text
 #: org.texi:11721
 msgid "Code block header arguments can span multiple lines using =#+header:= or =#+headers:= lines preceding a code block or nested in between the name and body of a named code block."
-msgstr ""
+msgstr "コードブロックのヘッダー引数を複数行にわたって記述できます。=#+header:=もしくは=#+headers:=の行を、コードブロックの前に記述するか、名前付きコードブロックの名前とコード本文との間に記述します。"
 
 #+glossary: header argument ( ヘッダー引数 ) / code ( コード )
 #. type: Plain text
 #: org.texi:11723
 msgid "Multi-line header arguments on an un-named code block:"
-msgstr ""
+msgstr "名前を付けていないコードブロックに複数行のヘッダー引数を設定します:"
 
 #. type: example
 #: org.texi:11728
@@ -23815,6 +23832,11 @@ msgid ""
 " #+end_src\n"
 "\n"
 msgstr ""
+" #+headers: :var data1=1\n"
+" #+begin_src emacs-lisp :var data2=2\n"
+"   (message \"data1:%S, data2:%S\" data1 data2)\n"
+" #+end_src\n"
+"\n"
 
 #. type: example
 #: org.texi:11731
@@ -23823,12 +23845,14 @@ msgid ""
 " #+results:\n"
 " : data1:1, data2:2\n"
 msgstr ""
+" #+results:\n"
+" : data1:1, data2:2\n"
 
 #+glossary: header argument ( ヘッダー引数 ) / code ( コード ) / named ( 名前付き )
 #. type: Plain text
 #: org.texi:11734
 msgid "Multi-line header arguments on a named code block:"
-msgstr ""
+msgstr "名前を付けたコードブロックに複数行のヘッダー引数を設定します:"
 
 #. type: example
 #: org.texi:11740
@@ -23841,6 +23865,12 @@ msgid ""
 "   #+end_src\n"
 "\n"
 msgstr ""
+"   #+source: named-block\n"
+"   #+header: :var data=2\n"
+"   #+begin_src emacs-lisp\n"
+"     (message \"data:%S\" data)\n"
+"   #+end_src\n"
+"\n"
 
 #. type: example
 #: org.texi:11743
@@ -23849,36 +23879,38 @@ msgid ""
 "   #+results: named-block\n"
 "   : data:2\n"
 msgstr ""
+"   #+results: named-block\n"
+"   : data:2\n"
 
 #+glossary: header argument ( ヘッダー引数 ) / code ( コード ) / example ( 例 ) / function ( 機能|関数 ) / information ( 情報 ) / level ( レベル|階層 ) / line ( 行|ライン|線 ) / structure ( 構造 )
 #. type: Plain text
 #: org.texi:11753
 msgid "At the most specific level, header arguments for ``Library of Babel'' or function call lines can be set as shown in the two examples below.  For more information on the structure of @code{#+call:} lines see @ref{Evaluating code blocks}."
-msgstr ""
+msgstr "一番個別のレベルにおいて、Babelのライブラリのためのヘッダー引数もしくは関数の呼び出し行は、下に示す2つの例のように設定されます。@code{#call:}行の構造ついついての更なる情報については、@ref{Evaluating code blocks}を参照してください。"
 
 #+glossary: header argument ( ヘッダー引数 ) / evaluation ( 評価 ) / line ( 行|ライン|線 )
 #. type: Plain text
 #: org.texi:11756
 msgid "The following will apply the @code{:exports results} header argument to the evaluation of the @code{#+call:} line."
-msgstr ""
+msgstr "以下の例では、ヘッダー引数@code{:exports results}を設定して、@code{#+call:}行を評価します。"
 
 #. type: example
 #: org.texi:11758
 #, no-wrap
 msgid "#+call: factorial(n=5) :exports results\n"
-msgstr ""
+msgstr "#+call: factorial(n=5) :exports results\n"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / evaluation ( 評価 )
 #. type: Plain text
 #: org.texi:11762
 msgid "The following will apply the @code{:session special} header argument to the evaluation of the @code{factorial} code block."
-msgstr ""
+msgstr "以下の例では、ヘッダー引数@code{:session special}を設定して、コードブロック@code{factorial}を評価します。"
 
 #. type: example
 #: org.texi:11764
 #, no-wrap
 msgid "#+call: factorial[:session special](n=5)\n"
-msgstr ""
+msgstr "#+call: factorial[:session special](n=5)\n"
 
 #+glossary: header argument ( ヘッダー引数 )
 #. type: Plain text
