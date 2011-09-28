@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-09-28 18:24+0900\n"
+"PO-Revision-Date: 2011-09-28 19:47+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -23922,61 +23922,61 @@ msgstr "以下のヘッダー引数が定義されています:"
 #: org.texi:11797
 #, no-wrap
 msgid ":var"
-msgstr ""
+msgstr ":var"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / argument ( 引数 ) / block ( ブロック ) / evaluation ( 評価 ) / example ( 例 ) / heading ( 見出し ) / language ( 言語 ) / org-mode ( Org-mode ) / syntax ( 構文|シンタックス ) / table ( テーブル ) / value ( 値 )
 #. type: Plain text
 #: org.texi:11805
 msgid "The @code{:var} header argument is used to pass arguments to code blocks.  The specifics of how arguments are included in a code block vary by language; these are addressed in the language-specific documentation. However, the syntax used to specify arguments is the same across all languages.  The values passed to arguments can be literal values, values from org-mode tables and literal example blocks, the results of other code blocks, or Emacs Lisp code---see the ``Emacs Lisp evaluation of variables'' heading below."
-msgstr ""
+msgstr "ヘッダー引数@code{:var}はコードブロックへ引数を渡すときに使われます。コードブロックに含まれている引数を受け取る方法は、言語によって異なります。これらは、言語固有の文書にて説明されています。しかし、引数を指定する構文は、すべての言語で共通です。引数に渡されうる値というのは、定数(リテラル値)、Org-modeのテーブルとexampleブロックそのもの文字列からの値、他のコードブロックの結果、あるいはEmacs_Lisp(原文スペースをアンダーバーで置換)のコードです。---Emacs_Lispについては、以下の見出し``Emacs Lisp evaluation of variables''を見て下さい。"
 
 #+glossary: heading ( 見出し ) / value ( 値 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:11808
 msgid "These values can be indexed in a manner similar to arrays---see the ``indexable variable values'' heading below."
-msgstr ""
+msgstr "これらの値は配列のようにインデックス化できます。---以下の見出し``indexable variable values''を見て下さい。"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / argument ( 引数 ) / syntax ( 構文|シンタックス )
 #. type: Plain text
 #: org.texi:11811
 msgid "The following syntax is used to pass arguments to code blocks using the @code{:var} header argument."
-msgstr ""
+msgstr "ヘッダー引数@code{:var}を使ってコードブロックへ引数を渡すには、以下の構文を使います。"
 
 #. type: example
 #: org.texi:11814
 #, no-wrap
 msgid ":var name=assign\n"
-msgstr ""
+msgstr ":var name=assign\n"
 
 #. type: Plain text
 #: org.texi:11817
 msgid "where @code{assign} can take one of the following forms"
-msgstr ""
+msgstr "ここで、@code{assign}は以下の構造のうちどれかをとることができます。"
 
 #+glossary: value ( 値 )
 #. type: item
 #: org.texi:11819
 #, no-wrap
 msgid "literal value"
-msgstr ""
+msgstr "literal value"
 
 #+glossary: string ( 文字列 )
 #. type: itemize
 #: org.texi:11821
 msgid "either a string @code{\"string\"} or a number @code{9}."
-msgstr ""
+msgstr "この文、文法的に分かりません。文字列(例:@code{\"string\"})もしくは数字(例:@code{9})です。"
 
 #. type: item
 #: org.texi:11821
 #, no-wrap
 msgid "reference"
-msgstr ""
+msgstr "reference"
 
 #+glossary: table ( テーブル )
 #. type: itemize
 #: org.texi:11823
 msgid "a table name:"
-msgstr ""
+msgstr "a table name:"
 
 #. type: example
 #: org.texi:11830
@@ -23989,6 +23989,12 @@ msgid ""
 "| 4 |\n"
 "\n"
 msgstr ""
+"#+tblname: example-table\n"
+"| 1 |\n"
+"| 2 |\n"
+"| 3 |\n"
+"| 4 |\n"
+"\n"
 
 #. type: example
 #: org.texi:11835
@@ -24008,12 +24014,14 @@ msgid ""
 "#+results: table-length\n"
 ": 4\n"
 msgstr ""
+"#+results: table-length\n"
+": 4\n"
 
 #+glossary: code block ( コードブロック )
 #. type: itemize
 #: org.texi:11842
 msgid "a code block name, as assigned by @code{#+srcname:}, followed by parentheses:"
-msgstr ""
+msgstr "@code{#+srcname:}と括弧「()」で挟まれたコードブロックの名前を参照します。"
 
 #. type: example
 #: org.texi:11847
@@ -24024,6 +24032,10 @@ msgid ""
 "#+end_src\n"
 "\n"
 msgstr ""
+"#+begin_src emacs-lisp :var length=table-length()\n"
+"(* 2 length)\n"
+"#+end_src\n"
+"\n"
 
 #. type: example
 #: org.texi:11850
@@ -24032,12 +24044,14 @@ msgid ""
 "#+results:\n"
 ": 8\n"
 msgstr ""
+"#+results:\n"
+": 8\n"
 
 #+glossary: code block ( コードブロック ) / argument ( 引数 )
 #. type: itemize
 #: org.texi:11855
 msgid "In addition, an argument can be passed to the code block referenced by @code{:var}.  The argument is passed within the parentheses following the code block name:"
-msgstr ""
+msgstr "加えて、@code{:var}によって参照されたコードブロックへ引数を渡すこともできます。コードブロック名に続く括弧「()」内の引数が渡されます。"
 
 #. type: example
 #: org.texi:11861
@@ -24058,6 +24072,9 @@ msgid ""
 ": 16\n"
 "\n"
 msgstr ""
+"#+results: double\n"
+": 16\n"
+"\n"
 
 #. type: example
 #: org.texi:11869
@@ -24069,6 +24086,11 @@ msgid ""
 "#+end_src\n"
 "\n"
 msgstr ""
+"#+source: squared\n"
+"#+begin_src emacs-lisp :var input=double(input=1)\n"
+"(* input input)\n"
+"#+end_src\n"
+"\n"
 
 #. type: example
 #: org.texi:11872
@@ -24077,6 +24099,8 @@ msgid ""
 "#+results: squared\n"
 ": 4\n"
 msgstr ""
+"#+results: squared\n"
+": 4\n"
 
 #+glossary: argument ( 引数 ) / syntax ( 構文|シンタックス )
 #. type: subsubheading
