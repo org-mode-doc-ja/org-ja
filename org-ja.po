@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-09-28 22:06+0900\n"
+"PO-Revision-Date: 2011-09-28 22:57+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -24324,13 +24324,13 @@ msgstr ""
 #: org.texi:11976
 #, no-wrap
 msgid "Emacs Lisp evaluation of variables"
-msgstr ""
+msgstr "Emacs Lispによる変数の評価"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / buffer ( バッファ ) / code ( コード ) / evaluation ( 評価 ) / example ( 例 ) / file ( ファイル ) / org-mode ( Org-mode ) / value ( 値 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:11986
 msgid "Emacs lisp code can be used to initialize variable values.  When a variable value starts with @code{(}, @code{[}, @code{'} or @code{`} it will be evaluated as Emacs Lisp and the result of the evaluation will be assigned as the variable value.  The following example demonstrates use of this evaluation to reliably pass the file-name of the org-mode buffer to a code block---note that evaluation of header arguments is guaranteed to take place in the original org-mode file, while there is no such guarantee for evaluation of the code block body."
-msgstr ""
+msgstr "変数の値を初期化するときにEmacs Lispのコードを使えます。変数の値が@code{(}, @code{[}, @code{'} もしくは @code{`}で始まる場合、変数はEmacs Lispとして評価され、その評価結果を変数の値として代入されます。次の例では、この評価を使ってOrg-modのファイル名を確かにコードブロックへ渡しています---元のOrg-file内でヘッダー引数が間違いなく評価されるということに注意して下さい。コードブロックで評価する場合そのような保証はありません。"
 
 #. type: example
 #: org.texi:11991
@@ -24340,12 +24340,15 @@ msgid ""
 "  wc -w $file\n"
 "#+end_src\n"
 msgstr ""
+"#+begin_src sh :var file-name=(buffer-file-name) :exports both\n"
+"  wc -w $file\n"
+"#+end_src\n"
 
 #+glossary: example ( 例 ) / list ( リスト ) / note ( ノート|メモ ) / table ( テーブル ) / value ( 値 )
 #. type: Plain text
 #: org.texi:11995
 msgid "Note that values read from tables and lists will not be evaluated as Emacs Lisp, as shown in the following example."
-msgstr ""
+msgstr "テーブルやリストから読み出された値はEmacs Lispとして評価されません。以下はその例です。"
 
 #. type: example
 #: org.texi:11999
@@ -24355,6 +24358,9 @@ msgid ""
 "| (a b c) |\n"
 "\n"
 msgstr ""
+"#+results: table\n"
+"| (a b c) |\n"
+"\n"
 
 #. type: example
 #: org.texi:12004
@@ -24366,6 +24372,11 @@ msgid ""
 "#+end_src\n"
 "\n"
 msgstr ""
+"#+headers: :var data=table[0,0]\n"
+"#+begin_src perl\n"
+"  $data\n"
+"#+end_src\n"
+"\n"
 
 #. type: example
 #: org.texi:12007
@@ -24374,6 +24385,8 @@ msgid ""
 "#+results:\n"
 ": (a b c)\n"
 msgstr ""
+"#+results:\n"
+": (a b c)\n"
 
 #. type: code{#1}
 #: org.texi:12010
