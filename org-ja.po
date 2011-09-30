@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-09-30 13:48+0900\n"
+"PO-Revision-Date: 2011-09-30 21:19+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -24703,25 +24703,25 @@ msgstr "@code{:file}に対する引数は、ファイルのパスを示す文字
 #: org.texi:12128
 #, no-wrap
 msgid "@code{:dir} and remote execution"
-msgstr ""
+msgstr "@code{:dir}とリモートでの実行"
 
 #+glossary: code block ( コードブロック ) / current buffer ( カレントバッファ ) / header argument ( ヘッダー引数 ) / current ( カレント|現在の ) / default ( デフォルト|初期値 ) / directory ( ディレクトリ ) / file ( ファイル ) / output ( アウトプット ) / value ( 値 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:12137
 msgid "While the @code{:file} header argument can be used to specify the path to the output file, @code{:dir} specifies the default directory during code block execution. If it is absent, then the directory associated with the current buffer is used. In other words, supplying @code{:dir path} temporarily has the same effect as changing the current directory with @kbd{M-x cd path}, and then not supplying @code{:dir}. Under the surface, @code{:dir} simply sets the value of the Emacs variable @code{default-directory}."
-msgstr ""
+msgstr "ヘッダー引数@code{:file}がアウトプットするファイルのパスを指定する一方で、@code{:dir}はコードブロックを実行する間のデフォルトのディレクトリを指定します。指定されなければ、現在のバッファに関連するディレクトリが使われます。言い換えると、@code{:dir path}を与えることは、@kbd{M-x cd path}でカレントディレクトリを変えるだけで@code{:dir}を設定しない場合と一時的には同じ効果を持ちます。水面下で、@code{:dir}がEmacsの変数@code{default-directory}を変更しているだけです。"
 
 #+glossary: default ( デフォルト|初期値 ) / directory ( ディレクトリ ) / file ( ファイル ) / output ( アウトプット )
 #. type: Plain text
 #: org.texi:12141
 msgid "When using @code{:dir}, you should supply a relative path for file output (e.g.@: @code{:file myfile.jpg} or @code{:file results/myfile.jpg}) in which case that path will be interpreted relative to the default directory."
-msgstr ""
+msgstr "@code{:dir}を使う場合、アウトプットするファイルを相対パス(例@: @code{:file myfile.jpg}もしくは@code{:file results/myfile.jpg})で与えなければなりません。その場合、与えたパスはデフォルトディレクトリに対する相対パスとして解釈されます。"
 
 #+glossary: directory ( ディレクトリ ) / folder ( フォルダ|折りたたむ )
 #. type: Plain text
 #: org.texi:12144
 msgid "In other words, if you want your plot to go into a folder called @file{Work} in your home directory, you could use"
-msgstr ""
+msgstr "つまり、ホームディレクトリ内に@file{Work}というフォルダでプロット(グラフを描画)したい場合、次のように使えます。"
 
 #. type: example
 #: org.texi:12149
@@ -24731,6 +24731,9 @@ msgid ""
 "matplot(matrix(rnorm(100), 10), type=\"l\")\n"
 "#+end_src\n"
 msgstr ""
+"#+begin_src R :file myplot.png :dir ~/Work\n"
+"matplot(matrix(rnorm(100), 10), type=\"l\")\n"
+"#+end_src\n"
 
 #. type: subsubheading
 #: org.texi:12151
