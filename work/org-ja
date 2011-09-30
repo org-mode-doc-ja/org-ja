@@ -2301,35 +2301,30 @@ File: org-ja,  Node: Column formulas,  Next: Editing and debugging formulas,  Pr
 3.5.5 Column formulas
 ---------------------
 
-When you assign a formula to a simple column reference like `$3=', the same
-formula will be used in all fields of that column, with the following very
-convenient exceptions: (i) If the table contains horizontal separator
-hlines, everything before the first such line is considered part of the
-table _header_ and will not be modified by column formulas.  (ii) Fields
-that already get a value from a field/range formula will be left alone by
-column formulas.  These conditions make column formulas very easy to use.
+数式に`$3='のような単純な列の参照を指定すると、同様の数式がその列の全てのフ
+ィールドで使用されます。これには非常に有用な条件があります。（1）テーブルが
+水平ラインを含む場合は、最初の水平ラインよりも上に存在する全ての行がテーブル
+の_ヘッダー_の一部であると考えられ、列の数式によって変更されません。フィール
+ドや範囲の数式からすでに値を取得しているフィールドは、列の数式は関与しません
+。これらの条件によって列の数式はとても使いやすくなっています。
 
-   To assign a formula to a column, type it directly into any field in the
-column, preceded by an equal sign, like `=$1+$2'.  When you press <TAB> or
-<RET> or `C-c C-c' with the cursor still in the field, the formula will be
-stored as the formula for the current column, evaluated and the current
-field replaced with the result.  If the field contains only `=', the
-previously stored formula for this column is used.  For each column, Org
-will only remember the most recently used formula.  In the `#+TBLFM:' line,
-column formulas will look like `$4=$1+$2'.  The left-hand side of a column
-formula can not be the name of column, it must be the numeric column
-reference or `$>'.
+列に数式を割り当てるためには、列のフィールドに直接記述します。イコールの後に
+続くように、`=$1+$2'としまう。同じフィールド内で<TAB>や<RET>もしくは `C-c
+C-c'を押すと、入力した数式はそのフィールドのための数式として保存され、
+評価されたのち、フィールドの表示が演算結果で置き換わります。フィールドが
+`='だけの場合、以前に列で保存した数式が利用されます。各列についてorg-modeは
+、直前に利用した数式だけを記憶します。`#+TBLFM:'行で、列の数式は`$4=$1+$2'の
+ように保存されます。列数式のイコールの左側には、列の名前を置くことができず、
+数値の列の参照か`$>'を置かなければなりません。
 
-   Instead of typing an equation into the field, you may also use the
-following command:
+   フィールドに数式を書き入れる代わりに、次のコマンドも利用できます。
 
 `C-c =     (`org-table-eval-formula')'
-     Install a new formula for the current column and replace current field
-     with the result of the formula.  The command prompts for a formula,
-     with default taken from the `#+TBLFM' line, applies it to the current
-     field and stores it.  With a numeric prefix argument(e.g. `C-5 C-c =')
-     the command will apply it to that many consecutive fields in the
-     current column.
+     現在の列に新しい数式を書き込み、数式の演算結果で置き換える。このコマン
+     ドは`#+TBLFM:'の列から取得したデフォルトの数式を表示し、カーソル位置の
+     フィールドに適用してから保存します。数値のプレフィックス（たとえば
+     `C-5 C-c ='）を用いると、現在の列で連続したフィールドに同じ効果を与え
+     ます。
 
 
 File: org-ja,  Node: Editing and debugging formulas,  Next: Updating the table,  Prev: Column formulas,  Up: The spreadsheet
@@ -2337,100 +2332,98 @@ File: org-ja,  Node: Editing and debugging formulas,  Next: Updating the table, 
 3.5.6 Editing and debugging formulas
 ------------------------------------
 
-You can edit individual formulas in the minibuffer or directly in the
-field.  Org can also prepare a special buffer with all active formulas of a
-table.  When offering a formula for editing, Org converts references to the
-standard format (like `B3' or `D&')  if possible.  If you prefer to only
-work with the internal format (like `@3$2' or `$4'), configure the variable
-`org-table-use-standard-references'.
+ミニバッファか直接フィールド内で、個々の数式を編集できます。org-modeはテーブ
+ルに含まれるすべてのアクティブな数式がある特別なバッファも準備しています。数
+式を編集しようとすると、org-modeは、もし可能ならば参照を標準のフォーマット（
+`B3'や`D&'のような記法）に変換します。もし内部フォーマット（`@3$2'や`$4'のような記法）を用いて編集したい場合は、変数
+`org-table-use-standard-references'を設定してください。
 
 `C-c =  or  C-u C-c =     (`org-table-eval-formula')'
-     Edit the formula associated with the current column/field in the
-     minibuffer.  See *note Column formulas::, and *note Field and range
-     formulas::.  
+     ミニバッファでカーソル位置の列やフィールドに結びついた数式を編集する。
+     *note Column formulas::と*note Field and range
+     formulas::を参照してください。  
 
 `C-u C-u C-c =     (`org-table-eval-formula')'
-     Re-insert the active formula (either a field formula, or a column
-     formula) into the current field, so that you can edit it directly in
-     the field.  The advantage over editing in the minibuffer is that you
-     can use the command `C-c ?'.  
+     カーソル位置のフィールドにアクティブな数式（フィールドの数式、もしくは
+     列の数式）を再挿入します。これはフィールド内で直接的に編集できるように
+     するためです。ミニバッファでの編集葉理も有利なのは、`C-c ?'を使えるこ
+     とです。
 
 `C-c ?     (`org-table-field-info')'
-     While editing a formula in a table field, highlight the field(s)
-     referenced by the reference at the cursor position in the formula.  
+     テーブルのフィールド内で数式を編集
+     するときに、数式内でカーソルが置かれている参照によって指し示されたフィ
+     ールドをハイライトする。 
 
 `C-c }'
-     Toggle the display of row and column numbers for a table, using
-     overlays (`org-table-toggle-coordinate-overlays').  These are updated
-     each time the table is aligned; you can force it with `C-c C-c'.  
+     オーバーレイ（`org-table-toggle-coordinate-overlays'）を使用して、テー
+     ブルの行と列の番号を表示するようにトグルする。テーブルが整列される度に
+     表示が変わり、`C-c C-c'で強制的に表示を更新できます。 
 
 `C-c {'
-     Toggle the formula debugger on and off
-     (`org-table-toggle-formula-debugger').  See below.  
+     数式のデバッガをON／OFFする（`org-table-toggle-formula-debugger'）。 
 
 `C-c '     (`org-table-edit-formulas')'
-     Edit all formulas for the current table in a special buffer, where the
-     formulas will be displayed one per line.  If the current field has an
-     active formula, the cursor in the formula editor will mark it.  While
-     inside the special buffer, Org will automatically highlight any field
-     or range reference at the cursor position.  You may edit, remove and
-     add formulas, and use the following commands:
+     特別なバッファで現在のテーブルのすべての数式を編集する。バッファでは数
+     式はラインごとに一つずつ表示される。カーソル位置のフィールドにアクティ
+     ブな数式があるとき、カーソルエディタのカーソルはその数式をマークします
+     。特別なバッファの中では、org-modeは、カーソルがあるどんなフィールドや
+     範囲参照も自動的にハイライトします。数式の編集、削除、追加ができること
+     に加え、次のコマンドが利用できます。
     `C-c C-c  or  C-x C-s     (`org-table-fedit-finish')'
-          Exit the formula editor and store the modified formulas.  With
-          `C-u' prefix, also apply the new formulas to the entire table.  
+          数式エディタを抜けて、修正された数式を保存する。プレフィックス`C-u'を
+          使うと、新しい数式をテーブル全体に適用します。 
 
     `C-c C-q     (`org-table-fedit-abort')'
-          Exit the formula editor without installing changes.  
+          変更を破棄して数式エディタを抜ける。 
 
     `C-c C-r     (`org-table-fedit-toggle-ref-type')'
-          Toggle all references in the formula editor between standard
-          (like `B3') and internal (like `@3$2').  
+          数式エディタの全ての参照について、(`B3'のような）標準の記法と（`@3$2'
+          のような）内部の記法についてトグルする。 
 
     `<TAB>     (`org-table-fedit-lisp-indent')'
-          Pretty-print or indent Lisp formula at point.  When in a line
-          containing a Lisp formula, format the formula according to Emacs
-          Lisp rules.  Another <TAB> collapses the formula back again.  In
-          the open formula, <TAB> re-indents just like in Emacs Lisp mode.  
+          カーソル位置のLisp数式を見やすくしたりインテンドする。ラインにLisp数式
+          が含まれると、Emacs
+          Lispのルールに基づいて数式を整える。さらに<TAB>を押すと、整えられた数
+          式を崩して元の状態に戻す。開いた数式では、Emacs
+          Lispモードのように<TAB>でさらにインテンドする。 
 
     `M-<TAB>     (`lisp-complete-symbol')'
-          Complete Lisp symbols, just like in Emacs Lisp mode.  
+          Emacs LispモードのようにLispの記号を補完する。 
 
     `S-<up>/<down>/<left>/<right>'
-          Shift the reference at point.  For example, if the reference is
-          `B3' and you press `S-<right>', it will become `C3'.  This also
-          works for relative references and for hline references.  
+          カーソル位置の参照を移動する。たとえば、参照が`B3'で`S-<right>'を押す
+          と、`C3'に変化する。これは相対参照や水平ラインの参照についても同じよう
+          に動作する。 
 
     `M-S-<up>     (`org-table-fedit-line-up')'
     `M-S-<down>     (`org-table-fedit-line-down')'
-          Move the test line for column formulas in the Org buffer up and
-          down.  
+          org-modeのバッファにある列の数式へのテストラインを上下に移動する。 
 
     `M-<up>     (`org-table-fedit-scroll-down')'
     `M-<down>     (`org-table-fedit-scroll-up')'
-          Scroll the window displaying the table.  
+          テーブルを表示するウィンドウをスクロールする。 
 
     `C-c }'
-          Turn the coordinate grid in the table on and off.
+          テーブルの座標グリッドをON／OFFする
 
-   Making a table field blank does not remove the formula associated with
-the field, because that is stored in a different line (the `#+TBLFM'
-line)--during the next recalculation the field will be filled again.  To
-remove a formula from a field, you have to give an empty reply when prompted
-for the formula, or to edit the `#+TBLFM' line.
+テーブルのフィールドを空欄にしても、そのフィールドに結びつけられた数式は削除
+されません。これは数式が別な行（`#+TBLFM:'行）に保存されているためです。次に
+再計算が行なわれる際に、再びフィールドに数式の結果が戻ります。フィールドから
+数式を削除するためには、数式を表示させて空にするか、`#+TBLFM:'行を編集する必
+要があります。
 
-   You may edit the `#+TBLFM' directly and re-apply the changed equations
-with `C-c C-c' in that line or with the normal recalculation commands in
-the table.
+`#+TBLFM:'行を直接編集することができ、変更した数式を再適用できます。これはラ
+インにおいて`C-c C-c'を押すか、テーブルで通常の再計算コマンドを発行すること
+で実行できます。
 
-Debugging formulas
-..................
+数式のデバッグ
+.....................
 
-When the evaluation of a formula leads to an error, the field content
-becomes the string `#ERROR'.  If you would like see what is going on during
-variable substitution and calculation in order to find a bug, turn on
-formula debugging in the `Tbl' menu and repeat the calculation, for example
-by pressing `C-u C-u C-c = <RET>' in a field.  Detailed information will be
-displayed.
+数式を評価してエラーが生じた時は、フィールドの文字列が`#ERROR'に変わります。
+バグを見つけるために、変数の代入と計算をする間に何が起こっているかを調べたい
+ならば、`Tbl'メニューの数式のデバッグを有効にして、計算をやり直してください
+。たとえば、フィールド内で`C-u C-u C-c = <RET>'と押します。すると、詳細な情
+報が表示されます。
 
 
 File: org-ja,  Node: Updating the table,  Next: Advanced features,  Prev: Editing and debugging formulas,  Up: The spreadsheet
@@ -2438,34 +2431,33 @@ File: org-ja,  Node: Updating the table,  Next: Advanced features,  Prev: Editin
 3.5.7 Updating the table
 ------------------------
 
-Recalculation of a table is normally not automatic, but needs to be
-triggered by a command.  See *note Advanced features::, for a way to make
-recalculation at least semi-automatic.
+テーブルの再計算は、通常は自動的に行なわれず、コマンドにより実行する必要があ
+ります。*note Advanced
+features::を参照してください。少なくとも半自動で計算を行な います。
 
-   In order to recalculate a line of a table or the entire table, use the
-following commands:
+テーブルのある行もしくはテーブル全体を再計算するために、次のコマンドを使いま
+す。
 
 `C-c *     (`org-table-recalculate')'
-     Recalculate the current row by first applying the stored column
-     formulas from left to right, and all field/range formulas in the
-     current row.  
+     現在行を最初に保存されている列の数式を用いて、左から右に、現在行の全て
+     のフィールドと範囲数式を再計算する。 
 
 `C-u C-c *'
 `C-u C-c C-c'
-     Recompute the entire table, line by line.  Any lines before the first
-     hline are left alone, assuming that these are part of the table header.  
+     行ごとにテーブル全体を再計算する。最初の水平ラインの以前のどんな行も再
+     計算されません。これらはテーブルのヘッダであると想定します。 
 
 `C-u C-u C-c *  or  C-u C-u C-c C-c     (`org-table-iterate')'
-     Iterate the table by recomputing it until no further changes occur.
-     This may be necessary if some computed fields use the value of other
-     fields that are computed later in the calculation sequence.
+     計算結果の変化が生じなくなるまでテーブルの再計算を繰り返す。これは、計
+     算の流れにおいて後で計算されるフィールドの値を利用している、いくつかの
+     フィールドを計算するときに必要になります。
 
 `M-x org-table-recalculate-buffer-tables'
-     Recompute all tables in the current buffer.
+     現在のバッファに含まれる全てのフィールドを再計算する
 
 `M-x org-table-iterate-buffer-tables'
-     Iterate all tables in the current buffer, in order to converge
-     table-to-table dependencies.
+     テーブル間の依存関係を収束するために、カレントバッファの全てのテーブル
+     を反復計算する。
 
 
 File: org-ja,  Node: Advanced features,  Prev: Updating the table,  Up: The spreadsheet
@@ -2473,16 +2465,15 @@ File: org-ja,  Node: Advanced features,  Prev: Updating the table,  Up: The spre
 3.5.8 Advanced features
 -----------------------
 
-If you want the recalculation of fields to happen automatically, or if you
-want to be able to assign names to fields and columns, you need to reserve
-the first column of the table for special marking characters.
+もしも自動的にフィールドを再計算したい、もしくは、フィールドと列に名前を割り
+当てたいならば、テーブルの第一列を特別なマーキング文字を格納するために予約し
+ておく必要があります。
 `C-#     (`org-table-rotate-recalc-marks')'
-     Rotate the calculation mark in first column through the states ` ',
-     `#', `*', `!', `$'.  When there is an active region, change all marks
-     in the region.
+     第一行の計算用マーカを` '、`#'、
+     `*'、`!'、`$'の順番に循環する。アクティブリージョンがあれば、その領域
+     のすべてのマーカを変更する。
 
-   Here is an example of a table that collects exam results of students and
-makes use of these features:
+例として、学生の試験結果を集めて、自動再計算の機能を使うテーブルを示します。
 
      |---+---------+--------+--------+--------+-------+------|
      |   | Student | Prob 1 | Prob 2 | Prob 3 | Total | Note |
@@ -2500,52 +2491,53 @@ makes use of these features:
      |---+---------+--------+--------+--------+-------+------|
      #+TBLFM: $6=vsum($P1..$P3)::$7=10*$Tot/$max;%.1f::$at=vmean(@-II..@-I);%.1f
 
-Important: please note that for these special tables, recalculating the
-table with `C-u C-c *' will only affect rows that are marked `#' or `*',
-and fields that have a formula assigned to the field itself.  The column
-formulas are not applied in rows with empty first field.
+Important: please note that for these special tables,
+（indent問題箇所）このような特別なテーブルについて、`C-u C-c *'を使った再計
+算は、`#'もしくは`*'でマークされた行、また、自身に対して数式が適用されている
+フィールドだけに影響します。最初のフィールドが空な行については、列の数式は適
+用されません。
 
-   The marking characters have the following meaning:
+   マーキング文字には、次のような意味があります。
 `!'
-     The fields in this line define names for the columns, so that you may
-     refer to a column as `$Tot' instead of `$6'.
+     行に含まれるフィールドが、対応する列の名前を表す。これは`$6'ではなく
+     `$Tot'として列を参照できるようにするため。
 
 `^'
-     This row defines names for the fields _above_ the row.  With such a
-     definition, any formula in the table may use `$m1' to refer to the
-     value `10'.  Also, if you assign a formula to a names field, it will be
-     stored as `$name=...'.
+     _上側の_列のフィールドについて名前を定義する。この定義を用いることで、
+     テーブルのどのような数式でも、値`10'を参照するために`$m1'を利用できる
+     。また、名前を定義するフィールドに数式を割り当てると、`$name=...'とし
+     て保存される。
 
 `_'
-     Similar to `^', but defines names for the fields in the row _below_.
+     `^'とほぼ同じだが、_下側の_列のフィールドに対する名前を定義する。
 
 `$'
-     Fields in this row can define _parameters_ for formulas.  For example,
-     if a field in a `$' row contains `max=50', then formulas in this table
-     can refer to the value 50 using `$max'.  Parameters work exactly like
-     constants, only that they can be defined on a per-table basis.
+     この行のフィールドは、数式の_パラメータ_を定義する。たとえば、`$'が指
+     定された行で、フィールドが`max=50'を含むならば、テーブルの数式は`$max'
+     を用いて値`50'を参照できる。パラメータは、正に定数として動作し、テーブ
+     ルごとに定義される。
 
 `#'
-     Fields in this row are automatically recalculated when pressing <TAB>
-     or <RET> or `S-<TAB>' in this row.  Also, this row is selected for a
-     global recalculation with `C-u C-c *'.  Unmarked lines will be left
-     alone by this command.
+     行の中で<TAB>、`RET'、または`S-<TAB>'を押すと、この行のフィールドは自
+     動的に再計算される。また、この行は`C-u C-c *'によるグローバルな再計算
+     のために選択される。このコマンドでは、マークされていない行はそのままに
+     維持される。
 
 `*'
-     Selects this line for global recalculation with `C-u C-c *', but not
-     for automatic recalculation.  Use this when automatic recalculation
-     slows down editing too much.
+     `C-u C-c *'によるグローバルな再計算のためにこの行を選択する。ただし、
+     自動的な再計算には利用されない。自動再計算が編集速度を著しく低下させる
+     場合に利用します。
 
-`Unmarked lines are exempt from recalculation with C-u C-c *.  All'
-     lines that should be recalculated should be marked with `#' or `*'.
+`マークされていない行は、C-u C-c *による再計算から除外される。再計算'
+     されるべきすべての行は、`#'や`*'でマークされるべきである。
 
 `/'
-     Do not export this line.  Useful for lines that contain the narrowing
-     `<N>' markers or column group markers.
+     この行はエクスポートしない。表示幅を狭くする`<N>'マーカ、もしくは列の
+     グループマーカを含む列について便利である。
 
-   Finally, just to whet your appetite for what can be done with the
-fantastic `calc.el' package, here is a table that computes the Taylor
-series of degree `n' at location `x' for a couple of functions.
+最後に、素晴らしい`calc.el'パッケージができることを学ぶ知識欲を刺激するため
+に、一つのテーブルを示します。このテーブルは、いくつかの関数に対して、`x'に
+おける`n'次のテーラー級数を計算します。
 
      |---+-------------+---+-----+--------------------------------------|
      |   | Func        | n | x   | Result                               |
@@ -2565,11 +2557,12 @@ File: org-ja,  Node: Org-Plot,  Prev: The spreadsheet,  Up: Tables
 3.6 Org-Plot
 ============
 
-Org-Plot can produce 2D and 3D graphs of information stored in org tables
-using `Gnuplot' `http://www.gnuplot.info/' and `gnuplot-mode'
-`http://cars9.uchicago.edu/~ravel/software/gnuplot-mode.html'.  To see this
-in action, ensure that you have both Gnuplot and Gnuplot mode installed on
-your system, then call `org-plot/gnuplot' on the following table.
+Org-Plotは、org-modeのテーブルに保存された情報による2次元と3次元のグラフを生
+成できます。`Gnuplot' `http://www.gnuplot.info/'と`gnuplot-mode'
+`http://cars9.uchicago.edu/~ravel/software/gnuplot-mode.html'を利用していま
+す。動作を確認するためには、GnuplotとGnuplotモードの両方がシステムにインスト
+ールされていることを確かめてください。その上で、次に示すテーブルで
+`org-plot/gnuplot'を呼び出してください。
 
      #+PLOT: title:"Citas" ind:1 deps:(3) type:2d with:histograms set:"yrange [0:]"
      | Sede      | Max cites | H-index |
@@ -2580,64 +2573,64 @@ your system, then call `org-plot/gnuplot' on the following table.
      | Stockholm |    134.19 |   14.33 |
      | Morelia   |    257.56 |   17.67 |
 
-   Notice that Org Plot is smart enough to apply the table's headers as
-labels.  Further control over the labels, type, content, and appearance of
-plots can be exercised through the `#+PLOT:' lines preceding a table.  See
-below for a complete list of Org-plot options.  For more information and
-examples see the Org-plot tutorial at
-`http://orgmode.org/worg/org-tutorials/org-plot.html'.
+Org-Plotは、テーブルのヘッダをラベルとして適用できます。ラベル、タイプ、コン
+テンツ、プロットの外観は、テーブルの上の`#+PLOT:'で始まる行によって制御可能
+です。以下のOrg-Plotオプションの完成したリストを見てください。さらなる情報と
+例は、`http://orgmode.org/worg/org-tutorials/org-plot.html'にあるOrg-Plotの
+チュートリアルを参照してください。
 
-Plot Options
-............
+プロットオプション
+...........................
 
 `set'
-     Specify any `gnuplot' option to be set when graphing.
+     グラフの描画時に設定される`gnuplot'のオプションを指定する。
 
 `title'
-     Specify the title of the plot.
+     プロットのタイトルを設定する。
 
 `ind'
-     Specify which column of the table to use as the `x' axis.
+     `x'軸として利用するテーブルの列を指定する。
 
 `deps'
-     Specify the columns to graph as a Lisp style list, surrounded by
-     parentheses and separated by spaces for example `dep:(3 4)' to graph
-     the third and fourth columns (defaults to graphing all other columns
-     aside from the `ind' column).
+     Lispスタイルのリストで描画するように列を指定する。括弧で括られ、スペー
+     スで分離されます。たとえば、`dep:(3 4)'とすると、第三と第四列を描画し
+     ます（デフォルトでは、`ind'の列を除いて他の全ての列が描画される）。
 
 `type'
-     Specify whether the plot will be `2d', `3d', or `grid'.
+     プロットの種別（`2d'、`3d'もしくは`grid'）を指定する。
 
 `with'
-     Specify a `with' option to be inserted for every col being plotted
-     (e.g. `lines', `points', `boxes', `impulses', etc...).  Defaults to
-     `lines'.
+     `with'オプションで挿入される、各プロット点の表示種別を指定する。たとえ
+     ば、
+     `lines'、`points'、`boxes'、`impluses'などで、デフォルトは`lines'。
 
 `file'
-     If you want to plot to a file, specify `"PATH/TO/DESIRED/OUTPUT-FILE"'.
+     プロット結果を外部ファイルに出力したいときに、
+     `"PATH/TO/DESIRED/OUTPUT-FILE"'のように指定する。
 
 `labels'
-     List of labels to be used for the `deps' (defaults to the column
-     headers if they exist).
+     `deps'で利用されるラベルのリストを指定する。標準では列のヘッダが使われ
+     る（存在する場合）。
 
 `line'
-     Specify an entire line to be inserted in the Gnuplot script.
+     Gnuplotのスクリプトに、記述内容がそのまま挿入される行を設定する。
 
 `map'
-     When plotting `3d' or `grid' types, set this to `t' to graph a flat
-     mapping rather than a `3d' slope.
+     プロットの種別で`3d'もしくは`grid'を指定する場合に、このオプションを
+     `t'にすると、`3d'の立体的な傾斜がわかる表示ではなく、平らな表示（訳注
+     ：平面に射影した状態）でプロットする。
 
 `timefmt'
-     Specify format of Org-mode timestamps as they will be parsed by
-     Gnuplot.  Defaults to `%Y-%m-%d-%H:%M:%S'.
+     Gnuplotが解釈するような形式にorg-modeのタイムスタンプを整える。デフォ
+     ルトでは、 `%Y-%m-%d-%H:%M:%S'が使われる。
 
 `script'
-     If you want total control, you can specify a script file (place the
-     file name between double-quotes) which will be used to plot.  Before
-     plotting, every instance of `$datafile' in the specified script will
-     be replaced with the path to the generated data file.  Note: even if
-     you set this option, you may still want to specify the plot type, as
-     that can impact the content of the data file.
+     Gnuplotをさらに制御するために、プロットに利用されるスクリプトファイル
+     （ファイル名をダブルクォーテーションで囲んでください）を指定できます。
+     プロットを開始する前に、このスクリプトファイルに含まれる`$datafile'の
+     記述は、プロット点を格納するファイルへのファイルパスで置き換えられます
+     。たとえこのオプションを指定しても、プロット種別を制御したいならば、
+     `type'オプションが優先的に適用されます。
 
 
 File: org-ja,  Node: Hyperlinks,  Next: TODO Items,  Prev: Tables,  Up: Top
@@ -10766,9 +10759,9 @@ File: org-ja,  Node: Header arguments,  Next: Results of evaluation,  Prev: Lang
 14.8 Header arguments
 =====================
 
-Code block functionality can be configured with header arguments.  This
-section provides an overview of the use of header arguments, and then
-describes each header argument in detail.
+ヘッダー引数を通して、コードブロックの機能を設定できます。このセクションでは
+ヘッダー引数の使い方を概説し、その後、各ヘッダー引数の詳細について説明します
+。
 
 * Menu:
 
@@ -10781,8 +10774,8 @@ File: org-ja,  Node: Using header arguments,  Next: Specific header arguments,  
 14.8.1 Using header arguments
 -----------------------------
 
-The values of header arguments can be set in six different ways, each more
-specific (and having higher priority) than the last.
+ヘッダー引数の値は6通りの方法で設定できます。以下の説明で、後に説明されるも
+のほど、個別の設定として優先されます。
 
 * Menu:
 
@@ -10800,8 +10793,8 @@ File: org-ja,  Node: System-wide header arguments,  Next: Language-specific head
 System-wide header arguments
 ............................
 
-System-wide values of header arguments can be specified by customizing the
-`org-babel-default-header-args' variable:
+変数`org-babel-default-header-args'をカスタマイズすることで、システム全体に
+わたるヘッダー引数の値を指定できます。
 
      :session    => "none"
      :results    => "replace"
@@ -10809,9 +10802,9 @@ System-wide values of header arguments can be specified by customizing the
      :cache      => "no"
      :noweb      => "no"
 
-   For example, the following example could be used to set the default
-value of `:noweb' header arguments to `yes'.  This would have the effect of
-expanding `:noweb' references by default when evaluating source code blocks.
+次の例のように、ヘッダー引数`:noweb'の初期値を`yes'と設定できます。ソースコ
+ードブロックを評価する時に、デフォルトの設定として`:noweb'の参照記号を展開し
+ます。
 
      (setq org-babel-default-header-args
      (cons '(:noweb . "yes")
@@ -10823,9 +10816,9 @@ File: org-ja,  Node: Language-specific header arguments,  Next: Buffer-wide head
 Language-specific header arguments
 ..................................
 
-Each language can define its own set of default header arguments.  See the
-language-specific documentation available online at
-`http://orgmode.org/worg/org-contrib/babel'.
+それぞれの言語用にデフォルトのヘッダー引数を定義できます。言語の詳細な文書に
+ついては、オンラインの`http://orgmode.org/worg/org-contrib/babel'を見て下さ
+い。
 
 
 File: org-ja,  Node: Buffer-wide header arguments,  Next: Header arguments in Org-mode properties,  Prev: Language-specific header arguments,  Up: Using header arguments
@@ -10833,15 +10826,14 @@ File: org-ja,  Node: Buffer-wide header arguments,  Next: Header arguments in Or
 Buffer-wide header arguments
 ............................
 
-Buffer-wide header arguments may be specified through the use of a special
-line placed anywhere in an Org-mode file.  The line consists of the
-`#+BABEL:' keyword followed by a series of header arguments which may be
-specified using the standard header argument syntax.
+Org-modeファイルにある特別な行を使って、バッファー全体にわたるヘッダー引数を
+設定できます。その行では、キーワード`#BABEL:'に続いて、普通のヘッダー引数の
+構文を使って指定された一連のヘッダー引数があります。
 
-   For example the following would set `session' to `*R*', and `results' to
-`silent' for every code block in the buffer, ensuring that all execution
-took place in the same session, and no results would be inserted into the
-buffer.
+   次の例は、`session'を`*R*'と設定し、バッファ内にあるコードブロック毎の
+`results'を`silent'と指定しています。この設定により、全ての(コードブロックが
+)同一のセッションで実行されることと、結果はバッファに挿入されないことを確か
+にしています。
 
      #+BABEL: :session *R* :results silent
 
@@ -10851,26 +10843,25 @@ File: org-ja,  Node: Header arguments in Org-mode properties,  Next: Code block 
 Header arguments in Org-mode properties
 .......................................
 
-Header arguments are also read from Org-mode properties (see *note Property
-syntax::), which can be set on a buffer-wide or per-heading basis. An
-example of setting a header argument for all code blocks in a buffer is
+ヘッダー引数はOrg-modeのプロパティから読み出すこともできます (*note
+Property syntax::を見て下さい)。プロパティはバッファ全体もしくは見出しごと
+の単位で設定できます。例えば、バッファ内の全コードブロックのヘッダー引数を設
+定するには、以下のようにします。
 
      #+property: tangle yes
 
-   When properties are used to set default header arguments, they are
-looked up with inheritance, so the value of the `:cache' header argument
-will default to `yes' in all code blocks in the subtree rooted at the
-following heading:
+デフォルトのヘッダー引数を設定するためにプロパティを使う場合、プロパティは継
+承(関係)に沿って参照されます。したがって、以下の見出しにあるサブツリー内の全
+コードブロックでは、ヘッダー引数`:cache'の値はデフォルトの`yes'となります:
 
-     * outline header
+     * アウトライン ヘッダー
      :PROPERTIES:
      :cache:    yes
      :END:
 
-   Properties defined in this way override the properties set in
-`org-babel-default-header-args'.  It is convenient to use the
-`org-set-property' function bound to `C-c C-x p' to set properties in
-Org-mode documents.
+このように設定されたプロパティは、`org-babel-default-header-args'に設定され
+たプロパティを上書きします。Org-modeドキュメント内のプロパティを設定する関数
+`org-set-property'を使うのが便利です。キーバインドは`C-c C-x p'です。
 
 
 File: org-ja,  Node: Code block specific header arguments,  Next: Header arguments in function calls,  Prev: Header arguments in Org-mode properties,  Up: Using header arguments
@@ -10878,30 +10869,29 @@ File: org-ja,  Node: Code block specific header arguments,  Next: Header argumen
 Code block specific header arguments
 ....................................
 
-The most common way to assign values to header arguments is at the code
-block level.  This can be done by listing a sequence of header arguments and
-their values as part of the `#+begin_src' line.  Properties set in this way
-override both the values of `org-babel-default-header-args' and header
-arguments specified as properties.  In the following example, the
-`:results' header argument is set to `silent', meaning the results of
-execution will not be inserted in the buffer, and the `:exports' header
-argument is set to `code', meaning only the body of the code block will be
-preserved on export to HTML or LaTeX.
+コードブロックのレベルでヘッダー引数に値を割り当てる方法が最も一般的です。
+`#+begin_src'行の一部として、ヘッダー引数とその値とを並べることによって設定
+されます。このように設定されたプロパティは変数
+`org-babel-default-header-args'とプロパティとして設定されたヘッダー引数との
+両方を上書きします。以下に示す例では、実行結果をバッファに挿入しないように、
+ヘッダー引数`:results'を`silent'と設定し、加えてHTMLやLaTeXへのエクスポート
+時にコードブロックの本文だけが保存されるように、ヘッダー引数`:exports'を
+`code'と設定しています。
 
      #+source: factorial
      #+begin_src haskell :results silent :exports code :var n=0
      fac 0 = 1
      fac n = n * fac (n-1)
      #+end_src
-   Similarly, it is possible to set header arguments for inline code blocks:
+   同様に、インラインのコードブロックにヘッダー引数を設定することも可能です:
 
      src_haskell[:exports both]{fac 5}
 
-   Code block header arguments can span multiple lines using =#+header:= or
-=#+headers:= lines preceding a code block or nested in between the name and
-body of a named code block.
+コードブロックのヘッダー引数を複数行にわたって記述できます。=#+header:=もし
+くは=#+headers:=の行を、コードブロックの前に記述するか、名前付きコードブロッ
+クの名前とコード本文との間に記述します。
 
-   Multi-line header arguments on an un-named code block:
+   名前を付けていないコードブロックに複数行のヘッダー引数を設定します:
       #+headers: :var data1=1
       #+begin_src emacs-lisp :var data2=2
         (message "data1:%S, data2:%S" data1 data2)
@@ -10910,7 +10900,7 @@ body of a named code block.
       #+results:
       : data1:1, data2:2
 
-   Multi-line header arguments on a named code block:
+   名前を付けたコードブロックに複数行のヘッダー引数を設定します:
         #+source: named-block
         #+header: :var data=2
         #+begin_src emacs-lisp
@@ -10926,17 +10916,17 @@ File: org-ja,  Node: Header arguments in function calls,  Prev: Code block speci
 Header arguments in function calls
 ..................................
 
-At the most specific level, header arguments for "Library of Babel" or
-function call lines can be set as shown in the two examples below.  For more
-information on the structure of `#+call:' lines see *note Evaluating code
-blocks::.
+一番個別のレベルにおいて、Babelのライブラリのためのヘッダー引数もしくは関数
+の呼び出し行は、下に示す2つの例のように設定されます。`#call:'行の構造ついつ
+いての更なる情報については、*note Evaluating code
+blocks::を参照してください。
 
-   The following will apply the `:exports results' header argument to the
-evaluation of the `#+call:' line.
+   以下の例では、ヘッダー引数`:exports
+results'を設定して、`#+call:'行を評価し ます。
      #+call: factorial(n=5) :exports results
 
-   The following will apply the `:session special' header argument to the
-evaluation of the `factorial' code block.
+   以下の例では、ヘッダー引数`:session special'を設定して、コードブロック
+`factorial'を評価します。
      #+call: factorial[:session special](n=5)
 
 
@@ -10945,7 +10935,7 @@ File: org-ja,  Node: Specific header arguments,  Prev: Using header arguments,  
 14.8.2 Specific header arguments
 --------------------------------
 
-The following header arguments are defined:
+以下のヘッダー引数が定義されています:
 
 * Menu:
 
@@ -10977,25 +10967,27 @@ File: org-ja,  Node: var,  Next: results,  Prev: Specific header arguments,  Up:
 14.8.2.1 `:var'
 ...............
 
-The `:var' header argument is used to pass arguments to code blocks.  The
-specifics of how arguments are included in a code block vary by language;
-these are addressed in the language-specific documentation. However, the
-syntax used to specify arguments is the same across all languages.  The
-values passed to arguments can be literal values, values from org-mode
-tables and literal example blocks, the results of other code blocks, or
-Emacs Lisp code--see the "Emacs Lisp evaluation of variables" heading below.
+ヘッダー引数`:var'はコードブロックへ引数を渡すときに使われます。コードブロッ
+クに含まれている引数を受け取る方法は、言語によって異なります。これらは、言語
+固有の文書にて説明されています。しかし、引数を指定する構文は、すべての言語で
+共通です。引数に渡されうる値というのは、定数(リテラル値)、Org-modeのテーブル
+とexampleブロックそのもの文字列からの値、他のコードブロックの結果、あるいは
+Emacs_Lisp(原文スペースをアンダーバーで置換)のコードです。--Emacs_Lispにつ
+いては、以下の見出し"Emacs Lisp evaluation of variables"を見て下さい。
 
-   These values can be indexed in a manner similar to arrays--see the
-"indexable variable values" heading below.
+   これらの値は配列のようにインデックス化できます。--以下の見出し
+"indexable variable values"を見て下さい。
 
-   The following syntax is used to pass arguments to code blocks using the
-`:var' header argument.
+ヘッダー引数`:var'を使ってコードブロックへ引数を渡すには、以下の構文を使いま
+す。
 
      :var name=assign
 
-   where `assign' can take one of the following forms
+   ここで、`assign'は以下の構造のうちどれかをとることができます。
 
-   * literal value either a string `"string"' or a number `9'.
+   * literal value
+     この文、文法的に分かりません。文字列(例:`"string"')もしくは数字(例
+     :`9')です。
 
    * reference a table name:
 
@@ -11013,8 +11005,7 @@ Emacs Lisp code--see the "Emacs Lisp evaluation of variables" heading below.
           #+results: table-length
           : 4
 
-     a code block name, as assigned by `#+srcname:', followed by
-     parentheses:
+     `#+srcname:'と括弧「()」で挟まれたコードブロックの名前を参照します。
 
           #+begin_src emacs-lisp :var length=table-length()
           (* 2 length)
@@ -11023,9 +11014,8 @@ Emacs Lisp code--see the "Emacs Lisp evaluation of variables" heading below.
           #+results:
           : 8
 
-     In addition, an argument can be passed to the code block referenced by
-     `:var'.  The argument is passed within the parentheses following the
-     code block name:
+     加えて、`:var'によって参照されたコードブロックへ引数を渡すこともできま
+     す。コードブロック名に続く括弧「()」内の引数が渡されます。
 
           #+source: double
           #+begin_src emacs-lisp :var input=8
@@ -11043,30 +11033,32 @@ Emacs Lisp code--see the "Emacs Lisp evaluation of variables" heading below.
           #+results: squared
           : 4
 
-Alternate argument syntax
-.........................
+Alternate argument syntax(引数を指定する別の構文)
+............................................................
 
-It is also possible to specify arguments in a potentially more natural way
-using the `#+source:' line of a code block.  As in the following example
-arguments can be packed inside of parenthesis, separated by commas,
-following the source name.
+コードブロックの`#+source:'行を利用するという方法でも引数を指定できます。も
+しかすると、こちらの方法がより自然かもしれません。以下の例のように、引数はソ
+ースの名前に続く括弧「()」の内に、カンマ「,」で分離された形でひとまとめにさ
+れています。
 
      #+source: double(input=0, x=2)
      #+begin_src emacs-lisp
      (* 2 (+ input x))
      #+end_src
 
-Indexable variable values
-.........................
+Indexable variable values(インデックス化可能な変数の値)
+.....................................................................
 
-It is possible to reference portions of variable values by "indexing" into
-the variables.  Indexes are 0 based with negative values counting back from
-the end.  If an index is separated by `,'s then each subsequent section
-will index into the next deepest nesting or dimension of the value.  Note
-that this indexing occurs _before_ other table related header arguments
-like `:hlines', `:colnames' and `:rownames' are applied.  The following
-example assigns the last cell of the first row the table `example-table' to
-the variable `data':
+変数の"indexing"インデックス化によって割り当てられた変数の一部分を参照でき
+ます。インデックスは0から始まる値で、負の値もとります。インデックスが負の値
+の場合、それは要素の最後から逆順に数え上げた順番です。インデックスが「,」で
+分割されているとき、後続する部分のそれぞれが、次に深いネスティング(入れ子構
+造)にインデックス化するか、値の次元にインデックス化します。このインデックス
+化を実行する_前に_、ヘッダー引数`:hlines'、`:colnames'、そして`:rownames'に
+関連する他のテーブルが変更されることに注意して下さい。(最終文、typo?  the
+last cell of the first row *in* the table example-table to the variable
+data)次の例では、テーブル`example-table'1行目の最後のセルを変数`data'に割り
+当てています:
 
      #+results: example-table
      | 1 | a |
@@ -11081,10 +11073,9 @@ the variable `data':
      #+results:
      : a
 
-   Ranges of variable values can be referenced using two integers separated
-by a `:', in which case the entire inclusive range is referenced.  For
-example the following assigns the middle three rows of `example-table' to
-`data'.
+`:'で区切られた2つの整数を使うことで、変数の範囲(行や列?)を参照できます。こ
+の場合、包括的な範囲を参照します。例えば、以下では`example-table'の中央3行を
+`data'に割り当てています。
 
      #+results: example-table
      | 1 | a |
@@ -11102,10 +11093,9 @@ example the following assigns the middle three rows of `example-table' to
      | 3 | c |
      | 4 | d |
 
-   Additionally, an empty index, or the single character `*', are both
-interpreted to mean the entire range and as such are equivalent to `0:-1',
-as shown in the following example in which the entire first column is
-referenced.
+加えて、インデックスが空の場合もしくは単一文字`*'の場合のどちらでも、全ての
+範囲すなわち`0:-1'を意味していると解釈されます。次の例では、1列目すべてが参
+照されます。
 
      #+results: example-table
      | 1 | a |
@@ -11120,9 +11110,9 @@ referenced.
      #+results:
      | 1 | 2 | 3 | 4 |
 
-   It is possible to index into the results of code blocks as well as
-tables.  Any number of dimensions can be indexed.  Dimensions are separated
-from one another by commas, as shown in the following example.
+コードブロックの結果をテーブルの様にインデックス化できます。どんな次元数でも
+インデックス化できます。以下の例に示すように、次元はそれぞれカンマで分割され
+ます。
 
      #+source: 3D
      #+begin_src emacs-lisp
@@ -11138,24 +11128,22 @@ from one another by commas, as shown in the following example.
      #+results:
      | 11 | 14 | 17 |
 
-Emacs Lisp evaluation of variables
+Emacs Lispによる変数の評価
 ..................................
 
-Emacs lisp code can be used to initialize variable values.  When a variable
-value starts with `(', `[', `'' or ``' it will be evaluated as Emacs Lisp
-and the result of the evaluation will be assigned as the variable value.
-The following example demonstrates use of this evaluation to reliably pass
-the file-name of the org-mode buffer to a code block--note that evaluation
-of header arguments is guaranteed to take place in the original org-mode
-file, while there is no such guarantee for evaluation of the code block
-body.
+変数の値を初期化するときにEmacs Lispのコードを使えます。変数の値が `(',
+`[', `'' もしくは ``'で始まる場合、変数はEmacs
+Lispとして評価され、その評価結果を変数の値として代入されます。次の例では、こ
+の評価を使ってOrg-modのファイル名を確かにコードブロックへ渡しています--元の
+Org-file内でヘッダー引数が間違いなく評価されるということに注意して下さい。コ
+ードブロックで評価する場合そのような保証はありません。
 
      #+begin_src sh :var file-name=(buffer-file-name) :exports both
        wc -w $file
      #+end_src
 
-   Note that values read from tables and lists will not be evaluated as
-Emacs Lisp, as shown in the following example.
+   テーブルやリストから読み出された値はEmacs
+Lispとして評価されません。以下はそ の例です。
 
      #+results: table
      | (a b c) |
@@ -11174,100 +11162,115 @@ File: org-ja,  Node: results,  Next: file,  Prev: var,  Up: Specific header argu
 14.8.2.2 `:results'
 ...................
 
-There are three classes of `:results' header argument.  Only one option per
-class may be supplied per code block.
+ヘッダー引数`:results'には3つのクラスがあります。コードブロックでは、クラス
+毎に1個のオプションだけを付与できます。
 
-   * collection header arguments specify how the results should be collected
-     from the code block
+   * ヘッダー引数collectionは、コードブロックからどのように結果を集めかを指
+     定します。
 
-   * type header arguments specify what type of result the code block will
-     return--which has implications for how they will be inserted into the
-     Org-mode buffer
+   * ヘッダー引数typeはコードブロックがどのタイプの結果を返すかを指定します
+     --これは、Org-modeのバッファーへ結果を挿入する方法に影響します。
 
-   * handling header arguments specify how the results of evaluating the
-     code block should be handled.
+   * ヘッダー引数handlingはコードブロックの評価の結果をどのように扱うかを指
+     定します。
 
 Collection
 ..........
 
-The following options are mutually exclusive, and specify how the results
-should be collected from the code block.
+以下のオプションは、コードブロックから結果を収める方法を指定します。どちらか
+のオプションしか指定できません。
 
-   * `value' This is the default.  The result is the value of the last
-     statement in the code block.  This header argument places the
-     evaluation in functional mode.  Note that in some languages, e.g.,
-     Python, use of this result type requires that a `return' statement be
-     included in the body of the source code block. E.g., `:results value'.
+   * `value'
+     デフォルトの設定です。コードブロックの最終行の値が結果になります。この
+     ヘッダー引数はfunctional
+     modeで評価します。このタイプの返り値を使う場合、Pythonなどの言語では、
+     ソースコードブロックの本文で`return'文が必要なことに注意して下さい。
+     例えば、`:results value'のように記述します。
 
-   * `output' The result is the collection of everything printed to STDOUT
-     during the execution of the code block.  This header argument places
-     the evaluation in scripting mode.  E.g., `:results output'.
+   * `output'
+     コードブロックで実行される間に標準出力(STDOUT)へと出力されたもの全てを
+     収集して結果とします。このヘッダー引数はscripting
+     modeで評価します。例えば、`:results output'のように記述します。
 
 Type
 ....
 
-The following options are mutually exclusive and specify what type of
-results the code block will return.  By default, results are inserted as
-either a table or scalar depending on their value.
+以下のオプションは相互に排他的で、コードブロックの結果のタイプを返します。デ
+フォルトでは、結果の値によって、テーブルかスカラーのどちらかが結果として挿入
+されます。
 
-   * `table', `vector' The results should be interpreted as an Org-mode
-     table.  If a single value is returned, it will be converted into a
-     table with one row and one column.  E.g., `:results value table'.
+   * `table', `vector'
+     結果は、Org-modeのテーブルとして解釈されます。単一の値が返された場合、
+     結果は1行1列のテーブルへと変換されます。例えば、`:results value table'
+     のように記述します。
 
-   * `list' The results should be interpreted as an Org-mode list.  If a
-     single scalar value is returned it will be converted into a list with
-     only one element.
+   * `list'
+     結果は、Org-modeのリストとして解釈されます。単一のスカラー値が返された
+     場合、結果は1要素からなるリストへと変換されます。
 
-   * `scalar', `verbatim' The results should be interpreted literally--they
-     will not be converted into a table.  The results will be inserted into
-     the Org-mode buffer as quoted text.  E.g., `:results value verbatim'.
+   * `scalar', `verbatim'
+     結果は文字通りに評価されます--結果はテーブルへと変換されません。結果
+     は引用されたテキストとしてOrg-modeのバッファに挿入されます。例えば、
+     `:results value verbatim'と記述します。
 
-   * `file' The results will be interpreted as the path to a file, and will
-     be inserted into the Org-mode buffer as a file link.  E.g., `:results
-     value file'.
+   * `file'
+     結果はファイルへのパスとして解釈され、ファイルのリンクとしてOrg-modeの
+     バッファに挿入されます。例えば、`:results value file'のように記述しま
+     す。
 
-   * `raw', `org' The results are interpreted as raw Org-mode code and are
-     inserted directly into the buffer.  If the results look like a table
-     they will be aligned as such by Org-mode.  E.g., `:results value raw'.
+   * `raw', `org'
+     結果は加工されていないOrg-modeのコードとして解釈され、そのバッファに直
+     接挿入されます。結果がテーブルのように見えるときは、Org-modeのように整
+     形します。例えば、`:results value raw'のように記述します。
 
-   * `html' Results are assumed to be HTML and will be enclosed in a
-     `begin_html' block.  E.g., `:results value html'.
+   * `html'
+     結果はHTMLであると見なされて、`begin_html'ブロックに囲まれます。例えば
+     、`:results value html'のように記述します。
 
-   * `latex' Results assumed to be LaTeX and are enclosed in a
-     `begin_latex' block.  E.g., `:results value latex'.
+   * `latex'
+     結果はLaTeXと見なされて、`begin_latex'ブロックに囲まれます。例えば、
+     `:results value latex'のように記述します。
 
-   * `code' Result are assumed to be parseable code and are enclosed in a
-     code block.  E.g., `:results value code'.
+   * `code'
+     結果は構文解析可能なコードと見なされて、コードブロックに囲まれます。例
+     えば、`:results value code'のように記述します。
 
-   * `pp' The result is converted to pretty-printed code and is enclosed in
-     a code block.  This option currently supports Emacs Lisp, Python, and
-     Ruby.  E.g., `:results value pp'.
+   * `pp'
+     結果は装飾されたコードに変換されて、コードブロックに囲まれます。このオ
+     プションは、現在、Emacs Lisp,
+     PythonとRubyをサポートしています。例えば、`:results value pp'のように
+     記述します。
 
-   * `wrap' The result is wrapped in a `begin_result' block.  This can be
-     useful for inserting `raw' or `org' syntax results in such a way that
-     their extend is known and they can be automatically removed or
-     replaced.
+   * `wrap'
+     結果は`begin_result'ブロックに囲まれます。結果の展開方法(extend?名詞形
+     を見つけられず)が分かっていて自動的に削除されるか置換されるような、
+     `raw'もしくは`org'構文の結果を挿入する時にこのオプションを使うと便利で
+     す。
 
 Handling
 ........
 
-The following results options indicate what happens with the results once
-they are collected.
+以下のresultのオプションは、結果が1度集められた後に何が起こるかを示していま
+す。
 
-   * `silent' The results will be echoed in the minibuffer but will not be
-     inserted into the Org-mode buffer.  E.g., `:results output silent'.
+   * `silent'
+     結果はミニバッファに表示されますが、Org-odeのバッファには挿入されませ
+     ん。例えば、`:results output silent'と記述します。
 
-   * `replace' The default value.  Any existing results will be removed,
-     and the new results will be inserted into the Org-mode buffer in their
-     place.  E.g., `:results output replace'.
+   * `replace'
+     デフォルトの設定です。どんな結果でも存在していれば削除し、新しい結果を
+     Org-modeのバッファのその場所に挿入します。例えば、 `:results output
+     replace'と記述します。
 
-   * `append' If there are pre-existing results of the code block then the
-     new results will be appended to the existing results.  Otherwise the
-     new results will be inserted as with `replace'.
+   * `append'
+     コードブロックの結果が以前から存在する場合、新しい結果は現在存在する結
+     果に付け加えられます。結果が存在しなければ、`replace'のように新しい結
+     果が挿入されます。
 
-   * `prepend' If there are pre-existing results of the code block then the
-     new results will be prepended to the existing results.  Otherwise the
-     new results will be inserted as with `replace'.
+   * `prepend'
+     もしコードブロックの結果が既に存在する場合、今現在の結果の先頭に新しい
+     結果追加します。結果が存在しなければ、`replace'のように新しい結果が挿
+     入されます。
 
 
 File: org-ja,  Node: file,  Next: dir,  Prev: results,  Up: Specific header arguments
@@ -13963,11 +13966,12 @@ Concept index
 * #+ARCHIVE:                             Moving subtrees.         (line  26)
 * #+ATTR_DOCBOOK:                        Images in DocBook export.
                                                                   (line  28)
-* #+ATTR_HTML <1>:                       Tables in HTML export.   (line  12)
-* #+ATTR_HTML <2>:                       Links in HTML export.    (line  21)
-* #+ATTR_HTML:                           Images in HTML export.   (line  23)
+* #+ATTR_HTML <1>:                       Links in HTML export.    (line  21)
+* #+ATTR_HTML <2>:                       Images in HTML export.   (line  23)
+* #+ATTR_HTML:                           Tables in HTML export.   (line  12)
 * #+ATTR_LaTeX <1>:                      Tables in LaTeX export.  (line  13)
-* #+ATTR_LaTeX:                          Images in LaTeX export.  (line  24)
+* #+ATTR_LaTeX <2>:                      Images in LaTeX export.  (line  24)
+* #+ATTR_LaTeX:                          Tables in LaTeX export.  (line  21)
 * #+AUTHOR:                              Export options.          (line  20)
 * #+BEGIN, clocktable:                   The clock table.         (line  38)
 * #+BEGIN, columnview:                   カラム表示の保存.        (line  11)
@@ -13982,14 +13986,13 @@ Concept index
 * #+BEGIN_SRC:                           Literal examples.        (line  25)
 * #+BEGIN_VERSE:                         Paragraphs.              (line  13)
 * #+BIND:                                Export options.          (line  20)
-* #+CAPTION <1>:                         Images in DocBook export.
+* #+CAPTION <1>:                         Tables in LaTeX export.  (line  21)
+* #+CAPTION <2>:                         Images and tables.       (line   6)
+* #+CAPTION <3>:                         Images in HTML export.   (line  23)
+* #+CAPTION <4>:                         Tables in HTML export.   (line  12)
+* #+CAPTION <5>:                         Images in DocBook export.
                                                                   (line  28)
-* #+CAPTION <2>:                         Tables in LaTeX export.  (line  21)
-* #+CAPTION <3>:                         Images in LaTeX export.  (line  24)
-* #+CAPTION <4>:                         Tables in LaTeX export.  (line  13)
-* #+CAPTION <5>:                         Images and tables.       (line   6)
-* #+CAPTION <6>:                         Images in HTML export.   (line  23)
-* #+CAPTION:                             Tables in HTML export.   (line  12)
+* #+CAPTION:                             Images in LaTeX export.  (line  24)
 * #+CATEGORY:                            Categories.              (line   6)
 * #+COLUMNS:                             Scope of column definitions.
                                                                   (line   8)
@@ -14006,18 +14009,17 @@ Concept index
 * #+INCLUDE:                             Include files.           (line   7)
 * #+INFOJS_OPT:                          JavaScript support.      (line  26)
 * #+KEYWORDS:                            Export options.          (line  20)
-* #+LABEL <1>:                           Tables in LaTeX export.  (line  21)
-* #+LABEL <2>:                           Images in LaTeX export.  (line  24)
-* #+LABEL <3>:                           Tables in LaTeX export.  (line  13)
-* #+LABEL <4>:                           Images and tables.       (line   6)
-* #+LABEL:                               Images in DocBook export.
+* #+LABEL <1>:                           Images in DocBook export.
                                                                   (line  28)
+* #+LABEL <2>:                           Tables in LaTeX export.  (line  21)
+* #+LABEL <3>:                           Images in LaTeX export.  (line  24)
+* #+LABEL:                               Images and tables.       (line   6)
 * #+LANGUAGE:                            Export options.          (line  20)
 * #+LaTeX:                               Quoting LaTeX code.      (line  12)
 * #+LATEX_CLASS:                         Header and sectioning.   (line   8)
 * #+LATEX_CLASS_OPTIONS:                 Header and sectioning.   (line   8)
-* #+LATEX_HEADER <1>:                    Export options.          (line  20)
-* #+LATEX_HEADER:                        Header and sectioning.   (line   8)
+* #+LATEX_HEADER <1>:                    Header and sectioning.   (line   8)
+* #+LATEX_HEADER:                        Export options.          (line  20)
 * #+LINK:                                Link abbreviations.      (line  39)
 * #+LINK_HOME:                           Export options.          (line  20)
 * #+LINK_UP:                             Export options.          (line  20)
@@ -14098,17 +14100,15 @@ Concept index
 * checkboxes and TODO dependencies:      TODO dependencies.       (line  43)
 * children, subtree visibility state:    Visibility cycling.      (line  10)
 * code block, batch execution:           バッチ処理.              (line   6)
-* code block, header arguments:          Header arguments.        (line   6)
 * code block, key bindings:              Key bindings and useful functions.
                                                                   (line   6)
 * code block, noweb reference:           Noweb reference syntax.  (line   6)
 * code block, results of evaluation:     Results of evaluation.   (line   6)
-* column formula:                        Column formulas.         (line   6)
 * column view, in agenda:                Agenda column view.      (line   6)
 * commands, in agenda buffer:            Agenda commands.         (line   6)
 * constants.el:                          Cooperation.             (line  16)
-* content, STARTUPキーワード <1>:        In-buffer settings.      (line  69)
-* content, STARTUPキーワード:            Visibility cycling.      (line  54)
+* content, STARTUPキーワード <1>:        Visibility cycling.      (line  54)
+* content, STARTUPキーワード:            In-buffer settings.      (line  69)
 * contents, global visibility state:     Visibility cycling.      (line  22)
 * context-sensitive commands, hooks:     Context-sensitive commands.
                                                                   (line   6)
@@ -14124,8 +14124,6 @@ Concept index
 * date tree:                             Using capture.           (line   9)
 * DEADLINEキーワード:                    Deadlines and scheduling.
                                                                   (line  10)
-* debugging, of table formulas:          Editing and debugging formulas.
-                                                                  (line  94)
 * demotion, of subtrees:                 Structure editing.       (line   6)
 * dependencies, of TODO states:          TODO dependencies.       (line   6)
 * diary entries, creating from agenda:   Agenda commands.         (line 438)
@@ -14146,8 +14144,6 @@ Concept index
                                                                   (line   6)
 * dynamic blocks:                        Dynamic blocks.          (line   6)
 * editing tables:                        Tables.                  (line   6)
-* editing, of table formulas:            Editing and debugging formulas.
-                                                                  (line   6)
 * effort filtering, in agenda:           Agenda commands.         (line 177)
 * ELispリンク:                           External links.          (line   6)
 * emacsserver:                           Protocols.               (line   6)
@@ -14168,22 +14164,17 @@ Concept index
 * fnprompt,キーワード:                   In-buffer settings.      (line 134)
 * folded, subtree visibility state:      Visibility cycling.      (line  10)
 * folding, sparse trees:                 Sparse trees.            (line   6)
-* footnote.el <1>:                       Cooperation.             (line  73)
-* footnote.el:                           Footnote markup.         (line   6)
+* footnote.el <1>:                       Footnote markup.         (line   6)
+* footnote.el:                           Cooperation.             (line  73)
 * footnotes <1>:                         Footnotes.               (line   6)
 * footnotes:                             Export options.          (line  43)
-* formula debugging:                     Editing and debugging formulas.
-                                                                  (line  94)
-* formula editing:                       Editing and debugging formulas.
-                                                                  (line   6)
-* formula, for table column:             Column formulas.         (line   6)
 * Freemind export:                       Freemind export.         (line   6)
 * Gillespie, Dave:                       Cooperation.             (line   6)
 * global cycling:                        Visibility cycling.      (line  22)
 * global TODO list:                      Global TODO list.        (line   6)
 * global visibility states:              Visibility cycling.      (line  22)
+* Gnuplotを用いたテーブルのプロット:     Org-Plot.                (line   6)
 * Gnusリンク:                            External links.          (line   6)
-* graph, in tables:                      Org-Plot.                (line   6)
 * Guerry, Bastien:                       LaTeX and PDF export.    (line   6)
 * habits:                                習慣の追跡.              (line   6)
 * hacking:                               Hacking.                 (line   6)
@@ -14211,8 +14202,8 @@ Concept index
 * index, in a publishing project:        Generating an index.     (line   6)
 * Infoリンク:                            External links.          (line   6)
 * inheritance, of tags:                  Tag inheritance.         (line   6)
-* inlineimages, STARTUP keyword <1>:     In-buffer settings.      (line  87)
-* inlineimages, STARTUP keyword:         Handling links.          (line 129)
+* inlineimages, STARTUP keyword <1>:     Handling links.          (line 129)
+* inlineimages, STARTUP keyword:         In-buffer settings.      (line  87)
 * inlining images in DocBook:            Images in DocBook export.
                                                                   (line   6)
 * iPhone:                                MobileOrg.               (line   6)
@@ -14246,7 +14237,6 @@ Concept index
 * logging, of progress:                  Progress logging.        (line   6)
 * Ludlam, Eric M.:                       Cooperation.             (line  45)
 * mapping entries, API:                  マッピングAPIを使う.     (line   6)
-* marking characters, tables:            Advanced features.       (line  38)
 * match view:                            Matching tags and properties.
                                                                   (line   6)
 * matching, of properties:               Matching tags and properties.
@@ -14266,8 +14256,8 @@ Concept index
                                                                   (line   6)
 * nofnadjust, STARTUPキーワード:         In-buffer settings.      (line 134)
 * nofninline, STARTUPキーワード:         In-buffer settings.      (line 134)
-* nohideblocks, STARTUP keyword <1>:     In-buffer settings.      (line 147)
-* nohideblocks, STARTUP keyword:         Blocks.                  (line  13)
+* nohideblocks, STARTUP keyword <1>:     Blocks.                  (line  13)
+* nohideblocks, STARTUP keyword:         In-buffer settings.      (line 147)
 * noinlineimages, STARTUP keyword <1>:   In-buffer settings.      (line  87)
 * noinlineimages, STARTUP keyword:       Handling links.          (line 129)
 * occur, command:                        Sparse trees.            (line   6)
@@ -14292,10 +14282,9 @@ Concept index
 * overview, STARTUPキーワード <1>:       Visibility cycling.      (line  54)
 * overview, STARTUPキーワード:           In-buffer settings.      (line  69)
 * pasting, of subtrees:                  Structure editing.       (line   6)
-* PDF出力 <1>:                           LaTeX and PDF export.    (line   6)
-* PDF出力:                               DocBook export.          (line   6)
+* PDF出力 <1>:                           DocBook export.          (line   6)
+* PDF出力:                               LaTeX and PDF export.    (line   6)
 * plain lists:                           Plain lists.             (line   6)
-* plot tables using Gnuplot:             Org-Plot.                (line   6)
 * presentation, of agenda items:         Presentation and sorting.
                                                                   (line   6)
 * print edition:                         Summary.                 (line  59)
@@ -14314,8 +14303,8 @@ Concept index
 * property, CUSTOM_ID:                   Internal links.          (line   6)
 * property, DESCRIPTION:                 iCalendarエクスポート.   (line  43)
 * property, ID <1>:                      Handling links.          (line  20)
-* property, ID <2>:                      iCalendarエクスポート.   (line  20)
-* property, ID:                          カラム表示の保存.        (line  22)
+* property, ID <2>:                      カラム表示の保存.        (line  22)
+* property, ID:                          iCalendarエクスポート.   (line  20)
 * property, LATEX_CLASS:                 Header and sectioning.   (line   8)
 * property, LATEX_CLASS_OPTIONS:         Header and sectioning.   (line   8)
 * property, LOCATION:                    iCalendarエクスポート.   (line  43)
@@ -14328,16 +14317,15 @@ Concept index
 * query editing, in agenda:              Agenda commands.         (line 177)
 * radio lists:                           ラジオリスト.            (line   6)
 * radio tables:                          Radio tables.            (line   6)
-* recomputing table fields:              Updating the table.      (line   6)
 * refiling notes:                        Refiling notes.          (line   6)
-* region, active <1>:                    HTML Export commands.    (line   6)
-* region, active <2>:                    Built-in table editor.   (line 157)
-* region, active <3>:                    Structure editing.       (line 124)
-* region, active <4>:                    LaTeX/PDF export commands.
-                                                                  (line   6)
-* region, active <5>:                    DocBook export commands. (line   6)
-* region, active:                        ASCII/Latin-1/UTF-8 export.
+* region, active <1>:                    Built-in table editor.   (line 157)
+* region, active <2>:                    Structure editing.       (line 124)
+* region, active <3>:                    ASCII/Latin-1/UTF-8 export.
                                                                   (line  10)
+* region, active <4>:                    HTML Export commands.    (line   6)
+* region, active <5>:                    DocBook export commands. (line   6)
+* region, active:                        LaTeX/PDF export commands.
+                                                                  (line   6)
 * regular expressions, with tags search: Matching tags and properties.
                                                                   (line  55)
 * remember.el:                           Cooperation.             (line  41)
@@ -14356,8 +14344,8 @@ Concept index
 * searching, for text:                   Search view.             (line   6)
 * setting tags:                          Setting tags.            (line   6)
 * SHELLリンク:                           External links.          (line   6)
-* shift-selection-mode <1>:              Plain lists.             (line  94)
-* shift-selection-mode:                  Conflicts.               (line   6)
+* shift-selection-mode <1>:              Conflicts.               (line   6)
+* shift-selection-mode:                  Plain lists.             (line  94)
 * show all, command:                     Visibility cycling.      (line  33)
 * show all, global visibility state:     Visibility cycling.      (line  22)
 * show hidden text:                      Visibility cycling.      (line   6)
@@ -14370,7 +14358,6 @@ Concept index
                                                                   (line   6)
 * sorting, of subtrees:                  Structure editing.       (line   6)
 * source code, batch execution:          バッチ処理.              (line   6)
-* source code, block header arguments:   Header arguments.        (line   6)
 * source code, noweb reference:          Noweb reference syntax.  (line   6)
 * source code, results of evaluation:    Results of evaluation.   (line   6)
 * source code, working with:             Working With Source Code.
@@ -14421,9 +14408,9 @@ Concept index
 * subtrees, cut and paste:               Structure editing.       (line   6)
 * syntax, noweb:                         Noweb reference syntax.  (line   6)
 * table editor, table.el:                Cooperation.             (line  52)
-* table.el:                              Cooperation.             (line  52)
-* tables <1>:                            Export options.          (line  43)
-* tables:                                Tables.                  (line   6)
+* table.el:                              Cooperation.             (line  49)
+* tables <1>:                            Tables.                  (line   6)
+* tables:                                Export options.          (line  43)
 * tables, in DocBook export:             Tables in DocBook export.
                                                                   (line   6)
 * tables, in LaTeX export:               Tables in LaTeX export.  (line   6)
@@ -14468,18 +14455,17 @@ Concept index
                                                                   (line   6)
 * TODOワークフロー:                      Workflow states.         (line   6)
 * transient-mark-mode <1>:               DocBook export commands. (line   6)
-* transient-mark-mode <2>:               LaTeX/PDF export commands.
-                                                                  (line   6)
-* transient-mark-mode <3>:               HTML Export commands.    (line   6)
-* transient-mark-mode:                   ASCII/Latin-1/UTF-8 export.
+* transient-mark-mode <2>:               ASCII/Latin-1/UTF-8 export.
                                                                   (line  10)
+* transient-mark-mode <3>:               LaTeX/PDF export commands.
+                                                                  (line   6)
+* transient-mark-mode:                   HTML Export commands.    (line   6)
 * translator function:                   Translator functions.    (line   6)
 * trees, sparse:                         Sparse trees.            (line   6)
 * trees, visibility:                     Visibility cycling.      (line   6)
 * tty端末のキーバインディング:           TTY keys.                (line   6)
 * undoing remote-editing events:         Agenda commands.         (line 257)
 * unison:                                Uploading files.         (line   6)
-* updating, table:                       Updating the table.      (line   6)
 * URLリンク:                             External links.          (line   6)
 * USENETリンク:                          External links.          (line   6)
 * UTF-8でのエクスポート:                 ASCII/Latin-1/UTF-8 export.
@@ -14498,22 +14484,22 @@ Concept index
 * はじめに:                              Introduction.            (line   6)
 * アウトラインビューを見やすくする:      Clean view.              (line   6)
 * アクティブでないタイムスタンプ:        Timestamps.              (line  47)
-* アクティブなリージョン <1>:            LaTeX/PDF export commands.
-                                                                  (line   6)
-* アクティブなリージョン <2>:            HTML Export commands.    (line   6)
-* アクティブなリージョン <3>:            ASCII/Latin-1/UTF-8 export.
+* アクティブなリージョン <1>:            DocBook export commands. (line   6)
+* アクティブなリージョン <2>:            ASCII/Latin-1/UTF-8 export.
                                                                   (line  10)
-* アクティブなリージョン <4>:            Structure editing.       (line 124)
-* アクティブなリージョン <5>:            DocBook export commands. (line   6)
-* アクティブなリージョン:                Built-in table editor.   (line 157)
+* アクティブなリージョン <3>:            HTML Export commands.    (line   6)
+* アクティブなリージョン <4>:            Built-in table editor.   (line 157)
+* アクティブなリージョン <5>:            Structure editing.       (line 124)
+* アクティブなリージョン:                LaTeX/PDF export commands.
+                                                                  (line   6)
 * アジェンダ:                            Weekly/daily agenda.     (line   6)
 * アジェンダのコマンドを選択する:        Agenda dispatcher.       (line   6)
 * アジェンダのコマンド選択画面:          Agenda dispatcher.       (line   6)
 * アジェンダビュー:                      Agenda Views.            (line   6)
-* アジェンダビューの出力 <1>:            Exporting Agenda Views.  (line  12)
-* アジェンダビューの出力:                Agenda commands.         (line 484)
+* アジェンダビューの出力 <1>:            Agenda commands.         (line 484)
+* アジェンダビューの出力:                Exporting Agenda Views.  (line  12)
 * アジェンダビュー（出力） <1>:          Agenda commands.         (line 484)
-* アジェンダビュー（出力）:              Exporting Agenda Views.  (line  12)
+* アジェンダビュー（出力）:              Exporting Agenda Views.  (line   6)
 * アジェンダファイル:                    Agenda files.            (line   6)
 * アジェンダ用のファイル:                Agenda files.            (line   6)
 * インストール:                          Installation.            (line   6)
@@ -14525,9 +14511,9 @@ Concept index
 * エクスポートのオプション:              Export options.          (line   6)
 * エクスポート中のマクロによる置き換え:  Macro replacement.       (line   6)
 * エラーのバックトレース:                Feedback.                (line  39)
-* オプションのキーワードの補完 <1>:      Export options.          (line   6)
-* オプションのキーワードの補完 <2>:      Completion.              (line   6)
-* オプションのキーワードの補完:          Per-file keywords.       (line  23)
+* オプションのキーワードの補完 <1>:      Completion.              (line   6)
+* オプションのキーワードの補完 <2>:      Per-file keywords.       (line  23)
+* オプションのキーワードの補完:          Export options.          (line   6)
 * オプションキーワードの補完:            Completion.              (line   6)
 * カウントダウンタイマ:                  カウントダウンタイマ.    (line   6)
 * カスタマイズ:                          Customization.           (line   6)
@@ -14544,12 +14530,14 @@ Concept index
 * キーバインド（グローバル）:            Activation.              (line   6)
 * キーワードオプション:                  Per-file keywords.       (line   6)
 * クロックテーブル、動的なブロック:      The clock table.         (line   6)
+* グラフ（テーブル）:                    Org-Plot.                (line   6)
 * グローバルなキーバインド:              Activation.              (line   6)
 * コマンド選択画面、エクスポートコマンドのための: The export dispatcher.
                                                                   (line   6)
 * コメント行:                            コメント行.              (line   6)
 * コードのテキスト、マークアップのルール: Emphasis and monospace. (line   6)
 * コードブロック、エクスポート:          Exporting code blocks.   (line   6)
+* コードブロック、ヘッダー引数:          Header arguments.        (line   6)
 * コードブロック、構造:                  Structure of code blocks.
                                                                   (line   6)
 * コードブロック、編集:                  Editing source code.     (line   6)
@@ -14560,6 +14548,7 @@ Concept index
 * スケジューリング:                      Timestamps.              (line   6)
 * スペシャルキーワード:                  In-buffer settings.      (line   6)
 * ソースコード、エクスポート:            Exporting code blocks.   (line   6)
+* ソースコード、ブロックのヘッダー引数:  Header arguments.        (line   6)
 * ソースコード、ブロック構造:            Structure of code blocks.
                                                                   (line   6)
 * ソースコード、編集:                    Editing source code.     (line   6)
@@ -14582,10 +14571,12 @@ Concept index
 * テンプレートの挿入:                    Easy Templates.          (line   6)
 * テーブル、HTMLの:                      Tables in HTML export.   (line   6)
 * テーブルのマイナーモード:              Orgtbl mode.             (line   6)
-* テーブルの中での計算 <1>:              The spreadsheet.         (line   6)
-* テーブルの中での計算:                  Built-in table editor.   (line 157)
+* テーブルの中での計算 <1>:              Built-in table editor.   (line 157)
+* テーブルの中での計算:                  The spreadsheet.         (line   6)
 * テーブルエディタ（組み込み）:          Built-in table editor.   (line   6)
 * デッドライン:                          Timestamps.              (line   6)
+* デバッグ（テーブルの数式）:            Editing and debugging formulas.
+                                                                  (line  93)
 * ハイパーリンク:                        Hyperlinks.              (line   6)
 * バグレポート:                          Feedback.                (line   6)
 * バッファ中での設定:                    In-buffer settings.      (line   6)
@@ -14598,6 +14589,7 @@ Concept index
 * ファイル名の補完:                      Handling links.          (line  86)
 * ファイル毎のキーワード:                Per-file keywords.       (line   6)
 * フィードバック:                        Feedback.                (line   6)
+* フィールドの再計算:                    Updating the table.      (line   6)
 * フィールドの参照:                      References.              (line  15)
 * フィールドの座標:                      References.              (line  87)
 * フィールドの数式:                      Field and range formulas.
@@ -14608,12 +14600,12 @@ Concept index
 * プロパティ:CLOCK_MODELINE_TOTAL:       Clocking commands.       (line  16)
 * プロパティ:LAST_REPEAT:                Clocking commands.       (line  16)
 * プロパティ、_ALL:                      Property syntax.         (line  36)
-* プロパティ、EXPORT_FILE_NAME <1>:      DocBook export commands. (line   7)
-* プロパティ、EXPORT_FILE_NAME <2>:      ASCII/Latin-1/UTF-8 export.
-                                                                  (line  11)
-* プロパティ、EXPORT_FILE_NAME <3>:      HTML Export commands.    (line   7)
-* プロパティ、EXPORT_FILE_NAME:          LaTeX/PDF export commands.
+* プロパティ、EXPORT_FILE_NAME <1>:      HTML Export commands.    (line   7)
+* プロパティ、EXPORT_FILE_NAME <2>:      LaTeX/PDF export commands.
                                                                   (line   7)
+* プロパティ、EXPORT_FILE_NAME <3>:      ASCII/Latin-1/UTF-8 export.
+                                                                  (line  11)
+* プロパティ、EXPORT_FILE_NAME:          DocBook export commands. (line   7)
 * プロパティ、EXPORT_TITLE:              Document title.          (line  15)
 * プロパティ、カラムビュー:              Defining columns.        (line   6)
 * プロパティ、スペシャル:                Special properties.      (line   6)
@@ -14633,18 +14625,19 @@ Concept index
 * プロパティ、工数:                      Effort estimates.        (line   6)
 * プロパティ、検索:                      Property searches.       (line   6)
 * プロパティ、継承:                      Property inheritance.    (line   6)
-* プロパティのためのAPI <1>:             Property API.            (line   6)
-* プロパティのためのAPI:                 Using the property API.  (line   6)
+* プロパティのためのAPI <1>:             Using the property API.  (line   6)
+* プロパティのためのAPI:                 Property API.            (line   6)
 * プロパティシンタックス:                Property syntax.         (line   6)
-* プロパティ（API） <1>:                 Using the property API.  (line   6)
-* プロパティ（API）:                     Property API.            (line   6)
+* プロパティ（API） <1>:                 Property API.            (line   6)
+* プロパティ（API）:                     Using the property API.  (line   6)
 * プロパティ（ARCHIVE） <1>:             Moving subtrees.         (line  28)
 * プロパティ（ARCHIVE）:                 Property inheritance.    (line  31)
-* プロパティ（CATEGORY） <1>:            Property inheritance.    (line  27)
-* プロパティ（CATEGORY）:                Categories.              (line  12)
+* プロパティ（CATEGORY） <1>:            Categories.              (line  12)
+* プロパティ（CATEGORY）:                Property inheritance.    (line  27)
 * プロパティ（COLUMNS） <1>:             Property inheritance.    (line  19)
 * プロパティ（COLUMNS）:                 In-buffer settings.      (line  26)
 * ベクトル（テーブルでの計算）:          Formula syntax for Calc. (line  10)
+* マーキング文字（テーブル）:            Advanced features.       (line  38)
 * マークリング:                          Handling links.          (line 136)
 * メンテナー:                            Feedback.                (line   6)
 * モード（Calc）:                        Formula syntax for Calc. (line  13)
@@ -14684,6 +14677,7 @@ Concept index
 * 内部リンク:                            Internal links.          (line   6)
 * 内部リンク、出力するHTMLの:            Links in HTML export.    (line   6)
 * 列のグルーピング:                      Column groups.           (line   6)
+* 列の数式:                              Column formulas.         (line   6)
 * 列（フィールドの座標）:                References.              (line  87)
 * 動的なインデント:                      Clean view.              (line   6)
 * 参照（フィールド）:                    References.              (line  15)
@@ -14695,7 +14689,7 @@ Concept index
                                                                   (line   6)
 * 名前をTODOキーワードとして:            TODO types.              (line   6)
 * 名前付き参照:                          References.              (line 103)
-* 名前（列やフィールド）:                References.              (line 124)
+* 名前（列やフィールド）:                References.              (line 103)
 * 固定幅の段落:                          Export options.          (line  43)
 * 外部リンク:                            External links.          (line   6)
 * 外部リンク、出力するHTMLの:            Links in HTML export.    (line   6)
@@ -14708,11 +14702,13 @@ Concept index
 * 完了、タグの:                          Completion.              (line   6)
 * 属性、COOKIE_DATA <1>:                 Breaking down tasks.     (line  21)
 * 属性、COOKIE_DATA:                     Checkboxes.              (line  29)
-* 属性、ログをとる <1>:                  Tracking TODO state changes.
+* 属性、ログをとる <1>:                  Property inheritance.    (line  35)
+* 属性、ログをとる:                      Tracking TODO state changes.
                                                                   (line  40)
-* 属性、ログをとる:                      Property inheritance.    (line  35)
-* 属性、並び順 <1>:                      TODO dependencies.       (line  30)
-* 属性、並び順:                          Checkboxes.              (line  74)
+* 属性、並び順 <1>:                      TODO dependencies.       (line   6)
+* 属性、並び順 <2>:                      Checkboxes.              (line  74)
+* 属性、並び順 <3>:                      TODO dependencies.       (line  30)
+* 属性、並び順:                          Checkboxes.              (line  44)
 * 工数の見積もり:                        Effort estimates.        (line   6)
 * 座標（フィールド）:                    References.              (line  87)
 * 強調されたテキスト:                    Export options.          (line  43)
@@ -14723,8 +14719,13 @@ Concept index
 * 改行の維持:                            Export options.          (line  43)
 * 数学記号:                              Special symbols.         (line   6)
 * 数式のシンタックス（Calc）:            Formula syntax for Calc. (line   6)
+* 数式のデバッグ:                        Editing and debugging formulas.
+                                                                  (line  93)
+* 数式の編集:                            Editing and debugging formulas.
+                                                                  (line   6)
 * 数式（テーブルの個々のフィールド）:    Field and range formulas.
                                                                   (line   6)
+* 数式（テーブルの列）:                  Column formulas.         (line   6)
 * 数式（テーブル内部）:                  Built-in table editor.   (line 157)
 * 数式（フィールドの範囲）:              Field and range formulas.
                                                                   (line   6)
@@ -14735,8 +14736,8 @@ Concept index
 * 日付:                                  Date and Times.          (line   6)
 * 日付、ミニバッファでの読み込み:        The date/time prompt.    (line   6)
 * 日付の間隔:                            Timestamps.              (line  39)
-* 日付スタンプ <1>:                      Date and Times.          (line   6)
-* 日付スタンプ:                          Timestamps.              (line   6)
+* 日付スタンプ <1>:                      Timestamps.              (line   6)
+* 日付スタンプ:                          Date and Times.          (line   6)
 * 日付フォーマット、カスタム:            Custom time format.      (line   6)
 * 日記の統合:                            Weekly/daily agenda.     (line  28)
 * 時刻:                                  Date and Times.          (line   6)
@@ -14749,8 +14750,9 @@ Concept index
 * 時間間隔、時刻:                        Timestamps.              (line   6)
 * 時間間隔の評価:                        Creating timestamps.     (line  61)
 * 時間順に並べたビュー:                  Timeline.                (line   6)
-* 暫定マークモード <1>:                  Structure editing.       (line 124)
-* 暫定マークモード:                      Built-in table editor.   (line 157)
+* 暫定マークモード <1>:                  Built-in table editor.   (line 157)
+* 暫定マークモード:                      Structure editing.       (line 124)
+* 更新（テーブル）:                      Updating the table.      (line   6)
 * 最初の見出しより前のテキスト、マークアップのルール: Initial text.
                                                                   (line   6)
 * 検索、プロパティの:                    Property searches.       (line   6)
@@ -14777,6 +14779,8 @@ Concept index
                                                                   (line   6)
 * 範囲参照:                              References.              (line  63)
 * 継承、プロパティの:                    Property inheritance.    (line   6)
+* 編集（テーブルの数式）:                Editing and debugging formulas.
+                                                                  (line   6)
 * 繰り返しタスク:                        Repeated tasks.          (line   6)
 * 脚注、マークアップのルール:            Footnote markup.         (line   6)
 * 著者:                                  Feedback.                (line   6)
@@ -14799,11 +14803,12 @@ Concept index
 * 評価、コードブロック:                  Evaluating code blocks.  (line   6)
 * 評価、ソースコード:                    Evaluating code blocks.  (line   6)
 * 辞書単語の補完:                        Completion.              (line   6)
-* （外部出力に用いる）ヘッドラインレベル <1>: ASCII/Latin-1/UTF-8 export.
-                                                                  (line  37)
+* （外部出力に用いる）ヘッドラインレベル <1>: HTML Export commands.
+                                                                  (line  39)
 * （外部出力に用いる）ヘッドラインレベル <2>: LaTeX/PDF export commands.
                                                                   (line  38)
-* （外部出力に用いる）ヘッドラインレベル: HTML Export commands.   (line  39)
+* （外部出力に用いる）ヘッドラインレベル: ASCII/Latin-1/UTF-8 export.
+                                                                  (line  37)
 
 
 File: org-ja,  Node: Key Index,  Next: Command and Function Index,  Prev: Main Index,  Up: Top
@@ -14836,7 +14841,7 @@ Key index
 * <TAB> <1>:                             Built-in table editor.   (line  60)
 * <TAB> <2>:                             Setting tags.            (line 101)
 * <TAB> <3>:                             Editing and debugging formulas.
-                                                                  (line  53)
+                                                                  (line  52)
 * <TAB> <4>:                             Agenda commands.         (line  38)
 * <TAB> <5>:                             Plain lists.             (line  84)
 * <TAB> <6>:                             Structure editing.       (line  30)
@@ -14871,7 +14876,7 @@ Key index
 * C-c %:                                 Handling links.          (line 133)
 * C-c &:                                 Handling links.          (line 138)
 * C-c ' <1>:                             Editing and debugging formulas.
-                                                                  (line  35)
+                                                                  (line  34)
 * C-c ' <2>:                             Cooperation.             (line  61)
 * C-c ' <3>:                             Editing source code.     (line   6)
 * C-c ' <4>:                             Include files.           (line  29)
@@ -14900,12 +14905,12 @@ Key index
 * C-c ;:                                 コメント行.              (line  12)
 * C-c <:                                 Creating timestamps.     (line  26)
 * C-c <RET>:                             Built-in table editor.   (line 108)
-* C-c = <1>:                             Column formulas.         (line  28)
+* C-c = <1>:                             Column formulas.         (line  24)
 * C-c =:                                 Editing and debugging formulas.
-                                                                  (line  13)
+                                                                  (line  12)
 * C-c >:                                 Creating timestamps.     (line  29)
 * C-c ?:                                 Editing and debugging formulas.
-                                                                  (line  22)
+                                                                  (line  21)
 * C-c [:                                 Agenda files.            (line  17)
 * C-c \ <1>:                             Property searches.       (line   8)
 * C-c \:                                 Tag searches.            (line   9)
@@ -14972,7 +14977,7 @@ Key index
 * C-c C-c <13>:                          Setting tags.            (line  17)
 * C-c C-c <14>:                          Checkboxes.              (line  50)
 * C-c C-c <15>:                          Editing and debugging formulas.
-                                                                  (line  44)
+                                                                  (line  43)
 * C-c C-c <16>:                          Built-in table editor.   (line  59)
 * C-c C-c:                               Plain lists.             (line 120)
 * C-c C-c c:                             Property syntax.         (line  74)
@@ -15039,10 +15044,10 @@ Key index
 * C-c C-o:                               Agenda commands.         (line  59)
 * C-c C-p:                               Motion.                  (line   9)
 * C-c C-q <1>:                           Editing and debugging formulas.
-                                                                  (line  46)
+                                                                  (line  45)
 * C-c C-q:                               Setting tags.            (line  10)
 * C-c C-r <1>:                           Editing and debugging formulas.
-                                                                  (line  49)
+                                                                  (line  48)
 * C-c C-r:                               Visibility cycling.      (line  34)
 * C-c C-s <1>:                           Agenda commands.         (line 331)
 * C-c C-s:                               Inserting deadline/schedule.
@@ -15166,7 +15171,7 @@ Key index
                                                                   (line  31)
 * C-c |:                                 Built-in table editor.   (line 188)
 * C-c }:                                 Editing and debugging formulas.
-                                                                  (line  76)
+                                                                  (line  75)
 * C-c ~:                                 Cooperation.             (line  63)
 * C-k:                                   Agenda commands.         (line 271)
 * C-S-<left> <1>:                        Multiple sets in one file.
@@ -15179,14 +15184,14 @@ Key index
 * C-TAB:                                 ファイル内部でのアーカイブ.
                                                                   (line  46)
 * C-u C-c !:                             Creating timestamps.     (line  20)
-* C-u C-c *:                             Updating the table.      (line  16)
+* C-u C-c *:                             Updating the table.      (line  15)
 * C-u C-c .:                             Creating timestamps.     (line  20)
 * C-u C-c = <1>:                         Editing and debugging formulas.
-                                                                  (line  13)
+                                                                  (line  12)
 * C-u C-c =:                             Field and range formulas.
                                                                   (line  21)
 * C-u C-c c:                             Using capture.           (line  43)
-* C-u C-c C-c:                           Updating the table.      (line  19)
+* C-u C-c C-c:                           Updating the table.      (line  18)
 * C-u C-c C-l:                           Handling links.          (line  83)
 * C-u C-c C-t:                           TODO basics.             (line  24)
 * C-u C-c C-w:                           Refiling notes.          (line  27)
@@ -15198,11 +15203,11 @@ Key index
 * C-u C-c C-x C-u <2>:                   カラム表示の保存.        (line  59)
 * C-u C-c C-x C-u:                       The clock table.         (line  20)
 * C-u C-u <TAB>:                         Visibility cycling.      (line  67)
-* C-u C-u C-c *:                         Updating the table.      (line  21)
+* C-u C-u C-c *:                         Updating the table.      (line  20)
 * C-u C-u C-c =:                         Editing and debugging formulas.
-                                                                  (line  16)
+                                                                  (line  15)
 * C-u C-u C-c c:                         Using capture.           (line  45)
-* C-u C-u C-c C-c:                       Updating the table.      (line  21)
+* C-u C-u C-c C-c:                       Updating the table.      (line  20)
 * C-u C-u C-c C-e:                       The export dispatcher.   (line  25)
 * C-u C-u C-c C-t:                       Multiple sets in one file.
                                                                   (line  24)
@@ -15213,7 +15218,7 @@ Key index
                                                                   (line  11)
 * C-v:                                   The date/time prompt.    (line  70)
 * C-x C-s:                               Editing and debugging formulas.
-                                                                  (line  44)
+                                                                  (line  43)
 * C-x C-w <1>:                           Exporting Agenda Views.  (line  11)
 * C-x C-w:                               Agenda commands.         (line 483)
 * C-x n b:                               Structure editing.       (line 107)
@@ -15245,7 +15250,7 @@ Key index
 * M:                                     Agenda commands.         (line 458)
 * m:                                     Agenda commands.         (line 391)
 * M-<down> <1>:                          Editing and debugging formulas.
-                                                                  (line  72)
+                                                                  (line  71)
 * M-<down>:                              Built-in table editor.   (line  93)
 * M-<left> <1>:                          Structure editing.       (line  36)
 * M-<left> <2>:                          Built-in table editor.   (line  85)
@@ -15264,7 +15269,7 @@ Key index
 * M-<TAB>:                               Editing and debugging formulas.
                                                                   (line  59)
 * M-<up> <1>:                            Editing and debugging formulas.
-                                                                  (line  72)
+                                                                  (line  71)
 * M-<up>:                                Built-in table editor.   (line  93)
 * M-a:                                   Built-in table editor.   (line  72)
 * M-down:                                Key bindings and useful functions.
@@ -15675,24 +15680,24 @@ Command and function index
 * org-table-delete-column:               Built-in table editor.   (line  87)
 * org-table-edit-field:                  Built-in table editor.   (line 175)
 * org-table-edit-formulas:               Editing and debugging formulas.
-                                                                  (line  35)
+                                                                  (line  34)
 * org-table-end-of-field:                Built-in table editor.   (line  76)
-* org-table-eval-formula <1>:            Column formulas.         (line  28)
+* org-table-eval-formula <1>:            Column formulas.         (line  24)
 * org-table-eval-formula <2>:            Editing and debugging formulas.
-                                                                  (line  16)
+                                                                  (line  15)
 * org-table-eval-formula:                Field and range formulas.
                                                                   (line  21)
 * org-table-export:                      Built-in table editor.   (line 198)
 * org-table-fedit-abort:                 Editing and debugging formulas.
-                                                                  (line  46)
+                                                                  (line  45)
 * org-table-fedit-finish:                Editing and debugging formulas.
-                                                                  (line  44)
+                                                                  (line  43)
 * org-table-fedit-line-down:             Editing and debugging formulas.
                                                                   (line  67)
 * org-table-fedit-line-up:               Editing and debugging formulas.
                                                                   (line  67)
 * org-table-fedit-lisp-indent:           Editing and debugging formulas.
-                                                                  (line  53)
+                                                                  (line  52)
 * org-table-fedit-ref-down:              Editing and debugging formulas.
                                                                   (line  62)
 * org-table-fedit-ref-left:              Editing and debugging formulas.
@@ -15702,19 +15707,19 @@ Command and function index
 * org-table-fedit-ref-up:                Editing and debugging formulas.
                                                                   (line  62)
 * org-table-fedit-scroll-down:           Editing and debugging formulas.
-                                                                  (line  72)
+                                                                  (line  71)
 * org-table-fedit-scroll-up:             Editing and debugging formulas.
-                                                                  (line  72)
+                                                                  (line  71)
 * org-table-fedit-toggle-ref-type:       Editing and debugging formulas.
-                                                                  (line  49)
+                                                                  (line  48)
 * org-table-field-info:                  Editing and debugging formulas.
-                                                                  (line  22)
+                                                                  (line  21)
 * org-table-hline-and-move:              Built-in table editor.   (line 108)
 * org-table-insert-column:               Built-in table editor.   (line  90)
 * org-table-insert-hline:                Built-in table editor.   (line 104)
 * org-table-insert-row:                  Built-in table editor.   (line 100)
-* org-table-iterate:                     Updating the table.      (line  21)
-* org-table-iterate-buffer-tables:       Updating the table.      (line  32)
+* org-table-iterate:                     Updating the table.      (line  20)
+* org-table-iterate-buffer-tables:       Updating the table.      (line  31)
 * org-table-kill-row:                    Built-in table editor.   (line  97)
 * org-table-move-column-left:            Built-in table editor.   (line  85)
 * org-table-move-column-right:           Built-in table editor.   (line  85)
@@ -15725,7 +15730,7 @@ Command and function index
 * org-table-paste-rectangle:             Built-in table editor.   (line 136)
 * org-table-previous-field:              Built-in table editor.   (line  64)
 * org-table-recalculate:                 Updating the table.      (line  13)
-* org-table-recalculate-buffer-tables:   Updating the table.      (line  29)
+* org-table-recalculate-buffer-tables:   Updating the table.      (line  28)
 * org-table-rotate-recalc-marks:         Advanced features.       (line   9)
 * org-table-sort-lines:                  Built-in table editor.   (line 112)
 * org-table-sum:                         Built-in table editor.   (line 157)
@@ -16235,367 +16240,367 @@ Ref: Formula syntax for Calc-Footnote-1110853
 Node: Formula syntax for Lisp111212
 Node: Field and range formulas113395
 Node: Column formulas116187
-Node: Editing and debugging formulas118081
-Node: Updating the table122735
-Node: Advanced features124081
-Node: Org-Plot128499
-Node: Hyperlinks131361
-Node: Link format132224
-Node: Internal links133968
-Ref: Internal links-Footnote-1136574
-Ref: Internal links-Footnote-2136825
-Node: Radio targets137132
-Node: External links138055
-Node: Handling links142487
-Ref: Handling links-Footnote-1152865
-Ref: Handling links-Footnote-2153387
-Ref: Handling links-Footnote-3153743
-Ref: Handling links-Footnote-4153860
-Ref: Handling links-Footnote-5153954
-Node: Using links outside Org154029
-Node: Link abbreviations154645
-Node: Search options157358
-Ref: Search options-Footnote-1159777
-Node: Custom searches159889
-Node: TODO Items161297
-Ref: TODO Items-Footnote-1162780
-Node: TODO basics162947
-Node: TODO extensions166469
-Node: Workflow states167740
-Ref: Workflow states-Footnote-1169417
-Node: TODO types169534
-Ref: TODO types-Footnote-1171693
-Node: Multiple sets in one file171808
-Node: Fast access to TODO states174083
-Ref: Fast access to TODO states-Footnote-1175046
-Node: Per-file keywords175387
-Ref: Per-file keywords-Footnote-1177210
-Node: Faces for TODO keywords177486
-Node: TODO dependencies178836
-Node: Progress logging181012
-Node: Closing items181754
-Ref: Closing items-Footnote-1182806
-Ref: Closing items-Footnote-2182875
-Node: Tracking TODO state changes182948
-Ref: Tracking TODO state changes-Footnote-1185839
-Ref: Tracking TODO state changes-Footnote-2185896
-Node: 習慣の追跡186184
-Node: Priorities190362
-Ref: Priorities-Footnote-1192362
-Node: Breaking down tasks192431
-Ref: Breaking down tasks-Footnote-1194426
-Node: Checkboxes194522
-Ref: Checkboxes-Footnote-1199020
-Ref: Checkboxes-Footnote-2199143
-Node: Tags199312
-Node: Tag inheritance200334
-Ref: Tag inheritance-Footnote-1201709
-Ref: Tag inheritance-Footnote-2201809
-Node: Setting tags201935
-Ref: Setting tags-Footnote-1208244
-Node: Tag searches208327
-Node: Properties and Columns209559
-Node: Property syntax211410
-Node: Special properties215035
-Node: Property searches216767
-Node: Property inheritance218491
-Node: Column view220665
-Node: Defining columns222287
-Node: Scope of column definitions222783
-Node: Column attributes223830
-Ref: Column attributes-Footnote-1228987
-Node: Using column view229120
-Node: カラム表示の保存232572
-Ref: カラム表示の保存-Footnote-1236475
-Node: Property API236659
-Node: Date and Times237127
-Node: Timestamps238382
-Ref: Timestamps-Footnote-1241729
-Node: Creating timestamps241956
-Node: The date/time prompt245647
-Ref: The date/time prompt-Footnote-1251036
-Ref: The date/time prompt-Footnote-2251249
-Ref: The date/time prompt-Footnote-3251374
-Node: Custom time format251533
-Node: Deadlines and scheduling253884
-Ref: Deadlines and scheduling-Footnote-1257522
-Node: Inserting deadline/schedule257734
-Ref: Inserting deadline/schedule-Footnote-1260499
-Ref: Inserting deadline/schedule-Footnote-2260689
-Ref: Inserting deadline/schedule-Footnote-3260803
-Node: Repeated tasks260918
-Ref: Repeated tasks-Footnote-1265527
-Ref: Repeated tasks-Footnote-2265783
-Node: Clocking work time266080
-Ref: Clocking work time-Footnote-1267542
-Node: Clocking commands267709
-Ref: Clocking commands-Footnote-1272556
-Ref: Clocking commands-Footnote-2272720
-Ref: Clocking commands-Footnote-3272773
-Ref: Clocking commands-Footnote-4272836
-Node: The clock table272932
-Ref: The clock table-Footnote-1280830
-Ref: The clock table-Footnote-2280958
-Node: Resolving idle time281158
-Ref: Resolving idle time-Footnote-1285582
-Node: Effort estimates286076
-Ref: Effort estimates-Footnote-1289675
-Ref: Effort estimates-Footnote-2289783
-Node: Relative timer289911
-Node: カウントダウンタイマ292593
-Node: Capture - Refile - Archive293356
-Node: Capture294431
-Node: Setting up capture295808
-Ref: Setting up capture-Footnote-1296235
-Node: Using capture296301
-Node: Capture templates298460
-Node: Template elements300369
-Node: テンプレートの拡張305705
-Ref: テンプレートの拡張-Footnote-1308911
-Ref: テンプレートの拡張-Footnote-2308998
-Ref: テンプレートの拡張-Footnote-3309180
-Node: Attachments309278
-Ref: Attachments-Footnote-1312663
-Node: RSS Feeds312813
-Node: Protocols314412
-Node: Refiling notes315129
-Ref: Refiling notes-Footnote-1317266
-Node: Archiving317362
-Node: Moving subtrees318111
-Ref: Moving subtrees-Footnote-1319847
-Node: ファイル内部でのアーカイブ320289
-Node: Agenda Views322984
-Node: Agenda files326178
-Ref: Agenda files-Footnote-1330467
-Ref: Agenda files-Footnote-2330682
-Node: Agenda dispatcher330988
-Ref: Agenda dispatcher-Footnote-1334127
-Ref: Agenda dispatcher-Footnote-2334254
-Node: Built-in agenda views334422
-Node: Weekly/daily agenda335236
-Ref: Weekly/daily agenda-Footnote-1342056
-Ref: Weekly/daily agenda-Footnote-2342423
-Node: Global TODO list342536
-Node: Matching tags and properties346202
-Node: Timeline355229
-Node: Search view356329
-Node: Stuck projects358276
-Ref: Stuck projects-Footnote-1361760
-Node: Presentation and sorting361790
-Node: Categories362933
-Ref: Categories-Footnote-1364090
-Node: Time-of-day specifications364809
-Node: agendaの項目をソートする367332
-Node: Agenda commands369529
-Ref: Agenda commands-Footnote-1400002
-Ref: Agenda commands-Footnote-2400117
-Ref: Agenda commands-Footnote-3400812
-Node: Custom agenda views400947
-Node: Storing searches401802
-Ref: Storing searches-Footnote-1405394
-Node: Block agenda405582
-Node: Setting Options407284
-Node: Exporting Agenda Views411544
-Ref: Exporting Agenda Views-Footnote-1418329
-Ref: Exporting Agenda Views-Footnote-2418433
-Ref: Exporting Agenda Views-Footnote-3418698
-Ref: Exporting Agenda Views-Footnote-4419029
-Node: Agenda column view419165
-Node: Markup423175
-Node: Structural markup elements424374
-Node: Document title425151
-Node: Headings and sections426189
-Node: Table of contents426783
-Node: Initial text427656
-Node: Lists429112
-Node: Paragraphs429497
-Node: Footnote markup430802
-Node: Emphasis and monospace431215
-Node: Horizontal rules431705
-Node: コメント行432031
-Node: Images and tables432701
-Node: Literal examples434416
-Ref: Literal examples-Footnote-1438741
-Ref: Literal examples-Footnote-2439859
-Ref: Literal examples-Footnote-3440038
-Ref: Literal examples-Footnote-4440258
-Node: Include files440377
-Node: Index entries442167
-Node: Macro replacement442729
-Node: Embedded LaTeX443640
-Ref: Embedded LaTeX-Footnote-1444721
-Node: Special symbols444939
-Ref: Special symbols-Footnote-1446855
-Node: Subscripts and superscripts447010
-Node: LaTeX fragments448517
-Ref: LaTeX fragments-Footnote-1451159
-Ref: LaTeX fragments-Footnote-2451167
-Ref: LaTeX fragments-Footnote-3451403
-Node: Previewing LaTeX fragments451598
-Node: CDLaTeX mode452904
-Ref: CDLaTeX mode-Footnote-1456007
-Node: Exporting456232
-Node: Selective export458781
-Node: Export options459887
-Ref: Export options-Footnote-1465579
-Node: The export dispatcher465726
-Ref: The export dispatcher-Footnote-1467598
-Node: ASCII/Latin-1/UTF-8 export467730
-Ref: ASCII/Latin-1/UTF-8 export-Footnote-1471085
-Ref: ASCII/Latin-1/UTF-8 export-Footnote-2471158
-Node: HTML export471254
-Node: HTML Export commands472423
-Ref: HTML Export commands-Footnote-1475127
-Ref: HTML Export commands-Footnote-2475200
-Node: Quoting HTML tags475296
-Node: Links in HTML export476070
-Node: Tables in HTML export477527
-Node: Images in HTML export478205
-Ref: Images in HTML export-Footnote-1479810
-Node: Math formatting in HTML export479892
-Ref: Math formatting in HTML export-Footnote-1481629
-Node: Text areas in HTML export481817
-Node: CSS support482984
-Ref: CSS support-Footnote-1486456
-Ref: CSS support-Footnote-2486700
-Node: JavaScript support486926
-Node: LaTeX and PDF export491701
-Ref: LaTeX and PDF export-Footnote-1492983
-Node: LaTeX/PDF export commands493315
-Ref: LaTeX/PDF export commands-Footnote-1495902
-Ref: LaTeX/PDF export commands-Footnote-2495974
-Node: Header and sectioning496068
-Ref: Header and sectioning-Footnote-1497511
-Node: Quoting LaTeX code497631
-Node: Tables in LaTeX export498443
-Node: Images in LaTeX export499676
-Node: Beamerクラスのエクスポート501402
-Node: DocBook export507146
-Node: DocBook export commands508055
-Ref: DocBook export commands-Footnote-1509606
-Ref: DocBook export commands-Footnote-2509666
-Node: Quoting DocBook code509718
-Node: Recursive sections510770
-Node: Tables in DocBook export511500
-Node: Images in DocBook export511968
-Node: Special characters513905
-Node: TaskJuggler export514952
-Node: Freemind export520244
-Node: XOXO export520535
-Node: iCalendarエクスポート521022
-Ref: iCalendarエクスポート-Footnote-1523752
-Ref: iCalendarエクスポート-Footnote-2523842
-Ref: iCalendarエクスポート-Footnote-3523942
-Node: Publishing524079
-Node: Configuration525004
-Node: Project alist525802
-Node: Sources and destinations526967
-Node: Selecting files528506
-Node: Publishing action529519
-Ref: Publishing action-Footnote-1531319
-Node: Publishing options531673
-Node: Publishing links535351
-Node: Sitemap537036
-Node: Generating an index539923
-Node: Uploading files540513
-Node: Sample configuration542281
-Node: Simple example542773
-Node: Complex example543449
-Node: 公開の開始545504
-Node: Working With Source Code546470
-Node: Structure of code blocks548635
-Node: Editing source code550246
-Node: Exporting code blocks551888
-Node: Extracting source code553851
-Node: Evaluating code blocks555650
-Ref: Evaluating code blocks-Footnote-1559022
-Ref: Evaluating code blocks-Footnote-2559443
-Node: Library of Babel559597
-Node: Languages560686
-Node: Header arguments563168
-Node: Using header arguments563674
-Node: System-wide header arguments564506
-Node: Language-specific header arguments565332
-Node: Buffer-wide header arguments565738
-Node: Header arguments in Org-mode properties566516
-Node: Code block specific header arguments567543
-Node: Header arguments in function calls569351
-Node: Specific header arguments570105
-Node: var571928
-Node: results577612
-Node: file581834
-Node: dir582743
-Node: exports585658
-Node: 抽出586313
-Node: mkdirp587025
-Node: comments587359
-Node: no-expand588492
-Node: session588986
-Node: noweb589436
-Node: cache590912
-Node: sep592412
-Node: hlines592987
-Node: colnames594496
-Node: rownames595714
-Node: shebang596724
-Node: eval597123
-Node: Results of evaluation597669
-Node: Noweb reference syntax600921
-Node: Key bindings and useful functions601919
-Node: バッチ処理603168
-Node: Miscellaneous604266
-Node: Completion605160
-Node: Easy Templates607819
-Node: Speed keys609497
-Node: Code evaluation security610556
-Node: Customization614030
-Node: In-buffer settings614719
-Ref: In-buffer settings-Footnote-1626032
-Node: The very busy C-c C-c key626079
-Node: Clean view628516
-Ref: Clean view-Footnote-1633476
-Ref: Clean view-Footnote-2633542
-Ref: Clean view-Footnote-3633781
-Ref: Clean view-Footnote-4633857
-Ref: Clean view-Footnote-5634004
-Node: TTY keys634188
-Node: Interaction636051
-Node: Cooperation636447
-Node: Conflicts641247
-Node: Hacking646039
-Node: Hooks647001
-Node: Add-on packages647420
-Node: Adding hyperlink types647964
-Node: Context-sensitive commands651882
-Ref: Context-sensitive commands-Footnote-1653461
-Node: Tables in arbitrary syntax653595
-Node: Radio tables655061
-Node: A LaTeX example657605
-Ref: A LaTeX example-Footnote-1661523
-Ref: A LaTeX example-Footnote-2661672
-Node: Translator functions662108
-Ref: Translator functions-Footnote-1665341
-Node: ラジオリスト665429
-Node: Dynamic blocks666582
-Node: Special agenda views668801
-Ref: Special agenda views-Footnote-1673055
-Node: Extracting agenda information673190
-Node: Using the property API677265
-Node: マッピングAPIを使う680525
-Node: MobileOrg684872
-Node: Setting up the staging area687009
-Ref: Setting up the staging area-Footnote-1688526
-Ref: Setting up the staging area-Footnote-2688952
-Node: Pushing to MobileOrg689298
-Ref: Pushing to MobileOrg-Footnote-1690899
-Ref: Pushing to MobileOrg-Footnote-2691631
-Node: MobileOrgからpullする691718
-Ref: MobileOrgからpullする-Footnote-1695593
-Ref: MobileOrgからpullする-Footnote-2695666
-Node: History and Acknowledgments696260
-Node: Main Index707406
-Node: Key Index775443
-Node: Command and Function Index819259
-Node: Variable Index848740
+Node: Editing and debugging formulas118438
+Node: Updating the table124325
+Node: Advanced features125976
+Node: Org-Plot131212
+Node: Hyperlinks135061
+Node: Link format135924
+Node: Internal links137668
+Ref: Internal links-Footnote-1140274
+Ref: Internal links-Footnote-2140525
+Node: Radio targets140832
+Node: External links141755
+Node: Handling links146187
+Ref: Handling links-Footnote-1156565
+Ref: Handling links-Footnote-2157087
+Ref: Handling links-Footnote-3157443
+Ref: Handling links-Footnote-4157560
+Ref: Handling links-Footnote-5157654
+Node: Using links outside Org157729
+Node: Link abbreviations158345
+Node: Search options161058
+Ref: Search options-Footnote-1163477
+Node: Custom searches163589
+Node: TODO Items164997
+Ref: TODO Items-Footnote-1166480
+Node: TODO basics166647
+Node: TODO extensions170169
+Node: Workflow states171440
+Ref: Workflow states-Footnote-1173117
+Node: TODO types173234
+Ref: TODO types-Footnote-1175393
+Node: Multiple sets in one file175508
+Node: Fast access to TODO states177783
+Ref: Fast access to TODO states-Footnote-1178746
+Node: Per-file keywords179087
+Ref: Per-file keywords-Footnote-1180910
+Node: Faces for TODO keywords181186
+Node: TODO dependencies182536
+Node: Progress logging184712
+Node: Closing items185454
+Ref: Closing items-Footnote-1186506
+Ref: Closing items-Footnote-2186575
+Node: Tracking TODO state changes186648
+Ref: Tracking TODO state changes-Footnote-1189539
+Ref: Tracking TODO state changes-Footnote-2189596
+Node: 習慣の追跡189884
+Node: Priorities194062
+Ref: Priorities-Footnote-1196062
+Node: Breaking down tasks196131
+Ref: Breaking down tasks-Footnote-1198126
+Node: Checkboxes198222
+Ref: Checkboxes-Footnote-1202720
+Ref: Checkboxes-Footnote-2202843
+Node: Tags203012
+Node: Tag inheritance204034
+Ref: Tag inheritance-Footnote-1205409
+Ref: Tag inheritance-Footnote-2205509
+Node: Setting tags205635
+Ref: Setting tags-Footnote-1211944
+Node: Tag searches212027
+Node: Properties and Columns213259
+Node: Property syntax215110
+Node: Special properties218735
+Node: Property searches220467
+Node: Property inheritance222191
+Node: Column view224365
+Node: Defining columns225987
+Node: Scope of column definitions226483
+Node: Column attributes227530
+Ref: Column attributes-Footnote-1232687
+Node: Using column view232820
+Node: カラム表示の保存236272
+Ref: カラム表示の保存-Footnote-1240175
+Node: Property API240359
+Node: Date and Times240827
+Node: Timestamps242082
+Ref: Timestamps-Footnote-1245429
+Node: Creating timestamps245656
+Node: The date/time prompt249347
+Ref: The date/time prompt-Footnote-1254736
+Ref: The date/time prompt-Footnote-2254949
+Ref: The date/time prompt-Footnote-3255074
+Node: Custom time format255233
+Node: Deadlines and scheduling257584
+Ref: Deadlines and scheduling-Footnote-1261222
+Node: Inserting deadline/schedule261434
+Ref: Inserting deadline/schedule-Footnote-1264199
+Ref: Inserting deadline/schedule-Footnote-2264389
+Ref: Inserting deadline/schedule-Footnote-3264503
+Node: Repeated tasks264618
+Ref: Repeated tasks-Footnote-1269227
+Ref: Repeated tasks-Footnote-2269483
+Node: Clocking work time269780
+Ref: Clocking work time-Footnote-1271242
+Node: Clocking commands271409
+Ref: Clocking commands-Footnote-1276256
+Ref: Clocking commands-Footnote-2276420
+Ref: Clocking commands-Footnote-3276473
+Ref: Clocking commands-Footnote-4276536
+Node: The clock table276632
+Ref: The clock table-Footnote-1284530
+Ref: The clock table-Footnote-2284658
+Node: Resolving idle time284858
+Ref: Resolving idle time-Footnote-1289282
+Node: Effort estimates289776
+Ref: Effort estimates-Footnote-1293375
+Ref: Effort estimates-Footnote-2293483
+Node: Relative timer293611
+Node: カウントダウンタイマ296293
+Node: Capture - Refile - Archive297056
+Node: Capture298131
+Node: Setting up capture299508
+Ref: Setting up capture-Footnote-1299935
+Node: Using capture300001
+Node: Capture templates302160
+Node: Template elements304069
+Node: テンプレートの拡張309405
+Ref: テンプレートの拡張-Footnote-1312611
+Ref: テンプレートの拡張-Footnote-2312698
+Ref: テンプレートの拡張-Footnote-3312880
+Node: Attachments312978
+Ref: Attachments-Footnote-1316363
+Node: RSS Feeds316513
+Node: Protocols318112
+Node: Refiling notes318829
+Ref: Refiling notes-Footnote-1320966
+Node: Archiving321062
+Node: Moving subtrees321811
+Ref: Moving subtrees-Footnote-1323547
+Node: ファイル内部でのアーカイブ323989
+Node: Agenda Views326684
+Node: Agenda files329878
+Ref: Agenda files-Footnote-1334167
+Ref: Agenda files-Footnote-2334382
+Node: Agenda dispatcher334688
+Ref: Agenda dispatcher-Footnote-1337827
+Ref: Agenda dispatcher-Footnote-2337954
+Node: Built-in agenda views338122
+Node: Weekly/daily agenda338936
+Ref: Weekly/daily agenda-Footnote-1345756
+Ref: Weekly/daily agenda-Footnote-2346123
+Node: Global TODO list346236
+Node: Matching tags and properties349902
+Node: Timeline358929
+Node: Search view360029
+Node: Stuck projects361976
+Ref: Stuck projects-Footnote-1365460
+Node: Presentation and sorting365490
+Node: Categories366633
+Ref: Categories-Footnote-1367790
+Node: Time-of-day specifications368509
+Node: agendaの項目をソートする371032
+Node: Agenda commands373229
+Ref: Agenda commands-Footnote-1403702
+Ref: Agenda commands-Footnote-2403817
+Ref: Agenda commands-Footnote-3404512
+Node: Custom agenda views404647
+Node: Storing searches405502
+Ref: Storing searches-Footnote-1409094
+Node: Block agenda409282
+Node: Setting Options410984
+Node: Exporting Agenda Views415244
+Ref: Exporting Agenda Views-Footnote-1422029
+Ref: Exporting Agenda Views-Footnote-2422133
+Ref: Exporting Agenda Views-Footnote-3422398
+Ref: Exporting Agenda Views-Footnote-4422729
+Node: Agenda column view422865
+Node: Markup426875
+Node: Structural markup elements428074
+Node: Document title428851
+Node: Headings and sections429889
+Node: Table of contents430483
+Node: Initial text431356
+Node: Lists432812
+Node: Paragraphs433197
+Node: Footnote markup434502
+Node: Emphasis and monospace434915
+Node: Horizontal rules435405
+Node: コメント行435731
+Node: Images and tables436401
+Node: Literal examples438116
+Ref: Literal examples-Footnote-1442441
+Ref: Literal examples-Footnote-2443559
+Ref: Literal examples-Footnote-3443738
+Ref: Literal examples-Footnote-4443958
+Node: Include files444077
+Node: Index entries445867
+Node: Macro replacement446429
+Node: Embedded LaTeX447340
+Ref: Embedded LaTeX-Footnote-1448421
+Node: Special symbols448639
+Ref: Special symbols-Footnote-1450555
+Node: Subscripts and superscripts450710
+Node: LaTeX fragments452217
+Ref: LaTeX fragments-Footnote-1454859
+Ref: LaTeX fragments-Footnote-2454867
+Ref: LaTeX fragments-Footnote-3455103
+Node: Previewing LaTeX fragments455298
+Node: CDLaTeX mode456604
+Ref: CDLaTeX mode-Footnote-1459707
+Node: Exporting459932
+Node: Selective export462481
+Node: Export options463587
+Ref: Export options-Footnote-1469279
+Node: The export dispatcher469426
+Ref: The export dispatcher-Footnote-1471298
+Node: ASCII/Latin-1/UTF-8 export471430
+Ref: ASCII/Latin-1/UTF-8 export-Footnote-1474785
+Ref: ASCII/Latin-1/UTF-8 export-Footnote-2474858
+Node: HTML export474954
+Node: HTML Export commands476123
+Ref: HTML Export commands-Footnote-1478827
+Ref: HTML Export commands-Footnote-2478900
+Node: Quoting HTML tags478996
+Node: Links in HTML export479770
+Node: Tables in HTML export481227
+Node: Images in HTML export481905
+Ref: Images in HTML export-Footnote-1483510
+Node: Math formatting in HTML export483592
+Ref: Math formatting in HTML export-Footnote-1485329
+Node: Text areas in HTML export485517
+Node: CSS support486684
+Ref: CSS support-Footnote-1490156
+Ref: CSS support-Footnote-2490400
+Node: JavaScript support490626
+Node: LaTeX and PDF export495401
+Ref: LaTeX and PDF export-Footnote-1496683
+Node: LaTeX/PDF export commands497015
+Ref: LaTeX/PDF export commands-Footnote-1499602
+Ref: LaTeX/PDF export commands-Footnote-2499674
+Node: Header and sectioning499768
+Ref: Header and sectioning-Footnote-1501211
+Node: Quoting LaTeX code501331
+Node: Tables in LaTeX export502143
+Node: Images in LaTeX export503376
+Node: Beamerクラスのエクスポート505102
+Node: DocBook export510846
+Node: DocBook export commands511755
+Ref: DocBook export commands-Footnote-1513306
+Ref: DocBook export commands-Footnote-2513366
+Node: Quoting DocBook code513418
+Node: Recursive sections514470
+Node: Tables in DocBook export515200
+Node: Images in DocBook export515668
+Node: Special characters517605
+Node: TaskJuggler export518652
+Node: Freemind export523944
+Node: XOXO export524235
+Node: iCalendarエクスポート524722
+Ref: iCalendarエクスポート-Footnote-1527452
+Ref: iCalendarエクスポート-Footnote-2527542
+Ref: iCalendarエクスポート-Footnote-3527642
+Node: Publishing527779
+Node: Configuration528704
+Node: Project alist529502
+Node: Sources and destinations530667
+Node: Selecting files532206
+Node: Publishing action533219
+Ref: Publishing action-Footnote-1535019
+Node: Publishing options535373
+Node: Publishing links539051
+Node: Sitemap540736
+Node: Generating an index543623
+Node: Uploading files544213
+Node: Sample configuration545981
+Node: Simple example546473
+Node: Complex example547149
+Node: 公開の開始549204
+Node: Working With Source Code550170
+Node: Structure of code blocks552335
+Node: Editing source code553946
+Node: Exporting code blocks555588
+Node: Extracting source code557551
+Node: Evaluating code blocks559350
+Ref: Evaluating code blocks-Footnote-1562722
+Ref: Evaluating code blocks-Footnote-2563143
+Node: Library of Babel563297
+Node: Languages564386
+Node: Header arguments566868
+Node: Using header arguments567424
+Node: System-wide header arguments568299
+Node: Language-specific header arguments569168
+Node: Buffer-wide header arguments569616
+Node: Header arguments in Org-mode properties570536
+Node: Code block specific header arguments571907
+Node: Header arguments in function calls574059
+Node: Specific header arguments574926
+Node: var576761
+Node: results583708
+Node: file589203
+Node: dir590112
+Node: exports593027
+Node: 抽出593682
+Node: mkdirp594394
+Node: comments594728
+Node: no-expand595861
+Node: session596355
+Node: noweb596805
+Node: cache598281
+Node: sep599781
+Node: hlines600356
+Node: colnames601865
+Node: rownames603083
+Node: shebang604093
+Node: eval604492
+Node: Results of evaluation605038
+Node: Noweb reference syntax608290
+Node: Key bindings and useful functions609288
+Node: バッチ処理610537
+Node: Miscellaneous611635
+Node: Completion612529
+Node: Easy Templates615188
+Node: Speed keys616866
+Node: Code evaluation security617925
+Node: Customization621399
+Node: In-buffer settings622088
+Ref: In-buffer settings-Footnote-1633401
+Node: The very busy C-c C-c key633448
+Node: Clean view635885
+Ref: Clean view-Footnote-1640845
+Ref: Clean view-Footnote-2640911
+Ref: Clean view-Footnote-3641150
+Ref: Clean view-Footnote-4641226
+Ref: Clean view-Footnote-5641373
+Node: TTY keys641557
+Node: Interaction643420
+Node: Cooperation643816
+Node: Conflicts648616
+Node: Hacking653408
+Node: Hooks654370
+Node: Add-on packages654789
+Node: Adding hyperlink types655333
+Node: Context-sensitive commands659251
+Ref: Context-sensitive commands-Footnote-1660830
+Node: Tables in arbitrary syntax660964
+Node: Radio tables662430
+Node: A LaTeX example664974
+Ref: A LaTeX example-Footnote-1668892
+Ref: A LaTeX example-Footnote-2669041
+Node: Translator functions669477
+Ref: Translator functions-Footnote-1672710
+Node: ラジオリスト672798
+Node: Dynamic blocks673951
+Node: Special agenda views676170
+Ref: Special agenda views-Footnote-1680424
+Node: Extracting agenda information680559
+Node: Using the property API684634
+Node: マッピングAPIを使う687894
+Node: MobileOrg692241
+Node: Setting up the staging area694378
+Ref: Setting up the staging area-Footnote-1695895
+Ref: Setting up the staging area-Footnote-2696321
+Node: Pushing to MobileOrg696667
+Ref: Pushing to MobileOrg-Footnote-1698268
+Ref: Pushing to MobileOrg-Footnote-2699000
+Node: MobileOrgからpullする699087
+Ref: MobileOrgからpullする-Footnote-1702962
+Ref: MobileOrgからpullする-Footnote-2703035
+Node: History and Acknowledgments703629
+Node: Main Index714775
+Node: Key Index783099
+Node: Command and Function Index826915
+Node: Variable Index856396
 
 End Tag Table

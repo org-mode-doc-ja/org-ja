@@ -2592,90 +2592,92 @@ Lisp形式の数値として挿入されます。@samp{L}フラッグを指定�
 
 @node Column formulas, Editing and debugging formulas, Field and range formulas, The spreadsheet
 @subsection Column formulas
-@cindex column formula
-@cindex formula, for table column
+@cindex 列の数式
+@cindex 数式（テーブルの列）
 
-When you assign a formula to a simple column reference like @code{$3=}, the
-same formula will be used in all fields of that column, with the following
-very convenient exceptions: (i) If the table contains horizontal separator
-hlines, everything before the first such line is considered part of the
-table @emph{header} and will not be modified by column formulas.  (ii)
-Fields that already get a value from a field/range formula will be left
-alone by column formulas.  These conditions make column formulas very easy
-to use.
+数式に@code{$3=}のような単純な列の参照を指定すると、同様の数式がその列の全てのフ
+ィールドで使用されます。これには非常に有用な条件があります。（1）テーブルが
+水平ラインを含む場合は、最初の水平ラインよりも上に存在する全ての行がテーブル
+の@emph{ヘッダー}の一部であると考えられ、列の数式によって変更されません。フィール
+ドや範囲の数式からすでに値を取得しているフィールドは、列の数式は関与しません
+。これらの条件によって列の数式はとても使いやすくなっています。
 
-To assign a formula to a column, type it directly into any field in the
-column, preceded by an equal sign, like @samp{=$1+$2}.  When you press
-@key{TAB} or @key{RET} or @kbd{C-c C-c} with the cursor still in the field,
-the formula will be stored as the formula for the current column, evaluated
-and the current field replaced with the result.  If the field contains only
-@samp{=}, the previously stored formula for this column is used.  For each
-column, Org will only remember the most recently used formula.  In the
-@samp{#+TBLFM:} line, column formulas will look like @samp{$4=$1+$2}.  The
-left-hand side of a column formula can not be the name of column, it must be
-the numeric column reference or @code{$>}.
+列に数式を割り当てるためには、列のフィールドに直接記述します。イコールの後に
+続くように、@samp{=$1+$2}としまう。同じフィールド内で@key{TAB}や@key{RET}もしくは
+@kbd{C-c C-c}を押すと、入力した数式はそのフィールドのための数式として保存され、
+評価されたのち、フィールドの表示が演算結果で置き換わります。フィールドが
+@samp{=}だけの場合、以前に列で保存した数式が利用されます。各列についてorg-modeは
+、直前に利用した数式だけを記憶します。@samp{#+TBLFM:}行で、列の数式は@samp{$4=$1+$2}の
+ように保存されます。列数式のイコールの左側には、列の名前を置くことができず、
+数値の列の参照か@code{$>}を置かなければなりません。
 
-Instead of typing an equation into the field, you may also use the following
-command:
+フィールドに数式を書き入れる代わりに、次のコマンドも利用できます。
 
 @table @kbd
-@orgcmd{C-c =,org-table-eval-formula} Install a new formula for the current
-column and replace current field with the result of the formula.  The
-command prompts for a formula, with default taken from the @samp{#+TBLFM}
-line, applies it to the current field and stores it.  With a numeric prefix
-argument(e.g.@: @kbd{C-5 C-c =}) the command will apply it to that many
-consecutive fields in the current column.
+@orgcmd{C-c =,org-table-eval-formula}
+現在の列に新しい数式を書き込み、数式の演算結果で置き換える。このコマン
+ドは@samp{#+TBLFM:}の列から取得したデフォルトの数式を表示し、カーソル位置の
+フィールドに適用してから保存します。数値のプレフィックス（たとえば@:
+@kbd{C-5 C-c =}）を用いると、現在の列で連続したフィールドに同じ効果を与え
+ます。
 @end table
 
 @node Editing and debugging formulas, Updating the table, Column formulas, The spreadsheet
 @subsection Editing and debugging formulas
-@cindex formula editing
-@cindex editing, of table formulas
+@cindex 数式の編集
+@cindex 編集（テーブルの数式）
 
 @vindex org-table-use-standard-references
-You can edit individual formulas in the minibuffer or directly in the
-field.  Org can also prepare a special buffer with all active formulas of a
-table.  When offering a formula for editing, Org converts references to the
-standard format (like @code{B3} or @code{D&})  if possible.  If you prefer
-to only work with the internal format (like @code{@@3$2} or @code{$4}),
-configure the variable @code{org-table-use-standard-references}.
+ミニバッファか直接フィールド内で、個々の数式を編集できます。org-modeはテーブ
+ルに含まれるすべてのアクティブな数式がある特別なバッファも準備しています。数
+式を編集しようとすると、org-modeは、もし可能ならば参照を標準のフォーマット（
+@code{B3}や@code{D&}のような記法）に変換します。もし内部フォーマット（@code{@@3$2}や@code{$4}のような記法）を用いて編集したい場合は、変数
+@code{org-table-use-standard-references}を設定してください。
 
 @table @kbd
-@orgcmdkkc{C-c =,C-u C-c =,org-table-eval-formula} Edit the formula
-associated with the current column/field in the minibuffer.  See @ref{Column formulas}, and @ref{Field and range formulas}.  @orgcmd{C-u C-u C-c =,org-table-eval-formula} Re-insert the active formula (either a field
-formula, or a column formula) into the current field, so that you can edit
-it directly in the field.  The advantage over editing in the minibuffer is
-that you can use the command @kbd{C-c ?}.  @orgcmd{C-c ?,org-table-field-info} While editing a formula in a table field, highlight
-the field(s)  referenced by the reference at the cursor position in the
-formula.
+@orgcmdkkc{C-c =,C-u C-c =,org-table-eval-formula}
+ミニバッファでカーソル位置の列やフィールドに結びついた数式を編集する。
+@ref{Column formulas}と@ref{Field and range formulas}を参照してください。
+ @orgcmd{C-u C-u C-c =,org-table-eval-formula}
+カーソル位置のフィールドにアクティブな数式（フィールドの数式、もしくは
+列の数式）を再挿入します。これはフィールド内で直接的に編集できるように
+するためです。ミニバッファでの編集葉理も有利なのは、@kbd{C-c ?}を使えるこ
+とです。@orgcmd{C-c ?,org-table-field-info}テーブルのフィールド内で数式を編集
+するときに、数式内でカーソルが置かれている参照によって指し示されたフィ
+ールドをハイライトする。
 @kindex C-c @}
 @findex org-table-toggle-coordinate-overlays
 @item C-c @}
-Toggle the display of row and column numbers for a table, using overlays
-(@command{org-table-toggle-coordinate-overlays}).  These are updated each
-time the table is aligned; you can force it with @kbd{C-c C-c}.
+オーバーレイ（@command{org-table-toggle-coordinate-overlays}）を使用して、テー
+ブルの行と列の番号を表示するようにトグルする。テーブルが整列される度に
+表示が変わり、@kbd{C-c C-c}で強制的に表示を更新できます。
 @kindex C-c @{
 @findex org-table-toggle-formula-debugger
 @item C-c @{
-Toggle the formula debugger on and off
-(@command{org-table-toggle-formula-debugger}).  See below.  @orgcmd{C-c ',org-table-edit-formulas} Edit all formulas for the current table in a
-special buffer, where the formulas will be displayed one per line.  If the
-current field has an active formula, the cursor in the formula editor will
-mark it.  While inside the special buffer, Org will automatically highlight
-any field or range reference at the cursor position.  You may edit, remove
-and add formulas, and use the following commands:
+数式のデバッガをON／OFFする（@command{org-table-toggle-formula-debugger}）。
+@orgcmd{C-c ',org-table-edit-formulas}
+特別なバッファで現在のテーブルのすべての数式を編集する。バッファでは数
+式はラインごとに一つずつ表示される。カーソル位置のフィールドにアクティ
+ブな数式があるとき、カーソルエディタのカーソルはその数式をマークします
+。特別なバッファの中では、org-modeは、カーソルがあるどんなフィールドや
+範囲参照も自動的にハイライトします。数式の編集、削除、追加ができること
+に加え、次のコマンドが利用できます。
 @table @kbd
-@orgcmdkkc{C-c C-c,C-x C-s,org-table-fedit-finish} Exit the formula editor
-and store the modified formulas.  With @kbd{C-u} prefix, also apply the new
-formulas to the entire table.  @orgcmd{C-c C-q,org-table-fedit-abort} Exit
-the formula editor without installing changes.  @orgcmd{C-c C-r,org-table-fedit-toggle-ref-type} Toggle all references in the formula
-editor between standard (like @code{B3}) and internal (like @code{@@3$2}).
-@orgcmd{@key{TAB},org-table-fedit-lisp-indent} Pretty-print or indent Lisp
-formula at point.  When in a line containing a Lisp formula, format the
-formula according to Emacs Lisp rules.  Another @key{TAB} collapses the
-formula back again.  In the open formula, @key{TAB} re-indents just like in
-Emacs Lisp mode.  @orgcmd{M-@key{TAB},lisp-complete-symbol} Complete Lisp
-symbols, just like in Emacs Lisp mode.
+@orgcmdkkc{C-c C-c,C-x C-s,org-table-fedit-finish}
+数式エディタを抜けて、修正された数式を保存する。プレフィックス@kbd{C-u}を
+使うと、新しい数式をテーブル全体に適用します。
+@orgcmd{C-c C-q,org-table-fedit-abort} 変更を破棄して数式エディタを抜ける。
+@orgcmd{C-c C-r,org-table-fedit-toggle-ref-type}
+数式エディタの全ての参照について、(@code{B3}のような）標準の記法と（@code{@@3$2}
+のような）内部の記法についてトグルする。
+@orgcmd{@key{TAB},org-table-fedit-lisp-indent}
+カーソル位置のLisp数式を見やすくしたりインテンドする。ラインにLisp数式
+が含まれると、Emacs
+Lispのルールに基づいて数式を整える。さらに@key{TAB}を押すと、整えられた数
+式を崩して元の状態に戻す。開いた数式では、Emacs
+Lispモードのように@key{TAB}でさらにインテンドする。
+@orgcmd{M-@key{TAB},lisp-complete-symbol}
+Emacs LispモードのようにLispの記号を補完する。
 @kindex S-@key{up}
 @kindex S-@key{down}
 @kindex S-@key{left}
@@ -2685,92 +2687,90 @@ symbols, just like in Emacs Lisp mode.
 @findex org-table-fedit-ref-left
 @findex org-table-fedit-ref-right
 @item S-@key{up}/@key{down}/@key{left}/@key{right}
-Shift the reference at point.  For example, if the reference is @code{B3}
-and you press @kbd{S-@key{right}}, it will become @code{C3}.  This also
-works for relative references and for hline references.
+カーソル位置の参照を移動する。たとえば、参照が@code{B3}で@kbd{S-@key{right}}を押す
+と、@code{C3}に変化する。これは相対参照や水平ラインの参照についても同じよう
+に動作する。
 @orgcmdkkcc{M-S-@key{up},M-S-@key{down},org-table-fedit-line-up,org-table-fedit-line-down}
-Move the test line for column formulas in the Org buffer up and down.
+org-modeのバッファにある列の数式へのテストラインを上下に移動する。
 @orgcmdkkcc{M-@key{up},M-@key{down},org-table-fedit-scroll-down,org-table-fedit-scroll-up}
-Scroll the window displaying the table.
+テーブルを表示するウィンドウをスクロールする。
 @kindex C-c @}
 @findex org-table-toggle-coordinate-overlays
 @item C-c @}
-Turn the coordinate grid in the table on and off.
+テーブルの座標グリッドをON／OFFする
 @end table
 @end table
 
-Making a table field blank does not remove the formula associated with the
-field, because that is stored in a different line (the @samp{#+TBLFM}
-line)---during the next recalculation the field will be filled again.  To
-remove a formula from a field, you have to give an empty reply when prompted
-for the formula, or to edit the @samp{#+TBLFM} line.
+テーブルのフィールドを空欄にしても、そのフィールドに結びつけられた数式は削除
+されません。これは数式が別な行（@samp{#+TBLFM:}行）に保存されているためです。次に
+再計算が行なわれる際に、再びフィールドに数式の結果が戻ります。フィールドから
+数式を削除するためには、数式を表示させて空にするか、@samp{#+TBLFM:}行を編集する必
+要があります。
 
 @kindex C-c C-c
-You may edit the @samp{#+TBLFM} directly and re-apply the changed equations
-with @kbd{C-c C-c} in that line or with the normal recalculation commands in
-the table.
+@samp{#+TBLFM:}行を直接編集することができ、変更した数式を再適用できます。これはラ
+インにおいて@kbd{C-c C-c}を押すか、テーブルで通常の再計算コマンドを発行すること
+で実行できます。
 
-@subsubheading Debugging formulas
-@cindex formula debugging
-@cindex debugging, of table formulas
-When the evaluation of a formula leads to an error, the field content
-becomes the string @samp{#ERROR}.  If you would like see what is going on
-during variable substitution and calculation in order to find a bug, turn on
-formula debugging in the @code{Tbl} menu and repeat the calculation, for
-example by pressing @kbd{C-u C-u C-c = @key{RET}} in a field.  Detailed
-information will be displayed.
+@subsubheading 数式のデバッグ
+@cindex 数式のデバッグ
+@cindex デバッグ（テーブルの数式）
+数式を評価してエラーが生じた時は、フィールドの文字列が@samp{#ERROR}に変わります。
+バグを見つけるために、変数の代入と計算をする間に何が起こっているかを調べたい
+ならば、@code{Tbl}メニューの数式のデバッグを有効にして、計算をやり直してください
+。たとえば、フィールド内で@kbd{C-u C-u C-c = @key{RET}}と押します。すると、詳細な情
+報が表示されます。
 
 @node Updating the table, Advanced features, Editing and debugging formulas, The spreadsheet
 @subsection Updating the table
-@cindex recomputing table fields
-@cindex updating, table
+@cindex フィールドの再計算
+@cindex 更新（テーブル）
 
-Recalculation of a table is normally not automatic, but needs to be
-triggered by a command.  See @ref{Advanced features}, for a way to make
-recalculation at least semi-automatic.
+テーブルの再計算は、通常は自動的に行なわれず、コマンドにより実行する必要があ
+ります。@ref{Advanced features}を参照してください。少なくとも半自動で計算を行な
+います。
 
-In order to recalculate a line of a table or the entire table, use the
-following commands:
+テーブルのある行もしくはテーブル全体を再計算するために、次のコマンドを使いま
+す。
 
 @table @kbd
 @c
-@orgcmd{C-c *,org-table-recalculate} Recalculate the current row by first
-applying the stored column formulas from left to right, and all field/range
-formulas in the current row.
+@orgcmd{C-c *,org-table-recalculate}
+現在行を最初に保存されている列の数式を用いて、左から右に、現在行の全て
+のフィールドと範囲数式を再計算する。
 @kindex C-u C-c *
 @item C-u C-c *
 @kindex C-u C-c C-c
 @itemx C-u C-c C-c
 @c
-Recompute the entire table, line by line.  Any lines before the first hline
-are left alone, assuming that these are part of the table header.
-@orgcmdkkc{C-u C-u C-c *,C-u C-u C-c C-c,org-table-iterate} Iterate the
-table by recomputing it until no further changes occur.  This may be
-necessary if some computed fields use the value of other fields that are
-computed @i{later} in the calculation sequence.
+行ごとにテーブル全体を再計算する。最初の水平ラインの以前のどんな行も再
+計算されません。これらはテーブルのヘッダであると想定します。
+@orgcmdkkc{C-u C-u C-c *,C-u C-u C-c C-c,org-table-iterate}
+計算結果の変化が生じなくなるまでテーブルの再計算を繰り返す。これは、計
+算の流れにおいて@i{後で}計算されるフィールドの値を利用している、いくつかの
+フィールドを計算するときに必要になります。
 @item M-x org-table-recalculate-buffer-tables
 @findex org-table-recalculate-buffer-tables
-Recompute all tables in the current buffer.
+現在のバッファに含まれる全てのフィールドを再計算する
 @item M-x org-table-iterate-buffer-tables
 @findex org-table-iterate-buffer-tables
-Iterate all tables in the current buffer, in order to converge
-table-to-table dependencies.
+テーブル間の依存関係を収束するために、カレントバッファの全てのテーブル
+を反復計算する。
 @end table
 
 @node Advanced features, , Updating the table, The spreadsheet
 @subsection Advanced features
 
-If you want the recalculation of fields to happen automatically, or if you
-want to be able to assign @i{names} to fields and columns, you need to
-reserve the first column of the table for special marking characters.
+もしも自動的にフィールドを再計算したい、もしくは、フィールドと列に@i{名前}を割り
+当てたいならば、テーブルの第一列を特別なマーキング文字を格納するために予約し
+ておく必要があります。
 @table @kbd
-@orgcmd{C-#,org-table-rotate-recalc-marks} Rotate the calculation mark in
-first column through the states @samp{ }, @samp{#}, @samp{*}, @samp{!},
-@samp{$}.  When there is an active region, change all marks in the region.
+@orgcmd{C-#,org-table-rotate-recalc-marks} 第一行の計算用マーカを@samp{ }、@samp{#}、
+@samp{*}、@samp{!}、@samp{$}の順番に循環する。アクティブリージョンがあれば、その領域
+のすべてのマーカを変更する。
 @end table
 
-Here is an example of a table that collects exam results of students and
-makes use of these features:
+例として、学生の試験結果を集めて、自動再計算の機能を使うテーブルを示します。
 
 @example
 @group
@@ -2793,50 +2793,48 @@ makes use of these features:
 @end example
 
 @noindent @b{Important}: please note that for these special tables,
-recalculating the table with @kbd{C-u C-c *} will only affect rows that are
-marked @samp{#} or @samp{*}, and fields that have a formula assigned to the
-field itself.  The column formulas are not applied in rows with empty first
-field.
+（indent問題箇所）このような特別なテーブルについて、@kbd{C-u C-c *}を使った再計
+算は、@samp{#}もしくは@samp{*}でマークされた行、また、自身に対して数式が適用されている
+フィールドだけに影響します。最初のフィールドが空な行については、列の数式は適
+用されません。
 
-@cindex marking characters, tables
-The marking characters have the following meaning:
+@cindex マーキング文字（テーブル）
+マーキング文字には、次のような意味があります。
 @table @samp
 @item !
-The fields in this line define names for the columns, so that you may refer
-to a column as @samp{$Tot} instead of @samp{$6}.
+行に含まれるフィールドが、対応する列の名前を表す。これは@samp{$6}ではなく
+@samp{$Tot}として列を参照できるようにするため。
 @item ^
-This row defines names for the fields @emph{above} the row.  With such a
-definition, any formula in the table may use @samp{$m1} to refer to the
-value @samp{10}.  Also, if you assign a formula to a names field, it will be
-stored as @samp{$name=...}.
+@emph{上側の}列のフィールドについて名前を定義する。この定義を用いることで、
+テーブルのどのような数式でも、値@samp{10}を参照するために@samp{$m1}を利用できる
+。また、名前を定義するフィールドに数式を割り当てると、@samp{$name=...}とし
+て保存される。
 @item _
-Similar to @samp{^}, but defines names for the fields in the row
-@emph{below}.
+@samp{^}とほぼ同じだが、@emph{下側の}列のフィールドに対する名前を定義する。
 @item $
-Fields in this row can define @emph{parameters} for formulas.  For example,
-if a field in a @samp{$} row contains @samp{max=50}, then formulas in this
-table can refer to the value 50 using @samp{$max}.  Parameters work exactly
-like constants, only that they can be defined on a per-table basis.
+この行のフィールドは、数式の@emph{パラメータ}を定義する。たとえば、@samp{$}が指
+定された行で、フィールドが@samp{max=50}を含むならば、テーブルの数式は@samp{$max}
+を用いて値@samp{50}を参照できる。パラメータは、正に定数として動作し、テーブ
+ルごとに定義される。
 @item #
-Fields in this row are automatically recalculated when pressing @key{TAB} or
-@key{RET} or @kbd{S-@key{TAB}} in this row.  Also, this row is selected for
-a global recalculation with @kbd{C-u C-c *}.  Unmarked lines will be left
-alone by this command.
+行の中で@key{TAB}、@kbd{RET}、または@kbd{S-@key{TAB}}を押すと、この行のフィールドは自
+動的に再計算される。また、この行は@kbd{C-u C-c *}によるグローバルな再計算
+のために選択される。このコマンドでは、マークされていない行はそのままに
+維持される。
 @item *
-Selects this line for global recalculation with @kbd{C-u C-c *}, but not for
-automatic recalculation.  Use this when automatic recalculation slows down
-editing too much.
-@item Unmarked lines are exempt from recalculation with @kbd{C-u C-c *}.  All
-lines that should be recalculated should be marked with @samp{#} or
-@samp{*}.
+@kbd{C-u C-c *}によるグローバルな再計算のためにこの行を選択する。ただし、
+自動的な再計算には利用されない。自動再計算が編集速度を著しく低下させる
+場合に利用します。
+@item マークされていない行は、@kbd{C-u C-c *}による再計算から除外される。再計算
+されるべきすべての行は、@samp{#}や@samp{*}でマークされるべきである。
 @item /
-Do not export this line.  Useful for lines that contain the narrowing
-@samp{<N>} markers or column group markers.
+この行はエクスポートしない。表示幅を狭くする@samp{<N>}マーカ、もしくは列の
+グループマーカを含む列について便利である。
 @end table
 
-Finally, just to whet your appetite for what can be done with the fantastic
-@file{calc.el} package, here is a table that computes the Taylor series of
-degree @code{n} at location @code{x} for a couple of functions.
+最後に、素晴らしい@file{calc.el}パッケージができることを学ぶ知識欲を刺激するため
+に、一つのテーブルを示します。このテーブルは、いくつかの関数に対して、@code{x}に
+おける@code{n}次のテーラー級数を計算します。
 
 @example
 @group
@@ -2856,15 +2854,17 @@ degree @code{n} at location @code{x} for a couple of functions.
 
 @node Org-Plot, , The spreadsheet, Tables
 @section Org-Plot
-@cindex graph, in tables
-@cindex plot tables using Gnuplot
+@cindex グラフ（テーブル）
+@cindex Gnuplotを用いたテーブルのプロット
 @cindex #+PLOT
 
-Org-Plot can produce 2D and 3D graphs of information stored in org tables
-using @file{Gnuplot} @uref{http://www.gnuplot.info/} and @file{gnuplot-mode}
-@uref{http://cars9.uchicago.edu/~ravel/software/gnuplot-mode.html}.  To see
-this in action, ensure that you have both Gnuplot and Gnuplot mode installed
-on your system, then call @code{org-plot/gnuplot} on the following table.
+Org-Plotは、org-modeのテーブルに保存された情報による2次元と3次元のグラフを生
+成できます。@file{Gnuplot}
+@uref{http://www.gnuplot.info/}と@file{gnuplot-mode}
+@uref{http://cars9.uchicago.edu/~ravel/software/gnuplot-mode.html}を利用していま
+す。動作を確認するためには、GnuplotとGnuplotモードの両方がシステムにインスト
+ールされていることを確かめてください。その上で、次に示すテーブルで
+@code{org-plot/gnuplot}を呼び出してください。
 
 @example
 @group
@@ -2879,65 +2879,65 @@ on your system, then call @code{org-plot/gnuplot} on the following table.
 @end group
 @end example
 
-Notice that Org Plot is smart enough to apply the table's headers as
-labels.  Further control over the labels, type, content, and appearance of
-plots can be exercised through the @code{#+PLOT:} lines preceding a table.
-See below for a complete list of Org-plot options.  For more information and
-examples see the Org-plot tutorial at
-@uref{http://orgmode.org/worg/org-tutorials/org-plot.html}.
+Org-Plotは、テーブルのヘッダをラベルとして適用できます。ラベル、タイプ、コン
+テンツ、プロットの外観は、テーブルの上の@code{#+PLOT:}で始まる行によって制御可能
+です。以下のOrg-Plotオプションの完成したリストを見てください。さらなる情報と
+例は、@uref{http://orgmode.org/worg/org-tutorials/org-plot.html}にあるOrg-Plotの
+チュートリアルを参照してください。
 
-@subsubheading Plot Options
+@subsubheading プロットオプション
 
 @table @code
 @item set
-Specify any @command{gnuplot} option to be set when graphing.
+グラフの描画時に設定される@command{gnuplot}のオプションを指定する。
 
 @item title
-Specify the title of the plot.
+プロットのタイトルを設定する。
 
 @item ind
-Specify which column of the table to use as the @code{x} axis.
+@code{x}軸として利用するテーブルの列を指定する。
 
 @item deps
-Specify the columns to graph as a Lisp style list, surrounded by parentheses
-and separated by spaces for example @code{dep:(3 4)} to graph the third and
-fourth columns (defaults to graphing all other columns aside from the
-@code{ind} column).
+Lispスタイルのリストで描画するように列を指定する。括弧で括られ、スペー
+スで分離されます。たとえば、@code{dep:(3 4)}とすると、第三と第四列を描画し
+ます（デフォルトでは、@code{ind}の列を除いて他の全ての列が描画される）。
 
 @item type
-Specify whether the plot will be @code{2d}, @code{3d}, or @code{grid}.
+プロットの種別（@code{2d}、@code{3d}もしくは@code{grid}）を指定する。
 
 @item with
-Specify a @code{with} option to be inserted for every col being plotted
-(e.g.@: @code{lines}, @code{points}, @code{boxes}, @code{impulses},
-etc...).  Defaults to @code{lines}.
+@code{with}オプションで挿入される、各プロット点の表示種別を指定する。たとえ
+ば、@:
+@code{lines}、@code{points}、@code{boxes}、@code{impluses}などで、デフォルトは@code{lines}。
 
 @item file
-If you want to plot to a file, specify
-@code{"@var{path/to/desired/output-file}"}.
+プロット結果を外部ファイルに出力したいときに、
+@code{"@var{path/to/desired/output-file}"}のように指定する。
 
 @item labels
-List of labels to be used for the @code{deps} (defaults to the column
-headers if they exist).
+@code{deps}で利用されるラベルのリストを指定する。標準では列のヘッダが使われ
+る（存在する場合）。
 
 @item line
-Specify an entire line to be inserted in the Gnuplot script.
+Gnuplotのスクリプトに、記述内容がそのまま挿入される行を設定する。
 
 @item map
-When plotting @code{3d} or @code{grid} types, set this to @code{t} to graph
-a flat mapping rather than a @code{3d} slope.
+プロットの種別で@code{3d}もしくは@code{grid}を指定する場合に、このオプションを
+@code{t}にすると、@code{3d}の立体的な傾斜がわかる表示ではなく、平らな表示（訳注
+：平面に射影した状態）でプロットする。
 
 @item timefmt
-Specify format of Org-mode timestamps as they will be parsed by Gnuplot.
-Defaults to @samp{%Y-%m-%d-%H:%M:%S}.
+Gnuplotが解釈するような形式にorg-modeのタイムスタンプを整える。デフォ
+ルトでは、
+@samp{%Y-%m-%d-%H:%M:%S}が使われる。
 
 @item script
-If you want total control, you can specify a script file (place the file
-name between double-quotes) which will be used to plot.  Before plotting,
-every instance of @code{$datafile} in the specified script will be replaced
-with the path to the generated data file.  Note: even if you set this
-option, you may still want to specify the plot type, as that can impact the
-content of the data file.
+Gnuplotをさらに制御するために、プロットに利用されるスクリプトファイル
+（ファイル名をダブルクォーテーションで囲んでください）を指定できます。
+プロットを開始する前に、このスクリプトファイルに含まれる@code{$datafile}の
+記述は、プロット点を格納するファイルへのファイルパスで置き換えられます
+。たとえこのオプションを指定しても、プロット種別を制御したいならば、
+@code{type}オプションが優先的に適用されます。
 @end table
 
 @node Hyperlinks, TODO Items, Tables, Top
@@ -11237,12 +11237,12 @@ Babel''の関数@code{org-babel-lob-ingest}を使って、ロードできます�
 
 @node Header arguments, Results of evaluation, Languages, Working With Source Code
 @section Header arguments
-@cindex code block, header arguments
-@cindex source code, block header arguments
+@cindex コードブロック、ヘッダー引数
+@cindex ソースコード、ブロックのヘッダー引数
 
-Code block functionality can be configured with header arguments.  This
-section provides an overview of the use of header arguments, and then
-describes each header argument in detail.
+ヘッダー引数を通して、コードブロックの機能を設定できます。このセクションでは
+ヘッダー引数の使い方を概説し、その後、各ヘッダー引数の詳細について説明します
+。
 
 @menu
 * Using header arguments::   ヘッダー引数を設定するための別の方法
@@ -11252,8 +11252,8 @@ describes each header argument in detail.
 @node Using header arguments, Specific header arguments, Header arguments, Header arguments
 @subsection Using header arguments
 
-The values of header arguments can be set in six different ways, each more
-specific (and having higher priority) than the last.
+ヘッダー引数の値は6通りの方法で設定できます。以下の説明で、後に説明されるも
+のほど、個別の設定として優先されます。
 @menu
 * System-wide header arguments::  全体的な初期値を設定する
 * Language-specific header arguments::  言語ごとに初期値を設定する
@@ -11268,8 +11268,8 @@ specific (and having higher priority) than the last.
 @node System-wide header arguments, Language-specific header arguments, Using header arguments, Using header arguments
 @subsubheading System-wide header arguments
 @vindex org-babel-default-header-args
-System-wide values of header arguments can be specified by customizing the
-@code{org-babel-default-header-args} variable:
+変数@code{org-babel-default-header-args}をカスタマイズすることで、システム全体に
+わたるヘッダー引数の値を指定できます。
 
 @example
 :session    => "none"
@@ -11293,10 +11293,9 @@ System-wide values of header arguments can be specified by customizing the
 @c   Default arguments to use when evaluating a code block.
 @c @end example
 
-For example, the following example could be used to set the default value of
-@code{:noweb} header arguments to @code{yes}.  This would have the effect of
-expanding @code{:noweb} references by default when evaluating source code
-blocks.
+次の例のように、ヘッダー引数@code{:noweb}の初期値を@code{yes}と設定できます。ソースコ
+ードブロックを評価する時に、デフォルトの設定として@code{:noweb}の参照記号を展開し
+ます。
 
 @lisp
 (setq org-babel-default-header-args
@@ -11306,21 +11305,20 @@ blocks.
 
 @node Language-specific header arguments, Buffer-wide header arguments, System-wide header arguments, Using header arguments
 @subsubheading Language-specific header arguments
-Each language can define its own set of default header arguments.  See the
-language-specific documentation available online at
-@uref{http://orgmode.org/worg/org-contrib/babel}.
+それぞれの言語用にデフォルトのヘッダー引数を定義できます。言語の詳細な文書に
+ついては、オンラインの@uref{http://orgmode.org/worg/org-contrib/babel}を見て下さ
+い。
 
 @node Buffer-wide header arguments, Header arguments in Org-mode properties, Language-specific header arguments, Using header arguments
 @subsubheading Buffer-wide header arguments
-Buffer-wide header arguments may be specified through the use of a special
-line placed anywhere in an Org-mode file.  The line consists of the
-@code{#+BABEL:} keyword followed by a series of header arguments which may
-be specified using the standard header argument syntax.
+Org-modeファイルにある特別な行を使って、バッファー全体にわたるヘッダー引数を
+設定できます。その行では、キーワード@code{#BABEL:}に続いて、普通のヘッダー引数の
+構文を使って指定された一連のヘッダー引数があります。
 
-For example the following would set @code{session} to @code{*R*}, and
-@code{results} to @code{silent} for every code block in the buffer, ensuring
-that all execution took place in the same session, and no results would be
-inserted into the buffer.
+次の例は、@code{session}を@code{*R*}と設定し、バッファ内にあるコードブロック毎の
+@code{results}を@code{silent}と指定しています。この設定により、全ての(コードブロックが
+)同一のセッションで実行されることと、結果はバッファに挿入されないことを確か
+にしています。
 
 @example
 #+BABEL: :session *R* :results silent
@@ -11329,20 +11327,21 @@ inserted into the buffer.
 @node Header arguments in Org-mode properties, Code block specific header arguments, Buffer-wide header arguments, Using header arguments
 @subsubheading Header arguments in Org-mode properties
 
-Header arguments are also read from Org-mode properties (see @ref{Property syntax}), which can be set on a buffer-wide or per-heading basis. An example
-of setting a header argument for all code blocks in a buffer is
+ヘッダー引数はOrg-modeのプロパティから読み出すこともできます
+(@ref{Property syntax}を見て下さい)。プロパティはバッファ全体もしくは見出しごと
+の単位で設定できます。例えば、バッファ内の全コードブロックのヘッダー引数を設
+定するには、以下のようにします。
 
 @example
 #+property: tangle yes
 @end example
 
-When properties are used to set default header arguments, they are looked up
-with inheritance, so the value of the @code{:cache} header argument will
-default to @code{yes} in all code blocks in the subtree rooted at the
-following heading:
+デフォルトのヘッダー引数を設定するためにプロパティを使う場合、プロパティは継
+承(関係)に沿って参照されます。したがって、以下の見出しにあるサブツリー内の全
+コードブロックでは、ヘッダー引数@code{:cache}の値はデフォルトの@code{yes}となります:
 
 @example
-* outline header
+* アウトライン ヘッダー
 :PROPERTIES:
 :cache:    yes
 :END:
@@ -11350,23 +11349,21 @@ following heading:
 
 @kindex C-c C-x p
 @vindex org-babel-default-header-args
-Properties defined in this way override the properties set in
-@code{org-babel-default-header-args}.  It is convenient to use the
-@code{org-set-property} function bound to @kbd{C-c C-x p} to set properties
-in Org-mode documents.
+このように設定されたプロパティは、@code{org-babel-default-header-args}に設定され
+たプロパティを上書きします。Org-modeドキュメント内のプロパティを設定する関数
+@code{org-set-property}を使うのが便利です。キーバインドは@kbd{C-c C-x p}です。
 
 @node Code block specific header arguments, Header arguments in function calls, Header arguments in Org-mode properties, Using header arguments
 @subsubheading Code block specific header arguments
 
-The most common way to assign values to header arguments is at the code
-block level.  This can be done by listing a sequence of header arguments and
-their values as part of the @code{#+begin_src} line.  Properties set in this
-way override both the values of @code{org-babel-default-header-args} and
-header arguments specified as properties.  In the following example, the
-@code{:results} header argument is set to @code{silent}, meaning the results
-of execution will not be inserted in the buffer, and the @code{:exports}
-header argument is set to @code{code}, meaning only the body of the code
-block will be preserved on export to HTML or LaTeX.
+コードブロックのレベルでヘッダー引数に値を割り当てる方法が最も一般的です。
+@code{#+begin_src}行の一部として、ヘッダー引数とその値とを並べることによって設定
+されます。このように設定されたプロパティは変数
+@code{org-babel-default-header-args}とプロパティとして設定されたヘッダー引数との
+両方を上書きします。以下に示す例では、実行結果をバッファに挿入しないように、
+ヘッダー引数@code{:results}を@code{silent}と設定し、加えてHTMLやLaTeXへのエクスポート
+時にコードブロックの本文だけが保存されるように、ヘッダー引数@code{:exports}を
+@code{code}と設定しています。
 
 @example
 #+source: factorial
@@ -11375,17 +11372,17 @@ fac 0 = 1
 fac n = n * fac (n-1)
 #+end_src
 @end example
-Similarly, it is possible to set header arguments for inline code blocks:
+同様に、インラインのコードブロックにヘッダー引数を設定することも可能です:
 
 @example
 src_haskell[:exports both]@{fac 5@}
 @end example
 
-Code block header arguments can span multiple lines using =#+header:= or
-=#+headers:= lines preceding a code block or nested in between the name and
-body of a named code block.
+コードブロックのヘッダー引数を複数行にわたって記述できます。=#+header:=もし
+くは=#+headers:=の行を、コードブロックの前に記述するか、名前付きコードブロッ
+クの名前とコード本文との間に記述します。
 
-Multi-line header arguments on an un-named code block:
+名前を付けていないコードブロックに複数行のヘッダー引数を設定します:
 @example
  #+headers: :var data1=1
  #+begin_src emacs-lisp :var data2=2
@@ -11396,7 +11393,7 @@ Multi-line header arguments on an un-named code block:
  : data1:1, data2:2
 @end example
 
-Multi-line header arguments on a named code block:
+名前を付けたコードブロックに複数行のヘッダー引数を設定します:
 @example
    #+source: named-block
    #+header: :var data=2
@@ -11412,25 +11409,25 @@ Multi-line header arguments on a named code block:
 @comment  node-name,  next,  previous,  up
 @subsubheading Header arguments in function calls
 
-At the most specific level, header arguments for ``Library of Babel'' or
-function call lines can be set as shown in the two examples below.  For more
-information on the structure of @code{#+call:} lines see @ref{Evaluating code blocks}.
+一番個別のレベルにおいて、Babelのライブラリのためのヘッダー引数もしくは関数
+の呼び出し行は、下に示す2つの例のように設定されます。@code{#call:}行の構造ついつ
+いての更なる情報については、@ref{Evaluating code blocks}を参照してください。
 
-The following will apply the @code{:exports results} header argument to the
-evaluation of the @code{#+call:} line.
+以下の例では、ヘッダー引数@code{:exports results}を設定して、@code{#+call:}行を評価し
+ます。
 @example
 #+call: factorial(n=5) :exports results
 @end example
 
-The following will apply the @code{:session special} header argument to the
-evaluation of the @code{factorial} code block.
+以下の例では、ヘッダー引数@code{:session special}を設定して、コードブロック
+@code{factorial}を評価します。
 @example
 #+call: factorial[:session special](n=5)
 @end example
 
 @node Specific header arguments, , Using header arguments, Header arguments
 @subsection Specific header arguments
-The following header arguments are defined:
+以下のヘッダー引数が定義されています:
 
 @menu
 * var::                      引数をコードブロックに渡す
@@ -11458,30 +11455,31 @@ The following header arguments are defined:
 
 @node var, results, Specific header arguments, Specific header arguments
 @subsubsection @code{:var}
-The @code{:var} header argument is used to pass arguments to code blocks.
-The specifics of how arguments are included in a code block vary by
-language; these are addressed in the language-specific
-documentation. However, the syntax used to specify arguments is the same
-across all languages.  The values passed to arguments can be literal values,
-values from org-mode tables and literal example blocks, the results of other
-code blocks, or Emacs Lisp code---see the ``Emacs Lisp evaluation of
-variables'' heading below.
+ヘッダー引数@code{:var}はコードブロックへ引数を渡すときに使われます。コードブロッ
+クに含まれている引数を受け取る方法は、言語によって異なります。これらは、言語
+固有の文書にて説明されています。しかし、引数を指定する構文は、すべての言語で
+共通です。引数に渡されうる値というのは、定数(リテラル値)、Org-modeのテーブル
+とexampleブロックそのもの文字列からの値、他のコードブロックの結果、あるいは
+Emacs_Lisp(原文スペースをアンダーバーで置換)のコードです。---Emacs_Lispにつ
+いては、以下の見出し``Emacs
+Lisp evaluation of variables''を見て下さい。
 
-These values can be indexed in a manner similar to arrays---see the
-``indexable variable values'' heading below.
+これらの値は配列のようにインデックス化できます。---以下の見出し
+``indexable variable values''を見て下さい。
 
-The following syntax is used to pass arguments to code blocks using the
-@code{:var} header argument.
+ヘッダー引数@code{:var}を使ってコードブロックへ引数を渡すには、以下の構文を使いま
+す。
 
 @example
 :var name=assign
 @end example
 
-where @code{assign} can take one of the following forms
+ここで、@code{assign}は以下の構造のうちどれかをとることができます。
 
 @itemize @bullet
 @item literal value
-either a string @code{"string"} or a number @code{9}.
+この文、文法的に分かりません。文字列(例:@code{"string"})もしくは数字(例
+:@code{9})です。
 @item reference
 a table name:
 
@@ -11501,8 +11499,7 @@ a table name:
 : 4
 @end example
 
-a code block name, as assigned by @code{#+srcname:}, followed by
-parentheses:
+@code{#+srcname:}と括弧「()」で挟まれたコードブロックの名前を参照します。
 
 @example
 #+begin_src emacs-lisp :var length=table-length()
@@ -11513,9 +11510,8 @@ parentheses:
 : 8
 @end example
 
-In addition, an argument can be passed to the code block referenced by
-@code{:var}.  The argument is passed within the parentheses following the
-code block name:
+加えて、@code{:var}によって参照されたコードブロックへ引数を渡すこともできま
+す。コードブロック名に続く括弧「()」内の引数が渡されます。
 
 @example
 #+source: double
@@ -11536,11 +11532,11 @@ code block name:
 @end example
 @end itemize
 
-@subsubheading Alternate argument syntax
-It is also possible to specify arguments in a potentially more natural way
-using the @code{#+source:} line of a code block.  As in the following
-example arguments can be packed inside of parenthesis, separated by commas,
-following the source name.
+@subsubheading Alternate argument syntax(引数を指定する別の構文)
+コードブロックの@code{#+source:}行を利用するという方法でも引数を指定できます。も
+しかすると、こちらの方法がより自然かもしれません。以下の例のように、引数はソ
+ースの名前に続く括弧「()」の内に、カンマ「,」で分離された形でひとまとめにさ
+れています。
 
 @example
 #+source: double(input=0, x=2)
@@ -11549,15 +11545,17 @@ following the source name.
 #+end_src
 @end example
 
-@subsubheading Indexable variable values
-It is possible to reference portions of variable values by ``indexing'' into
-the variables.  Indexes are 0 based with negative values counting back from
-the end.  If an index is separated by @code{,}s then each subsequent section
-will index into the next deepest nesting or dimension of the value.  Note
-that this indexing occurs @emph{before} other table related header arguments
-like @code{:hlines}, @code{:colnames} and @code{:rownames} are applied.  The
-following example assigns the last cell of the first row the table
-@code{example-table} to the variable @code{data}:
+@subsubheading Indexable variable values(インデックス化可能な変数の値)
+変数の``indexing''インデックス化によって割り当てられた変数の一部分を参照でき
+ます。インデックスは0から始まる値で、負の値もとります。インデックスが負の値
+の場合、それは要素の最後から逆順に数え上げた順番です。インデックスが「,」で
+分割されているとき、後続する部分のそれぞれが、次に深いネスティング(入れ子構
+造)にインデックス化するか、値の次元にインデックス化します。このインデックス
+化を実行する@emph{前に}、ヘッダー引数@code{:hlines}、@code{:colnames}、そして@code{:rownames}に
+関連する他のテーブルが変更されることに注意して下さい。(最終文、typo?
+the last cell of the first row *in* the table example-table to the variable
+data)次の例では、テーブル@code{example-table}1行目の最後のセルを変数@code{data}に割り
+当てています:
 
 @example
 #+results: example-table
@@ -11574,10 +11572,9 @@ following example assigns the last cell of the first row the table
 : a
 @end example
 
-Ranges of variable values can be referenced using two integers separated by
-a @code{:}, in which case the entire inclusive range is referenced.  For
-example the following assigns the middle three rows of @code{example-table}
-to @code{data}.
+@code{:}で区切られた2つの整数を使うことで、変数の範囲(行や列?)を参照できます。こ
+の場合、包括的な範囲を参照します。例えば、以下では@code{example-table}の中央3行を
+@code{data}に割り当てています。
 
 @example
 #+results: example-table
@@ -11597,10 +11594,9 @@ to @code{data}.
 | 4 | d |
 @end example
 
-Additionally, an empty index, or the single character @code{*}, are both
-interpreted to mean the entire range and as such are equivalent to
-@code{0:-1}, as shown in the following example in which the entire first
-column is referenced.
+加えて、インデックスが空の場合もしくは単一文字@code{*}の場合のどちらでも、全ての
+範囲すなわち@code{0:-1}を意味していると解釈されます。次の例では、1列目すべてが参
+照されます。
 
 @example
 #+results: example-table
@@ -11617,9 +11613,9 @@ column is referenced.
 | 1 | 2 | 3 | 4 |
 @end example
 
-It is possible to index into the results of code blocks as well as tables.
-Any number of dimensions can be indexed.  Dimensions are separated from one
-another by commas, as shown in the following example.
+コードブロックの結果をテーブルの様にインデックス化できます。どんな次元数でも
+インデックス化できます。以下の例に示すように、次元はそれぞれカンマで分割され
+ます。
 
 @example
 #+source: 3D
@@ -11637,16 +11633,15 @@ another by commas, as shown in the following example.
 | 11 | 14 | 17 |
 @end example
 
-@subsubheading Emacs Lisp evaluation of variables
+@subsubheading Emacs Lispによる変数の評価
 
-Emacs lisp code can be used to initialize variable values.  When a variable
-value starts with @code{(}, @code{[}, @code{'} or @code{`} it will be
-evaluated as Emacs Lisp and the result of the evaluation will be assigned as
-the variable value.  The following example demonstrates use of this
-evaluation to reliably pass the file-name of the org-mode buffer to a code
-block---note that evaluation of header arguments is guaranteed to take place
-in the original org-mode file, while there is no such guarantee for
-evaluation of the code block body.
+変数の値を初期化するときにEmacs Lispのコードを使えます。変数の値が
+@code{(}, @code{[}, @code{'} もしくは
+@code{`}で始まる場合、変数はEmacs
+Lispとして評価され、その評価結果を変数の値として代入されます。次の例では、こ
+の評価を使ってOrg-modのファイル名を確かにコードブロックへ渡しています---元の
+Org-file内でヘッダー引数が間違いなく評価されるということに注意して下さい。コ
+ードブロックで評価する場合そのような保証はありません。
 
 @example
 #+begin_src sh :var file-name=(buffer-file-name) :exports both
@@ -11654,8 +11649,8 @@ evaluation of the code block body.
 #+end_src
 @end example
 
-Note that values read from tables and lists will not be evaluated as Emacs
-Lisp, as shown in the following example.
+テーブルやリストから読み出された値はEmacs Lispとして評価されません。以下はそ
+の例です。
 
 @example
 #+results: table
@@ -11673,100 +11668,102 @@ Lisp, as shown in the following example.
 @node results, file, var, Specific header arguments
 @subsubsection @code{:results}
 
-There are three classes of @code{:results} header argument.  Only one option
-per class may be supplied per code block.
+ヘッダー引数@code{:results}には3つのクラスがあります。コードブロックでは、クラス
+毎に1個のオプションだけを付与できます。
 
 @itemize @bullet
-@item @b{collection} header arguments specify how the results should be collected
-from the code block
-@item @b{type} header arguments specify what type of result the code block will
-return---which has implications for how they will be inserted into the
-Org-mode buffer
-@item @b{handling} header arguments specify how the results of evaluating the code
-block should be handled.
+@item ヘッダー引数@b{collection}は、コードブロックからどのように結果を集めかを指
+定します。
+@item ヘッダー引数@b{type}はコードブロックがどのタイプの結果を返すかを指定します
+---これは、Org-modeのバッファーへ結果を挿入する方法に影響します。
+@item ヘッダー引数@b{handling}はコードブロックの評価の結果をどのように扱うかを指
+定します。
 @end itemize
 
 @subsubheading Collection
-The following options are mutually exclusive, and specify how the results
-should be collected from the code block.
+以下のオプションは、コードブロックから結果を収める方法を指定します。どちらか
+のオプションしか指定できません。
 
 @itemize @bullet
 @item @code{value}
-This is the default.  The result is the value of the last statement in the
-code block.  This header argument places the evaluation in functional mode.
-Note that in some languages, e.g., Python, use of this result type requires
-that a @code{return} statement be included in the body of the source code
-block. E.g., @code{:results value}.
+デフォルトの設定です。コードブロックの最終行の値が結果になります。この
+ヘッダー引数はfunctional
+modeで評価します。このタイプの返り値を使う場合、Pythonなどの言語では、
+ソースコードブロックの本文で@code{return}文が必要なことに注意して下さい。
+例えば、@code{:results value}のように記述します。
 @item @code{output}
-The result is the collection of everything printed to STDOUT during the
-execution of the code block.  This header argument places the evaluation in
-scripting mode.  E.g., @code{:results output}.
+コードブロックで実行される間に標準出力(STDOUT)へと出力されたもの全てを
+収集して結果とします。このヘッダー引数はscripting
+modeで評価します。例えば、@code{:results output}のように記述します。
 @end itemize
 
 @subsubheading Type
 
-The following options are mutually exclusive and specify what type of
-results the code block will return.  By default, results are inserted as
-either a table or scalar depending on their value.
+以下のオプションは相互に排他的で、コードブロックの結果のタイプを返します。デ
+フォルトでは、結果の値によって、テーブルかスカラーのどちらかが結果として挿入
+されます。
 
 @itemize @bullet
 @item @code{table}, @code{vector}
-The results should be interpreted as an Org-mode table.  If a single value
-is returned, it will be converted into a table with one row and one column.
-E.g., @code{:results value table}.
+結果は、Org-modeのテーブルとして解釈されます。単一の値が返された場合、
+結果は1行1列のテーブルへと変換されます。例えば、@code{:results value table}
+のように記述します。
 @item @code{list}
-The results should be interpreted as an Org-mode list.  If a single scalar
-value is returned it will be converted into a list with only one element.
+結果は、Org-modeのリストとして解釈されます。単一のスカラー値が返された
+場合、結果は1要素からなるリストへと変換されます。
 @item @code{scalar}, @code{verbatim}
-The results should be interpreted literally---they will not be converted
-into a table.  The results will be inserted into the Org-mode buffer as
-quoted text.  E.g., @code{:results value verbatim}.
+結果は文字通りに評価されます---結果はテーブルへと変換されません。結果
+は引用されたテキストとしてOrg-modeのバッファに挿入されます。例えば、
+@code{:results value verbatim}と記述します。
 @item @code{file}
-The results will be interpreted as the path to a file, and will be inserted
-into the Org-mode buffer as a file link.  E.g., @code{:results value file}.
+結果はファイルへのパスとして解釈され、ファイルのリンクとしてOrg-modeの
+バッファに挿入されます。例えば、@code{:results value file}のように記述しま
+す。
 @item @code{raw}, @code{org}
-The results are interpreted as raw Org-mode code and are inserted directly
-into the buffer.  If the results look like a table they will be aligned as
-such by Org-mode.  E.g., @code{:results value raw}.
+結果は加工されていないOrg-modeのコードとして解釈され、そのバッファに直
+接挿入されます。結果がテーブルのように見えるときは、Org-modeのように整
+形します。例えば、@code{:results value raw}のように記述します。
 @item @code{html}
-Results are assumed to be HTML and will be enclosed in a @code{begin_html}
-block.  E.g., @code{:results value html}.
+結果はHTMLであると見なされて、@code{begin_html}ブロックに囲まれます。例えば
+、@code{:results value html}のように記述します。
 @item @code{latex}
-Results assumed to be LaTeX and are enclosed in a @code{begin_latex} block.
-E.g., @code{:results value latex}.
+結果はLaTeXと見なされて、@code{begin_latex}ブロックに囲まれます。例えば、
+@code{:results value latex}のように記述します。
 @item @code{code}
-Result are assumed to be parseable code and are enclosed in a code block.
-E.g., @code{:results value code}.
+結果は構文解析可能なコードと見なされて、コードブロックに囲まれます。例
+えば、@code{:results value code}のように記述します。
 @item @code{pp}
-The result is converted to pretty-printed code and is enclosed in a code
-block.  This option currently supports Emacs Lisp, Python, and Ruby.  E.g.,
-@code{:results value pp}.
+結果は装飾されたコードに変換されて、コードブロックに囲まれます。このオ
+プションは、現在、Emacs Lisp,
+PythonとRubyをサポートしています。例えば、@code{:results value pp}のように
+記述します。
 @item @code{wrap}
-The result is wrapped in a @code{begin_result} block.  This can be useful
-for inserting @code{raw} or @code{org} syntax results in such a way that
-their extend is known and they can be automatically removed or replaced.
+結果は@code{begin_result}ブロックに囲まれます。結果の展開方法(extend?名詞形
+を見つけられず)が分かっていて自動的に削除されるか置換されるような、
+@code{raw}もしくは@code{org}構文の結果を挿入する時にこのオプションを使うと便利で
+す。
 @end itemize
 
 @subsubheading Handling
-The following results options indicate what happens with the results once
-they are collected.
+以下のresultのオプションは、結果が1度集められた後に何が起こるかを示していま
+す。
 
 @itemize @bullet
 @item @code{silent}
-The results will be echoed in the minibuffer but will not be inserted into
-the Org-mode buffer.  E.g., @code{:results output silent}.
+結果はミニバッファに表示されますが、Org-odeのバッファには挿入されませ
+ん。例えば、@code{:results output silent}と記述します。
 @item @code{replace}
-The default value.  Any existing results will be removed, and the new
-results will be inserted into the Org-mode buffer in their place.  E.g.,
-@code{:results output replace}.
+デフォルトの設定です。どんな結果でも存在していれば削除し、新しい結果を
+Org-modeのバッファのその場所に挿入します。例えば、
+@code{:results output replace}と記述します。
 @item @code{append}
-If there are pre-existing results of the code block then the new results
-will be appended to the existing results.  Otherwise the new results will be
-inserted as with @code{replace}.
+コードブロックの結果が以前から存在する場合、新しい結果は現在存在する結
+果に付け加えられます。結果が存在しなければ、@code{replace}のように新しい結
+果が挿入されます。
 @item @code{prepend}
-If there are pre-existing results of the code block then the new results
-will be prepended to the existing results.  Otherwise the new results will
-be inserted as with @code{replace}.
+もしコードブロックの結果が既に存在する場合、今現在の結果の先頭に新しい
+結果追加します。結果が存在しなければ、@code{replace}のように新しい結果が挿
+入されます。
 @end itemize
 
 @node file, dir, results, Specific header arguments
