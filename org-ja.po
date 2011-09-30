@@ -23950,67 +23950,67 @@ msgstr "#+call: factorial[:session special](n=5)\n"
 #. type: Plain text
 #: org.texi:11769
 msgid "The following header arguments are defined:"
-msgstr ""
+msgstr "以下のヘッダー引数が定義されています:"
 
 #. type: code{#1}
 #: org.texi:11797
 #, no-wrap
 msgid ":var"
-msgstr ""
+msgstr ":var"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / argument ( 引数 ) / block ( ブロック ) / evaluation ( 評価 ) / example ( 例 ) / heading ( 見出し ) / language ( 言語 ) / org-mode ( Org-mode ) / syntax ( 構文|シンタックス ) / table ( テーブル ) / value ( 値 )
 #. type: Plain text
 #: org.texi:11805
 msgid "The @code{:var} header argument is used to pass arguments to code blocks.  The specifics of how arguments are included in a code block vary by language; these are addressed in the language-specific documentation. However, the syntax used to specify arguments is the same across all languages.  The values passed to arguments can be literal values, values from org-mode tables and literal example blocks, the results of other code blocks, or Emacs Lisp code---see the ``Emacs Lisp evaluation of variables'' heading below."
-msgstr ""
+msgstr "ヘッダー引数@code{:var}はコードブロックへ引数を渡すときに使われます。コードブロックに含まれている引数を受け取る方法は、言語によって異なります。これらは、言語固有の文書にて説明されています。しかし、引数を指定する構文は、すべての言語で共通です。引数に渡されうる値というのは、定数(リテラル値)、Org-modeのテーブルとexampleブロックそのもの文字列からの値、他のコードブロックの結果、あるいはEmacs_Lisp(原文スペースをアンダーバーで置換)のコードです。---Emacs_Lispについては、以下の見出し``Emacs Lisp evaluation of variables''を見て下さい。"
 
 #+glossary: heading ( 見出し ) / value ( 値 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:11808
 msgid "These values can be indexed in a manner similar to arrays---see the ``indexable variable values'' heading below."
-msgstr ""
+msgstr "これらの値は配列のようにインデックス化できます。---以下の見出し``indexable variable values''を見て下さい。"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / argument ( 引数 ) / syntax ( 構文|シンタックス )
 #. type: Plain text
 #: org.texi:11811
 msgid "The following syntax is used to pass arguments to code blocks using the @code{:var} header argument."
-msgstr ""
+msgstr "ヘッダー引数@code{:var}を使ってコードブロックへ引数を渡すには、以下の構文を使います。"
 
 #. type: example
 #: org.texi:11814
 #, no-wrap
 msgid ":var name=assign\n"
-msgstr ""
+msgstr ":var name=assign\n"
 
 #. type: Plain text
 #: org.texi:11817
 msgid "where @code{assign} can take one of the following forms"
-msgstr ""
+msgstr "ここで、@code{assign}は以下の構造のうちどれかをとることができます。"
 
 #+glossary: value ( 値 )
 #. type: item
 #: org.texi:11819
 #, no-wrap
 msgid "literal value"
-msgstr ""
+msgstr "literal value"
 
 #+glossary: string ( 文字列 )
 #. type: itemize
 #: org.texi:11821
 msgid "either a string @code{\"string\"} or a number @code{9}."
-msgstr ""
+msgstr "この文、文法的に分かりません。文字列(例:@code{\"string\"})もしくは数字(例:@code{9})です。"
 
 #. type: item
 #: org.texi:11821
 #, no-wrap
 msgid "reference"
-msgstr ""
+msgstr "reference"
 
 #+glossary: table ( テーブル )
 #. type: itemize
 #: org.texi:11823
 msgid "a table name:"
-msgstr ""
+msgstr "a table name:"
 
 #. type: example
 #: org.texi:11830
@@ -24023,6 +24023,12 @@ msgid ""
 "| 4 |\n"
 "\n"
 msgstr ""
+"#+tblname: example-table\n"
+"| 1 |\n"
+"| 2 |\n"
+"| 3 |\n"
+"| 4 |\n"
+"\n"
 
 #. type: example
 #: org.texi:11835
@@ -24042,12 +24048,14 @@ msgid ""
 "#+results: table-length\n"
 ": 4\n"
 msgstr ""
+"#+results: table-length\n"
+": 4\n"
 
 #+glossary: code block ( コードブロック )
 #. type: itemize
 #: org.texi:11842
 msgid "a code block name, as assigned by @code{#+srcname:}, followed by parentheses:"
-msgstr ""
+msgstr "@code{#+srcname:}と括弧「()」で挟まれたコードブロックの名前を参照します。"
 
 #. type: example
 #: org.texi:11847
@@ -24058,6 +24066,10 @@ msgid ""
 "#+end_src\n"
 "\n"
 msgstr ""
+"#+begin_src emacs-lisp :var length=table-length()\n"
+"(* 2 length)\n"
+"#+end_src\n"
+"\n"
 
 #. type: example
 #: org.texi:11850
@@ -24066,12 +24078,14 @@ msgid ""
 "#+results:\n"
 ": 8\n"
 msgstr ""
+"#+results:\n"
+": 8\n"
 
 #+glossary: code block ( コードブロック ) / argument ( 引数 )
 #. type: itemize
 #: org.texi:11855
 msgid "In addition, an argument can be passed to the code block referenced by @code{:var}.  The argument is passed within the parentheses following the code block name:"
-msgstr ""
+msgstr "加えて、@code{:var}によって参照されたコードブロックへ引数を渡すこともできます。コードブロック名に続く括弧「()」内の引数が渡されます。"
 
 #. type: example
 #: org.texi:11861
@@ -24092,6 +24106,9 @@ msgid ""
 ": 16\n"
 "\n"
 msgstr ""
+"#+results: double\n"
+": 16\n"
+"\n"
 
 #. type: example
 #: org.texi:11869
@@ -24103,6 +24120,11 @@ msgid ""
 "#+end_src\n"
 "\n"
 msgstr ""
+"#+source: squared\n"
+"#+begin_src emacs-lisp :var input=double(input=1)\n"
+"(* input input)\n"
+"#+end_src\n"
+"\n"
 
 #. type: example
 #: org.texi:11872
@@ -24111,19 +24133,21 @@ msgid ""
 "#+results: squared\n"
 ": 4\n"
 msgstr ""
+"#+results: squared\n"
+": 4\n"
 
 #+glossary: argument ( 引数 ) / syntax ( 構文|シンタックス )
 #. type: subsubheading
 #: org.texi:11875
 #, no-wrap
 msgid "Alternate argument syntax"
-msgstr ""
+msgstr "Alternate argument syntax(引数を指定する別の構文)"
 
 #+glossary: code block ( コードブロック ) / argument ( 引数 ) / example ( 例 ) / line ( 行|ライン|線 ) / source ( ソース )
 #. type: Plain text
 #: org.texi:11880
 msgid "It is also possible to specify arguments in a potentially more natural way using the @code{#+source:} line of a code block.  As in the following example arguments can be packed inside of parenthesis, separated by commas, following the source name."
-msgstr ""
+msgstr "コードブロックの@code{#+source:}行を利用するという方法でも引数を指定できます。もしかすると、こちらの方法がより自然かもしれません。以下の例のように、引数はソースの名前に続く括弧「()」の内に、カンマ「,」で分離された形でひとまとめにされています。"
 
 #. type: example
 #: org.texi:11886
@@ -24134,19 +24158,23 @@ msgid ""
 "(* 2 (+ input x))\n"
 "#+end_src\n"
 msgstr ""
+"#+source: double(input=0, x=2)\n"
+"#+begin_src emacs-lisp\n"
+"(* 2 (+ input x))\n"
+"#+end_src\n"
 
 #+glossary: value ( 値 ) / variable ( 変数 )
 #. type: subsubheading
 #: org.texi:11888
 #, no-wrap
 msgid "Indexable variable values"
-msgstr ""
+msgstr "Indexable variable values(インデックス化可能な変数の値)"
 
 #+glossary: header argument ( ヘッダー引数 ) / example ( 例 ) / index ( インデックス ) / note ( ノート|メモ ) / row ( 行 ) / section ( セクション ) / table ( テーブル ) / value ( 値 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:11897
 msgid "It is possible to reference portions of variable values by ``indexing'' into the variables.  Indexes are 0 based with negative values counting back from the end.  If an index is separated by @code{,}s then each subsequent section will index into the next deepest nesting or dimension of the value.  Note that this indexing occurs @emph{before} other table related header arguments like @code{:hlines}, @code{:colnames} and @code{:rownames} are applied.  The following example assigns the last cell of the first row the table @code{example-table} to the variable @code{data}:"
-msgstr ""
+msgstr "変数の``indexing''インデックス化によって割り当てられた変数の一部分を参照できます。インデックスは0から始まる値で、負の値もとります。インデックスが負の値の場合、それは要素の最後から逆順に数え上げた順番です。インデックスが「,」で分割されているとき、後続する部分のそれぞれが、次に深いネスティング(入れ子構造)にインデックス化するか、値の次元にインデックス化します。このインデックス化を実行する@emph{前に}、ヘッダー引数@code{:hlines}、@code{:colnames}、そして@code{:rownames}に関連する他のテーブルが変更されることに注意して下さい。(最終文、typo? the last cell of the first row *in* the table example-table to the variable data)次の例では、テーブル@code{example-table}1行目の最後のセルを変数@code{data}に割り当てています:"
 
 #. type: example
 #: org.texi:11904
@@ -24160,6 +24188,12 @@ msgid ""
 "| 4 | d |\n"
 "\n"
 msgstr ""
+"#+results: example-table\n"
+"| 1 | a |\n"
+"| 2 | b |\n"
+"| 3 | c |\n"
+"| 4 | d |\n"
+"\n"
 
 #. type: example
 #: org.texi:11908
@@ -24170,6 +24204,10 @@ msgid ""
 "#+end_src\n"
 "\n"
 msgstr ""
+"#+begin_src emacs-lisp :var data=example-table[0,-1]\n"
+"  data\n"
+"#+end_src\n"
+"\n"
 
 #. type: example
 #: org.texi:11911
@@ -24178,12 +24216,14 @@ msgid ""
 "#+results:\n"
 ": a\n"
 msgstr ""
+"#+results:\n"
+": a\n"
 
 #+glossary: example ( 例 ) / row ( 行 ) / value ( 値 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:11917
 msgid "Ranges of variable values can be referenced using two integers separated by a @code{:}, in which case the entire inclusive range is referenced.  For example the following assigns the middle three rows of @code{example-table} to @code{data}."
-msgstr ""
+msgstr "@code{:}で区切られた2つの整数を使うことで、変数の範囲(行や列?)を参照できます。この場合、包括的な範囲を参照します。例えば、以下では@code{example-table}の中央3行を@code{data}に割り当てています。"
 
 #. type: example
 #: org.texi:11925
@@ -24197,6 +24237,13 @@ msgid ""
 "| 5 | 3 |\n"
 "\n"
 msgstr ""
+"#+results: example-table\n"
+"| 1 | a |\n"
+"| 2 | b |\n"
+"| 3 | c |\n"
+"| 4 | d |\n"
+"| 5 | 3 |\n"
+"\n"
 
 #. type: example
 #: org.texi:11929
@@ -24207,6 +24254,10 @@ msgid ""
 "#+end_src\n"
 "\n"
 msgstr ""
+"#+begin_src emacs-lisp :var data=example-table[1:3]\n"
+"  data\n"
+"#+end_src\n"
+"\n"
 
 #. type: example
 #: org.texi:11934
@@ -24217,12 +24268,16 @@ msgid ""
 "| 3 | c |\n"
 "| 4 | d |\n"
 msgstr ""
+"#+results:\n"
+"| 2 | b |\n"
+"| 3 | c |\n"
+"| 4 | d |\n"
 
 #+glossary: column ( 列 ) / example ( 例 ) / index ( インデックス )
 #. type: Plain text
 #: org.texi:11940
 msgid "Additionally, an empty index, or the single character @code{*}, are both interpreted to mean the entire range and as such are equivalent to @code{0:-1}, as shown in the following example in which the entire first column is referenced."
-msgstr ""
+msgstr "加えて、インデックスが空の場合もしくは単一文字@code{*}の場合のどちらでも、全ての範囲すなわち@code{0:-1}を意味していると解釈されます。次の例では、1列目すべてが参照されます。"
 
 #. type: example
 #: org.texi:11951
@@ -24233,6 +24288,10 @@ msgid ""
 "#+end_src\n"
 "\n"
 msgstr ""
+"#+begin_src emacs-lisp :var data=example-table[,0]\n"
+"  data\n"
+"#+end_src\n"
+"\n"
 
 #. type: example
 #: org.texi:11954
@@ -24241,12 +24300,14 @@ msgid ""
 "#+results:\n"
 "| 1 | 2 | 3 | 4 |\n"
 msgstr ""
+"#+results:\n"
+"| 1 | 2 | 3 | 4 |\n"
 
 #+glossary: code block ( コードブロック ) / example ( 例 ) / index ( インデックス ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:11959
 msgid "It is possible to index into the results of code blocks as well as tables.  Any number of dimensions can be indexed.  Dimensions are separated from one another by commas, as shown in the following example."
-msgstr ""
+msgstr "コードブロックの結果をテーブルの様にインデックス化できます。どんな次元数でもインデックス化できます。以下の例に示すように、次元はそれぞれカンマで分割されます。"
 
 #. type: example
 #: org.texi:11967
@@ -24260,6 +24321,13 @@ msgid ""
 "#+end_src\n"
 "\n"
 msgstr ""
+"#+source: 3D\n"
+"#+begin_src emacs-lisp\n"
+"  '(((1  2  3)  (4  5  6)  (7  8  9))\n"
+"    ((10 11 12) (13 14 15) (16 17 18))\n"
+"    ((19 20 21) (22 23 24) (25 26 27)))\n"
+"#+end_src\n"
+"\n"
 
 #. type: example
 #: org.texi:11971
@@ -24270,6 +24338,10 @@ msgid ""
 "#+end_src\n"
 "\n"
 msgstr ""
+"#+begin_src emacs-lisp :var data=3D[1,,1]\n"
+"  data\n"
+"#+end_src\n"
+"\n"
 
 #. type: example
 #: org.texi:11974
@@ -24278,19 +24350,21 @@ msgid ""
 "#+results:\n"
 "| 11 | 14 | 17 |\n"
 msgstr ""
+"#+results:\n"
+"| 11 | 14 | 17 |\n"
 
 #+glossary: evaluation ( 評価 ) / variable ( 変数 )
 #. type: subsubheading
 #: org.texi:11976
 #, no-wrap
 msgid "Emacs Lisp evaluation of variables"
-msgstr ""
+msgstr "Emacs Lispによる変数の評価"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / buffer ( バッファ ) / code ( コード ) / evaluation ( 評価 ) / example ( 例 ) / file ( ファイル ) / org-mode ( Org-mode ) / value ( 値 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:11986
 msgid "Emacs lisp code can be used to initialize variable values.  When a variable value starts with @code{(}, @code{[}, @code{'} or @code{`} it will be evaluated as Emacs Lisp and the result of the evaluation will be assigned as the variable value.  The following example demonstrates use of this evaluation to reliably pass the file-name of the org-mode buffer to a code block---note that evaluation of header arguments is guaranteed to take place in the original org-mode file, while there is no such guarantee for evaluation of the code block body."
-msgstr ""
+msgstr "変数の値を初期化するときにEmacs Lispのコードを使えます。変数の値が@code{(}, @code{[}, @code{'} もしくは @code{`}で始まる場合、変数はEmacs Lispとして評価され、その評価結果を変数の値として代入されます。次の例では、この評価を使ってOrg-modのファイル名を確かにコードブロックへ渡しています---元のOrg-file内でヘッダー引数が間違いなく評価されるということに注意して下さい。コードブロックで評価する場合そのような保証はありません。"
 
 #. type: example
 #: org.texi:11991
@@ -24300,12 +24374,15 @@ msgid ""
 "  wc -w $file\n"
 "#+end_src\n"
 msgstr ""
+"#+begin_src sh :var file-name=(buffer-file-name) :exports both\n"
+"  wc -w $file\n"
+"#+end_src\n"
 
 #+glossary: example ( 例 ) / list ( リスト ) / note ( ノート|メモ ) / table ( テーブル ) / value ( 値 )
 #. type: Plain text
 #: org.texi:11995
 msgid "Note that values read from tables and lists will not be evaluated as Emacs Lisp, as shown in the following example."
-msgstr ""
+msgstr "テーブルやリストから読み出された値はEmacs Lispとして評価されません。以下はその例です。"
 
 #. type: example
 #: org.texi:11999
@@ -24315,6 +24392,9 @@ msgid ""
 "| (a b c) |\n"
 "\n"
 msgstr ""
+"#+results: table\n"
+"| (a b c) |\n"
+"\n"
 
 #. type: example
 #: org.texi:12004
@@ -24326,6 +24406,11 @@ msgid ""
 "#+end_src\n"
 "\n"
 msgstr ""
+"#+headers: :var data=table[0,0]\n"
+"#+begin_src perl\n"
+"  $data\n"
+"#+end_src\n"
+"\n"
 
 #. type: example
 #: org.texi:12007
@@ -24334,166 +24419,168 @@ msgid ""
 "#+results:\n"
 ": (a b c)\n"
 msgstr ""
+"#+results:\n"
+": (a b c)\n"
 
 #. type: code{#1}
 #: org.texi:12010
 #, no-wrap
 msgid ":results"
-msgstr ""
+msgstr ":results"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / class ( クラス ) / option ( オプション )
 #. type: Plain text
 #: org.texi:12014
 msgid "There are three classes of @code{:results} header argument.  Only one option per class may be supplied per code block."
-msgstr ""
+msgstr "ヘッダー引数@code{:results}には3つのクラスがあります。コードブロックでは、クラス毎に1個のオプションだけを付与できます。"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 )
 #. type: itemize
 #: org.texi:12019
 msgid "@b{collection} header arguments specify how the results should be collected from the code block"
-msgstr ""
+msgstr "ヘッダー引数@b{collection}は、コードブロックからどのように結果を集めかを指定します。"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / buffer ( バッファ ) / org-mode ( Org-mode ) / type ( タイプ|入力する )
 #. type: itemize
 #: org.texi:12023
 msgid "@b{type} header arguments specify what type of result the code block will return---which has implications for how they will be inserted into the Org-mode buffer"
-msgstr ""
+msgstr "ヘッダー引数@b{type}はコードブロックがどのタイプの結果を返すかを指定します---これは、Org-modeのバッファーへ結果を挿入する方法に影響します。"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 )
 #. type: itemize
 #: org.texi:12026
 msgid "@b{handling} header arguments specify how the results of evaluating the code block should be handled."
-msgstr ""
+msgstr "ヘッダー引数@b{handling}はコードブロックの評価の結果をどのように扱うかを指定します。"
 
 #. type: subsubheading
 #: org.texi:12028
 #, no-wrap
 msgid "Collection"
-msgstr ""
+msgstr "Collection"
 
 #+glossary: code block ( コードブロック ) / option ( オプション )
 #. type: Plain text
 #: org.texi:12031
 msgid "The following options are mutually exclusive, and specify how the results should be collected from the code block."
-msgstr ""
+msgstr "以下のオプションは、コードブロックから結果を収める方法を指定します。どちらかのオプションしか指定できません。"
 
 #+glossary: value ( 値 )
 #. type: code{#1}
 #: org.texi:12033
 #, no-wrap
 msgid "value"
-msgstr ""
+msgstr "value"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / default ( デフォルト|初期値 ) / evaluation ( 評価 ) / language ( 言語 ) / mode ( モード|モード ) / note ( ノート|メモ ) / source ( ソース ) / type ( タイプ|入力する ) / value ( 値 )
 #. type: itemize
 #: org.texi:12039
 msgid "This is the default.  The result is the value of the last statement in the code block.  This header argument places the evaluation in functional mode.  Note that in some languages, e.g., Python, use of this result type requires that a @code{return} statement be included in the body of the source code block. E.g., @code{:results value}."
-msgstr ""
+msgstr "デフォルトの設定です。コードブロックの最終行の値が結果になります。このヘッダー引数はfunctional modeで評価します。このタイプの返り値を使う場合、Pythonなどの言語では、ソースコードブロックの本文で@code{return}文が必要なことに注意して下さい。 例えば、@code{:results value}のように記述します。"
 
 #+glossary: output ( アウトプット )
 #. type: code{#1}
 #: org.texi:12039
 #, no-wrap
 msgid "output"
-msgstr ""
+msgstr "output"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 ) / evaluation ( 評価 ) / mode ( モード|モード )
 #. type: itemize
 #: org.texi:12043
 msgid "The result is the collection of everything printed to STDOUT during the execution of the code block.  This header argument places the evaluation in scripting mode.  E.g., @code{:results output}."
-msgstr ""
+msgstr "コードブロックで実行される間に標準出力(STDOUT)へと出力されたもの全てを収集して結果とします。このヘッダー引数はscripting modeで評価します。例えば、@code{:results output}のように記述します。"
 
 #+glossary: type ( タイプ|入力する )
 #. type: subsubheading
 #: org.texi:12045
 #, no-wrap
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #+glossary: code block ( コードブロック ) / default ( デフォルト|初期値 ) / option ( オプション ) / table ( テーブル ) / type ( タイプ|入力する ) / value ( 値 )
 #. type: Plain text
 #: org.texi:12050
 msgid "The following options are mutually exclusive and specify what type of results the code block will return.  By default, results are inserted as either a table or scalar depending on their value."
-msgstr ""
+msgstr "以下のオプションは相互に排他的で、コードブロックの結果のタイプを返します。デフォルトでは、結果の値によって、テーブルかスカラーのどちらかが結果として挿入されます。"
 
 #. type: item
 #: org.texi:12052
 #, no-wrap
 msgid "@code{table}, @code{vector}"
-msgstr ""
+msgstr "@code{table}, @code{vector}"
 
 #+glossary: column ( 列 ) / org-mode ( Org-mode ) / row ( 行 ) / table ( テーブル ) / value ( 値 )
 #. type: itemize
 #: org.texi:12056
 msgid "The results should be interpreted as an Org-mode table.  If a single value is returned, it will be converted into a table with one row and one column.  E.g., @code{:results value table}."
-msgstr ""
+msgstr "結果は、Org-modeのテーブルとして解釈されます。単一の値が返された場合、結果は1行1列のテーブルへと変換されます。例えば、@code{:results value table}のように記述します。"
 
 #+glossary: list ( リスト )
 #. type: code{#1}
 #: org.texi:12056
 #, no-wrap
 msgid "list"
-msgstr ""
+msgstr "list"
 
 #+glossary: list ( リスト ) / org-mode ( Org-mode ) / value ( 値 )
 #. type: itemize
 #: org.texi:12059
 msgid "The results should be interpreted as an Org-mode list.  If a single scalar value is returned it will be converted into a list with only one element."
-msgstr ""
+msgstr "結果は、Org-modeのリストとして解釈されます。単一のスカラー値が返された場合、結果は1要素からなるリストへと変換されます。"
 
 #. type: item
 #: org.texi:12059
 #, no-wrap
 msgid "@code{scalar}, @code{verbatim}"
-msgstr ""
+msgstr "@code{scalar}, @code{verbatim}"
 
 #+glossary: buffer ( バッファ ) / org-mode ( Org-mode ) / table ( テーブル ) / text ( テキスト|文章 ) / value ( 値 )
 #. type: itemize
 #: org.texi:12063
 msgid "The results should be interpreted literally---they will not be converted into a table.  The results will be inserted into the Org-mode buffer as quoted text.  E.g., @code{:results value verbatim}."
-msgstr ""
+msgstr "結果は文字通りに評価されます---結果はテーブルへと変換されません。結果は引用されたテキストとしてOrg-modeのバッファに挿入されます。例えば、@code{:results value verbatim}と記述します。"
 
 #+glossary: buffer ( バッファ ) / file ( ファイル ) / link ( リンク ) / org-mode ( Org-mode ) / value ( 値 )
 #. type: itemize
 #: org.texi:12066
 msgid "The results will be interpreted as the path to a file, and will be inserted into the Org-mode buffer as a file link.  E.g., @code{:results value file}."
-msgstr ""
+msgstr "結果はファイルへのパスとして解釈され、ファイルのリンクとしてOrg-modeのバッファに挿入されます。例えば、@code{:results value file}のように記述します。"
 
 #. type: item
 #: org.texi:12066
 #, no-wrap
 msgid "@code{raw}, @code{org}"
-msgstr ""
+msgstr "@code{raw}, @code{org}"
 
 #+glossary: buffer ( バッファ ) / code ( コード ) / org-mode ( Org-mode ) / table ( テーブル ) / value ( 値 )
 #. type: itemize
 #: org.texi:12070
 msgid "The results are interpreted as raw Org-mode code and are inserted directly into the buffer.  If the results look like a table they will be aligned as such by Org-mode.  E.g., @code{:results value raw}."
-msgstr ""
+msgstr "結果は加工されていないOrg-modeのコードとして解釈され、そのバッファに直接挿入されます。結果がテーブルのように見えるときは、Org-modeのように整形します。例えば、@code{:results value raw}のように記述します。"
 
 #. type: code{#1}
 #: org.texi:12070
 #, no-wrap
 msgid "html"
-msgstr ""
+msgstr "html"
 
 #+glossary: block ( ブロック ) / value ( 値 )
 #. type: itemize
 #: org.texi:12073
 msgid "Results are assumed to be HTML and will be enclosed in a @code{begin_html} block.  E.g., @code{:results value html}."
-msgstr ""
+msgstr "結果はHTMLであると見なされて、@code{begin_html}ブロックに囲まれます。例えば、@code{:results value html}のように記述します。"
 
 #. type: code{#1}
 #: org.texi:12073
 #, no-wrap
 msgid "latex"
-msgstr ""
+msgstr "latex"
 
 #+glossary: block ( ブロック ) / value ( 値 )
 #. type: itemize
 #: org.texi:12076
 msgid "Results assumed to be LaTeX and are enclosed in a @code{begin_latex} block.  E.g., @code{:results value latex}."
-msgstr ""
+msgstr "結果はLaTeXと見なされて、@code{begin_latex}ブロックに囲まれます。例えば、@code{:results value latex}のように記述します。"
 
 #+glossary: code ( コード )
 #. type: code{#1}
@@ -24507,92 +24594,92 @@ msgstr "code"
 #. type: itemize
 #: org.texi:12079
 msgid "Result are assumed to be parseable code and are enclosed in a code block.  E.g., @code{:results value code}."
-msgstr ""
+msgstr "結果は構文解析可能なコードと見なされて、コードブロックに囲まれます。例えば、@code{:results value code}のように記述します。"
 
 #. type: code{#1}
 #: org.texi:12079
 #, no-wrap
 msgid "pp"
-msgstr ""
+msgstr "pp"
 
 #+glossary: code block ( コードブロック ) / code ( コード ) / option ( オプション ) / value ( 値 )
 #. type: itemize
 #: org.texi:12083
 msgid "The result is converted to pretty-printed code and is enclosed in a code block.  This option currently supports Emacs Lisp, Python, and Ruby.  E.g., @code{:results value pp}."
-msgstr ""
+msgstr "結果は装飾されたコードに変換されて、コードブロックに囲まれます。このオプションは、現在、Emacs Lisp, PythonとRubyをサポートしています。例えば、@code{:results value pp}のように記述します。"
 
 #. type: code{#1}
 #: org.texi:12083
 #, no-wrap
 msgid "wrap"
-msgstr ""
+msgstr "wrap"
 
 #+glossary: block ( ブロック ) / syntax ( 構文|シンタックス )
 #. type: itemize
 #: org.texi:12087
 msgid "The result is wrapped in a @code{begin_result} block.  This can be useful for inserting @code{raw} or @code{org} syntax results in such a way that their extend is known and they can be automatically removed or replaced."
-msgstr ""
+msgstr "結果は@code{begin_result}ブロックに囲まれます。結果の展開方法(extend?名詞形を見つけられず)が分かっていて自動的に削除されるか置換されるような、@code{raw}もしくは@code{org}構文の結果を挿入する時にこのオプションを使うと便利です。"
 
 #+glossary: handling ( 扱い )
 #. type: subsubheading
 #: org.texi:12089
 #, no-wrap
 msgid "Handling"
-msgstr ""
+msgstr "Handling"
 
 #+glossary: option ( オプション )
 #. type: Plain text
 #: org.texi:12092
 msgid "The following results options indicate what happens with the results once they are collected."
-msgstr ""
+msgstr "以下のresultのオプションは、結果が1度集められた後に何が起こるかを示しています。"
 
 #. type: code{#1}
 #: org.texi:12094
 #, no-wrap
 msgid "silent"
-msgstr ""
+msgstr "silent"
 
 #+glossary: buffer ( バッファ ) / minibuffer ( ミニバッファ ) / org-mode ( Org-mode ) / output ( アウトプット )
 #. type: itemize
 #: org.texi:12097
 msgid "The results will be echoed in the minibuffer but will not be inserted into the Org-mode buffer.  E.g., @code{:results output silent}."
-msgstr ""
+msgstr "結果はミニバッファに表示されますが、Org-odeのバッファには挿入されません。例えば、@code{:results output silent}と記述します。"
 
 #. type: code{#1}
 #: org.texi:12097
 #, no-wrap
 msgid "replace"
-msgstr ""
+msgstr "replace"
 
 #+glossary: buffer ( バッファ ) / default ( デフォルト|初期値 ) / org-mode ( Org-mode ) / output ( アウトプット ) / value ( 値 )
 #. type: itemize
 #: org.texi:12101
 msgid "The default value.  Any existing results will be removed, and the new results will be inserted into the Org-mode buffer in their place.  E.g., @code{:results output replace}."
-msgstr ""
+msgstr "デフォルトの設定です。どんな結果でも存在していれば削除し、新しい結果をOrg-modeのバッファのその場所に挿入します。例えば、@code{:results output replace}と記述します。"
 
 #. type: code{#1}
 #: org.texi:12101
 #, no-wrap
 msgid "append"
-msgstr ""
+msgstr "append"
 
 #+glossary: code block ( コードブロック )
 #. type: itemize
 #: org.texi:12105
 msgid "If there are pre-existing results of the code block then the new results will be appended to the existing results.  Otherwise the new results will be inserted as with @code{replace}."
-msgstr ""
+msgstr "コードブロックの結果が以前から存在する場合、新しい結果は現在存在する結果に付け加えられます。結果が存在しなければ、@code{replace}のように新しい結果が挿入されます。"
 
 #. type: code{#1}
 #: org.texi:12105
 #, no-wrap
 msgid "prepend"
-msgstr ""
+msgstr "prepend"
 
 #+glossary: code block ( コードブロック )
 #. type: itemize
 #: org.texi:12109
 msgid "If there are pre-existing results of the code block then the new results will be prepended to the existing results.  Otherwise the new results will be inserted as with @code{replace}."
-msgstr ""
+msgstr "もしコードブロックの結果が既に存在する場合、今現在の結果の先頭に新しい結果追加します。結果が存在しなければ、@code{replace}のように新しい結果が挿入されます。"
 
 #. type: code{#1}
 #: org.texi:12112
