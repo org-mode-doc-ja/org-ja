@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-09-30 21:19+0900\n"
+"PO-Revision-Date: 2011-10-01 01:56+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -24739,13 +24739,13 @@ msgstr ""
 #: org.texi:12151
 #, no-wrap
 msgid "Remote execution"
-msgstr ""
+msgstr "リモートでの実行"
 
 #+glossary: code ( コード ) / directory ( ディレクトリ ) / example ( 例 ) / file ( ファイル ) / syntax ( 構文|シンタックス )
 #. type: Plain text
 #: org.texi:12154
 msgid "A directory on a remote machine can be specified using tramp file syntax, in which case the code will be evaluated on the remote machine. An example is"
-msgstr ""
+msgstr "trampのファイル構文を使う事でリモートマシン上のディレクトリを記述できます。その場合、リモートマシン上でコードは評価されます。以下は例です。"
 
 #. type: example
 #: org.texi:12159
@@ -24755,30 +24755,33 @@ msgid ""
 "plot(1:10, main=system(\"hostname\", intern=TRUE))\n"
 "#+end_src\n"
 msgstr ""
+"#+begin_src R :file plot.png :dir /dand@@yakuba.princeton.edu:\n"
+"plot(1:10, main=system(\"hostname\", intern=TRUE))\n"
+"#+end_src\n"
 
 #+glossary: buffer ( バッファ ) / directory ( ディレクトリ ) / file ( ファイル ) / link ( リンク ) / org-mode ( Org-mode ) / output ( アウトプット ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:12165
 msgid "Text results will be returned to the local Org-mode buffer as usual, and file output will be created on the remote machine with relative paths interpreted relative to the remote directory. An Org-mode link to the remote file will be created."
-msgstr ""
+msgstr "いつものようにローカルのOrg-modeのバッファにテキストの結果が返され、リモートマシン上のリモートディレクトリを基準とした相対パスにファイルがアウトプットされます。リモートファイルへのOrg-modeのリンクが生成されます。"
 
 #+glossary: example ( 例 ) / link ( リンク ) / org ( Org-mode )
 #. type: Plain text
 #: org.texi:12168
 msgid "So, in the above example a plot will be created on the remote machine, and a link of the following form will be inserted in the org buffer:"
-msgstr ""
+msgstr "従って、上の例ではリモートマシン上にグラフが生成されます。そしてOrg-modeバッファには次の形式のリンクが挿入されます。"
 
 #. type: example
 #: org.texi:12171
 #, no-wrap
 msgid "[[file:/scp:dand@@yakuba.princeton.edu:/home/dand/plot.png][plot.png]]\n"
-msgstr ""
+msgstr "[[file:/scp:dand@@yakuba.princeton.edu:/home/dand/plot.png][plot.png]]\n"
 
 #+glossary: feature ( 機能 ) / functionality ( 機能性 ) / install ( インストール ) / value ( 値 ) / variable ( 変数 ) / version ( バージョン ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:12177
 msgid "Most of this functionality follows immediately from the fact that @code{:dir} sets the value of the Emacs variable @code{default-directory}, thanks to tramp. Those using XEmacs, or GNU Emacs prior to version 23 may need to install tramp separately in order for these features to work correctly."
-msgstr ""
+msgstr "trampのおかげで、@code{:dir}がEmacsの変数@code{default-directory}をセットするという事実からすぐにこの機能性の多くを得られる。これらの特長を正しく動かすために、XEmacsやversion23より前のGNU Emacsを使っている人はtrampを別々にインストールする必要があるかもしれない。"
 
 #+glossary: point ( ポイント )
 #. type: subsubheading
