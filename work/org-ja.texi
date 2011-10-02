@@ -2439,7 +2439,7 @@ remote(NAME-OR-ID,REF)
 @end example
 
 @noindent
-で、ここでNAMEは別なファイルにあるテーブルの名前で、テーブルの前の行に
+NAMEは別なファイルにあるテーブルの名前で、テーブルの前の行に
 @code{#+TBLNAME: NAME}と設定しておきます。エントリーのIDも利用でき、別なファイル
 にあるものも指定できます。この場合はエントリーに含まれる最初のテーブルを参照
 します。REFは前述したような絶対的なフィールドか範囲となる参照で、@code{@@3$3}や
@@ -2628,10 +2628,11 @@ Lisp形式の数値として挿入されます。@samp{L}フラッグを指定�
 @cindex 編集（テーブルの数式）
 
 @vindex org-table-use-standard-references
-ミニバッファか直接フィールド内で、個々の数式を編集できます。org-modeはテーブ
-ルに含まれるすべてのアクティブな数式がある特別なバッファも準備しています。数
-式を編集しようとすると、org-modeは、もし可能ならば参照を標準のフォーマット（
-@code{B3}や@code{D&}のような記法）に変換します。もし内部フォーマット（@code{@@3$2}や@code{$4}のような記法）を用いて編集したい場合は、変数
+ミニバッファかもしくは、直接フィールド内で、個々の数式を編集できます。
+org-modeはテーブルに含まれるすべてのアクティブな数式がある特別なバッファも準
+備しています。数式を編集しようとすると、org-modeは、もし可能ならば参照を標準
+のフォーマット（@code{B3}や@code{D&}のような記法）に変換します。もし内部フォーマット（
+@code{@@3$2}や@code{$4}のような記法）を用いて編集したい場合は、変数
 @code{org-table-use-standard-references}を設定してください。
 
 @table @kbd
@@ -11769,37 +11770,35 @@ Org-modeのバッファのその場所に挿入します。例えば、
 @node file, dir, results, Specific header arguments
 @subsubsection @code{:file}
 
-The header argument @code{:file} is used to specify an external file in
-which to save code block results.  After code block evaluation an Org-mode
-style @code{[[file:]]} link (see @ref{Link format}) to the file will be
-inserted into the Org-mode buffer.  Some languages including R, gnuplot,
-dot, and ditaa provide special handling of the @code{:file} header argument
-automatically wrapping the code block body in the boilerplate code required
-to save output to the specified file.  This is often useful for saving
-graphical output of a code block to the specified file.
+コードブロックの結果を保存する外部のファイルを指定するため、にヘッダー引数
+@code{:file}を使います。コードブロックの評価の後に、Org-modeスタイルのリンク
+@code{[[file:]]}(@ref{Link format}を参照)が、そのOrg-modeバッファーに挿入されます。
+R, gnuplot,
+dotやditaaなどの言語では、ヘッダー引数@code{:file}を扱う特別な機能が用意されてい
+ます。その機能は、指定されたファイルへアウトプットを保存するために、必要な定
+型のコードでコードブロックの本文を囲みます。これは、コードブロックの画像出力
+を特定のファイルに保存する場合に、よく使います。
 
-The argument to @code{:file} should be either a string specifying the path
-to a file, or a list of two strings in which case the first element of the
-list should be the path to a file and the second a description for the link.
+@code{:file}に対する引数は、ファイルのパスを示す文字列もしくは、次の2つの文字列か
+らなるリスト、のどちらかでなくてはなりません。2つの文字列からなるリストは、
+第1要素はファイルのパス、第2要素はそのリンクの説明から構成されます。
 
 @node dir, exports, file, Specific header arguments
-@subsubsection @code{:dir} and remote execution
+@subsubsection @code{:dir}とリモートでの実行
 
-While the @code{:file} header argument can be used to specify the path to
-the output file, @code{:dir} specifies the default directory during code
-block execution. If it is absent, then the directory associated with the
-current buffer is used. In other words, supplying @code{:dir path}
-temporarily has the same effect as changing the current directory with
-@kbd{M-x cd path}, and then not supplying @code{:dir}. Under the surface,
-@code{:dir} simply sets the value of the Emacs variable
-@code{default-directory}.
+ヘッダー引数@code{:file}がアウトプットするファイルのパスを指定する一方で、@code{:dir}
+はコードブロックを実行する間のデフォルトのディレクトリを指定します。指定され
+なければ、現在のバッファに関連するディレクトリが使われます。言い換えると、
+@code{:dir path}を与えることは、@kbd{M-x cd path}でカレントディレクトリを変えるだけで
+@code{:dir}を設定しない場合と一時的には同じ効果を持ちます。水面下で、@code{:dir}が
+Emacsの変数@code{default-directory}を変更しているだけです。
 
-When using @code{:dir}, you should supply a relative path for file output
-(e.g.@: @code{:file myfile.jpg} or @code{:file results/myfile.jpg}) in which
-case that path will be interpreted relative to the default directory.
+@code{:dir}を使う場合、アウトプットするファイルを相対パス(例@: @code{:file myfile.jpg}も
+しくは@code{:file results/myfile.jpg})で与えなければなりません。その場合、与えた
+パスはデフォルトディレクトリに対する相対パスとして解釈されます。
 
-In other words, if you want your plot to go into a folder called @file{Work}
-in your home directory, you could use
+つまり、ホームディレクトリ内に@file{Work}というフォルダでプロット(グラフを描画)し
+たい場合、次のように使えます。
 
 @example
 #+begin_src R :file myplot.png :dir ~/Work
@@ -11807,9 +11806,9 @@ matplot(matrix(rnorm(100), 10), type="l")
 #+end_src
 @end example
 
-@subsubheading Remote execution
-A directory on a remote machine can be specified using tramp file syntax, in
-which case the code will be evaluated on the remote machine. An example is
+@subsubheading リモートでの実行
+trampのファイル構文を使う事でリモートマシン上のディレクトリを記述できます。
+その場合、リモートマシン上でコードは評価されます。以下は例です。
 
 @example
 #+begin_src R :file plot.png :dir /dand@@yakuba.princeton.edu:
@@ -11817,38 +11816,35 @@ plot(1:10, main=system("hostname", intern=TRUE))
 #+end_src
 @end example
 
-Text results will be returned to the local Org-mode buffer as usual, and
-file output will be created on the remote machine with relative paths
-interpreted relative to the remote directory. An Org-mode link to the remote
-file will be created.
+いつものようにローカルのOrg-modeのバッファにテキストの結果が返され、リモート
+マシン上のリモートディレクトリを基準とした相対パスにファイルがアウトプットさ
+れます。リモートファイルへのOrg-modeのリンクが生成されます。
 
-So, in the above example a plot will be created on the remote machine, and a
-link of the following form will be inserted in the org buffer:
+従って、上の例ではリモートマシン上にグラフが生成されます。そしてOrg-modeバッ
+ファには次の形式のリンクが挿入されます。
 
 @example
 [[file:/scp:dand@@yakuba.princeton.edu:/home/dand/plot.png][plot.png]]
 @end example
 
-Most of this functionality follows immediately from the fact that
-@code{:dir} sets the value of the Emacs variable @code{default-directory},
-thanks to tramp. Those using XEmacs, or GNU Emacs prior to version 23 may
-need to install tramp separately in order for these features to work
-correctly.
+trampのおかげで、@code{:dir}がEmacsの変数@code{default-directory}をセットするという事
+実からすぐにこの機能性の多くを得られる。これらの特長を正しく動かすために、
+XEmacsやversion23より前のGNU
+Emacsを使っている人はtrampを別々にインストールする必要があるかもしれない。
 
-@subsubheading Further points
+@subsubheading 更なる点
 
 @itemize @bullet
-@item If @code{:dir} is used in conjunction with @code{:session}, although it will
-determine the starting directory for a new session as expected, no attempt
-is currently made to alter the directory associated with an existing
-session.
-@item @code{:dir} should typically not be used to create files during export with
-@code{:exports results} or @code{:exports both}. The reason is that, in
-order to retain portability of exported material between machines, during
-export links inserted into the buffer will *not* be expanded against
-@code{default directory}. Therefore, if @code{default-directory} is altered
-using @code{:dir}, it is probable that the file will be created in a
-location to which the link does not point.
+@item もし@code{:session}と並行して@code{:dir}が使われるとき、最初のセッションを開始す
+るときには確認されるので開始ディレクトリを決めますが、すでに存在するセ
+ッションに関連したディレクトリに変えられることはありません。
+@item @code{:exports results}や@code{:exports both}を使ってファイルをエクスポートする
+間、通常は@code{:dir}を使ってファイルを生成するべきではありません。理由は以
+下の通りです。両マシンでエクスポートされた素材の移植性を維持するために
+は、エクスポートの間にバッファーへと挿入されたリンクは
+@code{default-directory}に対して展開されません。それゆえ、もし
+@code{default directory}が@code{:dir}によって変えらる場合、リンクが指していない
+ポイントにファイルが生成されそうです。
 @end itemize
 
 @node exports, 抽出, dir, Specific header arguments
@@ -14347,66 +14343,71 @@ InBoxファイル中でトップレベルのエントリーとして位置づけ
 でも戻ることができます。
 
 @node History and Acknowledgments, Main Index, MobileOrg, Top
-@appendix History and acknowledgments
-@cindex acknowledgments
-@cindex history
-@cindex thanks
+@appendix 歴史と謝辞
+@cindex 謝辞
+@cindex 歴史
+@cindex 感謝
 
-Org was born in 2003, out of frustration over the user interface of the
-Emacs Outline mode.  I was trying to organize my notes and projects, and
-using Emacs seemed to be the natural way to go.  However, having to remember
-eleven different commands with two or three keys per command, only to hide
-and show parts of the outline tree, that seemed entirely unacceptable to
-me.  Also, when using outlines to take notes, I constantly wanted to
-restructure the tree, organizing it parallel to my thoughts and plans.
-@emph{Visibility cycling} and @emph{structure editing} were originally
-implemented in the package @file{outline-magic.el}, but quickly moved to the
-more general @file{org.el}.  As this environment became comfortable for
-project planning, the next step was adding @emph{TODO entries}, basic
-@emph{timestamps}, and @emph{table support}.  These areas highlighted the
-two main goals that Org still has today: to be a new, outline-based, plain
-text mode with innovative and intuitive editing features, and to incorporate
-project planning functionality directly into a notes file.
+Org-modeは2003年に誕生しました。Emacs
+Outlineモードのユーザインターフェイスに対するフラストレーションから自由にな
+るためでした。私（Carsten
+Dominik）は、自分のノートとプロジェクトを整理しようと試みていて、Emacs使うこ
+とが自然なやり方に思えました。ところが、アウトラインツリーの一部を隠したり表
+示したりするだけでも、2〜3個のキーを組み合わせたコマンドを、7種類も覚えなけ
+ればならず、これは全く受け入れがたいことでした（訳注：org-modeでは@key{TAB}だけ
+でよい）。また、アウトラインでノートを取るとき、私は絶えずツリーの構造を変更
+して、自分の考えや計画に合わせて整理しておきたかったのです。
+@emph{Visibility cycling}と@emph{structure editing}は、当初@file{outline-magic.el}パッケー
+ジに実装されていましたが、すぐにより一般的な@file{org.el}に移しました。プロジェク
+トを計画するための心地良い環境になったので、次の段階は@emph{TODOリスト}、基本的な
+@emph{タイムスタンプ}そして@emph{テーブル機能}を追加することでした。これらの機能は、
+org-modeが今日も追求している2つの主要なゴールを明らかにしました。すなわち、
+現代的で、アウトラインベースの、革新的かつ直感的な編集機能を持ったプレーンテ
+キストモードになること。そして、ノートファイルに、プロジェクトプランイングの
+機能を直接組み込むことです。
 
-Since the first release, literally thousands of emails to me or to
-@email{emacs-orgmode@@gnu.org} have provided a constant stream of bug
-reports, feedback, new ideas, and sometimes patches and add-on code.  Many
-thanks to everyone who has helped to improve this package.  I am trying to
-keep here a list of the people who had significant influence in shaping one
-or more aspects of Org.  The list may not be complete, if I have forgotten
-someone, please accept my apologies and let me know.
+Org-modeをリリースして以来、私や@email{emacs-orgmode@@gnu.org}に送られてくる、文字
+通りに何千ものeメールは、バグレポート、フィードバック、新しいアイディア、そ
+して時にはパッチやアドオンを絶えず提供してくれます。org-modeを改良するために
+手助けしてくれるすべての人に感謝します。org-modeの様々な側面で、改善に多大な
+影響を与えた方々のリストをここに記したいと思います。このリストは完全ではない
+と思うので、もし書き忘れてしまった方がいればお詫びすると共に、連絡をください
+。
 
-Before I get to this list, a few special mentions are in order:
+リストを記す前に、何名かについてアルファベット順で特別に紹介します。
 
 @table @i
 @item Bastien Guerry
-Bastien has written a large number of extensions to Org (most of them
-integrated into the core by now), including the LaTeX exporter and the plain
-list parser.  His support during the early days, when he basically acted as
-co-maintainer, was central to the success of this project.  Bastien also
-invented Worg, helped establishing the Web presence of Org, and sponsors
-hosting costs for the orgmode.org website.
+Bastienは、LaTeXエクスポートとプレーンなリストを構文解析する機能を含む
+、org-modeの数多くの拡張機能を実装しました（その多くが、現在はorg-mode
+の中心に組み込まれています）。彼が副管理者としての役割を果たしていた開
+発初期の尽力は、org-modeプロジェクトの成功の中心となりました。また彼は
+Worg（訳注：org-modeのコミュニティサイト。@uref{http://orgmode.org/worg/}）
+を考案し、org-modeのウェブにおける存在の認知を手助けし、orgmode.orgの
+ホスティングコストのスポンサーになりました。
 @item Eric Schulte and Dan Davison
-Eric and Dan are jointly responsible for the Org-babel system, which turns
-Org into a multi-language environment for evaluating code and doing literate
-programming and reproducible research.
+EricとDanは、共同でorg-babelシステムに構築しました。これによりorg-mode
+を、コードの評価、文芸的プログラミングそして再現可能な研究に対応する、
+他言語環境へと変えました。
 @item John Wiegley
-John has contributed a number of great ideas and patches directly to Org,
-including the attachment system (@file{org-attach.el}), integration with
-Apple Mail (@file{org-mac-message.el}), hierarchical dependencies of TODO
-items, habit tracking (@file{org-habits.el}), and encryption
-(@file{org-crypt.el}).  Also, the capture system is really an extended copy
-of his great @file{remember.el}.
+Johnは、数々の素晴らしいアイディアとパッチを直接的にorg-modeに提供して
+くれました。具体的には、ファイル添付システム（@file{org-attach.el}）、
+AppleMailとの一体化（@file{org-mac-message.el}）、TODOリストの階層的な依存
+関係、習慣のトラッキング（@file{org-habits.el}）そして、暗号化（
+@file{org-crypt.el}）です。そして実は、org-modeのキャプチャシステムは、彼の
+素晴らしい@file{remember.el}を拡張したものです。
 @item Sebastian Rose
-Without Sebastian, the HTML/XHTML publishing of Org would be the pitiful
-work of an ignorant amateur.  Sebastian has pushed this part of Org onto a
-much higher level.  He also wrote @file{org-info.js}, a Java script for
-displaying webpages derived from Org using an Info-like or a folding
-interface with single-key navigation.
+Sebastianが居なければ、org-modeのHTML/XHTMLエクスポートは、無知なアマ
+チュアによる痛ましい機能になっていたでしょう。彼はorg-modeの該当部分を
+より高いレベルに押し上げました。また、@file{org-info.js}の作者でもあります
+。このJavaScriptは、org-modeから生成されたウェブページをinfoのように表
+示したり、単一キーによるナビゲーションでツリーを折り畳むインターフェイ
+スを提供します。
 @end table
 
 @noindent OK, now to the full list of contributions!  Again, please let me
-know what I am missing here!
+（indent問題箇所）さて！いよいよ貢献してくれた方々のリストに移ります。繰り返
+しますが、忘れているところがあれば教えてください。
 
 @itemize @bullet
 
@@ -14567,8 +14568,10 @@ contributed various ideas and code snippets.
 @node Variable Index, , Command and Function Index, Top
 @unnumbered Variable index
 
-This is not a complete index of variables and faces, only the ones that are
-mentioned in the manual.  For a more complete list, use @kbd{M-x org-customize @key{RET}} and then click yourself through the tree.
+これは変数とフェイスの完全なインデックスではありません。このマニュアルで言及
+したものだけを列挙しています。さらに詳しいリストは、
+@kbd{M-x org-customize @key{RET}}で表示されるカスタムブラウザで確認できます。表示さ
+れるツリーをクリックしてください。
 
 @printindex vr
 
