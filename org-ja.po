@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-10-06 20:15+0900\n"
+"PO-Revision-Date: 2011-10-06 21:10+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -25406,25 +25406,25 @@ msgstr "テーブルが列の名前を持っている「ように見えない」
 #: org.texi:12496
 #, no-wrap
 msgid ":rownames"
-msgstr ""
+msgstr ":rownames"
 
 #+glossary: header argument ( ヘッダー引数 ) / default ( デフォルト|初期値 ) / value ( 値 )
 #. type: Plain text
 #: org.texi:12500
 msgid "The @code{:rownames} header argument can take on the values @code{yes} or @code{no}, with a default value of @code{no}."
-msgstr ""
+msgstr "ヘッダー引数@code{:rownames}は@code{yes}もしくは@code{no}を値として持つ事ができ、デフォルトでは@code{no}と設定されています。"
 
 #+glossary: row ( 行 )
 #. type: itemize
 #: org.texi:12504
 msgid "No row name pre-processing will take place."
-msgstr ""
+msgstr "行に関する前処理を行いません。"
 
 #+glossary: column ( 列 ) / processing ( 処理 ) / table ( テーブル )
 #. type: itemize
 #: org.texi:12508
 msgid "The first column of the table is removed from the table before processing, and is then reapplied to the results."
-msgstr ""
+msgstr "前処理としてテーブルの1列目を取り除き、処理結果に列の名前を付け加えます。"
 
 #. type: example
 #: org.texi:12513
@@ -25435,6 +25435,10 @@ msgid ""
 "| two | 6 | 7 | 8 | 9 | 10 |\n"
 "\n"
 msgstr ""
+"#+tblname: with-rownames\n"
+"| one | 1 | 2 | 3 | 4 |  5 |\n"
+"| two | 6 | 7 | 8 | 9 | 10 |\n"
+"\n"
 
 #+glossary: row ( 行 )
 #. type: example
@@ -25447,6 +25451,11 @@ msgid ""
 "#+end_src\n"
 "\n"
 msgstr ""
+"#+srcname: echo-table-once-again\n"
+"#+begin_src python :var tab=with-rownames :rownames yes\n"
+"  return [[val + 10 for val in row] for row in tab]\n"
+"#+end_src\n"
+"\n"
 
 #. type: example
 #: org.texi:12522
@@ -25456,12 +25465,15 @@ msgid ""
 "| one | 11 | 12 | 13 | 14 | 15 |\n"
 "| two | 16 | 17 | 18 | 19 | 20 |\n"
 msgstr ""
+"#+results: echo-table-once-again\n"
+"| one | 11 | 12 | 13 | 14 | 15 |\n"
+"| two | 16 | 17 | 18 | 19 | 20 |\n"
 
 #+glossary: note ( ノート|メモ ) / row ( 行 ) / table ( テーブル ) / variable ( 変数 )
 #. type: itemize
 #: org.texi:12526
 msgid "Please note that row names are not removed before the table is indexed using variable indexing @xref{var, Indexable variable values}."
-msgstr ""
+msgstr "variable indexing @xref{var, Indexable variable values}を使ってテーブルをインデックス化する前に、テーブルの行の名前が取り除かれないことに注意してください。"
 
 #. type: code{#1}
 #: org.texi:12530
