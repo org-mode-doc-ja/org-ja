@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-10-06 18:23+0900\n"
+"PO-Revision-Date: 2011-10-06 18:55+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -25085,7 +25085,7 @@ msgstr "-- <<example>>\n"
 #. type: Plain text
 #: org.texi:12326
 msgid "expands to:"
-msgstr "次のように展開します:"
+msgstr "次のように展開されます:"
 
 #. type: example
 #: org.texi:12330
@@ -25101,37 +25101,37 @@ msgstr ""
 #. type: Plain text
 #: org.texi:12335
 msgid "Note that noweb replacement text that does not contain any newlines will not be affected by this change, so it is still possible to use inline noweb references."
-msgstr "改行を含まないnowebのテキスト置換は、この変化の影響を受けないことに注目してください。したがって、インラインにおいてもnowebの識別記号を使えます。"
+msgstr "改行を含まないnowebのテキスト置換(機能)は、この変化の影響を受けないことに注目してください。したがって、インラインにおいてもnowebの識別記号を使えます。"
 
 #. type: code{#1}
 #: org.texi:12337
 #, no-wrap
 msgid ":cache"
-msgstr ""
+msgstr ":cache"
 
 #+glossary: code block ( コードブロック ) / header argument ( ヘッダー引数 )
 #. type: Plain text
 #: org.texi:12343
 msgid "The @code{:cache} header argument controls the use of in-buffer caching of the results of evaluating code blocks.  It can be used to avoid re-evaluating unchanged code blocks.  This header argument can have one of two values: @code{yes} or @code{no}."
-msgstr ""
+msgstr "ヘッダー引数@code{:cache}はコードブロックの評価結果をバッファ内に保存するか(=キャッシュするか)を管理します。これにより、変化していないコードブロックを再度評価することを避けられます。このヘッダー引数は:@code{yes}あるいは@code{no}のどちらかの値をとります。"
 
 #+glossary: code block ( コードブロック ) / default ( デフォルト|初期値 ) / time ( 時刻|時間|回 )
 #. type: itemize
 #: org.texi:12348
 msgid "The default.  No caching takes place, and the code block will be evaluated every time it is called."
-msgstr ""
+msgstr "デフォルトの設定です。実行結果をバッファに保存せず、呼び出される度にコードブロックを評価します。"
 
 #+glossary: code block ( コードブロック ) / argument ( 引数 ) / block ( ブロック ) / checked ( チェックされた ) / code ( コード ) / hash ( ハッシュデータ ) / line ( 行|ライン|線 ) / time ( 時刻|時間|回 )
 #. type: itemize
 #: org.texi:12354
 msgid "Every time the code block is run a SHA1 hash of the code and arguments passed to the block will be generated.  This hash is packed into the @code{#+results:} line and will be checked on subsequent executions of the code block.  If the code block has not changed since the last time it was evaluated, it will not be re-evaluated."
-msgstr ""
+msgstr "コードブロックが実行される度に、コードのSHA1ハッシュ値と引数とをブロックへ渡すために生成します。このハッシュ値は@code{#+results:}行に格納され、後のコードブロックの実行時にチェックされます。前回評価した時からコードブロックに変化が無い場合、そのコードブロックは改めて評価されません。"
 
 #+glossary: code block ( コードブロック ) / argument ( 引数 ) / example ( 例 ) / value ( 値 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:12361
 msgid "Code block caches notice if the value of a variable argument to the code block has changed. If this is the case, the cache is invalidated and the code block is re-run.  In the following example, @code{caller} will not be re-run unless the results of @code{random} have changed since it was last run."
-msgstr ""
+msgstr "コードブロックの引数である変数の値が変化した場合でも、コードブロックのキャッシュは変化として検知します。この場合、キャッシュは無効となり、そのコードブロックは再度実行されます。次の例では、@code{random}の結果が前回実行時から変化しない限り、@code{caller}は実行されません。"
 
 #. type: example
 #: org.texi:12367
@@ -25143,6 +25143,11 @@ msgid ""
 " #+end_src\n"
 "\n"
 msgstr ""
+" #+srcname: random\n"
+" #+begin_src R :cache yes\n"
+" runif(1)\n"
+" #+end_src\n"
+"\n"
 
 #. type: example
 #: org.texi:12370
@@ -25152,6 +25157,9 @@ msgid ""
 " 0.4659510825295\n"
 "\n"
 msgstr ""
+" #+results[a2a72cd647ad44515fab62e144796432793d68e1]: random\n"
+" 0.4659510825295\n"
+"\n"
 
 #. type: example
 #: org.texi:12375
@@ -25163,6 +25171,11 @@ msgid ""
 " #+end_src\n"
 "\n"
 msgstr ""
+" #+srcname: caller\n"
+" #+begin_src emacs-lisp :var x=random :cache yes\n"
+" x\n"
+" #+end_src\n"
+"\n"
 
 #. type: example
 #: org.texi:12378
@@ -25171,6 +25184,8 @@ msgid ""
 " #+results[bec9c8724e397d5df3b696502df3ed7892fc4f5f]: caller\n"
 " 0.254227238707244\n"
 msgstr ""
+" #+results[bec9c8724e397d5df3b696502df3ed7892fc4f5f]: caller\n"
+" 0.254227238707244\n"
 
 #. type: code{#1}
 #: org.texi:12381
