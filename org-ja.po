@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-10-06 19:53+0900\n"
+"PO-Revision-Date: 2011-10-06 20:15+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -25312,26 +25312,26 @@ msgstr ""
 #: org.texi:12452
 #, no-wrap
 msgid ":colnames"
-msgstr ""
+msgstr ":colnames"
 
 #+glossary: header argument ( ヘッダー引数 ) / default ( デフォルト|初期値 ) / value ( 値 )
 #. type: Plain text
 #: org.texi:12456
 msgid "The @code{:colnames} header argument accepts the values @code{yes}, @code{no}, or @code{nil} for unassigned.  The default value is @code{nil}."
-msgstr ""
+msgstr "ヘッダー引数@code{:colnames}は、@code{yes}と@code{no}そして宣言していない場合の@code{nil}を値として持てます。デフォルトでは@code{nil}に設定されています。"
 
 #+glossary: nil ( nil )
 #. type: code{#1}
 #: org.texi:12458
 #, no-wrap
 msgid "nil"
-msgstr ""
+msgstr "nil"
 
 #+glossary: column ( 列 ) / processing ( 処理 ) / row ( 行 ) / table ( テーブル )
 #. type: itemize
 #: org.texi:12463
 msgid "If an input table looks like it has column names (because its second row is an hline), then the column names will be removed from the table before processing, then reapplied to the results."
-msgstr ""
+msgstr "(2行目が水平線であることから)入力されたテーブルに列の名前があるように考えられる場合には、処理の前に列の名前が除外されてから、結果の列に名前を与えます。"
 
 #. type: example
 #: org.texi:12470
@@ -25344,6 +25344,12 @@ msgid ""
 "| c |\n"
 "\n"
 msgstr ""
+"#+tblname: less-cols\n"
+"| a |\n"
+"|---|\n"
+"| b |\n"
+"| c |\n"
+"\n"
 
 #+glossary: row ( 行 )
 #. type: example
@@ -25356,6 +25362,11 @@ msgid ""
 "#+end_src\n"
 "\n"
 msgstr ""
+"#+srcname: echo-table-again\n"
+"#+begin_src python :var tab=less-cols\n"
+"  return [[val + '*' for val in row] for row in tab]\n"
+"#+end_src\n"
+"\n"
 
 #. type: example
 #: org.texi:12481
@@ -25367,24 +25378,29 @@ msgid ""
 "| b* |\n"
 "| c* |\n"
 msgstr ""
+"#+results: echo-table-again\n"
+"| a  |\n"
+"|----|\n"
+"| b* |\n"
+"| c* |\n"
 
 #+glossary: column ( 列 ) / note ( ノート|メモ ) / table ( テーブル ) / variable ( 変数 )
 #. type: itemize
 #: org.texi:12485
 msgid "Please note that column names are not removed before the table is indexed using variable indexing @xref{var, Indexable variable values}."
-msgstr ""
+msgstr "variable indexing @xref{var, Indexable variable values}を使ってテーブルをインデックス化する前に、テーブルの列の名前が取り除かれないことに注意してください。"
 
 #+glossary: column ( 列 )
 #. type: itemize
 #: org.texi:12488
 msgid "No column name pre-processing takes place"
-msgstr ""
+msgstr "列の名前に関する前処理は行われません。"
 
 #+glossary: column ( 列 ) / row ( 行 ) / table ( テーブル )
 #. type: itemize
 #: org.texi:12493
 msgid "Column names are removed and reapplied as with @code{nil} even if the table does not ``look like'' it has column names (i.e.@: the second row is not an hline)"
-msgstr ""
+msgstr "テーブルが列の名前を持っている「ように見えない」場合でも(すなわち@: 2行目が水平線でない場合でも)、@code{nil}を設定されたように、列の名前を除外し、改めて結果の列に名前を割り振ります。"
 
 #. type: code{#1}
 #: org.texi:12496
