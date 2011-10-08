@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-10-08 12:42+0900\n"
+"PO-Revision-Date: 2011-10-09 00:20+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -20982,7 +20982,7 @@ msgstr ""
 #. type: Plain text
 #: org.texi:10065
 msgid "For @LaTeX{} export of a table, you can specify a label and a caption (@pxref{Images and tables}).  You can also use the @code{ATTR_LaTeX} line to request a @code{longtable} environment for the table, so that it may span several pages, or to change the default table environment from @code{table} to @code{table*} or to change the default inner tabular environment to @code{tabularx} or @code{tabulary}.  Finally, you can set the alignment string, and (with @code{tabularx} or @code{tabulary}) the width:"
-msgstr "@LaTeX{}で表を出力する際に、ラベルと表題を指定することができます (@pxref{Images and tables})、@code{ATTR_LaTeX}行を使うことで、表に関する@code{longtable}環境を呼び出すこともできます。複数のページにまたがる表や、デフォルトの表の環境を@code{table}から@code{table*}にするため、またはデフォルトの内部tabular環境を@code{tabularx}や@code{tabulary}にしたい時にも@code{ATTR_LaTeX}行は使われます。つまり、文字の配置や (@code{tabularx}や@code{tabulary}を使って)幅を次のようにして設定できます。:"
+msgstr "@LaTeX{}で表を出力する際に、番号と表題を指定することができます (@pxref{Images and tables})、@code{ATTR_LaTeX}行を使うことで、表に関する@code{longtable}環境を呼び出すこともできます。複数のページにまたがる表や、デフォルトの表の環境を@code{table}から@code{table*}にするため、またはデフォルトの内部tabular環境を@code{tabularx}や@code{tabulary}にしたい時にも@code{ATTR_LaTeX}行は使われます。つまり、文字の配置や (@code{tabularx}や@code{tabulary}を使って)幅を次のようにして設定できます。:"
 
 #. type: cindex
 #: org.texi:10068
@@ -21043,7 +21043,7 @@ msgstr "@LaTeX{}エクスポートにおける画像"
 #: org.texi:10092
 #, no-wrap
 msgid "images, inline in @LaTeX{}"
-msgstr "画像、@LaTeX{}に中のインライン"
+msgstr "画像、@LaTeX{}の中のインライン"
 
 #+glossary: image ( 画像 )
 #. type: cindex
@@ -21056,13 +21056,13 @@ msgstr "@LaTeX{}の中のインライン画像"
 #. type: Plain text
 #: org.texi:10106
 msgid "Images that are linked to without a description part in the link, like @samp{[[file:img.jpg]]} or @samp{[[./img.jpg]]} will be inserted into the PDF output file resulting from @LaTeX{} processing.  Org will use an @code{\\includegraphics} macro to insert the image.  If you have specified a caption and/or a label as described in @ref{Images and tables}, the figure will be wrapped into a @code{figure} environment and thus become a floating element.  You can use an @code{#+ATTR_LaTeX:} line to specify the various options that can be used in the optional argument of the @code{\\includegraphics} macro.  To modify the placement option of the @code{figure} environment, add something like @samp{placement=[h!]} to the Attributes."
-msgstr ""
+msgstr " @samp{[[file:img.jpg]]} や @samp{[[./img.jpg]]} のように概要にリンクされていない画像は、 @LaTeX{} の処理によりPDFの中に挿入されます。 Org-modeは、画像を挿入するのに @code{\\includegraphics} マクロを使います。もし、@ref{Images and tables}で説明されているように図の表題や番号を特定したいのならば、その図を @code{figure} 環境で囲むとfloat要素になります。 @code{\\includegraphics} マクロのオプション引数として使われている様々なオプションを特定するには @code{#+ATTR_LaTeX:} を使います。 @code{figure} 環境のオプションの配置を変更するには、 @samp{placement=[h!]} のように属性に追加します。"
 
 #+glossary: argument ( 引数 ) / field ( フィールド ) / image ( 画像 ) / line ( 行|ライン|線 ) / note ( ノート|メモ ) / page ( ページ ) / setting ( 設定 ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:10113
 msgid "If you would like to let text flow around the image, add the word @samp{wrap} to the @code{#+ATTR_LaTeX:} line, which will make the figure occupy the left half of the page.  To fine-tune, the @code{placement} field will be the set of additional arguments needed by the @code{wrapfigure} environment.  Note that if you change the size of the image, you need to use compatible settings for @code{\\includegraphics} and @code{wrapfigure}."
-msgstr ""
+msgstr "画像のまわりに文字を回りこませたいのであれば、@code{#+ATTR_LaTeX:} の行に @samp{wrap} を追加すると、画像がページの左半分にきます。微調整するには、@code{wrapfigure} 環境に引数として、 @code{placement} フィールドを追加します。画像のサイズを変更する時は、互換性のある @code{\\includegraphics} と @code{wrapfigure} を使わなければいけないので注意してください。"
 
 #. type: example
 #: org.texi:10122
@@ -21074,6 +21074,11 @@ msgid ""
 "[[./img/sed-hr4049.pdf]]\n"
 "\n"
 msgstr ""
+"#+CAPTION:    The black-body emission of the disk around HR 4049\n"
+"#+LABEL:      fig:SED-HR4049\n"
+"#+ATTR_LaTeX: width=5cm,angle=90\n"
+"[[./img/sed-hr4049.pdf]]\n"
+"\n"
 
 #. type: example
 #: org.texi:10125
@@ -21082,89 +21087,91 @@ msgid ""
 "#+ATTR_LaTeX: width=0.38\\textwidth wrap placement=@{r@}@{0.4\\textwidth@}\n"
 "[[./img/hst.png]]\n"
 msgstr ""
+"#+ATTR_LaTeX: width=0.38\\textwidth wrap placement=@{r@}@{0.4\\textwidth@}\n"
+"[[./img/hst.png]]\n"
 
 #. type: Plain text
 #: org.texi:10129
 msgid "If you need references to a label created in this way, write @samp{\\ref@{fig:SED-HR4049@}} just like in @LaTeX{}."
-msgstr ""
+msgstr "もし、このような番号を参照する必要があれば,  @LaTeX{} に @samp{\\ref@{fig:SED-HR4049@}} と記述してください。"
 
 #+glossary: class ( クラス ) / file ( ファイル ) / org-mode ( Org-mode ) / presentation ( プレゼンテーション|表示 ) / processing ( 処理 ) / tree ( ツリー )
 #. type: Plain text
 #: org.texi:10136
 msgid "The LaTeX class @file{beamer} allows production of high quality presentations using LaTeX and pdf processing.  Org-mode has special support for turning an Org-mode file or tree into a @file{beamer} presentation."
-msgstr ""
+msgstr "LaTeXの一種である @file{beamer} は、LaTeXとpdf処理により高品質なプレゼンテーション資料を提供します。Org-modeはOrg-modeのファイルやツリーを @file{beamer} のプレゼンテーション資料に変換するのに特別なサポートをします。"
 
 #+glossary: current buffer ( カレントバッファ ) / class ( クラス ) / default ( デフォルト|初期値 ) / entries ( エントリー|文|入力 ) / export ( エクスポート ) / file ( ファイル ) / hierarchy ( 階層 ) / itemize ( itemize ) / level ( レベル|階層 ) / list ( リスト ) / mode ( モード|モード ) / outline ( アウトライン|outline ) / presentation ( プレゼンテーション|表示 ) / structure ( 構造 ) / subtree ( サブツリー ) / tree ( ツリー ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:10147
 msgid "When the LaTeX class for the current buffer (as set with @code{#+LaTeX_CLASS: beamer}) or subtree (set with a @code{LaTeX_CLASS} property) is @code{beamer}, a special export mode will turn the file or tree into a beamer presentation.  Any tree with not-too-deep level nesting should in principle be exportable as a beamer presentation.  By default, the top-level entries (or the first level below the selected subtree heading) will be turned into frames, and the outline structure below this level will become itemize lists.  You can also configure the variable @code{org-beamer-frame-level} to a different level---then the hierarchy above frames will produce the sectioning structure of the presentation."
-msgstr ""
+msgstr "カレントバッファ ( @code{#+LaTeX_CLASS: beamer} がセットされている) かサブツリー ( @code{LaTeX_CLASS} 属性がセットされている)のLaTeXクラスが @code{beamer} ならば、特別なエクスポートモードがファイルやツリーをbeamerのプレゼンテーション資料にします。原則的にはあまり深くないネストのツリーなら何でもプレゼンテーション資料にします。デフォルトでは、トップレベルのエントリー (または、選択したサブツリーの最初のレベル) がフレームに変換され、そのレベルの下のアウトライン構造が箇条書きされたリストになります。 変数 @code{org-beamer-frame-level} は異なるレベルに設定でき、その時フレームより上の構造はプレゼンテーションの構造の区切りになります。"
 
 #+glossary: column view ( カラムビュー ) / buffer ( バッファ ) / editing ( 編集 ) / format ( フォーマット|形成 ) / install ( インストール ) / setting ( 設定 ) / template ( テンプレート )
 #. type: Plain text
 #: org.texi:10152
 msgid "A template for useful in-buffer settings or properties can be inserted into the buffer with @kbd{M-x org-insert-beamer-options-template}.  Among other things, this will install a column view format which is very handy for editing special properties used by beamer."
-msgstr ""
+msgstr "バッファでの便利なテンプレートに関する設定や属性は @kbd{M-x org-insert-beamer-options-template} によってバッファに挿入されます。その他については、カラムビューのフォーマットにインストールされます。カラムビューはbeamerで使う特別な属性を編集するのに便利だからです。"
 
 #+glossary: influence ( 変更する ) / presentation ( プレゼンテーション|表示 ) / structure ( 構造 )
 #. type: Plain text
 #: org.texi:10155
 msgid "You can influence the structure of the presentation using the following properties:"
-msgstr ""
+msgstr "次のような属性を使ってプレゼンテーションの構造を変えることができます。:"
 
 #. type: item
 #: org.texi:10157
 #, no-wrap
 msgid "BEAMER_env"
-msgstr ""
+msgstr "BEAMER_env"
 
 #+glossary: entry ( エントリー|文|入力 ) / format ( フォーマット|形成 ) / property ( プロパティ ) / tag ( タグ ) / visible ( 表示 )
 #. type: table
 #: org.texi:10163
 msgid "The environment that should be used to format this entry.  Valid environments are defined in the constant @code{org-beamer-environments-default}, and you can define more in @code{org-beamer-environments-extra}.  If this property is set, the entry will also get a @code{:B_environment:} tag to make this visible.  This tag has no semantic meaning, it is only a visual aid."
-msgstr ""
+msgstr "このエントリーをフォーマットする環境を指定します。有効な環境が変数 @code{org-beamer-environments-default} に定義されていて、さらに @code{org-beamer-environments-extra} に追加して定義することができます。もし、この属性がセットされていれば、それを可視化するため、そのエントリーには @code{:B_environment:} タグがあるはずです。このタグは字句的な意味はなく、視覚的に補助するためにあります。"
 
 #. type: item
 #: org.texi:10163
 #, no-wrap
 msgid "BEAMER_envargs"
-msgstr ""
+msgstr "BEAMER_envargs"
 
 #+glossary: argument ( 引数 ) / option ( オプション ) / property ( プロパティ )
 #. type: table
 #: org.texi:10170
 msgid "The beamer-special arguments that should be used for the environment, like @code{[t]} or @code{[<+->]} of @code{<2-3>}.  If the @code{BEAMER_col} property is also set, something like @code{C[t]} can be added here as well to set an options argument for the implied @code{columns} environment.  @code{c[t]} or @code{c<2->} will set an options for the implied @code{column} environment."
-msgstr ""
+msgstr "@code{[t]} 、 @code{[<+->]} や @code{<2-3>} のようなbeamerに特有な引数は、この環境で使われます。もし @code{BEAMER_col} 属性がセットされていると、 @code{columns} 環境のオプション引数として、 @code{C[t]} が追加されたことを意味します。 @code{c[t]} や @code{c<2->} は @code{column} 環境にオプションとして設定されたことを意味します。"
 
 #. type: item
 #: org.texi:10170
 #, no-wrap
 msgid "BEAMER_col"
-msgstr ""
+msgstr "BEAMER_col"
 
 #+glossary: column ( 列 ) / entry ( エントリー|文|入力 ) / plain ( プレーン ) / property ( プロパティ ) / tag ( タグ ) / value ( 値 ) / visible ( 表示 ) / width ( 幅 )
 #. type: table
 #: org.texi:10179
 msgid "The width of a column that should start with this entry.  If this property is set, the entry will also get a @code{:BMCOL:} property to make this visible.  Also this tag is only a visual aid.  When this is a plain number, it will be interpreted as a fraction of @code{\\textwidth}.  Otherwise it will be assumed that you have specified the units, like @samp{3cm}.  The first such property in a frame will start a @code{columns} environment to surround the columns.  This environment is closed when an entry has a @code{BEAMER_col} property with value 0 or 1, or automatically at the end of the frame."
-msgstr ""
+msgstr "この列が始まるときの列の幅です。もしこの属性がセットされていると、そのエントリーには @code{:BMCOL:} 属性が現れます。このタグも視覚的な補助のためにあります。もし、これが整数だった場合、 @code{\\textwidth} の割合とみなされます。  もしくは、 @samp{3cm} のような場合、特定の単位を使ったとみなされます。まず、フレームの中のそのような属性は列に囲まれた @code{columns} 環境で始まります。 @code{BEAMER_col} 属性が0か1、または自動的にフレームの最後となるエントリーでは、その環境は閉じられます。"
 
 #. type: item
 #: org.texi:10179
 #, no-wrap
 msgid "BEAMER_extra"
-msgstr ""
+msgstr "BEAMER_extra"
 
 #+glossary: command ( コマンド ) / creating ( 作成 ) / example ( 例 )
 #. type: table
 #: org.texi:10183
 msgid "Additional commands that should be inserted after the environment has been opened.  For example, when creating a frame, this can be used to specify transitions."
-msgstr ""
+msgstr "その環境が始まった後に挿入される追加的なコマンドです。例えば、フレームを作った時に変遷を特定します。"
 
 #+glossary: code ( コード ) / export ( エクスポート ) / option ( オプション ) / presentation ( プレゼンテーション|表示 ) / source ( ソース ) / verbatim ( 文字通りな )
 #. type: Plain text
 #: org.texi:10191
 msgid "Frames will automatically receive a @code{fragile} option if they contain source code that uses the verbatim environment.  Special @file{beamer} specific code can be inserted using @code{#+BEAMER:} and @code{#+BEGIN_beamer...#+end_beamer} constructs, similar to other export backends, but with the difference that @code{#+LaTeX:} stuff will be included in the presentation as well."
-msgstr ""
+msgstr "もし、verbatim環境を使ったソースコードが含まれていると、フレームは自動的に @code{fragile} を受けとります。 @file{beamer} 特有のコードは @code{#+BEAMER:} を使うことで挿入され、 @code{#+BEGIN_beamer...#+end_beamer} ブロックは,他のエクスポートのものと似ていますが、 @code{#+LaTeX:} はプレゼンテーション資料にも含まれるという点で異なります。"
 
 #+glossary: creating ( 作成 ) / heading ( 見出し ) / mark ( マーク ) / node ( ノード ) / note ( ノート|メモ ) / outline ( アウトライン|outline ) / property ( プロパティ ) / text ( テキスト|文章 ) / value ( 値 )
 #. type: Plain text
@@ -21172,37 +21179,37 @@ msgstr ""
 msgid ""
 "Outline nodes with @code{BEAMER_env} property value @samp{note} or @samp{noteNH} will be formatted as beamer notes, i,e, they will be wrapped into @code{\\n"
 "ote@{...@}}.  The former will include the heading as part of the note text, the latter will ignore the heading of that node.  To simplify note generation, it is actually enough to mark the note with a @emph{tag} (either @code{:B_note:} or @code{:B_noteNH:}) instead of creating the @code{BEAMER_env} property."
-msgstr ""
+msgstr "@code{BEAMER_env} 属性があるノードの @samp{note} や @samp{noteNH} の値はbeamerのnotesとして処理されます。例えば、 @code{\\note@{...@}} のように囲まれます。  前者は、ノートのテキストの一部分として見出しが含まれ、後者は、ノードの見出しは無視されます。ノートの生成を簡単にするには、実は @code{BEAMER_env} 属性を作るかわりに、 @emph{tag} (または @code{:B_note:} や @code{:B_noteNH:}) でマークするだけで十分です。"
 
 #+glossary: minor mode ( マイナーモード ) / editing ( 編集 )
 #. type: Plain text
 #: org.texi:10202
 msgid "You can turn on a special minor mode @code{org-beamer-mode} for editing support with"
-msgstr ""
+msgstr "編集作業のサポートを得るには次のオプションを追加して、マイナーモードの @code{org-beamer-mode} を有効にします。"
 
 #. type: example
 #: org.texi:10205
 #, no-wrap
 msgid "#+STARTUP: beamer\n"
-msgstr ""
+msgstr "#+STARTUP: beamer\n"
 
 #+glossary: key ( キー ) / property ( プロパティ )
 #. type: table
 #: org.texi:10211
 msgid "@orgcmd{C-c C-b,org-beamer-select-environment} In @code{org-beamer-mode}, this key offers fast selection of a beamer environment or the @code{BEAMER_col} property."
-msgstr ""
+msgstr "@orgcmd{C-c C-b,org-beamer-select-environment}  @code{org-beamer-mode} でこのキーバインドを使うことでbeamerの環境や @code{BEAMER_col} 属性を素早く選択することができます。"
 
 #+glossary: column view ( カラムビュー ) / column ( 列 ) / command ( コマンド ) / format ( フォーマット|形成 ) / node ( ノード ) / parameters ( パラメーター ) / provide ( 用意する )
 #. type: Plain text
 #: org.texi:10217
 msgid "Column view provides a great way to set the environment of a node and other important parameters.  Make sure you are using a COLUMN format that is geared toward this special purpose.  The command @kbd{M-x org-insert-beamer-options-template} defines such a format."
-msgstr ""
+msgstr "カラムビューはノードにおける環境及び重要なパラメータをセットするうえで、優れたやり方です。 カラムのフォーマットがこの特別な目的のためにセットされている確認してください。 コマンド @kbd{M-x org-insert-beamer-options-template} はそのようなフォーマットを定義します。"
 
 #+glossary: document ( ドキュメント|文書 ) / example ( 例 ) / export ( エクスポート ) / org ( Org-mode )
 #. type: Plain text
 #: org.texi:10219
 msgid "Here is a simple example Org document that is intended for beamer export."
-msgstr ""
+msgstr "次の例は、beamerへのエクスポートを意図した簡単なOrg-modeの文書の例です。"
 
 #+glossary: example ( 例 )
 #. type: smallexample
@@ -21218,6 +21225,14 @@ msgid ""
 "#+COLUMNS: %35ITEM %10BEAMER_env(Env) %10BEAMER_envargs(Args) %4BEAMER_col(Col) %8BEAMER_extra(Ex)\n"
 "\n"
 msgstr ""
+"#+LaTeX_CLASS: beamer\n"
+"#+TITLE: プレゼンテーション資料の例\n"
+"#+AUTHOR: Carsten Dominik\n"
+"#+LaTeX_CLASS_OPTIONS: [presentation]\n"
+"#+BEAMER_FRAME_LEVEL: 2\n"
+"#+BEAMER_HEADER_EXTRA: \\usetheme@{Madrid@}\\usecolortheme@{default@}\n"
+"#+COLUMNS: %35ITEM %10BEAMER_env(Env) %10BEAMER_envargs(Args) %4BEAMER_col(Col) %8BEAMER_extra(Ex)\n"
+"\n"
 
 #. type: smallexample
 #: org.texi:10230
@@ -21225,7 +21240,7 @@ msgstr ""
 msgid ""
 "* This is the first structural section\n"
 "\n"
-msgstr ""
+msgstr "* これは最初の構造的な章です。\n\n"
 
 #+glossary: note ( ノート|メモ ) / setup ( 設定 )
 #. type: smallexample
@@ -21255,18 +21270,40 @@ msgid ""
 "    :BEAMER_env: block\n"
 "    :END:\n"
 msgstr ""
+"** フレーム 1 \\\\ サブタイトル\n"
+"***  Eric Fraga へありがとう                                  :BMCOL:B_block:\n"
+"    :PROPERTIES:\n"
+"    :BEAMER_env: block\n"
+"    :BEAMER_envargs: C[t]\n"
+"    :BEAMER_col: 0.5\n"
+"    :END:\n"
+"    Org-modeでの最初のbeamerの設定\n"
+"*** みんなへありがとう                                        :BMCOL:B_block:\n"
+"    :PROPERTIES:\n"
+"    :BEAMER_col: 0.5\n"
+"    :BEAMER_env: block\n"
+"    :BEAMER_envargs: <2->\n"
+"    :END:\n"
+"    議論への寄与してくれたみんなへ\n"
+"**** これは、beamerのnoteとして処理される。                   :B_note:\n"
+"** Frame 2 \\\\ 使わないカラム\n"
+"*** リクエスト                                                   :B_block:\n"
+"    この部分を試してみてください!\n"
+"    :PROPERTIES:\n"
+"    :BEAMER_env: block\n"
+"    :END:\n"
 
 #+glossary: information ( 情報 )
 #. type: Plain text
 #: org.texi:10256
 msgid "For more information, see the documentation on Worg."
-msgstr ""
+msgstr "さらに詳しく知りたい場合は、Worgの文書を見てください。"
 
 #. type: cindex
 #: org.texi:10261
 #, no-wrap
 msgid "Cui, Baoqiu"
-msgstr ""
+msgstr "Cui, Baoqiu"
 
 #+glossary: available ( 利用できる ) / exported ( エクスポート|出力された ) / exporter ( エクスポート機能 ) / file ( ファイル ) / format ( フォーマット|形成 ) / org ( Org-mode ) / page ( ページ )
 #. type: Plain text
