@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-10-08 12:42+0900\n"
+"PO-Revision-Date: 2011-10-08 22:37+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -25660,19 +25660,19 @@ msgstr "外部プロセスとしてコードはインタープリタに渡され
 #: org.texi:12585
 #, no-wrap
 msgid "Session"
-msgstr ""
+msgstr "Session"
 
 #+glossary: code ( コード ) / evaluation ( 評価 ) / running ( 実行中の ) / value ( 値 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:12592
 msgid "The code is passed to the interpreter running as an interactive Emacs inferior process. The result returned is the result of the last evaluation performed by the interpreter. (This is obtained in a language-specific manner: the value of the variable @code{_} in Python and Ruby, and the value of @code{.Last.value} in R)."
-msgstr ""
+msgstr "対話式のEmacsの下位プロセスとして実行しているインタープリタ(解釈プログラム)にコードが渡されます。そのインタープリタが最後に評価した結果を、結果として受け取ります。 (これは言語固有の方法で得られています:PythonやRubyでの変数@code{_}の値と、Rでの@code{.Last.value}の値です)。"
 
 #+glossary: code ( コード ) / example ( 例 ) / external ( 外部 ) / output ( アウトプット ) / running ( 実行中の ) / sequence ( 順序 )
 #. type: Plain text
 #: org.texi:12600
 msgid "The code is passed to the interpreter running as an interactive Emacs inferior process. The result returned is the concatenation of the sequence of (text) output from the interactive interpreter. Notice that this is not necessarily the same as what would be sent to @code{STDOUT} if the same code were passed to a non-interactive interpreter running as an external process. For example, compare the following two blocks:"
-msgstr ""
+msgstr "対話式のEmacsの下位プロセスとして実行しているインタープリタ(解釈プログラム)にコードが渡されます。返される結果は、そのインタープリタからの一連の(テキストの)アウトプットを結合したものです。もし外部プロセスとして実行している対話式でないインタープリタに同じコードが送られるなら、@code{STDOUT}へと送られるであろうものと全く同じである必要はかならずしも無いことに気づいて下さい。例として、次の2つのブロックを比べて下さい:"
 
 #. type: example
 #: org.texi:12607
@@ -25685,6 +25685,12 @@ msgid ""
 "#+end_src\n"
 "\n"
 msgstr ""
+"#+begin_src python :results output\n"
+" print \"hello\"\n"
+" 2\n"
+" print \"bye\"\n"
+"#+end_src\n"
+"\n"
 
 #. type: example
 #: org.texi:12611
@@ -25694,12 +25700,15 @@ msgid ""
 ": hello\n"
 ": bye\n"
 msgstr ""
+"#+resname:\n"
+": hello\n"
+": bye\n"
 
 #+glossary: mode ( モード|モード )
 #. type: Plain text
 #: org.texi:12614
 msgid "In non-session mode, the `2' is not printed and does not appear."
-msgstr ""
+msgstr "non-sessionモードでは、`2'はプリントされず、表示されません。"
 
 #+glossary: output ( アウトプット )
 #. type: example
@@ -25713,6 +25722,12 @@ msgid ""
 "#+end_src\n"
 "\n"
 msgstr ""
+"#+begin_src python :results output :session\n"
+" print \"hello\"\n"
+" 2\n"
+" print \"bye\"\n"
+"#+end_src\n"
+"\n"
 
 #. type: example
 #: org.texi:12625
@@ -25723,12 +25738,16 @@ msgid ""
 ": 2\n"
 ": bye\n"
 msgstr ""
+"#+resname:\n"
+": hello\n"
+": 2\n"
+": bye\n"
 
 #+glossary: mode ( モード|モード ) / value ( 値 )
 #. type: Plain text
 #: org.texi:12630
 msgid "But in @code{:session} mode, the interactive interpreter receives input `2' and prints out its value, `2'. (Indeed, the other print statements are unnecessary here)."
-msgstr ""
+msgstr "しかし@code{:session}モードでは、対話的なインタープリタは入力`2'を受け取り、その値`2'を表示します。(実際には、ここでは他のprint文は不要でした)。"
 
 #+glossary: code block ( コードブロック )
 #. type: cindex
