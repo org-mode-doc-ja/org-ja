@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-10-08 23:12+0900\n"
+"PO-Revision-Date: 2011-10-09 00:08+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -26022,26 +26022,26 @@ msgstr "@kbd{C-c C-v z} @ @ @r{もしくは} @ @ @kbd{C-c C-v C-z} @tab @code{or
 #: org.texi:12727
 #, no-wrap
 msgid "code block, batch execution"
-msgstr ""
+msgstr "コードブロック、バッチ処理"
 
 #+glossary: batch execution ( バッチ処理 ) / code ( コード ) / source ( ソース )
 #. type: cindex
 #: org.texi:12728
 #, no-wrap
 msgid "source code, batch execution"
-msgstr ""
+msgstr "ソースコード、バッチ処理"
 
 #+glossary: command line ( コマンドライン ) / argument ( 引数 ) / function ( 機能|関数 )
 #. type: Plain text
 #: org.texi:12732
 msgid "It is possible to call functions from the command line.  This shell script calls @code{org-babel-tangle} on every one of its arguments."
-msgstr ""
+msgstr "コマンドラインから関数を呼び出すことができます。このシェルスクリプトは、引数のそれぞれに対して@code{org-babel-tangle}を呼び出します。"
 
 #+glossary: system ( システム )
 #. type: Plain text
 #: org.texi:12734
 msgid "Be sure to adjust the paths to fit your system."
-msgstr ""
+msgstr "必ずあなたのシステムに合うようにパスを設定してください。"
 
 #+glossary: file ( ファイル ) / tangle ( tangle )
 #. type: example
@@ -26058,6 +26058,15 @@ msgid ""
 "ORGINSTALL=\"~/src/org/lisp/org-install.el\"\n"
 "\n"
 msgstr ""
+"#!/bin/sh\n"
+"# -*- mode: shell-script -*-\n"
+"#\n"
+"# org-mode でファイルを抽出する\n"
+"#\n"
+"DIR=`pwd`\n"
+"FILES=\"\"\n"
+"ORGINSTALL=\"~/src/org/lisp/org-install.el\"\n"
+"\n"
 
 #+glossary: argument ( 引数 ) / code ( コード ) / tangle ( tangle )
 #. type: example
@@ -26070,6 +26079,11 @@ msgid ""
 "done\n"
 "\n"
 msgstr ""
+"# 関数tangleを呼び出すためのコードでそれぞれの引数を囲む\n"
+"for i in $@@; do\n"
+"    FILES=\"$FILES \\\"$i\\\"\"\n"
+"done\n"
+"\n"
 
 #+glossary: file ( ファイル )
 #. type: example
@@ -26086,6 +26100,15 @@ msgid ""
 "       (org-babel-tangle)\n"
 "       (kill-buffer)) '($FILES)))\" 2>&1 |grep tangled\n"
 msgstr ""
+"emacs -Q --batch -l $ORGINSTALL \\\n"
+"--eval \"(progn\n"
+"(add-to-list 'load-path (expand-file-name \\\"~/src/org/lisp/\\\"))\n"
+"(add-to-list 'load-path (expand-file-name \\\"~/src/org/contrib/lisp/\\\"))\n"
+"(require 'org)(require 'org-exp)(require 'ob)(require 'ob-tangle)\n"
+"(mapc (lambda (file)\n"
+"       (find-file (expand-file-name file \\\"$DIR\\\"))\n"
+"       (org-babel-tangle)\n"
+"       (kill-buffer)) '($FILES)))\" 2>&1 |grep tangled\n"
 
 #+glossary: completion ( 補完 ) / symbol ( 記号 )
 #. type: cindex
