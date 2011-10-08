@@ -1160,8 +1160,8 @@ TODOキーワードは、すべて大文字で記述されます。ユーザが�
 @cindex document structure
 @cindex structure of document
 
-Org is based on Outline mode and provides flexible commands to edit the
-structure of the document.
+Org-modeは、Outline modeをベースとしており、ドキュメントの構造を編集するため
+にフレキシブルなコマンドを用意しています。
 
 @menu
 * Outlines::                 Org-modeはoutline-modeをベースにしています
@@ -1183,14 +1183,15 @@ structure of the document.
 @cindex outlines
 @cindex Outline mode
 
-Org is implemented on top of Outline mode.  Outlines allow a document to be
-organized in a hierarchical structure, which (at least for me) is the best
-representation of notes and thoughts.  An overview of this structure is
-achieved by folding (hiding) large parts of the document to show only the
-general document structure and the parts currently being worked on.  Org
-greatly simplifies the use of outlines by compressing the entire show/hide
-functionality into a single command, @command{org-cycle}, which is bound to
-the @key{TAB} key.
+Org-modeはoutline
+modeの上で実行されます。アウトラインによって階層構造で体系化されたドキュメン
+トが作られ、（少なくとも私にとっては）それによって、ノートや思考の最高の表現
+方法となります。ドキュメントの大きな部分を折りたたむ（隠す）ことによって、ド
+キュメントの骨格のみを表示したり、現在、作業している部分を表示したりして、ド
+キュメントの構造の全体を見渡すことができるのです。Org-modeは、全体を表示した
+り／隠したりする機能を、たったひとつのコマンド、@command{org-cycle}、それは@key{TAB}キー
+と結びついていますが、に圧縮することにより、アウトラインの使用を大変単純なも
+のにしています。
 
 @node Headlines, Visibility cycling, Outlines, Document Structure
 @section Headlines
@@ -1200,8 +1201,11 @@ the @key{TAB} key.
 @vindex org-special-ctrl-k
 @vindex org-ctrl-k-protect-subtree
 
-Headlines define the structure of an outline tree.  The headlines in Org
-start with one or more stars, on the left margin@footnote{See the variables @code{org-special-ctrl-a/e}, @code{org-special-ctrl-k}, and @code{org-ctrl-k-protect-subtree} to configure special behavior of @kbd{C-a}, @kbd{C-e}, and @kbd{C-k} in headlines.}.  For example:
+見出しは、アウトラインのツリーの構造を定義します。Org-modeの見出しは、左のマ
+ージン@footnote{見出しの中で、@kbd{C-a}、@kbd{C-e}および@kbd{C-k}の特別な作用を設定するために、
+@code{org-special-ctrl-a/e}、@code{org-special-ctrl-k}、および
+@code{org-ctrl-k-protect-subtree}の変数を参照してください。}上にある１つもしくは
+それ以上の数の「＊」で始まります。例えば。
 
 @example
 * Top level headline
@@ -1215,15 +1219,16 @@ start with one or more stars, on the left margin@footnote{See the variables @cod
 @end example
 
 @noindent Some people find the many stars too noisy and would prefer an
-outline that has whitespace followed by a single star as headline starters.
-@ref{Clean view}, describes a setup to realize this.
+たくさんの「＊」があるとうるさく感じ、空白のあとに、見出しの始まりとしてのひ
+とつの「＊」があるという形式のアウトラインを好む人もいるでしょう。このような
+形式の設定について、@ref{Clean view},で説明しています。
 
 @vindex org-cycle-separator-lines
-An empty line after the end of a subtree is considered part of it and will
-be hidden when the subtree is folded.  However, if you leave at least two
-empty lines, one empty line will remain visible after folding the subtree,
-in order to structure the collapsed view.  See the variable
-@code{org-cycle-separator-lines} to modify this behavior.
+最後のサブツリーの直後の空白行は、そのサブツリーの一部と見なされます。そのた
+めサブツリーが折り畳まれたときには、隠れてしまいます。しかしながら、すくなく
+とも2行の空白行を残したときは、折り畳んだビューを構造化するために、サブツリ
+ーを折り畳んだあとも、1つの空白行は残ったままになります。この動作を修正した
+いときは、@code{org-cycle-separator-lines}を参照してください。
 
 @node Visibility cycling, Motion, Headlines, Document Structure
 @section Visibility cycling
@@ -1233,9 +1238,9 @@ in order to structure the collapsed view.  See the variable
 @cindex show hidden text
 @cindex hide text
 
-Outlines make it possible to hide parts of the text in the buffer.  Org uses
-just two commands, bound to @key{TAB} and @kbd{S-@key{TAB}} to change the
-visibility in the buffer.
+アウトラインによって、バッファの中で、テキストの一部を隠すことが可能となりま
+す。Org-modeはバッファないでの表示の状況を変更するために、@key{TAB}と@kbd{S-@key{TAB}}と
+に結びついた2つのコマンドを使用します。
 
 @cindex subtree visibility states
 @cindex subtree cycling
@@ -1243,8 +1248,8 @@ visibility in the buffer.
 @cindex children, subtree visibility state
 @cindex subtree, subtree visibility state
 @table @asis
-@orgcmd{@key{TAB},org-cycle} @emph{Subtree cycling}: Rotate current subtree
-among the states
+@orgcmd{@key{TAB},org-cycle} @emph{Subtree cycling}：カレントのサブツリーの状態を順番
+に表示します。
 
 @example
 ,-> FOLDED -> CHILDREN -> SUBTREE --.
@@ -1253,10 +1258,14 @@ among the states
 
 @vindex org-cycle-emulate-tab
 @vindex org-cycle-global-at-bob
-The cursor must be on a headline for this to work@footnote{see, however, the option @code{org-cycle-emulate-tab}.}.  When the cursor is at the beginning
-of the buffer and the first line is not a headline, then @key{TAB} actually
-runs global cycling (see below)@footnote{see the option @code{org-cycle-global-at-bob}.}.  Also when called with a prefix argument
-(@kbd{C-u @key{TAB}}), global cycling is invoked.
+これを動作@footnote{しかしながら、@code{org-cycle-emulate-tab}オプションを参照してく
+ださい。}
+させるためにはカーソルが見出しの上に置かれている必要があります。カーソ
+ルがバッファの一番上の行にあり、そして最初の行が見出しでない場合は、
+@key{TAB}が実際にグローバルな切り替えが実行されます。（下記を参照）
+@footnote{@code{org-cycle-global-at-bob}オプション参照。}
+前置引数(@kbd{C-u @key{TAB}})をつけて呼び出したときは、グローバルな切替が実行
+されます。
 
 @cindex global visibility states
 @cindex global cycling
@@ -1265,35 +1274,38 @@ runs global cycling (see below)@footnote{see the option @code{org-cycle-global-a
 @cindex show all, global visibility state
 @orgcmd{S-@key{TAB},org-global-cycle}
 @itemx C-u @key{TAB}
-@emph{Global cycling}: Rotate the entire buffer among the states
+@emph{Global cycling}：バッファ全体を交代で状態を変更する。
 
 @example
 ,-> OVERVIEW -> CONTENTS -> SHOW ALL --.
 '--------------------------------------'
 @end example
 
-When @kbd{S-@key{TAB}} is called with a numeric prefix argument N, the
-CONTENTS view up to headlines of level N will be shown.  Note that inside
-tables, @kbd{S-@key{TAB}} jumps to the previous field.
+@kbd{S-@key{TAB}}がNという数字のついた前置引数と一緒に呼び出されたときは、レベ
+ルN以上の見出しがCONTENTSビューに表示されます。テーブルの中では、
+@kbd{S-@key{TAB}}は前のフィールドにジャンプするということに注意してください。
 
 @cindex show all, command
-@orgcmd{C-u C-u C-u @key{TAB},show-all} Show all, including drawers.
-@orgcmd{C-c C-r,org-reveal} Reveal context around point, showing the current
-entry, the following heading and the hierarchy above.  Useful for working
-near a location that has been exposed by a sparse tree command
-(@pxref{Sparse trees}) or an agenda command (@pxref{Agenda commands}).  With
-a prefix argument show, on each level, all sibling headings.  With double
-prefix arg, also show the entire subtree of the parent.  @orgcmd{C-c C-k,show-branches} Expose all the headings of the subtree, CONTENT view for
-just one subtree.  @orgcmd{C-c C-x b,org-tree-to-indirect-buffer} Show the
-current subtree in an indirect buffer@footnote{The indirect buffer
+@orgcmd{C-u C-u C-u @key{TAB},show-all} 全てを表示する。引き出しを含む。
+ @orgcmd{C-c C-r,org-reveal}
+カレントエントリーや、下の見出しや上の階層を表示して、その場所でのコン
+テクストを表示する。ツリーの抽出コマンド（@pxref{Sparse trees}）やアジェンダ
+のコマンド（@pxref{Agenda commands}）によって表示された場所の周辺で作業をす
+るのに役立ちます。前置引数をつけることで、各階層での同一レベルの見出し
+を表示する。前置引数を2重に使った場合は、親のサブツリー全体を表示する。
+@orgcmd{C-c C-k,show-branches}
+サブツリーの見出しを全て表示し、ひとつのサブツリーのためのコンテンツビ
+ューである。@orgcmd{C-c C-x b,org-tree-to-indirect-buffer}　間接的なバッファ
+@footnote{間接的なバッファとは、
 @ifinfo (@pxref{Indirect Buffers,,,emacs,GNU Emacs Manual})
 @end ifinfo
 @ifnotinfo (see the Emacs manual for more information about indirect buffers)
 @end ifnotinfo
-will contain the entire buffer, but will be narrowed to the current tree.  Editing the indirect buffer will also change the original buffer, but without affecting visibility in that buffer.}.  With a numeric
-prefix argument N, go up to level N and then take that tree.  If N is
-negative then go up that many levels.  With a @kbd{C-u} prefix, do not
-remove the previously used indirect buffer.
+は全てのバッファを含んでいるが、カレントのツリーに制限されるだろう。間接的なバッファを編集することは、オリジナルのバッファに変更を加えることでもある。だがそのバッファの中での表示に影響を与えることはできない。}.
+の中にあるカレントのサブツリーを表示する。Nという数値付きの前置引数を
+つけると、N段階上の階層に上がるがそのツリーを捉える。もしもNがマイナス
+の値ならば、多くの階層まで遡る。@kbd{C-u}の前置引数をつけたならば、それ以
+前に使用された間接的なバッファを削除してはならない。
 @end table
 
 @vindex org-startup-folded
@@ -1302,10 +1314,11 @@ remove the previously used indirect buffer.
 @cindex @code{showall}, STARTUPキーワード
 @cindex @code{showeverything}, STARTUPキーワード
 
-When Emacs first visits an Org file, the global state is set to OVERVIEW,
-i.e.@: only the top level headlines are visible.  This can be configured
-through the variable @code{org-startup-folded}, or on a per-file basis by
-adding one of the following lines anywhere in the buffer:
+EmacsであるOrg-modeファイルを最初に開いたときに、グローバルな状態としては、
+概観のビューで開くように設定されています。すなわち、最上位の階層の見出しのみ
+が表示されています。これは、@code{org-startup-folded}変数によって設定されています
+。つまり、以下に示す行をバッファ上のどこかに追加することによって、ファイル毎
+に設定することができます。
 
 @example
 #+STARTUP: overview
@@ -1316,14 +1329,13 @@ adding one of the following lines anywhere in the buffer:
 
 @cindex property, VISIBILITY
 @noindent
-Furthermore, any entries with a @samp{VISIBILITY} property
-(@pxref{Properties and Columns}) will get their visibility adapted
-accordingly.  Allowed values for this property are @code{folded},
-@code{children}, @code{content}, and @code{all}.
+さらに、どのエントリーも@samp{VISIBILITY}属性（@pxref{Properties and Columns}）を持って
+おり、それを受けて適用された表示性をしめすでしょう。この属性のために許されて
+いる値は、@code{folded}、@code{children}、@code{content}および@code{all}です。
 @table @asis
-@orgcmd{C-u C-u @key{TAB},org-set-startup-visibility} Switch back to the
-startup visibility of the buffer, i.e.@: whatever is requested by startup
-options and @samp{VISIBILITY} properties in individual entries.
+@orgcmd{C-u C-u @key{TAB},org-set-startup-visibility}　そのバッファにおける起動時
+の表示条件に戻ります。すなわち、@:起動時のオプションで要求されている内
+容、そして個々のエントリーの中で設定されている@samp{VISIBILITY}の属性に。
 @end table
 
 @node Motion, Structure editing, Visibility cycling, Document Structure
@@ -1331,28 +1343,33 @@ options and @samp{VISIBILITY} properties in individual entries.
 @cindex motion, between headlines
 @cindex jumping, to headlines
 @cindex headline navigation
-The following commands jump to other headlines in the buffer.
+以下のコマンドはバッファの中で他の見出しにジャンプするものです。
 
 @table @asis
-@orgcmd{C-c C-n,outline-next-visible-heading} Next heading.  @orgcmd{C-c C-p,outline-previous-visible-heading} Previous heading.  @orgcmd{C-c C-f,org-forward-same-level} Next heading same level.  @orgcmd{C-c C-b,org-backward-same-level} Previous heading same level.  @orgcmd{C-c C-u,outline-up-heading} Backward to higher level heading.  @orgcmd{C-c C-j,org-goto} Jump to a different place without changing the current outline
-visibility.  Shows the document structure in a temporary buffer, where you
-can use the following keys to find your destination:
+@orgcmd{C-c C-n,outline-next-visible-heading}　次の見出しへ。
+@orgcmd{C-c C-p,outline-previous-visible-heading}　前の見出しへ。
+@orgcmd{C-c C-f,org-forward-same-level}　次の同一階層の見出しへ。
+@orgcmd{C-c C-b,org-backward-same-level}　前の同一階層の見出しへ。
+@orgcmd{C-c C-u,outline-up-heading}　一つ上の階層の見出しに戻る。
+@orgcmd{C-c C-j,org-goto}　現在のアウトラインの表示状態を変更することなく、別
+の場所にジャンプする。現在のバッファの中で文書の構造を表示し、そこでは
+あなたの目的の場所を見つけるために以下のようなキーを使用することができます。
 @vindex org-goto-auto-isearch
 @example
-@key{TAB}         @r{Cycle visibility.}
-@key{down} / @key{up}   @r{Next/previous visible headline.}
-@key{RET}         @r{Select this location.}
-@kbd{/}           @r{Do a Sparse-tree search}
-@r{The following keys work if you turn off @code{org-goto-auto-isearch}}
-n / p        @r{Next/previous visible headline.}
-f / b        @r{Next/previous headline same level.}
-u            @r{One level up.}
-0-9          @r{Digit argument.}
-q            @r{Quit}
+@key{TAB}         @r{表示を切り替える。}
+@key{down} / @key{up}   @r{次の／前の表示されている見出しへ。}
+@key{RET}         @r{この場所を選択する。}
+@kbd{/}           @r{ツリーの抽出による検索を実行する}
+@r{もしも@code{org-goto-auto-isearch}　を停止したときには以下のキーが動作する}
+n / p        @r{次の／前の表示されている見出しへ。}
+f / b        @r{次の／前の同じ階層の見出しへ。}
+u            @r{ひとつ上の階層へ。}
+0-9          @r{数値の変数。}
+q            @r{停止}
 @end example
 @vindex org-goto-interface
 @noindent
-See also the variable @code{org-goto-interface}.
+@code{org-goto-interface}変数もまた参照のこと。
 @end table
 
 @node Structure editing, Sparse trees, Motion, Document Structure
@@ -1371,96 +1388,106 @@ See also the variable @code{org-goto-interface}.
 @table @asis
 @orgcmd{M-@key{RET},org-insert-heading}
 @vindex org-M-RET-may-split-line
-Insert new heading with same level as current.  If the cursor is in a plain
-list item, a new item is created (@pxref{Plain lists}).  To force creation
-of a new headline, use a prefix argument.  When this command is used in the
-middle of a line, the line is split and the rest of the line becomes the new
-headline@footnote{If you do not want the line to be split, customize the variable @code{org-M-RET-may-split-line}.}.  If the command is used at the
-beginning of a headline, the new headline is created before the current
-line.  If at the beginning of any other line, the content of that line is
-made the new heading.  If the command is used at the end of a folded subtree
-(i.e.@: behind the ellipses at the end of a headline), then a headline like
-the current one will be inserted after the end of the subtree.
-@orgcmd{C-@key{RET},org-insert-heading-respect-content} Just like
-@kbd{M-@key{RET}}, except when adding a new heading below the current
-heading, the new heading is placed after the body instead of before it.
-This command works from anywhere in the entry.
+カレントの階層と同じ階層の新しい見出しを挿入します。もしもカーソルがプ
+レーンなリストアイテムの中にあるならば、新しいアイテムが作成されます
+(@pxref{Plain lists})。新しい見出しを強制的に作成するには前置引数をつけます
+。このコマンドが行の途中で使用されたときは、その行が分割され、その行の
+残りの部分が新しい見出し@footnote{もしも行を途中で分割したくないときは、
+@code{org-M-RET-may-split-line}変数をカスタマイズしてください。}となります
+。もしも見出しの先頭でそのコマンドが使用されたときは、カレント行の前に
+新しい見出しが作られます。もしも見出し以外の行の先頭の場合は、その行の
+内容が新しい見出しとして作成されます。そのコマンドが折り畳まれているサ
+ブツリーの行末で使用されたならば（i.e.@:
+見出しの最後の楕円の後）、カレントの見出しと同様な見出しが、サブツリー
+の末尾の後に挿入されるでしょう。@kbd{M-@key{RET}}とちょうど同じように、カレン
+トの見出しの下に新しい見出しが付け加えられたときを除いて、新しい見出し
+は本文の前に置かれるかわりに、本文の後に置かれます。このコマンドはエン
+トリーの中のどの場所からでも動作します。
 @orgcmd{M-S-@key{RET},org-insert-todo-heading}
 @vindex org-treat-insert-todo-heading-as-state-change
-Insert new TODO entry with same level as current heading.  See also the
-variable @code{org-treat-insert-todo-heading-as-state-change}.
-@orgcmd{C-S-@key{RET},org-insert-todo-heading-respect-content} Insert new
-TODO entry with same level as current heading.  Like @kbd{C-@key{RET}}, the
-new headline will be inserted after the current subtree.
-@orgcmd{@key{TAB},org-cycle} In a new entry with no text yet, the first
-@key{TAB} demotes the entry to become a child of the previous one.  The next
-@key{TAB} makes it a parent, and so on, all the way to top level.  Yet
-another @key{TAB}, and you are back to the initial level.
-@orgcmd{M-@key{left},org-do-promote} Promote current heading by one level.
-@orgcmd{M-@key{right},org-do-demote} Demote current heading by one level.
-@orgcmd{M-S-@key{left},org-promote-subtree} Promote the current subtree by
-one level.  @orgcmd{M-S-@key{right},org-demote-subtree} Demote the current
-subtree by one level.  @orgcmd{M-S-@key{up},org-move-subtree-up} Move
-subtree up (swap with previous subtree of same level).
-@orgcmd{M-S-@key{down},org-move-subtree-down} Move subtree down (swap with
-next subtree of same level).  @orgcmd{C-c C-x C-w,org-cut-subtree} Kill
-subtree, i.e.@: remove it from buffer but save in kill ring.  With a numeric
-prefix argument N, kill N sequential subtrees.  @orgcmd{C-c C-x M-w,org-copy-subtree} Copy subtree to kill ring.  With a numeric prefix
-argument N, copy the N sequential subtrees.  @orgcmd{C-c C-x C-y,org-paste-subtree} Yank subtree from kill ring.  This does modify the
-level of the subtree to make sure the tree fits in nicely at the yank
-position.  The yank level can also be specified with a numeric prefix
-argument, or by yanking after a headline marker like @samp{****}.
+カレントの見出しと同じ階層の新しいTODOエントリーが挿入されます。
+@code{org-treat-insert-todo-heading-as-state-change}変数も同じように参照し
+てください。@orgcmd{C-S-@key{RET},org-insert-todo-heading-respect-content}
+カレントの見出しと同一の階層に新しいTODOエントリーを挿入します。
+@kbd{C-@key{RET}}と同様に、新しい見出しはカレントのサブツリーの後に挿入される
+でしょう。@orgcmd{@key{TAB},org-cycle}
+新しいエントリーでまだ文が書かれていない状態で、最初に@key{TAB}を実行する
+と、そのエントリーの階層を下げ、その前の見出しの子になります。次に
+@key{TAB}を実行すると、その見出しを親として、それによってトップの階層まで
+、作成します。さらに次の@key{TAB}で、初期の階層にもどります。
+@orgcmd{M-@key{left},org-do-promote}
+カレントの見出しを1階層上げる。@orgcmd{M-@key{right},org-do-demote}
+カレントの見出しを1階層下げる。@orgcmd{M-S-@key{left},org-promote-subtree}
+カレントのサブツリーを1階層上げる。@orgcmd{M-S-@key{right},org-demote-subtree}
+カレントのサブツリーを1階層下げる。@orgcmd{M-S-@key{up},org-move-subtree-up}
+サブツリーを上に移動する。（同じ階層の前のサブツリーと交換する。）
+@orgcmd{M-S-@key{down},org-move-subtree-down}
+サブツリーを下に移動する。（同一階層の次のサブツリーと交換する。）
+@orgcmd{C-c C-x C-w,org-cut-subtree}
+サブツリーをキルする。i.e.@:
+そのサブツリーをバッファから取り除くが、キルリングに保存する。Nという
+数字付きの前置引数をつけたときは、N個連続でサブツリーをキルする。
+@orgcmd{C-c C-x M-w,org-copy-subtree}
+サブツリーをキルリングにコピーする。Nという数字付きの前置引数をつけた
+ときは、N個連続でサブツリーをコピーする。
+@orgcmd{C-c C-x C-y,org-paste-subtree}
+キルリングからサブツリーを貼り付ける。これによると、貼り付けるポジショ
+ンにうまく合わせて、ツリーに適合するようにサブツリーの階層を調整する。
+数字付きの前置引数をつけるか、@samp{****}のような星印のついた見出しの後に貼
+り付けることによって、貼り付ける階層を指定することができる。
 @orgcmd{C-y,org-yank}
 @vindex org-yank-adjusted-subtrees
 @vindex org-yank-folded-subtrees
-Depending on the variables @code{org-yank-adjusted-subtrees} and
-@code{org-yank-folded-subtrees}, Org's internal @code{yank} command will
-paste subtrees folded and in a clever way, using the same command as
-@kbd{C-c C-x C-y}.  With the default settings, no level adjustment will take
-place, but the yanked tree will be folded unless doing so would swallow text
-previously visible.  Any prefix argument to this command will force a normal
-@code{yank} to be executed, with the prefix passed along.  A good way to
-force a normal yank is @kbd{C-u C-y}.  If you use @code{yank-pop} after a
-yank, it will yank previous kill items plainly, without adjustment and
-folding.  @orgcmd{C-c C-x c,org-clone-subtree-with-time-shift} Clone a
-subtree by making a number of sibling copies of it.  You will be prompted
-for the number of copies to make, and you can also specify if any timestamps
-in the entry should be shifted.  This can be useful, for example, to create
-a number of tasks related to a series of lectures to prepare.  For more
-details, see the docstring of the command
-@code{org-clone-subtree-with-time-shift}.  @orgcmd{C-c C-w,org-refile}
-Refile entry or region to a different location.  @xref{Refiling notes}.
-@orgcmd{C-c ^,org-sort-entries-or-items} Sort same-level entries.  When
-there is an active region, all entries in the region will be sorted.
-Otherwise the children of the current headline are sorted.  The command
-prompts for the sorting method, which can be alphabetically, numerically, by
-time (first timestamp with active preferred, creation time, scheduled time,
-deadline time), by priority, by TODO keyword (in the sequence the keywords
-have been defined in the setup) or by the value of a property.  Reverse
-sorting is possible as well.  You can also supply your own function to
-extract the sorting key.  With a @kbd{C-u} prefix, sorting will be
-case-sensitive.  With two @kbd{C-u C-u} prefixes, duplicate entries will
-also be removed.  @orgcmd{C-x n s,org-narrow-to-subtree} Narrow buffer to
-current subtree.  @orgcmd{C-x n b,org-narrow-to-block} Narrow buffer to
-current block.  @orgcmd{C-x n w,widen} Widen buffer to remove narrowing.
-@orgcmd{C-c *,org-toggle-heading} Turn a normal line or plain list item into
-a headline (so that it becomes a subheading at its location).  Also turn a
-headline into a normal line by removing the stars.  If there is an active
-region, turn all lines in the region into headlines.  If the first line in
-the region was an item, turn only the item lines into headlines.  Finally,
-if the first line is a headline, remove the stars from all headlines in the
-region.
+@code{org-yank-adjusted-subtrees}と@code{org-yank-folded-subtrees}という変数によ
+って、Org-modeの内部の@code{yank}コマンドは、賢い方法で、@kbd{C-c C-x C-y}と同
+等のコマンドを用いて、折り畳まれているサブツリーを貼り付けることができ
+るでしょう。デフォルトの設定では、階層の調整は行われませんが、貼り付け
+られたツリーは、既に表示されているテキスト受け入れない限り、折り畳まれ
+たままでしょう。このコマンドに対して何らかの前置引数をつけることで、渡
+されたプレフィックスに応じて、通常の@code{yank}を実行させることになります。
+通常のyankを実行する良い方法は@kbd{C-u C-y}です。yankの後で@code{yank-pop}を使
+うと、階層の調整や折り畳みをすることなく、それ以前にkillしたアイテムを
+プレーンにyankします。@orgcmd{C-c C-x c,org-clone-subtree-with-time-shift}た
+くさんのそれと同じ兄弟のコピーを作成することで、サブツリーの複製を作り
+ます。たくさんのコピーの作成を実行したいならば、そのエントリーに含まれ
+ているタイムスタンプも調整されるように指定することもできます。この機能
+は便利です。例えば、準備している一連の講義に関連した沢山のタスクを作成
+するという場合のように。もっと詳細な情報が必要ならば、
+@code{org-clone-subtree-with-time-shift}コマンドの解説を参照してください。
+@orgcmd{C-c C-w,org-refile}エントリーやリージョンを別の場所に保管します。
+@xref{Refiling notes}.@orgcmd{C-c ^,org-sort-entries-or-items}同じ階層のエントリー
+を並び替えられます。アクティブなリージョンがあるときに、そのリージョン
+にあるすべてのエントリーは順番に並びます。もう一方で、カレントの見出し
+の子供の階層も並び替えられます。並び替えの形式をコマンドで入力します。
+すなわちアルファベット順、数字順、時間順（実行するために参照される作成
+日、予定日、期限などの最初のタイムスタンプ）、優先順位順、TODOキーワー
+ド順（設定の中で定義された一連のキーワードの中で）あるいは属性の価値の
+順に並べ替えるために。並び順を反転することも同様に可能です。並び替えの
+キーを拡張するために自分自身の関数を用意することもできます。@kbd{C-u C-u}
+という二重の前置引数を使用すると、複製されたエントリーは削除されます。
+@orgcmd{C-x n s,org-narrow-to-subtree}カレントのサブツリーのためにバッファを
+ナローイングします。@orgcmd{C-x n b,org-narrow-to-block} カレントのブロックの
+ためにバッファをナローイングします。@orgcmd{C-x n w,widen}
+ナローイングを取り除きバッファを広げます。@orgcmd{C-c *,org-toggle-heading}
+普通の行やプレーンなリストアイテムを見出しに変更します。（そのため、そ
+れらの場所によってはサブの見出しになります。）星汁うぃを取り除くことに
+よって見出しを普通の行に変更することもできます。もしもアクティブなリー
+ジョンあるならば、その領域のすべての行が見出しに変更されます。もしもそ
+の領域の中の最初の行がアイテムだったら、そのアイテムの行のみが見出しに
+変更されます。最後に、もし最初の行が見出しならば、その領域の中の全ての
+見出しから星印が取り除かれます。
 @end table
 
 @cindex region, active
 @cindex アクティブなリージョン
 @cindex 暫定マークモード
-When there is an active region (Transient Mark mode), promotion and demotion
-work on all headlines in the region.  To select a region of headlines, it is
-best to place both point and mark at the beginning of a line, mark at the
-beginning of the first headline, and point at the line just after the last
-headline to change.  Note that when the cursor is inside a table
-(@pxref{Tables}), the Meta-Cursor keys have different functionality.
+アクティブなリージョンがあるときには（Transient Mark
+mode）、そのリージョンのすべての見出しの階層を上げたり、下げたり作用すること
+ができる。あるリージョンの見出しを選択するためには、行の先頭にポイントを置い
+てマークし、最初の見出しの先頭でマークし、変更する最後の見出しの次の行にポイ
+ントを置くのが良い方法である。カーソルがテーブル
+(@pxref{Tables})の中にあるときに、Meta-Cursorキーは異なる機能性を持つことに注意し
+てください。
 
 
 @node Sparse trees, Plain lists, Structure editing, Document Structure
@@ -1474,38 +1501,46 @@ headline to change.  Note that when the cursor is inside a table
 @vindex org-show-following-heading
 @vindex org-show-siblings
 @vindex org-show-entry-below
-An important feature of Org-mode is the ability to construct @emph{sparse trees} for selected information in an outline tree, so that the entire
-document is folded as much as possible, but the selected information is made
-visible along with the headline structure above it@footnote{See also the variables @code{org-show-hierarchy-above}, @code{org-show-following-heading}, @code{org-show-siblings}, and @code{org-show-entry-below} for detailed control on how much context is shown around each match.}.  Just try it out and you will see immediately how
-it works.
+Org-modeの重要な特徴の一つに、あるアウトラインのツリーに含まれている選択され
+た情報のために@emph{sparse trees（ツリーの抽出）}を作ることができるということがあ
+ります。そのため文書全体が最大限畳まれていても、その@footnote{検索に一致したときに、
+どの範囲の内容を表示するかを詳細にコントロールするために、
+@code{org-show-hierarchy-above}@code{org-show-following-heading}、@code{org-show-siblings}
+、そして@code{org-show-entry-below}変数を参照のこと}
+上に見出し構造に沿って表示することができるのです。試してみて、それがどんなに
+素早く動作するかを見てください。
 
-Org-mode contains several commands creating such trees, all these commands
-can be accessed through a dispatcher:
+Org-modeにはそういうツリーを作成するためのいくつものコマンドがあります。これ
+らのコマンドの全てはディスパッチャーを通してアクセスすることができます。
 
 @table @asis
-@orgcmd{C-c /,org-sparse-tree} This prompts for an extra key to select a
-sparse-tree creating command.  @orgcmd{C-c / r,org-occur}
+@orgcmd{C-c /,org-sparse-tree}
+これは、ツリーの抽出を選択するためのコマンドを作成する追加のキーを入力
+する。@orgcmd{C-c / r,org-occur}
 @vindex org-remove-highlights-with-change
-Occur.  Prompts for a regexp and shows a sparse tree with all matches.  If
-the match is in a headline, the headline is made visible.  If the match is
-in the body of an entry, headline and body are made visible.  In order to
-provide minimal context, also the full hierarchy of headlines above the
-match is shown, as well as the headline following the match.  Each match is
-also highlighted; the highlights disappear when the buffer is changed by an
-editing command@footnote{This depends on the option @code{org-remove-highlights-with-change}}, or by pressing @kbd{C-c C-c}.
-When called with a @kbd{C-u} prefix argument, previous highlights are kept,
-so several calls to this command can be stacked.  @orgcmdkkc{M-g n,M-g M-n,next-error} Jump to the next sparse tree match in this buffer.
-@orgcmdkkc{M-g p,M-g M-p,previous-error} Jump to the previous sparse tree
-match in this buffer.
+発生。正規表現のための入力と全ての一致したものについてのツリーの抽出を
+表示する。もしもその一致した言葉が見出しの中にあるならば、その見出しが
+表示される。もしもその一致した言葉がエントリーの本文の中にあるならば、
+見出しと本文が表示される。最小の内容を区分するために、その一致した言葉
+のある見出しの階層全体が表示され、同様にその一致した言葉に続く見出しも
+表示される。どの一致した言葉もハイライトされる。そのハイライトはバッフ
+ァが編集コマンド@footnote{これは@code{org-remove-highlights-with-change}オプションに
+依存する。}
+　によって変更されるか、@kbd{C-c C-c}を押すことで消える。@kbd{C-u}前置引数が呼
+ばれたときは、以前のハイライトは維持される。そのため何度もこのコマンド
+を呼び出すと積み重ねることができる。@orgcmdkkc{M-g n,M-g M-n,next-error} そのバ
+ッファの中の次のツリーの抽出部分にジャンプする。
+@orgcmdkkc{M-g p,M-g M-p,previous-error}　そのバッファの前のツリーの抽出部分にジ
+ャンプする。
 @end table
 
 
 @noindent
 @vindex org-agenda-custom-commands
-For frequently used sparse trees of specific search strings, you can use the
-variable @code{org-agenda-custom-commands} to define fast keyboard access to
-specific sparse trees.  These commands will then be accessible through the
-agenda dispatcher (@pxref{Agenda dispatcher}).  For example:
+特定の検索文字列によるツリーの抽出を何度も使用するために、
+@code{org-agenda-custom-commands}変数を使って特定のツリーの抽出に、素早くキーボー
+ドからアクセスする定義をすることができる。これらのコマンドはアジェンダディス
+パッチャー(@pxref{Agenda dispatcher})を通してアクセスすることができる。例えば。
 
 @lisp
 (setq org-agenda-custom-commands
@@ -1513,19 +1548,21 @@ agenda dispatcher (@pxref{Agenda dispatcher}).  For example:
 @end lisp
 
 @noindent will define the key @kbd{C-c a f} as a shortcut for creating
-a sparse tree matching the string @samp{FIXME}.
+@samp{FIXME}という文字列にマッチするツリーの抽出
 
-The other sparse tree commands select headings based on TODO keywords, tags,
-or properties and will be discussed later in this manual.
+他のツリーの抽出のためのコマンドは、TODOキーワード、タグ、あるいは属性に基づ
+いて見出しを選択するもので、このマニュアルの後の部分で議論されるだろう。
 
 @kindex C-c C-e v
 @cindex printing sparse trees
 @cindex visible text, printing
-To print a sparse tree, you can use the Emacs command
-@code{ps-print-buffer-with-faces} which does not print invisible parts of
-the document @footnote{This does not work under XEmacs, because XEmacs uses selective display for outlining, not text properties.}.  Or you can use the
-command @kbd{C-c C-e v} to export only the visible part of the document and
-print the resulting file.
+抽出したツリーを印刷するためには、Emacsの@code{ps-print-buffer-with-faces}という
+コマンドを使用することができます。それを使うと文書@footnote{このコマンドは、XEmacsで
+は動作しません。というのは、XEmacsでは、テキスト属性の部分ではなく、アウトラ
+インの選択して表示するために使用するものだからです。}のうちの表示されていな
+い部分は印刷されません。あるいは、文書の見えている部分をエクスポートするため
+に、@kbd{C-c C-e v}コマンドを使用し、エクスポートしたファイルを印刷することがで
+きます。
 
 @node Plain lists, Drawers, Sparse trees, Document Structure
 @section Plain lists
@@ -1534,183 +1571,215 @@ print the resulting file.
 @cindex lists, ordered
 @cindex ordered lists
 
-Within an entry of the outline tree, hand-formatted lists can provide
-additional structure.  They also provide a way to create lists of checkboxes
-(@pxref{Checkboxes}).  Org supports editing such lists, and every exporter
-(@pxref{Exporting}) can parse and format them.
+アウトラインのエントリーの中に、手動でフォーマットしたリストによって、別の構
+造化された項目を追加することができます。そのリストを使って、チェックボックス
+(@pxref{Checkboxes})のリストを作成する方法が提供されています。Org-modeではそういう
+リストの編集をサポートしており、そしてすべてのエクスポート機能(@pxref{Exporting})
+はそれらのリストの構文を解析しフォーマット化することができます。
 
-Org knows ordered lists, unordered lists, and description lists.
+Org-modeでは、数字付きのリスト、順序のないリスト、そして記述リストを解釈しま
+す。
 @itemize @bullet
-@item @emph{Unordered} list items start with @samp{-}, @samp{+}, or
-@samp{*}@footnote{When using @samp{*} as a bullet, lines must be indented or they will be seen as top-level headlines.  Also, when you are hiding leading stars to get a clean outline view, plain list items starting with a star may be hard to distinguish from true headlines.  In short: even though @samp{*} is supported, it may be better to not use it for plain list items.} as
-bullets.
+@item @emph{順序のない}リストアイテムは、@samp{-}、@samp{+}、または箇条書きの太い中黒として
+の@samp{*}@footnote{@samp{*}を箇条書きの太い中黒として使用するときは、それらの行はインデ
+ントが設定されている必要があります。そうでなければ、それらの行は見出し
+のトップ階層と見なされてしまいます。また、わかりやすいアウトラインビュ
+ーを得るために、先頭の星印を隠しているときは、プレーンなリストアイテム
+の場合は、本当の見出しと区別が付かなくなります。簡単に言えば、@samp{*}をサ
+ポートしているもののプレーンなリストアイテムのためには使用しない方が良
+いかもしれません。}
+が文頭に付きます。
 @item @vindex org-plain-list-ordered-item-terminator
 @vindex org-alphabetical-lists
-@emph{Ordered} list items start with a numeral followed by either a period
-or a right parenthesis@footnote{You can filter out any of them by configuring @code{org-plain-list-ordered-item-terminator}.}, such as
-@samp{1.} or @samp{1)}@footnote{You can also get @samp{a.}, @samp{A.}, @samp{a)} and @samp{A)} by configuring @code{org-alphabetical-lists}.  To minimize confusion with normal text, those are limited to one character only.  Beyond that limit, bullets will automatically fallback to numbers.}.
-If you want a list to start with a different value (e.g.@: 20), start the
-text of the item with @code{[@@20]}@footnote{If there's a checkbox in the item, the cookie must be put @emph{before} the checkbox.  If you have activated alphabetical lists, you can also use counters like @code{[@@b]}.}.  Those constructs can be used in any item of the list in
-order to enforce a particular numbering.
-@item @emph{Description} list items are unordered list items, and contain the
-separator @samp{ :: } to distinguish the description @emph{term} from the
-description.
+@emph{順番のある}
+リストアイテムは、数字のあとにピリオドか右括弧
+@footnote{@code{org-plain-list-ordered-item-terminator}の設定によって、それらのリス
+トをはずすことが可能です。}
+がついた形ではじまっています。例えば、@code{org-alphabetical-lists}を設定す
+ることによって、@samp{1.}や@samp{1)}@footnote{@samp{a.}、@samp{A.}、あるいは@samp{a)}といった形式も可能
+です。通常のテキストの混乱を最小限にするために、１つの文字のみに限定さ
+れています。この制限を超えると、数字に替えてbulletが自動的に使用されま
+す。}のように。もしもあなたがリストをこれら以外の値(e.g.@:
+20)で始めたいと思ったら、そのアイテムの最初の文字を@code{[@@20]}@footnote{そのアイテ
+ムの中にチェックボックスがある場合は、そのクッキーは、チェックボックス
+の@emph{前に}置かれなければなりません。もしも活性化されたアルファベットのつ
+いたリストがあるならば、@code{[@@b]}といったカウンターを使用することもでき
+ます。}
+のような文字で始めます。
+@item @emph{説明}のリストアイテムは順序のないリストアイテムで、説明内容と@emph{用語}の
+記述を区別するために@samp{ :: }といった区分するための記号を含んでいます。
 @end itemize
 
-Items belonging to the same list must have the same indentation on the first
-line.  In particular, if an ordered list reaches number @samp{10.}, then the
-2--digit numbers must be written left-aligned with the other numbers in the
-list.  An item ends before the next line that is less or equally indented
-than its bullet/number.
+同じリストに属しているアイテムは、最初の行と同じインデントでなければならない
+。特に、もしも順番のついたリストが@samp{10.}番に到達したら、その２つの数字の番号
+は、そのリストの中の他の番号とおなじく左寄せで書かれなければなりません。アイ
+テムは、次の行が、そのbullet／数字よりも少ないか等しいインデントの場合の前ま
+でで終わります。
 
 @vindex org-list-ending-method
 @vindex org-list-end-regexp
 @vindex org-empty-line-terminates-plain-lists
-Two methods@footnote{To disable either of them, configure @code{org-list-ending-method}.} are provided to terminate lists.  A list
-ends whenever every item has ended, which means before any line less or
-equally indented than items at top level.  It also ends before two blank
-lines@footnote{See also @code{org-empty-line-terminates-plain-lists}.}.  In
-that case, all items are closed.  For finer control, you can end lists with
-any pattern set in @code{org-list-end-regexp}.  Here is an example:
+リストを終わらせるために２つの方法@footnote{これらどちらも無効にするためには、
+@code{org-list-ending-method}を設定します。}
+が用意されています。ひとつのリストは、それぞれのアイテムが終了すると終わりま
+す。そのことは、トップのレベルのアイテムよりも少ないか等しいインデントの行の
+前までであるということを意味しています。また、空行
+@footnote{@code{org-empty-line-terminates-plain-lists}を参照してください。}
+が2行あると終了します。その場合、すべてのアイテムが閉じていることになります
+。うまく管理するには、@code{org-list-end-regexp}の中のどれかのパターンの設定でリ
+ストを終わることです。事例を紹介します。
 
 @example
 @group
-** Lord of the Rings
-   My favorite scenes are (in this order)
-   1. The attack of the Rohirrim
-   2. Eowyn's fight with the witch king
-      + this was already my favorite scene in the book
-      + I really like Miranda Otto.
-   3. Peter Jackson being shot by Legolas
-      - on DVD only
-      He makes a really funny face when it happens.
-   But in the end, no individual scenes matter but the film as a whole.
-   Important actors in this film are:
-   - @b{Elijah Wood} :: He plays Frodo
-   - @b{Sean Austin} :: He plays Sam, Frodo's friend.  I still remember
-     him very well from his role as Mikey Walsh in @i{The Goonies}.
+** ロードオブザリング
+   渡しの大好きなシーンは (この順で)
+   1. the Rohirrimの攻撃
+   2. Eowynが魔法使いの王と一緒に戦うところ
+      + これはもともと本を読んだときも私のお気に入りのシーンだった
+      + 私はMiranda Ottoが本当に好きだ。
+   3. Peter JacksonがLegolasに撃たれる
+      - DVDだけで
+      そのとき彼は本当に面白い顔をした。
+   しかし、結局、映画全体を通して個性的なシーンがない。
+   この映画での重要な俳優は:
+   - @b{Elijah Wood} :: Frodo役
+   - @b{Sean Austin} :: Sam役, Frodoの友達。私は今でも@i{The Goonies}
+     の中でMikey Walsh役として素晴らしい役回りを演じたことを覚えている。
 @end group
 @end example
 
-Org supports these lists by tuning filling and wrapping commands to deal
-with them correctly@footnote{Org only changes the filling settings for Emacs.  For XEmacs, you should use Kyle E. Jones' @file{filladapt.el}.  To turn this on, put into @file{.emacs}: @code{(require 'filladapt)}}, and by
-exporting them properly (@pxref{Exporting}).  Since indentation is what
-governs the structure of these lists, many structural constructs like
-@code{#+BEGIN_...} blocks can be indented to signal that they belong to a
-particular item.
+Org-modeでは、これらのリストを正しく@footnote{Org-modeではEmacs用のみの埋め込みの設定
+を変更できます。XEmacs用としては、Kyle E. Jonesの@file{filladapt.el}を使用しなけ
+ればなりません。この設定を起動するためには、@file{.emacs}:に
+@code{(require 'filladapt)}を記述しておく必要があります。}取り扱うために、埋め込
+んだり包んだりするコマンドをチューニングし、適切にエクスポートする
+(@pxref{Exporting})ことによって、これらのリストに対応しています。これらのリストの
+構造を管理しているのがインデントであるため、@code{#+BEGIN_...}ブロックのような多
+くの構造的な構成を、特別なアイテムに帰属しているという目印のためにインデント
+を設定することができます。
 
 @vindex org-list-demote-modify-bullet
-If you find that using a different bullet for a sub-list (than that used for
-the current list-level) improves readability, customize the variable
-@code{org-list-demote-modify-bullet}.
+（カレントのリストの階層のために使用するというよりも）サブリストのために、異
+なるbulletを使うことが読みやすくできると思ったら、
+@code{org-list-demote-modify-bullet}変数をカスタマイズしてください。
 
 @vindex org-list-automatic-rules
-The following commands act on items when the cursor is in the first line of
-an item (the line with the bullet or number).  Some of them imply the
-application of automatic rules to keep list structure intact.  If some of
-these actions get in your way, configure @code{org-list-automatic-rules} to
-disable them individually.
+あるアイテムの最初の行（bulletまたは数字のついている行）にカーソルがあるとき
+に、以下のコマンドがアイテムに作用します。それらのコマンドのいくつかは、リス
+トの構造を完全なままたもつために自動的なルールのアプリケーションであることを
+暗示しています。これらのコマンドの動作のいくつかを独自のやりかたにしたいなら
+ば、それらを個別に無効にするために、@code{org-list-automatic-rules}を設定してくだ
+さい。
 
 @table @asis
 @orgcmd{@key{TAB},org-cycle}
 @vindex org-cycle-include-plain-lists
-Items can be folded just like headline levels.  Normally this works only if
-the cursor is on a plain list item.  For more details, see the variable
-@code{org-cycle-include-plain-lists}.  If this variable is set to
-@code{integrate}, plain list items will be treated like low-level
-headlines.  The level of an item is then given by the indentation of the
-bullet/number.  Items are always subordinate to real headlines, however; the
-hierarchies remain completely separated.
-@orgcmd{M-@key{RET},org-insert-heading}
+アイテムは見出しの階層と同じように折り畳むことができます。通常これらは
+カーソルがプレーンなリストアイテムの上にあるときに限り動作します。もっ
+と詳しく理解するには、@code{org-cycle-include-plain-lists}変数を参照してく
+ださい。もしもこの変数が@code{integrate}に設定されているときは、プレーンな
+リストアイテムは下の階層の見出しと同様に取り扱われます。そのため筆のア
+イテムの階層はbulletまたは数字のインデントによって決定されます。アイテ
+ムは実際の見出しに常に従属しているのです。しかしながら、階層構造は完全
+に区別されたままになります。@orgcmd{M-@key{RET},org-insert-heading}
 @vindex org-M-RET-may-split-line
 @vindex org-list-automatic-rules
-Insert new item at current level.  With a prefix argument, force a new
-heading (@pxref{Structure editing}).  If this command is used in the middle
-of an item, that item is @emph{split} in two, and the second part becomes
-the new item@footnote{If you do not want the item to be split, customize the variable @code{org-M-RET-may-split-line}.}.  If this command is executed
-@emph{before item's body}, the new item is created @emph{before} the current
-one.
+新しいアイテムをカレントの階層に挿入します。前置引数を用いると、新しい
+見出し (@pxref{Structure editing}.)となります。もしもこのコマンドがアイテム
+の途中で使用されるならば、そのアイテムは２つに@emph{分割}
+されます。そして2番目の部分は新しいアイテム@footnote{もしもアイテムを分割したく
+ないならば、@code{org-M-RET-may-split-line}変数をカスタマイズしてください。
+}となります。もしもこのコマンドが、@emph{本文の前で}実行されるならば、新し
+いアイテムは、カレントのアイテムの@emph{前に}作成されます。
 @kindex M-S-@key{RET}
 @item M-S-@key{RET}
-Insert a new item with a checkbox (@pxref{Checkboxes}).
-@orgcmd{@key{TAB},org-cycle} In a new item with no text yet, the first
-@key{TAB} demotes the item to become a child of the previous one.
-Subsequent @key{TAB}s move the item to meaningful levels in the list and
-eventually get it back to its initial position.
+チェックボックス(@pxref{Checkboxes})のついた新しいアイテムを挿入します。
+@orgcmd{@key{TAB},org-cycle}
+テキストがまだ書かれていない新しいアイテムの中で、最初の@key{TAB}
+でそのアイテムをその前のアイテムの子の階層に移動します。それに続けて
+@key{TAB}を入力していくと、そのアイテムをリスト上で意味のある階層に移動し
+、そして最終的にもとあった一に戻ります。
 @kindex S-@key{down}
 @item S-@key{up}
 @itemx S-@key{down}
 @cindex shift-selection-mode
 @vindex org-support-shift-select
-Jump to the previous/next item in the current list, but only if
-@code{org-support-shift-select} is off.  If not, you can still use paragraph
-jumping commands like @kbd{C-@key{up}} and @kbd{C-@key{down}} to quite
-similar effect.
+カレントのリストの中で、前の／次のアイテムにジャンプします。ただし
+@code{org-support-shift-select}
+がオフになっている時だけです。もしもそうなっていないなら、@kbd{C-@key{up}}
+と@kbd{C-@key{down}}のようなパラグラフのジャンプコマンドと全く同様の効果が現れ
+るように使用することができます。
 @kindex M-S-@key{up}
 @kindex M-S-@key{down}
 @item M-S-@key{up}
 @itemx M-S-@key{down}
-Move the item including subitems up/down (swap with previous/next item of
-same indentation).  If the list is ordered, renumbering is automatic.
+サブアイテムを持っているアイテムを上下（同じインデントのついたアイテム
+の前後と入れ替わる）に移動します。もしもリストに序列があるならば、自動
+的に採番しなおします。
 @kindex M-@key{left}
 @kindex M-@key{right}
 @item M-@key{left}
 @itemx M-@key{right}
-Decrease/increase the indentation of an item, leaving children alone.
+一つのアイテムのインデントを増減します。子のアイテムを残したままで。
 @kindex M-S-@key{left}
 @kindex M-S-@key{right}
 @item M-S-@key{left}
 @itemx M-S-@key{right}
-Decrease/increase the indentation of the item, including subitems.
-Initially, the item tree is selected based on current indentation.  When
-these commands are executed several times in direct succession, the
-initially selected region is used, even if the new indentation would imply a
-different hierarchy.  To use the new hierarchy, break the command chain with
-a cursor motion or so.
+サブアイテムを含んだまま、アイテムのインデントを増減します。初期設定で
+は、アイテムのツリーはカレントのインデントに基づいて選択されます。直接
+連続してこれらのコマンドが何度も実行されたときは、たとえ新しいインデン
+トが異なる階層であるとわかっていても、初期に選択されたリージョンが使用
+されます。新しい階層を使用するために、カーソルを移動させるコマンドの連
+鎖をブレイクする必要があります。
 
-As a special case, using this command on the very first item of a list will
-move the whole list.  This behavior can be disabled by configuring
-@code{org-list-automatic-rules}.  The global indentation of a list has no
-influence on the text @emph{after} the list.
+特別な場合として、リストの本当に最初のアイテムの上で、このコマンドを使
+用することで全てのリストを動かすことができます。この動作は
+@code{org-list-automatic-rules}を設定することで無効にすることができます。あ
+るリストのグローバルなインデントは、そのリストの@emph{後の}テキストにはなん
+の影響も与えません。
 @kindex C-c C-c
 @item C-c C-c
-If there is a checkbox (@pxref{Checkboxes}) in the item line, toggle the
-state of the checkbox.  In any case, verify bullets and indentation
-consistency in the whole list.
+アイテムの行にチェックボックス(@pxref{Checkboxes})がある場合には、チェックボ
+ックスの状態を切り替えます。ともかく、リスト全体についてbulletとインデ
+ントの整合性を検証します。
 @kindex C-c -
 @vindex org-plain-list-ordered-item-terminator
 @vindex org-list-automatic-rules
 @item C-c -
-Cycle the entire list level through the different itemize/enumerate bullets
-(@samp{-}, @samp{+}, @samp{*}, @samp{1.}, @samp{1)}) or a subset of them,
-depending on @code{org-plain-list-ordered-item-terminator}, the type of
-list, and its position@footnote{See @code{bullet} rule in @code{org-list-automatic-rules} for more information.}.  With a numeric
-prefix argument N, select the Nth bullet from this list.  If there is an
-active region when calling this, selected text will be changed into an
-item.  With a prefix argument, all lines will be converted to list items.
-If the first line already was a list item, any item marker will be removed
-from the list.  Finally, even without an active region, a normal line will
-be converted into a list item.
+@code{org-plain-list-ordered-item-terminator}の設定により、異なる箇条書き/
+番号付きのbullet(@samp{-},
+@samp{+}, @samp{*}, @samp{1.}, @samp{1)})
+、またはそれらのサブセットをもとにして全体のリストの階層、リストのタイ
+プ、リストの位置@footnote{もっと多くの情報が必要ならば、
+@code{org-list-automatic-rules}の中の@code{bullet}を参照してください。}を切り替
+えます。Nという数字の付いた前置引数を使用すると、これらのリストの中のN
+番目のbulletが選択されます。もしも、このコマンドを呼び出したときにアク
+ティブなリージョンがあるならば、選択された文章は普通のアイテムに変更さ
+れます。前置引数を使うと、すべての行がリストアイテムに変換されます。も
+しも最初の行がすでにリストアイテムだったならば、どのアイテムの符号もリ
+ストから削除されるでしょう。最後に、アクティブなリージョンでない場合で
+も、リストアイテムに変換されます。
 @kindex C-c *
 @item C-c *
-Turn a plain list item into a headline (so that it becomes a subheading at
-its location). @xref{Structure editing}, for a detailed explanation.
+プレーンなリストのアイテムを見出しに変更します（そのロケーションによっ
+てはサブの見出しになることもあります。）@xref{Structure editing}.、ここに詳
+しい説明があります。
 @kindex C-c C-*
 @item C-c C-*
-Turn the whole plain list into a subtree of the current heading.  Checkboxes
-(@pxref{Checkboxes}) will become TODO (resp. DONE) keywords when unchecked
-(resp. checked).
+プレーンなリスト全体を可憐との見出しのサブツリーに変換します。チェック
+ボックス(@pxref{Checkboxes})は、チェックされていないとき（またはチェックされ
+ているとき）はTODO（またはDONE）キーワードになるでしょう。
 @kindex S-@key{left}
 @kindex S-@key{right}
 @item S-@key{left}/@key{right}
 @vindex org-support-shift-select
-This command also cycles bullet styles when the cursor in on the bullet or
-anywhere in an item line, details depending on
-@code{org-support-shift-select}.
+bullet上、またはアイテムの行のどこかにカーソルが置かれているときに、こ
+のコマンドは、また、bulletのスタイルを切り替えます。詳細は
+@code{org-support-shift-select}に依存します。
 @kindex C-c ^
 @item C-c ^
-Sort the plain list.  You will be prompted for the sorting method:
-numerically, alphabetically, by time, or by custom function.
+プレーンなリストを並び替えます。次の並び替えの方法を入力します。数字順
+、アルファベット順、時間順、あるいはカスタムな機能の順番に。
 @end table
 
 @node Drawers, Blocks, Plain lists, Document Structure
@@ -1720,35 +1789,36 @@ numerically, alphabetically, by time, or by custom function.
 @cindex visibility cycling, drawers
 
 @vindex org-drawers
-Sometimes you want to keep information associated with an entry, but you
-normally don't want to see it.  For this, Org-mode has @emph{drawers}.
-Drawers need to be configured with the variable
-@code{org-drawers}@footnote{You can define drawers on a per-file basis with a line like @code{#+DRAWERS: HIDDEN PROPERTIES STATE}}.  Drawers look like
-this:
+あるエントリーに関連する情報を保持していたいときがあるが、普段はその情報を見
+たくはないということがあります。こういうときのために、Org-modeは@emph{引き出し}と
+いう機能を持っています。引き出しは
+@code{org-drawers}@footnote{@code{#+DRAWERS: HIDDEN PROPERTIES STATE}というような行を使ってファ
+イル毎に引き出しを定義することができます。}変数で設定する必要があります。引
+き出しはこんな形をしています。
 
 @example
-** This is a headline
-   Still outside the drawer
+** これは見出しです
+   ここはまだ引き出しの外側です
    :DRAWERNAME:
-   This is inside the drawer.
+   これは引き出しの内側です。
    :END:
-   After the drawer.
+   引き出しの後です。
 @end example
 
-Visibility cycling (@pxref{Visibility cycling}) on the headline will hide
-and show the entry, but keep the drawer collapsed to a single line.  In
-order to look inside the drawer, you need to move the cursor to the drawer
-line and press @key{TAB} there.  Org-mode uses the @code{PROPERTIES} drawer
-for storing properties (@pxref{Properties and Columns}), and you can also
-arrange for state change notes (@pxref{Tracking TODO state changes}) and
-clock times (@pxref{Clocking work time}) to be stored in a drawer
-@code{LOGBOOK}.  If you want to store a quick note in the LOGBOOK drawer, in
-a similar way to state changes, use
+見出し上で表示の切り替え(@pxref{Visibility cycling})を行うとエントリーを隠したり表
+示したりすることができますが、引き出しの部分は1行に畳まれたままの状態になり
+ます。引き出しの中身を見るためには、カーソルを引き出しの行に移動し、そこで
+@key{TAB}キーを押すことが必要です。Org-modeは属性(@pxref{Properties and Columns})を保
+持するために、@code{PROPERTIES}という引き出しを使用します。そしてノート
+(@pxref{Tracking TODO state changes})と時刻(@pxref{Clocking work time})の変化の状態を用
+意するために@code{LOGBOOK}という引き出しの中に保存をすることができます。もしも、
+状態の変化のためと似たような方法で素早くノートをLOGBOOKの引き出しに保存した
+いときには、このように使います。
 
 @table @kbd
 @kindex C-c C-z
 @item C-c C-z
-Add a time-stamped note to the LOGBOOK drawer.
+LOGBOOKのための引き出しにタイムスタンプ付きのノートを追加します。
 @end table
 
 @node Blocks, Footnotes, Drawers, Document Structure
@@ -1756,12 +1826,12 @@ Add a time-stamped note to the LOGBOOK drawer.
 
 @vindex org-hide-block-startup
 @cindex blocks, folding
-Org-mode uses begin...end blocks for various purposes from including source
-code examples (@pxref{Literal examples}) to capturing time logging
-information (@pxref{Clocking work time}).  These blocks can be folded and
-unfolded by pressing TAB in the begin line.  You can also get all blocks
-folded at startup by configuring the variable @code{org-hide-block-startup}
-or on a per-file basis by using
+Org-modeはソースコードの例(@pxref{Literal examples}) から時刻のログ情報
+(@pxref{Clocking work time})を記録することまで、いろいろな目的のために、
+begin...endというブロックを使用します。このブロックでは、行の先頭でTABを押す
+ことによって、折り畳んだり、折り畳みを解いたりすることができます。
+@code{org-hide-block-startup}変数を設定するか、以下のようなファイル毎の設定をする
+ことで、起動時に全てのブロックを折り畳んでおくこともできます。
 
 @cindex @code{hideblocks}, STARTUP keyword
 @cindex @code{nohideblocks}, STARTUP keyword
@@ -1774,107 +1844,113 @@ or on a per-file basis by using
 @section Footnotes
 @cindex footnotes
 
-Org-mode supports the creation of footnotes.  In contrast to the
-@file{footnote.el} package, Org-mode's footnotes are designed for work on a
-larger document, not only for one-off documents like emails.  The basic
-syntax is similar to the one used by @file{footnote.el}, i.e.@: a footnote
-is defined in a paragraph that is started by a footnote marker in square
-brackets in column 0, no indentation allowed.  If you need a paragraph break
-inside a footnote, use the @LaTeX{} idiom @samp{\par}.  The footnote
-reference is simply the marker in square brackets, inside text.  For
-example:
+Org-modeは脚注の作成をサポートしています。Org-modeは、@file{footnote.el}パッケー
+ジと対照的に、1回限りのEメールのような文書だけでなく、大きな文書上で動作する
+よう設計されています。基本構文は@file{footnote.el}の構文で使われているのと良く似
+ており、i.e.@:インデントが認められていない、カラム0の角カッコの中の脚注の印
+によって始まるパラグラフの中で定義されます。もしも脚注の中でパラグラフを改行
+したいならば、@LaTeX{}の用語である@samp{\par}を使用します。脚注の参照は、テキストの
+中の単純な角カッコの中の記号です。例えば。
 
 @example
-The Org homepage[fn:1] now looks a lot better than it used to.
+Org-modeのホームページ[fn:1] は以前に比べて現在は相当改良されていると思いま
+す。
 ...
-[fn:1] The link is: http://orgmode.org
+[fn:1] リンク先は: http://orgmode.org
 @end example
 
-Org-mode extends the number-based syntax to @emph{named} footnotes and
-optional inline definition.  Using plain numbers as markers (as
-@file{footnote.el} does) is supported for backward compatibility, but not
-encouraged because of possible conflicts with @LaTeX{} snippets
-(@pxref{Embedded LaTeX}).  Here are the valid references:
+Org-modeでは数字をベースとした構文を、@emph{名前のついた}脚注とオプションのインラ
+インでの定義へと拡張しています。プレーンな数字を(@file{footnote.el}で行えるように
+）マーカーとして使うことは、下位の互換性としてサポートされていますが、@LaTeX{}
+のsnippet(@pxref{Embedded LaTeX})と衝突する危険性があるのでお奨めはできません。以
+下に確かな参考資料を説明します。
 
 @table @code
 @item [1]
-A plain numeric footnote marker.  Compatible with @file{footnote.el}, but
-not recommended because something like @samp{[1]} could easily be part of a
-code snippet.
+プレーンな数字付きの脚注用の記号です。@file{footnote.el}と互換性はあります
+が、@samp{[1]}のような記号は、snippetのコードとかぶることが多いので推奨しま
+せん。
 @item [fn:name]
-A named footnote reference, where @code{name} is a unique label word, or,
-for simplicity of automatic creation, a number.
-@item [fn:: This is the inline definition of this footnote]
-A @LaTeX{}-like anonymous footnote where the definition is given directly at
-the reference point.
+名前付きの脚注参照、そこでは@code{name}がユニークな言葉によるラベルとなって
+おり、さもなければ簡単に自動的に作成される、数字が用いられます。
+@item [fn:: これは脚注のインラインの定義です]
+参照のポイントに直接定義がなされる@LaTeX{}のような無記名の脚注。
 @item [fn:name: a definition]
-An inline definition of a footnote, which also specifies a name for the
-note.  Since Org allows multiple references to the same note, you can then
-use @code{[fn:name]} to create additional references.
+脚注のインラインでの定義、それはまた、ノートのための名前を明確に規定し
+ます。Org-modeは同じノートに対して多重の参照を許容するので、新たな参照
+を作成するために、@code{[fn:name]}を使用することができます。
 @end table
 
 @vindex org-footnote-auto-label
-Footnote labels can be created automatically, or you can create names
-yourself.  This is handled by the variable @code{org-footnote-auto-label}
-and its corresponding @code{#+STARTUP} keywords.  See the docstring of that
-variable for details.
+脚注のラベルは自動的に作成することができます。そうしないならば、あなた自身で
+名前を作成することができます。これは@code{org-footnote-auto-label}変数で操作され
+、@code{#+STARTUP}キーワードに対応します。詳細については変数の説明を参照してくだ
+さい。
 
 @noindent The following command handles footnotes:
 
 @table @kbd
 @kindex C-c C-x f
 @item C-c C-x f
-The footnote action command.
+脚注の動作のコマンド。
 
-When the cursor is on a footnote reference, jump to the definition.  When it
-is at a definition, jump to the (first) reference.
+カーソルが脚注参照上にあるときに、定義部分にジャンプします。カーソルが
+定義部分にあるときに、（最初の）参照されている部分にジャンプします。
 
 @vindex org-footnote-define-inline
 @vindex org-footnote-section
 @vindex org-footnote-auto-adjust
-Otherwise, create a new footnote.  Depending on the variable
-@code{org-footnote-define-inline}@footnote{The corresponding in-buffer setting is: @code{#+STARTUP: fninline} or @code{#+STARTUP: nofninline}}, the
-definition will be placed right into the text as part of the reference, or
-separately into the location determined by the variable
-@code{org-footnote-section}.
+そうでなければ、新しい脚注を作成します。
+@code{org-footnote-define-inline}@footnote{対応するインバッファの設定は、
+@code{#+STARTUP: fninline}または @code{#+STARTUP: nofninline}となります。}によっ
+て、参照の一部として、または、@code{org-footnote-section}変数によって決定さ
+れる場所の中に区分されて、テキストの中に正しく定義が配置されるでしょう。
 
-When this command is called with a prefix argument, a menu of additional
-options is offered:
+前置引数と一緒にコマンドが呼び出された場合は、追加のオプションのメニュ
+ーが提示されます。
 @example
-s   @r{Sort the footnote definitions by reference sequence.  During editing,}
-    @r{Org makes no effort to sort footnote definitions into a particular}
-    @r{sequence.  If you want them sorted, use this command, which will}
-    @r{also move entries according to @code{org-footnote-section}.  Automatic}
-    @r{sorting after each insertion/deletion can be configured using the}
-    @r{variable @code{org-footnote-auto-adjust}.}
-r   @r{Renumber the simple @code{fn:N} footnotes.  Automatic renumbering}
-    @r{after each insertion/deletion can be configured using the variable}
-    @r{@code{org-footnote-auto-adjust}.}
-S   @r{Short for first @code{r}, then @code{s} action.}
-n   @r{Normalize the footnotes by collecting all definitions (including}
-    @r{inline definitions) into a special section, and then numbering them}
-    @r{in sequence.  The references will then also be numbers.  This is}
-    @r{meant to be the final step before finishing a document (e.g.@: sending}
-    @r{off an email).  The exporters do this automatically, and so could}
-    @r{something like @code{message-send-hook}.}
-d   @r{Delete the footnote at point, and all definitions of and references}
-    @r{to it.}
+s   @r{参照の順場によって、脚注の定義は並び替えられます。編集している間は、}
+    @r{Org-modeは特定の並びの中に脚注の定義を並び替える努力はしません。}
+    @r{もしもそれらを並び替えたいならば、このコマンドを使用してください。}
+    @r{それによって@code{org-footnote-section}に従ってエントリーをまた移動しま
+す。}
+    @r{挿入／削除のあとに自動的に並び替えるには、変数を使うことで設定する}
+    @r{ことができます。}
+r   @r{単純な@code{fn:N} の脚注を思い出してください。挿入／削除それぞれのあとの
+}
+    @r{自動的な採番は、@code{org-footnote-auto-adjust}変数を使う}
+    @r{ことで設定できます。}
+S   @r{最初の@code{r}のショートカットで、@code{s}はアクションです。}
+n   @r{すべての定義（インラインの定義もふくみます）を特別なセクションに集
+める}
+    @r{ことによって脚注を標準化します。そしてそれからそれらの定義を順番に
+採番}
+    @r{します。参照先にも番号がふられます。これは、ひとつのドキュメントを
+終了}
+    @r{する前の最後の段階であることを意味します。(e.g.@: Eメールを発送する）
+。}
+    @r{エクスポート機能はこのことを自動的に行い、}
+    @r{@code{message-send-hook}のような何かを行います。}
+d   @r{そのポイント、およびそれについての参照先の定義を削除します。}
 @end example
-Depending on the variable @code{org-footnote-auto-adjust}@footnote{the corresponding in-buffer options are @code{fnadjust} and @code{nofnadjust}.},
-renumbering and sorting footnotes can be automatic after each insertion or
-deletion.
+@code{org-footnote-auto-adjust}@footnote{対応するインバッファのオプションは
+@code{fnadjust}と@code{nofnadjust}になります。}と@code{nofnadjust}の変数に依存し、そ
+れぞれの挿入と削除のあとに、番号の振り直しと脚注の並び替えが自動的に行
+われます。
 
 @kindex C-c C-c
 @item C-c C-c
-If the cursor is on a footnote reference, jump to the definition.  If it is
-a the definition, jump back to the reference.  When called at a footnote
-location with a prefix argument, offer the same menu as @kbd{C-c C-x f}.
+もしもカーソルが脚注の参照の上にあるときは、定義部分に飛びます。もしも
+それがある定義ならば、参照先にジャンプして戻ります。前置引数と一緒に、
+脚注の場所を呼び出すときに、@kbd{C-c C-x f}として同じメニューが提供されて
+います。
 @kindex C-c C-o
 @kindex mouse-1
 @kindex mouse-2
 @item C-c C-o  @r{or} mouse-1/2
-Footnote labels are also links to the corresponding definition/reference,
-and you can use the usual commands to follow these links.
+脚注のラベルはまた、定義／参照先に対応してリンクを貼ります。そして通常
+のコマンドでこれらのリンクをフォローするための通常のコマンドを使用する
+ことができます。
 @end table
 
 @node Orgstruct mode, , Footnotes, Document Structure
@@ -1882,25 +1958,25 @@ and you can use the usual commands to follow these links.
 @cindex Orgstruct mode
 @cindex minor mode for structure editing
 
-If you like the intuitive way the Org-mode structure editing and list
-formatting works, you might want to use these commands in other modes like
-Text mode or Mail mode as well.  The minor mode @code{orgstruct-mode} makes
-this possible.  Toggle the mode with @kbd{M-x orgstruct-mode}, or turn it on
-by default, for example in Message mode, with one of:
+もしもOrg-modeの構造の編集とリストのフォーマットの動作について直感的な方法を
+好むのならば、あなたはTextモードやMailモードと同じような他のモードのコマンド
+を使用したいと思うでしょう。@code{orgstruct-mode}というマイナーモードでそれが可能
+になります。@kbd{M-x orgstruct-mode}を使ってモードを切り替えるか、例えばMessage
+モードの中で、デフォルトでそれを作動させるか、次のいずれかを用いて、
 
 @lisp
 (add-hook 'message-mode-hook 'turn-on-orgstruct)
 (add-hook 'message-mode-hook 'turn-on-orgstruct++)
 @end lisp
 
-When this mode is active and the cursor is on a line that looks to Org like
-a headline or the first line of a list item, most structure editing commands
-will work, even if the same keys normally have different functionality in
-the major mode you are using.  If the cursor is not in one of those special
-lines, Orgstruct mode lurks silently in the shadows.  When you use
-@code{orgstruct++-mode}, Org will also export indentation and autofill
-settings into that mode, and detect item context after the first line of an
-item.
+このモードがアクティブで、カーソルが見出しやリストアイテムの最初の行のような
+Org-modeのような行の上にあるときには、ほとんどの構造の編集のためのコマンドは
+動作するでしょう。たとえ、あなたが使っているメジャーモードの中で、同じキーが
+普通に異なる機能を持っているとしても。もしもカーソルがそういった特別の行の一
+つの中に置かれていなくても、Orgstructモードは影の中で静かに隠れています。
+@code{orgstruct++-mode}を使ったときは、Org-modeは、それらのモードの中に、インデン
+トやオートフィルの設定を書き出すでしょう。そして、アイテムの最初の行の後にア
+イテムのコンテクストを見つけるでしょう。
 
 @node Tables, Hyperlinks, Document Structure, Top
 @chapter Tables
@@ -2439,7 +2515,7 @@ remote(NAME-OR-ID,REF)
 @end example
 
 @noindent
-で、ここでNAMEは別なファイルにあるテーブルの名前で、テーブルの前の行に
+NAMEは別なファイルにあるテーブルの名前で、テーブルの前の行に
 @code{#+TBLNAME: NAME}と設定しておきます。エントリーのIDも利用でき、別なファイル
 にあるものも指定できます。この場合はエントリーに含まれる最初のテーブルを参照
 します。REFは前述したような絶対的なフィールドか範囲となる参照で、@code{@@3$3}や
@@ -2628,10 +2704,11 @@ Lisp形式の数値として挿入されます。@samp{L}フラッグを指定�
 @cindex 編集（テーブルの数式）
 
 @vindex org-table-use-standard-references
-ミニバッファか直接フィールド内で、個々の数式を編集できます。org-modeはテーブ
-ルに含まれるすべてのアクティブな数式がある特別なバッファも準備しています。数
-式を編集しようとすると、org-modeは、もし可能ならば参照を標準のフォーマット（
-@code{B3}や@code{D&}のような記法）に変換します。もし内部フォーマット（@code{@@3$2}や@code{$4}のような記法）を用いて編集したい場合は、変数
+ミニバッファかもしくは、直接フィールド内で、個々の数式を編集できます。
+org-modeはテーブルに含まれるすべてのアクティブな数式がある特別なバッファも準
+備しています。数式を編集しようとすると、org-modeは、もし可能ならば参照を標準
+のフォーマット（@code{B3}や@code{D&}のような記法）に変換します。もし内部フォーマット（
+@code{@@3$2}や@code{$4}のような記法）を用いて編集したい場合は、変数
 @code{org-table-use-standard-references}を設定してください。
 
 @table @kbd
@@ -11769,37 +11846,35 @@ Org-modeのバッファのその場所に挿入します。例えば、
 @node file, dir, results, Specific header arguments
 @subsubsection @code{:file}
 
-The header argument @code{:file} is used to specify an external file in
-which to save code block results.  After code block evaluation an Org-mode
-style @code{[[file:]]} link (see @ref{Link format}) to the file will be
-inserted into the Org-mode buffer.  Some languages including R, gnuplot,
-dot, and ditaa provide special handling of the @code{:file} header argument
-automatically wrapping the code block body in the boilerplate code required
-to save output to the specified file.  This is often useful for saving
-graphical output of a code block to the specified file.
+コードブロックの結果を保存する外部のファイルを指定するため、にヘッダー引数
+@code{:file}を使います。コードブロックの評価の後に、Org-modeスタイルのリンク
+@code{[[file:]]}(@ref{Link format}を参照)が、そのOrg-modeバッファーに挿入されます。
+R, gnuplot,
+dotやditaaなどの言語では、ヘッダー引数@code{:file}を扱う特別な機能が用意されてい
+ます。その機能は、指定されたファイルへアウトプットを保存するために、必要な定
+型のコードでコードブロックの本文を囲みます。これは、コードブロックの画像出力
+を特定のファイルに保存する場合に、よく使います。
 
-The argument to @code{:file} should be either a string specifying the path
-to a file, or a list of two strings in which case the first element of the
-list should be the path to a file and the second a description for the link.
+@code{:file}に対する引数は、ファイルのパスを示す文字列もしくは、次の2つの文字列か
+らなるリスト、のどちらかでなくてはなりません。2つの文字列からなるリストは、
+第1要素はファイルのパス、第2要素はそのリンクの説明から構成されます。
 
 @node dir, exports, file, Specific header arguments
-@subsubsection @code{:dir} and remote execution
+@subsubsection @code{:dir}とリモートでの実行
 
-While the @code{:file} header argument can be used to specify the path to
-the output file, @code{:dir} specifies the default directory during code
-block execution. If it is absent, then the directory associated with the
-current buffer is used. In other words, supplying @code{:dir path}
-temporarily has the same effect as changing the current directory with
-@kbd{M-x cd path}, and then not supplying @code{:dir}. Under the surface,
-@code{:dir} simply sets the value of the Emacs variable
-@code{default-directory}.
+ヘッダー引数@code{:file}がアウトプットするファイルのパスを指定する一方で、@code{:dir}
+はコードブロックを実行する間のデフォルトのディレクトリを指定します。指定され
+なければ、現在のバッファに関連するディレクトリが使われます。言い換えると、
+@code{:dir path}を与えることは、@kbd{M-x cd path}でカレントディレクトリを変えるだけで
+@code{:dir}を設定しない場合と一時的には同じ効果を持ちます。水面下で、@code{:dir}が
+Emacsの変数@code{default-directory}を変更しているだけです。
 
-When using @code{:dir}, you should supply a relative path for file output
-(e.g.@: @code{:file myfile.jpg} or @code{:file results/myfile.jpg}) in which
-case that path will be interpreted relative to the default directory.
+@code{:dir}を使う場合、アウトプットするファイルを相対パス(例@: @code{:file myfile.jpg}も
+しくは@code{:file results/myfile.jpg})で与えなければなりません。その場合、与えた
+パスはデフォルトディレクトリに対する相対パスとして解釈されます。
 
-In other words, if you want your plot to go into a folder called @file{Work}
-in your home directory, you could use
+つまり、ホームディレクトリ内に@file{Work}というフォルダでプロット(グラフを描画)し
+たい場合、次のように使えます。
 
 @example
 #+begin_src R :file myplot.png :dir ~/Work
@@ -11807,9 +11882,9 @@ matplot(matrix(rnorm(100), 10), type="l")
 #+end_src
 @end example
 
-@subsubheading Remote execution
-A directory on a remote machine can be specified using tramp file syntax, in
-which case the code will be evaluated on the remote machine. An example is
+@subsubheading リモートでの実行
+trampのファイル構文を使う事でリモートマシン上のディレクトリを記述できます。
+その場合、リモートマシン上でコードは評価されます。以下は例です。
 
 @example
 #+begin_src R :file plot.png :dir /dand@@yakuba.princeton.edu:
@@ -11817,205 +11892,201 @@ plot(1:10, main=system("hostname", intern=TRUE))
 #+end_src
 @end example
 
-Text results will be returned to the local Org-mode buffer as usual, and
-file output will be created on the remote machine with relative paths
-interpreted relative to the remote directory. An Org-mode link to the remote
-file will be created.
+いつものようにローカルのOrg-modeのバッファにテキストの結果が返され、リモート
+マシン上のリモートディレクトリを基準とした相対パスにファイルがアウトプットさ
+れます。リモートファイルへのOrg-modeのリンクが生成されます。
 
-So, in the above example a plot will be created on the remote machine, and a
-link of the following form will be inserted in the org buffer:
+従って、上の例ではリモートマシン上にグラフが生成されます。そしてOrg-modeバッ
+ファには次の形式のリンクが挿入されます。
 
 @example
 [[file:/scp:dand@@yakuba.princeton.edu:/home/dand/plot.png][plot.png]]
 @end example
 
-Most of this functionality follows immediately from the fact that
-@code{:dir} sets the value of the Emacs variable @code{default-directory},
-thanks to tramp. Those using XEmacs, or GNU Emacs prior to version 23 may
-need to install tramp separately in order for these features to work
-correctly.
+trampのおかげで、@code{:dir}がEmacsの変数@code{default-directory}をセットすれば、すぐ
+にこの機能の多くを使えます。これらの機能を正しく動かすためには、XEmacsや
+version23より前のGNU
+Emacsを使っている人はtrampを別にインストールする必要があるかもしれません。
 
-@subsubheading Further points
+@subsubheading 更なる点
 
 @itemize @bullet
-@item If @code{:dir} is used in conjunction with @code{:session}, although it will
-determine the starting directory for a new session as expected, no attempt
-is currently made to alter the directory associated with an existing
-session.
-@item @code{:dir} should typically not be used to create files during export with
-@code{:exports results} or @code{:exports both}. The reason is that, in
-order to retain portability of exported material between machines, during
-export links inserted into the buffer will *not* be expanded against
-@code{default directory}. Therefore, if @code{default-directory} is altered
-using @code{:dir}, it is probable that the file will be created in a
-location to which the link does not point.
+@item もし@code{:session}と並行して@code{:dir}が使われるとき、新規セッションを開始する
+場合には開始ディレクトリを予想して決定します。しかし、すでにセッション
+が存在する場合には、現バージョンでは、そのセッションと関連したディレク
+トリを変更しません。
+@item @code{:exports results}や@code{:exports both}を使ってファイルをエクスポートする
+間、通常は@code{:dir}を使ってファイルを生成するべきではありません。理由は以
+下の通りです。2つのマシンでエクスポートされた結果の移植性を維持するた
+めに、エクスポート時にバッファーへと挿入されるリンクは
+@code{default-directory}に対して展開*されていません*。それゆえ、もし@code{:dir}
+を使って@code{default directory}を変えてしまうと、リンクで意図していない場
+所にファイルが作られるという恐れがあります。
 @end itemize
 
 @node exports, 抽出, dir, Specific header arguments
 @subsubsection @code{:exports}
 
-The @code{:exports} header argument specifies what should be included in
-HTML or LaTeX exports of the Org-mode file.
+ヘッダー引数@code{:exports}は、Org-modeファイルのHTMLエクスポートやLaTeXエクスポ
+ートに、何を含めるかを指定します。
 
 @itemize @bullet
 @item @code{code}
-The default.  The body of code is included into the exported file.  E.g.,
-@code{:exports code}.
+デフォルトの設定です。コードの本文がエクスポートされるファイルに含まれ
+ます。例えば、@code{:exports code}のように記述します。
 @item @code{results}
-The result of evaluating the code is included in the exported file. E.g.,
-@code{:exports results}.
+コードの評価結果がエクスポートされるファイルに含まれます。例えば、
+@code{:exports results}のように記述します。
 @item @code{both}
-Both the code and results are included in the exported file. E.g.,
-@code{:exports both}.
+コードと結果の両方がエクスポートされるファイルに含まれます。例えば、
+@code{:exports both}のように記述します。
 @item @code{none}
-Nothing is included in the exported file.  E.g., @code{:exports none}.
+エクスポートされるファイルには何も含まれません。例えば、
+@code{:exports none}のように記述します。
 @end itemize
 
 @node 抽出, mkdirp, exports, Specific header arguments
 @subsubsection @code{:tangle}
 
-The @code{:tangle} header argument specifies whether or not the code block
-should be included in tangled extraction of source code files.
+ヘッダー引数@code{:tangle}は、ソースコードファイルを抽出したファイルにコードブロ
+ックを含めるか否かを指定します。
 
 @itemize @bullet
 @item @code{抽出}
-The code block is exported to a source code file named after the basename
-(name w/o extension) of the Org-mode file.  E.g., @code{:tangle yes}.
+コードブロックは、Org-modeのファイルのbasename(拡張子を取り除いた名前)
+にちなんだソースコードファイルにエクスポートされます。例えば、
+@code{:tangle yes}のように記述します。
 @item @code{no}
-The default.  The code block is not exported to a source code file.  E.g.,
-@code{:tangle no}.
+デフォルトの設定です。コードブロックはソースコードファイルにエクスポー
+トされません。例えば、@code{:tangle no}のように記述します。
 @item other
-Any other string passed to the @code{:tangle} header argument is interpreted
-as a file basename to which the block will be exported.  E.g., @code{:tangle basename}.
+ヘッダー引数@code{:tangle}に渡された何か他の文字列を、ブロックをエクスポー
+トするファイルのbasenameと解釈します。例えば、@code{:tangle basename}のよう
+に記述します。
 @end itemize
 
 @node mkdirp, comments, 抽出, Specific header arguments
 @subsubsection @code{:mkdirp}
 
-The @code{:mkdirp} header argument can be used to create parent directories
-of tangled files when missing.  This can be set to @code{yes} to enable
-directory creation or to @code{no} to inhibit directory creation.
+抽出した(tangled)ファイルの親ディレクトリが無いときに、ヘッダー引数@code{:mkdirp}
+を使って親ディレクトリを作成できます。ディレクトリ作成を許可するにはこのヘッ
+ダー引数を@code{yes}と設定し、ディレクトリ作成を禁止するには@code{no}と設定します。
 
 @node comments, no-expand, mkdirp, Specific header arguments
 @subsubsection @code{:comments}
-By default code blocks are tangled to source-code files without any
-insertion of comments beyond those which may already exist in the body of
-the code block.  The @code{:comments} header argument can be set as follows
-to control the insertion of extra comments into the tangled code file.
+デフォルトでは、コードブロックをソースコードへと抽出するときに、コードブロッ
+ク本文に既に存在するコメント以外のコメントは挿入されません。抽出されたコード
+ファイルに追加のコメントを挿入するには、ヘッダー引数@code{:comments}を以下のよう
+に設定します。
 
 @itemize @bullet
 @item @code{no}
-The default.  No extra comments are inserted during tangling.
+デフォルトの設定です。抽出(tangling)の間にコメントは追加されません。
 @item @code{link}
-The code block is wrapped in comments which contain pointers back to the
-original Org file from which the code was tangled.
+コードブロックは、コードが抽出される元のOrg-modeファイルへ戻るポインタ
+を示したコメントに囲まれます。
 @item @code{yes}
-A synonym for ``link'' to maintain backwards compatibility.
+後方互換性を保持する``link''と同じ意味です。
 @item @code{org}
-Include text from the org-mode file as a comment.
+Org-modeのファイルからのテキストをコメントとして含めます。
 
-The text is picked from the leading context of the tangled code and is
-limited by the nearest headline or source block as the case may be.
+抽出されたコードの先行する文脈からテキストが選ばれます。状況に応じて、
+テキストは、一番近い見出しもしくはソースブロックソースに限定されます。
 @item @code{both}
-Turns on both the ``link'' and ``org'' comment options.
+コメントのオプションの``link''と``org''との両方を有効にします。
 @item @code{noweb}
-Turns on the ``link'' comment option, and additionally wraps expanded noweb
-references in the code block body in link comments.
+コメントのオプション``link''を有効にした後に、nowebの参照記号をコード
+ブロック本文に展開し、それをリンクのコメントで囲みます。
 @end itemize
 
 @node no-expand, session, comments, Specific header arguments
 @subsubsection @code{:no-expand}
 
-By default, code blocks are expanded with @code{org-babel-expand-src-block}
-during tangling.  This has the effect of assigning values to variables
-specified with @code{:var} (see @ref{var}), and of replacing ``noweb''
-references (see @ref{Noweb reference syntax}) with their targets.  The
-@code{:no-expand} header argument can be used to turn off this behavior.
+デフォルトの設定では、抽出される際に関数@code{org-babel-expand-src-block}によって
+コードブロックが展開されます。これは、@code{:var}を使って変数を割り当てること
+(@ref{var}を参照してください)に加えて、``noweb''の参照記号
+(@ref{Noweb reference syntax}を参照してください)をそのターゲットで置き換えること
+と同様の効果があります。この動作を無効にするためにヘッダー引数@code{:no-expand}を
+使います。
 
 @node session, noweb, no-expand, Specific header arguments
 @subsubsection @code{:session}
 
-The @code{:session} header argument starts a session for an interpreted
-language where state is preserved.
+ヘッダー引数@code{:session}は、読み取られた言語のためにセッションを開始します。セ
+ッションでは、状態は保存されます。
 
-By default, a session is not started.
+デフォルトでは、セッションは開始されません。
 
-A string passed to the @code{:session} header argument will give the session
-a name.  This makes it possible to run concurrent sessions for each
-interpreted language.
+ヘッダー引数@code{:session}に渡された文字列が、セッションに名前を与えます。これに
+より、読み取られた言語のそれぞれについて同時セッションを実行可能です。
 
 @node noweb, cache, session, Specific header arguments
 @subsubsection @code{:noweb}
 
-The @code{:noweb} header argument controls expansion of ``noweb'' style (see
-@ref{Noweb reference syntax}) references in a code block.  This header
-argument can have one of three values: @code{yes} @code{no} or
-@code{tangle}.
+ヘッダー引数@code{:noweb}はコードブロック内の``noweb''スタイル
+(@ref{Noweb reference syntax}を参照のこと)の参照記号を展開する動作を管理している
+。このヘッダー引数は@code{yes}、@code{no}もしくは
+@code{tangle}の3つのうち1つを選ぶことができる。
 
 @itemize @bullet
 @item @code{yes}
-All ``noweb'' syntax references in the body of the code block will be
-expanded before the block is evaluated, tangled or exported.
+評価、抽出、エクスポートされる前に、コードブロックの本文にある全ての
+``noweb''構文の参照記号が展開されます。
 @item @code{no}
-The default.  No ``noweb'' syntax specific action is taken on evaluating
-code blocks, However, noweb references will still be expanded during
-tangling.
+デフォルトの設定です。コードブロックの評価では``noweb''構文のアクショ
+ンはありません。しかし、抽出の間にnoweb参照記号は展開されます。
 @item @code{抽出}
-All ``noweb'' syntax references in the body of the code block will be
-expanded before the block is tangled, however ``noweb'' references will not
-be expanded when the block is evaluated or exported.
+ブロックを抽出する前に、コードブロックの本文にある全ての``noweb''構文
+の参照記号は展開されますが、ブロックが評価されるときやエクスポートされ
+るときは``noweb''の参照記号は展開されません。
 @end itemize
 
-@subsubheading Noweb prefix lines
-Noweb insertions are now placed behind the line prefix of the
-@code{<<reference>>}.  This behavior is illustrated in the following
-example.  Because the @code{<<example>>} noweb reference appears behind the
-SQL comment syntax, each line of the expanded noweb reference will be
-commented.
+@subsubheading Nowebの行頭部分
+現在のNowebの挿入機能は、@code{<<reference>>}の行頭部分の後ろで実行されます。この
+機能は次の例で説明されます。nowwebの識別記号@code{<<example>>}がSQLのコメント構文
+の後に見つかったため、nowebの参照記号は展開され、それぞれの行がコメントとし
+て挿入されます。
 
-This code block:
+このコードブロックは:
 
 @example
 -- <<example>>
 @end example
 
 
-expands to:
+次のように展開されます:
 
 @example
--- this is the
--- multi-line body of example
+-- これはexampleの
+-- 複数行の本文です
 @end example
 
-Note that noweb replacement text that does not contain any newlines will not
-be affected by this change, so it is still possible to use inline noweb
-references.
+改行を含まないnowebのテキスト置換(機能)は、この変化の影響を受けないことに注
+目してください。したがって、インラインにおいてもnowebの識別記号を使えます。
 
 @node cache, sep, noweb, Specific header arguments
 @subsubsection @code{:cache}
 
-The @code{:cache} header argument controls the use of in-buffer caching of
-the results of evaluating code blocks.  It can be used to avoid
-re-evaluating unchanged code blocks.  This header argument can have one of
-two values: @code{yes} or @code{no}.
+ヘッダー引数@code{:cache}はコードブロックの評価結果をバッファ内に保存するか(=キャ
+ッシュするか)を管理します。これにより、変化していないコードブロックを再度評
+価することを避けられます。このヘッダー引数は:@code{yes}あるいは@code{no}のどちらかの値
+をとります。
 
 @itemize @bullet
 @item @code{no}
-The default.  No caching takes place, and the code block will be evaluated
-every time it is called.
+デフォルトの設定です。実行結果をバッファに保存せず、呼び出される度にコ
+ードブロックを評価します。
 @item @code{yes}
-Every time the code block is run a SHA1 hash of the code and arguments
-passed to the block will be generated.  This hash is packed into the
-@code{#+results:} line and will be checked on subsequent executions of the
-code block.  If the code block has not changed since the last time it was
-evaluated, it will not be re-evaluated.
+コードブロックが実行される度に、コードのSHA1ハッシュ値と引数とをブロッ
+クへ渡すために生成します。このハッシュ値は@code{#+results:}行に格納され、後
+のコードブロックの実行時にチェックされます。前回評価した時からコードブ
+ロックに変化が無い場合、そのコードブロックは改めて評価されません。
 @end itemize
 
-Code block caches notice if the value of a variable argument to the code
-block has changed. If this is the case, the cache is invalidated and the
-code block is re-run.  In the following example, @code{caller} will not be
-re-run unless the results of @code{random} have changed since it was last
-run.
+コードブロックの引数である変数の値が変化した場合でも、コードブロックのキャッ
+シュは変化として検知します。この場合、キャッシュは無効となり、そのコードブロ
+ックは再度実行されます。次の例では、@code{random}の結果が前回実行時から変化しない
+限り、@code{caller}は実行されません。
 
 @example
  #+srcname: random
@@ -12038,29 +12109,30 @@ run.
 @node sep, hlines, cache, Specific header arguments
 @subsubsection @code{:sep}
 
-The @code{:sep} header argument can be used to control the delimiter used
-when writing tabular results out to files external to Org-mode.  This is
-used either when opening tabular results of a code block by calling the
-@code{org-open-at-point} function bound to @kbd{C-c C-o} on the code block,
-or when writing code block results to an external file (see @ref{file})
-header argument.
+Org-modeから外部のファイルへと渡す表形式の結果を書く場合、ヘッダー引数@code{:sep}
+を使って区切り文字のを管理できます。この機能は、次の2つの方法のどちらかで使
+用できます。表形式で書かれたコードブロックの結果を開くときに、コードブロック
+上で関数@code{org-open-at-point}を呼び出します。キーバインドは@kbd{C-c C-o}です。もう
+1つの方法では、コードブロックの実行結果を外部ファイルへ出力するヘッダー引数
+を設定します。(@ref{file}を参照してください。)
 
-By default, when @code{:sep} is not specified output tables are tab
-delimited.
+@code{:sep}が設定されていない場合、デフォルトでは、タブで区切られたテーブルが出力
+されます。
 
 @node hlines, colnames, sep, Specific header arguments
 @subsubsection @code{:hlines}
 
-Tables are frequently represented with one or more horizontal lines, or
-hlines.  The @code{:hlines} argument to a code block accepts the values
-@code{yes} or @code{no}, with a default value of @code{no}.
+テーブルは頻繁に1本かそれ以上の水平な線、すなわちhlines(=_h_orizontal
+_lines_)を使って表現されます。コードブロックの引数@code{:hlines}の値として@code{yes}も
+しくは
+@code{no}を使えます。デフォルトでは@code{no}と設定されています。
 
 @itemize @bullet
 @item @code{no}
-Strips horizontal lines from the input table.  In most languages this is the
-desired effect because an @code{hline} symbol is interpreted as an unbound
-variable and raises an error.  Setting @code{:hlines no} or relying on the
-default value yields the following results.
+入力されたテーブルを表示します。ほとんどの言語ではこれが望ましい設定で
+す。なぜなら@code{hline}の記号を定義されていない変数と見なされて、エラーと
+なるからです。@code{:hlines no}と設定するか、デフォルトの設定値を使う場合、
+次のように出力されます。
 
 @example
 #+tblname: many-cols
@@ -12082,7 +12154,8 @@ default value yields the following results.
 @end example
 
 @item @code{yes}
-Leaves hlines in the table. Setting @code{:hlines yes} has this effect.
+テーブル内の水平線を残したままにします。@code{:hlines yes}と設定した場合の
+結果です。
 
 @example
 #+tblname: many-cols
@@ -12109,14 +12182,14 @@ Leaves hlines in the table. Setting @code{:hlines yes} has this effect.
 @node colnames, rownames, hlines, Specific header arguments
 @subsubsection @code{:colnames}
 
-The @code{:colnames} header argument accepts the values @code{yes},
-@code{no}, or @code{nil} for unassigned.  The default value is @code{nil}.
+ヘッダー引数@code{:colnames}は、@code{yes}と@code{no}そして宣言していない場合の@code{nil}を値と
+して持てます。デフォルトでは@code{nil}に設定されています。
 
 @itemize @bullet
 @item @code{nil}
-If an input table looks like it has column names (because its second row is
-an hline), then the column names will be removed from the table before
-processing, then reapplied to the results.
+(2行目が水平線であることから)入力されたテーブルに列の名前があるように
+考えられる場合には、処理の前に列の名前が除外されてから、結果の列に名前
+を与えます。
 
 @example
 #+tblname: less-cols
@@ -12137,31 +12210,31 @@ processing, then reapplied to the results.
 | c* |
 @end example
 
-Please note that column names are not removed before the table is indexed
-using variable indexing @xref{var, Indexable variable values}.
+variable indexing @xref{var, Indexable variable values}.を使ってテーブルを
+インデックス化する前に、テーブルの列の名前が取り除かれないことに注意し
+てください。
 
 @item @code{no}
-No column name pre-processing takes place
+列の名前に関する前処理は行われません。
 
 @item @code{yes}
-Column names are removed and reapplied as with @code{nil} even if the table
-does not ``look like'' it has column names (i.e.@: the second row is not an
-hline)
+テーブルが列の名前を持っている「ように見えない」場合でも(すなわち@:
+2行目が水平線でない場合でも)、@code{nil}を設定されたように、列の名前を除外
+し、改めて結果の列に名前を割り振ります。
 @end itemize
 
 @node rownames, shebang, colnames, Specific header arguments
 @subsubsection @code{:rownames}
 
-The @code{:rownames} header argument can take on the values @code{yes} or
-@code{no}, with a default value of @code{no}.
+ヘッダー引数@code{:rownames}は@code{yes}もしくは@code{no}を値として持つ事ができ、デフォルト
+では@code{no}と設定されています。
 
 @itemize @bullet
 @item @code{no}
-No row name pre-processing will take place.
+行に関する前処理を行いません。
 
 @item @code{yes}
-The first column of the table is removed from the table before processing,
-and is then reapplied to the results.
+前処理としてテーブルの1列目を取り除き、処理結果に列の名前を付け加えます。
 
 @example
 #+tblname: with-rownames
@@ -12178,28 +12251,27 @@ and is then reapplied to the results.
 | two | 16 | 17 | 18 | 19 | 20 |
 @end example
 
-Please note that row names are not removed before the table is indexed using
-variable indexing @xref{var, Indexable variable values}.
+variable indexing @xref{var, Indexable variable values}.を使ってテーブルを
+インデックス化する前に、テーブルの行の名前が取り除かれないことに注意し
+てください。
 
 @end itemize
 
 @node shebang, eval, rownames, Specific header arguments
 @subsubsection @code{:shebang}
 
-Setting the @code{:shebang} header argument to a string value (e.g.@:
-@code{:shebang "#!/bin/bash"}) causes the string to be inserted as the first
-line of any tangled file holding the code block, and the file permissions of
-the tangled file are set to make it executable.
+ヘッダー引数@code{:shebang}に文字列の値(例えば@: @code{:shebang "#!/bin/bash"})を設定す
+ることで、コードブロックを抽出した全てのファイルの1行目にその文字列を挿入し
+、抽出されたファイルのパーミッションは実行可能と設定されます。
 
 @node eval, , shebang, Specific header arguments
 @subsubsection @code{:eval}
-The @code{:eval} header argument can be used to limit the evaluation of
-specific code blocks.  @code{:eval} accepts two arguments ``never'' and
-``query''.  @code{:eval never} will ensure that a code block is never
-evaluated, this can be useful for protecting against the evaluation of
-dangerous code blocks.  @code{:eval query} will require a query for every
-execution of a code block regardless of the value of the
-@code{org-confirm-babel-evaluate} variable.
+ヘッダー引数@code{:eval}を使って、特定のコードブロックの評価を制限できます。
+@code{:eval}は``never''と``query''の2つの値をとれます。@code{:eval never}はコードブロ
+ックが評価されないことを確かにします。 これは危険なコードブロックを評価する
+ことを防ぐのに便利です。@code{:eval query}と設定すると、変数
+@code{org-confirm-babel-evaluate}の値に関係なく、コードブロックを実行する度に確認
+のダイアログがでます。
 
 @node Results of evaluation, Noweb reference syntax, Header arguments, Working With Source Code
 @section Results of evaluation
@@ -14347,66 +14419,71 @@ InBoxファイル中でトップレベルのエントリーとして位置づけ
 でも戻ることができます。
 
 @node History and Acknowledgments, Main Index, MobileOrg, Top
-@appendix History and acknowledgments
-@cindex acknowledgments
-@cindex history
-@cindex thanks
+@appendix 歴史と謝辞
+@cindex 謝辞
+@cindex 歴史
+@cindex 感謝
 
-Org was born in 2003, out of frustration over the user interface of the
-Emacs Outline mode.  I was trying to organize my notes and projects, and
-using Emacs seemed to be the natural way to go.  However, having to remember
-eleven different commands with two or three keys per command, only to hide
-and show parts of the outline tree, that seemed entirely unacceptable to
-me.  Also, when using outlines to take notes, I constantly wanted to
-restructure the tree, organizing it parallel to my thoughts and plans.
-@emph{Visibility cycling} and @emph{structure editing} were originally
-implemented in the package @file{outline-magic.el}, but quickly moved to the
-more general @file{org.el}.  As this environment became comfortable for
-project planning, the next step was adding @emph{TODO entries}, basic
-@emph{timestamps}, and @emph{table support}.  These areas highlighted the
-two main goals that Org still has today: to be a new, outline-based, plain
-text mode with innovative and intuitive editing features, and to incorporate
-project planning functionality directly into a notes file.
+Org-modeは2003年に誕生しました。Emacs
+Outlineモードのユーザインターフェイスに対するフラストレーションから自由にな
+るためでした。私（Carsten
+Dominik）は、自分のノートとプロジェクトを整理しようと試みていて、Emacs使うこ
+とが自然なやり方に思えました。ところが、アウトラインツリーの一部を隠したり表
+示したりするだけでも、2〜3個のキーを組み合わせたコマンドを、7種類も覚えなけ
+ればならず、これは全く受け入れがたいことでした（訳注：org-modeでは@key{TAB}だけ
+でよい）。また、アウトラインでノートを取るとき、私は絶えずツリーの構造を変更
+して、自分の考えや計画に合わせて整理しておきたかったのです。
+@emph{Visibility cycling}と@emph{structure editing}は、当初@file{outline-magic.el}パッケー
+ジに実装されていましたが、すぐにより一般的な@file{org.el}に移しました。プロジェク
+トを計画するための心地良い環境になったので、次の段階は@emph{TODOリスト}、基本的な
+@emph{タイムスタンプ}そして@emph{テーブル機能}を追加することでした。これらの機能は、
+org-modeが今日も追求している2つの主要なゴールを明らかにしました。すなわち、
+現代的で、アウトラインベースの、革新的かつ直感的な編集機能を持ったプレーンテ
+キストモードになること。そして、ノートファイルに、プロジェクトプランイングの
+機能を直接組み込むことです。
 
-Since the first release, literally thousands of emails to me or to
-@email{emacs-orgmode@@gnu.org} have provided a constant stream of bug
-reports, feedback, new ideas, and sometimes patches and add-on code.  Many
-thanks to everyone who has helped to improve this package.  I am trying to
-keep here a list of the people who had significant influence in shaping one
-or more aspects of Org.  The list may not be complete, if I have forgotten
-someone, please accept my apologies and let me know.
+Org-modeをリリースして以来、私や@email{emacs-orgmode@@gnu.org}に送られてくる、文字
+通りに何千ものeメールは、バグレポート、フィードバック、新しいアイディア、そ
+して時にはパッチやアドオンを絶えず提供してくれます。org-modeを改良するために
+手助けしてくれるすべての人に感謝します。org-modeの様々な側面で、改善に多大な
+影響を与えた方々のリストをここに記したいと思います。このリストは完全ではない
+と思うので、もし書き忘れてしまった方がいればお詫びすると共に、連絡をください
+。
 
-Before I get to this list, a few special mentions are in order:
+リストを記す前に、何名かについてアルファベット順で特別に紹介します。
 
 @table @i
 @item Bastien Guerry
-Bastien has written a large number of extensions to Org (most of them
-integrated into the core by now), including the LaTeX exporter and the plain
-list parser.  His support during the early days, when he basically acted as
-co-maintainer, was central to the success of this project.  Bastien also
-invented Worg, helped establishing the Web presence of Org, and sponsors
-hosting costs for the orgmode.org website.
+Bastienは、LaTeXエクスポートとプレーンなリストを構文解析する機能を含む
+、org-modeの数多くの拡張機能を実装しました（その多くが、現在はorg-mode
+の中心に組み込まれています）。彼が副管理者としての役割を果たしていた開
+発初期の尽力は、org-modeプロジェクトの成功の中心となりました。また彼は
+Worg（訳注：org-modeのコミュニティサイト。@uref{http://orgmode.org/worg/}）
+を考案し、org-modeのウェブにおける存在の認知を手助けし、orgmode.orgの
+ホスティングコストのスポンサーになりました。
 @item Eric Schulte and Dan Davison
-Eric and Dan are jointly responsible for the Org-babel system, which turns
-Org into a multi-language environment for evaluating code and doing literate
-programming and reproducible research.
+EricとDanは、共同でorg-babelシステムに構築しました。これによりorg-mode
+を、コードの評価、文芸的プログラミングそして再現可能な研究に対応する、
+他言語環境へと変えました。
 @item John Wiegley
-John has contributed a number of great ideas and patches directly to Org,
-including the attachment system (@file{org-attach.el}), integration with
-Apple Mail (@file{org-mac-message.el}), hierarchical dependencies of TODO
-items, habit tracking (@file{org-habits.el}), and encryption
-(@file{org-crypt.el}).  Also, the capture system is really an extended copy
-of his great @file{remember.el}.
+Johnは、数々の素晴らしいアイディアとパッチを直接的にorg-modeに提供して
+くれました。具体的には、ファイル添付システム（@file{org-attach.el}）、
+AppleMailとの一体化（@file{org-mac-message.el}）、TODOリストの階層的な依存
+関係、習慣のトラッキング（@file{org-habits.el}）そして、暗号化（
+@file{org-crypt.el}）です。そして実は、org-modeのキャプチャシステムは、彼の
+素晴らしい@file{remember.el}を拡張したものです。
 @item Sebastian Rose
-Without Sebastian, the HTML/XHTML publishing of Org would be the pitiful
-work of an ignorant amateur.  Sebastian has pushed this part of Org onto a
-much higher level.  He also wrote @file{org-info.js}, a Java script for
-displaying webpages derived from Org using an Info-like or a folding
-interface with single-key navigation.
+Sebastianが居なければ、org-modeのHTML/XHTMLエクスポートは、無知なアマ
+チュアによる痛ましい機能になっていたでしょう。彼はorg-modeの該当部分を
+より高いレベルに押し上げました。また、@file{org-info.js}の作者でもあります
+。このJavaScriptは、org-modeから生成されたウェブページをinfoのように表
+示したり、単一キーによるナビゲーションでツリーを折り畳むインターフェイ
+スを提供します。
 @end table
 
 @noindent OK, now to the full list of contributions!  Again, please let me
-know what I am missing here!
+（indent問題箇所）さて！いよいよ貢献してくれた方々のリストに移ります。繰り返
+しますが、忘れているところがあれば教えてください。
 
 @itemize @bullet
 
@@ -14567,8 +14644,10 @@ contributed various ideas and code snippets.
 @node Variable Index, , Command and Function Index, Top
 @unnumbered Variable index
 
-This is not a complete index of variables and faces, only the ones that are
-mentioned in the manual.  For a more complete list, use @kbd{M-x org-customize @key{RET}} and then click yourself through the tree.
+これは変数とフェイスの完全なインデックスではありません。このマニュアルで言及
+したものだけを列挙しています。さらに詳しいリストは、
+@kbd{M-x org-customize @key{RET}}で表示されるカスタムブラウザで確認できます。表示さ
+れるツリーをクリックしてください。
 
 @printindex vr
 
