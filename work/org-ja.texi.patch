@@ -1,24 +1,23 @@
-*** org-ja.texi	2011-09-02 00:08:14.000000000 +0900
---- org-ja.texi.fix	2011-09-02 00:08:58.000000000 +0900
+*** org-ja.texi.orig	2011-10-09 01:09:26.000000000 +0900
+--- org-ja.texi	2011-10-09 01:10:32.000000000 +0900
 ***************
-*** 1288,1294 ****
-  a prefix argument show, on each level, all sibling headings.  With double
-  prefix arg, also show the entire subtree of the parent.  @orgcmd{C-c C-k,show-branches} Expose all the headings of the subtree, CONTENT view for
-  just one subtree.  @orgcmd{C-c C-x b,org-tree-to-indirect-buffer} Show the
-! current subtree in an indirect buffer@footnote{The indirect buffer @ifinfo (@pxref{Indirect Buffers,,,emacs,GNU Emacs Manual})  @end ifinfo @ifnotinfo (see the Emacs manual for more information about indirect buffers)  @end ifnotinfo will contain the entire buffer, but will be narrowed to the current tree.  Editing the indirect buffer will also change the original buffer, but without affecting visibility in that buffer.}.  With a numeric
-  prefix argument N, go up to level N and then take that tree.  If N is
-  negative then go up that many levels.  With a @kbd{C-u} prefix, do not
-  remove the previously used indirect buffer.
---- 1288,1299 ----
-  a prefix argument show, on each level, all sibling headings.  With double
-  prefix arg, also show the entire subtree of the parent.  @orgcmd{C-c C-k,show-branches} Expose all the headings of the subtree, CONTENT view for
-  just one subtree.  @orgcmd{C-c C-x b,org-tree-to-indirect-buffer} Show the
-! current subtree in an indirect buffer@footnote{The indirect buffer
+*** 1297,1303 ****
+  サブツリーの見出しを全て表示し、ひとつのサブツリーのためのコンテンツビ
+  ューである。@orgcmd{C-c C-x b,org-tree-to-indirect-buffer}　間接的なバッファ
+  @footnote{間接的なバッファとは、
+! @ifinfo (@pxref{Indirect Buffers,,,emacs,GNU Emacs Manual})  @end ifinfo @ifnotinfo (see the Emacs manual for more information about indirect buffers)  @end ifnotinfo は全てのバッファを含んでいるが、カレントのツリーに制限されるだろう。間接的なバッファを編集することは、オリジナルのバッファに変更を加えることでもある。だがそのバッファの中での表示に影響を与えることはできない。}.
+  の中にあるカレントのサブツリーを表示する。Nという数値付きの前置引数を
+  つけると、N段階上の階層に上がるがそのツリーを捉える。もしもNがマイナス
+  の値ならば、多くの階層まで遡る。@kbd{C-u}の前置引数をつけたならば、それ以
+--- 1297,1307 ----
+  サブツリーの見出しを全て表示し、ひとつのサブツリーのためのコンテンツビ
+  ューである。@orgcmd{C-c C-x b,org-tree-to-indirect-buffer}　間接的なバッファ
+  @footnote{間接的なバッファとは、
 ! @ifinfo (@pxref{Indirect Buffers,,,emacs,GNU Emacs Manual})
 ! @end ifinfo
 ! @ifnotinfo (see the Emacs manual for more information about indirect buffers)
 ! @end ifnotinfo
-! will contain the entire buffer, but will be narrowed to the current tree.  Editing the indirect buffer will also change the original buffer, but without affecting visibility in that buffer.}.  With a numeric
-  prefix argument N, go up to level N and then take that tree.  If N is
-  negative then go up that many levels.  With a @kbd{C-u} prefix, do not
-  remove the previously used indirect buffer.
+! は全てのバッファを含んでいるが、カレントのツリーに制限されるだろう。間接的なバッファを編集することは、オリジナルのバッファに変更を加えることでもある。だがそのバッファの中での表示に影響を与えることはできない。}.
+  の中にあるカレントのサブツリーを表示する。Nという数値付きの前置引数を
+  つけると、N段階上の階層に上がるがそのツリーを捉える。もしもNがマイナス
+  の値ならば、多くの階層まで遡る。@kbd{C-u}の前置引数をつけたならば、それ以
