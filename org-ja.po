@@ -4518,7 +4518,7 @@ msgstr "コードブロックの機能的な設定"
 #: org.texi:12631
 #, no-wrap
 msgid "Results of evaluation"
-msgstr "Results of evaluation"
+msgstr "評価の結果"
 
 #+glossary: evaluation ( 評価 )
 #. type: menuentry
@@ -25575,52 +25575,52 @@ msgstr "ヘッダー引数@code{:eval}を使って、特定のコードブロッ
 #: org.texi:12549
 #, no-wrap
 msgid "code block, results of evaluation"
-msgstr ""
+msgstr "コードブロック、評価の結果"
 
 #+glossary: code ( コード ) / evaluation ( 評価 ) / source ( ソース )
 #. type: cindex
 #: org.texi:12550
 #, no-wrap
 msgid "source code, results of evaluation"
-msgstr ""
+msgstr "ソースコード、評価の結果"
 
 #+glossary: header argument ( ヘッダー引数 ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:12556
 msgid "The way in which results are handled depends on whether a session is invoked, as well as on whether @code{:results value} or @code{:results output} is used. The following table shows the table possibilities.  For a full listing of the possible results header arguments see @ref{results}."
-msgstr ""
+msgstr "結果の取り扱われ方は、セッションが呼び出されたかに依存することに加えて、@code{:results value}もしくは@code{:results output}が使われているかに依存します。(この一文分からず)次のテーブルは起こりうることを表形式にまとめました。ヘッダー引数resultsが取り得る完全なリストは、@ref{results}を見て下さい。"
 
 #. type: item
 #: org.texi:12558
 #, no-wrap
 msgid "@tab @b{Non-session} @tab @b{Session}"
-msgstr ""
+msgstr "@tab @b{Non-session} @tab @b{Session}"
 
 #+glossary: value ( 値 )
 #. type: item
 #: org.texi:12559
 #, no-wrap
 msgid "@code{:results value} @tab value of last expression @tab value of last expression"
-msgstr ""
+msgstr "@code{:results value} @tab 最後の式の値 @tab 最後の式の値"
 
 #+glossary: content ( コンテンツ|内容 ) / output ( アウトプット )
 #. type: item
 #: org.texi:12560
 #, no-wrap
 msgid "@code{:results output} @tab contents of STDOUT @tab concatenation of interpreter output"
-msgstr ""
+msgstr "@code{:results output} @tab STDOUTの内容 @tab インタプリタの出力をつなげたもの"
 
 #+glossary: org-mode ( Org-mode ) / string ( 文字列 ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:12566
 msgid "Note: With @code{:results value}, the result in both @code{:session} and non-session is returned to Org-mode as a table (a one- or two-dimensional vector of strings or numbers) when appropriate."
-msgstr ""
+msgstr "以下に注意すること:@code{:results value}と設定することで、@code{:session}とnon-sessionの両方の結果はOrg-modeにテーブル(文字列もしくは数字からなる1次元もしくは2次元のベクトル)を適切に返されます。"
 
 #. type: subsection
 #: org.texi:12567
 #, no-wrap
 msgid "Non-session"
-msgstr ""
+msgstr "Non-session"
 
 #+glossary: value ( 値 )
 #. type: code{#1}
@@ -25634,13 +25634,13 @@ msgstr ":results value"
 #. type: Plain text
 #: org.texi:12575
 msgid "This is the default. Internally, the value is obtained by wrapping the code in a function definition in the external language, and evaluating that function. Therefore, code should be written as if it were the body of such a function. In particular, note that Python does not automatically return a value from a function unless a @code{return} statement is present, and so a @samp{return} statement will usually be required in Python."
-msgstr ""
+msgstr "デフォルトの設定です。外部の言語で書かれた関数定義のコードを囲むことと、内部でその関数を評価することによってその値が得られます。それゆえ、コードはその関数の本文でであるかのように書かなければなりません。特に、Pythonは@code{return}文が存在しない限り自動的に関数から返り値を返しませんので、Pythonでは多くの場合に@samp{return}文が必要なことに注意してください。"
 
 #+glossary: code ( コード ) / context ( コンテクスト|状況|文脈 ) / evaluation ( 評価 ) / function ( 機能|関数 )
 #. type: Plain text
 #: org.texi:12578
 msgid "This is the only one of the four evaluation contexts in which the code is automatically wrapped in a function definition."
-msgstr ""
+msgstr "コンテキストを評価する4つの方法の中で、これは関数定義にコードが自動的に囲まれるただ一つの方法です。"
 
 #+glossary: output ( アウトプット )
 #. type: code{#1}
@@ -25654,7 +25654,7 @@ msgstr ":results output"
 #. type: Plain text
 #: org.texi:12584
 msgid "The code is passed to the interpreter as an external process, and the contents of the standard output stream are returned as text. (In certain languages this also contains the error output stream; this is an area for future work.)"
-msgstr ""
+msgstr "外部プロセスとしてコードはインタープリタに渡され、標準出力のストリームの内容がテキストとして返されます。(いくつかの言語ではエラー出力のストリームも含まれます; これは今後の課題です。)"
 
 #. type: subsection
 #: org.texi:12585
