@@ -9821,8 +9821,8 @@ Org-modeの記法が使われているという前提でリージョンを@LaTeX
 
 
 @node Tables in LaTeX export, Images in LaTeX export, Quoting LaTeX code, LaTeX and PDF export
-@subsection @LaTeX{}エクスポートにおける表
-@cindex tables, in @LaTeX{} export
+@subsection @LaTeX{} エクスポートにおけるテーブル
+@cindex @LaTeX{} エクスポートにおけるテーブル
 
 @LaTeX{}で表を出力する際に、番号と表題を指定することができます
  (@pxref{Images and tables})、@code{ATTR_LaTeX}行を使うことで、表に関する@code{longtable}環
@@ -9861,8 +9861,8 @@ Org-modeの記法が使われているという前提でリージョンを@LaTeX
 @cindex 画像、@LaTeX{}の中のインライン
 @cindex @LaTeX{}の中のインライン画像
 
- @samp{[[file:img.jpg]]} や @samp{[[./img.jpg]]} のように概要にリンクされていない画像
-は、
+ @samp{[[file:img.jpg]]} や @samp{[[./img.jpg]]} のように説明文にリンクされていない画
+像は、
 @LaTeX{} の処理によりPDFの中に挿入されます。 Org-modeは、画像を挿入するのに
  @code{\includegraphics}
 マクロを使います。もし、@ref{Images and tables}で説明されているように図の表題や
@@ -10036,12 +10036,12 @@ LaTeXの一種である @file{beamer}
 @cindex PDF出力
 @cindex Cui, Baoqiu
 
-Org contains a DocBook exporter written by Baoqiu Cui.  Once an Org file is
-exported to DocBook format, it can be further processed to produce other
-formats, including PDF, HTML, man pages, etc., using many available DocBook
-tools and stylesheets.
+Org-modeは、Baoqiu
+Cuiによって作成されたDocBookへのエクスポート機能があります。Org-modeのファイ
+ルはDocBookのフォーマットで出力され、さらにDocBookのツールやスタイルシートを
+使ってPDF、HTMLやmanなど他のフォーマットに出力することができます。
 
-Currently DocBook exporter only supports DocBook V5.0.
+現在、DocBookのエクスポート機能はDocBook V5.0をサポートしています。
 
 @menu
 * DocBook export commands::  DocBookエクスポートの起動方法
@@ -10061,137 +10061,149 @@ Currently DocBook exporter only supports DocBook V5.0.
 @table @kbd
 @orgcmd{C-c C-e D,org-export-as-docbook}
 @cindex プロパティ、EXPORT_FILE_NAME
-Export as DocBook file.  For an Org file, @file{myfile.org}, the DocBook XML
-file will be @file{myfile.xml}.  The file will be overwritten without
-warning.  If there is an active region@footnote{This requires @code{transient-mark-mode} to be turned on}, only the region will be
-exported.  If the selected region is a single tree@footnote{To select the current subtree, use @kbd{C-c @@}.}, the tree head will become the document
-title.  If the tree head entry has, or inherits, an @code{EXPORT_FILE_NAME}
-property, that name will be used for the export.  @orgcmd{C-c C-e V,org-export-as-docbook-pdf-and-open} Export as DocBook file, process to
-PDF, then open the resulting PDF file.
+DocBookファイルを出力します。Org-modeのファイル @file{myfile.org} は
+DocBook XMLファイルの
+@file{myfile.xml} となります。ファイルは警告なしに上書きされます。アクティ
+ブリージョン
+@footnote{@code{transient-mark-mode} を有効にしている必要があります。}
+がある場合は、リージョンのみが出力されます。選択したリージョンが単一の
+ツリー @footnote{現在のツリーを選択するには @kbd{C-c @@} を使ってください。} だった
+場合は, そのツリーの見出しが文書のタイトルになります。そのツリーの見出
+しがある、または継承されている場合や、
+@code{EXPORT_FILE_NAME} 属性がある場合は、その名前がエクスポートに使われま
+す。 @orgcmd{C-c C-e V,org-export-as-docbook-pdf-and-open}
+DocBookファイルが出力され、PDF処理を経て出力されたPDFファイルが開きます。
 
 @vindex org-export-docbook-xslt-proc-command
 @vindex org-export-docbook-xsl-fo-proc-command
-Note that, in order to produce PDF output based on exported DocBook file,
-you need to have XSLT processor and XSL-FO processor software installed on
-your system.  Check variables @code{org-export-docbook-xslt-proc-command}
-and @code{org-export-docbook-xsl-fo-proc-command}.
+DovBookファイルにエクスポートしてPDFに出力するには、XSLT処理系とXSL-FO
+処理系を環境にインストールしておく必要があるので注意してください。変数
+@code{org-export-docbook-xslt-proc-command} と
+@code{org-export-docbook-xsl-fo-proc-command}を確認してください。
 
 @vindex org-export-docbook-xslt-stylesheet
-The stylesheet argument @code{%s} in variable
-@code{org-export-docbook-xslt-proc-command} is replaced by the value of
-variable @code{org-export-docbook-xslt-stylesheet}, which needs to be set by
-the user.  You can also overrule this global setting on a per-file basis by
-adding an in-buffer setting @code{#+XSLT:} to the Org file.
+変数 @code{org-export-docbook-xslt-proc-command} でスタイルシートを表わす引
+数 @code{%s}
+はユーザによってセットされる変数 @code{org-export-docbook-xslt-stylesheet}
+の値で置き換えられます。Org-modeファイルに  @code{#+XSLT:} を追加することで
+、グローバルな設定を封じることができます。
 
-@orgkey{C-c C-e v D} Export only the visible part of the document.
+@orgkey{C-c C-e v D} 文書の見えている部分だけを出力します。
 @end table
 
 @node Quoting DocBook code, Recursive sections, DocBook export commands, DocBook export
 @subsection Quoting DocBook code
 
-You can quote DocBook code in Org files and copy it verbatim into exported
-DocBook file with the following constructs:
+次のようなブロックを使えば、Org-modeのファイルでDocBookのコードを引用したり
+、文章をそのままDocBookのファイルにコピーすることができます。
 
 @cindex #+DOCBOOK
 @cindex #+BEGIN_DOCBOOK
 @example
-#+DOCBOOK: Literal DocBook code for export
-@end example
+#+DOCBOOK: エクスポートするDocBookコードの文字列@end example
 
 @noindent or
 @cindex #+BEGIN_DOCBOOK
 
 @example
 #+BEGIN_DOCBOOK
-All lines between these markers are exported by DocBook exporter
-literally.
+これらのマーカの間の行はDocBookエクスポート機能により文字がそのまま出力され
+ます。
 #+END_DOCBOOK
 @end example
 
-For example, you can use the following lines to include a DocBook warning
-admonition.  As to what this warning says, you should pay attention to the
-document context when quoting DocBook code in Org files.  You may make
-exported DocBook XML files invalid by not quoting DocBook code correctly.
+例えば、DocBookの警告文を含めるには次のような文章を使います。この警告文によ
+り、Org-modeのファイルにDocBookコードをのせる時に、文章の文脈に注意を払うで
+しょう。DocBookコードを正しく引用しないと、DocBook
+XMLファイルを正確に出力できないかもしれせん。
 
 @example
 #+BEGIN_DOCBOOK
 <warning>
-  <para>You should know what you are doing when quoting DocBook XML code
-  in your Org file.  Invalid DocBook XML may be generated by
-  DocBook exporter if you are not careful!</para>
+  <para>Org-modeファイルの中でDocBook XMLコードを引用する際、何をしているか
+  知っておく必要があります。注意が足りないと、DocBookのエクスポート機能によ
+り
+  正しくないDocBook XMLが出力されるかもしれません。</para>
 </warning>
 #+END_DOCBOOK
 @end example
 
 @node Recursive sections, Tables in DocBook export, Quoting DocBook code, DocBook export
 @subsection Recursive sections
-@cindex DocBook recursive sections
+@cindex DocBookの再帰的なsection
 
-DocBook exporter exports Org files as articles using the @code{article}
-element in DocBook.  Recursive sections, i.e.@: @code{section} elements, are
-used in exported articles.  Top level headlines in Org files are exported as
-top level sections, and lower level headlines are exported as nested
-sections.  The entire structure of Org files will be exported completely, no
-matter how many nested levels of headlines there are.
+DocBookのエクスポート機能は、DocBookの @code{article}
+要素を使ってOrg-modeのファイルをarticlesとして出力します。再帰的なsections、
+例えば @code{section}
+要素が出力されたarticlesの中で使われます。
+Org-modeのファイルのトップレベルの見出しは、トップレベルのsectionsとして出力
+され、低いレベルの見出しはネストしたsectionsとして出力されます。Org-modeのフ
+ァイルの全体構造は、完全に出力されます。見出しにネストされたレベルはどれだけ
+あっても構いません。
 
-Using recursive sections makes it easy to port and reuse exported DocBook
-code in other DocBook document types like @code{book} or @code{set}.
+再帰的なセクションを使えば、 出力されたDocBookコードを他の @code{book} や @code{set}
+のようなドキュメントタイプに移植したり、再利用したりするのが用意になります。
 
 @node Tables in DocBook export, Images in DocBook export, Recursive sections, DocBook export
 @subsection Tables in DocBook export
-@cindex tables, in DocBook export
+@cindex DocBookへの出力におけるテーブル
 
-Tables in Org files are exported as HTML tables, which have been supported
-since DocBook V4.3.
+Org-modeの表はHTMLの表を出力します。HTMLの表はDocBook V4.3からサポートされて
+います。
 
-If a table does not have a caption, an informal table is generated using the
-@code{informaltable} element; otherwise, a formal table will be generated
-using the @code{table} element.
+テーブルに表題がなかった場合、 @code{informaltable} 要素によってinformal
+tableが出力されます。表題があれば、@code{table} 要素により、テーブルが出力されま
+す。
 
 @node Images in DocBook export, Special characters, Tables in DocBook export, DocBook export
 @subsection Images in DocBook export
-@cindex images, inline in DocBook
-@cindex inlining images in DocBook
+@cindex DocBookでのインライン画像
+@cindex DocBookでのインライン画像
 
-Images that are linked to without a description part in the link, like
-@samp{[[file:img.jpg]]} or @samp{[[./img.jpg]]}, will be exported to DocBook
-using @code{mediaobject} elements.  Each @code{mediaobject} element contains
-an @code{imageobject} that wraps an @code{imagedata} element.  If you have
-specified a caption for an image as described in @ref{Images and tables}, a
-@code{caption} element will be added in @code{mediaobject}.  If a label is
-also specified, it will be exported as an @code{xml:id} attribute of the
-@code{mediaobject} element.
+ @samp{[[file:img.jpg]]} や @samp{[[./img.jpg]]} のように説明文にリンクされていない画
+像は、
+@code{mediaobject} タグが使われてDocBookに出力されます。 各 @code{mediaobject}
+要素には、@code{imagedata} 要素を囲む @code{imageobject}要素が含まれます。もし、
+@ref{Images and tables}で説明されているように図の表題を特定するならば、
+ @code{caption} 要素を  @code{mediaobject}
+の中に追加します。番号も特定する場合は、 @code{mediaobject} 要素の中に  @code{xml:id}
+属性が出力されます。@code{figure} 環境のオプションの配置を変更するには、
+ @samp{placement=[h!]}
+のように属性に追加します。
 
 @vindex org-export-docbook-default-image-attributes
-Image attributes supported by the @code{imagedata} element, like
-@code{align} or @code{width}, can be specified in two ways: you can either
-customize variable @code{org-export-docbook-default-image-attributes} or use
-the @code{#+ATTR_DOCBOOK:} line.  Attributes specified in variable
-@code{org-export-docbook-default-image-attributes} are applied to all inline
-images in the Org file to be exported (unless they are overridden by image
-attributes specified in @code{#+ATTR_DOCBOOK:} lines).
+画像の属性には @code{imagedata} 要素がサポートされ、 @code{align} や @code{width}
+のような属性が二つの方法で特定されます。一つ目は変数
+@code{org-export-docbook-default-image-attributes} を設定する方法です。二つ目は
+@code{#+ATTR_DOCBOOK:} 行を使う方法です。変数
+@code{org-export-docbook-default-image-attributes}
+で特定される属性は出力元のOrg-modeファイルに含まれる全ての画像に適用されます
+(ただし、 @code{#+ATTR_DOCBOOK:}
+行で画像の属性が上書きされている場合は除きます。)。
 
-The @code{#+ATTR_DOCBOOK:} line can be used to specify additional image
-attributes or override default image attributes for individual images.  If
-the same attribute appears in both the @code{#+ATTR_DOCBOOK:} line and
-variable @code{org-export-docbook-default-image-attributes}, the former
-takes precedence.  Here is an example about how image attributes can be set:
+@code{#+ATTR_DOCBOOK:} 行は、追加的な画像の属性の指定や個々の画像にデフォルトの画
+像の属性を上書きするのに使います。もし、
+@code{#+ATTR_DOCBOOK:} と 変数
+@code{org-export-docbook-default-image-attributes}
+に同じ属性が現れた場合、前者の値が優先的に使われます。次の例は画像の属性に関
+する設定例です。
 
 @cindex #+CAPTION
 @cindex #+LABEL
 @cindex #+ATTR_DOCBOOK
 @example
-#+CAPTION:    The logo of Org-mode
+#+CAPTION:    Org-modeのロゴ
 #+LABEL:      unicorn-svg
 #+ATTR_DOCBOOK: scalefit="1" width="100%" depth="100%"
 [[./img/org-mode-unicorn.svg]]
 @end example
 
 @vindex org-export-docbook-inline-image-extensions
-By default, DocBook exporter recognizes the following image file types:
-@file{jpeg}, @file{jpg}, @file{png}, @file{gif}, and @file{svg}.  You can
-customize variable @code{org-export-docbook-inline-image-extensions} to add
-more types to this list as long as DocBook supports them.
+デフォルトでDocBookのエクスポート機能は、 @file{jpeg}, @file{jpg}, @file{png}, @file{gif},
+そして @file{svg} のような画像のタイプを認識します。変数
+@code{org-export-docbook-inline-image-extensions}
+を設定することで、DocBookがサポートしている画像のタイプを追加することができ
+ます。
 
 @node Special characters, , Images in DocBook export, DocBook export
 @subsection DocBook出力における特殊文字
@@ -10199,18 +10211,20 @@ more types to this list as long as DocBook supports them.
 
 @vindex org-export-docbook-doctype
 @vindex org-entities
-Special characters that are written in @TeX{}-like syntax, such as
-@code{\alpha}, @code{\Gamma}, and @code{\Zeta}, are supported by DocBook
-exporter.  These characters are rewritten to XML entities, like
-@code{&alpha;}, @code{&Gamma;}, and @code{&Zeta;}, based on the list saved
-in variable @code{org-entities}.  As long as the generated DocBook file
-includes the corresponding entities, these special characters are
-recognized.
+@code{\alpha}, @code{\Gamma}, そして @code{\Zeta} のような @TeX{}
+ライクなシンタックスで記述された特殊文字列は、DocBookのエクスポート機能でサ
+ポートされています。 そのような文字列は、変数
+@code{org-entities} に格納されているリストにもとづき、@code{&alpha;}, @code{&Gamma;}, そし
+て
+@code{&Zeta;} のように XML
+エンティティとして記述されます。対応するエンティティが含まれるDocBookファイ
+ルが出力されると、特殊文字列が認識されます。
 
-You can customize variable @code{org-export-docbook-doctype} to include the
-entities you need.  For example, you can set variable
-@code{org-export-docbook-doctype} to the following value to recognize all
-special characters included in XHTML entities:
+変数 @code{org-export-docbook-doctype} を設定することで必要なエンティティを含める
+ことができます。例えば、 変数
+@code{org-export-docbook-doctype}
+に次のような値を設定することで、XHTMLエンティティに含まれる全ての特殊文字列
+が認識されます。
 
 @example
 "<!DOCTYPE article [
@@ -10226,154 +10240,153 @@ special characters included in XHTML entities:
 @node TaskJuggler export, Freemind export, DocBook export, Exporting
 @section TaskJuggler export
 @cindex TaskJuggler export
-@cindex Project management
+@cindex プロジェクト管理
 
-@uref{http://www.taskjuggler.org/, TaskJuggler} is a project management
-tool.  It provides an optimizing scheduler that computes your project time
-lines and resource assignments based on the project outline and the
-constraints that you have provided.
+@uref{http://www.taskjuggler.org/, TaskJuggler}はプロジェクト管理ツールです。
+プロジェクトのアウトラインと設定して制限をもとにプロジェクトのタイムラインと
+リソースの割り当てを計算して最適化されたスケジュールを提供します。
 
-The TaskJuggler exporter is a bit different from other exporters, such as
-the HTML and LaTeX exporters for example, in that it does not export all the
-nodes of a document or strictly follow the order of the nodes in the
-document.
+TaskJugglerのエクスポート機能は、例えばHTMLやLaTeXのような他のエクスポート機
+能とは少し違い、ドキュメントのノード全てを出力しませんし、ドキュメントのノー
+ドの序列に従って出力することもしません。
 
-Instead the TaskJuggler exporter looks for a tree that defines the tasks and
-a optionally tree that defines the resources for this project. It then
-creates a TaskJuggler file based on these trees and the attributes defined
-in all the nodes.
+代わりに、TaskJugglerのエクスポート機能はタスクが定義されているツリーか、こ
+のプロジェクトのリソースとして任意に定義されたツリーを探します。そして、それ
+らツリーと全てのノードの中で定義された属性をもとにTaskJugglerファイルを作成
+します。
 
-@subsection TaskJuggler export commands
+@subsection TaskJugglerのエクスポートコマンド
 
 @table @kbd
-@orgcmd{C-c C-e j,org-export-as-taskjuggler} Export as TaskJuggler file.
+@orgcmd{C-c C-e j,org-export-as-taskjuggler} TaskJugglerファイルを出力します
+。
 
-@orgcmd{C-c C-e J,org-export-as-taskjuggler-and-open} Export as TaskJuggler
-file and then open the file with TaskJugglerUI.
+@orgcmd{C-c C-e J,org-export-as-taskjuggler-and-open}
+TaskJugglerファイルを出力し、TaskJugglerUIでファイルを開きます。
 @end table
 
-@subsection Tasks
+@subsection タスク
 
 @vindex org-export-taskjuggler-project-tag
-Create your tasks as you usually do with Org-mode. Assign efforts to each
-task using properties (it's easiest to do this in the column view). You
-should end up with something similar to the example by Peter Jones in
-@url{http://www.contextualdevelopment.com/static/artifacts/articles/2008/project-planning/project-planning.org}.
-Now mark the top node of your tasks with a tag named
-@code{:taskjuggler_project:} (or whatever you customized
-@code{org-export-taskjuggler-project-tag} to). You are now ready to export
-the project plan with @kbd{C-c C-e J} which will export the project plan and
-open a gantt chart in TaskJugglerUI.
+いつものようにOrg-modeでタスクを作ります。各タスクにプロパティを使ってエフォ
+ートを指定します (カラムビューを使うと簡単です。)。
+最終的には、Peter
+Jonesが作成した
+@url{http://www.contextualdevelopment.com/static/artifacts/articles/2008/project-planning/project-planning.org}の例と似たものになっているはずです。次に、タスクのトップノードを@code{:taskjuggler_project:}というタグでマークします
+(または変数@code{org-export-taskjuggler-project-tag}をカスタマイズします)。これで
+プロジェクトの計画を@kbd{C-c C-e J}で出力する準備ができました。出力されれば、
+TaskJugglerUIでガントチャートが開くはずです。
 
-@subsection Resources
+@subsection リソース
 
 @vindex org-export-taskjuggler-resource-tag
-Next you can define resources and assign those to work on specific
-tasks. You can group your resources hierarchically. Tag the top node of the
-resources with @code{:taskjuggler_resource:} (or whatever you customized
-@code{org-export-taskjuggler-resource-tag} to). You can optionally assign an
-identifier (named @samp{resource_id}) to the resources (using the standard
-Org properties commands, @pxref{Property syntax}) or you can let the
-exporter generate identifiers automatically (the exporter picks the first
-word of the headline as the identifier as long as it is unique---see the
-documentation of @code{org-taskjuggler-get-unique-id}). Using that
-identifier you can then allocate resources to tasks. This is again done with
-the @samp{allocate} property on the tasks. Do this in column view or when on
-the task type @kbd{C-c C-x p allocate @key{RET} <resource_id> @key{RET}}.
+次に特定のタスクにリソースを割り当てることができます。階層的にリソースをまと
+めることもできます。トップノードのタグは@code{:taskjuggler_resource:}になります
+(または@code{org-export-taskjuggler-resource-tag}をカスタマイズします。)。識別子
+(@samp{resource_id})をリソースに割り当てることもできます(標準的なOrg-modeのプロパ
+ティについては,
+@pxref{Property syntax})。また、エクスポート機能は自動で識別子を生成することができ
+ます。(識別子はユニークであればよいので、エクスポート機能は見出しの最初の単
+語を抽出します。詳しくは@code{org-taskjuggler-get-unique-id}のドキュメントを読ん
+でください)。識別子を使ってリソースをタスクに再配置することができます。
+@samp{allocate}属性がタスクで再び実行されます。カラムビューか、タスク上で
+@kbd{C-c C-x p allocate @key{RET} <resource_id> @key{RET}}と入力することで実行されます。
 
-Once the allocations are done you can again export to TaskJuggler and check
-in the Resource Allocation Graph which person is working on what task at
-what time.
+再配置が実行されると、再びTaskJugglerに出力してリソースの再配置グラフを確認
+することができます。そのグラフでは、各人がいつ何のタスクをこなしているかがわ
+かります。
 
-@subsection Export of properties
+@subsection 属性の出力
 
-The exporter also takes TODO state information into consideration, i.e.@: if
-a task is marked as done it will have the corresponding attribute in
-TaskJuggler (@samp{complete 100}). Also it will export any property on a
-task resource or resource node which is known to TaskJuggler, such as
-@samp{limits}, @samp{vacation}, @samp{shift}, @samp{booking},
-@samp{efficiency}, @samp{journalentry}, @samp{rate} for resources or
-@samp{account}, @samp{start}, @samp{note}, @samp{duration}, @samp{end},
-@samp{journalentry}, @samp{milestone}, @samp{reference}, @samp{responsible},
-@samp{scheduling}, etc for tasks.
+エクスポート機能はTODOの状態に関する情報も考慮されています。例えば、タスクが
+「DONE」とマークされると、それに対応して、TaskJugglerの属性も
+(@samp{complete 100})となります。タスクリソースやタスクノード上のうTaskJugglerで
+使われる@samp{limits}, @samp{vacation},
+@samp{shift}, @samp{booking}, @samp{efficiency}, @samp{journalentry},
+@samp{rate}のようなリソースの属性や@samp{account}, @samp{start}, @samp{note},
+@samp{duration}, @samp{end}, @samp{journalentry}, @samp{milestone},
+@samp{reference}, @samp{responsible}, @samp{scheduling}などのタスクの属性も、出力されます。
 
-@subsection Dependencies
+@subsection 依存状態
 
-The exporter will handle dependencies that are defined in the tasks either
-with the @samp{ORDERED} attribute (@pxref{TODO dependencies}), with the
-@samp{BLOCKER} attribute (see @file{org-depend.el}) or alternatively with a
-@samp{depends} attribute. Both the @samp{BLOCKER} and the @samp{depends}
-attribute can be either @samp{previous-sibling} or a reference to an
-identifier (named @samp{task_id}) which is defined for another task in the
-project. @samp{BLOCKER} and the @samp{depends} attribute can define multiple
-dependencies separated by either space or comma. You can also specify
-optional attributes on the dependency by simply appending it. The following
-examples should illustrate this:
+エクスポート機能はタスクで@samp{ORDERED} 属性 (@pxref{TODO dependencies})、@samp{BLOCKER} 属
+性
+(see
+@file{org-depend.el})、そして選択的に@samp{depends}属性で表される依存状態を操作するこ
+とができます。@samp{BLOCKER}
+属性も@samp{depends}属性も@samp{previous-sibling}のように扱えますし、プロジェクトの他
+のタスクで定義された識別子への参照
+(@samp{task_id})として扱うこともできます。@samp{BLOCKER}属性と@samp{depends}属性は、カンマ
+やスペースで分けることで複数の依存状態として定義できます。依存状態の属性は、
+単純に追加することで任意の属性を追加することができます。これまでの例は次のよ
+うに記述できます。
 
 @example
 * Preparation
   :PROPERTIES:
-  :task_id:  preparation
+  :task_id:  準備
   :ORDERED:  t
   :END:
-* Training material
+* 練習の材料
   :PROPERTIES:
   :task_id:  training_material
   :ORDERED:  t
   :END:
-** Markup Guidelines
+** マークアップのガイドライン
    :PROPERTIES:
    :Effort:   2.0
    :END:
-** Workflow Guidelines
+** ワークフローのガイドライン
    :PROPERTIES:
    :Effort:   2.0
    :END:
-* Presentation
+* プレゼンテーション
   :PROPERTIES:
   :Effort:   2.0
   :BLOCKER:  training_material @{ gapduration 1d @} preparation
   :END:
 @end example
 
-@subsection Reports
+@subsection レポート
 
 @vindex org-export-taskjuggler-default-reports
-TaskJuggler can produce many kinds of reports (e.g.@: gantt chart, resource
-allocation, etc). The user defines what kind of reports should be generated
-for a project in the TaskJuggler file. The exporter will automatically
-insert some default reports in the file. These defaults are defined in
-@code{org-export-taskjuggler-default-reports}. They can be modified using
-customize along with a number of other options. For a more complete list,
-see @kbd{M-x customize-group @key{RET} org-export-taskjuggler @key{RET}}.
+TaskJugglerは多くのレポートを作成できます。(例えば gantt chart, resource
+allocationなど)。TaskJugglerファイルにあるプロジェクトでどのレポートを作成す
+るか定義することができます。エクスポート機能は自動的にデフォルトのレポートを
+ファイルに挿入します。それらは、@code{org-export-taskjuggler-default-reports}で定
+義されています。カスタマイズ機能を使って、他の様々なオプションを変更すること
+ができます。ほかのオプションについて知りたい時は
+@kbd{M-x customize-group @key{RET} org-export-taskjuggler @key{RET}}と入力した確認してく
+ださい。
 
-For more information and examples see the Org-taskjuggler tutorial at
-@uref{http://orgmode.org/worg/org-tutorials/org-taskjuggler.html}.
+さらに詳しい情報や例を見たい時は、
+@uref{http://orgmode.org/worg/org-tutorials/org-taskjuggler.html}で
+Org-taskjugglerチュートリアルを見てください。
 
 @node Freemind export, XOXO export, TaskJuggler export, Exporting
 @section Freemind export
 @cindex Freemind export
-@cindex mind map
+@cindex マインドマップ
 
-The Freemind exporter was written by Lennart Borgman.
+Freemindのエクスポート機能はLennart Borgmanによって作成されました。
 
 @table @kbd
-@orgcmd{C-c C-e m,org-export-as-freemind} Export as Freemind mind map
-@file{myfile.mm}.
+@orgcmd{C-c C-e m,org-export-as-freemind} Freemindのマインドマップファイル
+@file{myfile.mm} を出力します。
 @end table
 
 @node XOXO export, iCalendarエクスポート, Freemind export, Exporting
 @section XOXO export
 @cindex XOXO export
 
-Org-mode contains an exporter that produces XOXO-style output.  Currently,
-this exporter only handles the general outline structure and does not
-interpret any additional Org-mode features.
+Org-modeにはXOXOスタイルで出力するエクスポート機能があります。現在、このエク
+スポート機能は一般的なアウトライン構造を扱うだけで、Org-modeの特徴を解釈しま
+せん。
 
 @table @kbd
-@orgcmd{C-c C-e x,org-export-as-xoxo} Export as XOXO file
-@file{myfile.html}.  @orgkey{C-c C-e v x} Export only the visible part of
-the document.
+@orgcmd{C-c C-e x,org-export-as-xoxo} XOXOファイルを
+@file{myfile.html}として出力します。@orgkey{C-c C-e v x} 見えている部分だけを出力
+します。
 @end table
 
 @node iCalendarエクスポート, , XOXO export, Exporting
@@ -10385,58 +10398,62 @@ the document.
 @vindex org-icalendar-use-scheduled
 @vindex org-icalendar-categories
 @vindex org-icalendar-alarm-time
-Some people use Org-mode for keeping track of projects, but still prefer a
-standard calendar application for anniversaries and appointments.  In this
-case it can be useful to show deadlines and other time-stamped items in Org
-files in the calendar application.  Org-mode can export calendar information
-in the standard iCalendar format.  If you also want to have TODO entries
-included in the export, configure the variable
-@code{org-icalendar-include-todo}.  Plain timestamps are exported as VEVENT,
-and TODO items as VTODO.  It will also create events from deadlines that are
-in non-TODO items.  Deadlines and scheduling dates in TODO items will be
-used to set the start and due dates for the TODO entry@footnote{See the variables @code{org-icalendar-use-deadline} and @code{org-icalendar-use-scheduled}.}.  As categories, it will use the tags
-locally defined in the heading, and the file/tree category@footnote{To add inherited tags or the TODO state, configure the variable @code{org-icalendar-categories}.}.  See the variable
-@code{org-icalendar-alarm-time} for a way to assign alarms to entries with a
-time.
+Org-modeユーザーには、プロジェクトの進行を記録している人もいますが、中にはま
+だ誕生日や予約のために標準的なカレンダーアプリケーションを好む人もいます。こ
+のような場合、カレンダーアプリケーションでOrg-modeのファイルにあるデッドライ
+ンとタイムスタンプのある項目が表示されると便利です。Org-modeはカレンダーの情
+報を標準的なiCalendarに出力することができます。もしTODOアイテムも出力したい
+ならば、変数@code{org-icalendar-include-todo}を調整しま。タイムスタンプはVEVENTと
+して出力され、TODOアイテムはVTODOとして出力されます。TODOアイテムでないデッ
+ドラインもイベントが生成されます。デッドラインとTODOアイテムの予定日はTODOア
+イテム@footnote{詳しくは変数@code{org-icalendar-use-deadline}と
+@code{org-icalendar-use-scheduled}を見てください。}の開始日と期日として扱われます
+。カテゴリーには、見出しで定義されたタグやファイルやツリーのカテゴリー
+@footnote{継承したタグやTODOの状態を追加するには変数@code{org-icalendar-categories}をカス
+タマイズしてください。}が使われます。アラームを設定する方法については、変数
+@code{org-icalendar-alarm-time}を参照してください。
 
 @vindex org-icalendar-store-UID
 @cindex property, ID
-The iCalendar standard requires each entry to have a globally unique
-identifier (UID).  Org creates these identifiers during export.  If you set
-the variable @code{org-icalendar-store-UID}, the UID will be stored in the
-@code{:ID:} property of the entry and re-used next time you report this
-entry.  Since a single entry can give rise to multiple iCalendar entries (as
-a timestamp, a deadline, a scheduled item, and as a TODO item), Org adds
-prefixes to the UID, depending on what triggered the inclusion of the
-entry.  In this way the UID remains unique, but a synchronization program
-can still figure out from which entry all the different instances originate.
+標準のiCalendar形式はそれぞれのエントリーにグローバルでユニークな識別子(UID)
+が必要となります。Org-modeではエクスポートする際にこの識別子を作成します。変
+数@code{org-icalendar-store-UID}が設定されていると、UIDはエントリーの
+@code{:ID:}属性に保存され、次にこのエントリーを使うときに再度利用されます。一つの
+項目が複数のiCalendar形式の項目(タイムスタンプ、デッドライン、スケジューリン
+グされたアイテムやTODOアイテム)となるので,
+エントリーの中のトリガーによって、Org-modeはUIDにプレフィックスをつけます。
+このようにして、UIDはユニークな値となりますが、同期処理では全て異なるエント
+リーから作られたエントリーとみなされるでしょう。
 
 @table @kbd
-@orgcmd{C-c C-e i,org-export-icalendar-this-file} Create iCalendar entries
-for the current file and store them in the same directory, using a file
-extension @file{.ics}.  @orgcmd{C-c C-e I, org-export-icalendar-all-agenda-files}
+@orgcmd{C-c C-e i,org-export-icalendar-this-file}
+現在のファイルからiCalendar形式のエントリーを作成し、拡張子@file{.ics}をつ
+けて同じディレクトリに保存します。
+@orgcmd{C-c C-e I, org-export-icalendar-all-agenda-files}
 @vindex org-agenda-files
-Like @kbd{C-c C-e i}, but do this for all files in @code{org-agenda-files}.
-For each of these files, a separate iCalendar file will be written.
+@kbd{C-c C-e i}に似ていますが、@code{org-agenda-files}で指定された全てのファイ
+ルで実行されます。それぞれのファイルでiCalendar形式のファイルが作成さ
+れます。
 @orgcmd{C-c C-e c,org-export-icalendar-combine-agenda-files}
 @vindex org-combined-agenda-icalendar-file
-Create a single large iCalendar file from all files in
-@code{org-agenda-files} and write it to the file given by
-@code{org-combined-agenda-icalendar-file}.
+@code{org-agenda-files}で指定されたファイルから単一のiCalendar形式のファイ
+ルを生成し、@code{org-combined-agenda-icalendar-file}で指定されたファイルに
+出力します。
 @end table
 
 @vindex org-use-property-inheritance
 @vindex org-icalendar-include-body
-@cindex property, SUMMARY
-@cindex property, DESCRIPTION
-@cindex property, LOCATION
-The export will honor SUMMARY, DESCRIPTION and LOCATION@footnote{The LOCATION property can be inherited from higher in the hierarchy if you configure @code{org-use-property-inheritance} accordingly.} properties if
-the selected entries have them.  If not, the summary will be derived from
-the headline, and the description from the body (limited to
-@code{org-icalendar-include-body} characters).
+@cindex SUMMARY属性
+@cindex DESCRIPTION属性
+@cindex LOCATION属性
+エクスポート機能はエントリーがSUMMARY、DESCRIPTIONそしてLOCATION属性
+@footnote{@code{org-use-property-inheritance}を設定した場合、それに応じてLOCATION属性は高
+い階層からその値が継承されます。}を持っていた場合、それを継承します。なかっ
+た場合はSUMMARY属性は見出しから抽出され、DESCRIPTION属性はその内容
+(@code{org-icalendar-include-body}で制限されます。)から抽出されます。
 
-How this calendar is best read and updated, depends on the application you
-are using.  The FAQ covers this issue.
+このカレンダーを読んだり更新したりするのにベストな方法は、使うカレンダーアプ
+リケーション次第です。FAQではこの問題についてカバーしています。
 
 @node Publishing, Working With Source Code, Exporting, Top
 @chapter Publishing
@@ -14493,142 +14510,157 @@ Sebastianが居なければ、org-modeのHTML/XHTMLエクスポートは、無�
 
 @itemize @bullet
 
-@item @i{Russel Adams} came up with the idea for drawers.
-@item @i{Thomas Baumann} wrote @file{org-bbdb.el} and @file{org-mhe.el}.
-@item @i{Christophe Bataillon} created the great unicorn logo that we use on the
-Org-mode website.
-@item @i{Alex Bochannek} provided a patch for rounding timestamps.
-@item @i{Jan Böcker} wrote @file{org-docview.el}.
-@item @i{Brad Bozarth} showed how to pull RSS feed data into Org-mode files.
-@item @i{Tom Breton} wrote @file{org-choose.el}.
-@item @i{Charles Cave}'s suggestion sparked the implementation of templates for
-Remember, which are now templates for capture.
-@item @i{Pavel Chalmoviansky} influenced the agenda treatment of items with
-specified time.
-@item @i{Gregory Chernov} patched support for Lisp forms into table calculations
-and improved XEmacs compatibility, in particular by porting
-@file{nouline.el} to XEmacs.
-@item @i{Sacha Chua} suggested copying some linking code from Planner.
-@item @i{Baoqiu Cui} contributed the DocBook exporter.
-@item @i{Eddward DeVilla} proposed and tested checkbox statistics.  He also came
-up with the idea of properties, and that there should be an API for them.
-@item @i{Nick Dokos} tracked down several nasty bugs.
-@item @i{Kees Dullemond} used to edit projects lists directly in HTML and so
-inspired some of the early development, including HTML export.  He also
-asked for a way to narrow wide table columns.
-@item @i{Thomas S. Dye} contributed documentation on Worg and helped integrating
-the Org-Babel documentation into the manual.
-@item @i{Christian Egli} converted the documentation into Texinfo format, inspired
-the agenda, patched CSS formatting into the HTML exporter, and wrote
-@file{org-taskjuggler.el}.
-@item @i{David Emery} provided a patch for custom CSS support in exported HTML
-agendas.
-@item @i{Nic Ferrier} contributed mailcap and XOXO support.
-@item @i{Miguel A. Figueroa-Villanueva} implemented hierarchical checkboxes.
-@item @i{John Foerch} figured out how to make incremental search show context
-around a match in a hidden outline tree.
-@item @i{Raimar Finken} wrote @file{org-git-line.el}.
-@item @i{Mikael Fornius} works as a mailing list moderator.
-@item @i{Austin Frank} works as a mailing list moderator.
-@item @i{Eric Fraga} drove the development of BEAMER export with ideas and
-testing.
-@item @i{Barry Gidden} did proofreading the manual in preparation for the book
-publication through Network Theory Ltd.
-@item @i{Niels Giesen} had the idea to automatically archive DONE trees.
-@item @i{Nicolas Goaziou} rewrote much of the plain list code.
-@item @i{Kai Grossjohann} pointed out key-binding conflicts with other packages.
-@item @i{Brian Gough} of Network Theory Ltd publishes the Org mode manual as a
-book.
-@item @i{Bernt Hansen} has driven much of the support for auto-repeating tasks,
-task state change logging, and the clocktable.  His clear explanations have
-been critical when we started to adopt the Git version control system.
-@item @i{Manuel Hermenegildo} has contributed various ideas, small fixes and
-patches.
-@item @i{Phil Jackson} wrote @file{org-irc.el}.
-@item @i{Scott Jaderholm} proposed footnotes, control over whitespace between
-folded entries, and column view for properties.
-@item @i{Matt Jones} wrote @i{MobileOrg Android}.
-@item @i{Tokuya Kameshima} wrote @file{org-wl.el} and @file{org-mew.el}.
-@item @i{Shidai Liu} ("Leo") asked for embedded @LaTeX{} and tested it.  He also
-provided frequent feedback and some patches.
-@item @i{Matt Lundin} has proposed last-row references for table formulas and
-named invisible anchors.  He has also worked a lot on the FAQ.
-@item @i{David Maus} wrote @file{org-atom.el}, maintains the issues file for Org,
-and is a prolific contributor on the mailing list with competent replies,
-small fixes and patches.
-@item @i{Jason F. McBrayer} suggested agenda export to CSV format.
-@item @i{Max Mikhanosha} came up with the idea of refiling.
-@item @i{Dmitri Minaev} sent a patch to set priority limits on a per-file basis.
-@item @i{Stefan Monnier} provided a patch to keep the Emacs-Lisp compiler happy.
-@item @i{Richard Moreland} wrote @i{MobileOrg} for the iPhone.
-@item @i{Rick Moynihan} proposed allowing multiple TODO sequences in a file and
-being able to quickly restrict the agenda to a subtree.
-@item @i{Todd Neal} provided patches for links to Info files and Elisp forms.
-@item @i{Greg Newman} refreshed the unicorn logo into its current form.
-@item @i{Tim O'Callaghan} suggested in-file links, search options for general file
-links, and TAGS.
-@item @i{Osamu Okano} wrote @file{orgcard2ref.pl}, a Perl program to create a text
-version of the reference card.
-@item @i{Takeshi Okano} translated the manual and David O'Toole's tutorial into
-Japanese.
-@item @i{Oliver Oppitz} suggested multi-state TODO items.
-@item @i{Scott Otterson} sparked the introduction of descriptive text for links,
-among other things.
-@item @i{Pete Phillips} helped during the development of the TAGS feature, and
-provided frequent feedback.
+@item @i{Russel Adams}は、引き出しのアイディアを思いつきました。
+@item @i{Thomas Baumann}は、@file{org-bbdb.el}と@file{org-mhe.el}を作成しました
+@item @i{Christophe Bataillon}は、org-modeのウェブサイトで使っている素晴らしいユ
+ニコーンのロゴを作成しました。
+@item @i{Alex Bochannek}は、タイムスタンプの丸め込みのためのパッチを提供しました
+。
+@item @i{Jan Böcker}は、@file{org-docview.el}を作成しました。
+@item @i{Brad Bozarth}は、org-modeのファイルにRSSフィードの情報を引き込む方法を
+示しました。
+@item @i{Tom Breton}は、@file{org-choose.el}を作成しました。
+@item @i{Charles Cave}の提案は、Rememberのためのテンプレートの実装を活性化しまし
+た。現在はCaptureのテンプレートになっています。
+@item @i{Pavel Chalmoviansky}は、時間指定したアイテムについてアジェンダの扱いに
+影響を与えました。
+@item @i{Gregory Chernov}は、テーブルの計算でLisp形式をサポートするパッチを作成
+し、XEmacsとの互換性を改善しました。特に、XEmacsへ@file{nouline.el}を移植し
+ました。を行ないました。
+@item @i{Sacha Chua}は、Plannerからのいくつかのリンクコードをコピーすることを提
+案しました。
+@item @i{Baoqiu Cui}は、DocBookエクスポートに貢献しました。
+@item @i{Eddward DeVilla}は、チェックボックスの統計を提案し、テストしました。ま
+た、プロパティのアイディアを思いつきました。しかも、そのためのAPIがあ
+ります。
+@item @i{Nick Dokos}は、いくつもの扱いにくいバグを見つけ出しました。
+@item @i{Kees Dullemond}は、HTMLにあるプロジェクトのリストを直接編集していました
+。そのため、HTMLエクスポートを含む初期の開発の一部をとても活性化しまし
+た。彼は、テーブルの列を狭めたり広げたりする手段を求めました。
+@item @i{Thomas S. Dye}は、Worgにドキュメントを寄稿し、マニュアルにOrg-babelのド
+キュメントを組み込む手助けをしました。
+@item @i{Christian Egli}は、ドキュメントをTexinfo形式に変換し、アジェンダを呼び
+起こし、HTMLエクスポートにCSSフォーマットのパッチを生成しました。さら
+に、@file{org-taskjuggler.el}を作成しました。
+@item @i{David Emery}は、エクスポートされたHTMLのアジェンダでカスタムなCSSをサポ
+ートするパッチを提供しました。
+@item @i{Nic Ferrier}は、mailcapとXOXOサポートに貢献しました。
+@item @i{Miguel A. Figueroa-Villanueva}は、階層的なチェックボックスを実装しまし
+た。
+@item @i{John Foerch}は、隠されたアウトラインツリーで、どうすればインクリメンタ
+ルサーチが検索結果の周辺にコンテクストを表示するようになるかを明らかに
+しました。
+@item @i{Raimar Finken}は、@file{org-git-line.el}を作成しました。
+@item @i{Mikael Fornius}は、メーリングリストの司会をしています。
+@item @i{Austin Frank}は、メーリングリストの司会をしています。
+@item @i{Eric Fraga}は、アイディアを出しテストを行ない、BEAMERエクスポートの開発
+を進めました。
+@item @i{Barry Gidden}は、Network Theory Ltd. を通した本の出版のための準備で、マ
+ニュアルを校正してくれました。
+@item @i{Niels Giesen}は、DONEとしたツリーを自動的にアーカイブするアイディアを提
+供しました。
+@item @i{Nicolas Goaziou}は、プレーンなリストのコードの多くの部分を書き直しまし
+た。
+@item @i{Kai Grossjohann}は、他のパッケージとのキーバインディングの衝突を指摘し
+ました。
+@item Network Theory Ltd. の@i{Brian Gough}は、org-modeのマニュアルを書籍として
+出版しました。
+@item @i{Bernt Hansen}は、タスクの自動リピート、タスクの状態遷移ログ、クロックテ
+ーブルのサポートで、多くの部分を担当しました。彼の明瞭な説明は、Gitの
+バージョン管理システムを採用した時にとても重要でした。
+@item @i{Manuel Hermenegildo}は、いくつものアイディア、小数のバグフィックスとパ
+ッチを提出しました。
+@item @i{Phil Jackson}は、@file{org-irc.el}を作成しました。
+@item @i{Scott Jaderholm}は、フットノート、折り畳んだエントリー間の空行の制御、
+そしてプロパティの列表示を提案しました。
+@item @i{Matt Jones}は、@i{MobileOrg Android}を作成しました。
+@item @i{Tokuya Kameshima}は、@file{org-wl.el}と@file{org-mew.el}を作成しました。
+@item @i{Shidai Liu}
+("Leo")は、@LaTeX{}の組み込みを探求し検証しました。また彼は頻繁なフィード
+バックといくつかのパッチを提供しました。
+@item @i{Matt Lundin}は、テーブルの数式と名前付きの非表示アンカーへの参照をテー
+ブルの最終行に置くことを提案しました。
+@item @i{David Maus}は、@file{org-atom.el}を作成し、org-modeに関するgitのチケットを管
+理しました。またメーリングリストに、有益な返信といくつかのバグフィック
+ス、そしてパッチを多数提出する貢献者でした。
+@item @i{Jason F. McBrayer}は、アジェンダのCSV形式のエクスポートを提案しました。
+@item @i{Max Mikhanosha}は、ノートの再配置のアイディアを思いつきました。
+@item @i{Dmitri Minaev}は、ファイルごとに優先順位の制限を設定するパッチを提出し
+ました。
+@item @i{Stefan Monnier}は、Emacs Lisp コンパイラの出力を快適に保つためのパッチ
+を 提供しました。
+@item @i{Richard Moreland}は、iPhone向けに@i{MobileOrg}を作成しました。
+@item @i{Rick Moynihan}は、一つのファイルで複数のTODOの連なりを扱うことを可能に
+し、アジェンダをサブツリーに素早く制限可能にしました。
+@item @i{Todd Neal}は、INFOファイルとElisp形式へのリンクについてパッチを提供しま
+した。
+@item @i{Greg Newman}は、ユニコーンのロゴを現在の形にリフレッシュしました。
+@item @i{Tim O'Callaghan}は、ファイル内リンク、一般的なファイルリンクのための検
+索オプション、そしてタグを提案しました。
+@item @i{Osamu Okano}は、@file{orgcard2ref.pl}を作成しました。リファレンスカードのテ
+キスト版を作るためのPerlスクリプトです。
+@item @i{Takeshi Okano}は、org-modeのマニュアルと、David O'Toole'sのチュートリア
+ルを日本語に翻訳しました。
+@item @i{Oliver Oppitz}は、TODOアイテムが複数の状態を持つことを提案しました。
+@item @i{Scott Otterson}は、他の要素とのリンクに説明文を導入するきっかけを作りま
+した。
+@item @i{Pete Phillips}は、タグの開発をする際に助力しました。また、頻繁にフィー
+ドバックを提供しました。
 @item @i{Martin Pohlack} provided the code snippet to bundle character insertion
 into bundles of 20 for undo.
-@item @i{T.V. Raman} reported bugs and suggested improvements.
-@item @i{Matthias Rempe} (Oelde) provided ideas, Windows support, and quality
-control.
-@item @i{Paul Rivier} provided the basic implementation of named footnotes.  He
-also acted as mailing list moderator for some time.
-@item @i{Kevin Rogers} contributed code to access VM files on remote hosts.
-@item @i{Frank Ruell} solved the mystery of the @code{keymapp nil} bug, a conflict
-with @file{allout.el}.
-@item @i{Jason Riedy} generalized the send-receive mechanism for Orgtbl tables
-with extensive patches.
-@item @i{Philip Rooke} created the Org reference card, provided lots of feedback,
-developed and applied standards to the Org documentation.
-@item @i{Christian Schlauer} proposed angular brackets around links, among other
-things.
-@item @i{Paul Sexton} wrote @file{org-ctags.el}.
-@item Linking to VM/BBDB/Gnus was first inspired by @i{Tom Shannon}'s
-@file{organizer-mode.el}.
-@item @i{Ilya Shlyakhter} proposed the Archive Sibling, line numbering in literal
-examples, and remote highlighting for referenced code lines.
-@item @i{Stathis Sideris} wrote the @file{ditaa.jar} ASCII to PNG converter that
-is now packaged into Org's @file{contrib} directory.
-@item @i{Daniel Sinder} came up with the idea of internal archiving by locking
-subtrees.
-@item @i{Dale Smith} proposed link abbreviations.
-@item @i{James TD Smith} has contributed a large number of patches for useful
-tweaks and features.
-@item @i{Adam Spiers} asked for global linking commands, inspired the link
-extension system, added support for mairix, and proposed the mapping API.
-@item @i{Ulf Stegemann} created the table to translate special symbols to HTML,
-LaTeX, UTF-8, Latin-1 and ASCII.
-@item @i{Andy Stewart} contributed code to @file{org-w3m.el}, to copy HTML content
-with links transformation to Org syntax.
-@item @i{David O'Toole} wrote @file{org-publish.el} and drafted the manual chapter
-about publishing.
-@item @i{Sebastien Vauban} reported many issues with LaTeX and BEAMER export and
-enabled source code highlighling in Gnus.
-@item @i{Stefan Vollmar} organized a video-recorded talk at the
-Max-Planck-Institute for Neurology.  He also inspired the creation of a
-concept index for HTML export.
-@item @i{J@"urgen Vollmer} contributed code generating the table of contents in
-HTML output.
-@item @i{Samuel Wales} has provided important feedback and bug reports.
-@item @i{Chris Wallace} provided a patch implementing the @samp{QUOTE} keyword.
-@item @i{David Wainberg} suggested archiving, and improvements to the linking
-system.
-@item @i{Carsten Wimmer} suggested some changes and helped fix a bug in linking to
-Gnus.
-@item @i{Roland Winkler} requested additional key bindings to make Org work on a
-tty.
-@item @i{Piotr Zielinski} wrote @file{org-mouse.el}, proposed agenda blocks and
-contributed various ideas and code snippets.
+@item @i{T.V. Raman}は、バグをレポートして改善を提案しました。
+@item @i{Matthias Rempe} (Oelde)は、アイディアとWindowsサポート、品質制御を提供
+しました。
+@item @i{Paul Rivier}は、名前付き注釈の基本的な実装を提供しました。また彼は、し
+ばらくメーリングリストの管理者でした。
+@item @i{Kevin Rogers}は、リモートホストのVMファイルにアクセスするコードを提出し
+ました。
+@item @i{Frank Ruell}は、@code{keymapp nil}のミステリアスなバグ（@file{allout.el}との衝突
+）を解消しました。
+@item @i{Jason Riedy}は、拡張パッチによってorgtblテーブルのための送受信の仕組み
+を汎用化しました。
+@item @i{Philip Rooke}は、org-modeのリファレンスカードを作成しました。数多くのフ
+ィードバックを提供し、org-modeの文書化の基準を作成し適用しました。
+@item @i{Christian Schlauer}は、特に、リンクで利用するカギ括弧（<,>）について提
+案しました。
+@item @i{Paul Sexton}は、@file{org-ctags.el}を作成しました。
+@item VM、BBDB、Gnusへリンクすることの最初のアイディアは、@i{Tom Shannon}の
+@file{organizer-mode.el}によってもたらされました。
+@item @i{Ilya Shlyakhter}は、同一階層内でのアーカイブ、リテラルの例での行番号、
+そして、参照されたコード行のリモートハイライトを提案しました。
+@item @i{Stathis Sideris}は、ASCIIをPNGに変換する@file{ditaa.jar}を作成しました。現在
+これは、org-modeの@file{contrib}ディレクトリに格納されています。
+@item @i{Daniel Sinder}は、サブツリーのロックによる内部的なアーカイブ機能のアイ
+ディアを思いつきました。
+@item @i{Dale Smith}は、リンクの省略記法を提案しました。
+@item @i{James TD Smith}は、便利なカスタマイズと機能のための数多くのパッチを提供
+しました。
+@item @i{Adam Spiers}は、グローバルなリンクコマンドを求めました。これはリンクの
+拡張システムの構築のきっかけとなり、行列のサポートを追加し、さらにマッ
+ピングAPIを提案しました。
+@item @i{Ulf Stegemann}は、特別な記号をHTML、LaTeX、UTF-8、Latin-1、そしてASCII
+に変換するための表を作成しました。
+@item @i{Andy Stewart}は、@file{org-w3m.el}にコードを提供しました。org-modeのシンタッ
+クスにリンクを変換したHTMLコンテンツをコピーする機能です。
+@item @i{David O'Toole}は、@file{org-publish.el}を作成しました。また、マニュアルにお
+ける公開の章のドラフトを執筆しました。
+@item @i{Sebastien Vauban}は、LaTeXとBEAMERエクスポートについての多くの問題をレ
+ポートしました。また、GNUSのソースコードをハイライトする機能を有効にし
+ました。
+@item @i{Stefan Vollmar}は、神経学のマックスプランク研究所での講演（ビデオ収録さ
+れている）を準備しました。また彼は、HTMLエクスポートのコンセプトインデ
+ックスの生成を思いつきました。
+@item @i{J@"urgen Vollmer}は、HTML出力で目次を生成するコードを提供しました。
+@item @i{Samuel Wales}は、改善のためのフィードバックとバグレポートを提供しました
+。
+@item @i{Chris Wallace}は、@samp{QUOTE}キーワードを改良するパッチを提供しました。
+@item @i{David Wainberg}は、アーカイブと、リンクシステムの改良を提案しました。
+@item @i{Carsten Wimmer}は、いくつかの変更を提案し、GNUSへのリンクに関するバグフ
+ィックスを手助けしました。
+@item @i{Roland Winkler}は、tty端末でorg-modeを動かすためのキーバインドの追加を
+依頼しました。
+@item @i{Piotr Zielinski}は@file{org-mouse.el}を作成しました。アジェンダブロックを提
+案し、様々なアイディアをコードスニペットを提供しました。
 @end itemize
 
 

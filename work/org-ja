@@ -9395,8 +9395,8 @@ or
 
 File: org-ja,  Node: Tables in LaTeX export,  Next: Images in LaTeX export,  Prev: Quoting LaTeX code,  Up: LaTeX and PDF export
 
-12.6.4 LaTeXエクスポートにおける表
----------------------------------------------
+12.6.4 LaTeX エクスポートにおけるテーブル
+-------------------------------------------------------
 
 LaTeXで表を出力する際に、番号と表題を指定することができます  (*note Images
 and tables::)、`ATTR_LaTeX'行を使うことで、表に関する`longtable'環
@@ -9425,8 +9425,8 @@ File: org-ja,  Node: Images in LaTeX export,  Next: Beamerクラスのエクス�
 12.6.5 LaTeXエクスポートにおける画像
 ------------------------------------------------
 
-`[[file:img.jpg]]' や `[[./img.jpg]]' のように概要にリンクされていない画像
-は、 LaTeX の処理によりPDFの中に挿入されます。
+`[[file:img.jpg]]' や `[[./img.jpg]]' のように説明文にリンクされていない画
+像は、 LaTeX の処理によりPDFの中に挿入されます。
 Org-modeは、画像を挿入するのに  `\includegraphics'
 マクロを使います。もし、*note Images and
 tables::で説明されているように図の表題や 番号を特定したいのならば、その図を
@@ -9591,12 +9591,12 @@ File: org-ja,  Node: DocBook export,  Next: TaskJuggler export,  Prev: LaTeX and
 12.7 DocBook export
 ===================
 
-Org contains a DocBook exporter written by Baoqiu Cui.  Once an Org file is
-exported to DocBook format, it can be further processed to produce other
-formats, including PDF, HTML, man pages, etc., using many available DocBook
-tools and stylesheets.
+Org-modeは、Baoqiu
+Cuiによって作成されたDocBookへのエクスポート機能があります。Org-modeのファイ
+ルはDocBookのフォーマットで出力され、さらにDocBookのツールやスタイルシートを
+使ってPDF、HTMLやmanなど他のフォーマットに出力することができます。
 
-   Currently DocBook exporter only supports DocBook V5.0.
+   現在、DocBookのエクスポート機能はDocBook V5.0をサポートしています。
 
 * Menu:
 
@@ -9614,38 +9614,38 @@ File: org-ja,  Node: DocBook export commands,  Next: Quoting DocBook code,  Prev
 ------------------------------
 
 `C-c C-e D     (`org-export-as-docbook')'
-     Export as DocBook file.  For an Org file, `myfile.org', the DocBook XML
-     file will be `myfile.xml'.  The file will be overwritten without
-     warning.  If there is an active region(1), only the region will be
-     exported.  If the selected region is a single tree(2), the tree head
-     will become the document title.  If the tree head entry has, or
-     inherits, an `EXPORT_FILE_NAME' property, that name will be used for
-     the export.  
+     DocBookファイルを出力します。Org-modeのファイル `myfile.org' は
+     DocBook XMLファイルの `myfile.xml'
+     となります。ファイルは警告なしに上書きされます。アクティ ブリージョン
+     (1)
+     がある場合は、リージョンのみが出力されます。選択したリージョンが単一の
+     ツリー (2) だった 場合は,
+     そのツリーの見出しが文書のタイトルになります。そのツリーの見出
+     しがある、または継承されている場合や、 `EXPORT_FILE_NAME'
+     属性がある場合は、その名前がエクスポートに使われま す。 
 
 `C-c C-e V     (`org-export-as-docbook-pdf-and-open')'
-     Export as DocBook file, process to PDF, then open the resulting PDF
-     file.
+     DocBookファイルが出力され、PDF処理を経て出力されたPDFファイルが開きます。
 
-     Note that, in order to produce PDF output based on exported DocBook
-     file, you need to have XSLT processor and XSL-FO processor software
-     installed on your system.  Check variables
-     `org-export-docbook-xslt-proc-command' and
-     `org-export-docbook-xsl-fo-proc-command'.
+     DovBookファイルにエクスポートしてPDFに出力するには、XSLT処理系とXSL-FO
+     処理系を環境にインストールしておく必要があるので注意してください。変数
+     `org-export-docbook-xslt-proc-command' と
+     `org-export-docbook-xsl-fo-proc-command'を確認してください。
 
-     The stylesheet argument `%s' in variable
-     `org-export-docbook-xslt-proc-command' is replaced by the value of
-     variable `org-export-docbook-xslt-stylesheet', which needs to be set by
-     the user.  You can also overrule this global setting on a per-file
-     basis by adding an in-buffer setting `#+XSLT:' to the Org file.
+     変数 `org-export-docbook-xslt-proc-command' でスタイルシートを表わす引
+     数 `%s' はユーザによってセットされる変数
+     `org-export-docbook-xslt-stylesheet'
+     の値で置き換えられます。Org-modeファイルに  `#+XSLT:' を追加することで
+     、グローバルな設定を封じることができます。
 
 `C-c C-e v D'
-     Export only the visible part of the document.
+     文書の見えている部分だけを出力します。
 
    ---------- Footnotes ----------
 
-   (1) This requires `transient-mark-mode' to be turned on
+   (1) `transient-mark-mode' を有効にしている必要があります。
 
-   (2) To select the current subtree, use `C-c @'.
+   (2) 現在のツリーを選択するには `C-c @' を使ってください。
 
 
 File: org-ja,  Node: Quoting DocBook code,  Next: Recursive sections,  Prev: DocBook export commands,  Up: DocBook export
@@ -9653,28 +9653,29 @@ File: org-ja,  Node: Quoting DocBook code,  Next: Recursive sections,  Prev: Doc
 12.7.2 Quoting DocBook code
 ---------------------------
 
-You can quote DocBook code in Org files and copy it verbatim into exported
-DocBook file with the following constructs:
+次のようなブロックを使えば、Org-modeのファイルでDocBookのコードを引用したり
+、文章をそのままDocBookのファイルにコピーすることができます。
 
-     #+DOCBOOK: Literal DocBook code for export
+     #+DOCBOOK: エクスポートするDocBookコードの文字列
 
 or 
 
      #+BEGIN_DOCBOOK
-     All lines between these markers are exported by DocBook exporter
-     literally.
+     これらのマーカの間の行はDocBookエクスポート機能により文字がそのまま出力され
+     ます。
      #+END_DOCBOOK
 
-   For example, you can use the following lines to include a DocBook warning
-admonition.  As to what this warning says, you should pay attention to the
-document context when quoting DocBook code in Org files.  You may make
-exported DocBook XML files invalid by not quoting DocBook code correctly.
+例えば、DocBookの警告文を含めるには次のような文章を使います。この警告文によ
+り、Org-modeのファイルにDocBookコードをのせる時に、文章の文脈に注意を払うで
+しょう。DocBookコードを正しく引用しないと、DocBook
+XMLファイルを正確に出力できないかもしれせん。
 
      #+BEGIN_DOCBOOK
      <warning>
-       <para>You should know what you are doing when quoting DocBook XML code
-       in your Org file.  Invalid DocBook XML may be generated by
-       DocBook exporter if you are not careful!</para>
+       <para>Org-modeファイルの中でDocBook XMLコードを引用する際、何をしているか
+       知っておく必要があります。注意が足りないと、DocBookのエクスポート機能によ
+     り
+       正しくないDocBook XMLが出力されるかもしれません。</para>
      </warning>
      #+END_DOCBOOK
 
@@ -9684,15 +9685,17 @@ File: org-ja,  Node: Recursive sections,  Next: Tables in DocBook export,  Prev:
 12.7.3 Recursive sections
 -------------------------
 
-DocBook exporter exports Org files as articles using the `article' element
-in DocBook.  Recursive sections, i.e. `section' elements, are used in
-exported articles.  Top level headlines in Org files are exported as top
-level sections, and lower level headlines are exported as nested sections.
-The entire structure of Org files will be exported completely, no matter
-how many nested levels of headlines there are.
+DocBookのエクスポート機能は、DocBookの `article'
+要素を使ってOrg-modeのファイルをarticlesとして出力します。再帰的なsections、
+例えば `section' 要素が出力されたarticlesの中で使われます。
+Org-modeのファイルのトップレベルの見出しは、トップレベルのsectionsとして出力
+され、低いレベルの見出しはネストしたsectionsとして出力されます。Org-modeのフ
+ァイルの全体構造は、完全に出力されます。見出しにネストされたレベルはどれだけ
+あっても構いません。
 
-   Using recursive sections makes it easy to port and reuse exported DocBook
-code in other DocBook document types like `book' or `set'.
+   再帰的なセクションを使えば、 出力されたDocBookコードを他の `book' や
+`set'
+のようなドキュメントタイプに移植したり、再利用したりするのが用意になります。
 
 
 File: org-ja,  Node: Tables in DocBook export,  Next: Images in DocBook export,  Prev: Recursive sections,  Up: DocBook export
@@ -9700,12 +9703,12 @@ File: org-ja,  Node: Tables in DocBook export,  Next: Images in DocBook export, 
 12.7.4 Tables in DocBook export
 -------------------------------
 
-Tables in Org files are exported as HTML tables, which have been supported
-since DocBook V4.3.
+Org-modeの表はHTMLの表を出力します。HTMLの表はDocBook V4.3からサポートされて
+います。
 
-   If a table does not have a caption, an informal table is generated using
-the `informaltable' element; otherwise, a formal table will be generated
-using the `table' element.
+   テーブルに表題がなかった場合、 `informaltable' 要素によってinformal
+tableが出力されます。表題があれば、`table' 要素により、テーブルが出力されま
+す。
 
 
 File: org-ja,  Node: Images in DocBook export,  Next: Special characters,  Prev: Tables in DocBook export,  Up: DocBook export
@@ -9713,37 +9716,41 @@ File: org-ja,  Node: Images in DocBook export,  Next: Special characters,  Prev:
 12.7.5 Images in DocBook export
 -------------------------------
 
-Images that are linked to without a description part in the link, like
-`[[file:img.jpg]]' or `[[./img.jpg]]', will be exported to DocBook using
-`mediaobject' elements.  Each `mediaobject' element contains an
-`imageobject' that wraps an `imagedata' element.  If you have specified a
-caption for an image as described in *note Images and tables::, a `caption'
-element will be added in `mediaobject'.  If a label is also specified, it
-will be exported as an `xml:id' attribute of the `mediaobject' element.
+`[[file:img.jpg]]' や `[[./img.jpg]]' のように説明文にリンクされていない画
+像は、 `mediaobject' タグが使われてDocBookに出力されます。 各 `mediaobject'
+要素には、`imagedata' 要素を囲む `imageobject'要素が含まれます。もし、
+*note Images and tables::で説明されているように図の表題を特定するならば、
+`caption' 要素を  `mediaobject' の中に追加します。番号も特定する場合は、
+`mediaobject' 要素の中に  `xml:id' 属性が出力されます。`figure'
+環境のオプションの配置を変更するには、  `placement=[h!]'
+のように属性に追加します。
 
-   Image attributes supported by the `imagedata' element, like `align' or
-`width', can be specified in two ways: you can either customize variable
-`org-export-docbook-default-image-attributes' or use the `#+ATTR_DOCBOOK:'
-line.  Attributes specified in variable
-`org-export-docbook-default-image-attributes' are applied to all inline
-images in the Org file to be exported (unless they are overridden by image
-attributes specified in `#+ATTR_DOCBOOK:' lines).
+   画像の属性には `imagedata' 要素がサポートされ、 `align' や `width'
+のような属性が二つの方法で特定されます。一つ目は変数
+`org-export-docbook-default-image-attributes' を設定する方法です。二つ目は
+`#+ATTR_DOCBOOK:' 行を使う方法です。変数
+`org-export-docbook-default-image-attributes'
+で特定される属性は出力元のOrg-modeファイルに含まれる全ての画像に適用されます
+(ただし、 `#+ATTR_DOCBOOK:'
+行で画像の属性が上書きされている場合は除きます。)。
 
-   The `#+ATTR_DOCBOOK:' line can be used to specify additional image
-attributes or override default image attributes for individual images.  If
-the same attribute appears in both the `#+ATTR_DOCBOOK:' line and variable
-`org-export-docbook-default-image-attributes', the former takes precedence.
-Here is an example about how image attributes can be set:
+   `#+ATTR_DOCBOOK:'
+行は、追加的な画像の属性の指定や個々の画像にデフォルトの画
+像の属性を上書きするのに使います。もし、 `#+ATTR_DOCBOOK:' と 変数
+`org-export-docbook-default-image-attributes'
+に同じ属性が現れた場合、前者の値が優先的に使われます。次の例は画像の属性に関
+する設定例です。
 
-     #+CAPTION:    The logo of Org-mode
+     #+CAPTION:    Org-modeのロゴ
      #+LABEL:      unicorn-svg
      #+ATTR_DOCBOOK: scalefit="1" width="100%" depth="100%"
      [[./img/org-mode-unicorn.svg]]
 
-   By default, DocBook exporter recognizes the following image file types:
-`jpeg', `jpg', `png', `gif', and `svg'.  You can customize variable
-`org-export-docbook-inline-image-extensions' to add more types to this list
-as long as DocBook supports them.
+   デフォルトでDocBookのエクスポート機能は、 `jpeg', `jpg', `png', `gif',
+そして `svg' のような画像のタイプを認識します。変数
+`org-export-docbook-inline-image-extensions'
+を設定することで、DocBookがサポートしている画像のタイプを追加することができ
+ます。
 
 
 File: org-ja,  Node: Special characters,  Prev: Images in DocBook export,  Up: DocBook export
@@ -9751,17 +9758,19 @@ File: org-ja,  Node: Special characters,  Prev: Images in DocBook export,  Up: D
 12.7.6 DocBook出力における特殊文字
 --------------------------------------------
 
-Special characters that are written in TeX-like syntax, such as `\alpha',
-`\Gamma', and `\Zeta', are supported by DocBook exporter.  These characters
-are rewritten to XML entities, like `&alpha;', `&Gamma;', and `&Zeta;',
-based on the list saved in variable `org-entities'.  As long as the
-generated DocBook file includes the corresponding entities, these special
-characters are recognized.
+`\alpha', `\Gamma', そして `\Zeta' のような TeX
+ライクなシンタックスで記述された特殊文字列は、DocBookのエクスポート機能でサ
+ポートされています。 そのような文字列は、変数 `org-entities'
+に格納されているリストにもとづき、`&alpha;', `&Gamma;', そし て `&Zeta;'
+のように XML
+エンティティとして記述されます。対応するエンティティが含まれるDocBookファイ
+ルが出力されると、特殊文字列が認識されます。
 
-   You can customize variable `org-export-docbook-doctype' to include the
-entities you need.  For example, you can set variable
-`org-export-docbook-doctype' to the following value to recognize all
-special characters included in XHTML entities:
+   変数 `org-export-docbook-doctype'
+を設定することで必要なエンティティを含める ことができます。例えば、 変数
+`org-export-docbook-doctype'
+に次のような値を設定することで、XHTMLエンティティに含まれる全ての特殊文字列
+が認識されます。
 
      "<!DOCTYPE article [
      <!ENTITY % xhtml1-symbol PUBLIC
@@ -9778,124 +9787,121 @@ File: org-ja,  Node: TaskJuggler export,  Next: Freemind export,  Prev: DocBook 
 12.8 TaskJuggler export
 =======================
 
-TaskJuggler (http://www.taskjuggler.org/) is a project management tool.  It
-provides an optimizing scheduler that computes your project time lines and
-resource assignments based on the project outline and the constraints that
-you have provided.
+TaskJuggler (http://www.taskjuggler.org/)はプロジェクト管理ツールです。
+プロジェクトのアウトラインと設定して制限をもとにプロジェクトのタイムラインと
+リソースの割り当てを計算して最適化されたスケジュールを提供します。
 
-   The TaskJuggler exporter is a bit different from other exporters, such as
-the HTML and LaTeX exporters for example, in that it does not export all the
-nodes of a document or strictly follow the order of the nodes in the
-document.
+TaskJugglerのエクスポート機能は、例えばHTMLやLaTeXのような他のエクスポート機
+能とは少し違い、ドキュメントのノード全てを出力しませんし、ドキュメントのノー
+ドの序列に従って出力することもしません。
 
-   Instead the TaskJuggler exporter looks for a tree that defines the tasks
-and a optionally tree that defines the resources for this project. It then
-creates a TaskJuggler file based on these trees and the attributes defined
-in all the nodes.
+代わりに、TaskJugglerのエクスポート機能はタスクが定義されているツリーか、こ
+のプロジェクトのリソースとして任意に定義されたツリーを探します。そして、それ
+らツリーと全てのノードの中で定義された属性をもとにTaskJugglerファイルを作成
+します。
 
-12.8.1 TaskJuggler export commands
-----------------------------------
+12.8.1 TaskJugglerのエクスポートコマンド
+---------------------------------------------------
 
 `C-c C-e j     (`org-export-as-taskjuggler')'
-     Export as TaskJuggler file.
+     TaskJugglerファイルを出力します 。
 
 `C-c C-e J     (`org-export-as-taskjuggler-and-open')'
-     Export as TaskJuggler file and then open the file with TaskJugglerUI.
+     TaskJugglerファイルを出力し、TaskJugglerUIでファイルを開きます。
 
-12.8.2 Tasks
-------------
-
-Create your tasks as you usually do with Org-mode. Assign efforts to each
-task using properties (it's easiest to do this in the column view). You
-should end up with something similar to the example by Peter Jones in
-`http://www.contextualdevelopment.com/static/artifacts/articles/2008/project-planning/project-planning.org'.
-Now mark the top node of your tasks with a tag named
-`:taskjuggler_project:' (or whatever you customized
-`org-export-taskjuggler-project-tag' to). You are now ready to export the
-project plan with `C-c C-e J' which will export the project plan and open a
-gantt chart in TaskJugglerUI.
-
-12.8.3 Resources
+12.8.2 タスク
 ----------------
 
-Next you can define resources and assign those to work on specific tasks.
-You can group your resources hierarchically. Tag the top node of the
-resources with `:taskjuggler_resource:' (or whatever you customized
-`org-export-taskjuggler-resource-tag' to). You can optionally assign an
-identifier (named `resource_id') to the resources (using the standard Org
-properties commands, *note Property syntax::) or you can let the exporter
-generate identifiers automatically (the exporter picks the first word of
-the headline as the identifier as long as it is unique--see the
-documentation of `org-taskjuggler-get-unique-id'). Using that identifier
-you can then allocate resources to tasks. This is again done with the
-`allocate' property on the tasks. Do this in column view or when on the
-task type `C-c C-x p allocate <RET> <resource_id> <RET>'.
+いつものようにOrg-modeでタスクを作ります。各タスクにプロパティを使ってエフォ
+ートを指定します (カラムビューを使うと簡単です。)。 最終的には、Peter
+Jonesが作成した
+`http://www.contextualdevelopment.com/static/artifacts/articles/2008/project-planning/project-planning.org'の例と似たものになっているはずです。次に、タスクのトップノードを`:taskjuggler_project:'というタグでマークします
+(または変数`org-export-taskjuggler-project-tag'をカスタマイズします)。これで
+プロジェクトの計画を`C-c C-e J'で出力する準備ができました。出力されれば、
+TaskJugglerUIでガントチャートが開くはずです。
 
-   Once the allocations are done you can again export to TaskJuggler and
-check in the Resource Allocation Graph which person is working on what task
-at what time.
-
-12.8.4 Export of properties
----------------------------
-
-The exporter also takes TODO state information into consideration, i.e. if
-a task is marked as done it will have the corresponding attribute in
-TaskJuggler (`complete 100'). Also it will export any property on a task
-resource or resource node which is known to TaskJuggler, such as `limits',
-`vacation', `shift', `booking', `efficiency', `journalentry', `rate' for
-resources or `account', `start', `note', `duration', `end', `journalentry',
-`milestone', `reference', `responsible', `scheduling', etc for tasks.
-
-12.8.5 Dependencies
+12.8.3 リソース
 -------------------
 
-The exporter will handle dependencies that are defined in the tasks either
-with the `ORDERED' attribute (*note TODO dependencies::), with the
-`BLOCKER' attribute (see `org-depend.el') or alternatively with a `depends'
-attribute. Both the `BLOCKER' and the `depends' attribute can be either
-`previous-sibling' or a reference to an identifier (named `task_id') which
-is defined for another task in the project. `BLOCKER' and the `depends'
-attribute can define multiple dependencies separated by either space or
-comma. You can also specify optional attributes on the dependency by simply
-appending it. The following examples should illustrate this:
+次に特定のタスクにリソースを割り当てることができます。階層的にリソースをまと
+めることもできます。トップノードのタグは`:taskjuggler_resource:'になります
+(または`org-export-taskjuggler-resource-tag'をカスタマイズします。)。識別子
+(`resource_id')をリソースに割り当てることもできます(標準的なOrg-modeのプロパ
+ティについては, *note Property
+syntax::)。また、エクスポート機能は自動で識別子を生成することができ
+ます。(識別子はユニークであればよいので、エクスポート機能は見出しの最初の単
+語を抽出します。詳しくは`org-taskjuggler-get-unique-id'のドキュメントを読ん
+でください)。識別子を使ってリソースをタスクに再配置することができます。
+`allocate'属性がタスクで再び実行されます。カラムビューか、タスク上で `C-c
+C-x p allocate <RET> <resource_id> <RET>'と入力することで実行されます。
+
+再配置が実行されると、再びTaskJugglerに出力してリソースの再配置グラフを確認
+することができます。そのグラフでは、各人がいつ何のタスクをこなしているかがわ
+かります。
+
+12.8.4 属性の出力
+----------------------
+
+エクスポート機能はTODOの状態に関する情報も考慮されています。例えば、タスクが
+「DONE」とマークされると、それに対応して、TaskJugglerの属性も (`complete
+100')となります。タスクリソースやタスクノード上のうTaskJugglerで
+使われる`limits', `vacation', `shift', `booking', `efficiency',
+`journalentry', `rate'のようなリソースの属性や`account', `start', `note',
+`duration', `end', `journalentry', `milestone', `reference', `responsible',
+`scheduling'などのタスクの属性も、出力されます。
+
+12.8.5 依存状態
+-------------------
+
+エクスポート機能はタスクで`ORDERED' 属性 (*note TODO
+dependencies::)、`BLOCKER' 属 性 (see
+`org-depend.el')、そして選択的に`depends'属性で表される依存状態を操作するこ
+とができます。`BLOCKER'
+属性も`depends'属性も`previous-sibling'のように扱えますし、プロジェクトの他
+のタスクで定義された識別子への参照
+(`task_id')として扱うこともできます。`BLOCKER'属性と`depends'属性は、カンマ
+やスペースで分けることで複数の依存状態として定義できます。依存状態の属性は、
+単純に追加することで任意の属性を追加することができます。これまでの例は次のよ
+うに記述できます。
 
      * Preparation
        :PROPERTIES:
-       :task_id:  preparation
+       :task_id:  準備
        :ORDERED:  t
        :END:
-     * Training material
+     * 練習の材料
        :PROPERTIES:
        :task_id:  training_material
        :ORDERED:  t
        :END:
-     ** Markup Guidelines
+     ** マークアップのガイドライン
         :PROPERTIES:
         :Effort:   2.0
         :END:
-     ** Workflow Guidelines
+     ** ワークフローのガイドライン
         :PROPERTIES:
         :Effort:   2.0
         :END:
-     * Presentation
+     * プレゼンテーション
        :PROPERTIES:
        :Effort:   2.0
        :BLOCKER:  training_material { gapduration 1d } preparation
        :END:
 
-12.8.6 Reports
---------------
+12.8.6 レポート
+-------------------
 
-TaskJuggler can produce many kinds of reports (e.g. gantt chart, resource
-allocation, etc). The user defines what kind of reports should be generated
-for a project in the TaskJuggler file. The exporter will automatically
-insert some default reports in the file. These defaults are defined in
-`org-export-taskjuggler-default-reports'. They can be modified using
-customize along with a number of other options. For a more complete list,
-see `M-x customize-group <RET> org-export-taskjuggler <RET>'.
+TaskJugglerは多くのレポートを作成できます。(例えば gantt chart, resource
+allocationなど)。TaskJugglerファイルにあるプロジェクトでどのレポートを作成す
+るか定義することができます。エクスポート機能は自動的にデフォルトのレポートを
+ファイルに挿入します。それらは、`org-export-taskjuggler-default-reports'で定
+義されています。カスタマイズ機能を使って、他の様々なオプションを変更すること
+ができます。ほかのオプションについて知りたい時は `M-x customize-group <RET>
+org-export-taskjuggler <RET>'と入力した確認してく ださい。
 
-   For more information and examples see the Org-taskjuggler tutorial at
-`http://orgmode.org/worg/org-tutorials/org-taskjuggler.html'.
+   さらに詳しい情報や例を見たい時は、
+`http://orgmode.org/worg/org-tutorials/org-taskjuggler.html'で
+Org-taskjugglerチュートリアルを見てください。
 
 
 File: org-ja,  Node: Freemind export,  Next: XOXO export,  Prev: TaskJuggler export,  Up: Exporting
@@ -9903,10 +9909,10 @@ File: org-ja,  Node: Freemind export,  Next: XOXO export,  Prev: TaskJuggler exp
 12.9 Freemind export
 ====================
 
-The Freemind exporter was written by Lennart Borgman.
+Freemindのエクスポート機能はLennart Borgmanによって作成されました。
 
 `C-c C-e m     (`org-export-as-freemind')'
-     Export as Freemind mind map `myfile.mm'.
+     Freemindのマインドマップファイル `myfile.mm' を出力します。
 
 
 File: org-ja,  Node: XOXO export,  Next: iCalendarエクスポート,  Prev: Freemind export,  Up: Exporting
@@ -9914,15 +9920,15 @@ File: org-ja,  Node: XOXO export,  Next: iCalendarエクスポート,  Prev: Fre
 12.10 XOXO export
 =================
 
-Org-mode contains an exporter that produces XOXO-style output.  Currently,
-this exporter only handles the general outline structure and does not
-interpret any additional Org-mode features.
+Org-modeにはXOXOスタイルで出力するエクスポート機能があります。現在、このエク
+スポート機能は一般的なアウトライン構造を扱うだけで、Org-modeの特徴を解釈しま
+せん。
 
 `C-c C-e x     (`org-export-as-xoxo')'
-     Export as XOXO file `myfile.html'.  
+     XOXOファイルを `myfile.html'として出力します。
 
 `C-c C-e v x'
-     Export only the visible part of the document.
+     見えている部分だけを出力 します。
 
 
 File: org-ja,  Node: iCalendarエクスポート,  Prev: XOXO export,  Up: Exporting
@@ -9930,61 +9936,63 @@ File: org-ja,  Node: iCalendarエクスポート,  Prev: XOXO export,  Up: Expor
 12.11 iCalendarエクスポート
 =================================
 
-Some people use Org-mode for keeping track of projects, but still prefer a
-standard calendar application for anniversaries and appointments.  In this
-case it can be useful to show deadlines and other time-stamped items in Org
-files in the calendar application.  Org-mode can export calendar information
-in the standard iCalendar format.  If you also want to have TODO entries
-included in the export, configure the variable
-`org-icalendar-include-todo'.  Plain timestamps are exported as VEVENT, and
-TODO items as VTODO.  It will also create events from deadlines that are in
-non-TODO items.  Deadlines and scheduling dates in TODO items will be used
-to set the start and due dates for the TODO entry(1).  As categories, it
-will use the tags locally defined in the heading, and the file/tree
-category(2).  See the variable `org-icalendar-alarm-time' for a way to
-assign alarms to entries with a time.
+Org-modeユーザーには、プロジェクトの進行を記録している人もいますが、中にはま
+だ誕生日や予約のために標準的なカレンダーアプリケーションを好む人もいます。こ
+のような場合、カレンダーアプリケーションでOrg-modeのファイルにあるデッドライ
+ンとタイムスタンプのある項目が表示されると便利です。Org-modeはカレンダーの情
+報を標準的なiCalendarに出力することができます。もしTODOアイテムも出力したい
+ならば、変数`org-icalendar-include-todo'を調整しま。タイムスタンプはVEVENTと
+して出力され、TODOアイテムはVTODOとして出力されます。TODOアイテムでないデッ
+ドラインもイベントが生成されます。デッドラインとTODOアイテムの予定日はTODOア
+イテム(1)の開始日と期日として扱われます
+。カテゴリーには、見出しで定義されたタグやファイルやツリーのカテゴリー
+(2)が使われます。アラームを設定する方法については、変数
+`org-icalendar-alarm-time'を参照してください。
 
-   The iCalendar standard requires each entry to have a globally unique
-identifier (UID).  Org creates these identifiers during export.  If you set
-the variable `org-icalendar-store-UID', the UID will be stored in the
-`:ID:' property of the entry and re-used next time you report this entry.
-Since a single entry can give rise to multiple iCalendar entries (as a
-timestamp, a deadline, a scheduled item, and as a TODO item), Org adds
-prefixes to the UID, depending on what triggered the inclusion of the
-entry.  In this way the UID remains unique, but a synchronization program
-can still figure out from which entry all the different instances originate.
+標準のiCalendar形式はそれぞれのエントリーにグローバルでユニークな識別子(UID)
+が必要となります。Org-modeではエクスポートする際にこの識別子を作成します。変
+数`org-icalendar-store-UID'が設定されていると、UIDはエントリーの
+`:ID:'属性に保存され、次にこのエントリーを使うときに再度利用されます。一つの
+項目が複数のiCalendar形式の項目(タイムスタンプ、デッドライン、スケジューリン
+グされたアイテムやTODOアイテム)となるので,
+エントリーの中のトリガーによって、Org-modeはUIDにプレフィックスをつけます。
+このようにして、UIDはユニークな値となりますが、同期処理では全て異なるエント
+リーから作られたエントリーとみなされるでしょう。
 
 `C-c C-e i     (`org-export-icalendar-this-file')'
-     Create iCalendar entries for the current file and store them in the
-     same directory, using a file extension `.ics'.  
+     現在のファイルからiCalendar形式のエントリーを作成し、拡張子`.ics'をつ
+     けて同じディレクトリに保存します。 
 
 `C-c C-e I     (`org-export-icalendar-all-agenda-files')'
-     Like `C-c C-e i', but do this for all files in `org-agenda-files'.
-     For each of these files, a separate iCalendar file will be written.  
+     `C-c C-e i'に似ていますが、`org-agenda-files'で指定された全てのファイ
+     ルで実行されます。それぞれのファイルでiCalendar形式のファイルが作成さ
+     れます。 
 
 `C-c C-e c     (`org-export-icalendar-combine-agenda-files')'
-     Create a single large iCalendar file from all files in
-     `org-agenda-files' and write it to the file given by
-     `org-combined-agenda-icalendar-file'.
+     `org-agenda-files'で指定されたファイルから単一のiCalendar形式のファイ
+     ルを生成し、`org-combined-agenda-icalendar-file'で指定されたファイルに
+     出力します。
 
-   The export will honor SUMMARY, DESCRIPTION and LOCATION(3) properties if
-the selected entries have them.  If not, the summary will be derived from
-the headline, and the description from the body (limited to
-`org-icalendar-include-body' characters).
+   エクスポート機能はエントリーがSUMMARY、DESCRIPTIONそしてLOCATION属性
+(3)を持っていた場合、それを継承します。なかっ
+た場合はSUMMARY属性は見出しから抽出され、DESCRIPTION属性はその内容
+(`org-icalendar-include-body'で制限されます。)から抽出されます。
 
-   How this calendar is best read and updated, depends on the application
-you are using.  The FAQ covers this issue.
+このカレンダーを読んだり更新したりするのにベストな方法は、使うカレンダーアプ
+リケーション次第です。FAQではこの問題についてカバーしています。
 
    ---------- Footnotes ----------
 
-   (1) See the variables `org-icalendar-use-deadline' and
-`org-icalendar-use-scheduled'.
+   (1) 詳しくは変数`org-icalendar-use-deadline'と
+`org-icalendar-use-scheduled'を見てください。
 
-   (2) To add inherited tags or the TODO state, configure the variable
-`org-icalendar-categories'.
+   (2)
+継承したタグやTODOの状態を追加するには変数`org-icalendar-categories'をカス
+タマイズしてください。
 
-   (3) The LOCATION property can be inherited from higher in the hierarchy
-if you configure `org-use-property-inheritance' accordingly.
+   (3)
+`org-use-property-inheritance'を設定した場合、それに応じてLOCATION属性は高
+い階層からその値が継承されます。
 
 
 File: org-ja,  Node: Publishing,  Next: Working With Source Code,  Prev: Exporting,  Up: Top
@@ -13802,226 +13810,238 @@ OK, now to the full list of contributions!  Again, please let me
 （indent問題箇所）さて！いよいよ貢献してくれた方々のリストに移ります。繰り返
 しますが、忘れているところがあれば教えてください。
 
-   * Russel Adams came up with the idea for drawers.
+   * Russel Adamsは、引き出しのアイディアを思いつきました。
 
-   * Thomas Baumann wrote `org-bbdb.el' and `org-mhe.el'.
+   * Thomas Baumannは、`org-bbdb.el'と`org-mhe.el'を作成しました
 
-   * Christophe Bataillon created the great unicorn logo that we use on the
-     Org-mode website.
+   * Christophe Bataillonは、org-modeのウェブサイトで使っている素晴らしいユ
+     ニコーンのロゴを作成しました。
 
-   * Alex Bochannek provided a patch for rounding timestamps.
+   * Alex Bochannekは、タイムスタンプの丸め込みのためのパッチを提供しました
+     。
 
-   * Jan Böcker wrote `org-docview.el'.
+   * Jan Böckerは、`org-docview.el'を作成しました。
 
-   * Brad Bozarth showed how to pull RSS feed data into Org-mode files.
+   * Brad Bozarthは、org-modeのファイルにRSSフィードの情報を引き込む方法を
+     示しました。
 
-   * Tom Breton wrote `org-choose.el'.
+   * Tom Bretonは、`org-choose.el'を作成しました。
 
-   * Charles Cave's suggestion sparked the implementation of templates for
-     Remember, which are now templates for capture.
+   * Charles Caveの提案は、Rememberのためのテンプレートの実装を活性化しまし
+     た。現在はCaptureのテンプレートになっています。
 
-   * Pavel Chalmoviansky influenced the agenda treatment of items with
-     specified time.
+   * Pavel Chalmovianskyは、時間指定したアイテムについてアジェンダの扱いに
+     影響を与えました。
 
-   * Gregory Chernov patched support for Lisp forms into table calculations
-     and improved XEmacs compatibility, in particular by porting
-     `nouline.el' to XEmacs.
+   * Gregory Chernovは、テーブルの計算でLisp形式をサポートするパッチを作成
+     し、XEmacsとの互換性を改善しました。特に、XEmacsへ`nouline.el'を移植し
+     ました。を行ないました。
 
-   * Sacha Chua suggested copying some linking code from Planner.
+   * Sacha Chuaは、Plannerからのいくつかのリンクコードをコピーすることを提
+     案しました。
 
-   * Baoqiu Cui contributed the DocBook exporter.
+   * Baoqiu Cuiは、DocBookエクスポートに貢献しました。
 
-   * Eddward DeVilla proposed and tested checkbox statistics.  He also came
-     up with the idea of properties, and that there should be an API for
-     them.
+   * Eddward DeVillaは、チェックボックスの統計を提案し、テストしました。ま
+     た、プロパティのアイディアを思いつきました。しかも、そのためのAPIがあ
+     ります。
 
-   * Nick Dokos tracked down several nasty bugs.
+   * Nick Dokosは、いくつもの扱いにくいバグを見つけ出しました。
 
-   * Kees Dullemond used to edit projects lists directly in HTML and so
-     inspired some of the early development, including HTML export.  He also
-     asked for a way to narrow wide table columns.
+   * Kees Dullemondは、HTMLにあるプロジェクトのリストを直接編集していました
+     。そのため、HTMLエクスポートを含む初期の開発の一部をとても活性化しまし
+     た。彼は、テーブルの列を狭めたり広げたりする手段を求めました。
 
-   * Thomas S. Dye contributed documentation on Worg and helped integrating
-     the Org-Babel documentation into the manual.
+   * Thomas S. Dyeは、Worgにドキュメントを寄稿し、マニュアルにOrg-babelのド
+     キュメントを組み込む手助けをしました。
 
-   * Christian Egli converted the documentation into Texinfo format,
-     inspired the agenda, patched CSS formatting into the HTML exporter,
-     and wrote `org-taskjuggler.el'.
+   * Christian Egliは、ドキュメントをTexinfo形式に変換し、アジェンダを呼び
+     起こし、HTMLエクスポートにCSSフォーマットのパッチを生成しました。さら
+     に、`org-taskjuggler.el'を作成しました。
 
-   * David Emery provided a patch for custom CSS support in exported HTML
-     agendas.
+   * David Emeryは、エクスポートされたHTMLのアジェンダでカスタムなCSSをサポ
+     ートするパッチを提供しました。
 
-   * Nic Ferrier contributed mailcap and XOXO support.
+   * Nic Ferrierは、mailcapとXOXOサポートに貢献しました。
 
-   * Miguel A. Figueroa-Villanueva implemented hierarchical checkboxes.
+   * Miguel A. Figueroa-Villanuevaは、階層的なチェックボックスを実装しまし
+     た。
 
-   * John Foerch figured out how to make incremental search show context
-     around a match in a hidden outline tree.
+   * John Foerchは、隠されたアウトラインツリーで、どうすればインクリメンタ
+     ルサーチが検索結果の周辺にコンテクストを表示するようになるかを明らかに
+     しました。
 
-   * Raimar Finken wrote `org-git-line.el'.
+   * Raimar Finkenは、`org-git-line.el'を作成しました。
 
-   * Mikael Fornius works as a mailing list moderator.
+   * Mikael Forniusは、メーリングリストの司会をしています。
 
-   * Austin Frank works as a mailing list moderator.
+   * Austin Frankは、メーリングリストの司会をしています。
 
-   * Eric Fraga drove the development of BEAMER export with ideas and
-     testing.
+   * Eric Fragaは、アイディアを出しテストを行ない、BEAMERエクスポートの開発
+     を進めました。
 
-   * Barry Gidden did proofreading the manual in preparation for the book
-     publication through Network Theory Ltd.
+   * Barry Giddenは、Network Theory Ltd. を通した本の出版のための準備で、マ
+     ニュアルを校正してくれました。
 
-   * Niels Giesen had the idea to automatically archive DONE trees.
+   * Niels Giesenは、DONEとしたツリーを自動的にアーカイブするアイディアを提
+     供しました。
 
-   * Nicolas Goaziou rewrote much of the plain list code.
+   * Nicolas Goaziouは、プレーンなリストのコードの多くの部分を書き直しまし
+     た。
 
-   * Kai Grossjohann pointed out key-binding conflicts with other packages.
+   * Kai Grossjohannは、他のパッケージとのキーバインディングの衝突を指摘し
+     ました。
 
-   * Brian Gough of Network Theory Ltd publishes the Org mode manual as a
-     book.
+   * Network Theory Ltd. のBrian Goughは、org-modeのマニュアルを書籍として
+     出版しました。
 
-   * Bernt Hansen has driven much of the support for auto-repeating tasks,
-     task state change logging, and the clocktable.  His clear explanations
-     have been critical when we started to adopt the Git version control
-     system.
+   * Bernt Hansenは、タスクの自動リピート、タスクの状態遷移ログ、クロックテ
+     ーブルのサポートで、多くの部分を担当しました。彼の明瞭な説明は、Gitの
+     バージョン管理システムを採用した時にとても重要でした。
 
-   * Manuel Hermenegildo has contributed various ideas, small fixes and
-     patches.
+   * Manuel Hermenegildoは、いくつものアイディア、小数のバグフィックスとパ
+     ッチを提出しました。
 
-   * Phil Jackson wrote `org-irc.el'.
+   * Phil Jacksonは、`org-irc.el'を作成しました。
 
-   * Scott Jaderholm proposed footnotes, control over whitespace between
-     folded entries, and column view for properties.
+   * Scott Jaderholmは、フットノート、折り畳んだエントリー間の空行の制御、
+     そしてプロパティの列表示を提案しました。
 
-   * Matt Jones wrote MobileOrg Android.
+   * Matt Jonesは、MobileOrg Androidを作成しました。
 
-   * Tokuya Kameshima wrote `org-wl.el' and `org-mew.el'.
+   * Tokuya Kameshimaは、`org-wl.el'と`org-mew.el'を作成しました。
 
-   * Shidai Liu ("Leo") asked for embedded LaTeX and tested it.  He also
-     provided frequent feedback and some patches.
+   * Shidai Liu
+     ("Leo")は、LaTeXの組み込みを探求し検証しました。また彼は頻繁なフィード
+     バックといくつかのパッチを提供しました。
 
-   * Matt Lundin has proposed last-row references for table formulas and
-     named invisible anchors.  He has also worked a lot on the FAQ.
+   * Matt Lundinは、テーブルの数式と名前付きの非表示アンカーへの参照をテー
+     ブルの最終行に置くことを提案しました。
 
-   * David Maus wrote `org-atom.el', maintains the issues file for Org, and
-     is a prolific contributor on the mailing list with competent replies,
-     small fixes and patches.
+   * David Mausは、`org-atom.el'を作成し、org-modeに関するgitのチケットを管
+     理しました。またメーリングリストに、有益な返信といくつかのバグフィック
+     ス、そしてパッチを多数提出する貢献者でした。
 
-   * Jason F. McBrayer suggested agenda export to CSV format.
+   * Jason F. McBrayerは、アジェンダのCSV形式のエクスポートを提案しました。
 
-   * Max Mikhanosha came up with the idea of refiling.
+   * Max Mikhanoshaは、ノートの再配置のアイディアを思いつきました。
 
-   * Dmitri Minaev sent a patch to set priority limits on a per-file basis.
+   * Dmitri Minaevは、ファイルごとに優先順位の制限を設定するパッチを提出し
+     ました。
 
-   * Stefan Monnier provided a patch to keep the Emacs-Lisp compiler happy.
+   * Stefan Monnierは、Emacs Lisp コンパイラの出力を快適に保つためのパッチ
+     を 提供しました。
 
-   * Richard Moreland wrote MobileOrg for the iPhone.
+   * Richard Morelandは、iPhone向けにMobileOrgを作成しました。
 
-   * Rick Moynihan proposed allowing multiple TODO sequences in a file and
-     being able to quickly restrict the agenda to a subtree.
+   * Rick Moynihanは、一つのファイルで複数のTODOの連なりを扱うことを可能に
+     し、アジェンダをサブツリーに素早く制限可能にしました。
 
-   * Todd Neal provided patches for links to Info files and Elisp forms.
+   * Todd Nealは、INFOファイルとElisp形式へのリンクについてパッチを提供しま
+     した。
 
-   * Greg Newman refreshed the unicorn logo into its current form.
+   * Greg Newmanは、ユニコーンのロゴを現在の形にリフレッシュしました。
 
-   * Tim O'Callaghan suggested in-file links, search options for general
-     file links, and TAGS.
+   * Tim O'Callaghanは、ファイル内リンク、一般的なファイルリンクのための検
+     索オプション、そしてタグを提案しました。
 
-   * Osamu Okano wrote `orgcard2ref.pl', a Perl program to create a text
-     version of the reference card.
+   * Osamu Okanoは、`orgcard2ref.pl'を作成しました。リファレンスカードのテ
+     キスト版を作るためのPerlスクリプトです。
 
-   * Takeshi Okano translated the manual and David O'Toole's tutorial into
-     Japanese.
+   * Takeshi Okanoは、org-modeのマニュアルと、David O'Toole'sのチュートリア
+     ルを日本語に翻訳しました。
 
-   * Oliver Oppitz suggested multi-state TODO items.
+   * Oliver Oppitzは、TODOアイテムが複数の状態を持つことを提案しました。
 
-   * Scott Otterson sparked the introduction of descriptive text for links,
-     among other things.
+   * Scott Ottersonは、他の要素とのリンクに説明文を導入するきっかけを作りま
+     した。
 
-   * Pete Phillips helped during the development of the TAGS feature, and
-     provided frequent feedback.
+   * Pete Phillipsは、タグの開発をする際に助力しました。また、頻繁にフィー
+     ドバックを提供しました。
 
    * Martin Pohlack provided the code snippet to bundle character insertion
      into bundles of 20 for undo.
 
-   * T.V. Raman reported bugs and suggested improvements.
+   * T.V. Ramanは、バグをレポートして改善を提案しました。
 
-   * Matthias Rempe (Oelde) provided ideas, Windows support, and quality
-     control.
+   * Matthias Rempe (Oelde)は、アイディアとWindowsサポート、品質制御を提供
+     しました。
 
-   * Paul Rivier provided the basic implementation of named footnotes.  He
-     also acted as mailing list moderator for some time.
+   * Paul Rivierは、名前付き注釈の基本的な実装を提供しました。また彼は、し
+     ばらくメーリングリストの管理者でした。
 
-   * Kevin Rogers contributed code to access VM files on remote hosts.
+   * Kevin Rogersは、リモートホストのVMファイルにアクセスするコードを提出し
+     ました。
 
-   * Frank Ruell solved the mystery of the `keymapp nil' bug, a conflict
-     with `allout.el'.
+   * Frank Ruellは、`keymapp nil'のミステリアスなバグ（`allout.el'との衝突
+     ）を解消しました。
 
-   * Jason Riedy generalized the send-receive mechanism for Orgtbl tables
-     with extensive patches.
+   * Jason Riedyは、拡張パッチによってorgtblテーブルのための送受信の仕組み
+     を汎用化しました。
 
-   * Philip Rooke created the Org reference card, provided lots of feedback,
-     developed and applied standards to the Org documentation.
+   * Philip Rookeは、org-modeのリファレンスカードを作成しました。数多くのフ
+     ィードバックを提供し、org-modeの文書化の基準を作成し適用しました。
 
-   * Christian Schlauer proposed angular brackets around links, among other
-     things.
+   * Christian Schlauerは、特に、リンクで利用するカギ括弧（<,>）について提
+     案しました。
 
-   * Paul Sexton wrote `org-ctags.el'.
+   * Paul Sextonは、`org-ctags.el'を作成しました。
 
-   * Linking to VM/BBDB/Gnus was first inspired by Tom Shannon's
-     `organizer-mode.el'.
+   * VM、BBDB、Gnusへリンクすることの最初のアイディアは、Tom Shannonの
+     `organizer-mode.el'によってもたらされました。
 
-   * Ilya Shlyakhter proposed the Archive Sibling, line numbering in literal
-     examples, and remote highlighting for referenced code lines.
+   * Ilya Shlyakhterは、同一階層内でのアーカイブ、リテラルの例での行番号、
+     そして、参照されたコード行のリモートハイライトを提案しました。
 
-   * Stathis Sideris wrote the `ditaa.jar' ASCII to PNG converter that is
-     now packaged into Org's `contrib' directory.
+   * Stathis Siderisは、ASCIIをPNGに変換する`ditaa.jar'を作成しました。現在
+     これは、org-modeの`contrib'ディレクトリに格納されています。
 
-   * Daniel Sinder came up with the idea of internal archiving by locking
-     subtrees.
+   * Daniel Sinderは、サブツリーのロックによる内部的なアーカイブ機能のアイ
+     ディアを思いつきました。
 
-   * Dale Smith proposed link abbreviations.
+   * Dale Smithは、リンクの省略記法を提案しました。
 
-   * James TD Smith has contributed a large number of patches for useful
-     tweaks and features.
+   * James TD Smithは、便利なカスタマイズと機能のための数多くのパッチを提供
+     しました。
 
-   * Adam Spiers asked for global linking commands, inspired the link
-     extension system, added support for mairix, and proposed the mapping
-     API.
+   * Adam Spiersは、グローバルなリンクコマンドを求めました。これはリンクの
+     拡張システムの構築のきっかけとなり、行列のサポートを追加し、さらにマッ
+     ピングAPIを提案しました。
 
-   * Ulf Stegemann created the table to translate special symbols to HTML,
-     LaTeX, UTF-8, Latin-1 and ASCII.
+   * Ulf Stegemannは、特別な記号をHTML、LaTeX、UTF-8、Latin-1、そしてASCII
+     に変換するための表を作成しました。
 
-   * Andy Stewart contributed code to `org-w3m.el', to copy HTML content
-     with links transformation to Org syntax.
+   * Andy Stewartは、`org-w3m.el'にコードを提供しました。org-modeのシンタッ
+     クスにリンクを変換したHTMLコンテンツをコピーする機能です。
 
-   * David O'Toole wrote `org-publish.el' and drafted the manual chapter
-     about publishing.
+   * David O'Tooleは、`org-publish.el'を作成しました。また、マニュアルにお
+     ける公開の章のドラフトを執筆しました。
 
-   * Sebastien Vauban reported many issues with LaTeX and BEAMER export and
-     enabled source code highlighling in Gnus.
+   * Sebastien Vaubanは、LaTeXとBEAMERエクスポートについての多くの問題をレ
+     ポートしました。また、GNUSのソースコードをハイライトする機能を有効にし
+     ました。
 
-   * Stefan Vollmar organized a video-recorded talk at the
-     Max-Planck-Institute for Neurology.  He also inspired the creation of a
-     concept index for HTML export.
+   * Stefan Vollmarは、神経学のマックスプランク研究所での講演（ビデオ収録さ
+     れている）を準備しました。また彼は、HTMLエクスポートのコンセプトインデ
+     ックスの生成を思いつきました。
 
-   * Ju"rgen Vollmer contributed code generating the table of contents in
-     HTML output.
+   * Ju"rgen Vollmerは、HTML出力で目次を生成するコードを提供しました。
 
-   * Samuel Wales has provided important feedback and bug reports.
+   * Samuel Walesは、改善のためのフィードバックとバグレポートを提供しました
+     。
 
-   * Chris Wallace provided a patch implementing the `QUOTE' keyword.
+   * Chris Wallaceは、`QUOTE'キーワードを改良するパッチを提供しました。
 
-   * David Wainberg suggested archiving, and improvements to the linking
-     system.
+   * David Wainbergは、アーカイブと、リンクシステムの改良を提案しました。
 
-   * Carsten Wimmer suggested some changes and helped fix a bug in linking
-     to Gnus.
+   * Carsten Wimmerは、いくつかの変更を提案し、GNUSへのリンクに関するバグフ
+     ィックスを手助けしました。
 
-   * Roland Winkler requested additional key bindings to make Org work on a
-     tty.
+   * Roland Winklerは、tty端末でorg-modeを動かすためのキーバインドの追加を
+     依頼しました。
 
-   * Piotr Zielinski wrote `org-mouse.el', proposed agenda blocks and
-     contributed various ideas and code snippets.
+   * Piotr Zielinskiは`org-mouse.el'を作成しました。アジェンダブロックを提
+     案し、様々なアイディアをコードスニペットを提供しました。
 
 
 File: org-ja,  Node: Main Index,  Next: Key Index,  Prev: History and Acknowledgments,  Up: Top
@@ -14034,19 +14054,19 @@ Concept index
 
 * #+ARCHIVE:                             Moving subtrees.         (line  26)
 * #+ATTR_DOCBOOK:                        Images in DocBook export.
-                                                                  (line  28)
+                                                                  (line  31)
 * #+ATTR_HTML <1>:                       Links in HTML export.    (line  21)
 * #+ATTR_HTML <2>:                       Tables in HTML export.   (line  12)
 * #+ATTR_HTML:                           Images in HTML export.   (line  23)
 * #+ATTR_LaTeX <1>:                      Images in LaTeX export.  (line  25)
-* #+ATTR_LaTeX:                          Tables in LaTeX export.  (line  21)
+* #+ATTR_LaTeX:                          Tables in LaTeX export.  (line  13)
 * #+AUTHOR:                              Export options.          (line  20)
 * #+BEGIN, clocktable:                   The clock table.         (line  38)
 * #+BEGIN, columnview:                   カラム表示の保存.        (line  11)
 * #+BEGIN:dynamic block:                 Dynamic blocks.          (line  15)
 * #+BEGIN_CENTER:                        Paragraphs.              (line  29)
 * #+BEGIN_COMMENT:                       コメント行.              (line   6)
-* #+BEGIN_DOCBOOK:                       Quoting DocBook code.    (line  11)
+* #+BEGIN_DOCBOOK:                       Quoting DocBook code.    (line   9)
 * #+BEGIN_EXAMPLE:                       Literal examples.        (line   7)
 * #+BEGIN_HTML:                          Quoting HTML tags.       (line  16)
 * #+BEGIN_LaTeX:                         Quoting LaTeX code.      (line  12)
@@ -14056,10 +14076,11 @@ Concept index
 * #+BIND:                                Export options.          (line  20)
 * #+CAPTION <1>:                         Images in LaTeX export.  (line  25)
 * #+CAPTION <2>:                         Images and tables.       (line   6)
-* #+CAPTION <3>:                         Tables in HTML export.   (line  12)
+* #+CAPTION <3>:                         Images in HTML export.   (line  23)
 * #+CAPTION <4>:                         Images in DocBook export.
-                                                                  (line  28)
-* #+CAPTION <5>:                         Images in HTML export.   (line  23)
+                                                                  (line  31)
+* #+CAPTION <5>:                         Tables in LaTeX export.  (line  21)
+* #+CAPTION <6>:                         Tables in HTML export.   (line  12)
 * #+CAPTION:                             Tables in LaTeX export.  (line  13)
 * #+CATEGORY:                            Categories.              (line   6)
 * #+COLUMNS:                             Scope of column definitions.
@@ -14077,11 +14098,12 @@ Concept index
 * #+INCLUDE:                             Include files.           (line   7)
 * #+INFOJS_OPT:                          JavaScript support.      (line  26)
 * #+KEYWORDS:                            Export options.          (line  20)
-* #+LABEL <1>:                           Images in DocBook export.
-                                                                  (line  28)
-* #+LABEL <2>:                           Tables in LaTeX export.  (line  21)
-* #+LABEL <3>:                           Images and tables.       (line   6)
-* #+LABEL:                               Images in LaTeX export.  (line  25)
+* #+LABEL <1>:                           Images and tables.       (line   6)
+* #+LABEL <2>:                           Tables in LaTeX export.  (line  13)
+* #+LABEL <3>:                           Images in LaTeX export.  (line  25)
+* #+LABEL <4>:                           Images in DocBook export.
+                                                                  (line  31)
+* #+LABEL:                               Tables in LaTeX export.  (line  21)
 * #+LANGUAGE:                            Export options.          (line  20)
 * #+LaTeX:                               Quoting LaTeX code.      (line  12)
 * #+LATEX_CLASS:                         Header and sectioning.   (line   8)
@@ -14108,8 +14130,8 @@ Concept index
 * #+TBLFM:                               Field and range formulas.
                                                                   (line  12)
 * #+TBLNAME:                             References.              (line 124)
-* #+TEXT <1>:                            Export options.          (line  20)
-* #+TEXT:                                Initial text.            (line   6)
+* #+TEXT <1>:                            Initial text.            (line   6)
+* #+TEXT:                                Export options.          (line  20)
 * #+TITLE <1>:                           Export options.          (line  20)
 * #+TITLE:                               Document title.          (line   8)
 * #+TODO:                                Per-file keywords.       (line   6)
@@ -14191,12 +14213,17 @@ Concept index
                                                                   (line  10)
 * demotion, of subtrees:                 Structure editing.       (line   6)
 * dependencies, of TODO states:          TODO dependencies.       (line   6)
+* DESCRIPTION属性:                       iCalendarエクスポート.   (line  43)
 * diary entries, creating from agenda:   Agenda commands.         (line 438)
 * directories, for publishing:           Sources and destinations.
                                                                   (line   6)
 * display changing, in agenda:           Agenda commands.         (line  68)
 * DocBook export:                        DocBook export.          (line   6)
-* DocBook recursive sections:            Recursive sections.      (line   6)
+* DocBookでのインライン画像:             Images in DocBook export.
+                                                                  (line   6)
+* DocBookの再帰的なsection:              Recursive sections.      (line   6)
+* DocBookへの出力におけるテーブル:       Tables in DocBook export.
+                                                                  (line   6)
 * DocBook出力における特殊文字:           Special characters.      (line   6)
 * document structure:                    Document Structure.      (line   6)
 * Dominik, Carsten:                      Cooperation.             (line  27)
@@ -14229,8 +14256,8 @@ Concept index
 * fnprompt,キーワード:                   In-buffer settings.      (line 134)
 * folded, subtree visibility state:      Visibility cycling.      (line  10)
 * folding, sparse trees:                 Sparse trees.            (line   6)
-* footnote.el <1>:                       Cooperation.             (line  73)
-* footnote.el:                           Footnote markup.         (line   6)
+* footnote.el <1>:                       Footnote markup.         (line   6)
+* footnote.el:                           Cooperation.             (line  73)
 * footnotes <1>:                         Footnotes.               (line   6)
 * footnotes:                             Export options.          (line  43)
 * Freemind export:                       Freemind export.         (line   6)
@@ -14259,19 +14286,16 @@ Concept index
 * HTMLエクスポート、CSS:                 CSS support.             (line   6)
 * hyperlinks, adding new types:          Adding hyperlink types.  (line   6)
 * iCalendarエクスポート:                 iCalendarエクスポート.   (line   6)
-* images, inline in DocBook:             Images in DocBook export.
-                                                                  (line   6)
 * imenu.el:                              Cooperation.             (line  32)
 * index, in a publishing project:        Generating an index.     (line   6)
 * Infoリンク:                            External links.          (line   6)
 * inheritance, of tags:                  Tag inheritance.         (line   6)
 * inlineimages, STARTUP keyword <1>:     Handling links.          (line 129)
 * inlineimages, STARTUP keyword:         In-buffer settings.      (line  87)
-* inlining images in DocBook:            Images in DocBook export.
-                                                                  (line   6)
 * iPhone:                                MobileOrg.               (line   6)
 * IRCリンク:                             External links.          (line   6)
 * jumping, to headlines:                 Motion.                  (line   6)
+* LaTeX エクスポートにおけるテーブル:    Tables in LaTeX export.  (line   6)
 * LaTeX, and Orgtbl mode:                A LaTeX example.         (line   6)
 * LaTeXのエクスポート:                   LaTeX and PDF export.    (line   6)
 * LaTeXのエントリ:                       Special symbols.         (line   6)
@@ -14297,6 +14321,7 @@ Concept index
                                                                   (line   6)
 * lists, ordered:                        Plain lists.             (line   6)
 * lists, plain:                          Plain lists.             (line   6)
+* LOCATION属性:                          iCalendarエクスポート.   (line  43)
 * logging, of progress:                  Progress logging.        (line   6)
 * Ludlam, Eric M.:                       Cooperation.             (line  45)
 * mapping entries, API:                  マッピングAPIを使う.     (line   6)
@@ -14310,7 +14335,6 @@ Concept index
 * MathJax:                               Math formatting in HTML export.
                                                                   (line   6)
 * MH-Eリンク:                            External links.          (line   6)
-* mind map:                              Freemind export.         (line   6)
 * minor mode for structure editing:      Orgstruct mode.          (line   6)
 * MobileOrg:                             MobileOrg.               (line   6)
 * motion commands in agenda:             Agenda commands.         (line  20)
@@ -14319,10 +14343,10 @@ Concept index
                                                                   (line   6)
 * nofnadjust, STARTUPキーワード:         In-buffer settings.      (line 134)
 * nofninline, STARTUPキーワード:         In-buffer settings.      (line 134)
-* nohideblocks, STARTUP keyword <1>:     Blocks.                  (line  13)
-* nohideblocks, STARTUP keyword:         In-buffer settings.      (line 147)
-* noinlineimages, STARTUP keyword <1>:   Handling links.          (line 129)
-* noinlineimages, STARTUP keyword:       In-buffer settings.      (line  87)
+* nohideblocks, STARTUP keyword <1>:     In-buffer settings.      (line 147)
+* nohideblocks, STARTUP keyword:         Blocks.                  (line  13)
+* noinlineimages, STARTUP keyword <1>:   In-buffer settings.      (line  87)
+* noinlineimages, STARTUP keyword:       Handling links.          (line 129)
 * occur, command:                        Sparse trees.            (line   6)
 * options, for custom agenda views:      Setting Options.         (line   6)
 * options, for publishing:               Publishing options.      (line   6)
@@ -14334,9 +14358,9 @@ Concept index
 * org-pretty-entities:                   In-buffer settings.      (line 150)
 * org-publish-project-alist:             Project alist.           (line   6)
 * Orgstruct mode:                        Orgstruct mode.          (line   6)
-* Orgtbl mode <1>:                       Orgtbl mode.             (line   6)
-* Orgtbl mode:                           Tables in arbitrary syntax.
+* Orgtbl mode <1>:                       Tables in arbitrary syntax.
                                                                   (line   6)
+* Orgtbl mode:                           Orgtbl mode.             (line   6)
 * Ota, Takaaki:                          Cooperation.             (line  52)
 * Outline mode:                          Outlines.                (line   6)
 * outline tree:                          Headlines.               (line   6)
@@ -14356,24 +14380,20 @@ Concept index
 * priorities, of agenda items:           agendaの項目をソートする.
                                                                   (line   6)
 * progress logging:                      Progress logging.        (line   6)
-* Project management:                    TaskJuggler export.      (line   6)
 * projects, for publishing:              Project alist.           (line   6)
 * promotion, of subtrees:                Structure editing.       (line   6)
 * properties:                            Properties and Columns.  (line   6)
 * property, ATTACH_DIR:                  Attachments.             (line  70)
 * property, ATTACH_DIR_INHERIT:          Attachments.             (line  75)
-* property, CUSTOM_ID <1>:               Handling links.          (line  20)
-* property, CUSTOM_ID:                   Internal links.          (line   6)
-* property, DESCRIPTION:                 iCalendarエクスポート.   (line  43)
+* property, CUSTOM_ID <1>:               Internal links.          (line   6)
+* property, CUSTOM_ID:                   Handling links.          (line  20)
 * property, ID <1>:                      Handling links.          (line  20)
-* property, ID <2>:                      iCalendarエクスポート.   (line  20)
-* property, ID:                          カラム表示の保存.        (line  22)
+* property, ID <2>:                      カラム表示の保存.        (line  22)
+* property, ID:                          iCalendarエクスポート.   (line  19)
 * property, LATEX_CLASS:                 Header and sectioning.   (line   8)
 * property, LATEX_CLASS_OPTIONS:         Header and sectioning.   (line   8)
-* property, LOCATION:                    iCalendarエクスポート.   (line  43)
 * property, LOG_INTO_DRAWER:             Tracking TODO state changes.
                                                                   (line   6)
-* property, SUMMARY:                     iCalendarエクスポート.   (line  43)
 * property, VISIBILITY:                  Visibility cycling.      (line  67)
 * protocols, for external access:        Protocols.               (line   6)
 * publishing:                            Publishing.              (line   6)
@@ -14381,14 +14401,14 @@ Concept index
 * radio lists:                           ラジオリスト.            (line   6)
 * radio tables:                          Radio tables.            (line   6)
 * refiling notes:                        Refiling notes.          (line   6)
-* region, active <1>:                    Structure editing.       (line 126)
-* region, active <2>:                    DocBook export commands. (line   6)
-* region, active <3>:                    HTML Export commands.    (line   6)
-* region, active <4>:                    LaTeX/PDF export commands.
-                                                                  (line   6)
-* region, active <5>:                    ASCII/Latin-1/UTF-8 export.
+* region, active <1>:                    DocBook export commands. (line   6)
+* region, active <2>:                    ASCII/Latin-1/UTF-8 export.
                                                                   (line  10)
-* region, active:                        Built-in table editor.   (line 157)
+* region, active <3>:                    LaTeX/PDF export commands.
+                                                                  (line   6)
+* region, active <4>:                    HTML Export commands.    (line   6)
+* region, active <5>:                    Built-in table editor.   (line 157)
+* region, active:                        Structure editing.       (line 126)
 * regular expressions, with tags search: Matching tags and properties.
                                                                   (line  55)
 * remember.el:                           Cooperation.             (line  41)
@@ -14407,15 +14427,15 @@ Concept index
 * searching, for text:                   Search view.             (line   6)
 * setting tags:                          Setting tags.            (line   6)
 * SHELLリンク:                           External links.          (line   6)
-* shift-selection-mode <1>:              Conflicts.               (line   6)
-* shift-selection-mode:                  Plain lists.             (line 105)
+* shift-selection-mode <1>:              Plain lists.             (line 105)
+* shift-selection-mode:                  Conflicts.               (line   6)
 * show all, command:                     Visibility cycling.      (line  34)
 * show all, global visibility state:     Visibility cycling.      (line  23)
 * show hidden text:                      Visibility cycling.      (line   6)
-* showall, STARTUPキーワード <1>:        Visibility cycling.      (line  56)
-* showall, STARTUPキーワード:            In-buffer settings.      (line  69)
-* showeverything, STARTUPキーワード <1>: Visibility cycling.      (line  56)
-* showeverything, STARTUPキーワード:     In-buffer settings.      (line  69)
+* showall, STARTUPキーワード <1>:        In-buffer settings.      (line  69)
+* showall, STARTUPキーワード:            Visibility cycling.      (line  56)
+* showeverything, STARTUPキーワード <1>: In-buffer settings.      (line  69)
+* showeverything, STARTUPキーワード:     Visibility cycling.      (line  56)
 * sitemap, of published pages:           Sitemap.                 (line   6)
 * sorting, of agenda items:              agendaの項目をソートする.
                                                                   (line   6)
@@ -14468,14 +14488,12 @@ Concept index
 * subtree, cut and paste:                Structure editing.       (line   6)
 * subtree, subtree visibility state:     Visibility cycling.      (line  10)
 * subtrees, cut and paste:               Structure editing.       (line   6)
+* SUMMARY属性:                           iCalendarエクスポート.   (line  43)
 * syntax, noweb:                         Noweb reference syntax.  (line   6)
 * table editor, table.el:                Cooperation.             (line  52)
 * table.el:                              Cooperation.             (line  49)
-* tables <1>:                            Tables.                  (line   6)
-* tables:                                Export options.          (line  43)
-* tables, in DocBook export:             Tables in DocBook export.
-                                                                  (line   6)
-* tables, in LaTeX export:               Tables in LaTeX export.  (line   6)
+* tables <1>:                            Export options.          (line  43)
+* tables:                                Tables.                  (line   6)
 * tables, in other modes:                Tables in arbitrary syntax.
                                                                   (line   6)
 * tag filtering, in agenda:              Agenda commands.         (line 177)
@@ -14492,8 +14510,8 @@ Concept index
 * text search:                           Search view.             (line   6)
 * TeXの解釈:                             Embedded LaTeX.          (line   6)
 * TeXシンボルの補完:                     Completion.              (line   6)
-* TeXマクロ <1>:                         Special symbols.         (line   6)
-* TeXマクロ:                             Export options.          (line  43)
+* TeXマクロ <1>:                         Export options.          (line  43)
+* TeXマクロ:                             Special symbols.         (line   6)
 * time grid:                             Time-of-day specifications.
                                                                   (line  27)
 * time-of-day specification:             Time-of-day specifications.
@@ -14514,12 +14532,12 @@ Concept index
 * TODOキーワードセット:                  Multiple sets in one file.
                                                                   (line   6)
 * TODOワークフロー:                      Workflow states.         (line   6)
-* transient-mark-mode <1>:               ASCII/Latin-1/UTF-8 export.
-                                                                  (line  10)
-* transient-mark-mode <2>:               DocBook export commands. (line   6)
-* transient-mark-mode <3>:               LaTeX/PDF export commands.
+* transient-mark-mode <1>:               HTML Export commands.    (line   6)
+* transient-mark-mode <2>:               LaTeX/PDF export commands.
                                                                   (line   6)
-* transient-mark-mode:                   HTML Export commands.    (line   6)
+* transient-mark-mode <3>:               DocBook export commands. (line   6)
+* transient-mark-mode:                   ASCII/Latin-1/UTF-8 export.
+                                                                  (line  10)
 * translator function:                   Translator functions.    (line   6)
 * trees, sparse:                         Sparse trees.            (line   6)
 * trees, visibility:                     Visibility cycling.      (line   6)
@@ -14544,22 +14562,23 @@ Concept index
 * はじめに:                              Introduction.            (line   6)
 * アウトラインビューを見やすくする:      Clean view.              (line   6)
 * アクティブでないタイムスタンプ:        Timestamps.              (line  47)
-* アクティブなリージョン <1>:            Built-in table editor.   (line 157)
-* アクティブなリージョン <2>:            LaTeX/PDF export commands.
-                                                                  (line   6)
-* アクティブなリージョン <3>:            HTML Export commands.    (line   6)
-* アクティブなリージョン <4>:            DocBook export commands. (line   6)
-* アクティブなリージョン <5>:            Structure editing.       (line 126)
-* アクティブなリージョン:                ASCII/Latin-1/UTF-8 export.
+* アクティブなリージョン <1>:            HTML Export commands.    (line   6)
+* アクティブなリージョン <2>:            ASCII/Latin-1/UTF-8 export.
                                                                   (line  10)
+* アクティブなリージョン <3>:            Structure editing.       (line 126)
+* アクティブなリージョン <4>:            Built-in table editor.   (line 157)
+* アクティブなリージョン <5>:            DocBook export commands. (line   6)
+* アクティブなリージョン:                LaTeX/PDF export commands.
+                                                                  (line   6)
 * アジェンダ:                            Weekly/daily agenda.     (line   6)
 * アジェンダのコマンドを選択する:        Agenda dispatcher.       (line   6)
 * アジェンダのコマンド選択画面:          Agenda dispatcher.       (line   6)
 * アジェンダビュー:                      Agenda Views.            (line   6)
 * アジェンダビューの出力 <1>:            Agenda commands.         (line 484)
 * アジェンダビューの出力:                Exporting Agenda Views.  (line  12)
-* アジェンダビュー（出力） <1>:          Exporting Agenda Views.  (line  12)
-* アジェンダビュー（出力）:              Agenda commands.         (line 484)
+* アジェンダビュー（出力） <1>:          Exporting Agenda Views.  (line   6)
+* アジェンダビュー（出力） <2>:          Agenda commands.         (line 484)
+* アジェンダビュー（出力）:              Exporting Agenda Views.  (line  12)
 * アジェンダファイル:                    Agenda files.            (line   6)
 * アジェンダ用のファイル:                Agenda files.            (line   6)
 * インストール:                          Installation.            (line   6)
@@ -14571,9 +14590,9 @@ Concept index
 * エクスポートのオプション:              Export options.          (line   6)
 * エクスポート中のマクロによる置き換え:  Macro replacement.       (line   6)
 * エラーのバックトレース:                Feedback.                (line  39)
-* オプションのキーワードの補完 <1>:      Export options.          (line   6)
-* オプションのキーワードの補完 <2>:      Completion.              (line   6)
-* オプションのキーワードの補完:          Per-file keywords.       (line  23)
+* オプションのキーワードの補完 <1>:      Completion.              (line   6)
+* オプションのキーワードの補完 <2>:      Per-file keywords.       (line  23)
+* オプションのキーワードの補完:          Export options.          (line   6)
 * オプションキーワードの補完:            Completion.              (line   6)
 * カウントダウンタイマ:                  カウントダウンタイマ.    (line   6)
 * カスタマイズ:                          Customization.           (line   6)
@@ -14584,9 +14603,9 @@ Concept index
 * カラムビュー、プロパティ用:            Defining columns.        (line   6)
 * カレンダー、日付選択のため:            The date/time prompt.    (line  66)
 * カレンダーの統合:                      Weekly/daily agenda.     (line  28)
-* キャプチャ <1>:                        Capture - Refile - Archive.
+* キャプチャ <1>:                        Capture.                 (line   6)
+* キャプチャ:                            Capture - Refile - Archive.
                                                                   (line   6)
-* キャプチャ:                            Capture.                 (line   6)
 * キーバインド（グローバル）:            Activation.              (line   6)
 * キーワードオプション:                  Per-file keywords.       (line   6)
 * クロックテーブル、動的なブロック:      The clock table.         (line   6)
@@ -14659,15 +14678,16 @@ Concept index
 * フォーマット,リンクの:                 Link format.             (line   6)
 * フォーマット指定:                      Formula syntax for Calc. (line  13)
 * プレーンテキスト外部リンク:            External links.          (line  61)
+* プロジェクト管理:                      TaskJuggler export.      (line   6)
 * プロパティ:CLOCK_MODELINE_TOTAL:       Clocking commands.       (line  16)
 * プロパティ:LAST_REPEAT:                Clocking commands.       (line  16)
 * プロパティ、_ALL:                      Property syntax.         (line  36)
-* プロパティ、EXPORT_FILE_NAME <1>:      LaTeX/PDF export commands.
-                                                                  (line   7)
-* プロパティ、EXPORT_FILE_NAME <2>:      HTML Export commands.    (line   7)
-* プロパティ、EXPORT_FILE_NAME <3>:      DocBook export commands. (line   7)
-* プロパティ、EXPORT_FILE_NAME:          ASCII/Latin-1/UTF-8 export.
+* プロパティ、EXPORT_FILE_NAME <1>:      ASCII/Latin-1/UTF-8 export.
                                                                   (line  11)
+* プロパティ、EXPORT_FILE_NAME <2>:      LaTeX/PDF export commands.
+                                                                  (line   7)
+* プロパティ、EXPORT_FILE_NAME <3>:      HTML Export commands.    (line   7)
+* プロパティ、EXPORT_FILE_NAME:          DocBook export commands. (line   7)
 * プロパティ、EXPORT_TITLE:              Document title.          (line  15)
 * プロパティ、カラムビュー:              Defining columns.        (line   6)
 * プロパティ、スペシャル:                Special properties.      (line   6)
@@ -14687,18 +14707,19 @@ Concept index
 * プロパティ、工数:                      Effort estimates.        (line   6)
 * プロパティ、検索:                      Property searches.       (line   6)
 * プロパティ、継承:                      Property inheritance.    (line   6)
-* プロパティのためのAPI <1>:             Property API.            (line   6)
-* プロパティのためのAPI:                 Using the property API.  (line   6)
+* プロパティのためのAPI <1>:             Using the property API.  (line   6)
+* プロパティのためのAPI:                 Property API.            (line   6)
 * プロパティシンタックス:                Property syntax.         (line   6)
 * プロパティ（API） <1>:                 Using the property API.  (line   6)
 * プロパティ（API）:                     Property API.            (line   6)
-* プロパティ（ARCHIVE） <1>:             Moving subtrees.         (line  28)
-* プロパティ（ARCHIVE）:                 Property inheritance.    (line  31)
+* プロパティ（ARCHIVE） <1>:             Property inheritance.    (line  31)
+* プロパティ（ARCHIVE）:                 Moving subtrees.         (line  28)
 * プロパティ（CATEGORY） <1>:            Property inheritance.    (line  27)
 * プロパティ（CATEGORY）:                Categories.              (line  12)
 * プロパティ（COLUMNS） <1>:             In-buffer settings.      (line  26)
 * プロパティ（COLUMNS）:                 Property inheritance.    (line  19)
 * ベクトル（テーブルでの計算）:          Formula syntax for Calc. (line  10)
+* マインドマップ:                        Freemind export.         (line   6)
 * マーキング文字（テーブル）:            Advanced features.       (line  38)
 * マークリング:                          Handling links.          (line 136)
 * メンテナー:                            Feedback.                (line   6)
@@ -14751,26 +14772,25 @@ Concept index
                                                                   (line   6)
 * 名前をTODOキーワードとして:            TODO types.              (line   6)
 * 名前付き参照:                          References.              (line 103)
-* 名前（列やフィールド）:                References.              (line 124)
+* 名前（列やフィールド）:                References.              (line 103)
 * 固定幅の段落:                          Export options.          (line  43)
 * 外部リンク:                            External links.          (line   6)
 * 外部リンク、出力するHTMLの:            Links in HTML export.    (line   6)
 * 大括弧,リンクの周辺:                   External links.          (line  61)
 * 太字のテキスト、マーックアップのルール: Emphasis and monospace. (line   6)
 * 奇数レベルのみのアウトライン:          Clean view.              (line   6)
-* 完了、TODOキーワードの <1>:            Completion.              (line   6)
-* 完了、TODOキーワードの:                Workflow states.         (line  14)
+* 完了、TODOキーワードの <1>:            Workflow states.         (line  14)
+* 完了、TODOキーワードの:                Completion.              (line   6)
 * 完了、タグの <1>:                      Completion.              (line   6)
 * 完了、タグの:                          Setting tags.            (line  11)
-* 属性、COOKIE_DATA <1>:                 Checkboxes.              (line  29)
-* 属性、COOKIE_DATA:                     Breaking down tasks.     (line  21)
-* 属性、ログをとる <1>:                  Property inheritance.    (line  35)
-* 属性、ログをとる:                      Tracking TODO state changes.
+* 属性、COOKIE_DATA <1>:                 Breaking down tasks.     (line  21)
+* 属性、COOKIE_DATA:                     Checkboxes.              (line  29)
+* 属性、ログをとる <1>:                  Tracking TODO state changes.
                                                                   (line  40)
-* 属性、並び順 <1>:                      TODO dependencies.       (line   6)
-* 属性、並び順 <2>:                      Checkboxes.              (line  74)
-* 属性、並び順 <3>:                      TODO dependencies.       (line  30)
-* 属性、並び順:                          Checkboxes.              (line  44)
+* 属性、ログをとる:                      Property inheritance.    (line  35)
+* 属性、並び順 <1>:                      Checkboxes.              (line  44)
+* 属性、並び順 <2>:                      TODO dependencies.       (line  30)
+* 属性、並び順:                          Checkboxes.              (line  74)
 * 工数の見積もり:                        Effort estimates.        (line   6)
 * 座標（フィールド）:                    References.              (line  87)
 * 強調されたテキスト:                    Export options.          (line  43)
@@ -14800,8 +14820,8 @@ Concept index
 * 日付:                                  Date and Times.          (line   6)
 * 日付、ミニバッファでの読み込み:        The date/time prompt.    (line   6)
 * 日付の間隔:                            Timestamps.              (line  39)
-* 日付スタンプ <1>:                      Date and Times.          (line   6)
-* 日付スタンプ:                          Timestamps.              (line   6)
+* 日付スタンプ <1>:                      Timestamps.              (line   6)
+* 日付スタンプ:                          Date and Times.          (line   6)
 * 日付フォーマット、カスタム:            Custom time format.      (line   6)
 * 日記の統合:                            Weekly/daily agenda.     (line  28)
 * 時刻:                                  Date and Times.          (line   6)
@@ -14814,8 +14834,8 @@ Concept index
 * 時間間隔、時刻:                        Timestamps.              (line   6)
 * 時間間隔の評価:                        Creating timestamps.     (line  61)
 * 時間順に並べたビュー:                  Timeline.                (line   6)
-* 暫定マークモード <1>:                  Built-in table editor.   (line 157)
-* 暫定マークモード:                      Structure editing.       (line 126)
+* 暫定マークモード <1>:                  Structure editing.       (line 126)
+* 暫定マークモード:                      Built-in table editor.   (line 157)
 * 更新（テーブル）:                      Updating the table.      (line   6)
 * 最初の見出しより前のテキスト、マークアップのルール: Initial text.
                                                                   (line   6)
@@ -14828,8 +14848,8 @@ Concept index
                                                                   (line   6)
 * 段落、マークアップのルール:            Paragraphs.              (line   6)
 * 水平線、マーックアップのルール:        Horizontal rules.        (line   6)
-* 特別なプロパティ（CLOCKSUM） <1>:      Agenda column view.      (line  28)
-* 特別なプロパティ（CLOCKSUM）:          Special properties.      (line  13)
+* 特別なプロパティ（CLOCKSUM） <1>:      Special properties.      (line  13)
+* 特別なプロパティ（CLOCKSUM）:          Agenda column view.      (line  28)
 * 特別な文字列:                          Export options.          (line  43)
 * 特殊記号:                              Special symbols.         (line   6)
 * 画像,インライン:                       Handling links.          (line 129)
@@ -14865,18 +14885,17 @@ Concept index
                                                                   (line   6)
 * 見出しの階層:                          Export options.          (line  43)
 * 言語、babel:                           Languages.               (line   6)
-* 計算中の定数:                          References.              (line 124)
+* 計算中の定数:                          References.              (line 103)
 * 評価、コードブロック:                  Evaluating code blocks.  (line   6)
 * 評価、ソースコード:                    Evaluating code blocks.  (line   6)
 * 謝辞:                                  History and Acknowledgments.
                                                                   (line   6)
 * 辞書単語の補完:                        Completion.              (line   6)
-* （外部出力に用いる）ヘッドラインレベル <1>: HTML Export commands.
-                                                                  (line  39)
-* （外部出力に用いる）ヘッドラインレベル <2>: LaTeX/PDF export commands.
+* （外部出力に用いる）ヘッドラインレベル <1>: LaTeX/PDF export commands.
                                                                   (line  38)
-* （外部出力に用いる）ヘッドラインレベル: ASCII/Latin-1/UTF-8 export.
+* （外部出力に用いる）ヘッドラインレベル <2>: ASCII/Latin-1/UTF-8 export.
                                                                   (line  37)
+* （外部出力に用いる）ヘッドラインレベル: HTML Export commands.   (line  39)
 
 
 File: org-ja,  Node: Key Index,  Next: Command and Function Index,  Prev: Main Index,  Up: Top
@@ -15071,10 +15090,10 @@ Key index
 * C-c C-e F:                             公開の開始.              (line  13)
 * C-c C-e h:                             HTML Export commands.    (line   6)
 * C-c C-e H:                             HTML Export commands.    (line  18)
-* C-c C-e i:                             iCalendarエクスポート.   (line  30)
-* C-c C-e I:                             iCalendarエクスポート.   (line  32)
-* C-c C-e j:                             TaskJuggler export.      (line  24)
-* C-c C-e J:                             TaskJuggler export.      (line  27)
+* C-c C-e i:                             iCalendarエクスポート.   (line  29)
+* C-c C-e I:                             iCalendarエクスポート.   (line  31)
+* C-c C-e j:                             TaskJuggler export.      (line  22)
+* C-c C-e J:                             TaskJuggler export.      (line  25)
 * C-c C-e L:                             LaTeX/PDF export commands.
                                                                   (line  15)
 * C-c C-e l:                             LaTeX/PDF export commands.
@@ -15095,7 +15114,7 @@ Key index
                                                                   (line  30)
 * C-c C-e v <1>:                         The export dispatcher.   (line  20)
 * C-c C-e v:                             Sparse trees.            (line  52)
-* C-c C-e V:                             DocBook export commands. (line  13)
+* C-c C-e V:                             DocBook export commands. (line  15)
 * C-c C-e v D:                           DocBook export commands. (line  31)
 * C-c C-e v x:                           XOXO export.             (line  11)
 * C-c C-e x:                             XOXO export.             (line  10)
@@ -15638,7 +15657,7 @@ Command and function index
 * org-export-as-ascii-to-buffer:         ASCII/Latin-1/UTF-8 export.
                                                                   (line  19)
 * org-export-as-docbook:                 DocBook export commands. (line   6)
-* org-export-as-docbook-pdf-and-open:    DocBook export commands. (line  13)
+* org-export-as-docbook-pdf-and-open:    DocBook export commands. (line  15)
 * org-export-as-freemind:                Freemind export.         (line   8)
 * org-export-as-html:                    HTML Export commands.    (line   6)
 * org-export-as-html-and-open:           HTML Export commands.    (line  15)
@@ -15655,17 +15674,17 @@ Command and function index
                                                                   (line  29)
 * org-export-as-pdf-and-open:            LaTeX/PDF export commands.
                                                                   (line  32)
-* org-export-as-taskjuggler:             TaskJuggler export.      (line  24)
-* org-export-as-taskjuggler-and-open:    TaskJuggler export.      (line  27)
+* org-export-as-taskjuggler:             TaskJuggler export.      (line  22)
+* org-export-as-taskjuggler-and-open:    TaskJuggler export.      (line  25)
 * org-export-as-utf8:                    ASCII/Latin-1/UTF-8 export.
                                                                   (line  27)
 * org-export-as-utf8-to-buffer:          ASCII/Latin-1/UTF-8 export.
                                                                   (line  30)
 * org-export-as-xoxo:                    XOXO export.             (line  10)
-* org-export-icalendar-all-agenda-files: iCalendarエクスポート.   (line  32)
+* org-export-icalendar-all-agenda-files: iCalendarエクスポート.   (line  31)
 * org-export-icalendar-combine-agenda-files: iCalendarエクスポート.
                                                                   (line  36)
-* org-export-icalendar-this-file:        iCalendarエクスポート.   (line  30)
+* org-export-icalendar-this-file:        iCalendarエクスポート.   (line  29)
 * org-export-region-as-html:             HTML Export commands.    (line  21)
 * org-export-visible:                    The export dispatcher.   (line  20)
 * org-feed-goto-inbox:                   RSS Feeds.               (line  26)
@@ -15888,7 +15907,7 @@ Variable index
 * org-agenda-files <1>:                  Agenda files.            (line   6)
 * org-agenda-files <2>:                  agendaの項目をソートする.
                                                                   (line   8)
-* org-agenda-files:                      iCalendarエクスポート.   (line  35)
+* org-agenda-files:                      iCalendarエクスポート.   (line  34)
 * org-agenda-filter-preset:              Agenda commands.         (line 178)
 * org-agenda-log-mode-items:             Agenda commands.         (line 105)
 * org-agenda-ndays:                      Weekly/daily agenda.     (line  15)
@@ -16000,13 +16019,13 @@ Variable index
 * org-export-default-language <1>:       Publishing options.      (line  12)
 * org-export-default-language:           Export options.          (line  20)
 * org-export-docbook-default-image-attributes: Images in DocBook export.
-                                                                  (line  14)
+                                                                  (line  15)
 * org-export-docbook-doctype:            Special characters.      (line   6)
 * org-export-docbook-inline-image-extensions: Images in DocBook export.
-                                                                  (line  33)
+                                                                  (line  36)
 * org-export-docbook-xsl-fo-proc-command: DocBook export commands.
-                                                                  (line  19)
-* org-export-docbook-xslt-proc-command:  DocBook export commands. (line  19)
+                                                                  (line  20)
+* org-export-docbook-xslt-proc-command:  DocBook export commands. (line  20)
 * org-export-docbook-xslt-stylesheet:    DocBook export commands. (line  25)
 * org-export-email:                      Publishing options.      (line  12)
 * org-export-exclude-tags <1>:           Selective export.        (line   6)
@@ -16049,9 +16068,9 @@ Variable index
 * org-export-select-tags:                Publishing options.      (line  12)
 * org-export-skip-text-before-1st-heading <1>: Initial text.      (line  11)
 * org-export-skip-text-before-1st-heading: Publishing options.    (line  12)
-* org-export-taskjuggler-default-reports: TaskJuggler export.     (line 114)
-* org-export-taskjuggler-project-tag:    TaskJuggler export.      (line  33)
-* org-export-taskjuggler-resource-tag:   TaskJuggler export.      (line  46)
+* org-export-taskjuggler-default-reports: TaskJuggler export.     (line 110)
+* org-export-taskjuggler-project-tag:    TaskJuggler export.      (line  31)
+* org-export-taskjuggler-resource-tag:   TaskJuggler export.      (line  42)
 * org-export-with-archived-trees <1>:    ファイル内部でのアーカイブ.
                                                                   (line  27)
 * org-export-with-archived-trees:        Publishing options.      (line  12)
@@ -16107,7 +16126,7 @@ Variable index
 * org-icalendar-categories:              iCalendarエクスポート.   (line   6)
 * org-icalendar-include-body:            iCalendarエクスポート.   (line  43)
 * org-icalendar-include-todo:            iCalendarエクスポート.   (line   6)
-* org-icalendar-store-UID:               iCalendarエクスポート.   (line  20)
+* org-icalendar-store-UID:               iCalendarエクスポート.   (line  19)
 * org-icalendar-use-deadline:            iCalendarエクスポート.   (line   6)
 * org-icalendar-use-scheduled:           iCalendarエクスポート.   (line   6)
 * org-imenu-depth:                       Cooperation.             (line  37)
@@ -16542,134 +16561,134 @@ Node: Header and sectioning513775
 Ref: Header and sectioning-Footnote-1515218
 Node: Quoting LaTeX code515338
 Node: Tables in LaTeX export516150
-Node: Images in LaTeX export517380
-Node: Beamerクラスのエクスポート519210
-Node: DocBook export526155
-Node: DocBook export commands527064
-Ref: DocBook export commands-Footnote-1528615
-Ref: DocBook export commands-Footnote-2528675
-Node: Quoting DocBook code528727
-Node: Recursive sections529779
-Node: Tables in DocBook export530509
-Node: Images in DocBook export530977
-Node: Special characters532914
-Node: TaskJuggler export533961
-Node: Freemind export539253
-Node: XOXO export539544
-Node: iCalendarエクスポート540031
-Ref: iCalendarエクスポート-Footnote-1542761
-Ref: iCalendarエクスポート-Footnote-2542851
-Ref: iCalendarエクスポート-Footnote-3542951
-Node: Publishing543088
-Node: Configuration544013
-Node: Project alist544811
-Node: Sources and destinations545976
-Node: Selecting files547515
-Node: Publishing action548528
-Ref: Publishing action-Footnote-1550328
-Node: Publishing options550682
-Node: Publishing links554360
-Node: Sitemap556045
-Node: Generating an index558932
-Node: Uploading files559522
-Node: Sample configuration561290
-Node: Simple example561782
-Node: Complex example562458
-Node: 公開の開始564513
-Node: Working With Source Code565479
-Node: Structure of code blocks567644
-Node: Editing source code569255
-Node: Exporting code blocks570897
-Node: Extracting source code572860
-Node: Evaluating code blocks574659
-Ref: Evaluating code blocks-Footnote-1578031
-Ref: Evaluating code blocks-Footnote-2578452
-Node: Library of Babel578606
-Node: Languages579695
-Node: Header arguments582177
-Node: Using header arguments582727
-Node: System-wide header arguments583602
-Node: Language-specific header arguments584471
-Node: Buffer-wide header arguments584919
-Node: Header arguments in Org-mode properties585839
-Node: Code block specific header arguments587210
-Node: Header arguments in function calls589362
-Node: Specific header arguments590229
-Node: var592064
-Node: results599011
-Node: file604506
-Node: dir605692
-Node: exports609401
-Node: 抽出610378
-Node: mkdirp611380
-Node: comments611842
-Node: no-expand613323
-Node: session613986
-Node: noweb614576
-Node: cache616461
-Node: sep618307
-Node: hlines619177
-Node: colnames620923
-Node: rownames622453
-Node: shebang623593
-Node: eval624033
-Node: 評価の結果624667
-Node: Noweb reference syntax628219
-Node: Key bindings and useful functions629211
-Node: バッチ処理630460
-Node: Miscellaneous631558
-Node: Completion632452
-Node: Easy Templates635111
-Node: Speed keys636789
-Node: Code evaluation security637848
-Node: Customization641322
-Node: In-buffer settings642011
-Ref: In-buffer settings-Footnote-1653324
-Node: The very busy C-c C-c key653371
-Node: Clean view655808
-Ref: Clean view-Footnote-1660768
-Ref: Clean view-Footnote-2660834
-Ref: Clean view-Footnote-3661073
-Ref: Clean view-Footnote-4661149
-Ref: Clean view-Footnote-5661296
-Node: TTY keys661480
-Node: Interaction663343
-Node: Cooperation663739
-Node: Conflicts668539
-Node: Hacking673331
-Node: Hooks674293
-Node: Add-on packages674712
-Node: Adding hyperlink types675256
-Node: Context-sensitive commands679174
-Ref: Context-sensitive commands-Footnote-1680753
-Node: Tables in arbitrary syntax680887
-Node: Radio tables682353
-Node: A LaTeX example684897
-Ref: A LaTeX example-Footnote-1688815
-Ref: A LaTeX example-Footnote-2688964
-Node: Translator functions689400
-Ref: Translator functions-Footnote-1692633
-Node: ラジオリスト692721
-Node: Dynamic blocks693874
-Node: Special agenda views696093
-Ref: Special agenda views-Footnote-1700347
-Node: Extracting agenda information700482
-Node: Using the property API704557
-Node: マッピングAPIを使う707817
-Node: MobileOrg712164
-Node: Setting up the staging area714301
-Ref: Setting up the staging area-Footnote-1715818
-Ref: Setting up the staging area-Footnote-2716244
-Node: Pushing to MobileOrg716590
-Ref: Pushing to MobileOrg-Footnote-1718191
-Ref: Pushing to MobileOrg-Footnote-2718923
-Node: MobileOrgからpullする719010
-Ref: MobileOrgからpullする-Footnote-1722885
-Ref: MobileOrgからpullする-Footnote-2722958
-Node: History and Acknowledgments723552
-Node: Main Index736285
-Node: Key Index804573
-Node: Command and Function Index848462
-Node: Variable Index877866
+Node: Images in LaTeX export517400
+Node: Beamerクラスのエクスポート519233
+Node: DocBook export526178
+Node: DocBook export commands527206
+Ref: DocBook export commands-Footnote-1529086
+Ref: DocBook export commands-Footnote-2529165
+Node: Quoting DocBook code529249
+Node: Recursive sections530609
+Node: Tables in DocBook export531613
+Node: Images in DocBook export532130
+Node: Special characters534454
+Node: TaskJuggler export535713
+Node: Freemind export542209
+Node: XOXO export542574
+Node: iCalendarエクスポート543130
+Ref: iCalendarエクスポート-Footnote-1546687
+Ref: iCalendarエクスポート-Footnote-2546799
+Ref: iCalendarエクスポート-Footnote-3546938
+Node: Publishing547088
+Node: Configuration548013
+Node: Project alist548811
+Node: Sources and destinations549976
+Node: Selecting files551515
+Node: Publishing action552528
+Ref: Publishing action-Footnote-1554328
+Node: Publishing options554682
+Node: Publishing links558360
+Node: Sitemap560045
+Node: Generating an index562932
+Node: Uploading files563522
+Node: Sample configuration565290
+Node: Simple example565782
+Node: Complex example566458
+Node: 公開の開始568513
+Node: Working With Source Code569479
+Node: Structure of code blocks571644
+Node: Editing source code573255
+Node: Exporting code blocks574897
+Node: Extracting source code576860
+Node: Evaluating code blocks578659
+Ref: Evaluating code blocks-Footnote-1582031
+Ref: Evaluating code blocks-Footnote-2582452
+Node: Library of Babel582606
+Node: Languages583695
+Node: Header arguments586177
+Node: Using header arguments586727
+Node: System-wide header arguments587602
+Node: Language-specific header arguments588471
+Node: Buffer-wide header arguments588919
+Node: Header arguments in Org-mode properties589839
+Node: Code block specific header arguments591210
+Node: Header arguments in function calls593362
+Node: Specific header arguments594229
+Node: var596064
+Node: results603011
+Node: file608506
+Node: dir609692
+Node: exports613401
+Node: 抽出614378
+Node: mkdirp615380
+Node: comments615842
+Node: no-expand617323
+Node: session617986
+Node: noweb618576
+Node: cache620461
+Node: sep622307
+Node: hlines623177
+Node: colnames624923
+Node: rownames626453
+Node: shebang627593
+Node: eval628033
+Node: 評価の結果628667
+Node: Noweb reference syntax632219
+Node: Key bindings and useful functions633211
+Node: バッチ処理634460
+Node: Miscellaneous635558
+Node: Completion636452
+Node: Easy Templates639111
+Node: Speed keys640789
+Node: Code evaluation security641848
+Node: Customization645322
+Node: In-buffer settings646011
+Ref: In-buffer settings-Footnote-1657324
+Node: The very busy C-c C-c key657371
+Node: Clean view659808
+Ref: Clean view-Footnote-1664768
+Ref: Clean view-Footnote-2664834
+Ref: Clean view-Footnote-3665073
+Ref: Clean view-Footnote-4665149
+Ref: Clean view-Footnote-5665296
+Node: TTY keys665480
+Node: Interaction667343
+Node: Cooperation667739
+Node: Conflicts672539
+Node: Hacking677331
+Node: Hooks678293
+Node: Add-on packages678712
+Node: Adding hyperlink types679256
+Node: Context-sensitive commands683174
+Ref: Context-sensitive commands-Footnote-1684753
+Node: Tables in arbitrary syntax684887
+Node: Radio tables686353
+Node: A LaTeX example688897
+Ref: A LaTeX example-Footnote-1692815
+Ref: A LaTeX example-Footnote-2692964
+Node: Translator functions693400
+Ref: Translator functions-Footnote-1696633
+Node: ラジオリスト696721
+Node: Dynamic blocks697874
+Node: Special agenda views700093
+Ref: Special agenda views-Footnote-1704347
+Node: Extracting agenda information704482
+Node: Using the property API708557
+Node: マッピングAPIを使う711817
+Node: MobileOrg716164
+Node: Setting up the staging area718301
+Ref: Setting up the staging area-Footnote-1719818
+Ref: Setting up the staging area-Footnote-2720244
+Node: Pushing to MobileOrg720590
+Ref: Pushing to MobileOrg-Footnote-1722191
+Ref: Pushing to MobileOrg-Footnote-2722923
+Node: MobileOrgからpullする723010
+Ref: MobileOrgからpullする-Footnote-1726885
+Ref: MobileOrgからpullする-Footnote-2726958
+Node: History and Acknowledgments727552
+Node: Main Index743972
+Node: Key Index812273
+Node: Command and Function Index856162
+Node: Variable Index885566
 
 End Tag Table
