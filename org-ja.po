@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-10-10 13:23+0900\n"
+"PO-Revision-Date: 2011-10-12 00:43+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -10997,7 +10997,7 @@ msgstr "CANCELEDにあるようにフェイスプロパティのリストを使�
 #: org.texi:3827
 #, no-wrap
 msgid "dependencies, of TODO states"
-msgstr ""
+msgstr "TODOの状態の依存関係"
 
 #. type: vindex
 #: org.texi:3829
@@ -11014,13 +11014,13 @@ msgstr "org-enforce-todo-dependencies"
 #: org.texi:4322
 #, no-wrap
 msgid "property, ORDERED"
-msgstr "属性、並び順"
+msgstr "プロパティ、ORDERED"
 
 #+glossary: block ( ブロック ) / customize ( カスタマイズ ) / entries ( エントリー|文|入力 ) / entry ( エントリー|文|入力 ) / file ( ファイル ) / marked ( マーク ) / org ( Org-mode ) / property ( プロパティ ) / sequence ( 順序 ) / structure ( 構造 ) / subtask ( サブタスク ) / task ( タスク ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:3841
 msgid "The structure of Org files (hierarchy and lists) makes it easy to define TODO dependencies.  Usually, a parent TODO task should not be marked DONE until all subtasks (defined as children tasks) are marked as DONE.  And sometimes there is a logical sequence to a number of (sub)tasks, so that one task cannot be acted upon before all siblings above it are done.  If you customize the variable @code{org-enforce-todo-dependencies}, Org will block entries from changing state to DONE while they have children that are not DONE.  Furthermore, if an entry has a property @code{ORDERED}, each of its children will be blocked until all earlier siblings are marked DONE.  Here is an example:"
-msgstr ""
+msgstr "Orgファイルの構成「階層とリスト」は、TODOの依存関係の定義を容易にします。通常、親TODOタスクは、すべてのサブタスク「子タスクと定義されている」が終るまでは、DONEにするべきではありません。そして時折、多く「サブ」タスクに対して論理的な順序があるので、あるタスクがその前にあるすべての関連したタスクが終るまで始められないこともあります。もし、変数@code{org-enforce-todo-dependencies}をカスタマイズすれば、Orgは、未完了の子タスクが終わるまでDONEへの状態の変更を防ぎます。さらに、もし、あるアイテムに@code{ORDERED}のプロパティが設定されていると、その前の関連したタスクがすべてがDONEになるまで、そのそれぞれの子タスクは、変更できないようになります。ここに例があります:"
 
 #. type: example
 #: org.texi:3846
@@ -11031,6 +11031,10 @@ msgid ""
 "** TODO two\n"
 "\n"
 msgstr ""
+"* TODO このTODOは、２番が終るまで変更できない。\n"
+"** DONE １番\n"
+"** TODO ２番\n"
+"\n"
 
 #. type: example
 #: org.texi:3854
@@ -11044,11 +11048,18 @@ msgid ""
 "** TODO b, needs to wait for (a)\n"
 "** TODO c, needs to wait for (a) and (b)\n"
 msgstr ""
+"* 親\n"
+"  :PROPERTIES:\n"
+"    :ORDERED: t\n"
+"  :END:\n"
+"** TODO a\n"
+"** TODO b, (a)が終わるのを待つ必要があります。\n"
+"** TODO c, (a)と(b)が終わるのを待つ必要があります。\n"
 
 #. type: table
 #: org.texi:3858
 msgid "@orgcmd{C-c C-x o,org-toggle-ordered-property}"
-msgstr ""
+msgstr "@orgcmd{C-c C-x o,org-toggle-ordered-property}"
 
 #. type: vindex
 #: org.texi:3858
@@ -11061,106 +11072,106 @@ msgstr "org-track-ordered-property-with-tag"
 #. type: table
 #: org.texi:3867
 msgid "Toggle the @code{ORDERED} property of the current entry.  A property is used for this behavior because this should be local to the current entry, not inherited like a tag.  However, if you would like to @i{track} the value of this property with a tag for better visibility, customize the variable @code{org-track-ordered-property-with-tag}.  @orgkey{C-u C-u C-u C-c C-t} Change TODO state, circumventing any state blocking."
-msgstr ""
+msgstr "@code{ORDERED}プロパティを現在のアイテムに対してトグルします。プロパティが、この動作に使われるのは、タグのように継承するのではなく、現在のアイテムに対してのみ動作させるためです。しかし、もし見やすいようにタグを使ってプロパティの値を記録したいのであれば、変数@code{org-track-ordered-property-with-tag}をカスタマイズしてください。@orgkey{C-u C-u C-u C-c C-t}は、変更できない状態のものでもTODOの状態を変更します。"
 
 #. type: vindex
 #: org.texi:3869
 #, no-wrap
 msgid "org-agenda-dim-blocked-tasks"
-msgstr ""
+msgstr "org-agenda-dim-blocked-tasks"
 
 #+glossary: agenda views ( アジェンダビュー ) / entries ( エントリー|文|入力 ) / font ( フォント ) / invisible ( 非表示 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:3873
 msgid "If you set the variable @code{org-agenda-dim-blocked-tasks}, TODO entries that cannot be closed because of such dependencies will be shown in a dimmed font or even made invisible in agenda views (@pxref{Agenda Views})."
-msgstr ""
+msgstr "変数@code{org-agenda-dim-blocked-tasks}を設定すれば、依存関係のせいで閉じることのできないTODOエントリーをアジェンダビューで薄暗いフォントにして表示するか、さらに見えなくすることもできます。(@pxref{Agenda Views})."
 
 #+glossary: checkbox ( チェックボックス )
 #. type: cindex
 #: org.texi:3874
 #, no-wrap
 msgid "checkboxes and TODO dependencies"
-msgstr ""
+msgstr "チェックボックスとTODO依存関係"
 
 #+glossary: TODO states ( TODOの状態 ) / block ( ブロック ) / checkbox ( チェックボックス ) / entry ( エントリー|文|入力 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:3880
 msgid "You can also block changes of TODO states by looking at checkboxes (@pxref{Checkboxes}).  If you set the variable @code{org-enforce-todo-checkbox-dependencies}, an entry that has unchecked checkboxes will be blocked from switching to DONE."
-msgstr ""
+msgstr "チェックボックスを見ることでTODOの状態の変更を妨げることもできます(@pxref{Checkboxes})。変数@code{org-enforce-todo-checkbox-dependencies}を設定すれば、チェックされていないチェックボックスをもつエントリーがDONEになるのを妨げることもできます。"
 
 #+glossary: check ( チェック ) / entries ( エントリー|文|入力 ) / example ( 例 ) / file ( ファイル ) / structure ( 構造 ) / tree ( ツリー )
 #. type: Plain text
 #: org.texi:3884
 msgid "If you need more complex dependency structures, for example dependencies between entries in different trees or files, check out the contributed module @file{org-depend.el}."
-msgstr ""
+msgstr "\nもし、より複雑な依存関係の構造が必要であれば、例えば、異なるツリーやファイルのエントリー同士の依存関係、付属モジュールの@file{org-depend.el}を参照してみてください。"
 
 #+glossary: progress logging ( 進行記録 )
 #. type: cindex
 #: org.texi:3888
 #, no-wrap
 msgid "progress logging"
-msgstr ""
+msgstr "進捗状況の記録"
 
 #+glossary: logging ( 記録|ログ|ログを取る ) / progress ( 進行管理 )
 #. type: cindex
 #: org.texi:3889
 #, no-wrap
 msgid "logging, of progress"
-msgstr ""
+msgstr "進捗状況の記録"
 
 #+glossary: file ( ファイル ) / information ( 情報 ) / item ( アイテム|項目 ) / mark ( マーク ) / note ( ノート|メモ ) / org-mode ( Org-mode ) / setting ( 設定 ) / subtree ( サブツリー ) / system ( システム ) / task ( タスク ) / time ( 時刻|時間|回 ) / timestamp ( タイムスタンプ ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:3897
 msgid "Org-mode can automatically record a timestamp and possibly a note when you mark a TODO item as DONE, or even each time you change the state of a TODO item.  This system is highly configurable, settings can be on a per-keyword basis and can be localized to a file or even a subtree.  For information on how to clock working time for a task, see @ref{Clocking work time}."
-msgstr ""
+msgstr "Org-modeは、TODOアイテムにDONEという完了の印をつけたときや、TODOアイテムの状態を変更したときはいつでも、自動的にタイムスタンプとメモを記録をすることができます。かなり柔軟に設定することが可能で、キーワードごとに設定したり、ファイルやサブツリーごとに設定することもできます。タスクの時間管理についての情報は、@ref{Clocking work time}を参照してください。"
 
 #+glossary: item ( アイテム|項目 ) / logging ( 記録|ログ|ログを取る ) / setting ( 設定 )
 #. type: Plain text
 #: org.texi:3910
 msgid "The most basic logging is to keep track of @emph{when} a certain TODO item was finished.  This is achieved with@footnote{The corresponding in-buffer setting is: @code{#+STARTUP: logdone}}"
-msgstr ""
+msgstr "一番基本的な時間の記録機能は、@emph{いつ}TODOアイテムが完了したかを記録することです。これは、次のようにしてください@footnote{これに対応するイン-バッファ定義は:@code{#+STARTUP: logdone}}"
 
 #. type: lisp
 #: org.texi:3913
 #, no-wrap
 msgid "(setq org-log-done 'time)\n"
-msgstr ""
+msgstr "(setq org-log-done 'time)\n"
 
 #+glossary: cycling ( 切り替え ) / entry ( エントリー|文|入力 ) / headline ( 見出し ) / item ( アイテム|項目 ) / line ( 行|ライン|線 ) / note ( ノート|メモ ) / setting ( 設定 ) / time ( 時刻|時間|回 ) / timestamp ( タイムスタンプ )
 #. type: Plain text
 #: org.texi:3922
 msgid "Then each time you turn an entry from a TODO (not-done) state into any of the DONE states, a line @samp{CLOSED: [timestamp]} will be inserted just after the headline.  If you turn the entry back into a TODO item through further state cycling, that line will be removed again.  If you want to record a note along with the timestamp, use@footnote{The corresponding in-buffer setting is: @code{#+STARTUP: lognotedone}}"
-msgstr ""
+msgstr "この後、毎回TODO「未完了」からDONEの状態に移行したとき、見出しの後に@samp{CLOSED: [タイムスタンプ]}の行が挿入されます。切り替えていく間に一つのエントリーに対してTODOの状態に戻すと挿入された行はまた削除されます。タイムスタンプと一緒にメモも記録したいのであれば、次のようにしてください@footnote{これに対応するイン-バッファ定義は:@code{#+STARTUP: lognotedone}}"
 
 #. type: lisp
 #: org.texi:3925
 #, no-wrap
 msgid "(setq org-log-done 'note)\n"
-msgstr ""
+msgstr "(setq org-log-done 'note)\n"
 
 #+glossary: entry ( エントリー|文|入力 ) / heading ( 見出し ) / note ( ノート|メモ )
 #. type: Plain text
 #: org.texi:3930
 msgid "You will then be prompted for a note, and that note will be stored below the entry with a @samp{Closing Note} heading."
-msgstr ""
+msgstr "この設定によりメモの入力を聞いてきます。そのメモは@samp{Closing Note}という見出しの下に挿入されます。"
 
 #+glossary: TODO items ( TODOアイテム ) / agenda ( アジェンダ ) / day ( 日付|日にち ) / display ( ディスプレイ|表示 ) / key ( キー ) / overview ( 概観 ) / timeline ( タイムライン ) / timestamp ( タイムスタンプ )
 #. type: Plain text
 #: org.texi:3935
 msgid "In the timeline (@pxref{Timeline}) and in the agenda (@pxref{Weekly/daily agenda}), you can then use the @kbd{l} key to display the TODO items with a @samp{CLOSED} timestamp on each day, giving you an overview of what has been done."
-msgstr ""
+msgstr "タイムライン「@pxref{Timeline}」とアジェンダ「@pxref{Weekly/daily agenda}」上で、@kbd{l}キー使用してTODOアイテムと@samp{CLOSED}タイムスタンプを日ごとに表示することができあす。何が完了しているかのサマリも提供されます。"
 
 #. type: cindex
 #: org.texi:3938
 #, no-wrap
 msgid "drawer, for state change recording"
-msgstr ""
+msgstr "引き出し、状態変化を記録する際に使用"
 
 #. type: vindex
 #: org.texi:3940
 #, no-wrap
 msgid "org-log-states-order-reversed"
-msgstr ""
+msgstr "org-log-states-order-reversed"
 
 #. type: vindex
 #: org.texi:3941
@@ -11174,19 +11185,19 @@ msgstr "org-log-into-drawer"
 #: org.texi:3942
 #, no-wrap
 msgid "property, LOG_INTO_DRAWER"
-msgstr ""
+msgstr "プロパティ、LOG_INTO_DRAWER"
 
 #+glossary: TODO keywords ( TODOキーワード ) / customize ( カスタマイズ ) / headline ( 見出し ) / list ( リスト ) / note ( ノート|メモ ) / property ( プロパティ ) / setting ( 設定 ) / subtree ( サブツリー ) / timestamp ( タイムスタンプ ) / variable ( 変数 ) / workflow ( ワークフロー )
 #. type: Plain text
 #: org.texi:3954
 msgid "When TODO keywords are used as workflow states (@pxref{Workflow states}), you might want to keep track of when a state change occurred and maybe take a note about this change.  You can either record just a timestamp, or a time-stamped note for a change.  These records will be inserted after the headline as an itemized list, newest first@footnote{See the variable @code{org-log-states-order-reversed}}.  When taking a lot of notes, you might want to get the notes out of the way into a drawer (@pxref{Drawers}).  Customize the variable @code{org-log-into-drawer} to get this behavior---the recommended drawer for this is called @code{LOGBOOK}.  You can also overrule the setting of this variable for a subtree by setting a @code{LOG_INTO_DRAWER} property."
-msgstr ""
+msgstr "TODOキーワードがワークフローの状態(@pxref{Workflow states})として使われる時に、いつその状態の変化が起きたか記録したいことがあるかもしれません。その場合、タイムスタンプかタイムスタンプ付きメモを記録することができます。これらは、見出しの後に一番新しいものを先頭として@footnote{変数@code{org-log-states-order-reversed}を確認してください}項目ごとにリストされ挿入されます。たくさんのメモをとっている場合、そのメモを引き出しの中に入れて隠したいようになるかもしれません「@pxref{Drawers}」。その場合、変数@code{org-log-into-drawer}を編集してください。オススメの引き出しは、@code{LOGBOOK}と呼ばれています。さらにサブツリーのために、この変数の設定も@code{LOG_INTO_DRAWER}プロパティを修正すれば、その効果を無視して上書きすることができます。"
 
 #+glossary: configuration ( 設定 ) / example ( 例 ) / keyword ( キーワード ) / note ( ノート|メモ ) / org-mode ( Org-mode ) / setting ( 設定 )
 #. type: Plain text
 #: org.texi:3959
 msgid "Since it is normally too much to record a note for every state, Org-mode expects configuration on a per-keyword basis for this.  This is achieved by adding special markers @samp{!} (for a timestamp) and @samp{@@} (for a note)  in parentheses after each keyword.  For example, with the setting"
-msgstr ""
+msgstr "通常、すべての状態でメモを記録するのはやりすぎになるので、Org-modeは、キーワードごとに設定されると想定します。これは、特別なマーカー@samp{!}「タイムスタンプ用」、@samp{@@}「メモ用」をキーワードの後に括弧に入れることでできるようになります。例えば、以下のようになります。"
 
 #. type: lisp
 #: org.texi:3963
@@ -11195,6 +11206,8 @@ msgid ""
 "(setq org-todo-keywords\n"
 "  '((sequence \"TODO(t)\" \"WAIT(w@@/!)\" \"|\" \"DONE(d!)\" \"CANCELED(c@@)\")))\n"
 msgstr ""
+"(setq org-todo-keywords\n"
+"  '((sequence \"TODO(t)\" \"WAIT(w@@/!)\" \"|\" \"DONE(d!)\" \"CANCELED(c@@)\")))\n"
 
 #. type: vindex
 #: org.texi:3966
@@ -11208,19 +11221,19 @@ msgstr "org-log-done"
 #. type: Plain text
 #: org.texi:3983
 msgid "you not only define global TODO keywords and fast access keys, but also request that a time is recorded when the entry is set to DONE@footnote{It is possible that Org-mode will record two timestamps when you are using both @code{org-log-done} and state change logging.  However, it will never prompt for two notes---if you have configured both, the state change recording note will take precedence and cancel the @samp{Closing Note}.}, and that a note is recorded when switching to WAIT or CANCELED.  The setting for WAIT is even more special: the @samp{!} after the slash means that in addition to the note taken when entering the state, a timestamp should be recorded when @i{leaving} the WAIT state, if and only if the @i{target} state does not configure logging for entering it.  So it has no effect when switching from WAIT to DONE, because DONE is configured to record a timestamp only.  But when switching from WAIT back to TODO, the @samp{/!} in the WAIT setting now triggers a timestamp even though TODO has no logging configured."
-msgstr ""
+msgstr "これで、グローバルTODOキーワードとショートカットキーを定義するだけでなく、DONEに状態が変更された際、時間も記録されるようにも定義できます。@footnote{Org-modeは、@code{org-log-done}と状態変化の際の記録機能を使えば、二つのタイムスタンプを記録することも可能です。それでも、二つのメモをするように聞かれることはできません。もし実際に、両方の機能を設定した場合、状態変化の際の記録機能の方が優先されて、@samp{Closing Note}は、使われません。}そして、WAITかCANCELEDに状態が変化したときにメモが記録されます。WAITの設定は、さらに特別です:斜線の後の@samp{!}は、その状態に最初に切り替わる際に挿入されるメモの記録だけでなく、WAITの状態から@i{次にの状態に変わる}時に、タイムスタンプも記録されます「でもこれは、@i{次の}状態が切り替わる時に記録する設定がない場合にのみ有効です」。そのため、WAITからDONEに切り替わる際には影響がありません、なぜならDONEは、タイムスタンプを記録するだけとして設定されているからです。しかしWAITからTODOに戻る場合は、TODOになにも記録するように設定されてなくても、WAITの@samp{/!}設定が、タイムスタンプを挿入するようになります。"
 
 #+glossary: logging ( 記録|ログ|ログを取る ) / setting ( 設定 ) / syntax ( 構文|シンタックス )
 #. type: Plain text
 #: org.texi:3986
 msgid "You can use the exact same syntax for setting logging preferences local to a buffer:"
-msgstr ""
+msgstr "まったく同じ構文を使ってバッファ内のみ有効な設定を使用できます。"
 
 #. type: example
 #: org.texi:3988
 #, no-wrap
 msgid "#+TODO: TODO(t) WAIT(w@@/!) | DONE(d!) CANCELED(c@@)\n"
-msgstr ""
+msgstr "#+TODO: TODO(t) WAIT(w@@/!) | DONE(d!) CANCELED(c@@)\n"
 
 #+glossary: logging ( 記録|ログ|ログを取る ) / property ( プロパティ )
 #. type: cindex
@@ -11228,13 +11241,13 @@ msgstr ""
 #: org.texi:4855
 #, no-wrap
 msgid "property, LOGGING"
-msgstr "属性、ログをとる"
+msgstr "プロパティ、ログをとる"
 
 #+glossary: STARTUP keyword ( STARTUPキーワード ) / entry ( エントリー|文|入力 ) / example ( 例 ) / item ( アイテム|項目 ) / logging ( 記録|ログ|ログを取る ) / nil ( nil ) / property ( プロパティ ) / setting ( 設定 ) / subtree ( サブツリー ) / tree ( ツリー )
 #. type: Plain text
 #: org.texi:3997
 msgid "In order to define logging settings that are local to a subtree or a single item, define a LOGGING property in this entry.  Any non-empty LOGGING property resets all logging settings to nil.  You may then turn on logging for this specific tree using STARTUP keywords like @code{lognotedone} or @code{logrepeat}, as well as adding state specific settings like @code{TODO(!)}.  For example"
-msgstr ""
+msgstr "サブツリーまたは、一つのアイテムだけ局所的にログの設定を定義したい場合は、そのエントリーにLOGGINGプロパティを定義してください。空ではないLOGGINGプロパティは、すべてのログの設定をnilにリセットします。この後、@code{lognotedone}か@code{logrepeat}のようなSTARTUPキーワード、そして@code{TODO(!)}のような状態に特化した設定追加して、特定のツリーに対してログを開始するようにできます。例えば"
 
 #+glossary: logging ( 記録|ログ|ログを取る )
 #. type: example
@@ -11254,59 +11267,71 @@ msgid ""
 "  :LOGGING: nil\n"
 "  :END:\n"
 msgstr ""
+"* TODO 各状態のタイムスタンプだけをログを取る\n"
+"  :PROPERTIES:\n"
+"  :LOGGING: TODO(!) WAIT(!) DONE(!) CANCELED(!)\n"
+"  :END:\n"
+"* TODO WAITに切り替えるときだけログをとる、繰り返されたとき\n"
+"  :PROPERTIES:\n"
+"  :LOGGING: WAIT(@@) logrepeat\n"
+"  :END:\n"
+"* TODO 何もログを取らない\n"
+"  :PROPERTIES:\n"
+"  :LOGGING: nil\n"
+"  :END:\n"
 
 #. type: cindex
 #: org.texi:4015
 #, no-wrap
 msgid "habits"
-msgstr ""
+msgstr "habits"
 
 #+glossary: ability ( 機能|能力 ) / category ( カテゴリー ) / org ( Org-mode )
 #. type: Plain text
 #: org.texi:4019
 msgid "Org has the ability to track the consistency of a special category of TODOs, called ``habits''.  A habit has the following properties:"
-msgstr ""
+msgstr "Org-modeには、「habits(習慣)」と呼ばれる一貫性を記録するためのTODOの特別なカテゴリーがあります。habitには、以下の性質があります:"
 
 #+glossary: customizing ( カスタマイズする ) / variable ( 変数 )
 #. type: enumerate
 #: org.texi:4024
 msgid "You have enabled the @code{habits} module by customizing the variable @code{org-modules}."
-msgstr ""
+msgstr "変数@code{org-modules}をカスタマイズすることで@code{habits}モジュールを有効にします。"
 
 #+glossary: keyword ( キーワード )
 #. type: enumerate
 #: org.texi:4026
 msgid "The habit is a TODO, with a TODO keyword representing an open state."
-msgstr ""
+msgstr "habitは、TODO一種であり、TODOキーワードを使い、未解決を表します。"
 
 #+glossary: property ( プロパティ ) / value ( 値 )
 #. type: enumerate
 #: org.texi:4028
 msgid "The property @code{STYLE} is set to the value @code{habit}."
-msgstr ""
+msgstr "プロパティ@code{STYLE}に、@code{habit}を値として定義します。"
 
 #+glossary: date ( 日付 ) / scheduled ( スケジューリングされる ) / time ( 時刻|時間|回 ) / weekly ( 週の|1週の )
 #. type: enumerate
 #: org.texi:4033
 msgid "The TODO has a scheduled date, usually with a @code{.+} style repeat interval.  A @code{++} style may be appropriate for habits with time constraints, e.g., must be done on weekends, or a @code{+} style for an unusual habit that can have a backlog, e.g., weekly reports."
-msgstr ""
+msgstr "このTODOは、スケジュールされた日付があり、通常@code{.+}スタイルで繰り返される間隔を表します。@code{++}スタイルは、時間制限があるような場合に有効でしょう。例えば、週末にしなければいけないことなどです。@code{+}スタイルは、遅れることがあるような通常の習慣ではないような場合「例:週次報告書」に適しています。"
 
 #+glossary: day ( 日付|日にち ) / syntax ( 構文|シンタックス ) / task ( タスク )
 #. type: enumerate
 #: org.texi:4037
 msgid "The TODO may also have minimum and maximum ranges specified by using the syntax @samp{.+2d/3d}, which says that you want to do the task at least every three days, but at most every two days."
-msgstr ""
+msgstr "このTODOは、最短から最長の期間を@samp{.+2d/3d}のようなシンタックスで指定できます。この例の場合、このタスクを少なくともで３日ごとか、多くて２日ごとにこなすと指定しています。"
 
 #+glossary: data ( データ ) / error ( エラー ) / logging ( 記録|ログ|ログを取る )
 #. type: enumerate
 #: org.texi:4042
 msgid "You must also have state logging for the @code{DONE} state enabled, in order for historical data to be represented in the consistency graph.  If it's not enabled it's not an error, but the consistency graphs will be largely meaningless."
-msgstr ""
+msgstr "記録されていたデータが一貫性のあるグラフに表記されるように、状態のログを取る@code{DONE}を使用できるようにしておく必要があります。使用できるようになっていない場合は、エラーにはなりませんが、一貫性を表すはずのグラフがまったく意味のないものになります。"
 
 #. type: Plain text
 #: org.texi:4046
 msgid "To give you an idea of what the above rules look like in action, here's an actual habit with some history:"
-msgstr ""
+msgstr "上記にある定義が実際にはどのようになるか分かってもらうために、ここに経過の記録情報と共に実際のhabitがあります。"
 
 #. type: example
 #: org.texi:4064
@@ -11329,169 +11354,186 @@ msgid ""
 "   :LAST_REPEAT: [2009-10-19 Mon 00:36]\n"
 "   :END:\n"
 msgstr ""
+"** TODO 髭剃り\n"
+"   SCHEDULED: <2009-10-17 Sat .+2d/4d>\n"
+"   - State \"DONE\"       from \"TODO\"       [2009-10-15 Thu]\n"
+"   - State \"DONE\"       from \"TODO\"       [2009-10-12 Mon]\n"
+"   - State \"DONE\"       from \"TODO\"       [2009-10-10 Sat]\n"
+"   - State \"DONE\"       from \"TODO\"       [2009-10-04 Sun]\n"
+"   - State \"DONE\"       from \"TODO\"       [2009-10-02 Fri]\n"
+"   - State \"DONE\"       from \"TODO\"       [2009-09-29 Tue]\n"
+"   - State \"DONE\"       from \"TODO\"       [2009-09-25 Fri]\n"
+"   - State \"DONE\"       from \"TODO\"       [2009-09-19 Sat]\n"
+"   - State \"DONE\"       from \"TODO\"       [2009-09-16 Wed]\n"
+"   - State \"DONE\"       from \"TODO\"       [2009-09-12 Sat]\n"
+"   :PROPERTIES:\n"
+"   :STYLE:    habit\n"
+"   :LAST_REPEAT: [2009-10-19 Mon 00:36]\n"
+"   :END:\n"
 
 #+glossary: agenda ( アジェンダ ) / date ( 日付 ) / day ( 日付|日にち )
 #. type: Plain text
 #: org.texi:4071
 msgid "What this habit says is: I want to shave at most every 2 days (given by the @code{SCHEDULED} date and repeat interval) and at least every 4 days.  If today is the 15th, then the habit first appears in the agenda on Oct 17, after the minimum of 2 days has elapsed, and will appear overdue on Oct 19, after four days have elapsed."
-msgstr ""
+msgstr "このhabitが表しているのは、髭剃りを、多くて２日ごとか「@code{SCHEDULED}に対して、日付と繰り返される間隔を指定されている」、少なくとも４日ごとにする。もし、今日が１５日とすると、このhabitは、二日後の１０月１７日にアジェンダに表示されて、４日後の１９日には、期限切れとして表示されます。"
 
 #+glossary: day ( 日付|日にち ) / task ( タスク )
 #. type: Plain text
 #: org.texi:4076
 msgid "What's really useful about habits is that they are displayed along with a consistency graph, to show how consistent you've been at getting that task done in the past.  This graph shows every day that the task was done over the past three weeks, with colors for each day.  The colors used are:"
-msgstr ""
+msgstr "habitsの本当に使い易いところは、定期的グラフと表示されることです。これは、過去にどれぐらいタスクが定期的に完了したかを見るためのものです。このグラフは、毎日過去３週間のタスクが完了したかを色分けして表示します。各色は、以下を表します:"
 
 #. type: item
 #: org.texi:4078
 #, no-wrap
 msgid "Blue"
-msgstr ""
+msgstr "青"
 
 #+glossary: day ( 日付|日にち ) / task ( タスク )
 #. type: table
 #: org.texi:4080
 msgid "If the task wasn't to be done yet on that day."
-msgstr ""
+msgstr "まだ、その日までにタスクが完了していない場合。"
 
 #. type: item
 #: org.texi:4080
 #, no-wrap
 msgid "Green"
-msgstr ""
+msgstr "緑"
 
 #+glossary: day ( 日付|日にち ) / task ( タスク )
 #. type: table
 #: org.texi:4082
 msgid "If the task could have been done on that day."
-msgstr ""
+msgstr "その日に完了したタスクの場合。"
 
 #. type: item
 #: org.texi:4082
 #, no-wrap
 msgid "Yellow"
-msgstr ""
+msgstr "黄"
 
 #+glossary: day ( 日付|日にち ) / task ( タスク )
 #. type: table
 #: org.texi:4084
 msgid "If the task was going to be overdue the next day."
-msgstr ""
+msgstr "明日になると期限切れになるタスクの場合。"
 
 #. type: item
 #: org.texi:4084
 #, no-wrap
 msgid "Red"
-msgstr ""
+msgstr "赤"
 
 #+glossary: day ( 日付|日にち ) / task ( タスク )
 #. type: table
 #: org.texi:4086
 msgid "If the task was overdue on that day."
-msgstr ""
+msgstr "期限切れのタスクの場合。"
 
 #+glossary: current ( カレント|現在の ) / day ( 日付|日にち ) / mark ( マーク ) / marked ( マーク ) / task ( タスク )
 #. type: Plain text
 #: org.texi:4091
 msgid "In addition to coloring each day, the day is also marked with an asterisk if the task was actually done that day, and an exclamation mark to show where the current day falls in the graph."
-msgstr ""
+msgstr "日ごとの色分けだけでなく、その日に終わったタスクに関してはアスタリスクでマークされ、エクスクラメーションマークが、グラフ中の今日の日付の部分に付きます。"
 
 #+glossary: agenda ( アジェンダ ) / configuration ( 設定 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:4094
 msgid "There are several configuration variables that can be used to change the way habits are displayed in the agenda."
-msgstr ""
+msgstr "アジェンダ上でhabitsが表示方法を変える幾つかの設定変数があります。"
 
 #. type: item
 #: org.texi:4096
 #, no-wrap
 msgid "org-habit-graph-column"
-msgstr ""
+msgstr "org-habit-graph-column"
 
 #+glossary: buffer ( バッファ ) / column ( 列 ) / point ( ポイント ) / text ( テキスト|文章 )
 #. type: table
 #: org.texi:4100
 msgid "The buffer column at which the consistency graph should be drawn.  This will overwrite any text in that column, so it's a good idea to keep your habits' titles brief and to the point."
-msgstr ""
+msgstr "定期的グラフを表記させるバッファ列。これにより指定された列にある文字列を上書きします。そのため、habitのタイトルを短く要点を付くようにするといいでしょう。"
 
 #. type: item
 #: org.texi:4100
 #, no-wrap
 msgid "org-habit-preceding-days"
-msgstr ""
+msgstr "org-habit-preceding-days"
 
 #+glossary: day ( 日付|日にち )
 #. type: table
 #: org.texi:4102
 msgid "The amount of history, in days before today, to appear in consistency graphs."
-msgstr ""
+msgstr "今日より前に、定期的グラフに何日分の日付表示するかの指定。"
 
 #. type: item
 #: org.texi:4102
 #, no-wrap
 msgid "org-habit-following-days"
-msgstr ""
+msgstr "org-habit-following-days"
 
 #+glossary: day ( 日付|日にち )
 #. type: table
 #: org.texi:4104
 msgid "The number of days after today that will appear in consistency graphs."
-msgstr ""
+msgstr "今日より後に、定期的グラフに何日分の日付表示するかの指定。"
 
 #. type: item
 #: org.texi:4104
 #, no-wrap
 msgid "org-habit-show-habits-only-for-today"
-msgstr ""
+msgstr "org-habit-show-habits-only-for-today"
 
 #+glossary: agenda ( アジェンダ ) / default ( デフォルト|初期値 ) / view ( ビュー )
 #. type: table
 #: org.texi:4107
 msgid "If non-nil, only show habits in today's agenda view.  This is set to true by default."
-msgstr ""
+msgstr "nil以外が指定されている場合、habitsを今日のアジェンダビューだけに表示する。これは、初期値で真に設定されています。"
 
 #+glossary: agenda ( アジェンダ ) / buffer ( バッファ ) / context ( コンテクスト|状況|文脈 ) / example ( 例 ) / tag ( タグ )
 #. type: Plain text
 #: org.texi:4113
+#, fuzzy
 msgid "Lastly, pressing @kbd{K} in the agenda buffer will cause habits to temporarily be disabled and they won't appear at all.  Press @kbd{K} again to bring them back.  They are also subject to tag filtering, if you have habits which should only be done in certain contexts, for example."
-msgstr ""
+msgstr "最後に、アジェンダバッファで@kbd{K}を押すことによりhabitsを一時的に使用不可にし、まったく表示させないようにできます。もう一度@kbd{K}を押すと元にもどります。もし、例えば、特定の前後の文章にのみ表示が必要な場合は、habitsタグのフィルタリングの影響も受けます。"
 
 #+glossary: priorities ( 優先順位|プライオリティ )
 #. type: cindex
 #: org.texi:4116
 #, no-wrap
 msgid "priorities"
-msgstr ""
+msgstr "優先順位"
 
 #+glossary: end up ( 結局〜となる ) / TODO items ( TODOアイテム ) / headline ( 見出し ) / item ( アイテム|項目 ) / org-mode ( Org-mode )
 #. type: Plain text
 #: org.texi:4121
 msgid "If you use Org-mode extensively, you may end up with enough TODO items that it starts to make sense to prioritize them.  Prioritizing can be done by placing a @emph{priority cookie} into the headline of a TODO item, like this"
-msgstr ""
+msgstr "もし、Org-modeよく使うのであれば、最終的にTODOアイテム量が増え、優先順位付けをした方がいいとなるかもしれません。優先順位付けはTODOアイテムの見出しに、次のように@emph{優先順位クッキー}を置くことで可能になります:"
 
 #. type: example
 #: org.texi:4124
 #, no-wrap
 msgid "*** TODO [#A] Write letter to Sam Fortune\n"
-msgstr ""
+msgstr "*** TODO [#A] サム フォーチュンに手紙を書く。"
 
 #. type: vindex
 #: org.texi:4127
 #, no-wrap
 msgid "org-priority-faces"
-msgstr ""
+msgstr "org-priority-faces"
 
 #+glossary: agenda ( アジェンダ ) / customizing ( カスタマイズする ) / default ( デフォルト|初期値 ) / entry ( エントリー|文|入力 ) / org-mode ( Org-mode ) / priorities ( 優先順位|プライオリティ ) / priority ( 優先順位|プライオリティ ) / sorting ( 並び替え ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:4134
 msgid "By default, Org-mode supports three priorities: @samp{A}, @samp{B}, and @samp{C}.  @samp{A} is the highest priority.  An entry without a cookie is treated just like priority @samp{B}.  Priorities make a difference only for sorting in the agenda (@pxref{Weekly/daily agenda}); outside the agenda, they have no inherent meaning to Org-mode.  The cookies can be highlighted with special faces by customizing the variable @code{org-priority-faces}."
-msgstr ""
+msgstr "初期値としてOrg-modeは、次の３つの優先順位付けをサポートします:@samp{A}、@samp{B}、@samp{C}。@samp{A}が一番高い優先度です。クッキーなしの場合は、@samp{B}の優先度として扱われます。優先順位付けは、アジェンダのに順位を付けることにのみ違いが発生します。「@pxref{Weekly/daily agenda}アジェンダ外では、Org-modeで継承されたりしません。クッキーは、変数@code{org-priority-faces}をカスタマイズすることにより、特別なフェイスを使ってハイライトすることができます。"
 
 #+glossary: TODO items ( TODOアイテム ) / outline ( アウトライン|outline ) / priorities ( 優先順位|プライオリティ )
 #. type: Plain text
 #: org.texi:4137
 msgid "Priorities can be attached to any outline node; they do not need to be TODO items."
-msgstr ""
+msgstr "優先順位付けどんなアウトラインモードにも付けるとができます。つまりTODOアイテムである必要はありません。"
 
 #. type: kbd{#1}
 #: org.texi:4139
@@ -11504,25 +11546,25 @@ msgstr "C-c ,"
 #: org.texi:4141
 #, no-wrap
 msgid "org-priority"
-msgstr ""
+msgstr "org-priority"
 
 #+glossary: agenda ( アジェンダ ) / buffer ( バッファ ) / command ( コマンド ) / current ( カレント|現在の ) / headline ( 見出し ) / priorities ( 優先順位|プライオリティ ) / priority ( 優先順位|プライオリティ ) / prompt ( 入力 ) / timeline ( タイムライン )
 #. type: table
 #: org.texi:4149
 msgid "Set the priority of the current headline (@command{org-priority}).  The command prompts for a priority character @samp{A}, @samp{B} or @samp{C}.  When you press @key{SPC} instead, the priority cookie is removed from the headline.  The priorities can also be changed ``remotely'' from the timeline and agenda buffer with the @kbd{,} command (@pxref{Agenda commands}).  @orgcmdkkcc{S-@key{up},S-@key{down},org-priority-up,org-priority-down}"
-msgstr ""
+msgstr "現在の見出しの優先順位付けをする「@command{org-priority}」。このコマンドは、優先順位付けのための文字@samp{A}、@samp{B}、または、@samp{C}を聞いてきます。その代わりに@key{SPC}を押すと、優先順位付けのクッキーが見出しから削除されます。優先順位は、離れたタイムラインまたは、アジェンダバッファからも@kbd{,}コマンドで変更できます。「@pxref{Agenda commands}」。@orgcmdkkcc{S-@key{up},S-@key{down},org-priority-up,org-priority-down}"
 
 #. type: vindex
 #: org.texi:4149
 #, no-wrap
 msgid "org-priority-start-cycle-with-default"
-msgstr ""
+msgstr "org-priority-start-cycle-with-default"
 
 #+glossary: current ( カレント|現在の ) / interaction ( 連携 ) / key ( キー ) / modify ( 修正 ) / note ( ノート|メモ ) / option ( オプション ) / priority ( 優先順位|プライオリティ ) / timestamp ( タイムスタンプ )
 #. type: table
 #: org.texi:4155
 msgid "Increase/decrease priority of current headline@footnote{See also the option @code{org-priority-start-cycle-with-default}.}.  Note that these keys are also used to modify timestamps (@pxref{Creating timestamps}).  See also @ref{Conflicts}, for a discussion of the interaction with @code{shift-selection-mode}."
-msgstr ""
+msgstr "現在の見出し優先度を上下する。@footnote{次のオプションも参照してください。@code{org-priority-start-cycle-with-default}.}.これらのキーはタイムスタンプを修正するのにも使うので注意してください。「@pxref{Creating timestamps}」@code{shift-selection-mode}との相互利用に関しては次を参照してください。@ref{Conflicts}"
 
 #. type: vindex
 #: org.texi:4157
@@ -11549,40 +11591,40 @@ msgstr "org-default-priority"
 #. type: Plain text
 #: org.texi:4166
 msgid "You can change the range of allowed priorities by setting the variables @code{org-highest-priority}, @code{org-lowest-priority}, and @code{org-default-priority}.  For an individual buffer, you may set these values (highest, lowest, default) like this (please make sure that the highest priority is earlier in the alphabet than the lowest priority):"
-msgstr ""
+msgstr "変数@code{org-highest-priority}、@code{org-lowest-priority}、@code{org-default-priority}を設定することで、変更できる優先度の範囲を変えることができます。バッファごとに、「上限、下限、既定値」の設定を以下のようにすることができます。「必ず一番上の優先度の文字が、一番下の優先度よりもアルファベットの並びで前の文字であるようにしてください。」:>"
 
 #. type: cindex
 #: org.texi:4167
 #, no-wrap
 msgid "#+PRIORITIES"
-msgstr ""
+msgstr "#+PRIORITIES"
 
 #. type: example
 #: org.texi:4170
 #, no-wrap
 msgid "#+PRIORITIES: A C B\n"
-msgstr ""
+msgstr "#+PRIORITIES: A C B\n"
 
 #+glossary: subtask ( サブタスク ) / task ( タスク )
 #. type: section
 #: org.texi:4173
 #, no-wrap
 msgid "Breaking tasks down into subtasks"
-msgstr ""
+msgstr "タスクをサブタスクに細分化する。"
 
 #+glossary: task ( タスク )
 #. type: cindex
 #: org.texi:4174
 #, no-wrap
 msgid "tasks, breaking down"
-msgstr ""
+msgstr "タスク、細分化"
 
 #+glossary: TODO items ( TODOアイテム )
 #. type: cindex
 #: org.texi:4175
 #, no-wrap
 msgid "statistics, for TODO items"
-msgstr ""
+msgstr "統計、TODOアイテムのための"
 
 #. type: vindex
 #: org.texi:4177
@@ -11595,7 +11637,7 @@ msgstr "org-agenda-todo-list-sublevels"
 #. type: Plain text
 #: org.texi:4186
 msgid "It is often advisable to break down large tasks into smaller, manageable subtasks.  You can do this by creating an outline tree below a TODO item, with detailed subtasks on the tree@footnote{To keep subtasks out of the global TODO list, see the @code{org-agenda-todo-list-sublevels}.}.  To keep the overview over the fraction of subtasks that are already completed, insert either @samp{[/]} or @samp{[%]} anywhere in the headline.  These cookies will be updated each time the TODO status of a child changes, or when pressing @kbd{C-c C-c} on the cookie.  For example:"
-msgstr ""
+msgstr "通常、大きなタスクは小さくて管理しやすいサブタスクに細分化することをお勧めします。これはTODOアイテムの下にアウトラインツリーをさらに詳細なサブタスクをそのツリーを付けて作成することで可能です。「@footnote{サブタスクをグローバルTODOリストに含めないようにするには、@code{org-agenda-todo-list-sublevels}を参照してください。}」すでに完了したサブタスクの進捗状況を表示してさせておくには、@samp{[/]}か@samp{[%]}ヘッドラインのどこかに挿入してください。これらのクッキーは、サブタスクのTODOの状態が変わるかクッキー上で@kbd{C-c C-c}を押すたびに更新されます。例えば:"
 
 #. type: example
 #: org.texi:4194
@@ -11608,6 +11650,12 @@ msgid ""
 "** TODO Buy food\n"
 "** DONE Talk to neighbor\n"
 msgstr ""
+"* パーティーの準備をする [33%]\n"
+"** TODO 出席者に電話する [1/2]\n"
+"*** TODO ピーター\n"
+"*** DONE サラ\n"
+"** TODO 食べ物を買う\n"
+"** DONE 近所の人と話す\n"
 
 #+glossary: property ( プロパティ )
 #. type: cindex
@@ -11615,25 +11663,25 @@ msgstr ""
 #: org.texi:4268
 #, no-wrap
 msgid "property, COOKIE_DATA"
-msgstr "属性、COOKIE_DATA"
+msgstr "プロパティ、COOKIE_DATA"
 
 #+glossary: checkbox ( チェックボックス ) / heading ( 見出し ) / property ( プロパティ )
 #. type: Plain text
 #: org.texi:4201
 msgid "If a heading has both checkboxes and TODO children below it, the meaning of the statistics cookie become ambiguous.  Set the property @code{COOKIE_DATA} to either @samp{checkbox} or @samp{todo} to resolve this issue."
-msgstr ""
+msgstr "もし、見出しがチェックボックスと子TODOを両方持っていた場合、統計クッキーは、あいまいなものになります。この問題を解決するには、@code{COOKIE_DATA}プロパティを@samp{checkbox}か@samp{todo}に設定してください。"
 
 #. type: vindex
 #: org.texi:4202
 #, no-wrap
 msgid "org-hierarchical-todo-statistics"
-msgstr ""
+msgstr "org-hierarchical-todo-statistics"
 
 #+glossary: entries ( エントリー|文|入力 ) / property ( プロパティ ) / subtree ( サブツリー ) / value ( 値 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:4208
 msgid "If you would like to have the statistics cookie count any TODO entries in the subtree (not just direct children), configure the variable @code{org-hierarchical-todo-statistics}.  To do this for a single subtree, include the word @samp{recursive} into the value of the @code{COOKIE_DATA} property."
-msgstr ""
+msgstr "もし統計クッキーに「直下のTODOだけでなく」すべてのサブツリーのTODOエントリーを含めたい場合は、変数@code{org-hierarchical-todo-statistics}を設定してください。これを一つのサブツリーに行うには、@samp{recursive}というキーワードを@code{COOKIE_DATA}プロパティの値として設定してください。"
 
 #. type: example
 #: org.texi:4214
@@ -11644,12 +11692,16 @@ msgid ""
 "  :COOKIE_DATA: todo recursive\n"
 "  :END:\n"
 msgstr ""
+"* 親キャプチャ統計 [2/20]\n"
+"  :PROPERTIES:\n"
+"  :COOKIE_DATA: todo recursive\n"
+"  :END:\n"
 
 #+glossary: entry ( エントリー|文|入力 )
 #. type: Plain text
 #: org.texi:4218
 msgid "If you would like a TODO entry to automatically change to DONE when all children are done, you can use the following setup:"
-msgstr ""
+msgstr "もしすえての子タスクが終了後、TODOエントリーを自動的にDONEに切り替えたい場合は、以下の設定を行なってください:"
 
 #+glossary: entry ( エントリー|文|入力 )
 #. type: example
@@ -11662,37 +11714,41 @@ msgid ""
 "    (org-todo (if (= n-not-done 0) \"DONE\" \"TODO\"))))\n"
 "\n"
 msgstr ""
+"(defun org-summary-todo (n-done n-not-done)\n"
+"  \"すべてのサブツリーが終了するとDONEに切り替えます。その他の場合は、TODOになります。\"\n"
+"  (let (org-log-done org-log-states)   ; 記録「logging」を終了\n"
+"    (org-todo (if (= n-not-done 0) \"DONE\" \"TODO\"))))"
 
 #. type: example
 #: org.texi:4226
 #, no-wrap
 msgid "(add-hook 'org-after-todo-statistics-hook 'org-summary-todo)\n"
-msgstr ""
+msgstr "(add-hook 'org-after-todo-statistics-hook 'org-summary-todo)\n"
 
 #+glossary: checkbox ( チェックボックス ) / hierarchy ( 階層 ) / subtask ( サブタスク )
 #. type: Plain text
 #: org.texi:4231
 msgid "Another possibility is the use of checkboxes to identify (a hierarchy of) a large number of subtasks (@pxref{Checkboxes})."
-msgstr ""
+msgstr "その他の方法としては、チェックボックスをつかって「階層化された」多量のサブタスクがいくつあるか調べることもできます。「@pxref{Checkboxes}」"
 
 #+glossary: checkbox ( チェックボックス )
 #. type: cindex
 #: org.texi:4235
 #, no-wrap
 msgid "checkboxes"
-msgstr ""
+msgstr "チェックボックス"
 
 #+glossary: TODO items ( TODOアイテム ) / checkbox ( チェックボックス ) / feature ( 機能 ) / global ( グローバルな ) / item ( アイテム|項目 ) / list ( リスト ) / mouse ( マウス|mouse ) / plain ( プレーン ) / string ( 文字列 ) / task ( タスク ) / toggle ( トグル )
 #. type: Plain text
 #: org.texi:4247
 msgid "Every item in a plain list@footnote{With the exception of description lists. But you can allow it by modifying @code{org-list-automatic-rules} accordingly.} (@pxref{Plain lists}) can be made into a checkbox by starting it with the string @samp{[ ]}.  This feature is similar to TODO items (@pxref{TODO Items}), but is more lightweight.  Checkboxes are not included into the global TODO list, so they are often great to split a task into a number of simple steps.  Or you can use them in a shopping list.  To toggle a checkbox, use @kbd{C-c C-c}, or use the mouse (thanks to Piotr Zielinski's @file{org-mouse.el})."
-msgstr ""
+msgstr "＊プレーンリスト＊@footnote{これは＊description list＊以外という意味ですが、このリストも@code{org-list-automatic-rules}を修正することで可能です。}「＊@pxref{Plain lists}＊」は、@samp{[ ]}で開始することでチェックボックスにすることができます。この機能は、TODOアイテムに似ていてますが「＊@pxref{TODO Items}＊」、より気軽につかえます。チェックボックスは、グローバルTODOリストに追加されません。そのためタスクを分岐するのに便利です。もしくは、買い物リストに使えます。チェックボックスをチェックした状態するには、@kbd{C-c C-c}を使ってください。もしくは、マウスでクリックしてください。「Piotr Zielinskiの@file{org-mouse.el}に感謝」。"
 
 #+glossary: checkbox ( チェックボックス ) / example ( 例 ) / list ( リスト )
 #. type: Plain text
 #: org.texi:4249
 msgid "Here is an example of a checkbox list."
-msgstr ""
+msgstr "以下は、チェックボックスリストの例です:"
 
 #. type: example
 #: org.texi:4259
@@ -11707,70 +11763,78 @@ msgid ""
 "  - [ ] think about what music to play\n"
 "  - [X] talk to the neighbors\n"
 msgstr ""
+"* TODO パーティの準備 [2/4]\n"
+"  - [-] みんなに連絡 [1/3]\n"
+"    - [ ] ピーター\n"
+"    - [X] サラ\n"
+"    - [ ] サム\n"
+"  - [X] 食べ物を注文\n"
+"  - [ ] どんな音楽を掛けるか考える\n"
+"  - [X] 近所の人と話す"
 
 #+glossary: checkbox ( チェックボックス ) / checked ( チェックされた ) / item ( アイテム|項目 ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:4265
 msgid "Checkboxes work hierarchically, so if a checkbox item has children that are checkboxes, toggling one of the children checkboxes will make the parent checkbox reflect if none, some, or all of the children are checked."
-msgstr ""
+msgstr "チェックボックスは、階層化に対応しています。そのため、もしチェックボックスの項目が子チェックボックスを持っている場合、もしその子チェックボックスが全くチェックされていないか、いくつかされているか、全てされているかによりその内の一つのチェックボックスをチェックした状態にすると親チェックボックスに影響します。"
 
 #+glossary: checkbox ( チェックボックス )
 #. type: cindex
 #: org.texi:4266
 #, no-wrap
 msgid "statistics, for checkboxes"
-msgstr ""
+msgstr "統計、チェックボックスの"
 
 #+glossary: checkbox ( チェックボックス )
 #. type: cindex
 #: org.texi:4267
 #, no-wrap
 msgid "checkbox statistics"
-msgstr ""
+msgstr "チェックボックスの統計"
 
 #. type: vindex
 #: org.texi:4269
 #, no-wrap
 msgid "org-hierarchical-checkbox-statistics"
-msgstr ""
+msgstr "org-hierarchical-checkbox-statistics"
 
 #+glossary: plain list ( プレーンリスト|単純なリスト ) / TODO states ( TODOの状態 ) / checkbox ( チェックボックス ) / checked ( チェックされた ) / display ( ディスプレイ|表示 ) / entry ( エントリー|文|入力 ) / example ( 例 ) / heading ( 見出し ) / headline ( 見出し ) / information ( 情報 ) / insert ( 挿入 ) / item ( アイテム|項目 ) / line ( 行|ライン|線 ) / property ( プロパティ ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:4287
 msgid "The @samp{[2/4]} and @samp{[1/3]} in the first and second line are cookies indicating how many checkboxes present in this entry have been checked off, and the total number of checkboxes present.  This can give you an idea on how many checkboxes remain, even without opening a folded entry.  The cookies can be placed into a headline or into (the first line of) a plain list item.  Each cookie covers checkboxes of direct children structurally below the headline/item on which the cookie appears@footnote{Set the variable @code{org-hierarchical-checkbox-statistics} if you want such cookies to represent the all checkboxes below the cookie, not just the direct children.}.  You have to insert the cookie yourself by typing either @samp{[/]} or @samp{[%]}.  With @samp{[/]} you get an @samp{n out of m} result, as in the examples above.  With @samp{[%]} you get information about the percentage of checkboxes checked (in the above example, this would be @samp{[50%]} and @samp{[33%]}, respectively).  In a headline, a cookie can count either checkboxes below the heading or TODO states of children, and it will display whatever was changed last.  Set the property @code{COOKIE_DATA} to either @samp{checkbox} or @samp{todo} to resolve this issue."
-msgstr ""
+msgstr "最初と二列目の@samp{[2/4]}と@samp{[1/3]}はクッキーであり、いくつのチェックボックスがそのエントリーでチェックされているかとそのすべてのチェックボックス数が表示されています。これにより、いくつのチェックボックスが残っているか、折りたたまれていても分かるようになっています。クッキーは見出しか＊plaine list＊「の最初の列」に置くことができいます。各クッキーは、クッキーのある見出し／項目の直下にある子構造であるチェックボックスを表しています。@footnote{もし直下だけでなくクッキーのしたにあるすべてのチェックボックスを網羅したい場合は、変数@code{org-hierarchical-checkbox-statistics}を設定してください。}自分でクッキーを@samp{[/]}もしくは、@samp{[%]}をタイプして入力しなければなりません。@samp{[/]}を入力すると上記したように、@samp{m個の内のn個}となります。@samp{[%]}の場合は、何パーセントのチェックボックスがチェックされているかが情報として得られます。「上記の例では、それぞれ@samp{[50%]}と@samp{[33%]となります」}. 見出しの下では、クッキーは、見チェックボックスか子TODOの状態の数を数えます。また、最後の変更に基づいて表示されます。この問題を解決するには、プロパティ@code{COOKIE_DATA}を@samp{checkbox}か@samp{todo}に設定してください。"
 
 #+glossary: checkbox ( チェックボックス )
 #. type: cindex
 #: org.texi:4288
 #, no-wrap
 msgid "blocking, of checkboxes"
-msgstr ""
+msgstr "ブロック、チェックボックスの"
 
 #+glossary: checkbox ( チェックボックス )
 #. type: cindex
 #: org.texi:4289
 #, no-wrap
 msgid "checkbox blocking"
-msgstr ""
+msgstr "チェックボックスのブロック"
 
 #+glossary: check ( チェック ) / checkbox ( チェックボックス ) / checked ( チェックされた ) / current ( カレント|現在の ) / error ( エラー ) / node ( ノード ) / outline ( アウトライン|outline ) / property ( プロパティ ) / sequence ( 順序 )
 #. type: Plain text
 #: org.texi:4294
 msgid "If the current outline node has an @code{ORDERED} property, checkboxes must be checked off in sequence, and an error will be thrown if you try to check off a box while there are unchecked boxes above it."
-msgstr ""
+msgstr "アウトラインノードに@code{ORDERED}プロパティが設定されている場合、チェックボックスは、連続でチェックされていなければなりません。上部のチェックボックスがチェックされていない状態でその下部のチェックボックスをチェックしようとするとエラーがスローされます"
 
 #+glossary: argument ( 引数 ) / checkbox ( チェックボックス ) / point ( ポイント ) / prefix ( 接頭辞 ) / toggle ( トグル )
 #. type: table
 #: org.texi:4306
 msgid "@orgcmd{C-c C-c,org-toggle-checkbox} Toggle checkbox status or (with prefix arg) checkbox presence at point.  With double prefix argument, set it to @samp{[-]}, which is considered to be an intermediate state.  @orgcmd{C-c C-x C-b,org-toggle-checkbox} Toggle checkbox status or (with prefix arg) checkbox presence at point.  With double prefix argument, set it to @samp{[-]}, which is considered to be an intermediate state."
-msgstr ""
+msgstr "@orgcmd{C-c C-c,org-toggle-checkbox}は、チェックした状態をトグルするか「前置引数と実行すると」チェックボックスを作成します。ダブル前置引数だと、@samp{[-]}が設定されます。これは、中間の状態を表します。"
 
 #+glossary: active region ( アクティブなリージョン ) / prefix arg ( 前置引数 ) / checkbox ( チェックボックス ) / item ( アイテム|項目 ) / region ( リージョン|領域 ) / toggle ( トグル )
 #. type: itemize
 #: org.texi:4311
 msgid "If there is an active region, toggle the first checkbox in the region and set all remaining boxes to the same status as the first.  With a prefix arg, add or remove the checkbox for all items in the region."
-msgstr ""
+msgstr "アクティブなリージョンがある場合は、そのリージョンの最初のチェックボックスをトグルします。そして残りのボックスを最初のボックスと同じ状態にします。前置引数と使用すると、リージョン内のすべてのチェックボックスを作成するか削除します。"
 
 #+glossary: checkbox ( チェックボックス ) / cursor ( カーソル ) / headline ( 見出し ) / region ( リージョン|領域 ) / toggle ( トグル )
 #. type: itemize
@@ -11788,13 +11852,13 @@ msgstr ""
 #. type: table
 #: org.texi:4321
 msgid "@orgcmd{M-S-@key{RET},org-insert-todo-heading} Insert a new item with a checkbox.  This works only if the cursor is already in a plain list item (@pxref{Plain lists}).  @orgcmd{C-c C-x o,org-toggle-ordered-property}"
-msgstr ""
+msgstr "@orgcmd{M-S-@key{RET},org-insert-todo-heading}は新しい項目をチェックボックスと共に挿入します。これは、＊plain list＊(@pxref{Plain lists})内にカーソルがすでにある場合にのみ動作します。@orgcmd{C-c C-x o,org-toggle-ordered-property}"
 
 #+glossary: TODO states ( TODOの状態 ) / checkbox ( チェックボックス ) / checked ( チェックされた ) / command ( コマンド ) / current ( カレント|現在の ) / customize ( カスタマイズ ) / entry ( エントリー|文|入力 ) / file ( ファイル ) / outline ( アウトライン|outline ) / prefix ( 接頭辞 ) / property ( プロパティ ) / sequence ( 順序 ) / tag ( タグ ) / toggle ( トグル ) / update ( アップデート|更新 ) / value ( 値 ) / variable ( 変数 ) / visibility ( 表示 )
 #. type: table
 #: org.texi:4337
 msgid "Toggle the @code{ORDERED} property of the entry, to toggle if checkboxes must be checked off in sequence.  A property is used for this behavior because this should be local to the current entry, not inherited like a tag.  However, if you would like to @i{track} the value of this property with a tag for better visibility, customize the variable @code{org-track-ordered-property-with-tag}.  @orgcmd{C-c #,org-update-statistics-cookies} Update the statistics cookie in the current outline entry.  When called with a @kbd{C-u} prefix, update the entire file.  Checkbox statistic cookies are updated automatically if you toggle checkboxes with @kbd{C-c C-c} and make new ones with @kbd{M-S-@key{RET}}.  TODO statistics cookies update when changing TODO states.  If you delete boxes/entries or add/change them by hand, use this command to get things back into sync.  Or simply toggle any entry twice (checkboxes with @kbd{C-c C-c})."
-msgstr ""
+msgstr "@code{ORDERED}プロパティを設定します。これは、連続でチェックボックスがチェックされていなければならないと指定します。プロパティが使用されます、なぜならこの指定はローカルに影響するべきでタグのように継承されるないからです。しかし、見やすいようにプロパティの値をタグを使って@i{記録}したい場合は、@code{org-track-ordered-property-with-tag}変数をカスタマイズしてください。@orgcmd{C-c #,org-update-statistics-cookies}現在のアウトライン内の統計クッキーを更新します。@kbd{C-u}引数と呼び出されるとファイル全体を更新します。@kbd{C-c C-c}でチェックボックスをトグルした場合と@kbd{M-S-@key{RET}}で新しいチェックボックス項目が作成された場合、チェックボックス統計クッキーは、自動的に更新されます。TODO状態を変更すると統計クッキーも更新されます。手動でチェックボックスや項目を削除したり、それらを追加したり変更した場合は、このコマンドをつかって状態を更新してください。もしくは、単にコマンドを二度トグルしてください「@kbd{C-c C-c}チェックボックスを作成など」。"
 
 #+glossary: tag ( タグ )
 #. type: cindex
