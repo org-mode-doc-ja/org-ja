@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-10-13 15:19+0900\n"
+"PO-Revision-Date: 2011-10-14 01:11+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -28366,13 +28366,13 @@ msgstr "様々な人によって膨大な数のアドオンパッケージが書
 #: org.texi:13706
 #, no-wrap
 msgid "hyperlinks, adding new types"
-msgstr ""
+msgstr "ハイパーリンク、タイプの追加"
 
 #+glossary: built-in ( ビルトイン ) / creating ( 作成 ) / example ( 例 ) / file ( ファイル ) / link ( リンク ) / manual ( マニュアル ) / org ( Org-mode ) / page ( ページ ) / provide ( 用意する ) / type ( タイプ|入力する )
 #. type: Plain text
 #: org.texi:13714
 msgid "Org has a large number of hyperlink types built-in (@pxref{Hyperlinks}).  If you would like to add new link types, Org provides an interface for doing so.  Let's look at an example file, @file{org-man.el}, that will add support for creating links like @samp{[[man:printf][The printf manpage]]} to show Unix manual pages inside Emacs:"
-msgstr ""
+msgstr "Org-modeにはビルトインのハイパーリンク形式が多数用意されています(@pxref{Hyperlinks})。新しいタイプのリンクを追加したい場合、Orgは追加するためのインターフェスを用意します。例となるファイル @file{org-man.el}を見て下さい。これは UnixのmanページをEmacsで表示するために、@samp{[[man:printf][printfのmanページ]]}というリンクを生成するサポートを作成します:"
 
 #+glossary: link ( リンク )
 #. type: lisp
@@ -28382,6 +28382,8 @@ msgid ""
 ";;; org-man.el - Support for links to manpages in Org\n"
 "\n"
 msgstr ""
+";;; org-man.el - Org-modeでmanページのリンクをサポートする\n"
+"\n"
 
 #. type: lisp
 #: org.texi:13719
@@ -28390,6 +28392,8 @@ msgid ""
 "(require 'org)\n"
 "\n"
 msgstr ""
+"(require 'org)\n"
+"\n"
 
 #. type: lisp
 #: org.texi:13722
@@ -28399,6 +28403,9 @@ msgid ""
 "(add-hook 'org-store-link-functions 'org-man-store-link)\n"
 "\n"
 msgstr ""
+"(org-add-link-type \"man\" 'org-man-open)\n"
+"(add-hook 'org-store-link-functions 'org-man-store-link)\n"
+"\n"
 
 #+glossary: command ( コマンド ) / display ( ディスプレイ|表示 )
 #. type: lisp
@@ -28411,6 +28418,11 @@ msgid ""
 "  :type '(choice (const man) (const woman)))\n"
 "\n"
 msgstr ""
+"(defcustom org-man-command 'man\n"
+"  \"manのページを表示するためのEmacsのコマンド。\"\n"
+"  :group 'org-link\n"
+"  :type '(choice (const man) (const woman)))\n"
+"\n"
 
 #. type: lisp
 #: org.texi:13732
@@ -28422,6 +28434,11 @@ msgid ""
 "  (funcall org-man-command path))\n"
 "\n"
 msgstr ""
+"(defun org-man-open (path)\n"
+"  \"パス(PATH)にあるmanpageを開きます。\n"
+"パスはコマンドmanに渡せる内容でなければなりません。\"\n"
+"  (funcall org-man-command path))\n"
+"\n"
 
 #+glossary: link ( リンク ) / page ( ページ )
 #. type: lisp
@@ -28441,6 +28458,18 @@ msgid ""
 "       :description description))))\n"
 "\n"
 msgstr ""
+"(defun org-man-store-link ()\n"
+"  \"manページへのリンクを保存します。\"\n"
+"  (when (memq major-mode '(Man-mode woman-mode))\n"
+"    ;; これはmanページなので、リンクを作成します。\n"
+"    (let* ((page (org-man-get-page-name))\n"
+"           (link (concat \"man:\" page))\n"
+"           (description (format \"Manpage for %s\" page)))\n"
+"      (org-store-link-props\n"
+"       :type \"man\"\n"
+"       :link link\n"
+"       :description description))))\n"
+"\n"
 
 #+glossary: buffer ( バッファ ) / link ( リンク ) / page ( ページ ) / work ( 作業 )
 #. type: lisp
@@ -28455,6 +28484,13 @@ msgid ""
 "    (error \"Cannot create link to this man page\")))\n"
 "\n"
 msgstr ""
+"(defun org-man-get-page-name ()\n"
+"  \"バッファ名からページ名を抽出します。\"\n"
+"  ;; `Man-mode' と `woman-mode' の両方で動作します。\n"
+"  (if (string-match \" \\\\(\\\\S-+\\\\)\\\\*\" (buffer-name))\n"
+"      (match-string 1 (buffer-name))\n"
+"    (error \"このmanページへのリンクを作成できません\")))\n"
+"\n"
 
 #. type: lisp
 #: org.texi:13753
@@ -28463,71 +28499,73 @@ msgid ""
 "(provide 'org-man)\n"
 "\n"
 msgstr ""
+"(provide 'org-man)\n"
+"\n"
 
 #. type: lisp
 #: org.texi:13755
 #, no-wrap
 msgid ";;; org-man.el ends here\n"
-msgstr ""
+msgstr ";;; org-man.el ends here\n"
 
 #+glossary: link ( リンク ) / type ( タイプ|入力する )
 #. type: Plain text
 #: org.texi:13759
 msgid "You would activate this new link type in @file{.emacs} with"
-msgstr ""
+msgstr "以下を@file{.emacs}に加えて、この新しいタイプのリンクを有効にします。"
 
 #. type: lisp
 #: org.texi:13762
 #, no-wrap
 msgid "(require 'org-man)\n"
-msgstr ""
+msgstr "(require 'org-man)\n"
 
 #+glossary: file ( ファイル )
 #. type: Plain text
 #: org.texi:13766
 msgid "Let's go through the file and see what it does."
-msgstr ""
+msgstr "そのファイルを一つずつ順番に検討して、何をするのか見てみましょう。"
 
 #. type: enumerate
 #: org.texi:13770
 msgid "It does @code{(require 'org)} to make sure that @file{org.el} has been loaded."
-msgstr ""
+msgstr "@code{(require 'org)}を実行して@file{org.el}が読み込まれたことを確認します。"
 
 #+glossary: function ( 機能|関数 ) / line ( 行|ライン|線 ) / link ( リンク ) / prefix ( 接頭辞 ) / type ( タイプ|入力する )
 #. type: enumerate
 #: org.texi:13774
 msgid "The next line calls @code{org-add-link-type} to define a new link type with prefix @samp{man}.  The call also contains the name of a function that will be called to follow such a link."
-msgstr ""
+msgstr "次の行では@code{org-add-link-type}を呼び出して、新しいタイプのリンクを接頭辞 @samp{man} で定義します。またこの呼び出しでは、そのようなリンクを辿るために呼び出される関数の名前も含まれています。"
 
 #. type: vindex
 #: org.texi:13775
 #, no-wrap
 msgid "org-store-link-functions"
-msgstr ""
+msgstr "org-store-link-functions"
 
 #+glossary: buffer ( バッファ ) / command ( コマンド ) / function ( 機能|関数 ) / line ( 行|ライン|線 ) / link ( リンク ) / page ( ページ )
 #. type: enumerate
 #: org.texi:13779
 msgid "The next line adds a function to @code{org-store-link-functions}, in order to allow the command @kbd{C-c l} to record a useful link in a buffer displaying a man page."
-msgstr ""
+msgstr "次の行では、manページを表示したバッファ内にて有用なリンクを@kbd{C-c l}で保存できるように、関数を@code{org-store-link-functions}に追加します。"
 
 #+glossary: command ( コマンド ) / customization ( カスタマイズ ) / display ( ディスプレイ|表示 ) / file ( ファイル ) / function ( 機能|関数 ) / link ( リンク ) / manual ( マニュアル ) / option ( オプション ) / page ( ページ ) / value ( 値 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:13788
 msgid "The rest of the file defines the necessary variables and functions.  First there is a customization variable that determines which Emacs command should be used to display man pages.  There are two options, @code{man} and @code{woman}.  Then the function to follow a link is defined.  It gets the link path as an argument---in this case the link path is just a topic for the manual command.  The function calls the value of @code{org-man-command} to display the man page."
-msgstr ""
+msgstr "ファイルの残りは必要な変数と関数を定義しています。最初に、manページの表示にどのEmacsのコマンドを使うかを決める変数のカスタマイズがあります。2つのオプション、@code{man} と @code{woman} があります。次に、リンクを辿る関数が定義されています。リンクのパスは引数として渡されます --- この場合、リンクのパスは単にmanコマンドのトピックです。この関数はmanページの表示に@code{org-man-command}の値を呼び出します。"
 
 #+glossary: buffer ( バッファ ) / command ( コマンド ) / default ( デフォルト|初期値 ) / function ( 機能|関数 ) / link ( リンク ) / manual ( マニュアル ) / org ( Org-mode ) / property ( プロパティ ) / provide ( 用意する ) / string ( 文字列 ) / value ( 値 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:13801
 msgid "Finally the function @code{org-man-store-link} is defined.  When you try to store a link with @kbd{C-c l}, this function will be called to try to make a link.  The function must first decide if it is supposed to create the link for this buffer type; we do this by checking the value of the variable @code{major-mode}.  If not, the function must exit and return the value @code{nil}.  If yes, the link is created by getting the manual topic from the buffer name and prefixing it with the string @samp{man:}.  Then it must call the command @code{org-store-link-props} and set the @code{:type} and @code{:link} properties.  Optionally you can also set the @code{:description} property to provide a default for the link description when the link is later inserted into an Org buffer with @kbd{C-c C-l}."
-msgstr ""
+msgstr "最後に、関数@code{org-man-store-link}が定義されています。@kbd{C-c l}でリンクを保存する時に、リンクを作成するためにこの関数が呼び出されます。関数は、このバッファのタイプでリンク作成がサポートされているかどうかを最初に判断します; 変数@code{major-mode}の値をチェックして判断します。サポートされていない場合、関数は終了して、@code{nil}の値を返します。サポートされている場合、バッファ名からmanのトピックを取得して、文字列 @samp{man:} の後に繋げることで、リンクを生成します。次に、コマンド@code{org-store-link-props}を呼び出して、@code{:type}と@code{:link}プロパティを設定します。任意で@code{:descriptiion}プロパティを設定できます。これは、後に@kbd{C-c C-l}でOrg-modeのバッファにリンクが挿入される時のリンクの説明のデフォルト値を用意します。"
 
 #+glossary: argument ( 引数 ) / function ( 機能|関数 ) / link ( リンク ) / prefix ( 接頭辞 ) / type ( タイプ|入力する )
 #. type: Plain text
 #: org.texi:13806
 msgid "When it makes sense for your new link type, you may also define a function @code{org-PREFIX-complete-link} that implements special (e.g.@: completion)  support for inserting such a link with @kbd{C-c C-l}.  Such a function should not accept any arguments, and return the full link with prefix."
-msgstr ""
+msgstr "新しいタイプのリンクを正しく設定できると、@kbd{C-c C-l}でリンクを挿入するときの特別な機能(例えば@: 補完機能)のサポートを実装する関数@code{org-PREFIX-complete-link}を定義できます。そのような関数は引数をとらず、接頭辞がついたリンク全体を返します。"
 
 #+glossary: command ( コマンド ) / hook ( フック )
 #. type: cindex
