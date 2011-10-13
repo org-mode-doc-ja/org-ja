@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-10-14 01:11+0900\n"
+"PO-Revision-Date: 2011-10-14 07:44+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -28572,32 +28572,32 @@ msgstr "新しいタイプのリンクを正しく設定できると、@kbd{C-c 
 #: org.texi:13809
 #, no-wrap
 msgid "context-sensitive commands, hooks"
-msgstr ""
+msgstr "文脈に依存するコマンド、フック"
 
 #+glossary: command ( コマンド )
 #. type: cindex
 #: org.texi:13810
 #, no-wrap
 msgid "add-ons, context-sensitive commands"
-msgstr ""
+msgstr "アドオン、文脈に依存するコマンド"
 
 #. type: vindex
 #: org.texi:13811
 #, no-wrap
 msgid "org-ctrl-c-ctrl-c-hook"
-msgstr ""
+msgstr "org-ctrl-c-ctrl-c-hook"
 
 #+glossary: command ( コマンド ) / context ( コンテクスト|状況|文脈 ) / example ( 例 ) / key ( キー ) / org ( Org-mode ) / property ( プロパティ )
 #. type: Plain text
 #: org.texi:13816
 msgid "Org has several commands that act differently depending on context.  The most important example it the @kbd{C-c C-c} (@pxref{The very busy C-c C-c key}).  Also the @kbd{M-cursor} and @kbd{M-S-cursor} keys have this property."
-msgstr ""
+msgstr "Org-modeでは、文脈に依存して動作が変わるコマンドが幾つかあります。最も重要な例は@kbd{C-c C-c}(@pxref{The very busy C-c C-c key})です[typo?: The most important example +it+ *is* the @kbd{C-c C-c} (@pxref{The very busy C-c C-c key}).  また、@kbd{M-cursor} と @kbd{M-S-cursor} キーもこの性質を持っています。"
 
 #+glossary: command ( コマンド ) / context ( コンテクスト|状況|文脈 ) / evaluate ( 評価する ) / example ( 例 ) / function ( 機能|関数 ) / functionality ( 機能性 ) / language ( 言語 ) / line ( 行|ライン|線 ) / org-mode ( Org-mode ) / package ( パッケージ ) / source ( ソース )
 #. type: Plain text
 #: org.texi:13825
 msgid "Add-ons can tap into this functionality by providing a function that detects special context for that add-on and executes functionality appropriate for the context.  Here is an example from Dan Davison's @file{org-R.el} which allows you to evaluate commands based on the @file{R} programming language @footnote{@file{org-R.el} has been replaced by the org-mode functionality described in @ref{Working With Source Code} and is now obsolete.}.  For this package, special contexts are lines that start with @code{#+R:} or @code{#+RR:}."
-msgstr ""
+msgstr "アドオンにとって特別な文脈を検知し、文脈に沿って適切に実行する関数を準備することによって、アドオンはこの機能を活用できます。ここに例として Dan Davisonの @file{org-R.el}があります。このファイルは@file{R}プログラミング言語@footnote{@file{org-R.el}は@ref{Working With Source Code}で説明されたOrg-modeの機能によって置き換えられ、現在使われておりません。}に基づいてコマンドを実行できます。このパッケージでは、特別な文脈とは@code{#+R:} や @code{#+RR:}で始まる行のことです。"
 
 #+glossary: context ( コンテクスト|状況|文脈 )
 #. type: lisp
@@ -28614,18 +28614,27 @@ msgid ""
 "    nil)) ;; to signal that we did not\n"
 "\n"
 msgstr ""
+"(defun org-R-apply-maybe ()\n"
+"  \"org-Rの文脈なら検知して、Rのコマンドを実行します。\"\n"
+"  (if (save-excursion\n"
+"        (beginning-of-line 1)\n"
+"        (looking-at \"#\\\\+RR?:\"))\n"
+"      (progn (call-interactively 'org-R-apply)\n"
+"             t) ;; 処置したと信号を送ります\n"
+"    nil)) ;; 処置しなかったと信号を送ります\n"
+"\n"
 
 #. type: lisp
 #: org.texi:13837
 #, no-wrap
 msgid "(add-hook 'org-ctrl-c-ctrl-c-hook 'org-R-apply-maybe)\n"
-msgstr ""
+msgstr "(add-hook 'org-ctrl-c-ctrl-c-hook 'org-R-apply-maybe)\n"
 
 #+glossary: check ( チェック ) / context ( コンテクスト|状況|文脈 ) / cursor ( カーソル ) / function ( 機能|関数 ) / line ( 行|ライン|線 )
 #. type: Plain text
 #: org.texi:13843
 msgid "The function first checks if the cursor is in such a line.  If that is the case, @code{org-R-apply} is called and the function returns @code{t} to signal that action was taken, and @kbd{C-c C-c} will stop looking for other contexts.  If the function finds it should do nothing locally, it returns @code{nil} so that other, similar functions can have a try."
-msgstr ""
+msgstr "関数は最初にそのような行にカーソルがあるのかをチェックします。そうである場合、@code{org-R-apply}が呼び出されて関数は処置したと信号を送るために@code{t}を返し、そして@kbd{C-c C-c}は他の文脈を探すことを止めます。もし関数がそこですべきことが無いと分かった場合は、他の同じような関数が試せるように@code{nil}を返します。"
 
 #+glossary: mode ( モード|モード ) / table ( テーブル )
 #. type: cindex
