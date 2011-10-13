@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-10-02 14:47+0900\n"
+"PO-Revision-Date: 2011-10-13 21:40+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -21775,38 +21775,38 @@ msgstr ""
 #. type: Plain text
 #: org.texi:10687
 msgid "Org includes a publishing management system that allows you to configure automatic HTML conversion of @emph{projects} composed of interlinked org files.  You can also configure Org to automatically upload your exported HTML pages and related attachments, such as images and source code files, to a web server."
-msgstr ""
+msgstr "Org-modeは連結されたOrg-modeのファイルから成る@emph{projects}の自動的なHTMLへの変換設定をあなたに許可します．あなたはまた，エクスポートしたHTMLページと画像やソースコードのような関係する添付ファイルの自動的なアップロードをOrg-modeに設定できます．"
 
 #+glossary: available ( 利用できる ) / file ( ファイル ) / format ( フォーマット|形成 ) / org ( Org-mode )
 #. type: Plain text
 #: org.texi:10690
 msgid "You can also use Org to convert files into PDF, or even combine HTML and PDF conversion so that files are available in both formats on the server."
-msgstr ""
+msgstr "あなたはまた，Org-modeからPDFへ変換することもでき，さらに，サーバ上で両方のファイルを利用できるようにHTMLとPDFへの変換を組み合わせることも可能です．"
 
 #+glossary: org ( Org-mode ) / publishing ( 公開 )
 #. type: Plain text
 #: org.texi:10692
 msgid "Publishing has been contributed to Org by David O'Toole."
-msgstr ""
+msgstr "公開はDavid O'TooleによってOrg-modeに寄与されました．"
 
 #+glossary: configuration ( 設定 ) / destination ( 公開先 ) / file ( ファイル ) / project ( プロジェクト ) / publishing ( 公開 )
 #. type: Plain text
 #: org.texi:10705
 msgid "Publishing needs significant configuration to specify files, destination and many other properties of a project."
-msgstr ""
+msgstr "公開はファイルの指定，公開先，プロジェクトのその他多くのプロパティの重要な設定を必要とします．"
 
 #+glossary: export ( エクスポート )
 #. type: menuentry
 #: org.texi:10715
 msgid "Tweaking HTML/@LaTeX{} export"
-msgstr ""
+msgstr "HTML/@LaTeX{}エクスポートの調整"
 
 #+glossary: variable ( 変数 )
 #. type: subsection
 #: org.texi:10718
 #, no-wrap
 msgid "The variable @code{org-publish-project-alist}"
-msgstr ""
+msgstr "@code{org-publishing-alist}変数"
 
 #. type: vindex
 #: org.texi:10719
@@ -21821,13 +21821,13 @@ msgstr "org-publish-project-alist"
 #: org.texi:10720
 #, no-wrap
 msgid "projects, for publishing"
-msgstr ""
+msgstr "プロジェクト，公開のための"
 
 #+glossary: list ( リスト ) / project ( プロジェクト ) / publishing ( 公開 ) / setting ( 設定 ) / value ( 値 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:10726
 msgid "Publishing is configured almost entirely through setting the value of one variable, called @code{org-publish-project-alist}.  Each element of the list configures one project, and may be in one of the two following forms:"
-msgstr ""
+msgstr "公開は@code{org-publish-project-alist}というある変数の値により設定されます．リストの各要素が1つのプロジェクトの設定で，2種類の設定方法について以下に示します:"
 
 #+glossary: key ( キー ) / list ( リスト ) / property ( プロパティ ) / value ( 値 )
 #. type: lisp
@@ -21840,630 +21840,635 @@ msgid ""
 "   (\"project-name\" :components (\"project-name\" \"project-name\" ...))\n"
 "\n"
 msgstr ""
+"   (\"project-name\" :property value :property value ...) \n"
+"     @r{i.e.@: a well-formed property list with alternating keys and values}\n"
+"@r{or}\n"
+"   (\"project-name\" :components (\"project-name\" \"project-name\" ...))\n"
+"\n"
 
 #+glossary: publishing configuration ( 公開用の設定 ) / component ( コンポーネント ) / file ( ファイル ) / option ( オプション ) / project ( プロジェクト ) / property ( プロパティ ) / publish ( 公開 ) / published ( 公開 ) / publishing ( 公開 ) / sequence ( 順序 ) / value ( 値 )
 #. type: Plain text
 #: org.texi:10743
 msgid "In both cases, projects are configured by specifying property values.  A project defines the set of files that will be published, as well as the publishing configuration to use when publishing those files.  When a project takes the second form listed above, the individual members of the @code{:components} property are taken to be sub-projects, which group together files requiring different publishing options.  When you publish such a ``meta-project'', all the components will also be published, in the sequence given."
-msgstr ""
+msgstr "どちらの場合もプロパティと値の指定によって設定されます．プロジェクトは公開されるファイルのセットと，それらが公開される時に使用する設定を定義します．上記の2番目の形式を取る場合，@code{:components}プロパティの個々のメンバは異なる公開設定を持つファイルをまとめたサブプロジェクトとして扱われます．あなたが``メタプロジェクト''を公開する時，全てのコンポーネントは特定の順序で公開されます．"
 
 #+glossary: destination ( 公開先 ) / file ( ファイル ) / source ( ソース )
 #. type: subsection
 #: org.texi:10745
 #, no-wrap
 msgid "Sources and destinations for files"
-msgstr ""
+msgstr "ファイルの送り元と送り先"
 
 #+glossary: publishing ( 公開 )
 #. type: cindex
 #: org.texi:10746
 #, no-wrap
 msgid "directories, for publishing"
-msgstr ""
+msgstr "公開のためのディレクトリ"
 
 #+glossary: file ( ファイル ) / org ( Org-mode ) / published ( 公開 ) / source ( ソース )
 #. type: Plain text
 #: org.texi:10751
 msgid "Most properties are optional, but some should always be set.  In particular, Org needs to know where to look for source files, and where to put published files."
-msgstr ""
+msgstr "多くの<プロパティは任意に選択でき，しかし多くは常にセットされているべきです．特に，Org-modeはソースファイルをどこで探すか，またファイルの公開先を知る必要があります．"
 
 #. type: code{#1}
 #: org.texi:10753
 #, no-wrap
 msgid ":base-directory"
-msgstr ""
+msgstr ":base-directory"
 
 #+glossary: directory ( ディレクトリ ) / file ( ファイル ) / publishing ( 公開 ) / source ( ソース )
 #. type: multitable
 #: org.texi:10755
 msgid "Directory containing publishing source files"
-msgstr ""
+msgstr "公開するソースファイルを含むディレクトリ"
 
 #. type: code{#1}
 #: org.texi:10755
 #, no-wrap
 msgid ":publishing-directory"
-msgstr ""
+msgstr ":publishing-directory"
 
 #+glossary: directory ( ディレクトリ ) / external ( 外部 ) / file ( ファイル ) / output ( アウトプット ) / package ( パッケージ ) / publish ( 公開 ) / published ( 公開 ) / syntax ( 構文|シンタックス )
 #. type: multitable
 #: org.texi:10760
 msgid "Directory where output files will be published.  You can directly publish to a webserver using a file name syntax appropriate for the Emacs @file{tramp} package.  Or you can publish to a local directory and use external tools to upload your website (@pxref{Uploading files})."
-msgstr ""
+msgstr "アウトプットファイルのあるディレクトリは公開されます．あなたはEmacs@file{tramp}パッケージの構文のファイル名を使ってウェブサーバに直接公開することができます．もしくは，ローカルディレクトリに公開したり，あなたのウェブサイト(@pxref{Uploading files})にアップロードするための拡張ツールを使うことができます．"
 
 #. type: code{#1}
 #: org.texi:10760
 #, no-wrap
 msgid ":preparation-function"
-msgstr ""
+msgstr ":preparation-function"
 
 #+glossary: example ( 例 ) / file ( ファイル ) / function ( 機能|関数 ) / list ( リスト ) / project ( プロジェクト ) / property ( プロパティ ) / published ( 公開 ) / publishing ( 公開 ) / variable ( 変数 )
 #. type: multitable
 #: org.texi:10765
 msgid "Function or list of functions to be called before starting the publishing process, for example, to run @code{make} for updating files to be published.  The project property list is scoped into this call as the variable @code{project-plist}."
-msgstr ""
+msgstr "公開プロセスの開始前に呼ばれる関数または関数のリストです(例えば，公開のためのファイルの更新に使う@code{make}を実行します)．@code{project-plist}変数であるプロジェクトのプロパティリストはこの呼び出しにスコープされます．"
 
 #. type: code{#1}
 #: org.texi:10765
 #, no-wrap
 msgid ":completion-function"
-msgstr ""
+msgstr ":completion-function"
 
 #+glossary: example ( 例 ) / file ( ファイル ) / function ( 機能|関数 ) / list ( リスト ) / project ( プロジェクト ) / property ( プロパティ ) / publishing ( 公開 ) / variable ( 変数 )
 #. type: multitable
 #: org.texi:10770
 msgid "Function or list of functions called after finishing the publishing process, for example, to change permissions of the resulting files.  The project property list is scoped into this call as the variable @code{project-plist}."
-msgstr ""
+msgstr "公開プロセスが完了した後に呼ばれる関数または関数のリストです(例えば，出力したファイルの権限を変更します)．@code{project-plist}変数であるプロジェクトのプロパティリストはこの呼び出しにスコープされます．"
 
 #+glossary: file ( ファイル ) / publishing ( 公開 ) / selecting ( 選択する )
 #. type: cindex
 #: org.texi:10775
 #, no-wrap
 msgid "files, selecting for publishing"
-msgstr ""
+msgstr "ファイル，公開のための選択"
 
 #+glossary: default ( デフォルト|初期値 ) / directory ( ディレクトリ ) / extension ( 拡張|拡張子 ) / file ( ファイル ) / project ( プロジェクト ) / setting ( 設定 )
 #. type: Plain text
 #: org.texi:10780
 msgid "By default, all files with extension @file{.org} in the base directory are considered part of the project.  This can be modified by setting the properties"
-msgstr ""
+msgstr "デフォルトでは，ベースディレクトリの中の拡張子が@file{.org}である全てのファイルはプロジェクトの一部であるとみなされます．これはプロパティの設定により変更することができます:"
 
 #. type: code{#1}
 #: org.texi:10781
 #, no-wrap
 msgid ":base-extension"
-msgstr ""
+msgstr ":base-extension"
 
 #+glossary: extension ( 拡張|拡張子 ) / file ( ファイル ) / source ( ソース ) / symbol ( 記号 )
 #. type: multitable
 #: org.texi:10785
 msgid "Extension (without the dot!) of source files.  This actually is a regular expression.  Set this to the symbol @code{any} if you want to get all files in @code{:base-directory}, even without extension."
-msgstr ""
+msgstr "ソースファイルの拡張子(.を除きます!)です．これは実際は正規表現です．もしあなたが@code{:base-directory}の中の全てのファイルを取得したいのであれば，@code{any}シンボルをセットします．"
 
 #. type: code{#1}
 #: org.texi:10786
 #, no-wrap
 msgid ":exclude"
-msgstr ""
+msgstr ":exclude"
 
 #+glossary: extension ( 拡張|拡張子 ) / file ( ファイル ) / published ( 公開 )
 #. type: multitable
 #: org.texi:10790
 msgid "Regular expression to match file names that should not be published, even though they have been selected on the basis of their extension."
-msgstr ""
+msgstr "そのファイルの拡張子が選択されていたとしても，公開したくないファイル名にマッチする正規表現．"
 
 #. type: code{#1}
 #: org.texi:10791
 #, no-wrap
 msgid ":include"
-msgstr ""
+msgstr ":include"
 
 #+glossary: file ( ファイル ) / list ( リスト )
 #. type: multitable
 #: org.texi:10794
 msgid "List of files to be included regardless of @code{:base-extension} and @code{:exclude}."
-msgstr ""
+msgstr "@code{:base-extension}と@code{:exclude}にかかわらずインクルードするファイルのリスト．"
 
 #. type: code{#1}
 #: org.texi:10795
 #, no-wrap
 msgid ":recursive"
-msgstr ""
+msgstr ":recursive"
 
 #+glossary: check ( チェック ) / file ( ファイル ) / publish ( 公開 )
 #. type: multitable
 #: org.texi:10797
 msgid "Non-nil means, check base-directory recursively for files to publish."
-msgstr ""
+msgstr "nilでなければ，ベースディレクトリから再帰的に公開するファイルをチェックします．"
 
 #+glossary: publishing ( 公開 )
 #. type: cindex
 #: org.texi:10801
 #, no-wrap
 msgid "action, for publishing"
-msgstr ""
+msgstr "アクション，公開のための"
 
 #+glossary: content ( コンテンツ|内容 ) / default ( デフォルト|初期値 ) / destination ( 公開先 ) / directory ( ディレクトリ ) / export ( エクスポート ) / exporter ( エクスポート機能 ) / file ( ファイル ) / function ( 機能|関数 ) / image ( 画像 ) / note ( ノート|メモ ) / org ( Org-mode ) / parameters ( パラメーター ) / project ( プロジェクト ) / publish ( 公開 ) / published ( 公開 ) / publishing ( 公開 ) / setup ( 設定 ) / source ( ソース ) / time ( 時刻|時間|回 ) / tree ( ツリー )
 #. type: Plain text
 #: org.texi:10822
 msgid "Publishing means that a file is copied to the destination directory and possibly transformed in the process.  The default transformation is to export Org files as HTML files, and this is done by the function @code{org-publish-org-to-html} which calls the HTML exporter (@pxref{HTML export}).  But you also can publish your content as PDF files using @code{org-publish-org-to-pdf}, or as @code{ascii}, @code{latin1} or @code{utf8} encoded files using the corresponding functions.  If you want to publish the Org file itself, but with @i{archived}, @i{commented}, and @i{tag-excluded} trees removed, use @code{org-publish-org-to-org} and set the parameters @code{:plain-source} and/or @code{:htmlized-source}.  This will produce @file{file.org} and @file{file.org.html} in the publishing directory@footnote{@file{file-source.org} and @file{file-source.org.html} if source and publishing directories are equal.  Note that with this kind of setup, you need to add @code{:exclude \"-source\\\\.org\"} to the project definition in @code{org-publish-project-alist} to prevent the published source files from being considered as new org files the next time the project is published.}.  Other files like images only need to be copied to the publishing destination; for this you may use @code{org-publish-attachment}.  For non-Org files, you always need to specify the publishing function:"
-msgstr ""
+msgstr "公開は，ファイルを宛先ディレクトリにコピーし，場合によっては変換することです．デフォルトの変換はOrg-modeファイルからHTMLファイルへのエクスポートで，これはHTMLエクスポーター(@pxref{HTML export})を呼び出す@code{org-publish-org-to-html}によって行われます．しかしあなたはまた，@code{org-publish-org-to-pdf}を用いたPDFファイルのようなコンテンツも公開することができます．もしあなたが@i{アーカイブされた}，@i{コメントされた}，@i{除外タグがついた}ツリーを消去したOrg-modeファイル自身を公開したいのであれば，@code{org-publish-org-to-org}を使い，@code{:plain-source}パラメラと/または@code{:htmlized-source}をセットします．これは公開ディレクトリ@footnote{もしソースと公開ディレクトリが同じであれば，@file{file-source.org}と@file{file-source.org.html}です．このようなセットアップでは，プロジェクトが公開される次回，新しいOrg-modeファイルとみなされるソースファイルが公開されるのを防ぐためにあなたは@code{:exclude \\\"-source\\\\\\\\.org\\\"}を@code{org-publish-alist}中のプロジェクトの定義に追加する必要があることに注意しください．}に@file{file.org}と@file{file.org.html}を作ります．画像のようなその他のファイル公開ディレクトリにコピーされる必要があります; このために，あなたは@code{org-publish-attachment}を使うことができます．Org-modeでないファイルのために，あなたは常に公開用の関数を指定する必要があります:"
 
 #. type: code{#1}
 #: org.texi:10824
 #, no-wrap
 msgid ":publishing-function"
-msgstr ""
+msgstr ":publishing-function"
 
 #+glossary: file ( ファイル ) / function ( 機能|関数 ) / list ( リスト ) / publication ( 公開操作 )
 #. type: multitable
 #: org.texi:10827
 msgid "Function executing the publication of a file.  This may also be a list of functions, which will all be called in turn."
-msgstr ""
+msgstr "ファイルの公開を実行する関数です．これは，順番に呼び出される関数のリストにすることもできます．"
 
 #. type: code{#1}
 #: org.texi:10827
 #, no-wrap
 msgid ":plain-source"
-msgstr ""
+msgstr ":plain-source"
 
 #+glossary: plain ( プレーン ) / publish ( 公開 ) / source ( ソース )
 #. type: multitable
 #: org.texi:10829
 msgid "Non-nil means, publish plain source."
-msgstr ""
+msgstr "nilでなければ，プレーンソースを公開します．"
 
 #. type: code{#1}
 #: org.texi:10829
 #, no-wrap
 msgid ":htmlized-source"
-msgstr ""
+msgstr ":htmlized-source"
 
 #+glossary: publish ( 公開 ) / source ( ソース )
 #. type: multitable
 #: org.texi:10831
 msgid "Non-nil means, publish htmlized source."
-msgstr ""
+msgstr "nilでなければ，HTMLに変換されたソースを公開します．"
 
 #+glossary: destination ( 公開先 ) / directory ( ディレクトリ ) / file ( ファイル ) / folder ( フォルダ|折りたたむ ) / function ( 機能|関数 ) / list ( リスト ) / output ( アウトプット ) / property ( プロパティ ) / published ( 公開 ) / publishing ( 公開 )
 #. type: Plain text
 #: org.texi:10838
 msgid "The function must accept three arguments: a property list containing at least a @code{:publishing-directory} property, the name of the file to be published, and the path to the publishing directory of the output file.  It should take the specified file, make the necessary transformation (if any)  and place the result into the destination folder."
-msgstr ""
+msgstr "関数には3つの引数を渡す必要があります: 最低でも@code{:publishing-directory}プロパティを含むプロパティリスト，公開されるファイル名，出力ファイルの公開ディレクトリへのパスです．それは指定されたファイルを取り，(もしあれば)必要な変換を行い，出力をコピー先ディレクトリに置きます．"
 
 #+glossary: exporter ( エクスポート機能 ) / option ( オプション )
 #. type: subsection
 #: org.texi:10840
 #, no-wrap
 msgid "Options for the HTML/@LaTeX{} exporters"
-msgstr ""
+msgstr "HTML/@LaTeX{}エクスポート機能のオプション"
 
 #+glossary: option ( オプション ) / publishing ( 公開 )
 #. type: cindex
 #: org.texi:10841
 #, no-wrap
 msgid "options, for publishing"
-msgstr ""
+msgstr "オプション，公開のための"
 
 #+glossary: export ( エクスポート ) / exporter ( エクスポート機能 ) / list ( リスト ) / option ( オプション ) / org ( Org-mode ) / property ( プロパティ ) / string ( 文字列 ) / table ( テーブル ) / user ( ユーザー ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:10848
 msgid "The property list can be used to set many export options for the HTML and @LaTeX{} exporters.  In most cases, these properties correspond to user variables in Org.  The table below lists these properties along with the variable they belong to.  See the documentation string for the respective variable for details."
-msgstr ""
+msgstr "プロパティリストはHTMLと@LaTeX{}エクスポート機能の多くのエクスポートオプションをセットするために使うことができます．多くの場合，これらのプロパティはOrg-mode中のユーザ変数と対応します．下のテーブルはそれらが所属する変数と同様なプロパティのリストです．各変数の詳細については，ドキュメントを参照してください．"
 
 #. type: vindex
 #: org.texi:10849
 #, no-wrap
 msgid "org-export-html-link-up"
-msgstr ""
+msgstr "org-export-html-link-up"
 
 #. type: vindex
 #: org.texi:10850
 #, no-wrap
 msgid "org-export-html-link-home"
-msgstr ""
+msgstr "org-export-html-link-home"
 
 #. type: vindex
 #: org.texi:10854
 #, no-wrap
 msgid "org-export-with-section-numbers"
-msgstr ""
+msgstr "org-export-with-section-numbers"
 
 #. type: vindex
 #: org.texi:10855
 #, no-wrap
 msgid "org-export-section-number-format"
-msgstr ""
+msgstr "org-export-section-number-format"
 
 #. type: vindex
 #: org.texi:10857
 #, no-wrap
 msgid "org-export-preserve-breaks"
-msgstr ""
+msgstr "org-export-preserve-breaks"
 
 #. type: vindex
 #: org.texi:10859
 #, no-wrap
 msgid "org-export-with-emphasize"
-msgstr ""
+msgstr "org-export-with-emphasize"
 
 #. type: vindex
 #: org.texi:10861
 #, no-wrap
 msgid "org-export-with-special-strings"
-msgstr ""
+msgstr "org-export-with-special-strings"
 
 #. type: vindex
 #: org.texi:10862
 #, no-wrap
 msgid "org-export-with-footnotes"
-msgstr ""
+msgstr "org-export-with-footnotes"
 
 #. type: vindex
 #: org.texi:10863
 #, no-wrap
 msgid "org-export-with-drawers"
-msgstr ""
+msgstr "org-export-with-drawers"
 
 #. type: vindex
 #: org.texi:10864
 #, no-wrap
 msgid "org-export-with-tags"
-msgstr ""
+msgstr "org-export-with-tags"
 
 #. type: vindex
 #: org.texi:10865
 #, no-wrap
 msgid "org-export-with-todo-keywords"
-msgstr ""
+msgstr "org-export-with-todo-keywords"
 
 #. type: vindex
 #: org.texi:10866
 #, no-wrap
 msgid "org-export-with-priority"
-msgstr ""
+msgstr "org-export-with-priority"
 
 #. type: vindex
 #: org.texi:10867
 #, no-wrap
 msgid "org-export-with-TeX-macros"
-msgstr ""
+msgstr "org-export-with-TeX-macros"
 
 #. type: vindex
 #: org.texi:10870
 #, no-wrap
 msgid "org-export-with-fixed-width"
-msgstr ""
+msgstr "org-export-with-fixed-width"
 
 #. type: vindex
 #: org.texi:10871
 #, no-wrap
 msgid "org-export-with-timestamps"
-msgstr ""
+msgstr "org-export-with-timestamps"
 
 #. type: vindex
 #: org.texi:10872
 #, no-wrap
 msgid "org-export-author-info"
-msgstr ""
+msgstr "org-export-author-info"
 
 #. type: vindex
 #: org.texi:10873
 #, no-wrap
 msgid "org-export-email"
-msgstr ""
+msgstr "org-export-email"
 
 #. type: vindex
 #: org.texi:10874
 #, no-wrap
 msgid "org-export-creator-info"
-msgstr ""
+msgstr "org-export-creator-info"
 
 #. type: vindex
 #: org.texi:10875
 #, no-wrap
 msgid "org-export-with-tables"
-msgstr ""
+msgstr "org-export-with-tables"
 
 #. type: vindex
 #: org.texi:10876
 #, no-wrap
 msgid "org-export-highlight-first-table-line"
-msgstr ""
+msgstr "org-export-highlight-first-table-line"
 
 #. type: vindex
 #: org.texi:10878
 #, no-wrap
 msgid "org-export-html-style-include-scripts"
-msgstr ""
+msgstr "org-export-html-style-include-scripts"
 
 #. type: vindex
 #: org.texi:10880
 #, no-wrap
 msgid "org-export-html-style-extra"
-msgstr ""
+msgstr "org-export-html-style-extra"
 
 #. type: vindex
 #: org.texi:10881
 #, no-wrap
 msgid "org-export-html-link-org-files-as-html"
-msgstr ""
+msgstr "org-export-html-link-org-files-as-html"
 
 #. type: vindex
 #: org.texi:10883
 #, no-wrap
 msgid "org-export-html-extension"
-msgstr ""
+msgstr "org-export-html-extension"
 
 #. type: vindex
 #: org.texi:10885
 #, no-wrap
 msgid "org-export-html-expand"
-msgstr ""
+msgstr "org-export-html-expand"
 
 #. type: vindex
 #: org.texi:10886
 #, no-wrap
 msgid "org-export-html-with-timestamp"
-msgstr ""
+msgstr "org-export-html-with-timestamp"
 
 #. type: vindex
 #: org.texi:10887
 #, no-wrap
 msgid "org-export-publishing-directory"
-msgstr ""
+msgstr "org-export-publishing-directory"
 
 #. type: vindex
 #: org.texi:10888
 #, no-wrap
 msgid "org-export-html-preamble"
-msgstr ""
+msgstr "org-export-html-preamble"
 
 #. type: vindex
 #: org.texi:10889
 #, no-wrap
 msgid "org-export-html-postamble"
-msgstr ""
+msgstr "org-export-html-postamble"
 
 #. type: item
 #: org.texi:10896
 #, no-wrap
 msgid "@code{:link-up}               @tab @code{org-export-html-link-up}"
-msgstr ""
+msgstr "@code{:link-up}               @tab @code{org-export-html-link-up}"
 
 #. type: item
 #: org.texi:10897
 #, no-wrap
 msgid "@code{:link-home}             @tab @code{org-export-html-link-home}"
-msgstr ""
+msgstr "@code{:link-home}             @tab @code{org-export-html-link-home}"
 
 #. type: item
 #: org.texi:10898
 #, no-wrap
 msgid "@code{:language}              @tab @code{org-export-default-language}"
-msgstr ""
+msgstr "@code{:language}              @tab @code{org-export-default-language}"
 
 #. type: item
 #: org.texi:10899
 #, no-wrap
 msgid "@code{:customtime}            @tab @code{org-display-custom-times}"
-msgstr ""
+msgstr "@code{:customtime}            @tab @code{org-display-custom-times}"
 
 #. type: item
 #: org.texi:10900
 #, no-wrap
 msgid "@code{:headline-levels}       @tab @code{org-export-headline-levels}"
-msgstr ""
+msgstr "@code{:headline-levels}       @tab @code{org-export-headline-levels}"
 
 #. type: item
 #: org.texi:10901
 #, no-wrap
 msgid "@code{:section-numbers}       @tab @code{org-export-with-section-numbers}"
-msgstr ""
+msgstr "@code{:section-numbers}       @tab @code{org-export-with-section-numbers}"
 
 #. type: item
 #: org.texi:10902
 #, no-wrap
 msgid "@code{:section-number-format} @tab @code{org-export-section-number-format}"
-msgstr ""
+msgstr "@code{:section-number-format} @tab @code{org-export-section-number-format}"
 
 #. type: item
 #: org.texi:10903
 #, no-wrap
 msgid "@code{:table-of-contents}     @tab @code{org-export-with-toc}"
-msgstr ""
+msgstr "@code{:table-of-contents}     @tab @code{org-export-with-toc}"
 
 #. type: item
 #: org.texi:10904
 #, no-wrap
 msgid "@code{:preserve-breaks}       @tab @code{org-export-preserve-breaks}"
-msgstr ""
+msgstr "@code{:preserve-breaks}       @tab @code{org-export-preserve-breaks}"
 
 #. type: item
 #: org.texi:10905
 #, no-wrap
 msgid "@code{:archived-trees}        @tab @code{org-export-with-archived-trees}"
-msgstr ""
+msgstr "@code{:archived-trees}        @tab @code{org-export-with-archived-trees}"
 
 #. type: item
 #: org.texi:10906
 #, no-wrap
 msgid "@code{:emphasize}             @tab @code{org-export-with-emphasize}"
-msgstr ""
+msgstr "@code{:emphasize}             @tab @code{org-export-with-emphasize}"
 
 #. type: item
 #: org.texi:10907
 #, no-wrap
 msgid "@code{:sub-superscript}       @tab @code{org-export-with-sub-superscripts}"
-msgstr ""
+msgstr "@code{:sub-superscript}       @tab @code{org-export-with-sub-superscripts}"
 
 #. type: item
 #: org.texi:10908
 #, no-wrap
 msgid "@code{:special-strings}       @tab @code{org-export-with-special-strings}"
-msgstr ""
+msgstr "@code{:special-strings}       @tab @code{org-export-with-special-strings}"
 
 #. type: item
 #: org.texi:10909
 #, no-wrap
 msgid "@code{:footnotes}             @tab @code{org-export-with-footnotes}"
-msgstr ""
+msgstr "@code{:footnotes}             @tab @code{org-export-with-footnotes}"
 
 #. type: item
 #: org.texi:10910
 #, no-wrap
 msgid "@code{:drawers}               @tab @code{org-export-with-drawers}"
-msgstr ""
+msgstr "@code{:drawers}               @tab @code{org-export-with-drawers}"
 
 #. type: item
 #: org.texi:10911
 #, no-wrap
 msgid "@code{:tags}                  @tab @code{org-export-with-tags}"
-msgstr ""
+msgstr "@code{:tags}                  @tab @code{org-export-with-tags}"
 
 #. type: item
 #: org.texi:10912
 #, no-wrap
 msgid "@code{:todo-keywords}         @tab @code{org-export-with-todo-keywords}"
-msgstr ""
+msgstr "@code{:todo-keywords}         @tab @code{org-export-with-todo-keywords}"
 
 #. type: item
 #: org.texi:10913
 #, no-wrap
 msgid "@code{:priority}              @tab @code{org-export-with-priority}"
-msgstr ""
+msgstr "@code{:priority}              @tab @code{org-export-with-priority}"
 
 #. type: item
 #: org.texi:10914
 #, no-wrap
 msgid "@code{:TeX-macros}            @tab @code{org-export-with-TeX-macros}"
-msgstr ""
+msgstr "@code{:TeX-macros}            @tab @code{org-export-with-TeX-macros}"
 
 #. type: item
 #: org.texi:10915
 #, no-wrap
 msgid "@code{:LaTeX-fragments}       @tab @code{org-export-with-LaTeX-fragments}"
-msgstr ""
+msgstr "@code{:LaTeX-fragments}       @tab @code{org-export-with-LaTeX-fragments}"
 
 #. type: item
 #: org.texi:10916
 #, no-wrap
 msgid "@code{:latex-listings}        @tab @code{org-export-latex-listings}"
-msgstr ""
+msgstr "@code{:latex-listings}        @tab @code{org-export-latex-listings}"
 
 #. type: item
 #: org.texi:10917
 #, no-wrap
 msgid "@code{:skip-before-1st-heading} @tab @code{org-export-skip-text-before-1st-heading}"
-msgstr ""
+msgstr "@code{:skip-before-1st-heading} @tab @code{org-export-skip-text-before-1st-heading}"
 
 #. type: item
 #: org.texi:10918
 #, no-wrap
 msgid "@code{:fixed-width}           @tab @code{org-export-with-fixed-width}"
-msgstr ""
+msgstr "@code{:fixed-width}           @tab @code{org-export-with-fixed-width}"
 
 #. type: item
 #: org.texi:10919
 #, no-wrap
 msgid "@code{:timestamps}            @tab @code{org-export-with-timestamps}"
-msgstr ""
+msgstr "@code{:timestamps}            @tab @code{org-export-with-timestamps}"
 
 #. type: item
 #: org.texi:10920
 #, no-wrap
 msgid "@code{:author}                @tab @code{user-full-name}"
-msgstr ""
+msgstr "@code{:author}                @tab @code{user-full-name}"
 
 #. type: item
 #: org.texi:10921
 #, no-wrap
 msgid "@code{:email}                 @tab @code{user-mail-address} : @code{addr;addr;..}"
-msgstr ""
+msgstr "@code{:email}                 @tab @code{user-mail-address} : @code{addr;addr;..}"
 
 #. type: item
 #: org.texi:10922
 #, no-wrap
 msgid "@code{:author-info}           @tab @code{org-export-author-info}"
-msgstr ""
+msgstr "@code{:author-info}           @tab @code{org-export-author-info}"
 
 #. type: item
 #: org.texi:10923
 #, no-wrap
 msgid "@code{:email-info}            @tab @code{org-export-email-info}"
-msgstr ""
+msgstr "@code{:email-info}            @tab @code{org-export-email-info}"
 
 #. type: item
 #: org.texi:10924
 #, no-wrap
 msgid "@code{:creator-info}          @tab @code{org-export-creator-info}"
-msgstr ""
+msgstr "@code{:creator-info}          @tab @code{org-export-creator-info}"
 
 #. type: item
 #: org.texi:10925
 #, no-wrap
 msgid "@code{:tables}                @tab @code{org-export-with-tables}"
-msgstr ""
+msgstr "@code{:tables}                @tab @code{org-export-with-tables}"
 
 #. type: item
 #: org.texi:10926
 #, no-wrap
 msgid "@code{:table-auto-headline}   @tab @code{org-export-highlight-first-table-line}"
-msgstr ""
+msgstr "@code{:table-auto-headline}   @tab @code{org-export-highlight-first-table-line}"
 
 #. type: item
 #: org.texi:10927
 #, no-wrap
 msgid "@code{:style-include-default} @tab @code{org-export-html-style-include-default}"
-msgstr ""
+msgstr "@code{:style-include-default} @tab @code{org-export-html-style-include-default}"
 
 #. type: item
 #: org.texi:10928
 #, no-wrap
 msgid "@code{:style-include-scripts} @tab @code{org-export-html-style-include-scripts}"
-msgstr ""
+msgstr "@code{:style-include-scripts} @tab @code{org-export-html-style-include-scripts}"
 
 #. type: item
 #: org.texi:10929
 #, no-wrap
 msgid "@code{:style}                 @tab @code{org-export-html-style}"
-msgstr ""
+msgstr "@code{:style}                 @tab @code{org-export-html-style}"
 
 #. type: item
 #: org.texi:10930
 #, no-wrap
 msgid "@code{:style-extra}           @tab @code{org-export-html-style-extra}"
-msgstr ""
+msgstr "@code{:style-extra}           @tab @code{org-export-html-style-extra}"
 
 #. type: item
 #: org.texi:10931
 #, no-wrap
 msgid "@code{:convert-org-links}     @tab @code{org-export-html-link-org-files-as-html}"
-msgstr ""
+msgstr "@code{:convert-org-links}     @tab @code{org-export-html-link-org-files-as-html}"
 
 #. type: item
 #: org.texi:10932
 #, no-wrap
 msgid "@code{:inline-images}         @tab @code{org-export-html-inline-images}"
-msgstr ""
+msgstr "@code{:inline-images}         @tab @code{org-export-html-inline-images}"
 
 #. type: item
 #: org.texi:10933
 #, no-wrap
 msgid "@code{:html-extension}        @tab @code{org-export-html-extension}"
-msgstr ""
+msgstr "@code{:html-extension}        @tab @code{org-export-html-extension}"
 
 #. type: item
 #: org.texi:10934
 #, no-wrap
 msgid "@code{:html-preamble}         @tab @code{org-export-html-preamble}"
-msgstr ""
+msgstr "@code{:html-preamble}         @tab @code{org-export-html-preamble}"
 
 #. type: item
 #: org.texi:10935
 #, no-wrap
 msgid "@code{:html-postamble}        @tab @code{org-export-html-postamble}"
-msgstr ""
+msgstr "@code{:html-postamble}        @tab @code{org-export-html-postamble}"
 
 #. type: item
 #: org.texi:10936
@@ -22475,55 +22480,55 @@ msgstr ""
 #: org.texi:10937
 #, no-wrap
 msgid "@code{:html-table-tag}        @tab @code{org-export-html-table-tag}"
-msgstr ""
+msgstr "@code{:html-table-tag}        @tab @code{org-export-html-table-tag}"
 
 #. type: item
 #: org.texi:10938
 #, no-wrap
 msgid "@code{:expand-quoted-html}    @tab @code{org-export-html-expand}"
-msgstr ""
+msgstr "@code{:expand-quoted-html}    @tab @code{org-export-html-expand}"
 
 #. type: item
 #: org.texi:10939
 #, no-wrap
 msgid "@code{:timestamp}             @tab @code{org-export-html-with-timestamp}"
-msgstr ""
+msgstr "@code{:timestamp}             @tab @code{org-export-html-with-timestamp}"
 
 #. type: item
 #: org.texi:10940
 #, no-wrap
 msgid "@code{:publishing-directory}  @tab @code{org-export-publishing-directory}"
-msgstr ""
+msgstr "@code{:publishing-directory}  @tab @code{org-export-publishing-directory}"
 
 #. type: item
 #: org.texi:10941
 #, no-wrap
 msgid "@code{:select-tags}           @tab @code{org-export-select-tags}"
-msgstr ""
+msgstr "@code{:select-tags}           @tab @code{org-export-select-tags}"
 
 #. type: item
 #: org.texi:10942
 #, no-wrap
 msgid "@code{:exclude-tags}          @tab @code{org-export-exclude-tags}"
-msgstr ""
+msgstr "@code{:exclude-tags}          @tab @code{org-export-exclude-tags}"
 
 #. type: item
 #: org.texi:10943
 #, no-wrap
 msgid "@code{:latex-image-options}   @tab @code{org-export-latex-image-default-option}"
-msgstr ""
+msgstr "@code{:latex-image-options}   @tab @code{org-export-latex-image-default-option}"
 
 #+glossary: check ( チェック ) / export ( エクスポート ) / exporter ( エクスポート機能 ) / list ( リスト ) / option ( オプション ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:10951
 msgid "Most of the @code{org-export-with-*} variables have the same effect in both HTML and @LaTeX{} exporters, except for @code{:TeX-macros} and @code{:LaTeX-fragments} options, respectively @code{nil} and @code{t} in the @LaTeX{} export.  See @code{org-export-plist-vars} to check this list of options."
-msgstr ""
+msgstr "@code{org-export-with-*}変数の大部分は@LaTeX{}エクスポートで@code{nil}と@code{t}のそれぞれで@code{:TeX-macros}と@code{:LaTeX-fragments}オプションを除きHTMLと@LaTeX{}エクスポート機能の両方で同じ効果を持ちます．このオプションのリストをチェックするには@code{org-export-plist-vars}を見てください．"
 
 #+glossary: file ( ファイル ) / option ( オプション ) / property ( プロパティ ) / publishing ( 公開 ) / setting ( 設定 ) / user ( ユーザー ) / value ( 値 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:10959
 msgid "When a property is given a value in @code{org-publish-project-alist}, its setting overrides the value of the corresponding user variable (if any) during publishing.  Options set within a file (@pxref{Export options}), however, override everything."
-msgstr ""
+msgstr "プロパティが@code{org-publish-project-alist}中の値で与えられた時，その設定は公開時に対応するユーザ変数を上書きします．オプションをファイル(@pxref{エクスポートオプション})内でセットしても，全て上書きされます．"
 
 #+glossary: file ( ファイル ) / link ( リンク ) / published ( 公開 )
 #. type: subsection
