@@ -3907,7 +3907,6 @@ Orgファイルの構成「階層とリスト」は、TODOの依存関係の定�
 ェックされていないチェックボックスをもつエントリーがDONEになるのを妨げること
 もできます。
 
-
 もし、より複雑な依存関係の構造が必要であれば、例えば、異なるツリーやファイル
 のエントリー同士の依存関係、付属モジュールの@file{org-depend.el}を参照してみてく
 ださい。
@@ -4134,7 +4133,8 @@ habits which should only be done in certain contexts, for example.
 のように@emph{優先順位クッキー}を置くことで可能になります:
 
 @example
-*** TODO [#A] サム フォーチュンに手紙を書く。@end example
+*** TODO [#A] サム フォーチュンに手紙を書く。
+@end example
 
 @noindent
 @vindex org-priority-faces
@@ -4230,7 +4230,8 @@ habits which should only be done in certain contexts, for example.
   "すべてのサブツリーが終了するとDONEに切り替えます。その他の場合は、TODOに
 なります。"
   (let (org-log-done org-log-states)   ; 記録「logging」を終了
-    (org-todo (if (= n-not-done 0) "DONE" "TODO"))))(add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
+    (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+(add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 @end example
 
 
@@ -4262,7 +4263,8 @@ habits which should only be done in certain contexts, for example.
     - [ ] サム
   - [X] 食べ物を注文
   - [ ] どんな音楽を掛けるか考える
-  - [X] 近所の人と話す@end example
+  - [X] 近所の人と話す
+@end example
 
 チェックボックスは、階層化に対応しています。そのため、もしチェックボックスの
 項目が子チェックボックスを持っている場合、もしその子チェックボックスが全くチ
@@ -10104,7 +10106,8 @@ DovBookファイルにエクスポートしてPDFに出力するには、XSLT処
 @cindex #+DOCBOOK
 @cindex #+BEGIN_DOCBOOK
 @example
-#+DOCBOOK: エクスポートするDocBookコードの文字列@end example
+#+DOCBOOK: エクスポートするDocBookコードの文字列
+@end example
 
 @noindent or
 @cindex #+BEGIN_DOCBOOK
@@ -10463,16 +10466,15 @@ Org-modeユーザーには、プロジェクトの進行を記録している人
 @chapter Publishing
 @cindex publishing
 
-Org includes a publishing management system that allows you to configure
-automatic HTML conversion of @emph{projects} composed of interlinked org
-files.  You can also configure Org to automatically upload your exported
-HTML pages and related attachments, such as images and source code files, to
-a web server.
+Org-modeは連結されたOrg-modeのファイルから成る@emph{projects}の自動的なHTMLへの変
+換設定をあなたに許可します。あなたはまた、エクスポートしたHTMLページと画像や
+ソースコードのような関係する添付ファイルの自動的なアップロードをOrg-modeに設
+定できます。
 
-You can also use Org to convert files into PDF, or even combine HTML and PDF
-conversion so that files are available in both formats on the server.
+あなたはまた、Org-modeからPDFへ変換することもでき、さらに、サーバ上で両方の
+ファイルを利用できるようにHTMLとPDFへの変換を組み合わせることも可能です。
 
-Publishing has been contributed to Org by David O'Toole.
+公開はDavid O'TooleによってOrg-modeに寄与されました。
 
 @menu
 * Configuration::            プロジェクトの定義
@@ -10484,29 +10486,29 @@ Publishing has been contributed to Org by David O'Toole.
 @node Configuration, Uploading files, Publishing, Publishing
 @section Configuration
 
-Publishing needs significant configuration to specify files, destination and
-many other properties of a project.
+公開はファイルの指定、公開先、プロジェクトのその他多くのプロパティの重要な設
+定を必要とします。
 
 @menu
 * Project alist::            主な設定用の変数
 * Sources and destinations::  ここからそこまで
 * Selecting files::          どのファイルがプロジェクトの一部なのか
 * Publishing action::        公開を行う関数の設定
-* Publishing options::       Tweaking HTML/@LaTeX{} export
+* Publishing options::       HTML/@LaTeX{}エクスポートの調整
 * Publishing links::         どのリンクを公開した後も有効にしておくか
 * Sitemap::                  全てのページリストの生成
 * Generating an index::      ページを超えたインデックス
 @end menu
 
 @node Project alist, Sources and destinations, Configuration, Configuration
-@subsection The variable @code{org-publish-project-alist}
+@subsection @code{org-publishing-alist}変数
 @cindex org-publish-project-alist
-@cindex projects, for publishing
+@cindex プロジェクト、公開のための
 
 @vindex org-publish-project-alist
-Publishing is configured almost entirely through setting the value of one
-variable, called @code{org-publish-project-alist}.  Each element of the list
-configures one project, and may be in one of the two following forms:
+公開は@code{org-publish-project-alist}というある変数の値により設定されます。リス
+トの各要素が1つのプロジェクトの設定で、2種類の設定方法について以下に示します
+:
 
 @lisp
    ("project-name" :property value :property value ...) 
@@ -10516,112 +10518,111 @@ configures one project, and may be in one of the two following forms:
 
 @end lisp
 
-In both cases, projects are configured by specifying property values.  A
-project defines the set of files that will be published, as well as the
-publishing configuration to use when publishing those files.  When a project
-takes the second form listed above, the individual members of the
-@code{:components} property are taken to be sub-projects, which group
-together files requiring different publishing options.  When you publish
-such a ``meta-project'', all the components will also be published, in the
-sequence given.
+どちらの場合もプロパティと値の指定によって設定されます。プロジェクトは公開さ
+れるファイルのセットと、それらが公開される時に使用する設定を定義します。上記
+の2番目の形式を取る場合、@code{:components}プロパティの個々のメンバは異なる公開設
+定を持つファイルをまとめたサブプロジェクトとして扱われます。あなたが``メタプ
+ロジェクト''を公開する時、全てのコンポーネントは特定の順序で公開されます。
 
 @node Sources and destinations, Selecting files, Project alist, Configuration
-@subsection Sources and destinations for files
-@cindex directories, for publishing
+@subsection ファイルの送り元と送り先
+@cindex 公開のためのディレクトリ
 
-Most properties are optional, but some should always be set.  In particular,
-Org needs to know where to look for source files, and where to put published
-files.
+多くの<プロパティは任意に選択でき、しかし多くは常にセットされているべきです
+。特に、Org-modeはソースファイルをどこで探すか、またファイルの公開先を知る必
+要があります。
 
 @multitable @columnfractions 0.3 0.7
 @item @code{:base-directory}
-@tab Directory containing publishing source files
+@tab 公開するソースファイルを含むディレクトリ
 @item @code{:publishing-directory}
-@tab Directory where output files will be published.  You can directly publish to
-a webserver using a file name syntax appropriate for the Emacs @file{tramp}
-package.  Or you can publish to a local directory and use external tools to
-upload your website (@pxref{Uploading files}).
+@tab アウトプットファイルのあるディレクトリは公開されます。あなたはEmacs@file{tramp}
+パッケージの構文のファイル名を使ってウェブサーバに直接公開することができます
+。もしくは、ローカルディレクトリに公開したり、あなたのウェブサイト
+(@pxref{Uploading files})にアップロードするための拡張ツールを使うことができます。
 @item @code{:preparation-function}
-@tab Function or list of functions to be called before starting the publishing
-process, for example, to run @code{make} for updating files to be
-published.  The project property list is scoped into this call as the
-variable @code{project-plist}.
+@tab 公開プロセスの開始前に呼ばれる関数または関数のリストです(例えば、公開のため
+のファイルの更新に使う@code{make}を実行します)。@code{project-plist}変数であるプロジェ
+クトのプロパティリストはこの呼び出しにスコープされます。
 @item @code{:completion-function}
-@tab Function or list of functions called after finishing the publishing process,
-for example, to change permissions of the resulting files.  The project
-property list is scoped into this call as the variable @code{project-plist}.
+@tab 公開プロセスが完了した後に呼ばれる関数または関数のリストです(例えば、出力し
+たファイルの権限を変更します)。@code{project-plist}変数であるプロジェクトのプロパ
+ティリストはこの呼び出しにスコープされます。
 @end multitable
 @noindent
 
 @node Selecting files, Publishing action, Sources and destinations, Configuration
 @subsection Selecting files
-@cindex files, selecting for publishing
+@cindex ファイル、公開のための選択
 
-By default, all files with extension @file{.org} in the base directory are
-considered part of the project.  This can be modified by setting the
-properties
+デフォルトでは、ベースディレクトリの中の拡張子が@file{.org}である全てのファイルは
+プロジェクトの一部であるとみなされます。これはプロパティの設定により変更する
+ことができます:
 @multitable @columnfractions 0.25 0.75
 @item @code{:base-extension}
-@tab Extension (without the dot!) of source files.  This actually is a regular
-expression.  Set this to the symbol @code{any} if you want to get all files
-in @code{:base-directory}, even without extension.
+@tab ソースファイルの拡張子(.を除きます!)です。これは実際は正規表現です。もしあ
+なたが@code{:base-directory}の中の全てのファイルを取得したいのであれば、@code{any}シン
+ボルをセットします。
 
 @item @code{:exclude}
-@tab Regular expression to match file names that should not be published, even
-though they have been selected on the basis of their extension.
+@tab そのファイルの拡張子が選択されていたとしても、公開したくないファイル名にマ
+ッチする正規表現。
 
 @item @code{:include}
-@tab List of files to be included regardless of @code{:base-extension} and
-@code{:exclude}.
+@tab @code{:base-extension}と@code{:exclude}にかかわらずインクルードするファイルのリスト。
 
 @item @code{:recursive}
-@tab Non-nil means, check base-directory recursively for files to publish.
+@tab nilでなければ、ベースディレクトリから再帰的に公開するファイルをチェックしま
+す。
 @end multitable
 
 @node Publishing action, Publishing options, Selecting files, Configuration
 @subsection Publishing action
-@cindex action, for publishing
+@cindex アクション、公開のための
 
-Publishing means that a file is copied to the destination directory and
-possibly transformed in the process.  The default transformation is to
-export Org files as HTML files, and this is done by the function
-@code{org-publish-org-to-html} which calls the HTML exporter (@pxref{HTML export}).  But you also can publish your content as PDF files using
-@code{org-publish-org-to-pdf}, or as @code{ascii}, @code{latin1} or
-@code{utf8} encoded files using the corresponding functions.  If you want to
-publish the Org file itself, but with @i{archived}, @i{commented}, and
-@i{tag-excluded} trees removed, use @code{org-publish-org-to-org} and set
-the parameters @code{:plain-source} and/or @code{:htmlized-source}.  This
-will produce @file{file.org} and @file{file.org.html} in the publishing
-directory@footnote{@file{file-source.org} and @file{file-source.org.html} if source and publishing directories are equal.  Note that with this kind of setup, you need to add @code{:exclude "-source\\.org"} to the project definition in @code{org-publish-project-alist} to prevent the published source files from being considered as new org files the next time the project is published.}.  Other files like images only need to be copied to
-the publishing destination; for this you may use
-@code{org-publish-attachment}.  For non-Org files, you always need to
-specify the publishing function:
+公開は、ファイルを宛先ディレクトリにコピーし、場合によっては変換することです
+。デフォルトの変換はOrg-modeファイルからHTMLファイルへのエクスポートで、これ
+はHTMLエクスポーター(@pxref{HTML export})を呼び出す@code{org-publish-org-to-html}によっ
+て行われます。しかしあなたはまた、@code{org-publish-org-to-pdf}を用いたPDFファイ
+ルのようなコンテンツも公開することができます。もしあなたが@i{アーカイブされた}、
+@i{コメントされた}、@i{除外タグがついた}ツリーを消去したOrg-modeファイル自身を公開し
+たいのであれば、@code{org-publish-org-to-org}を使い、@code{:plain-source}パラメラと/ま
+たは@code{:htmlized-source}をセットします。これは公開ディレクトリ@footnote{もしソースと公
+開ディレクトリが同じであれば、@file{file-source.org}と@file{file-source.org.html}です
+。このようなセットアップでは、プロジェクトが公開される次回、新しいOrg-modeフ
+ァイルとみなされるソースファイルが公開されるのを防ぐためにあなたは
+@code{:exclude \"-source\\\\.org\"}を@code{org-publish-alist}中のプロジェクトの定義に
+追加する必要があることに注意しください。}に@file{file.org}と@file{file.org.html}を作り
+ます。画像のようなその他のファイル公開ディレクトリにコピーされる必要がありま
+す;
+このために、あなたは@code{org-publish-attachment}を使うことができます。Org-modeで
+ないファイルのために、あなたは常に公開用の関数を指定する必要があります:
 
 @multitable @columnfractions 0.3 0.7
 @item @code{:publishing-function}
-@tab Function executing the publication of a file.  This may also be a list of
-functions, which will all be called in turn.
+@tab ファイルの公開を実行する関数です。これは、順番に呼び出される関数のリストに
+することもできます。
 @item @code{:plain-source}
-@tab Non-nil means, publish plain source.
+@tab nilでなければ、プレーンソースを公開します。
 @item @code{:htmlized-source}
-@tab Non-nil means, publish htmlized source.
+@tab nilでなければ、HTMLに変換されたソースを公開します。
 @end multitable
 
-The function must accept three arguments: a property list containing at
-least a @code{:publishing-directory} property, the name of the file to be
-published, and the path to the publishing directory of the output file.  It
-should take the specified file, make the necessary transformation (if any)
-and place the result into the destination folder.
+関数には3つの引数を渡す必要があります:
+最低でも@code{:publishing-directory}プロパティを含むプロパティリスト、公開される
+ファイル名、出力ファイルの公開ディレクトリへのパスです。それは指定されたファ
+イルを取り、(もしあれば)必要な変換を行い、出力をコピー先ディレクトリに置きま
+す。
 
 @node Publishing options, Publishing links, Publishing action, Configuration
-@subsection Options for the HTML/@LaTeX{} exporters
-@cindex options, for publishing
+@subsection HTML/@LaTeX{}エクスポート機能のオプション
+@cindex オプション、公開のための
 
-The property list can be used to set many export options for the HTML and
-@LaTeX{} exporters.  In most cases, these properties correspond to user
-variables in Org.  The table below lists these properties along with the
-variable they belong to.  See the documentation string for the respective
-variable for details.
+プロパティリストはHTMLと@LaTeX{}エクスポート機能の多くのエクスポートオプション
+をセットするために使うことができます。多くの場合、これらのプロパティは
+Org-mode中のユーザ変数と対応します。下のテーブルはそれらが所属する変数と同様
+なプロパティのリストです。各変数の詳細については、ドキュメントを参照してくだ
+さい。
 
 @vindex org-export-html-link-up
 @vindex org-export-html-link-home
@@ -10720,19 +10721,17 @@ variable for details.
 @item @code{:latex-image-options}   @tab @code{org-export-latex-image-default-option}
 @end multitable
 
-Most of the @code{org-export-with-*} variables have the same effect in both
-HTML and @LaTeX{} exporters, except for @code{:TeX-macros} and
-@code{:LaTeX-fragments} options, respectively @code{nil} and @code{t} in the
-@LaTeX{} export.  See @code{org-export-plist-vars} to check this list of
-options.
+@code{org-export-with-*}変数の大部分は@LaTeX{}エクスポートで@code{nil}と@code{t}のそれぞれで
+@code{:TeX-macros}と@code{:LaTeX-fragments}オプションを除きHTMLと@LaTeX{}エクスポート機能
+の両方で同じ効果を持ちます。このオプションのリストをチェックするには
+@code{org-export-plist-vars}を見てください。
 
 
 
 @vindex org-publish-project-alist
-When a property is given a value in @code{org-publish-project-alist}, its
-setting overrides the value of the corresponding user variable (if any)
-during publishing.  Options set within a file (@pxref{Export options}),
-however, override everything.
+プロパティが@code{org-publish-project-alist}中の値で与えられた時、その設定は公開
+時に対応するユーザ変数を上書きします。オプションをファイル(@pxref{Export options})
+内でセットしても、全て上書きされます。
 
 @node Publishing links, Sitemap, Publishing options, Configuration
 @subsection Links between published files
