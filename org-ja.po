@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-10-15 15:46+0900\n"
+"PO-Revision-Date: 2011-10-16 01:18+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -28769,26 +28769,26 @@ msgstr "単純に、ファイルを編集したいときはテーブルを一行
 #: org.texi:13947
 #, no-wrap
 msgid "A @LaTeX{} example of radio tables"
-msgstr ""
+msgstr "@LaTeX{}でのラジオテーブルの例"
 
 #+glossary: mode ( モード|モード ) / orgtbl ( orgtbl )
 #. type: cindex
 #: org.texi:13948
 #, no-wrap
 msgid "@LaTeX{}, and Orgtbl mode"
-msgstr ""
+msgstr "@LaTeX{}、Orgtblモードと"
 
 #+glossary: command ( コマンド ) / default ( デフォルト|初期値 ) / document ( ドキュメント|文書 ) / header ( ヘッダー ) / insert ( 挿入 ) / install ( インストール ) / mode ( モード|モード ) / orgtbl ( orgtbl ) / radio ( ラジオ ) / source ( ソース ) / table ( テーブル ) / template ( テンプレート ) / variable ( 変数 ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:13959
 msgid "The best way to wrap the source table in @LaTeX{} is to use the @code{comment} environment provided by @file{comment.sty}.  It has to be activated by placing @code{\\usepackage@{comment@}} into the document header.  Orgtbl mode can insert a radio table skeleton@footnote{By default this works only for @LaTeX{}, HTML, and Texinfo.  Configure the variable @code{orgtbl-radio-tables} to install templates for other modes.} with the command @kbd{M-x orgtbl-insert-radio-table}.  You will be prompted for a table name, let's say we use @samp{salesfigures}.  You will then get the following template:"
-msgstr ""
+msgstr "@LaTeX{}でソーステーブルを囲む最良の方法は、@file{comment.sty}で提供される@code{comment}環境を使うことです。文書のヘッダーに@code{\\usepackage@{comment@}}と書くことで有効になります。Orgtblモードで@kbd{M-x orgtbl-insert-radio-table}とすると、テーブルのスケルトンを挿入できますfootnote{デフォルトでは、@LaTeX{}, HTMLと Texinfoの場合だけ動作します。他のモードのテンプレートをインストールするには、変数@code{orgtbl-radio-tables}を編集して下さい。}。 テーブル名を確認されますので、@samp{salesfigures}と入力します。 そして以下のテンプレートを得ました:"
 
 #. type: cindex
 #: org.texi:13960
 #, no-wrap
 msgid "#+ORGTBL, SEND"
-msgstr ""
+msgstr "#+ORGTBL, SEND"
 
 #+glossary: orgtbl ( orgtbl )
 #. type: example
@@ -28802,18 +28802,24 @@ msgid ""
 "| | |\n"
 "\\end@{comment@}\n"
 msgstr ""
+"% BEGIN RECEIVE ORGTBL salesfigures\n"
+"% END RECEIVE ORGTBL salesfigures\n"
+"\\begin@{comment@}\n"
+"#+ORGTBL: SEND salesfigures orgtbl-to-latex\n"
+"| | |\n"
+"\\end@{comment@}\n"
 
 #. type: vindex
 #: org.texi:13971
 #, no-wrap
 msgid "@LaTeX{}-verbatim-environments"
-msgstr ""
+msgstr "@LaTeX{}-verbatim-environments"
 
 #+glossary: characters ( 文字 ) / example ( 例 ) / function ( 機能|関数 ) / line ( 行|ライン|線 ) / mode ( モード|モード ) / orgtbl ( orgtbl ) / table ( テーブル ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:13983
 msgid "The @code{#+ORGTBL: SEND} line tells Orgtbl mode to use the function @code{orgtbl-to-latex} to convert the table into @LaTeX{} and to put it into the receiver location with name @code{salesfigures}.  You may now fill in the table---feel free to use the spreadsheet features@footnote{If the @samp{#+TBLFM} line contains an odd number of dollar characters, this may cause problems with font-lock in @LaTeX{} mode.  As shown in the example you can fix this by adding an extra line inside the @code{comment} environment that is used to balance the dollar expressions.  If you are using AUC@TeX{} with the font-latex library, a much better solution is to add the @code{comment} environment to the variable @code{LaTeX-verbatim-environments}.}:"
-msgstr ""
+msgstr "@code{#+ORGTBL: SEND}の行は、関数@code{orgtbl-to-latex}を使ってテーブルを@LaTeX{}へ変換し、@code{salesfigures}の名前で受け取る場所に設置するようにと、Orgtblモードに指示しています。これからテーブルに記入します---スプレッドシートの機能を自由に使ってください@footnote{@samp{#+TBLFM}行に奇数個のドル記号(dollar character, $)が在る場合、@LaTeX{}モードの色分けで問題が生じるかも知れません。この問題を解決するには、例で示すように@code{comment}環境内に行を追加してドル記号の表現を調整してください。AUC@TeX{}をfont-latexライブラリと使っている場合のはるかに優れた解決法は、変数@code{LaTeX-verbatim-environments}に@code{comment}環境追加することです。}:"
 
 #+glossary: day ( 日付|日にち ) / orgtbl ( orgtbl )
 #. type: example
@@ -28833,18 +28839,30 @@ msgid ""
 "% $ (optional extra dollar to keep font-lock happy, see footnote)\n"
 "\\end@{comment@}\n"
 msgstr ""
+"% BEGIN RECEIVE ORGTBL salesfigures\n"
+"% END RECEIVE ORGTBL salesfigures\n"
+"\\begin@{comment@}\n"
+"#+ORGTBL: SEND salesfigures orgtbl-to-latex\n"
+"| 月  | 日数 | 販売数 | 一日あたり |\n"
+"|-----+------+--------+------------|\n"
+"| 1月 |   23 |     55 |        2.4 |\n"
+"| 2月 |   21 |     16 |        0.8 |\n"
+"| 3月 |   22 |    278 |       12.6 |\n"
+"#+TBLFM: $4=$3/$2;%.1f\n"
+"% $ (font-lock 色分けをうまく動作させるための余分なドル記号、脚注参照)\n"
+"\\end@{comment@}\n"
 
 #+glossary: line ( 行|ライン|線 ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:14002
 msgid "When you are done, press @kbd{C-c C-c} in the table to get the converted table inserted between the two marker lines."
-msgstr ""
+msgstr "入力し終わり、テーブルの中で@kbd{C-c C-c}と押下すると、目印となる2行の間に変換されたテーブルが挿入されます。"
 
 #+glossary: column ( 列 ) / command ( コマンド ) / header ( ヘッダー ) / line ( 行|ライン|線 ) / source ( ソース ) / table ( テーブル ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:14008
 msgid "Now let's assume you want to make the table header by hand, because you want to control how columns are aligned, etc@.  In this case we make sure that the table translator skips the first 2 lines of the source table, and tell the command to work as a @i{splice}, i.e.@: to not produce header and footer commands of the target table:"
-msgstr ""
+msgstr "さて、列の文字揃えを制御したいなどの理由から、テーブルのヘッダーを書きたいとします。この場合は次のことを確認します。テーブルを変換する関数がソーステーブルの最初の2行を飛ばすことと、接合部として動作すること、すなわち@: ターゲットテーブルのヘッダーとフッターを生成しないことです:"
 
 #+glossary: day ( 日付|日にち ) / orgtbl ( orgtbl )
 #. type: example
@@ -28867,48 +28885,94 @@ msgid ""
 "#+TBLFM: $4=$3/$2;%.1f\n"
 "\\end@{comment@}\n"
 msgstr ""
+"\\begin@{tabular@}@{lrrr@}\n"
+"月 & \\multicolumn@{1@}@{c@}@{日数@} & 販売数 & 一日あたり \\\\\n"
+"% BEGIN RECEIVE ORGTBL salesfigures\n"
+"1月 & 23 & 55 & 2.4 \\\\\n"
+"2月 & 21 & 16 & 0.8 \\\\\n"
+"3月 & 22 & 278 & 12.6 \\\\\n"
+"% END RECEIVE ORGTBL salesfigures\n"
+"\\end@{tabular@}\n"
+"%\n"
+"\\begin@{comment@}\n"
+"#+ORGTBL: SEND salesfigures orgtbl-to-latex :splice t :skip 2\n"
+"| 月  | 日数 | 販売数 | 1日あたり |\n"
+"|-----+------+--------+-----------|\n"
+"| 1月 |   23 |     55 |       2.4 |\n"
+"| 2月 |   21 |     16 |       0.8 |\n"
+"| 3月 |   22 |    278 |      12.6 |\n"
+"#+TBLFM: $4=$3/$2;%.1f\n"
+"\\end@{comment@}\n"
 
 #+glossary: function ( 機能|関数 ) / horizontal ( 水平|横線 ) / line ( 行|ライン|線 ) / mark ( マーク ) / mode ( モード|モード ) / orgtbl ( orgtbl ) / parameters ( パラメーター ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:14031
 msgid "The @LaTeX{} translator function @code{orgtbl-to-latex} is already part of Orgtbl mode.  It uses a @code{tabular} environment to typeset the table and marks horizontal lines with @code{\\hline}.  Furthermore, it interprets the following parameters (see also @pxref{Translator functions}):"
-msgstr ""
+msgstr "@LaTeX{}へ変換する関数@code{orgtbl-to-latex}は既にOrgtblモードの一部です。@code{tabular}環境を使ってテーブルをタイプセットし、横線に@code{\\hline}で印を付けます。加えて、以下のパラメータを解釈します(@pxref{Translator functions}も参照してください):"
 
 #. type: item
 #: org.texi:14033
 #, no-wrap
 msgid ":splice nil/t"
-msgstr ""
+msgstr ":splice nil/t"
 
 #+glossary: default ( デフォルト|初期値 ) / line ( 行|ライン|線 ) / nil ( nil ) / table ( テーブル )
 #. type: table
 #: org.texi:14036
 msgid "When set to t, return only table body lines, don't wrap them into a tabular environment.  Default is nil."
-msgstr ""
+msgstr "tのとき、tabular環境で囲まずに、テーブルの本文だけを返します。デフォルトではnilです。"
 
 #. type: item
 #: org.texi:14037
 #, no-wrap
 msgid ":fmt fmt"
-msgstr ""
+msgstr ":fmt fmt"
 
 #+glossary: argument ( 引数 ) / column ( 列 ) / example ( 例 ) / field ( フィールド ) / format ( フォーマット|形成 ) / function ( 機能|関数 ) / list ( リスト ) / property ( プロパティ ) / string ( 文字列 ) / value ( 値 )
 #. type: table
 #: org.texi:14044
 msgid "A format to be used to wrap each field, it should contain @code{%s} for the original field value.  For example, to wrap each field value in dollars, you could use @code{:fmt \"$%s$\"}.  This may also be a property list with column numbers and formats. for example @code{:fmt (2 \"$%s$\" 4 \"%s\\\\%%\")}.  A function of one argument can be used in place of the strings; the function must return a formatted string."
-msgstr ""
+msgstr "各フィールドを囲むのに使われるフォーマットで、@code{%s}にはフィールドの元の値が入っています。例えばドルマークで囲む場合には、@code{:fmt \"$%s$\"}と書けます。また、列の番号とフォーマットというプロパティのリストにもなります。例えば@code{:fmt (2 \"$%s$\" 4 \"%s\\\\%%\")}と書けます。文字列の変わりに、1つの引数を持つ関数を使えます; その関数は書式設定された文字列を返します。"
 
 #. type: item
 #: org.texi:14045
 #, no-wrap
 msgid ":efmt efmt"
-msgstr ""
+msgstr ":efmt efmt"
 
+# テスト希望 指数表記されず (efmt)
+# ---test.tex starts---
+# \begin@{tabular@}@{lrrr@}
+# 月 & \multicolumn@{1@}@{c@}@{日数@} & 販売数 & 一日あたり \\
+# % BEGIN RECEIVE ORGTBL salesfigures
+# \hline
+# 1月 & $23$ & 55 & 2.4 \\
+# 2月 & $21$ & 0.0000016 & 0.8 \\
+# 3月 & $22$ & 27800000 & 12.6 \\
+# % END RECEIVE ORGTBL salesfigures
+# \end@{tabular@}
+# %
+# \begin@{comment@}
+# #+ORGTBL: SEND salesfigures orgtbl-to-latex :splice t :skip 1 :efmt (3 "$%s, %s$") :fmt (2 "$%s$")
+# | 月  | 日数 |    販売数 | 1日あたり |
+# |-----+------+-----------+-----------|
+# | 1月 |   23 |        55 |       2.4 |
+# | 2月 |   21 | 0.0000016 |       0.8 |
+# | 3月 |   22 |  27800000 |      12.6 |
+# #+TBLFM: $4=$3/$2;%.1f
+# % $ (font-lock 色分けをうまく動作させるための余分なドル記号、脚注参照)
+# \end@{comment@}
+# ---test.tex ends---
+#
+# #+begin_verse
+# org-version
+# "7.5"
+# #+end_verse
 #+glossary: argument ( 引数 ) / column ( 列 ) / default ( デフォルト|初期値 ) / example ( 例 ) / format ( フォーマット|形成 ) / function ( 機能|関数 ) / list ( リスト ) / property ( プロパティ ) / string ( 文字列 ) / value ( 値 )
 #. type: table
 #: org.texi:14054
 msgid "Use this format to print numbers with exponentials.  The format should have @code{%s} twice for inserting mantissa and exponent, for example @code{\"%s\\\\times10^@{%s@}\"}.  The default is @code{\"%s\\\\,(%s)\"}.  This may also be a property list with column numbers and formats, for example @code{:efmt (2 \"$%s\\\\times10^@{%s@}$\" 4 \"$%s\\\\cdot10^@{%s@}$\")}.  After @code{efmt} has been applied to a value, @code{fmt} will also be applied.  Similar to @code{fmt}, functions of two arguments can be supplied instead of strings."
-msgstr ""
+msgstr "指数表記で数値を出力する時に使います。仮数部と指数部を挿入するため、この形式では@code{%s}が2回出現します。例えば@code{\"%s\\\\times10^@{%s@}\"}。デフォルトでは@code{\"%s\\\\,(%s)\"}です。これも列数と書式設定のリスト、例えば@code{:efmt (2 \"$%s\\\\times10^@{%s@}$\" 4 \"$%s\\\\cdot10^@{%s@}$\")}となり得ます。値に@code{efmt}が適用された後に、@code{fmt}も適用されます。@code{fmt}と同様に、文字列の代わりに引数2つの関数を使えます。"
 
 #+glossary: mode ( モード|モード ) / orgtbl ( orgtbl )
 #. type: cindex
