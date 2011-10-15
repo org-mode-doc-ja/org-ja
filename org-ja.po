@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-10-14 12:31+0900\n"
+"PO-Revision-Date: 2011-10-15 15:46+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -28673,13 +28673,13 @@ msgstr "Bastienはリストに対して同じ機能をOrgstructモードに加�
 #: org.texi:13880
 #, no-wrap
 msgid "radio tables"
-msgstr ""
+msgstr "ラジオテーブル"
 
 #+glossary: comment ( コメント ) / current ( カレント|現在の ) / insert ( 挿入 ) / line ( 行|ライン|線 ) / mode ( モード|モード ) / orgtbl ( orgtbl ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:13886
 msgid "To define the location of the target table, you first need to create two lines that are comments in the current mode, but contain magic words for Orgtbl mode to find.  Orgtbl mode will insert the translated table between these lines, replacing whatever was there before.  For example:"
-msgstr ""
+msgstr "ターゲットテーブルの場所を定義するには、Orgtblモードが見つけ出せるマジックワード含んだ2行のコメントを最初にカレントモード内で作成します。Orgtblモードはその2行の間に変換されたテーブルを挿入します。前に何が在ったかは考慮せずに置き換えます。例えば:"
 
 #+glossary: orgtbl ( orgtbl )
 #. type: example
@@ -28689,78 +28689,80 @@ msgid ""
 "/* BEGIN RECEIVE ORGTBL table_name */\n"
 "/* END RECEIVE ORGTBL table_name */\n"
 msgstr ""
+"/* BEGIN RECEIVE ORGTBL table_name */\n"
+"/* END RECEIVE ORGTBL table_name */\n"
 
 #+glossary: install ( インストール ) / line ( 行|ライン|線 ) / mode ( モード|モード ) / orgtbl ( orgtbl ) / source ( ソース ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:13896
 msgid "Just above the source table, we put a special line that tells Orgtbl mode how to translate this table and where to install it.  For example:"
-msgstr ""
+msgstr "ソーステーブル(元のテーブル)のすぐ上に、変換する方法と挿入する場所をOrgtblモードに知らせる特別な行を付け加えます。例えば:"
 
 #. type: cindex
 #: org.texi:13896
 #, no-wrap
 msgid "#+ORGTBL"
-msgstr ""
+msgstr "#+ORGTBL"
 
 #. type: example
 #: org.texi:13899
 #, no-wrap
 msgid "#+ORGTBL: SEND table_name translation_function arguments....\n"
-msgstr ""
+msgstr "#+ORGTBL: SEND table_name translation_function arguments....\n"
 
 #+glossary: argument ( 引数 ) / function ( 機能|関数 ) / key ( キー ) / line ( 行|ライン|線 ) / list ( リスト ) / parameters ( パラメーター ) / property ( プロパティ ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:13909
 msgid "@code{table_name} is the reference name for the table that is also used in the receiver lines. @code{translation_function} is the Lisp function that does the translation.  Furthermore, the line can contain a list of arguments (alternating key and value) at the end.  The arguments will be passed as a property list to the translation function for interpretation.  A few standard parameters are already recognized and acted upon before the translation function is called:"
-msgstr ""
+msgstr "@code{table_name}はそのテーブルの参照名で、それは変換結果を挿入する行でも使われます。@code{translation_function}は変換するLispの関数です。加えて、その行の最後では、(keyとvalueを交互においた)引数のリストを含むことができます。引数はプロパティのリストとして解釈するために、変換する関数(translation function)に渡されます。変換する関数(translation function)が呼び出される前に、いくつかの基本的なパラメータは既に認識され、影響を受けています。"
 
 #. type: item
 #: org.texi:13911
 #, no-wrap
 msgid ":skip N"
-msgstr ""
+msgstr ":skip N"
 
 #+glossary: line ( 行|ライン|線 ) / table ( テーブル )
 #. type: table
 #: org.texi:13914
 msgid "Skip the first N lines of the table.  Hlines do count as separate lines for this parameter!"
-msgstr ""
+msgstr "テーブルの最初のN行を飛ばして読み進みます。このパラメータは、行を分ける横線をカウントします。"
 
 #. type: item
 #: org.texi:13915
 #, no-wrap
 msgid ":skipcols (n1 n2 ...)"
-msgstr ""
+msgstr ":skipcols (n1 n2 ...)"
 
 #+glossary: calculation ( 計算 ) / column ( 列 ) / function ( 機能|関数 ) / list ( リスト ) / mark ( マーク ) / note ( ノート|メモ ) / table ( テーブル )
 #. type: table
 #: org.texi:13921
 msgid "List of columns that should be skipped.  If the table has a column with calculation marks, that column is automatically discarded as well.  Please note that the translator function sees the table @emph{after} the removal of these columns, the function never knows that there have been additional columns."
-msgstr ""
+msgstr "飛ばすべき列のリストです。もしもテーブルに計算用にマークされた列がある場合、同じようにに自動的に無視されます。列を除去した@emph{後で}変換する関数がテーブルを見るので、そこには更に列があったとは知る由もないことに注意して下さい。"
 
 #+glossary: buffer ( バッファ ) / example ( 例 ) / file ( ファイル ) / processing ( 処理 ) / source ( ソース ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:13928
 msgid "The one problem remaining is how to keep the source table in the buffer without disturbing the normal workings of the file, for example during compilation of a C file or processing of a @LaTeX{} file.  There are a number of different solutions:"
-msgstr ""
+msgstr "残る1つの問題は、ファイルの通常動作を妨げずに、バッファ内のソーステーブルを保つ方法です。例えば、C言語のファイルや@LaTeX{}ファイルを編集している場合です。いくつかの方法があります:"
 
 #+glossary: block ( ブロック ) / comment ( コメント ) / example ( 例 ) / language ( 言語 ) / line ( 行|ライン|線 ) / mode ( モード|モード ) / table ( テーブル )
 #. type: itemize
 #: org.texi:13934
 msgid "The table could be placed in a block comment if that is supported by the language.  For example, in C mode you could wrap the table between @samp{/*} and @samp{*/} lines."
-msgstr ""
+msgstr "その言語でサポートされたブロックコメント内にテーブルを設置できます。例えばCモードの場合、テーブルを@samp{/*}と@samp{*/}の行で括れます。"
 
 #+glossary: example ( 例 ) / table ( テーブル )
 #. type: itemize
 #: org.texi:13938
 msgid "Sometimes it is possible to put the table after some kind of @i{END} statement, for example @samp{\\bye} in @TeX{} and @samp{\\end@{document@}} in @LaTeX{}."
-msgstr ""
+msgstr "時には、@TeX{}の@samp{\\bye}や@LaTeX{}の@samp{\\end@{document@}}のような、ある種の終了文の後にテーブルを書けることがあります。"
 
 #+glossary: command ( コマンド ) / comment ( コメント ) / file ( ファイル ) / key ( キー ) / table ( テーブル )
 #. type: itemize
 #: org.texi:13944
 msgid "You can just comment the table line-by-line whenever you want to process the file, and uncomment it whenever you need to edit the table.  This only sounds tedious---the command @kbd{M-x orgtbl-toggle-comment} makes this comment-toggling very easy, in particular if you bind it to a key."
-msgstr ""
+msgstr "単純に、ファイルを編集したいときはテーブルを一行一行コメントにし、テーブルを編集したいときはコメントを外すこともできます。これは退屈そうに聞こえますが---コマンド@kbd{M-x orgtbl-toggle-comment}を使えばコメントのオンオフを簡単にできます。キーバインドを設定すると特に便利です。"
 
 #+glossary: example ( 例 ) / radio ( ラジオ ) / table ( テーブル )
 #. type: subsection
