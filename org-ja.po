@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-10-16 01:18+0900\n"
+"PO-Revision-Date: 2011-10-17 12:16+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -28979,20 +28979,20 @@ msgstr "指数表記で数値を出力する時に使います。仮数部と指
 #: org.texi:14058
 #, no-wrap
 msgid "HTML, and Orgtbl mode"
-msgstr ""
+msgstr "HTML、Orgtblモードと"
 
 #+glossary: function ( 機能|関数 )
 #. type: cindex
 #: org.texi:14059
 #, no-wrap
 msgid "translator function"
-msgstr ""
+msgstr "変換関数"
 
 #+glossary: code ( コード ) / column ( 列 ) / example ( 例 ) / field ( フィールド ) / function ( 機能|関数 ) / line ( 行|ライン|線 ) / mode ( モード|モード ) / orgtbl ( orgtbl ) / processing ( 処理 ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:14070
 msgid "Orgtbl mode has several translator functions built-in: @code{orgtbl-to-csv} (comma-separated values), @code{orgtbl-to-tsv} (TAB-separated values)  @code{orgtbl-to-latex}, @code{orgtbl-to-html}, and @code{orgtbl-to-texinfo}.  Except for @code{orgtbl-to-html}@footnote{The HTML translator uses the same code that produces tables during HTML export.}, these all use a generic translator, @code{orgtbl-to-generic}.  For example, @code{orgtbl-to-latex} itself is a very short function that computes the column definitions for the @code{tabular} environment, defines a few field and line separators and then hands processing over to the generic translator.  Here is the entire code:"
-msgstr ""
+msgstr "Orgtblモードには幾つかの組み込み変換関数があります: @code{orgtbl-to-csv} (カンマ区切り), @code{orgtbl-to-tsv} (タブ区切り)  @code{orgtbl-to-latex}, @code{orgtbl-to-html} そして @code{orgtbl-to-texinfo}です。@code{orgtbl-to-html}@footnote{HTMLの変換関数は、HTMLをエクスポートする時にテーブルを作るコードと全く同じものを使っています。}を除いた、これら全ての関数は包括的な変換関数@code{orgtbl-to-generic}を使います。例えば、@code{orgtbl-to-latex}それ自体はとても短い関数で@code{tabular}環境の列の定義を計算したり、幾つかのフィールドセパレータや行セパレータを定義してそれから処理を包括的な変換関数へと渡しています。ここに完全なコードがあります:"
 
 #+glossary: mode ( モード|モード ) / orgtbl ( orgtbl ) / table ( テーブル )
 #. type: group
@@ -29011,24 +29011,35 @@ msgid ""
 "           :efmt \"%s\\\\,(%s)\" :hline \"\\\\hline\")))\n"
 "    (orgtbl-to-generic table (org-combine-plists params2 params))))\n"
 msgstr ""
+"(defun orgtbl-to-latex (table params)\n"
+"  \"OrgtblモードのテーブルをLaTeXに変換します。\"\n"
+"  (let* ((alignment (mapconcat (lambda (x) (if x \"r\" \"l\"))\n"
+"                               org-table-last-alignment \"\"))\n"
+"         (params2\n"
+"          (list\n"
+"           :tstart (concat \"\\\\begin@{tabular@}@{\" alignment \"@}\")\n"
+"           :tend \"\\\\end@{tabular@}\"\n"
+"           :lstart \"\" :lend \" \\\\\\\\\" :sep \" & \"\n"
+"           :efmt \"%s\\\\,(%s)\" :hline \"\\\\hline\")))\n"
+"    (orgtbl-to-generic table (org-combine-plists params2 params))))\n"
 
 #+glossary: default ( デフォルト|初期値 ) / function ( 機能|関数 ) / line ( 行|ライン|線 )
 #. type: Plain text
 #: org.texi:14094
 msgid "As you can see, the properties passed into the function (variable @var{PARAMS}) are combined with the ones newly defined in the function (variable @var{PARAMS2}).  The ones passed into the function (i.e.@: the ones set by the @samp{ORGTBL SEND} line) take precedence.  So if you would like to use the @LaTeX{} translator, but wanted the line endings to be @samp{\\\\[2mm]} instead of the default @samp{\\\\}, you could just overrule the default with"
-msgstr ""
+msgstr "ご覧のように、関数に渡されたプロパティ(変数@var{PARAMS})が、関数の中で新しく定義されたプロパティ(変数@var{PARAMS2})と結合されています。関数に渡されたもの(すなわち@:@samp{ORGTBL SEND}行でセットされたプロパティ)が優先されます。よって、もし@LaTeX{} 変換関数を使いたけれども、行の最後はデフォルトの@samp{\\\\}の代わりに@samp{\\\\[2mm]}としたいなら、デフォルトの設定をこのように上書きできます"
 
 #. type: example
 #: org.texi:14097
 #, no-wrap
 msgid "#+ORGTBL: SEND test orgtbl-to-latex :lend \" \\\\\\\\[2mm]\"\n"
-msgstr ""
+msgstr "#+ORGTBL: SEND test orgtbl-to-latex :lend \" \\\\\\\\[2mm]\"\n"
 
 #+glossary: example ( 例 ) / field ( フィールド ) / function ( 機能|関数 ) / language ( 言語 ) / line ( 行|ライン|線 ) / tab ( TAB|タブ ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:14106
 msgid "For a new language, you can either write your own converter function in analogy with the @LaTeX{} translator, or you can use the generic function directly.  For example, if you have a language where a table is started with @samp{!BTBL!}, ended with @samp{!ETBL!}, and where table lines are started with @samp{!BL!}, ended with @samp{!EL!}, and where the field separator is a TAB, you could call the generic translator like this (on a single line!):"
-msgstr ""
+msgstr "新しい言語に対して、@LaTeX{}変換関数とのアナロジーから自分で変換関数を書くか、もしくは、包括的な変換関数を直接使うこともできます。例えば、もしある言語では、テーブルが始まるときは@samp{!BTBL!}、終わるときには@samp{!ETBL!}、そしてテーブル行は@samp{!BL!}で始まり、@samp{!EL!}で終わり、フィールドセパレータはタブだとしたら、このように(1行だけで!)包括的な変換関数を呼び出すことができます:"
 
 #. type: example
 #: org.texi:14110
@@ -29037,18 +29048,20 @@ msgid ""
 "#+ORGTBL: SEND test orgtbl-to-generic :tstart \"!BTBL!\" :tend \"!ETBL!\"\n"
 "                              :lstart \"!BL! \" :lend \" !EL!\" :sep \"\\t\"\n"
 msgstr ""
+"#+ORGTBL: SEND test orgtbl-to-generic :tstart \"!BTBL!\" :tend \"!ETBL!\"\n"
+"                              :lstart \"!BL! \" :lend \" !EL!\" :sep \"\\t\"\n"
 
 #+glossary: check ( チェック ) / function ( 機能|関数 ) / list ( リスト ) / parameters ( パラメーター ) / string ( 文字列 )
 #. type: Plain text
 #: org.texi:14118
 msgid "Please check the documentation string of the function @code{orgtbl-to-generic} for a full list of parameters understood by that function, and remember that you can pass each of them into @code{orgtbl-to-latex}, @code{orgtbl-to-texinfo}, and any other function using the generic function."
-msgstr ""
+msgstr "関数によって理解されるパラメータの完全なリストのために、関数@code{orgtbl-to-generic}の説明文をチェックしてください。そして、それらの1つずつを@code{orgtbl-to-latex}、@code{orgtbl-to-texinfo}や、包括的な変換関数を使った何か他の関数に渡せることを覚えて下さい。"
 
 #+glossary: argument ( 引数 ) / field ( フィールド ) / function ( 機能|関数 ) / line ( 行|ライン|線 ) / list ( リスト ) / parameters ( パラメーター ) / property ( プロパティ ) / string ( 文字列 ) / symbol ( 記号 ) / table ( テーブル ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:14128
 msgid "Of course you can also write a completely new function doing complicated things the generic translator cannot do.  A translator function takes two arguments.  The first argument is the table, a list of lines, each line either the symbol @code{hline} or a list of fields.  The second argument is the property list containing all parameters specified in the @samp{#+ORGTBL: SEND} line.  The function must return a single string containing the formatted table.  If you write a generally useful translator, please post it on @email{emacs-orgmode@@gnu.org} so that others can benefit from your work."
-msgstr ""
+msgstr "もちろん包括的な変換関数では行えない複雑な事を処理する全く新しい関数を書くこともできます。変換関数は2つの引数を持ちます。1つ目の引数はテーブル、行のリスト、それぞれの行のシンボルコード@code{hline} もしくはフィールドのリストです。2つめの引数はプロパティリストで、@samp{#+ORGTBL: SEND}行で指定された全てのパラメータを含みます。関数は書式設定されたテーブルを含む1つの文字列を返します。もし一般に有用な変換関数を書いた場合、他の人があなたの仕事から恩恵に預かれるように、どうか@email{emacs-orgmode@@gnu.org}に投稿して下さい。"
 
 #+glossary: radio lists ( ラジオリスト )
 #. type: cindex
