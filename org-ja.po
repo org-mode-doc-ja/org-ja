@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-10-17 12:16+0900\n"
+"PO-Revision-Date: 2011-10-17 12:59+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -29068,61 +29068,61 @@ msgstr "もちろん包括的な変換関数では行えない複雑な事を処
 #: org.texi:14131
 #, no-wrap
 msgid "radio lists"
-msgstr ""
+msgstr "ラジオリスト"
 
 #. type: cindex
 #: org.texi:14132
 #, no-wrap
 msgid "org-list-insert-radio-list"
-msgstr ""
+msgstr "org-list-insert-radio-list"
 
 #+glossary: sending and receiving ( 送受信 ) / radio lists ( ラジオリスト ) / insert ( 挿入 ) / list ( リスト ) / mode ( モード|モード ) / radio ( ラジオ ) / table ( テーブル ) / template ( テンプレート ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:14138
 msgid "Sending and receiving radio lists works exactly the same way as sending and receiving radio tables (@pxref{Radio tables}).  As for radio tables, you can insert radio list templates in HTML, @LaTeX{} and Texinfo modes by calling @code{org-list-insert-radio-list}."
-msgstr ""
+msgstr "ラジオリストを送受信する方法は、ラジオテーブル(@pxref{Radio tables})を送受信する方法と全く同じです。ラジオテーブル(ラジオリストのtypo?)に関しては、関数@code{org-list-insert-radio-list}を呼び出して、HTMLモード、@LaTeX{}モードそしてTexinfoモードにラジオリストを挿入できます。"
 
 #+glossary: radio ( ラジオ )
 #. type: Plain text
 #: org.texi:14140
 msgid "Here are the differences with radio tables:"
-msgstr ""
+msgstr "ここではラジオテーブルとの違いを説明します:"
 
 #+glossary: mode ( モード|モード )
 #. type: itemize
 #: org.texi:14144
 msgid "Orgstruct mode must be active."
-msgstr ""
+msgstr "Orgstructモードが有効でなければなりません。"
 
 #+glossary: keyword ( キーワード )
 #. type: itemize
 #: org.texi:14146
 msgid "Use the @code{ORGLST} keyword instead of @code{ORGTBL}."
-msgstr ""
+msgstr "@code{ORGTBL}の代わりに、キーワード@code{ORGLST}を使います。"
 
 #+glossary: radio lists ( ラジオリスト ) / available ( 利用できる ) / function ( 機能|関数 ) / parameters ( パラメーター )
 #. type: itemize
 #: org.texi:14149
 msgid "The available translation functions for radio lists don't take parameters."
-msgstr ""
+msgstr "現在利用できるラジオリストの変換関数は、パラメータをとりません。"
 
 #+glossary: item ( アイテム|項目 ) / list ( リスト ) / work ( 作業 )
 #. type: itemize
 #: org.texi:14151
 msgid "@kbd{C-c C-c} will work when pressed on the first item of the list."
-msgstr ""
+msgstr "リストの1つ目の項目で@kbd{C-c C-c}と押すと、動作します。"
 
 #+glossary: example ( 例 )
 #. type: Plain text
 #: org.texi:14155
 msgid "Here is a @LaTeX{} example.  Let's say that you have this in your @LaTeX{} file:"
-msgstr ""
+msgstr "これは@LaTeX{}の例です。@LaTeX{}ファイルに以下が書いてあるとします:"
 
 #. type: cindex
 #: org.texi:14156
 #, no-wrap
 msgid "#+ORGLST"
-msgstr ""
+msgstr "#+ORGLST"
 
 #. type: example
 #: org.texi:14168
@@ -29139,12 +29139,23 @@ msgid ""
 "- a new life\n"
 "\\end@{comment@}\n"
 msgstr ""
+"% BEGIN RECEIVE ORGLST to-buy\n"
+"% END RECEIVE ORGLST to-buy\n"
+"\\begin@{comment@}\n"
+"#+ORGLST: SEND to-buy org-list-to-latex\n"
+"- 新しい家\n"
+"- 新しいコンピュータ\n"
+"  + 新しいキーボード\n"
+"  + 新しいマウス\n"
+"- 新しい生活\n"
+"\\end@{comment@}\n"
 
+# 動作を確認できず。
 #+glossary: insert ( 挿入 ) / line ( 行|ライン|線 ) / list ( リスト )
 #. type: Plain text
 #: org.texi:14172
 msgid "Pressing `C-c C-c' on @code{a new house} and will insert the converted @LaTeX{} list between the two marker lines."
-msgstr ""
+msgstr "@code{新しい家}の上で`C-c C-c'とタイプすると、@LaTeX{}に変換されたリストが目印の2行の間に挿入されます。"
 
 #+glossary: block ( ブロック ) / dynamic ( 動的な )
 #. type: cindex
