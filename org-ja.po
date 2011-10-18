@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-10-18 20:38+0900\n"
+"PO-Revision-Date: 2011-10-19 02:04+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -29507,32 +29507,32 @@ msgstr ""
 #: org.texi:14341
 #, no-wrap
 msgid "agenda, pipe"
-msgstr ""
+msgstr "アジェンダ、パイプ"
 
 #+glossary: agenda ( アジェンダ ) / processing ( 処理 )
 #. type: cindex
 #: org.texi:14342
 #, no-wrap
 msgid "Scripts, for agenda processing"
-msgstr ""
+msgstr "スクリプト、アジェンダの処理のために"
 
 #+glossary: command line ( コマンドライン ) / agenda ( アジェンダ ) / batch ( バッチ ) / command ( コマンド ) / current ( カレント|現在の ) / data ( データ ) / example ( 例 ) / function ( 機能|関数 ) / information ( 情報 ) / key ( キー ) / list ( リスト ) / mode ( モード|モード ) / org ( Org-mode ) / processing ( 処理 ) / provide ( 用意する ) / string ( 文字列 ) / text ( テキスト|文章 ) / view ( ビュー )
 #. type: Plain text
 #: org.texi:14355
 msgid "Org provides commands to access agenda information for the command line in Emacs batch mode.  This extracted information can be sent directly to a printer, or it can be read by a program that does further processing of the data.  The first of these commands is the function @code{org-batch-agenda}, that produces an agenda view and sends it as ASCII text to STDOUT.  The command takes a single string as parameter.  If the string has length 1, it is used as a key to one of the commands you have configured in @code{org-agenda-custom-commands}, basically any key you can use after @kbd{C-c a}.  For example, to directly print the current TODO list, you could use"
-msgstr ""
+msgstr "Org-modeは、コマンドラインからEmacsのバッチモードでアジェンダの情報にアクセスするコマンドを用意しています。 この抽出された情報はプリンタに直接送ることも可能ですし、更にデータを処理させるプログラムに読み込ませることも可能です。1つ目のコマンドは関数@code{org-batch-agenda}であり、アジェンダビューを作成し、それをASCIIテキストとしてSTDOUTへと送ります。コマンドはパラメータとして1つの文字列をとります。文字列の長さが1のとき、@code{org-agenda-custom-commands}にあなたが設定したコマンドの1つが使われます。基本的に、@kbd{C-c a}の後にはどんなキーも使えます。例えば、現在のTODOリストを直接印刷するなら、このように使えます"
 
 #. type: example
 #: org.texi:14358
 #, no-wrap
 msgid "emacs -batch -l ~/.emacs -eval '(org-batch-agenda \"t\")' | lpr\n"
-msgstr ""
+msgstr "emacs -batch -l ~/.emacs -eval '(org-batch-agenda \"t\")' | lpr\n"
 
 #+glossary: characters ( 文字 ) / example ( 例 ) / item ( アイテム|項目 ) / list ( リスト ) / string ( 文字列 ) / tag ( タグ )
 #. type: Plain text
 #: org.texi:14364
 msgid "If the parameter is a string with 2 or more characters, it is used as a tags/TODO match string.  For example, to print your local shopping list (all items with the tag @samp{shop}, but excluding the tag @samp{NewYork}), you could use"
-msgstr ""
+msgstr "パラメータが2文字以上の文字列の場合、tags/TODOの検索に使われます。例えば、地元でのショッピングリスト(@samp{shop}というタグが付いていて、@samp{NewYork}というタグを含んでいない全てのアイテム)を印刷するには、このように使えます"
 
 #. type: example
 #: org.texi:14368
@@ -29541,12 +29541,14 @@ msgid ""
 "emacs -batch -l ~/.emacs                                      \\\n"
 "      -eval '(org-batch-agenda \"+shop-NewYork\")' | lpr\n"
 msgstr ""
+"emacs -batch -l ~/.emacs                                      \\\n"
+"      -eval '(org-batch-agenda \"+shop-NewYork\")' | lpr\n"
 
 #+glossary: modify ( 修正 ) / parameters ( パラメーター )
 #. type: Plain text
 #: org.texi:14372
 msgid "You may also modify parameters on the fly like this:"
-msgstr ""
+msgstr "このように、その場でパラメータを変えることもできます:"
 
 #+glossary: nil ( nil )
 #. type: example
@@ -29560,18 +29562,24 @@ msgid ""
 "            org-agenda-files (quote (\"~/org/project.org\")))'  \\\n"
 "   | lpr\n"
 msgstr ""
+"emacs -batch -l ~/.emacs                                      \\\n"
+"   -eval '(org-batch-agenda \"a\"                               \\\n"
+"            org-agenda-span month                             \\\n"
+"            org-agenda-include-diary nil                      \\\n"
+"            org-agenda-files (quote (\"~/org/project.org\")))'  \\\n"
+"   | lpr\n"
 
 #+glossary: agenda ( アジェンダ ) / diary ( 日記 ) / file ( ファイル ) / org ( Org-mode )
 #. type: Plain text
 #: org.texi:14385
 msgid "which will produce a 30-day agenda, fully restricted to the Org file @file{~/org/projects.org}, not even including the diary."
-msgstr ""
+msgstr "これは30日のアジェンダを作成します。情報は、Org-modeのファイル@file{~/org/projects.org}だけに制限され、~/diary(日誌)ファイルでさえ含まれません。"
 
 #+glossary: agenda ( アジェンダ ) / command ( コマンド ) / data ( データ ) / field ( フィールド ) / item ( アイテム|項目 ) / line ( 行|ライン|線 ) / list ( リスト ) / output ( アウトプット ) / value ( 値 )
 #. type: Plain text
 #: org.texi:14391
 msgid "If you want to process the agenda data in more sophisticated ways, you can use the command @code{org-batch-agenda-csv} to get a comma-separated list of values for each agenda item.  Each line in the output will contain a number of fields separated by commas.  The fields in a line are:"
-msgstr ""
+msgstr "もっと洗練された方法でアジェンダのデータを処理したい場合は、アジェンダのアイテム毎に値をカンマで区切られたリストを作成する@code{org-batch-agenda-csv}というコマンドを使えます。アウトプットの各行にはカンマで区切られたいろいろなフィールドがあります。行内のフィールドは以下の通りです:"
 
 #+glossary: agenda ( アジェンダ ) / block ( ブロック ) / category ( カテゴリー ) / date ( 日付 ) / deadline ( デッドライン ) / diary ( 日記 ) / entry ( エントリー|文|入力 ) / headline ( 見出し ) / keyword ( キーワード ) / planning ( 計画 ) / priority ( 優先順位|プライオリティ ) / scheduled ( スケジューリングされる ) / tag ( タグ ) / time ( 時刻|時間|回 ) / timestamp ( タイムスタンプ ) / type ( タイプ|入力する )
 #. type: example
@@ -29599,18 +29607,38 @@ msgid ""
 "priority-l   @r{The priority letter if any was given}\n"
 "priority-n   @r{The computed numerical priority}\n"
 msgstr ""
+"category     @r{アイテムのカテゴリーです}\n"
+"head         @r{TODOキーワード、TAGSそしてPRIORITYを除いた見出しです}\n"
+"type         @r{アジェンダのタイプで、以下が考えられます}\n"
+"                todo               @r{TODO検索で選ばれた}\n"
+"                tagsmatch          @r{tags検索で選ばれた}\n"
+"                diary              @r{diaryからインポートされた}\n"
+"                deadline           @r{デッドラインを設定された}\n"
+"                scheduled          @r{スケジューリングされた}\n"
+"                timestamp          @r{アポイントメント、タイムスタンプで選ばれた}\n"
+"                closed             @r{日付に閉じられたエントリ}\n"
+"                upcoming-deadline  @r{デッドラインが近づいている警告している}\n"
+"                past-scheduled     @r{forwarded scheduled item}\n"
+"                block              @r{エントリが日付のブロックを持っていて日付を含む}\n"
+"todo         @r{もしあれば、TODOのキーワード}\n"
+"tags         @r{継承したものも含めた全てのtags。コロンで区切られている。}\n"
+"date         @r{2007-2-14のような基準日}\n"
+"time         @r{15:00-16:50のような時間}\n"
+"extra        @r{追加のプラニング情報の文字列}\n"
+"priority-l   @r{もし与えられていれば優先順位の文字}\n"
+"priority-n   @r{計算された数字の優先度}\n"
 
 #+glossary: date ( 日付 ) / item ( アイテム|項目 ) / time ( 時刻|時間|回 ) / timestamp ( タイムスタンプ )
 #. type: Plain text
 #: org.texi:14418
 msgid "Time and date will only be given if a timestamp (or deadline/scheduled)  led to the selection of the item."
-msgstr ""
+msgstr "タイムスタンプ(すなわちデッドラインを設定された/スケジューリングされた)がそのアイテムのセクションをleadする場合にのみTimeもしくはdateが与えられます。"
 
 #+glossary: example ( 例 ) / item ( アイテム|項目 ) / list ( リスト )
 #. type: Plain text
 #: org.texi:14422
 msgid "A CSV list like this is very easy to use in a post-processing script.  For example, here is a Perl program that gets the TODO list from Emacs/Org and prints all the items, preceded by a checkbox:"
-msgstr ""
+msgstr "このようなCSVリストは後処理のスクリプトでとても使いやすいです。例のPerlプログラムは、Emacs/Org-modeからTODOリストを取得して、前にチェックボックスを挿入して、全てのアイテムを出力します。"
 
 #. type: example
 #: org.texi:14425
@@ -29618,7 +29646,7 @@ msgstr ""
 msgid ""
 "#!/usr/bin/perl\n"
 "\n"
-msgstr ""
+msgstr "#!/usr/bin/perl\n\n"
 
 #+glossary: command ( コマンド )
 #. type: example
@@ -29629,6 +29657,9 @@ msgid ""
 "$cmd = \"emacs -batch -l ~/.emacs -eval '(org-batch-agenda-csv \\\"t\\\")'\";\n"
 "\n"
 msgstr ""
+"# 実行するEmacsのコマンドを定義します\n"
+"$cmd = \"emacs -batch -l ~/.emacs -eval '(org-batch-agenda-csv \\\"t\\\")'\";\n"
+"\n"
 
 #+glossary: capture ( キャプチャ )
 #. type: example
@@ -29639,6 +29670,9 @@ msgid ""
 "$agenda = qx@{$cmd 2>/dev/null@};\n"
 "\n"
 msgstr ""
+"# 実行してアウトプットを取得します\n"
+"$agenda = qx@{$cmd 2>/dev/null@};\n"
+"\n"
 
 #. type: example
 #: org.texi:14440
@@ -29655,6 +29689,14 @@ msgid ""
 "\";\n"
 "@}\n"
 msgstr ""
+"# 全ての行についてループします\n"
+"foreach $line (split(/\\n/,$agenda)) @{\n"
+"  # それぞれの値を取得します\n"
+"  ($category,$head,$type,$todo,$tags,$date,$time,$extra,\n"
+"   $priority_l,$priority_n) = split(/,/,$line);\n"
+"  # 処理して出力します\n"
+"  print \"[ ] $head\\n\";\n"
+"@}\n"
 
 #+glossary: function ( 機能|関数 ) / work ( 作業 )
 #. type: Plain text
