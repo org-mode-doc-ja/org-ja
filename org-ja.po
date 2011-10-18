@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-10-17 15:58+0900\n"
+"PO-Revision-Date: 2011-10-19 02:04+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -28327,52 +28327,52 @@ msgstr "(define-key viper-vi-global-user-map \"C-c /\" 'org-sparse-tree)\n"
 #: org.texi:13663
 #, no-wrap
 msgid "hacking"
-msgstr ""
+msgstr "ハッキング"
 
 #+glossary: functionality ( 機能性 ) / org ( Org-mode ) / user ( ユーザー )
 #. type: Plain text
 #: org.texi:13667
 msgid "This appendix covers some aspects where users can extend the functionality of Org."
-msgstr ""
+msgstr "この付録では、ユーザーがOrg-modeの機能を拡張できる幾つかの特徴を紹介します。"
 
 #+glossary: hook ( フック )
 #. type: cindex
 #: org.texi:13683
 #, no-wrap
 msgid "hooks"
-msgstr ""
+msgstr "フック"
 
 #+glossary: functionality ( 機能性 ) / hacking ( ハッキング ) / hook ( フック ) / list ( リスト ) / org ( Org-mode ) / project ( プロジェクト ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:13690
 msgid "Org has a large number of hook variables that can be used to add functionality.  This appendix about hacking is going to illustrate the use of some of them.  A complete list of all hooks with documentation is maintained by the Worg project and can be found at @uref{http://orgmode.org/worg/org-configs/org-hooks.php}."
-msgstr ""
+msgstr "Org-modeには、機能を追加するためのフック変数が数多くあります。ハッキングに関するこの付録では、それらの使い方を説明します。全フックの完全なリストと説明文は Worg project によって維持管理されており、@uref{http://orgmode.org/worg/org-configs/org-hooks.php}にて見つけられます。"
 
 #+glossary: package ( パッケージ )
 #. type: cindex
 #: org.texi:13693
 #, no-wrap
 msgid "add-on packages"
-msgstr ""
+msgstr "アドオンパッケージ"
 
 #+glossary: available ( 利用できる ) / list ( リスト ) / org-mode ( Org-mode ) / package ( パッケージ ) / page ( ページ ) / project ( プロジェクト )
 #. type: Plain text
 #: org.texi:13701
 msgid "A large number of add-on packages have been written by various authors.  These packages are not part of Emacs, but they are distributed as contributed packages with the separate release available at the Org-mode home page at @uref{http://orgmode.org}.  The list of contributed packages, along with documentation about each package, is maintained by the Worg project at @uref{http://orgmode.org/worg/org-contrib/}."
-msgstr ""
+msgstr "様々な人によって膨大な数のアドオンパッケージが書かれました。これらのパッケージはEmacsの一部ではありませんが、投稿されたパッケージとして独自のリリースで配布されており、Org-modeのホームページ @uref{http://orgmode.org}にて入手できます。投稿されたパッケージのリストとその説明文は Worg project によって @uref{http://orgmode.org/worg/org-contrib/}にて維持管理されています。"
 
 #+glossary: hyperlinks ( ハイパーリンク ) / type ( タイプ|入力する )
 #. type: cindex
 #: org.texi:13706
 #, no-wrap
 msgid "hyperlinks, adding new types"
-msgstr ""
+msgstr "ハイパーリンク、タイプの追加"
 
 #+glossary: built-in ( ビルトイン ) / creating ( 作成 ) / example ( 例 ) / file ( ファイル ) / link ( リンク ) / manual ( マニュアル ) / org ( Org-mode ) / page ( ページ ) / provide ( 用意する ) / type ( タイプ|入力する )
 #. type: Plain text
 #: org.texi:13714
 msgid "Org has a large number of hyperlink types built-in (@pxref{Hyperlinks}).  If you would like to add new link types, Org provides an interface for doing so.  Let's look at an example file, @file{org-man.el}, that will add support for creating links like @samp{[[man:printf][The printf manpage]]} to show Unix manual pages inside Emacs:"
-msgstr ""
+msgstr "Org-modeにはビルトインのハイパーリンク形式が多数用意されています(@pxref{Hyperlinks})。新しいタイプのリンクを追加したい場合、Orgは追加するためのインターフェスを用意します。例となるファイル @file{org-man.el}を見て下さい。これは UnixのmanページをEmacsで表示するために、@samp{[[man:printf][printfのmanページ]]}というリンクを生成するサポートを作成します:"
 
 #+glossary: link ( リンク )
 #. type: lisp
@@ -28382,6 +28382,8 @@ msgid ""
 ";;; org-man.el - Support for links to manpages in Org\n"
 "\n"
 msgstr ""
+";;; org-man.el - Org-modeでmanページのリンクをサポートする\n"
+"\n"
 
 #. type: lisp
 #: org.texi:13719
@@ -28390,6 +28392,8 @@ msgid ""
 "(require 'org)\n"
 "\n"
 msgstr ""
+"(require 'org)\n"
+"\n"
 
 #. type: lisp
 #: org.texi:13722
@@ -28399,6 +28403,9 @@ msgid ""
 "(add-hook 'org-store-link-functions 'org-man-store-link)\n"
 "\n"
 msgstr ""
+"(org-add-link-type \"man\" 'org-man-open)\n"
+"(add-hook 'org-store-link-functions 'org-man-store-link)\n"
+"\n"
 
 #+glossary: command ( コマンド ) / display ( ディスプレイ|表示 )
 #. type: lisp
@@ -28411,6 +28418,11 @@ msgid ""
 "  :type '(choice (const man) (const woman)))\n"
 "\n"
 msgstr ""
+"(defcustom org-man-command 'man\n"
+"  \"manのページを表示するためのEmacsのコマンド。\"\n"
+"  :group 'org-link\n"
+"  :type '(choice (const man) (const woman)))\n"
+"\n"
 
 #. type: lisp
 #: org.texi:13732
@@ -28422,6 +28434,11 @@ msgid ""
 "  (funcall org-man-command path))\n"
 "\n"
 msgstr ""
+"(defun org-man-open (path)\n"
+"  \"パス(PATH)にあるmanpageを開きます。\n"
+"パスはコマンドmanに渡せる内容でなければなりません。\"\n"
+"  (funcall org-man-command path))\n"
+"\n"
 
 #+glossary: link ( リンク ) / page ( ページ )
 #. type: lisp
@@ -28441,6 +28458,18 @@ msgid ""
 "       :description description))))\n"
 "\n"
 msgstr ""
+"(defun org-man-store-link ()\n"
+"  \"manページへのリンクを保存します。\"\n"
+"  (when (memq major-mode '(Man-mode woman-mode))\n"
+"    ;; これはmanページなので、リンクを作成します。\n"
+"    (let* ((page (org-man-get-page-name))\n"
+"           (link (concat \"man:\" page))\n"
+"           (description (format \"Manpage for %s\" page)))\n"
+"      (org-store-link-props\n"
+"       :type \"man\"\n"
+"       :link link\n"
+"       :description description))))\n"
+"\n"
 
 #+glossary: buffer ( バッファ ) / link ( リンク ) / page ( ページ ) / work ( 作業 )
 #. type: lisp
@@ -28455,6 +28484,13 @@ msgid ""
 "    (error \"Cannot create link to this man page\")))\n"
 "\n"
 msgstr ""
+"(defun org-man-get-page-name ()\n"
+"  \"バッファ名からページ名を抽出します。\"\n"
+"  ;; `Man-mode' と `woman-mode' の両方で動作します。\n"
+"  (if (string-match \" \\\\(\\\\S-+\\\\)\\\\*\" (buffer-name))\n"
+"      (match-string 1 (buffer-name))\n"
+"    (error \"このmanページへのリンクを作成できません\")))\n"
+"\n"
 
 #. type: lisp
 #: org.texi:13753
@@ -28463,103 +28499,105 @@ msgid ""
 "(provide 'org-man)\n"
 "\n"
 msgstr ""
+"(provide 'org-man)\n"
+"\n"
 
 #. type: lisp
 #: org.texi:13755
 #, no-wrap
 msgid ";;; org-man.el ends here\n"
-msgstr ""
+msgstr ";;; org-man.el ends here\n"
 
 #+glossary: link ( リンク ) / type ( タイプ|入力する )
 #. type: Plain text
 #: org.texi:13759
 msgid "You would activate this new link type in @file{.emacs} with"
-msgstr ""
+msgstr "以下を@file{.emacs}に加えて、この新しいタイプのリンクを有効にします。"
 
 #. type: lisp
 #: org.texi:13762
 #, no-wrap
 msgid "(require 'org-man)\n"
-msgstr ""
+msgstr "(require 'org-man)\n"
 
 #+glossary: file ( ファイル )
 #. type: Plain text
 #: org.texi:13766
 msgid "Let's go through the file and see what it does."
-msgstr ""
+msgstr "そのファイルを一つずつ順番に検討して、何をするのか見てみましょう。"
 
 #. type: enumerate
 #: org.texi:13770
 msgid "It does @code{(require 'org)} to make sure that @file{org.el} has been loaded."
-msgstr ""
+msgstr "@code{(require 'org)}を実行して@file{org.el}が読み込まれたことを確認します。"
 
 #+glossary: function ( 機能|関数 ) / line ( 行|ライン|線 ) / link ( リンク ) / prefix ( 接頭辞 ) / type ( タイプ|入力する )
 #. type: enumerate
 #: org.texi:13774
 msgid "The next line calls @code{org-add-link-type} to define a new link type with prefix @samp{man}.  The call also contains the name of a function that will be called to follow such a link."
-msgstr ""
+msgstr "次の行では@code{org-add-link-type}を呼び出して、新しいタイプのリンクを接頭辞 @samp{man} で定義します。またこの呼び出しでは、そのようなリンクを辿るために呼び出される関数の名前も含まれています。"
 
 #. type: vindex
 #: org.texi:13775
 #, no-wrap
 msgid "org-store-link-functions"
-msgstr ""
+msgstr "org-store-link-functions"
 
 #+glossary: buffer ( バッファ ) / command ( コマンド ) / function ( 機能|関数 ) / line ( 行|ライン|線 ) / link ( リンク ) / page ( ページ )
 #. type: enumerate
 #: org.texi:13779
 msgid "The next line adds a function to @code{org-store-link-functions}, in order to allow the command @kbd{C-c l} to record a useful link in a buffer displaying a man page."
-msgstr ""
+msgstr "次の行では、manページを表示したバッファ内にて有用なリンクを@kbd{C-c l}で保存できるように、関数を@code{org-store-link-functions}に追加します。"
 
 #+glossary: command ( コマンド ) / customization ( カスタマイズ ) / display ( ディスプレイ|表示 ) / file ( ファイル ) / function ( 機能|関数 ) / link ( リンク ) / manual ( マニュアル ) / option ( オプション ) / page ( ページ ) / value ( 値 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:13788
 msgid "The rest of the file defines the necessary variables and functions.  First there is a customization variable that determines which Emacs command should be used to display man pages.  There are two options, @code{man} and @code{woman}.  Then the function to follow a link is defined.  It gets the link path as an argument---in this case the link path is just a topic for the manual command.  The function calls the value of @code{org-man-command} to display the man page."
-msgstr ""
+msgstr "ファイルの残りは必要な変数と関数を定義しています。最初に、manページの表示にどのEmacsのコマンドを使うかを決める変数のカスタマイズがあります。2つのオプション、@code{man} と @code{woman} があります。次に、リンクを辿る関数が定義されています。リンクのパスは引数として渡されます --- この場合、リンクのパスは単にmanコマンドのトピックです。この関数はmanページの表示に@code{org-man-command}の値を呼び出します。"
 
 #+glossary: buffer ( バッファ ) / command ( コマンド ) / default ( デフォルト|初期値 ) / function ( 機能|関数 ) / link ( リンク ) / manual ( マニュアル ) / org ( Org-mode ) / property ( プロパティ ) / provide ( 用意する ) / string ( 文字列 ) / value ( 値 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:13801
 msgid "Finally the function @code{org-man-store-link} is defined.  When you try to store a link with @kbd{C-c l}, this function will be called to try to make a link.  The function must first decide if it is supposed to create the link for this buffer type; we do this by checking the value of the variable @code{major-mode}.  If not, the function must exit and return the value @code{nil}.  If yes, the link is created by getting the manual topic from the buffer name and prefixing it with the string @samp{man:}.  Then it must call the command @code{org-store-link-props} and set the @code{:type} and @code{:link} properties.  Optionally you can also set the @code{:description} property to provide a default for the link description when the link is later inserted into an Org buffer with @kbd{C-c C-l}."
-msgstr ""
+msgstr "最後に、関数@code{org-man-store-link}が定義されています。@kbd{C-c l}でリンクを保存する時に、リンクを作成するためにこの関数が呼び出されます。関数は、このバッファのタイプでリンク作成がサポートされているかどうかを最初に判断します; 変数@code{major-mode}の値をチェックして判断します。サポートされていない場合、関数は終了して、@code{nil}の値を返します。サポートされている場合、バッファ名からmanのトピックを取得して、文字列 @samp{man:} の後に繋げることで、リンクを生成します。次に、コマンド@code{org-store-link-props}を呼び出して、@code{:type}と@code{:link}プロパティを設定します。任意で@code{:descriptiion}プロパティを設定できます。これは、後に@kbd{C-c C-l}でOrg-modeのバッファにリンクが挿入される時のリンクの説明のデフォルト値を用意します。"
 
 #+glossary: argument ( 引数 ) / function ( 機能|関数 ) / link ( リンク ) / prefix ( 接頭辞 ) / type ( タイプ|入力する )
 #. type: Plain text
 #: org.texi:13806
 msgid "When it makes sense for your new link type, you may also define a function @code{org-PREFIX-complete-link} that implements special (e.g.@: completion)  support for inserting such a link with @kbd{C-c C-l}.  Such a function should not accept any arguments, and return the full link with prefix."
-msgstr ""
+msgstr "新しいタイプのリンクを正しく設定できると、@kbd{C-c C-l}でリンクを挿入するときの特別な機能(例えば@: 補完機能)のサポートを実装する関数@code{org-PREFIX-complete-link}を定義できます。そのような関数は引数をとらず、接頭辞がついたリンク全体を返します。"
 
 #+glossary: command ( コマンド ) / hook ( フック )
 #. type: cindex
 #: org.texi:13809
 #, no-wrap
 msgid "context-sensitive commands, hooks"
-msgstr ""
+msgstr "文脈に依存するコマンド、フック"
 
 #+glossary: command ( コマンド )
 #. type: cindex
 #: org.texi:13810
 #, no-wrap
 msgid "add-ons, context-sensitive commands"
-msgstr ""
+msgstr "アドオン、文脈に依存するコマンド"
 
 #. type: vindex
 #: org.texi:13811
 #, no-wrap
 msgid "org-ctrl-c-ctrl-c-hook"
-msgstr ""
+msgstr "org-ctrl-c-ctrl-c-hook"
 
 #+glossary: command ( コマンド ) / context ( コンテクスト|状況|文脈 ) / example ( 例 ) / key ( キー ) / org ( Org-mode ) / property ( プロパティ )
 #. type: Plain text
 #: org.texi:13816
 msgid "Org has several commands that act differently depending on context.  The most important example it the @kbd{C-c C-c} (@pxref{The very busy C-c C-c key}).  Also the @kbd{M-cursor} and @kbd{M-S-cursor} keys have this property."
-msgstr ""
+msgstr "Org-modeでは、文脈に依存して動作が変わるコマンドが幾つかあります。最も重要な例は@kbd{C-c C-c}(@pxref{The very busy C-c C-c key})です[typo?: The most important example +it+ *is* the @kbd{C-c C-c} (@pxref{The very busy C-c C-c key}).  また、@kbd{M-cursor} と @kbd{M-S-cursor} キーもこの性質を持っています。"
 
 #+glossary: command ( コマンド ) / context ( コンテクスト|状況|文脈 ) / evaluate ( 評価する ) / example ( 例 ) / function ( 機能|関数 ) / functionality ( 機能性 ) / language ( 言語 ) / line ( 行|ライン|線 ) / org-mode ( Org-mode ) / package ( パッケージ ) / source ( ソース )
 #. type: Plain text
 #: org.texi:13825
 msgid "Add-ons can tap into this functionality by providing a function that detects special context for that add-on and executes functionality appropriate for the context.  Here is an example from Dan Davison's @file{org-R.el} which allows you to evaluate commands based on the @file{R} programming language @footnote{@file{org-R.el} has been replaced by the org-mode functionality described in @ref{Working With Source Code} and is now obsolete.}.  For this package, special contexts are lines that start with @code{#+R:} or @code{#+RR:}."
-msgstr ""
+msgstr "アドオンにとって特別な文脈を検知し、文脈に沿って適切に実行する関数を準備することによって、アドオンはこの機能を活用できます。ここに例として Dan Davisonの @file{org-R.el}があります。このファイルは@file{R}プログラミング言語@footnote{@file{org-R.el}は@ref{Working With Source Code}で説明されたOrg-modeの機能によって置き換えられ、現在使われておりません。}に基づいてコマンドを実行できます。このパッケージでは、特別な文脈とは@code{#+R:} や @code{#+RR:}で始まる行のことです。"
 
 #+glossary: context ( コンテクスト|状況|文脈 )
 #. type: lisp
@@ -28576,63 +28614,72 @@ msgid ""
 "    nil)) ;; to signal that we did not\n"
 "\n"
 msgstr ""
+"(defun org-R-apply-maybe ()\n"
+"  \"org-Rの文脈なら検知して、Rのコマンドを実行します。\"\n"
+"  (if (save-excursion\n"
+"        (beginning-of-line 1)\n"
+"        (looking-at \"#\\\\+RR?:\"))\n"
+"      (progn (call-interactively 'org-R-apply)\n"
+"             t) ;; 処置したと信号を送ります\n"
+"    nil)) ;; 処置しなかったと信号を送ります\n"
+"\n"
 
 #. type: lisp
 #: org.texi:13837
 #, no-wrap
 msgid "(add-hook 'org-ctrl-c-ctrl-c-hook 'org-R-apply-maybe)\n"
-msgstr ""
+msgstr "(add-hook 'org-ctrl-c-ctrl-c-hook 'org-R-apply-maybe)\n"
 
 #+glossary: check ( チェック ) / context ( コンテクスト|状況|文脈 ) / cursor ( カーソル ) / function ( 機能|関数 ) / line ( 行|ライン|線 )
 #. type: Plain text
 #: org.texi:13843
 msgid "The function first checks if the cursor is in such a line.  If that is the case, @code{org-R-apply} is called and the function returns @code{t} to signal that action was taken, and @kbd{C-c C-c} will stop looking for other contexts.  If the function finds it should do nothing locally, it returns @code{nil} so that other, similar functions can have a try."
-msgstr ""
+msgstr "関数は最初にそのような行にカーソルがあるのかをチェックします。そうである場合、@code{org-R-apply}が呼び出されて関数は処置したと信号を送るために@code{t}を返し、そして@kbd{C-c C-c}は他の文脈を探すことを止めます。もし関数がそこですべきことが無いと分かった場合は、他の同じような関数が試せるように@code{nil}を返します。"
 
 #+glossary: mode ( モード|モード ) / table ( テーブル )
 #. type: cindex
 #: org.texi:13847
 #, no-wrap
 msgid "tables, in other modes"
-msgstr ""
+msgstr "テーブル、他のモードで"
 
 #+glossary: list ( リスト ) / mode ( モード|モード )
 #. type: cindex
 #: org.texi:13848
 #, no-wrap
 msgid "lists, in other modes"
-msgstr ""
+msgstr "リスト、他のモードで"
 
 #+glossary: minor mode ( マイナーモード ) / buffer ( バッファ ) / customization ( カスタマイズ ) / editor ( エディタ ) / example ( 例 ) / feature ( 機能 ) / language ( 言語 ) / mode ( モード|モード ) / orgtbl ( orgtbl ) / table ( テーブル ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:13857
 msgid "Since Orgtbl mode can be used as a minor mode in arbitrary buffers, a frequent feature request has been to make it work with native tables in specific languages, for example @LaTeX{}.  However, this is extremely hard to do in a general way, would lead to a customization nightmare, and would take away much of the simplicity of the Orgtbl-mode table editor."
-msgstr ""
+msgstr "Orgtblモードを任意のバッファでマイナーモードとして使えるため、@LaTeX{}のような特定言語のテーブルでモードを動作させる機能の要望がよく出されます。しかし、通常の方法でこれを実装するのは極めて難しく、結局悪夢のような設定となってしまい、Orgtblモードのテーブルエディタによって得られる単純さのほとんどを失ってしまうでしょう。"
 
 #+glossary: custom ( カスタム|カスタマイズ ) / format ( フォーマット|形成 ) / function ( 機能|関数 ) / mode ( モード|モード ) / orgtbl ( orgtbl ) / syntax ( 構文|シンタックス ) / system ( システム ) / table ( テーブル ) / user ( ユーザー ) / writing ( 書き出す )
 #. type: Plain text
 #: org.texi:13864
 msgid "This appendix describes a different approach.  We keep the Orgtbl mode table in its native format (the @i{source table}), and use a custom function to @i{translate} the table to the correct syntax, and to @i{install} it in the right location (the @i{target table}).  This puts the burden of writing conversion functions on the user, but it allows for a very flexible system."
-msgstr ""
+msgstr "この付録では、別の方法を説明します。Orgtblモード本来のフォーマットでテーブルを保ち(@i{もとのテーブル})、その表を正しいシンタックスへと@i{変換}するカスタム関数を使い、(@i{目的のテーブルを})正しい場所に配置します。これはユーザーに変換する関数を書く負担をかけますが、まさにフレキシブルな方法が可能となります。"
 
 #+glossary: ability ( 機能|能力 ) / exporting ( エクスポート ) / format ( フォーマット|形成 ) / list ( リスト ) / mode ( モード|モード ) / structure ( 構造 )
 #. type: Plain text
 #: org.texi:13869
 msgid "Bastien added the ability to do the same with lists, in Orgstruct mode.  You can use Org's facilities to edit and structure lists by turning @code{orgstruct-mode} on, then locally exporting such lists in another format (HTML, @LaTeX{} or Texinfo.)"
-msgstr ""
+msgstr "Bastienはリストに対して同じ機能をOrgstructモードに加えました。リストを編集したり構造化するOrg-modeの機能を使うには、@code{orgstruct-mode}をオンにして、そこで当該リストを別のフォーマット(HTML, @LaTeX{} もしくは Texinfo)へとエクスポートしてください。"
 
 #+glossary: radio ( ラジオ ) / table ( テーブル )
 #. type: cindex
 #: org.texi:13880
 #, no-wrap
 msgid "radio tables"
-msgstr ""
+msgstr "ラジオテーブル"
 
 #+glossary: comment ( コメント ) / current ( カレント|現在の ) / insert ( 挿入 ) / line ( 行|ライン|線 ) / mode ( モード|モード ) / orgtbl ( orgtbl ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:13886
 msgid "To define the location of the target table, you first need to create two lines that are comments in the current mode, but contain magic words for Orgtbl mode to find.  Orgtbl mode will insert the translated table between these lines, replacing whatever was there before.  For example:"
-msgstr ""
+msgstr "ターゲットテーブルの場所を定義するには、Orgtblモードが見つけ出せるマジックワード含んだ2行のコメントを最初にカレントモード内で作成します。Orgtblモードはその2行の間に変換されたテーブルを挿入します。前に何が在ったかは考慮せずに置き換えます。例えば:"
 
 #+glossary: orgtbl ( orgtbl )
 #. type: example
@@ -28642,104 +28689,106 @@ msgid ""
 "/* BEGIN RECEIVE ORGTBL table_name */\n"
 "/* END RECEIVE ORGTBL table_name */\n"
 msgstr ""
+"/* BEGIN RECEIVE ORGTBL table_name */\n"
+"/* END RECEIVE ORGTBL table_name */\n"
 
 #+glossary: install ( インストール ) / line ( 行|ライン|線 ) / mode ( モード|モード ) / orgtbl ( orgtbl ) / source ( ソース ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:13896
 msgid "Just above the source table, we put a special line that tells Orgtbl mode how to translate this table and where to install it.  For example:"
-msgstr ""
+msgstr "ソーステーブル(元のテーブル)のすぐ上に、変換する方法と挿入する場所をOrgtblモードに知らせる特別な行を付け加えます。例えば:"
 
 #. type: cindex
 #: org.texi:13896
 #, no-wrap
 msgid "#+ORGTBL"
-msgstr ""
+msgstr "#+ORGTBL"
 
 #. type: example
 #: org.texi:13899
 #, no-wrap
 msgid "#+ORGTBL: SEND table_name translation_function arguments....\n"
-msgstr ""
+msgstr "#+ORGTBL: SEND table_name translation_function arguments....\n"
 
 #+glossary: argument ( 引数 ) / function ( 機能|関数 ) / key ( キー ) / line ( 行|ライン|線 ) / list ( リスト ) / parameters ( パラメーター ) / property ( プロパティ ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:13909
 msgid "@code{table_name} is the reference name for the table that is also used in the receiver lines. @code{translation_function} is the Lisp function that does the translation.  Furthermore, the line can contain a list of arguments (alternating key and value) at the end.  The arguments will be passed as a property list to the translation function for interpretation.  A few standard parameters are already recognized and acted upon before the translation function is called:"
-msgstr ""
+msgstr "@code{table_name}はそのテーブルの参照名で、それは変換結果を挿入する行でも使われます。@code{translation_function}は変換するLispの関数です。加えて、その行の最後では、(keyとvalueを交互においた)引数のリストを含むことができます。引数はプロパティのリストとして解釈するために、変換する関数(translation function)に渡されます。変換する関数(translation function)が呼び出される前に、いくつかの基本的なパラメータは既に認識され、影響を受けています。"
 
 #. type: item
 #: org.texi:13911
 #, no-wrap
 msgid ":skip N"
-msgstr ""
+msgstr ":skip N"
 
 #+glossary: line ( 行|ライン|線 ) / table ( テーブル )
 #. type: table
 #: org.texi:13914
 msgid "Skip the first N lines of the table.  Hlines do count as separate lines for this parameter!"
-msgstr ""
+msgstr "テーブルの最初のN行を飛ばして読み進みます。このパラメータは、行を分ける横線をカウントします。"
 
 #. type: item
 #: org.texi:13915
 #, no-wrap
 msgid ":skipcols (n1 n2 ...)"
-msgstr ""
+msgstr ":skipcols (n1 n2 ...)"
 
 #+glossary: calculation ( 計算 ) / column ( 列 ) / function ( 機能|関数 ) / list ( リスト ) / mark ( マーク ) / note ( ノート|メモ ) / table ( テーブル )
 #. type: table
 #: org.texi:13921
 msgid "List of columns that should be skipped.  If the table has a column with calculation marks, that column is automatically discarded as well.  Please note that the translator function sees the table @emph{after} the removal of these columns, the function never knows that there have been additional columns."
-msgstr ""
+msgstr "飛ばすべき列のリストです。もしもテーブルに計算用にマークされた列がある場合、同じようにに自動的に無視されます。列を除去した@emph{後で}変換する関数がテーブルを見るので、そこには更に列があったとは知る由もないことに注意して下さい。"
 
 #+glossary: buffer ( バッファ ) / example ( 例 ) / file ( ファイル ) / processing ( 処理 ) / source ( ソース ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:13928
 msgid "The one problem remaining is how to keep the source table in the buffer without disturbing the normal workings of the file, for example during compilation of a C file or processing of a @LaTeX{} file.  There are a number of different solutions:"
-msgstr ""
+msgstr "残る1つの問題は、ファイルの通常動作を妨げずに、バッファ内のソーステーブルを保つ方法です。例えば、C言語のファイルや@LaTeX{}ファイルを編集している場合です。いくつかの方法があります:"
 
 #+glossary: block ( ブロック ) / comment ( コメント ) / example ( 例 ) / language ( 言語 ) / line ( 行|ライン|線 ) / mode ( モード|モード ) / table ( テーブル )
 #. type: itemize
 #: org.texi:13934
 msgid "The table could be placed in a block comment if that is supported by the language.  For example, in C mode you could wrap the table between @samp{/*} and @samp{*/} lines."
-msgstr ""
+msgstr "その言語でサポートされたブロックコメント内にテーブルを設置できます。例えばCモードの場合、テーブルを@samp{/*}と@samp{*/}の行で括れます。"
 
 #+glossary: example ( 例 ) / table ( テーブル )
 #. type: itemize
 #: org.texi:13938
 msgid "Sometimes it is possible to put the table after some kind of @i{END} statement, for example @samp{\\bye} in @TeX{} and @samp{\\end@{document@}} in @LaTeX{}."
-msgstr ""
+msgstr "時には、@TeX{}の@samp{\\bye}や@LaTeX{}の@samp{\\end@{document@}}のような、ある種の終了文の後にテーブルを書けることがあります。"
 
 #+glossary: command ( コマンド ) / comment ( コメント ) / file ( ファイル ) / key ( キー ) / table ( テーブル )
 #. type: itemize
 #: org.texi:13944
 msgid "You can just comment the table line-by-line whenever you want to process the file, and uncomment it whenever you need to edit the table.  This only sounds tedious---the command @kbd{M-x orgtbl-toggle-comment} makes this comment-toggling very easy, in particular if you bind it to a key."
-msgstr ""
+msgstr "単純に、ファイルを編集したいときはテーブルを一行一行コメントにし、テーブルを編集したいときはコメントを外すこともできます。これは退屈そうに聞こえますが---コマンド@kbd{M-x orgtbl-toggle-comment}を使えばコメントのオンオフを簡単にできます。キーバインドを設定すると特に便利です。"
 
 #+glossary: example ( 例 ) / radio ( ラジオ ) / table ( テーブル )
 #. type: subsection
 #: org.texi:13947
 #, no-wrap
 msgid "A @LaTeX{} example of radio tables"
-msgstr ""
+msgstr "@LaTeX{}でのラジオテーブルの例"
 
 #+glossary: mode ( モード|モード ) / orgtbl ( orgtbl )
 #. type: cindex
 #: org.texi:13948
 #, no-wrap
 msgid "@LaTeX{}, and Orgtbl mode"
-msgstr ""
+msgstr "@LaTeX{}、Orgtblモードと"
 
 #+glossary: command ( コマンド ) / default ( デフォルト|初期値 ) / document ( ドキュメント|文書 ) / header ( ヘッダー ) / insert ( 挿入 ) / install ( インストール ) / mode ( モード|モード ) / orgtbl ( orgtbl ) / radio ( ラジオ ) / source ( ソース ) / table ( テーブル ) / template ( テンプレート ) / variable ( 変数 ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:13959
 msgid "The best way to wrap the source table in @LaTeX{} is to use the @code{comment} environment provided by @file{comment.sty}.  It has to be activated by placing @code{\\usepackage@{comment@}} into the document header.  Orgtbl mode can insert a radio table skeleton@footnote{By default this works only for @LaTeX{}, HTML, and Texinfo.  Configure the variable @code{orgtbl-radio-tables} to install templates for other modes.} with the command @kbd{M-x orgtbl-insert-radio-table}.  You will be prompted for a table name, let's say we use @samp{salesfigures}.  You will then get the following template:"
-msgstr ""
+msgstr "@LaTeX{}でソーステーブルを囲む最良の方法は、@file{comment.sty}で提供される@code{comment}環境を使うことです。文書のヘッダーに@code{\\usepackage@{comment@}}と書くことで有効になります。Orgtblモードで@kbd{M-x orgtbl-insert-radio-table}とすると、テーブルのスケルトンを挿入できますfootnote{デフォルトでは、@LaTeX{}, HTMLと Texinfoの場合だけ動作します。他のモードのテンプレートをインストールするには、変数@code{orgtbl-radio-tables}を編集して下さい。}。 テーブル名を確認されますので、@samp{salesfigures}と入力します。 そして以下のテンプレートを得ました:"
 
 #. type: cindex
 #: org.texi:13960
 #, no-wrap
 msgid "#+ORGTBL, SEND"
-msgstr ""
+msgstr "#+ORGTBL, SEND"
 
 #+glossary: orgtbl ( orgtbl )
 #. type: example
@@ -28753,18 +28802,24 @@ msgid ""
 "| | |\n"
 "\\end@{comment@}\n"
 msgstr ""
+"% BEGIN RECEIVE ORGTBL salesfigures\n"
+"% END RECEIVE ORGTBL salesfigures\n"
+"\\begin@{comment@}\n"
+"#+ORGTBL: SEND salesfigures orgtbl-to-latex\n"
+"| | |\n"
+"\\end@{comment@}\n"
 
 #. type: vindex
 #: org.texi:13971
 #, no-wrap
 msgid "@LaTeX{}-verbatim-environments"
-msgstr ""
+msgstr "@LaTeX{}-verbatim-environments"
 
 #+glossary: characters ( 文字 ) / example ( 例 ) / function ( 機能|関数 ) / line ( 行|ライン|線 ) / mode ( モード|モード ) / orgtbl ( orgtbl ) / table ( テーブル ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:13983
 msgid "The @code{#+ORGTBL: SEND} line tells Orgtbl mode to use the function @code{orgtbl-to-latex} to convert the table into @LaTeX{} and to put it into the receiver location with name @code{salesfigures}.  You may now fill in the table---feel free to use the spreadsheet features@footnote{If the @samp{#+TBLFM} line contains an odd number of dollar characters, this may cause problems with font-lock in @LaTeX{} mode.  As shown in the example you can fix this by adding an extra line inside the @code{comment} environment that is used to balance the dollar expressions.  If you are using AUC@TeX{} with the font-latex library, a much better solution is to add the @code{comment} environment to the variable @code{LaTeX-verbatim-environments}.}:"
-msgstr ""
+msgstr "@code{#+ORGTBL: SEND}の行は、関数@code{orgtbl-to-latex}を使ってテーブルを@LaTeX{}へ変換し、@code{salesfigures}の名前で受け取る場所に設置するようにと、Orgtblモードに指示しています。これからテーブルに記入します---スプレッドシートの機能を自由に使ってください@footnote{@samp{#+TBLFM}行に奇数個のドル記号(dollar character, $)が在る場合、@LaTeX{}モードの色分けで問題が生じるかも知れません。この問題を解決するには、例で示すように@code{comment}環境内に行を追加してドル記号の表現を調整してください。AUC@TeX{}をfont-latexライブラリと使っている場合のはるかに優れた解決法は、変数@code{LaTeX-verbatim-environments}に@code{comment}環境追加することです。}:"
 
 #+glossary: day ( 日付|日にち ) / orgtbl ( orgtbl )
 #. type: example
@@ -28784,18 +28839,30 @@ msgid ""
 "% $ (optional extra dollar to keep font-lock happy, see footnote)\n"
 "\\end@{comment@}\n"
 msgstr ""
+"% BEGIN RECEIVE ORGTBL salesfigures\n"
+"% END RECEIVE ORGTBL salesfigures\n"
+"\\begin@{comment@}\n"
+"#+ORGTBL: SEND salesfigures orgtbl-to-latex\n"
+"| 月  | 日数 | 販売数 | 一日あたり |\n"
+"|-----+------+--------+------------|\n"
+"| 1月 |   23 |     55 |        2.4 |\n"
+"| 2月 |   21 |     16 |        0.8 |\n"
+"| 3月 |   22 |    278 |       12.6 |\n"
+"#+TBLFM: $4=$3/$2;%.1f\n"
+"% $ (font-lock 色分けをうまく動作させるための余分なドル記号、脚注参照)\n"
+"\\end@{comment@}\n"
 
 #+glossary: line ( 行|ライン|線 ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:14002
 msgid "When you are done, press @kbd{C-c C-c} in the table to get the converted table inserted between the two marker lines."
-msgstr ""
+msgstr "入力し終わり、テーブルの中で@kbd{C-c C-c}と押下すると、目印となる2行の間に変換されたテーブルが挿入されます。"
 
 #+glossary: column ( 列 ) / command ( コマンド ) / header ( ヘッダー ) / line ( 行|ライン|線 ) / source ( ソース ) / table ( テーブル ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:14008
 msgid "Now let's assume you want to make the table header by hand, because you want to control how columns are aligned, etc@.  In this case we make sure that the table translator skips the first 2 lines of the source table, and tell the command to work as a @i{splice}, i.e.@: to not produce header and footer commands of the target table:"
-msgstr ""
+msgstr "さて、列の文字揃えを制御したいなどの理由から、テーブルのヘッダーを書きたいとします。この場合は次のことを確認します。テーブルを変換する関数がソーステーブルの最初の2行を飛ばすことと、接合部として動作すること、すなわち@: ターゲットテーブルのヘッダーとフッターを生成しないことです:"
 
 #+glossary: day ( 日付|日にち ) / orgtbl ( orgtbl )
 #. type: example
@@ -28818,68 +28885,114 @@ msgid ""
 "#+TBLFM: $4=$3/$2;%.1f\n"
 "\\end@{comment@}\n"
 msgstr ""
+"\\begin@{tabular@}@{lrrr@}\n"
+"月 & \\multicolumn@{1@}@{c@}@{日数@} & 販売数 & 一日あたり \\\\\n"
+"% BEGIN RECEIVE ORGTBL salesfigures\n"
+"1月 & 23 & 55 & 2.4 \\\\\n"
+"2月 & 21 & 16 & 0.8 \\\\\n"
+"3月 & 22 & 278 & 12.6 \\\\\n"
+"% END RECEIVE ORGTBL salesfigures\n"
+"\\end@{tabular@}\n"
+"%\n"
+"\\begin@{comment@}\n"
+"#+ORGTBL: SEND salesfigures orgtbl-to-latex :splice t :skip 2\n"
+"| 月  | 日数 | 販売数 | 1日あたり |\n"
+"|-----+------+--------+-----------|\n"
+"| 1月 |   23 |     55 |       2.4 |\n"
+"| 2月 |   21 |     16 |       0.8 |\n"
+"| 3月 |   22 |    278 |      12.6 |\n"
+"#+TBLFM: $4=$3/$2;%.1f\n"
+"\\end@{comment@}\n"
 
 #+glossary: function ( 機能|関数 ) / horizontal ( 水平|横線 ) / line ( 行|ライン|線 ) / mark ( マーク ) / mode ( モード|モード ) / orgtbl ( orgtbl ) / parameters ( パラメーター ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:14031
 msgid "The @LaTeX{} translator function @code{orgtbl-to-latex} is already part of Orgtbl mode.  It uses a @code{tabular} environment to typeset the table and marks horizontal lines with @code{\\hline}.  Furthermore, it interprets the following parameters (see also @pxref{Translator functions}):"
-msgstr ""
+msgstr "@LaTeX{}へ変換する関数@code{orgtbl-to-latex}は既にOrgtblモードの一部です。@code{tabular}環境を使ってテーブルをタイプセットし、横線に@code{\\hline}で印を付けます。加えて、以下のパラメータを解釈します(@pxref{Translator functions}も参照してください):"
 
 #. type: item
 #: org.texi:14033
 #, no-wrap
 msgid ":splice nil/t"
-msgstr ""
+msgstr ":splice nil/t"
 
 #+glossary: default ( デフォルト|初期値 ) / line ( 行|ライン|線 ) / nil ( nil ) / table ( テーブル )
 #. type: table
 #: org.texi:14036
 msgid "When set to t, return only table body lines, don't wrap them into a tabular environment.  Default is nil."
-msgstr ""
+msgstr "tのとき、tabular環境で囲まずに、テーブルの本文だけを返します。デフォルトではnilです。"
 
 #. type: item
 #: org.texi:14037
 #, no-wrap
 msgid ":fmt fmt"
-msgstr ""
+msgstr ":fmt fmt"
 
 #+glossary: argument ( 引数 ) / column ( 列 ) / example ( 例 ) / field ( フィールド ) / format ( フォーマット|形成 ) / function ( 機能|関数 ) / list ( リスト ) / property ( プロパティ ) / string ( 文字列 ) / value ( 値 )
 #. type: table
 #: org.texi:14044
 msgid "A format to be used to wrap each field, it should contain @code{%s} for the original field value.  For example, to wrap each field value in dollars, you could use @code{:fmt \"$%s$\"}.  This may also be a property list with column numbers and formats. for example @code{:fmt (2 \"$%s$\" 4 \"%s\\\\%%\")}.  A function of one argument can be used in place of the strings; the function must return a formatted string."
-msgstr ""
+msgstr "各フィールドを囲むのに使われるフォーマットで、@code{%s}にはフィールドの元の値が入っています。例えばドルマークで囲む場合には、@code{:fmt \"$%s$\"}と書けます。また、列の番号とフォーマットというプロパティのリストにもなります。例えば@code{:fmt (2 \"$%s$\" 4 \"%s\\\\%%\")}と書けます。文字列の変わりに、1つの引数を持つ関数を使えます; その関数は書式設定された文字列を返します。"
 
 #. type: item
 #: org.texi:14045
 #, no-wrap
 msgid ":efmt efmt"
-msgstr ""
+msgstr ":efmt efmt"
 
+# テスト希望 指数表記されず (efmt)
+# ---test.tex starts---
+# \begin@{tabular@}@{lrrr@}
+# 月 & \multicolumn@{1@}@{c@}@{日数@} & 販売数 & 一日あたり \\
+# % BEGIN RECEIVE ORGTBL salesfigures
+# \hline
+# 1月 & $23$ & 55 & 2.4 \\
+# 2月 & $21$ & 0.0000016 & 0.8 \\
+# 3月 & $22$ & 27800000 & 12.6 \\
+# % END RECEIVE ORGTBL salesfigures
+# \end@{tabular@}
+# %
+# \begin@{comment@}
+# #+ORGTBL: SEND salesfigures orgtbl-to-latex :splice t :skip 1 :efmt (3 "$%s, %s$") :fmt (2 "$%s$")
+# | 月  | 日数 |    販売数 | 1日あたり |
+# |-----+------+-----------+-----------|
+# | 1月 |   23 |        55 |       2.4 |
+# | 2月 |   21 | 0.0000016 |       0.8 |
+# | 3月 |   22 |  27800000 |      12.6 |
+# #+TBLFM: $4=$3/$2;%.1f
+# % $ (font-lock 色分けをうまく動作させるための余分なドル記号、脚注参照)
+# \end@{comment@}
+# ---test.tex ends---
+#
+# #+begin_verse
+# org-version
+# "7.5"
+# #+end_verse
 #+glossary: argument ( 引数 ) / column ( 列 ) / default ( デフォルト|初期値 ) / example ( 例 ) / format ( フォーマット|形成 ) / function ( 機能|関数 ) / list ( リスト ) / property ( プロパティ ) / string ( 文字列 ) / value ( 値 )
 #. type: table
 #: org.texi:14054
 msgid "Use this format to print numbers with exponentials.  The format should have @code{%s} twice for inserting mantissa and exponent, for example @code{\"%s\\\\times10^@{%s@}\"}.  The default is @code{\"%s\\\\,(%s)\"}.  This may also be a property list with column numbers and formats, for example @code{:efmt (2 \"$%s\\\\times10^@{%s@}$\" 4 \"$%s\\\\cdot10^@{%s@}$\")}.  After @code{efmt} has been applied to a value, @code{fmt} will also be applied.  Similar to @code{fmt}, functions of two arguments can be supplied instead of strings."
-msgstr ""
+msgstr "指数表記で数値を出力する時に使います。仮数部と指数部を挿入するため、この形式では@code{%s}が2回出現します。例えば@code{\"%s\\\\times10^@{%s@}\"}。デフォルトでは@code{\"%s\\\\,(%s)\"}です。これも列数と書式設定のリスト、例えば@code{:efmt (2 \"$%s\\\\times10^@{%s@}$\" 4 \"$%s\\\\cdot10^@{%s@}$\")}となり得ます。値に@code{efmt}が適用された後に、@code{fmt}も適用されます。@code{fmt}と同様に、文字列の代わりに引数2つの関数を使えます。"
 
 #+glossary: mode ( モード|モード ) / orgtbl ( orgtbl )
 #. type: cindex
 #: org.texi:14058
 #, no-wrap
 msgid "HTML, and Orgtbl mode"
-msgstr ""
+msgstr "HTML、Orgtblモードと"
 
 #+glossary: function ( 機能|関数 )
 #. type: cindex
 #: org.texi:14059
 #, no-wrap
 msgid "translator function"
-msgstr ""
+msgstr "変換関数"
 
 #+glossary: code ( コード ) / column ( 列 ) / example ( 例 ) / field ( フィールド ) / function ( 機能|関数 ) / line ( 行|ライン|線 ) / mode ( モード|モード ) / orgtbl ( orgtbl ) / processing ( 処理 ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:14070
 msgid "Orgtbl mode has several translator functions built-in: @code{orgtbl-to-csv} (comma-separated values), @code{orgtbl-to-tsv} (TAB-separated values)  @code{orgtbl-to-latex}, @code{orgtbl-to-html}, and @code{orgtbl-to-texinfo}.  Except for @code{orgtbl-to-html}@footnote{The HTML translator uses the same code that produces tables during HTML export.}, these all use a generic translator, @code{orgtbl-to-generic}.  For example, @code{orgtbl-to-latex} itself is a very short function that computes the column definitions for the @code{tabular} environment, defines a few field and line separators and then hands processing over to the generic translator.  Here is the entire code:"
-msgstr ""
+msgstr "Orgtblモードには幾つかの組み込み変換関数があります: @code{orgtbl-to-csv} (カンマ区切り), @code{orgtbl-to-tsv} (タブ区切り)  @code{orgtbl-to-latex}, @code{orgtbl-to-html} そして @code{orgtbl-to-texinfo}です。@code{orgtbl-to-html}@footnote{HTMLの変換関数は、HTMLをエクスポートする時にテーブルを作るコードと全く同じものを使っています。}を除いた、これら全ての関数は包括的な変換関数@code{orgtbl-to-generic}を使います。例えば、@code{orgtbl-to-latex}それ自体はとても短い関数で@code{tabular}環境の列の定義を計算したり、幾つかのフィールドセパレータや行セパレータを定義してそれから処理を包括的な変換関数へと渡しています。ここに完全なコードがあります:"
 
 #+glossary: mode ( モード|モード ) / orgtbl ( orgtbl ) / table ( テーブル )
 #. type: group
@@ -28898,24 +29011,35 @@ msgid ""
 "           :efmt \"%s\\\\,(%s)\" :hline \"\\\\hline\")))\n"
 "    (orgtbl-to-generic table (org-combine-plists params2 params))))\n"
 msgstr ""
+"(defun orgtbl-to-latex (table params)\n"
+"  \"OrgtblモードのテーブルをLaTeXに変換します。\"\n"
+"  (let* ((alignment (mapconcat (lambda (x) (if x \"r\" \"l\"))\n"
+"                               org-table-last-alignment \"\"))\n"
+"         (params2\n"
+"          (list\n"
+"           :tstart (concat \"\\\\begin@{tabular@}@{\" alignment \"@}\")\n"
+"           :tend \"\\\\end@{tabular@}\"\n"
+"           :lstart \"\" :lend \" \\\\\\\\\" :sep \" & \"\n"
+"           :efmt \"%s\\\\,(%s)\" :hline \"\\\\hline\")))\n"
+"    (orgtbl-to-generic table (org-combine-plists params2 params))))\n"
 
 #+glossary: default ( デフォルト|初期値 ) / function ( 機能|関数 ) / line ( 行|ライン|線 )
 #. type: Plain text
 #: org.texi:14094
 msgid "As you can see, the properties passed into the function (variable @var{PARAMS}) are combined with the ones newly defined in the function (variable @var{PARAMS2}).  The ones passed into the function (i.e.@: the ones set by the @samp{ORGTBL SEND} line) take precedence.  So if you would like to use the @LaTeX{} translator, but wanted the line endings to be @samp{\\\\[2mm]} instead of the default @samp{\\\\}, you could just overrule the default with"
-msgstr ""
+msgstr "ご覧のように、関数に渡されたプロパティ(変数@var{PARAMS})が、関数の中で新しく定義されたプロパティ(変数@var{PARAMS2})と結合されています。関数に渡されたもの(すなわち@:@samp{ORGTBL SEND}行でセットされたプロパティ)が優先されます。よって、もし@LaTeX{} 変換関数を使いたけれども、行の最後はデフォルトの@samp{\\\\}の代わりに@samp{\\\\[2mm]}としたいなら、デフォルトの設定をこのように上書きできます"
 
 #. type: example
 #: org.texi:14097
 #, no-wrap
 msgid "#+ORGTBL: SEND test orgtbl-to-latex :lend \" \\\\\\\\[2mm]\"\n"
-msgstr ""
+msgstr "#+ORGTBL: SEND test orgtbl-to-latex :lend \" \\\\\\\\[2mm]\"\n"
 
 #+glossary: example ( 例 ) / field ( フィールド ) / function ( 機能|関数 ) / language ( 言語 ) / line ( 行|ライン|線 ) / tab ( TAB|タブ ) / table ( テーブル )
 #. type: Plain text
 #: org.texi:14106
 msgid "For a new language, you can either write your own converter function in analogy with the @LaTeX{} translator, or you can use the generic function directly.  For example, if you have a language where a table is started with @samp{!BTBL!}, ended with @samp{!ETBL!}, and where table lines are started with @samp{!BL!}, ended with @samp{!EL!}, and where the field separator is a TAB, you could call the generic translator like this (on a single line!):"
-msgstr ""
+msgstr "新しい言語に対して、@LaTeX{}変換関数とのアナロジーから自分で変換関数を書くか、もしくは、包括的な変換関数を直接使うこともできます。例えば、もしある言語では、テーブルが始まるときは@samp{!BTBL!}、終わるときには@samp{!ETBL!}、そしてテーブル行は@samp{!BL!}で始まり、@samp{!EL!}で終わり、フィールドセパレータはタブだとしたら、このように(1行だけで!)包括的な変換関数を呼び出すことができます:"
 
 #. type: example
 #: org.texi:14110
@@ -28924,79 +29048,81 @@ msgid ""
 "#+ORGTBL: SEND test orgtbl-to-generic :tstart \"!BTBL!\" :tend \"!ETBL!\"\n"
 "                              :lstart \"!BL! \" :lend \" !EL!\" :sep \"\\t\"\n"
 msgstr ""
+"#+ORGTBL: SEND test orgtbl-to-generic :tstart \"!BTBL!\" :tend \"!ETBL!\"\n"
+"                              :lstart \"!BL! \" :lend \" !EL!\" :sep \"\\t\"\n"
 
 #+glossary: check ( チェック ) / function ( 機能|関数 ) / list ( リスト ) / parameters ( パラメーター ) / string ( 文字列 )
 #. type: Plain text
 #: org.texi:14118
 msgid "Please check the documentation string of the function @code{orgtbl-to-generic} for a full list of parameters understood by that function, and remember that you can pass each of them into @code{orgtbl-to-latex}, @code{orgtbl-to-texinfo}, and any other function using the generic function."
-msgstr ""
+msgstr "関数によって理解されるパラメータの完全なリストのために、関数@code{orgtbl-to-generic}の説明文をチェックしてください。そして、それらの1つずつを@code{orgtbl-to-latex}、@code{orgtbl-to-texinfo}や、包括的な変換関数を使った何か他の関数に渡せることを覚えて下さい。"
 
 #+glossary: argument ( 引数 ) / field ( フィールド ) / function ( 機能|関数 ) / line ( 行|ライン|線 ) / list ( リスト ) / parameters ( パラメーター ) / property ( プロパティ ) / string ( 文字列 ) / symbol ( 記号 ) / table ( テーブル ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:14128
 msgid "Of course you can also write a completely new function doing complicated things the generic translator cannot do.  A translator function takes two arguments.  The first argument is the table, a list of lines, each line either the symbol @code{hline} or a list of fields.  The second argument is the property list containing all parameters specified in the @samp{#+ORGTBL: SEND} line.  The function must return a single string containing the formatted table.  If you write a generally useful translator, please post it on @email{emacs-orgmode@@gnu.org} so that others can benefit from your work."
-msgstr ""
+msgstr "もちろん包括的な変換関数では行えない複雑な事を処理する全く新しい関数を書くこともできます。変換関数は2つの引数を持ちます。1つ目の引数はテーブル、行のリスト、それぞれの行のシンボルコード@code{hline} もしくはフィールドのリストです。2つめの引数はプロパティリストで、@samp{#+ORGTBL: SEND}行で指定された全てのパラメータを含みます。関数は書式設定されたテーブルを含む1つの文字列を返します。もし一般に有用な変換関数を書いた場合、他の人があなたの仕事から恩恵に預かれるように、どうか@email{emacs-orgmode@@gnu.org}に投稿して下さい。"
 
 #+glossary: radio lists ( ラジオリスト )
 #. type: cindex
 #: org.texi:14131
 #, no-wrap
 msgid "radio lists"
-msgstr ""
+msgstr "ラジオリスト"
 
 #. type: cindex
 #: org.texi:14132
 #, no-wrap
 msgid "org-list-insert-radio-list"
-msgstr ""
+msgstr "org-list-insert-radio-list"
 
 #+glossary: sending and receiving ( 送受信 ) / radio lists ( ラジオリスト ) / insert ( 挿入 ) / list ( リスト ) / mode ( モード|モード ) / radio ( ラジオ ) / table ( テーブル ) / template ( テンプレート ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:14138
 msgid "Sending and receiving radio lists works exactly the same way as sending and receiving radio tables (@pxref{Radio tables}).  As for radio tables, you can insert radio list templates in HTML, @LaTeX{} and Texinfo modes by calling @code{org-list-insert-radio-list}."
-msgstr ""
+msgstr "ラジオリストを送受信する方法は、ラジオテーブル(@pxref{Radio tables})を送受信する方法と全く同じです。ラジオテーブル(ラジオリストのtypo?)に関しては、関数@code{org-list-insert-radio-list}を呼び出して、HTMLモード、@LaTeX{}モードそしてTexinfoモードにラジオリストを挿入できます。"
 
 #+glossary: radio ( ラジオ )
 #. type: Plain text
 #: org.texi:14140
 msgid "Here are the differences with radio tables:"
-msgstr ""
+msgstr "ここではラジオテーブルとの違いを説明します:"
 
 #+glossary: mode ( モード|モード )
 #. type: itemize
 #: org.texi:14144
 msgid "Orgstruct mode must be active."
-msgstr ""
+msgstr "Orgstructモードが有効でなければなりません。"
 
 #+glossary: keyword ( キーワード )
 #. type: itemize
 #: org.texi:14146
 msgid "Use the @code{ORGLST} keyword instead of @code{ORGTBL}."
-msgstr ""
+msgstr "@code{ORGTBL}の代わりに、キーワード@code{ORGLST}を使います。"
 
 #+glossary: radio lists ( ラジオリスト ) / available ( 利用できる ) / function ( 機能|関数 ) / parameters ( パラメーター )
 #. type: itemize
 #: org.texi:14149
 msgid "The available translation functions for radio lists don't take parameters."
-msgstr ""
+msgstr "現在利用できるラジオリストの変換関数は、パラメータをとりません。"
 
 #+glossary: item ( アイテム|項目 ) / list ( リスト ) / work ( 作業 )
 #. type: itemize
 #: org.texi:14151
 msgid "@kbd{C-c C-c} will work when pressed on the first item of the list."
-msgstr ""
+msgstr "リストの1つ目の項目で@kbd{C-c C-c}と押すと、動作します。"
 
 #+glossary: example ( 例 )
 #. type: Plain text
 #: org.texi:14155
 msgid "Here is a @LaTeX{} example.  Let's say that you have this in your @LaTeX{} file:"
-msgstr ""
+msgstr "これは@LaTeX{}の例です。@LaTeX{}ファイルに以下が書いてあるとします:"
 
 #. type: cindex
 #: org.texi:14156
 #, no-wrap
 msgid "#+ORGLST"
-msgstr ""
+msgstr "#+ORGLST"
 
 #. type: example
 #: org.texi:14168
@@ -29013,38 +29139,49 @@ msgid ""
 "- a new life\n"
 "\\end@{comment@}\n"
 msgstr ""
+"% BEGIN RECEIVE ORGLST to-buy\n"
+"% END RECEIVE ORGLST to-buy\n"
+"\\begin@{comment@}\n"
+"#+ORGLST: SEND to-buy org-list-to-latex\n"
+"- 新しい家\n"
+"- 新しいコンピュータ\n"
+"  + 新しいキーボード\n"
+"  + 新しいマウス\n"
+"- 新しい生活\n"
+"\\end@{comment@}\n"
 
+# 動作を確認できず。
 #+glossary: insert ( 挿入 ) / line ( 行|ライン|線 ) / list ( リスト )
 #. type: Plain text
 #: org.texi:14172
 msgid "Pressing `C-c C-c' on @code{a new house} and will insert the converted @LaTeX{} list between the two marker lines."
-msgstr ""
+msgstr "@code{新しい家}の上で`C-c C-c'とタイプすると、@LaTeX{}に変換されたリストが目印の2行の間に挿入されます。"
 
 #+glossary: block ( ブロック ) / dynamic ( 動的な )
 #. type: cindex
 #: org.texi:14175
 #, no-wrap
 msgid "dynamic blocks"
-msgstr ""
+msgstr "動的なブロック"
 
 #+glossary: block ( ブロック ) / command ( コマンド ) / document ( ドキュメント|文書 ) / example ( 例 ) / function ( 機能|関数 ) / marked ( マーク ) / org ( Org-mode ) / region ( リージョン|領域 ) / table ( テーブル ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:14181
 msgid "Org documents can contain @emph{dynamic blocks}.  These are specially marked regions that are updated by some user-written function.  A good example for such a block is the clock table inserted by the command @kbd{C-c C-x C-r} (@pxref{Clocking work time})."
-msgstr ""
+msgstr "Org-modeの文書は@emph{動的なブロック}を含むことができます。これらのブロックはユーザーが書いた関数によって更新される印のついた領域です。そのようなブロックの良い例は、@kbd{C-c C-x C-r}(@pxref{Clocking work time})というコマンドで挿入した時計のテーブル(クロックテーブル)です。"
 
 #+glossary: block ( ブロック ) / content ( コンテンツ|内容 ) / dynamic ( 動的な ) / function ( 機能|関数 ) / parameters ( パラメーター ) / structure ( 構造 )
 #. type: Plain text
 #: org.texi:14185
 msgid "Dynamic blocks are enclosed by a BEGIN-END structure that assigns a name to the block and can also specify parameters for the function producing the content of the block."
-msgstr ""
+msgstr "動的なブロックは、そのブロックに名前を指定し、そしてそのブロックの内容を実行する機能のためのパラメータを指定する「BEGIN-END」構造によって囲まれている必要があります。"
 
 #+glossary: block ( ブロック )
 #. type: cindex
 #: org.texi:14186
 #, no-wrap
 msgid "#+BEGIN:dynamic block"
-msgstr ""
+msgstr "#+BEGIN:dynamic block"
 
 #. type: example
 #: org.texi:14189
@@ -29053,30 +29190,32 @@ msgid ""
 "#+BEGIN: myblock :parameter1 value1 :parameter2 value2 ...\n"
 "\n"
 msgstr ""
+"#+BEGIN: myblock :parameter1 value1 :parameter2 value2 ...\n"
+"\n"
 
 #+glossary: following commands ( 以下に述べるコマンド ) / block ( ブロック ) / dynamic ( 動的な )
 #. type: Plain text
 #: org.texi:14194
 msgid "Dynamic blocks are updated with the following commands"
-msgstr ""
+msgstr "動的なブロックを更新するには以下のコマンドを使用します。"
 
 #+glossary: block ( ブロック ) / current ( カレント|現在の ) / dynamic ( 動的な ) / file ( ファイル ) / point ( ポイント ) / update ( アップデート|更新 )
 #. type: table
 #: org.texi:14200
 msgid "@orgcmd{C-c C-x C-u,org-dblock-update} Update dynamic block at point.  @orgkey{C-u C-c C-x C-u} Update all dynamic blocks in the current file."
-msgstr ""
+msgstr "@orgcmd{C-c C-x C-u,org-dblock-update}その場所での動的なブロックを更新します。@orgkey{C-u C-c C-x C-u}現在のファイルの全ての動的なブロックを更新します。"
 
 #+glossary: block ( ブロック ) / content ( コンテンツ|内容 ) / dynamic ( 動的な ) / function ( 機能|関数 ) / insert ( 挿入 ) / line ( 行|ライン|線 ) / parameters ( パラメーター ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:14207
 msgid "Updating a dynamic block means to remove all the text between BEGIN and END, parse the BEGIN line for parameters and then call the specific writer function for this block to insert the new content.  If you want to use the original content in the writer function, you can use the extra parameter @code{:content}."
-msgstr ""
+msgstr "動的なブロックを更新するということは、すべての「BEGIN」と「END」の間のテキストを取り除き、「BEGIN」の行に書かれているパラメーターを解析し、それからそのブロックのための特定の書き出し用の関数を呼び出して新しい内容を書き込むことを意味します。もしもその書き出し用の関数の中で元の中身を使いたい場合は、追加のパラメータである@code{:content}を使えます。"
 
 #+glossary: block ( ブロック ) / example ( 例 ) / function ( 機能|関数 ) / line ( 行|ライン|線 ) / list ( リスト ) / parameters ( パラメーター ) / property ( プロパティ ) / update ( アップデート|更新 )
 #. type: Plain text
 #: org.texi:14213
 msgid "For a block with name @code{myblock}, the writer function is @code{org-dblock-write:myblock} with as only parameter a property list with the parameters given in the begin line.  Here is a trivial example of a block that keeps track of when the block update function was last run:"
-msgstr ""
+msgstr "@code{myblock}という名前のブロックに対する書き出し用の関数は@code{org-dblock-write:myblock}です。BEGINの行にて与えられるパラメータのプロパティリストを単一パラメータとして受け取ります。ブロックの一例として、ブロックを更新する関数が最後に実行されたのはいつかを記録します:"
 
 #. type: example
 #: org.texi:14216
@@ -29084,13 +29223,13 @@ msgstr ""
 msgid ""
 "#+BEGIN: block-update-time :format \"on %m/%d/%Y at %H:%M\"\n"
 "\n"
-msgstr ""
+msgstr "#+BEGIN: block-update-time :format \"on %m/%d/%Y at %H:%M\"\n\n"
 
 #+glossary: block ( ブロック ) / function ( 機能|関数 )
 #. type: Plain text
 #: org.texi:14222
 msgid "The corresponding block writer function could look like this:"
-msgstr ""
+msgstr "対応するブロックへの書き出し用の関数は、このようになっています:"
 
 #+glossary: block ( ブロック ) / update ( アップデート|更新 )
 #. type: lisp
@@ -29102,25 +29241,29 @@ msgid ""
 "     (insert \"Last block update at: \"\n"
 "             (format-time-string fmt (current-time)))))\n"
 msgstr ""
+"(defun org-dblock-write:block-update-time (params)\n"
+"   (let ((fmt (or (plist-get params :format) \"%d. %m. %Y\")))\n"
+"     (insert \"ブロックの最終更新日時は: \"\n"
+"             (format-time-string fmt (current-time)))))\n"
 
 #+glossary: block ( ブロック ) / buffer ( バッファ ) / dynamic ( 動的な ) / example ( 例 ) / function ( 機能|関数 ) / hook ( フック )
 #. type: Plain text
 #: org.texi:14235
 msgid "If you want to make sure that all dynamic blocks are always up-to-date, you could add the function @code{org-update-all-dblocks} to a hook, for example @code{before-save-hook}.  @code{org-update-all-dblocks} is written in a way such that it does nothing in buffers that are not in @code{org-mode}."
-msgstr ""
+msgstr "もしもすべての動的なブロックが常に最新のものに更新されるようにしたいならば、関数@code{org-update-all-dblocks}をフック、例えば変数@code{before-save-hook}に追加します。@code{org-update-all-dblocks}は@code{org-mode}内ではないバッファの中では何もしないように書かれています。"
 
 #+glossary: current buffer ( カレントバッファ ) / block ( ブロック ) / current ( カレント|現在の ) / dynamic ( 動的な ) / narrow ( ナローイングする|幅を狭くする )
 #. type: Plain text
 #: org.texi:14238
 msgid "You can narrow the current buffer to the current dynamic block (like any other block) with @code{org-narrow-to-block}."
-msgstr ""
+msgstr "@code{org-narrow-to-block}を使って、(他のブロックの様に)現在のバッファを現在の動的なブロックへとナローイングできます。"
 
 #+glossary: agenda views ( アジェンダビュー )
 #. type: cindex
 #: org.texi:14241
 #, no-wrap
 msgid "agenda views, user-defined"
-msgstr ""
+msgstr "アジェンダビュー、ユーザー定義"
 
 #. type: vindex
 #: org.texi:14243
@@ -29134,25 +29277,25 @@ msgstr "org-agenda-skip-function"
 #: org.texi:14244
 #, no-wrap
 msgid "org-agenda-skip-function-global"
-msgstr ""
+msgstr "org-agenda-skip-function-global"
 
 #+glossary: agenda views ( アジェンダビュー ) / agenda ( アジェンダ ) / custom ( カスタム|カスタマイズ ) / function ( 機能|関数 ) / global ( グローバルな ) / hook ( フック ) / narrow ( ナローイングする|幅を狭くする ) / org ( Org-mode ) / provide ( 用意する ) / search ( 検索 ) / variable ( 変数 ) / view ( ビュー )
 #. type: Plain text
 #: org.texi:14254
 msgid "Org provides a special hook that can be used to narrow down the selection made by these agenda views: @code{todo}, @code{alltodo}, @code{tags}, @code{tags-todo}, @code{tags-tree}.  You may specify a function that is used at each match to verify if the match should indeed be part of the agenda view, and if not, how much should be skipped.  You can specify a global condition that will be applied to all agenda views, this condition would be stored in the variable @code{org-agenda-skip-function-global}.  More commonly, such a definition is applied only to specific custom searches, using @code{org-agenda-skip-function}."
-msgstr ""
+msgstr "Org-modeでは、以下のアジェンダビューによって選択されたものを絞り込む特別なフック関数を用意しています: @code{todo}, @code{alltodo}, @code{tags}, @code{tags-todo}, @code{tags-tree}。検索でマッチする度に、実際にアジェンダビューでマッチしたかを確認したり、もしマッチしなければどれくらい飛ばすのかを、関数で指定できます。全てのアジェンダビューに適用されるようにグローバルな条件を設定でき、それは変数@code{org-agenda-skip-function-global}に格納されます。通常は、変数@code{org-agenda-skip-function}を使って、このような定義を特定のカスタムサーチに適用します。"
 
 #+glossary: heading ( 見出し ) / keyword ( キーワード ) / line ( 行|ライン|線 ) / list ( リスト ) / marked ( マーク ) / project ( プロジェクト ) / search ( 検索 ) / subtree ( サブツリー ) / tag ( タグ ) / tree ( ツリー )
 #. type: Plain text
 #: org.texi:14261
 msgid "Let's say you want to produce a list of projects that contain a WAITING tag anywhere in the project tree.  Let's further assume that you have marked all tree headings that define a project with the TODO keyword PROJECT.  In this case you would run a TODO search for the keyword PROJECT, but skip the match unless there is a WAITING tag anywhere in the subtree belonging to the project line."
-msgstr ""
+msgstr "プロジェクトのツリーのどこかにWAITINGというタグを含むプロジェクトのリストを作成する場合を考えてみましょう。ツリーの見出しには、プロジェクトを定義するTODOのキーワード「PROJECT」でマークされているとします。この場合、キーワードのPROJECTでTODOを検索し、プロジェクトのサブツリーにWAITINGのタグが無ければ検索でマッチしてもスキップしたいとします。"
 
 #+glossary: function ( 機能|関数 ) / search ( 検索 ) / subtree ( サブツリー ) / tag ( タグ )
 #. type: Plain text
 #: org.texi:14267
 msgid "To achieve this, you must write a function that searches the subtree for the tag.  If the tag is found, the function must return @code{nil} to indicate that this match should not be skipped.  If there is no such tag, return the location of the end of the subtree, to indicate that search should continue from there."
-msgstr ""
+msgstr "これを達成するには、サブツリーをタグで検索する関数を書かなければなりません。もしそのタグが見つかったら、そのマッチはスキップされるべきではないと示すために、その関数は@code{nil}を返さなければなりません。もしそのようなタグが無ければ、そこから検索し続けるということを示すために、そのサブツリーの終端の場所を返さなくてはなりません。"
 
 #+glossary: nil ( nil ) / tag ( タグ ) / tree ( ツリー )
 #. type: lisp
@@ -29166,12 +29309,18 @@ msgid ""
 "        nil          ; tag found, do not skip\n"
 "      subtree-end))) ; tag not found, continue after end of subtree\n"
 msgstr ""
+"(defun my-skip-unless-waiting ()\n"
+"  \"waitingでないツリーをスキップします\"\n"
+"  (let ((subtree-end (save-excursion (org-end-of-subtree t))))\n"
+"    (if (re-search-forward \":waiting:\" subtree-end t)\n"
+"        nil          ; タグが見つかったので、スキップしません\n"
+"      subtree-end))) ; タグが見つからないので、サブツリーの最後から検索を再開します\n"
 
 #+glossary: agenda ( アジェンダ ) / command ( コマンド ) / custom ( カスタム|カスタマイズ ) / example ( 例 ) / function ( 機能|関数 )
 #. type: Plain text
 #: org.texi:14279
 msgid "Now you may use this function in an agenda custom command, for example like this:"
-msgstr ""
+msgstr "今からこの関数をアジェンダのカスタムコマンドで使えます。例えばこうなります:"
 
 #. type: lisp
 #: org.texi:14285
@@ -29182,156 +29331,160 @@ msgid ""
 "   ((org-agenda-skip-function 'my-skip-unless-waiting)\n"
 "    (org-agenda-overriding-header \"Projects waiting for something: \"))))\n"
 msgstr ""
+"(org-add-agenda-custom-command\n"
+" '(\"b\" todo \"PROJECT\"\n"
+"   ((org-agenda-skip-function 'my-skip-unless-waiting)\n"
+"    (org-agenda-overriding-header \"waiting (待ち)状態のプロジェクト: \"))))\n"
 
 #. type: vindex
 #: org.texi:14287
 #, no-wrap
 msgid "org-agenda-overriding-header"
-msgstr ""
+msgstr "org-agenda-overriding-header"
 
 #+glossary: agenda ( アジェンダ ) / header ( ヘッダー ) / note ( ノート|メモ ) / view ( ビュー )
 #. type: Plain text
 #: org.texi:14290
 msgid "Note that this also binds @code{org-agenda-overriding-header} to get a meaningful header in the agenda view."
-msgstr ""
+msgstr "関数@code{org-agenda-overriding-header}を使って、アジェンダビューで意味のある見出しに変更したことにも注意して下さい。"
 
 #+glossary: custom ( カスタム|カスタマイズ ) / entries ( エントリー|文|入力 ) / function ( 機能|関数 ) / hierarchy ( 階層 ) / level ( レベル|階層 ) / search ( 検索 )
 #. type: Plain text
 #: org.texi:14300
 msgid "A general way to create custom searches is to base them on a search for entries with a certain level limit.  If you want to study all entries with your custom search function, simply do a search for @samp{LEVEL>0}@footnote{Note that, when using @code{org-odd-levels-only}, a level number corresponds to order in the hierarchy, not to the number of stars.}, and then use @code{org-agenda-skip-function} to select the entries you really want to have."
-msgstr ""
+msgstr "カスタム検索を作成するには、あるレベルの制限を設けた検索を基づくのが一般的な方法です。自作の検索関数で全てのエントリーを検索したい場合は、単に@samp{LEVEL>0}@footnote{@code{org-odd-levels-only}を使用している場合、level numberは階層構造のレベルと対応していて、スター「*」の数ではないことに注意して下さい。}を検索した後に、必要なエントリを選択してください。"
 
 #+glossary: function ( 機能|関数 )
 #. type: Plain text
 #: org.texi:14304
 msgid "You may also put a Lisp form into @code{org-agenda-skip-function}.  In particular, you may use the functions @code{org-agenda-skip-entry-if} and @code{org-agenda-skip-subtree-if} in this form, for example:"
-msgstr ""
+msgstr "変数@code{org-agenda-skip-function}にLispフォームを渡すこともできます。具体的に言うと、例えばこのように関数@code{org-agenda-skip-entry-if}と関数@code{org-agenda-skip-subtree-if}とを使えます:"
 
 #. type: item
 #: org.texi:14306
 #, no-wrap
 msgid "'(org-agenda-skip-entry-if 'scheduled)"
-msgstr ""
+msgstr "'(org-agenda-skip-entry-if 'scheduled)"
 
 #+glossary: current ( カレント|現在の ) / entry ( エントリー|文|入力 ) / scheduled ( スケジューリングされる )
 #. type: table
 #: org.texi:14308
 msgid "Skip current entry if it has been scheduled."
-msgstr ""
+msgstr "現在のエントリがスケジューリングされている場合、それをスキップします。"
 
 #. type: item
 #: org.texi:14308
 #, no-wrap
 msgid "'(org-agenda-skip-entry-if 'notscheduled)"
-msgstr ""
+msgstr "'(org-agenda-skip-entry-if 'notscheduled)"
 
 #+glossary: current ( カレント|現在の ) / entry ( エントリー|文|入力 ) / scheduled ( スケジューリングされる )
 #. type: table
 #: org.texi:14310
 msgid "Skip current entry if it has not been scheduled."
-msgstr ""
+msgstr "現在のエントリがスケジューリングされていない場合、それをスキップします。"
 
 #. type: item
 #: org.texi:14310
 #, no-wrap
 msgid "'(org-agenda-skip-entry-if 'deadline)"
-msgstr ""
+msgstr "'(org-agenda-skip-entry-if 'deadline)"
 
 #+glossary: current ( カレント|現在の ) / deadline ( デッドライン ) / entry ( エントリー|文|入力 )
 #. type: table
 #: org.texi:14312
 msgid "Skip current entry if it has a deadline."
-msgstr ""
+msgstr "現在のエントリがデッドラインを設定されている場合、それをスキップします。"
 
 #. type: item
 #: org.texi:14312
 #, no-wrap
 msgid "'(org-agenda-skip-entry-if 'scheduled 'deadline)"
-msgstr ""
+msgstr "'(org-agenda-skip-entry-if 'scheduled 'deadline)"
 
 #+glossary: current ( カレント|現在の ) / deadline ( デッドライン ) / entry ( エントリー|文|入力 ) / scheduled ( スケジューリングされる )
 #. type: table
 #: org.texi:14314
 msgid "Skip current entry if it has a deadline, or if it is scheduled."
-msgstr ""
+msgstr "現在のエントリがデッドラインを設定されているかもしくはスケジューリングされている場合、それをスキップします"
 
 #. type: item
 #: org.texi:14314
 #, no-wrap
 msgid "'(org-agenda-skip-entry-if 'todo '(\"TODO\" \"WAITING\"))"
-msgstr ""
+msgstr "'(org-agenda-skip-entry-if 'todo '(\"TODO\" \"WAITING\"))"
 
 #+glossary: current ( カレント|現在の ) / entry ( エントリー|文|入力 ) / keyword ( キーワード )
 #. type: table
 #: org.texi:14316
 msgid "Skip current entry if the TODO keyword is TODO or WAITING."
-msgstr ""
+msgstr "現在のエントリのTODOのキーワードがTODOもしくはWAITINGの場合、それをスキップします。"
 
 #. type: item
 #: org.texi:14316
 #, no-wrap
 msgid "'(org-agenda-skip-entry-if 'todo 'done)"
-msgstr ""
+msgstr "'(org-agenda-skip-entry-if 'todo 'done)"
 
 #+glossary: current ( カレント|現在の ) / entry ( エントリー|文|入力 ) / keyword ( キーワード ) / mark ( マーク )
 #. type: table
 #: org.texi:14318
 msgid "Skip current entry if the TODO keyword marks a DONE state."
-msgstr ""
+msgstr "現在のエントリのTODOのキーワードがDONEとマークされている場合、それをスキップします。"
 
 #. type: item
 #: org.texi:14318
 #, no-wrap
 msgid "'(org-agenda-skip-entry-if 'timestamp)"
-msgstr ""
+msgstr "'(org-agenda-skip-entry-if 'timestamp)"
 
 #+glossary: current ( カレント|現在の ) / deadline ( デッドライン ) / entry ( エントリー|文|入力 ) / scheduled ( スケジューリングされる ) / timestamp ( タイムスタンプ )
 #. type: table
 #: org.texi:14320
 msgid "Skip current entry if it has any timestamp, may also be deadline or scheduled."
-msgstr ""
+msgstr "現在のエントリが何かしらのタイムスタンプを持っている場合、それをスキップします。タイムスタンプはデッドラインかスケジューリングが考えられます。"
 
 #. type: item
 #: org.texi:14320
 #, no-wrap
 msgid "'(org-agenda-skip-entry 'regexp \"regular expression\")"
-msgstr ""
+msgstr "'(org-agenda-skip-entry 'regexp \"regular expression\")"
 
 #+glossary: current ( カレント|現在の ) / entry ( エントリー|文|入力 ) / matches ( 一致 )
 #. type: table
 #: org.texi:14322
 msgid "Skip current entry if the regular expression matches in the entry."
-msgstr ""
+msgstr "現在のエントリの中で正規表現「regular expression」にマッチした場合、それをスキップします。"
 
 #. type: item
 #: org.texi:14322
 #, no-wrap
 msgid "'(org-agenda-skip-entry 'notregexp \"regular expression\")"
-msgstr ""
+msgstr "'(org-agenda-skip-entry 'notregexp \"regular expression\")"
 
 #+glossary: current ( カレント|現在の ) / entry ( エントリー|文|入力 ) / matches ( 一致 )
 #. type: table
 #: org.texi:14324
 msgid "Skip current entry unless the regular expression matches."
-msgstr ""
+msgstr "現在のエントリの中で正規表現「regular expression」にマッチしない場合、それをスキップします。"
 
 #. type: item
 #: org.texi:14324
 #, no-wrap
 msgid "'(org-agenda-skip-subtree-if 'regexp \"regular expression\")"
-msgstr ""
+msgstr "'(org-agenda-skip-subtree-if 'regexp \"regular expression\")"
 
 #+glossary: check ( チェック ) / subtree ( サブツリー )
 #. type: table
 #: org.texi:14326
 msgid "Same as above, but check and skip the entire subtree."
-msgstr ""
+msgstr "2つ上と同じですが、サブツリー全体をチェックしてスキップします。"
 
 #+glossary: project ( プロジェクト ) / search ( 検索 )
 #. type: Plain text
 #: org.texi:14330
 msgid "Therefore we could also have written the search for WAITING projects like this, even without defining a special function:"
-msgstr ""
+msgstr "従って特別な関数を定義しなかったとしても、WAITINGがあるプロジェクトの検索をこのように書くこともできました:"
 
 #. type: lisp
 #: org.texi:14337
@@ -29343,38 +29496,43 @@ msgid ""
 "                                'regexp \":waiting:\"))\n"
 "    (org-agenda-overriding-header \"Projects waiting for something: \"))))\n"
 msgstr ""
+"(org-add-agenda-custom-command\n"
+" '(\"b\" todo \"PROJECT\"\n"
+"   ((org-agenda-skip-function '(org-agenda-skip-subtree-if\n"
+"                                'regexp \":waiting:\"))\n"
+"    (org-agenda-overriding-header \"waiting (待ち)状態のプロジェクト: \"))))\n"
 
 #+glossary: agenda ( アジェンダ )
 #. type: cindex
 #: org.texi:14341
 #, no-wrap
 msgid "agenda, pipe"
-msgstr ""
+msgstr "アジェンダ、パイプ"
 
 #+glossary: agenda ( アジェンダ ) / processing ( 処理 )
 #. type: cindex
 #: org.texi:14342
 #, no-wrap
 msgid "Scripts, for agenda processing"
-msgstr ""
+msgstr "スクリプト、アジェンダの処理のために"
 
 #+glossary: command line ( コマンドライン ) / agenda ( アジェンダ ) / batch ( バッチ ) / command ( コマンド ) / current ( カレント|現在の ) / data ( データ ) / example ( 例 ) / function ( 機能|関数 ) / information ( 情報 ) / key ( キー ) / list ( リスト ) / mode ( モード|モード ) / org ( Org-mode ) / processing ( 処理 ) / provide ( 用意する ) / string ( 文字列 ) / text ( テキスト|文章 ) / view ( ビュー )
 #. type: Plain text
 #: org.texi:14355
 msgid "Org provides commands to access agenda information for the command line in Emacs batch mode.  This extracted information can be sent directly to a printer, or it can be read by a program that does further processing of the data.  The first of these commands is the function @code{org-batch-agenda}, that produces an agenda view and sends it as ASCII text to STDOUT.  The command takes a single string as parameter.  If the string has length 1, it is used as a key to one of the commands you have configured in @code{org-agenda-custom-commands}, basically any key you can use after @kbd{C-c a}.  For example, to directly print the current TODO list, you could use"
-msgstr ""
+msgstr "Org-modeは、コマンドラインからEmacsのバッチモードでアジェンダの情報にアクセスするコマンドを用意しています。 この抽出された情報はプリンタに直接送ることも可能ですし、更にデータを処理させるプログラムに読み込ませることも可能です。1つ目のコマンドは関数@code{org-batch-agenda}であり、アジェンダビューを作成し、それをASCIIテキストとしてSTDOUTへと送ります。コマンドはパラメータとして1つの文字列をとります。文字列の長さが1のとき、@code{org-agenda-custom-commands}にあなたが設定したコマンドの1つが使われます。基本的に、@kbd{C-c a}の後にはどんなキーも使えます。例えば、現在のTODOリストを直接印刷するなら、このように使えます"
 
 #. type: example
 #: org.texi:14358
 #, no-wrap
 msgid "emacs -batch -l ~/.emacs -eval '(org-batch-agenda \"t\")' | lpr\n"
-msgstr ""
+msgstr "emacs -batch -l ~/.emacs -eval '(org-batch-agenda \"t\")' | lpr\n"
 
 #+glossary: characters ( 文字 ) / example ( 例 ) / item ( アイテム|項目 ) / list ( リスト ) / string ( 文字列 ) / tag ( タグ )
 #. type: Plain text
 #: org.texi:14364
 msgid "If the parameter is a string with 2 or more characters, it is used as a tags/TODO match string.  For example, to print your local shopping list (all items with the tag @samp{shop}, but excluding the tag @samp{NewYork}), you could use"
-msgstr ""
+msgstr "パラメータが2文字以上の文字列の場合、tags/TODOの検索に使われます。例えば、地元でのショッピングリスト(@samp{shop}というタグが付いていて、@samp{NewYork}というタグを含んでいない全てのアイテム)を印刷するには、このように使えます"
 
 #. type: example
 #: org.texi:14368
@@ -29383,12 +29541,14 @@ msgid ""
 "emacs -batch -l ~/.emacs                                      \\\n"
 "      -eval '(org-batch-agenda \"+shop-NewYork\")' | lpr\n"
 msgstr ""
+"emacs -batch -l ~/.emacs                                      \\\n"
+"      -eval '(org-batch-agenda \"+shop-NewYork\")' | lpr\n"
 
 #+glossary: modify ( 修正 ) / parameters ( パラメーター )
 #. type: Plain text
 #: org.texi:14372
 msgid "You may also modify parameters on the fly like this:"
-msgstr ""
+msgstr "このように、その場でパラメータを変えることもできます:"
 
 #+glossary: nil ( nil )
 #. type: example
@@ -29402,18 +29562,24 @@ msgid ""
 "            org-agenda-files (quote (\"~/org/project.org\")))'  \\\n"
 "   | lpr\n"
 msgstr ""
+"emacs -batch -l ~/.emacs                                      \\\n"
+"   -eval '(org-batch-agenda \"a\"                               \\\n"
+"            org-agenda-span month                             \\\n"
+"            org-agenda-include-diary nil                      \\\n"
+"            org-agenda-files (quote (\"~/org/project.org\")))'  \\\n"
+"   | lpr\n"
 
 #+glossary: agenda ( アジェンダ ) / diary ( 日記 ) / file ( ファイル ) / org ( Org-mode )
 #. type: Plain text
 #: org.texi:14385
 msgid "which will produce a 30-day agenda, fully restricted to the Org file @file{~/org/projects.org}, not even including the diary."
-msgstr ""
+msgstr "これは30日のアジェンダを作成します。情報は、Org-modeのファイル@file{~/org/projects.org}だけに制限され、~/diary(日誌)ファイルでさえ含まれません。"
 
 #+glossary: agenda ( アジェンダ ) / command ( コマンド ) / data ( データ ) / field ( フィールド ) / item ( アイテム|項目 ) / line ( 行|ライン|線 ) / list ( リスト ) / output ( アウトプット ) / value ( 値 )
 #. type: Plain text
 #: org.texi:14391
 msgid "If you want to process the agenda data in more sophisticated ways, you can use the command @code{org-batch-agenda-csv} to get a comma-separated list of values for each agenda item.  Each line in the output will contain a number of fields separated by commas.  The fields in a line are:"
-msgstr ""
+msgstr "もっと洗練された方法でアジェンダのデータを処理したい場合は、アジェンダのアイテム毎に値をカンマで区切られたリストを作成する@code{org-batch-agenda-csv}というコマンドを使えます。アウトプットの各行にはカンマで区切られたいろいろなフィールドがあります。行内のフィールドは以下の通りです:"
 
 #+glossary: agenda ( アジェンダ ) / block ( ブロック ) / category ( カテゴリー ) / date ( 日付 ) / deadline ( デッドライン ) / diary ( 日記 ) / entry ( エントリー|文|入力 ) / headline ( 見出し ) / keyword ( キーワード ) / planning ( 計画 ) / priority ( 優先順位|プライオリティ ) / scheduled ( スケジューリングされる ) / tag ( タグ ) / time ( 時刻|時間|回 ) / timestamp ( タイムスタンプ ) / type ( タイプ|入力する )
 #. type: example
@@ -29441,18 +29607,38 @@ msgid ""
 "priority-l   @r{The priority letter if any was given}\n"
 "priority-n   @r{The computed numerical priority}\n"
 msgstr ""
+"category     @r{アイテムのカテゴリーです}\n"
+"head         @r{TODOキーワード、TAGSそしてPRIORITYを除いた見出しです}\n"
+"type         @r{アジェンダのタイプで、以下が考えられます}\n"
+"                todo               @r{TODO検索で選ばれた}\n"
+"                tagsmatch          @r{tags検索で選ばれた}\n"
+"                diary              @r{diaryからインポートされた}\n"
+"                deadline           @r{デッドラインを設定された}\n"
+"                scheduled          @r{スケジューリングされた}\n"
+"                timestamp          @r{アポイントメント、タイムスタンプで選ばれた}\n"
+"                closed             @r{日付に閉じられたエントリ}\n"
+"                upcoming-deadline  @r{デッドラインが近づいている警告している}\n"
+"                past-scheduled     @r{forwarded scheduled item}\n"
+"                block              @r{エントリが日付のブロックを持っていて日付を含む}\n"
+"todo         @r{もしあれば、TODOのキーワード}\n"
+"tags         @r{継承したものも含めた全てのtags。コロンで区切られている。}\n"
+"date         @r{2007-2-14のような基準日}\n"
+"time         @r{15:00-16:50のような時間}\n"
+"extra        @r{追加のプラニング情報の文字列}\n"
+"priority-l   @r{もし与えられていれば優先順位の文字}\n"
+"priority-n   @r{計算された数字の優先度}\n"
 
 #+glossary: date ( 日付 ) / item ( アイテム|項目 ) / time ( 時刻|時間|回 ) / timestamp ( タイムスタンプ )
 #. type: Plain text
 #: org.texi:14418
 msgid "Time and date will only be given if a timestamp (or deadline/scheduled)  led to the selection of the item."
-msgstr ""
+msgstr "タイムスタンプ(すなわちデッドラインを設定された/スケジューリングされた)がそのアイテムのセクションをleadする場合にのみTimeもしくはdateが与えられます。"
 
 #+glossary: example ( 例 ) / item ( アイテム|項目 ) / list ( リスト )
 #. type: Plain text
 #: org.texi:14422
 msgid "A CSV list like this is very easy to use in a post-processing script.  For example, here is a Perl program that gets the TODO list from Emacs/Org and prints all the items, preceded by a checkbox:"
-msgstr ""
+msgstr "このようなCSVリストは後処理のスクリプトでとても使いやすいです。例のPerlプログラムは、Emacs/Org-modeからTODOリストを取得して、前にチェックボックスを挿入して、全てのアイテムを出力します。"
 
 #. type: example
 #: org.texi:14425
@@ -29460,7 +29646,7 @@ msgstr ""
 msgid ""
 "#!/usr/bin/perl\n"
 "\n"
-msgstr ""
+msgstr "#!/usr/bin/perl\n\n"
 
 #+glossary: command ( コマンド )
 #. type: example
@@ -29471,6 +29657,9 @@ msgid ""
 "$cmd = \"emacs -batch -l ~/.emacs -eval '(org-batch-agenda-csv \\\"t\\\")'\";\n"
 "\n"
 msgstr ""
+"# 実行するEmacsのコマンドを定義します\n"
+"$cmd = \"emacs -batch -l ~/.emacs -eval '(org-batch-agenda-csv \\\"t\\\")'\";\n"
+"\n"
 
 #+glossary: capture ( キャプチャ )
 #. type: example
@@ -29481,6 +29670,9 @@ msgid ""
 "$agenda = qx@{$cmd 2>/dev/null@};\n"
 "\n"
 msgstr ""
+"# 実行してアウトプットを取得します\n"
+"$agenda = qx@{$cmd 2>/dev/null@};\n"
+"\n"
 
 #. type: example
 #: org.texi:14440
@@ -29497,6 +29689,14 @@ msgid ""
 "\";\n"
 "@}\n"
 msgstr ""
+"# 全ての行についてループします\n"
+"foreach $line (split(/\\n/,$agenda)) @{\n"
+"  # それぞれの値を取得します\n"
+"  ($category,$head,$type,$todo,$tags,$date,$time,$extra,\n"
+"   $priority_l,$priority_n) = split(/,/,$line);\n"
+"  # 処理して出力します\n"
+"  print \"[ ] $head\\n\";\n"
+"@}\n"
 
 #+glossary: function ( 機能|関数 ) / work ( 作業 )
 #. type: Plain text
