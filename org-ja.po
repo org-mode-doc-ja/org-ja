@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-10-17 12:59+0900\n"
+"PO-Revision-Date: 2011-10-18 21:50+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -29162,26 +29162,26 @@ msgstr "@code{新しい家}の上で`C-c C-c'とタイプすると、@LaTeX{}に
 #: org.texi:14175
 #, no-wrap
 msgid "dynamic blocks"
-msgstr ""
+msgstr "動的なブロック"
 
 #+glossary: block ( ブロック ) / command ( コマンド ) / document ( ドキュメント|文書 ) / example ( 例 ) / function ( 機能|関数 ) / marked ( マーク ) / org ( Org-mode ) / region ( リージョン|領域 ) / table ( テーブル ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:14181
 msgid "Org documents can contain @emph{dynamic blocks}.  These are specially marked regions that are updated by some user-written function.  A good example for such a block is the clock table inserted by the command @kbd{C-c C-x C-r} (@pxref{Clocking work time})."
-msgstr ""
+msgstr "Org-modeの文書は@emph{動的なブロック}を含むことができます。これらのブロックはユーザーが書いた関数によって更新される印のついた領域です。そのようなブロックの良い例は、@kbd{C-c C-x C-r}(@pxref{Clocking work time})というコマンドで挿入した時計のテーブル(クロックテーブル)です。"
 
 #+glossary: block ( ブロック ) / content ( コンテンツ|内容 ) / dynamic ( 動的な ) / function ( 機能|関数 ) / parameters ( パラメーター ) / structure ( 構造 )
 #. type: Plain text
 #: org.texi:14185
 msgid "Dynamic blocks are enclosed by a BEGIN-END structure that assigns a name to the block and can also specify parameters for the function producing the content of the block."
-msgstr ""
+msgstr "動的なブロックは、そのブロックに名前を指定し、そしてそのブロックの内容を実行する機能のためのパラメータを指定する「BEGIN-END」構造によって囲まれている必要があります。"
 
 #+glossary: block ( ブロック )
 #. type: cindex
 #: org.texi:14186
 #, no-wrap
 msgid "#+BEGIN:dynamic block"
-msgstr ""
+msgstr "#+BEGIN:dynamic block"
 
 #. type: example
 #: org.texi:14189
@@ -29190,30 +29190,32 @@ msgid ""
 "#+BEGIN: myblock :parameter1 value1 :parameter2 value2 ...\n"
 "\n"
 msgstr ""
+"#+BEGIN: myblock :parameter1 value1 :parameter2 value2 ...\n"
+"\n"
 
 #+glossary: following commands ( 以下に述べるコマンド ) / block ( ブロック ) / dynamic ( 動的な )
 #. type: Plain text
 #: org.texi:14194
 msgid "Dynamic blocks are updated with the following commands"
-msgstr ""
+msgstr "動的なブロックを更新するには以下のコマンドを使用します。"
 
 #+glossary: block ( ブロック ) / current ( カレント|現在の ) / dynamic ( 動的な ) / file ( ファイル ) / point ( ポイント ) / update ( アップデート|更新 )
 #. type: table
 #: org.texi:14200
 msgid "@orgcmd{C-c C-x C-u,org-dblock-update} Update dynamic block at point.  @orgkey{C-u C-c C-x C-u} Update all dynamic blocks in the current file."
-msgstr ""
+msgstr "@orgcmd{C-c C-x C-u,org-dblock-update}その場所での動的なブロックを更新します。@orgkey{C-u C-c C-x C-u}現在のファイルの全ての動的なブロックを更新します。"
 
 #+glossary: block ( ブロック ) / content ( コンテンツ|内容 ) / dynamic ( 動的な ) / function ( 機能|関数 ) / insert ( 挿入 ) / line ( 行|ライン|線 ) / parameters ( パラメーター ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:14207
 msgid "Updating a dynamic block means to remove all the text between BEGIN and END, parse the BEGIN line for parameters and then call the specific writer function for this block to insert the new content.  If you want to use the original content in the writer function, you can use the extra parameter @code{:content}."
-msgstr ""
+msgstr "動的なブロックを更新するということは、すべての「BEGIN」と「END」の間のテキストを取り除き、「BEGIN」の行に書かれているパラメーターを解析し、それからそのブロックのための特定の書き出し用の関数を呼び出して新しい内容を書き込むことを意味します。もしもその書き出し用の関数の中で元の中身を使いたい場合は、追加のパラメータである@code{:content}を使えます。"
 
 #+glossary: block ( ブロック ) / example ( 例 ) / function ( 機能|関数 ) / line ( 行|ライン|線 ) / list ( リスト ) / parameters ( パラメーター ) / property ( プロパティ ) / update ( アップデート|更新 )
 #. type: Plain text
 #: org.texi:14213
 msgid "For a block with name @code{myblock}, the writer function is @code{org-dblock-write:myblock} with as only parameter a property list with the parameters given in the begin line.  Here is a trivial example of a block that keeps track of when the block update function was last run:"
-msgstr ""
+msgstr "@code{myblock}という名前のブロックに対する書き出し用の関数は@code{org-dblock-write:myblock}です。BEGINの行にて与えられるパラメータのプロパティリストを単一パラメータとして受け取ります。ブロックの一例として、ブロックを更新する関数が最後に実行されたのはいつかを記録します:"
 
 #. type: example
 #: org.texi:14216
@@ -29221,13 +29223,13 @@ msgstr ""
 msgid ""
 "#+BEGIN: block-update-time :format \"on %m/%d/%Y at %H:%M\"\n"
 "\n"
-msgstr ""
+msgstr "#+BEGIN: block-update-time :format \"on %m/%d/%Y at %H:%M\"\n\n"
 
 #+glossary: block ( ブロック ) / function ( 機能|関数 )
 #. type: Plain text
 #: org.texi:14222
 msgid "The corresponding block writer function could look like this:"
-msgstr ""
+msgstr "対応するブロックへの書き出し用の関数は、このようになっています:"
 
 #+glossary: block ( ブロック ) / update ( アップデート|更新 )
 #. type: lisp
@@ -29239,18 +29241,22 @@ msgid ""
 "     (insert \"Last block update at: \"\n"
 "             (format-time-string fmt (current-time)))))\n"
 msgstr ""
+"(defun org-dblock-write:block-update-time (params)\n"
+"   (let ((fmt (or (plist-get params :format) \"%d. %m. %Y\")))\n"
+"     (insert \"ブロックの最終更新日時は: \"\n"
+"             (format-time-string fmt (current-time)))))\n"
 
 #+glossary: block ( ブロック ) / buffer ( バッファ ) / dynamic ( 動的な ) / example ( 例 ) / function ( 機能|関数 ) / hook ( フック )
 #. type: Plain text
 #: org.texi:14235
 msgid "If you want to make sure that all dynamic blocks are always up-to-date, you could add the function @code{org-update-all-dblocks} to a hook, for example @code{before-save-hook}.  @code{org-update-all-dblocks} is written in a way such that it does nothing in buffers that are not in @code{org-mode}."
-msgstr ""
+msgstr "もしもすべての動的なブロックが常に最新のものに更新されるようにしたいならば、関数@code{org-update-all-dblocks}をフック、例えば変数@code{before-save-hook}に追加します。@code{org-update-all-dblocks}は@code{org-mode}内ではないバッファの中では何もしないように書かれています。"
 
 #+glossary: current buffer ( カレントバッファ ) / block ( ブロック ) / current ( カレント|現在の ) / dynamic ( 動的な ) / narrow ( ナローイングする|幅を狭くする )
 #. type: Plain text
 #: org.texi:14238
 msgid "You can narrow the current buffer to the current dynamic block (like any other block) with @code{org-narrow-to-block}."
-msgstr ""
+msgstr "@code{org-narrow-to-block}を使って、(他のブロックの様に)現在のバッファを現在の動的なブロックへとナローイングできます。"
 
 #+glossary: agenda views ( アジェンダビュー )
 #. type: cindex
