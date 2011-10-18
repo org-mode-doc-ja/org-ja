@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-10-18 21:50+0900\n"
+"PO-Revision-Date: 2011-10-18 20:38+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -29263,7 +29263,7 @@ msgstr "@code{org-narrow-to-block}を使って、(他のブロックの様に)�
 #: org.texi:14241
 #, no-wrap
 msgid "agenda views, user-defined"
-msgstr ""
+msgstr "アジェンダビュー、ユーザー定義"
 
 #. type: vindex
 #: org.texi:14243
@@ -29277,25 +29277,25 @@ msgstr "org-agenda-skip-function"
 #: org.texi:14244
 #, no-wrap
 msgid "org-agenda-skip-function-global"
-msgstr ""
+msgstr "org-agenda-skip-function-global"
 
 #+glossary: agenda views ( アジェンダビュー ) / agenda ( アジェンダ ) / custom ( カスタム|カスタマイズ ) / function ( 機能|関数 ) / global ( グローバルな ) / hook ( フック ) / narrow ( ナローイングする|幅を狭くする ) / org ( Org-mode ) / provide ( 用意する ) / search ( 検索 ) / variable ( 変数 ) / view ( ビュー )
 #. type: Plain text
 #: org.texi:14254
 msgid "Org provides a special hook that can be used to narrow down the selection made by these agenda views: @code{todo}, @code{alltodo}, @code{tags}, @code{tags-todo}, @code{tags-tree}.  You may specify a function that is used at each match to verify if the match should indeed be part of the agenda view, and if not, how much should be skipped.  You can specify a global condition that will be applied to all agenda views, this condition would be stored in the variable @code{org-agenda-skip-function-global}.  More commonly, such a definition is applied only to specific custom searches, using @code{org-agenda-skip-function}."
-msgstr ""
+msgstr "Org-modeでは、以下のアジェンダビューによって選択されたものを絞り込む特別なフック関数を用意しています: @code{todo}, @code{alltodo}, @code{tags}, @code{tags-todo}, @code{tags-tree}。検索でマッチする度に、実際にアジェンダビューでマッチしたかを確認したり、もしマッチしなければどれくらい飛ばすのかを、関数で指定できます。全てのアジェンダビューに適用されるようにグローバルな条件を設定でき、それは変数@code{org-agenda-skip-function-global}に格納されます。通常は、変数@code{org-agenda-skip-function}を使って、このような定義を特定のカスタムサーチに適用します。"
 
 #+glossary: heading ( 見出し ) / keyword ( キーワード ) / line ( 行|ライン|線 ) / list ( リスト ) / marked ( マーク ) / project ( プロジェクト ) / search ( 検索 ) / subtree ( サブツリー ) / tag ( タグ ) / tree ( ツリー )
 #. type: Plain text
 #: org.texi:14261
 msgid "Let's say you want to produce a list of projects that contain a WAITING tag anywhere in the project tree.  Let's further assume that you have marked all tree headings that define a project with the TODO keyword PROJECT.  In this case you would run a TODO search for the keyword PROJECT, but skip the match unless there is a WAITING tag anywhere in the subtree belonging to the project line."
-msgstr ""
+msgstr "プロジェクトのツリーのどこかにWAITINGというタグを含むプロジェクトのリストを作成する場合を考えてみましょう。ツリーの見出しには、プロジェクトを定義するTODOのキーワード「PROJECT」でマークされているとします。この場合、キーワードのPROJECTでTODOを検索し、プロジェクトのサブツリーにWAITINGのタグが無ければ検索でマッチしてもスキップしたいとします。"
 
 #+glossary: function ( 機能|関数 ) / search ( 検索 ) / subtree ( サブツリー ) / tag ( タグ )
 #. type: Plain text
 #: org.texi:14267
 msgid "To achieve this, you must write a function that searches the subtree for the tag.  If the tag is found, the function must return @code{nil} to indicate that this match should not be skipped.  If there is no such tag, return the location of the end of the subtree, to indicate that search should continue from there."
-msgstr ""
+msgstr "これを達成するには、サブツリーをタグで検索する関数を書かなければなりません。もしそのタグが見つかったら、そのマッチはスキップされるべきではないと示すために、その関数は@code{nil}を返さなければなりません。もしそのようなタグが無ければ、そこから検索し続けるということを示すために、そのサブツリーの終端の場所を返さなくてはなりません。"
 
 #+glossary: nil ( nil ) / tag ( タグ ) / tree ( ツリー )
 #. type: lisp
@@ -29309,12 +29309,18 @@ msgid ""
 "        nil          ; tag found, do not skip\n"
 "      subtree-end))) ; tag not found, continue after end of subtree\n"
 msgstr ""
+"(defun my-skip-unless-waiting ()\n"
+"  \"waitingでないツリーをスキップします\"\n"
+"  (let ((subtree-end (save-excursion (org-end-of-subtree t))))\n"
+"    (if (re-search-forward \":waiting:\" subtree-end t)\n"
+"        nil          ; タグが見つかったので、スキップしません\n"
+"      subtree-end))) ; タグが見つからないので、サブツリーの最後から検索を再開します\n"
 
 #+glossary: agenda ( アジェンダ ) / command ( コマンド ) / custom ( カスタム|カスタマイズ ) / example ( 例 ) / function ( 機能|関数 )
 #. type: Plain text
 #: org.texi:14279
 msgid "Now you may use this function in an agenda custom command, for example like this:"
-msgstr ""
+msgstr "今からこの関数をアジェンダのカスタムコマンドで使えます。例えばこうなります:"
 
 #. type: lisp
 #: org.texi:14285
@@ -29325,156 +29331,160 @@ msgid ""
 "   ((org-agenda-skip-function 'my-skip-unless-waiting)\n"
 "    (org-agenda-overriding-header \"Projects waiting for something: \"))))\n"
 msgstr ""
+"(org-add-agenda-custom-command\n"
+" '(\"b\" todo \"PROJECT\"\n"
+"   ((org-agenda-skip-function 'my-skip-unless-waiting)\n"
+"    (org-agenda-overriding-header \"waiting (待ち)状態のプロジェクト: \"))))\n"
 
 #. type: vindex
 #: org.texi:14287
 #, no-wrap
 msgid "org-agenda-overriding-header"
-msgstr ""
+msgstr "org-agenda-overriding-header"
 
 #+glossary: agenda ( アジェンダ ) / header ( ヘッダー ) / note ( ノート|メモ ) / view ( ビュー )
 #. type: Plain text
 #: org.texi:14290
 msgid "Note that this also binds @code{org-agenda-overriding-header} to get a meaningful header in the agenda view."
-msgstr ""
+msgstr "関数@code{org-agenda-overriding-header}を使って、アジェンダビューで意味のある見出しに変更したことにも注意して下さい。"
 
 #+glossary: custom ( カスタム|カスタマイズ ) / entries ( エントリー|文|入力 ) / function ( 機能|関数 ) / hierarchy ( 階層 ) / level ( レベル|階層 ) / search ( 検索 )
 #. type: Plain text
 #: org.texi:14300
 msgid "A general way to create custom searches is to base them on a search for entries with a certain level limit.  If you want to study all entries with your custom search function, simply do a search for @samp{LEVEL>0}@footnote{Note that, when using @code{org-odd-levels-only}, a level number corresponds to order in the hierarchy, not to the number of stars.}, and then use @code{org-agenda-skip-function} to select the entries you really want to have."
-msgstr ""
+msgstr "カスタム検索を作成するには、あるレベルの制限を設けた検索を基づくのが一般的な方法です。自作の検索関数で全てのエントリーを検索したい場合は、単に@samp{LEVEL>0}@footnote{@code{org-odd-levels-only}を使用している場合、level numberは階層構造のレベルと対応していて、スター「*」の数ではないことに注意して下さい。}を検索した後に、必要なエントリを選択してください。"
 
 #+glossary: function ( 機能|関数 )
 #. type: Plain text
 #: org.texi:14304
 msgid "You may also put a Lisp form into @code{org-agenda-skip-function}.  In particular, you may use the functions @code{org-agenda-skip-entry-if} and @code{org-agenda-skip-subtree-if} in this form, for example:"
-msgstr ""
+msgstr "変数@code{org-agenda-skip-function}にLispフォームを渡すこともできます。具体的に言うと、例えばこのように関数@code{org-agenda-skip-entry-if}と関数@code{org-agenda-skip-subtree-if}とを使えます:"
 
 #. type: item
 #: org.texi:14306
 #, no-wrap
 msgid "'(org-agenda-skip-entry-if 'scheduled)"
-msgstr ""
+msgstr "'(org-agenda-skip-entry-if 'scheduled)"
 
 #+glossary: current ( カレント|現在の ) / entry ( エントリー|文|入力 ) / scheduled ( スケジューリングされる )
 #. type: table
 #: org.texi:14308
 msgid "Skip current entry if it has been scheduled."
-msgstr ""
+msgstr "現在のエントリがスケジューリングされている場合、それをスキップします。"
 
 #. type: item
 #: org.texi:14308
 #, no-wrap
 msgid "'(org-agenda-skip-entry-if 'notscheduled)"
-msgstr ""
+msgstr "'(org-agenda-skip-entry-if 'notscheduled)"
 
 #+glossary: current ( カレント|現在の ) / entry ( エントリー|文|入力 ) / scheduled ( スケジューリングされる )
 #. type: table
 #: org.texi:14310
 msgid "Skip current entry if it has not been scheduled."
-msgstr ""
+msgstr "現在のエントリがスケジューリングされていない場合、それをスキップします。"
 
 #. type: item
 #: org.texi:14310
 #, no-wrap
 msgid "'(org-agenda-skip-entry-if 'deadline)"
-msgstr ""
+msgstr "'(org-agenda-skip-entry-if 'deadline)"
 
 #+glossary: current ( カレント|現在の ) / deadline ( デッドライン ) / entry ( エントリー|文|入力 )
 #. type: table
 #: org.texi:14312
 msgid "Skip current entry if it has a deadline."
-msgstr ""
+msgstr "現在のエントリがデッドラインを設定されている場合、それをスキップします。"
 
 #. type: item
 #: org.texi:14312
 #, no-wrap
 msgid "'(org-agenda-skip-entry-if 'scheduled 'deadline)"
-msgstr ""
+msgstr "'(org-agenda-skip-entry-if 'scheduled 'deadline)"
 
 #+glossary: current ( カレント|現在の ) / deadline ( デッドライン ) / entry ( エントリー|文|入力 ) / scheduled ( スケジューリングされる )
 #. type: table
 #: org.texi:14314
 msgid "Skip current entry if it has a deadline, or if it is scheduled."
-msgstr ""
+msgstr "現在のエントリがデッドラインを設定されているかもしくはスケジューリングされている場合、それをスキップします"
 
 #. type: item
 #: org.texi:14314
 #, no-wrap
 msgid "'(org-agenda-skip-entry-if 'todo '(\"TODO\" \"WAITING\"))"
-msgstr ""
+msgstr "'(org-agenda-skip-entry-if 'todo '(\"TODO\" \"WAITING\"))"
 
 #+glossary: current ( カレント|現在の ) / entry ( エントリー|文|入力 ) / keyword ( キーワード )
 #. type: table
 #: org.texi:14316
 msgid "Skip current entry if the TODO keyword is TODO or WAITING."
-msgstr ""
+msgstr "現在のエントリのTODOのキーワードがTODOもしくはWAITINGの場合、それをスキップします。"
 
 #. type: item
 #: org.texi:14316
 #, no-wrap
 msgid "'(org-agenda-skip-entry-if 'todo 'done)"
-msgstr ""
+msgstr "'(org-agenda-skip-entry-if 'todo 'done)"
 
 #+glossary: current ( カレント|現在の ) / entry ( エントリー|文|入力 ) / keyword ( キーワード ) / mark ( マーク )
 #. type: table
 #: org.texi:14318
 msgid "Skip current entry if the TODO keyword marks a DONE state."
-msgstr ""
+msgstr "現在のエントリのTODOのキーワードがDONEとマークされている場合、それをスキップします。"
 
 #. type: item
 #: org.texi:14318
 #, no-wrap
 msgid "'(org-agenda-skip-entry-if 'timestamp)"
-msgstr ""
+msgstr "'(org-agenda-skip-entry-if 'timestamp)"
 
 #+glossary: current ( カレント|現在の ) / deadline ( デッドライン ) / entry ( エントリー|文|入力 ) / scheduled ( スケジューリングされる ) / timestamp ( タイムスタンプ )
 #. type: table
 #: org.texi:14320
 msgid "Skip current entry if it has any timestamp, may also be deadline or scheduled."
-msgstr ""
+msgstr "現在のエントリが何かしらのタイムスタンプを持っている場合、それをスキップします。タイムスタンプはデッドラインかスケジューリングが考えられます。"
 
 #. type: item
 #: org.texi:14320
 #, no-wrap
 msgid "'(org-agenda-skip-entry 'regexp \"regular expression\")"
-msgstr ""
+msgstr "'(org-agenda-skip-entry 'regexp \"regular expression\")"
 
 #+glossary: current ( カレント|現在の ) / entry ( エントリー|文|入力 ) / matches ( 一致 )
 #. type: table
 #: org.texi:14322
 msgid "Skip current entry if the regular expression matches in the entry."
-msgstr ""
+msgstr "現在のエントリの中で正規表現「regular expression」にマッチした場合、それをスキップします。"
 
 #. type: item
 #: org.texi:14322
 #, no-wrap
 msgid "'(org-agenda-skip-entry 'notregexp \"regular expression\")"
-msgstr ""
+msgstr "'(org-agenda-skip-entry 'notregexp \"regular expression\")"
 
 #+glossary: current ( カレント|現在の ) / entry ( エントリー|文|入力 ) / matches ( 一致 )
 #. type: table
 #: org.texi:14324
 msgid "Skip current entry unless the regular expression matches."
-msgstr ""
+msgstr "現在のエントリの中で正規表現「regular expression」にマッチしない場合、それをスキップします。"
 
 #. type: item
 #: org.texi:14324
 #, no-wrap
 msgid "'(org-agenda-skip-subtree-if 'regexp \"regular expression\")"
-msgstr ""
+msgstr "'(org-agenda-skip-subtree-if 'regexp \"regular expression\")"
 
 #+glossary: check ( チェック ) / subtree ( サブツリー )
 #. type: table
 #: org.texi:14326
 msgid "Same as above, but check and skip the entire subtree."
-msgstr ""
+msgstr "2つ上と同じですが、サブツリー全体をチェックしてスキップします。"
 
 #+glossary: project ( プロジェクト ) / search ( 検索 )
 #. type: Plain text
 #: org.texi:14330
 msgid "Therefore we could also have written the search for WAITING projects like this, even without defining a special function:"
-msgstr ""
+msgstr "従って特別な関数を定義しなかったとしても、WAITINGがあるプロジェクトの検索をこのように書くこともできました:"
 
 #. type: lisp
 #: org.texi:14337
@@ -29486,6 +29496,11 @@ msgid ""
 "                                'regexp \":waiting:\"))\n"
 "    (org-agenda-overriding-header \"Projects waiting for something: \"))))\n"
 msgstr ""
+"(org-add-agenda-custom-command\n"
+" '(\"b\" todo \"PROJECT\"\n"
+"   ((org-agenda-skip-function '(org-agenda-skip-subtree-if\n"
+"                                'regexp \":waiting:\"))\n"
+"    (org-agenda-overriding-header \"waiting (待ち)状態のプロジェクト: \"))))\n"
 
 #+glossary: agenda ( アジェンダ )
 #. type: cindex
