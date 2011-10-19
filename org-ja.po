@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-10-19 02:04+0900\n"
+"PO-Revision-Date: 2011-10-19 22:16+0000\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -23000,20 +23000,20 @@ msgstr "ローカルディレクトリの公開はリモートへの公開に比
 #. type: Plain text
 #: org.texi:11108
 msgid "Below we provide two example configurations.  The first one is a simple project publishing only a set of Org files.  The second example is more complex, with a multi-component project."
-msgstr ""
+msgstr "私達は2つの設定の例を以下に示します．1つ目の設定はOrg-modeファイルのみのシンプルなプロジェクトの公開です．2つ目の設定は複数のコンポーネントを持つプロジェクトで，少し複雑な例です．"
 
 #+glossary: publishing configuration ( 公開用の設定 )
 #. type: subsection
 #: org.texi:11115
 #, no-wrap
 msgid "Example: simple publishing configuration"
-msgstr ""
+msgstr "例：シンプルな公開用の設定"
 
 #+glossary: directory ( ディレクトリ ) / example ( 例 ) / file ( ファイル ) / org ( Org-mode ) / publish ( 公開 )
 #. type: Plain text
 #: org.texi:11119
 msgid "This example publishes a set of Org files to the @file{public_html} directory on the local machine."
-msgstr ""
+msgstr "この例はOrg-modeファイルのセットをローカルマシンの@file{public_html}にディレクトリ公開します．"
 
 #. type: lisp
 #: org.texi:11130
@@ -23029,37 +23029,46 @@ msgid ""
 "                href=\\\"../other/mystyle.css\\\"\n"
 "                type=\\\"text/css\\\"/>\")))\n"
 msgstr ""
+"(setq org-publish-project-alist\n"
+"      '((\"org\"\n"
+"         :base-directory \"~/org/\"\n"
+"         :publishing-directory \"~/public_html\"\n"
+"         :section-numbers nil\n"
+"         :table-of-contents nil\n"
+"         :style \"<link rel=\\\"stylesheet\\\"\n"
+"                href=\\\"../other/mystyle.css\\\"\n"
+"                type=\\\"text/css\\\"/>\")))\n"
 
 #+glossary: publishing configuration ( 公開用の設定 )
 #. type: subsection
 #: org.texi:11133
 #, no-wrap
 msgid "Example: complex publishing configuration"
-msgstr ""
+msgstr "例：複雑な公開用の設定"
 
 #+glossary: code ( コード ) / directory ( ディレクトリ ) / example ( 例 ) / file ( ファイル ) / image ( 画像 ) / org ( Org-mode ) / publish ( 公開 ) / publishing ( 公開 ) / source ( ソース )
 #. type: Plain text
 #: org.texi:11139
 msgid "This more complicated example publishes an entire website, including Org files converted to HTML, image files, Emacs Lisp source code, and style sheets. The publishing directory is remote and private files are excluded."
-msgstr ""
+msgstr "この少し複雑な例はHTMLに変換されたorg-modeファイル，画像ファイル，Emacs Lispのソースコード，スタイルシートなどを含む全てのウェブサイトを公開します．公開ディレクトリはリモートと除外されたプライベートなファイルです．"
 
 #+glossary: directory ( ディレクトリ ) / example ( 例 ) / file ( ファイル ) / image ( 画像 ) / link ( リンク ) / org ( Org-mode ) / structure ( 構造 )
 #. type: Plain text
 #: org.texi:11145
 msgid "To ensure that links are preserved, care should be taken to replicate your directory structure on the web server, and to use relative file paths. For example, if your Org files are kept in @file{~/org} and your publishable images in @file{~/images}, you would link to an image with"
-msgstr ""
+msgstr "リンクが保持されていることを保証するには，ウェブサーバ上のディレクトリ構造の再現，ファイルの相対パスの使用を慎重にするべきです．例えば，もしあなたのOrg-modeファイルが@file{~/org}に，公開する画像が@file{~/image}にあるとすると，あなたは画像のリンクを以下のようにします．"
 
 #. type: example
 #: org.texi:11147
 #, no-wrap
 msgid "file:../images/myimage.png\n"
-msgstr ""
+msgstr "file:../images/myimage.png\n"
 
 #+glossary: folder ( フォルダ|折りたたむ ) / image ( 画像 ) / publishing ( 公開 ) / setting ( 設定 )
 #. type: Plain text
 #: org.texi:11152
 msgid "On the web server, the relative path to the image should be the same. You can accomplish this by setting up an \"images\" folder in the right place on the web server, and publishing images to it."
-msgstr ""
+msgstr "ウェブサーバ上では，画像への相対パスは同じにするべきです．あなたは\\\"images\\\"フォルダをウェブサーバ上の正しい一に置き，画像をそこに公開することでこれを達成することができます．"
 
 #. type: lisp
 #: org.texi:11167
@@ -23080,6 +23089,20 @@ msgid ""
 "          :html-preamble t)\n"
 "\n"
 msgstr ""
+"(setq org-publish-project-alist\n"
+"      '((\"orgfiles\"\n"
+"          :base-directory \"~/org/\"\n"
+"          :base-extension \"org\"\n"
+"          :publishing-directory \"/ssh:user@@host:~/html/notebook/\"\n"
+"          :publishing-function org-publish-org-to-html\n"
+"          :exclude \"PrivatePage.org\"   ;; regexp\n"
+"          :headline-levels 3\n"
+"          :section-numbers nil\n"
+"          :table-of-contents nil\n"
+"          :style \"<link rel=\\\"stylesheet\\\"\n"
+"                  href=\\\"../other/mystyle.css\\\" type=\\\"text/css\\\"/>\"\n"
+"          :html-preamble t)\n"
+"\n"
 
 #. type: lisp
 #: org.texi:11173
@@ -23092,6 +23115,12 @@ msgid ""
 "          :publishing-function org-publish-attachment)\n"
 "\n"
 msgstr ""
+"         (\"images\"\n"
+"          :base-directory \"~/images/\"\n"
+"          :base-extension \"jpg\\\\|gif\\\\|png\"\n"
+"          :publishing-directory \"/ssh:user@@host:~/html/images/\"\n"
+"          :publishing-function org-publish-attachment)\n"
+"\n"
 
 #. type: lisp
 #: org.texi:11180
@@ -23104,6 +23133,12 @@ msgid ""
 "          :publishing-function org-publish-attachment)\n"
 "         (\"website\" :components (\"orgfiles\" \"images\" \"other\"))))\n"
 msgstr ""
+"         (\"other\"\n"
+"          :base-directory \"~/other/\"\n"
+"          :base-extension \"css\\\\|el\"\n"
+"          :publishing-directory \"/ssh:user@@host:~/html/other/\"\n"
+"          :publishing-function org-publish-attachment)\n"
+"         (\"website\" :components (\"orgfiles\" \"images\" \"other\"))))\n"
 
 #+glossary: org ( Org-mode ) / publish ( 公開 )
 #. type: Plain text
