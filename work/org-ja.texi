@@ -10734,151 +10734,148 @@ Org-mode中のユーザ変数と対応します。下のテーブルはそれら
 内でセットしても、全て上書きされます。
 
 @node Publishing links, Sitemap, Publishing options, Configuration
-@subsection Links between published files
-@cindex links, publishing
+@subsection 公開ファイル間のリンク
+@cindex リンク、公開
 
-To create a link from one Org file to another, you would use something like
-@samp{[[file:foo.org][The foo]]} or simply @samp{file:foo.org.}
-(@pxref{Hyperlinks}).  When published, this link becomes a link to
-@file{foo.html}.  In this way, you can interlink the pages of your "org web"
-project and the links will work as expected when you publish them to HTML.
-If you also publish the Org source file and want to link to that, use an
-@code{http:} link instead of a @code{file:} link, because @code{file:} links
-are converted to link to the corresponding @file{html} file.
+あるOrg-modeファイルから別のファイルへのリンクを作成する方法として、あなたは
+@samp{[[file:foo.org][The foo]]}、もしくはより単純な@samp{file:foo.org.}(@pxref{Hyperlinks})
+のような形式を使うことができます。公開するとき、このリンクは@file{foo.html}へのリ
+ンクとなります。この方法では、あなたはあなたの\"Org-modeウェブ\"プロジェクト
+のページとHTMLへ公開するときにリンクを連結することができます。もしあなたが
+Org-modeのソースファイルを公開したりそこへのリンクを作成したいのであれば、
+@code{file:}リンクは対応する@file{html}ファイルにリンクが変換されるため、@code{file:}リンク
+の代わりに@code{http:}リンクを使います。
 
-You may also link to related files, such as images. Provided you are careful
-with relative file names, and provided you have also configured Org to
-upload the related files, these links will work too. See @ref{Complex example}, for an example of this usage.
+あなたはまた、画像のような関連するファイルへのリンクを作成することができます
+。あなたが関連するファイル名に慎重になっているとき、そしてあなたが関連するフ
+ァイルをアップロードするOrg-modeの設定をするとき、これらのリンクも働きます。
+使い方の例は、@ref{Complex example}を参照してください。
 
-Sometimes an Org file to be published may contain links that are only valid
-in your production environment, but not in the publishing location.  In this
-case, use the property
+時々、公開されるOrg-modeファイルはあなたの製品環境内でのみ有効で、公開する場
+所では有効でないなリンクを含むことができます。この場合、次のプロパティを使い
+ます。
 
 @multitable @columnfractions 0.4 0.6
 @item @code{:link-validation-function}
-@tab Function to validate links
+@tab 有効にする関数
 @end multitable
 
 @noindent
-to define a function for checking link validity.  This function must accept
-two arguments, the file name and a directory relative to which the file name
-is interpreted in the production environment.  If this function returns
-@code{nil}, then the HTML generator will only insert a description into the
-HTML file, but no link.  One option for this function is
-@code{org-publish-validate-link} which checks if the given file is part of
-any project in @code{org-publish-project-alist}.
+このプロパティはリンクの有効性をチェックする関数を定義します。この関数はファ
+イル名と製品環境内で解釈できるファイル名に関連するディレクトリ2つの引数を持
+ちます。もしこの関数が@code{nil}を返すなら、HTMLジェネレータはHTMLファイルにリン
+クを除き説明のみ挿入します。この関数へのオプションとして、
+@code{org-publish-project-alist}中のプロジェクトの一部であるファイルが与えられて
+いるなチェックする@code{org-publish-validate-link}があります。
 
 @node Sitemap, Generating an index, Publishing links, Configuration
-@subsection Generating a sitemap
-@cindex sitemap, of published pages
+@subsection サイトマップの生成
+@cindex サイトマップ、ページの公開
 
-The following properties may be used to control publishing of a map of files
-for a given project.
+以下のプロパティはプロジェクトのファイルのマップの公開を制御するために使うこ
+とができます。
 
 @multitable @columnfractions 0.35 0.65
 @item @code{:auto-sitemap}
-@tab When non-nil, publish a sitemap during @code{org-publish-current-project} or
-@code{org-publish-all}.
+@tab nilでないとき、@code{org-publish-current-project}もしくは@code{org-publish-all}の実行
+中にサイトマップを公開します。
 
 @item @code{:sitemap-filename}
-@tab Filename for output of sitemap. Defaults to @file{sitemap.org} (which
-becomes @file{sitemap.html}).
+@tab 出力するサイトマップのファイル名です。デフォルトでは
+@file{sitemap.org}(@file{sitemap.html}になります)です。
 
 @item @code{:sitemap-title}
-@tab Title of sitemap page. Defaults to name of file.
+@tab サイトマップページのタイトルです。デフォルトはファイル名です。
 
 @item @code{:sitemap-function}
-@tab Plug-in function to use for generation of the sitemap.  Defaults to
-@code{org-publish-org-sitemap}, which generates a plain list of links to all
-files in the project.
+@tab サイトマップの生成に使うプラグイン関数です。デフォルトでは
+@code{org-publish-org-sitemap}で、プロジェクト中の全てのファイルへのリンクのプレ
+ーンリストを生成します。
 
 @item @code{:sitemap-sort-folders}
-@tab Where folders should appear in the sitemap.  Set this to @code{first}
-(default) or @code{last} to display folders first or last, respectively.
-Any other value will mix files and folders.
+@tab フォルダがサイトマップに表示される位置です。先頭か最後にそれぞれフォルダを
+表示するため、これに@code{first}(デフォルト)か@code{last}をセットしてください。
 
 @item @code{:sitemap-sort-files}
-@tab How the files are sorted in the site map.  Set this to @code{alphabetically}
-(default), @code{chronologically} or
-@code{anti-chronologically}. @code{chronologically} sorts the files with
-older date first while @code{anti-chronologically} sorts the files with
-newer date first. @code{alphabetically} sorts the files alphabetically. The
-date of a file is retrieved with @code{org-publish-find-date}.
+@tab サイトマップ中でのファイルのソート方法です。@code{alphabetically}(デフォルト)、
+@code{chronologically}または@code{anti-chronologically}をセットします。
+@code{chronologically}はファイルを日付の古い順番にソートし、
+@code{anti-chronologically}は新しい順番にソートします。@code{alphabetically}はファイル
+をアルファベット順にソートします。ファイルの日付は@code{org-publish-find-dat}によ
+り検索します。
 
 @item @code{:sitemap-ignore-case}
-@tab Should sorting be case-sensitive? Default @code{nil}.
+@tab ソート時に大文字と小文字を区別するかどうかです。デフォルトでは@code{nil}です。
 
 @item @code{:sitemap-file-entry-format}
-@tab With this option one can tell how a sitemap's entry is formated in the
-sitemap. This is a format string with some escape sequences: @code{%t}
-stands for the title of the file, @code{%a} stands for the author of the
-file and @code{%d} stands for the date of the file. The date is retrieved
-with the @code{org-publish-find-date} function and formated with
-@code{org-publish-sitemap-date-format}. Default @code{%t}.
+@tab このオプションでサイトマップのエントリがサイトマップでフォーマットされてい
+るか知ることができます。これはエスケープシークエンスを含むフォーマット文字列
+です:
+@code{%t}はファイルのタイトル、@code{%a}はファイルの著者、@code{%d}はファイルの日付を表しま
+す。日付は@code{org-publish-find-date}関数により検索され、
+@code{org-publish-sitemap-date-format}によりフォーマットされます。デフォルトは
+@code{%t}です。
 
 @item @code{:sitemap-date-format}
-@tab Format string for the @code{format-time-string} function that tells how a
-sitemap entry's date is to be formated. This property bypasses
-@code{org-publish-sitemap-date-format} which defaults to @code{%Y-%m-%d}.
+@tab エントリの日付をどのようにフォーマットするかを決める@code{format-time-string}関
+数用のフォーマット文字列です。このプロパティはデフォルトでは@code{%Y-%m-%d}である
+@code{rog-publish-sitemap-date-format}を迂回します.
 
 @end multitable
 
 @node Generating an index, , Sitemap, Configuration
 @subsection Generating an index
-@cindex index, in a publishing project
+@cindex インデックス、プロジェクトの公開
 
-Org-mode can generate an index across the files of a publishing project.
+Org-modeは公開するプロジェクトのファイルを跨ぐインデックスを生成することがで
+きます。
 
 @multitable @columnfractions 0.25 0.75
 @item @code{:makeindex}
-@tab When non-nil, generate in index in the file @file{theindex.org} and publish
-it as @file{theindex.html}.
+@tab nilでないとき、@file{theindex.org}ファイルにインデックスを作成し、
+@file{theindex.html}に公開します。
 @end multitable
 
-The file will be created when first publishing a project with the
-@code{:makeindex} set.  The file only contains a statement @code{#+include: "theindex.inc"}.  You can then build around this include statement by adding
-a title, style information, etc.
+@code{:makeindex}を設定したプロジェクトの最初の公開のとき、ファイルは作成されます
+。ファイルは@code{#+include: \"theindex.inc\"}ステートメントのみを含みます。あな
+たはタイトルやスタイル情報等をステートメントの周囲に追加することができます。
 
 @node Uploading files, Sample configuration, Configuration, Publishing
 @section Uploading files
 @cindex rsync
 @cindex unison
 
-For those people already utilizing third party sync tools such as
-@command{rsync} or @command{unison}, it might be preferable not to use the
-built in @i{remote} publishing facilities of Org-mode which rely heavily on
-Tramp.  Tramp, while very useful and powerful, tends not to be so efficient
-for multiple file transfer and has been known to cause problems under heavy
-usage.
+Trampに深く頼っているOrg-modeの組込みの公開機能を使うことは望ましくなく、
+@command{rsync}や@command{unison}のようなサードパーティの同期ツールを人々は活用しています。
+Trampは非常に便利で協力ですが、複数のファイルを送る場合効率的でない場合があ
+り、ヘビーに使う環境下での問題の原因として知られています。
 
-Specialized synchronization utilities offer several advantages.  In addition
-to timestamp comparison, they also do content and permissions/attribute
-checks.  For this reason you might prefer to publish your web to a local
-directory (possibly even @i{in place} with your Org files) and then use
-@file{unison} or @file{rsync} to do the synchronization with the remote
-host.
+専用の同期ユーティリティはいくつかのアドバンテージを提供します。タイムスタン
+プの比較に加えて、コンテンツや権限、属性のチェックも行います。そういうわけで
+、あなたのWEBページをローカルディレクトリ(場合によるとOrg-modeファイルの場所
+で)に公開し、そして@file{unison}や@file{rsync}をリモートホストとの同期に使うために選ぶ
+ことができます。
 
-Since Unison (for example) can be configured as to which files to transfer
-to a certain remote destination, it can greatly simplify the project
-publishing definition.  Simply keep all files in the correct location,
-process your Org files with @code{org-publish} and let the synchronization
-tool do the rest.  You do not need, in this scenario, to include attachments
-such as @file{jpg}, @file{css} or @file{gif} files in the project definition
-since the 3rd party tool syncs them.
+Unisonはファイルを信頼できるリモートの公開先に転送する設定を行うことができる
+ので、プロジェクトの公開についての定義を非常にシンプルにすることができます。
+@code{org-publish}を用いるあなたのOrg-modeファイルの処理と同期ツールの設定により
+、正しい場所で全てのファイルをシンプルに保ちます。このシナリオでは、@file{jpg}や
+@file{css}、@file{gif}のようなファイルの添付については、サードパーティの同期ツールがそ
+れらを同期するため、設定する必要がありません。
 
-Publishing to a local directory is also much faster than to a remote one, so
-that you can afford more easily to republish entire projects.  If you set
-@code{org-publish-use-timestamps-flag} to @code{nil}, you gain the main
-benefit of re-including any changed external files such as source example
-files you might include with @code{#+INCLUDE}.  The timestamp mechanism in
-Org is not smart enough to detect if included files have been modified.
+ローカルディレクトリの公開はリモートへの公開に比べると高速で、
+全てのプロジェクトをより簡単に再公開できます。もしあなたが
+@code{org-publish-use-timestamp-flag}を@code{nil}に設定しているのであれば、変更が加え
+られた@code{#+INCLUDE}でインクルードしたたソースファイルのような外部ファイルの再
+公開で恩恵を受けます。Org-modeにおけるタイムスタンプのメカニズムはファイルに
+変更が加えられたかどうか検出できるほどスマートではありません。
 
 @node Sample configuration, 公開の開始, Uploading files, Publishing
 @section Sample configuration
 
-Below we provide two example configurations.  The first one is a simple
-project publishing only a set of Org files.  The second example is more
-complex, with a multi-component project.
+私達は2つの設定の例を以下に示します。1つ目の設定はOrg-modeファイルのみのシン
+プルなプロジェクトの公開です。2つ目の設定は複数のコンポーネントを持つプロジ
+ェクトで、少し複雑な例です。
 
 @menu
 * Simple example::           1コンポーネントでの公開
@@ -10886,10 +10883,10 @@ complex, with a multi-component project.
 @end menu
 
 @node Simple example, Complex example, Sample configuration, Sample configuration
-@subsection Example: simple publishing configuration
+@subsection 例：シンプルな公開用の設定
 
-This example publishes a set of Org files to the @file{public_html}
-directory on the local machine.
+この例はOrg-modeファイルのセットをローカルマシンの@file{public_html}にディレクト
+リ公開します。
 
 @lisp
 (setq org-publish-project-alist
@@ -10904,24 +10901,24 @@ directory on the local machine.
 @end lisp
 
 @node Complex example, , Simple example, Sample configuration
-@subsection Example: complex publishing configuration
+@subsection 例：複雑な公開用の設定
 
-This more complicated example publishes an entire website, including Org
-files converted to HTML, image files, Emacs Lisp source code, and style
-sheets. The publishing directory is remote and private files are excluded.
+この少し複雑な例はHTMLに変換されたorg-modeファイル、画像ファイル、Emacs
+Lispのソースコード、スタイルシートなどを含む全てのウェブサイトを公開します。
+公開ディレクトリはリモートと除外されたプライベートなファイルです。
 
 @c
-To ensure that links are preserved, care should be taken to replicate your
-directory structure on the web server, and to use relative file paths. For
-example, if your Org files are kept in @file{~/org} and your publishable
-images in @file{~/images}, you would link to an image with
+リンクが保持されていることを保証するには、ウェブサーバ上のディレクトリ構造の
+再現、ファイルの相対パスの使用を慎重にするべきです。例えば、もしあなたの
+Org-modeファイルが@file{~/org}に、公開する画像が@file{~/image}にあるとすると、あなたは
+画像のリンクを以下のようにします。
 @example
 file:../images/myimage.png
 @end example
 @c
-On the web server, the relative path to the image should be the same. You
-can accomplish this by setting up an "images" folder in the right place on
-the web server, and publishing images to it.
+ウェブサーバ上では、画像への相対パスは同じにするべきです。あなたは\"images\"
+フォルダをウェブサーバ上の正しい一に置き、画像をそこに公開することでこれを達
+成することができます。
 
 @lisp
 (setq org-publish-project-alist
@@ -10955,21 +10952,25 @@ the web server, and publishing images to it.
 @node 公開の開始, , Sample configuration, Publishing
 @section 公開の開始
 
-Once properly configured, Org can publish with the following commands:
+一度適切に設定すると、Org-modeは以下のコマンドを使うことで公開することができ
+ます。
 
 @table @kbd
-@orgcmd{C-c C-e X,org-publish} Prompt for a specific project and publish all
-files that belong to it.  @orgcmd{C-c C-e P,org-publish-current-project}
-Publish the project containing the current file.  @orgcmd{C-c C-e F,org-publish-current-file} Publish only the current file.  @orgcmd{C-c C-e E,org-publish-all} Publish every project.
+@orgcmd{C-c C-e X,org-publish} プロンプトでプロジェクトを指定し、プロジェクト
+の全てのファイルを公開します。
+@orgcmd{C-c C-e P,org-publish-current-project} 現在のファイルを含むプロジェク
+トを公開します。
+@orgcmd{C-c C-e F,org-publish-current-file} 現在のファイルのみ公開します。
+ @orgcmd{c-c C-e E,org-publish-all} 全てのプロジェクトを公開します。
 @end table
 
 @vindex org-publish-use-timestamps-flag
-Org uses timestamps to track when a file has changed. The above functions
-normally only publish changed files. You can override this and force
-publishing of all files by giving a prefix argument to any of the commands
-above, or by customizing the variable
-@code{org-publish-use-timestamps-flag}.  This may be necessary in particular
-if files include other files via @code{#+SETUPFILE:} or @code{#+INCLUDE:}.
+Org-modeはファイルが変更された時を記録するためにタイムスタンプを使います。上
+記の関数は通常変更されたファイルのみを公開します。あなたはこれを上書きし、上
+記コマンドに前置引数を付けて実行するか@code{org-publish-use-timestamps-flag}変数
+をカスタマイズすることで全てのファイルを強制的に公開できます。もし、ファイル
+が@code{#+SETUPFILE:}や@code{#+INCLUDE:}を用いて他のファイルをインクルードしているなら
+特別必要です。
 
 @comment  node-name,  next,  previous,  up
 @comment Working With Source Code, Miscellaneous, Publishing, Top
@@ -11059,13 +11060,13 @@ src_<language>[<header arguments>]@{<body>@}
 @item <language>
 ブロック内にあるコードの言語です。
 @item <switches>
-Optional switches controlling exportation of the code block (see switches
-discussion in @ref{Literal examples})
+コードブロックのエクスポートを管理するスイッチです。省略可能です。
+(@ref{Literal examples}を参照してください。)
 @item <header arguments>
-Optional header arguments control many aspects of evaluation, export and
-tangling of code blocks. See the @ref{Header arguments} section. Header
-arguments can also be set on a per-buffer or per-subtree basis using
-properties.
+省略可能なヘッダー引数は、コードブロックの評価、エクスポートそして抽出
+での多く特徴を管理します。@ref{Header arguments}セクションを見て下さい。プ
+ロパティを設定することで、バッファー毎に、サブツリー毎にヘッダー引数を
+設定できます。
 @item <body>
 ソースコードです。
 @end table
@@ -11079,10 +11080,10 @@ properties.
 @cindex ソースコード、編集
 
 @kindex C-c '
-Use @kbd{C-c '} to edit the current code block. This brings up a language
-major-mode edit buffer containing the body of the code block. Saving this
-buffer will write the new contents back to the Org buffer. Use @kbd{C-c '}
-again to exit.
+現在のコードブロックを編集するには@kbd{C-c '}を使ってください。コードブロックの
+本文を含んだ編集バッファが、その言語のメジャーモードで新たに開かれます。その
+バッファを保存すると、Org-modeのバッファへ新しい内容を上書きします。コードブ
+ロックの編集バッファを閉じるには@kbd{C-c '}を再度押して下さい。
 
 編集バッファにて@code{org-src-mode}マイナーモードが起動します。編集バッファの振る
 舞いを設定するには、以下の変数が使えます。詳細な設定オプションについては、カ
@@ -11090,22 +11091,22 @@ again to exit.
 
 @table @code
 @item org-src-lang-modes
-If an Emacs major-mode named @code{<lang>-mode} exists, where @code{<lang>}
-is the language named in the header line of the code block, then the edit
-buffer will be placed in that major-mode. This variable can be used to map
-arbitrary language names to existing major modes.
+コードブロックのヘッダー行で宣言した言語名@code{<lang>}のメジャーモードが
+Emacsに存在する場合、そのメジャーモードで編集バッファを開きます。存在
+するメジャーモードに任意の言語名を割り振るためにこの変数を使えます。
 @item org-src-window-setup
 編集バッファを新規作成する際の、Emacsのウィンドウ配置方法を管理します。
 @item org-src-preserve-indentation
 Pythonなどのインデント幅が非常に重要な言語をtangling(コード本文を抽出)
 するときに、この変数は特に役に立ちます。
 @item org-src-ask-before-returning-to-edit-buffer
-By default, Org will ask before returning to an open edit buffer. Set this
-variable to nil to switch without asking.
+デフォルトでは、既に開いてある編集バッファへと戻る前に、Org-modeが確認
+のプロンプトを出します。確認のプロンプトを出さずにバッファを変更するに
+は、この変数をnilに設定してください。
 @end table
 
-To turn on native code fontification in the @emph{Org} buffer, configure the
-variable @code{org-src-fontify-natively}.
+@emph{Org-mode}バッファ内にもかかわらず、記述した言語をメジャーモードの配色で表示
+したい場合には、変数@code{org-src-fontify-natively}を設定してください。
 
 @comment  node-name,  next,  previous,  up
 @comment  Exporting code blocks, Extracting source code, Editing source code, Working With Source Code
@@ -11115,12 +11116,13 @@ variable @code{org-src-fontify-natively}.
 @cindex コードブロック、エクスポート
 @cindex ソースコード、エクスポート
 
-It is possible to export the @emph{contents} of code blocks, the
-@emph{results} of code block evaluation, @emph{neither}, or @emph{both}.
-For most languages, the default exports the contents of code
-blocks. However, for some languages (e.g.@: @code{ditaa}) the default
-exports the results of code block evaluation.  For information on exporting
-code block bodies, see @ref{Literal examples}.
+コードブロックの@emph{内容}、コードブロックを評価した@emph{結果}、@emph{いずれでもないもの}
+、もしくは内容と結果@emph{両方}をエクスポートできます。ほとんどの言語では、デフォ
+ルトの設定ではコードブロックの内容をエクスポートします。しかし、ある言語(例
+えば@:
+@code{ditaa})では、デフォルトの設定でコードブロックを評価した結果をエクスポートし
+ます。コードブロックの本文をエクスポートするには、@ref{Literal examples}を参照し
+てください。
 
 ヘッダー引数@code{:exports}を設定することで、エクスポート時の振る舞いを指定できま
 す:
@@ -11141,12 +11143,11 @@ code block bodies, see @ref{Literal examples}.
 コードブロックとその結果のいずれもエクスポートされません。
 @end table
 
-It is possible to inhibit the evaluation of code blocks during export.
-Setting the @code{org-export-babel-evaluate} variable to @code{nil} will
-ensure that no code blocks are evaluated as part of the export process.
-This can be useful in situations where potentially untrusted Org-mode files
-are exported in an automated fashion, for example when Org-mode is used as
-the markup language for a wiki.
+エクスポートの間、コードブロックは評価されません。変数
+@code{org-export-babel-evaluate}を@code{nil}に設定すると、エクスポートのプロセスの一部
+としてのコードブロックの評価は抑止されます。例えばwikiのマークアップ言語とし
+てOrg-modeを使う場合など、信頼できない可能性があるOrg-modeが自動的にエクスポ
+ートされる場合には、この設定が役立ちます。
 
 @comment  node-name,  next,  previous,  up
 @comment  Extracting source code, Evaluating code blocks, Exporting code blocks, Working With Source Code
@@ -13368,10 +13369,9 @@ Viperは@kbd{C-c /}を使い、それ故にOrg-modeの@code{org-sparse-tree}コ�
 
 @node Hacking, MobileOrg, Miscellaneous, Top
 @appendix Hacking
-@cindex hacking
+@cindex ハッキング
 
-This appendix covers some aspects where users can extend the functionality
-of Org.
+この付録では、ユーザーがOrg-modeの機能を拡張できる幾つかの特徴を紹介します。
 
 @menu
 * Hooks::                    Orgの内部にアクセスするのはどれ？
@@ -13388,39 +13388,41 @@ of Org.
 
 @node Hooks, Add-on packages, Hacking, Hacking
 @section Hooks
-@cindex hooks
+@cindex フック
 
-Org has a large number of hook variables that can be used to add
-functionality.  This appendix about hacking is going to illustrate the use
-of some of them.  A complete list of all hooks with documentation is
-maintained by the Worg project and can be found at
-@uref{http://orgmode.org/worg/org-configs/org-hooks.php}.
+Org-modeには、機能を追加するためのフック変数が数多くあります。ハッキングに関
+するこの付録では、それらの使い方を説明します。全フックの完全なリストと説明文
+は
+Worg project
+によって維持管理されており、
+@uref{http://orgmode.org/worg/org-configs/org-hooks.php}にて見つけられます。
 
 @node Add-on packages, Adding hyperlink types, Hooks, Hacking
 @section Add-on packages
-@cindex add-on packages
+@cindex アドオンパッケージ
 
-A large number of add-on packages have been written by various authors.
-These packages are not part of Emacs, but they are distributed as
-contributed packages with the separate release available at the Org-mode
-home page at @uref{http://orgmode.org}.  The list of contributed packages,
-along with documentation about each package, is maintained by the Worg
-project at @uref{http://orgmode.org/worg/org-contrib/}.
+様々な人によって膨大な数のアドオンパッケージが書かれました。これらのパッケー
+ジはEmacsの一部ではありませんが、投稿されたパッケージとして独自のリリースで
+配布されており、Org-modeのホームページ
+@uref{http://orgmode.org}にて入手できます。投稿されたパッケージのリストとその説明
+文は Worg project によって
+@uref{http://orgmode.org/worg/org-contrib/}にて維持管理されています。
 
 
 
 @node Adding hyperlink types, Context-sensitive commands, Add-on packages, Hacking
 @section Adding hyperlink types
-@cindex hyperlinks, adding new types
+@cindex ハイパーリンク、タイプの追加
 
-Org has a large number of hyperlink types built-in (@pxref{Hyperlinks}).  If
-you would like to add new link types, Org provides an interface for doing
-so.  Let's look at an example file, @file{org-man.el}, that will add support
-for creating links like @samp{[[man:printf][The printf manpage]]} to show
-Unix manual pages inside Emacs:
+Org-modeにはビルトインのハイパーリンク形式が多数用意されています
+(@pxref{Hyperlinks})。新しいタイプのリンクを追加したい場合、Orgは追加するためのイ
+ンターフェスを用意します。例となるファイル
+@file{org-man.el}を見て下さい。これは
+UnixのmanページをEmacsで表示するために、@samp{[[man:printf][printfのmanページ]]}
+というリンクを生成するサポートを作成します:
 
 @lisp
-;;; org-man.el - Support for links to manpages in Org
+;;; org-man.el - Org-modeでmanページのリンクをサポートする
 
 (require 'org)
 
@@ -13428,19 +13430,19 @@ Unix manual pages inside Emacs:
 (add-hook 'org-store-link-functions 'org-man-store-link)
 
 (defcustom org-man-command 'man
-  "The Emacs command to be used to display a man page."
+  "manのページを表示するためのEmacsのコマンド。"
   :group 'org-link
   :type '(choice (const man) (const woman)))
 
 (defun org-man-open (path)
-  "Visit the manpage on PATH.
-PATH should be a topic that can be thrown at the man command."
+  "パス(PATH)にあるmanpageを開きます。
+パスはコマンドmanに渡せる内容でなければなりません。"
   (funcall org-man-command path))
 
 (defun org-man-store-link ()
-  "Store a link to a manpage."
+  "manページへのリンクを保存します。"
   (when (memq major-mode '(Man-mode woman-mode))
-    ;; This is a man page, we do make this link
+    ;; これはmanページなので、リンクを作成します。
     (let* ((page (org-man-get-page-name))
            (link (concat "man:" page))
            (description (format "Manpage for %s" page)))
@@ -13450,11 +13452,11 @@ PATH should be a topic that can be thrown at the man command."
        :description description))))
 
 (defun org-man-get-page-name ()
-  "Extract the page name from the buffer name."
-  ;; This works for both `Man-mode' and `woman-mode'.
+  "バッファ名からページ名を抽出します。"
+  ;; `Man-mode' と `woman-mode' の両方で動作します。
   (if (string-match " \\(\\S-+\\)\\*" (buffer-name))
       (match-string 1 (buffer-name))
-    (error "Cannot create link to this man page")))
+    (error "このmanページへのリンクを作成できません")))
 
 (provide 'org-man)
 
@@ -13462,111 +13464,111 @@ PATH should be a topic that can be thrown at the man command."
 @end lisp
 
 @noindent
-You would activate this new link type in @file{.emacs} with
+以下を@file{.emacs}に加えて、この新しいタイプのリンクを有効にします。
 
 @lisp
 (require 'org-man)
 @end lisp
 
 @noindent
-Let's go through the file and see what it does.
+そのファイルを一つずつ順番に検討して、何をするのか見てみましょう。
 @enumerate
-@item It does @code{(require 'org)} to make sure that @file{org.el} has been
-loaded.
-@item The next line calls @code{org-add-link-type} to define a new link type with
-prefix @samp{man}.  The call also contains the name of a function that will
-be called to follow such a link.
+@item @code{(require 'org)}を実行して@file{org.el}が読み込まれたことを確認します。
+@item 次の行では@code{org-add-link-type}を呼び出して、新しいタイプのリンクを接頭
+辞 @samp{man}
+で定義します。またこの呼び出しでは、そのようなリンクを辿るために呼び出
+される関数の名前も含まれています。
 @item @vindex org-store-link-functions
-The next line adds a function to @code{org-store-link-functions}, in order
-to allow the command @kbd{C-c l} to record a useful link in a buffer
-displaying a man page.
+次の行では、manページを表示したバッファ内にて有用なリンクを@kbd{C-c l}で保
+存できるように、関数を@code{org-store-link-functions}に追加します。
 @end enumerate
 
-The rest of the file defines the necessary variables and functions.  First
-there is a customization variable that determines which Emacs command should
-be used to display man pages.  There are two options, @code{man} and
-@code{woman}.  Then the function to follow a link is defined.  It gets the
-link path as an argument---in this case the link path is just a topic for
-the manual command.  The function calls the value of @code{org-man-command}
-to display the man page.
+ファイルの残りは必要な変数と関数を定義しています。最初に、manページの表示に
+どのEmacsのコマンドを使うかを決める変数のカスタマイズがあります。2つのオプシ
+ョン、@code{man}
+と @code{woman} があります。次に、リンクを辿る関数が定義されています。リンクのパ
+スは引数として渡されます ---
+この場合、リンクのパスは単にmanコマンドのトピックです。この関数はmanページの
+表示に@code{org-man-command}の値を呼び出します。
 
-Finally the function @code{org-man-store-link} is defined.  When you try to
-store a link with @kbd{C-c l}, this function will be called to try to make a
-link.  The function must first decide if it is supposed to create the link
-for this buffer type; we do this by checking the value of the variable
-@code{major-mode}.  If not, the function must exit and return the value
-@code{nil}.  If yes, the link is created by getting the manual topic from
-the buffer name and prefixing it with the string @samp{man:}.  Then it must
-call the command @code{org-store-link-props} and set the @code{:type} and
-@code{:link} properties.  Optionally you can also set the
-@code{:description} property to provide a default for the link description
-when the link is later inserted into an Org buffer with @kbd{C-c C-l}.
+最後に、関数@code{org-man-store-link}が定義されています。@kbd{C-c l}でリンクを保存す
+る時に、リンクを作成するためにこの関数が呼び出されます。関数は、このバッファ
+のタイプでリンク作成がサポートされているかどうかを最初に判断します;
+変数@code{major-mode}の値をチェックして判断します。サポートされていない場合、関数
+は終了して、@code{nil}の値を返します。サポートされている場合、バッファ名からmanの
+トピックを取得して、文字列
+@samp{man:}
+の後に繋げることで、リンクを生成します。次に、コマンド@code{org-store-link-props}
+を呼び出して、@code{:type}と@code{:link}プロパティを設定します。任意で@code{:descriptiion}
+プロパティを設定できます。これは、後に@kbd{C-c C-l}でOrg-modeのバッファにリンク
+が挿入される時のリンクの説明のデフォルト値を用意します。
 
-When it makes sense for your new link type, you may also define a function
-@code{org-PREFIX-complete-link} that implements special (e.g.@: completion)
-support for inserting such a link with @kbd{C-c C-l}.  Such a function
-should not accept any arguments, and return the full link with prefix.
+新しいタイプのリンクを正しく設定できると、@kbd{C-c C-l}でリンクを挿入するときの
+特別な機能(例えば@:
+補完機能)のサポートを実装する関数@code{org-PREFIX-complete-link}を定義できます。
+そのような関数は引数をとらず、接頭辞がついたリンク全体を返します。
 
 @node Context-sensitive commands, Tables in arbitrary syntax, Adding hyperlink types, Hacking
 @section Context-sensitive commands
-@cindex context-sensitive commands, hooks
-@cindex add-ons, context-sensitive commands
+@cindex 文脈に依存するコマンド、フック
+@cindex アドオン、文脈に依存するコマンド
 @vindex org-ctrl-c-ctrl-c-hook
 
-Org has several commands that act differently depending on context.  The
-most important example it the @kbd{C-c C-c} (@pxref{The very busy C-c C-c key}).  Also the @kbd{M-cursor} and @kbd{M-S-cursor} keys have this
-property.
+Org-modeでは、文脈に依存して動作が変わるコマンドが幾つかあります。最も重要な
+例は@kbd{C-c C-c}(@pxref{The very busy C-c C-c key})です
+[typo?: The most important example +it+ *is* the
+@kbd{C-c C-c} (@pxref{The very busy C-c C-c key}).  また、@kbd{M-cursor} と
+@kbd{M-S-cursor} キーもこの性質を持っています。
 
-Add-ons can tap into this functionality by providing a function that detects
-special context for that add-on and executes functionality appropriate for
-the context.  Here is an example from Dan Davison's @file{org-R.el} which
-allows you to evaluate commands based on the @file{R} programming language
-@footnote{@file{org-R.el} has been replaced by the org-mode functionality described in @ref{Working With Source Code} and is now obsolete.}.  For this
-package, special contexts are lines that start with @code{#+R:} or
-@code{#+RR:}.
+アドオンにとって特別な文脈を検知し、文脈に沿って適切に実行する関数を準備する
+ことによって、アドオンはこの機能を活用できます。ここに例として Dan
+Davisonの
+@file{org-R.el}があります。このファイルは@file{R}プログラミング言語@footnote{@file{org-R.el}は
+@ref{Working With Source Code}で説明されたOrg-modeの機能によって置き換えられ、現
+在使われておりません。}に基づいてコマンドを実行できます。このパッケージでは
+、特別な文脈とは@code{#+R:}
+や @code{#+RR:}で始まる行のことです。
 
 @lisp
 (defun org-R-apply-maybe ()
-  "Detect if this is context for org-R and execute R commands."
+  "org-Rの文脈なら検知して、Rのコマンドを実行します。"
   (if (save-excursion
         (beginning-of-line 1)
         (looking-at "#\\+RR?:"))
       (progn (call-interactively 'org-R-apply)
-             t) ;; to signal that we took action
-    nil)) ;; to signal that we did not
+             t) ;; 処置したと信号を送ります
+    nil)) ;; 処置しなかったと信号を送ります
 
 (add-hook 'org-ctrl-c-ctrl-c-hook 'org-R-apply-maybe)
 @end lisp
 
-The function first checks if the cursor is in such a line.  If that is the
-case, @code{org-R-apply} is called and the function returns @code{t} to
-signal that action was taken, and @kbd{C-c C-c} will stop looking for other
-contexts.  If the function finds it should do nothing locally, it returns
-@code{nil} so that other, similar functions can have a try.
+関数は最初にそのような行にカーソルがあるのかをチェックします。そうである場合
+、@code{org-R-apply}が呼び出されて関数は処置したと信号を送るために@code{t}を返し、そし
+て@kbd{C-c C-c}は他の文脈を探すことを止めます。もし関数がそこですべきことが無い
+と分かった場合は、他の同じような関数が試せるように@code{nil}を返します。
 
 
 @node Tables in arbitrary syntax, Dynamic blocks, Context-sensitive commands, Hacking
 @section 任意のシンタックスによる表やリスト
-@cindex tables, in other modes
-@cindex lists, in other modes
+@cindex テーブル、他のモードで
+@cindex リスト、他のモードで
 @cindex Orgtbl mode
 
-Since Orgtbl mode can be used as a minor mode in arbitrary buffers, a
-frequent feature request has been to make it work with native tables in
-specific languages, for example @LaTeX{}.  However, this is extremely hard
-to do in a general way, would lead to a customization nightmare, and would
-take away much of the simplicity of the Orgtbl-mode table editor.
+Orgtblモードを任意のバッファでマイナーモードとして使えるため、@LaTeX{}のような
+特定言語のテーブルでモードを動作させる機能の要望がよく出されます。しかし、通
+常の方法でこれを実装するのは極めて難しく、結局悪夢のような設定となってしまい
+、Orgtblモードのテーブルエディタによって得られる単純さのほとんどを失ってしま
+うでしょう。
 
-This appendix describes a different approach.  We keep the Orgtbl mode table
-in its native format (the @i{source table}), and use a custom function to
-@i{translate} the table to the correct syntax, and to @i{install} it in the
-right location (the @i{target table}).  This puts the burden of writing
-conversion functions on the user, but it allows for a very flexible system.
+この付録では、別の方法を説明します。Orgtblモード本来のフォーマットでテーブル
+を保ち(@i{もとのテーブル})、その表を正しいシンタックスへと@i{変換}するカスタム関数を
+使い、(@i{目的のテーブルを})正しい場所に配置します。これはユーザーに変換する関数
+を書く負担をかけますが、まさにフレキシブルな方法が可能となります。
 
-Bastien added the ability to do the same with lists, in Orgstruct mode.  You
-can use Org's facilities to edit and structure lists by turning
-@code{orgstruct-mode} on, then locally exporting such lists in another
-format (HTML, @LaTeX{} or Texinfo.)
+Bastienはリストに対して同じ機能をOrgstructモードに加えました。リストを編集し
+たり構造化するOrg-modeの機能を使うには、@code{orgstruct-mode}をオンにして、そこで
+当該リストを別のフォーマット(HTML,
+@LaTeX{} もしくは Texinfo)へとエクスポートしてください。
 
 
 @menu
@@ -13578,12 +13580,12 @@ format (HTML, @LaTeX{} or Texinfo.)
 
 @node Radio tables, A LaTeX example, Tables in arbitrary syntax, Tables in arbitrary syntax
 @subsection Radio tables
-@cindex radio tables
+@cindex ラジオテーブル
 
-To define the location of the target table, you first need to create two
-lines that are comments in the current mode, but contain magic words for
-Orgtbl mode to find.  Orgtbl mode will insert the translated table between
-these lines, replacing whatever was there before.  For example:
+ターゲットテーブルの場所を定義するには、Orgtblモードが見つけ出せるマジックワ
+ード含んだ2行のコメントを最初にカレントモード内で作成します。Orgtblモードは
+その2行の間に変換されたテーブルを挿入します。前に何が在ったかは考慮せずに置
+き換えます。例えば:
 
 @example
 /* BEGIN RECEIVE ORGTBL table_name */
@@ -13591,65 +13593,62 @@ these lines, replacing whatever was there before.  For example:
 @end example
 
 @noindent
-Just above the source table, we put a special line that tells Orgtbl mode
-how to translate this table and where to install it.  For example:
+ソーステーブル(元のテーブル)のすぐ上に、変換する方法と挿入する場所をOrgtblモ
+ードに知らせる特別な行を付け加えます。例えば:
 @cindex #+ORGTBL
 @example
 #+ORGTBL: SEND table_name translation_function arguments....
 @end example
 
 @noindent
-@code{table_name} is the reference name for the table that is also used in
-the receiver lines. @code{translation_function} is the Lisp function that
-does the translation.  Furthermore, the line can contain a list of arguments
-(alternating key and value) at the end.  The arguments will be passed as a
-property list to the translation function for interpretation.  A few
-standard parameters are already recognized and acted upon before the
-translation function is called:
+@code{table_name}はそのテーブルの参照名で、それは変換結果を挿入する行でも使われま
+す。@code{translation_function}は変換するLispの関数です。加えて、その行の最後では
+、(keyとvalueを交互においた)引数のリストを含むことができます。引数はプロパテ
+ィのリストとして解釈するために、変換する関数(translation
+function)に渡されます。変換する関数(translation
+function)が呼び出される前に、いくつかの基本的なパラメータは既に認識され、影
+響を受けています。
 
 @table @code
 @item :skip N
-Skip the first N lines of the table.  Hlines do count as separate lines for
-this parameter!
+テーブルの最初のN行を飛ばして読み進みます。このパラメータは、行を分け
+る横線をカウントします。
 
 @item :skipcols (n1 n2 ...)
-List of columns that should be skipped.  If the table has a column with
-calculation marks, that column is automatically discarded as well.  Please
-note that the translator function sees the table @emph{after} the removal of
-these columns, the function never knows that there have been additional
-columns.
+飛ばすべき列のリストです。もしもテーブルに計算用にマークされた列がある
+場合、同じようにに自動的に無視されます。列を除去した@emph{後で}変換する関数
+がテーブルを見るので、そこには更に列があったとは知る由もないことに注意
+して下さい。
 @end table
 
 @noindent
-The one problem remaining is how to keep the source table in the buffer
-without disturbing the normal workings of the file, for example during
-compilation of a C file or processing of a @LaTeX{} file.  There are a
-number of different solutions:
+残る1つの問題は、ファイルの通常動作を妨げずに、バッファ内のソーステーブルを
+保つ方法です。例えば、C言語のファイルや@LaTeX{}ファイルを編集している場合です。
+いくつかの方法があります:
 
 @itemize @bullet
-@item The table could be placed in a block comment if that is supported by the
-language.  For example, in C mode you could wrap the table between @samp{/*}
-and @samp{*/} lines.
-@item Sometimes it is possible to put the table after some kind of @i{END}
-statement, for example @samp{\bye} in @TeX{} and @samp{\end@{document@}} in
-@LaTeX{}.
-@item You can just comment the table line-by-line whenever you want to process the
-file, and uncomment it whenever you need to edit the table.  This only
-sounds tedious---the command @kbd{M-x orgtbl-toggle-comment} makes this
-comment-toggling very easy, in particular if you bind it to a key.
+@item その言語でサポートされたブロックコメント内にテーブルを設置できます。例
+えばCモードの場合、テーブルを@samp{/*}と@samp{*/}の行で括れます。
+@item 時には、@TeX{}の@samp{\bye}や@LaTeX{}の@samp{\end@{document@}}のような、ある種の終了文
+の後にテーブルを書けることがあります。
+@item 単純に、ファイルを編集したいときはテーブルを一行一行コメントにし、テー
+ブルを編集したいときはコメントを外すこともできます。これは退屈そうに聞
+こえますが---コマンド@kbd{M-x orgtbl-toggle-comment}を使えばコメントのオン
+オフを簡単にできます。キーバインドを設定すると特に便利です。
 @end itemize
 
 @node A LaTeX example, Translator functions, Radio tables, Tables in arbitrary syntax
-@subsection A @LaTeX{} example of radio tables
-@cindex @LaTeX{}, and Orgtbl mode
+@subsection @LaTeX{}でのラジオテーブルの例
+@cindex @LaTeX{}、Orgtblモードと
 
-The best way to wrap the source table in @LaTeX{} is to use the
-@code{comment} environment provided by @file{comment.sty}.  It has to be
-activated by placing @code{\usepackage@{comment@}} into the document
-header.  Orgtbl mode can insert a radio table skeleton@footnote{By default this works only for @LaTeX{}, HTML, and Texinfo.  Configure the variable @code{orgtbl-radio-tables} to install templates for other modes.} with the
-command @kbd{M-x orgtbl-insert-radio-table}.  You will be prompted for a
-table name, let's say we use @samp{salesfigures}.  You will then get the
-following template:
+@LaTeX{}でソーステーブルを囲む最良の方法は、@file{comment.sty}で提供される@code{comment}
+環境を使うことです。文書のヘッダーに@code{\usepackage@{comment@}}と書くことで有効
+になります。Orgtblモードで@kbd{M-x orgtbl-insert-radio-table}とすると、テーブル
+のスケルトンを挿入できます@footnote{デフォルトでは、@LaTeX{}, HTMLと Texinfoの場合だけ動
+作します。他のモードのテンプレートをインストールするには、変数
+@code{orgtbl-radio-tables}を編集して下さい。}。
+テーブル名を確認されますので、@samp{salesfigures}と入力します。 そして以下のテン
+プレートを得ました:
 
 @cindex #+ORGTBL, SEND
 @example
@@ -13663,101 +13662,105 @@ following template:
 
 @noindent
 @vindex @LaTeX{}-verbatim-environments
-The @code{#+ORGTBL: SEND} line tells Orgtbl mode to use the function
-@code{orgtbl-to-latex} to convert the table into @LaTeX{} and to put it into
-the receiver location with name @code{salesfigures}.  You may now fill in
-the table---feel free to use the spreadsheet features@footnote{If the @samp{#+TBLFM} line contains an odd number of dollar characters, this may cause problems with font-lock in @LaTeX{} mode.  As shown in the example you can fix this by adding an extra line inside the @code{comment} environment that is used to balance the dollar expressions.  If you are using AUC@TeX{} with the font-latex library, a much better solution is to add the @code{comment} environment to the variable @code{LaTeX-verbatim-environments}.}:
+@code{#+ORGTBL: SEND}の行は、関数@code{orgtbl-to-latex}を使ってテーブルを@LaTeX{}へ変換し
+、@code{salesfigures}の名前で受け取る場所に設置するようにと、Orgtblモードに指示し
+ています。これからテーブルに記入します---スプレッドシートの機能を自由に使っ
+てください@footnote{@samp{#+TBLFM}行に奇数個のドル記号(dollar character, $)が在る場合、
+@LaTeX{}モードの色分けで問題が生じるかも知れません。この問題を解決するには、例
+で示すように@code{comment}環境内に行を追加してドル記号の表現を調整してください。
+AUC@TeX{}をfont-latexライブラリと使っている場合のはるかに優れた解決法は、変数
+@code{LaTeX-verbatim-environments}に@code{comment}環境追加することです。}:
 
 @example
 % BEGIN RECEIVE ORGTBL salesfigures
 % END RECEIVE ORGTBL salesfigures
 \begin@{comment@}
 #+ORGTBL: SEND salesfigures orgtbl-to-latex
-| Month | Days | Nr sold | per day |
-|-------+------+---------+---------|
-| Jan   |   23 |      55 |     2.4 |
-| Feb   |   21 |      16 |     0.8 |
-| March |   22 |     278 |    12.6 |
+| 月  | 日数 | 販売数 | 一日あたり |
+|-----+------+--------+------------|
+| 1月 |   23 |     55 |        2.4 |
+| 2月 |   21 |     16 |        0.8 |
+| 3月 |   22 |    278 |       12.6 |
 #+TBLFM: $4=$3/$2;%.1f
-% $ (optional extra dollar to keep font-lock happy, see footnote)
+% $ (font-lock 色分けをうまく動作させるための余分なドル記号、脚注参照)
 \end@{comment@}
 @end example
 
 @noindent
-When you are done, press @kbd{C-c C-c} in the table to get the converted
-table inserted between the two marker lines.
+入力し終わり、テーブルの中で@kbd{C-c C-c}と押下すると、目印となる2行の間に変換さ
+れたテーブルが挿入されます。
 
-Now let's assume you want to make the table header by hand, because you want
-to control how columns are aligned, etc@.  In this case we make sure that
-the table translator skips the first 2 lines of the source table, and tell
-the command to work as a @i{splice}, i.e.@: to not produce header and footer
-commands of the target table:
+さて、列の文字揃えを制御したいなどの理由から、テーブルのヘッダーを書きたいと
+します。この場合は次のことを確認します。テーブルを変換する関数がソーステーブ
+ルの最初の2行を飛ばすことと、接合部として動作すること、すなわち@:
+ターゲットテーブルのヘッダーとフッターを生成しないことです:
 
 @example
 \begin@{tabular@}@{lrrr@}
-Month & \multicolumn@{1@}@{c@}@{Days@} & Nr.\ sold & per day\\
+月 & \multicolumn@{1@}@{c@}@{日数@} & 販売数 & 一日あたり \\
 % BEGIN RECEIVE ORGTBL salesfigures
+1月 & 23 & 55 & 2.4 \\
+2月 & 21 & 16 & 0.8 \\
+3月 & 22 & 278 & 12.6 \\
 % END RECEIVE ORGTBL salesfigures
 \end@{tabular@}
 %
 \begin@{comment@}
 #+ORGTBL: SEND salesfigures orgtbl-to-latex :splice t :skip 2
-| Month | Days | Nr sold | per day |
-|-------+------+---------+---------|
-| Jan   |   23 |      55 |     2.4 |
-| Feb   |   21 |      16 |     0.8 |
-| March |   22 |     278 |    12.6 |
+| 月  | 日数 | 販売数 | 1日あたり |
+|-----+------+--------+-----------|
+| 1月 |   23 |     55 |       2.4 |
+| 2月 |   21 |     16 |       0.8 |
+| 3月 |   22 |    278 |      12.6 |
 #+TBLFM: $4=$3/$2;%.1f
 \end@{comment@}
 @end example
 
-The @LaTeX{} translator function @code{orgtbl-to-latex} is already part of
-Orgtbl mode.  It uses a @code{tabular} environment to typeset the table and
-marks horizontal lines with @code{\hline}.  Furthermore, it interprets the
-following parameters (see also @pxref{Translator functions}):
+@LaTeX{}へ変換する関数@code{orgtbl-to-latex}は既にOrgtblモードの一部です。@code{tabular}
+環境を使ってテーブルをタイプセットし、横線に@code{\hline}で印を付けます。加えて、
+以下のパラメータを解釈します(@pxref{Translator functions}も参照してください):
 
 @table @code
 @item :splice nil/t
-When set to t, return only table body lines, don't wrap them into a tabular
-environment.  Default is nil.
+tのとき、tabular環境で囲まずに、テーブルの本文だけを返します。デフォル
+トではnilです。
 
 @item :fmt fmt
-A format to be used to wrap each field, it should contain @code{%s} for the
-original field value.  For example, to wrap each field value in dollars, you
-could use @code{:fmt "$%s$"}.  This may also be a property list with column
-numbers and formats. for example @code{:fmt (2 "$%s$" 4 "%s\\%%")}.  A
-function of one argument can be used in place of the strings; the function
-must return a formatted string.
+各フィールドを囲むのに使われるフォーマットで、@code{%s}にはフィールドの元の
+値が入っています。例えばドルマークで囲む場合には、@code{:fmt "$%s$"}と書け
+ます。また、列の番号とフォーマットというプロパティのリストにもなります
+。例えば@code{:fmt (2 "$%s$" 4 "%s\\%%")}と書けます。文字列の変わりに、1つ
+の引数を持つ関数を使えます; その関数は書式設定された文字列を返します。
 
 @item :efmt efmt
-Use this format to print numbers with exponentials.  The format should have
-@code{%s} twice for inserting mantissa and exponent, for example
-@code{"%s\\times10^@{%s@}"}.  The default is @code{"%s\\,(%s)"}.  This may
-also be a property list with column numbers and formats, for example
-@code{:efmt (2 "$%s\\times10^@{%s@}$" 4 "$%s\\cdot10^@{%s@}$")}.  After
-@code{efmt} has been applied to a value, @code{fmt} will also be applied.
-Similar to @code{fmt}, functions of two arguments can be supplied instead of
-strings.
+指数表記で数値を出力する時に使います。仮数部と指数部を挿入するため、こ
+の形式では@code{%s}が2回出現します。例えば@code{"%s\\times10^@{%s@}"}。デフォル
+トでは@code{"%s\\,(%s)"}です。これも列数と書式設定のリスト、例えば
+@code{:efmt (2 "$%s\\times10^@{%s@}$" 4 "$%s\\cdot10^@{%s@}$")}となり得ます
+。値に@code{efmt}が適用された後に、@code{fmt}も適用されます。@code{fmt}と同様に、文字
+列の代わりに引数2つの関数を使えます。
 @end table
 
 @node Translator functions, ラジオリスト, A LaTeX example, Tables in arbitrary syntax
 @subsection Translator functions
-@cindex HTML, and Orgtbl mode
-@cindex translator function
+@cindex HTML、Orgtblモードと
+@cindex 変換関数
 
-Orgtbl mode has several translator functions built-in: @code{orgtbl-to-csv}
-(comma-separated values), @code{orgtbl-to-tsv} (TAB-separated values)
-@code{orgtbl-to-latex}, @code{orgtbl-to-html}, and
-@code{orgtbl-to-texinfo}.  Except for @code{orgtbl-to-html}@footnote{The HTML translator uses the same code that produces tables during HTML export.}, these all use a generic translator, @code{orgtbl-to-generic}.  For
-example, @code{orgtbl-to-latex} itself is a very short function that
-computes the column definitions for the @code{tabular} environment, defines
-a few field and line separators and then hands processing over to the
-generic translator.  Here is the entire code:
+Orgtblモードには幾つかの組み込み変換関数があります: @code{orgtbl-to-csv} (カンマ
+区切り),
+@code{orgtbl-to-tsv} (タブ区切り)  @code{orgtbl-to-latex}, @code{orgtbl-to-html}
+そして
+@code{orgtbl-to-texinfo}です。@code{orgtbl-to-html}@footnote{HTMLの変換関数は、HTMLをエクスポー
+トする時にテーブルを作るコードと全く同じものを使っています。}を除いた、これ
+ら全ての関数は包括的な変換関数@code{orgtbl-to-generic}を使います。例えば、
+@code{orgtbl-to-latex}それ自体はとても短い関数で@code{tabular}環境の列の定義を計算した
+り、幾つかのフィールドセパレータや行セパレータを定義してそれから処理を包括的
+な変換関数へと渡しています。ここに完全なコードがあります:
 
 @lisp
 @group
 (defun orgtbl-to-latex (table params)
-  "Convert the Orgtbl mode TABLE to LaTeX."
+  "OrgtblモードのテーブルをLaTeXに変換します。"
   (let* ((alignment (mapconcat (lambda (x) (if x "r" "l"))
                                org-table-last-alignment ""))
          (params2
@@ -13770,24 +13773,22 @@ generic translator.  Here is the entire code:
 @end group
 @end lisp
 
-As you can see, the properties passed into the function (variable
-@var{PARAMS}) are combined with the ones newly defined in the function
-(variable @var{PARAMS2}).  The ones passed into the function (i.e.@: the
-ones set by the @samp{ORGTBL SEND} line) take precedence.  So if you would
-like to use the @LaTeX{} translator, but wanted the line endings to be
-@samp{\\[2mm]} instead of the default @samp{\\}, you could just overrule the
-default with
+ご覧のように、関数に渡されたプロパティ(変数@var{PARAMS})が、関数の中で新しく定義
+されたプロパティ(変数@var{PARAMS2})と結合されています。関数に渡されたもの(すなわ
+ち@:@samp{ORGTBL SEND}行でセットされたプロパティ)が優先されます。よって、もし
+@LaTeX{}
+変換関数を使いたけれども、行の最後はデフォルトの@samp{\\}の代わりに@samp{\\[2mm]}とし
+たいなら、デフォルトの設定をこのように上書きできます
 
 @example
 #+ORGTBL: SEND test orgtbl-to-latex :lend " \\\\[2mm]"
 @end example
 
-For a new language, you can either write your own converter function in
-analogy with the @LaTeX{} translator, or you can use the generic function
-directly.  For example, if you have a language where a table is started with
-@samp{!BTBL!}, ended with @samp{!ETBL!}, and where table lines are started
-with @samp{!BL!}, ended with @samp{!EL!}, and where the field separator is a
-TAB, you could call the generic translator like this (on a single line!):
+新しい言語に対して、@LaTeX{}変換関数とのアナロジーから自分で変換関数を書くか、
+もしくは、包括的な変換関数を直接使うこともできます。例えば、もしある言語では
+、テーブルが始まるときは@samp{!BTBL!}、終わるときには@samp{!ETBL!}、そしてテーブル行は
+@samp{!BL!}で始まり、@samp{!EL!}で終わり、フィールドセパレータはタブだとしたら、このよ
+うに(1行だけで!)包括的な変換関数を呼び出すことができます:
 
 @example
 #+ORGTBL: SEND test orgtbl-to-generic :tstart "!BTBL!" :tend "!ETBL!"
@@ -13795,41 +13796,40 @@ TAB, you could call the generic translator like this (on a single line!):
 @end example
 
 @noindent
-Please check the documentation string of the function
-@code{orgtbl-to-generic} for a full list of parameters understood by that
-function, and remember that you can pass each of them into
-@code{orgtbl-to-latex}, @code{orgtbl-to-texinfo}, and any other function
-using the generic function.
+関数によって理解されるパラメータの完全なリストのために、関数
+@code{orgtbl-to-generic}の説明文をチェックしてください。そして、それらの1つずつを
+@code{orgtbl-to-latex}、@code{orgtbl-to-texinfo}や、包括的な変換関数を使った何か他の関
+数に渡せることを覚えて下さい。
 
-Of course you can also write a completely new function doing complicated
-things the generic translator cannot do.  A translator function takes two
-arguments.  The first argument is the table, a list of lines, each line
-either the symbol @code{hline} or a list of fields.  The second argument is
-the property list containing all parameters specified in the @samp{#+ORGTBL: SEND} line.  The function must return a single string containing the
-formatted table.  If you write a generally useful translator, please post it
-on @email{emacs-orgmode@@gnu.org} so that others can benefit from your work.
+もちろん包括的な変換関数では行えない複雑な事を処理する全く新しい関数を書くこ
+ともできます。変換関数は2つの引数を持ちます。1つ目の引数はテーブル、行のリス
+ト、それぞれの行のシンボルコード@code{hline}
+もしくはフィールドのリストです。2つめの引数はプロパティリストで、
+@samp{#+ORGTBL: SEND}行で指定された全てのパラメータを含みます。関数は書式設定され
+たテーブルを含む1つの文字列を返します。もし一般に有用な変換関数を書いた場合
+、他の人があなたの仕事から恩恵に預かれるように、どうか
+@email{emacs-orgmode@@gnu.org}に投稿して下さい。
 
 @node ラジオリスト, , Translator functions, Tables in arbitrary syntax
 @subsection ラジオリスト
-@cindex radio lists
+@cindex ラジオリスト
 @cindex org-list-insert-radio-list
 
-Sending and receiving radio lists works exactly the same way as sending and
-receiving radio tables (@pxref{Radio tables}).  As for radio tables, you can
-insert radio list templates in HTML, @LaTeX{} and Texinfo modes by calling
-@code{org-list-insert-radio-list}.
+ラジオリストを送受信する方法は、ラジオテーブル(@pxref{Radio tables})を送受信する方
+法と全く同じです。ラジオテーブル(ラジオリストのtypo?)に関しては、関数
+@code{org-list-insert-radio-list}を呼び出して、HTMLモード、@LaTeX{}モードそして
+Texinfoモードにラジオリストを挿入できます。
 
-Here are the differences with radio tables:
+ここではラジオテーブルとの違いを説明します:
 
 @itemize @minus
-@item Orgstruct mode must be active.
-@item Use the @code{ORGLST} keyword instead of @code{ORGTBL}.
-@item The available translation functions for radio lists don't take parameters.
-@item @kbd{C-c C-c} will work when pressed on the first item of the list.
+@item Orgstructモードが有効でなければなりません。
+@item @code{ORGTBL}の代わりに、キーワード@code{ORGLST}を使います。
+@item 現在利用できるラジオリストの変換関数は、パラメータをとりません。
+@item リストの1つ目の項目で@kbd{C-c C-c}と押すと、動作します。
 @end itemize
 
-Here is a @LaTeX{} example.  Let's say that you have this in your @LaTeX{}
-file:
+これは@LaTeX{}の例です。@LaTeX{}ファイルに以下が書いてあるとします:
 
 @cindex #+ORGLST
 @example
@@ -13837,29 +13837,29 @@ file:
 % END RECEIVE ORGLST to-buy
 \begin@{comment@}
 #+ORGLST: SEND to-buy org-list-to-latex
-- a new house
-- a new computer
-  + a new keyboard
-  + a new mouse
-- a new life
+- 新しい家
+- 新しいコンピュータ
+  + 新しいキーボード
+  + 新しいマウス
+- 新しい生活
 \end@{comment@}
 @end example
 
-Pressing `C-c C-c' on @code{a new house} and will insert the converted
-@LaTeX{} list between the two marker lines.
+@code{新しい家}の上で`C-c C-c'とタイプすると、@LaTeX{}に変換されたリストが目印の2行
+の間に挿入されます。
 
 @node Dynamic blocks, Special agenda views, Tables in arbitrary syntax, Hacking
 @section Dynamic blocks
-@cindex dynamic blocks
+@cindex 動的なブロック
 
-Org documents can contain @emph{dynamic blocks}.  These are specially marked
-regions that are updated by some user-written function.  A good example for
-such a block is the clock table inserted by the command @kbd{C-c C-x C-r}
-(@pxref{Clocking work time}).
+Org-modeの文書は@emph{動的なブロック}を含むことができます。これらのブロックはユー
+ザーが書いた関数によって更新される印のついた領域です。そのようなブロックの良
+い例は、@kbd{C-c C-x C-r}(@pxref{Clocking work time})というコマンドで挿入した時計のテ
+ーブル(クロックテーブル)です。
 
-Dynamic blocks are enclosed by a BEGIN-END structure that assigns a name to
-the block and can also specify parameters for the function producing the
-content of the block.
+動的なブロックは、そのブロックに名前を指定し、そしてそのブロックの内容を実行
+する機能のためのパラメータを指定する「BEGIN-END」構造によって囲まれている必
+要があります。
 
 @cindex #+BEGIN:dynamic block
 @example
@@ -13868,23 +13868,23 @@ content of the block.
 #+END:
 @end example
 
-Dynamic blocks are updated with the following commands
+動的なブロックを更新するには以下のコマンドを使用します。
 
 @table @kbd
-@orgcmd{C-c C-x C-u,org-dblock-update} Update dynamic block at point.
-@orgkey{C-u C-c C-x C-u} Update all dynamic blocks in the current file.
+@orgcmd{C-c C-x C-u,org-dblock-update}その場所での動的なブロックを更新します
+。@orgkey{C-u C-c C-x C-u}現在のファイルの全ての動的なブロックを更新します。
 @end table
 
-Updating a dynamic block means to remove all the text between BEGIN and END,
-parse the BEGIN line for parameters and then call the specific writer
-function for this block to insert the new content.  If you want to use the
-original content in the writer function, you can use the extra parameter
-@code{:content}.
+動的なブロックを更新するということは、すべての「BEGIN」と「END」の間のテキス
+トを取り除き、「BEGIN」の行に書かれているパラメーターを解析し、それからその
+ブロックのための特定の書き出し用の関数を呼び出して新しい内容を書き込むことを
+意味します。もしもその書き出し用の関数の中で元の中身を使いたい場合は、追加の
+パラメータである@code{:content}を使えます。
 
-For a block with name @code{myblock}, the writer function is
-@code{org-dblock-write:myblock} with as only parameter a property list with
-the parameters given in the begin line.  Here is a trivial example of a
-block that keeps track of when the block update function was last run:
+@code{myblock}という名前のブロックに対する書き出し用の関数は
+@code{org-dblock-write:myblock}です。BEGINの行にて与えられるパラメータのプロパテ
+ィリストを単一パラメータとして受け取ります。ブロックの一例として、ブロックを
+更新する関数が最後に実行されたのはいつかを記録します:
 
 @example
 #+BEGIN: block-update-time :format "on %m/%d/%Y at %H:%M"
@@ -13893,147 +13893,149 @@ block that keeps track of when the block update function was last run:
 @end example
 
 @noindent
-The corresponding block writer function could look like this:
+対応するブロックへの書き出し用の関数は、このようになっています:
 
 @lisp
 (defun org-dblock-write:block-update-time (params)
    (let ((fmt (or (plist-get params :format) "%d. %m. %Y")))
-     (insert "Last block update at: "
+     (insert "ブロックの最終更新日時は: "
              (format-time-string fmt (current-time)))))
 @end lisp
 
-If you want to make sure that all dynamic blocks are always up-to-date, you
-could add the function @code{org-update-all-dblocks} to a hook, for example
-@code{before-save-hook}.  @code{org-update-all-dblocks} is written in a way
-such that it does nothing in buffers that are not in @code{org-mode}.
+もしもすべての動的なブロックが常に最新のものに更新されるようにしたいならば、
+関数@code{org-update-all-dblocks}をフック、例えば変数@code{before-save-hook}に追加しま
+す。@code{org-update-all-dblocks}は@code{org-mode}内ではないバッファの中では何もしない
+ように書かれています。
 
-You can narrow the current buffer to the current dynamic block (like any
-other block) with @code{org-narrow-to-block}.
+@code{org-narrow-to-block}を使って、(他のブロックの様に)現在のバッファを現在の動
+的なブロックへとナローイングできます。
 
 @node Special agenda views, Extracting agenda information, Dynamic blocks, Hacking
 @section Special agenda views
-@cindex agenda views, user-defined
+@cindex アジェンダビュー、ユーザー定義
 
 @vindex org-agenda-skip-function
 @vindex org-agenda-skip-function-global
-Org provides a special hook that can be used to narrow down the selection
-made by these agenda views: @code{todo}, @code{alltodo}, @code{tags},
-@code{tags-todo}, @code{tags-tree}.  You may specify a function that is used
-at each match to verify if the match should indeed be part of the agenda
-view, and if not, how much should be skipped.  You can specify a global
-condition that will be applied to all agenda views, this condition would be
-stored in the variable @code{org-agenda-skip-function-global}.  More
-commonly, such a definition is applied only to specific custom searches,
-using @code{org-agenda-skip-function}.
+Org-modeでは、以下のアジェンダビューによって選択されたものを絞り込む特別なフ
+ック関数を用意しています: @code{todo},
+@code{alltodo}, @code{tags}, @code{tags-todo},
+@code{tags-tree}。検索でマッチする度に、実際にアジェンダビューでマッチしたかを確
+認したり、もしマッチしなければどれくらい飛ばすのかを、関数で指定できます。全
+てのアジェンダビューに適用されるようにグローバルな条件を設定でき、それは変数
+@code{org-agenda-skip-function-global}に格納されます。通常は、変数
+@code{org-agenda-skip-function}を使って、このような定義を特定のカスタムサーチに適
+用します。
 
-Let's say you want to produce a list of projects that contain a WAITING tag
-anywhere in the project tree.  Let's further assume that you have marked all
-tree headings that define a project with the TODO keyword PROJECT.  In this
-case you would run a TODO search for the keyword PROJECT, but skip the match
-unless there is a WAITING tag anywhere in the subtree belonging to the
-project line.
+プロジェクトのツリーのどこかにWAITINGというタグを含むプロジェクトのリストを
+作成する場合を考えてみましょう。ツリーの見出しには、プロジェクトを定義する
+TODOのキーワード「PROJECT」でマークされているとします。この場合、キーワード
+のPROJECTでTODOを検索し、プロジェクトのサブツリーにWAITINGのタグが無ければ検
+索でマッチしてもスキップしたいとします。
 
-To achieve this, you must write a function that searches the subtree for the
-tag.  If the tag is found, the function must return @code{nil} to indicate
-that this match should not be skipped.  If there is no such tag, return the
-location of the end of the subtree, to indicate that search should continue
-from there.
+これを達成するには、サブツリーをタグで検索する関数を書かなければなりません。
+もしそのタグが見つかったら、そのマッチはスキップされるべきではないと示すため
+に、その関数は@code{nil}を返さなければなりません。もしそのようなタグが無ければ、
+そこから検索し続けるということを示すために、そのサブツリーの終端の場所を返さ
+なくてはなりません。
 
 @lisp
 (defun my-skip-unless-waiting ()
-  "Skip trees that are not waiting"
+  "waitingでないツリーをスキップします"
   (let ((subtree-end (save-excursion (org-end-of-subtree t))))
     (if (re-search-forward ":waiting:" subtree-end t)
-        nil          ; tag found, do not skip
-      subtree-end))) ; tag not found, continue after end of subtree
+        nil          ; タグが見つかったので、スキップしません
+      subtree-end))) ; タグが見つからないので、サブツリーの最後から検索を再
+開します
 @end lisp
 
-Now you may use this function in an agenda custom command, for example like
-this:
+今からこの関数をアジェンダのカスタムコマンドで使えます。例えばこうなります:
 
 @lisp
 (org-add-agenda-custom-command
  '("b" todo "PROJECT"
    ((org-agenda-skip-function 'my-skip-unless-waiting)
-    (org-agenda-overriding-header "Projects waiting for something: "))))
+    (org-agenda-overriding-header "waiting (待ち)状態のプロジェクト: "))))
 @end lisp
 
 @vindex org-agenda-overriding-header
-Note that this also binds @code{org-agenda-overriding-header} to get a
-meaningful header in the agenda view.
+関数@code{org-agenda-overriding-header}を使って、アジェンダビューで意味のある見出
+しに変更したことにも注意して下さい。
 
 @vindex org-odd-levels-only
 @vindex org-agenda-skip-function
-A general way to create custom searches is to base them on a search for
-entries with a certain level limit.  If you want to study all entries with
-your custom search function, simply do a search for
-@samp{LEVEL>0}@footnote{Note that, when using @code{org-odd-levels-only}, a level number corresponds to order in the hierarchy, not to the number of stars.}, and then use @code{org-agenda-skip-function} to select the entries
-you really want to have.
+カスタム検索を作成するには、あるレベルの制限を設けた検索を基づくのが一般的な
+方法です。自作の検索関数で全てのエントリーを検索したい場合は、単に
+@samp{LEVEL>0}@footnote{@code{org-odd-levels-only}を使用している場合、level numberは階層構造の
+レベルと対応していて、スター「*」の数ではないことに注意して下さい。}を検索し
+た後に、必要なエントリを選択してください。
 
-You may also put a Lisp form into @code{org-agenda-skip-function}.  In
-particular, you may use the functions @code{org-agenda-skip-entry-if} and
-@code{org-agenda-skip-subtree-if} in this form, for example:
+変数@code{org-agenda-skip-function}にLispフォームを渡すこともできます。具体的に言
+うと、例えばこのように関数@code{org-agenda-skip-entry-if}と関数
+@code{org-agenda-skip-subtree-if}とを使えます:
 
 @table @code
 @item '(org-agenda-skip-entry-if 'scheduled)
-Skip current entry if it has been scheduled.
+現在のエントリがスケジューリングされている場合、それをスキップします。
 @item '(org-agenda-skip-entry-if 'notscheduled)
-Skip current entry if it has not been scheduled.
+現在のエントリがスケジューリングされていない場合、それをスキップします。
 @item '(org-agenda-skip-entry-if 'deadline)
-Skip current entry if it has a deadline.
+現在のエントリがデッドラインを設定されている場合、それをスキップします。
 @item '(org-agenda-skip-entry-if 'scheduled 'deadline)
-Skip current entry if it has a deadline, or if it is scheduled.
+現在のエントリがデッドラインを設定されているかもしくはスケジューリング
+されている場合、それをスキップします
 @item '(org-agenda-skip-entry-if 'todo '("TODO" "WAITING"))
-Skip current entry if the TODO keyword is TODO or WAITING.
+現在のエントリのTODOのキーワードがTODOもしくはWAITINGの場合、それをス
+キップします。
 @item '(org-agenda-skip-entry-if 'todo 'done)
-Skip current entry if the TODO keyword marks a DONE state.
+現在のエントリのTODOのキーワードがDONEとマークされている場合、それをス
+キップします。
 @item '(org-agenda-skip-entry-if 'timestamp)
-Skip current entry if it has any timestamp, may also be deadline or
-scheduled.
+現在のエントリが何かしらのタイムスタンプを持っている場合、それをスキッ
+プします。タイムスタンプはデッドラインかスケジューリングが考えられます。
 @item '(org-agenda-skip-entry 'regexp "regular expression")
-Skip current entry if the regular expression matches in the entry.
+現在のエントリの中で正規表現「regular expression」にマッチした場合、そ
+れをスキップします。
 @item '(org-agenda-skip-entry 'notregexp "regular expression")
-Skip current entry unless the regular expression matches.
+現在のエントリの中で正規表現「regular expression」にマッチしない場合、
+それをスキップします。
 @item '(org-agenda-skip-subtree-if 'regexp "regular expression")
-Same as above, but check and skip the entire subtree.
+2つ上と同じですが、サブツリー全体をチェックしてスキップします。
 @end table
 
-Therefore we could also have written the search for WAITING projects like
-this, even without defining a special function:
+従って特別な関数を定義しなかったとしても、WAITINGがあるプロジェクトの検索を
+このように書くこともできました:
 
 @lisp
 (org-add-agenda-custom-command
  '("b" todo "PROJECT"
    ((org-agenda-skip-function '(org-agenda-skip-subtree-if
                                 'regexp ":waiting:"))
-    (org-agenda-overriding-header "Projects waiting for something: "))))
+    (org-agenda-overriding-header "waiting (待ち)状態のプロジェクト: "))))
 @end lisp
 
 @node Extracting agenda information, Using the property API, Special agenda views, Hacking
 @section Extracting agenda information
-@cindex agenda, pipe
-@cindex Scripts, for agenda processing
+@cindex アジェンダ、パイプ
+@cindex スクリプト、アジェンダの処理のために
 
 @vindex org-agenda-custom-commands
-Org provides commands to access agenda information for the command line in
-Emacs batch mode.  This extracted information can be sent directly to a
-printer, or it can be read by a program that does further processing of the
-data.  The first of these commands is the function @code{org-batch-agenda},
-that produces an agenda view and sends it as ASCII text to STDOUT.  The
-command takes a single string as parameter.  If the string has length 1, it
-is used as a key to one of the commands you have configured in
-@code{org-agenda-custom-commands}, basically any key you can use after
-@kbd{C-c a}.  For example, to directly print the current TODO list, you
-could use
+Org-modeは、コマンドラインからEmacsのバッチモードでアジェンダの情報にアクセ
+スするコマンドを用意しています。
+この抽出された情報はプリンタに直接送ることも可能ですし、更にデータを処理させ
+るプログラムに読み込ませることも可能です。1つ目のコマンドは関数
+@code{org-batch-agenda}であり、アジェンダビューを作成し、それをASCIIテキストとし
+てSTDOUTへと送ります。コマンドはパラメータとして1つの文字列をとります。文字
+列の長さが1のとき、@code{org-agenda-custom-commands}にあなたが設定したコマンドの1
+つが使われます。基本的に、@kbd{C-c a}の後にはどんなキーも使えます。例えば、現在
+のTODOリストを直接印刷するなら、このように使えます
 
 @example
 emacs -batch -l ~/.emacs -eval '(org-batch-agenda "t")' | lpr
 @end example
 
-If the parameter is a string with 2 or more characters, it is used as a
-tags/TODO match string.  For example, to print your local shopping list (all
-items with the tag @samp{shop}, but excluding the tag @samp{NewYork}), you
-could use
+パラメータが2文字以上の文字列の場合、tags/TODOの検索に使われます。例えば、地
+元でのショッピングリスト(@samp{shop}というタグが付いていて、@samp{NewYork}というタグを
+含んでいない全てのアイテム)を印刷するには、このように使えます
 
 @example
 emacs -batch -l ~/.emacs                                      \
@@ -14041,7 +14043,7 @@ emacs -batch -l ~/.emacs                                      \
 @end example
 
 @noindent
-You may also modify parameters on the fly like this:
+このように、その場でパラメータを変えることもできます:
 
 @example
 emacs -batch -l ~/.emacs                                      \
@@ -14053,60 +14055,63 @@ emacs -batch -l ~/.emacs                                      \
 @end example
 
 @noindent
-which will produce a 30-day agenda, fully restricted to the Org file
-@file{~/org/projects.org}, not even including the diary.
+これは30日のアジェンダを作成します。情報は、Org-modeのファイル
+@file{~/org/projects.org}だけに制限され、~/diary(日誌)ファイルでさえ含まれません
+。
 
-If you want to process the agenda data in more sophisticated ways, you can
-use the command @code{org-batch-agenda-csv} to get a comma-separated list of
-values for each agenda item.  Each line in the output will contain a number
-of fields separated by commas.  The fields in a line are:
+もっと洗練された方法でアジェンダのデータを処理したい場合は、アジェンダのアイ
+テム毎に値をカンマで区切られたリストを作成する@code{org-batch-agenda-csv}というコ
+マンドを使えます。アウトプットの各行にはカンマで区切られたいろいろなフィール
+ドがあります。行内のフィールドは以下の通りです:
 
 @example
-category     @r{The category of the item}
-head         @r{The headline, without TODO keyword, TAGS and PRIORITY}
-type         @r{The type of the agenda entry, can be}
-                todo               @r{selected in TODO match}
-                tagsmatch          @r{selected in tags match}
-                diary              @r{imported from diary}
-                deadline           @r{a deadline}
-                scheduled          @r{scheduled}
-                timestamp          @r{appointment, selected by timestamp}
-                closed             @r{entry was closed on date}
-                upcoming-deadline  @r{warning about nearing deadline}
+category     @r{アイテムのカテゴリーです}
+head         @r{TODOキーワード、TAGSそしてPRIORITYを除いた見出しです}
+type         @r{アジェンダのタイプで、以下が考えられます}
+                todo               @r{TODO検索で選ばれた}
+                tagsmatch          @r{tags検索で選ばれた}
+                diary              @r{diaryからインポートされた}
+                deadline           @r{デッドラインを設定された}
+                scheduled          @r{スケジューリングされた}
+                timestamp          @r{アポイントメント、タイムスタンプで選ばれた
+}
+                closed             @r{日付に閉じられたエントリ}
+                upcoming-deadline  @r{デッドラインが近づいている警告している}
                 past-scheduled     @r{forwarded scheduled item}
-                block              @r{entry has date block including date}
-todo         @r{The TODO keyword, if any}
-tags         @r{All tags including inherited ones, separated by colons}
-date         @r{The relevant date, like 2007-2-14}
-time         @r{The time, like 15:00-16:50}
-extra        @r{String with extra planning info}
-priority-l   @r{The priority letter if any was given}
-priority-n   @r{The computed numerical priority}
+                block              @r{エントリが日付のブロックを持っていて日付を
+含む}
+todo         @r{もしあれば、TODOのキーワード}
+tags         @r{継承したものも含めた全てのtags。コロンで区切られている。}
+date         @r{2007-2-14のような基準日}
+time         @r{15:00-16:50のような時間}
+extra        @r{追加のプラニング情報の文字列}
+priority-l   @r{もし与えられていれば優先順位の文字}
+priority-n   @r{計算された数字の優先度}
 @end example
 
 @noindent
-Time and date will only be given if a timestamp (or deadline/scheduled)  led
-to the selection of the item.
+タイムスタンプ(すなわちデッドラインを設定された/スケジューリングされた)がそ
+のアイテムのセクションをleadする場合にのみTimeもしくはdateが与えられます。
 
-A CSV list like this is very easy to use in a post-processing script.  For
-example, here is a Perl program that gets the TODO list from Emacs/Org and
-prints all the items, preceded by a checkbox:
+このようなCSVリストは後処理のスクリプトでとても使いやすいです。例のPerlプロ
+グラムは、Emacs/Org-modeからTODOリストを取得して、前にチェックボックスを挿入
+して、全てのアイテムを出力します。
 
 @example
 #!/usr/bin/perl
 
-# define the Emacs command to run
+# 実行するEmacsのコマンドを定義します
 $cmd = "emacs -batch -l ~/.emacs -eval '(org-batch-agenda-csv \"t\")'";
 
-# run it and capture the output
+# 実行してアウトプットを取得します
 $agenda = qx@{$cmd 2>/dev/null@};
 
-# loop over all lines
+# 全ての行についてループします
 foreach $line (split(/\n/,$agenda)) @{
-  # get the individual values
+  # それぞれの値を取得します
   ($category,$head,$type,$todo,$tags,$date,$time,$extra,
    $priority_l,$priority_n) = split(/,/,$line);
-  # process and print
+  # 処理して出力します
   print "[ ] $head\n";
 @}
 @end example
