@@ -5819,12 +5819,13 @@ File: org-ja,  Node: Capture - Refile - Archive,  Next: Agenda Views,  Prev: Dat
 9 Capture - Refile - Archive
 ****************************
 
-An important part of any organization system is the ability to quickly
-capture new ideas and tasks, and to associate reference material with them.
-Org does this using a process called capture.  It also can store files
-related to a task (attachments) in a special directory.  Once in the
-system, tasks and projects need to be moved around.  Moving completed
-project trees to an archive file keeps the system compact and fast.
+管理システ� における重要な点の一つとして、新しいアイディアやタスクを� 早くキ
+ャプチャし、それらを参考資料と連携する能力があることです。Org-modeではキャプ
+チャと呼ばれるプロセスを用いて行います。また、タスクに関係するファイル
+(attachments)を特別なディレクトリに保存することがも可能です。一度システ� へ
+取り込むと、タスクとプロジェクトを移動させる必要があります。完了したプロジェ
+クトツリーをアーカイブファイルへ移動することで、システ� をコンパクトで速く保
+つことが可能です。
 
 * Menu:
 
@@ -5852,13 +5853,13 @@ org-remember at `http://orgmode.org/org-remember.pdf'.
 new users.  To convert your `org-remember-templates', run the command
      M-x org-capture-import-remember-templates <RET>
    and then customize the new variable with `M-x customize-variable
-org-capture-templates', check the result, and save the customization.  You
-can then use both remember and capture until you are familiar with the new
-mechanism.
+org-capture-templates', check the result, and save the
+これにより、新しい仕組みになれるまではリメンバーとキャプチャの両方を使うこと
+ができます。
 
-   Capture lets you quickly store notes with little interruption of your
-work flow.  The basic process of capturing is very similar to remember, but
-Org does enhance it with templates and more.
+キャプチャはワークフローにおいて小さい割り込みで� 早くノートを保存することが
+できます。キャプチャの基本的なプロセスはリメンバーととても良く似ていますが、
+Org-modeはそれをテンプレートなどで強化しました。
 
 * Menu:
 
@@ -5872,15 +5873,16 @@ File: org-ja,  Node: Setting up capture,  Next: Using capture,  Prev: Capture,  
 9.1.1 Setting up capture
 ------------------------
 
-The following customization sets a default target file for notes, and
-defines a global key(1) for capturing new material.
+以下のカスタマイズはノートを取るデフォルトのファイルと新しい� 材をキャプチャ
+するためのグローバルなキー(1)
 
      (setq org-default-notes-file (concat org-directory "/notes.org"))
      (define-key global-map "\C-cc" 'org-capture)
 
    ---------- Footnotes ----------
 
-   (1) Please select your own key, `C-c c' is only a suggestion.
+   (1) 自分のキーを選択して下さい。`C-c
+c'はた� の提案で す。
 
 
 File: org-ja,  Node: Using capture,  Next: Capture templates,  Prev: Setting up capture,  Up: Capture
@@ -5889,48 +5891,49 @@ File: org-ja,  Node: Using capture,  Next: Capture templates,  Prev: Setting up 
 -------------------
 
 `C-c c     (`org-capture')'
-     Call the command `org-capture'.  Note that this keybinding is global
-     and not active by default - you need to install it.  If you have
-     templates defined *note Capture templates::, it will offer these
-     templates for selection or use a new Org outline node as the default
-     template.  It will insert the template into the target file and switch
-     to an indirect buffer narrowed to this new node.  You may then insert
-     the information you want.
+     `org-caputre'コマンドを呼びます。このキーバインドは
+     グローバルで、デフォルトではアクティブになっておらず、インストールする
+     必要があることに注意が必要です。もしテンプレートがあるならば defined
+     *note Capture templates::,
+     これらのテンプレートの選択か、デフォルト
+     のテンプレートを使用した新しい Org
+     アウトラインノードが使用されます。
 
 `C-c C-c     (`org-capture-finalize')'
-     Once you have finished entering information into the capture buffer,
-     `C-c C-c' will return you to the window configuration before the
-     capture process, so that you can resume your work without further
-     distraction.  When called with a prefix arg, finalize and then jump to
-     the captured item.
+     キャプチャバッファに情� �を入力し終わった
+     ら、`C-c
+     C-c'はキャプチャプロセスの前に設定されたウィンドウへ戻します
+     。これによってこれ以上気を散らさずに作業を再開することができます。前置
+     引数と一緒に呼ばれた� �合は、仕上げをしたあとキャプチャした� �目へ移動します。
 
 `C-c C-w     (`org-capture-refile')'
-     Finalize the capture process by refiling (*note Refiling notes::) the
-     note to a different place.  Please realize that this is a normal
-     refiling command that will be executed--so the cursor position at the
-     moment you run this command is important.  If you have inserted a tree
-     with a parent and children, first move the cursor back to the parent.
-     Any prefix argument given to this command will be passed on to the
-     `org-refile' command.
+     ノートを別の� �所に差し替える (*note Refiling
+     notes::)ことでキャプチャプロセスを仕上げます。これは通常の差
+     し替えコマンドが実行されることを認識してく� さい。したがってこのコマン
+     ドを実行するときのカーソル位置が重要です。もし親や小を持つツリーを挿入
+     する� �合、まずカーソルを親へ移動してく� さい。このコマンドに渡された接
+     � �辞引数はすべて`org-refile'コマンドに渡されます。
 
 `C-c C-k     (`org-capture-kill')'
-     Abort the capture process and return to the previous state.
+     キャプチャプロセスをアボートして前の状態へ戻
+     ります。
 
 
-   You can also call `org-capture' in a special way from the agenda, using
-the `k c' key combination.  With this access, any timestamps inserted by
-the selected capture template will default to the cursor date in the agenda,
-rather than to the current date.
+   `org-capture'をアジェンダから`k
+c'キーの組合せを用いた特別な方法で呼ぶことも
+できます。この方法では、選択されたキャプチャテンプレートに挿入されるタイ� ス
+タンプは、現在の日付ではなくアジェンダ内のカーソルがある位置の日付がデフォル
+トになります。
 
-   To find the locations of the last stored capture, use `org-capture' with
-prefix commands:
+最後にキャプチャが保存された� �所を探すには、`org-capture'をプレフィックスコ
+マンドと一緒に使用します。
 
 `C-u C-c c'
-     Visit the target location of a cpature template.  You get to select
-     the template in the usual way.  
+     キャプチャテンプレートが対象としている� �所に移動します。テンプレートの
+     選択は通常と同じように行います。
 
 `C-u C-u C-c c'
-     Visit the last stored capture item in its buffer.
+     バッファ内で最後に保存したキャプチャアイテ� の� �所に移動します。
 
 
 File: org-ja,  Node: Capture templates,  Prev: Using capture,  Up: Capture
@@ -5938,43 +5941,45 @@ File: org-ja,  Node: Capture templates,  Prev: Using capture,  Up: Capture
 9.1.3 Capture templates
 -----------------------
 
-You can use templates for different types of capture items, and for
-different target locations.  The easiest way to create such templates is
-through the customize interface.
+テンプレートは異なる種類のキャプチャアイテ� や、異なる� �所へ使用することがで
+きます。最も簡単にそのようなテンプレートを作る方法、カスタマイズインターフェ
+ースを通じて行うことです。
 
 `C-c c C'
-     Customize the variable `org-capture-templates'.
+     `org-capture-templates'変数のカスタマイズを行います。
 
-   Before we give the formal description of template definitions, let's
-look at an example.  Say you would like to use one template to create
-general TODO entries, and you want to put these entries under the heading
-`Tasks' in your file `~/org/gtd.org'.  Also, a date tree in the file
-`journal.org' should capture journal entries.  A possible configuration
-would look like:
+テンプレート定義の正式な説明の前に、例を挙げます。一般的なTODOエントリーを作
+成する� �合を考えます。また、これらのエントリーは`~/org/gtd.org'の中にある見
+出し`Tasks'の下に作成され、`journal.org'内のデートツリーはジャーナルエントリ
+ーがキャプチャされます。このような� �合の設定は以下のようになります。
 
      (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
-             "* TODO %?\n  %i\n  %a")
+             "* TODO %?
+       %i
+       %a")
         ("j" "Journal" entry (file+datetree "~/org/journal.org")
-             "* %?\nEntered on %U\n  %i\n  %a")))
+             "* %?
+     Entered on %U
+       %i
+       %a")))
 
 If you then press `C-c c t', Org will prepare the template for you like
 this:
      * TODO
-       [[file:LINK TO WHERE YOU INITIATED CAPTURE]]
+       [[file:LINT TO WHERE YOU INITIATED CAPTURE]]
 
-During expansion of the template, `%a' has been replaced by a link to the
-location from where you called the capture command.  This can be extremely
-useful for deriving tasks from emails, for example.  You fill in the task
-definition, press `C-c C-c' and Org returns you to the same place where you
-started the capture process.
+テンプレートが展開される際、`%a'はキャプチャコマンドを呼ん� � �所へのリンクに
+変換されます。これは例えばメールからタスクを登録する時にとても役立ちます。タ
+スクの定義を埋め、`C-c
+C-c'を押すとOrg-modeはキャプチャ動作を始めた� �所へま
+た連れ戻してくれます。
 
-   To define special keys to capture to a particular template without going
-through the interactive template selection, you can create your key binding
-like this:
+特定のテンプレートを対話的な選択なしに用いてキャプチャする特別なキーを定義す
+るには、以下のようにキーバインドを作成できます。
 
-     (define-key global-map "\C-cx"
-        (lambda () (interactive) (org-capture nil "x")))
+     (define-key global-map "\C-cx\n"
+       (lambda () (interactive) (org-capture nil "x")))
 
 * Menu:
 
@@ -5987,132 +5992,127 @@ File: org-ja,  Node: Template elements,  Next: テンプレートの拡張,  Pre
 9.1.3.1 Template elements
 .........................
 
-Now lets look at the elements of a template definition.  Each entry in
-`org-capture-templates' is a list with the following items:
+それではテンプレートを定義するための要� について述べてます。
+`org-capture-templates'中にあるそれぞれのエントリーは以下の� �目から構成され
+るリストです。
 
 `keys'
-     The keys that will select the template, as a string, characters only,
-     for example `"a"' for a template to be selected with a single key, or
-     `"bt"' for selection with two keys.  When using several keys, keys
-     using the same prefix key must be sequential in the list and preceded
-     by a 2-element entry explaining the prefix key, for example
-                   ("b" "Templates for marking stuff to buy")
+     キーは文字列で示されるテンプレートを文字� けで選択します。例えば、
+     `"a"'はaキー� けで選択するテンプレートであり、`"bt"'は２つのキーで選択
+     します。幾つかのキーを使う� �合、同じ接� �辞キーを持つキーはリストの中で
+     連続している必要があり、以下に例をあげるような、接� �辞キーを表す２つの
+     要� を持つエントリーをその前に置きます。
+                   ("b" "買い物リストのためのテンプレート")
      If you do not define a template for the `C' key, this key will be used
      to open the customize buffer for this complex variable.
 
 `description'
-     A short string describing the template, which will be shown during
-     selection.
+     選択時に表示されるテンプレートの短い説明文。
 
 `type'
-     The type of entry, a symbol.  Valid values are:
+     エントリーの種類をシンボルで表します。正しい値は以下の通りです。
     `entry'
-          An Org-mode node, with a headline. Will be filed as the child of
-          the target entry or as a top-level entry.  The target file should
-          be an Org-mode file.
+          見出しのついたOrg-modeのノード。対象エントリーの子かトップレベルのエン
+          トリーとして書き込まれます。対象のファイルはOrg-modeのファイルでなけれ
+          ばならなりません。
 
     `item'
-          A plain list item, placed in the first plain list at the target
-          location.  Again the target file should be an Org file.
+          対象の� �所の最初にある単純なリストへ書き込まれる単純なリストの� �目。対
+          象のファイルはOrg-modeのファイルでなければならなりません。
 
     `checkitem'
-          A checkbox item.  This only differs from the plain list item by
-          the default template.
+          チェックボックス� �目。これは単純なリストとデフォルトのテンプレートが異
+          なる� けです。
 
     `table-line'
-          a new line in the first table at the target location.  Where
-          exactly the line will be inserted depends on the properties
-          `:prepend' and `:table-line-pos' (see below).
+          対象の� �所にある最初のテーブルへ追� する新しい行。行が追� される� �所は
+          `:prepend'と`:table-line-pos'プロパティに依存します。(下記参照)
 
     `plain'
-          Text to be inserted as it is.
+          そのまま挿入される文� 
 
 `target'
-     Specification of where the captured item should be placed.  In Org-mode
-     files, targets usually define a node.  Entries will become children of
-     this node.  Other types will be added to the table or list in the body
-     of this node.  Most target specifications contain a file name.  If
-     that file name is the empty string, it defaults to
-     `org-default-notes-file'.  A file can also be given as a variable,
-     function, or Emacs Lisp form.
+     キャプチャされた� �目が挿入されるべき� �所の指定。Org-modeファイルでは、通常タ
+     ーゲットはノードで定義されます。エントリーはこのノードの子になります。他のタ
+     イプはこのノードの本文にあるテーブルやリストに追� されます。多くのターゲット
+     の指定にはファイル名が含まれます。もしファイル名が空の文字列� った� �合、
+     `org-default-notes-file'がデフォルトになります。ファイルは変数や関数、Emacs
+     Lispのフォー� でも与えられます。
 
-     Valid values are:
+     正しい値は以下の通りです。
     `(file "path/to/file")'
-          Text will be placed at the beginning or end of that file.
+          文� はこのファイルの先� �か最後に挿入されます。
 
-    `(id "id of existing org entry")'
-          Filing as child of this entry, or in the body of the entry.
+    `(id "現存するorgエントリーのid")'
+          このエントリーの子として、もしくはこのエントリの本文として記入します。
 
     `(file+headline "path/to/file" "node headline")'
-          Fast configuration if the target heading is unique in the file.
+          対象の見出しがファイル中で一つしか内� �合の早い設定。
 
-    `(file+olp "path/to/file" "Level 1 heading" "Level 2" ...)'
-          For non-unique headings, the full path is safer.
+    `(file+olp "path/to/file" "Leval 1 heading" "Leval 2" ...)'
+          唯一でない見出しの� �合、フルパスの方が安全です。
 
     `(file+regexp  "path/to/file" "regexp to find location")'
-          Use a regular expression to position the cursor.
+          カーソルの位置に正規表現を使った� �合。
 
-    `(file+datetree "path/to/file")'
-          Will create a heading in a date tree for today's date.
+    `(file+datatree "path/to/file")'
+          今日の日付で日付ツリーの見出しを作ります。
 
     `(file+datetree+prompt "path/to/file")'
-          Will create a heading in a date tree, but will prompt for the
-          date.
+          promptで与えられた日付で日付ツリーの見出しを作ります。
 
     `(file+function "path/to/file" function-finding-location)'
-          A function to find the right location in the file.
+          ファイルの中で正しい� �所を見つける関数
 
     `(clock)'
-          File to the entry that is currently being clocked.
+          ファイル中で現在時間を測っているエントリー。
 
     `(function function-finding-location)'
-          Most general way, write your own function to find both file and
-          location.
+          一般的な方法、ファイルと� �所を見つける自分の関数を書く方法。
 
 `template'
-     The template for creating the capture item.  If you leave this empty,
-     an appropriate default template will be used.  Otherwise this is a
-     string with escape codes, which will be replaced depending on time and
-     context of the capture call.  The string with escapes may be loaded
-     from a template file, using the special syntax `(file
-     "path/to/template")'.  See below for more details.
+     キャプチャする� �目を作るテンプレート。もし空にした� �合、デフォルトのテンプレ
+     ートを使用します。もしエスケープコードを付� した文字列の� �合、キャプチャされ
+     た時の時間と状況に依存して置換されます。エスケープされた文字列はテンプレート
+     ファイルからロードされ、特別な構文`(file
+     "path/to/template")'を使用します。
+     詳細をいかに示します。
 
 `properties'
-     The rest of the entry is a property list of additional options.
-     Recognized properties are:
+     エントリーの残りは追� オプションのプロパティリストです。理解できるプロパティ
+     は
     `:prepend'
-          Normally new captured information will be appended at the target
-          location (last child, last table line, last list item...).
-          Setting this property will change that.
+          通常新しくキャプチャされた情� �は対象の� �所(最後の子、最後のテーブル、
+          最後のリスト� �目...)に追� されます。このプロパティを設定することで変更
+          します。
 
     `:immediate-finish'
-          When set, do not offer to edit the information, just file it away
-          immediately.  This makes sense if the template only needs
-          information that can be added automatically.
+          セットされると情� �の編集を行わなず、追� � けを直ちに行います。テンプレ
+          ートが自動的に追� できる情� �� けを必要とする� �合� け意味を成します。
 
     `:empty-lines'
-          Set this to the number of lines to insert before and after the
-          new item.  Default 0, only common other value is 1.
+          新しい� �目の前後に挿入する行の数をこれに設定します。デフォルトは０で、
+          通常の他の値は１です。
 
     `:clock-in'
-          Start the clock in this item.
+          この� �目の時計を開始します。
 
     `:clock-keep'
-          Keep the clock running when filing the captured entry.
+          キャプチャしたエントリーを追� しても時計を動かし続けます。
 
     `:clock-resume'
-          If starting the capture interrupted a clock, restart that clock
-          when finished with the capture.  Note that `:clock-keep' has
-          precedence over `:clock-resume'.  When setting both to `t', the
-          current clock will run and the previous one will not be resumed.
+          もし時計を割り込むキャプチャを始めた� �合、キャプチャ終了時に時計を再開
+          します。`:clock-keep'は`:clock-resume'より優先されることに注意が必要で
+          す。もしどちらの設定も`t'に設定された� �合、現在の時計が動き、一つ前の
+          時計は再開されません。
 
     `:unnarrowed'
-          Do not narrow the target buffer, simply show the full buffer.
-          Default is to narrow it so that you only see the new material.
+          対象とするバッファの幅を狭めず、単純にフルバッファで表示します。デフォ
+          ルトでは幅を狭くし、新しい内容� けが表示されます。
 
     `:kill-buffer'
-          If the target file was not yet visited when capture was invoked,
-          kill the buffer again after capture is completed.
+          対象のファイルがキャプチャ時にま� 読み込まれていなかった� �合、キャプチ
+          ャ終了時に再びバッファを閉じます。
 
 
 File: org-ja,  Node: テンプレートの拡張,  Prev: Template elements,  Up: Capture templates
@@ -6120,72 +6120,82 @@ File: org-ja,  Node: テンプレートの拡張,  Prev: Template elements,  Up:
 9.1.3.2 テンプレートの拡張
 ...................................
 
-In the template itself, special `%'-escapes(1) allow dynamic insertion of
-content:
+テンプレート自身の中では、特別な`%'-エスケープ(1)によって動的に内容を
+挿入できます。
 
-     %^{PROMPT}  prompt the user for a string and replace this sequence with it.
-                 You may specify a default value and a completion table with
-                 %^{prompt|default|completion2|completion3...}
-                 The arrow keys access a prompt-specific history.
-     %a          annotation, normally the link created with `org-store-link'
-     %A          like `%a', but prompt for the description part
-     %i          initial content, the region when capture is called while the
-                 region is active.
-                 The entire text will be indented like `%i' itself.
-     %t          timestamp, date only
-     %T          timestamp with date and time
-     %u, %U      like the above, but inactive timestamps
-     %^t         like `%t', but prompt for date.  Similarly `%^T', `%^u', `%^U'
-                 You may define a prompt like `%^{Birthday}t'
-     %n          user name (taken from `user-full-name')
-     %c          Current kill ring head.
-     %x          Content of the X clipboard.
-     %^C         Interactive selection of which kill or clip to use.
-     %^L         Like `%^C', but insert as link.
-     %k          title of the currently clocked task
-     %K          link to the currently clocked task
-     %f          file visited by current buffer when org-capture was called
-     %F          like `%f', but include full path
-     %^g         prompt for tags, with completion on tags in target file.
-     %^G         prompt for tags, with completion all tags in all agenda files.
-     %^{PROP}p   Prompt the user for a value for property PROP
-     %:keyword   specific information for certain link types, see below
-     %[FILE]     insert the contents of the file given by FILE
-     %(SEXP)     evaluate Elisp SEXP and replace with the result
+     %^{PROMPT} ユーザーに文字列を入力させこの� �序と置換します。
+                 デフォルトの値と補完テーブルは以下のように指定します。
+                 %^{prompt|デフォルト値|補完2|補完3...}
+                 矢印キーで入力の履歴をたどることができます。
+     %a          注釈、通常は`org-store-link'で作成されたリンク
+     %A          `%a'と同様、しかし説明部分への入力を行います。
+     %i          初期の内容、キャプチャが呼ばれた時にアクティブに
+                 なっているリージョン全体。
+                 全体のテキストは`%i'自身と同じ様にインデントされます。
+     %t          タイ� スタンプ、日付のみ
+     %T          時間と日付からなるタイ� スタンプ
+     %u, %U      上記と同じ� が、不活性なタイ� スタンプ
+     %^t         `%t'と同じ� が、日付の入力を行います。`%^T'、`%^u'、`%^U'と似てま
+     す。
+                 プロンプトを`%^{Birthday}t'の様に定義できます。
+     %n          ユーザーネー� (`user-full-name'から取ってきます)
+     %c          現在のキルリングの先� �
+     %x          Xクリップボードの内容
+     %^C         キルかクリップどちらを使うか対話的に選択します。
+     %^L         `%^C'と同様� が、リンクとして挿入します。
+     %k          現在計時しているタスクのタイトル。
+     %K          現在計時しているタスクへのリンク。
+     %f          org-captureが呼ばれた時に現在のバッファーで表示していたファイル。
 
-For specific link types, the following keywords will be defined(2):
+     %F          `%f'と同様� が、フルパスを含んでいます。
+     %^g         タグの入力を対象ファイル中のタグから補完して入力します。
+     %^G         タグの入力をアジェンダファイルすべてから補完して入力します。
+     %^{PROP}p   ユーザーにPROPプロパティの値の入力を行わせます。
+     %:keyword   あるリンクのタイプを指示する特定の情� �
+     %[FILE]     FILEで与えられるファイルへ内容を挿入します。
+     %(SEXP)     SEXPで与えられるElispを評価してその結果と入れ替えます。
 
-     Link type          |  Available keywords
+リンクのタイプを指定するため、以下のキーワードが定義(2)されています。
+
+     リンクタイプ       |  使用可能なキーワード
      -------------------+----------------------------------------------
      bbdb                    |  %:name %:company
      irc                     |  %:server %:port %:nick
      vm, wl, mh, mew, rmail  |  %:type %:subject %:message-id
                              |  %:from %:fromname %:fromaddress
                              |  %:to   %:toname   %:toaddress
-                             |  %:date (message date header field)
-                             |  %:date-timestamp (date as active timestamp)
-                             |  %:date-timestamp-inactive (date as inactive timestamp)
-                             |  %:fromto (either "to NAME" or "from NAME")(3)
-     gnus                    |  %:group, for messages also all email fields
+                             |  %:date (ヘッダーメッセージ中にあるメッセージの日付
+     )
+                             |  %:date-timestamp (アクティブなタイ� スタンプとして
+     の日付)
+                             |  %:date-timestamp-inactive (アクティブでないタイ� 
+     スタンプとしての日付)
+                             |  %:fromto (\"to NAME\"か\"from NAME\"のどちらか
+     )(3)
+     gnus                    |  %:group, メッセージとそれに� えてすべてのemailフィ
+     ールドのため。
      w3, w3m                 |  %:url
      info                    |  %:file %:node
      calendar                |  %:date
 
-To place the cursor after template expansion use:
+テンプレート展開後のカーソル位置のために以下を用います。
 
-     %?          After completing the template, position cursor here.
+     %?          テンプレートを完了したあと、カーソル位置をここに移動します。
 
    ---------- Footnotes ----------
 
-   (1) If you need one of these sequences literally, escape the `%' with a
-backslash.
+   (1) もしこれらの文字通りの並びが
+必要な� �合は、`%'をバックスラッシュでエスケープすること
 
-   (2) If you define your own link types (*note Adding hyperlink types::),
-any property you store with `org-store-link-props' can be accessed in
-capture templates in a similar way.
+   (2) もしあなたが自分のリン
+クタイプを定義しているならば(*note Adding hyperlink
+types::)、
+`org-store-link-props'に保存されているいずれのプロパティもキャプチャテンプレ
+ート中に同じ方法でアクセス可能です。
 
-   (3) This will always be the other, not the user.  See the variable
-`org-from-is-user-regexp'.
+   (3)
+これはユーザーではなく常に他人になる。`org-from-is-user-regexp'を参照する
+こと。
 
 
 File: org-ja,  Node: Attachments,  Next: RSS Feeds,  Prev: Capture,  Up: Capture - Refile - Archive
@@ -6193,82 +6203,81 @@ File: org-ja,  Node: Attachments,  Next: RSS Feeds,  Prev: Capture,  Up: Capture
 9.2 Attachments
 ===============
 
-It is often useful to associate reference material with an outline
-node/task.  Small chunks of plain text can simply be stored in the subtree
-of a project.  Hyperlinks (*note Hyperlinks::) can establish associations
-with files that live elsewhere on your computer or in the cloud, like emails
-or source code files belonging to a project.  Another method is
-attachments, which are files located in a directory belonging to an outline
-node.  Org uses directories named by the unique ID of each entry.  These
-directories are located in the `data' directory which lives in the same
-directory where your Org file lives(1).  If you initialize this directory
-with `git init', Org will automatically commit changes when it sees them.
-The attachment system has been contributed to Org by John Wiegley.
+参照すべきものをアウトラインノートやタスクと連携させることは大抵役立ちます。
+小さなプレーンテキストの塊は単純にプロジェクトのサブツリーとして保存可能です
+。ハイパーリンク(*note
+Hyperlinks::)はあなたのコンピュータやクラウドなどにあるファ
+イル、例えばプロジェクトに関連するemailやソースコードファイルとの連携を確立
+します。その他の方法として、attachmentsがあります。これはアウトラインノード
+の属するディレクトリにあるファイルです。これらのディレクトリは`data'ディレク
+トリの中に位置し、あなたのOrgファイルが保存されているディレクトリと同じディ
+レクトリの中にある(1)。 もしこのディレクトリを`git
+init'で初期化した� �合、Org-modeは変更点を見つけた
+時に自動的にそれらをコミットします。添付システ� はJohn
+Wiegleyの貢献によってOrg-modeへ追� されました。
 
-   In cases where it seems better to do so, you can also attach a directory
-of your choice to an entry.  You can also make children inherit the
-attachment directory from a parent, so that an entire subtree uses the same
-attached directory.
+もしそれがより良い方法に思える� �合は、エントリーへディレクトリを添付すること
+も自身の選択で可能です。子エントリーは親から添付ディレクトリを受け継ぐため、
+サブツリー全体が同じ添付ディレクトリを使うことになります。
 
 The following commands deal with attachments:
 
 `C-c C-a     (`org-attach')'
-     The dispatcher for commands related to the attachment system.  After
-     these keys, a list of commands is displayed and you must press an
-     additional key to select a command:
+     添付システ� に関連するコマンドのコマンド選択画面。これらのキーのあとに
+     、コマンドのリストが表示され、コマンドを選択するために更にキーを押す必
+     要があります。
 
     `a     (`org-attach-attach')'
-          Select a file and move it into the task's attachment directory.
-          The file will be copied, moved, or linked, depending on
-          `org-attach-method'.  Note that hard links are not supported on
-          all systems.
+          ファイルを選択してそれをタスクの添付ディレクトリへ移動します。ファイル
+          は`org-attach-method'によって複製、移動、リンクされます。ハードリンク
+          はすべてのシステ� でサポートされていないことに注意が必要です。
 
     `c/m/l'
-          Attach a file using the copy/move/link method.  Note that hard
-          links are not supported on all systems.
+          コピー/移動/リンクメソッドを使ってファイルを添付します。ハードリンクは
+          すべてのシステ� でサポートされていないことに注意が必要です。
 
     `n     (`org-attach-new')'
-          Create a new attachment as an Emacs buffer.
+          Emacsのバッファとして新しい添付を作成しま す。
 
     `z     (`org-attach-sync')'
-          Synchronize the current task with its attachment directory, in
-          case you added attachments yourself.
+          あなた自身で添付を追� した� �合に、現在のタスクをその添付ディレクトリと
+          同期します。
 
     `o     (`org-attach-open')'
-          Open current task's attachment.  If there is more than one,
-          prompt for a file name first.  Opening will follow the rules set
-          by `org-file-apps'.  For more details, see the information on
-          following hyperlinks (*note Handling links::).
+          現在のタスクに関する添付を開きます。もし１つ以上ある� �合は、まずファイ
+          ル名を入力させます。開き方は`org-file-apps'に従います。詳細は、ハイパ
+          ーリンクを辿るための情� �(*note Handling
+          links::)を参照してく� さい。
 
     `O     (`org-attach-open-in-emacs')'
-          Also open the attachment, but force opening the file in Emacs.
+          これも添付を開きますが、強制的にファイルをEmacsを用います。
 
     `f     (`org-attach-reveal')'
-          Open the current task's attachment directory.
+          現在のタスクの添付ディレクトリを開きま す。
 
     `F     (`org-attach-reveal-in-emacs')'
-          Also open the directory, but force using `dired' in Emacs.
+          これもディレクトリを開きますが、強制的にEmacs内で`dired'を用います。
 
     `d     (`org-attach-delete-one')'
-          Select and delete a single attachment.
+          添付の１つを選択し削除します。
 
     `D     (`org-attach-delete-all')'
-          Delete all of a task's attachments.  A safer way is to open the
-          directory in `dired' and delete from there.
+          タスクに関連する添付をすべて削除します。安全な方法は`dired'を用いてデ
+          ィレクトリを開き、そこから削除する方法です。
 
     `s     (`org-attach-set-directory')'
-          Set a specific directory as the entry's attachment directory.
-          This works by putting the directory path into the `ATTACH_DIR'
-          property.
+          特定のディレクトリをエントリーの添付ディレクトリーに指定します。これは
+          ディレクトリーのパスを`ATTAH_DIR'プロパティに代入することで動作します。
 
     `i     (`org-attach-set-inherit')'
-          Set the `ATTACH_DIR_INHERIT' property, so that children will use
-          the same directory for attachments as the parent does.
+          `ATTACH_DIR_INHERIT'プロパティをセットします。これによって子も親と同じ
+          ディレクトリを添付として使用します。
 
    ---------- Footnotes ----------
 
-   (1) If you move entries or Org files from one directory to another, you
-may want to configure `org-attach-directory' to contain an absolute path.
+   (1)
+もしエントリーやOrgファイルを他のディレクトリに移動した� �
+合、`org-attach-directory'が絶対パスを含むように設定する必要があります。
 
 
 File: org-ja,  Node: RSS Feeds,  Next: Protocols,  Prev: Attachments,  Up: Capture - Refile - Archive
@@ -6276,40 +6285,42 @@ File: org-ja,  Node: RSS Feeds,  Next: Protocols,  Prev: Attachments,  Up: Captu
 9.3 RSSフィード
 ===================
 
-Org can add and change entries based on information found in RSS feeds and
-Atom feeds.  You could use this to make a task out of each new podcast in a
-podcast feed.  Or you could use a phone-based note-creating service on the
-web to import tasks into Org.  To access feeds, configure the variable
-`org-feed-alist'.  The docstring of this variable has detailed information.
-Here is just an example:
+Org-modeはエントリーの追� や変更をRSSフィードとAtomフィードの情� �を元に行う
+ことができます。この機能を使ってプロダクトフィードのなかからそれぞれの新しい
+プロダクトに対してタスクを作ることも可能です。もしくは、携帯電話を対象とした
+Web上のノート作成サービスをOrg-modeのタスクにインポートできます。フィードに
+アクセスするには、`org-feed-alist'を設定します。この変数のドキュメント文字列
+に詳細はあります。以下に例をしまします。
 
      (setq org-feed-alist
           '(("Slashdot"
               "http://rss.slashdot.org/Slashdot/slashdot"
               "~/txt/org/feeds.org" "Slashdot Entries")))
 
-will configure that new items from the feed provided by `rss.slashdot.org'
-will result in new entries in the file `~/org/feeds.org' under the heading
-`Slashdot Entries', whenever the following command is used:
+この例は、以下のコマンドが使われるたびに、`rss.slashdot.org'で提供されている
+フィードの新しいアイテ� から、`~/org/feeds.org'ファイル内に
+`Slashdot
+Entries'をヘッダーにもつ新しいエントリーを生成します。
 
 `C-c C-x g     (`org-feed-update-all')'
 
 `C-c C-x g'
-     Collect items from the feeds configured in `org-feed-alist' and act
-     upon them.  
+     `org-feed-alist'に設定されたフィードからアイテ� を収集し、上記のように
+     振る舞う。
 
 `C-c C-x G     (`org-feed-goto-inbox')'
-     Prompt for a feed name and go to the inbox configured for this feed.
+     はフィード名を入力し、そのフ
+     ィードに設定されたインボックスへ移動します。
 
-   Under the same headline, Org will create a drawer `FEEDSTATUS' in which
-it will store information about the status of items in the feed, to avoid
-adding the same item several times.  You should add `FEEDSTATUS' to the
-list of drawers in that file:
+幾つかの見出しでは、Org-modeは`FEEDSTATUS'という引き出しを作成します。これは
+フィード中にあるアイテ� のステータス情� �を保存しています。なんども同じアイテ
+� が追� されないためには、`FEEDSTATUS'をファイルの引き出しの中に追� すること
+が必要です。
 
      #+DRAWERS: LOGBOOK PROPERTIES FEEDSTATUS
 
-   For more information, including how to read atom feeds, see
-`org-feed.el' and the docstring of `org-feed-alist'.
+Atomフィードの読み方などのより詳しい情� �は、`org-feed.el'を御覧く� さい。ま
+た、`org-feed-alist'のドキュメント文字列もあります。
 
 
 File: org-ja,  Node: Protocols,  Next: Refiling notes,  Prev: RSS Feeds,  Up: Capture - Refile - Archive
@@ -6317,14 +6328,14 @@ File: org-ja,  Node: Protocols,  Next: Refiling notes,  Prev: RSS Feeds,  Up: Ca
 9.4 Protocols for external access
 =================================
 
-You can set up Org for handling protocol calls from outside applications
-that are passed to Emacs through the `emacsserver'.  For example, you can
-configure bookmarks in your web browser to send a link to the current page
-to Org and create a note from it using capture (*note Capture::).  Or you
-could create a bookmark that will tell Emacs to open the local source file
-of a remote website you are looking at with the browser.  See
-`http://orgmode.org/worg/org-contrib/org-protocol.php' for detailed
-documentation and setup instructions.
+Org-modeを扱うためのプロトコルを外部のアプリケーションから、`emacsserver'を
+通じてEmacsに渡すことができます。例えば、ウェブブラウザーのブックマークをキ
+ャプチャ(*note
+Capture::)を使って現在のページへのリンクとしてOrg-modeに送り、新し
+いノートを作るように設定できます。または、Emacsに現在ウェブブラウザーで開い
+ているウェブサイトのローカルにあるソースファイルを開くようなブックマークを作
+ることも出来ます。詳細な説明や設定方法は
+`http://orgmode.org/worg/org-contrib/org-protocol.php'を御覧く� さい。
 
 
 File: org-ja,  Node: Refiling notes,  Next: Archiving,  Prev: Protocols,  Up: Capture - Refile - Archive
@@ -6332,49 +6343,50 @@ File: org-ja,  Node: Refiling notes,  Next: Archiving,  Prev: Protocols,  Up: Ca
 9.5 Refiling notes
 ==================
 
-When reviewing the captured data, you may want to refile some of the entries
-into a different list, for example into a project.  Cutting, finding the
-right location, and then pasting the note is cumbersome.  To simplify this
-process, you can use the following special command:
+キャプチャしたデータを見なおしているとき、幾つかのエントリーをプロジェクトな
+どの異なるリストへ移動したい時があるでしょう。カットし、正しい位置をさがし、
+ノートを貼り付けるのは面倒です。これを単純にするには、以下に示す特別なコマン
+ドを使います。
 
 `C-c C-w     (`org-refile')'
-     Refile the entry or region at point.  This command offers possible
-     locations for refiling the entry and lets you select one with
-     completion.  The item (or all items in the region) is filed below the
-     target heading as a subitem.  Depending on `org-reverse-note-order',
-     it will be either the first or last subitem.
-     By default, all level 1 headlines in the current buffer are considered
-     to be targets, but you can have more complex definitions across a
-     number of files.  See the variable `org-refile-targets' for details.
-     If you would like to select a location via a file-path-like completion
-     along the outline path, see the variables
-     `org-refile-use-outline-path' and
-     `org-outline-path-complete-in-steps'.  If you would like to be able to
-     create new nodes as new parents for refiling on the fly, check the
-     variable `org-refile-allow-creating-parent-nodes'.  When the variable
-     `org-log-refile'(1) is set, a timestamp or a note will be recorded
-     when an entry has been refiled.  
+     エントリーや現在のリージョンをリファイルします。このコマンドはエントリ
+     ーをリファイルする� �所を求め、補完とともに１つ選択させます。アイテ� (
+     またはリージョン内のアイテ� )は対象の見出しの下にサブアイテ� として挿
+     入されます。`org-reverse-note-order'に依存して、サブアイテ� の先� �か最
+     後のどちらかに挿入されます。
+     デフォルトでは、現在のバッファのレベル１の見出しすべては対象と考えられ
+     ますが、いくつものファイルにまたがった複雑な定義もすることが可能です。
+     詳細は`org-refile-targets'変数をご覧く� さい。もし� �所をアウトラインの
+     パスをファイルパスのような補完で選択したければ、
+     `org-refile-use-outline-path'と`org-outline-path-complete-in-steps'変
+     数をご覧く� さい。もしリファイルするノードの親ノードをその� �で作れるよ
+     うにしたいときは、`org-refile-allow-creating-parent-nodes'変数をご覧く
+     � さい。`org-log-refile'変数(1)がセットされてい
+     る� �合、タイ� スタンプやノートがエントリーがリファイルされたときに記録
+     されます。
 
 `C-u C-c C-w'
-     Use the refile interface to jump to a heading.  
+     　リファイルのインターフェースを見出しのジャン
+     プに使います。 
 
 `C-u C-u C-c C-w     (`org-refile-goto-last-stored')'
-     Jump to the location where `org-refile' last moved a tree to.
+     `org-refile'が最後に木を
+     移動させた� �所に移動します。
 
 `C-2 C-c C-w'
-     Refile as the child of the item currently being clocked.
+     現在計時しているアイテ� の子としてリファイルします。
 
 `C-0 C-c C-w  or  C-u C-u C-u C-c C-w'
 
 `C-0 C-c C-w  or  C-u C-u C-u C-c C-w     (`org-refile-cache-clear')'
-     Clear the target cache.  Caching of refile targets can be turned on by
-     setting `org-refile-use-cache'.  To make the command see new possible
-     targets, you have to clear the cache with this command.
+     対象のキャッシュを削除します。リファイル対象のキャッシュは
+     `org-refile-use-cache'を設定することで設定します。コマンドに新しい対象
+     を見せるために、このコマンドでキャッシュを削除する必要があります。
 
    ---------- Footnotes ----------
 
-   (1) with corresponding `#+STARTUP' keywords `logrefile',
-`lognoterefile', and `nologrefile'
+   (1) `#+STARTUP'キーワード、`logfile'、
+`lognoterefile'、そして`nologrefile'に対応している。
 
 
 File: org-ja,  Node: Archiving,  Prev: Refiling notes,  Up: Capture - Refile - Archive
@@ -6382,14 +6394,14 @@ File: org-ja,  Node: Archiving,  Prev: Refiling notes,  Up: Capture - Refile - A
 9.6 Archiving
 =============
 
-When a project represented by a (sub)tree is finished, you may want to move
-the tree out of the way and to stop it from contributing to the agenda.
-Archiving is important to keep your working files compact and global
-searches like the construction of agenda views fast.
+(サブ)ツリーとして表現されたプロジェクトが終わった時、ツリーを外に移動し、そ
+れがアジェンダに現れない様にしたいでしょう。アーカイブは活動中のファイルをコ
+ンパクトにし、アジェンダビューを作るようなグローバルな検索を早くするために重
+要です。
 
 `C-c C-x C-a     (`org-archive-subtree-default')'
-     Archive the current entry using the command specified in the variable
-     `org-archive-default-command'.
+     現在のエントリーを`org-archive-default-command'変数で指定されたコマン
+     ドを使ってアーカイブします。
 
 * Menu:
 
@@ -6399,49 +6411,47 @@ searches like the construction of agenda views fast.
 
 File: org-ja,  Node: Moving subtrees,  Next: ファイル内部でのアーカイブ,  Prev: Archiving,  Up: Archiving
 
-9.6.1 Moving a tree to the archive file
----------------------------------------
+9.6.1 ツリーをアーカイブファイルへ移動
+------------------------------------------------------
 
-The most common archiving action is to move a project tree to another file,
-the archive file.
+もっとも一般的なアーカイブアクションはプロジェクトを他のファイル、アーカイブ
+ファイル、へ移動させることです。
 
 `C-c C-x C-s  or short  C-c $     (`org-archive-subtree')'
-     Archive the subtree starting at the cursor position to the location
-     given by `org-archive-location'.  
+     カーソルの� �所から始まるサブツリーを`org-archive-location'で与えられる
+     � �所にアーカイブします。
 
 `C-u C-c C-x C-s'
-     Check if any direct children of the current headline could be moved to
-     the archive.  To do this, each subtree is checked for open TODO
-     entries.  If none are found, the command offers to move it to the
-     archive location.  If the cursor is _not_ on a headline when this
-     command is invoked, the level 1 trees will be checked.
+     現在の見出しにある子がアーカイブへ移動可能か調べます。これを行うために
+     は、それぞれのサブツリーがオープンなTODOエントリーとしてチェックされて
+     いる必要がります。もし１つも見つからなければ、コマンドはこれをアーカイ
+     ブの� �所へ移動するか訪ねてきます。もしコマンドが入力されたときに、カー
+     ソルがへっどらいんで_ない_� �合、レベル１のツリーがチェックされます。
 
-   The default archive location is a file in the same directory as the
-current file, with the name derived by appending `_archive' to the current
-file name.  For information and examples on how to change this, see the
-documentation string of the variable `org-archive-location'.  There is also
-an in-buffer option for setting this variable, for example(1):
+通常のアーカイブ� �所は現在のファイルと同じディレクトリにある、現在のファイル
+名に`_archive'を付� した名前のファイルです。これを変更するための情� �や例は、
+`org-archive-location'変数のドキュメント文字列をご覧く� さい。以下に示すよう
+な、バッファ内でこれを変更するためのオプションもあります(1)。
 
      #+ARCHIVE: %s_done::
 
-If you would like to have a special ARCHIVE location for a single entry or a
-(sub)tree, give the entry an `:ARCHIVE:' property with the location as the
-value (*note Properties and Columns::).
+もしあるエントリー又は(サブ)ツリーに対して特別なアーカイブ� �所を指定したいと
+きには、エントリーに`:ARCHIVE:'プロパティを� �所を値として与えてく� さい
+(*note Properties and Columns::)。
 
-   When a subtree is moved, it receives a number of special properties that
-record context information like the file from where the entry came, its
-outline path the archiving time etc.  Configure the variable
-`org-archive-save-context-info' to adjust the amount of information added.
+もしサブツリーが移動した� �合、エントリーが移動してきたファイル、アーカイブし
+たときのアウトラインパスなどのコンテクスト情� �が記録されます。
+`org-archive-save-context-info'変数を設定することで追� される情� �の量を調整
+します。
 
    ---------- Footnotes ----------
 
-   (1) For backward compatibility, the following also works: If there are
-several such lines in a file, each specifies the archive location for the
-text below it. The first such line also applies to any text before its
-definition. However, using this method is _strongly_ deprecated as it is
-incompatible with the outline structure of the document.  The correct
-method for setting multiple archive locations in a buffer is using
-properties.
+   (1) 後方互換性のために
+、もしこれらの行がファイル中にいくつか存在する� �合、それ以下のテキストのアー
+カイブ� �所をそれぞれ指定します。最初の行はその定義以前のすべてのテキストに適
+応されます。しかし、この方法は文書のアウトライン構� と互換性が無く、_全く_推
+奨されません。複数のアーカイブ� �所をバッファ内で設定する正しい方法は、プロパ
+ティを使う方法です。
 
 
 File: org-ja,  Node: ファイル内部でのアーカイブ,  Prev: Moving subtrees,  Up: Archiving
@@ -6449,57 +6459,64 @@ File: org-ja,  Node: ファイル内部でのアーカイブ,  Prev: Moving subt
 9.6.2 ファイル内部でのアーカイブ
 ---------------------------------------------
 
-If you want to just switch off (for agenda views) certain subtrees without
-moving them to a different file, you can use the `ARCHIVE tag'.
+もし異なるファイルへサブツリーを移動させずに、それをアジェンダビューに表示さ
+せないようにするには、`ARCHIVE
+tag'を使うことができます。
 
-   A headline that is marked with the ARCHIVE tag (*note Tags::) stays at
-its location in the outline tree, but behaves in the following way:
-   - It does not open when you attempt to do so with a visibility cycling
-     command (*note Visibility cycling::).  You can force cycling archived
-     subtrees with `C-<TAB>', or by setting the option
-     `org-cycle-open-archived-trees'.  Also normal outline commands like
-     `show-all' will open archived subtrees.
+   ARCHIVE タグ(*note
+Tags::)でマークされている見出しはアウトラインツリー内の� �所に留
+まりますが、下記のような振る舞いをします。
+   - 表示を切り替えるコマンド(*note Visibility
+     cycling::)では開くことはできません
+     。アーカイブしたサブツリーを強制的に切り替えるには`C-<TAB>'を使うか、
+     `org-cycle-open-archived-trees'オプションを設定します。また、
+     `show-all'などの通常のアウトラインコマンドはアーカイブしたサブツリーも
+     開きます。
 
-   - During sparse tree construction (*note Sparse trees::), matches in
-     archived subtrees are not exposed, unless you configure the option
-     `org-sparse-tree-open-archived-trees'.
+   - ツリーの抽出を行う過程で(*note Sparse
+     trees::)、アーカイブしたサブツリー内で
+     マッチしたものは`org-suparse-tree-open-archived-trees'オプションを設定
+     しない限り現れません。
 
-   - During agenda view construction (*note Agenda Views::), the content of
-     archived trees is ignored unless you configure the option
-     `org-agenda-skip-archived-trees', in which case these trees will always
-     be included.  In the agenda you can press `v a' to get archives
-     temporarily included.
+   - アジェンダビューの抽出を行う過程で(*note Agenda
+     Views::)、アーカイブしたツリ
+     ーの内容は、`org-agenda-skip-archived-trees'を設定した� �合は無視され、
+     設定されない� �合は常に表示されます。アジェンダでは、`v
+     a'を押すことで
+     一時的にアーカイブを含むことができます。
 
-   - Archived trees are not exported (*note Exporting::), only the headline
-     is.  Configure the details using the variable
-     `org-export-with-archived-trees'.
+   - アーカイブされたツリーは見出し以外はエクスポートされません
+     (*note
+     Exporting::)。`org-export-with-archived-trees'変数を使って詳細な設定
+     は行なってく� さい。
 
-   - Archived trees are excluded from column view unless the variable
-     `org-columns-skip-archived-trees' is configured to `nil'.
+   - アーカイブしたツリーは`org-columns-skip-archived-trees'変数が`nil'に設
+     定されない限りカラ� ビューから除外されます。
 
-   The following commands help manage the ARCHIVE tag:
+   以下に示すコマンドがARCHIVEタグの編集に役立ちます。
 
 `C-c C-x a     (`org-toggle-archive-tag')'
-     Toggle the ARCHIVE tag for the current headline.  When the tag is set,
-     the headline changes to a shadowed face, and the subtree below it is
-     hidden.  
+     現在の見出しのARCHIVEタグをトグルす
+     る。もしタグが設定されているならば、見出しは
+     shadowed
+     faceに変更され、以下のサブツリーは� されます。
 
 `C-u C-c C-x a'
-     Check if any direct children of the current headline should be
-     archived.  To do this, each subtree is checked for open TODO entries.
-     If none are found, the command offers to set the ARCHIVE tag for the
-     child.  If the cursor is _not_ on a headline when this command is
-     invoked, the level 1 trees will be checked.  
+     現在の見出しが持つ直接の子がアーカイブされるべきかチェックする。これを
+     おこなうには、それぞれのサブツリーがオープンなTODOエントリーかチェック
+     される。もし何も見つからなかった� �合、コマンドは子にARCHIVEタグをセッ
+     トする。もしカーソルがコマンド実行時に見出し上に_無い_� �合、レベル１の
+     ツリーがチェックされる。
 
 `C-TAB     (`org-force-cycle-archived')'
-     Cycle a tree even if it is tagged with ARCHIVE.  
+     もしARCHIVE
+     タグがついていてもツリーの切り替えを行う 
 
 `C-c C-x A     (`org-archive-to-archive-sibling')'
-     Move the current entry to the _Archive Sibling_.  This is a sibling of
-     the entry with the heading `Archive' and the tag `ARCHIVE'.  The entry
-     becomes a child of that sibling and in this way retains a lot of its
-     original context, including inherited tags and approximate position in
-     the outline.
+     現在のエントリーを_アーカイ
+     ブ兄弟_に移動する。これは見出しが`Archive'か`ARCHIVE'タグの付いたエン
+     トリーの兄弟である。このエントリーはこの兄弟の子になる。そのため、継承
+     したタグやアウトライン内の� いたいな位置など、従来の状況は保ち続けている。
 
 
 File: org-ja,  Node: Agenda Views,  Next: Markup,  Prev: Capture - Refile - Archive,  Up: Top
@@ -10870,9 +10887,9 @@ File: org-ja,  Node: Editing source code,  Next: Exporting code blocks,  Prev: S
 スタマイズグループ`org-edit-structure'も見て下さい。
 
 `org-src-lang-modes'
-     コードブロックのヘッダー行で宣言した言語名`<lang>'のメジャーモードが
-     Emacsに存在する� �合、そのメジャーモードで編集バッファを開きます。存在
-     するメジャーモードに任意の言語名を割り振るためにこの変数を使えます。
+     コードブロックのヘッダー行で宣言した言語名`<lang>-mode'のメジャーモー
+     ドがEmacsに存在する� �合、そのメジャーモードで編集バッファを開きます。
+     存在するメジャーモードに任意の言語名を割り振るためにこの変数を使えます。
 
 `org-src-window-setup'
      編集バッファを新規作成する際の、Emacsのウィンドウ配置方法を管理します。
@@ -13834,66 +13851,73 @@ File: org-ja,  Node: Using the property API,  Next: マッピングAPIを使う,
 A.9 Using the property API
 ==========================
 
-Here is a description of the functions that can be used to work with
-properties.
+プロパティを扱うために使用できる関数を説明します。
 
  -- 機能: org-entry-properties &optional pom which
-     Get all properties of the entry at point-or-marker POM.
-     This includes the TODO keyword, the tags, time strings for deadline,
-     scheduled, and clocking, and any additional properties defined in the
-     entry.  The return value is an alist.  Keys may occur multiple times
-     if the property key was used several times.
-     POM may also be nil, in which case the current entry is used.  If
-     WHICH is nil or `all', get all properties.  If WHICH is `special' or
-     `standard', only get that subclass.
+     ポイントかマーカー(point-or-marker
+     POM)の位置でのエントリのプロパティを全て
+     取得します。
+     これには、TODOキーワード, tags,
+     デッドラインのtime文字列,
+     スケジューリングのtime文字列, 計測のtime文字 列,
+     エントリ内で更に定義されているプロパティが含まれます。返り値は連想リストです
+     。プロパティのキーが何度も使われた� �合は、キーは複数回出現します。
+     POMはnilとなり得ます。その� �合は現在のエントリが使われます。WHICHがnilもし
+     くは`all'の� �合、全てのプロパティを取得します。WHICHが`special'もしくは
+     `standard'の� �合、部分集合(subclass)を取得します。
    
  -- 機能: org-entry-get pom property &optional inherit
-     Get value of PROPERTY for entry at point-or-marker POM.  By default,
-     this only looks at properties defined locally in the entry.  If
-     INHERIT is non-nil and the entry does not have the property, then also
-     check higher levels of the hierarchy.  If INHERIT is the symbol
-     `selective', use inheritance if and only if the setting of
-     `org-use-property-inheritance' selects PROPERTY for inheritance.
+     ポイントかマーカー(point-or-marker
+     POM)の位置でのエントリーのプロパティ  PROPERTY
+     の値を取得します。デフォルトでは、そのエントリーで局所的に定義されたプロパテ
+     ィのみを調べます。もしINHERITがnon-nilかつエントリーがプロパティを持っていな
+     い� �合、階層のより高いレベルをチェックします。もしINHERITがシンボル
+     `selective'である� �合、継承を使います。また、継承を使うのは、継承のためのプ
+     ロパティを`org-use-property-inheritance'の設定が選ん� ときに限ります。
 
  -- 機能: org-entry-delete pom property
-     Delete the property PROPERTY from entry at point-or-marker POM.
+     ポイントかマーカー(point-or-marker
+     POM)の位置のエントリーからプロパティ
+     PROPERTYを削除します。
 
  -- 機能: org-entry-put pom property value
-     Set PROPERTY to VALUE for entry at point-or-marker POM.
+     ポイントかマーカー(point-or-marker
+     POM)の位置のエントリにプロパティPROPERTY
+     の値VALUEをセットします。
 
  -- 機能: org-buffer-property-keys &optional include-specials
-     Get all property keys in the current buffer.
+     カレントバッファにある全てのプロパティのキーを取得します。
 
  -- 機能: org-insert-property-drawer
-     Insert a property drawer at point.
+     ポイントの位置にプロパティの引き出し(drawer)を挿入します。
 
  -- 機能: org-entry-put-multivalued-property pom property &rest values
-     Set PROPERTY at point-or-marker POM to VALUES.  VALUES should be a
-     list of strings.  They will be concatenated, with spaces as separators.
+     ポイントかマーカー(point-or-marker
+     POM)のプロパティPROPERTYを値VALUESにセットします。値VALUESは文字列のリストで
+     なければなりません。それらはスペースを区切り文字として連結されます。
 
  -- 機能: org-entry-get-multivalued-property pom property
-     Treat the value of the property PROPERTY as a whitespace-separated
-     list of values and return the values as a list of strings.
+     プロパティPROPERTYの値を、値がスペースで区切られたリストとして扱い、文字列の
+     リストを返します。
 
  -- 機能: org-entry-add-to-multivalued-property pom property value
-     Treat the value of the property PROPERTY as a whitespace-separated
-     list of values and make sure that VALUE is in this list.
+     プロパティPROPERTYの値を、値がスペースで区切られたリストとして扱い、このリス
+     トの中に値VALUEがあることを確認します。
 
  -- 機能: org-entry-remove-from-multivalued-property pom property value
-     Treat the value of the property PROPERTY as a whitespace-separated
-     list of values and make sure that VALUE is _not_ in this list.
+     プロパティPROPERTYの値を、値がスペースで区切られたリストとして扱い、このリス
+     トの中に値VALUEが_ない_ことを確認します。
 
  -- 機能: org-entry-member-in-multivalued-property pom property value
-     Treat the value of the property PROPERTY as a whitespace-separated
-     list of values and check if VALUE is in this list.
+     プロパティPROPERTYの値を、値がスペースで区切られたリストとして扱い、このリス
+     トの中に値VALUEがあるかをチェックします。
 
  -- ユーザオプション: org-property-allowed-value-functions
-     Hook for functions supplying allowed values for a specific property.
-     The functions must take a single argument, the name of the property,
-     and return a flat list of allowed values.  If `:ETC' is one of the
-     values, use the values as completion help, but allow also other values
-     to be entered.  The functions must return `nil' if they are not
-     responsible for this property.
+     特定のプロパティに許可された値を提供する関数へのフックです。その関数はプロパ
+     ティの名前を単一の引数として受け取り、許可された値の単純なリストを返します。
+     `:ETC'がその値の1つである� �合、その値を補完の候補として使いますが、他の値も
+     入力することができます。もし関数がプロパティと関係無い� �合には、関数は`nil'
+     を返します。
 
 
 File: org-ja,  Node: マッピングAPIを使う,  Prev: Using the property API,  Up: Hacking
@@ -13901,92 +13925,88 @@ File: org-ja,  Node: マッピングAPIを使う,  Prev: Using the property API,
 A.10 マッピングAPIを使う
 ================================
 
-Org has sophisticated mapping capabilities to find all entries satisfying
-certain criteria.  Internally, this functionality is used to produce agenda
-views, but there is also an API that can be used to execute arbitrary
-functions for each or selected entries.  The main entry point for this API
-is:
+Org-modeは一定の基準を満たす全てのエントリーを探すために、洗練されたマッピン
+グ機能を持っています。アジェンダビューを作成するために内部でこの機能を使われ
+ていますが、エントリのそれぞれもしくは選択されたエントリに対して任意の関数を
+実行するためにAPIも使われます。
 
  -- 機能: org-map-entries func &optional match scope &rest skip
-     Call FUNC at each headline selected by MATCH in SCOPE.
+     範囲SCOPEの内でMATCHにマッチして選択された各見出しで関数FUNCを呼び出します。
 
-     FUNC is a function or a Lisp form.  The function will be called without
-     arguments, with the cursor positioned at the beginning of the
-     headline.  The return values of all calls to the function will be
-     collected and returned as a list.
+     FUNCは関数かLispのフォー� です。関数は引数なしですが、見出しの始まりと終わり
+     のカーソル位置とともに呼び出されます。関数への全ての返り値は、リストとして集
+     められて返されます。
 
-     The call to FUNC will be wrapped into a save-excursion form, so FUNC
-     does not need to preserve point.  After evaluation, the cursor will be
-     moved to the end of the line (presumably of the headline of the
-     processed entry) and search continues from there.  Under some
-     circumstances, this may not produce the wanted results.  For example,
-     if you have removed (e.g. archived) the current (sub)tree it could
-     mean that the next entry will be skipped entirely.  In such cases, you
-     can specify the position from where search should continue by making
-     FUNC set the variable `org-map-continue-from' to the desired buffer
-     position.
+     save-excursionフォー� の中でFUNCを呼び出されるので、ポイントを保存する必要が
+     ありません。評価の後に、カーソルは(処理しているエントリの)行末に移動し、検索
+     を続行します。ある条件では、この方法では希望する結果を得られないかも知れませ
+     ん。例えば、もし現在の(サブ)ツリーを削除した(例えば
+     アーカイブした)� �合、次のエントリをスキップすることを意味します。そのような
+     � �合、変数`org-map-continue-from'に希望するバッファポジションをFUNCに設定さ
+     せることで、どこから検索を続けるべきかというポジションを指定できます。
 
-     MATCH is a tags/property/todo match as it is used in the agenda match
-     view.  Only headlines that are matched by this query will be
-     considered during the iteration.  When MATCH is nil or t, all
-     headlines will be visited by the iteration.
+     アジェンダビューに使われるとき、MATCHはtags/property/todoにマッチします。繰
+     り返しの間、このクエリーにマッチする見出し� けが考慮されます。もしMATCHがnil
+     かtの� �合、繰り返しで全ての見出しがチェックされます。
 
-     SCOPE determines the scope of this command.  It can be any of:
+     SCOPEはこのコマンドのスコープ(対象とする範囲)を決定します。以下のどれかにな
+     り得ます:
 
-          nil     the current buffer, respecting the restriction if any
-          tree    the subtree started with the entry at point
-          file    the current buffer, without restriction
+          nil     カレントバッファ、 制限があればそれに従う
+          tree    現在位置のエントリから始まるサブツリー
+          file    カレントバッファ、制限なしで
           file-with-archives
-                  the current buffer, and any archives associated with it
-          agenda  all agenda files
+                  カレントバッファ、関連したアーカイブも含む
+          agenda  全てのアジェンダファイル
           agenda-with-archives
-                  all agenda files with any archive files associated with them
+                  全てのアジェンダフィル、関連したアーカイブファイルも含む
           (file1 file2 ...)
-                  if this is a list, all files in the list will be scanned
-     The remaining args are treated as settings for the skipping facilities
-     of the scanner.  The following items can be given here:
+                  ファイルがリスト形式の� �合、リスト内の全てのファイルをスキャンします
+     残りの引数は、スキャナー(読み取る関数?)のスキップ機能の設定として取り扱われ
+     ます。以下のアイテ� をとることができます。
 
-          archive   skip trees with the archive tag
-          comment   skip trees with the COMMENT keyword
+          archive   アーカイブタグ(archive tag)があるツリーをスキップします
+          comment   キーワードCOMMENTがあるツリーをスキップします
           function or Lisp form
-                    will be used as value for `org-agenda-skip-function',
-                    so whenever the function returns t, FUNC
-                    will not be called for that entry and search will
-                    continue from the point where the function leaves it
+                    `org-agenda-skip-function'の値として使われます。
+                    関数であればいつもtを返します、
+                    FUNCはは呼び出されません、
+                    関数がポイントを置いたままにした位置から検索は続きます
 
-   The function given to that mapping routine can really do anything you
-like.  It can use the property API (*note Using the property API::) to
-gather more information about the entry, or in order to change metadata in
-the entry.  Here are a couple of functions that might be handy:
+マッピングルーティーンへと与えられる関数はどのような動作もできます。エントリ
+に関する情� �を更に集めるためにプロパティAPI(*note Using
+the property API::)を使え
+ますし、もしくはエントリのメタデータを変更するために使えます。
+便利な幾つか の関数を紹介します:
 
  -- 機能: org-todo &optional arg
-     Change the TODO state of the entry.  See the docstring of the
-     functions for the many possible values for the argument ARG.
+     エントリのTODO状態を変更します。引数ARGが取り得る多くの値については、関数の
+     ドキュメント文字列を見て下さい。
 
  -- 機能: org-priority &optional action
-     Change the priority of the entry.  See the docstring of this function
-     for the possible values for ACTION.
+     エントリのプライオリティを変更します。ACTIONが取り得る値についてはこの関数の
+     ドキュメント文字列を見て下さい。
 
  -- 機能: org-toggle-tag tag &optional onoff
-     Toggle the tag TAG in the current entry.  Setting ONOFF to either `on'
-     or `off' will not toggle tag, but ensure that it is either on or off.
+     現在のエントリのタグTAGをトグルします。`on'か`off'のいずれかを設定するという
+     ことは、タグをトグルするのではなく、onかoffのどちらかであることを確かにしま
+     す。
 
  -- 機能: org-promote
-     Promote the current entry.
+     現在のエントリを一階層上に引き上げます。
 
  -- 機能: org-demote
-     Demote the current entry.
+     現在のエントリを一階層下へ引き下げます。
 
-   Here is a simple example that will turn all entries in the current file
-with a tag `TOMORROW' into TODO entries with the keyword `UPCOMING'.
-Entries in comment trees and in archive trees will be ignored.
+これは、現在のファイルの中でTODO`TOMORROW'を持つ全てエントリを、キーワード
+`UPCOMIND'をつけたTODOのエントリへと変化させる簡単な例です。
 
      (org-map-entries
         '(org-todo "UPCOMING")
         "+TOMORROW" 'file 'archive 'comment)
 
-   The following example counts the number of entries with TODO keyword
-`WAITING', in all agenda files.
+以下の例では、全てのアジェンダファイルに渡って、TODOのキーワードに`WAITING'
+があるエントリの数をカウントします。
 
      (length (org-map-entries t "/+WAITING" 'agenda))
 
@@ -14547,14 +14567,14 @@ Concept index
  [index ]
 * Menu:
 
-* #+ARCHIVE:                             Moving subtrees.         (line  26)
+* #+ARCHIVE:                             Moving subtrees.         (line  25)
 * #+ATTR_DOCBOOK:                        Images in DocBook export.
                                                                   (line  36)
-* #+ATTR_HTML <1>:                       Tables in HTML export.   (line  12)
+* #+ATTR_HTML <1>:                       Links in HTML export.    (line  22)
 * #+ATTR_HTML <2>:                       Images in HTML export.   (line  25)
-* #+ATTR_HTML:                           Links in HTML export.    (line  22)
-* #+ATTR_LaTeX <1>:                      Images in LaTeX export.  (line  27)
-* #+ATTR_LaTeX:                          Tables in LaTeX export.  (line  15)
+* #+ATTR_HTML:                           Tables in HTML export.   (line  12)
+* #+ATTR_LaTeX <1>:                      Tables in LaTeX export.  (line  15)
+* #+ATTR_LaTeX:                          Images in LaTeX export.  (line  27)
 * #+AUTHOR:                              Export options.          (line  22)
 * #+BEGIN, clocktable:                   The clock table.         (line  39)
 * #+BEGIN, columnview:                   カラ� 表示の保存.
@@ -14565,18 +14585,18 @@ Concept index
 * #+BEGIN_DOCBOOK:                       Quoting DocBook code.    (line   9)
 * #+BEGIN_EXAMPLE:                       Literal examples.        (line   7)
 * #+BEGIN_HTML:                          Quoting HTML tags.       (line  14)
-* #+BEGIN_LaTeX:                         Quoting LaTeX code.      (line  14)
+* #+BEGIN_LaTeX:                         Quoting LaTeX code.      (line  12)
 * #+BEGIN_QUOTE:                         Paragraphs.              (line  24)
 * #+BEGIN_SRC:                           Literal examples.        (line  25)
 * #+BEGIN_VERSE:                         Paragraphs.              (line  13)
 * #+BIND:                                Export options.          (line  22)
-* #+CAPTION <1>:                         Images in DocBook export.
-                                                                  (line  36)
+* #+CAPTION <1>:                         Images in HTML export.   (line  25)
 * #+CAPTION <2>:                         Images and tables.       (line   6)
-* #+CAPTION <3>:                         Tables in HTML export.   (line  12)
-* #+CAPTION <4>:                         Images in LaTeX export.  (line  27)
-* #+CAPTION <5>:                         Tables in LaTeX export.  (line  23)
-* #+CAPTION <6>:                         Images in HTML export.   (line  25)
+* #+CAPTION <3>:                         Tables in LaTeX export.  (line  23)
+* #+CAPTION <4>:                         Tables in HTML export.   (line  12)
+* #+CAPTION <5>:                         Images in LaTeX export.  (line  27)
+* #+CAPTION <6>:                         Images in DocBook export.
+                                                                  (line  36)
 * #+CAPTION:                             Tables in LaTeX export.  (line  15)
 * #+CATEGORY:                            Categories.              (line   6)
 * #+COLUMNS:                             Scope of column definitions.
@@ -14594,12 +14614,12 @@ Concept index
 * #+INCLUDE:                             Include files.           (line   7)
 * #+INFOJS_OPT:                          JavaScript support.      (line  27)
 * #+KEYWORDS:                            Export options.          (line  22)
-* #+LABEL <1>:                           Tables in LaTeX export.  (line  23)
-* #+LABEL <2>:                           Images in LaTeX export.  (line  27)
-* #+LABEL <3>:                           Images and tables.       (line   6)
-* #+LABEL <4>:                           Tables in LaTeX export.  (line  15)
-* #+LABEL:                               Images in DocBook export.
+* #+LABEL <1>:                           Images and tables.       (line   6)
+* #+LABEL <2>:                           Images in DocBook export.
                                                                   (line  36)
+* #+LABEL <3>:                           Tables in LaTeX export.  (line  15)
+* #+LABEL <4>:                           Images in LaTeX export.  (line  27)
+* #+LABEL:                               Tables in LaTeX export.  (line  23)
 * #+LANGUAGE:                            Export options.          (line  22)
 * #+LaTeX:                               Quoting LaTeX code.      (line  12)
 * #+LATEX_CLASS:                         Header and sectioning.   (line   8)
@@ -14610,8 +14630,8 @@ Concept index
 * #+LINK_HOME:                           Export options.          (line  22)
 * #+LINK_UP:                             Export options.          (line  22)
 * #+MACRO:                               Macro replacement.       (line   6)
-* #+OPTIONS <1>:                         Headings and sections.   (line  12)
-* #+OPTIONS:                             Export options.          (line  22)
+* #+OPTIONS <1>:                         Export options.          (line  22)
+* #+OPTIONS:                             Headings and sections.   (line  12)
 * #+ORGLST:                              ラジオリスト.      (line  26)
 * #+ORGTBL:                              Radio tables.            (line  15)
 * #+ORGTBL, SEND:                        A LaTeX example.         (line  14)
@@ -14628,8 +14648,8 @@ Concept index
 * #+TBLNAME:                             References.              (line 126)
 * #+TEXT <1>:                            Export options.          (line  22)
 * #+TEXT:                                Initial text.            (line   6)
-* #+TITLE <1>:                           Export options.          (line  22)
-* #+TITLE:                               Document title.          (line   8)
+* #+TITLE <1>:                           Document title.          (line   8)
+* #+TITLE:                               Export options.          (line  22)
 * #+TODO:                                Per-file keywords.       (line   6)
 * #+TYP_TODO:                            Per-file keywords.       (line   6)
 * #+XSLT:                                Export options.          (line  22)
@@ -14643,7 +14663,7 @@ Concept index
 * alignment in tables:                   Column width and alignment.
                                                                   (line   6)
 * anniversaries, from BBDB:              Weekly/daily agenda.     (line  68)
-* API, for mapping:                      マッピングAPIを使う.
+* API、マッピングの:              マッピングAPIを使う.
                                                                   (line   6)
 * appointment reminders:                 Weekly/daily agenda.     (line 104)
 * appt.el:                               Weekly/daily agenda.     (line 104)
@@ -14675,8 +14695,8 @@ Concept index
 * column view, in agenda:                Agenda column view.      (line   6)
 * commands, in agenda buffer:            Agenda commands.         (line   6)
 * constants.el:                          Cooperation.             (line  16)
-* content, STARTUPキーワード <1>:   Visibility cycling.      (line  59)
-* content, STARTUPキーワード:       In-buffer settings.      (line  72)
+* content, STARTUPキーワード <1>:   In-buffer settings.      (line  72)
+* content, STARTUPキーワード:       Visibility cycling.      (line  59)
 * contents, global visibility state:     Visibility cycling.      (line  25)
 * copying, of subtrees:                  Structure editing.       (line   6)
 * CSS、HTMLエクスポートに関する: CSS support.          (line   6)
@@ -14747,8 +14767,8 @@ Concept index
 * headline, promotion and demotion:      Structure editing.       (line   6)
 * headlines:                             Headlines.               (line   6)
 * hide text:                             Visibility cycling.      (line   6)
-* hideblocks, STARTUP keyword <1>:       In-buffer settings.      (line 150)
-* hideblocks, STARTUP keyword:           Blocks.                  (line  14)
+* hideblocks, STARTUP keyword <1>:       Blocks.                  (line  14)
+* hideblocks, STARTUP keyword:           In-buffer settings.      (line 150)
 * HTML export:                           HTML export.             (line   6)
 * HTML、Orgtblモードと:             Translator functions.    (line   6)
 * HTMLのインライン画像:          Images in HTML export.   (line   6)
@@ -14794,8 +14814,6 @@ Concept index
 * LOCATION属性:                        iCalendarエクスポート.
                                                                   (line  44)
 * Ludlam, Eric M.:                       Cooperation.             (line  45)
-* mapping entries, API:                  マッピングAPIを使う.
-                                                                  (line   6)
 * match view:                            Matching tags and properties.
                                                                   (line   6)
 * matching, of properties:               Matching tags and properties.
@@ -14839,8 +14857,8 @@ Concept index
 * overview, STARTUPキーワード <1>:  In-buffer settings.      (line  72)
 * overview, STARTUPキーワード:      Visibility cycling.      (line  59)
 * pasting, of subtrees:                  Structure editing.       (line   6)
-* PDF出力 <1>:                         LaTeX and PDF export.    (line   6)
-* PDF出力:                             DocBook export.          (line   6)
+* PDF出力 <1>:                         DocBook export.          (line   6)
+* PDF出力:                             LaTeX and PDF export.    (line   6)
 * plain lists:                           Plain lists.             (line   6)
 * presentation, of agenda items:         Presentation and sorting.
                                                                   (line   6)
@@ -14850,8 +14868,6 @@ Concept index
                                                                   (line   6)
 * promotion, of subtrees:                Structure editing.       (line   6)
 * properties:                            Properties and Columns.  (line   6)
-* property, ATTACH_DIR:                  Attachments.             (line  70)
-* property, ATTACH_DIR_INHERIT:          Attachments.             (line  75)
 * property, CUSTOM_ID <1>:               Internal links.          (line   6)
 * property, CUSTOM_ID:                   Handling links.          (line  20)
 * property, ID <1>:                      Handling links.          (line  20)
@@ -14863,17 +14879,18 @@ Concept index
 * property, LATEX_CLASS_OPTIONS:         Header and sectioning.   (line   8)
 * property, VISIBILITY:                  Visibility cycling.      (line  70)
 * protocols, for external access:        Protocols.               (line   6)
-* publishing:                            Publishing.              (line   6)
+* proverty, ATTACH_DIR:                  Attachments.             (line  69)
+* proverty, ATTACH_DIR_INTERIT:          Attachments.             (line  73)
 * query editing, in agenda:              Agenda commands.         (line 188)
 * refiling notes:                        Refiling notes.          (line   6)
-* region, active <1>:                    Built-in table editor.   (line 159)
+* region, active <1>:                    Structure editing.       (line 132)
 * region, active <2>:                    HTML Export commands.    (line   6)
-* region, active <3>:                    ASCII/Latin-1/UTF-8 export.
-                                                                  (line  10)
-* region, active <4>:                    Structure editing.       (line 132)
-* region, active <5>:                    LaTeX/PDF export commands.
+* region, active <3>:                    LaTeX/PDF export commands.
                                                                   (line   6)
-* region, active:                        DocBook export commands. (line   6)
+* region, active <4>:                    ASCII/Latin-1/UTF-8 export.
+                                                                  (line  10)
+* region, active <5>:                    DocBook export commands. (line   6)
+* region, active:                        Built-in table editor.   (line 159)
 * regular expressions, with tags search: Matching tags and properties.
                                                                   (line  59)
 * remember.el:                           Cooperation.             (line  41)
@@ -14890,8 +14907,8 @@ Concept index
 * searching, for text:                   Search view.             (line   6)
 * setting tags:                          Setting tags.            (line   6)
 * SHELLリンク:                        External links.          (line   6)
-* shift-selection-mode <1>:              Conflicts.               (line   6)
-* shift-selection-mode:                  Plain lists.             (line 112)
+* shift-selection-mode <1>:              Plain lists.             (line 112)
+* shift-selection-mode:                  Conflicts.               (line   6)
 * show all, command:                     Visibility cycling.      (line  37)
 * show all, global visibility state:     Visibility cycling.      (line  25)
 * show hidden text:                      Visibility cycling.      (line   6)
@@ -14949,9 +14966,9 @@ Concept index
 * SUMMARY属性:                         iCalendarエクスポート.
                                                                   (line  44)
 * table editor, table.el:                Cooperation.             (line  52)
-* table.el:                              Cooperation.             (line  49)
-* tables <1>:                            Export options.          (line  47)
-* tables:                                Tables.                  (line   6)
+* table.el:                              Cooperation.             (line  52)
+* tables <1>:                            Tables.                  (line   6)
+* tables:                                Export options.          (line  47)
 * tag filtering, in agenda:              Agenda commands.         (line 188)
 * tag inheritance:                       Tag inheritance.         (line   6)
 * tag searches:                          Tag searches.            (line   6)
@@ -14961,12 +14978,11 @@ Concept index
 * tags, setting:                         Setting tags.            (line   6)
 * tangling:                              Extracting source code.  (line   6)
 * TaskJuggler export:                    TaskJuggler export.      (line   6)
-* templates, for Capture:                Capture templates.       (line   6)
 * text search:                           Search view.             (line   6)
 * TeXの解釈:                          Embedded LaTeX.          (line   6)
 * TeXシンボルの補完:              Completion.              (line   6)
-* TeXマクロ <1>:                      Export options.          (line  47)
-* TeXマクロ:                          Special symbols.         (line   6)
+* TeXマクロ <1>:                      Special symbols.         (line   6)
+* TeXマクロ:                          Export options.          (line  47)
 * time grid:                             Time-of-day specifications.
                                                                   (line  27)
 * time-of-day specification:             Time-of-day specifications.
@@ -14991,9 +15007,9 @@ Concept index
 * TODOワークフロー:                Workflow states.         (line   6)
 * transient-mark-mode <1>:               ASCII/Latin-1/UTF-8 export.
                                                                   (line  10)
-* transient-mark-mode <2>:               LaTeX/PDF export commands.
+* transient-mark-mode <2>:               HTML Export commands.    (line   6)
+* transient-mark-mode <3>:               LaTeX/PDF export commands.
                                                                   (line   6)
-* transient-mark-mode <3>:               HTML Export commands.    (line   6)
 * transient-mark-mode:                   DocBook export commands. (line   6)
 * trees, sparse:                         Sparse trees.            (line   6)
 * trees, visibility:                     Visibility cycling.      (line   6)
@@ -15019,14 +15035,14 @@ Concept index
 * アウトラインビューを見やすくする: Clean view.   (line   6)
 * アクション、公開のための:  Publishing action.       (line   6)
 * アクティブでないタイ� スタンプ: Timestamps.      (line  49)
-* アクティブなリージョン <1>: DocBook export commands. (line   6)
-* アクティブなリージョン <2>: Structure editing.       (line 132)
-* アクティブなリージョン <3>: ASCII/Latin-1/UTF-8 export.
-                                                                  (line  10)
-* アクティブなリージョン <4>: HTML Export commands.    (line   6)
-* アクティブなリージョン <5>: Built-in table editor.   (line 159)
-* アクティブなリージョン:     LaTeX/PDF export commands.
+* アクティブなリージョン <1>: Structure editing.       (line 132)
+* アクティブなリージョン <2>: Built-in table editor.   (line 159)
+* アクティブなリージョン <3>: LaTeX/PDF export commands.
                                                                   (line   6)
+* アクティブなリージョン <4>: HTML Export commands.    (line   6)
+* アクティブなリージョン <5>: DocBook export commands. (line   6)
+* アクティブなリージョン:     ASCII/Latin-1/UTF-8 export.
+                                                                  (line  10)
 * アジェンダ:                       Weekly/daily agenda.     (line   6)
 * アジェンダ、パイプ:           Extracting agenda information.
                                                                   (line   6)
@@ -15036,12 +15052,12 @@ Concept index
 * アジェンダビュー:              Agenda Views.            (line   6)
 * アジェンダビュー、ユーザー定義: Special agenda views.
                                                                   (line   6)
-* アジェンダビューの出力 <1>: Exporting Agenda Views.  (line  12)
-* アジェンダビューの出力:     Agenda commands.         (line 500)
+* アジェンダビューの出力 <1>: Agenda commands.         (line 500)
+* アジェンダビューの出力:     Exporting Agenda Views.  (line  12)
 * アジェンダビュー（出力） <1>: Exporting Agenda Views.
-                                                                  (line  12)
+                                                                  (line   6)
 * アジェンダビュー（出力） <2>: Agenda commands.      (line 500)
-* アジェンダビュー（出力）:  Exporting Agenda Views.  (line   6)
+* アジェンダビュー（出力）:  Exporting Agenda Views.  (line  12)
 * アジェンダファイル:           Agenda files.            (line   6)
 * アジェンダ用のファイル:     Agenda files.            (line   6)
 * アドオン、文脈に依存するコマンド: Context-sensitive commands.
@@ -15060,10 +15076,12 @@ Concept index
 * エクスポート中のマクロによる置き換え: Macro replacement.
                                                                   (line   6)
 * エラーのバックトレース:     Feedback.                (line  40)
+* エントリのマッピング、API:  マッピングAPIを使う.
+                                                                  (line   6)
 * オプション、公開のための:  Publishing options.      (line   6)
-* オプションのキーワードの補完 <1>: Export options. (line   6)
-* オプションのキーワードの補完 <2>: Per-file keywords.
+* オプションのキーワードの補完 <1>: Per-file keywords.
                                                                   (line  23)
+* オプションのキーワードの補完 <2>: Export options. (line   6)
 * オプションのキーワードの補完: Completion.         (line   6)
 * オプションキーワードの補完: Completion.            (line   6)
 * カウントダウンタイマ:        カウントダウンタイマ.
@@ -15079,6 +15097,7 @@ Concept index
 * キャプチャ <1>:                   Capture - Refile - Archive.
                                                                   (line   6)
 * キャプチャ:                       Capture.                 (line   6)
+* キャプチャテンプレート:     Capture templates.       (line   6)
 * キーバインド（グローバル）: Activation.            (line   6)
 * キーワードオプション:        Per-file keywords.       (line   6)
 * クロックテーブル、動的なブロック: The clock table.
@@ -15126,9 +15145,8 @@ Concept index
                                                                   (line  22)
 * ソースコードの抽出、コードブロック: Extracting source code.
                                                                   (line   6)
-* タイ� スタンプ <1>:             Timestamps.              (line   6)
-* タイ� スタンプ <2>:             Date and Times.          (line   6)
-* タイ� スタンプ:                 Timestamps.              (line  16)
+* タイ� スタンプ <1>:             Timestamps.              (line  16)
+* タイ� スタンプ:                 Date and Times.          (line   6)
 * タイ� スタンプ、アクティブでない: Timestamps.   (line  49)
 * タイ� スタンプ、リピート間隔: Timestamps.         (line  25)
 * タイ� スタンプ、作成:        Creating timestamps.     (line   6)
@@ -15201,10 +15219,10 @@ Concept index
 * プロパティ、EXPORT_TITLE:        Document title.          (line  15)
 * プロパティ、LOG_INTO_DRAWER:     Tracking TODO state changes.
                                                                   (line   6)
-* プロパティ、ORDERED <1>:         Checkboxes.              (line  47)
-* プロパティ、ORDERED <2>:         TODO dependencies.       (line   6)
-* プロパティ、ORDERED <3>:         Checkboxes.              (line  75)
-* プロパティ、ORDERED:             TODO dependencies.       (line  29)
+* プロパティ、ORDERED <1>:         TODO dependencies.       (line  29)
+* プロパティ、ORDERED <2>:         Checkboxes.              (line  75)
+* プロパティ、ORDERED <3>:         TODO dependencies.       (line   6)
+* プロパティ、ORDERED:             Checkboxes.              (line  47)
 * プロパティ、カラ� ビュー:  Defining columns.        (line   6)
 * プロパティ、スペシャル:     Special properties.      (line   6)
 * プロパティ、スペシャル、ALLTAGS: Special properties.
@@ -15237,14 +15255,14 @@ Concept index
 * プロパティのためのAPI <1>:    Using the property API.  (line   6)
 * プロパティのためのAPI:        Property API.            (line   6)
 * プロパティシンタックス:     Property syntax.         (line   6)
-* プロパティ（API） <1>:          Property API.            (line   6)
-* プロパティ（API）:              Using the property API.  (line   6)
-* プロパティ（ARCHIVE） <1>:      Property inheritance.    (line  31)
-* プロパティ（ARCHIVE）:          Moving subtrees.         (line  28)
+* プロパティ（API） <1>:          Using the property API.  (line   6)
+* プロパティ（API）:              Property API.            (line   6)
+* プロパティ（ARCHIVE） <1>:      Moving subtrees.         (line  27)
+* プロパティ（ARCHIVE）:          Property inheritance.    (line  31)
 * プロパティ（CATEGORY） <1>:     Categories.              (line  12)
 * プロパティ（CATEGORY）:         Property inheritance.    (line  27)
-* プロパティ（COLUMNS） <1>:      In-buffer settings.      (line  27)
-* プロパティ（COLUMNS）:          Property inheritance.    (line  19)
+* プロパティ（COLUMNS） <1>:      Property inheritance.    (line  19)
+* プロパティ（COLUMNS）:          In-buffer settings.      (line  27)
 * ベクトル（テーブルでの計算）: Formula syntax for Calc.
                                                                   (line  10)
 * マインドマップ:                 Freemind export.         (line   6)
@@ -15291,6 +15309,7 @@ Concept index
 * 休止時間を解決する:           Resolving idle time.     (line   6)
 * 優先� �位:                          Priorities.              (line   6)
 * 先� �の「*」を� す:             Clean view.              (line   6)
+* 公開:                                Publishing.              (line   6)
 * 公開のためのインデックスのエントリ: Index entries.
                                                                   (line   6)
 * 公開のためのディレクトリ:  Sources and destinations.
@@ -15392,8 +15411,8 @@ Concept index
 * 段落、マークアップのルール: Paragraphs.            (line   6)
 * 水平線、マーックアップのルール: Horizontal rules.
                                                                   (line   6)
-* 特別なプロパティ（CLOCKSUM） <1>: Special properties. (line  13)
-* 特別なプロパティ（CLOCKSUM）: Agenda column view.     (line  28)
+* 特別なプロパティ（CLOCKSUM） <1>: Agenda column view. (line  28)
+* 特別なプロパティ（CLOCKSUM）: Special properties.     (line  13)
 * 特別な文字列:                    Export options.          (line  47)
 * 特殊記号:                          Special symbols.         (line   6)
 * 画像,インライン:                Handling links.          (line 138)
@@ -15432,19 +15451,19 @@ Concept index
                                                                   (line   6)
 * 見出しの階層:                    Export options.          (line  47)
 * 言語、babel:                        Languages.               (line   6)
-* 計算中の定数:                    References.              (line 126)
+* 計算中の定数:                    References.              (line 105)
 * 評価、コードブロック:        Evaluating code blocks.  (line   6)
 * 評価、ソースコード:           Evaluating code blocks.  (line   6)
 * 謝辞:                                History and Acknowledgments.
                                                                   (line   6)
 * 辞書単語の補完:                 Completion.              (line   6)
 * 進捗状況の記録:                 Progress logging.        (line   6)
-* （外部出力に用いる）ヘッドラインレベル <1>: HTML Export commands.
-                                                                  (line  44)
+* （外部出力に用いる）ヘッドラインレベル <1>: LaTeX/PDF export commands.
+                                                                  (line  39)
 * （外部出力に用いる）ヘッドラインレベル <2>: ASCII/Latin-1/UTF-8 export.
                                                                   (line  43)
-* （外部出力に用いる）ヘッドラインレベル: LaTeX/PDF export commands.
-                                                                  (line  39)
+* （外部出力に用いる）ヘッドラインレベル: HTML Export commands.
+                                                                  (line  44)
 
 
 File: org-ja,  Node: Key Index,  Next: Command and Function Index,  Prev: Main Index,  Up: Top
@@ -15506,7 +15525,7 @@ Key index
 * C-#:                                   Advanced features.       (line   9)
 * C-':                                   Agenda files.            (line  25)
 * C-,:                                   Agenda files.            (line  25)
-* C-0 C-c C-w:                           Refiling notes.          (line  39)
+* C-0 C-c C-w:                           Refiling notes.          (line  40)
 * C-_:                                   Agenda commands.         (line 268)
 * C-c !:                                 Creating timestamps.     (line  15)
 * C-c #:                                 Checkboxes.              (line  79)
@@ -15582,19 +15601,19 @@ Key index
 * C-c C-a <1>:                           Attachments.             (line  25)
 * C-c C-a:                               Agenda commands.         (line 340)
 * C-c C-a a:                             Attachments.             (line  30)
-* C-c C-a c:                             Attachments.             (line  36)
-* C-c C-a d:                             Attachments.             (line  62)
-* C-c C-a D:                             Attachments.             (line  65)
-* C-c C-a f:                             Attachments.             (line  56)
-* C-c C-a F:                             Attachments.             (line  59)
-* C-c C-a i:                             Attachments.             (line  74)
-* C-c C-a l:                             Attachments.             (line  36)
-* C-c C-a m:                             Attachments.             (line  36)
-* C-c C-a n:                             Attachments.             (line  40)
-* C-c C-a o:                             Attachments.             (line  47)
-* C-c C-a O:                             Attachments.             (line  53)
-* C-c C-a s:                             Attachments.             (line  69)
-* C-c C-a z:                             Attachments.             (line  43)
+* C-c C-a c:                             Attachments.             (line  35)
+* C-c C-a d:                             Attachments.             (line  61)
+* C-c C-a D:                             Attachments.             (line  64)
+* C-c C-a f:                             Attachments.             (line  55)
+* C-c C-a F:                             Attachments.             (line  58)
+* C-c C-a i:                             Attachments.             (line  72)
+* C-c C-a l:                             Attachments.             (line  35)
+* C-c C-a m:                             Attachments.             (line  35)
+* C-c C-a n:                             Attachments.             (line  39)
+* C-c C-a o:                             Attachments.             (line  46)
+* C-c C-a O:                             Attachments.             (line  52)
+* C-c C-a s:                             Attachments.             (line  68)
+* C-c C-a z:                             Attachments.             (line  42)
 * C-c C-b <1>:                           Beamerクラスのエクスポート.
                                                                   (line  89)
 * C-c C-b:                               Motion.                  (line  15)
@@ -15678,7 +15697,7 @@ Key index
 * C-c C-f:                               Motion.                  (line  12)
 * C-c C-j:                               Motion.                  (line  21)
 * C-c C-k <1>:                           Visibility cycling.      (line  46)
-* C-c C-k:                               Using capture.           (line  31)
+* C-c C-k:                               Using capture.           (line  30)
 * C-c C-l:                               Handling links.          (line  65)
 * C-c C-n:                               Motion.                  (line   8)
 * C-c C-o <1>:                           Footnotes.               (line  94)
@@ -15755,9 +15774,9 @@ Key index
 * C-c C-x \:                             Subscripts and superscripts.
                                                                   (line  26)
 * C-c C-x a:                             ファイル内部でのアーカイブ.
-                                                                  (line  36)
+                                                                  (line  42)
 * C-c C-x A <1>:                         ファイル内部でのアーカイブ.
-                                                                  (line  49)
+                                                                  (line  57)
 * C-c C-x A:                             Agenda commands.         (line 299)
 * C-c C-x a:                             Agenda commands.         (line 296)
 * C-c C-x b <1>:                         Visibility cycling.      (line  50)
@@ -15796,8 +15815,8 @@ Key index
 * C-c C-x C-y:                           Built-in table editor.   (line 138)
 * C-c C-x e:                             Effort estimates.        (line  14)
 * C-c C-x f:                             Footnotes.               (line  50)
-* C-c C-x G:                             RSS Feeds.               (line  26)
-* C-c C-x g:                             RSS Feeds.               (line  22)
+* C-c C-x G:                             RSS Feeds.               (line  27)
+* C-c C-x g:                             RSS Feeds.               (line  23)
 * C-c C-x i:                             カラ� 表示の保存.
                                                                   (line  52)
 * C-c C-x M-w <1>:                       Built-in table editor.   (line 130)
@@ -15829,7 +15848,7 @@ Key index
 * C-S-<right>:                           Multiple sets in one file.
                                                                   (line  25)
 * C-TAB:                                 ファイル内部でのアーカイブ.
-                                                                  (line  46)
+                                                                  (line  53)
 * C-u C-c !:                             Creating timestamps.     (line  20)
 * C-u C-c *:                             Updating the table.      (line  16)
 * C-u C-c .:                             Creating timestamps.     (line  20)
@@ -15837,14 +15856,14 @@ Key index
                                                                   (line  22)
 * C-u C-c =:                             Editing and debugging formulas.
                                                                   (line  13)
-* C-u C-c c:                             Using capture.           (line  43)
+* C-u C-c c:                             Using capture.           (line  44)
 * C-u C-c C-c:                           Updating the table.      (line  19)
 * C-u C-c C-l:                           Handling links.          (line  88)
 * C-u C-c C-t:                           TODO basics.             (line  24)
-* C-u C-c C-w:                           Refiling notes.          (line  27)
+* C-u C-c C-w:                           Refiling notes.          (line  26)
 * C-u C-c C-x ,:                         Relative timer.          (line  27)
 * C-u C-c C-x a:                         ファイル内部でのアーカイブ.
-                                                                  (line  39)
+                                                                  (line  46)
 * C-u C-c C-x C-s:                       Moving subtrees.         (line  11)
 * C-u C-c C-x C-u <1>:                   The clock table.         (line  20)
 * C-u C-c C-x C-u <2>:                   カラ� 表示の保存.
@@ -15854,7 +15873,7 @@ Key index
 * C-u C-u C-c *:                         Updating the table.      (line  21)
 * C-u C-u C-c =:                         Editing and debugging formulas.
                                                                   (line  16)
-* C-u C-u C-c c:                         Using capture.           (line  45)
+* C-u C-u C-c c:                         Using capture.           (line  46)
 * C-u C-u C-c C-c:                       Updating the table.      (line  21)
 * C-u C-u C-c C-e:                       The export dispatcher.   (line  26)
 * C-u C-u C-c C-t:                       Multiple sets in one file.
@@ -16125,28 +16144,28 @@ Command and function index
 * org-archive-subtree:                   Moving subtrees.         (line   9)
 * org-archive-subtree-default:           Archiving.               (line  11)
 * org-archive-to-archive-sibling:        ファイル内部でのアーカイブ.
-                                                                  (line  49)
+                                                                  (line  57)
 * org-attach <1>:                        Attachments.             (line  25)
 * org-attach:                            Agenda commands.         (line 340)
 * org-attach-attach:                     Attachments.             (line  30)
-* org-attach-delete-all:                 Attachments.             (line  65)
-* org-attach-delete-one:                 Attachments.             (line  62)
-* org-attach-new:                        Attachments.             (line  40)
-* org-attach-open:                       Attachments.             (line  47)
-* org-attach-open-in-emacs:              Attachments.             (line  53)
-* org-attach-reveal:                     Attachments.             (line  56)
-* org-attach-reveal-in-emacs:            Attachments.             (line  59)
-* org-attach-set-directory:              Attachments.             (line  69)
-* org-attach-set-inherit:                Attachments.             (line  74)
-* org-attach-sync:                       Attachments.             (line  43)
+* org-attach-delete-all:                 Attachments.             (line  64)
+* org-attach-delete-one:                 Attachments.             (line  61)
+* org-attach-new:                        Attachments.             (line  39)
+* org-attach-open:                       Attachments.             (line  46)
+* org-attach-open-in-emacs:              Attachments.             (line  52)
+* org-attach-reveal:                     Attachments.             (line  55)
+* org-attach-reveal-in-emacs:            Attachments.             (line  58)
+* org-attach-set-directory:              Attachments.             (line  68)
+* org-attach-set-inherit:                Attachments.             (line  72)
+* org-attach-sync:                       Attachments.             (line  42)
 * org-backward-same-level:               Motion.                  (line  15)
 * org-beamer-select-environment:         Beamerクラスのエクスポート.
                                                                   (line  89)
-* org-buffer-property-keys:              Using the property API.  (line  34)
+* org-buffer-property-keys:              Using the property API.  (line  41)
 * org-calendar-goto-agenda:              Agenda commands.         (line 448)
 * org-capture:                           Using capture.           (line   6)
 * org-capture-finalize:                  Using capture.           (line  15)
-* org-capture-kill:                      Using capture.           (line  31)
+* org-capture-kill:                      Using capture.           (line  30)
 * org-capture-refile:                    Using capture.           (line  22)
 * org-check-after-date:                  Inserting deadline/schedule.
                                                                   (line  41)
@@ -16195,22 +16214,22 @@ Command and function index
 * org-delete-property:                   Property syntax.         (line  68)
 * org-delete-property-globally:          Property syntax.         (line  71)
 * org-demote:                            マッピングAPIを使う.
-                                                                  (line  80)
+                                                                  (line  77)
 * org-demote-subtree:                    Structure editing.       (line  46)
 * org-do-demote:                         Structure editing.       (line  40)
 * org-do-promote:                        Structure editing.       (line  37)
 * org-edit-special:                      Cooperation.             (line  61)
-* org-entry-add-to-multivalued-property: Using the property API.  (line  48)
-* org-entry-delete:                      Using the property API.  (line  28)
-* org-entry-get:                         Using the property API.  (line  20)
-* org-entry-get-multivalued-property:    Using the property API.  (line  44)
+* org-entry-add-to-multivalued-property: Using the property API.  (line  56)
+* org-entry-delete:                      Using the property API.  (line  31)
+* org-entry-get:                         Using the property API.  (line  22)
+* org-entry-get-multivalued-property:    Using the property API.  (line  52)
 * org-entry-member-in-multivalued-property: Using the property API.
-                                                                  (line  56)
-* org-entry-properties:                  Using the property API.  (line  10)
-* org-entry-put:                         Using the property API.  (line  31)
-* org-entry-put-multivalued-property:    Using the property API.  (line  40)
+                                                                  (line  64)
+* org-entry-properties:                  Using the property API.  (line   9)
+* org-entry-put:                         Using the property API.  (line  36)
+* org-entry-put-multivalued-property:    Using the property API.  (line  47)
 * org-entry-remove-from-multivalued-property: Using the property API.
-                                                                  (line  52)
+                                                                  (line  60)
 * org-evaluate-time-range <1>:           Creating timestamps.     (line  60)
 * org-evaluate-time-range:               Clocking commands.       (line  40)
 * org-export:                            The export dispatcher.   (line  26)
@@ -16251,10 +16270,10 @@ Command and function index
                                                                   (line  29)
 * org-export-region-as-html:             HTML Export commands.    (line  26)
 * org-export-visible:                    The export dispatcher.   (line  20)
-* org-feed-goto-inbox:                   RSS Feeds.               (line  26)
-* org-feed-update-all:                   RSS Feeds.               (line  22)
+* org-feed-goto-inbox:                   RSS Feeds.               (line  27)
+* org-feed-update-all:                   RSS Feeds.               (line  23)
 * org-force-cycle-archived:              ファイル内部でのアーカイブ.
-                                                                  (line  46)
+                                                                  (line  53)
 * org-forward-same-level:                Motion.                  (line  12)
 * org-global-cycle:                      Visibility cycling.      (line  25)
 * org-goto:                              Motion.                  (line  21)
@@ -16266,14 +16285,14 @@ Command and function index
 * org-insert-heading <2>:                Plain lists.             (line  90)
 * org-insert-heading:                    Structure editing.       (line   6)
 * org-insert-link:                       Handling links.          (line  65)
-* org-insert-property-drawer <1>:        Using the property API.  (line  37)
+* org-insert-property-drawer <1>:        Using the property API.  (line  44)
 * org-insert-property-drawer:            Property syntax.         (line  54)
 * org-insert-todo-heading <1>:           TODO basics.             (line  60)
 * org-insert-todo-heading <2>:           Structure editing.       (line  21)
 * org-insert-todo-heading:               Checkboxes.              (line  68)
 * org-insert-todo-heading-respect-content: Structure editing.     (line  26)
 * org-map-entries:                       マッピングAPIを使う.
-                                                                  (line  13)
+                                                                  (line  12)
 * org-mark-entry-for-agenda-action:      Inserting deadline/schedule.
                                                                   (line  21)
 * org-mark-ring-goto:                    Handling links.          (line 147)
@@ -16291,12 +16310,12 @@ Command and function index
 * org-paste-subtree:                     Structure editing.       (line  64)
 * org-previous-link:                     Handling links.          (line 153)
 * org-priority <1>:                      マッピングAPIを使う.
-                                                                  (line  69)
+                                                                  (line  65)
 * org-priority:                          Priorities.              (line  24)
 * org-priority-down:                     Priorities.              (line  28)
 * org-priority-up:                       Priorities.              (line  28)
 * org-promote:                           マッピングAPIを使う.
-                                                                  (line  77)
+                                                                  (line  74)
 * org-promote-subtree:                   Structure editing.       (line  43)
 * org-property-action:                   Property syntax.         (line  56)
 * org-property-next-allowed-value:       Property syntax.         (line  64)
@@ -16307,7 +16326,7 @@ Command and function index
 * org-publish-current-project:           公開の開始.         (line  11)
 * org-refile <1>:                        Refiling notes.          (line  11)
 * org-refile:                            Structure editing.       (line  93)
-* org-refile-cache-clear:                Refiling notes.          (line  39)
+* org-refile-cache-clear:                Refiling notes.          (line  40)
 * org-refile-goto-last-stored:           Refiling notes.          (line  30)
 * org-remove-file:                       Agenda files.            (line  21)
 * org-reveal:                            Visibility cycling.      (line  38)
@@ -16413,18 +16432,18 @@ Command and function index
 * org-todo <1>:                          Clocking commands.       (line  46)
 * org-todo <2>:                          TODO basics.             (line  13)
 * org-todo:                              マッピングAPIを使う.
-                                                                  (line  65)
+                                                                  (line  61)
 * org-todo-list <1>:                     Global TODO list.        (line   9)
 * org-todo-list:                         TODO basics.             (line  51)
 * org-toggle-archive-tag:                ファイル内部でのアーカイブ.
-                                                                  (line  36)
+                                                                  (line  42)
 * org-toggle-checkbox:                   Checkboxes.              (line  54)
 * org-toggle-heading:                    Structure editing.       (line 121)
 * org-toggle-inline-images:              Handling links.          (line 135)
 * org-toggle-ordered-property <1>:       Checkboxes.              (line  72)
 * org-toggle-ordered-property:           TODO dependencies.       (line  28)
 * org-toggle-tag:                        マッピングAPIを使う.
-                                                                  (line  73)
+                                                                  (line  69)
 * org-toggle-time-stamp-overlays:        Custom time format.      (line  11)
 * org-tree-to-indirect-buffer:           Visibility cycling.      (line  50)
 * org-update-all-dblocks:                カラ� 表示の保存.
@@ -16458,8 +16477,8 @@ Variable index
 * Menu:
 
 * cdlatex-simplify-sub-super-scripts:    CDLaTeX mode.            (line  32)
-* constants-unit-system <1>:             References.              (line 111)
-* constants-unit-system:                 In-buffer settings.      (line 132)
+* constants-unit-system <1>:             In-buffer settings.      (line 132)
+* constants-unit-system:                 References.              (line 111)
 * htmlize-output-type:                   Exporting Agenda Views.  (line  19)
 * LaTeX-verbatim-environments:           A LaTeX example.         (line  21)
 * org-adapt-indentation:                 Clean view.              (line  45)
@@ -16467,20 +16486,19 @@ Variable index
 * org-agenda-columns-add-appointments-to-effort-sum: Effort estimates.
                                                                   (line  43)
 * org-agenda-confirm-kill:               Agenda commands.         (line 285)
-* org-agenda-custom-commands <1>:        Setting Options.         (line   6)
+* org-agenda-custom-commands <1>:        Storing searches.        (line   9)
 * org-agenda-custom-commands <2>:        Extracting agenda information.
                                                                   (line   6)
-* org-agenda-custom-commands <3>:        Storing searches.        (line   9)
-* org-agenda-custom-commands <4>:        Sparse trees.            (line  40)
+* org-agenda-custom-commands <3>:        Sparse trees.            (line  40)
 * org-agenda-custom-commands:            Setting Options.         (line  36)
 * org-agenda-diary-file:                 Agenda commands.         (line 456)
 * org-agenda-dim-blocked-tasks:          TODO dependencies.       (line  39)
 * org-agenda-entry-text-maxlines:        Agenda commands.         (line 148)
 * org-agenda-exporter-settings <1>:      Exporting Agenda Views.  (line  12)
 * org-agenda-exporter-settings:          Agenda commands.         (line 500)
-* org-agenda-files <1>:                  Agenda files.            (line   6)
-* org-agenda-files <2>:                  agendaの� �目をソートする.
+* org-agenda-files <1>:                  agendaの� �目をソートする.
                                                                   (line   8)
+* org-agenda-files <2>:                  Agenda files.            (line   6)
 * org-agenda-files:                      iCalendarエクスポート.
                                                                   (line  34)
 * org-agenda-filter-preset:              Agenda commands.         (line 189)
@@ -16492,10 +16510,10 @@ Variable index
 * org-agenda-restore-windows-after-quit: Agenda Views.            (line  45)
 * org-agenda-show-inherited-tags:        Agenda commands.         (line 311)
 * org-agenda-skip-archived-trees:        ファイル内部でのアーカイブ.
-                                                                  (line  21)
-* org-agenda-skip-function <1>:          Special agenda views.    (line   6)
+                                                                  (line  25)
+* org-agenda-skip-function <1>:          Special agenda views.    (line  46)
 * org-agenda-skip-function:              マッピングAPIを使う.
-                                                                  (line  51)
+                                                                  (line  46)
 * org-agenda-skip-function-global:       Special agenda views.    (line   6)
 * org-agenda-skip-scheduled-if-done:     Deadlines and scheduling.
                                                                   (line  30)
@@ -16510,45 +16528,45 @@ Variable index
                                                                   (line   6)
 * org-agenda-tags-todo-honor-ignore-options: Matching tags and properties.
                                                                   (line  23)
-* org-agenda-text-search-extra-files <1>: Search view.            (line  27)
-* org-agenda-text-search-extra-files:    Agenda dispatcher.       (line  36)
-* org-agenda-time-grid <1>:              Agenda commands.         (line 156)
-* org-agenda-time-grid:                  Time-of-day specifications.
+* org-agenda-text-search-extra-files <1>: Agenda dispatcher.      (line  36)
+* org-agenda-text-search-extra-files:    Search view.             (line  27)
+* org-agenda-time-grid <1>:              Time-of-day specifications.
                                                                   (line  42)
+* org-agenda-time-grid:                  Agenda commands.         (line 156)
 * org-agenda-todo-ignore-deadlines:      Global TODO list.        (line  39)
 * org-agenda-todo-ignore-scheduled:      Global TODO list.        (line  39)
 * org-agenda-todo-ignore-timestamp:      Global TODO list.        (line  39)
 * org-agenda-todo-ignore-with-date:      Global TODO list.        (line  39)
-* org-agenda-todo-list-sublevels <1>:    Global TODO list.        (line  47)
-* org-agenda-todo-list-sublevels:        Breaking down tasks.     (line   6)
-* org-agenda-use-time-grid <1>:          Time-of-day specifications.
+* org-agenda-todo-list-sublevels <1>:    Breaking down tasks.     (line   6)
+* org-agenda-todo-list-sublevels:        Global TODO list.        (line  47)
+* org-agenda-use-time-grid <1>:          Agenda commands.         (line 156)
+* org-agenda-use-time-grid:              Time-of-day specifications.
                                                                   (line  42)
-* org-agenda-use-time-grid:              Agenda commands.         (line 156)
 * org-agenda-window-setup:               Agenda Views.            (line  45)
 * org-alphabetical-lists:                Plain lists.             (line  20)
-* org-archive-default-command <1>:       Agenda commands.         (line 294)
-* org-archive-default-command:           Archiving.               (line  12)
+* org-archive-default-command <1>:       Archiving.               (line  12)
+* org-archive-default-command:           Agenda commands.         (line 294)
 * org-archive-location <1>:              In-buffer settings.      (line  15)
 * org-archive-location:                  Moving subtrees.         (line  10)
-* org-archive-save-context-info:         Moving subtrees.         (line  32)
+* org-archive-save-context-info:         Moving subtrees.         (line  31)
 * org-attach-directory:                  Attachments.             (line   6)
 * org-attach-method:                     Attachments.             (line  31)
-* org-babel-default-header-args <1>:     Header arguments in Org-mode properties.
-                                                                  (line  23)
-* org-babel-default-header-args:         System-wide header arguments.
+* org-babel-default-header-args <1>:     System-wide header arguments.
                                                                   (line   6)
+* org-babel-default-header-args:         Header arguments in Org-mode properties.
+                                                                  (line  23)
 * org-calc-default-modes:                Formula syntax for Calc. (line  13)
 * org-clock-idle-time:                   Resolving idle time.     (line  10)
 * org-clock-into-drawer:                 Clocking commands.       (line   7)
 * org-clock-modeline-total:              Clocking commands.       (line  17)
 * org-clocktable-defaults:               The clock table.         (line  41)
 * org-coderef-label-format:              Literal examples.        (line  53)
-* org-columns-default-format <1>:        Agenda commands.         (line 171)
-* org-columns-default-format <2>:        Agenda column view.      (line  18)
-* org-columns-default-format <3>:        Using column view.       (line  10)
-* org-columns-default-format:            Effort estimates.        (line  33)
+* org-columns-default-format <1>:        Effort estimates.        (line  33)
+* org-columns-default-format <2>:        Using column view.       (line  10)
+* org-columns-default-format <3>:        Agenda commands.         (line 171)
+* org-columns-default-format:            Agenda column view.      (line  18)
 * org-columns-skip-archived-trees:       ファイル内部でのアーカイブ.
-                                                                  (line  31)
+                                                                  (line  37)
 * org-combined-agenda-icalendar-file:    iCalendarエクスポート.
                                                                   (line  40)
 * org-confirm-babel-evaluate:            Code evaluation security.
@@ -16564,14 +16582,12 @@ Variable index
 * org-cycle-emulate-tab:                 Visibility cycling.      (line  17)
 * org-cycle-global-at-bob:               Visibility cycling.      (line  17)
 * org-cycle-include-plain-lists:         Plain lists.             (line  83)
-* org-cycle-open-archived-trees:         ファイル内部でのアーカイブ.
-                                                                  (line  11)
 * org-cycle-separator-lines:             Headlines.               (line  24)
-* org-deadline-warning-days <1>:         Inserting deadline/schedule.
-                                                                  (line  31)
-* org-deadline-warning-days:             Deadlines and scheduling.
+* org-deadline-warning-days <1>:         Deadlines and scheduling.
                                                                   (line  13)
-* org-default-notes-file <1>:            Template elements.       (line  47)
+* org-deadline-warning-days:             Inserting deadline/schedule.
+                                                                  (line  31)
+* org-default-notes-file <1>:            Template elements.       (line  46)
 * org-default-notes-file:                Setting up capture.      (line   9)
 * org-default-priority <1>:              In-buffer settings.      (line  50)
 * org-default-priority:                  Priorities.              (line  38)
@@ -16580,12 +16596,12 @@ Variable index
 * org-display-internal-link-with-indirect-buffer: Handling links. (line 134)
 * org-disputed-keys:                     Conflicts.               (line  33)
 * org-done (フェイス):               Faces for TODO keywords. (line   6)
-* org-drawers <1>:                       Drawers.                 (line   6)
-* org-drawers:                           In-buffer settings.      (line  41)
+* org-drawers <1>:                       In-buffer settings.      (line  41)
+* org-drawers:                           Drawers.                 (line   6)
 * org-effort-property:                   Effort estimates.        (line   6)
 * org-empty-line-terminates-plain-lists: Plain lists.             (line  39)
 * org-enable-table-editor:               Built-in table editor.   (line  32)
-* org-enforce-todo-dependencies:         TODO dependencies.       (line   6)
+* org-enforce-todo-dependencies:         TODO dependencies.       (line  43)
 * org-entities <1>:                      Special characters.      (line   6)
 * org-entities:                          Special symbols.         (line  14)
 * org-execute-file-search-functions:     Custom searches.         (line  12)
@@ -16593,8 +16609,8 @@ Variable index
                                                                   (line  62)
 * org-export-author-info:                Publishing options.      (line  12)
 * org-export-creator-info:               Publishing options.      (line  12)
-* org-export-default-language <1>:       Publishing options.      (line  12)
-* org-export-default-language:           Export options.          (line  22)
+* org-export-default-language <1>:       Export options.          (line  22)
+* org-export-default-language:           Publishing options.      (line  12)
 * org-export-docbook-default-image-attributes: Images in DocBook export.
                                                                   (line  18)
 * org-export-docbook-doctype:            Special characters.      (line   6)
@@ -16613,19 +16629,19 @@ Variable index
 * org-export-html-expand:                Publishing options.      (line  12)
 * org-export-html-extension:             Publishing options.      (line  12)
 * org-export-html-extra:                 CSS support.             (line  38)
-* org-export-html-inline-images <1>:     Images in HTML export.   (line   6)
-* org-export-html-inline-images:         Publishing options.      (line  12)
+* org-export-html-inline-images <1>:     Publishing options.      (line  12)
+* org-export-html-inline-images:         Images in HTML export.   (line   6)
 * org-export-html-link-home:             Publishing options.      (line  12)
 * org-export-html-link-org-files-as-html: Publishing options.     (line  12)
 * org-export-html-link-up:               Publishing options.      (line  12)
 * org-export-html-postamble:             Publishing options.      (line  12)
 * org-export-html-preamble:              Publishing options.      (line  12)
-* org-export-html-style <1>:             Publishing options.      (line  12)
-* org-export-html-style:                 CSS support.             (line  38)
+* org-export-html-style <1>:             CSS support.             (line  38)
+* org-export-html-style:                 Publishing options.      (line  12)
 * org-export-html-style-default:         CSS support.             (line  38)
 * org-export-html-style-extra:           Publishing options.      (line  12)
-* org-export-html-style-include-default <1>: Publishing options.  (line  12)
-* org-export-html-style-include-default: CSS support.             (line  38)
+* org-export-html-style-include-default <1>: CSS support.         (line  38)
+* org-export-html-style-include-default: Publishing options.      (line  12)
 * org-export-html-style-include-scripts: Publishing options.      (line  12)
 * org-export-html-table-tag <1>:         Publishing options.      (line  12)
 * org-export-html-table-tag:             Tables in HTML export.   (line   6)
@@ -16639,18 +16655,19 @@ Variable index
 * org-export-latex-packages-alist:       Header and sectioning.   (line   8)
 * org-export-preserve-breaks:            Publishing options.      (line  12)
 * org-export-publishing-directory:       Publishing options.      (line  12)
-* org-export-run-in-background:          The export dispatcher.   (line  29)
+* org-export-run-in-background:          The export dispatcher.   (line  15)
 * org-export-section-number-format:      Publishing options.      (line  12)
-* org-export-select-tags <1>:            Selective export.        (line   6)
-* org-export-select-tags:                Publishing options.      (line  12)
-* org-export-skip-text-before-1st-heading <1>: Initial text.      (line  11)
-* org-export-skip-text-before-1st-heading: Publishing options.    (line  12)
+* org-export-select-tags <1>:            Publishing options.      (line  12)
+* org-export-select-tags:                Selective export.        (line   6)
+* org-export-skip-text-before-1st-heading <1>: Publishing options.
+                                                                  (line  12)
+* org-export-skip-text-before-1st-heading: Initial text.          (line  11)
 * org-export-taskjuggler-default-reports: TaskJuggler export.     (line 115)
 * org-export-taskjuggler-project-tag:    TaskJuggler export.      (line  32)
 * org-export-taskjuggler-resource-tag:   TaskJuggler export.      (line  44)
-* org-export-with-archived-trees <1>:    ファイル内部でのアーカイブ.
-                                                                  (line  27)
-* org-export-with-archived-trees:        Publishing options.      (line  12)
+* org-export-with-archived-trees <1>:    Publishing options.      (line  12)
+* org-export-with-archived-trees:        ファイル内部でのアーカイブ.
+                                                                  (line  32)
 * org-export-with-drawers:               Publishing options.      (line  12)
 * org-export-with-emphasize:             Publishing options.      (line  12)
 * org-export-with-fixed-width:           Publishing options.      (line  12)
@@ -16673,33 +16690,33 @@ Variable index
 * org-fast-tag-selection-include-todo:   Fast access to TODO states.
                                                                   (line  15)
 * org-fast-tag-selection-single-key:     Setting tags.            (line 135)
-* org-file-apps <1>:                     Attachments.             (line  48)
-* org-file-apps:                         Handling links.          (line 107)
+* org-file-apps <1>:                     Handling links.          (line 107)
+* org-file-apps:                         Attachments.             (line  47)
 * org-footnote-auto-adjust <1>:          Footnotes.               (line  56)
 * org-footnote-auto-adjust:              In-buffer settings.      (line 135)
 * org-footnote-auto-label <1>:           Footnotes.               (line  43)
 * org-footnote-auto-label:               In-buffer settings.      (line 135)
-* org-footnote-define-inline <1>:        Footnotes.               (line  56)
-* org-footnote-define-inline:            In-buffer settings.      (line 135)
+* org-footnote-define-inline <1>:        In-buffer settings.      (line 135)
+* org-footnote-define-inline:            Footnotes.               (line  56)
 * org-footnote-section:                  Footnotes.               (line  56)
 * org-format-latex-header:               LaTeX fragments.         (line   6)
-* org-format-latex-options <1>:          LaTeX fragments.         (line  34)
-* org-format-latex-options:              Previewing LaTeX fragments.
+* org-format-latex-options <1>:          Previewing LaTeX fragments.
                                                                   (line  19)
+* org-format-latex-options:              LaTeX fragments.         (line  34)
 * org-from-is-user-regexp:               テンプレートの拡張.
-                                                                  (line  41)
+                                                                  (line  43)
 * org-global-properties <1>:             Effort estimates.        (line  33)
 * org-global-properties:                 Property syntax.         (line  39)
 * org-goto-auto-isearch:                 Motion.                  (line  26)
 * org-goto-interface:                    Motion.                  (line  37)
 * org-hide (face):                       Clean view.              (line  63)
 * org-hide-block-startup:                Blocks.                  (line   6)
-* org-hide-leading-stars <1>:            In-buffer settings.      (line 119)
-* org-hide-leading-stars:                Clean view.              (line  48)
+* org-hide-leading-stars <1>:            Clean view.              (line  48)
+* org-hide-leading-stars:                In-buffer settings.      (line 119)
 * org-hierarchical-checkbox-statistics:  Checkboxes.              (line  33)
 * org-hierarchical-todo-statistics:      Breaking down tasks.     (line  24)
-* org-highest-priority <1>:              In-buffer settings.      (line  50)
-* org-highest-priority:                  Priorities.              (line  38)
+* org-highest-priority <1>:              Priorities.              (line  38)
+* org-highest-priority:                  In-buffer settings.      (line  50)
 * org-icalendar-alarm-time:              iCalendarエクスポート.
                                                                   (line   6)
 * org-icalendar-categories:              iCalendarエクスポート.
@@ -16724,8 +16741,9 @@ Variable index
 * org-link-abbrev-alist <1>:             Link abbreviations.      (line  12)
 * org-link-abbrev-alist:                 In-buffer settings.      (line  45)
 * org-link-to-org-use-id:                Handling links.          (line  20)
-* org-list-automatic-rules <1>:          Checkboxes.              (line   6)
-* org-list-automatic-rules:              Plain lists.             (line 147)
+* org-list-automatic-rules <1>:          Plain lists.             (line 147)
+* org-list-automatic-rules <2>:          Checkboxes.              (line   6)
+* org-list-automatic-rules:              Plain lists.             (line  93)
 * org-list-demote-modify-bullet:         Plain lists.             (line  71)
 * org-list-end-regexp:                   Plain lists.             (line  39)
 * org-list-ending-method:                Plain lists.             (line  39)
@@ -16733,32 +16751,32 @@ Variable index
                                                                   (line  26)
 * org-log-done <2>:                      Agenda commands.         (line 113)
 * org-log-done:                          In-buffer settings.      (line  94)
-* org-log-into-drawer <1>:               Agenda commands.         (line 338)
-* org-log-into-drawer:                   Tracking TODO state changes.
+* org-log-into-drawer <1>:               Tracking TODO state changes.
                                                                   (line   6)
-* org-log-note-clock-out <1>:            In-buffer settings.      (line  94)
-* org-log-note-clock-out:                Clocking commands.       (line  31)
+* org-log-into-drawer:                   Agenda commands.         (line 338)
+* org-log-note-clock-out <1>:            Clocking commands.       (line  31)
+* org-log-note-clock-out:                In-buffer settings.      (line  94)
 * org-log-refile:                        Refiling notes.          (line  12)
-* org-log-repeat <1>:                    In-buffer settings.      (line  94)
-* org-log-repeat:                        Repeated tasks.          (line  33)
+* org-log-repeat <1>:                    Repeated tasks.          (line  33)
+* org-log-repeat:                        In-buffer settings.      (line  94)
 * org-log-states-order-reversed:         Tracking TODO state changes.
                                                                   (line   6)
-* org-lowest-priority <1>:               Priorities.              (line  38)
-* org-lowest-priority:                   In-buffer settings.      (line  50)
-* org-M-RET-may-split-line <1>:          Structure editing.       (line   7)
-* org-M-RET-may-split-line:              Plain lists.             (line  93)
-* org-odd-levels-only <1>:               Clean view.              (line  70)
-* org-odd-levels-only <2>:               Special agenda views.    (line  46)
-* org-odd-levels-only <3>:               Matching tags and properties.
+* org-lowest-priority <1>:               In-buffer settings.      (line  50)
+* org-lowest-priority:                   Priorities.              (line  38)
+* org-M-RET-may-split-line <1>:          Plain lists.             (line  93)
+* org-M-RET-may-split-line:              Structure editing.       (line   7)
+* org-odd-levels-only <1>:               Special agenda views.    (line  46)
+* org-odd-levels-only <2>:               Clean view.              (line  70)
+* org-odd-levels-only <3>:               In-buffer settings.      (line 119)
+* org-odd-levels-only:                   Matching tags and properties.
                                                                   (line  63)
-* org-odd-levels-only:                   In-buffer settings.      (line 119)
 * org-outline-path-complete-in-steps:    Refiling notes.          (line  12)
 * org-overriding-columns-format:         Agenda column view.      (line  18)
 * org-plain-list-ordered-item-terminator: Plain lists.            (line  20)
 * org-popup-calendar-for-date-prompt:    The date/time prompt.    (line  67)
 * org-priority-faces:                    Priorities.              (line  12)
 * org-priority-start-cycle-with-default: Priorities.              (line  32)
-* org-property-allowed-value-functions:  Using the property API.  (line  60)
+* org-property-allowed-value-functions:  Using the property API.  (line  68)
 * org-publish-project-alist <1>:         Project alist.           (line   6)
 * org-publish-project-alist:             Publishing options.      (line  66)
 * org-publish-use-timestamps-flag:       公開の開始.         (line  22)
@@ -16769,8 +16787,8 @@ Variable index
 * org-refile-targets:                    Refiling notes.          (line  12)
 * org-refile-use-cache:                  Refiling notes.          (line  12)
 * org-refile-use-outline-path:           Refiling notes.          (line  12)
-* org-remove-highlights-with-change <1>: Sparse trees.            (line  21)
-* org-remove-highlights-with-change:     Clocking commands.       (line  63)
+* org-remove-highlights-with-change <1>: Clocking commands.       (line  63)
+* org-remove-highlights-with-change:     Sparse trees.            (line  21)
 * org-replace-disputed-keys:             Conflicts.               (line  18)
 * org-return-follows-link:               Handling links.          (line 124)
 * org-reverse-note-order:                Refiling notes.          (line  12)
@@ -16780,41 +16798,42 @@ Variable index
 * org-show-siblings:                     Sparse trees.            (line   6)
 * org-sort-agenda-noeffort-is-high:      Agenda commands.         (line 206)
 * org-sparse-tree-open-archived-trees:   ファイル内部でのアーカイブ.
-                                                                  (line  17)
+                                                                  (line  20)
 * org-special-ctrl-a/e:                  Headlines.               (line   6)
 * org-special-ctrl-k:                    Headlines.               (line   6)
 * org-speed-commands-user:               Speed keys.              (line   6)
 * org-startup-align-all-tables <1>:      In-buffer settings.      (line  82)
 * org-startup-align-all-tables:          Column width and alignment.
                                                                   (line  35)
-* org-startup-folded <1>:                In-buffer settings.      (line  72)
-* org-startup-folded:                    Visibility cycling.      (line  59)
+* org-startup-folded <1>:                Visibility cycling.      (line  59)
+* org-startup-folded:                    In-buffer settings.      (line  72)
 * org-startup-indented:                  In-buffer settings.      (line  78)
-* org-startup-with-inline-images <1>:    In-buffer settings.      (line  88)
-* org-startup-with-inline-images:        Handling links.          (line 138)
+* org-startup-with-inline-images <1>:    Handling links.          (line 138)
+* org-startup-with-inline-images:        In-buffer settings.      (line  88)
 * org-store-link-functions:              Adding hyperlink types.  (line  68)
 * org-stuck-projects:                    Stuck projects.          (line  18)
-* org-support-shift-select <1>:          Plain lists.             (line 174)
-* org-support-shift-select <2>:          Conflicts.               (line   6)
+* org-support-shift-select <1>:          Conflicts.               (line   6)
 * org-support-shift-select:              Plain lists.             (line 112)
+* org-sycle-open-archived-trees:         ファイル内部でのアーカイブ.
+                                                                  (line  13)
 * org-table-auto-blank-field:            Built-in table editor.   (line  32)
 * org-table-copy-increment:              Built-in table editor.   (line 165)
 * org-table-export-default-format:       Built-in table editor.   (line 203)
 * org-table-formula:                     In-buffer settings.      (line  32)
-* org-table-formula-constants <1>:       Cooperation.             (line  16)
+* org-table-formula-constants <1>:       In-buffer settings.      (line  32)
 * org-table-formula-constants <2>:       References.              (line 105)
-* org-table-formula-constants:           In-buffer settings.      (line  32)
-* org-table-use-standard-references <1>: Editing and debugging formulas.
+* org-table-formula-constants:           Cooperation.             (line  16)
+* org-table-use-standard-references <1>: References.              (line  21)
+* org-table-use-standard-references:     Editing and debugging formulas.
                                                                   (line   6)
-* org-table-use-standard-references:     References.              (line  21)
 * org-tag-alist <1>:                     In-buffer settings.      (line 159)
 * org-tag-alist:                         Setting tags.            (line  22)
 * org-tag-faces:                         Tags.                    (line  10)
 * org-tag-persistent-alist:              Setting tags.            (line  37)
 * org-tags-column:                       Setting tags.            (line  11)
 * org-tags-exclude-from-inheritance:     Tag inheritance.         (line  22)
-* org-tags-match-list-sublevels <1>:     Property searches.       (line  18)
-* org-tags-match-list-sublevels <2>:     Tag inheritance.         (line  26)
+* org-tags-match-list-sublevels <1>:     Tag inheritance.         (line  26)
+* org-tags-match-list-sublevels <2>:     Property searches.       (line  18)
 * org-tags-match-list-sublevels <3>:     Matching tags and properties.
                                                                   (line  23)
 * org-tags-match-list-sublevels:         Tag searches.            (line  18)
@@ -16823,10 +16842,10 @@ Variable index
 * org-time-stamp-rounding-minutes:       Creating timestamps.     (line  24)
 * org-todo (フェイス):               Faces for TODO keywords. (line   6)
 * org-todo-keyword-faces:                Faces for TODO keywords. (line   6)
-* org-todo-keywords <1>:                 Global TODO list.        (line  16)
-* org-todo-keywords <2>:                 TODO extensions.         (line   6)
-* org-todo-keywords <3>:                 TODO basics.             (line  40)
-* org-todo-keywords:                     In-buffer settings.      (line 175)
+* org-todo-keywords <1>:                 TODO basics.             (line  40)
+* org-todo-keywords <2>:                 Global TODO list.        (line  16)
+* org-todo-keywords <3>:                 In-buffer settings.      (line 175)
+* org-todo-keywords:                     TODO extensions.         (line   6)
 * org-todo-repeat-to-state:              Repeated tasks.          (line  18)
 * org-todo-state-tags-triggers:          TODO basics.             (line  65)
 * org-track-ordered-property-with-tag <1>: TODO dependencies.     (line  29)
@@ -16834,10 +16853,10 @@ Variable index
 * org-treat-insert-todo-heading-as-state-change: Structure editing.
                                                                   (line  24)
 * org-treat-S-cursor-todo-selection-as-state-change: TODO basics. (line  32)
-* org-use-property-inheritance <1>:      Using the property API.  (line  18)
-* org-use-property-inheritance <2>:      iCalendarエクスポート.
+* org-use-property-inheritance <1>:      iCalendarエクスポート.
                                                                   (line  44)
-* org-use-property-inheritance:          Property inheritance.    (line   6)
+* org-use-property-inheritance <2>:      Property inheritance.    (line   6)
+* org-use-property-inheritance:          Using the property API.  (line  20)
 * org-use-speed-commands:                Speed keys.              (line   6)
 * org-use-tag-inheritance:               Tag inheritance.         (line  22)
 * org-yank-adjusted-subtrees:            Structure editing.       (line  73)
@@ -17023,258 +17042,258 @@ Ref: Effort estimates-Footnote-2313780
 Node: Relative timer313908
 Node: カウントダウンタイマ316595
 Node: Capture - Refile - Archive317358
-Node: Capture318433
-Node: Setting up capture319810
-Ref: Setting up capture-Footnote-1320237
-Node: Using capture320303
-Node: Capture templates322462
-Node: Template elements324371
-Node: テンプレートの拡張329707
-Ref: テンプレートの拡張-Footnote-1332913
-Ref: テンプレートの拡張-Footnote-2333000
-Ref: テンプレートの拡張-Footnote-3333182
-Node: Attachments333280
-Ref: Attachments-Footnote-1336665
-Node: RSS Feeds336815
-Node: Protocols338414
-Node: Refiling notes339131
-Ref: Refiling notes-Footnote-1341268
-Node: Archiving341364
-Node: Moving subtrees342113
-Ref: Moving subtrees-Footnote-1343849
-Node: ファイル内部でのアーカイブ344291
-Node: Agenda Views346986
-Node: Agenda files350215
-Ref: Agenda files-Footnote-1354514
-Ref: Agenda files-Footnote-2354729
-Node: Agenda dispatcher355035
-Ref: Agenda dispatcher-Footnote-1358189
-Ref: Agenda dispatcher-Footnote-2358316
-Node: Built-in agenda views358484
-Node: Weekly/daily agenda359298
-Ref: Weekly/daily agenda-Footnote-1366118
-Ref: Weekly/daily agenda-Footnote-2366485
-Node: Global TODO list366598
-Node: Matching tags and properties370274
-Node: Timeline379331
-Node: Search view380431
-Node: Stuck projects382378
-Ref: Stuck projects-Footnote-1385862
-Node: Presentation and sorting385892
-Node: Categories387035
-Ref: Categories-Footnote-1388192
-Node: Time-of-day specifications388911
-Node: agendaの� �目をソートする391434
-Node: Agenda commands393646
-Ref: Agenda commands-Footnote-1424209
-Ref: Agenda commands-Footnote-2424324
-Ref: Agenda commands-Footnote-3425019
-Node: Custom agenda views425154
-Node: Storing searches426009
-Ref: Storing searches-Footnote-1429611
-Node: Block agenda429799
-Node: Setting Options431501
-Node: Exporting Agenda Views435758
-Ref: Exporting Agenda Views-Footnote-1442540
-Ref: Exporting Agenda Views-Footnote-2442644
-Ref: Exporting Agenda Views-Footnote-3442909
-Ref: Exporting Agenda Views-Footnote-4443240
-Node: Agenda column view443376
-Node: Markup447396
-Node: Structural markup elements448595
-Node: Document title449372
-Node: Headings and sections450410
-Node: Table of contents451004
-Node: Initial text451877
-Node: Lists453333
-Node: Paragraphs453718
-Node: Footnote markup455020
-Node: Emphasis and monospace455433
-Node: Horizontal rules455923
-Node: コメント行456249
-Node: Images and tables456919
-Node: Literal examples458634
-Ref: Literal examples-Footnote-1462961
-Ref: Literal examples-Footnote-2464079
-Ref: Literal examples-Footnote-3464258
-Ref: Literal examples-Footnote-4464478
-Node: Include files464597
-Node: Index entries466387
-Node: Macro replacement466949
-Node: Embedded LaTeX467860
-Ref: Embedded LaTeX-Footnote-1468941
-Node: Special symbols469159
-Ref: Special symbols-Footnote-1471072
-Node: Subscripts and superscripts471227
-Node: LaTeX fragments472734
-Ref: LaTeX fragments-Footnote-1475381
-Ref: LaTeX fragments-Footnote-2475389
-Ref: LaTeX fragments-Footnote-3475625
-Node: Previewing LaTeX fragments475820
-Node: CDLaTeX mode477126
-Ref: CDLaTeX mode-Footnote-1480234
-Node: Exporting480459
-Node: Selective export483008
-Node: Export options484114
-Ref: Export options-Footnote-1489802
-Node: The export dispatcher489949
-Ref: The export dispatcher-Footnote-1491836
-Node: ASCII/Latin-1/UTF-8 export491968
-Ref: ASCII/Latin-1/UTF-8 export-Footnote-1495352
-Ref: ASCII/Latin-1/UTF-8 export-Footnote-2495425
-Node: HTML export495521
-Node: HTML Export commands496690
-Ref: HTML Export commands-Footnote-1499419
-Ref: HTML Export commands-Footnote-2499492
-Node: Quoting HTML tags499588
-Node: Links in HTML export500362
-Node: Tables in HTML export501819
-Node: Images in HTML export502497
-Ref: Images in HTML export-Footnote-1504099
-Node: Math formatting in HTML export504181
-Ref: Math formatting in HTML export-Footnote-1505918
-Node: Text areas in HTML export506106
-Node: CSS support507273
-Ref: CSS support-Footnote-1510745
-Ref: CSS support-Footnote-2510989
-Node: JavaScript support511215
-Node: LaTeX and PDF export515990
-Ref: LaTeX and PDF export-Footnote-1517272
-Node: LaTeX/PDF export commands517604
-Ref: LaTeX/PDF export commands-Footnote-1520196
-Ref: LaTeX/PDF export commands-Footnote-2520268
-Node: Header and sectioning520362
-Ref: Header and sectioning-Footnote-1521805
-Node: Quoting LaTeX code521925
-Node: Tables in LaTeX export522737
-Node: Images in LaTeX export523983
-Node: Beamerクラスのエクスポート525814
-Node: DocBook export532773
-Node: DocBook export commands533801
-Ref: DocBook export commands-Footnote-1535701
-Ref: DocBook export commands-Footnote-2535780
-Node: Quoting DocBook code535864
-Node: Recursive sections537224
-Node: Tables in DocBook export538228
-Node: Images in DocBook export538745
-Node: Special characters541069
-Node: TaskJuggler export542328
-Node: Freemind export548824
-Node: XOXO export549194
-Node: iCalendarエクスポート549750
-Ref: iCalendarエクスポート-Footnote-1553309
-Ref: iCalendarエクスポート-Footnote-2553421
-Ref: iCalendarエクスポート-Footnote-3553560
-Node: Publishing553710
-Node: Configuration554752
-Node: Project alist555591
-Node: Sources and destinations556775
-Node: Selecting files558596
-Node: Publishing action559777
-Ref: Publishing action-Footnote-1561950
-Node: Publishing options562435
-Node: Publishing links566385
-Node: Sitemap568674
-Node: Generating an index571909
-Node: Uploading files572655
-Node: Sample configuration574901
-Node: Simple example575474
-Node: Complex example576178
-Node: 公開の開始578475
-Node: Working With Source Code579765
-Node: Structure of code blocks581930
-Node: Editing source code583698
-Node: Exporting code blocks585802
-Node: Extracting source code588063
-Node: Evaluating code blocks589872
-Ref: Evaluating code blocks-Footnote-1593251
-Ref: Evaluating code blocks-Footnote-2593672
-Node: Library of Babel593826
-Node: Languages594912
-Node: Header arguments597384
-Node: Using header arguments597934
-Node: System-wide header arguments598809
-Node: Language-specific header arguments599678
-Node: Buffer-wide header arguments600126
-Node: Header arguments in Org-mode properties601043
-Node: Code block specific header arguments602414
-Node: Header arguments in function calls604557
-Node: Specific header arguments605424
-Node: var607259
-Node: results614199
-Node: file619719
-Node: dir620905
-Node: exports624626
-Node: 抽出625608
-Node: mkdirp626615
-Node: comments627077
-Node: no-expand628568
-Node: session629231
-Node: noweb629821
-Node: cache631706
-Node: sep633552
-Node: hlines634422
-Node: colnames636178
-Node: rownames637713
-Node: shebang638853
-Node: eval639293
-Node: 評価の結果639927
-Node: Noweb reference syntax643781
-Node: Key bindings and useful functions645071
-Node: バッチ処理646689
-Node: Miscellaneous647906
-Node: Completion648800
-Node: Easy Templates651499
-Node: Speed keys653174
-Node: Code evaluation security654233
-Node: Customization657766
-Node: In-buffer settings658455
-Ref: In-buffer settings-Footnote-1669783
-Node: The very busy C-c C-c key669830
-Node: Clean view672327
-Ref: Clean view-Footnote-1677292
-Ref: Clean view-Footnote-2677358
-Ref: Clean view-Footnote-3677597
-Ref: Clean view-Footnote-4677673
-Ref: Clean view-Footnote-5677820
-Node: TTY keys678004
-Node: Interaction679863
-Node: Cooperation680259
-Node: Conflicts685059
-Node: Hacking689856
-Node: Hooks690846
-Node: Add-on packages691320
-Node: Adding hyperlink types691957
-Node: Context-sensitive commands696790
-Ref: Context-sensitive commands-Footnote-1698715
-Node: Tables in arbitrary syntax698875
-Node: Radio tables700623
-Node: A LaTeX example703681
-Ref: A LaTeX example-Footnote-1708235
-Ref: A LaTeX example-Footnote-2708451
-Node: Translator functions708937
-Ref: Translator functions-Footnote-1712713
-Node: ラジオリスト712860
-Node: Dynamic blocks714307
-Node: Special agenda views717253
-Ref: Special agenda views-Footnote-1722942
-Node: Extracting agenda information723133
-Node: Using the property API728292
-Node: マッピングAPIを使う731543
-Node: MobileOrg735878
-Node: Setting up the staging area738015
-Ref: Setting up the staging area-Footnote-1739532
-Ref: Setting up the staging area-Footnote-2739958
-Node: Pushing to MobileOrg740304
-Ref: Pushing to MobileOrg-Footnote-1741905
-Ref: Pushing to MobileOrg-Footnote-2742637
-Node: MobileOrgからpullする742724
-Ref: MobileOrgからpullする-Footnote-1746614
-Ref: MobileOrgからpullする-Footnote-2746687
-Node: History and Acknowledgments747281
-Node: Main Index764038
-Node: Key Index832822
-Node: Command and Function Index877291
-Node: Variable Index907579
+Node: Capture318705
+Node: Setting up capture320215
+Ref: Setting up capture-Footnote-1320678
+Node: Using capture320764
+Node: Capture templates323423
+Node: Template elements325587
+Node: テンプレートの拡張332202
+Ref: テンプレートの拡張-Footnote-1336332
+Ref: テンプレートの拡張-Footnote-2336465
+Ref: テンプレートの拡張-Footnote-3336744
+Node: Attachments336860
+Ref: Attachments-Footnote-1341195
+Node: RSS Feeds341386
+Node: Protocols343500
+Node: Refiling notes344368
+Ref: Refiling notes-Footnote-1347069
+Node: Archiving347184
+Node: Moving subtrees348052
+Ref: Moving subtrees-Footnote-1350278
+Node: ファイル内部でのアーカイブ350804
+Node: Agenda Views354215
+Node: Agenda files357444
+Ref: Agenda files-Footnote-1361743
+Ref: Agenda files-Footnote-2361958
+Node: Agenda dispatcher362264
+Ref: Agenda dispatcher-Footnote-1365418
+Ref: Agenda dispatcher-Footnote-2365545
+Node: Built-in agenda views365713
+Node: Weekly/daily agenda366527
+Ref: Weekly/daily agenda-Footnote-1373347
+Ref: Weekly/daily agenda-Footnote-2373714
+Node: Global TODO list373827
+Node: Matching tags and properties377503
+Node: Timeline386560
+Node: Search view387660
+Node: Stuck projects389607
+Ref: Stuck projects-Footnote-1393091
+Node: Presentation and sorting393121
+Node: Categories394264
+Ref: Categories-Footnote-1395421
+Node: Time-of-day specifications396140
+Node: agendaの� �目をソートする398663
+Node: Agenda commands400875
+Ref: Agenda commands-Footnote-1431438
+Ref: Agenda commands-Footnote-2431553
+Ref: Agenda commands-Footnote-3432248
+Node: Custom agenda views432383
+Node: Storing searches433238
+Ref: Storing searches-Footnote-1436840
+Node: Block agenda437028
+Node: Setting Options438730
+Node: Exporting Agenda Views442987
+Ref: Exporting Agenda Views-Footnote-1449769
+Ref: Exporting Agenda Views-Footnote-2449873
+Ref: Exporting Agenda Views-Footnote-3450138
+Ref: Exporting Agenda Views-Footnote-4450469
+Node: Agenda column view450605
+Node: Markup454625
+Node: Structural markup elements455824
+Node: Document title456601
+Node: Headings and sections457639
+Node: Table of contents458233
+Node: Initial text459106
+Node: Lists460562
+Node: Paragraphs460947
+Node: Footnote markup462249
+Node: Emphasis and monospace462662
+Node: Horizontal rules463152
+Node: コメント行463478
+Node: Images and tables464148
+Node: Literal examples465863
+Ref: Literal examples-Footnote-1470190
+Ref: Literal examples-Footnote-2471308
+Ref: Literal examples-Footnote-3471487
+Ref: Literal examples-Footnote-4471707
+Node: Include files471826
+Node: Index entries473616
+Node: Macro replacement474178
+Node: Embedded LaTeX475089
+Ref: Embedded LaTeX-Footnote-1476170
+Node: Special symbols476388
+Ref: Special symbols-Footnote-1478301
+Node: Subscripts and superscripts478456
+Node: LaTeX fragments479963
+Ref: LaTeX fragments-Footnote-1482610
+Ref: LaTeX fragments-Footnote-2482618
+Ref: LaTeX fragments-Footnote-3482854
+Node: Previewing LaTeX fragments483049
+Node: CDLaTeX mode484355
+Ref: CDLaTeX mode-Footnote-1487463
+Node: Exporting487688
+Node: Selective export490237
+Node: Export options491343
+Ref: Export options-Footnote-1497031
+Node: The export dispatcher497178
+Ref: The export dispatcher-Footnote-1499065
+Node: ASCII/Latin-1/UTF-8 export499197
+Ref: ASCII/Latin-1/UTF-8 export-Footnote-1502581
+Ref: ASCII/Latin-1/UTF-8 export-Footnote-2502654
+Node: HTML export502750
+Node: HTML Export commands503919
+Ref: HTML Export commands-Footnote-1506648
+Ref: HTML Export commands-Footnote-2506721
+Node: Quoting HTML tags506817
+Node: Links in HTML export507591
+Node: Tables in HTML export509048
+Node: Images in HTML export509726
+Ref: Images in HTML export-Footnote-1511328
+Node: Math formatting in HTML export511410
+Ref: Math formatting in HTML export-Footnote-1513147
+Node: Text areas in HTML export513335
+Node: CSS support514502
+Ref: CSS support-Footnote-1517974
+Ref: CSS support-Footnote-2518218
+Node: JavaScript support518444
+Node: LaTeX and PDF export523219
+Ref: LaTeX and PDF export-Footnote-1524501
+Node: LaTeX/PDF export commands524833
+Ref: LaTeX/PDF export commands-Footnote-1527425
+Ref: LaTeX/PDF export commands-Footnote-2527497
+Node: Header and sectioning527591
+Ref: Header and sectioning-Footnote-1529034
+Node: Quoting LaTeX code529154
+Node: Tables in LaTeX export529966
+Node: Images in LaTeX export531212
+Node: Beamerクラスのエクスポート533043
+Node: DocBook export540002
+Node: DocBook export commands541030
+Ref: DocBook export commands-Footnote-1542930
+Ref: DocBook export commands-Footnote-2543009
+Node: Quoting DocBook code543093
+Node: Recursive sections544453
+Node: Tables in DocBook export545457
+Node: Images in DocBook export545974
+Node: Special characters548298
+Node: TaskJuggler export549557
+Node: Freemind export556053
+Node: XOXO export556423
+Node: iCalendarエクスポート556979
+Ref: iCalendarエクスポート-Footnote-1560538
+Ref: iCalendarエクスポート-Footnote-2560650
+Ref: iCalendarエクスポート-Footnote-3560789
+Node: Publishing560939
+Node: Configuration561981
+Node: Project alist562820
+Node: Sources and destinations564004
+Node: Selecting files565825
+Node: Publishing action567006
+Ref: Publishing action-Footnote-1569179
+Node: Publishing options569664
+Node: Publishing links573614
+Node: Sitemap575903
+Node: Generating an index579138
+Node: Uploading files579884
+Node: Sample configuration582130
+Node: Simple example582703
+Node: Complex example583407
+Node: 公開の開始585704
+Node: Working With Source Code586994
+Node: Structure of code blocks589159
+Node: Editing source code590927
+Node: Exporting code blocks593036
+Node: Extracting source code595297
+Node: Evaluating code blocks597106
+Ref: Evaluating code blocks-Footnote-1600485
+Ref: Evaluating code blocks-Footnote-2600906
+Node: Library of Babel601060
+Node: Languages602146
+Node: Header arguments604618
+Node: Using header arguments605168
+Node: System-wide header arguments606043
+Node: Language-specific header arguments606912
+Node: Buffer-wide header arguments607360
+Node: Header arguments in Org-mode properties608277
+Node: Code block specific header arguments609648
+Node: Header arguments in function calls611791
+Node: Specific header arguments612658
+Node: var614493
+Node: results621433
+Node: file626953
+Node: dir628139
+Node: exports631860
+Node: 抽出632842
+Node: mkdirp633849
+Node: comments634311
+Node: no-expand635802
+Node: session636465
+Node: noweb637055
+Node: cache638940
+Node: sep640786
+Node: hlines641656
+Node: colnames643412
+Node: rownames644947
+Node: shebang646087
+Node: eval646527
+Node: 評価の結果647161
+Node: Noweb reference syntax651015
+Node: Key bindings and useful functions652305
+Node: バッチ処理653923
+Node: Miscellaneous655140
+Node: Completion656034
+Node: Easy Templates658733
+Node: Speed keys660408
+Node: Code evaluation security661467
+Node: Customization665000
+Node: In-buffer settings665689
+Ref: In-buffer settings-Footnote-1677017
+Node: The very busy C-c C-c key677064
+Node: Clean view679561
+Ref: Clean view-Footnote-1684526
+Ref: Clean view-Footnote-2684592
+Ref: Clean view-Footnote-3684831
+Ref: Clean view-Footnote-4684907
+Ref: Clean view-Footnote-5685054
+Node: TTY keys685238
+Node: Interaction687097
+Node: Cooperation687493
+Node: Conflicts692293
+Node: Hacking697090
+Node: Hooks698080
+Node: Add-on packages698554
+Node: Adding hyperlink types699191
+Node: Context-sensitive commands704024
+Ref: Context-sensitive commands-Footnote-1705949
+Node: Tables in arbitrary syntax706109
+Node: Radio tables707857
+Node: A LaTeX example710915
+Ref: A LaTeX example-Footnote-1715469
+Ref: A LaTeX example-Footnote-2715685
+Node: Translator functions716171
+Ref: Translator functions-Footnote-1719947
+Node: ラジオリスト720094
+Node: Dynamic blocks721541
+Node: Special agenda views724487
+Ref: Special agenda views-Footnote-1730176
+Node: Extracting agenda information730367
+Node: Using the property API735526
+Node: マッピングAPIを使う739913
+Node: MobileOrg745263
+Node: Setting up the staging area747400
+Ref: Setting up the staging area-Footnote-1748917
+Ref: Setting up the staging area-Footnote-2749343
+Node: Pushing to MobileOrg749689
+Ref: Pushing to MobileOrg-Footnote-1751290
+Ref: Pushing to MobileOrg-Footnote-2752022
+Node: MobileOrgからpullする752109
+Ref: MobileOrgからpullする-Footnote-1755999
+Ref: MobileOrgからpullする-Footnote-2756072
+Node: History and Acknowledgments756666
+Node: Main Index773423
+Node: Key Index842130
+Node: Command and Function Index886599
+Node: Variable Index916887
 
 End Tag Table

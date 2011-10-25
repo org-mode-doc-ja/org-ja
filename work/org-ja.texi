@@ -6019,12 +6019,13 @@ Org-modeバッファから@code{org-timer-set-timer}を呼ぶことにより、�
 @chapter Capture - Refile - Archive
 @cindex キャプチャ
 
-An important part of any organization system is the ability to quickly
-capture new ideas and tasks, and to associate reference material with them.
-Org does this using a process called @i{capture}.  It also can store files
-related to a task (@i{attachments}) in a special directory.  Once in the
-system, tasks and projects need to be moved around.  Moving completed
-project trees to an archive file keeps the system compact and fast.
+管理システムにおける重要な点の一つとして、新しいアイディアやタスクを素早くキ
+ャプチャし、それらを参考資料と連携する能力があることです。Org-modeでは@i{キャプ
+チャ}と呼ばれるプロセスを用いて行います。また、タスクに関係するファイル
+(@i{attachments})を特別なディレクトリに保存することがも可能です。一度システムへ
+取り込むと、タスクとプロジェクトを移動させる必要があります。完了したプロジェ
+クトツリーをアーカイブファイルへ移動することで、システムをコンパクトで速く保
+つことが可能です。
 
 @menu
 * Capture::                  新しいものをキャプチャする
@@ -6052,12 +6053,12 @@ new users.  To convert your @code{org-remember-templates}, run the command
 @kbd{M-x org-capture-import-remember-templates @key{RET}}
 @end example
 @noindent and then customize the new variable with @kbd{M-x customize-variable org-capture-templates}, check the result, and save the
-customization.  You can then use both remember and capture until you are
-familiar with the new mechanism.
+これにより、新しい仕組みになれるまではリメンバーとキャプチャの両方を使うこと
+ができます。
 
-Capture lets you quickly store notes with little interruption of your work
-flow.  The basic process of capturing is very similar to remember, but Org
-does enhance it with templates and more.
+キャプチャはワークフローにおいて小さい割り込みで素早くノートを保存することが
+できます。キャプチャの基本的なプロセスはリメンバーととても良く似ていますが、
+Org-modeはそれをテンプレートなどで強化しました。
 
 @menu
 * Setting up capture::       キャプチャされたノートが保存される場所
@@ -6068,8 +6069,9 @@ does enhance it with templates and more.
 @node Setting up capture, Using capture, Capture, Capture
 @subsection Setting up capture
 
-The following customization sets a default target file for notes, and
-defines a global key@footnote{Please select your own key, @kbd{C-c c} is only a suggestion.} for capturing new material.
+以下のカスタマイズはノートを取るデフォルトのファイルと新しい素材をキャプチャ
+するためのグローバルなキー@footnote{自分のキーを選択して下さい。@kbd{C-c c}はただの提案で
+す。}
 
 @vindex org-default-notes-file
 @example
@@ -6081,96 +6083,95 @@ defines a global key@footnote{Please select your own key, @kbd{C-c c} is only a 
 @subsection Using capture
 
 @table @kbd
-@orgcmd{C-c c,org-capture} Call the command @code{org-capture}.  Note that
-this keybinding is global and not active by default - you need to install
-it.  If you have templates
+@orgcmd{C-c c,org-capture}@code{org-caputre}コマンドを呼びます。このキーバインドは
+グローバルで、デフォルトではアクティブになっておらず、インストールする
+必要があることに注意が必要です。もしテンプレートがあるならば
 @cindex date tree
-defined @pxref{Capture templates}, it will offer these templates for
-selection or use a new Org outline node as the default template.  It will
-insert the template into the target file and switch to an indirect buffer
-narrowed to this new node.  You may then insert the information you want.
+defined @pxref{Capture templates}, これらのテンプレートの選択か、デフォルト
+のテンプレートを使用した新しい Org
+アウトラインノードが使用されます。
 
-@orgcmd{C-c C-c,org-capture-finalize} Once you have finished entering
-information into the capture buffer, @kbd{C-c C-c} will return you to the
-window configuration before the capture process, so that you can resume your
-work without further distraction.  When called with a prefix arg, finalize
-and then jump to the captured item.
+@orgcmd{C-c C-c,org-capture-finalize}キャプチャバッファに情報を入力し終わった
+ら、@kbd{C-c C-c}はキャプチャプロセスの前に設定されたウィンドウへ戻します
+。これによってこれ以上気を散らさずに作業を再開することができます。前置
+引数と一緒に呼ばれた場合は、仕上げをしたあとキャプチャした項目へ移動します。
 
-@orgcmd{C-c C-w,org-capture-refile} Finalize the capture process by refiling
-(@pxref{Refiling notes}) the note to a different place.  Please realize that
-this is a normal refiling command that will be executed---so the cursor
-position at the moment you run this command is important.  If you have
-inserted a tree with a parent and children, first move the cursor back to
-the parent.  Any prefix argument given to this command will be passed on to
-the @code{org-refile} command.
+@orgcmd{C-c C-w,org-capture-refile}ノートを別の場所に差し替える
+(@pxref{Refiling notes})ことでキャプチャプロセスを仕上げます。これは通常の差
+し替えコマンドが実行されることを認識してください。したがってこのコマン
+ドを実行するときのカーソル位置が重要です。もし親や小を持つツリーを挿入
+する場合、まずカーソルを親へ移動してください。このコマンドに渡された接
+頭辞引数はすべて@code{org-refile}コマンドに渡されます。
 
-@orgcmd{C-c C-k,org-capture-kill} Abort the capture process and return to
-the previous state.
+@orgcmd{C-c C-k,org-capture-kill}キャプチャプロセスをアボートして前の状態へ戻
+ります。
 
 @end table
 
-You can also call @code{org-capture} in a special way from the agenda, using
-the @kbd{k c} key combination.  With this access, any timestamps inserted by
-the selected capture template will default to the cursor date in the agenda,
-rather than to the current date.
+@code{org-capture}をアジェンダから@kbd{k c}キーの組合せを用いた特別な方法で呼ぶことも
+できます。この方法では、選択されたキャプチャテンプレートに挿入されるタイムス
+タンプは、現在の日付ではなくアジェンダ内のカーソルがある位置の日付がデフォル
+トになります。
 
-To find the locations of the last stored capture, use @code{org-capture}
-with prefix commands:
+最後にキャプチャが保存された場所を探すには、@code{org-capture}をプレフィックスコ
+マンドと一緒に使用します。
 
 @table @kbd
-@orgkey{C-u C-c c} Visit the target location of a cpature template.  You get
-to select the template in the usual way.  @orgkey{C-u C-u C-c c} Visit the
-last stored capture item in its buffer.
+@orgkey{C-u C-c c}
+キャプチャテンプレートが対象としている場所に移動します。テンプレートの
+選択は通常と同じように行います。@orgkey{C-u C-u C-c c}
+バッファ内で最後に保存したキャプチャアイテムの場所に移動します。
 @end table
 
 @node Capture templates, , Using capture, Capture
 @subsection Capture templates
-@cindex templates, for Capture
+@cindex キャプチャテンプレート
 
-You can use templates for different types of capture items, and for
-different target locations.  The easiest way to create such templates is
-through the customize interface.
+テンプレートは異なる種類のキャプチャアイテムや、異なる場所へ使用することがで
+きます。最も簡単にそのようなテンプレートを作る方法、カスタマイズインターフェ
+ースを通じて行うことです。
 
 @table @kbd
-@orgkey{C-c c C} Customize the variable @code{org-capture-templates}.
+@orgkey{C-c c C} @code{org-capture-templates}変数のカスタマイズを行います。
 @end table
 
-Before we give the formal description of template definitions, let's look at
-an example.  Say you would like to use one template to create general TODO
-entries, and you want to put these entries under the heading @samp{Tasks} in
-your file @file{~/org/gtd.org}.  Also, a date tree in the file
-@file{journal.org} should capture journal entries.  A possible configuration
-would look like:
+テンプレート定義の正式な説明の前に、例を挙げます。一般的なTODOエントリーを作
+成する場合を考えます。また、これらのエントリーは@file{~/org/gtd.org}の中にある見
+出し@samp{Tasks}の下に作成され、@file{journal.org}内のデートツリーはジャーナルエントリ
+ーがキャプチャされます。このような場合の設定は以下のようになります。
 
 @example
 (setq org-capture-templates
  '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
-        "* TODO %?\n  %i\n  %a")
+        "* TODO %?
+  %i
+  %a")
    ("j" "Journal" entry (file+datetree "~/org/journal.org")
-        "* %?\nEntered on %U\n  %i\n  %a")))
+        "* %?
+Entered on %U
+  %i
+  %a")))
 @end example
 
 @noindent If you then press @kbd{C-c c t}, Org will prepare the template
 for you like this:
 @example
 * TODO
-  [[file:@var{link to where you initiated capture}]]
+  [[file:@var{lint to where you initiated capture}]]
 @end example
 
 @noindent
-During expansion of the template, @code{%a} has been replaced by a link to
-the location from where you called the capture command.  This can be
-extremely useful for deriving tasks from emails, for example.  You fill in
-the task definition, press @code{C-c C-c} and Org returns you to the same
-place where you started the capture process.
+テンプレートが展開される際、@code{%a}はキャプチャコマンドを呼んだ場所へのリンクに
+変換されます。これは例えばメールからタスクを登録する時にとても役立ちます。タ
+スクの定義を埋め、@code{C-c C-c}を押すとOrg-modeはキャプチャ動作を始めた場所へま
+た連れ戻してくれます。
 
-To define special keys to capture to a particular template without going
-through the interactive template selection, you can create your key binding
-like this:
+特定のテンプレートを対話的な選択なしに用いてキャプチャする特別なキーを定義す
+るには、以下のようにキーバインドを作成できます。
 
 @lisp
-(define-key global-map "\C-cx"
-   (lambda () (interactive) (org-capture nil "x")))
+(define-key global-map "\C-cx\n"
+  (lambda () (interactive) (org-capture nil "x")))
 @end lisp
 
 @menu
@@ -6181,203 +6182,213 @@ like this:
 @node Template elements, テンプレートの拡張, Capture templates, Capture templates
 @subsubsection Template elements
 
-Now lets look at the elements of a template definition.  Each entry in
-@code{org-capture-templates} is a list with the following items: 
+それではテンプレートを定義するための要素について述べてます。
+@code{org-capture-templates}中にあるそれぞれのエントリーは以下の項目から構成され
+るリストです。 
 
 @table @code
 @item keys
-The keys that will select the template, as a string, characters only, for
-example @code{"a"} for a template to be selected with a single key, or
-@code{"bt"} for selection with two keys.  When using several keys, keys
-using the same prefix key must be sequential in the list and preceded by a
-2-element entry explaining the prefix key, for example
+キーは文字列で示されるテンプレートを文字だけで選択します。例えば、
+@code{"a"}はaキーだけで選択するテンプレートであり、@code{"bt"}は２つのキーで選択
+します。幾つかのキーを使う場合、同じ接頭辞キーを持つキーはリストの中で
+連続している必要があり、以下に例をあげるような、接頭辞キーを表す２つの
+要素を持つエントリーをその前に置きます。
 @example
-         ("b" "Templates for marking stuff to buy")
+         ("b" "買い物リストのためのテンプレート")
 @end example
 @noindent If you do not define a template for the @kbd{C} key, this key will
 be used to open the customize buffer for this complex variable.
 
 @item description
-A short string describing the template, which will be shown during
-selection.
+選択時に表示されるテンプレートの短い説明文。
 
 @item type
-The type of entry, a symbol.  Valid values are:
+エントリーの種類をシンボルで表します。正しい値は以下の通りです。
 @table @code
 @item entry
-An Org-mode node, with a headline. Will be filed as the child of the target
-entry or as a top-level entry.  The target file should be an Org-mode file.
+見出しのついたOrg-modeのノード。対象エントリーの子かトップレベルのエン
+トリーとして書き込まれます。対象のファイルはOrg-modeのファイルでなけれ
+ばならなりません。
 @item item
-A plain list item, placed in the first plain list at the target location.
-Again the target file should be an Org file.
+対象の場所の最初にある単純なリストへ書き込まれる単純なリストの項目。対
+象のファイルはOrg-modeのファイルでなければならなりません。
 @item checkitem
-A checkbox item.  This only differs from the plain list item by the default
-template.
+チェックボックス項目。これは単純なリストとデフォルトのテンプレートが異
+なるだけです。
 @item table-line
-a new line in the first table at the target location.  Where exactly the
-line will be inserted depends on the properties @code{:prepend} and
-@code{:table-line-pos} (see below).
+対象の場所にある最初のテーブルへ追加する新しい行。行が追加される場所は
+@code{:prepend}と@code{:table-line-pos}プロパティに依存します。(下記参照)
 @item plain
-Text to be inserted as it is.
+そのまま挿入される文章
 @end table
 
 @item target
 @vindex org-default-notes-file
-Specification of where the captured item should be placed.  In Org-mode
-files, targets usually define a node.  Entries will become children of this
-node.  Other types will be added to the table or list in the body of this
-node.  Most target specifications contain a file name.  If that file name is
-the empty string, it defaults to @code{org-default-notes-file}.  A file can
-also be given as a variable, function, or Emacs Lisp form.
+キャプチャされた項目が挿入されるべき場所の指定。Org-modeファイルでは、通常タ
+ーゲットはノードで定義されます。エントリーはこのノードの子になります。他のタ
+イプはこのノードの本文にあるテーブルやリストに追加されます。多くのターゲット
+の指定にはファイル名が含まれます。もしファイル名が空の文字列だった場合、
+@code{org-default-notes-file}がデフォルトになります。ファイルは変数や関数、Emacs
+Lispのフォームでも与えられます。
 
-Valid values are:
+正しい値は以下の通りです。
 @table @code
 @item (file "path/to/file")
-Text will be placed at the beginning or end of that file.
+文章はこのファイルの先頭か最後に挿入されます。
 
-@item (id "id of existing org entry")
-Filing as child of this entry, or in the body of the entry.
+@item (id "現存するorgエントリーのid")
+このエントリーの子として、もしくはこのエントリの本文として記入します。
 
 @item (file+headline "path/to/file" "node headline")
-Fast configuration if the target heading is unique in the file.
+対象の見出しがファイル中で一つしか内場合の早い設定。
 
-@item (file+olp "path/to/file" "Level 1 heading" "Level 2" ...)
-For non-unique headings, the full path is safer.
+@item (file+olp "path/to/file" "Leval 1 heading" "Leval 2" ...)
+唯一でない見出しの場合、フルパスの方が安全です。
 
 @item (file+regexp  "path/to/file" "regexp to find location")
-Use a regular expression to position the cursor.
+カーソルの位置に正規表現を使った場合。
 
-@item (file+datetree "path/to/file")
-Will create a heading in a date tree for today's date.
+@item (file+datatree "path/to/file")
+今日の日付で日付ツリーの見出しを作ります。
 
 @item (file+datetree+prompt "path/to/file")
-Will create a heading in a date tree, but will prompt for the date.
+promptで与えられた日付で日付ツリーの見出しを作ります。
 
 @item (file+function "path/to/file" function-finding-location)
-A function to find the right location in the file.
+ファイルの中で正しい場所を見つける関数
 
 @item (clock)
-File to the entry that is currently being clocked.
+ファイル中で現在時間を測っているエントリー。
 
 @item (function function-finding-location)
-Most general way, write your own function to find both file and location.
+一般的な方法、ファイルと場所を見つける自分の関数を書く方法。
 @end table
 
 @item template
-The template for creating the capture item.  If you leave this empty, an
-appropriate default template will be used.  Otherwise this is a string with
-escape codes, which will be replaced depending on time and context of the
-capture call.  The string with escapes may be loaded from a template file,
-using the special syntax @code{(file "path/to/template")}.  See below for
-more details.
+キャプチャする項目を作るテンプレート。もし空にした場合、デフォルトのテンプレ
+ートを使用します。もしエスケープコードを付加した文字列の場合、キャプチャされ
+た時の時間と状況に依存して置換されます。エスケープされた文字列はテンプレート
+ファイルからロードされ、特別な構文@code{(file "path/to/template")}を使用します。
+詳細をいかに示します。
 
 @item properties
-The rest of the entry is a property list of additional options.  Recognized
-properties are:
+エントリーの残りは追加オプションのプロパティリストです。理解できるプロパティ
+は
 @table @code
 @item :prepend
-Normally new captured information will be appended at the target location
-(last child, last table line, last list item...).  Setting this property
-will change that.
+通常新しくキャプチャされた情報は対象の場所(最後の子、最後のテーブル、
+最後のリスト項目...)に追加されます。このプロパティを設定することで変更
+します。
 
 @item :immediate-finish
-When set, do not offer to edit the information, just file it away
-immediately.  This makes sense if the template only needs information that
-can be added automatically.
+セットされると情報の編集を行わなず、追加だけを直ちに行います。テンプレ
+ートが自動的に追加できる情報だけを必要とする場合だけ意味を成します。
 
 @item :empty-lines
-Set this to the number of lines to insert before and after the new item.
-Default 0, only common other value is 1.
+新しい項目の前後に挿入する行の数をこれに設定します。デフォルトは０で、
+通常の他の値は１です。
 
 @item :clock-in
-Start the clock in this item.
+この項目の時計を開始します。
 
 @item :clock-keep
-Keep the clock running when filing the captured entry.
+キャプチャしたエントリーを追加しても時計を動かし続けます。
 
 @item :clock-resume
-If starting the capture interrupted a clock, restart that clock when
-finished with the capture.  Note that @code{:clock-keep} has precedence over
-@code{:clock-resume}.  When setting both to @code{t}, the current clock will
-run and the previous one will not be resumed.
+もし時計を割り込むキャプチャを始めた場合、キャプチャ終了時に時計を再開
+します。@code{:clock-keep}は@code{:clock-resume}より優先されることに注意が必要で
+す。もしどちらの設定も@code{t}に設定された場合、現在の時計が動き、一つ前の
+時計は再開されません。
 
 @item :unnarrowed
-Do not narrow the target buffer, simply show the full buffer.  Default is to
-narrow it so that you only see the new material.
+対象とするバッファの幅を狭めず、単純にフルバッファで表示します。デフォ
+ルトでは幅を狭くし、新しい内容だけが表示されます。
 
 @item :kill-buffer
-If the target file was not yet visited when capture was invoked, kill the
-buffer again after capture is completed.
+対象のファイルがキャプチャ時にまだ読み込まれていなかった場合、キャプチ
+ャ終了時に再びバッファを閉じます。
 @end table
 @end table
 
 @node テンプレートの拡張, , Template elements, Capture templates
 @subsubsection テンプレートの拡張
 
-In the template itself, special @kbd{%}-escapes@footnote{If you need one of these sequences literally, escape the @kbd{%} with a backslash.} allow
-dynamic insertion of content:
+テンプレート自身の中では、特別な@kbd{%}-エスケープ@footnote{もしこれらの文字通りの並びが
+必要な場合は、@kbd{%}をバックスラッシュでエスケープすること}によって動的に内容を
+挿入できます。
 
 @comment SJE: should these sentences terminate in period?
 @smallexample
-%^@{@var{prompt}@}  @r{prompt the user for a string and replace this sequence with it.}
-            @r{You may specify a default value and a completion table with}
-            @r{%^@{prompt|default|completion2|completion3...@}}
-            @r{The arrow keys access a prompt-specific history.}
-%a          @r{annotation, normally the link created with @code{org-store-link}}
-%A          @r{like @code{%a}, but prompt for the description part}
-%i          @r{initial content, the region when capture is called while the}
-            @r{region is active.}
-            @r{The entire text will be indented like @code{%i} itself.}
-%t          @r{timestamp, date only}
-%T          @r{timestamp with date and time}
-%u, %U      @r{like the above, but inactive timestamps}
-%^t         @r{like @code{%t}, but prompt for date.  Similarly @code{%^T}, @code{%^u}, @code{%^U}}
-            @r{You may define a prompt like @code{%^@{Birthday@}t}}
-%n          @r{user name (taken from @code{user-full-name})}
-%c          @r{Current kill ring head.}
-%x          @r{Content of the X clipboard.}
-%^C         @r{Interactive selection of which kill or clip to use.}
-%^L         @r{Like @code{%^C}, but insert as link.}
-%k          @r{title of the currently clocked task}
-%K          @r{link to the currently clocked task}
-%f          @r{file visited by current buffer when org-capture was called}
-%F          @r{like @code{%f}, but include full path}
-%^g         @r{prompt for tags, with completion on tags in target file.}
-%^G         @r{prompt for tags, with completion all tags in all agenda files.}
-%^@{@var{prop}@}p   @r{Prompt the user for a value for property @var{prop}}
-%:keyword   @r{specific information for certain link types, see below}
-%[@var{file}]     @r{insert the contents of the file given by @var{file}}
-%(@var{sexp})     @r{evaluate Elisp @var{sexp} and replace with the result}
+%^@{@var{prompt}@} @r{ユーザーに文字列を入力させこの順序と置換します。}
+            @r{デフォルトの値と補完テーブルは以下のように指定します。}
+            @r{%^@{prompt|デフォルト値|補完2|補完3...@}}
+            @r{矢印キーで入力の履歴をたどることができます。}
+%a          @r{注釈、通常は@code{org-store-link}で作成されたリンク}
+%A          @r{@code{%a}と同様、しかし説明部分への入力を行います。}
+%i          @r{初期の内容、キャプチャが呼ばれた時にアクティブに}
+            @r{なっているリージョン全体。}
+            @r{全体のテキストは@code{%i}自身と同じ様にインデントされます。}
+%t          @r{タイムスタンプ、日付のみ}
+%T          @r{時間と日付からなるタイムスタンプ}
+%u, %U      @r{上記と同じだが、不活性なタイムスタンプ}
+%^t         @r{@code{%t}と同じだが、日付の入力を行います。@code{%^T}、@code{%^u}、@code{%^U}と似てま
+す。}
+            @r{プロンプトを@code{%^@{Birthday@}t}の様に定義できます。}
+%n          @r{ユーザーネーム(@code{user-full-name}から取ってきます)}
+%c          @r{現在のキルリングの先頭}
+%x          @r{Xクリップボードの内容}
+%^C         @r{キルかクリップどちらを使うか対話的に選択します。}
+%^L         @r{@code{%^C}と同様だが、リンクとして挿入します。}
+%k          @r{現在計時しているタスクのタイトル。}
+%K          @r{現在計時しているタスクへのリンク。}
+%f          @r{org-captureが呼ばれた時に現在のバッファーで表示していたファイル。
+}
+%F          @r{@code{%f}と同様だが、フルパスを含んでいます。}
+%^g         @r{タグの入力を対象ファイル中のタグから補完して入力します。}
+%^G         @r{タグの入力をアジェンダファイルすべてから補完して入力します。}
+%^@{@var{prop}@}p   @r{ユーザーに@var{prop}プロパティの値の入力を行わせます。}
+%:keyword   @r{あるリンクのタイプを指示する特定の情報}
+%[@var{file}]     @r{@var{file}で与えられるファイルへ内容を挿入します。}
+%(@var{sexp})     @r{@var{sexp}で与えられるElispを評価してその結果と入れ替えます。}
 @end smallexample
 
 @noindent
-For specific link types, the following keywords will be defined@footnote{If you define your own link types (@pxref{Adding hyperlink types}), any property you store with @code{org-store-link-props} can be accessed in capture templates in a similar way.}:
+リンクのタイプを指定するため、以下のキーワードが定義@footnote{もしあなたが自分のリン
+クタイプを定義しているならば(@pxref{Adding hyperlink types})、
+@code{org-store-link-props}に保存されているいずれのプロパティもキャプチャテンプレ
+ート中に同じ方法でアクセス可能です。}されています。
 
 @vindex org-from-is-user-regexp
 @smallexample
-Link type          |  Available keywords
+リンクタイプ       |  使用可能なキーワード
 -------------------+----------------------------------------------
 bbdb                    |  %:name %:company
 irc                     |  %:server %:port %:nick
 vm, wl, mh, mew, rmail  |  %:type %:subject %:message-id
                         |  %:from %:fromname %:fromaddress
                         |  %:to   %:toname   %:toaddress
-                        |  %:date @r{(message date header field)}
-                        |  %:date-timestamp @r{(date as active timestamp)}
-                        |  %:date-timestamp-inactive @r{(date as inactive timestamp)}
-                        |  %:fromto @r{(either "to NAME" or "from NAME")@footnote{This will always be the other, not the user.  See the variable @code{org-from-is-user-regexp}.}}
-gnus                    |  %:group, @r{for messages also all email fields}
+                        |  %:date @r{(ヘッダーメッセージ中にあるメッセージの日付
+)}
+                        |  %:date-timestamp @r{(アクティブなタイムスタンプとして
+の日付)}
+                        |  %:date-timestamp-inactive @r{(アクティブでないタイム
+スタンプとしての日付)}
+                        |  %:fromto @r{(\"to NAME\"か\"from NAME\"のどちらか
+)@footnote{これはユーザーではなく常に他人になる。@code{org-from-is-user-regexp}を参照する
+こと。}}
+gnus                    |  %:group, @r{メッセージとそれに加えてすべてのemailフィ
+ールドのため。}
 w3, w3m                 |  %:url
 info                    |  %:file %:node
 calendar                |  %:date
 @end smallexample
 
 @noindent
-To place the cursor after template expansion use:
+テンプレート展開後のカーソル位置のために以下を用います。
 
 @smallexample
-%?          @r{After completing the template, position cursor here.}
-@end smallexample
+%?          @r{テンプレートを完了したあと、カーソル位置をここに移動します。
+}@end smallexample
 
 
 @node Attachments, RSS Feeds, Capture, Capture - Refile - Archive
@@ -6385,84 +6396,83 @@ To place the cursor after template expansion use:
 @cindex attachments
 
 @vindex org-attach-directory
-It is often useful to associate reference material with an outline
-node/task.  Small chunks of plain text can simply be stored in the subtree
-of a project.  Hyperlinks (@pxref{Hyperlinks}) can establish associations
-with files that live elsewhere on your computer or in the cloud, like emails
-or source code files belonging to a project.  Another method is
-@i{attachments}, which are files located in a directory belonging to an
-outline node.  Org uses directories named by the unique ID of each entry.
-These directories are located in the @file{data} directory which lives in
-the same directory where your Org file lives@footnote{If you move entries or Org files from one directory to another, you may want to configure @code{org-attach-directory} to contain an absolute path.}.  If you
-initialize this directory with @code{git init}, Org will automatically
-commit changes when it sees them.  The attachment system has been
-contributed to Org by John Wiegley.
+参照すべきものをアウトラインノートやタスクと連携させることは大抵役立ちます。
+小さなプレーンテキストの塊は単純にプロジェクトのサブツリーとして保存可能です
+。ハイパーリンク(@pxref{Hyperlinks})はあなたのコンピュータやクラウドなどにあるファ
+イル、例えばプロジェクトに関連するemailやソースコードファイルとの連携を確立
+します。その他の方法として、@i{attachments}があります。これはアウトラインノード
+の属するディレクトリにあるファイルです。これらのディレクトリは@file{data}ディレク
+トリの中に位置し、あなたのOrgファイルが保存されているディレクトリと同じディ
+レクトリの中にある@footnote{もしエントリーやOrgファイルを他のディレクトリに移動した場
+合、@code{org-attach-directory}が絶対パスを含むように設定する必要があります。}。
+もしこのディレクトリを@code{git init}で初期化した場合、Org-modeは変更点を見つけた
+時に自動的にそれらをコミットします。添付システムはJohn
+Wiegleyの貢献によってOrg-modeへ追加されました。
 
-In cases where it seems better to do so, you can also attach a directory of
-your choice to an entry.  You can also make children inherit the attachment
-directory from a parent, so that an entire subtree uses the same attached
-directory.
+もしそれがより良い方法に思える場合は、エントリーへディレクトリを添付すること
+も自身の選択で可能です。子エントリーは親から添付ディレクトリを受け継ぐため、
+サブツリー全体が同じ添付ディレクトリを使うことになります。
 
 @noindent The following commands deal with attachments:
 
 @table @kbd
 
-@orgcmd{C-c C-a,org-attach} The dispatcher for commands related to the
-attachment system.  After these keys, a list of commands is displayed and
-you must press an additional key to select a command:
+@orgcmd{C-c C-a,org-attach}
+添付システムに関連するコマンドのコマンド選択画面。これらのキーのあとに
+、コマンドのリストが表示され、コマンドを選択するために更にキーを押す必
+要があります。
 
 @table @kbd
 @orgcmdtkc{a,C-c C-a a,org-attach-attach}
 @vindex org-attach-method
-Select a file and move it into the task's attachment directory.  The file
-will be copied, moved, or linked, depending on @code{org-attach-method}.
-Note that hard links are not supported on all systems.
+ファイルを選択してそれをタスクの添付ディレクトリへ移動します。ファイル
+は@code{org-attach-method}によって複製、移動、リンクされます。ハードリンク
+はすべてのシステムでサポートされていないことに注意が必要です。
 
 @kindex C-c C-a c
 @kindex C-c C-a m
 @kindex C-c C-a l
 @item c/m/l
-Attach a file using the copy/move/link method.  Note that hard links are not
-supported on all systems.
+コピー/移動/リンクメソッドを使ってファイルを添付します。ハードリンクは
+すべてのシステムでサポートされていないことに注意が必要です。
 
-@orgcmdtkc{n,C-c C-a n,org-attach-new} Create a new attachment as an Emacs
-buffer.
+@orgcmdtkc{n,C-c C-a n,org-attach-new} Emacsのバッファとして新しい添付を作成しま
+す。
 
-@orgcmdtkc{z,C-c C-a z,org-attach-sync} Synchronize the current task with
-its attachment directory, in case you added attachments yourself.
+@orgcmdtkc{z,C-c C-a z,org-attach-sync}
+あなた自身で添付を追加した場合に、現在のタスクをその添付ディレクトリと
+同期します。
 
 @orgcmdtkc{o,C-c C-a o,org-attach-open}
 @vindex org-file-apps
-Open current task's attachment.  If there is more than one, prompt for a
-file name first.  Opening will follow the rules set by
-@code{org-file-apps}.  For more details, see the information on following
-hyperlinks (@pxref{Handling links}).
+現在のタスクに関する添付を開きます。もし１つ以上ある場合は、まずファイ
+ル名を入力させます。開き方は@code{org-file-apps}に従います。詳細は、ハイパ
+ーリンクを辿るための情報(@pxref{Handling links})を参照してください。
 
-@orgcmdtkc{O,C-c C-a O,org-attach-open-in-emacs} Also open the attachment,
-but force opening the file in Emacs.
+@orgcmdtkc{O,C-c C-a O,org-attach-open-in-emacs}
+これも添付を開きますが、強制的にファイルをEmacsを用います。
 
-@orgcmdtkc{f,C-c C-a f,org-attach-reveal} Open the current task's attachment
-directory.
+@orgcmdtkc{f,C-c C-a f,org-attach-reveal} 現在のタスクの添付ディレクトリを開きま
+す。
 
-@orgcmdtkc{F,C-c C-a F,org-attach-reveal-in-emacs} Also open the directory,
-but force using @command{dired} in Emacs.
+@orgcmdtkc{F,C-c C-a F,org-attach-reveal-in-emacs}
+これもディレクトリを開きますが、強制的にEmacs内で@command{dired}を用います。
 
-@orgcmdtkc{d,C-c C-a d,org-attach-delete-one} Select and delete a single
-attachment.
+@orgcmdtkc{d,C-c C-a d,org-attach-delete-one} 添付の１つを選択し削除します。
 
-@orgcmdtkc{D,C-c C-a D,org-attach-delete-all} Delete all of a task's
-attachments.  A safer way is to open the directory in @command{dired} and
-delete from there.
+@orgcmdtkc{D,C-c C-a D,org-attach-delete-all}
+タスクに関連する添付をすべて削除します。安全な方法は@command{dired}を用いてデ
+ィレクトリを開き、そこから削除する方法です。
 
-@orgcmdtkc{s,C-c C-a s,org-attach-set-directory}
-@cindex property, ATTACH_DIR
-Set a specific directory as the entry's attachment directory.  This works by
-putting the directory path into the @code{ATTACH_DIR} property.
+@orgcmdtkc{s,C-c C-a s, org-attach-set-directory}
+@cindex proverty, ATTACH_DIR
+特定のディレクトリをエントリーの添付ディレクトリーに指定します。これは
+ディレクトリーのパスを@code{ATTAH_DIR}プロパティに代入することで動作します。
 
 @orgcmdtkc{i,C-c C-a i,org-attach-set-inherit}
-@cindex property, ATTACH_DIR_INHERIT
-Set the @code{ATTACH_DIR_INHERIT} property, so that children will use the
-same directory for attachments as the parent does.
+@cindex proverty, ATTACH_DIR_INTERIT
+@code{ATTACH_DIR_INHERIT}プロパティをセットします。これによって子も親と同じ
+ディレクトリを添付として使用します。
 @end table
 @end table
 
@@ -6471,12 +6481,12 @@ same directory for attachments as the parent does.
 @cindex RSSフィード
 @cindex Atom feeds
 
-Org can add and change entries based on information found in RSS feeds and
-Atom feeds.  You could use this to make a task out of each new podcast in a
-podcast feed.  Or you could use a phone-based note-creating service on the
-web to import tasks into Org.  To access feeds, configure the variable
-@code{org-feed-alist}.  The docstring of this variable has detailed
-information.  Here is just an example:
+Org-modeはエントリーの追加や変更をRSSフィードとAtomフィードの情報を元に行う
+ことができます。この機能を使ってプロダクトフィードのなかからそれぞれの新しい
+プロダクトに対してタスクを作ることも可能です。もしくは、携帯電話を対象とした
+Web上のノート作成サービスをOrg-modeのタスクにインポートできます。フィードに
+アクセスするには、@code{org-feed-alist}を設定します。この変数のドキュメント文字列
+に詳細はあります。以下に例をしまします。
 
 @example
 (setq org-feed-alist
@@ -6486,53 +6496,51 @@ information.  Here is just an example:
 @end example
 
 @noindent
-will configure that new items from the feed provided by
-@code{rss.slashdot.org} will result in new entries in the file
-@file{~/org/feeds.org} under the heading @samp{Slashdot Entries}, whenever
-the following command is used:
+この例は、以下のコマンドが使われるたびに、@code{rss.slashdot.org}で提供されている
+フィードの新しいアイテムから、@file{~/org/feeds.org}ファイル内に
+@samp{Slashdot Entries}をヘッダーにもつ新しいエントリーを生成します。
 
 @table @kbd
 @orgcmd{C-c C-x g,org-feed-update-all}
 @item C-c C-x g
-Collect items from the feeds configured in @code{org-feed-alist} and act
-upon them.  @orgcmd{C-c C-x G,org-feed-goto-inbox} Prompt for a feed name
-and go to the inbox configured for this feed.
+@code{org-feed-alist}に設定されたフィードからアイテムを収集し、上記のように
+振る舞う。@orgcmd{C-c C-x G,org-feed-goto-inbox}はフィード名を入力し、そのフ
+ィードに設定されたインボックスへ移動します。
 @end table
 
-Under the same headline, Org will create a drawer @samp{FEEDSTATUS} in which
-it will store information about the status of items in the feed, to avoid
-adding the same item several times.  You should add @samp{FEEDSTATUS} to the
-list of drawers in that file:
+幾つかの見出しでは、Org-modeは@samp{FEEDSTATUS}という引き出しを作成します。これは
+フィード中にあるアイテムのステータス情報を保存しています。なんども同じアイテ
+ムが追加されないためには、@samp{FEEDSTATUS}をファイルの引き出しの中に追加すること
+が必要です。
 
 @example
 #+DRAWERS: LOGBOOK PROPERTIES FEEDSTATUS
 @end example
 
-For more information, including how to read atom feeds, see
-@file{org-feed.el} and the docstring of @code{org-feed-alist}.
+Atomフィードの読み方などのより詳しい情報は、@file{org-feed.el}を御覧ください。ま
+た、@code{org-feed-alist}のドキュメント文字列もあります。
 
 @node Protocols, Refiling notes, RSS Feeds, Capture - Refile - Archive
 @section Protocols for external access
 @cindex protocols, for external access
 @cindex emacsserver
 
-You can set up Org for handling protocol calls from outside applications
-that are passed to Emacs through the @file{emacsserver}.  For example, you
-can configure bookmarks in your web browser to send a link to the current
-page to Org and create a note from it using capture (@pxref{Capture}).  Or
-you could create a bookmark that will tell Emacs to open the local source
-file of a remote website you are looking at with the browser.  See
-@uref{http://orgmode.org/worg/org-contrib/org-protocol.php} for detailed
-documentation and setup instructions.
+Org-modeを扱うためのプロトコルを外部のアプリケーションから、@file{emacsserver}を
+通じてEmacsに渡すことができます。例えば、ウェブブラウザーのブックマークをキ
+ャプチャ(@pxref{Capture})を使って現在のページへのリンクとしてOrg-modeに送り、新し
+いノートを作るように設定できます。または、Emacsに現在ウェブブラウザーで開い
+ているウェブサイトのローカルにあるソースファイルを開くようなブックマークを作
+ることも出来ます。詳細な説明や設定方法は
+@uref{http://orgmode.org/worg/org-contrib/org-protocol.php}を御覧ください。
 
 @node Refiling notes, Archiving, Protocols, Capture - Refile - Archive
 @section Refiling notes
 @cindex refiling notes
 
-When reviewing the captured data, you may want to refile some of the entries
-into a different list, for example into a project.  Cutting, finding the
-right location, and then pasting the note is cumbersome.  To simplify this
-process, you can use the following special command:
+キャプチャしたデータを見なおしているとき、幾つかのエントリーをプロジェクトな
+どの異なるリストへ移動したい時があるでしょう。カットし、正しい位置をさがし、
+ノートを貼り付けるのは面倒です。これを単純にするには、以下に示す特別なコマン
+ドを使います。
 
 @table @kbd
 @orgcmd{C-c C-w,org-refile}
@@ -6543,49 +6551,50 @@ process, you can use the following special command:
 @vindex org-refile-allow-creating-parent-nodes
 @vindex org-log-refile
 @vindex org-refile-use-cache
-Refile the entry or region at point.  This command offers possible locations
-for refiling the entry and lets you select one with completion.  The item
-(or all items in the region) is filed below the target heading as a
-subitem.  Depending on @code{org-reverse-note-order}, it will be either the
-first or last subitem.@* By default, all level 1 headlines in the current
-buffer are considered to be targets, but you can have more complex
-definitions across a number of files.  See the variable
-@code{org-refile-targets} for details.  If you would like to select a
-location via a file-path-like completion along the outline path, see the
-variables @code{org-refile-use-outline-path} and
-@code{org-outline-path-complete-in-steps}.  If you would like to be able to
-create new nodes as new parents for refiling on the fly, check the variable
-@code{org-refile-allow-creating-parent-nodes}.  When the variable
-@code{org-log-refile}@footnote{with corresponding @code{#+STARTUP} keywords @code{logrefile}, @code{lognoterefile}, and @code{nologrefile}} is set, a
-timestamp or a note will be recorded when an entry has been refiled.
-@orgkey{C-u C-c C-w} Use the refile interface to jump to a heading.
-@orgcmd{C-u C-u C-c C-w,org-refile-goto-last-stored} Jump to the location
-where @code{org-refile} last moved a tree to.
+エントリーや現在のリージョンをリファイルします。このコマンドはエントリ
+ーをリファイルする場所を求め、補完とともに１つ選択させます。アイテム(
+またはリージョン内のアイテム)は対象の見出しの下にサブアイテムとして挿
+入されます。@code{org-reverse-note-order}に依存して、サブアイテムの先頭か最
+後のどちらかに挿入されます。@*
+デフォルトでは、現在のバッファのレベル１の見出しすべては対象と考えられ
+ますが、いくつものファイルにまたがった複雑な定義もすることが可能です。
+詳細は@code{org-refile-targets}変数をご覧ください。もし場所をアウトラインの
+パスをファイルパスのような補完で選択したければ、
+@code{org-refile-use-outline-path}と@code{org-outline-path-complete-in-steps}変
+数をご覧ください。もしリファイルするノードの親ノードをその場で作れるよ
+うにしたいときは、@code{org-refile-allow-creating-parent-nodes}変数をご覧く
+ださい。@code{org-log-refile}変数@footnote{@code{#+STARTUP}キーワード、@code{logfile}、
+@code{lognoterefile}、そして@code{nologrefile}に対応している。}がセットされてい
+る場合、タイムスタンプやノートがエントリーがリファイルされたときに記録
+されます。@orgkey{C-u C-c C-w}　リファイルのインターフェースを見出しのジャン
+プに使います。
+@orgcmd{C-u C-u C-c C-w,org-refile-goto-last-stored} @code{org-refile}が最後に木を
+移動させた場所に移動します。
 @item C-2 C-c C-w
-Refile as the child of the item currently being clocked.
+現在計時しているアイテムの子としてリファイルします。
 @item C-0 C-c C-w @ @r{or} @ C-u C-u C-u C-c C-w
 
 @orgcmdtkc{C-0 C-c C-w @ @r{or} @ C-u C-u C-u C-c C-w,C-0 C-c C-w,org-refile-cache-clear}
 
-Clear the target cache.  Caching of refile targets can be turned on by
-setting @code{org-refile-use-cache}.  To make the command see new possible
-targets, you have to clear the cache with this command.
+対象のキャッシュを削除します。リファイル対象のキャッシュは
+@code{org-refile-use-cache}を設定することで設定します。コマンドに新しい対象
+を見せるために、このコマンドでキャッシュを削除する必要があります。
 @end table
 
 @node Archiving, , Refiling notes, Capture - Refile - Archive
 @section Archiving
 @cindex archiving
 
-When a project represented by a (sub)tree is finished, you may want to move
-the tree out of the way and to stop it from contributing to the agenda.
-Archiving is important to keep your working files compact and global
-searches like the construction of agenda views fast.
+(サブ)ツリーとして表現されたプロジェクトが終わった時、ツリーを外に移動し、そ
+れがアジェンダに現れない様にしたいでしょう。アーカイブは活動中のファイルをコ
+ンパクトにし、アジェンダビューを作るようなグローバルな検索を早くするために重
+要です。
 
 @table @kbd
 @orgcmd{C-c C-x C-a,org-archive-subtree-default}
 @vindex org-archive-default-command
-Archive the current entry using the command specified in the variable
-@code{org-archive-default-command}.
+現在のエントリーを@code{org-archive-default-command}変数で指定されたコマン
+ドを使ってアーカイブします。
 @end table
 
 @menu
@@ -6594,30 +6603,34 @@ Archive the current entry using the command specified in the variable
 @end menu
 
 @node Moving subtrees, ファイル内部でのアーカイブ, Archiving, Archiving
-@subsection Moving a tree to the archive file
+@subsection ツリーをアーカイブファイルへ移動
 @cindex external archiving
 
-The most common archiving action is to move a project tree to another file,
-the archive file.
+もっとも一般的なアーカイブアクションはプロジェクトを他のファイル、アーカイブ
+ファイル、へ移動させることです。
 
 @table @kbd
 @orgcmdkskc{C-c C-x C-s,C-c $,org-archive-subtree}
 @vindex org-archive-location
-Archive the subtree starting at the cursor position to the location given by
-@code{org-archive-location}.  @orgkey{C-u C-c C-x C-s} Check if any direct
-children of the current headline could be moved to the archive.  To do this,
-each subtree is checked for open TODO entries.  If none are found, the
-command offers to move it to the archive location.  If the cursor is
-@emph{not} on a headline when this command is invoked, the level 1 trees
-will be checked.
+カーソルの場所から始まるサブツリーを@code{org-archive-location}で与えられる
+場所にアーカイブします。@orgkey{C-u C-c C-x C-s}
+現在の見出しにある子がアーカイブへ移動可能か調べます。これを行うために
+は、それぞれのサブツリーがオープンなTODOエントリーとしてチェックされて
+いる必要がります。もし１つも見つからなければ、コマンドはこれをアーカイ
+ブの場所へ移動するか訪ねてきます。もしコマンドが入力されたときに、カー
+ソルがへっどらいんで@emph{ない}場合、レベル１のツリーがチェックされます。
 @end table
 
 @cindex archive locations
-The default archive location is a file in the same directory as the current
-file, with the name derived by appending @file{_archive} to the current file
-name.  For information and examples on how to change this, see the
-documentation string of the variable @code{org-archive-location}.  There is
-also an in-buffer option for setting this variable, for example@footnote{For backward compatibility, the following also works: If there are several such lines in a file, each specifies the archive location for the text below it. The first such line also applies to any text before its definition. However, using this method is @emph{strongly} deprecated as it is incompatible with the outline structure of the document.  The correct method for setting multiple archive locations in a buffer is using properties.}:
+通常のアーカイブ場所は現在のファイルと同じディレクトリにある、現在のファイル
+名に@file{_archive}を付加した名前のファイルです。これを変更するための情報や例は、
+@code{org-archive-location}変数のドキュメント文字列をご覧ください。以下に示すよう
+な、バッファ内でこれを変更するためのオプションもあります@footnote{後方互換性のために
+、もしこれらの行がファイル中にいくつか存在する場合、それ以下のテキストのアー
+カイブ場所をそれぞれ指定します。最初の行はその定義以前のすべてのテキストに適
+応されます。しかし、この方法は文書のアウトライン構造と互換性が無く、@emph{全く}推
+奨されません。複数のアーカイブ場所をバッファ内で設定する正しい方法は、プロパ
+ティを使う方法です。}。
 
 @cindex #+ARCHIVE
 @example
@@ -6626,68 +6639,66 @@ also an in-buffer option for setting this variable, for example@footnote{For bac
 
 @cindex プロパティ（ARCHIVE）
 @noindent
-If you would like to have a special ARCHIVE location for a single entry or a
-(sub)tree, give the entry an @code{:ARCHIVE:} property with the location as
-the value (@pxref{Properties and Columns}).
+もしあるエントリー又は(サブ)ツリーに対して特別なアーカイブ場所を指定したいと
+きには、エントリーに@code{:ARCHIVE:}プロパティを場所を値として与えてください
+(@pxref{Properties and Columns})。
 
 @vindex org-archive-save-context-info
-When a subtree is moved, it receives a number of special properties that
-record context information like the file from where the entry came, its
-outline path the archiving time etc.  Configure the variable
-@code{org-archive-save-context-info} to adjust the amount of information
-added.
+もしサブツリーが移動した場合、エントリーが移動してきたファイル、アーカイブし
+たときのアウトラインパスなどのコンテクスト情報が記録されます。
+@code{org-archive-save-context-info}変数を設定することで追加される情報の量を調整
+します。
 
 
 @node ファイル内部でのアーカイブ, , Moving subtrees, Archiving
 @subsection ファイル内部でのアーカイブ
 
-If you want to just switch off (for agenda views) certain subtrees without
-moving them to a different file, you can use the @code{ARCHIVE tag}.
+もし異なるファイルへサブツリーを移動させずに、それをアジェンダビューに表示さ
+せないようにするには、@code{ARCHIVE tag}を使うことができます。
 
-A headline that is marked with the ARCHIVE tag (@pxref{Tags}) stays at its
-location in the outline tree, but behaves in the following way:
+ARCHIVE タグ(@pxref{Tags})でマークされている見出しはアウトラインツリー内の場所に留
+まりますが、下記のような振る舞いをします。
 @itemize @minus
-@item @vindex org-cycle-open-archived-trees
-It does not open when you attempt to do so with a visibility cycling command
-(@pxref{Visibility cycling}).  You can force cycling archived subtrees with
-@kbd{C-@key{TAB}}, or by setting the option
-@code{org-cycle-open-archived-trees}.  Also normal outline commands like
-@code{show-all} will open archived subtrees.
+@item @vindex org-sycle-open-archived-trees
+表示を切り替えるコマンド(@pxref{Visibility cycling})では開くことはできません
+。アーカイブしたサブツリーを強制的に切り替えるには@kbd{C-@key{TAB}}を使うか、
+@code{org-cycle-open-archived-trees}オプションを設定します。また、
+@code{show-all}などの通常のアウトラインコマンドはアーカイブしたサブツリーも
+開きます。
 @item @vindex org-sparse-tree-open-archived-trees
-During sparse tree construction (@pxref{Sparse trees}), matches in archived
-subtrees are not exposed, unless you configure the option
-@code{org-sparse-tree-open-archived-trees}.
+ツリーの抽出を行う過程で(@pxref{Sparse trees})、アーカイブしたサブツリー内で
+マッチしたものは@code{org-suparse-tree-open-archived-trees}オプションを設定
+しない限り現れません。
 @item @vindex org-agenda-skip-archived-trees
-During agenda view construction (@pxref{Agenda Views}), the content of
-archived trees is ignored unless you configure the option
-@code{org-agenda-skip-archived-trees}, in which case these trees will always
-be included.  In the agenda you can press @kbd{v a} to get archives
-temporarily included.
+アジェンダビューの抽出を行う過程で(@pxref{Agenda Views})、アーカイブしたツリ
+ーの内容は、@code{org-agenda-skip-archived-trees}を設定した場合は無視され、
+設定されない場合は常に表示されます。アジェンダでは、@kbd{v a}を押すことで
+一時的にアーカイブを含むことができます。
 @item @vindex org-export-with-archived-trees
-Archived trees are not exported (@pxref{Exporting}), only the headline is.
-Configure the details using the variable
-@code{org-export-with-archived-trees}.
+アーカイブされたツリーは見出し以外はエクスポートされません
+(@pxref{Exporting})。@code{org-export-with-archived-trees}変数を使って詳細な設定
+は行なってください。
 @item @vindex org-columns-skip-archived-trees
-Archived trees are excluded from column view unless the variable
-@code{org-columns-skip-archived-trees} is configured to @code{nil}.
+アーカイブしたツリーは@code{org-columns-skip-archived-trees}変数が@code{nil}に設
+定されない限りカラムビューから除外されます。
 @end itemize
 
-The following commands help manage the ARCHIVE tag:
+以下に示すコマンドがARCHIVEタグの編集に役立ちます。
 
 @table @kbd
-@orgcmd{C-c C-x a,org-toggle-archive-tag} Toggle the ARCHIVE tag for the
-current headline.  When the tag is set, the headline changes to a shadowed
-face, and the subtree below it is hidden.  @orgkey{C-u C-c C-x a} Check if
-any direct children of the current headline should be archived.  To do this,
-each subtree is checked for open TODO entries.  If none are found, the
-command offers to set the ARCHIVE tag for the child.  If the cursor is
-@emph{not} on a headline when this command is invoked, the level 1 trees
-will be checked.  @orgcmd{C-@kbd{TAB},org-force-cycle-archived} Cycle a tree
-even if it is tagged with ARCHIVE.  @orgcmd{C-c C-x A,org-archive-to-archive-sibling} Move the current entry to the
-@emph{Archive Sibling}.  This is a sibling of the entry with the heading
-@samp{Archive} and the tag @samp{ARCHIVE}.  The entry becomes a child of
-that sibling and in this way retains a lot of its original context,
-including inherited tags and approximate position in the outline.
+@orgcmd{C-c C-x a,org-toggle-archive-tag}現在の見出しのARCHIVEタグをトグルす
+る。もしタグが設定されているならば、見出しは
+shadowed faceに変更され、以下のサブツリーは隠されます。@orgkey{C-u C-c C-x a}
+現在の見出しが持つ直接の子がアーカイブされるべきかチェックする。これを
+おこなうには、それぞれのサブツリーがオープンなTODOエントリーかチェック
+される。もし何も見つからなかった場合、コマンドは子にARCHIVEタグをセッ
+トする。もしカーソルがコマンド実行時に見出し上に@emph{無い}場合、レベル１の
+ツリーがチェックされる。@orgcmd{C-@kbd{TAB},org-force-cycle-archived}もしARCHIVE
+タグがついていてもツリーの切り替えを行う
+@orgcmd{C-c C-x A,org-archive-to-archive-sibling}現在のエントリーを@emph{アーカイ
+ブ兄弟}に移動する。これは見出しが@samp{Archive}か@samp{ARCHIVE}タグの付いたエン
+トリーの兄弟である。このエントリーはこの兄弟の子になる。そのため、継承
+したタグやアウトライン内のだいたいな位置など、従来の状況は保ち続けている。
 @end table
 
 
@@ -10464,7 +10475,7 @@ Org-modeユーザーには、プロジェクトの進行を記録している人
 
 @node Publishing, Working With Source Code, Exporting, Top
 @chapter Publishing
-@cindex publishing
+@cindex 公開
 
 Org-modeは連結されたOrg-modeのファイルから成る@emph{projects}の自動的なHTMLへの変
 換設定をあなたに許可します。あなたはまた、エクスポートしたHTMLページと画像や
@@ -11091,9 +11102,9 @@ src_<language>[<header arguments>]@{<body>@}
 
 @table @code
 @item org-src-lang-modes
-コードブロックのヘッダー行で宣言した言語名@code{<lang>}のメジャーモードが
-Emacsに存在する場合、そのメジャーモードで編集バッファを開きます。存在
-するメジャーモードに任意の言語名を割り振るためにこの変数を使えます。
+コードブロックのヘッダー行で宣言した言語名@code{<lang>-mode}のメジャーモー
+ドがEmacsに存在する場合、そのメジャーモードで編集バッファを開きます。
+存在するメジャーモードに任意の言語名を割り振るためにこの変数を使えます。
 @item org-src-window-setup
 編集バッファを新規作成する際の、Emacsのウィンドウ配置方法を管理します。
 @item org-src-preserve-indentation
@@ -14121,173 +14132,172 @@ foreach $line (split(/\n/,$agenda)) @{
 @cindex プロパティのためのAPI
 @cindex プロパティ（API）
 
-Here is a description of the functions that can be used to work with
-properties.
+プロパティを扱うために使用できる関数を説明します。
 
 @defun org-entry-properties &optional pom which
-Get all properties of the entry at point-or-marker POM.@* This includes the
-TODO keyword, the tags, time strings for deadline, scheduled, and clocking,
-and any additional properties defined in the entry.  The return value is an
-alist.  Keys may occur multiple times if the property key was used several
-times.@* POM may also be nil, in which case the current entry is used.  If
-WHICH is nil or `all', get all properties.  If WHICH is `special' or
-`standard', only get that subclass.
+ポイントかマーカー(point-or-marker POM)の位置でのエントリのプロパティを全て
+取得します。@*これには、TODOキーワード,
+tags, デッドラインのtime文字列, スケジューリングのtime文字列, 計測のtime文字
+列,
+エントリ内で更に定義されているプロパティが含まれます。返り値は連想リストです
+。プロパティのキーが何度も使われた場合は、キーは複数回出現します。@*POMはnilとなり得ます。その場合は現在のエントリが使われます。WHICHがnilもし
+くは`all'の場合、全てのプロパティを取得します。WHICHが`special'もしくは
+`standard'の場合、部分集合(subclass)を取得します。
 @end defun
 @vindex org-use-property-inheritance
 @defun org-entry-get pom property &optional inherit
-Get value of PROPERTY for entry at point-or-marker POM.  By default, this
-only looks at properties defined locally in the entry.  If INHERIT is
-non-nil and the entry does not have the property, then also check higher
-levels of the hierarchy.  If INHERIT is the symbol @code{selective}, use
-inheritance if and only if the setting of
-@code{org-use-property-inheritance} selects PROPERTY for inheritance.
+ポイントかマーカー(point-or-marker POM)の位置でのエントリーのプロパティ
+ PROPERTY
+の値を取得します。デフォルトでは、そのエントリーで局所的に定義されたプロパテ
+ィのみを調べます。もしINHERITがnon-nilかつエントリーがプロパティを持っていな
+い場合、階層のより高いレベルをチェックします。もしINHERITがシンボル
+@code{selective}である場合、継承を使います。また、継承を使うのは、継承のためのプ
+ロパティを@code{org-use-property-inheritance}の設定が選んだときに限ります。
 @end defun
 
 @defun org-entry-delete pom property
-Delete the property PROPERTY from entry at point-or-marker POM.
+ポイントかマーカー(point-or-marker POM)の位置のエントリーからプロパティ
+PROPERTYを削除します。
 @end defun
 
 @defun org-entry-put pom property value
-Set PROPERTY to VALUE for entry at point-or-marker POM.
+ポイントかマーカー(point-or-marker POM)の位置のエントリにプロパティPROPERTY
+の値VALUEをセットします。
 @end defun
 
 @defun org-buffer-property-keys &optional include-specials
-Get all property keys in the current buffer.
+カレントバッファにある全てのプロパティのキーを取得します。
 @end defun
 
 @defun org-insert-property-drawer
-Insert a property drawer at point.
+ポイントの位置にプロパティの引き出し(drawer)を挿入します。
 @end defun
 
 @defun org-entry-put-multivalued-property pom property &rest values
-Set PROPERTY at point-or-marker POM to VALUES.  VALUES should be a list of
-strings.  They will be concatenated, with spaces as separators.
+ポイントかマーカー(point-or-marker
+POM)のプロパティPROPERTYを値VALUESにセットします。値VALUESは文字列のリストで
+なければなりません。それらはスペースを区切り文字として連結されます。
 @end defun
 
 @defun org-entry-get-multivalued-property pom property
-Treat the value of the property PROPERTY as a whitespace-separated list of
-values and return the values as a list of strings.
+プロパティPROPERTYの値を、値がスペースで区切られたリストとして扱い、文字列の
+リストを返します。
 @end defun
 
 @defun org-entry-add-to-multivalued-property pom property value
-Treat the value of the property PROPERTY as a whitespace-separated list of
-values and make sure that VALUE is in this list.
+プロパティPROPERTYの値を、値がスペースで区切られたリストとして扱い、このリス
+トの中に値VALUEがあることを確認します。
 @end defun
 
 @defun org-entry-remove-from-multivalued-property pom property value
-Treat the value of the property PROPERTY as a whitespace-separated list of
-values and make sure that VALUE is @emph{not} in this list.
+プロパティPROPERTYの値を、値がスペースで区切られたリストとして扱い、このリス
+トの中に値VALUEが@emph{ない}ことを確認します。
 @end defun
 
 @defun org-entry-member-in-multivalued-property pom property value
-Treat the value of the property PROPERTY as a whitespace-separated list of
-values and check if VALUE is in this list.
+プロパティPROPERTYの値を、値がスペースで区切られたリストとして扱い、このリス
+トの中に値VALUEがあるかをチェックします。
 @end defun
 
 @defopt org-property-allowed-value-functions
-Hook for functions supplying allowed values for a specific property.  The
-functions must take a single argument, the name of the property, and return
-a flat list of allowed values.  If @samp{:ETC} is one of the values, use the
-values as completion help, but allow also other values to be entered.  The
-functions must return @code{nil} if they are not responsible for this
-property.
+特定のプロパティに許可された値を提供する関数へのフックです。その関数はプロパ
+ティの名前を単一の引数として受け取り、許可された値の単純なリストを返します。
+@samp{:ETC}がその値の1つである場合、その値を補完の候補として使いますが、他の値も
+入力することができます。もし関数がプロパティと関係無い場合には、関数は@code{nil}
+を返します。
 @end defopt
 
 @node マッピングAPIを使う, , Using the property API, Hacking
 @section マッピングAPIを使う
-@cindex API, for mapping
-@cindex mapping entries, API
+@cindex API、マッピングの
+@cindex エントリのマッピング、API
 
-Org has sophisticated mapping capabilities to find all entries satisfying
-certain criteria.  Internally, this functionality is used to produce agenda
-views, but there is also an API that can be used to execute arbitrary
-functions for each or selected entries.  The main entry point for this API
-is:
+Org-modeは一定の基準を満たす全てのエントリーを探すために、洗練されたマッピン
+グ機能を持っています。アジェンダビューを作成するために内部でこの機能を使われ
+ていますが、エントリのそれぞれもしくは選択されたエントリに対して任意の関数を
+実行するためにAPIも使われます。
 
 @defun org-map-entries func &optional match scope &rest skip
-Call FUNC at each headline selected by MATCH in SCOPE.
+範囲SCOPEの内でMATCHにマッチして選択された各見出しで関数FUNCを呼び出します。
 
-FUNC is a function or a Lisp form.  The function will be called without
-arguments, with the cursor positioned at the beginning of the headline.  The
-return values of all calls to the function will be collected and returned as
-a list.
+FUNCは関数かLispのフォームです。関数は引数なしですが、見出しの始まりと終わり
+のカーソル位置とともに呼び出されます。関数への全ての返り値は、リストとして集
+められて返されます。
 
-The call to FUNC will be wrapped into a save-excursion form, so FUNC does
-not need to preserve point.  After evaluation, the cursor will be moved to
-the end of the line (presumably of the headline of the processed entry) and
-search continues from there.  Under some circumstances, this may not produce
-the wanted results.  For example, if you have removed (e.g.@: archived) the
-current (sub)tree it could mean that the next entry will be skipped
-entirely.  In such cases, you can specify the position from where search
-should continue by making FUNC set the variable `org-map-continue-from' to
-the desired buffer position.
+save-excursionフォームの中でFUNCを呼び出されるので、ポイントを保存する必要が
+ありません。評価の後に、カーソルは(処理しているエントリの)行末に移動し、検索
+を続行します。ある条件では、この方法では希望する結果を得られないかも知れませ
+ん。例えば、もし現在の(サブ)ツリーを削除した(例えば@:
+アーカイブした)場合、次のエントリをスキップすることを意味します。そのような
+場合、変数`org-map-continue-from'に希望するバッファポジションをFUNCに設定さ
+せることで、どこから検索を続けるべきかというポジションを指定できます。
 
-MATCH is a tags/property/todo match as it is used in the agenda match view.
-Only headlines that are matched by this query will be considered during the
-iteration.  When MATCH is nil or t, all headlines will be visited by the
-iteration.
+アジェンダビューに使われるとき、MATCHはtags/property/todoにマッチします。繰
+り返しの間、このクエリーにマッチする見出しだけが考慮されます。もしMATCHがnil
+かtの場合、繰り返しで全ての見出しがチェックされます。
 
-SCOPE determines the scope of this command.  It can be any of:
+SCOPEはこのコマンドのスコープ(対象とする範囲)を決定します。以下のどれかにな
+り得ます:
 
 @example
-nil     @r{the current buffer, respecting the restriction if any}
-tree    @r{the subtree started with the entry at point}
-file    @r{the current buffer, without restriction}
+nil     @r{カレントバッファ、 制限があればそれに従う}
+tree    @r{現在位置のエントリから始まるサブツリー}
+file    @r{カレントバッファ、制限なしで}
 file-with-archives
-        @r{the current buffer, and any archives associated with it}
-agenda  @r{all agenda files}
+        @r{カレントバッファ、関連したアーカイブも含む}
+agenda  @r{全てのアジェンダファイル}
 agenda-with-archives
-        @r{all agenda files with any archive files associated with them}
+        @r{全てのアジェンダフィル、関連したアーカイブファイルも含む}
 (file1 file2 ...)
-        @r{if this is a list, all files in the list will be scanned}
+        @r{ファイルがリスト形式の場合、リスト内の全てのファイルをスキャンします}
 @end example
 @noindent
-The remaining args are treated as settings for the skipping facilities of
-the scanner.  The following items can be given here:
+残りの引数は、スキャナー(読み取る関数?)のスキップ機能の設定として取り扱われ
+ます。以下のアイテムをとることができます。
 
 @vindex org-agenda-skip-function
 @example
-archive   @r{skip trees with the archive tag}
-comment   @r{skip trees with the COMMENT keyword}
+archive   @r{アーカイブタグ(archive tag)があるツリーをスキップします}
+comment   @r{キーワードCOMMENTがあるツリーをスキップします}
 function or Lisp form
-          @r{will be used as value for @code{org-agenda-skip-function},}
-          @r{so whenever the function returns t, FUNC}
-          @r{will not be called for that entry and search will}
-          @r{continue from the point where the function leaves it}
+          @r{@code{org-agenda-skip-function}の値として使われます。}
+          @r{関数であればいつもtを返します、}
+          @r{FUNCはは呼び出されません、}
+          @r{関数がポイントを置いたままにした位置から検索は続きます}
 @end example
 @end defun
 
-The function given to that mapping routine can really do anything you like.
-It can use the property API (@pxref{Using the property API}) to gather more
-information about the entry, or in order to change metadata in the entry.
-Here are a couple of functions that might be handy:
+マッピングルーティーンへと与えられる関数はどのような動作もできます。エントリ
+に関する情報を更に集めるためにプロパティAPI(@pxref{Using the property API})を使え
+ますし、もしくはエントリのメタデータを変更するために使えます。 便利な幾つか
+の関数を紹介します:
 
 @defun org-todo &optional arg
-Change the TODO state of the entry.  See the docstring of the functions for
-the many possible values for the argument ARG.
+エントリのTODO状態を変更します。引数ARGが取り得る多くの値については、関数の
+ドキュメント文字列を見て下さい。
 @end defun
 
 @defun org-priority &optional action
-Change the priority of the entry.  See the docstring of this function for
-the possible values for ACTION.
+エントリのプライオリティを変更します。ACTIONが取り得る値についてはこの関数の
+ドキュメント文字列を見て下さい。
 @end defun
 
 @defun org-toggle-tag tag &optional onoff
-Toggle the tag TAG in the current entry.  Setting ONOFF to either @code{on}
-or @code{off} will not toggle tag, but ensure that it is either on or off.
+現在のエントリのタグTAGをトグルします。@code{on}か@code{off}のいずれかを設定するという
+ことは、タグをトグルするのではなく、onかoffのどちらかであることを確かにしま
+す。
 @end defun
 
 @defun org-promote
-Promote the current entry.
+現在のエントリを一階層上に引き上げます。
 @end defun
 
 @defun org-demote
-Demote the current entry.
+現在のエントリを一階層下へ引き下げます。
 @end defun
 
-Here is a simple example that will turn all entries in the current file with
-a tag @code{TOMORROW} into TODO entries with the keyword @code{UPCOMING}.
-Entries in comment trees and in archive trees will be ignored.
+これは、現在のファイルの中でTODO@code{TOMORROW}を持つ全てエントリを、キーワード
+@code{UPCOMIND}をつけたTODOのエントリへと変化させる簡単な例です。
 
 @lisp
 (org-map-entries
@@ -14295,8 +14305,8 @@ Entries in comment trees and in archive trees will be ignored.
    "+TOMORROW" 'file 'archive 'comment)
 @end lisp
 
-The following example counts the number of entries with TODO keyword
-@code{WAITING}, in all agenda files.
+以下の例では、全てのアジェンダファイルに渡って、TODOのキーワードに@code{WAITING}
+があるエントリの数をカウントします。
 
 @lisp
 (length (org-map-entries t "/+WAITING" 'agenda))
