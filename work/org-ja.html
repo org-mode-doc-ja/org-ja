@@ -186,7 +186,7 @@ Software Foundation, Inc.
 </li></ul>
 <li><a href="#Attachments">9.2 Attachments</a>
 <li><a href="#RSS-Feeds">9.3 RSSフィード</a>
-<li><a href="#Protocols">9.4 Protocols for external access</a>
+<li><a href="#Protocols">9.4 外部アクセスのためのプロトコル</a>
 <li><a href="#Refiling-notes">9.5 Refiling notes</a>
 <li><a href="#Archiving">9.6 Archiving</a>
 <ul>
@@ -5966,19 +5966,22 @@ Org-modeバッファから<code>org-timer-set-timer</code>を呼ぶことによ�
 <h3 class="section">9.1 Capture</h3>
 
 <p><a name="index-g_t_00e3_0082_00ad_00e3_0083_00a3_00e3_0083_0097_00e3_0083_0081_00e3_0083_00a3-894"></a>
-Org's method for capturing new items is heavily inspired by John Wiegley
-excellent remember package.  Up to version 6.36 Org used a special setup for
-<samp><span class="file">remember.el</span></samp>.  <samp><span class="file">org-remember.el</span></samp> is still part of Org-mode for
-backward compatibility with existing setups.  You can find the documentation
-for org-remember at <a href="http://orgmode.org/org-remember.pdf">http://orgmode.org/org-remember.pdf</a>.
+Org-modeでは、新しいアイテムをキャプチャする方法はJohn
+Wiegleyによる素晴らしいrememberパッケージから多くのアイディアを得ています。
+バージョン6.36のOrg-modeまでは<samp><span class="file">remember.el</span></samp>用の特別な設定を使っていました。
+<samp><span class="file">org-remember.el</span></samp>は従来の設定との逆互換性のため、まだOrg-modeの一部です。
+org-rememberに関するドキュメントは<a href="http://orgmode.org/org-remember.pdf">http://orgmode.org/org-remember.pdf</a>にあ
+ります。
 
-   <p>The new capturing setup described here is preferred and should be used by
-new users.  To convert your <code>org-remember-templates</code>, run the command
+   <p>ここで述べる新しいキャプチャのための設定が好ましく、新しいユーザーはこれを使
+用するべきです。あなたの<code>org-remember-templates</code>を変換する場合は以下のコマン
+ドを実行します。
 <pre class="example">     <kbd>M-x org-capture-import-remember-templates &lt;RET&gt;</kbd>
 </pre>
    <p class="noindent">and then customize the new variable with <kbd>M-x customize-variable org-capture-templates</kbd>, check the result, and save the
-これにより、新しい仕組みになれるまではリメンバーとキャプチャの両方を使うこと
-ができます。
+そして新しい変数を<kbd>M-x customize-variable org-capture-templates</kbd>でカスタマイ
+ズし、結果を確認してから保存してください。これにより、新しい仕組みになれるま
+ではリメンバーとキャプチャの両方を使うことができます。
 
    <p>キャプチャはワークフローにおいて小さい割り込みで素早くノートを保存することが
 できます。キャプチャの基本的なプロセスはリメンバーととても良く似ていますが、
@@ -6099,7 +6102,7 @@ Org-modeはそれをテンプレートなどで強化しました。
        %a")))
 </pre>
    <p class="noindent">If you then press <kbd>C-c c t</kbd>, Org will prepare the template
-for you like this:
+ここで<kbd>C-c c t</kbd>を押すと、Org-modeはこのようなテンプレートを用意します。
 <pre class="example">     * TODO
        [[file:<var>lint to where you initiated capture</var>]]
 </pre>
@@ -6143,7 +6146,8 @@ for you like this:
      <pre class="example">                   ("b" "買い物リストのためのテンプレート")
      </pre>
      <p class="noindent">If you do not define a template for the <kbd>C</kbd> key, this key will
-be used to open the customize buffer for this complex variable.
+もし<kbd>C</kbd>キーにテンプレートを定義していなければ、このキーでこの複雑な変
+数のカスタマイズバッファを開きます。
 
      <br><dt><code>description</code><dd>選択時に表示されるテンプレートの短い説明文。
 
@@ -6444,7 +6448,7 @@ Web上のノート作成サービスをOrg-modeのタスクにインポートで
 
 </div>
 
-<h3 class="section">9.4 Protocols for external access</h3>
+<h3 class="section">9.4 外部アクセスのためのプロトコル</h3>
 
 <p><a name="index-protocols_002c-for-external-access-950"></a><a name="index-emacsserver-951"></a>
 Org-modeを扱うためのプロトコルを外部のアプリケーションから、<samp><span class="file">emacsserver</span></samp>を
