@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-10-28 23:12+0900\n"
+"PO-Revision-Date: 2011-10-29 01:38+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -14929,7 +14929,8 @@ msgid ""
 "(define-key global-map \"\\C-cx\"\n"
 "   (lambda () (interactive) (org-capture nil \"x\")))\n"
 msgstr ""
-"(define-key global-map \"\\C-cx\\n\"\n"
+"(define-key global-map \"\\C-cx\\n"
+"\"\n"
 "  (lambda () (interactive) (org-capture nil \"x\")))\n"
 
 #+glossary: entry ( エントリー|文|入力 ) / list ( リスト ) / template ( テンプレート )
@@ -15429,7 +15430,7 @@ msgstr "テンプレート展開後のカーソル位置のために以下を用
 #: org.texi:6500
 #, no-wrap
 msgid "%?          @r{After completing the template, position cursor here.}\n"
-msgstr "%?          @r{テンプレートを完了したあと、カーソル位置をここに移動します。}"
+msgstr "%?          @r{テンプレートを完了したあと、カーソル位置をここに移動します。}\n"
 
 #. type: cindex
 #: org.texi:6505
@@ -22831,7 +22832,7 @@ msgstr "リンク，公開"
 #. type: Plain text
 #: org.texi:10973
 msgid "To create a link from one Org file to another, you would use something like @samp{[[file:foo.org][The foo]]} or simply @samp{file:foo.org.} (@pxref{Hyperlinks}).  When published, this link becomes a link to @file{foo.html}.  In this way, you can interlink the pages of your \"org web\" project and the links will work as expected when you publish them to HTML.  If you also publish the Org source file and want to link to that, use an @code{http:} link instead of a @code{file:} link, because @code{file:} links are converted to link to the corresponding @file{html} file."
-msgstr "あるOrg-modeファイルから別のファイルへのリンクを作成する方法として，あなたは@samp{[[file:foo.org][The foo]]}，もしくはより単純な@samp{file:foo.org.}(@pxref{Hyperlinks})のような形式を使うことができます．公開するとき，このリンクは@file{foo.html}へのリンクとなります．この方法では，あなたはあなたの\\\"Org-modeウェブ\\\"プロジェクトのページとHTMLへ公開するときにリンクを連結することができます．もしあなたがOrg-modeのソースファイルを公開したりそこへのリンクを作成したいのであれば，@code{file:}リンクは対応する@file{html}ファイルにリンクが変換されるため，@code{file:}リンクの代わりに@code{http:}リンクを使います．\n"
+msgstr "あるOrg-modeファイルから別のファイルへのリンクを作成する方法として，あなたは@samp{[[file:foo.org][The foo]]}，もしくはより単純な@samp{file:foo.org.}(@pxref{Hyperlinks})のような形式を使うことができます．公開するとき，このリンクは@file{foo.html}へのリンクとなります．この方法では，あなたはあなたの\\\"Org-modeウェブ\\\"プロジェクトのページとHTMLへ公開するときにリンクを連結することができます．もしあなたがOrg-modeのソースファイルを公開したりそこへのリンクを作成したいのであれば，@code{file:}リンクは対応する@file{html}ファイルにリンクが変換されるため，@code{file:}リンクの代わりに@code{http:}リンクを使います．"
 
 #+glossary: example ( 例 ) / file ( ファイル ) / image ( 画像 ) / link ( リンク ) / org ( Org-mode ) / work ( 作業 )
 #. type: Plain text
@@ -29319,7 +29320,9 @@ msgstr "@code{myblock}という名前のブロックに対する書き出し用�
 msgid ""
 "#+BEGIN: block-update-time :format \"on %m/%d/%Y at %H:%M\"\n"
 "\n"
-msgstr "#+BEGIN: block-update-time :format \"on %m/%d/%Y at %H:%M\"\n\n"
+msgstr ""
+"#+BEGIN: block-update-time :format \"on %m/%d/%Y at %H:%M\"\n"
+"\n"
 
 #+glossary: block ( ブロック ) / function ( 機能|関数 )
 #. type: Plain text
@@ -29742,7 +29745,9 @@ msgstr "このようなCSVリストは後処理のスクリプトでとても使
 msgid ""
 "#!/usr/bin/perl\n"
 "\n"
-msgstr "#!/usr/bin/perl\n\n"
+msgstr ""
+"#!/usr/bin/perl\n"
+"\n"
 
 #+glossary: command ( コマンド )
 #. type: example
@@ -29786,12 +29791,14 @@ msgid ""
 "@}\n"
 msgstr ""
 "# 全ての行についてループします\n"
-"foreach $line (split(/\\n/,$agenda)) @{\n"
+"foreach $line (split(/\\n"
+"/,$agenda)) @{\n"
 "  # それぞれの値を取得します\n"
 "  ($category,$head,$type,$todo,$tags,$date,$time,$extra,\n"
 "   $priority_l,$priority_n) = split(/,/,$line);\n"
 "  # 処理して出力します\n"
-"  print \"[ ] $head\\n\";\n"
+"  print \"[ ] $head\\n"
+"\";\n"
 "@}\n"
 
 #+glossary: function ( 機能|関数 ) / work ( 作業 )

@@ -4338,24 +4338,23 @@ list＊(@pxref{Plain lists})内にカーソルがすでにある場合にのみ�
 
 @node Tags, Properties and Columns, TODO Items, Top
 @chapter Tags
-@cindex tags
-@cindex headline tagging
-@cindex matching, tags
-@cindex sparse tree, tag based
+@cindex タグ
+@cindex 見出しのタグ付け
+@cindex マッチング、タグ
+@cindex ツリーの抽出、タグに基づいた
 
-An excellent way to implement labels and contexts for cross-correlating
-information is to assign @i{tags} to headlines.  Org-mode has extensive
-support for tags.
+相互に関係する情報のためにコンテキストやラベルをつけるためのすばらしい方法の
+一つは見出しに@i{タグ}を対応づけることです。Org-modeはタグについて幅広く対応して
+います。
 
 @vindex org-tag-faces
-Every headline can contain a list of tags; they occur at the end of the
-headline.  Tags are normal words containing letters, numbers, @samp{_}, and
-@samp{@@}.  Tags must be preceded and followed by a single colon, e.g.,
-@samp{:work:}.  Several tags can be specified, as in @samp{:work:urgent:}.
-Tags will by default be in bold face with the same color as the headline.
-You may specify special faces for specific tags using the variable
-@code{org-tag-faces}, in much the same way as you can for TODO keywords
-(@pxref{Faces for TODO keywords}).
+全ての見出しはタグのリストを取ることができて、タグは見出しの最後に置かれます
+。タグはいわゆる普通の単語で利用される文字や数字、@samp{_}、@samp{_}を利用できます。タ
+グはコロンで始まりコロンで終わらなければなりません。例えば、@samp{:work:}です。複
+数のタグはこのように書きます。@samp{:work:urgent:}。タグはデフォルトでは太字のフ
+ェイスで見出しと同じ色で表示されます。TODOのキーワード
+(@pxref{Faces for TODO keywords})と同じように変数@code{org-tag-faces}を変更することで特
+別なフェイスを設定することも可能です。
 
 @menu
 * Tag inheritance::          アウトラインのツリー構造に沿ってタグ付けされる
@@ -4365,13 +4364,12 @@ You may specify special faces for specific tags using the variable
 
 @node Tag inheritance, Setting tags, Tags, Tags
 @section Tag inheritance
-@cindex tag inheritance
-@cindex inheritance, of tags
-@cindex sublevels, inclusion into tags match
+@cindex タグの継承
+@cindex 継承、タグの
+@cindex 下位レベル、マッチしたタグへの包含
 
-@i{Tags} make use of the hierarchical structure of outline trees.  If a
-heading has a certain tag, all subheadings will inherit the tag as well.
-For example, in the list
+@i{タグ}はアウトラインツリーの階層構造を利用します。もしある見出しに特定のタグが
+ついていれば、全ての下位レベルにタグが継承されます。以下に例を示します:
 
 @example
 * Meeting with the French group      :work:
@@ -4380,12 +4378,11 @@ For example, in the list
 @end example
 
 @noindent
-the final heading will have the tags @samp{:work:}, @samp{:boss:},
-@samp{:notes:}, and @samp{:action:} even though the final heading is not
-explicitly marked with those tags.  You can also set tags that all entries
-in a file should inherit just as if these tags were defined in a
-hypothetical level zero that surrounds the entire file.  Use a line like
-this@footnote{As with all these in-buffer settings, pressing @kbd{C-c C-c} activates any changes in the line.}:
+最後の見出しには明示的にマークされていない、@samp{:work:}、@samp{:boss:}、@samp{:notes:}、
+@samp{:action:}のタグがついています。ファイル全体の見出しに継承される見出しをつけ
+ることもでき、これは仮定的にレベル0の見出しとして定義され、ファイル全体に反
+映させることができます。この例を次に示します@footnote{これら全てのバッファ内の設定は
+、@kbd{C-c C-c}とタイプすることでその行の変更を有効にすることができる}:
 
 @cindex #+FILETAGS
 @example
@@ -4770,7 +4767,7 @@ FILE         @r{エントリのあるファイル名}
 のみチェックします。
 @end table
 
-makThe syntax for the search string is described in @ref{Matching tags and properties}.
+検索文字列のための文法は、@ref{Matching tags and properties}で説明されています。
 
 1つのプロパティに基いて抽出したツリーを作成するための特別なコマンドもありま
 す。
