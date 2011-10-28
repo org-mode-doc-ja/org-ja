@@ -4302,19 +4302,18 @@ list＊(see <a href="#Plain-lists">Plain lists</a>)内にカーソルがすで�
 
 <h2 class="chapter">6 Tags</h2>
 
-<p><a name="index-tags-593"></a><a name="index-headline-tagging-594"></a><a name="index-matching_002c-tags-595"></a><a name="index-sparse-tree_002c-tag-based-596"></a>
-An excellent way to implement labels and contexts for cross-correlating
-information is to assign <i>tags</i> to headlines.  Org-mode has extensive
-support for tags.
+<p><a name="index-g_t_00e3_0082_00bf_00e3_0082_00b0-593"></a><a name="index-g_t_00e8_00a6_008b_00e5_0087_00ba_00e3_0081_0097_00e3_0081_00ae_00e3_0082_00bf_00e3_0082_00b0_00e4_00bb_0098_00e3_0081_0091-594"></a><a name="index-g_t_00e3_0083_009e_00e3_0083_0083_00e3_0083_0081_00e3_0083_00b3_00e3_0082_00b0_00e3_0080_0081_00e3_0082_00bf_00e3_0082_00b0-595"></a><a name="index-g_t_00e3_0083_0084_00e3_0083_00aa_00e3_0083_00bc_00e3_0081_00ae_00e6_008a_00bd_00e5_0087_00ba_00e3_0080_0081_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00ab_00e5_009f_00ba_00e3_0081_00a5_00e3_0081_0084_00e3_0081_009f-596"></a>
+相互に関係する情報のためにコンテキストやラベルをつけるためのすばらしい方法の
+一つは見出しに<i>タグ</i>を対応づけることです。Org-modeはタグについて幅広く対応して
+います。
 
-   <p><a name="index-org_002dtag_002dfaces-597"></a>Every headline can contain a list of tags; they occur at the end of the
-headline.  Tags are normal words containing letters, numbers, `<samp><span class="samp">_</span></samp>', and
-`<samp><span class="samp">@</span></samp>'.  Tags must be preceded and followed by a single colon, e.g.,
-`<samp><span class="samp">:work:</span></samp>'.  Several tags can be specified, as in `<samp><span class="samp">:work:urgent:</span></samp>'. 
-Tags will by default be in bold face with the same color as the headline. 
-You may specify special faces for specific tags using the variable
-<code>org-tag-faces</code>, in much the same way as you can for TODO keywords
-(see <a href="#Faces-for-TODO-keywords">Faces for TODO keywords</a>).
+   <p><a name="index-org_002dtag_002dfaces-597"></a>全ての見出しはタグのリストを取ることができて、タグは見出しの最後に置かれます
+。タグはいわゆる普通の単語で利用される文字や数字、`<samp><span class="samp">_</span></samp>'、`<samp><span class="samp">_</span></samp>'を利用できます。タ
+グはコロンで始まりコロンで終わらなければなりません。例えば、`<samp><span class="samp">:work:</span></samp>'です。複
+数のタグはこのように書きます。`<samp><span class="samp">:work:urgent:</span></samp>'。タグはデフォルトでは太字のフ
+ェイスで見出しと同じ色で表示されます。TODOのキーワード
+(see <a href="#Faces-for-TODO-keywords">Faces for TODO keywords</a>)と同じように変数<code>org-tag-faces</code>を変更することで特
+別なフェイスを設定することも可能です。
 
 <ul class="menu">
 <li><a accesskey="1" href="#Tag-inheritance">Tag inheritance</a>:           アウトラインのツリー構造に沿ってタグ付けされる
@@ -4333,21 +4332,18 @@ You may specify special faces for specific tags using the variable
 
 <h3 class="section">6.1 Tag inheritance</h3>
 
-<p><a name="index-tag-inheritance-598"></a><a name="index-inheritance_002c-of-tags-599"></a><a name="index-sublevels_002c-inclusion-into-tags-match-600"></a>
-<i>Tags</i> make use of the hierarchical structure of outline trees.  If a
-heading has a certain tag, all subheadings will inherit the tag as well. 
-For example, in the list
+<p><a name="index-g_t_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00ae_00e7_00b6_0099_00e6_0089_00bf-598"></a><a name="index-g_t_00e7_00b6_0099_00e6_0089_00bf_00e3_0080_0081_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00ae-599"></a><a name="index-g_t_00e4_00b8_008b_00e4_00bd_008d_00e3_0083_00ac_00e3_0083_0099_00e3_0083_00ab_00e3_0080_0081_00e3_0083_009e_00e3_0083_0083_00e3_0083_0081_00e3_0081_0097_00e3_0081_009f_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00b8_00e3_0081_00ae_00e5_008c_0085_00e5_0090_00ab-600"></a>
+<i>タグ</i>はアウトラインツリーの階層構造を利用します。もしある見出しに特定のタグが
+ついていれば、全ての下位レベルにタグが継承されます。以下に例を示します:
 
 <pre class="example">     * Meeting with the French group      :work:
      ** Summary by Frank                  :boss:notes:
      *** TODO Prepare slides for him      :action:
 </pre>
-   <p class="noindent">the final heading will have the tags `<samp><span class="samp">:work:</span></samp>', `<samp><span class="samp">:boss:</span></samp>',
-`<samp><span class="samp">:notes:</span></samp>', and `<samp><span class="samp">:action:</span></samp>' even though the final heading is not
-explicitly marked with those tags.  You can also set tags that all entries
-in a file should inherit just as if these tags were defined in a
-hypothetical level zero that surrounds the entire file.  Use a line like
-this<a rel="footnote" href="#fn-52" name="fnd-52"><sup>52</sup></a>:
+   <p class="noindent">最後の見出しには明示的にマークされていない、`<samp><span class="samp">:work:</span></samp>'、`<samp><span class="samp">:boss:</span></samp>'、`<samp><span class="samp">:notes:</span></samp>'、
+`<samp><span class="samp">:action:</span></samp>'のタグがついています。ファイル全体の見出しに継承される見出しをつけ
+ることもでき、これは仮定的にレベル0の見出しとして定義され、ファイル全体に反
+映させることができます。この例を次に示します<a rel="footnote" href="#fn-52" name="fnd-52"><sup>52</sup></a>:
 
    <p><a name="index-g_t_0023_002bFILETAGS-601"></a>
 <pre class="example">     #+FILETAGS: :Peter:Boss:Secret:
@@ -4712,7 +4708,7 @@ See <a href="#Matching-tags-and-properties">Matching tags and properties</a>.  <
 のみチェックします。
 </dl>
 
-   <p>makThe syntax for the search string is described in <a href="#Matching-tags-and-properties">Matching tags and properties</a>.
+   <p>検索文字列のための文法は、<a href="#Matching-tags-and-properties">Matching tags and properties</a>で説明されています。
 
    <p>1つのプロパティに基いて抽出したツリーを作成するための特別なコマンドもありま
 す。
@@ -6304,8 +6300,8 @@ Lispのフォームでも与えられます。
 </pre>
    <p class="noindent">テンプレート展開後のカーソル位置のために以下を用います。
 
-<pre class="smallexample">     %?          <span class="roman">テンプレートを完了したあと、カーソル位置をここに移動します。
-     </span></pre>
+<pre class="smallexample">     %?          <span class="roman">テンプレートを完了したあと、カーソル位置をここに移動します。</span>
+</pre>
    <div class="node">
 <p><hr>
 <a name="Attachments"></a>
@@ -14746,11 +14742,11 @@ into bundles of 20 for undo.
 <ul class="index-cp" compact>
 <li><a href="#index-g_t_0023_002bARCHIVE-978">#+ARCHIVE</a>: <a href="#Moving-subtrees">Moving subtrees</a></li>
 <li><a href="#index-g_t_0023_002bATTR_005fDOCBOOK-1588">#+ATTR_DOCBOOK</a>: <a href="#Images-in-DocBook-export">Images in DocBook export</a></li>
+<li><a href="#index-g_t_0023_002bATTR_005fHTML-1492">#+ATTR_HTML</a>: <a href="#Tables-in-HTML-export">Tables in HTML export</a></li>
 <li><a href="#index-g_t_0023_002bATTR_005fHTML-1488">#+ATTR_HTML</a>: <a href="#Links-in-HTML-export">Links in HTML export</a></li>
 <li><a href="#index-g_t_0023_002bATTR_005fHTML-1497">#+ATTR_HTML</a>: <a href="#Images-in-HTML-export">Images in HTML export</a></li>
-<li><a href="#index-g_t_0023_002bATTR_005fHTML-1492">#+ATTR_HTML</a>: <a href="#Tables-in-HTML-export">Tables in HTML export</a></li>
-<li><a href="#index-g_t_0023_002bATTR_005fLaTeX-1552">#+ATTR_LaTeX</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
 <li><a href="#index-g_t_0023_002bATTR_005fLaTeX-1560">#+ATTR_LaTeX</a>: <a href="#Images-in-LaTeX-export">Images in LaTeX export</a></li>
+<li><a href="#index-g_t_0023_002bATTR_005fLaTeX-1552">#+ATTR_LaTeX</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
 <li><a href="#index-g_t_0023_002bAUTHOR-1405">#+AUTHOR</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bBEGIN_002c-clocktable-864">#+BEGIN, clocktable</a>: <a href="#The-clock-table">The clock table</a></li>
 <li><a href="#index-g_t_0023_002bBEGIN_002c-columnview-723">#+BEGIN, columnview</a>: <a href="#g_t_00e3_0082_00ab_00e3_0083_00a9_00e3_0083_00a0_00e8_00a1_00a8_00e7_00a4_00ba_00e3_0081_00ae_00e4_00bf_009d_00e5_00ad_0098">カラム表示の保存</a></li>
@@ -14765,13 +14761,12 @@ into bundles of 20 for undo.
 <li><a href="#index-g_t_0023_002bBEGIN_005fSRC-1356">#+BEGIN_SRC</a>: <a href="#Literal-examples">Literal examples</a></li>
 <li><a href="#index-g_t_0023_002bBEGIN_005fVERSE-1332">#+BEGIN_VERSE</a>: <a href="#Paragraphs">Paragraphs</a></li>
 <li><a href="#index-g_t_0023_002bBIND-1413">#+BIND</a>: <a href="#Export-options">Export options</a></li>
-<li><a href="#index-g_t_0023_002bCAPTION-1496">#+CAPTION</a>: <a href="#Images-in-HTML-export">Images in HTML export</a></li>
-<li><a href="#index-g_t_0023_002bCAPTION-1349">#+CAPTION</a>: <a href="#Images-and-tables">Images and tables</a></li>
-<li><a href="#index-g_t_0023_002bCAPTION-1553">#+CAPTION</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
 <li><a href="#index-g_t_0023_002bCAPTION-1491">#+CAPTION</a>: <a href="#Tables-in-HTML-export">Tables in HTML export</a></li>
+<li><a href="#index-g_t_0023_002bCAPTION-1349">#+CAPTION</a>: <a href="#Images-and-tables">Images and tables</a></li>
+<li><a href="#index-g_t_0023_002bCAPTION-1496">#+CAPTION</a>: <a href="#Images-in-HTML-export">Images in HTML export</a></li>
+<li><a href="#index-g_t_0023_002bCAPTION-1553">#+CAPTION</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
 <li><a href="#index-g_t_0023_002bCAPTION-1558">#+CAPTION</a>: <a href="#Images-in-LaTeX-export">Images in LaTeX export</a></li>
 <li><a href="#index-g_t_0023_002bCAPTION-1586">#+CAPTION</a>: <a href="#Images-in-DocBook-export">Images in DocBook export</a></li>
-<li><a href="#index-g_t_0023_002bCAPTION-1550">#+CAPTION</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
 <li><a href="#index-g_t_0023_002bCATEGORY-1081">#+CATEGORY</a>: <a href="#Categories">Categories</a></li>
 <li><a href="#index-g_t_0023_002bCOLUMNS-691">#+COLUMNS</a>: <a href="#Scope-of-column-definitions">Scope of column definitions</a></li>
 <li><a href="#index-g_t_0023_002bCONSTANTS-315">#+CONSTANTS</a>: <a href="#References">References</a></li>
@@ -14787,23 +14782,22 @@ into bundles of 20 for undo.
 <li><a href="#index-g_t_0023_002bINCLUDE-1361">#+INCLUDE</a>: <a href="#Include-files">Include files</a></li>
 <li><a href="#index-g_t_0023_002bINFOJS_005fOPT-1512">#+INFOJS_OPT</a>: <a href="#JavaScript-support">JavaScript support</a></li>
 <li><a href="#index-g_t_0023_002bKEYWORDS-1409">#+KEYWORDS</a>: <a href="#Export-options">Export options</a></li>
-<li><a href="#index-g_t_0023_002bLABEL-1350">#+LABEL</a>: <a href="#Images-and-tables">Images and tables</a></li>
 <li><a href="#index-g_t_0023_002bLABEL-1587">#+LABEL</a>: <a href="#Images-in-DocBook-export">Images in DocBook export</a></li>
-<li><a href="#index-g_t_0023_002bLABEL-1551">#+LABEL</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
-<li><a href="#index-g_t_0023_002bLABEL-1559">#+LABEL</a>: <a href="#Images-in-LaTeX-export">Images in LaTeX export</a></li>
 <li><a href="#index-g_t_0023_002bLABEL-1554">#+LABEL</a>: <a href="#Tables-in-LaTeX-export">Tables in LaTeX export</a></li>
+<li><a href="#index-g_t_0023_002bLABEL-1559">#+LABEL</a>: <a href="#Images-in-LaTeX-export">Images in LaTeX export</a></li>
+<li><a href="#index-g_t_0023_002bLABEL-1350">#+LABEL</a>: <a href="#Images-and-tables">Images and tables</a></li>
 <li><a href="#index-g_t_0023_002bLANGUAGE-1410">#+LANGUAGE</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bLaTeX-1546">#+LaTeX</a>: <a href="#Quoting-LaTeX-code">Quoting LaTeX code</a></li>
 <li><a href="#index-g_t_0023_002bLATEX_005fCLASS-1542">#+LATEX_CLASS</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
 <li><a href="#index-g_t_0023_002bLATEX_005fCLASS_005fOPTIONS-1543">#+LATEX_CLASS_OPTIONS</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
-<li><a href="#index-g_t_0023_002bLATEX_005fHEADER-1419">#+LATEX_HEADER</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bLATEX_005fHEADER-1541">#+LATEX_HEADER</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
+<li><a href="#index-g_t_0023_002bLATEX_005fHEADER-1419">#+LATEX_HEADER</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bLINK-484">#+LINK</a>: <a href="#Link-abbreviations">Link abbreviations</a></li>
 <li><a href="#index-g_t_0023_002bLINK_005fHOME-1415">#+LINK_HOME</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bLINK_005fUP-1414">#+LINK_UP</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bMACRO-1365">#+MACRO</a>: <a href="#Macro-replacement">Macro replacement</a></li>
-<li><a href="#index-g_t_0023_002bOPTIONS-1412">#+OPTIONS</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bOPTIONS-1324">#+OPTIONS</a>: <a href="#Headings-and-sections">Headings and sections</a></li>
+<li><a href="#index-g_t_0023_002bOPTIONS-1412">#+OPTIONS</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bORGLST-1928">#+ORGLST</a>: <a href="#g_t_00e3_0083_00a9_00e3_0082_00b8_00e3_0082_00aa_00e3_0083_00aa_00e3_0082_00b9_00e3_0083_0088">ラジオリスト</a></li>
 <li><a href="#index-g_t_0023_002bORGTBL-1920">#+ORGTBL</a>: <a href="#Radio-tables">Radio tables</a></li>
 <li><a href="#index-g_t_0023_002bORGTBL_002c-SEND-1922">#+ORGTBL, SEND</a>: <a href="#A-LaTeX-example">A LaTeX example</a></li>
@@ -14817,8 +14811,8 @@ into bundles of 20 for undo.
 <li><a href="#index-g_t_0023_002bTAGS-615">#+TAGS</a>: <a href="#Setting-tags">Setting tags</a></li>
 <li><a href="#index-g_t_0023_002bTBLFM-336">#+TBLFM</a>: <a href="#Field-and-range-formulas">Field and range formulas</a></li>
 <li><a href="#index-g_t_0023_002bTBLNAME-324">#+TBLNAME</a>: <a href="#References">References</a></li>
-<li><a href="#index-g_t_0023_002bTEXT-1411">#+TEXT</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bTEXT-1328">#+TEXT</a>: <a href="#Initial-text">Initial text</a></li>
+<li><a href="#index-g_t_0023_002bTEXT-1411">#+TEXT</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bTITLE-1320">#+TITLE</a>: <a href="#Document-title">Document title</a></li>
 <li><a href="#index-g_t_0023_002bTITLE-1404">#+TITLE</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0023_002bTODO-525">#+TODO</a>: <a href="#Per_002dfile-keywords">Per-file keywords</a></li>
@@ -14878,7 +14872,7 @@ into bundles of 20 for undo.
 <li><a href="#index-diary-entries_002c-creating-from-agenda-1269">diary entries, creating from agenda</a>: <a href="#Agenda-commands">Agenda commands</a></li>
 <li><a href="#index-display-changing_002c-in-agenda-1114">display changing, in agenda</a>: <a href="#Agenda-commands">Agenda commands</a></li>
 <li><a href="#index-DocBook-export-1563">DocBook export</a>: <a href="#DocBook-export">DocBook export</a></li>
-<li><a href="#index-DocBook_00e3_0081_00a7_00e3_0081_00ae_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e7_0094_00bb_00e5_0083_008f-1583">DocBookでのインライン画像</a>: <a href="#Images-in-DocBook-export">Images in DocBook export</a></li>
+<li><a href="#index-DocBook_00e3_0081_00a7_00e3_0081_00ae_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e7_0094_00bb_00e5_0083_008f-1584">DocBookでのインライン画像</a>: <a href="#Images-in-DocBook-export">Images in DocBook export</a></li>
 <li><a href="#index-DocBook_00e3_0081_00ae_00e5_0086_008d_00e5_00b8_00b0_00e7_009a_0084_00e3_0081_00aasection-1581">DocBookの再帰的なsection</a>: <a href="#Recursive-sections">Recursive sections</a></li>
 <li><a href="#index-DocBook_00e3_0081_00b8_00e3_0081_00ae_00e5_0087_00ba_00e5_008a_009b_00e3_0081_00ab_00e3_0081_008a_00e3_0081_0091_00e3_0082_008b_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab-1582">DocBookへの出力におけるテーブル</a>: <a href="#Tables-in-DocBook-export">Tables in DocBook export</a></li>
 <li><a href="#index-DocBook_00e5_0087_00ba_00e5_008a_009b_00e3_0081_00ab_00e3_0081_008a_00e3_0081_0091_00e3_0082_008b_00e7_0089_00b9_00e6_00ae_008a_00e6_0096_0087_00e5_00ad_0097-1590">DocBook出力における特殊文字</a>: <a href="#Special-characters">Special characters</a></li>
@@ -14921,7 +14915,6 @@ into bundles of 20 for undo.
 <li><a href="#index-Guerry_002c-Bastien-1517">Guerry, Bastien</a>: <a href="#LaTeX-and-PDF-export">LaTeX and PDF export</a></li>
 <li><a href="#index-habits-555">habits</a>: <a href="#g_t_00e7_00bf_0092_00e6_0085_00a3_00e3_0081_00ae_00e8_00bf_00bd_00e8_00b7_00a1">習慣の追跡</a></li>
 <li><a href="#index-headline-navigation-69">headline navigation</a>: <a href="#Motion">Motion</a></li>
-<li><a href="#index-headline-tagging-594">headline tagging</a>: <a href="#Tags">Tags</a></li>
 <li><a href="#index-headline_002c-promotion-and-demotion-85">headline, promotion and demotion</a>: <a href="#Structure-editing">Structure editing</a></li>
 <li><a href="#index-headlines-23">headlines</a>: <a href="#Headlines">Headlines</a></li>
 <li><a href="#index-hide-text-33">hide text</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
@@ -14936,9 +14929,8 @@ into bundles of 20 for undo.
 <li><a href="#index-iCalendar_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088-1610">iCalendarエクスポート</a>: <a href="#iCalendar_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088">iCalendarエクスポート</a></li>
 <li><a href="#index-g_t_0040file_007bimenu_002eel_007d-1881"><samp><span class="file">imenu.el</span></samp></a>: <a href="#Cooperation">Cooperation</a></li>
 <li><a href="#index-Info_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af-432">Infoリンク</a>: <a href="#External-links">External links</a></li>
-<li><a href="#index-inheritance_002c-of-tags-599">inheritance, of tags</a>: <a href="#Tag-inheritance">Tag inheritance</a></li>
-<li><a href="#index-g_t_0040code_007binlineimages_007d_002c-STARTUP-keyword-1808"><code>inlineimages</code>, STARTUP keyword</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-g_t_0040code_007binlineimages_007d_002c-STARTUP-keyword-468"><code>inlineimages</code>, STARTUP keyword</a>: <a href="#Handling-links">Handling links</a></li>
+<li><a href="#index-g_t_0040code_007binlineimages_007d_002c-STARTUP-keyword-1808"><code>inlineimages</code>, STARTUP keyword</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-iPhone-1967">iPhone</a>: <a href="#MobileOrg">MobileOrg</a></li>
 <li><a href="#index-IRC_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af-423">IRCリンク</a>: <a href="#External-links">External links</a></li>
 <li><a href="#index-jumping_002c-to-headlines-68">jumping, to headlines</a>: <a href="#Motion">Motion</a></li>
@@ -14949,8 +14941,8 @@ into bundles of 20 for undo.
 <li><a href="#index-LaTeX_00e3_0081_00ae_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089_00e7_0089_0087_00e3_0080_0081_00e3_0083_0097_00e3_0083_00ac_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc-1384">LaTeXのコード片、プレビュー</a>: <a href="#Previewing-LaTeX-fragments">Previewing LaTeX fragments</a></li>
 <li><a href="#index-g_t_0040LaTeX_007b_007d_00e3_0081_00ae_00e4_00b8_00ad_00e3_0081_00ae_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e7_0094_00bb_00e5_0083_008f-1557">LaTeXの中のインライン画像</a>: <a href="#Images-in-LaTeX-export">Images in LaTeX export</a></li>
 <li><a href="#index-g_t_0040LaTeX_007b_007d_00e3_0081_00ae_00e6_0096_00ad_00e7_0089_0087_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1371">LaTeXの断片、マークアップのルール</a>: <a href="#Special-symbols">Special symbols</a></li>
-<li><a href="#index-g_t_0040LaTeX_007b_007d_00e3_0081_00ae_00e6_0096_00ad_00e7_0089_0087_00e7_009a_0084_00e3_0081_00aa_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089-1435">LaTeXの断片的なコード</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0040LaTeX_007b_007d_00e3_0081_00ae_00e6_0096_00ad_00e7_0089_0087_00e7_009a_0084_00e3_0081_00aa_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089-1380">LaTeXの断片的なコード</a>: <a href="#LaTeX-fragments">LaTeX fragments</a></li>
+<li><a href="#index-g_t_0040LaTeX_007b_007d_00e3_0081_00ae_00e6_0096_00ad_00e7_0089_0087_00e7_009a_0084_00e3_0081_00aa_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089-1435">LaTeXの断片的なコード</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_0040LaTeX_007b_007d_00e3_0081_00ae_00e6_00a7_008b_00e9_0080_00a0_00e3_0081_00ae_00e5_0088_0086_00e5_0089_00b2-1533">LaTeXの構造の分割</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
 <li><a href="#index-g_t_0040LaTeX_007b_007d_00e3_0081_00ae_00e8_00a6_008b_00e5_0087_00ba_00e3_0081_0097-1534">LaTeXの見出し</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
 <li><a href="#index-g_t_0040LaTeX_007b_007d_00e3_0081_00ae_00e8_00a7_00a3_00e9_0087_0088-1367">LaTeXの解釈</a>: <a href="#Embedded-LaTeX">Embedded LaTeX</a></li>
@@ -14967,7 +14959,6 @@ into bundles of 20 for undo.
 <li><a href="#index-match-view-1049">match view</a>: <a href="#Matching-tags-and-properties">Matching tags and properties</a></li>
 <li><a href="#index-matching_002c-of-properties-1047">matching, of properties</a>: <a href="#Matching-tags-and-properties">Matching tags and properties</a></li>
 <li><a href="#index-matching_002c-of-tags-1046">matching, of tags</a>: <a href="#Matching-tags-and-properties">Matching tags and properties</a></li>
-<li><a href="#index-matching_002c-tags-595">matching, tags</a>: <a href="#Tags">Tags</a></li>
 <li><a href="#index-MathJax-1498">MathJax</a>: <a href="#Math-formatting-in-HTML-export">Math formatting in HTML export</a></li>
 <li><a href="#index-MH_002dE_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00af-429">MH-Eリンク</a>: <a href="#External-links">External links</a></li>
 <li><a href="#index-minor-mode-for-structure-editing-226">minor mode for structure editing</a>: <a href="#Orgstruct-mode">Orgstruct mode</a></li>
@@ -14979,8 +14970,8 @@ into bundles of 20 for undo.
 <li><a href="#index-g_t_0040code_007bnofninline_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1846"><code>nofninline</code>, STARTUPキーワード</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-g_t_0040code_007bnohideblocks_007d_002c-STARTUP-keyword-214"><code>nohideblocks</code>, STARTUP keyword</a>: <a href="#Blocks">Blocks</a></li>
 <li><a href="#index-g_t_0040code_007bnohideblocks_007d_002c-STARTUP-keyword-1856"><code>nohideblocks</code>, STARTUP keyword</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
-<li><a href="#index-g_t_0040code_007bnoinlineimages_007d_002c-STARTUP-keyword-1809"><code>noinlineimages</code>, STARTUP keyword</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-g_t_0040code_007bnoinlineimages_007d_002c-STARTUP-keyword-469"><code>noinlineimages</code>, STARTUP keyword</a>: <a href="#Handling-links">Handling links</a></li>
+<li><a href="#index-g_t_0040code_007bnoinlineimages_007d_002c-STARTUP-keyword-1809"><code>noinlineimages</code>, STARTUP keyword</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-occur_002c-command-146">occur, command</a>: <a href="#Sparse-trees">Sparse trees</a></li>
 <li><a href="#index-options_002c-for-custom-agenda-views-1297">options, for custom agenda views</a>: <a href="#Setting-Options">Setting Options</a></li>
 <li><a href="#index-ordered-lists-169">ordered lists</a>: <a href="#Plain-lists">Plain lists</a></li>
@@ -14998,8 +14989,8 @@ into bundles of 20 for undo.
 <li><a href="#index-outline-tree-24">outline tree</a>: <a href="#Headlines">Headlines</a></li>
 <li><a href="#index-outlines-21">outlines</a>: <a href="#Outlines">Outlines</a></li>
 <li><a href="#index-overview_002c-global-visibility-state-45">overview, global visibility state</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
-<li><a href="#index-g_t_0040code_007boverview_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1797"><code>overview</code>, STARTUPキーワード</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-g_t_0040code_007boverview_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-60"><code>overview</code>, STARTUPキーワード</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
+<li><a href="#index-g_t_0040code_007boverview_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1797"><code>overview</code>, STARTUPキーワード</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-pasting_002c-of-subtrees-89">pasting, of subtrees</a>: <a href="#Structure-editing">Structure editing</a></li>
 <li><a href="#index-PDF_00e5_0087_00ba_00e5_008a_009b-1564">PDF出力</a>: <a href="#DocBook-export">DocBook export</a></li>
 <li><a href="#index-PDF_00e5_0087_00ba_00e5_008a_009b-1516">PDF出力</a>: <a href="#LaTeX-and-PDF-export">LaTeX and PDF export</a></li>
@@ -15010,11 +15001,11 @@ into bundles of 20 for undo.
 <li><a href="#index-priorities_002c-of-agenda-items-1088">priorities, of agenda items</a>: <a href="#agenda_00e3_0081_00ae_00e9_00a0_0085_00e7_009b_00ae_00e3_0082_0092_00e3_0082_00bd_00e3_0083_00bc_00e3_0083_0088_00e3_0081_0099_00e3_0082_008b">agendaの項目をソートする</a></li>
 <li><a href="#index-promotion_002c-of-subtrees-86">promotion, of subtrees</a>: <a href="#Structure-editing">Structure editing</a></li>
 <li><a href="#index-properties-631">properties</a>: <a href="#Properties-and-Columns">Properties and Columns</a></li>
-<li><a href="#index-property_002c-CUSTOM_005fID-414">property, CUSTOM_ID</a>: <a href="#Internal-links">Internal links</a></li>
 <li><a href="#index-property_002c-CUSTOM_005fID-441">property, CUSTOM_ID</a>: <a href="#Handling-links">Handling links</a></li>
+<li><a href="#index-property_002c-CUSTOM_005fID-414">property, CUSTOM_ID</a>: <a href="#Internal-links">Internal links</a></li>
+<li><a href="#index-property_002c-ID-1617">property, ID</a>: <a href="#iCalendar_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088">iCalendarエクスポート</a></li>
 <li><a href="#index-property_002c-ID-442">property, ID</a>: <a href="#Handling-links">Handling links</a></li>
 <li><a href="#index-property_002c-ID-724">property, ID</a>: <a href="#g_t_00e3_0082_00ab_00e3_0083_00a9_00e3_0083_00a0_00e8_00a1_00a8_00e7_00a4_00ba_00e3_0081_00ae_00e4_00bf_009d_00e5_00ad_0098">カラム表示の保存</a></li>
-<li><a href="#index-property_002c-ID-1617">property, ID</a>: <a href="#iCalendar_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088">iCalendarエクスポート</a></li>
 <li><a href="#index-property_002c-LATEX_005fCLASS-1544">property, LATEX_CLASS</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
 <li><a href="#index-property_002c-LATEX_005fCLASS_005fOPTIONS-1545">property, LATEX_CLASS_OPTIONS</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
 <li><a href="#index-property_002c-VISIBILITY-64">property, VISIBILITY</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
@@ -15023,12 +15014,12 @@ into bundles of 20 for undo.
 <li><a href="#index-proverty_002c-ATTACH_005fDIR_005fINTERIT-943">proverty, ATTACH_DIR_INTERIT</a>: <a href="#Attachments">Attachments</a></li>
 <li><a href="#index-query-editing_002c-in-agenda-1177">query editing, in agenda</a>: <a href="#Agenda-commands">Agenda commands</a></li>
 <li><a href="#index-refiling-notes-952">refiling notes</a>: <a href="#Refiling-notes">Refiling notes</a></li>
-<li><a href="#index-region_002c-active-140">region, active</a>: <a href="#Structure-editing">Structure editing</a></li>
-<li><a href="#index-region_002c-active-1469">region, active</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
-<li><a href="#index-region_002c-active-1518">region, active</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
 <li><a href="#index-region_002c-active-1450">region, active</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
-<li><a href="#index-region_002c-active-1566">region, active</a>: <a href="#DocBook-export-commands">DocBook export commands</a></li>
 <li><a href="#index-region_002c-active-278">region, active</a>: <a href="#Built_002din-table-editor">Built-in table editor</a></li>
+<li><a href="#index-region_002c-active-1469">region, active</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
+<li><a href="#index-region_002c-active-1566">region, active</a>: <a href="#DocBook-export-commands">DocBook export commands</a></li>
+<li><a href="#index-region_002c-active-140">region, active</a>: <a href="#Structure-editing">Structure editing</a></li>
+<li><a href="#index-region_002c-active-1518">region, active</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
 <li><a href="#index-regular-expressions_002c-with-tags-search-1057">regular expressions, with tags search</a>: <a href="#Matching-tags-and-properties">Matching tags and properties</a></li>
 <li><a href="#index-g_t_0040file_007bremember_002eel_007d-1883"><samp><span class="file">remember.el</span></samp></a>: <a href="#Cooperation">Cooperation</a></li>
 <li><a href="#index-remote-editing_002c-bulk_002c-from-agenda-1255">remote editing, bulk, from agenda</a>: <a href="#Agenda-commands">Agenda commands</a></li>
@@ -15048,14 +15039,13 @@ into bundles of 20 for undo.
 <li><a href="#index-show-all_002c-command-50">show all, command</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-show-all_002c-global-visibility-state-47">show all, global visibility state</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-show-hidden-text-32">show hidden text</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
-<li><a href="#index-g_t_0040code_007bshowall_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1799"><code>showall</code>, STARTUPキーワード</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-g_t_0040code_007bshowall_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-62"><code>showall</code>, STARTUPキーワード</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
-<li><a href="#index-g_t_0040code_007bshoweverything_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-63"><code>showeverything</code>, STARTUPキーワード</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
+<li><a href="#index-g_t_0040code_007bshowall_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1799"><code>showall</code>, STARTUPキーワード</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-g_t_0040code_007bshoweverything_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-1800"><code>showeverything</code>, STARTUPキーワード</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
+<li><a href="#index-g_t_0040code_007bshoweverything_007d_002c-STARTUP_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089-63"><code>showeverything</code>, STARTUPキーワード</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-sorting_002c-of-agenda-items-1087">sorting, of agenda items</a>: <a href="#agenda_00e3_0081_00ae_00e9_00a0_0085_00e7_009b_00ae_00e3_0082_0092_00e3_0082_00bd_00e3_0083_00bc_00e3_0083_0088_00e3_0081_0099_00e3_0082_008b">agendaの項目をソートする</a></li>
 <li><a href="#index-sorting_002c-of-subtrees-92">sorting, of subtrees</a>: <a href="#Structure-editing">Structure editing</a></li>
 <li><a href="#index-source-code_002c-working-with-1701">source code, working with</a>: <a href="#Working-With-Source-Code">Working With Source Code</a></li>
-<li><a href="#index-sparse-tree_002c-tag-based-596">sparse tree, tag based</a>: <a href="#Tags">Tags</a></li>
 <li><a href="#index-sparse-trees-143">sparse trees</a>: <a href="#Sparse-trees">Sparse trees</a></li>
 <li><a href="#index-speed-keys-1774">speed keys</a>: <a href="#Speed-keys">Speed keys</a></li>
 <li><a href="#index-g_t_0040file_007bspeedbar_002eel_007d-1885"><samp><span class="file">speedbar.el</span></samp></a>: <a href="#Cooperation">Cooperation</a></li>
@@ -15090,7 +15080,6 @@ into bundles of 20 for undo.
 <li><a href="#index-Storm_002c-Kim_002e-F_002e-1901">Storm, Kim. F.</a>: <a href="#Conflicts">Conflicts</a></li>
 <li><a href="#index-structure-editing-84">structure editing</a>: <a href="#Structure-editing">Structure editing</a></li>
 <li><a href="#index-structure-of-document-20">structure of document</a>: <a href="#Document-Structure">Document Structure</a></li>
-<li><a href="#index-sublevels_002c-inclusion-into-tags-match-600">sublevels, inclusion into tags match</a>: <a href="#Tag-inheritance">Tag inheritance</a></li>
 <li><a href="#index-sublevels_002c-inclusion-into-TODO-list-1040">sublevels, inclusion into TODO list</a>: <a href="#Global-TODO-list">Global TODO list</a></li>
 <li><a href="#index-subtree-cycling-35">subtree cycling</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-subtree-visibility-states-34">subtree visibility states</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
@@ -15099,13 +15088,11 @@ into bundles of 20 for undo.
 <li><a href="#index-subtrees_002c-cut-and-paste-93">subtrees, cut and paste</a>: <a href="#Structure-editing">Structure editing</a></li>
 <li><a href="#index-SUMMARY_00e5_00b1_009e_00e6_0080_00a7-1628">SUMMARY属性</a>: <a href="#iCalendar_00e3_0082_00a8_00e3_0082_00af_00e3_0082_00b9_00e3_0083_009d_00e3_0083_00bc_00e3_0083_0088">iCalendarエクスポート</a></li>
 <li><a href="#index-table-editor_002c-_0040file_007btable_002eel_007d-1889">table editor, <samp><span class="file">table.el</span></samp></a>: <a href="#Cooperation">Cooperation</a></li>
-<li><a href="#index-g_t_0040file_007btable_002eel_007d-1890"><samp><span class="file">table.el</span></samp></a>: <a href="#Cooperation">Cooperation</a></li>
+<li><a href="#index-g_t_0040file_007btable_002eel_007d-1887"><samp><span class="file">table.el</span></samp></a>: <a href="#Cooperation">Cooperation</a></li>
 <li><a href="#index-tables-227">tables</a>: <a href="#Tables">Tables</a></li>
 <li><a href="#index-tables-1429">tables</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-tag-filtering_002c-in-agenda-1175">tag filtering, in agenda</a>: <a href="#Agenda-commands">Agenda commands</a></li>
-<li><a href="#index-tag-inheritance-598">tag inheritance</a>: <a href="#Tag-inheritance">Tag inheritance</a></li>
 <li><a href="#index-tag-searches-621">tag searches</a>: <a href="#Tag-searches">Tag searches</a></li>
-<li><a href="#index-tags-593">tags</a>: <a href="#Tags">Tags</a></li>
 <li><a href="#index-tags-view-1048">tags view</a>: <a href="#Matching-tags-and-properties">Matching tags and properties</a></li>
 <li><a href="#index-tags_002c-setting-606">tags, setting</a>: <a href="#Setting-tags">Setting tags</a></li>
 <li><a href="#index-tangling-1709">tangling</a>: <a href="#Extracting-source-code">Extracting source code</a></li>
@@ -15132,10 +15119,10 @@ into bundles of 20 for undo.
 <li><a href="#index-TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1766">TODOキーワードの補完</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0082_00bb_00e3_0083_0083_00e3_0083_0088-516">TODOキーワードセット</a>: <a href="#Multiple-sets-in-one-file">Multiple sets in one file</a></li>
 <li><a href="#index-TODO_00e3_0083_00af_00e3_0083_00bc_00e3_0082_00af_00e3_0083_0095_00e3_0083_00ad_00e3_0083_00bc-510">TODOワークフロー</a>: <a href="#Workflow-states">Workflow states</a></li>
-<li><a href="#index-transient_002dmark_002dmode-1452">transient-mark-mode</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
-<li><a href="#index-transient_002dmark_002dmode-1471">transient-mark-mode</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
 <li><a href="#index-transient_002dmark_002dmode-1520">transient-mark-mode</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
+<li><a href="#index-transient_002dmark_002dmode-1471">transient-mark-mode</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
 <li><a href="#index-transient_002dmark_002dmode-1568">transient-mark-mode</a>: <a href="#DocBook-export-commands">DocBook export commands</a></li>
+<li><a href="#index-transient_002dmark_002dmode-1452">transient-mark-mode</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
 <li><a href="#index-trees_002c-sparse-144">trees, sparse</a>: <a href="#Sparse-trees">Sparse trees</a></li>
 <li><a href="#index-trees_002c-visibility-31">trees, visibility</a>: <a href="#Visibility-cycling">Visibility cycling</a></li>
 <li><a href="#index-tty_00e7_00ab_00af_00e6_009c_00ab_00e3_0081_00ae_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_0090_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_0087_00e3_0082_00a3_00e3_0083_00b3_00e3_0082_00b0-1872">tty端末のキーバインディング</a>: <a href="#TTY-keys">TTY keys</a></li>
@@ -15159,12 +15146,12 @@ into bundles of 20 for undo.
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00a6_00e3_0083_0088_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00e3_0082_0092_00e8_00a6_008b_00e3_0082_0084_00e3_0081_0099_00e3_0081_008f_00e3_0081_0099_00e3_0082_008b-1867">アウトラインビューを見やすくする</a>: <a href="#Clean-view">Clean view</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0082_00b7_00e3_0083_00a7_00e3_0083_00b3_00e3_0080_0081_00e5_0085_00ac_00e9_0096_008b_00e3_0081_00ae_00e3_0081_009f_00e3_0082_0081_00e3_0081_00ae-1637">アクション、公開のための</a>: <a href="#Publishing-action">Publishing action</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00a7_00e3_0081_00aa_00e3_0081_0084_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097-748">アクティブでないタイムスタンプ</a>: <a href="#Timestamps">Timestamps</a></li>
-<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-141">アクティブなリージョン</a>: <a href="#Structure-editing">Structure editing</a></li>
-<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-279">アクティブなリージョン</a>: <a href="#Built_002din-table-editor">Built-in table editor</a></li>
-<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-1519">アクティブなリージョン</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
-<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-1470">アクティブなリージョン</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
-<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-1567">アクティブなリージョン</a>: <a href="#DocBook-export-commands">DocBook export commands</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-1451">アクティブなリージョン</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
+<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-1567">アクティブなリージョン</a>: <a href="#DocBook-export-commands">DocBook export commands</a></li>
+<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-141">アクティブなリージョン</a>: <a href="#Structure-editing">Structure editing</a></li>
+<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-1519">アクティブなリージョン</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
+<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-279">アクティブなリージョン</a>: <a href="#Built_002din-table-editor">Built-in table editor</a></li>
+<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00af_00e3_0083_0086_00e3_0082_00a3_00e3_0083_0096_00e3_0081_00aa_00e3_0083_00aa_00e3_0083_00bc_00e3_0082_00b8_00e3_0083_00a7_00e3_0083_00b3-1470">アクティブなリージョン</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080-1019">アジェンダ</a>: <a href="#Weekly_002fdaily-agenda">Weekly/daily agenda</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0080_0081_00e3_0083_0091_00e3_0082_00a4_00e3_0083_0097-1940">アジェンダ、パイプ</a>: <a href="#Extracting-agenda-information">Extracting agenda information</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0081_00ae_00e3_0082_00b3_00e3_0083_009e_00e3_0083_00b3_00e3_0083_0089_00e3_0082_0092_00e9_0081_00b8_00e6_008a_009e_00e3_0081_0099_00e3_0082_008b-1017">アジェンダのコマンドを選択する</a>: <a href="#Agenda-dispatcher">Agenda dispatcher</a></li>
@@ -15173,9 +15160,8 @@ into bundles of 20 for undo.
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00e3_0080_0081_00e3_0083_00a6_00e3_0083_00bc_00e3_0082_00b6_00e3_0083_00bc_00e5_00ae_009a_00e7_00be_00a9-1934">アジェンダビュー、ユーザー定義</a>: <a href="#Special-agenda-views">Special agenda views</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00e3_0081_00ae_00e5_0087_00ba_00e5_008a_009b-1283">アジェンダビューの出力</a>: <a href="#Agenda-commands">Agenda commands</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00e3_0081_00ae_00e5_0087_00ba_00e5_008a_009b-1303">アジェンダビューの出力</a>: <a href="#Exporting-Agenda-Views">Exporting Agenda Views</a></li>
-<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00ef_00bc_0088_00e5_0087_00ba_00e5_008a_009b_00ef_00bc_0089-1300">アジェンダビュー（出力）</a>: <a href="#Exporting-Agenda-Views">Exporting Agenda Views</a></li>
-<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00ef_00bc_0088_00e5_0087_00ba_00e5_008a_009b_00ef_00bc_0089-1284">アジェンダビュー（出力）</a>: <a href="#Agenda-commands">Agenda commands</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00ef_00bc_0088_00e5_0087_00ba_00e5_008a_009b_00ef_00bc_0089-1304">アジェンダビュー（出力）</a>: <a href="#Exporting-Agenda-Views">Exporting Agenda Views</a></li>
+<li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc_00ef_00bc_0088_00e5_0087_00ba_00e5_008a_009b_00ef_00bc_0089-1284">アジェンダビュー（出力）</a>: <a href="#Agenda-commands">Agenda commands</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e3_0083_0095_00e3_0082_00a1_00e3_0082_00a4_00e3_0083_00ab-996">アジェンダファイル</a>: <a href="#Agenda-files">Agenda files</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0082_00b8_00e3_0082_00a7_00e3_0083_00b3_00e3_0083_0080_00e7_0094_00a8_00e3_0081_00ae_00e3_0083_0095_00e3_0082_00a1_00e3_0082_00a4_00e3_0083_00ab-997">アジェンダ用のファイル</a>: <a href="#Agenda-files">Agenda files</a></li>
 <li><a href="#index-g_t_00e3_0082_00a2_00e3_0083_0089_00e3_0082_00aa_00e3_0083_00b3_00e3_0080_0081_00e6_0096_0087_00e8_0084_0088_00e3_0081_00ab_00e4_00be_009d_00e5_00ad_0098_00e3_0081_0099_00e3_0082_008b_00e3_0082_00b3_00e3_0083_009e_00e3_0083_00b3_00e3_0083_0089-1914">アドオン、文脈に依存するコマンド</a>: <a href="#Context_002dsensitive-commands">Context-sensitive commands</a></li>
@@ -15247,6 +15233,8 @@ into bundles of 20 for undo.
 <li><a href="#index-g_t_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097_00e3_0080_0081_00e3_0083_00aa_00e3_0083_0094_00e3_0083_00bc_00e3_0083_0088_00e9_0096_0093_00e9_009a_0094-744">タイムスタンプ、リピート間隔</a>: <a href="#Timestamps">Timestamps</a></li>
 <li><a href="#index-g_t_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097_00e3_0080_0081_00e4_00bd_009c_00e6_0088_0090-750">タイムスタンプ、作成</a>: <a href="#Creating-timestamps">Creating timestamps</a></li>
 <li><a href="#index-g_t_00e3_0082_00bf_00e3_0082_00a4_00e3_0083_00a0_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097_00e3_0081_00ae_00e4_00bd_009c_00e6_0088_0090-749">タイムスタンプの作成</a>: <a href="#Creating-timestamps">Creating timestamps</a></li>
+<li><a href="#index-g_t_00e3_0082_00bf_00e3_0082_00b0-593">タグ</a>: <a href="#Tags">Tags</a></li>
+<li><a href="#index-g_t_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00ae_00e7_00b6_0099_00e6_0089_00bf-598">タグの継承</a>: <a href="#Tag-inheritance">Tag inheritance</a></li>
 <li><a href="#index-g_t_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1769">タグの補完</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-g_t_00e3_0082_00bf_00e3_0082_00b9_00e3_0082_00af_00e3_0080_0081_00e7_00b4_00b0_00e5_0088_0086_00e5_008c_0096-569">タスク、細分化</a>: <a href="#Breaking-down-tasks">Breaking down tasks</a></li>
 <li><a href="#index-g_t_00e3_0082_00bf_00e3_0082_00b9_00e3_0082_00af_00e3_0080_0081_00e7_00b9_00b0_00e3_0082_008a_00e8_00bf_0094_00e3_0081_0097-822">タスク、繰り返し</a>: <a href="#Repeated-tasks">Repeated tasks</a></li>
@@ -15256,6 +15244,7 @@ into bundles of 20 for undo.
 <li><a href="#index-g_t_00e3_0083_0081_00e3_0082_00a7_00e3_0083_0083_00e3_0082_00af_00e3_0083_009c_00e3_0083_0083_00e3_0082_00af_00e3_0082_00b9_00e3_0081_00a8TODO_00e4_00be_009d_00e5_00ad_0098_00e9_0096_00a2_00e4_00bf_0082-545">チェックボックスとTODO依存関係</a>: <a href="#TODO-dependencies">TODO dependencies</a></li>
 <li><a href="#index-g_t_00e3_0083_0081_00e3_0082_00a7_00e3_0083_0083_00e3_0082_00af_00e3_0083_009c_00e3_0083_0083_00e3_0082_00af_00e3_0082_00b9_00e3_0081_00ae_00e3_0083_0096_00e3_0083_00ad_00e3_0083_0083_00e3_0082_00af-581">チェックボックスのブロック</a>: <a href="#Checkboxes">Checkboxes</a></li>
 <li><a href="#index-g_t_00e3_0083_0081_00e3_0082_00a7_00e3_0083_0083_00e3_0082_00af_00e3_0083_009c_00e3_0083_0083_00e3_0082_00af_00e3_0082_00b9_00e3_0081_00ae_00e7_00b5_00b1_00e8_00a8_0088-577">チェックボックスの統計</a>: <a href="#Checkboxes">Checkboxes</a></li>
+<li><a href="#index-g_t_00e3_0083_0084_00e3_0083_00aa_00e3_0083_00bc_00e3_0081_00ae_00e6_008a_00bd_00e5_0087_00ba_00e3_0080_0081_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00ab_00e5_009f_00ba_00e3_0081_00a5_00e3_0081_0084_00e3_0081_009f-596">ツリーの抽出、タグに基づいた</a>: <a href="#Tags">Tags</a></li>
 <li><a href="#index-g_t_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0082_00a8_00e3_0083_00aa_00e3_0082_00a2_00e3_0080_0081HTML_00e3_0081_00ae_00e4_00b8_00ad_00e3_0081_00ae-1500">テキストエリア、HTMLの中の</a>: <a href="#Text-areas-in-HTML-export">Text areas in HTML export</a></li>
 <li><a href="#index-g_t_00e3_0083_0086_00e3_0083_00b3_00e3_0083_0097_00e3_0083_00ac_00e3_0083_00bc_00e3_0083_0088_00e3_0081_00ae_00e6_008c_00bf_00e5_0085_00a5-1773">テンプレートの挿入</a>: <a href="#Easy-Templates">Easy Templates</a></li>
 <li><a href="#index-g_t_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e3_0080_0081HTML_00e3_0081_00ae-1489">テーブル、HTMLの</a>: <a href="#Tables-in-HTML-export">Tables in HTML export</a></li>
@@ -15295,16 +15284,14 @@ into bundles of 20 for undo.
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_003aCLOCK_005fMODELINE_005fTOTAL-831">プロパティ:CLOCK_MODELINE_TOTAL</a>: <a href="#Clocking-commands">Clocking commands</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_003aLAST_005fREPEAT-832">プロパティ:LAST_REPEAT</a>: <a href="#Clocking-commands">Clocking commands</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_005fALL-634">プロパティ、_ALL</a>: <a href="#Property-syntax">Property syntax</a></li>
-<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081COOKIE_005fDATA-572">プロパティ、COOKIE_DATA</a>: <a href="#Breaking-down-tasks">Breaking down tasks</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081COOKIE_005fDATA-578">プロパティ、COOKIE_DATA</a>: <a href="#Checkboxes">Checkboxes</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081COOKIE_005fDATA-572">プロパティ、COOKIE_DATA</a>: <a href="#Breaking-down-tasks">Breaking down tasks</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fFILE_005fNAME-1571">プロパティ、EXPORT_FILE_NAME</a>: <a href="#DocBook-export-commands">DocBook export commands</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fFILE_005fNAME-1474">プロパティ、EXPORT_FILE_NAME</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fFILE_005fNAME-1523">プロパティ、EXPORT_FILE_NAME</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fFILE_005fNAME-1455">プロパティ、EXPORT_FILE_NAME</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
-<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fFILE_005fNAME-1571">プロパティ、EXPORT_FILE_NAME</a>: <a href="#DocBook-export-commands">DocBook export commands</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081EXPORT_005fTITLE-1321">プロパティ、EXPORT_TITLE</a>: <a href="#Document-title">Document title</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081LOG_005fINTO_005fDRAWER-552">プロパティ、LOG_INTO_DRAWER</a>: <a href="#Tracking-TODO-state-changes">Tracking TODO state changes</a></li>
-<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081ORDERED-542">プロパティ、ORDERED</a>: <a href="#TODO-dependencies">TODO dependencies</a></li>
-<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081ORDERED-590">プロパティ、ORDERED</a>: <a href="#Checkboxes">Checkboxes</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081ORDERED-538">プロパティ、ORDERED</a>: <a href="#TODO-dependencies">TODO dependencies</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081ORDERED-582">プロパティ、ORDERED</a>: <a href="#Checkboxes">Checkboxes</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00ab_00e3_0083_00a9_00e3_0083_00a0_00e3_0083_0093_00e3_0083_00a5_00e3_0083_00bc-690">プロパティ、カラムビュー</a>: <a href="#Defining-columns">Defining columns</a></li>
@@ -15327,8 +15314,8 @@ into bundles of 20 for undo.
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e5_00b7_00a5_00e6_0095_00b0-870">プロパティ、工数</a>: <a href="#Effort-estimates">Effort estimates</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e6_00a4_009c_00e7_00b4_00a2-671">プロパティ、検索</a>: <a href="#Property-searches">Property searches</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e7_00b6_0099_00e6_0089_00bf-682">プロパティ、継承</a>: <a href="#Property-inheritance">Property inheritance</a></li>
-<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0081_00ae_00e3_0081_009f_00e3_0082_0081_00e3_0081_00aeAPI-1943">プロパティのためのAPI</a>: <a href="#Using-the-property-API">Using the property API</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0081_00ae_00e3_0081_009f_00e3_0082_0081_00e3_0081_00aeAPI-733">プロパティのためのAPI</a>: <a href="#Property-API">Property API</a></li>
+<li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0081_00ae_00e3_0081_009f_00e3_0082_0081_00e3_0081_00aeAPI-1943">プロパティのためのAPI</a>: <a href="#Using-the-property-API">Using the property API</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0082_00b7_00e3_0083_00b3_00e3_0082_00bf_00e3_0083_0083_00e3_0082_00af_00e3_0082_00b9-632">プロパティシンタックス</a>: <a href="#Property-syntax">Property syntax</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088API_00ef_00bc_0089-1944">プロパティ（API）</a>: <a href="#Using-the-property-API">Using the property API</a></li>
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088API_00ef_00bc_0089-732">プロパティ（API）</a>: <a href="#Property-API">Property API</a></li>
@@ -15340,6 +15327,7 @@ into bundles of 20 for undo.
 <li><a href="#index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088COLUMNS_00ef_00bc_0089-1786">プロパティ（COLUMNS）</a>: <a href="#In_002dbuffer-settings">In-buffer settings</a></li>
 <li><a href="#index-g_t_00e3_0083_0099_00e3_0082_00af_00e3_0083_0088_00e3_0083_00ab_00ef_00bc_0088_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e3_0081_00a7_00e3_0081_00ae_00e8_00a8_0088_00e7_00ae_0097_00ef_00bc_0089-327">ベクトル（テーブルでの計算）</a>: <a href="#Formula-syntax-for-Calc">Formula syntax for Calc</a></li>
 <li><a href="#index-g_t_00e3_0083_009e_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_0089_00e3_0083_009e_00e3_0083_0083_00e3_0083_0097-1603">マインドマップ</a>: <a href="#Freemind-export">Freemind export</a></li>
+<li><a href="#index-g_t_00e3_0083_009e_00e3_0083_0083_00e3_0083_0081_00e3_0083_00b3_00e3_0082_00b0_00e3_0080_0081_00e3_0082_00bf_00e3_0082_00b0-595">マッチング、タグ</a>: <a href="#Tags">Tags</a></li>
 <li><a href="#index-g_t_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00ad_00e3_0083_00b3_00e3_0082_00b0_00e6_0096_0087_00e5_00ad_0097_00ef_00bc_0088_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00ef_00bc_0089-404">マーキング文字（テーブル）</a>: <a href="#Advanced-features">Advanced features</a></li>
 <li><a href="#index-g_t_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0083_00aa_00e3_0083_00b3_00e3_0082_00b0-472">マークリング</a>: <a href="#Handling-links">Handling links</a></li>
 <li><a href="#index-g_t_00e3_0083_00a1_00e3_0083_00b3_00e3_0083_0086_00e3_0083_008a_00e3_0083_00bc-16">メンテナー</a>: <a href="#Feedback">Feedback</a></li>
@@ -15372,6 +15360,7 @@ into bundles of 20 for undo.
 <li><a href="#index-g_t_00e4_00b8_008a_00e4_00bb_0098_00e3_0081_008d_00e3_0080_0081_00e4_00b8_008b_00e4_00bb_0098_00e3_0081_008d_00e6_0096_0087_00e5_00ad_0097_00e3_0082_0092_00e7_00a4_00ba_00e3_0081_0099-_0040TeX_007b_007d-_00e3_0081_00ae_00e3_0082_0088_00e3_0081_0086_00e3_0081_00aa_00e3_0082_00b7_00e3_0083_00b3_00e3_0082_00bf_00e3_0083_0083_00e3_0082_00af_00e3_0082_00b9-1430">上付き、下付き文字を示す TeX のようなシンタックス</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_00e4_00b8_008a_00e4_00bb_0098_00e3_0081_008d_00e6_0096_0087_00e5_00ad_0097-1377">上付き文字</a>: <a href="#Subscripts-and-superscripts">Subscripts and superscripts</a></li>
 <li><a href="#index-g_t_00e4_00b8_008b_00e4_00bb_0098_00e3_0081_008d_00e6_0096_0087_00e5_00ad_0097-1376">下付き文字</a>: <a href="#Subscripts-and-superscripts">Subscripts and superscripts</a></li>
+<li><a href="#index-g_t_00e4_00b8_008b_00e4_00bd_008d_00e3_0083_00ac_00e3_0083_0099_00e3_0083_00ab_00e3_0080_0081_00e3_0083_009e_00e3_0083_0083_00e3_0083_0081_00e3_0081_0097_00e3_0081_009f_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00b8_00e3_0081_00ae_00e5_008c_0085_00e5_0090_00ab-600">下位レベル、マッチしたタグへの包含</a>: <a href="#Tag-inheritance">Tag inheritance</a></li>
 <li><a href="#index-g_t_00e4_00b8_008b_00e7_00b7_009a_00e3_0081_00ae_00e3_0081_0082_00e3_0082_008b_00e3_0083_0086_00e3_0082_00ad_00e3_0082_00b9_00e3_0083_0088_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1337">下線のあるテキスト、マークアップのルール</a>: <a href="#Emphasis-and-monospace">Emphasis and monospace</a></li>
 <li><a href="#index-g_t_00e4_00bc_0091_00e6_00ad_00a2_00e3_0080_0081_00e8_00a7_00a3_00e6_00b1_00ba_00e3_0080_0081_00e7_00a9_00ba_00e3_0081_008d_00e6_0099_0082_00e9_0096_0093-867">休止、解決、空き時間</a>: <a href="#Resolving-idle-time">Resolving idle time</a></li>
 <li><a href="#index-g_t_00e4_00bc_0091_00e6_00ad_00a2_00e6_0099_0082_00e9_0096_0093_00e3_0082_0092_00e8_00a7_00a3_00e6_00b1_00ba_00e3_0081_0099_00e3_0082_008b-866">休止時間を解決する</a>: <a href="#Resolving-idle-time">Resolving idle time</a></li>
@@ -15405,8 +15394,8 @@ into bundles of 20 for undo.
 <li><a href="#index-g_t_00e5_00a5_0087_00e6_0095_00b0_00e3_0083_00ac_00e3_0083_0099_00e3_0083_00ab_00e3_0081_00ae_00e3_0081_00bf_00e3_0081_00ae_00e3_0082_00a2_00e3_0082_00a6_00e3_0083_0088_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3-1866">奇数レベルのみのアウトライン</a>: <a href="#Clean-view">Clean view</a></li>
 <li><a href="#index-g_t_00e5_00ae_008c_00e4_00ba_0086_00e3_0080_0081TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae-512">完了、TODOキーワードの</a>: <a href="#Workflow-states">Workflow states</a></li>
 <li><a href="#index-g_t_00e5_00ae_008c_00e4_00ba_0086_00e3_0080_0081TODO_00e3_0082_00ad_00e3_0083_00bc_00e3_0083_00af_00e3_0083_00bc_00e3_0083_0089_00e3_0081_00ae-1759">完了、TODOキーワードの</a>: <a href="#Completion">Completion</a></li>
-<li><a href="#index-g_t_00e5_00ae_008c_00e4_00ba_0086_00e3_0080_0081_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00ae-1762">完了、タグの</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-g_t_00e5_00ae_008c_00e4_00ba_0086_00e3_0080_0081_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00ae-610">完了、タグの</a>: <a href="#Setting-tags">Setting tags</a></li>
+<li><a href="#index-g_t_00e5_00ae_008c_00e4_00ba_0086_00e3_0080_0081_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00ae-1762">完了、タグの</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-g_t_00e5_00b7_00a5_00e6_0095_00b0_00e3_0081_00ae_00e8_00a6_008b_00e7_00a9_008d_00e3_0082_0082_00e3_0082_008a-869">工数の見積もり</a>: <a href="#Effort-estimates">Effort estimates</a></li>
 <li><a href="#index-g_t_00e5_00ba_00a7_00e6_00a8_0099_00ef_00bc_0088_00e3_0083_0095_00e3_0082_00a3_00e3_0083_00bc_00e3_0083_00ab_00e3_0083_0089_00ef_00bc_0089-308">座標（フィールド）</a>: <a href="#References">References</a></li>
 <li><a href="#index-g_t_00e5_00bc_0095_00e3_0081_008d_00e5_0087_00ba_00e3_0081_0097_00e3_0080_0081_00e7_008a_00b6_00e6_0085_008b_00e5_00a4_0089_00e5_008c_0096_00e3_0082_0092_00e8_00a8_0098_00e9_008c_00b2_00e3_0081_0099_00e3_0082_008b_00e9_009a_009b_00e3_0081_00ab_00e4_00bd_00bf_00e7_0094_00a8-549">引き出し、状態変化を記録する際に使用</a>: <a href="#Tracking-TODO-state-changes">Tracking TODO state changes</a></li>
@@ -15431,8 +15420,8 @@ into bundles of 20 for undo.
 <li><a href="#index-g_t_00e6_0097_00a5_00e4_00bb_0098-734">日付</a>: <a href="#Date-and-Times">Date and Times</a></li>
 <li><a href="#index-g_t_00e6_0097_00a5_00e4_00bb_0098_00e3_0080_0081_00e3_0083_009f_00e3_0083_008b_00e3_0083_0090_00e3_0083_0083_00e3_0083_0095_00e3_0082_00a1_00e3_0081_00a7_00e3_0081_00ae_00e8_00aa_00ad_00e3_0081_00bf_00e8_00be_00bc_00e3_0081_00bf-775">日付、ミニバッファでの読み込み</a>: <a href="#The-date_002ftime-prompt">The date/time prompt</a></li>
 <li><a href="#index-g_t_00e6_0097_00a5_00e4_00bb_0098_00e3_0081_00ae_00e9_0096_0093_00e9_009a_0094-746">日付の間隔</a>: <a href="#Timestamps">Timestamps</a></li>
-<li><a href="#index-g_t_00e6_0097_00a5_00e4_00bb_0098_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097-737">日付スタンプ</a>: <a href="#Date-and-Times">Date and Times</a></li>
 <li><a href="#index-g_t_00e6_0097_00a5_00e4_00bb_0098_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097-740">日付スタンプ</a>: <a href="#Timestamps">Timestamps</a></li>
+<li><a href="#index-g_t_00e6_0097_00a5_00e4_00bb_0098_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00b3_00e3_0083_0097-737">日付スタンプ</a>: <a href="#Date-and-Times">Date and Times</a></li>
 <li><a href="#index-g_t_00e6_0097_00a5_00e4_00bb_0098_00e3_0083_0095_00e3_0082_00a9_00e3_0083_00bc_00e3_0083_009e_00e3_0083_0083_00e3_0083_0088_00e3_0080_0081_00e3_0082_00ab_00e3_0082_00b9_00e3_0082_00bf_00e3_0083_00a0-797">日付フォーマット、カスタム</a>: <a href="#Custom-time-format">Custom time format</a></li>
 <li><a href="#index-g_t_00e6_0097_00a5_00e8_00a8_0098_00e3_0081_00ae_00e7_00b5_00b1_00e5_0090_0088-1028">日記の統合</a>: <a href="#Weekly_002fdaily-agenda">Weekly/daily agenda</a></li>
 <li><a href="#index-g_t_00e6_0099_0082_00e5_0088_00bb-735">時刻</a>: <a href="#Date-and-Times">Date and Times</a></li>
@@ -15475,6 +15464,7 @@ into bundles of 20 for undo.
 <li><a href="#index-g_t_00e7_00af_0084_00e5_009b_00b2_00e5_008f_0082_00e7_0085_00a7-305">範囲参照</a>: <a href="#References">References</a></li>
 <li><a href="#index-g_t_00e7_00b5_00b1_00e8_00a8_0088_00e3_0080_0081TODO_00e3_0082_00a2_00e3_0082_00a4_00e3_0083_0086_00e3_0083_00a0_00e3_0081_00ae_00e3_0081_009f_00e3_0082_0081_00e3_0081_00ae-570">統計、TODOアイテムのための</a>: <a href="#Breaking-down-tasks">Breaking down tasks</a></li>
 <li><a href="#index-g_t_00e7_00b5_00b1_00e8_00a8_0088_00e3_0080_0081_00e3_0083_0081_00e3_0082_00a7_00e3_0083_0083_00e3_0082_00af_00e3_0083_009c_00e3_0083_0083_00e3_0082_00af_00e3_0082_00b9_00e3_0081_00ae-576">統計、チェックボックスの</a>: <a href="#Checkboxes">Checkboxes</a></li>
+<li><a href="#index-g_t_00e7_00b6_0099_00e6_0089_00bf_00e3_0080_0081_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00ae-599">継承、タグの</a>: <a href="#Tag-inheritance">Tag inheritance</a></li>
 <li><a href="#index-g_t_00e7_00b6_0099_00e6_0089_00bf_00e3_0080_0081_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0081_00ae-683">継承、プロパティの</a>: <a href="#Property-inheritance">Property inheritance</a></li>
 <li><a href="#index-g_t_00e7_00b7_00a8_00e9_009b_0086_00ef_00bc_0088_00e3_0083_0086_00e3_0083_00bc_00e3_0083_0096_00e3_0083_00ab_00e3_0081_00ae_00e6_0095_00b0_00e5_00bc_008f_00ef_00bc_0089-344">編集（テーブルの数式）</a>: <a href="#Editing-and-debugging-formulas">Editing and debugging formulas</a></li>
 <li><a href="#index-g_t_00e7_00b9_00b0_00e3_0082_008a_00e8_00bf_0094_00e3_0081_0097_00e3_0082_00bf_00e3_0082_00b9_00e3_0082_00af-823">繰り返しタスク</a>: <a href="#Repeated-tasks">Repeated tasks</a></li>
@@ -15492,17 +15482,18 @@ into bundles of 20 for undo.
 <li><a href="#index-g_t_00e8_00a3_009c_00e5_00ae_008c_00e3_0080_0081_00e8_00be_009e_00e6_009b_00b8_00e3_0081_00ae_00e5_008d_0098_00e8_00aa_009e-1760">補完、辞書の単語</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-g_t_00e8_00a6_008b_00e5_0087_00ba_00e3_0081_0097_00e3_0080_0081LaTeX_00e3_0083_0095_00e3_0082_00a1_00e3_0082_00a4_00e3_0083_00ab_00e3_0081_00ae_00e3_0081_009f_00e3_0082_0081_00e3_0081_00ae-1535">見出し、LaTeXファイルのための</a>: <a href="#Header-and-sectioning">Header and sectioning</a></li>
 <li><a href="#index-g_t_00e8_00a6_008b_00e5_0087_00ba_00e3_0081_0097_00e3_0081_00a8_00e3_0082_00bb_00e3_0082_00af_00e3_0082_00b7_00e3_0083_00a7_00e3_0083_00b3_00e3_0080_0081_00e3_0083_009e_00e3_0083_00bc_00e3_0082_00af_00e3_0082_00a2_00e3_0083_0083_00e3_0083_0097_00e3_0081_00ae_00e3_0083_00ab_00e3_0083_00bc_00e3_0083_00ab-1322">見出しとセクション、マークアップのルール</a>: <a href="#Headings-and-sections">Headings and sections</a></li>
+<li><a href="#index-g_t_00e8_00a6_008b_00e5_0087_00ba_00e3_0081_0097_00e3_0081_00ae_00e3_0082_00bf_00e3_0082_00b0_00e4_00bb_0098_00e3_0081_0091-594">見出しのタグ付け</a>: <a href="#Tags">Tags</a></li>
 <li><a href="#index-g_t_00e8_00a6_008b_00e5_0087_00ba_00e3_0081_0097_00e3_0081_00ae_00e9_009a_008e_00e5_00b1_00a4-1423">見出しの階層</a>: <a href="#Export-options">Export options</a></li>
 <li><a href="#index-g_t_00e8_00a8_0080_00e8_00aa_009e_00e3_0080_0081babel-1720">言語、babel</a>: <a href="#Languages">Languages</a></li>
-<li><a href="#index-g_t_00e8_00a8_0088_00e7_00ae_0097_00e4_00b8_00ad_00e3_0081_00ae_00e5_00ae_009a_00e6_0095_00b0-314">計算中の定数</a>: <a href="#References">References</a></li>
+<li><a href="#index-g_t_00e8_00a8_0088_00e7_00ae_0097_00e4_00b8_00ad_00e3_0081_00ae_00e5_00ae_009a_00e6_0095_00b0-323">計算中の定数</a>: <a href="#References">References</a></li>
 <li><a href="#index-g_t_00e8_00a9_0095_00e4_00be_00a1_00e3_0080_0081_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089_00e3_0083_0096_00e3_0083_00ad_00e3_0083_0083_00e3_0082_00af-1713">評価、コードブロック</a>: <a href="#Evaluating-code-blocks">Evaluating code blocks</a></li>
 <li><a href="#index-g_t_00e8_00a9_0095_00e4_00be_00a1_00e3_0080_0081_00e3_0082_00bd_00e3_0083_00bc_00e3_0082_00b9_00e3_0082_00b3_00e3_0083_00bc_00e3_0083_0089-1714">評価、ソースコード</a>: <a href="#Evaluating-code-blocks">Evaluating code blocks</a></li>
 <li><a href="#index-g_t_00e8_00ac_009d_00e8_00be_009e-1971">謝辞</a>: <a href="#History-and-Acknowledgments">History and Acknowledgments</a></li>
 <li><a href="#index-g_t_00e8_00be_009e_00e6_009b_00b8_00e5_008d_0098_00e8_00aa_009e_00e3_0081_00ae_00e8_00a3_009c_00e5_00ae_008c-1767">辞書単語の補完</a>: <a href="#Completion">Completion</a></li>
 <li><a href="#index-g_t_00e9_0080_00b2_00e6_008d_0097_00e7_008a_00b6_00e6_00b3_0081_00e3_0081_00ae_00e8_00a8_0098_00e9_008c_00b2-547">進捗状況の記録</a>: <a href="#Progress-logging">Progress logging</a></li>
-<li><a href="#index-g_t_00ef_00bc_0088_00e5_00a4_0096_00e9_0083_00a8_00e5_0087_00ba_00e5_008a_009b_00e3_0081_00ab_00e7_0094_00a8_00e3_0081_0084_00e3_0082_008b_00ef_00bc_0089_00e3_0083_0098_00e3_0083_0083_00e3_0083_0089_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00ac_00e3_0083_0099_00e3_0083_00ab-1530">（外部出力に用いる）ヘッドラインレベル</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
 <li><a href="#index-g_t_00ef_00bc_0088_00e5_00a4_0096_00e9_0083_00a8_00e5_0087_00ba_00e5_008a_009b_00e3_0081_00ab_00e7_0094_00a8_00e3_0081_0084_00e3_0082_008b_00ef_00bc_0089_00e3_0083_0098_00e3_0083_0083_00e3_0083_0089_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00ac_00e3_0083_0099_00e3_0083_00ab-1466">（外部出力に用いる）ヘッドラインレベル</a>: <a href="#ASCII_002fLatin_002d1_002fUTF_002d8-export">ASCII/Latin-1/UTF-8 export</a></li>
 <li><a href="#index-g_t_00ef_00bc_0088_00e5_00a4_0096_00e9_0083_00a8_00e5_0087_00ba_00e5_008a_009b_00e3_0081_00ab_00e7_0094_00a8_00e3_0081_0084_00e3_0082_008b_00ef_00bc_0089_00e3_0083_0098_00e3_0083_0083_00e3_0083_0089_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00ac_00e3_0083_0099_00e3_0083_00ab-1481">（外部出力に用いる）ヘッドラインレベル</a>: <a href="#HTML-Export-commands">HTML Export commands</a></li>
+<li><a href="#index-g_t_00ef_00bc_0088_00e5_00a4_0096_00e9_0083_00a8_00e5_0087_00ba_00e5_008a_009b_00e3_0081_00ab_00e7_0094_00a8_00e3_0081_0084_00e3_0082_008b_00ef_00bc_0089_00e3_0083_0098_00e3_0083_0083_00e3_0083_0089_00e3_0083_00a9_00e3_0082_00a4_00e3_0083_00b3_00e3_0083_00ac_00e3_0083_0099_00e3_0083_00ab-1530">（外部出力に用いる）ヘッドラインレベル</a>: <a href="#LaTeX_002fPDF-export-commands">LaTeX/PDF export commands</a></li>
    </ul><div class="node">
 <p><hr>
 <a name="Key-Index"></a>
@@ -16915,7 +16906,8 @@ XEmacsでは動作しません</p>
 けでなくクッキーのしたにあるすべてのチェックボックスを網羅したい場合は、変数
 <code>org-hierarchical-checkbox-statistics</code>を設定してください。</p>
 
-   <p class="footnote"><small>[<a name="fn-52" href="#fnd-52">52</a>]</small> As with all these in-buffer settings, pressing <kbd>C-c C-c</kbd> activates any changes in the line.</p>
+   <p class="footnote"><small>[<a name="fn-52" href="#fnd-52">52</a>]</small> これら全てのバッファ内の設定は
+、<kbd>C-c C-c</kbd>とタイプすることでその行の変更を有効にすることができる</p>
 
    <p class="footnote"><small>[<a name="fn-53" href="#fnd-53">53</a>]</small> This is only true if the search does not involve more complex tests including properties (see <a href="#Property-searches">Property searches</a>).</p>
 
