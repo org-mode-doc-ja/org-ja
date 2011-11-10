@@ -4392,40 +4392,38 @@ list＊(@pxref{Plain lists})内にカーソルがすでにある場合にのみ�
 @noindent
 @vindex org-use-tag-inheritance
 @vindex org-tags-exclude-from-inheritance
-To limit tag inheritance to specific tags, or to turn it off entirely, use
-the variables @code{org-use-tag-inheritance} and
-@code{org-tags-exclude-from-inheritance}.
+特定のタグについてタグの継承を制限するには変数@code{org-use-tag-inheritance}、
+@code{org-tags-exclude-from-inheritance}を利用します。
 
 @vindex org-tags-match-list-sublevels
-When a headline matches during a tags search while tag inheritance is turned
-on, all the sublevels in the same tree will (for a simple match form) match
-as well@footnote{This is only true if the search does not involve more complex tests including properties (@pxref{Property searches}).}.  The list
-of matches may then become very long.  If you only want to see the first
-tags match in a subtree, configure the variable
-@code{org-tags-match-list-sublevels} (not recommended).
+タグの継承が有効の場合にタグの検索で見出しが一致したとき、その見出しの全ての
+サブツリーも同じように一致します@footnote{タグ以外の条件を加えて検索するとこの限りで
+はない(これはもしその検索が、より複雑な属性を含む条件を伴わないときだけ正し
+い)(@pxref{Property searches})}。始めにタグが一致したサブツリーのみを表示したいの
+であれば、変数@code{org-tags-match-list-sublevels}を設定してください
+(非推奨).
 
 @node Setting tags, Tag searches, Tag inheritance, Tags
 @section Setting tags
-@cindex setting tags
-@cindex tags, setting
+@cindex タグの設定
+@cindex タグ、設定
 
 @kindex M-@key{TAB}
-Tags can simply be typed into the buffer at the end of a headline.  After a
-colon, @kbd{M-@key{TAB}} offers completion on tags.  There is also a special
-command for inserting tags:
+簡単に見出しの最後へタグは入力することができます。コロンの次に@kbd{M-@key{TAB}}でタ
+グの補完をします。他にもタグの入力のための特別なコマンドが以下に続きます:
 
 @table @kbd
 @orgcmd{C-c C-q,org-set-tags-command}
 @cindex 完了、タグの
 @vindex org-tags-column
-Enter new tags for the current headline.  Org-mode will either offer
-completion or a special single-key interface for setting tags, see below.
-After pressing @key{RET}, the tags will be inserted and aligned to
-@code{org-tags-column}.  When called with a @kbd{C-u} prefix, all tags in
-the current buffer will be aligned to that column, just to make things look
-nice.  TAGS are automatically realigned after promotion, demotion, and TODO
-state changes (@pxref{TODO basics}).  @orgcmd{C-c C-c,org-set-tags-command}
-When the cursor is in a headline, this does the same as @kbd{C-c C-q}.
+現在の見出しに新しくタグを入力します。org-modeは補完を始めるか、特別な
+ワンキーのインタフェースを提示します。ワンキーのインタフェースは後で説
+明します。タグを入力し、@key{RET}キーをタイプするとタグが挿入され、
+@code{org-tags-column}の列に整列されます。数引数(@kbd{C-u}
+prefix)をつけて呼び出すと、カレントバッファの全てのタグがきれいに見え
+るように整列されます。TAGSは自動的に昇格や降格した後に再整列され、TODO
+の状態が変わります(@pxref{TODO basics})。@orgcmd{C-c C-c,org-set-tags-command} カー
+ソルが見出し行にある時は@kbd{C-c C-q}と同じ動作をします。
 @end table
 
 @vindex org-tag-alist
@@ -6388,8 +6386,8 @@ calendar                |  %:date
 テンプレート展開後のカーソル位置のために以下を用います。
 
 @smallexample
-%?          @r{テンプレートを完了したあと、カーソル位置をここに移動します。
-}@end smallexample
+%?          @r{テンプレートを完了したあと、カーソル位置をここに移動します。}
+@end smallexample
 
 
 @node Attachments, RSS Feeds, Capture, Capture - Refile - Archive
