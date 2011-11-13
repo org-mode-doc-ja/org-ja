@@ -269,7 +269,8 @@
 @end macro
 
 @copying
-このマニュアルは、Org-mode @value{VERSION}に対応しています。
+このマニュアルは、Org-mode
+@value{VERSION}に対応しています。
 
 Copyright @copyright{} 2004, 2005, 2006, 2007, 2008, 2009, 2010 Free
 Software Foundation, Inc.
@@ -359,7 +360,7 @@ Introduction
 
 * Summary::                  Org-modeで何ができるか
 * Installation::             Org-modeのインストール
-* Activation::               Org-modeを特定のバッファで有効にする方法
+* アクティベーション::  Org-modeを特定のバッファで有効にする方法
 * Feedback::                 バグ報告、アイデア、パッチなど
 * Conventions::              マニュアルで使われる植字の慣例
 
@@ -385,7 +386,7 @@ Tables
 
 
 * Built-in table editor::    単純なテーブル
-* Column width and alignment::  自動設定を解除する
+* 列幅と整列::          自動設定を解除する
 * Column groups::            縦の線を引き金にしてグループを作る
 * Orgtbl mode::              マイナーモードとしてのテーブルエディタ
 * The spreadsheet::          テーブルエディタはスプレッドシートの能力を持つ
@@ -853,7 +854,7 @@ MobileOrg
 @menu
 * Summary::                  Org-modeで何ができるか
 * Installation::             Org-modeのインストール
-* Activation::               Org-modeを特定のバッファで有効にする方法
+* アクティベーション::  Org-modeを特定のバッファで有効にする方法
 * Feedback::                 バグ報告、アイデア、パッチなど
 * Conventions::              マニュアルで使われる植字の慣例
 @end menu
@@ -927,7 +928,7 @@ Org-modeは、単純なものは単純なまま保持します。初めて起動
 @page
 
 
-@node Installation, Activation, Summary, Introduction
+@node Installation, アクティベーション, Summary, Introduction
 @section Installation
 @cindex インストール
 @cindex XEmacs
@@ -935,9 +936,9 @@ Org-modeは、単純なものは単純なまま保持します。初めて起動
 @b{Important:}
 @i{もしあなたが、Emacsに含まれた古いバージョンのOrgを利用している、もしくは、
 XEmacsのパッケージを利用している場合には、このセクションを飛ばして直接
-@ref{Activation}に移動してください。あなたのEmacsに含まれているOrg（もし存在する
-ならば）のバージョンを見るためには、@kbd{M-x load-library RET org}を実行してから
-、@kbd{M-x org-version}を実行してください。}
+@ref{アクティベーション}に移動してください。あなたのEmacsに含まれているOrg（もし
+存在するならば）のバージョンを見るためには、@kbd{M-x load-library RET org}を実行
+してから、@kbd{M-x org-version}を実行してください。}
 
 もしすでにインターネットからOrgをダウンロードしているならば、@file{.zip}か@file{.tar}
 もしくはGitアーカイブかは問いませんが、以下の手順に沿ってインストールしてく
@@ -998,8 +999,8 @@ make install-info-debian
 次節の解説ようにOrg-modeをアクティベーションすることを忘れないでください。
 @page
 
-@node Activation, Feedback, Installation, Introduction
-@section Activation
+@node アクティベーション, Feedback, Installation, Introduction
+@section アクティベーション
 @cindex activation
 @cindex autoload
 @cindex グローバルなキーバインド
@@ -1015,8 +1016,8 @@ make install-info-debian
 @code{(add-hook 'org-mode-hook 'turn-on-font-lock)}を使いOrg-modeのバッファについ
 て有効化してください。}。
 
-Org-modeの4つのコマンド（@command{org-store-link}, @command{org-capture},
-@command{org-agenda},
+Org-modeの4つのコマンド（@command{org-store-link},
+@command{org-capture}, @command{org-agenda},
 @command{org-iswitchb}）は、グローバルキーを割り当てて使いやすくするべきでしょう。言
 い換えれば、Org-modeのバッファだけではなく、Emcasでいつでも使えるようにしま
 す。これらのキーバインドとして以下を割り当てることをお勧めします。自分の環境
@@ -1053,7 +1054,7 @@ Org-modeの多くのコマンドは、リージョンが@i{active}な場合に�
 （nointent問題箇所）リージョンを選択するためにマウスを利用できます。もしくは
 、カーソルを移動する前に@kbd{C-@key{SPC}}を二回押します。
 
-@node Feedback, Conventions, Activation, Introduction
+@node Feedback, Conventions, アクティベーション, Introduction
 @section Feedback
 @cindex フィードバック
 @cindex バグレポート
@@ -1160,8 +1161,9 @@ TODOキーワードは、すべて大文字で記述されます。ユーザが�
 @cindex document structure
 @cindex structure of document
 
-Org-modeは、Outline modeをベースとしており、ドキュメントの構造を編集するため
-にフレキシブルなコマンドを用意しています。
+Org-modeは、Outline
+modeをベースとしており、ドキュメントの構造を編集するためにフレキシブルなコマ
+ンドを用意しています。
 
 @menu
 * Outlines::                 Org-modeはoutline-modeをベースにしています
@@ -1286,8 +1288,8 @@ modeの上で実行されます。アウトラインによって階層構造で�
 @kbd{S-@key{TAB}}は前のフィールドにジャンプするということに注意してください。
 
 @cindex show all, command
-@orgcmd{C-u C-u C-u @key{TAB},show-all} 全てを表示する。引き出しを含む。
- @orgcmd{C-c C-r,org-reveal}
+@orgcmd{C-u C-u C-u @key{TAB},show-all}
+全てを表示する。引き出しを含む。 @orgcmd{C-c C-r,org-reveal}
 カレントエントリーや、下の見出しや上の階層を表示して、その場所でのコン
 テクストを表示する。ツリーの抽出コマンド（@pxref{Sparse trees}）やアジェンダ
 のコマンド（@pxref{Agenda commands}）によって表示された場所の周辺で作業をす
@@ -1423,8 +1425,7 @@ q            @r{停止}
 サブツリーを上に移動する。（同じ階層の前のサブツリーと交換する。）
 @orgcmd{M-S-@key{down},org-move-subtree-down}
 サブツリーを下に移動する。（同一階層の次のサブツリーと交換する。）
-@orgcmd{C-c C-x C-w,org-cut-subtree}
-サブツリーをキルする。i.e.@:
+@orgcmd{C-c C-x C-w,org-cut-subtree} サブツリーをキルする。i.e.@:
 そのサブツリーをバッファから取り除くが、キルリングに保存する。Nという
 数字付きの前置引数をつけたときは、N個連続でサブツリーをキルする。
 @orgcmd{C-c C-x M-w,org-copy-subtree}
@@ -1466,8 +1467,9 @@ q            @r{停止}
 キーを拡張するために自分自身の関数を用意することもできます。@kbd{C-u C-u}
 という二重の前置引数を使用すると、複製されたエントリーは削除されます。
 @orgcmd{C-x n s,org-narrow-to-subtree}カレントのサブツリーのためにバッファを
-ナローイングします。@orgcmd{C-x n b,org-narrow-to-block} カレントのブロックの
-ためにバッファをナローイングします。@orgcmd{C-x n w,widen}
+ナローイングします。@orgcmd{C-x n b,org-narrow-to-block}
+カレントのブロックのためにバッファをナローイングします。
+@orgcmd{C-x n w,widen}
 ナローイングを取り除きバッファを広げます。@orgcmd{C-c *,org-toggle-heading}
 普通の行やプレーンなリストアイテムを見出しに変更します。（そのため、そ
 れらの場所によってはサブの見出しになります。）星汁うぃを取り除くことに
@@ -1528,8 +1530,8 @@ Org-modeにはそういうツリーを作成するためのいくつものコマ
 依存する。}
 　によって変更されるか、@kbd{C-c C-c}を押すことで消える。@kbd{C-u}前置引数が呼
 ばれたときは、以前のハイライトは維持される。そのため何度もこのコマンド
-を呼び出すと積み重ねることができる。@orgcmdkkc{M-g n,M-g M-n,next-error} そのバ
-ッファの中の次のツリーの抽出部分にジャンプする。
+を呼び出すと積み重ねることができる。@orgcmdkkc{M-g n,M-g M-n,next-error}
+そのバッファの中の次のツリーの抽出部分にジャンプする。
 @orgcmdkkc{M-g p,M-g M-p,previous-error}　そのバッファの前のツリーの抽出部分にジ
 ャンプする。
 @end table
@@ -1684,9 +1686,9 @@ Org-modeでは、これらのリストを正しく@footnote{Org-modeではEmacs�
 に区別されたままになります。@orgcmd{M-@key{RET},org-insert-heading}
 @vindex org-M-RET-may-split-line
 @vindex org-list-automatic-rules
-新しいアイテムをカレントの階層に挿入します。前置引数を用いると、新しい
-見出し (@pxref{Structure editing}.)となります。もしもこのコマンドがアイテム
-の途中で使用されるならば、そのアイテムは２つに@emph{分割}
+新しいアイテムをカレントの階層に挿入します。前置引数を用いると、新しい見出し
+(@pxref{Structure editing}.)となります。もしもこのコマンドがアイテムの途中で
+使用されるならば、そのアイテムは２つに@emph{分割}
 されます。そして2番目の部分は新しいアイテム@footnote{もしもアイテムを分割したく
 ないならば、@code{org-M-RET-may-split-line}変数をカスタマイズしてください。
 }となります。もしもこのコマンドが、@emph{本文の前で}実行されるならば、新し
@@ -1826,10 +1828,10 @@ LOGBOOKのための引き出しにタイムスタンプ付きのノートを追�
 
 @vindex org-hide-block-startup
 @cindex blocks, folding
-Org-modeはソースコードの例(@pxref{Literal examples}) から時刻のログ情報
-(@pxref{Clocking work time})を記録することまで、いろいろな目的のために、
-begin...endというブロックを使用します。このブロックでは、行の先頭でTABを押す
-ことによって、折り畳んだり、折り畳みを解いたりすることができます。
+Org-modeはソースコードの例(@pxref{Literal examples})
+から時刻のログ情報(@pxref{Clocking work time})を記録することまで、いろいろな目的の
+ために、begin...endというブロックを使用します。このブロックでは、行の先頭で
+TABを押すことによって、折り畳んだり、折り畳みを解いたりすることができます。
 @code{org-hide-block-startup}変数を設定するか、以下のようなファイル毎の設定をする
 ことで、起動時に全てのブロックを折り畳んでおくこともできます。
 
@@ -1989,19 +1991,20 @@ Org-modeは、高速で直感的なテーブルエディタを備えています
 (@pxref{Top,Calc,,Calc,Gnu Emacs Calculator Manual}).
 @end ifinfo
 @ifnotinfo
-（Emacs Calculatorの詳細は、同パッケージのマニュアルを参照してください。）
+（Emacs
+Calculatorの詳細は、同パッケージのマニュアルを参照してください。）
 @end ifnotinfo
 
 @menu
 * Built-in table editor::    単純なテーブル
-* Column width and alignment::  自動設定を解除する
+* 列幅と整列::          自動設定を解除する
 * Column groups::            縦の線を引き金にしてグループを作る
 * Orgtbl mode::              マイナーモードとしてのテーブルエディタ
 * The spreadsheet::          テーブルエディタはスプレッドシートの能力を持つ
 * Org-Plot::                 org-modeのテーブルからプロットする
 @end menu
 
-@node Built-in table editor, Column width and alignment, Tables, Tables
+@node Built-in table editor, 列幅と整列, Tables, Tables
 @section 組み込まれたテーブルエディタ
 @cindex テーブルエディタ（組み込み）
 
@@ -2159,9 +2162,9 @@ shift-selectionとこれに関連するモードでも使われています（@p
 @c
 @tsubheading{その他の機能} @orgcmd{C-c `,org-table-edit-field}
 個別のウィンドウでカーソル位置のフィールドを編集する。この昨日は、フィ
-ールド全体が表示されていないときに便利です（
-@pxref{Column width and alignment}）。プレフィックス@kbd{C-u}と伴って関数が呼ば
-れると、フィールドの全ての内容が表示されるため、フィールド内で編集できます。
+ールド全体が表示されていないときに便利です（@pxref{列幅と整列}）。プレフィッ
+クス@kbd{C-u}と伴って関数が呼ばれると、フィールドの全ての内容が表示される
+ため、フィールド内で編集できます。
 @item M-x org-table-import
 @c
 ファイルをテーブルとしてインポートする。テーブルは、タブもしくは空白で
@@ -2203,8 +2206,8 @@ org-modeのバッファにテーブル状のテキスト（訳注：文字列が
 （indent問題箇所）手動でテーブルを整列するために@kbd{C-c C-c}をまだ利用できます
 。
 
-@node Column width and alignment, Column groups, Built-in table editor, Tables
-@section Column width and alignment
+@node 列幅と整列, Column groups, Built-in table editor, Tables
+@section 列幅と整列
 @cindex narrow columns in tables
 @cindex alignment in tables
 
@@ -2263,7 +2266,7 @@ XEmacsでは動作しません}。次に行なわれるテーブルの整列で�
 書式の設定情報のみを含む行は、ドキュメントをエクスポートするときに自動的に削
 除されます。
 
-@node Column groups, Orgtbl mode, Column width and alignment, Tables
+@node Column groups, Orgtbl mode, 列幅と整列, Tables
 @section Column groups
 @cindex 列のグルーピング
 
@@ -2715,7 +2718,7 @@ org-modeはテーブルに含まれるすべてのアクティブな数式があ
 @orgcmdkkc{C-c =,C-u C-c =,org-table-eval-formula}
 ミニバッファでカーソル位置の列やフィールドに結びついた数式を編集する。
 @ref{Column formulas}と@ref{Field and range formulas}を参照してください。
- @orgcmd{C-u C-u C-c =,org-table-eval-formula}
+@orgcmd{C-u C-u C-c =,org-table-eval-formula}
 カーソル位置のフィールドにアクティブな数式（フィールドの数式、もしくは
 列の数式）を再挿入します。これはフィールド内で直接的に編集できるように
 するためです。ミニバッファでの編集葉理も有利なのは、@kbd{C-c ?}を使えるこ
@@ -2743,7 +2746,8 @@ org-modeはテーブルに含まれるすべてのアクティブな数式があ
 @orgcmdkkc{C-c C-c,C-x C-s,org-table-fedit-finish}
 数式エディタを抜けて、修正された数式を保存する。プレフィックス@kbd{C-u}を
 使うと、新しい数式をテーブル全体に適用します。
-@orgcmd{C-c C-q,org-table-fedit-abort} 変更を破棄して数式エディタを抜ける。
+@orgcmd{C-c C-q,org-table-fedit-abort}
+変更を破棄して数式エディタを抜ける。
 @orgcmd{C-c C-r,org-table-fedit-toggle-ref-type}
 数式エディタの全ての参照について、(@code{B3}のような）標準の記法と（@code{@@3$2}
 のような）内部の記法についてトグルする。
@@ -2842,9 +2846,9 @@ org-modeのバッファにある列の数式へのテストラインを上下に
 当てたいならば、テーブルの第一列を特別なマーキング文字を格納するために予約し
 ておく必要があります。
 @table @kbd
-@orgcmd{C-#,org-table-rotate-recalc-marks} 第一行の計算用マーカを@samp{ }、@samp{#}、
-@samp{*}、@samp{!}、@samp{$}の順番に循環する。アクティブリージョンがあれば、その領域
-のすべてのマーカを変更する。
+@orgcmd{C-#,org-table-rotate-recalc-marks}
+第一行の計算用マーカを@samp{ }、@samp{#}、@samp{*}、@samp{!}、@samp{$}の順番に循環する。アクテ
+ィブリージョンがあれば、その領域のすべてのマーカを変更する。
 @end table
 
 例として、学生の試験結果を集めて、自動再計算の機能を使うテーブルを示します。
@@ -3305,7 +3309,8 @@ IRCリンクの場合、@code{org-irc-link-to-logs}変数を@code{t}にした場
 支援を行います。たとえば、@kbd{file @key{RET}}をタイプすると、ファイル名の補完
 ((または、@kbd{C-u C-c C-l}をタイプします。以下を参照。)を行い、
 @kbd{bbdb @key{RET}}をタイプすると、連絡先の名前を補完することができます。
-@orgkey C-u C-c C-l
+@orgkey
+C-u C-c C-l
 @cindex ファイル名の補完
 @cindex 補完,ファイル名の
 @c
@@ -3442,10 +3447,11 @@ Org-modeだけでなく、どのEmacsのバッファーでも、Org-mode構文�
 
 上記の設定だと、@code{[[bugzilla:129]]}で特定のバグへリンクすることができ、
 @code{[[google:OrgMode]]}で@samp{OrgMode}をウェブ検索することができ、
-@code{[[gmap:51 Franklin Street, Boston]]}でFree Software Foundationの、
-@code{[[omap:Science Park 904, Amsterdam, The Netherlands]]}でCarstenのオフィスの
-地図上の位置を表示することができ、@code{[[ads:Dominik,C]]}でOrg-modeの作者がEmacs
-のハッキングの他に何をしているかを見つけることができます。
+@code{[[gmap:51 Franklin Street, Boston]]}でFree Software
+Foundationの、@code{[[omap:Science Park 904, Amsterdam, The Netherlands]]}で
+Carstenのオフィスの地図上の位置を表示することができ、@code{[[ads:Dominik,C]]}で
+Org-modeの作者がEmacsのハッキングの他に何をしているかを見つけることができま
+す。
 
 ある特定のOrg-modeバッファーでだけリンクの省略記法を使いたい場合は、次のよう
 にすることで定義できます。
@@ -4251,7 +4257,8 @@ habits which should only be done in certain contexts, for example.
 ェックボックスは、グローバルTODOリストに追加されません。そのためタスクを分岐
 するのに便利です。もしくは、買い物リストに使えます。チェックボックスをチェッ
 クした状態するには、@kbd{C-c C-c}を使ってください。もしくは、マウスでクリックし
-てください。「Piotr Zielinskiの@file{org-mouse.el}に感謝」。
+てください。「Piotr
+Zielinskiの@file{org-mouse.el}に感謝」。
 
 以下は、チェックボックスリストの例です:
 
@@ -4311,9 +4318,10 @@ list＊「の最初の列」に置くことができいます。各クッキー�
 クスをトグルします。そして残りのボックスを最初のボックスと同じ状態にし
 ます。前置引数と使用すると、リージョン内のすべてのチェックボックスを作
 成するか削除します。
-@item If the cursor is in a headline, toggle checkboxes in the region between this
-headline and the next (so @emph{not} the entire subtree).
-@item If there is no active region, just toggle the checkbox at point.
+@item カーソルが見出し上にある場合、現在の見出しから次の見出しのリージョン内
+のチェックボックスをトグルします。「つまりサブツリー全体では@emph{ない}」
+@item アクティブなリージョンがなければ、その場所のチェックボックスをトグルし
+ます。
 @end itemize
 @orgcmd{M-S-@key{RET},org-insert-todo-heading}は新しい項目をチェックボックスと共に挿入
 します。これは、＊plain
@@ -4422,8 +4430,8 @@ list＊(@pxref{Plain lists})内にカーソルがすでにある場合にのみ�
 @code{org-tags-column}の列に整列されます。数引数(@kbd{C-u}
 prefix)をつけて呼び出すと、カレントバッファの全てのタグがきれいに見え
 るように整列されます。TAGSは自動的に昇格や降格した後に再整列され、TODO
-の状態が変わります(@pxref{TODO basics})。@orgcmd{C-c C-c,org-set-tags-command} カー
-ソルが見出し行にある時は@kbd{C-c C-q}と同じ動作をします。
+の状態が変わります(@pxref{TODO basics})。@orgcmd{C-c C-c,org-set-tags-command}
+カーソルが見出し行にある時は@kbd{C-c C-q}と同じ動作をします。
 @end table
 
 @vindex org-tag-alist
@@ -4755,8 +4763,9 @@ FILE         @r{エントリのあるファイル名}
 @orgcmdkkc{C-c / m,C-c \\,org-match-sparse-tree}
 全てのマッチしたエントリについて抽出したツリーを作成します。前置引数
 @kbd{C-u}をつけると、TODO行でない見出しは無視されます。
-@orgcmd{C-c a m,org-tags-view} 全てのアジェンダファイルからタグ・プロパティに
-マッチしたグローバルなリストを作成します。
+@orgcmd{C-c a m,org-tags-view}
+全てのアジェンダファイルからタグ・プロパティにマッチしたグローバルなリ
+ストを作成します。
 @xref{Matching tags and properties}.  @orgcmd{C-c a M,org-tags-view}
 @vindex org-tags-match-list-sublevels
 全てのアジェンダファイルからタグにマッチするグローバルなリストを作成し
@@ -5978,7 +5987,7 @@ Org-modeのアジェンダが半端時間を絶えずチェックしているフ
 @item C-c C-x ,
 @c removed the sentence because it is redundant to the following item
 タイマーを一時停止します。一時停止されている場合には再開します
- (@command{org-timer-pause-or-continue})。
+(@command{org-timer-pause-or-continue})。
 @kindex C-u C-c C-x ,
 @item C-u C-c C-x ,
 タイマーを停止します。これを実行した後には古いタイマーを再開することは
@@ -6085,9 +6094,9 @@ Org-modeはそれをテンプレートなどで強化しました。
 グローバルで、デフォルトではアクティブになっておらず、インストールする
 必要があることに注意が必要です。もしテンプレートがあるならば
 @cindex date tree
-defined @pxref{Capture templates}, これらのテンプレートの選択か、デフォルト
-のテンプレートを使用した新しい Org
-アウトラインノードが使用されます。
+defined @pxref{Capture templates},
+これらのテンプレートの選択か、デフォルトのテンプレートを使用した新しい
+Org アウトラインノードが使用されます。
 
 @orgcmd{C-c C-c,org-capture-finalize}キャプチャバッファに情報を入力し終わった
 ら、@kbd{C-c C-c}はキャプチャプロセスの前に設定されたウィンドウへ戻します
@@ -6130,7 +6139,8 @@ defined @pxref{Capture templates}, これらのテンプレートの選択か、
 ースを通じて行うことです。
 
 @table @kbd
-@orgkey{C-c c C} @code{org-capture-templates}変数のカスタマイズを行います。
+@orgkey{C-c c C}
+@code{org-capture-templates}変数のカスタマイズを行います。
 @end table
 
 テンプレート定義の正式な説明の前に、例を挙げます。一般的なTODOエントリーを作
@@ -6435,8 +6445,8 @@ Wiegleyの貢献によってOrg-modeへ追加されました。
 コピー/移動/リンクメソッドを使ってファイルを添付します。ハードリンクは
 すべてのシステムでサポートされていないことに注意が必要です。
 
-@orgcmdtkc{n,C-c C-a n,org-attach-new} Emacsのバッファとして新しい添付を作成しま
-す。
+@orgcmdtkc{n,C-c C-a n,org-attach-new}
+Emacsのバッファとして新しい添付を作成します。
 
 @orgcmdtkc{z,C-c C-a z,org-attach-sync}
 あなた自身で添付を追加した場合に、現在のタスクをその添付ディレクトリと
@@ -6451,13 +6461,14 @@ Wiegleyの貢献によってOrg-modeへ追加されました。
 @orgcmdtkc{O,C-c C-a O,org-attach-open-in-emacs}
 これも添付を開きますが、強制的にファイルをEmacsを用います。
 
-@orgcmdtkc{f,C-c C-a f,org-attach-reveal} 現在のタスクの添付ディレクトリを開きま
-す。
+@orgcmdtkc{f,C-c C-a f,org-attach-reveal}
+現在のタスクの添付ディレクトリを開きます。
 
 @orgcmdtkc{F,C-c C-a F,org-attach-reveal-in-emacs}
 これもディレクトリを開きますが、強制的にEmacs内で@command{dired}を用います。
 
-@orgcmdtkc{d,C-c C-a d,org-attach-delete-one} 添付の１つを選択し削除します。
+@orgcmdtkc{d,C-c C-a d,org-attach-delete-one}
+添付の１つを選択し削除します。
 
 @orgcmdtkc{D,C-c C-a D,org-attach-delete-all}
 タスクに関連する添付をすべて削除します。安全な方法は@command{dired}を用いてデ
@@ -6566,9 +6577,8 @@ Org-modeを扱うためのプロトコルを外部のアプリケーションか
 @code{lognoterefile}、そして@code{nologrefile}に対応している。}がセットされてい
 る場合、タイムスタンプやノートがエントリーがリファイルされたときに記録
 されます。@orgkey{C-u C-c C-w}　リファイルのインターフェースを見出しのジャン
-プに使います。
-@orgcmd{C-u C-u C-c C-w,org-refile-goto-last-stored} @code{org-refile}が最後に木を
-移動させた場所に移動します。
+プに使います。@orgcmd{C-u C-u C-c C-w,org-refile-goto-last-stored}
+@code{org-refile}が最後に木を移動させた場所に移動します。
 @item C-2 C-c C-w
 現在計時しているアイテムの子としてリファイルします。
 @item C-0 C-c C-w @ @r{or} @ C-u C-u C-u C-c C-w
@@ -6655,8 +6665,9 @@ Org-modeを扱うためのプロトコルを外部のアプリケーションか
 もし異なるファイルへサブツリーを移動させずに、それをアジェンダビューに表示さ
 せないようにするには、@code{ARCHIVE tag}を使うことができます。
 
-ARCHIVE タグ(@pxref{Tags})でマークされている見出しはアウトラインツリー内の場所に留
-まりますが、下記のような振る舞いをします。
+ARCHIVE
+タグ(@pxref{Tags})でマークされている見出しはアウトラインツリー内の場所に留まります
+が、下記のような振る舞いをします。
 @itemize @minus
 @item @vindex org-sycle-open-archived-trees
 表示を切り替えるコマンド(@pxref{Visibility cycling})では開くことはできません
@@ -6687,13 +6698,14 @@ ARCHIVE タグ(@pxref{Tags})でマークされている見出しはアウトラ�
 @table @kbd
 @orgcmd{C-c C-x a,org-toggle-archive-tag}現在の見出しのARCHIVEタグをトグルす
 る。もしタグが設定されているならば、見出しは
-shadowed faceに変更され、以下のサブツリーは隠されます。@orgkey{C-u C-c C-x a}
-現在の見出しが持つ直接の子がアーカイブされるべきかチェックする。これを
-おこなうには、それぞれのサブツリーがオープンなTODOエントリーかチェック
-される。もし何も見つからなかった場合、コマンドは子にARCHIVEタグをセッ
-トする。もしカーソルがコマンド実行時に見出し上に@emph{無い}場合、レベル１の
-ツリーがチェックされる。@orgcmd{C-@kbd{TAB},org-force-cycle-archived}もしARCHIVE
-タグがついていてもツリーの切り替えを行う
+shadowed
+faceに変更され、以下のサブツリーは隠されます。@orgkey{C-u C-c C-x a}現在の見
+出しが持つ直接の子がアーカイブされるべきかチェックする。これをおこなう
+には、それぞれのサブツリーがオープンなTODOエントリーかチェックされる。
+もし何も見つからなかった場合、コマンドは子にARCHIVEタグをセットする。
+もしカーソルがコマンド実行時に見出し上に@emph{無い}場合、レベル１のツリーが
+チェックされる。@orgcmd{C-@kbd{TAB},org-force-cycle-archived}もしARCHIVEタグがつ
+いていてもツリーの切り替えを行う
 @orgcmd{C-c C-x A,org-archive-to-archive-sibling}現在のエントリーを@emph{アーカイ
 ブ兄弟}に移動する。これは見出しが@samp{Archive}か@samp{ARCHIVE}タグの付いたエン
 トリーの兄弟である。このエントリーはこの兄弟の子になる。そのため、継承
@@ -6722,10 +6734,12 @@ Org-modeでは、いろいろな基準によってアイテムを選択するこ
 て見出しを表示します、
 @item @emph{タイムラインビュー}　1つのOrg-modeのファイルの中に含まれている全ての
 イベントを時間順のビューに表示します、
-@item a @emph{テキストの検索ビュー}　複数のファイルの中かから、指定したキーワード
-を含んでいるすべてのエントリーを表示します、
-@item a @emph{詳細が未決定のプロジェクトビュー}　現在作業が進んでいないプロジェク
-トを表示します。そして、
+@item a
+@emph{テキストの検索ビュー}　複数のファイルの中かから、指定したキーワードを
+含んでいるすべてのエントリーを表示します、
+@item a
+@emph{詳細が未決定のプロジェクトビュー}　現在作業が進んでいないプロジェクト
+を表示します。そして、
 @item @emph{カスタムビュー}　特別な検索や異なるビューの組合せによるビューです。
 @end itemize
 
@@ -7563,8 +7577,8 @@ Followモードをトグルする。Followモードではアジェンダバッ�
 @c
 @c
 @c
-Logbook modeにするかどうかをトグルします。Logbook modeの中では、ログの
-取得中に(変数
+Logbook modeにするかどうかをトグルします。Logbook
+modeの中では、ログの取得中に(変数
 @code{org-log-done})DONEと印が付けられたエントリーが、その日の時刻を持って
 いるエントリーとして、アジェンダの中に表示されます。
 @code{org-agenda-log-mode-items}変数を用いてlogモードに含まれるエントリーの
@@ -7934,7 +7948,8 @@ d  @r{指定した日をデッドラインとして設定する。}
 @vindex org-agenda-exporter-settings
 アジェンダビューを1つのファイルに書き出します。選択したファイル名の拡張子に
 従って、そのビューは、HTML
-(拡張子が@file{.html}または@file{.htm})、Postscript (拡張子@file{.ps})、PDF
+(拡張子が@file{.html}または@file{.htm})、Postscript
+(拡張子@file{.ps})、PDF
 (拡張子@file{.pdf})、そしてプレーンテキスト(その他の拡張子）などにエクスポートさ
 れます。@kbd{C-u}という前置引数を用いてコマンドを呼び出したならば、即座に新しく
 作成されたファイルが開きます。エクスポートの間に使用されている@file{ps-print}およ
@@ -8331,7 +8346,8 @@ Org-modeはアジェンダの中で表示された値を合計するでしょう
 較することができるので、優位性を持ちます。この機能はアジェンダのカラム
 ビューにおける重要なアプリケーションのひとつです。もしもあなたが表示さ
 れている期間の中の作業時間についての情報を得たいならば、clock
-table mode（@kbd{R}をアジェンダの中で入力する）を使用してください。
+table
+mode（@kbd{R}をアジェンダの中で入力する）を使用してください。
 @end enumerate
 
 
@@ -9028,9 +9044,10 @@ ASCII形式でエクスポートすることでOrgファイルの読みやすく
 られます。
 HTMLのエクスポートではノートをウェブに公開できるようになりますし,
 XOXOフォーマットは他の様々なアプリケーションでやりとりするうえで確かな基礎と
-なります。 @LaTeX{}
+なります。
+@LaTeX{}
 のエクスポートでは、org-modeとその構造化された編集機能を使って、容易に
- @LaTeX{}
+@LaTeX{}
 のファイルを出力することができます。DocBookのエクスポートでは、Orgファイルを
 DocBookのツールを使った様々なフォーマットに変換することが可能です。プロジェ
 クトの管理では、TaskJuggler形式のエクスポートを使って、ガントリソースチャー
@@ -9067,37 +9084,43 @@ org-modeは、 @code{transient-mark-mode} がオンの時(Emacs
 @vindex org-export-select-tags
 @vindex org-export-exclude-tags
 エクスポートしたいドキュメントのある部分を選択、または除外する時にタグを使う
-ことができます。 その挙動は、
-@code{org-export-select-tags} と @code{org-export-exclude-tags}
-の二つの変数により決まります。
+ことができます。
+その挙動は、 @code{org-export-select-tags} と
+@code{org-export-exclude-tags} の二つの変数により決まります。
 
-org-modeはまず最初に @emph{select} タグがバッファにないかチェックします。 あった
-場合は,
+org-modeはまず最初に @emph{select}
+タグがバッファにないかチェックします。
+あった場合は,
 タグがない全てのツリーは除外されます。もし選択したツリーがサブツリーだった場
 合、それより上の階層はエクスポートされるものとして選択されますが,
 それより下の階層は選択されません。
 
 @noindent
-もし、選択されたタグがなかった場合, バッファにある全ての内容がエクスポートさ
-れるものとして選択されるでしょう。
+もし、選択されたタグがなかった場合,
+バッファにある全ての内容がエクスポートされるものとして選択されるでしょう。
 
 @noindent
-最後に,  @emph{exclude} タグでマークされていない全てのサブツリーはエクスポートバ
-ッファから除かれるでしょう。
+最後に,  @emph{exclude}
+タグでマークされていない全てのサブツリーはエクスポートバッファから除かれるで
+しょう。
 
 @node Export options, The export dispatcher, Selective export, Exporting
 @section Export options
 @cindex エクスポートのオプション
 
 @cindex オプションのキーワードの補完
-エクスポートする際にはバッファにある特別な行が読みこまれます。 その行には追
-加的な情報が含まれており、ファイルの中でどこにでも書くことができます。
-@kbd{C-c C-e t} と入力することで、バッファにそのような行をセットで挿入することが
-できます。それぞれの行で @samp{#+}
-と入力した後に @kbd{M-@key{TAB}} による補完を行ない、 (@pxref{Completion})
+エクスポートする際にはバッファにある特別な行が読みこまれます。
+その行には追加的な情報が含まれており、ファイルの中でどこにでも書くことができ
+ます。
+@kbd{C-c C-e t}
+と入力することで、バッファにそのような行をセットで挿入することができます。そ
+れぞれの行で
+@samp{#+} と入力した後に @kbd{M-@key{TAB}}
+による補完を行ない、 (@pxref{Completion})
 キーワードが正しいか、確認してみると良いでしょう。エクスポートと関連のない、
-バッファ内の設定の概要については @ref{In-buffer settings} を参照してください。特
-に、 @code{#+SETUPFILE}
+バッファ内の設定の概要については
+@ref{In-buffer settings} を参照してください。特に、
+@code{#+SETUPFILE}
 を使うことによって含めることができる別のファイルの中でよく使われる(エクスポ
 ートの)オプションを指定できることに注意してください
 
@@ -9151,8 +9174,9 @@ org-modeはまず最初に @emph{select} タグがバッファにないかチェ
 @end example
 
 @noindent
-OPTIONS行は 以下のようなエクスポートの設定を示すコンパクトな式です。
- @footnote{もし、このように多くのオプションを設定したい時は, それぞれオプション行を作
+OPTIONS行は
+以下のようなエクスポートの設定を示すコンパクトな式です。
+@footnote{もし、このように多くのオプションを設定したい時は, それぞれオプション行を作
 りことができます。} 
 @cindex 見出しの階層
 @cindex 章の番号
@@ -9197,23 +9221,28 @@ timestamp: @r{作成した日付を出力するかどうか}
 d:         @r{drawerを出力するかどうか}
 @end example
 @noindent
-これらのオプションはHTML、 @LaTeX{} の両方のエクスポートに影響します。 @code{TeX} と
- @code{LaTeX}
-のオプションを除き @LaTeX{} のエクスポートをするのに、それぞれ @code{t} 、または
- @code{nil} となります。
+これらのオプションはHTML、 @LaTeX{}
+の両方のエクスポートに影響します。 @code{TeX} と
+@code{LaTeX} のオプションを除き @LaTeX{}
+のエクスポートをするのに、それぞれ @code{t} 、または
+@code{nil} となります。
 
- @code{org-export-html-pre/postamble} を @code{t} とするとHTMLにエクスポートする時に
-@code{author} 、 @code{email} 及び @code{creator} の値は上書きされるでしょう。 代わりに
+ @code{org-export-html-pre/postamble} を @code{t}
+とするとHTMLにエクスポートする時に @code{author} 、
+@code{email} 及び @code{creator}
+の値は上書きされるでしょう。 代わりに
 @code{org-export-html-pre/postamble-format} が用いられます。
 
-このようなオプションの初期値は変数のセットで与えられます。 そのような変数は
-、OPTIONSのキーと公開するキーにも対応しています。
-(@pxref{Project alist}), @code{org-export-plist-vars} の定数を見てください。
+このようなオプションの初期値は変数のセットで与えられます。
+そのような変数は、OPTIONSのキーと公開するキーにも対応しています。
+(@pxref{Project alist}), @code{org-export-plist-vars}
+の定数を見てください。
 
-エクスポートのコマンドを呼びだす前に、 @kbd{C-c @@} で選択した単一のサブツリーを
-エクスポートする時、そのサブツリーは、
+エクスポートのコマンドを呼びだす前に、 @kbd{C-c @@}
+で選択した単一のサブツリーをエクスポートする時、そのサブツリーは、
 @code{EXPORT_FILE_NAME} 、 @code{EXPORT_TITLE} 、 @code{EXPORT_TEXT} 、
-@code{EXPORT_AUTHOR} 、 @code{EXPORT_DATE} 、 そして @code{EXPORT_OPTIONS}
+@code{EXPORT_AUTHOR} 、 @code{EXPORT_DATE} 、 そして
+@code{EXPORT_OPTIONS}
 プロパティでエクスポートの設定を無視することができます。
 
 @node The export dispatcher, ASCII/Latin-1/UTF-8 export, Export options, Exporting
@@ -9233,20 +9262,22 @@ d:         @r{drawerを出力するかどうか}
 @vindex org-export-run-in-background
 エクスポート、または公開のコマンド選択画面です。エクスポート、または公
 開のコマンドを起動するのに必要なキーがヘルプウィンドウに表示されます。
-前置引数として、入力すると、直接エクスポート機能となります。二重の前置
-引数 @kbd{C-u C-u}
+前置引数として、入力すると、直接エクスポート機能となります。二重の前置引数
+@kbd{C-u C-u}
 を入力することで、コマンドは別のEmacsプロセスにおいてバックグラウンド
 で実行されます。@footnote{このような挙動をデフォルトにするには、
- @code{org-export-run-in-background}変数を設定してください
-.}.  @orgcmd{C-c C-e v,org-export-visible} @kbd{C-c C-e} のように動作しますが、 
-今見えている文章だけがエクスポートされます。
-(i.e.@: アウトライン表示により、隠されていない文章
-).  @orgcmd{C-u C-u C-c C-e,org-export}
+ @code{org-export-run-in-background}変数を設定してください.}.
+@orgcmd{C-c C-e v,org-export-visible} @kbd{C-c C-e}
+のように動作しますが、
+今見えている文章だけがエクスポートされます。 (i.e.@:
+アウトライン表示により、隠されていない文章).
+@orgcmd{C-u C-u C-c C-e,org-export}
 @vindex org-export-run-in-background
-エクスポート機能が呼ばれますが、 @code{org-export-run-in-background} の設定
-と逆の挙動となります。 i.e.@:
-動いていないバックグラウンドプロセスを呼びだしたり, 現在のEmacsのプロ
-セスで強制的に実行したりします。
+エクスポート機能が呼ばれますが、
+@code{org-export-run-in-background}
+の設定と逆の挙動となります。 i.e.@:
+動いていないバックグラウンドプロセスを呼びだしたり,
+現在のEmacsのプロセスで強制的に実行したりします。
 @end table
 
 @node ASCII/Latin-1/UTF-8 export, HTML export, The export dispatcher, Exporting
@@ -9265,42 +9296,47 @@ ASCII形式へのエクスポートは、org-modeのファイルをASCIIのみ�
 @table @kbd
 @orgcmd{C-c C-e a,org-export-as-ascii}
 @cindex プロパティ、EXPORT_FILE_NAME
-ASCII形式のファイルをエクスポートします。 Orgファイルを @file{myfile.org} 
-だとすると、ASCII形式のファイルは
-@file{myfile.txt} となるでしょう。 そのファイルは警告なしに上書きされます。
-もしアクティブなリージョン
+ASCII形式のファイルをエクスポートします。
+Orgファイルを @file{myfile.org}
+だとすると、ASCII形式のファイルは @file{myfile.txt}
+となるでしょう。
+そのファイルは警告なしに上書きされます。もしアクティブなリージョン
 @footnote{@code{transient-mark-mode} が有効である必要があります。} があった場合,
-そのリージョンのみがエクスポートされます。 選択したリージョンが一つの
-ツリー @footnote{現在のサブツリーの選択するには、 @kbd{C-c @@} と入力してください。
-}を含んでいた場合、そのツリーの見出しがドキュメントのタイトルとなるで
-しょう. 見出しがあるか、または
-@code{EXPORT_FILE_NAME} プロパティを継承していた場合、 エクスポートする際に
-はその名前が使われるでしょう。
-@orgcmd{C-c C-e A,org-export-as-ascii-to-buffer} 一時的なバッファに出力し、フ
-ァイルを作成しません。
-@orgcmd{C-c C-e n,org-export-as-latin1} @xorgcmd{C-c C-e N,org-export-as-latin1-to-buffer} 上に示したコマンドのような動作をしますが,
+そのリージョンのみがエクスポートされます。
+選択したリージョンが一つのツリー
+@footnote{現在のサブツリーの選択するには、 @kbd{C-c @@} と入力してください。}を含ん
+でいた場合、そのツリーの見出しがドキュメントのタイトルとなるでしょう.
+見出しがあるか、または @code{EXPORT_FILE_NAME}
+プロパティを継承していた場合、
+エクスポートする際にはその名前が使われるでしょう。
+@orgcmd{C-c C-e A,org-export-as-ascii-to-buffer}
+一時的なバッファに出力し、ファイルを作成しません。
+@orgcmd{C-c C-e n,org-export-as-latin1} @xorgcmd{C-c C-e N,org-export-as-latin1-to-buffer}
+上に示したコマンドのような動作をしますが,
 Latin-1でエンコーディングされたものが出力されます。
-  @orgcmd{C-c C-e u,org-export-as-utf8}
-@xorgcmd{C-c C-e U,org-export-as-utf8-to-buffer} 上に示したコマンドのような動
-作をしますが,
+@orgcmd{C-c C-e u,org-export-as-utf8} @xorgcmd{C-c C-e U,org-export-as-utf8-to-buffer}
+上に示したコマンドのような動作をしますが,
 UTF-8でエンコーディングされたものが出力されます。
 @item C-c C-e v a/n/u
 文書の中で、バッファで表示されている部分だけを出力する。
 @end table
 
 @cindex （外部出力に用いる）ヘッドラインレベル
-エクスポートされたものでは、 最初の3つのアウトラインの階層が一般的な文書の構
-造と見なされて、見出しとなります。
-それ以外の階層はアイテムのリストとしてエクスポートされます。 この違いを異な
-る階層に変えたい場合は、 前置引数で、その階層を指定します。  例えば、
+エクスポートされたものでは、
+最初の3つのアウトラインの階層が一般的な文書の構造と見なされて、見出しとなり
+ます。
+それ以外の階層はアイテムのリストとしてエクスポートされます。
+この違いを異なる階層に変えたい場合は、
+前置引数で、その階層を指定します。  例えば、
 
 @example
 @kbd{C-1 C-c C-e a}
 @end example
 
 @noindent
-は 最初の階層のみを見出しとし、それ以外はアイテムとなります。見出しがアイテ
-ムに変更された時、
+は
+最初の階層のみを見出しとし、それ以外はアイテムとなります。見出しがアイテムに
+変更された時、
 見出し後の文章のインデントは、アイテムの下にうまく調和するように変更されます
 。
 この変更は、最初の本文が全体のインデントを示しているという仮定のもとで実行さ
@@ -9318,10 +9354,10 @@ UTF-8でエンコーディングされたものが出力されます。
 @section HTML export
 @cindex HTML export
 
-org-modeには多くのHTMLのフォーマットに対応したHTML (XHTML 1.0 準拠)エクスポ
-ート機能があります。それは、John
-Gruberが開発した @emph{markdown} 言語に似ていますが、org-modeではさらにテーブルも
-サポートしています。
+org-modeには多くのHTMLのフォーマットに対応したHTML (XHTML
+1.0 準拠)エクスポート機能があります。それは、John
+Gruberが開発した @emph{markdown}
+言語に似ていますが、org-modeではさらにテーブルもサポートしています。
 
 @menu
 * HTML Export commands::     HTMLへのエクスポートをどうやって起動するか
@@ -9348,17 +9384,18 @@ HTMLファイル@file{myfile.html}をエクスポートします。Orgファイ�
 をエクスポートすると、ASCII形式のファイルは@file{myfile.html}となるでしょう
 。
 そのファイルは警告なしに上書きされます。もしアクティブなリージョン
- @footnote{@code{transient-mark-mode} が有効である必要があります。} があった場合, そ
-のリージョンのみがエクスポートされます。 選択したリージョンが一つのツリー
+@footnote{@code{transient-mark-mode} が有効である必要があります。} があった場合,
+そのリージョンのみがエクスポートされます。
+選択したリージョンが一つのツリー
 @footnote{現在のサブツリーの選択するには、 @kbd{C-c @@} と入力してください。}を含ん
-でいた場合、そのツリーの見出しがドキュメントのタイトルとなるでしょう. 
-見出しがあるか、または
-@code{EXPORT_FILE_NAME} プロパティを継承していた場合、 エクスポートする際に
-はその名前が使われるでしょう。
-@orgcmd{C-c C-e b,org-export-as-html-and-open} HTMLファイルをエクスポートし、
-そのファイルをブラウザで開きます。
-@orgcmd{C-c C-e H,org-export-as-html-to-buffer} 一時的なバッファに出力し、フ
-ァイルを作成しません。
+でいた場合、そのツリーの見出しがドキュメントのタイトルとなるでしょう.
+見出しがあるか、または @code{EXPORT_FILE_NAME}
+プロパティを継承していた場合、
+エクスポートする際にはその名前が使われるでしょう。
+@orgcmd{C-c C-e b,org-export-as-html-and-open}
+HTMLファイルをエクスポートし、そのファイルをブラウザで開きます。
+@orgcmd{C-c C-e H,org-export-as-html-to-buffer}
+一時的なバッファに出力し、ファイルを作成しません。
 @orgcmd{C-c C-e R,org-export-region-as-html}
 アクティブなリージョンを一時的なバッファに出力します。前置引数があると
 ヘッダーとフッターを出力せずに、リージョンのHTMLのみを出力します。これ
@@ -9374,10 +9411,12 @@ org-modeの記法が使われているという前提でアクティブなリー
 @end table
 
 @cindex （外部出力に用いる）ヘッドラインレベル
-エクスポートされたものでは、 最初の3つのアウトラインの階層が一般的な文書の構
-造と見なされて、見出しとなります。
-それ以外の階層はアイテムのリストとしてエクスポートされます。 この違いを異な
-る階層に変えたい場合は、 前置引数で、その階層を指定します。  例えば、
+エクスポートされたものでは、
+最初の3つのアウトラインの階層が一般的な文書の構造と見なされて、見出しとなり
+ます。
+それ以外の階層はアイテムのリストとしてエクスポートされます。
+この違いを異なる階層に変えたい場合は、
+前置引数で、その階層を指定します。  例えば、
 
 @example
 @kbd{C-2 C-c C-e b}
@@ -9390,10 +9429,11 @@ org-modeの記法が使われているという前提でアクティブなリー
 @node Quoting HTML tags, Links in HTML export, HTML Export commands, HTML export
 @subsection Quoting HTML tags
 
-HTMLにエクスポートする際、プレインな@samp{<} and @samp{>}は常に
-@samp{&lt;}と@samp{&gt;}に変換されます。もし単純なHTMLタグをそのまま含めたい時は
-, @samp{@@<b>bold text@@</b>}のようにma@samp{@@}でマークします。これは単純なHTMLタグでしか動作
-しませんので注意してください。
+HTMLにエクスポートする際、プレインな@samp{<} and
+@samp{>}は常に
+@samp{&lt;}と@samp{&gt;}に変換されます。もし単純なHTMLタグをそのまま含めたい時は,
+@samp{@@<b>bold text@@</b>}のようにma@samp{@@}でマークします。これは単純なHTMLタグでしか動作し
+ませんので注意してください。
 エクスポートするファイルにさらに広範囲なHTMLをそのままコピーするには次のよう
 なブロックが使えます。
 
@@ -9446,7 +9486,8 @@ HTMLにエクスポートする際、プレインな@samp{<} and @samp{>}は常�
 org-modeの表は、@code{org-export-html-table-tag}で定義されているテーブルのタグを
 使ってHTMLにエクスポートされます。
 デフォルトの設定では、セルの罫線とフレームがない状態でテーブルが出力されます
-。 個々のテーブルでその設定を変えたい場合は,
+。
+個々のテーブルでその設定を変えたい場合は,
 次のような行をテーブルの前に記述してください。
 
 @cindex #+CAPTION
@@ -9467,7 +9508,8 @@ HTMLのエクスポートではOrgファイルにリンクがある画像をイ�
 その画像はリンクされているクリック可能な部分として扱われます。
 デフォルトでは、@footnote{ただし、@code{org-export-html-inline-images}を確認してください。
 },
-リンクにdescriptionがなければ、画像はインライン表示されます。 つまり、
+リンクにdescriptionがなければ、画像はインライン表示されます。
+つまり、
 @samp{[[file:myimg.jpg]]}はインライン表示されますが、
 @samp{[[file:myimg.jpg][the image]]}はが画像にリンクされる@samp{the image}というテキス
 トリンクが作られます。
@@ -9620,8 +9662,9 @@ p.footnote          @r{脚注定義の文章、脚注を含む}
 に@code{<style>}
 @code{</style>}セクションに直接記述してください。
 
-サブツリーにスタイルを追加するには, ツリーにクラスを適用する
-@code{:HTML_CONTAINER_CLASS:} プロパティを
+サブツリーにスタイルを追加するには,
+ツリーにクラスを適用する@code{:HTML_CONTAINER_CLASS:}
+プロパティを
 使います。個々の見出しにCSSスタイルを適用するには、@code{:CUSTOM_ID:}プロパティで
 指定されるIDを使うことができます。
 
@@ -9745,8 +9788,8 @@ Guerryによって書かれた@LaTeX{}のエクスポート機能があります
 場合、ツリーの見出しがタイトルになります。ツリーの見出しのエントリーが
 @code{EXPORT_FILE_NAME}プロパティを継承、または持っている場合、エクスポート
 される際には、その名前が使われるでしょう。
-@orgcmd{C-c C-e L,org-export-as-latex-to-buffer} 一時バッファに出力します。フ
-ァイルを作りません。
+@orgcmd{C-c C-e L,org-export-as-latex-to-buffer}
+一時バッファに出力します。ファイルを作りません。
 @item C-c C-e v l/L
 文書の中で、バッファで表示されている部分だけを出力する。
 @item M-x org-export-region-as-latex
@@ -9754,21 +9797,23 @@ Org-modeの記法が使われているという前提でリージョンを@LaTeX
 。これはどのバッファでも起動するグローバルなコマンドです。
 @item M-x org-replace-region-by-latex
 アクティブなリージョンを(Org-modeの記法が使われている前提で)@LaTeX{}コー
-ドに置き変えます。@orgcmd{C-c C-e p,org-export-as-pdf} @LaTeX{}に出力し、PDFにも
-変換します。@orgcmd{C-c C-e d,org-export-as-pdf-and-open} @LaTeX{}に出力し、PDF
-にも変換します。その際出力されたPDFファイルを開きます。
+ドに置き変えます。@orgcmd{C-c C-e p,org-export-as-pdf}
+@LaTeX{}に出力し、PDFにも変換します。
+@orgcmd{C-c C-e d,org-export-as-pdf-and-open}
+@LaTeX{}に出力し、PDFにも変換します。その際出力されたPDFファイルを開きます。
 @end table
 
 @cindex （外部出力に用いる）ヘッドラインレベル
 @vindex org-latex-low-levels
-エクスポートされたものでは、 最初の3つのアウトラインの階層が一般的な文書の構
-造と見なされて、見出しとなります。
+エクスポートされたものでは、
+最初の3つのアウトラインの階層が一般的な文書の構造と見なされて、見出しとなり
+ます。
 それ以外の階層は概要のリストとしてエクスポートされます。エクスポート機能では
 、@code{org-latex-low-levels}を変更することで、この設定を無視、または変更すること
 ができます。
 
-この違いを異なる階層で変えたい場合は、 前置引数で、その階層を指定します。 例
-えば、
+この違いを異なる階層で変えたい場合は、
+前置引数で、その階層を指定します。 例えば、
 
 @example
 @kbd{C-2 C-c C-e l}
@@ -9841,11 +9886,10 @@ Org-modeの記法が使われているという前提でリージョンを@LaTeX
 @cindex @LaTeX{} エクスポートにおけるテーブル
 
 @LaTeX{}で表を出力する際に、番号と表題を指定することができます
- (@pxref{Images and tables})、@code{ATTR_LaTeX}行を使うことで、表に関する@code{longtable}環
-境を呼び出すこともできます。複数のページにまたがる表や、デフォルトの表の環境
-を@code{table}から@code{table*}にするため、またはデフォルトの内部tabular環境を
-@code{tabularx}や@code{tabulary}にしたい時にも@code{ATTR_LaTeX}行は使われます。つまり、文字
-の配置や
+(@pxref{Images and tables})、@code{ATTR_LaTeX}行を使うことで、表に関する@code{longtable}環境
+を呼び出すこともできます。複数のページにまたがる表や、デフォルトの表の環境を
+@code{table}から@code{table*}にするため、またはデフォルトの内部tabular環境を@code{tabularx}
+や@code{tabulary}にしたい時にも@code{ATTR_LaTeX}行は使われます。つまり、文字の配置や
 (@code{tabularx}や@code{tabulary}を使って)幅を次のようにして設定できます。:
 
 @cindex #+CAPTION
@@ -9877,23 +9921,25 @@ Org-modeの記法が使われているという前提でリージョンを@LaTeX
 @cindex 画像、@LaTeX{}の中のインライン
 @cindex @LaTeX{}の中のインライン画像
 
- @samp{[[file:img.jpg]]} や @samp{[[./img.jpg]]} のように説明文にリンクされていない画
-像は、
-@LaTeX{} の処理によりPDFの中に挿入されます。 Org-modeは、画像を挿入するのに
- @code{\includegraphics}
+ @samp{[[file:img.jpg]]} や @samp{[[./img.jpg]]}
+のように説明文にリンクされていない画像は、 @LaTeX{}
+の処理によりPDFの中に挿入されます。
+Org-modeは、画像を挿入するのに @code{\includegraphics}
 マクロを使います。もし、@ref{Images and tables}で説明されているように図の表題や
 番号を特定したいのならば、その図を
-@code{figure} 環境で囲むとfloat要素になります。 @code{\includegraphics}
+@code{figure} 環境で囲むとfloat要素になります。
+@code{\includegraphics}
 マクロのオプション引数として使われている様々なオプションを特定するには
- @code{#+ATTR_LaTeX:} を使います。
-@code{figure} 環境のオプションの配置を変更するには、 @samp{placement=[h!]} のように属
-性に追加します。
+@code{#+ATTR_LaTeX:} を使います。 @code{figure}
+環境のオプションの配置を変更するには、
+@samp{placement=[h!]} のように属性に追加します。
 
-画像のまわりに文字を回りこませたいのであれば、@code{#+ATTR_LaTeX:} の行に @samp{wrap}
-を追加すると、画像がページの左半分にきます。微調整するには、@code{wrapfigure} 環
-境に引数として、 @code{placement}
+画像のまわりに文字を回りこませたいのであれば、@code{#+ATTR_LaTeX:}
+の行に @samp{wrap}
+を追加すると、画像がページの左半分にきます。微調整するには、@code{wrapfigure}
+環境に引数として、 @code{placement}
 フィールドを追加します。画像のサイズを変更する時は、互換性のある
- @code{\includegraphics} と @code{wrapfigure}
+@code{\includegraphics} と @code{wrapfigure}
 を使わなければいけないので注意してください。
 
 @cindex #+CAPTION
@@ -9909,8 +9955,8 @@ Org-modeの記法が使われているという前提でリージョンを@LaTeX
 [[./img/hst.png]]
 @end example
 
-もし、このような番号を参照する必要があれば,  @LaTeX{} に
- @samp{\ref@{fig:SED-HR4049@}} と記述してください。
+もし、このような番号を参照する必要があれば,  @LaTeX{}
+に @samp{\ref@{fig:SED-HR4049@}} と記述してください。
 
 @node Beamerクラスのエクスポート, , Images in LaTeX export, LaTeX and PDF export
 @subsection Beamerクラスのエクスポート
@@ -9918,22 +9964,24 @@ Org-modeの記法が使われているという前提でリージョンを@LaTeX
 LaTeXの一種である @file{beamer}
 は、LaTeXとpdf処理により高品質なプレゼンテーション資料を提供します。Org-mode
 はOrg-modeのファイルやツリーを
-@file{beamer} のプレゼンテーション資料に変換するのに特別なサポートをします。
+@file{beamer}
+のプレゼンテーション資料に変換するのに特別なサポートをします。
 
-カレントバッファ ( @code{#+LaTeX_CLASS: beamer} がセットされている) かサブツリー
- (
-@code{LaTeX_CLASS} 属性がセットされている)のLaTeXクラスが @code{beamer}
+カレントバッファ ( @code{#+LaTeX_CLASS: beamer}
+がセットされている) かサブツリー ( @code{LaTeX_CLASS}
+属性がセットされている)のLaTeXクラスが @code{beamer}
 ならば、特別なエクスポートモードがファイルやツリーをbeamerのプレゼンテーショ
 ン資料にします。原則的にはあまり深くないネストのツリーなら何でもプレゼンテー
 ション資料にします。デフォルトでは、トップレベルのエントリー
-(または、選択したサブツリーの最初のレベル) がフレームに変換され、そのレベル
-の下のアウトライン構造が箇条書きされたリストになります。 変数
-@code{org-beamer-frame-level}
+(または、選択したサブツリーの最初のレベル)
+がフレームに変換され、そのレベルの下のアウトライン構造が箇条書きされたリスト
+になります。
+変数 @code{org-beamer-frame-level}
 は異なるレベルに設定でき、その時フレームより上の構造はプレゼンテーションの構
 造の区切りになります。
 
 バッファでの便利なテンプレートに関する設定や属性は
- @kbd{M-x org-insert-beamer-options-template}
+@kbd{M-x org-insert-beamer-options-template}
 によってバッファに挿入されます。その他については、カラムビューのフォーマット
 にインストールされます。カラムビューはbeamerで使う特別な属性を編集するのに便
 利だからです。
@@ -9943,26 +9991,31 @@ LaTeXの一種である @file{beamer}
 @table @code
 @item BEAMER_env
 このエントリーをフォーマットする環境を指定します。有効な環境が変数
- @code{org-beamer-environments-default}
-に定義されていて、さらに @code{org-beamer-environments-extra}
+@code{org-beamer-environments-default} に定義されていて、さらに
+@code{org-beamer-environments-extra}
 に追加して定義することができます。もし、この属性がセットされていれば、
 それを可視化するため、そのエントリーには
-@code{:B_environment:} タグがあるはずです。このタグは字句的な意味はなく、視
-覚的に補助するためにあります。
+@code{:B_environment:}
+タグがあるはずです。このタグは字句的な意味はなく、視覚的に補助するため
+にあります。
 @item BEAMER_envargs
-@code{[t]} 、 @code{[<+->]} や @code{<2-3>} のようなbeamerに特有な引数は、この環境で
-使われます。もし
-@code{BEAMER_col} 属性がセットされていると、 @code{columns} 環境のオプション引数
-として、 @code{C[t]}
-が追加されたことを意味します。 @code{c[t]} や @code{c<2->} は @code{column}
+@code{[t]} 、 @code{[<+->]} や @code{<2-3>}
+のようなbeamerに特有な引数は、この環境で使われます。もし
+@code{BEAMER_col} 属性がセットされていると、 @code{columns}
+環境のオプション引数として、 @code{C[t]}
+が追加されたことを意味します。 @code{c[t]} や @code{c<2->}
+は @code{column}
 環境にオプションとして設定されたことを意味します。
 @item BEAMER_col
 この列が始まるときの列の幅です。もしこの属性がセットされていると、その
-エントリーには @code{:BMCOL:}
+エントリーには
+@code{:BMCOL:}
 属性が現れます。このタグも視覚的な補助のためにあります。もし、これが整
-数だった場合、 @code{\textwidth} の割合とみなされます。
-もしくは、 @samp{3cm} のような場合、特定の単位を使ったとみなされます。まず
-、フレームの中のそのような属性は列に囲まれた
+数だった場合、
+@code{\textwidth} の割合とみなされます。  もしくは、
+@samp{3cm}
+のような場合、特定の単位を使ったとみなされます。まず、フレームの中のそ
+のような属性は列に囲まれた
 @code{columns} 環境で始まります。 @code{BEAMER_col}
 属性が0か1、または自動的にフレームの最後となるエントリーでは、その環境
 は閉じられます。
@@ -9972,22 +10025,24 @@ LaTeXの一種である @file{beamer}
 @end table
 
 もし、verbatim環境を使ったソースコードが含まれていると、フレームは自動的に
- @code{fragile} を受けとります。
-@file{beamer} 特有のコードは @code{#+BEAMER:} を使うことで挿入され、
-@code{#+BEGIN_beamer...#+end_beamer} ブロックは,他のエクスポートのものと似ていま
-すが、
-@code{#+LaTeX:} はプレゼンテーション資料にも含まれるという点で異なります。
+@code{fragile} を受けとります。 @file{beamer} 特有のコードは
+@code{#+BEAMER:} を使うことで挿入され、
+@code{#+BEGIN_beamer...#+end_beamer}
+ブロックは,他のエクスポートのものと似ていますが、
+@code{#+LaTeX:}
+はプレゼンテーション資料にも含まれるという点で異なります。
 
 @code{BEAMER_env} 属性があるノードの @samp{note} や @samp{noteNH}
-の値はbeamerのnotesとして処理されます。例えば、 @code{\note@{...@}} のように囲ま
-れます。
+の値はbeamerのnotesとして処理されます。例えば、
+@code{\note@{...@}} のように囲まれます。
 前者は、ノートのテキストの一部分として見出しが含まれ、後者は、ノードの見出し
 は無視されます。ノートの生成を簡単にするには、実は
-@code{BEAMER_env} 属性を作るかわりに、 @emph{tag} (または @code{:B_note:} や
-@code{:B_noteNH:}) でマークするだけで十分です。
+@code{BEAMER_env} 属性を作るかわりに、 @emph{tag} (または
+@code{:B_note:} や @code{:B_noteNH:})
+でマークするだけで十分です。
 
 編集作業のサポートを得るには次のオプションを追加して、マイナーモードの
- @code{org-beamer-mode} を有効にします。
+@code{org-beamer-mode} を有効にします。
 
 @example
 #+STARTUP: beamer
@@ -9995,15 +10050,16 @@ LaTeXの一種である @file{beamer}
 
 @table @kbd
 @orgcmd{C-c C-b,org-beamer-select-environment}  @code{org-beamer-mode}
-でこのキーバインドを使うことでbeamerの環境や @code{BEAMER_col} 属性を素早く
-選択することができます。
+でこのキーバインドを使うことでbeamerの環境や
+@code{BEAMER_col} 属性を素早く選択することができます。
 @end table
 
 カラムビューはノードにおける環境及び重要なパラメータをセットするうえで、優れ
 たやり方です。
 カラムのフォーマットがこの特別な目的のためにセットされている確認してください
-。 コマンド @kbd{M-x org-insert-beamer-options-template} はそのようなフォーマッ
-トを定義します。
+。
+コマンド @kbd{M-x org-insert-beamer-options-template}
+はそのようなフォーマットを定義します。
 
 次の例は、beamerへのエクスポートを意図した簡単なOrg-modeの文書の例です。
 
@@ -10057,7 +10113,8 @@ Cuiによって作成されたDocBookへのエクスポート機能がありま�
 ルはDocBookのフォーマットで出力され、さらにDocBookのツールやスタイルシートを
 使ってPDF、HTMLやmanなど他のフォーマットに出力することができます。
 
-現在、DocBookのエクスポート機能はDocBook V5.0をサポートしています。
+現在、DocBookのエクスポート機能はDocBook
+V5.0をサポートしています。
 
 @menu
 * DocBook export commands::  DocBookエクスポートの起動方法
@@ -10077,17 +10134,17 @@ Cuiによって作成されたDocBookへのエクスポート機能がありま�
 @table @kbd
 @orgcmd{C-c C-e D,org-export-as-docbook}
 @cindex プロパティ、EXPORT_FILE_NAME
-DocBookファイルを出力します。Org-modeのファイル @file{myfile.org} は
-DocBook XMLファイルの
-@file{myfile.xml} となります。ファイルは警告なしに上書きされます。アクティ
-ブリージョン
+DocBookファイルを出力します。Org-modeのファイル
+@file{myfile.org} はDocBook XMLファイルの @file{myfile.xml}
+となります。ファイルは警告なしに上書きされます。アクティブリージョン
 @footnote{@code{transient-mark-mode} を有効にしている必要があります。}
-がある場合は、リージョンのみが出力されます。選択したリージョンが単一の
-ツリー @footnote{現在のツリーを選択するには @kbd{C-c @@} を使ってください。} だった
-場合は, そのツリーの見出しが文書のタイトルになります。そのツリーの見出
-しがある、または継承されている場合や、
-@code{EXPORT_FILE_NAME} 属性がある場合は、その名前がエクスポートに使われま
-す。 @orgcmd{C-c C-e V,org-export-as-docbook-pdf-and-open}
+がある場合は、リージョンのみが出力されます。選択したリージョンが単一のツリー
+@footnote{現在のツリーを選択するには @kbd{C-c @@} を使ってください。} だった場合は,
+そのツリーの見出しが文書のタイトルになります。そのツリーの見出しがある
+、または継承されている場合や、
+@code{EXPORT_FILE_NAME}
+属性がある場合は、その名前がエクスポートに使われます。
+@orgcmd{C-c C-e V,org-export-as-docbook-pdf-and-open}
 DocBookファイルが出力され、PDF処理を経て出力されたPDFファイルが開きます。
 
 @vindex org-export-docbook-xslt-proc-command
@@ -10098,13 +10155,15 @@ DovBookファイルにエクスポートしてPDFに出力するには、XSLT処
 @code{org-export-docbook-xsl-fo-proc-command}を確認してください。
 
 @vindex org-export-docbook-xslt-stylesheet
-変数 @code{org-export-docbook-xslt-proc-command} でスタイルシートを表わす引
-数 @code{%s}
-はユーザによってセットされる変数 @code{org-export-docbook-xslt-stylesheet}
-の値で置き換えられます。Org-modeファイルに  @code{#+XSLT:} を追加することで
-、グローバルな設定を封じることができます。
+変数 @code{org-export-docbook-xslt-proc-command}
+でスタイルシートを表わす引数 @code{%s}
+はユーザによってセットされる変数
+@code{org-export-docbook-xslt-stylesheet}
+の値で置き換えられます。Org-modeファイルに  @code{#+XSLT:}
+を追加することで、グローバルな設定を封じることができます。
 
-@orgkey{C-c C-e v D} 文書の見えている部分だけを出力します。
+@orgkey{C-c C-e v D}
+文書の見えている部分だけを出力します。
 @end table
 
 @node Quoting DocBook code, Recursive sections, DocBook export commands, DocBook export
@@ -10151,55 +10210,63 @@ XMLファイルを正確に出力できないかもしれせん。
 
 DocBookのエクスポート機能は、DocBookの @code{article}
 要素を使ってOrg-modeのファイルをarticlesとして出力します。再帰的なsections、
-例えば @code{section}
-要素が出力されたarticlesの中で使われます。
+例えば
+@code{section} 要素が出力されたarticlesの中で使われます。
 Org-modeのファイルのトップレベルの見出しは、トップレベルのsectionsとして出力
 され、低いレベルの見出しはネストしたsectionsとして出力されます。Org-modeのフ
 ァイルの全体構造は、完全に出力されます。見出しにネストされたレベルはどれだけ
 あっても構いません。
 
-再帰的なセクションを使えば、 出力されたDocBookコードを他の @code{book} や @code{set}
+再帰的なセクションを使えば、
+出力されたDocBookコードを他の @code{book} や @code{set}
 のようなドキュメントタイプに移植したり、再利用したりするのが用意になります。
 
 @node Tables in DocBook export, Images in DocBook export, Recursive sections, DocBook export
 @subsection Tables in DocBook export
 @cindex DocBookへの出力におけるテーブル
 
-Org-modeの表はHTMLの表を出力します。HTMLの表はDocBook V4.3からサポートされて
-います。
+Org-modeの表はHTMLの表を出力します。HTMLの表はDocBook
+V4.3からサポートされています。
 
-テーブルに表題がなかった場合、 @code{informaltable} 要素によってinformal
-tableが出力されます。表題があれば、@code{table} 要素により、テーブルが出力されま
-す。
+テーブルに表題がなかった場合、 @code{informaltable}
+要素によってinformal
+tableが出力されます。表題があれば、@code{table}
+要素により、テーブルが出力されます。
 
 @node Images in DocBook export, Special characters, Tables in DocBook export, DocBook export
 @subsection Images in DocBook export
 @cindex DocBookでのインライン画像
 @cindex DocBookでのインライン画像
 
- @samp{[[file:img.jpg]]} や @samp{[[./img.jpg]]} のように説明文にリンクされていない画
-像は、
-@code{mediaobject} タグが使われてDocBookに出力されます。 各 @code{mediaobject}
-要素には、@code{imagedata} 要素を囲む @code{imageobject}要素が含まれます。もし、
-@ref{Images and tables}で説明されているように図の表題を特定するならば、
- @code{caption} 要素を  @code{mediaobject}
-の中に追加します。番号も特定する場合は、 @code{mediaobject} 要素の中に  @code{xml:id}
-属性が出力されます。@code{figure} 環境のオプションの配置を変更するには、
- @samp{placement=[h!]}
-のように属性に追加します。
+ @samp{[[file:img.jpg]]} や @samp{[[./img.jpg]]}
+のように説明文にリンクされていない画像は、
+@code{mediaobject} タグが使われてDocBookに出力されます。 各
+@code{mediaobject} 要素には、@code{imagedata} 要素を囲む
+@code{imageobject}要素が含まれます。もし、@ref{Images and tables}で説明されているよう
+に図の表題を特定するならば、
+@code{caption} 要素を  @code{mediaobject}
+の中に追加します。番号も特定する場合は、
+@code{mediaobject} 要素の中に  @code{xml:id}
+属性が出力されます。@code{figure}
+環境のオプションの配置を変更するには、
+@samp{placement=[h!]} のように属性に追加します。
 
 @vindex org-export-docbook-default-image-attributes
-画像の属性には @code{imagedata} 要素がサポートされ、 @code{align} や @code{width}
+画像の属性には @code{imagedata} 要素がサポートされ、
+@code{align} や @code{width}
 のような属性が二つの方法で特定されます。一つ目は変数
-@code{org-export-docbook-default-image-attributes} を設定する方法です。二つ目は
-@code{#+ATTR_DOCBOOK:} 行を使う方法です。変数
+@code{org-export-docbook-default-image-attributes}
+を設定する方法です。二つ目は @code{#+ATTR_DOCBOOK:}
+行を使う方法です。変数
 @code{org-export-docbook-default-image-attributes}
 で特定される属性は出力元のOrg-modeファイルに含まれる全ての画像に適用されます
-(ただし、 @code{#+ATTR_DOCBOOK:}
+(ただし、
+@code{#+ATTR_DOCBOOK:}
 行で画像の属性が上書きされている場合は除きます。)。
 
-@code{#+ATTR_DOCBOOK:} 行は、追加的な画像の属性の指定や個々の画像にデフォルトの画
-像の属性を上書きするのに使います。もし、
+@code{#+ATTR_DOCBOOK:}
+行は、追加的な画像の属性の指定や個々の画像にデフォルトの画像の属性を上書きす
+るのに使います。もし、
 @code{#+ATTR_DOCBOOK:} と 変数
 @code{org-export-docbook-default-image-attributes}
 に同じ属性が現れた場合、前者の値が優先的に使われます。次の例は画像の属性に関
@@ -10216,8 +10283,9 @@ tableが出力されます。表題があれば、@code{table} 要素により�
 @end example
 
 @vindex org-export-docbook-inline-image-extensions
-デフォルトでDocBookのエクスポート機能は、 @file{jpeg}, @file{jpg}, @file{png}, @file{gif},
-そして @file{svg} のような画像のタイプを認識します。変数
+デフォルトでDocBookのエクスポート機能は、 @file{jpeg},
+@file{jpg}, @file{png}, @file{gif}, そして @file{svg}
+のような画像のタイプを認識します。変数
 @code{org-export-docbook-inline-image-extensions}
 を設定することで、DocBookがサポートしている画像のタイプを追加することができ
 ます。
@@ -10230,16 +10298,16 @@ tableが出力されます。表題があれば、@code{table} 要素により�
 @vindex org-entities
 @code{\alpha}, @code{\Gamma}, そして @code{\Zeta} のような @TeX{}
 ライクなシンタックスで記述された特殊文字列は、DocBookのエクスポート機能でサ
-ポートされています。 そのような文字列は、変数
-@code{org-entities} に格納されているリストにもとづき、@code{&alpha;}, @code{&Gamma;}, そし
-て
-@code{&Zeta;} のように XML
+ポートされています。
+そのような文字列は、変数 @code{org-entities}
+に格納されているリストにもとづき、@code{&alpha;},
+@code{&Gamma;}, そして @code{&Zeta;} のように XML
 エンティティとして記述されます。対応するエンティティが含まれるDocBookファイ
 ルが出力されると、特殊文字列が認識されます。
 
-変数 @code{org-export-docbook-doctype} を設定することで必要なエンティティを含める
-ことができます。例えば、 変数
-@code{org-export-docbook-doctype}
+変数 @code{org-export-docbook-doctype}
+を設定することで必要なエンティティを含めることができます。例えば、
+変数 @code{org-export-docbook-doctype}
 に次のような値を設定することで、XHTMLエンティティに含まれる全ての特殊文字列
 が認識されます。
 
@@ -10275,8 +10343,8 @@ TaskJugglerのエクスポート機能は、例えばHTMLやLaTeXのような他
 @subsection TaskJugglerのエクスポートコマンド
 
 @table @kbd
-@orgcmd{C-c C-e j,org-export-as-taskjuggler} TaskJugglerファイルを出力します
-。
+@orgcmd{C-c C-e j,org-export-as-taskjuggler}
+TaskJugglerファイルを出力します。
 
 @orgcmd{C-c C-e J,org-export-as-taskjuggler-and-open}
 TaskJugglerファイルを出力し、TaskJugglerUIでファイルを開きます。
@@ -10286,8 +10354,8 @@ TaskJugglerファイルを出力し、TaskJugglerUIでファイルを開きま�
 
 @vindex org-export-taskjuggler-project-tag
 いつものようにOrg-modeでタスクを作ります。各タスクにプロパティを使ってエフォ
-ートを指定します (カラムビューを使うと簡単です。)。
-最終的には、Peter
+ートを指定します
+(カラムビューを使うと簡単です。)。 最終的には、Peter
 Jonesが作成した
 @url{http://www.contextualdevelopment.com/static/artifacts/articles/2008/project-planning/project-planning.org}の例と似たものになっているはずです。次に、タスクのトップノードを@code{:taskjuggler_project:}というタグでマークします
 (または変数@code{org-export-taskjuggler-project-tag}をカスタマイズします)。これで
@@ -10318,17 +10386,18 @@ TaskJugglerUIでガントチャートが開くはずです。
 エクスポート機能はTODOの状態に関する情報も考慮されています。例えば、タスクが
 「DONE」とマークされると、それに対応して、TaskJugglerの属性も
 (@samp{complete 100})となります。タスクリソースやタスクノード上のうTaskJugglerで
-使われる@samp{limits}, @samp{vacation},
-@samp{shift}, @samp{booking}, @samp{efficiency}, @samp{journalentry},
-@samp{rate}のようなリソースの属性や@samp{account}, @samp{start}, @samp{note},
-@samp{duration}, @samp{end}, @samp{journalentry}, @samp{milestone},
-@samp{reference}, @samp{responsible}, @samp{scheduling}などのタスクの属性も、出力されます。
+使われる@samp{limits},
+@samp{vacation}, @samp{shift}, @samp{booking}, @samp{efficiency},
+@samp{journalentry},
+@samp{rate}のようなリソースの属性や@samp{account}, @samp{start},
+@samp{note}, @samp{duration}, @samp{end}, @samp{journalentry},
+@samp{milestone}, @samp{reference}, @samp{responsible},
+@samp{scheduling}などのタスクの属性も、出力されます。
 
 @subsection 依存状態
 
 エクスポート機能はタスクで@samp{ORDERED} 属性 (@pxref{TODO dependencies})、@samp{BLOCKER} 属
-性
-(see
+性 (see
 @file{org-depend.el})、そして選択的に@samp{depends}属性で表される依存状態を操作するこ
 とができます。@samp{BLOCKER}
 属性も@samp{depends}属性も@samp{previous-sibling}のように扱えますし、プロジェクトの他
@@ -10367,7 +10436,8 @@ TaskJugglerUIでガントチャートが開くはずです。
 @subsection レポート
 
 @vindex org-export-taskjuggler-default-reports
-TaskJugglerは多くのレポートを作成できます。(例えば gantt chart, resource
+TaskJugglerは多くのレポートを作成できます。(例えば gantt
+chart, resource
 allocationなど)。TaskJugglerファイルにあるプロジェクトでどのレポートを作成す
 るか定義することができます。エクスポート機能は自動的にデフォルトのレポートを
 ファイルに挿入します。それらは、@code{org-export-taskjuggler-default-reports}で定
@@ -10385,11 +10455,13 @@ Org-taskjugglerチュートリアルを見てください。
 @cindex Freemind export
 @cindex マインドマップ
 
-Freemindのエクスポート機能はLennart Borgmanによって作成されました。
+Freemindのエクスポート機能はLennart
+Borgmanによって作成されました。
 
 @table @kbd
-@orgcmd{C-c C-e m,org-export-as-freemind} Freemindのマインドマップファイル
-@file{myfile.mm} を出力します。
+@orgcmd{C-c C-e m,org-export-as-freemind}
+Freemindのマインドマップファイル @file{myfile.mm}
+を出力します。
 @end table
 
 @node XOXO export, iCalendarエクスポート, Freemind export, Exporting
@@ -10402,8 +10474,8 @@ Org-modeにはXOXOスタイルで出力するエクスポート機能があり�
 
 @table @kbd
 @orgcmd{C-c C-e x,org-export-as-xoxo} XOXOファイルを
-@file{myfile.html}として出力します。@orgkey{C-c C-e v x} 見えている部分だけを出力
-します。
+@file{myfile.html}として出力します。@orgkey{C-c C-e v x}
+見えている部分だけを出力します。
 @end table
 
 @node iCalendarエクスポート, , XOXO export, Exporting
@@ -10966,12 +11038,13 @@ file:../images/myimage.png
 ます。
 
 @table @kbd
-@orgcmd{C-c C-e X,org-publish} プロンプトでプロジェクトを指定し、プロジェクト
-の全てのファイルを公開します。
-@orgcmd{C-c C-e P,org-publish-current-project} 現在のファイルを含むプロジェク
-トを公開します。
-@orgcmd{C-c C-e F,org-publish-current-file} 現在のファイルのみ公開します。
- @orgcmd{c-c C-e E,org-publish-all} 全てのプロジェクトを公開します。
+@orgcmd{C-c C-e X,org-publish}
+プロンプトでプロジェクトを指定し、プロジェクトの全てのファイルを公開します。
+@orgcmd{C-c C-e P,org-publish-current-project}
+現在のファイルを含むプロジェクトを公開します。
+@orgcmd{C-c C-e F,org-publish-current-file}
+現在のファイルのみ公開します。 @orgcmd{c-c C-e E,org-publish-all} 全てのプロ
+ジェクトを公開します。
 @end table
 
 @vindex org-publish-use-timestamps-flag
@@ -11246,8 +11319,9 @@ of Babel''(@ref{Library of Babel}にあるコードブロックを間接的に�
 数は@code{:var}というヘッダー引数と関連付けられています。例えば、@code{double}と
 名付けられたもともとのコードブロックがヘッダー引数@code{:var n=2}を持つ場合
 、上記call行により数値の4をブロックに渡すには@code{#+call: double(n=2)}と書
-かれます。英文にてtypo?:number four->number two:"then the call line
-passing the number four to that block would be written as @code{#+call: double(n=2)}."
+かれます。英文にてtypo?:number four->number
+two:"then the call line passing the number four to that block would be
+written as @code{#+call: double(n=2)}."
 @item <header arguments>
 関数を起動した後の、ヘッダー引数を指定できます。ヘッダー引数の(更なる
 情報|詳細)については@ref{Header arguments}を参照してください。
@@ -11273,8 +11347,8 @@ passing the number four to that block would be written as @code{#+call: double(n
 @cindex ライブラリ、ソースコード
 @cindex ライブラリ、コードブロック
 
-``Library of Babel'' はOrg-modeのファイルから呼び出せるコードブロックのライ
-ブラリです。
+``Library of Babel''
+はOrg-modeのファイルから呼び出せるコードブロックのライブラリです。
 ライブラリは、Org-modeの@samp{contrib}ディレクトリのOrg-modeファイルに格納されて
 います。Org-modeのユーザーは、一般的に有用だと考えられる関数を、ライブラリ内
 に置くことができます。
@@ -11286,7 +11360,8 @@ Babel''で定義されたコードブロックは、あたかも現在のOrg-mod
 い。)
 
 @kindex C-c C-v i
-どんなOrg-modeファイルに記述されたコードブロックでも、``Library of
+どんなOrg-modeファイルに記述されたコードブロックでも、``Library
+of
 Babel''の関数@code{org-babel-lob-ingest}を使って、ロードできます。キーバインドは
 @kbd{C-c C-v i}です。
 
@@ -11578,8 +11653,8 @@ Emacs_Lisp(原文スペースをアンダーバーで置換)のコードです�
 いては、以下の見出し``Emacs
 Lisp evaluation of variables''を見て下さい。
 
-これらの値は配列のようにインデックス化できます。---以下の見出し
-``indexable variable values''を見て下さい。
+これらの値は配列のようにインデックス化できます。---以下の見出し``indexable
+variable values''を見て下さい。
 
 ヘッダー引数@code{:var}を使ってコードブロックへ引数を渡すには、以下の構文を使いま
 す。
@@ -11749,9 +11824,9 @@ data)次の例では、テーブル@code{example-table}1行目の最後のセル
 
 @subsubheading Emacs Lispによる変数の評価
 
-変数の値を初期化するときにEmacs Lispのコードを使えます。変数の値が
-@code{(}, @code{[}, @code{'} もしくは
-@code{`}で始まる場合、変数はEmacs
+変数の値を初期化するときにEmacs
+Lispのコードを使えます。変数の値が@code{(}, @code{[},
+@code{'} もしくは @code{`}で始まる場合、変数はEmacs
 Lispとして評価され、その評価結果を変数の値として代入されます。次の例では、こ
 の評価を使ってOrg-modのファイル名を確かにコードブロックへ渡しています---元の
 Org-file内でヘッダー引数が間違いなく評価されるということに注意して下さい。コ
@@ -11763,8 +11838,8 @@ Org-file内でヘッダー引数が間違いなく評価されるということ
 #+end_src
 @end example
 
-テーブルやリストから読み出された値はEmacs Lispとして評価されません。以下はそ
-の例です。
+テーブルやリストから読み出された値はEmacs
+Lispとして評価されません。以下はその例です。
 
 @example
 #+results: table
@@ -11848,7 +11923,8 @@ modeで評価します。例えば、@code{:results output}のように記述し
 えば、@code{:results value code}のように記述します。
 @item @code{pp}
 結果は装飾されたコードに変換されて、コードブロックに囲まれます。このオ
-プションは、現在、Emacs Lisp,
+プションは、現在、Emacs
+Lisp,
 PythonとRubyをサポートしています。例えば、@code{:results value pp}のように
 記述します。
 @item @code{wrap}
@@ -11885,8 +11961,8 @@ Org-modeのバッファのその場所に挿入します。例えば、
 
 コードブロックの結果を保存する外部のファイルを指定するため、にヘッダー引数
 @code{:file}を使います。コードブロックの評価の後に、Org-modeスタイルのリンク
-@code{[[file:]]}(@ref{Link format}を参照)が、そのOrg-modeバッファーに挿入されます。
-R, gnuplot,
+@code{[[file:]]}(@ref{Link format}を参照)が、そのOrg-modeバッファーに挿入されます。R,
+gnuplot,
 dotやditaaなどの言語では、ヘッダー引数@code{:file}を扱う特別な機能が用意されてい
 ます。その機能は、指定されたファイルへアウトプットを保存するために、必要な定
 型のコードでコードブロックの本文を囲みます。これは、コードブロックの画像出力
@@ -11906,9 +11982,10 @@ dotやditaaなどの言語では、ヘッダー引数@code{:file}を扱う特別
 @code{:dir}を設定しない場合と一時的には同じ効果を持ちます。水面下で、@code{:dir}が
 Emacsの変数@code{default-directory}を変更しているだけです。
 
-@code{:dir}を使う場合、アウトプットするファイルを相対パス(例@: @code{:file myfile.jpg}も
-しくは@code{:file results/myfile.jpg})で与えなければなりません。その場合、与えた
-パスはデフォルトディレクトリに対する相対パスとして解釈されます。
+@code{:dir}を使う場合、アウトプットするファイルを相対パス(例@:
+@code{:file myfile.jpg}もしくは@code{:file results/myfile.jpg})で与えなければなりませ
+ん。その場合、与えたパスはデフォルトディレクトリに対する相対パスとして解釈さ
+れます。
 
 つまり、ホームディレクトリ内に@file{Work}というフォルダでプロット(グラフを描画)し
 たい場合、次のように使えます。
@@ -12297,18 +12374,19 @@ variable indexing @xref{var, Indexable variable values}.を使ってテーブル
 @node shebang, eval, rownames, Specific header arguments
 @subsubsection @code{:shebang}
 
-ヘッダー引数@code{:shebang}に文字列の値(例えば@: @code{:shebang "#!/bin/bash"})を設定す
-ることで、コードブロックを抽出した全てのファイルの1行目にその文字列を挿入し
-、抽出されたファイルのパーミッションは実行可能と設定されます。
+ヘッダー引数@code{:shebang}に文字列の値(例えば@:
+@code{:shebang "#!/bin/bash"})を設定することで、コードブロックを抽出した全てのフ
+ァイルの1行目にその文字列を挿入し、抽出されたファイルのパーミッションは実行
+可能と設定されます。
 
 @node eval, , shebang, Specific header arguments
 @subsubsection @code{:eval}
 ヘッダー引数@code{:eval}を使って、特定のコードブロックの評価を制限できます。
 @code{:eval}は``never''と``query''の2つの値をとれます。@code{:eval never}はコードブロ
-ックが評価されないことを確かにします。 これは危険なコードブロックを評価する
-ことを防ぐのに便利です。@code{:eval query}と設定すると、変数
-@code{org-confirm-babel-evaluate}の値に関係なく、コードブロックを実行する度に確認
-のダイアログがでます。
+ックが評価されないことを確かにします。
+これは危険なコードブロックを評価することを防ぐのに便利です。@code{:eval query}と
+設定すると、変数@code{org-confirm-babel-evaluate}の値に関係なく、コードブロックを
+実行する度に確認のダイアログがでます。
 
 @node 評価の結果, Noweb reference syntax, Header arguments, Working With Source Code
 @section 評価の結果
@@ -12700,7 +12778,8 @@ Org-modeはコードを直接評価できる2つのリンクタイプ(@pxref{Ext
 シェルへのリンクを実行するための問い合わせを行う関数。
 @end defopt
 @defopt org-confirm-elisp-link-function
-Emacs Lispへのリンクを実行するための問い合わせを行う関数。
+Emacs
+Lispへのリンクを実行するための問い合わせを行う関数。
 @end defopt
 
 @item 表中の式
@@ -13071,8 +13150,9 @@ more text                        |          more text
 サポートします:
 
 @enumerate
-@item @emph{見出しの下のテキストのインデント}@* 以下のように、あなたは各見出しの下のテキストを見出しと同じ位置にインデントでき
-ます。
+@item @emph{見出しの下のテキストのインデント}@*
+以下のように、あなたは各見出しの下のテキストを見出しと同じ位置にインデ
+ントできます。
 
 @example
 *** 3rd level
@@ -13175,7 +13255,8 @@ Org-modeはとても多くのコマンドを用意しているため、デフォ
 @node Interaction, , TTY keys, Miscellaneous
 @section 他のパッケージとの関係
 @cindex パッケージ、他のものとの連携
-Org-modeはGNU Emacsの世界に生きていて、他のコードと様々な方法で連携します。
+Org-modeはGNU
+Emacsの世界に生きていて、他のコードと様々な方法で連携します。
 
 @menu
 * Cooperation::              Orgと連携するパッケージ
@@ -13415,7 +13496,8 @@ Worg project
 ジはEmacsの一部ではありませんが、投稿されたパッケージとして独自のリリースで
 配布されており、Org-modeのホームページ
 @uref{http://orgmode.org}にて入手できます。投稿されたパッケージのリストとその説明
-文は Worg project によって
+文は
+Worg project によって
 @uref{http://orgmode.org/worg/org-contrib/}にて維持管理されています。
 
 
@@ -13485,7 +13567,8 @@ UnixのmanページをEmacsで表示するために、@samp{[[man:printf][printf
 @enumerate
 @item @code{(require 'org)}を実行して@file{org.el}が読み込まれたことを確認します。
 @item 次の行では@code{org-add-link-type}を呼び出して、新しいタイプのリンクを接頭
-辞 @samp{man}
+辞
+@samp{man}
 で定義します。またこの呼び出しでは、そのようなリンクを辿るために呼び出
 される関数の名前も含まれています。
 @item @vindex org-store-link-functions
@@ -13496,8 +13579,10 @@ UnixのmanページをEmacsで表示するために、@samp{[[man:printf][printf
 ファイルの残りは必要な変数と関数を定義しています。最初に、manページの表示に
 どのEmacsのコマンドを使うかを決める変数のカスタマイズがあります。2つのオプシ
 ョン、@code{man}
-と @code{woman} があります。次に、リンクを辿る関数が定義されています。リンクのパ
-スは引数として渡されます ---
+と @code{woman}
+があります。次に、リンクを辿る関数が定義されています。リンクのパスは引数とし
+て渡されます
+---
 この場合、リンクのパスは単にmanコマンドのトピックです。この関数はmanページの
 表示に@code{org-man-command}の値を呼び出します。
 
@@ -13525,14 +13610,14 @@ UnixのmanページをEmacsで表示するために、@samp{[[man:printf][printf
 @vindex org-ctrl-c-ctrl-c-hook
 
 Org-modeでは、文脈に依存して動作が変わるコマンドが幾つかあります。最も重要な
-例は@kbd{C-c C-c}(@pxref{The very busy C-c C-c key})です
-[typo?: The most important example +it+ *is* the
-@kbd{C-c C-c} (@pxref{The very busy C-c C-c key}).  また、@kbd{M-cursor} と
-@kbd{M-S-cursor} キーもこの性質を持っています。
+例は@kbd{C-c C-c}(@pxref{The very busy C-c C-c key})です[typo?: The most important
+example +it+ *is* the @kbd{C-c C-c} (@pxref{The very busy C-c C-c key}).
+また、@kbd{M-cursor} と @kbd{M-S-cursor}
+キーもこの性質を持っています。
 
 アドオンにとって特別な文脈を検知し、文脈に沿って適切に実行する関数を準備する
-ことによって、アドオンはこの機能を活用できます。ここに例として Dan
-Davisonの
+ことによって、アドオンはこの機能を活用できます。ここに例として
+Dan Davisonの
 @file{org-R.el}があります。このファイルは@file{R}プログラミング言語@footnote{@file{org-R.el}は
 @ref{Working With Source Code}で説明されたOrg-modeの機能によって置き換えられ、現
 在使われておりません。}に基づいてコマンドを実行できます。このパッケージでは
@@ -13657,8 +13742,8 @@ function)が呼び出される前に、いくつかの基本的なパラメー�
 のスケルトンを挿入できます@footnote{デフォルトでは、@LaTeX{}, HTMLと Texinfoの場合だけ動
 作します。他のモードのテンプレートをインストールするには、変数
 @code{orgtbl-radio-tables}を編集して下さい。}。
-テーブル名を確認されますので、@samp{salesfigures}と入力します。 そして以下のテン
-プレートを得ました:
+テーブル名を確認されますので、@samp{salesfigures}と入力します。
+そして以下のテンプレートを得ました:
 
 @cindex #+ORGTBL, SEND
 @example
@@ -13740,7 +13825,8 @@ tのとき、tabular環境で囲まずに、テーブルの本文だけを返し
 値が入っています。例えばドルマークで囲む場合には、@code{:fmt "$%s$"}と書け
 ます。また、列の番号とフォーマットというプロパティのリストにもなります
 。例えば@code{:fmt (2 "$%s$" 4 "%s\\%%")}と書けます。文字列の変わりに、1つ
-の引数を持つ関数を使えます; その関数は書式設定された文字列を返します。
+の引数を持つ関数を使えます;
+その関数は書式設定された文字列を返します。
 
 @item :efmt efmt
 指数表記で数値を出力する時に使います。仮数部と指数部を挿入するため、こ
@@ -13756,10 +13842,9 @@ tのとき、tabular環境で囲まずに、テーブルの本文だけを返し
 @cindex HTML、Orgtblモードと
 @cindex 変換関数
 
-Orgtblモードには幾つかの組み込み変換関数があります: @code{orgtbl-to-csv} (カンマ
-区切り),
-@code{orgtbl-to-tsv} (タブ区切り)  @code{orgtbl-to-latex}, @code{orgtbl-to-html}
-そして
+Orgtblモードには幾つかの組み込み変換関数があります:
+@code{orgtbl-to-csv} (カンマ区切り), @code{orgtbl-to-tsv}
+(タブ区切り)  @code{orgtbl-to-latex}, @code{orgtbl-to-html} そして
 @code{orgtbl-to-texinfo}です。@code{orgtbl-to-html}@footnote{HTMLの変換関数は、HTMLをエクスポー
 トする時にテーブルを作るコードと全く同じものを使っています。}を除いた、これ
 ら全ての関数は包括的な変換関数@code{orgtbl-to-generic}を使います。例えば、
@@ -13855,8 +13940,8 @@ Texinfoモードにラジオリストを挿入できます。
 \end@{comment@}
 @end example
 
-@code{新しい家}の上で`C-c C-c'とタイプすると、@LaTeX{}に変換されたリストが目印の2行
-の間に挿入されます。
+@code{新しい家}の上で`C-c
+C-c'とタイプすると、@LaTeX{}に変換されたリストが目印の2行の間に挿入されます。
 
 @node Dynamic blocks, Special agenda views, Tables in arbitrary syntax, Hacking
 @section Dynamic blocks
@@ -13927,8 +14012,8 @@ Org-modeの文書は@emph{動的なブロック}を含むことができます�
 @vindex org-agenda-skip-function
 @vindex org-agenda-skip-function-global
 Org-modeでは、以下のアジェンダビューによって選択されたものを絞り込む特別なフ
-ック関数を用意しています: @code{todo},
-@code{alltodo}, @code{tags}, @code{tags-todo},
+ック関数を用意しています:
+@code{todo}, @code{alltodo}, @code{tags}, @code{tags-todo},
 @code{tags-tree}。検索でマッチする度に、実際にアジェンダビューでマッチしたかを確
 認したり、もしマッチしなければどれくらい飛ばすのかを、関数で指定できます。全
 てのアジェンダビューに適用されるようにグローバルな条件を設定でき、それは変数
@@ -14003,11 +14088,11 @@ TODOのキーワード「PROJECT」でマークされているとします。こ
 現在のエントリが何かしらのタイムスタンプを持っている場合、それをスキッ
 プします。タイムスタンプはデッドラインかスケジューリングが考えられます。
 @item '(org-agenda-skip-entry 'regexp "regular expression")
-現在のエントリの中で正規表現「regular expression」にマッチした場合、そ
-れをスキップします。
+現在のエントリの中で正規表現「regular
+expression」にマッチした場合、それをスキップします。
 @item '(org-agenda-skip-entry 'notregexp "regular expression")
-現在のエントリの中で正規表現「regular expression」にマッチしない場合、
-それをスキップします。
+現在のエントリの中で正規表現「regular
+expression」にマッチしない場合、それをスキップします。
 @item '(org-agenda-skip-subtree-if 'regexp "regular expression")
 2つ上と同じですが、サブツリー全体をチェックしてスキップします。
 @end table
@@ -14134,10 +14219,10 @@ foreach $line (split(/\n/,$agenda)) @{
 プロパティを扱うために使用できる関数を説明します。
 
 @defun org-entry-properties &optional pom which
-ポイントかマーカー(point-or-marker POM)の位置でのエントリのプロパティを全て
-取得します。@*これには、TODOキーワード,
-tags, デッドラインのtime文字列, スケジューリングのtime文字列, 計測のtime文字
-列,
+ポイントかマーカー(point-or-marker
+POM)の位置でのエントリのプロパティを全て取得します。@*これには、TODOキーワード,
+tags, デッドラインのtime文字列,
+スケジューリングのtime文字列, 計測のtime文字列,
 エントリ内で更に定義されているプロパティが含まれます。返り値は連想リストです
 。プロパティのキーが何度も使われた場合は、キーは複数回出現します。@*POMはnilとなり得ます。その場合は現在のエントリが使われます。WHICHがnilもし
 くは`all'の場合、全てのプロパティを取得します。WHICHが`special'もしくは
@@ -14145,8 +14230,8 @@ tags, デッドラインのtime文字列, スケジューリングのtime文字�
 @end defun
 @vindex org-use-property-inheritance
 @defun org-entry-get pom property &optional inherit
-ポイントかマーカー(point-or-marker POM)の位置でのエントリーのプロパティ
- PROPERTY
+ポイントかマーカー(point-or-marker
+POM)の位置でのエントリーのプロパティ PROPERTY
 の値を取得します。デフォルトでは、そのエントリーで局所的に定義されたプロパテ
 ィのみを調べます。もしINHERITがnon-nilかつエントリーがプロパティを持っていな
 い場合、階層のより高いレベルをチェックします。もしINHERITがシンボル
@@ -14155,13 +14240,13 @@ tags, デッドラインのtime文字列, スケジューリングのtime文字�
 @end defun
 
 @defun org-entry-delete pom property
-ポイントかマーカー(point-or-marker POM)の位置のエントリーからプロパティ
-PROPERTYを削除します。
+ポイントかマーカー(point-or-marker
+POM)の位置のエントリーからプロパティPROPERTYを削除します。
 @end defun
 
 @defun org-entry-put pom property value
-ポイントかマーカー(point-or-marker POM)の位置のエントリにプロパティPROPERTY
-の値VALUEをセットします。
+ポイントかマーカー(point-or-marker
+POM)の位置のエントリにプロパティPROPERTYの値VALUEをセットします。
 @end defun
 
 @defun org-buffer-property-keys &optional include-specials
@@ -14268,8 +14353,8 @@ function or Lisp form
 
 マッピングルーティーンへと与えられる関数はどのような動作もできます。エントリ
 に関する情報を更に集めるためにプロパティAPI(@pxref{Using the property API})を使え
-ますし、もしくはエントリのメタデータを変更するために使えます。 便利な幾つか
-の関数を紹介します:
+ますし、もしくはエントリのメタデータを変更するために使えます。
+便利な幾つかの関数を紹介します:
 
 @defun org-todo &optional arg
 エントリのTODO状態を変更します。引数ARGが取り得る多くの値については、関数の
@@ -14336,7 +14421,8 @@ MobileOrgの中でタグやTODOの状態を変更するためには、あなた�
 を設定しなければなりません。MobileOrgは、同様にインバッファの設定で状態やタ
 グを提供しますが、これらの変数の中で設定されているものについてのみ、TODOの状
 態についての@i{設定}
-(@pxref{Per-file keywords}) や@i{相互に排他的な} タグ (@pxref{Setting tags})
+(@pxref{Per-file keywords}) や@i{相互に排他的な} タグ
+(@pxref{Setting tags})
 についての装備状況を理解してください。
 
 @menu
@@ -14353,7 +14439,7 @@ MobileOrgはサーバー上のディレクトリを通して、Emacsと相互に
 ります。もしも公開のサーバーを使用しているなら、そのサーバーにアップロードさ
 れるファイルを暗号化したいと考えるかもしれません。この機能はOrg-mode7.02の
 @i{MobileOrg 1.5}（iPhoneバージョン）で実現していますが、あなたのシステムに
- @file{openssl}
+@file{openssl}
 をインストールしておく必要があるでしょう。暗号化するために、@i{MobileOrg}にパス
 ワードを設定し、Emacs上では、@code{org-mobile-use-encryption}@footnote{もしもあなたのEmacs
 の設定ファイルの中にパスワードを安全に保存したいならば、
@@ -14571,8 +14657,9 @@ Sebastianが居なければ、org-modeのHTML/XHTMLエクスポートは、無�
 @item @i{Austin Frank}は、メーリングリストの司会をしています。
 @item @i{Eric Fraga}は、アイディアを出しテストを行ない、BEAMERエクスポートの開発
 を進めました。
-@item @i{Barry Gidden}は、Network Theory Ltd. を通した本の出版のための準備で、マ
-ニュアルを校正してくれました。
+@item @i{Barry Gidden}は、Network Theory
+Ltd.
+を通した本の出版のための準備で、マニュアルを校正してくれました。
 @item @i{Niels Giesen}は、DONEとしたツリーを自動的にアーカイブするアイディアを提
 供しました。
 @item @i{Nicolas Goaziou}は、プレーンなリストのコードの多くの部分を書き直しまし
@@ -14603,8 +14690,9 @@ Sebastianが居なければ、org-modeのHTML/XHTMLエクスポートは、無�
 @item @i{Max Mikhanosha}は、ノートの再配置のアイディアを思いつきました。
 @item @i{Dmitri Minaev}は、ファイルごとに優先順位の制限を設定するパッチを提出し
 ました。
-@item @i{Stefan Monnier}は、Emacs Lisp コンパイラの出力を快適に保つためのパッチ
-を 提供しました。
+@item @i{Stefan Monnier}は、Emacs Lisp
+コンパイラの出力を快適に保つためのパッチを
+提供しました。
 @item @i{Richard Moreland}は、iPhone向けに@i{MobileOrg}を作成しました。
 @item @i{Rick Moynihan}は、一つのファイルで複数のTODOの連なりを扱うことを可能に
 し、アジェンダをサブツリーに素早く制限可能にしました。
@@ -14615,8 +14703,8 @@ Sebastianが居なければ、org-modeのHTML/XHTMLエクスポートは、無�
 索オプション、そしてタグを提案しました。
 @item @i{Osamu Okano}は、@file{orgcard2ref.pl}を作成しました。リファレンスカードのテ
 キスト版を作るためのPerlスクリプトです。
-@item @i{Takeshi Okano}は、org-modeのマニュアルと、David O'Toole'sのチュートリア
-ルを日本語に翻訳しました。
+@item @i{Takeshi Okano}は、org-modeのマニュアルと、David
+O'Toole'sのチュートリアルを日本語に翻訳しました。
 @item @i{Oliver Oppitz}は、TODOアイテムが複数の状態を持つことを提案しました。
 @item @i{Scott Otterson}は、他の要素とのリンクに説明文を導入するきっかけを作りま
 した。
@@ -14625,8 +14713,8 @@ Sebastianが居なければ、org-modeのHTML/XHTMLエクスポートは、無�
 @item @i{Martin Pohlack} provided the code snippet to bundle character insertion
 into bundles of 20 for undo.
 @item @i{T.V. Raman}は、バグをレポートして改善を提案しました。
-@item @i{Matthias Rempe} (Oelde)は、アイディアとWindowsサポート、品質制御を提供
-しました。
+@item @i{Matthias Rempe}
+(Oelde)は、アイディアとWindowsサポート、品質制御を提供しました。
 @item @i{Paul Rivier}は、名前付き注釈の基本的な実装を提供しました。また彼は、し
 ばらくメーリングリストの管理者でした。
 @item @i{Kevin Rogers}は、リモートホストのVMファイルにアクセスするコードを提出し
