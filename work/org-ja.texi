@@ -962,15 +962,16 @@ Emacsのロードパスにサブディレクトリとして@file{lisp}を加え�
 (setq load-path (cons "~/path/to/orgdir/contrib/lisp" load-path))
 @end example
 
-@noindent Now byte-compile the Lisp files with the shell command:
+@noindent
+Now byte-compile the Lisp files with the shell command:
 
 @example
 make
 @end example
 
-@noindent If you are running Org from the distribution directory, this is
-これですべてです。もしOrg-modeをシステムディレクトリにインストールしたい場合
-には、管理者権限で次のコマンドを使います。
+@noindent
+If you are running Org from the distribution directory, this is all.  If you
+want to install Org into the system directories, use (as administrator)
 
 @example
 make install
@@ -1010,10 +1011,9 @@ make install-info-debian
 @lisp
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 @end lisp
-@noindent Org mode buffers need font-lock to be turned on - this is the
-これはEmacsで標準の設定です@footnote{もしグローバルにfont-lockを使わない場合は、
-@code{(add-hook 'org-mode-hook 'turn-on-font-lock)}を使いOrg-modeのバッファについ
-て有効化してください。}。
+@noindent
+Org mode buffers need font-lock to be turned on - this is the default in
+Emacs@footnote{If you don't use font-lock globally, turn it on in Org buffer with @code{(add-hook 'org-mode-hook 'turn-on-font-lock)}}.
 
 Org-modeの4つのコマンド（@command{org-store-link}, @command{org-capture},
 @command{org-agenda},
@@ -1038,9 +1038,9 @@ MY PROJECTS    -*- mode: org; -*-
 @end example
 
 @vindex org-insert-mode-line-in-empty-file
-@noindent which will select Org-mode for this buffer no matter what
-（nonintent問題箇所）変数@code{org-insert-mode-line-in-empty-file}も確認してくだ
-さい。
+@noindent
+which will select Org-mode for this buffer no matter what the file's name
+is.  See also the variable @code{org-insert-mode-line-in-empty-file}.
 
 Org-modeの多くのコマンドは、リージョンが@i{active}な場合に動作します。アクティブ
 なリージョンをハイライトするためには、@code{transient-mark-mode}（XEmacsでは
@@ -1049,9 +1049,10 @@ Org-modeの多くのコマンドは、リージョンが@i{active}な場合に�
 @lisp
 (transient-mark-mode 1)
 @end lisp
-@noindent If you do not like @code{transient-mark-mode}, you can create an
-（nointent問題箇所）リージョンを選択するためにマウスを利用できます。もしくは
-、カーソルを移動する前に@kbd{C-@key{SPC}}を二回押します。
+@noindent
+If you do not like @code{transient-mark-mode}, you can create an active
+region by using the mouse to select a region, or pressing @kbd{C-@key{SPC}}
+twice before moving the cursor.
 
 @node Feedback, Conventions, アクティベーション, Introduction
 @section Feedback
@@ -1077,10 +1078,10 @@ Org-modeのメーリングリスト@email{emacs-orgmode@@gnu.org}へメールし
 @example
 @kbd{M-x org-submit-bug-report}
 @end example
-@noindent which will put all this information into an Emacs mail buffer so
-（nointent問題箇所）あなたがバグについての説明を書き加えればよいだけの状態。
-Emacsを利用してメールを送信しない場合は、テンプレートの内容をメールクライア
-ントにコピー＆ペーストしてください。
+@noindent
+which will put all this information into an Emacs mail buffer so that you
+only need to add your description.  If you re not sending the Email from
+within Emacs, please copy and paste the content into your Email program.
 
 もしもエラーが発生したら、バックトレースが非常に便利です（どのように作るのか
 は以下を参照してください）。しばしば次の明瞭な情報を含む小さな凡例ファイルが
@@ -1091,7 +1092,8 @@ Emacsを利用してメールを送信しない場合は、テンプレートの
 @item 何が起きることを期待していたのか
 @item 期待と異なり何が起こったのか
 @end enumerate
-@noindent Thank you for helping to improve this program.
+@noindent
+Thank you for helping to improve this program.
 
 @subsubheading 便利なバックトレースを生成する方法
 
@@ -1218,10 +1220,9 @@ modeの上で実行されます。アウトラインによって階層構造で�
 * Another top level headline
 @end example
 
-@noindent Some people find the many stars too noisy and would prefer an
-たくさんの「＊」があるとうるさく感じ、空白のあとに、見出しの始まりとしてのひ
-とつの「＊」があるという形式のアウトラインを好む人もいるでしょう。このような
-形式の設定について、@ref{Clean view},で説明しています。
+@noindent
+Some people find the many stars too noisy and would prefer an outline that
+has whitespace followed by a single star as headline starters.  @ref{Clean view}, describes a setup to realize this.
 
 @vindex org-cycle-separator-lines
 最後のサブツリーの直後の空白行は、そのサブツリーの一部と見なされます。そのた
@@ -1547,8 +1548,9 @@ Org-modeにはそういうツリーを作成するためのいくつものコマ
       '(("f" occur-tree "FIXME")))
 @end lisp
 
-@noindent will define the key @kbd{C-c a f} as a shortcut for creating
-@samp{FIXME}という文字列にマッチするツリーの抽出
+@noindent
+will define the key @kbd{C-c a f} as a shortcut for creating a sparse tree
+matching the string @samp{FIXME}.
 
 他のツリーの抽出のためのコマンドは、TODOキーワード、タグ、あるいは属性に基づ
 いて見出しを選択するもので、このマニュアルの後の部分で議論されるだろう。
@@ -1887,7 +1889,8 @@ Org-modeでは数字をベースとした構文を、@emph{名前のついた}�
 、@code{#+STARTUP}キーワードに対応します。詳細については変数の説明を参照してくだ
 さい。
 
-@noindent The following command handles footnotes:
+@noindent
+The following command handles footnotes:
 
 @table @kbd
 @kindex C-c C-x f
@@ -2030,9 +2033,9 @@ Org-modeはプレーンなASCII形式でのテーブル編集を容易にしま�
 |-
 @end example
 
-@noindent and then press @key{TAB} to align the table and start filling in
-（indent問題箇所）さらに素早いテーブルの作成方法は、@code{|名前|電話番号|年齢}に
-続いて@kbd{C-c @key{RET}}を入力することです。
+@noindent
+and then press @key{TAB} to align the table and start filling in fields.
+Even faster would be to type @code{|Name|Phone|Age} followed by @kbd{C-c @key{RET}}.
 
 @vindex org-enable-table-editor
 @vindex org-table-auto-blank-field
@@ -2199,9 +2202,9 @@ org-modeのバッファにテーブル状のテキスト（訳注：文字列が
 (setq org-enable-table-editor nil)
 @end lisp
 
-@noindent Then the only table command that still works is
-（indent問題箇所）手動でテーブルを整列するために@kbd{C-c C-c}をまだ利用できます
-。
+@noindent
+Then the only table command that still works is @kbd{C-c C-c} to do a manual
+re-align.
 
 @node 列幅と整列, Column groups, Built-in table editor, Tables
 @section 列幅と整列
@@ -2438,12 +2441,12 @@ A2..C4        @r{同上}
 @@I..II        @r{第一と第二の水平ラインに挟まれた領域（@code{@@I..@@II}の短縮表記）}
 @end example
 
-@noindent Range references return a vector of values that can be fed
-（indent問題箇所）範囲参照はCalcのベクトル関数に代入可能な値のベクトルを返し
-ます。範囲に含まれる空のフィールドは、普通は除去されます。これはベクトルが空
-ではないフィールドのみを含むようにするためです（ただし下記の@samp{E}モードスイッ
-チも参照してください）。もし、すべてのフィールドが空ならば、数式のシンタック
-スエラーを避けるために@samp{[0]}が返されます。
+@noindent
+Range references return a vector of values that can be fed into Calc vector
+functions.  Empty fields in ranges are normally suppressed, so that the
+vector contains only the non-empty fields (but see the @samp{E} mode switch
+below).  If there are no non-empty fields, @samp{[0]} is returned to avoid
+syntax errors in formulas.
 
 @subsubheading 数式中のフィールドの座標
 @cindex フィールドの座標
@@ -2461,11 +2464,10 @@ $3 = remote(FOO, @@@@#$2)      @r{テーブルFOOの二列目をコピーし、}
                              @r{現在のテーブルの三列目に上書きする}
 @end example
 
-@noindent For the second example, table FOO must have at least as many rows
-（indent問題箇所）二つ目の例では、テーブルFOOは少なくとも、カーソル位置のテ
-ーブルが持つ行数と同じ数の行がなければなりません。たくさんの行があると処理が
-重くなる@footnote{この計算の規模は、O(N^2)のオーダーです。テーブルFOOが、各フィールド
-をコピーするためにパースされるのが原因です。}ことに気を付けてください。
+@noindent
+For the second example, table FOO must have at least as many rows as the
+current table.  Note that this is inefficient@footnote{The computation time scales as O(N^2) because table FOO is parsed for each field to be copied.}
+for large number of rows.
 
 @subsubheading 名前付き参照
 @cindex 名前付き参照
@@ -2869,11 +2871,11 @@ org-modeのバッファにある列の数式へのテストラインを上下に
 @end group
 @end example
 
-@noindent @b{Important}: please note that for these special tables,
-（indent問題箇所）このような特別なテーブルについて、@kbd{C-u C-c *}を使った再計
-算は、@samp{#}もしくは@samp{*}でマークされた行、また、自身に対して数式が適用されている
-フィールドだけに影響します。最初のフィールドが空な行については、列の数式は適
-用されません。
+@noindent
+@b{Important}: please note that for these special tables, recalculating the
+table with @kbd{C-u C-c *} will only affect rows that are marked @samp{#} or
+@samp{*}, and fields that have a formula assigned to the field itself.  The
+column formulas are not applied in rows with empty first field.
 
 @cindex マーキング文字（テーブル）
 マーキング文字には、次のような意味があります。
@@ -3092,11 +3094,9 @@ C-l」を実行します。
 # <<My Target>>
 @end example
 
-@noindent In HTML export (@pxref{HTML export}), such targets will become
-HTMLでのエクスポート（@pxref{HTML export}）では、このようなターゲットは、@samp{http}で
-直接アクセスできる名前つきのアンカーになります@footnote{一番最初の見出しより前の文は
-エクスポートされないことに注意してください。このためそのようなターゲットの一
-番最初のものは、最初の見出しより後にある必要があります。}。
+@noindent
+In HTML export (@pxref{HTML export}), such targets will become named anchors
+for direct access through @samp{http} links@footnote{Note that text before the first headline is usually not exported, so the first such target should be after the first headline, or in the line directly before the first headline.}.
 
 もしも専用のターゲットが存在しない場合には、Org-modeはそのリンクにある語句と
 同じ見出しを検索しますが、TODOキーワードやタグ@footnote{見出しへのリンクを挿入すると
@@ -3793,7 +3793,8 @@ or @code{DONE} to @code{REPORT}, and any of the words in the second row to
 @example
 #+TODO: TODO FEEDBACK VERIFY | DONE CANCELED
 @end example
-@noindent (you may also write @code{#+SEQ_TODO} to be explicit about the
+@noindent
+(you may also write @code{#+SEQ_TODO} to be explicit about the
 interpretation, but it means the same as @code{#+TODO}), or
 @example
 #+TYP_TODO: Fred Sara Lucy Mike | DONE
@@ -3809,9 +3810,9 @@ interpretation, but it means the same as @code{#+TODO}), or
 
 @cindex オプションのキーワードの補完
 @kindex M-@key{TAB}
-@noindent To make sure you are using the correct keyword, type
-間違いなく正しいキーワードを使うため、そのバッファ内で@samp{#+}をタイプして、
-@kbd{M-@key{TAB}}を使って補完してください。
+@noindent
+To make sure you are using the correct keyword, type @samp{#+} into the
+buffer and then use @kbd{M-@key{TAB}} completion.
 
 @cindex DONEは最終のTODOキーワード
 縦線の後のキーワード「もしくは、縦線が指定されてない場合は、最後のキーワード
@@ -4299,7 +4300,8 @@ list＊「の最初の列」に置くことができいます。各クッキー�
 ックされていない状態でその下部のチェックボックスをチェックしようとするとエラ
 ーがスローされます
 
-@noindent The following commands work with checkboxes:
+@noindent
+The following commands work with checkboxes:
 
 @table @kbd
 @orgcmd{C-c C-c,org-toggle-checkbox}は、チェックした状態をトグルするか「前置
@@ -4470,23 +4472,25 @@ Org-modeは@emph{list of tags}に基づくタグの挿入をサポートして�
 (setq org-tag-alist '(("@@work" . ?w) ("@@home" . ?h) ("laptop" . ?l)))
 @end lisp
 
-@noindent If the tag is only relevant to the file you are working on, then you
-もしそのタグが作業中のファイルにおいてのみふさわしいのであれば、かわりに次の
-ようにTAGSオプションを書くこともできます。
+@noindent
+If the tag is only relevant to the file you are working on, then you can
+instead set the TAGS option line as:
 
 @example
 #+TAGS: @@work(w)  @@home(h)  @@tennisclub(t)  laptop(l)  pc(p)
 @end example
 
-@noindent The tags interface will show the available tags in a splash
-タグインタフェースはスプラッシュウィンドウにとりうるタグを表示します。もし特
-定のタグの後に新しい行から始めたいのであればタグリストに@samp{\n}を挿入します。
+@noindent
+The tags interface will show the available tags in a splash window.  If you
+want to start a new line after a specific tag, insert @samp{\n} into the tag
+list
 
 @example
 #+TAGS: @@work(w)  @@home(h)  @@tennisclub(t) \n laptop(l)  pc(p)
 @end example
 
-@noindent or write them in two lines:
+@noindent
+or write them in two lines:
 
 @example
 #+TAGS: @@work(w)  @@home(h)  @@tennisclub(t)
@@ -4501,13 +4505,13 @@ Org-modeは@emph{list of tags}に基づくタグの挿入をサポートして�
 #+TAGS: @{ @@work(w)  @@home(h)  @@tennisclub(t) @}  laptop(l)  pc(p)
 @end example
 
-@noindent you indicate that at most one of @samp{@@work}, @samp{@@home},
-これは@samp{@@work}、@samp{@@home}、@samp{@@tennisclub}のうち少なくとも一つは選択されること
-を意図しています。そのようなグループを複数持つことも可能です。
+@noindent
+you indicate that at most one of @samp{@@work}, @samp{@@home}, and
+@samp{@@tennisclub} should be selected.  Multiple such groups are allowed.
 
-@noindent Don't forget to press @kbd{C-c C-c} with the cursor in one of
-これらの変更を有効にするために、その行にカーソルを置いて@key{C-c C-c}を押すこと
-を忘れないようにしてください。
+@noindent
+Don't forget to press @kbd{C-c C-c} with the cursor in one of these lines to
+activate any changes.
 
 @noindent
 これらの相互排除グループを変数@code{org-tags-alist}で設定するためには、ブレースの
@@ -5009,7 +5013,8 @@ more specific columns further down, when you edit a deeper part of the tree.
 #+END:
 @end example
 
-@noindent This dynamic block has the following parameters:
+@noindent
+This dynamic block has the following parameters:
 
 @table @code
 @item :id
@@ -5734,9 +5739,9 @@ Org-modeのテーブルまたはその組み合わせにより作成されます
 を指定します。これらのデフォルト値は変数@code{org-clocktable-defaults}により変更
 することができます。
 
-@noindent First there are options that determine which clock entries are to
-まず、時間が計測されたエントリのうちどれが選択されるかを定めるオプションがあ
-ります。
+@noindent
+First there are options that determine which clock entries are to be
+selected:
 @example
 :maxlevel    @r{テーブルに表示される最大の深さレベル。}
              @r{これより深いレベルの時間は上位レベルに積算されて表示される。}
@@ -6048,10 +6053,10 @@ org-rememberに関するドキュメントは@url{http://orgmode.org/org-remembe
 @example
 @kbd{M-x org-capture-import-remember-templates @key{RET}}
 @end example
-@noindent and then customize the new variable with @kbd{M-x customize-variable org-capture-templates}, check the result, and save the
-そして新しい変数を@kbd{M-x customize-variable org-capture-templates}でカスタマイ
-ズし、結果を確認してから保存してください。これにより、新しい仕組みになれるま
-ではリメンバーとキャプチャの両方を使うことができます。
+@noindent
+and then customize the new variable with @kbd{M-x customize-variable org-capture-templates}, check the result, and save the customization.  You
+can then use both remember and capture until you are familiar with the new
+mechanism.
 
 キャプチャはワークフローにおいて小さい割り込みで素早くノートを保存することが
 できます。キャプチャの基本的なプロセスはリメンバーととても良く似ていますが、
@@ -6150,8 +6155,9 @@ Entered on %U
   %a")))
 @end example
 
-@noindent If you then press @kbd{C-c c t}, Org will prepare the template
-ここで@kbd{C-c c t}を押すと、Org-modeはこのようなテンプレートを用意します。
+@noindent
+If you then press @kbd{C-c c t}, Org will prepare the template for you like
+this:
 @example
 * TODO
   [[file:@var{lint to where you initiated capture}]]
@@ -6193,9 +6199,9 @@ Entered on %U
 @example
          ("b" "買い物リストのためのテンプレート")
 @end example
-@noindent If you do not define a template for the @kbd{C} key, this key will
-もし@kbd{C}キーにテンプレートを定義していなければ、このキーでこの複雑な変
-数のカスタマイズバッファを開きます。
+@noindent
+If you do not define a template for the @kbd{C} key, this key will be used
+to open the customize buffer for this complex variable.
 
 @item description
 選択時に表示されるテンプレートの短い説明文。
@@ -6411,7 +6417,8 @@ Wiegleyの貢献によってOrg-modeへ追加されました。
 も自身の選択で可能です。子エントリーは親から添付ディレクトリを受け継ぐため、
 サブツリー全体が同じ添付ディレクトリを使うことになります。
 
-@noindent The following commands deal with attachments:
+@noindent
+The following commands deal with attachments:
 
 @table @kbd
 
@@ -6946,16 +6953,16 @@ Emacsの日記からOrg-modeのアジェンダに項目を落とし込むため�
 (setq org-agenda-include-diary t)
 @end lisp
 
-@noindent After that, everything will happen automatically.  All diary
-祝祭日や記念日などを含むすべての項目は、Org-modeで作成されるジェンダバッファ
-に取り込むことができます。日記に記録されている項目を編集するために、アジェン
-ダバッファ上で@key{SPC}、
-@key{TAB}、及び
-@key{RET}を入力することで、日記のファイルにジャンプすることができます。その日に
-新しいエントリーを挿入する@kbd{i}というコマンドはアジェンダバッファ上で動作しま
-す。あたかも、日の出日の入りの時刻を表示したり、月の満ち欠けの状態を表示した
-り、他の暦に変換するための、@kbd{S}、@kbd{M}、および@kbd{C}というコマンドと同様です。
-@kbd{c}はカレンダーとアジェンダの間を行ったり来たりすることができます。
+@noindent
+After that, everything will happen automatically.  All diary entries
+including holidays, anniversaries, etc., will be included in the agenda
+buffer created by Org-mode.  @key{SPC}, @key{TAB}, and @key{RET} can be used
+from the agenda buffer to jump to the diary file in order to edit existing
+diary entries.  The @kbd{i} command to insert new entries for the current
+date works in the agenda buffer, as well as the commands @kbd{S}, @kbd{M},
+and @kbd{C} to display Sunrise/Sunset times, show lunar phases and to
+convert to other calendars, respectively.  @kbd{c} can be used to switch
+back and forth between calendar and agenda.
 
 もしもあなたが日記をS式項目と祝祭日だけで使用しているのならば、上のような設
 定をするよりも、Org-modeファイルに直接コピーしたり移動したりしたほうが手っ取
@@ -8767,14 +8774,16 @@ HTMLはエクスポート時にテキストエリア,@xref{Text areas in HTML ex
 #+MACRO: name   replacement text $1, $2 are arguments
 @end example
 
-@noindent which can be referenced anywhere in the document (even in
-code examples) with
-@code{@{@{@{name(arg1,arg2)@}@}@}}.
-マクロの定義に加えて、@code{@{@{@{title@}@}@}}、@code{@{@{@{author@}@}@}}など、
-@code{#+TITLE:}や@code{#+AUTHOR:}、似たような行によりセットされる情報を参照します。ま
-た、@code{@{@{@{date(@var{FORMAT})@}@}@}}と@code{@{@{@{modification-time(@var{FORMAT})@}@}@}}
-は現在の日付とファイルがエクスポートされて変更された時刻をそれぞれ参照します
-。@var{FORMAT}は@code{format-time-string}で認識した文字列をフォーマットします。
+@noindent
+which can be referenced anywhere in the document (even in code examples)
+with @code{@{@{@{name(arg1,arg2)@}@}@}}.  In addition to defined macros,
+@code{@{@{@{title@}@}@}}, @code{@{@{@{author@}@}@}}, etc., will reference
+information set by the @code{#+TITLE:}, @code{#+AUTHOR:}, and similar
+lines.  Also, @code{@{@{@{date(@var{FORMAT})@}@}@}} and
+@code{@{@{@{modification-time(@var{FORMAT})@}@}@}} refer to current date
+time and to the modification time of the file being exported, respectively.
+@var{FORMAT} should be a format string understood by
+@code{format-time-string}.
 
 マクロ展開はエクスポート中に行われ、一部の人々は複雑なHTMLコードの構築に用い
 る。
@@ -8872,8 +8881,9 @@ the sun is R_@{sun@} = 6.96 x 10^8 m.
 #+OPTIONS: ^:@{@}
 @end example
 
-@noindent With this setting, @samp{a_b} will not be interpreted as a
-subscript, but @samp{a_@{b@}} will.
+@noindent
+With this setting, @samp{a_b} will not be interpreted as a subscript, but
+@samp{a_@{b@}} will.
 
 @table @kbd
 @kindex C-c C-x \
@@ -8909,7 +8919,8 @@ subscript, but @samp{a_@{b@}} will.
 学区切り文字のみとして認識され、@samp{$}文字がの間に空白がない、そして
 @end itemize
 
-@noindent For example:
+@noindent
+For example:
 
 @example
 \begin@{equation@}                          % arbitrary environments,
@@ -9516,8 +9527,9 @@ descriptionの部分が@code{file:}リンクか画像を示す@code{http:}のURL
 #+MATHJAX: align:"left" mathml:t path:"/MathJax/MathJax.js"
 @end example
 
-@noindent See the docstring of the variable
-この行の各パラメータの意味の知るための@code{org-export-html-mathjax-options}
+@noindent
+See the docstring of the variable @code{org-export-html-mathjax-options} for
+the meaning of the parameters in this line.
 
 望むのであれば、@LaTeX{}を小さな画像に変換してブラウザ上のページに挿入すること
 もできます。MathJaxが有用である前には、これがorg-modeでのデフォルトの方法で
@@ -14519,9 +14531,9 @@ Sebastianが居なければ、org-modeのHTML/XHTMLエクスポートは、無�
 スを提供します。
 @end table
 
-@noindent OK, now to the full list of contributions!  Again, please let me
-（indent問題箇所）さて！いよいよ貢献してくれた方々のリストに移ります。繰り返
-しますが、忘れているところがあれば教えてください。
+@noindent
+OK, now to the full list of contributions! Again, please let me know what I
+am missing here!
 
 @itemize @bullet
 
