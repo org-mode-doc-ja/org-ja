@@ -331,7 +331,7 @@ Davison, Eric Schulte, and Thomas Dye
 * TODO Items::               全ツリーの枝をTODOアイテムになれます
 * Tags::                     見出しのタグ付けとタグの組み合せによる検索
 * Properties and Columns::   エントリーについての情報を保存する
-* Date and Times::           計画のためにアイテムを扱いやすくする
+* 日付や時間::          計画のためにアイテムを扱いやすくする
 * Capture - Refile - Archive::  プロジェクトへの入出力
 * Agenda Views::             さまざまな情報をビューにまとめて表示する
 * Markup::                   リッチなエクスポートのための下準備
@@ -359,7 +359,7 @@ Introduction
 
 * Summary::                  Org-modeで何ができるか
 * Installation::             Org-modeのインストール
-* Activation::               Org-modeを特定のバッファで有効にする方法
+* アクティベーション::  Org-modeを特定のバッファで有効にする方法
 * Feedback::                 バグ報告、アイデア、パッチなど
 * Conventions::              マニュアルで使われる植字の慣例
 
@@ -385,7 +385,7 @@ Tables
 
 
 * Built-in table editor::    単純なテーブル
-* Column width and alignment::  自動設定を解除する
+* 列幅と整列::          自動設定を解除する
 * Column groups::            縦の線を引き金にしてグループを作る
 * Orgtbl mode::              マイナーモードとしてのテーブルエディタ
 * The spreadsheet::          テーブルエディタはスプレッドシートの能力を持つ
@@ -853,7 +853,7 @@ MobileOrg
 @menu
 * Summary::                  Org-modeで何ができるか
 * Installation::             Org-modeのインストール
-* Activation::               Org-modeを特定のバッファで有効にする方法
+* アクティベーション::  Org-modeを特定のバッファで有効にする方法
 * Feedback::                 バグ報告、アイデア、パッチなど
 * Conventions::              マニュアルで使われる植字の慣例
 @end menu
@@ -927,7 +927,7 @@ Org-modeは、単純なものは単純なまま保持します。初めて起動
 @page
 
 
-@node Installation, Activation, Summary, Introduction
+@node Installation, アクティベーション, Summary, Introduction
 @section Installation
 @cindex インストール
 @cindex XEmacs
@@ -935,9 +935,9 @@ Org-modeは、単純なものは単純なまま保持します。初めて起動
 @b{Important:}
 @i{もしあなたが、Emacsに含まれた古いバージョンのOrgを利用している、もしくは、
 XEmacsのパッケージを利用している場合には、このセクションを飛ばして直接
-@ref{Activation}に移動してください。あなたのEmacsに含まれているOrg（もし存在する
-ならば）のバージョンを見るためには、@kbd{M-x load-library RET org}を実行してから
-、@kbd{M-x org-version}を実行してください。}
+@ref{アクティベーション}に移動してください。あなたのEmacsに含まれているOrg（もし
+存在するならば）のバージョンを見るためには、@kbd{M-x load-library RET org}を実行
+してから、@kbd{M-x org-version}を実行してください。}
 
 もしすでにインターネットからOrgをダウンロードしているならば、@file{.zip}か@file{.tar}
 もしくはGitアーカイブかは問いませんが、以下の手順に沿ってインストールしてく
@@ -998,8 +998,8 @@ make install-info-debian
 次節の解説ようにOrg-modeをアクティベーションすることを忘れないでください。
 @page
 
-@node Activation, Feedback, Installation, Introduction
-@section Activation
+@node アクティベーション, Feedback, Installation, Introduction
+@section アクティベーション
 @cindex activation
 @cindex autoload
 @cindex グローバルなキーバインド
@@ -1053,7 +1053,7 @@ Org-modeの多くのコマンドは、リージョンが@i{active}な場合に�
 （nointent問題箇所）リージョンを選択するためにマウスを利用できます。もしくは
 、カーソルを移動する前に@kbd{C-@key{SPC}}を二回押します。
 
-@node Feedback, Conventions, Activation, Introduction
+@node Feedback, Conventions, アクティベーション, Introduction
 @section Feedback
 @cindex フィードバック
 @cindex バグレポート
@@ -1994,14 +1994,14 @@ Org-modeは、高速で直感的なテーブルエディタを備えています
 
 @menu
 * Built-in table editor::    単純なテーブル
-* Column width and alignment::  自動設定を解除する
+* 列幅と整列::          自動設定を解除する
 * Column groups::            縦の線を引き金にしてグループを作る
 * Orgtbl mode::              マイナーモードとしてのテーブルエディタ
 * The spreadsheet::          テーブルエディタはスプレッドシートの能力を持つ
 * Org-Plot::                 org-modeのテーブルからプロットする
 @end menu
 
-@node Built-in table editor, Column width and alignment, Tables, Tables
+@node Built-in table editor, 列幅と整列, Tables, Tables
 @section 組み込まれたテーブルエディタ
 @cindex テーブルエディタ（組み込み）
 
@@ -2159,9 +2159,9 @@ shift-selectionとこれに関連するモードでも使われています（@p
 @c
 @tsubheading{その他の機能} @orgcmd{C-c `,org-table-edit-field}
 個別のウィンドウでカーソル位置のフィールドを編集する。この昨日は、フィ
-ールド全体が表示されていないときに便利です（
-@pxref{Column width and alignment}）。プレフィックス@kbd{C-u}と伴って関数が呼ば
-れると、フィールドの全ての内容が表示されるため、フィールド内で編集できます。
+ールド全体が表示されていないときに便利です（@pxref{列幅と整列}）。プレフィッ
+クス@kbd{C-u}と伴って関数が呼ばれると、フィールドの全ての内容が表示される
+ため、フィールド内で編集できます。
 @item M-x org-table-import
 @c
 ファイルをテーブルとしてインポートする。テーブルは、タブもしくは空白で
@@ -2203,8 +2203,8 @@ org-modeのバッファにテーブル状のテキスト（訳注：文字列が
 （indent問題箇所）手動でテーブルを整列するために@kbd{C-c C-c}をまだ利用できます
 。
 
-@node Column width and alignment, Column groups, Built-in table editor, Tables
-@section Column width and alignment
+@node 列幅と整列, Column groups, Built-in table editor, Tables
+@section 列幅と整列
 @cindex narrow columns in tables
 @cindex alignment in tables
 
@@ -2263,7 +2263,7 @@ XEmacsでは動作しません}。次に行なわれるテーブルの整列で�
 書式の設定情報のみを含む行は、ドキュメントをエクスポートするときに自動的に削
 除されます。
 
-@node Column groups, Orgtbl mode, Column width and alignment, Tables
+@node Column groups, Orgtbl mode, 列幅と整列, Tables
 @section Column groups
 @cindex 列のグルーピング
 
@@ -3570,7 +3570,7 @@ TODOアイテムが散らばることになります。それを補うためにO
 @end example
 
 @noindent
-TODO項目を入力するときの重要なコマンドは以下のとおりです。
+TODO項目を入力するときの最も重要なコマンドは以下のとおりです。
 
 @table @kbd
 @orgcmd{C-c C-t,org-todo}
@@ -3583,8 +3583,8 @@ TODO項目を入力するときの重要なコマンドは以下のとおりで�
 @end example
 
 同じような状態の切り替えは、タイムラインとアジェンダバッファで@kbd{t}コマ
-ンドキー（@pxref{Agenda commands}参照）を入力することで「リモートで」完了に
-することもできます。
+ンドキー（@pxref{Agenda commands}参照）を入力することで「間接的に」完了にす
+ることもできます。
 
 @orgkey{C-u C-c C-t}補完や「すでに設定されていれば」さらに速い選択方法を提供
 するインターフェイスを使用して特定のキーワードを選択します。後者の方法
@@ -3599,13 +3599,13 @@ TODO項目を入力するときの重要なコマンドは以下のとおりで�
 ます。もっとも役に立つのはTODOの状態が２段階以上の場合です。
 (@pxref{TODO extensions}).@code{shift-selection-mode}との連携については、
 @ref{Conflicts}も参照してください。変数
-@code{org-treat-S-cursor-todo-selection-as-state-change}.
-@orgcmd{C-c / t,org-show-todo-key}も参照してください。
-@cindex TODOのためのツリーの抽出
+@code{org-treat-S-cursor-todo-selection-as-state-change}も参照してください
+。@orgcmd{C-c / t,org-show-todo-key}
+@cindex ツリーの抽出、TODO用
 @vindex org-todo-keywords
 @emph{ツリーの抽出}機能を使ってTODOを確認します（@pxref{Sparse trees}）参照。バッ
-ファ全体を折り畳みますが、全てのTODO項目「DONE状態以外の」とその階層の
-見出しを表示します。接頭辞をつけることで(もしくは、キーバインド
+ファ全体を折り畳みますが、全てのTODO項目「DONE状態以外の」とその上の見
+出しの階層を表示します。前置引数をつけることで(もしくは、キーバインド
 @kbd{C-c / T})、ある特定のDONE状態の項目も表示させることができます。検索用
 のキーワードを入力するためのプロンプトが表示されます。さらにキーワード
 のリストを次のように入力することもでき@code{KWD1|KWD2|...}、この内のどれか
@@ -3618,8 +3618,8 @@ TODO項目を入力するときの重要なコマンドは以下のとおりで�
 。その新しくできたバッファは、@code{agenda-mode}で表示され、確認や修正を加
 えるためのコマンドも提供されます。
 (@pxref{Agenda commands}). @xref{Global TODO list}.を参照してください。
-@orgcmd{S-M-@key{RET},org-insert-todo-heading}新しいTODOを現在の位置に入力します
-。
+@orgcmd{S-M-@key{RET},org-insert-todo-heading}新しいTODOを現在の位置にあるTODOの
+前に入力します。
 @end table
 
 @noindent
@@ -3632,12 +3632,12 @@ the option @code{org-todo-state-tags-triggers} for details.
 @cindex 拡張されたTODOキーワード
 
 @vindex org-todo-keywords
-デフォルトでは、マークされたTODOの状態は、TODOとDONEの２つあります。さらに
-Org-modeは、@emph{TODOキーワード}「@code{org-todo-keywords}に指定されています。」を使
-って、より複雑にTODOアイテムを分類できます。特別な設定により、TODOキーワード
-システムは、ファイルによって異なる働きにすることできます。
+デフォルトでは、マークされたTODOの状態は、TODOとDONEの２つしかありません。さ
+らにOrg-modeは、@emph{TODOキーワード}「@code{org-todo-keywords}に指定されています。」
+を使って、より複雑にTODOアイテムを分類できます。特別な設定により、TODOキーワ
+ードシステムは、ファイルによって異なる働きにすることできます。
 
-注記、@i{タグ}は見出しと特にTODOアイテムの分類のもう一つの方法です。(@pxref{Tags}).
+注記、@i{タグ}は見出しと特にTODOアイテムを分類するもう一つの方法です。(@pxref{Tags}).
 
 @menu
 * Workflow states::          TODOからDONEまでの流れ
@@ -3665,18 +3665,18 @@ TODOキーワードを使用して、アイテムの@emph{連続した}異なる
 @end lisp
 
 縦線は、TODOキーワード「@emph{アクションが必要な}状態」とDONE状態「アクションが必
-要ない状態」からを分離します。縦線が指定されていない場合は、最後の状態が、
-DONE状態として使用されます。
+要ない状態」を分けます。縦線が指定されていない場合は、最後の状態が、DONE状態
+として使用されます。
 @cindex 完了、TODOキーワードの
-この設定により、コマンド@kbd{C-c C-t}で、TODO、FEEDBACK、それからVERIFY、最後に
-DONE、DELEGATEDというように順番切り替えます。前置引数を使用することで、特定
-の状態を即座に選択することもできます。例えば@kbd{C-3 C-c C-t}と入力すると、ダイ
-レクトに３番目のVERIFYに変更することができます。もしくは、@kbd{S-@key{left}}により、
+この設定により、コマンド@kbd{C-c C-t}で、TODOからFEEDBACKへ、それからVERIFY、最
+後にDONE、DELEGATEDというように順番に切り替えます。前置引数を使用することで
+、特定の状態を即座に選択することもできます。例えば@kbd{C-3 C-c C-t}と入力すると
+、すぐに３番目のVERIFYに変更することができます。もしくは、@kbd{S-@key{left}}により、
 逆の方向に順番に切り替えることもできます。もしも、たくさんのキーワードを定義
-した場合は、入力補完機能（@pxref{Completion}）か特別な一つのキーによる選択によりバ
-ッファに入力することができます。(@pxref{Fast access to TODO states})TODOの状態の変
-更は、タイムスタンプと共にログをとることができます。（より詳しい情報は
-@ref{Tracking TODO state changes}参照）
+した場合は、バッファ内補完機能（@pxref{Completion}）か特別な一つのキーによる選択に
+より特定のキーワードをバッファに入力することができます。
+(@pxref{Fast access to TODO states})TODOの状態の変更は、タイムスタンプと共にログを
+とることができます。（より詳しい情報は@ref{Tracking TODO state changes}を参照）
 
 @node TODO types, Multiple sets in one file, Workflow states, TODO extensions
 @subsection 種類としてのTODOキーワード
@@ -3684,11 +3684,11 @@ DONE、DELEGATEDというように順番切り替えます。前置引数を使�
 @cindex 名前をTODOキーワードとして
 @cindex 種類をTODOキーワードとして
 
-TODOキーワードの２つ目の使い方として、異なる@emph{種類}のアクションアイテムを定義
-できることです。例えば、アイテムを「仕事」または「家庭」を示すようにも使えま
-す。もしくは、複数の人と同じプロジェクトに参加するとき、その中の何人かに彼ら
-の名前を使って直接アクションアイテムを割り当てたいかもしれません。これは、以
-下のように設定します。：
+TODOキーワードの２つ目の使い方として、いろいろな@emph{種類}のやるべき事として表す
+使用法です。例えば、項目を「仕事」または「家」を示すようにも使えます。もしく
+は、複数の人と同じプロジェクトに参加するとき、その中の何人かに彼らの名前を
+TODOキーワードとして使って直接やるべき事を割り当てたいかもしれません。これは
+、以下のように設定します。：
 
 @lisp
 (setq org-todo-keywords '((type "Fred" "Sara" "Lucy" "|" "DONE")))
@@ -3703,11 +3703,10 @@ TODOキーワードの２つ目の使い方として、異なる@emph{種類}の
 らく間をおいてその項目に戻ってきて、「@kbd{C-c C-t}」を再度実行すると、そのとき
 は、すぐDONEに切り替えられます。前置引数か補完を使えば、適当なタイプをすぐに
 選ぶことができます。さらに@kbd{C-c / t}に前置引数を指定することにより、抽出され
-たツリーの中で探しているTODOのタイプを確認することもできます。例えば、Lucyが
+たツリーの中で特定のTODOタイプの項目を確認することもできます。例えば、Lucyが
 やらねばならないにすべての項目を見るには、「@kbd{C-3 C-c / t}」を実行します。す
-べてのアジェンダのファイルの中からLucyの項目を一つのバッファに集約するのに、
-グローバルなtodoリストを作成し、次のように前置引数を使用します:「
-@kbd{C-3 C-c a t}」。
+べてのアジェンダファイルの中からLucyの項目を一つのバッファに集約するには、グ
+ローバルなtodoリストを作成し、前置引数を使用します:「@kbd{C-3 C-c a t}」、
 
 @node Multiple sets in one file, Fast access to TODO states, TODO types, TODO extensions
 @subsection 同一ファイル内での複数のキーワードセット
@@ -4311,9 +4310,10 @@ list＊「の最初の列」に置くことができいます。各クッキー�
 クスをトグルします。そして残りのボックスを最初のボックスと同じ状態にし
 ます。前置引数と使用すると、リージョン内のすべてのチェックボックスを作
 成するか削除します。
-@item If the cursor is in a headline, toggle checkboxes in the region between this
-headline and the next (so @emph{not} the entire subtree).
-@item If there is no active region, just toggle the checkbox at point.
+@item カーソルが見出し上にある場合、現在の見出しから次の見出しのリージョン内
+のチェックボックスをトグルします。「つまりサブツリー全体では@emph{ない}」
+@item アクティブなリージョンがなければ、その場所のチェックボックスをトグルし
+ます。
 @end itemize
 @orgcmd{M-S-@key{RET},org-insert-todo-heading}は新しい項目をチェックボックスと共に挿入
 します。これは、＊plain
@@ -4606,7 +4606,7 @@ matching against TODO keywords, entry levels and properties.  For a complete
 description with many examples, see @ref{Matching tags and properties}.
 
 
-@node Properties and Columns, Date and Times, Tags, Top
+@node Properties and Columns, 日付や時間, Tags, Top
 @chapter プロパティ（属性）とカラム（列）
 @cindex properties
 
@@ -5080,7 +5080,7 @@ Schulteの@file{org-collector.el}によりできます。それは寄付され�
 Lispプログラムから使われます。詳細な情報は@ref{Using the property API}を参照して
 下さい。
 
-@node Date and Times, Capture - Refile - Archive, Properties and Columns, Top
+@node 日付や時間, Capture - Refile - Archive, Properties and Columns, Top
 @chapter 日付と時刻
 @cindex 日付
 @cindex 時刻
@@ -5105,7 +5105,7 @@ Lispプログラムから使われます。詳細な情報は@ref{Using the prop
 @end menu
 
 
-@node Timestamps, Creating timestamps, Date and Times, Date and Times
+@node Timestamps, Creating timestamps, 日付や時間, 日付や時間
 @section タイムスタンプ、デッドラインおよびスケジューリング
 @cindex タイムスタンプ
 @cindex 時間間隔、時刻
@@ -5181,7 +5181,7 @@ Lispプログラムから使われます。詳細な情報は@ref{Using the prop
 
 @end table
 
-@node Creating timestamps, Deadlines and scheduling, Timestamps, Date and Times
+@node Creating timestamps, Deadlines and scheduling, Timestamps, 日付や時間
 @section Creating timestamps
 @cindex タイムスタンプの作成
 @cindex タイムスタンプ、作成
@@ -5400,7 +5400,7 @@ Org-modeは文字列のスキャンニングのためにデフォルトのフォ
 @end itemize
 
 
-@node Deadlines and scheduling, Clocking work time, Creating timestamps, Date and Times
+@node Deadlines and scheduling, Clocking work time, Creating timestamps, 日付や時間
 @section Deadlines and scheduling
 
 プランニングを補助するため、タイムスタンプの前に所定のキーワードを置くことが
@@ -5599,7 +5599,7 @@ TODOに戻されます@footnote{実際には、変更される状態は@code{REP
 で解説されています。
 
 
-@node Clocking work time, Effort estimates, Deadlines and scheduling, Date and Times
+@node Clocking work time, Effort estimates, Deadlines and scheduling, 日付や時間
 @section Clocking work time
 @cindex 時間を計測する
 @cindex 時間の計測
@@ -5898,7 +5898,7 @@ Emacsを再開してタスクの計測を開始すると、Org-modeは最後の�
 Org-modeのアジェンダが半端時間を絶えずチェックしているファイルのリストは、
 @kbd{M-x org-resolve-clocks}により確認することができます。
 
-@node Effort estimates, Relative timer, Clocking work time, Date and Times
+@node Effort estimates, Relative timer, Clocking work time, 日付や時間
 @section Effort estimates
 @cindex 工数の見積もり
 
@@ -5957,7 +5957,7 @@ Org-modeのアジェンダが半端時間を絶えずチェックしているフ
 行えば、2、3回キーを押すことにより空いている時間間隔に合うように項目を絞り込
 むことができます。
 
-@node Relative timer, カウントダウンタイマ, Effort estimates, Date and Times
+@node Relative timer, カウントダウンタイマ, Effort estimates, 日付や時間
 @section 相対時間タイマーを使ったノート作成
 @cindex 相対時間タイマー
 
@@ -5995,7 +5995,7 @@ Org-modeのアジェンダが半端時間を絶えずチェックしているフ
 タイマー文字列を一度に修正する場合に使用できます。
 @end table
 
-@node カウントダウンタイマ, , Relative timer, Date and Times
+@node カウントダウンタイマ, , Relative timer, 日付や時間
 @section カウントダウンタイマ
 @cindex カウントダウンタイマ
 @kindex C-c C-x ;
@@ -6010,7 +6010,7 @@ Org-modeバッファから@code{org-timer-set-timer}を呼ぶことにより、�
 ォルトのカウントダウン値を設定します。前置引数で数値を指定することで、デフォ
 ルトの値が上書きされます。
 
-@node Capture - Refile - Archive, Agenda Views, Date and Times, Top
+@node Capture - Refile - Archive, Agenda Views, 日付や時間, Top
 @chapter Capture - Refile - Archive
 @cindex キャプチャ
 
@@ -14622,8 +14622,8 @@ Sebastianが居なければ、org-modeのHTML/XHTMLエクスポートは、無�
 した。
 @item @i{Pete Phillips}は、タグの開発をする際に助力しました。また、頻繁にフィー
 ドバックを提供しました。
-@item @i{Martin Pohlack} provided the code snippet to bundle character insertion
-into bundles of 20 for undo.
+@item @i{Martin Pohlack}は、文字列の挿入をアンドゥのために使いやすい束にするコー
+ドスニペットを提供しました。
 @item @i{T.V. Raman}は、バグをレポートして改善を提案しました。
 @item @i{Matthias Rempe} (Oelde)は、アイディアとWindowsサポート、品質制御を提供
 しました。
