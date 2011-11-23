@@ -4427,11 +4427,13 @@ prefix)をつけて呼び出すと、カレントバッファの全てのタグ�
 @end table
 
 @vindex org-tag-alist
-Org will support tag insertion based on a @emph{list of tags}.  By default
-this list is constructed dynamically, containing all tags currently used in
-the buffer.  You may also globally specify a hard list of tags with the
-variable @code{org-tag-alist}.  Finally you can set the default tags for a
-given file with lines like
+Org-modeは@emph{list of tags}に基づくタグの挿入をサポートしています。
+このリストはデフォルトでは動的に構築され、バッファで使われているタグを全て含
+みます。
+変数@code{org-tag-alist}にタグのリストを設定することでグローバルにタグを指定して
+おくこともできます。
+デフォルトのタグを次のようにファイルに記述することでもデフォルトのタグリスト
+を設定できます。
 
 @cindex #+TAGS
 @example
@@ -4439,49 +4441,46 @@ given file with lines like
 #+TAGS: laptop car pc sailboat
 @end example
 
-If you have globally defined your preferred set of tags using the variable
-@code{org-tag-alist}, but would like to use a dynamic tag list in a specific
-file, add an empty TAGS option line to that file:
+もし変数@code{org-tag-alist}にタグを設定することでタグリストがグローバルに定義さ
+れていたとして、そのリストよりもファイルから生成された動的なタグリストを利用
+したければ、次のような空のTAGSオプションをファイルに指定します
 
 @example
 #+TAGS:
 @end example
 
 @vindex org-tag-persistent-alist
-If you have a preferred set of tags that you would like to use in every
-file, in addition to those defined on a per-file basis by TAGS option lines,
-then you may specify a list of tags with the variable
-@code{org-tag-persistent-alist}.  You may turn this off on a per-file basis
-by adding a STARTUP option line to that file:
+もし全てのファイルで使うつもりのタグや、ファイルごとのTAGSオプションで定義さ
+れたタグの集合を優先したければ、変数@code{org-tag-persistent-alist}に明記すればよ
+い。これを止めるにはファイルごとにSTARTUPオプションを次のように書きます。
 
 @example
 #+STARTUP: noptag
 @end example
 
-By default Org-mode uses the standard minibuffer completion facilities for
-entering tags.  However, it also implements another, quicker, tag selection
-method called @emph{fast tag selection}.  This allows you to select and
-deselect tags with just a single key press.  For this to work well you
-should assign unique letters to most of your commonly used tags.  You can do
-this globally by configuring the variable @code{org-tag-alist} in your
-@file{.emacs} file.  For example, you may find the need to tag many items in
-different files with @samp{:@@home:}.  In this case you can set something
-like:
+デフォルトでOrg-modeはタグの入力に標準的なミニバッファでの補完を使います。し
+かし@emph{fast tag selection}と呼ばれるもう一つの速い実装もあります。これはタグの
+選択や除外をワンキーで可能にするものです。これをうまく動かすためにあなたはユ
+ニークな文字を良く使うタグにアサインするべきです。変数@code{org-tag-alist}を
+@file{.emacs}に設定することでグローバルにこの機能を使うことができます。例えば複数
+のファイルの多くの項目に@samp{:@@home:}タグをつけるという需要があったとします。こ
+の場合次のような設定なるでしょう。
 
 @lisp
 (setq org-tag-alist '(("@@work" . ?w) ("@@home" . ?h) ("laptop" . ?l)))
 @end lisp
 
 @noindent If the tag is only relevant to the file you are working on, then you
-can instead set the TAGS option line as:
+もしそのタグが作業中のファイルにおいてのみふさわしいのであれば、かわりに次の
+ようにTAGSオプションを書くこともできます。
 
 @example
 #+TAGS: @@work(w)  @@home(h)  @@tennisclub(t)  laptop(l)  pc(p)
 @end example
 
 @noindent The tags interface will show the available tags in a splash
-window.  If you want to start a new line after a specific tag, insert
-@samp{\n} into the tag list
+タグインタフェースはスプラッシュウィンドウにとりうるタグを表示します。もし特
+定のタグの後に新しい行から始めたいのであればタグリストに@samp{\n}を挿入します。
 
 @example
 #+TAGS: @@work(w)  @@home(h)  @@tennisclub(t) \n laptop(l)  pc(p)
@@ -4495,26 +4494,26 @@ window.  If you want to start a new line after a specific tag, insert
 @end example
 
 @noindent
-You can also group together tags that are mutually exclusive by using
-braces, as in:
+また次のようにブレース(波括弧@{@})を使うことで相互排除したグループにタグをま
+とめることもできます。
 
 @example
 #+TAGS: @{ @@work(w)  @@home(h)  @@tennisclub(t) @}  laptop(l)  pc(p)
 @end example
 
 @noindent you indicate that at most one of @samp{@@work}, @samp{@@home},
-and @samp{@@tennisclub} should be selected.  Multiple such groups are
-allowed.
+これは@samp{@@work}、@samp{@@home}、@samp{@@tennisclub}のうち少なくとも一つは選択されること
+を意図しています。そのようなグループを複数持つことも可能です。
 
 @noindent Don't forget to press @kbd{C-c C-c} with the cursor in one of
-these lines to activate any changes.
+これらの変更を有効にするために、その行にカーソルを置いて@key{C-c C-c}を押すこと
+を忘れないようにしてください。
 
 @noindent
-To set these mutually exclusive groups in the variable
-@code{org-tags-alist}, you must use the dummy tags @code{:startgroup} and
-@code{:endgroup} instead of the braces.  Similarly, you can use
-@code{:newline} to indicate a line break.  The previous example would be set
-globally by the following configuration:
+これらの相互排除グループを変数@code{org-tags-alist}で設定するためには、ブレースの
+代わりにダミーのタグとして@code{:startgroup}と@code{:endgroup}を使わなければなりません
+。同様に改行を表現するためにダミーのタグとして@code{:newline}を使うことができます
+。直前の例を設定すると次のような記述になります。
 
 @lisp
 (setq org-tag-alist '((:startgroup . nil)
@@ -4580,8 +4579,8 @@ for single-key tag selection, it comes up only when you press an extra
 
 @node Tag searches, , Setting tags, Tags
 @section Tag searches
-@cindex tag searches
-@cindex searching for tags
+@cindex タグの検索
+@cindex タグのための検索
 
 Once a system of tags has been set up, it can be used to collect related
 information into special lists.
