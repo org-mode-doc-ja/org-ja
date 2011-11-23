@@ -4462,46 +4462,44 @@ prefix)をつけて呼び出すと、カレントバッファの全てのタグ�
                            (:endgroup . nil)
                            ("laptop" . ?l) ("pc" . ?p)))
 </pre>
-   <p>If at least one tag has a selection key then pressing <kbd>C-c C-c</kbd> will
-automatically present you with a special interface, listing inherited tags,
-the tags of the current headline, and a list of all valid tags with
-corresponding keys<a rel="footnote" href="#fn-54" name="fnd-54"><sup>54</sup></a>.  In this interface, you can use the
-following keys:
+   <p>もし少なくとも一つのタグに選択用キーが設定されていると、<kbd>C-c C-c</kbd>が押された
+ときに自動的に特別なインタフェースが表示されます。そのインタフェースは継承さ
+れたタグ、現在の見出しのタグ、全ての有効な付随するタグを提示します<a rel="footnote" href="#fn-54" name="fnd-54"><sup>54</sup></a>。このインタフェー
+スでは以下のキーが利用できます。
 
      <dl>
-<dt><kbd>a-z...</kbd><dd>Pressing keys assigned to tags will add or remove them from the list of tags
-in the current line.  Selecting a tag in a group of mutually exclusive tags
-will turn off any other tags from that group. 
-<a name="index-g_t_0040key_007bTAB_007d-617"></a><br><dt><kbd>&lt;TAB&gt;</kbd><dd>Enter a tag in the minibuffer, even if the tag is not in the predefined
-list.  You will be able to complete on all tags present in the buffer.  You
-can also add several tags: just separate them with a comma.
+<dt><kbd>a-z...</kbd><dd>アサインされたキーを押すことで現在の行にタグが追加または削除されます。
+相互排除グループのタグを選択することでそのグループの他のタグは無効にな
+ります。
+<a name="index-g_t_0040key_007bTAB_007d-617"></a><br><dt><kbd>&lt;TAB&gt;</kbd><dd>たとえあらかじめ定義されていないタグでも、ミニバッファでタグを入力しま
+す。バッファ内の全てのタグを補完することができます。コンマで区切ること
+で複数のタグを追加することも可能です。
 
-     <p><a name="index-g_t_0040key_007bSPC_007d-618"></a><br><dt><kbd>&lt;SPC&gt;</kbd><dd>Clear all tags for this line. 
-<a name="index-g_t_0040key_007bRET_007d-619"></a><br><dt><kbd>&lt;RET&gt;</kbd><dd>Accept the modified set. 
-<br><dt><kbd>C-g</kbd><dd>Abort without installing changes. 
-<br><dt><kbd>q</kbd><dd>If <kbd>q</kbd> is not assigned to a tag, it aborts like <kbd>C-g</kbd>. 
-<br><dt><kbd>!</kbd><dd>Turn off groups of mutually exclusive tags.  Use this to (as an exception)
-assign several tags from such a group. 
-<br><dt><kbd>C-c</kbd><dd>Toggle auto-exit after the next change (see below).  If you are using expert
-mode, the first <kbd>C-c</kbd> will display the selection window. 
+     <p><a name="index-g_t_0040key_007bSPC_007d-618"></a><br><dt><kbd>&lt;SPC&gt;</kbd><dd>この行のタグを全てクリアします。
+<a name="index-g_t_0040key_007bRET_007d-619"></a><br><dt><kbd>&lt;RET&gt;</kbd><dd>変更された集合を確定します。
+<br><dt><kbd>C-g</kbd><dd>変更を破棄します。
+<br><dt><kbd>q</kbd><dd>もし<kbd>q</kbd>がタグにアサインされていなければ<kbd>C-g</kbd>のように変更を破棄します。
+<br><dt><kbd>!</kbd><dd>相互排除しているタグのグルーピングを無効にします。これはそのグループ内
+のタグを(例外的に)複数個、タグづけるときに使います。
+<br><dt><kbd>C-c</kbd><dd>次の変更後の自動終了をトグルします(下記参照)。もしもしエキスパートモー
+ドを使っているのであれば、最初の<kbd>C-c</kbd>が選択ウィンドウに表示されます。
 </dl>
 
-<p class="noindent">This method lets you assign tags to a headline with very few keys.  With the
-above setup, you could clear the current tags and set &lsquo;<samp><span class="samp">@home</span></samp>&rsquo;,
-&lsquo;<samp><span class="samp">laptop</span></samp>&rsquo; and &lsquo;<samp><span class="samp">pc</span></samp>&rsquo; tags with just the following keys: <kbd>C-c C-c &lt;SPC&gt; h l p &lt;RET&gt;</kbd>.  Switching from &lsquo;<samp><span class="samp">@home</span></samp>&rsquo; to &lsquo;<samp><span class="samp">@work</span></samp>&rsquo;
-would be done with <kbd>C-c C-c w &lt;RET&gt;</kbd> or alternatively with <kbd>C-c C-c C-c w</kbd>.  Adding the non-predefined tag &lsquo;<samp><span class="samp">Sarah</span></samp>&rsquo; could be done with
-<kbd>C-c C-c &lt;TAB&gt; S a r a h &lt;RET&gt; &lt;RET&gt;</kbd>.
+<p class="noindent">このメソッド(特別なインタフェース)であなたはとても少ないタイプで見出しにタグ
+をつけられます。上記の設定で、現在のタグをクリアして、&lsquo;<samp><span class="samp">@home</span></samp>&rsquo;、&lsquo;<samp><span class="samp">laptop</span></samp>&rsquo;、
+&lsquo;<samp><span class="samp">pc</span></samp>&rsquo;のタグをつけるには次のように入力します:
+<kbd>C-c C-c &lt;SPC&gt; h l p &lt;RET&gt;</kbd>。タグ&lsquo;<samp><span class="samp">@home</span></samp>&rsquo;を&lsquo;<samp><span class="samp">@work</span></samp>&rsquo;へ付け替えるには
+<kbd>C-c C-c w &lt;RET&gt;</kbd>とタイプするか代わりに<kbd>C-c C-c C-c w</kbd>とタイプします。定義さ
+れていないタグ&lsquo;<samp><span class="samp">Sarah</span></samp>&rsquo;を追加するには<kbd>C-c C-c &lt;TAB&gt; S a r a h &lt;RET&gt; &lt;RET&gt;</kbd>すれ
+ばよいのです。
 
-   <p><a name="index-org_002dfast_002dtag_002dselection_002dsingle_002dkey-620"></a>If you find that most of the time you need only a single key press to modify
-your list of tags, set the variable
-<code>org-fast-tag-selection-single-key</code>.  Then you no longer have to press
-&lt;RET&gt; to exit fast tag selection&mdash;it will immediately exit after the
-first change.  If you then occasionally need more keys, press <kbd>C-c</kbd> to
-turn off auto-exit for the current tag selection process (in effect: start
-selection with <kbd>C-c C-c C-c</kbd> instead of <kbd>C-c C-c</kbd>).  If you set the
-variable to the value <code>expert</code>, the special window is not even shown
-for single-key tag selection, it comes up only when you press an extra
-<kbd>C-c</kbd>.
+   <p><a name="index-org_002dfast_002dtag_002dselection_002dsingle_002dkey-620"></a>もしタグを決定するのをただひとつのキーを押すだけにする必要があれば、変数
+<code>org-fast-tag-selection-single-key</code>を設定します。これによってタグを選択する
+キーを押した後に<kbd>RET</kbd>を押す必要がなくなります。もしキー入力が必要であれば
+<kbd>C-c</kbd>で無効化できます(つまりタグの選択を始めるために<kbd>C-c C-c C-c</kbd>の代わりに
+<kbd>C-c C-c</kbd>を使います)。もしこの変数に<code>expert</code>を設定すれば、タグのワンキー選択
+用の特別なウィンドウを表示しなくなります。<kbd>C-c</kbd>を追加してはじめてそのウィン
+ドウが表示されるようになります。
 
 <div class="node">
 <a name="Tag-searches"></a>
@@ -4514,29 +4512,30 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Tags">Tags</a>
 <h3 class="section">6.3 Tag searches</h3>
 
 <p><a name="index-g_t_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00ae_00e6_00a4_009c_00e7_00b4_00a2-621"></a><a name="index-g_t_00e3_0082_00bf_00e3_0082_00b0_00e3_0081_00ae_00e3_0081_009f_00e3_0082_0081_00e3_0081_00ae_00e6_00a4_009c_00e7_00b4_00a2-622"></a>
-Once a system of tags has been set up, it can be used to collect related
-information into special lists.
+一度タグシステムが設定されると、関連する情報を特殊なリストに集めるのに使われ
+ます。
 
      
 <a name="index-C_002dc-_002f-m-623"></a>
 <a name="index-C_002dc-_005c-624"></a>
 <a name="index-org_002dmatch_002dsparse_002dtree-625"></a>
-<dl><dt><kbd>C-c / m  </kbd><span class="roman">or</span><kbd>  C-c \ &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-match-sparse-tree</code><kbd>)</kbd><dd> Create a sparse tree with
-all headlines matching a tags search.  With a <kbd>C-u</kbd> prefix argument,
-ignore headlines that are not a TODO line.  <a name="index-C_002dc-a-m-626"></a><a name="index-org_002dtags_002dview-627"></a><br><dt><kbd>C-c a m &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-tags-view</code><kbd>)</kbd><dd>
-Create a global list of tag matches from all agenda files.  See <a href="#Matching-tags-and-properties">Matching tags and properties</a>.  <a name="index-C_002dc-a-M-628"></a><a name="index-org_002dtags_002dview-629"></a><br><dt><kbd>C-c a M &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-tags-view</code><kbd>)</kbd><dd>
-<a name="index-org_002dtags_002dmatch_002dlist_002dsublevels-630"></a>Create a global list of tag matches from all agenda files, but check only
-TODO items and force checking subitems (see variable
-<code>org-tags-match-list-sublevels</code>). 
+<dl><dt><kbd>C-c / m  </kbd><span class="roman">or</span><kbd>  C-c \ &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-match-sparse-tree</code><kbd>)</kbd><dd>
+タグ検索にマッチした全てのツリーを抽出する。<kbd>C-u</kbd>のプレフィックスをつ
+けて呼び出すことで、TODOの見出しのみに限定する。
+<a name="index-C_002dc-a-m-626"></a><a name="index-org_002dtags_002dview-627"></a><br><dt><kbd>C-c a m &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-tags-view</code><kbd>)</kbd><dd> 全てのアジェンダファイルにおいてタグにマッチし
+たものの一覧を作成する。
+See <a href="#Matching-tags-and-properties">Matching tags and properties</a>. <a name="index-C_002dc-a-M-628"></a><a name="index-org_002dtags_002dview-629"></a><br><dt><kbd>C-c a M &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-tags-view</code><kbd>)</kbd><dd>
+<a name="index-org_002dtags_002dmatch_002dlist_002dsublevels-630"></a>全てのアジェンダファイルにおいてタグにマッチしたものの一覧を作成する。
+ただしTODOの項目に限定し、サブツリーの項目の検索を強制する(変数
+<code>org-tags-match-list-sublevels</code>参照)。
 </dl>
 
-   <p>These commands all prompt for a match string which allows basic Boolean
-logic like &lsquo;<samp><span class="samp">+boss+urgent-project1</span></samp>&rsquo;, to find entries with tags
-&lsquo;<samp><span class="samp">boss</span></samp>&rsquo; and &lsquo;<samp><span class="samp">urgent</span></samp>&rsquo;, but not &lsquo;<samp><span class="samp">project1</span></samp>&rsquo;, or
-&lsquo;<samp><span class="samp">Kathy|Sally</span></samp>&rsquo; to find entries which are tagged, like &lsquo;<samp><span class="samp">Kathy</span></samp>&rsquo; or
-&lsquo;<samp><span class="samp">Sally</span></samp>&rsquo;.  The full syntax of the search string is rich and allows also
-matching against TODO keywords, entry levels and properties.  For a complete
-description with many examples, see <a href="#Matching-tags-and-properties">Matching tags and properties</a>.
+   <p>これらのコマンドは全てマッチ文字列を問います。マッチ文字列はタグ&lsquo;<samp><span class="samp">boss</span></samp>&rsquo;と
+&lsquo;<samp><span class="samp">urgent</span></samp>&rsquo;を含み、&lsquo;<samp><span class="samp">project1</span></samp>&rsquo;を含まないものを検索する&lsquo;<samp><span class="samp">+boss+urgent-project1</span></samp>&rsquo;や
+、タグ&lsquo;<samp><span class="samp">Kathy</span></samp>&rsquo;または&lsquo;<samp><span class="samp">Sally</span></samp>&rsquo;がつけられているエントリーを検索する&lsquo;<samp><span class="samp">Kathy|Sally</span></samp>&rsquo;
+のような基本的な論理構造が使用可能です。検索文字列の全ての構文はリッチでTODO
+キーワードやエントリーのレベル、プロパティにもマッチします。完全な説明と多く
+の例は<a href="#Matching-tags-and-properties">Matching tags and properties</a>を見てください。
 
 <div class="node">
 <a name="Properties-and-Columns"></a>
@@ -16914,7 +16913,8 @@ XEmacsでは動作しません</p>
 はない(これはもしその検索が、より複雑な属性を含む条件を伴わないときだけ正し
 い)(see <a href="#Property-searches">Property searches</a>)</p>
 
-   <p class="footnote"><small>[<a name="fn-54" href="#fnd-54">54</a>]</small> Keys will automatically be assigned to tags which have no configured keys.</p>
+   <p class="footnote"><small>[<a name="fn-54" href="#fnd-54">54</a>]</small> キーが設
+定されていないタグにはは自動的にキーがアサインされます。</p>
 
    <p class="footnote"><small>[<a name="fn-55" href="#fnd-55">55</a>]</small> Please note that the COLUMNS definition must be on a single line&mdash;it is wrapped here only because of formatting constraints.</p>
 

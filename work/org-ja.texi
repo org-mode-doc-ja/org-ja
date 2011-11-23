@@ -4523,86 +4523,86 @@ Org-modeは@emph{list of tags}に基づくタグの挿入をサポートして�
                       ("laptop" . ?l) ("pc" . ?p)))
 @end lisp
 
-If at least one tag has a selection key then pressing @kbd{C-c C-c} will
-automatically present you with a special interface, listing inherited tags,
-the tags of the current headline, and a list of all valid tags with
-corresponding keys@footnote{Keys will automatically be assigned to tags which have no configured keys.}.  In this interface, you can use the
-following keys:
+もし少なくとも一つのタグに選択用キーが設定されていると、@kbd{C-c C-c}が押された
+ときに自動的に特別なインタフェースが表示されます。そのインタフェースは継承さ
+れたタグ、現在の見出しのタグ、全ての有効な付随するタグを提示します@footnote{キーが設
+定されていないタグにはは自動的にキーがアサインされます。}。このインタフェー
+スでは以下のキーが利用できます。
 
 @table @kbd
 @item a-z...
-Pressing keys assigned to tags will add or remove them from the list of tags
-in the current line.  Selecting a tag in a group of mutually exclusive tags
-will turn off any other tags from that group.
+アサインされたキーを押すことで現在の行にタグが追加または削除されます。
+相互排除グループのタグを選択することでそのグループの他のタグは無効にな
+ります。
 @kindex @key{TAB}
 @item @key{TAB}
-Enter a tag in the minibuffer, even if the tag is not in the predefined
-list.  You will be able to complete on all tags present in the buffer.  You
-can also add several tags: just separate them with a comma.
+たとえあらかじめ定義されていないタグでも、ミニバッファでタグを入力しま
+す。バッファ内の全てのタグを補完することができます。コンマで区切ること
+で複数のタグを追加することも可能です。
 
 @kindex @key{SPC}
 @item @key{SPC}
-Clear all tags for this line.
+この行のタグを全てクリアします。
 @kindex @key{RET}
 @item @key{RET}
-Accept the modified set.
+変更された集合を確定します。
 @item C-g
-Abort without installing changes.
+変更を破棄します。
 @item q
-If @kbd{q} is not assigned to a tag, it aborts like @kbd{C-g}.
+もし@kbd{q}がタグにアサインされていなければ@kbd{C-g}のように変更を破棄します。
 @item !
-Turn off groups of mutually exclusive tags.  Use this to (as an exception)
-assign several tags from such a group.
+相互排除しているタグのグルーピングを無効にします。これはそのグループ内
+のタグを(例外的に)複数個、タグづけるときに使います。
 @item C-c
-Toggle auto-exit after the next change (see below).  If you are using expert
-mode, the first @kbd{C-c} will display the selection window.
+次の変更後の自動終了をトグルします(下記参照)。もしもしエキスパートモー
+ドを使っているのであれば、最初の@kbd{C-c}が選択ウィンドウに表示されます。
 @end table
 
 @noindent
-This method lets you assign tags to a headline with very few keys.  With the
-above setup, you could clear the current tags and set @samp{@@home},
-@samp{laptop} and @samp{pc} tags with just the following keys: @kbd{C-c C-c @key{SPC} h l p @key{RET}}.  Switching from @samp{@@home} to @samp{@@work}
-would be done with @kbd{C-c C-c w @key{RET}} or alternatively with @kbd{C-c C-c C-c w}.  Adding the non-predefined tag @samp{Sarah} could be done with
-@kbd{C-c C-c @key{TAB} S a r a h @key{RET} @key{RET}}.
+このメソッド(特別なインタフェース)であなたはとても少ないタイプで見出しにタグ
+をつけられます。上記の設定で、現在のタグをクリアして、@samp{@@home}、@samp{laptop}、
+@samp{pc}のタグをつけるには次のように入力します:
+@kbd{C-c C-c @key{SPC} h l p @key{RET}}。タグ@samp{@@home}を@samp{@@work}へ付け替えるには
+@kbd{C-c C-c w @key{RET}}とタイプするか代わりに@kbd{C-c C-c C-c w}とタイプします。定義さ
+れていないタグ@samp{Sarah}を追加するには@kbd{C-c C-c @key{TAB} S a r a h @key{RET} @key{RET}}すれ
+ばよいのです。
 
 @vindex org-fast-tag-selection-single-key
-If you find that most of the time you need only a single key press to modify
-your list of tags, set the variable
-@code{org-fast-tag-selection-single-key}.  Then you no longer have to press
-@key{RET} to exit fast tag selection---it will immediately exit after the
-first change.  If you then occasionally need more keys, press @kbd{C-c} to
-turn off auto-exit for the current tag selection process (in effect: start
-selection with @kbd{C-c C-c C-c} instead of @kbd{C-c C-c}).  If you set the
-variable to the value @code{expert}, the special window is not even shown
-for single-key tag selection, it comes up only when you press an extra
-@kbd{C-c}.
+もしタグを決定するのをただひとつのキーを押すだけにする必要があれば、変数
+@code{org-fast-tag-selection-single-key}を設定します。これによってタグを選択する
+キーを押した後に@kbd{RET}を押す必要がなくなります。もしキー入力が必要であれば
+@kbd{C-c}で無効化できます(つまりタグの選択を始めるために@kbd{C-c C-c C-c}の代わりに
+@kbd{C-c C-c}を使います)。もしこの変数に@code{expert}を設定すれば、タグのワンキー選択
+用の特別なウィンドウを表示しなくなります。@kbd{C-c}を追加してはじめてそのウィン
+ドウが表示されるようになります。
 
 @node Tag searches, , Setting tags, Tags
 @section Tag searches
 @cindex タグの検索
 @cindex タグのための検索
 
-Once a system of tags has been set up, it can be used to collect related
-information into special lists.
+一度タグシステムが設定されると、関連する情報を特殊なリストに集めるのに使われ
+ます。
 
 @table @kbd
-@orgcmdkkc{C-c / m,C-c \\,org-match-sparse-tree} Create a sparse tree with
-all headlines matching a tags search.  With a @kbd{C-u} prefix argument,
-ignore headlines that are not a TODO line.  @orgcmd{C-c a m,org-tags-view}
-Create a global list of tag matches from all agenda files.  @xref{Matching tags and properties}.  @orgcmd{C-c a M,org-tags-view}
+@orgcmdkkc{C-c / m,C-c \\,org-match-sparse-tree}
+タグ検索にマッチした全てのツリーを抽出する。@kbd{C-u}のプレフィックスをつ
+けて呼び出すことで、TODOの見出しのみに限定する。
+@orgcmd{C-c a m,org-tags-view} 全てのアジェンダファイルにおいてタグにマッチし
+たものの一覧を作成する。
+@xref{Matching tags and properties}. @orgcmd{C-c a M,org-tags-view}
 @vindex org-tags-match-list-sublevels
-Create a global list of tag matches from all agenda files, but check only
-TODO items and force checking subitems (see variable
-@code{org-tags-match-list-sublevels}).
+全てのアジェンダファイルにおいてタグにマッチしたものの一覧を作成する。
+ただしTODOの項目に限定し、サブツリーの項目の検索を強制する(変数
+@code{org-tags-match-list-sublevels}参照)。
 @end table
 
-These commands all prompt for a match string which allows basic Boolean
-logic like @samp{+boss+urgent-project1}, to find entries with tags
-@samp{boss} and @samp{urgent}, but not @samp{project1}, or
-@samp{Kathy|Sally} to find entries which are tagged, like @samp{Kathy} or
-@samp{Sally}.  The full syntax of the search string is rich and allows also
-matching against TODO keywords, entry levels and properties.  For a complete
-description with many examples, see @ref{Matching tags and properties}.
+これらのコマンドは全てマッチ文字列を問います。マッチ文字列はタグ@samp{boss}と
+@samp{urgent}を含み、@samp{project1}を含まないものを検索する@samp{+boss+urgent-project1}や
+、タグ@samp{Kathy}または@samp{Sally}がつけられているエントリーを検索する@samp{Kathy|Sally}
+のような基本的な論理構造が使用可能です。検索文字列の全ての構文はリッチでTODO
+キーワードやエントリーのレベル、プロパティにもマッチします。完全な説明と多く
+の例は@ref{Matching tags and properties}を見てください。
 
 
 @node Properties and Columns, 日付や時間, Tags, Top
