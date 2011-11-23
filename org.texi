@@ -848,13 +848,15 @@ step for this directory:
 (setq load-path (cons "~/path/to/orgdir/contrib/lisp" load-path))
 @end example
 
-@noindent Now byte-compile the Lisp files with the shell command:
+@noindent
+Now byte-compile the Lisp files with the shell command:
 
 @example
 make
 @end example
 
-@noindent If you are running Org from the distribution directory, this is
+@noindent
+If you are running Org from the distribution directory, this is
 all.  If you want to install Org into the system directories, use (as
 administrator)
 
@@ -896,7 +898,8 @@ line to your @file{.emacs} file.
 @lisp
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 @end lisp
-@noindent Org mode buffers need font-lock to be turned on - this is the
+@noindent
+Org mode buffers need font-lock to be turned on - this is the
 default in Emacs@footnote{If you don't use font-lock globally, turn it on in
 Org buffer with @code{(add-hook 'org-mode-hook 'turn-on-font-lock)}}.
 
@@ -922,7 +925,8 @@ MY PROJECTS    -*- mode: org; -*-
 @end example
 
 @vindex org-insert-mode-line-in-empty-file
-@noindent which will select Org-mode for this buffer no matter what
+@noindent
+which will select Org-mode for this buffer no matter what
 the file's name is.  See also the variable
 @code{org-insert-mode-line-in-empty-file}.
 
@@ -933,7 +937,8 @@ in Emacs 22 you need to do this yourself with
 @lisp
 (transient-mark-mode 1)
 @end lisp
-@noindent If you do not like @code{transient-mark-mode}, you can create an
+@noindent
+If you do not like @code{transient-mark-mode}, you can create an
 active region by using the mouse to select a region, or pressing
 @kbd{C-@key{SPC}} twice before moving the cursor.
 
@@ -961,7 +966,8 @@ version information of Emacs (@kbd{M-x emacs-version @key{RET}}) and Org
 @example
 @kbd{M-x org-submit-bug-report}
 @end example
-@noindent which will put all this information into an Emacs mail buffer so
+@noindent
+which will put all this information into an Emacs mail buffer so
 that you only need to add your description.  If you re not sending the Email
 from within Emacs, please copy and paste the content into your Email program.
 
@@ -974,7 +980,8 @@ about:
 @item What did you expect to happen?
 @item What happened instead?
 @end enumerate
-@noindent Thank you for helping to improve this program.
+@noindent
+Thank you for helping to improve this program.
 
 @subsubheading How to create a useful backtrace
 
@@ -1102,7 +1109,8 @@ start with one or more stars, on the left margin@footnote{See the variables
 * Another top level headline
 @end example
 
-@noindent Some people find the many stars too noisy and would prefer an
+@noindent
+Some people find the many stars too noisy and would prefer an
 outline that has whitespace followed by a single star as headline
 starters.  @ref{Clean view}, describes a setup to realize this.
 
@@ -1453,7 +1461,8 @@ For example:
       '(("f" occur-tree "FIXME")))
 @end lisp
 
-@noindent will define the key @kbd{C-c a f} as a shortcut for creating
+@noindent
+will define the key @kbd{C-c a f} as a shortcut for creating
 a sparse tree matching the string @samp{FIXME}.
 
 The other sparse tree commands select headings based on TODO keywords,
@@ -1779,7 +1788,8 @@ This is handled by the variable @code{org-footnote-auto-label} and its
 corresponding @code{#+STARTUP} keywords.  See the docstring of that variable
 for details.
 
-@noindent The following command handles footnotes:
+@noindent
+The following command handles footnotes:
 
 @table @kbd
 @kindex C-c C-x f
@@ -1918,7 +1928,8 @@ create the above table, you would only type
 |-
 @end example
 
-@noindent and then press @key{TAB} to align the table and start filling in
+@noindent
+and then press @key{TAB} to align the table and start filling in
 fields.  Even faster would be to type @code{|Name|Phone|Age} followed by
 @kbd{C-c @key{RET}}.
 
@@ -2097,7 +2108,8 @@ it off with
 (setq org-enable-table-editor nil)
 @end lisp
 
-@noindent Then the only table command that still works is
+@noindent
+Then the only table command that still works is
 @kbd{C-c C-c} to do a manual re-align.
 
 @node Column width and alignment, Column groups, Built-in table editor, Tables
@@ -2343,7 +2355,8 @@ A2..C4        @r{Same as above}
 @@I..II        @r{Between first and second hline, short for @code{@@I..@@II}}
 @end example
 
-@noindent Range references return a vector of values that can be fed
+@noindent
+Range references return a vector of values that can be fed
 into Calc vector functions.  Empty fields in ranges are normally
 suppressed, so that the vector contains only the non-empty fields (but
 see the @samp{E} mode switch below).  If there are no non-empty fields,
@@ -2366,7 +2379,8 @@ $3 = remote(FOO, @@@@#$2)      @r{copy column 2 from table FOO into}
                              @r{column 3 of the current table}
 @end example
 
-@noindent For the second example, table FOO must have at least as many rows
+@noindent
+For the second example, table FOO must have at least as many rows
 as the current table.  Note that this is inefficient@footnote{The computation time scales as
 O(N^2) because table FOO is parsed for each field to be copied.} for large
 number of rows.
@@ -2802,7 +2816,8 @@ makes use of these features:
 @end group
 @end example
 
-@noindent @b{Important}: please note that for these special tables,
+@noindent
+@b{Important}: please note that for these special tables,
 recalculating the table with @kbd{C-u C-c *} will only affect rows that
 are marked @samp{#} or @samp{*}, and fields that have a formula assigned
 to the field itself.  The column formulas are not applied in rows with
@@ -3030,7 +3045,8 @@ comment line. For example
 # <<My Target>>
 @end example
 
-@noindent In HTML export (@pxref{HTML export}), such targets will become
+@noindent
+In HTML export (@pxref{HTML export}), such targets will become
 named anchors for direct access through @samp{http} links@footnote{Note that
 text before the first headline is usually not exported, so the first such
 target should be after the first headline, or in the line directly before the
@@ -3764,7 +3780,8 @@ file:
 @example
 #+TODO: TODO FEEDBACK VERIFY | DONE CANCELED
 @end example
-@noindent (you may also write @code{#+SEQ_TODO} to be explicit about the
+@noindent
+(you may also write @code{#+SEQ_TODO} to be explicit about the
 interpretation, but it means the same as @code{#+TODO}), or
 @example
 #+TYP_TODO: Fred Sara Lucy Mike | DONE
@@ -3780,7 +3797,8 @@ A setup for using several sets in parallel would be:
 
 @cindex completion, of option keywords
 @kindex M-@key{TAB}
-@noindent To make sure you are using the correct keyword, type
+@noindent
+To make sure you are using the correct keyword, type
 @samp{#+} into the buffer and then use @kbd{M-@key{TAB}} completion.
 
 @cindex DONE, final TODO keyword
@@ -4292,7 +4310,8 @@ If the current outline node has an @code{ORDERED} property, checkboxes must
 be checked off in sequence, and an error will be thrown if you try to check
 off a box while there are unchecked boxes above it.
 
-@noindent The following commands work with checkboxes:
+@noindent
+The following commands work with checkboxes:
 
 @table @kbd
 @orgcmd{C-c C-c,org-toggle-checkbox}
@@ -4480,14 +4499,16 @@ like:
 (setq org-tag-alist '(("@@work" . ?w) ("@@home" . ?h) ("laptop" . ?l)))
 @end lisp
 
-@noindent If the tag is only relevant to the file you are working on, then you
+@noindent
+If the tag is only relevant to the file you are working on, then you
 can instead set the TAGS option line as:
 
 @example
 #+TAGS: @@work(w)  @@home(h)  @@tennisclub(t)  laptop(l)  pc(p)
 @end example
 
-@noindent The tags interface will show the available tags in a splash
+@noindent
+The tags interface will show the available tags in a splash
 window.  If you want to start a new line after a specific tag, insert
 @samp{\n} into the tag list
 
@@ -4495,7 +4516,8 @@ window.  If you want to start a new line after a specific tag, insert
 #+TAGS: @@work(w)  @@home(h)  @@tennisclub(t) \n laptop(l)  pc(p)
 @end example
 
-@noindent or write them in two lines:
+@noindent
+or write them in two lines:
 
 @example
 #+TAGS: @@work(w)  @@home(h)  @@tennisclub(t)
@@ -4510,10 +4532,12 @@ braces, as in:
 #+TAGS: @{ @@work(w)  @@home(h)  @@tennisclub(t) @}  laptop(l)  pc(p)
 @end example
 
-@noindent you indicate that at most one of @samp{@@work}, @samp{@@home},
+@noindent
+you indicate that at most one of @samp{@@work}, @samp{@@home},
 and @samp{@@tennisclub} should be selected.  Multiple such groups are allowed.
 
-@noindent Don't forget to press @kbd{C-c C-c} with the cursor in one of
+@noindent
+Don't forget to press @kbd{C-c C-c} with the cursor in one of
 these lines to activate any changes.
 
 @noindent
@@ -5085,7 +5109,8 @@ of this block looks like this:
 #+END:
 @end example
 
-@noindent This dynamic block has the following parameters:
+@noindent
+This dynamic block has the following parameters:
 
 @table @code
 @item :id
@@ -5851,7 +5876,8 @@ The @samp{BEGIN} line and specify a number of options to define the scope,
 structure, and formatting of the report.  Defaults for all these options can
 be configured in the variable @code{org-clocktable-defaults}.
 
-@noindent First there are options that determine which clock entries are to
+@noindent
+First there are options that determine which clock entries are to
 be selected:
 @example
 :maxlevel    @r{Maximum level depth to which times are listed in the table.}
@@ -6159,7 +6185,8 @@ users.  To convert your @code{org-remember-templates}, run the command
 @example
 @kbd{M-x org-capture-import-remember-templates @key{RET}}
 @end example
-@noindent and then customize the new variable with @kbd{M-x customize-variable org-capture-templates}, check the result, and save the
+@noindent
+and then customize the new variable with @kbd{M-x customize-variable org-capture-templates}, check the result, and save the
 customization.  You can then use both remember and capture until
 you are familiar with the new mechanism.
 
@@ -6262,7 +6289,8 @@ would look like:
         "* %?\nEntered on %U\n  %i\n  %a")))
 @end example
 
-@noindent If you then press @kbd{C-c c t}, Org will prepare the template
+@noindent
+If you then press @kbd{C-c c t}, Org will prepare the template
 for you like this:
 @example
 * TODO
@@ -6307,7 +6335,8 @@ prefix key, for example
 @example
          ("b" "Templates for marking stuff to buy")
 @end example
-@noindent If you do not define a template for the @kbd{C} key, this key will
+@noindent
+If you do not define a template for the @kbd{C} key, this key will
 be used to open the customize buffer for this complex variable.
 
 @item description
@@ -6524,7 +6553,8 @@ choice to an entry.  You can also make children inherit the attachment
 directory from a parent, so that an entire subtree uses the same attached
 directory.
 
-@noindent The following commands deal with attachments:
+@noindent
+The following commands deal with attachments:
 
 @table @kbd
 
@@ -7089,7 +7119,8 @@ agenda, you only need to customize the variable
 (setq org-agenda-include-diary t)
 @end lisp
 
-@noindent After that, everything will happen automatically.  All diary
+@noindent
+After that, everything will happen automatically.  All diary
 entries including holidays, anniversaries, etc., will be included in the
 agenda buffer created by Org-mode.  @key{SPC}, @key{TAB}, and
 @key{RET} can be used from the agenda buffer to jump to the diary
@@ -8981,7 +9012,8 @@ You can define text snippets with
 #+MACRO: name   replacement text $1, $2 are arguments
 @end example
 
-@noindent which can be referenced anywhere in the document (even in
+@noindent
+which can be referenced anywhere in the document (even in
 code examples) with @code{@{@{@{name(arg1,arg2)@}@}@}}.  In addition to
 defined macros, @code{@{@{@{title@}@}@}}, @code{@{@{@{author@}@}@}}, etc.,
 will reference information set by the @code{#+TITLE:}, @code{#+AUTHOR:}, and
@@ -9093,7 +9125,8 @@ convention, or use, on a per-file basis:
 #+OPTIONS: ^:@{@}
 @end example
 
-@noindent With this setting, @samp{a_b} will not be interpreted as a
+@noindent
+With this setting, @samp{a_b} will not be interpreted as a
 subscript, but @samp{a_@{b@}} will.
 
 @table @kbd
@@ -9144,7 +9177,8 @@ For the other delimiters, there is no such restriction, so when in doubt, use
 @samp{\(...\)} as inline math delimiters.
 @end itemize
 
-@noindent For example:
+@noindent
+For example:
 
 @example
 \begin@{equation@}                          % arbitrary environments,
@@ -9734,7 +9768,8 @@ insert something like the following into the buffer:
 #+MATHJAX: align:"left" mathml:t path:"/MathJax/MathJax.js"
 @end example
 
-@noindent See the docstring of the variable
+@noindent
+See the docstring of the variable
 @code{org-export-html-mathjax-options} for the meaning of the parameters in
 this line.
 
@@ -14824,7 +14859,8 @@ webpages derived from Org using an Info-like or a folding interface with
 single-key navigation.
 @end table
 
-@noindent OK, now to the full list of contributions!  Again, please let me
+@noindent
+OK, now to the full list of contributions!  Again, please let me
 know what I am missing here!
 
 @itemize @bullet
