@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-11-23 20:14+0900\n"
+"PO-Revision-Date: 2011-11-23 22:31+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -12054,6 +12054,10 @@ msgstr "org-tag-alist"
 #: org.texi:4443
 msgid "Org will support tag insertion based on a @emph{list of tags}.  By default this list is constructed dynamically, containing all tags currently used in the buffer.  You may also globally specify a hard list of tags with the variable @code{org-tag-alist}.  Finally you can set the default tags for a given file with lines like"
 msgstr ""
+"Org-modeは@emph{list of tags}に基づくタグの挿入をサポートしています．\n"
+"このリストはデフォルトでは動的に構築され，バッファで使われているタグを全て含みます．\n"
+"変数@code{org-tag-alist}にタグのリストを設定することでグローバルにタグを指定しておくこともできます．\n"
+"デフォルトのタグを次のようにファイルに記述することでもデフォルトのタグリストを設定できます．"
 
 #. type: cindex
 #: org.texi:4444
@@ -12076,7 +12080,7 @@ msgstr ""
 #. type: Plain text
 #: org.texi:4453
 msgid "If you have globally defined your preferred set of tags using the variable @code{org-tag-alist}, but would like to use a dynamic tag list in a specific file, add an empty TAGS option line to that file:"
-msgstr ""
+msgstr "もし変数@code{org-tag-alist}にタグを設定することでタグリストがグローバルに定義されていたとして，そのリストよりもファイルから生成された動的なタグリストを利用したければ，次のような空のTAGSオプションをファイルに指定します"
 
 #. type: example
 #: org.texi:4456
@@ -12094,7 +12098,7 @@ msgstr "org-tag-persistent-alist"
 #. type: Plain text
 #: org.texi:4464
 msgid "If you have a preferred set of tags that you would like to use in every file, in addition to those defined on a per-file basis by TAGS option lines, then you may specify a list of tags with the variable @code{org-tag-persistent-alist}.  You may turn this off on a per-file basis by adding a STARTUP option line to that file:"
-msgstr ""
+msgstr "もし全てのファイルで使うつもりのタグや，ファイルごとのTAGSオプションで定義されたタグの集合を優先したければ，変数@code{org-tag-persistent-alist}に明記すればよい．これを止めるにはファイルごとにSTARTUPオプションを次のように書きます．"
 
 #. type: example
 #: org.texi:4467
@@ -12106,7 +12110,7 @@ msgstr "#+STARTUP: noptag\n"
 #. type: Plain text
 #: org.texi:4478
 msgid "By default Org-mode uses the standard minibuffer completion facilities for entering tags.  However, it also implements another, quicker, tag selection method called @emph{fast tag selection}.  This allows you to select and deselect tags with just a single key press.  For this to work well you should assign unique letters to most of your commonly used tags.  You can do this globally by configuring the variable @code{org-tag-alist} in your @file{.emacs} file.  For example, you may find the need to tag many items in different files with @samp{:@@home:}.  In this case you can set something like:"
-msgstr ""
+msgstr "デフォルトでOrg-modeはタグの入力に標準的なミニバッファでの補完を使います．しかし@emph{fast tag selection}と呼ばれるもう一つの速い実装もあります．これはタグの選択や除外をワンキーで可能にするものです．これをうまく動かすためにあなたはユニークな文字を良く使うタグにアサインするべきです．変数@code{org-tag-alist}を@file{.emacs}に設定することでグローバルにこの機能を使うことができます．例えば複数のファイルの多くの項目に@samp{:@@home:}タグをつけるという需要があったとします．この場合次のような設定なるでしょう．"
 
 #. type: lisp
 #: org.texi:4481
@@ -12118,7 +12122,7 @@ msgstr "(setq org-tag-alist '((\"@@work\" . ?w) (\"@@home\" . ?h) (\"laptop\" . 
 #. type: Plain text
 #: org.texi:4485
 msgid "can instead set the TAGS option line as:"
-msgstr ""
+msgstr "もしそのタグが作業中のファイルにおいてのみふさわしいのであれば，かわりに次のようにTAGSオプションを書くこともできます．"
 
 #. type: example
 #: org.texi:4488
@@ -12132,7 +12136,7 @@ msgstr "#+TAGS: @@work(w)  @@home(h)  @@tennisclub(t)  laptop(l)  pc(p)\n"
 msgid ""
 "window.  If you want to start a new line after a specific tag, insert @samp{\\n"
 "} into the tag list"
-msgstr ""
+msgstr "タグインタフェースはスプラッシュウィンドウにとりうるタグを表示します．もし特定のタグの後に新しい行から始めたいのであればタグリストに@samp{\\n}を挿入します．"
 
 #. type: example
 #: org.texi:4496
@@ -12156,7 +12160,7 @@ msgstr ""
 #. type: Plain text
 #: org.texi:4508
 msgid "You can also group together tags that are mutually exclusive by using braces, as in:"
-msgstr ""
+msgstr "また次のようにブレース(波括弧{})を使うことで相互排除したグループにタグをまとめることもできます．"
 
 #. type: example
 #: org.texi:4511
@@ -12167,19 +12171,19 @@ msgstr "#+TAGS: @{ @@work(w)  @@home(h)  @@tennisclub(t) @}  laptop(l)  pc(p)\n"
 #. type: Plain text
 #: org.texi:4515
 msgid "and @samp{@@tennisclub} should be selected.  Multiple such groups are allowed."
-msgstr ""
+msgstr "これは@samp{@@work}，@samp{@@home}，@samp{@@tennisclub}のうち少なくとも一つは選択されることを意図しています．そのようなグループを複数持つことも可能です．"
 
 #+glossary: line ( 行|ライン|線 )
 #. type: Plain text
 #: org.texi:4518
 msgid "these lines to activate any changes."
-msgstr ""
+msgstr "これらの変更を有効にするために，その行にカーソルを置いて@key{C-c C-c}を押すことを忘れないようにしてください．"
 
 #+glossary: line break ( 改行 ) / example ( 例 ) / previous ( 前の ) / tag ( タグ ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:4525
 msgid "To set these mutually exclusive groups in the variable @code{org-tags-alist}, you must use the dummy tags @code{:startgroup} and @code{:endgroup} instead of the braces.  Similarly, you can use @code{:newline} to indicate a line break.  The previous example would be set globally by the following configuration:"
-msgstr ""
+msgstr "これらの相互排除グループを変数@code{org-tags-alist}で設定するためには，ブレースの代わりにダミーのタグとして@code{:startgroup}と@code{:endgroup}を使わなければなりません．同様に改行を表現するためにダミーのタグとして@code{:newline}を使うことができます．直前の例を設定すると次のような記述になります．"
 
 #. type: lisp
 #: org.texi:4532
