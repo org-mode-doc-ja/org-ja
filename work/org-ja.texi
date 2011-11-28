@@ -522,7 +522,7 @@ Clocking work time
 
 * Clocking commands::        時計の開始と終了
 * The clock table::          詳細な報告
-* Resolving idle time::      Resolving time when you've been idle
+* Resolving idle time::      空いた時間を解決する
 
 Capture - Refile - Archive
 
@@ -727,16 +727,15 @@ Sample configuration
 
 
 
-* Structure of code blocks::  Code block syntax described
+* Structure of code blocks::  コードブロックシンタックスについて
 * Editing source code::      言語のメジャーモードを用いた編集
 * Exporting code blocks::    コード(と/または)結果のエクスポート
 * Extracting source code::   ソースコードのみのファイルの作成
-* Evaluating code blocks::   Place results of evaluation in the Org-mode 
-                               buffer
+* Evaluating code blocks::   Org-modeバッファ中の評価結果の場所
 * Library of Babel::         有用なコードブロックのライブラリを読む、そして
 貢献する
 * Languages::                コードブロックがサポートする言語一覧
-* Header arguments::         Configure code block functionality
+* Header arguments::         コードブロックの機能的な設定
 * 評価の結果::          評価の結果を操作する方法
 * Noweb reference syntax::   Org-modeでの文芸的プログラミング
 * Key bindings and useful functions::  コードブロックを素早く操作する
@@ -932,7 +931,7 @@ Org-modeは、単純なものは単純なまま保持します。初めて起動
 @cindex インストール
 @cindex XEmacs
 
-@b{Important:}
+@b{重要}:
 @i{もしあなたが、Emacsに含まれた古いバージョンのOrgを利用している、もしくは、
 XEmacsのパッケージを利用している場合には、このセクションを飛ばして直接
 @ref{アクティベーション}に移動してください。あなたのEmacsに含まれているOrg（もし
@@ -963,15 +962,16 @@ Emacsのロードパスにサブディレクトリとして@file{lisp}を加え�
 @end example
 
 @noindent
-Now byte-compile the Lisp files with the shell command:
+シェルコマンドを使ってLispファイルをバイトコンパイルします。
 
 @example
 make
 @end example
 
 @noindent
-If you are running Org from the distribution directory, this is all.  If you
-want to install Org into the system directories, use (as administrator)
+解凍したOrg-modeファイルがあるディレクトリでOrg-modeを動かすならば、これでイ
+ンストール完了です。もしOrg-modeをシステムディレクトリにインストールしたいな
+らば、管理者権限で次のコマンドを使います。
 
 @example
 make install
@@ -1012,8 +1012,10 @@ make install-info-debian
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 @end lisp
 @noindent
-Org mode buffers need font-lock to be turned on - this is the default in
-Emacs@footnote{If you don't use font-lock globally, turn it on in Org buffer with @code{(add-hook 'org-mode-hook 'turn-on-font-lock)}}.
+Org-modeのバッファは、font-lockが有効になっている必要があります。これはEmacs
+で標準の設定です@footnote{もしグローバルにfont-lockを使わない場合は、
+@code{(add-hook 'org-mode-hook 'turn-on-font-lock)}を使いOrg-modeのバッファについ
+て有効化してください。}。
 
 Org-modeの4つのコマンド（@command{org-store-link}, @command{org-capture},
 @command{org-agenda},
@@ -1039,8 +1041,8 @@ MY PROJECTS    -*- mode: org; -*-
 
 @vindex org-insert-mode-line-in-empty-file
 @noindent
-which will select Org-mode for this buffer no matter what the file's name
-is.  See also the variable @code{org-insert-mode-line-in-empty-file}.
+この設定のあるバッファは、ファイルの名前とは無関係にOrg-modeが有効になります
+。変数@code{org-insert-mode-line-in-empty-file}も確認してください。
 
 Org-modeの多くのコマンドは、リージョンが@i{active}な場合に動作します。アクティブ
 なリージョンをハイライトするためには、@code{transient-mark-mode}（XEmacsでは
@@ -1050,9 +1052,9 @@ Org-modeの多くのコマンドは、リージョンが@i{active}な場合に�
 (transient-mark-mode 1)
 @end lisp
 @noindent
-If you do not like @code{transient-mark-mode}, you can create an active
-region by using the mouse to select a region, or pressing @kbd{C-@key{SPC}}
-twice before moving the cursor.
+もし@code{transient-mark-mode}が好みでないならば、マウスを利用した領域の選択で、
+アクティブなリージョンを作れます。もしくは、カーソルを移動する前に@kbd{C-@key{SPC}}
+を二回押します。
 
 @node Feedback, Conventions, アクティベーション, Introduction
 @section Feedback
@@ -1079,9 +1081,10 @@ Org-modeのメーリングリスト@email{emacs-orgmode@@gnu.org}へメールし
 @kbd{M-x org-submit-bug-report}
 @end example
 @noindent
-which will put all this information into an Emacs mail buffer so that you
-only need to add your description.  If you re not sending the Email from
-within Emacs, please copy and paste the content into your Email program.
+あなたがバグについての説明を書き加えればよいだけの状態になるように、Emacsの
+メールバッファに必要な情報を書きこんでくれます。Emacsを利用してメールを送信
+しない場合は、テンプレートの内容をメールクライアントにコピー＆ペーストしてく
+ださい。
 
 もしもエラーが発生したら、バックトレースが非常に便利です（どのように作るのか
 は以下を参照してください）。しばしば次の明瞭な情報を含む小さな凡例ファイルが
@@ -1093,7 +1096,7 @@ within Emacs, please copy and paste the content into your Email program.
 @item 期待と異なり何が起こったのか
 @end enumerate
 @noindent
-Thank you for helping to improve this program.
+Org-modeの改善にご協力いただき心より感謝します。
 
 @subsubheading 便利なバックトレースを生成する方法
 
@@ -2034,8 +2037,9 @@ Org-modeはプレーンなASCII形式でのテーブル編集を容易にしま�
 @end example
 
 @noindent
-and then press @key{TAB} to align the table and start filling in fields.
-Even faster would be to type @code{|Name|Phone|Age} followed by @kbd{C-c @key{RET}}.
+そして@key{TAB}を押してテーブルを整列し、フィールドへの入力を始めます。さらに素
+早いテーブルの作成方法は、@code{|名前|電話番号|年齢}に続いて@kbd{C-c @key{RET}}を入力する
+ことです。
 
 @vindex org-enable-table-editor
 @vindex org-table-auto-blank-field
@@ -2203,8 +2207,8 @@ org-modeのバッファにテーブル状のテキスト（訳注：文字列が
 @end lisp
 
 @noindent
-Then the only table command that still works is @kbd{C-c C-c} to do a manual
-re-align.
+こうすると、テーブルのコマンドで利用できるのは、@kbd{C-c C-c}によるマニュアルな
+再整列だけになります。
 
 @node 列幅と整列, Column groups, Built-in table editor, Tables
 @section 列幅と整列
@@ -2442,11 +2446,11 @@ A2..C4        @r{同上}
 @end example
 
 @noindent
-Range references return a vector of values that can be fed into Calc vector
-functions.  Empty fields in ranges are normally suppressed, so that the
-vector contains only the non-empty fields (but see the @samp{E} mode switch
-below).  If there are no non-empty fields, @samp{[0]} is returned to avoid
-syntax errors in formulas.
+範囲参照はCalcのベクトル関数に代入可能な値のベクトルを返します。範囲に含まれ
+る空のフィールドは、普通は除去されます。これはベクトルが空ではないフィールド
+のみを含むようにするためです（ただし下記の@samp{E}モードスイッチも参照してくださ
+い）。もし、すべてのフィールドが空ならば、数式のシンタックスエラーを避けるた
+めに@samp{[0]}が返されます。
 
 @subsubheading 数式中のフィールドの座標
 @cindex フィールドの座標
@@ -2465,9 +2469,10 @@ $3 = remote(FOO, @@@@#$2)      @r{テーブルFOOの二列目をコピーし、}
 @end example
 
 @noindent
-For the second example, table FOO must have at least as many rows as the
-current table.  Note that this is inefficient@footnote{The computation time scales as O(N^2) because table FOO is parsed for each field to be copied.}
-for large number of rows.
+二つ目の例では、テーブルFOOは少なくとも、カーソル位置のテーブルが持つ行数と
+同じ数の行がなければなりません。たくさんの行があると処理が重くなる@footnote{この計算
+の規模は、O(N^2)のオーダーです。テーブルFOOが、各フィールドをコピーするため
+にパースされるのが原因です。}ことに気を付けてください。
 
 @subsubheading 名前付き参照
 @cindex 名前付き参照
@@ -2872,10 +2877,10 @@ org-modeのバッファにある列の数式へのテストラインを上下に
 @end example
 
 @noindent
-@b{Important}: please note that for these special tables, recalculating the
-table with @kbd{C-u C-c *} will only affect rows that are marked @samp{#} or
-@samp{*}, and fields that have a formula assigned to the field itself.  The
-column formulas are not applied in rows with empty first field.
+@b{重要}: このような特別なテーブルについて、@kbd{C-u C-c *}を使った再計算は、@samp{#}もし
+くは@samp{*}でマークされた行、また、自身に対して数式が適用されているフィールドだ
+けに影響することに気をつけてください。最初のフィールドが空な行については、列
+の数式は適用されません。
 
 @cindex マーキング文字（テーブル）
 マーキング文字には、次のような意味があります。
@@ -3069,7 +3074,7 @@ C-l」を実行します。
 @node Internal links, External links, Link format, Hyperlinks
 @section Internal links
 @cindex 内部リンク
-@cindex links, internal
+@cindex リンク,内部
 @cindex ターゲット,リンクの
 
 @cindex property, CUSTOM_ID
@@ -3095,8 +3100,10 @@ C-l」を実行します。
 @end example
 
 @noindent
-In HTML export (@pxref{HTML export}), such targets will become named anchors
-for direct access through @samp{http} links@footnote{Note that text before the first headline is usually not exported, so the first such target should be after the first headline, or in the line directly before the first headline.}.
+HTMLでのエクスポート（@pxref{HTML export}）では、このようなターゲットは、@samp{http}で
+直接アクセスできる名前つきのアンカーになります@footnote{一番最初の見出しより前の文は
+エクスポートされないことに注意してください。このためそのようなターゲットの一
+番最初のものは、最初の見出しより後にある必要があります。}。
 
 もしも専用のターゲットが存在しない場合には、Org-modeはそのリンクにある語句と
 同じ見出しを検索しますが、TODOキーワードやタグ@footnote{見出しへのリンクを挿入すると
@@ -3457,11 +3464,10 @@ Org-modeだけでなく、どのEmacsのバッファーでも、Org-mode構文�
 @end example
 
 @noindent
-In-buffer completion (@pxref{Completion}) can be used after @samp{[} to
-complete link abbreviations.  You may also define a function
-@code{org-PREFIX-complete-link} that implements special (e.g.@: completion)
-support for inserting such a link with @kbd{C-c C-l}.  Such a function
-should not accept any arguments, and return the full link with prefix.
+バッファー内補完(@pxref{Completion})は、@samp{[}以降でリンクの省略記法を補完するために
+使用することができます。@kbd{C-c C-l}でリンクを挿入することへの特別な支援(たとえ
+ば、補完)を実行する@code{org-PREFIX-complete-link}関数を定義することもできます。
+このような関数はいかなる引数も受け入れず、接頭辞付きのリンクを返します。
 
 @node Search options, Custom searches, Link abbreviations, Hyperlinks
 @section ファイルリンクにおける検索オプション
@@ -3624,8 +3630,9 @@ TODO項目を入力するときの最も重要なコマンドは以下のとお�
 
 @noindent
 @vindex org-todo-state-tags-triggers
-Changing a TODO state can also trigger tag changes.  See the docstring of
-the option @code{org-todo-state-tags-triggers} for details.
+TODOの状態の変更は、タグの変更をすることになることがあります。詳細については
+、オプション@code{org-todo-state-tags-triggers}のドキュメント文字列を参照してくだ
+さい。
 
 @node TODO extensions, Progress logging, TODO basics, TODO Items
 @section TODOキーワードの拡張的な使い方
@@ -3714,9 +3721,9 @@ TODOキーワードとして使って直接やるべき事を割り当てたい�
 
 時には、異なるセットのTODOキーワードを同時に使いたい場合があるかもしれません
 。例えば、通常の@code{TODO}/@code{DONE}を使用しつつ、バグフィックスのワークフロー、さ
-らにアイテムがキャンセルをされたことを表すその次の状態を使用したい場合などで
-す「つまりDONEではないが、次のアクションが必要ない場合」。その場合の設定は次
-のようになります:
+らにアイテムがキャンセルをされたことを表すもう一つの状態を使用したい場合など
+です「つまりDONEではないが、次のアクションが必要ない場合」。その場合の設定は
+次のようになります:
 
 @lisp
 (setq org-todo-keywords
@@ -3725,12 +3732,12 @@ TODOキーワードとして使って直接やるべき事を割り当てたい�
         (sequence "|" "CANCELED")))
 @end lisp
 
-キーワードは、すべて異るようにすべきで、そうするとOrg-modeが、現在の状態の次
-に続くものを認識するのに役立ちます。この設定では、@kbd{C-c C-t}は、サブグループ
-内だけで働きます。つまり@code{DONE}から(何も無い状態)から@code{TODO}へ、そして@code{FIXED}
-から(何も無い状態)から@code{REPORT}へ。その為、まず使いたいサブグループを選ぶ方法
-が必要です。当然通常行うようにキーワードをタイプするか、補完、または次のコマ
-ンドを使ううこともできます:
+キーワードは、すべて異るようにすべきで、そうすることでOrg-modeが、今入力され
+たキーワードから次に続くものを認識するのに役立ちます。この設定では、
+@kbd{C-c C-t}は、サブグループ内だけで働きます。つまり@code{DONE}から(何も無い状態)か
+ら@code{TODO}へ、そして@code{FIXED}から(何も無い状態)から@code{REPORT}へ。その為、まず使い
+たいサブグループを選ぶ方法が必要です。当然通常行うようにキーワードをタイプす
+るか、補完、または次のコマンドを使うこともできます:
 
 @table @kbd
 @kindex C-S-@key{right}
@@ -3749,17 +3756,17 @@ or @code{DONE} to @code{REPORT}, and any of the words in the second row to
 @item S-@key{right}
 @itemx S-@key{left}
 @kbd{S-@key{<left>}}と@kbd{S-@key{<right>}}は、すべてのサブグループの@emph{すべて}のキーワ
-ード切り替えいきます。例えば、上記の例では、@kbd{S-@key{<right>}}は、@code{DONE}に
-切り替えられ、さらに@code{REPORT}になります。@code{shift-selection-mode}と連携さ
-せる方法については、@ref{Conflicts}を参照してください。
+ードに切り替えいきます。例えば、上記の例では、@kbd{S-@key{<right>}}は、@code{DONE}
+に切り替えられ、さらに@code{REPORT}になります。@code{shift-selection-mode}と連携
+させる方法については、@ref{Conflicts}を参照してください。>
 @end table
 
 @node Fast access to TODO states, Per-file keywords, Multiple sets in one file, TODO extensions
 @subsection Fast access to TODO states
 
 もし、切り替えせずに任意のTODOの状態にすばやく変更したい場合は、キー登録して
-一文字でその状態に変更できます。それには、各キーワードに対して括弧で括ってセ
-クションキーを割り当てることにより実現できます。例えば:
+一文字でその状態に変更できます。それには、各キーワードの後に括弧で括ってセク
+ションキーを割り当てることにより実現できます。例えば:
 
 @lisp
 (setq org-todo-keywords
@@ -3786,21 +3793,21 @@ or @code{DONE} to @code{REPORT}, and any of the words in the second row to
 
 異なるファイルごとに、TODOの機能をさまざまなの方法で使用できるととても便利で
 す。ファイル単位のローカルな設定をするためには、そのファイルだけに通用するキ
-ーワードを特別な行を記入することで設定する必要があります。例えば、前述した２
-つの例のうちの一つを設定するの場合、次のような行を、そのファイルのどこかで行
-頭から開始する必要があります。
+ーワードを特別な行として記入することで設定する必要があります。例えば、前述し
+た２つの例のうちの一つを設定するの場合、次のような行を、そのファイルのどこか
+で行頭から開始する必要があります。
 
 @example
 #+TODO: TODO FEEDBACK VERIFY | DONE CANCELED
 @end example
 @noindent
-(you may also write @code{#+SEQ_TODO} to be explicit about the
-interpretation, but it means the same as @code{#+TODO}), or
+(解釈を明確にするために@code{#+SEQ_TODO}と記入してもいいです。しかし、@code{#+TODO}と
+記入するのと同じです。)、もしくは、
 @example
 #+TYP_TODO: Fred Sara Lucy Mike | DONE
 @end example
 
-同時に複数のキーワードセットの設定には:
+同時に複数のキーワードグループの設定には:
 
 @example
 #+TODO: TODO | DONE
@@ -3808,7 +3815,7 @@ interpretation, but it means the same as @code{#+TODO}), or
 #+TODO: | CANCELED
 @end example
 
-@cindex オプションのキーワードの補完
+@cindex 補完、オプションのキーワード
 @kindex M-@key{TAB}
 @noindent
 To make sure you are using the correct keyword, type @samp{#+} into the
@@ -3820,12 +3827,12 @@ buffer and then use @kbd{M-@key{TAB}} completion.
 と言ってもDONE以外のキーワードも使えます」。これらの変更を加えた後、Org-mode
 に変更を認識させるため、カーソルを変更した場所に置いたままで@kbd{C-c C-c}してく
 ださい。@footnote{Org-modeがこれらの行を読み込むのは、ファイルを開いてOrg-modeが実行
-された場合だけです。@samp{#+}で始まる行にカーソルを置いて@kbd{C-c C-c}をすると、現在
-のバッファでOrg-modeを再起動したことになります。}
+された場合だけです。@samp{#+}で始まる行にカーソルを置いて@kbd{C-c C-c}をすると、単に
+現在のバッファでOrg-modeを再起動したことになります。}
 
 @node Faces for TODO keywords, TODO dependencies, Per-file keywords, TODO extensions
 @subsection Faces for TODO keywords
-@cindex TODOキーワードのフェイス
+@cindex フェイス、TODOキーワード
 
 @vindex org-todo @r{(フェイス)}
 @vindex org-done @r{(フェイス)}
@@ -3845,16 +3852,16 @@ Org-modeは、TODOキーワードを特別なフェイスを使ってハイラ�
 @end group
 @end lisp
 
-CANCELEDにあるようにフェイスプロパティのリストを使うのは、上手くいく@emph{はず}で
-すが、いつもうまくいってるように見えないかもしれません。必要であれば、特別な
-フェイスを定義してそれを使うのもいいかもしれません。文字列は、カラーとして解
-釈されます。変数@code{org-faces-easy-properties}により、文字の色にするか、背景色
-にするか指定できます。
+CANCELEDにあるようにフェイスプロパティのリストを使えば上手くいく@emph{はず}ですが
+、いつもうまくいってるように見えないかもしれません。必要であれば、特別なフェ
+イスを定義してそれを使うのもいいかもしれません。文字列は、カラーとして解釈さ
+れます。変数@code{org-faces-easy-properties}により、文字の色にするか、背景色にす
+るか指定できます。
 
 @node TODO dependencies, , Faces for TODO keywords, TODO extensions
 @subsection TODO dependencies
 @cindex TODO dependencies
-@cindex TODOの状態の依存関係
+@cindex 依存関係、TODOの状態
 
 @vindex org-enforce-todo-dependencies
 @cindex プロパティ、ORDERED
@@ -3891,8 +3898,8 @@ Orgファイルの構成「階層とリスト」は、TODOの依存関係の定�
 ムに対してのみ動作させるためです。しかし、もし見やすいようにタグを使っ
 てプロパティの値を記録したいのであれば、変数
 @code{org-track-ordered-property-with-tag}をカスタマイズしてください。
-@orgkey{C-u C-u C-u C-c C-t}は、変更できない状態のものでもTODOの状態を変更し
-ます。
+@orgkey{C-u C-u C-u C-c C-t}変更できない状態のものでもTODOの状態を変更します
+。
 @end table
 
 @vindex org-agenda-dim-blocked-tasks
@@ -3956,7 +3963,7 @@ Org-modeは、TODOアイテムにDONEという完了の印をつけたときや�
 の下に挿入されます。
 
 タイムライン「@pxref{Timeline}」とアジェンダ「@pxref{Weekly/daily agenda}」上で、@kbd{l}キー
-使用してTODOアイテムと@samp{CLOSED}タイムスタンプを日ごとに表示することができあす
+使用してTODOアイテムと@samp{CLOSED}タイムスタンプを日ごとに表示することができます
 。何が完了しているかのサマリも提供されます。
 
 @node Tracking TODO state changes, 習慣の追跡, Closing items, Progress logging
@@ -3967,15 +3974,15 @@ Org-modeは、TODOアイテムにDONEという完了の印をつけたときや�
 @vindex org-log-into-drawer
 @cindex プロパティ、LOG_INTO_DRAWER
 TODOキーワードがワークフローの状態(@pxref{Workflow states})として使われる時に、い
-つその状態の変化が起きたか記録したいことがあるかもしれません。その場合、タイ
-ムスタンプかタイムスタンプ付きメモを記録することができます。これらは、見出し
-の後に一番新しいものを先頭として@footnote{変数@code{org-log-states-order-reversed}を確認し
-てください}項目ごとにリストされ挿入されます。たくさんのメモをとっている場合
-、そのメモを引き出しの中に入れて隠したいようになるかもしれません「@pxref{Drawers}
-」。その場合、変数@code{org-log-into-drawer}を編集してください。オススメの引き出
-しは、@code{LOGBOOK}と呼ばれています。さらにサブツリーのために、この変数の設定も
-@code{LOG_INTO_DRAWER}プロパティを修正すれば、その効果を無視して上書きすることが
-できます。
+つその状態の変化が起きたか記録し、さらにメモを取りたくなるかもしれません。そ
+の場合、タイムスタンプかタイムスタンプ付きメモを記録することができます。これ
+らは、見出しの後に一番新しいものを先頭として@footnote{変数
+@code{org-log-states-order-reversed}を確認してください}項目ごとにリストされ挿入さ
+れます。たくさんのメモをとっている場合、そのメモを引き出しの中に入れて隠した
+いようになるかもしれません「@pxref{Drawers}」。その場合、変数@code{org-log-into-drawer}
+を編集してください。オススメの引き出しは、@code{LOGBOOK}と呼ばれています。さらに
+サブツリーのために、この変数の設定も@code{LOG_INTO_DRAWER}プロパティを修正すれば
+、その効果を無視して上書きすることができます。
 
 通常、すべての状態でメモを記録するのはやりすぎになるので、Org-modeは、キーワ
 ードごとに設定されると想定します。これは、特別なマーカー@samp{!}「タイムスタンプ
@@ -4014,14 +4021,14 @@ DONEに状態が変更された際、時間も記録されるようにも定義�
 のエントリーにLOGGINGプロパティを定義してください。空ではないLOGGINGプロパテ
 ィは、すべてのログの設定をnilにリセットします。この後、@code{lognotedone}か
 @code{logrepeat}のようなSTARTUPキーワード、そして@code{TODO(!)}のような状態に特化した
-設定追加して、特定のツリーに対してログを開始するようにできます。例えば
+設定を追加して、特定のツリーに対してログを開始するようにできます。例えば
 
 @example
 * TODO 各状態のタイムスタンプだけをログを取る
   :PROPERTIES:
   :LOGGING: TODO(!) WAIT(!) DONE(!) CANCELED(!)
   :END:
-* TODO WAITに切り替えるときだけログをとる、繰り返されたとき
+* TODO WAITに切り替えられ、さらに繰り返されたときだけログを取る
   :PROPERTIES:
   :LOGGING: WAIT(@@) logrepeat
   :END:
@@ -4033,16 +4040,16 @@ DONEに状態が変更された際、時間も記録されるようにも定義�
 
 @node 習慣の追跡, , Tracking TODO state changes, Progress logging
 @subsection 習慣の追跡
-@cindex habits
+@cindex 習慣
 
-Org-modeには、「habits(習慣)」と呼ばれる一貫性を記録するためのTODOの特別なカ
-テゴリーがあります。habitには、以下の性質があります:
+Org-modeには、「habits(習慣)」と呼ばれるTODOの特別なカテゴリーの一貫性を記録
+するための機能があります。habitには、以下の性質があります:
 
 @enumerate
 @item 変数@code{org-modules}をカスタマイズすることで@code{habits}モジュールを有効にし
-ます。
-@item habitは、TODO一種であり、TODOキーワードを使い、未解決を表します。
-@item プロパティ@code{STYLE}に、@code{habit}を値として定義します。
+てある。
+@item habitは、TODO一種であり、TODOキーワードを使い未解決を表します。
+@item プロパティ@code{STYLE}に、@code{habit}を値として定義してある。
 @item このTODOは、スケジュールされた日付があり、通常@code{.+}スタイルで繰り返され
 る間隔を表します。@code{++}スタイルは、時間制限があるような場合に有効でしょ
 う。例えば、週末にしなければいけないことなどです。@code{+}スタイルは、遅れ
@@ -4079,29 +4086,29 @@ Org-modeには、「habits(習慣)」と呼ばれる一貫性を記録するた�
    :END:
 @end example
 
-このhabitが表しているのは、髭剃りを、多くて２日ごとか「@code{SCHEDULED}に対して、
-日付と繰り返される間隔を指定されている」、少なくとも４日ごとにする。もし、今
-日が１５日とすると、このhabitは、二日後の１０月１７日にアジェンダに表示され
-て、４日後の１９日には、期限切れとして表示されます。
+このhabitが表しているのは、髭剃りを多くて２日ごとか「@code{SCHEDULED}により指定さ
+れた日付と繰り返される間隔」、少なくとも４日ごとにする。もし、今日が１５日と
+すると、このhabitは、二日後の１０月１７日にアジェンダに表示されて、４日後の
+１９日には、期限切れとして表示されます。
 
-habitsの本当に使い易いところは、定期的グラフと表示されることです。これは、過
+habitsの本当に使い易いところは、定期性グラフと表示されることです。これは、過
 去にどれぐらいタスクが定期的に完了したかを見るためのものです。このグラフは、
 毎日過去３週間のタスクが完了したかを色分けして表示します。各色は、以下を表し
 ます:
 
 @table @code
 @item 青
-まだ、その日までにタスクが完了していない場合。
+まだ、その日までにタスクが完了してなくていい場合。
 @item 緑
-その日に完了したタスクの場合。
+その日に完了できたはずのタスクの場合。
 @item 黄
 明日になると期限切れになるタスクの場合。
 @item 赤
-期限切れのタスクの場合。
+その日に期限切れのタスクの場合。
 @end table
 
 日ごとの色分けだけでなく、その日に終わったタスクに関してはアスタリスクでマー
-クされ、エクスクラメーションマークが、グラフ中の今日の日付の部分に付きます。
+クされ、感嘆符が、グラフ中の今日の日付の部分に付きます。
 
 アジェンダ上でhabitsが表示方法を変える幾つかの設定変数があります。
 
@@ -4119,10 +4126,10 @@ nil以外が指定されている場合、habitsを今日のアジェンダビ�
 する。これは、初期値で真に設定されています。
 @end table
 
-Lastly, pressing @kbd{K} in the agenda buffer will cause habits to
-temporarily be disabled and they won't appear at all.  Press @kbd{K} again
-to bring them back.  They are also subject to tag filtering, if you have
-habits which should only be done in certain contexts, for example.
+最後に、アジェンダバッファで@kbd{K}を押すことによりhabitsを一時的に使用不可にし
+、まったく表示させないようにできます。もう一度@kbd{K}を押すと元にもどります。例
+えば、もし特定の前後の内容によてのみ必要なhabitsの場合は、タグのフィルタリン
+グの影響も受けます。
 
 @node Priorities, Breaking down tasks, Progress logging, TODO Items
 @section Priorities
@@ -4140,10 +4147,10 @@ habits which should only be done in certain contexts, for example.
 @vindex org-priority-faces
 初期値としてOrg-modeは、次の３つの優先順位付けをサポートします:@samp{A}、@samp{B}、
 @samp{C}。@samp{A}が一番高い優先度です。クッキーなしの場合は、@samp{B}の優先度として扱われ
-ます。優先順位付けは、アジェンダのに順位を付けることにのみ違いが発生します。
-「@pxref{Weekly/daily agenda}アジェンダ外では、Org-modeで継承されたりしません。ク
-ッキーは、変数@code{org-priority-faces}をカスタマイズすることにより、特別なフェイ
-スを使ってハイライトすることができます。
+ます。優先順位付けは、アジェンダの順番を付けるときのみ影響します。「
+@pxref{Weekly/daily agenda}アジェンダ外では、Org-modeで継承されたりしません。クッ
+キーは、変数@code{org-priority-faces}をカスタマイズすることにより、特別なフェイス
+を使ってハイライトすることもできます。
 
 優先順位付けどんなアウトラインモードにも付けるとができます。つまりTODOアイテ
 ムである必要はありません。
@@ -4156,8 +4163,8 @@ habits which should only be done in certain contexts, for example.
 現在の見出しの優先順位付けをする「@command{org-priority}」。このコマンドは、優
 先順位付けのための文字@samp{A}、@samp{B}、または、@samp{C}を聞いてきます。その代わり
 に@key{SPC}を押すと、優先順位付けのクッキーが見出しから削除されます。優先
-順位は、離れたタイムラインまたは、アジェンダバッファからも@kbd{,}コマンド
-で変更できます。「@pxref{Agenda commands}」。
+順位は、タイムラインまたは、アジェンダバッファからも@kbd{,}コマンドで遠隔
+的に変更できます。「@pxref{Agenda commands}」。
 @orgcmdkkcc{S-@key{up},S-@key{down},org-priority-up,org-priority-down}
 @vindex org-priority-start-cycle-with-default
 現在の見出し優先度を上下する。@footnote{次のオプションも参照してください。
@@ -4174,7 +4181,7 @@ habits which should only be done in certain contexts, for example.
 設定することで、変更できる優先度の範囲を変えることができます。バッファごとに
 、「上限、下限、既定値」の設定を以下のようにすることができます。「必ず一番上
 の優先度の文字が、一番下の優先度よりもアルファベットの並びで前の文字であるよ
-うにしてください。」:>
+うにしてください。」:
 
 @cindex #+PRIORITIES
 @example
@@ -4189,11 +4196,11 @@ habits which should only be done in certain contexts, for example.
 @vindex org-agenda-todo-list-sublevels
 通常、大きなタスクは小さくて管理しやすいサブタスクに細分化することをお勧めし
 ます。これはTODOアイテムの下にアウトラインツリーをさらに詳細なサブタスクをそ
-のツリーを付けて作成することで可能です。「@footnote{サブタスクをグローバルTODOリスト
-に含めないようにするには、@code{org-agenda-todo-list-sublevels}を参照してください
-。}」すでに完了したサブタスクの進捗状況を表示してさせておくには、@samp{[/]}か
-@samp{[%]}ヘッドラインのどこかに挿入してください。これらのクッキーは、サブタスク
-のTODOの状態が変わるかクッキー上で@kbd{C-c C-c}を押すたびに更新されます。例えば:
+のツリーを付けて作成することで可能です。@footnote{サブタスクをグローバルTODOリストに
+含めないようにするには、@code{org-agenda-todo-list-sublevels}を参照してください。
+}すでに完了したサブタスクの進捗状況を表示してさせておくには、@samp{[/]}か@samp{[%]}ヘ
+ッドラインのどこかに挿入してください。これらのクッキーは、サブタスクのTODOの
+状態が変わるかクッキー上で@kbd{C-c C-c}を押すたびに更新されます。例えば:
 
 @example
 * パーティーの準備をする [33%]
@@ -4222,13 +4229,13 @@ habits which should only be done in certain contexts, for example.
   :END:
 @end example
 
-もしすえての子タスクが終了後、TODOエントリーを自動的にDONEに切り替えたい場合
+もしすべての子タスクが終了後、TODOエントリーを自動的にDONEに切り替えたい場合
 は、以下の設定を行なってください:
 
 @example
 (defun org-summary-todo (n-done n-not-done)
-  "すべてのサブツリーが終了するとDONEに切り替えます。その他の場合は、TODOに
-なります。"
+  "すべてのサブツリーが終了するとDONEに切り替え、その他の場合は、TODOになす
+る。"
   (let (org-log-done org-log-states)   ; 記録「logging」を終了
     (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
 (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
@@ -4244,14 +4251,14 @@ habits which should only be done in certain contexts, for example.
 @cindex チェックボックス
 
 @vindex org-list-automatic-rules
-＊プレーンリスト＊@footnote{これは＊description list＊以外という意味ですが、このリス
-トも@code{org-list-automatic-rules}を修正することで可能です。}「＊@pxref{Plain lists}＊
-」は、@samp{[ ]}で開始することでチェックボックスにすることができます。この機能は
-、TODOアイテムに似ていてますが「＊@pxref{TODO Items}＊」、より気軽につかえます。チ
-ェックボックスは、グローバルTODOリストに追加されません。そのためタスクを分岐
-するのに便利です。もしくは、買い物リストに使えます。チェックボックスをチェッ
-クした状態するには、@kbd{C-c C-c}を使ってください。もしくは、マウスでクリックし
-てください。「Piotr Zielinskiの@file{org-mouse.el}に感謝」。
+プレーンなリスト@footnote{これは概要リスト以外という意味ですが、このリストも
+@code{org-list-automatic-rules}を修正することで可能です。}「@pxref{Plain lists}」は、
+@samp{[ ]}で開始することでチェックボックスにすることができます。この機能は、TODO
+アイテムに似ていてますが「@pxref{TODO Items}」、より気軽につかえます。チェックボッ
+クスは、グローバルTODOリストに追加されません。そのためタスクを分岐するのに便
+利です。もしくは、買い物リストに使えます。チェックボックスをチェックした状態
+するには、@kbd{C-c C-c}を使ってください。もしくは、マウスでクリックしてください
+。「Piotr Zielinskiの@file{org-mouse.el}に感謝」。
 
 以下は、チェックボックスリストの例です:
 
@@ -4266,11 +4273,10 @@ habits which should only be done in certain contexts, for example.
   - [X] 近所の人と話す
 @end example
 
-チェックボックスは、階層化に対応しています。そのため、もしチェックボックスの
-項目が子チェックボックスを持っている場合、もしその子チェックボックスが全くチ
-ェックされていないか、いくつかされているか、全てされているかによりその内の一
-つのチェックボックスをチェックした状態にすると親チェックボックスに影響します
-。
+チェックボックスは、階層化に対応しています。そのため、もしあるチェックボック
+ス下の項目が複数のチェックボックスである場合、チェックボックスが全くチェック
+されていないか、いくつかされているか、全てされているかによりその内の一つのチ
+ェックボックスをチェックした状態にすると親チェックボックスに影響します。
 
 @cindex 統計、チェックボックスの
 @cindex チェックボックスの統計
@@ -4279,10 +4285,10 @@ habits which should only be done in certain contexts, for example.
 最初と二列目の@samp{[2/4]}と@samp{[1/3]}はクッキーであり、いくつのチェックボックスがそ
 のエントリーでチェックされているかとそのすべてのチェックボックス数が表示され
 ています。これにより、いくつのチェックボックスが残っているか、折りたたまれて
-いても分かるようになっています。クッキーは見出しか＊plaine
-list＊「の最初の列」に置くことができいます。各クッキーは、クッキーのある見出
-し／項目の直下にある子構造であるチェックボックスを表しています。@footnote{もし直下だ
-けでなくクッキーのしたにあるすべてのチェックボックスを網羅したい場合は、変数
+いても分かるようになっています。クッキーは見出しかプレインなリスト「の最初の
+列」に置くことができいます。各クッキーは、クッキーのある見出し／項目の直下に
+ある子構造であるチェックボックスを表しています。@footnote{もし直下だけでなくクッキー
+のしたにあるすべてのチェックボックスを網羅したい場合は、変数
 @code{org-hierarchical-checkbox-statistics}を設定してください。}自分でクッキーを
 @samp{[/]}もしくは、@samp{[%]}をタイプして入力しなければなりません。@samp{[/]}を入力すると
 上記したように、@samp{m個の内のn個}となります。@samp{[%]}の場合は、何パーセントのチェ
@@ -4301,10 +4307,13 @@ list＊「の最初の列」に置くことができいます。各クッキー�
 ーがスローされます
 
 @noindent
-The following commands work with checkboxes:
+以下のコマンドでチェックボックスを操作できます:
 
 @table @kbd
-@orgcmd{C-c C-c,org-toggle-checkbox}は、チェックした状態をトグルするか「前置
+@orgcmd{C-c C-c,org-toggle-checkbox}チェックした状態をトグルするか「前置引数
+と実行すると」チェックボックスを作成します。ダブル前置引数だと、@samp{[-]}
+が設定されます。これは、中間の状態を表します。
+@orgcmd{C-c C-x C-b,org-toggle-checkbox}チェックした状態をトグルするか「前置
 引数と実行すると」チェックボックスを作成します。ダブル前置引数だと、
 @samp{[-]}が設定されます。これは、中間の状態を表します。
 @itemize @minus
@@ -4317,10 +4326,9 @@ The following commands work with checkboxes:
 @item アクティブなリージョンがなければ、その場所のチェックボックスをトグルし
 ます。
 @end itemize
-@orgcmd{M-S-@key{RET},org-insert-todo-heading}は新しい項目をチェックボックスと共に挿入
-します。これは、＊plain
-list＊(@pxref{Plain lists})内にカーソルがすでにある場合にのみ動作します。
-@orgcmd{C-c C-x o,org-toggle-ordered-property}
+@orgcmd{M-S-@key{RET},org-insert-todo-heading}新しい項目をチェックボックスと共に挿入し
+ます。これは、プレインなリスト(@pxref{Plain lists})内にカーソルがすでにある場合に
+のみ動作します。@orgcmd{C-c C-x o,org-toggle-ordered-property}
 @vindex org-track-ordered-property-with-tag
 @cindex プロパティ、ORDERED
 @code{ORDERED}プロパティを設定します。これは、連続でチェックボックスがチェックさ
@@ -4429,13 +4437,11 @@ prefix)をつけて呼び出すと、カレントバッファの全てのタグ�
 @end table
 
 @vindex org-tag-alist
-Org-modeは@emph{list of tags}に基づくタグの挿入をサポートしています。
-このリストはデフォルトでは動的に構築され、バッファで使われているタグを全て含
-みます。
-変数@code{org-tag-alist}にタグのリストを設定することでグローバルにタグを指定して
-おくこともできます。
-デフォルトのタグを次のようにファイルに記述することでもデフォルトのタグリスト
-を設定できます。
+Org-modeは@emph{list of tags}に基づくタグの挿入をサポートしています。このリストは
+デフォルトでは動的に構築され、バッファで使われているタグを全て含みます。変数
+@code{org-tag-alist}にタグのリストを設定することでグローバルにタグを指定しておく
+こともできます。デフォルトのタグを次のようにファイルに記述することでもデフォ
+ルトのタグリストを設定できます。
 
 @cindex #+TAGS
 @example
@@ -4481,16 +4487,15 @@ instead set the TAGS option line as:
 @end example
 
 @noindent
-The tags interface will show the available tags in a splash window.  If you
-want to start a new line after a specific tag, insert @samp{\n} into the tag
-list
+タグインタフェースはスプラッシュウィンドウにとりうるタグを表示します。もし特
+定のタグの後に新しい行から始めたいのであればタグリストに@samp{\n}を挿入します。
 
 @example
 #+TAGS: @@work(w)  @@home(h)  @@tennisclub(t) \n laptop(l)  pc(p)
 @end example
 
 @noindent
-or write them in two lines:
+もしくは2行に分けて書きます。
 
 @example
 #+TAGS: @@work(w)  @@home(h)  @@tennisclub(t)
@@ -4506,8 +4511,8 @@ or write them in two lines:
 @end example
 
 @noindent
-you indicate that at most one of @samp{@@work}, @samp{@@home}, and
-@samp{@@tennisclub} should be selected.  Multiple such groups are allowed.
+これは@samp{@@work}、@samp{@@home}、@samp{@@tennisclub}のうち少なくとも一つは選択されること
+を意図しています。そのようなグループを複数持つことも可能です。
 
 @noindent
 Don't forget to press @kbd{C-c C-c} with the cursor in one of these lines to
@@ -5629,7 +5634,7 @@ Emacsの再開後に新しいタスクの計測を始めると、不完全な時
 @menu
 * Clocking commands::        時計の開始と終了
 * The clock table::          詳細な報告
-* Resolving idle time::      Resolving time when you've been idle
+* Resolving idle time::      空いた時間を解決する
 @end menu
 
 @node Clocking commands, The clock table, Clocking work time, Clocking work time
@@ -6054,9 +6059,9 @@ org-rememberに関するドキュメントは@url{http://orgmode.org/org-remembe
 @kbd{M-x org-capture-import-remember-templates @key{RET}}
 @end example
 @noindent
-and then customize the new variable with @kbd{M-x customize-variable org-capture-templates}, check the result, and save the customization.  You
-can then use both remember and capture until you are familiar with the new
-mechanism.
+そして新しい変数を@kbd{M-x customize-variable org-capture-templates}でカスタマイ
+ズし、結果を確認してから保存してください。これにより、新しい仕組みになれるま
+ではリメンバーとキャプチャの両方を使うことができます。
 
 キャプチャはワークフローにおいて小さい割り込みで素早くノートを保存することが
 できます。キャプチャの基本的なプロセスはリメンバーととても良く似ていますが、
@@ -6156,8 +6161,7 @@ Entered on %U
 @end example
 
 @noindent
-If you then press @kbd{C-c c t}, Org will prepare the template for you like
-this:
+ここで@kbd{C-c c t}を押すと、Org-modeはこのようなテンプレートを用意します。
 @example
 * TODO
   [[file:@var{lint to where you initiated capture}]]
@@ -6200,8 +6204,8 @@ this:
          ("b" "買い物リストのためのテンプレート")
 @end example
 @noindent
-If you do not define a template for the @kbd{C} key, this key will be used
-to open the customize buffer for this complex variable.
+もし@kbd{C}キーにテンプレートを定義していなければ、このキーでこの複雑な変
+数のカスタマイズバッファを開きます。
 
 @item description
 選択時に表示されるテンプレートの短い説明文。
@@ -6418,7 +6422,7 @@ Wiegleyの貢献によってOrg-modeへ追加されました。
 サブツリー全体が同じ添付ディレクトリを使うことになります。
 
 @noindent
-The following commands deal with attachments:
+以下のコマンドはプロパティを操作する助けとなります。
 
 @table @kbd
 
@@ -9099,7 +9103,7 @@ org-modeはまず最初に @emph{select} タグがバッファにないかチェ
 @section Export options
 @cindex エクスポートのオプション
 
-@cindex オプションのキーワードの補完
+@cindex 補完、オプションのキーワード
 エクスポートする際にはバッファにある特別な行が読みこまれます。 その行には追
 加的な情報が含まれており、ファイルの中でどこにでも書くことができます。
 @kbd{C-c C-e t} と入力することで、バッファにそのような行をセットで挿入することが
@@ -11000,7 +11004,7 @@ Org-modeはファイルが変更された時を記録するためにタイムス
 @chapter ソースコードとの連携
 @cindex Eric Schulte
 @cindex Dan Davidson
-@cindex source code, working with
+@cindex ソースコード、連携する
 
 @samp{src}ブロックを使う事でOrg-modeの文書にソースコードを含めることができます。
 例えば@:
@@ -11025,16 +11029,15 @@ SchultとDan Davidsonによって開発されました。
 す。
 
 @menu
-* Structure of code blocks::  Code block syntax described
+* Structure of code blocks::  コードブロックシンタックスについて
 * Editing source code::      言語のメジャーモードを用いた編集
 * Exporting code blocks::    コード(と/または)結果のエクスポート
 * Extracting source code::   ソースコードのみのファイルの作成
-* Evaluating code blocks::   Place results of evaluation in the Org-mode 
-                               buffer
+* Evaluating code blocks::   Org-modeバッファ中の評価結果の場所
 * Library of Babel::         有用なコードブロックのライブラリを読む、そして
 貢献する
 * Languages::                コードブロックがサポートする言語一覧
-* Header arguments::         Configure code block functionality
+* Header arguments::         コードブロックの機能的な設定
 * 評価の結果::          評価の結果を操作する方法
 * Noweb reference syntax::   Org-modeでの文芸的プログラミング
 * Key bindings and useful functions::  コードブロックを素早く操作する
@@ -12553,7 +12556,7 @@ emacs -Q --batch -l $ORGINSTALL \
 @cindex 補完、@TeX{}の記号
 @cindex 完了、TODOキーワードの
 @cindex 補完、辞書の単語
-@cindex オプションのキーワードの補完
+@cindex 補完、オプションのキーワード
 @cindex 完了、タグの
 @cindex 補完、プロパティキー
 @cindex 補完、リンクの省略記法
@@ -14532,8 +14535,8 @@ Sebastianが居なければ、org-modeのHTML/XHTMLエクスポートは、無�
 @end table
 
 @noindent
-OK, now to the full list of contributions! Again, please let me know what I
-am missing here!
+さて！いよいよ貢献してくれた方々のリストに移ります。繰り返しますが、忘れてい
+るところがあれば教えてください。
 
 @itemize @bullet
 
