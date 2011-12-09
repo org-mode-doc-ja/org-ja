@@ -1,9 +1,9 @@
 % texinfo.tex -- TeX macros to handle Texinfo files.
-% 
+%
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2011-02-24.09}
+\def\texinfoversion{2011-12-10.00}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -65,6 +65,27 @@
 \everyjob{\message{[Texinfo version \texinfoversion]}%
   \catcode`+=\active \catcode`\_=\active}
 
+% (Aug. 17, 1999 --ak)
+% Japanese support. (pTeX is a free Japanese TeX by ASCII corp., Japan,
+% and jTeX is a free Japanese TeX by NTT corp. and T. Sakurai)
+\newif\ifjaTeX
+\newif\ifpTeX
+\newif\ifjTeX
+\ifx\kanjiskip\undefined\else
+  \pTeXtrue
+  \jaTeXtrue
+\fi
+\ifx\jkern\undefined\else
+  \jTeXtrue
+  \jaTeXtrue
+\fi
+
+\ifpTeX
+\message{ASCII-pTeX,}
+\fi
+\ifjTeX
+\message{NTT-jTeX,}
+\fi
 \chardef\other=12
 
 % We never want plain's \outer definition of \+ in Texinfo.
@@ -116,6 +137,7 @@
 % Set up fixed words for English if not already set.
 \ifx\putwordAppendix\undefined  \gdef\putwordAppendix{Appendix}\fi
 \ifx\putwordChapter\undefined   \gdef\putwordChapter{Chapter}\fi
+\ifx\putworderror\undefined     \gdef\putworderror{error}\fi
 \ifx\putwordfile\undefined      \gdef\putwordfile{file}\fi
 \ifx\putwordin\undefined        \gdef\putwordin{in}\fi
 \ifx\putwordIndexIsEmpty\undefined       \gdef\putwordIndexIsEmpty{(Index is empty)}\fi
@@ -693,15 +715,6 @@ where each line of input produces a line of output.}
 
 \newdimen\mil  \mil=0.001in
 
-% Old definition--didn't work.
-%\parseargdef\need{\par %
-%% This method tries to make TeX break the page naturally
-%% if the depth of the box does not fit.
-%{\baselineskip=0pt%
-%\vtop to #1\mil{\vfil}\kern -#1\mil\nobreak
-%\prevdepth=-1000pt
-%}}
-
 \parseargdef\need{%
   % Ensure vertical mode, so we don't make a big box in the middle of a
   % paragraph.
@@ -1203,29 +1216,31 @@ output) for that.)}
     \def\imagewidth{#2}\setbox0 = \hbox{\ignorespaces #2}%
     \def\imageheight{#3}\setbox2 = \hbox{\ignorespaces #3}%
     %
-    % pdftex (and the PDF format) support .png, .jpg, .pdf (among
-    % others).  Let's try in that order.
+    % pdftex (and the PDF format) support .pdf, .png, .jpg (among
+    % others).  Let's try in that order, PDF first since if
+    % someone has a scalable image, presumably better to use that than a
+    % bitmap.
     \let\pdfimgext=\empty
     \begingroup
-      \openin 1 #1.png \ifeof 1
-        \openin 1 #1.jpg \ifeof 1
-          \openin 1 #1.jpeg \ifeof 1
-            \openin 1 #1.JPG \ifeof 1
-              \openin 1 #1.pdf \ifeof 1
-                \openin 1 #1.PDF \ifeof 1
+      \openin 1 #1.pdf \ifeof 1
+        \openin 1 #1.PDF \ifeof 1
+          \openin 1 #1.png \ifeof 1
+            \openin 1 #1.jpg \ifeof 1
+              \openin 1 #1.jpeg \ifeof 1
+                \openin 1 #1.JPG \ifeof 1
                   \errhelp = \nopdfimagehelp
                   \errmessage{Could not find image file #1 for pdf}%
-                \else \gdef\pdfimgext{PDF}%
+                \else \gdef\pdfimgext{JPG}%
                 \fi
-              \else \gdef\pdfimgext{pdf}%
+              \else \gdef\pdfimgext{jpeg}%
               \fi
-            \else \gdef\pdfimgext{JPG}%
+            \else \gdef\pdfimgext{jpg}%
             \fi
-          \else \gdef\pdfimgext{jpeg}%
+          \else \gdef\pdfimgext{png}%
           \fi
-        \else \gdef\pdfimgext{jpg}%
+        \else \gdef\pdfimgext{PDF}%
         \fi
-      \else \gdef\pdfimgext{png}%
+      \else \gdef\pdfimgext{pdf}%
       \fi
       \closein 1
     \endgroup
@@ -1460,20 +1475,41 @@ output) for that.)}
 %
 \def\selectfonts#1{\csname #1fonts\endcsname \csname\curfontstyle\endcsname}
 
+% Japanese fonts. (--ak)
+\ifjaTeX
+\csname newfam\endcsname\mcfam
+\csname newfam\endcsname\gtfam
+\def\mc{\fam\mcfam \setfontstyle{min}}
+\def\gt{\fam\gtfam \setfontstyle{gt}}
+\def\rm{\mc \fam=0 \setfontstyle{rm}}
+\def\it{\fam=\itfam \setfontstyle{it}}
+\def\sl{\fam=\slfam \setfontstyle{sl}}
+\def\bf{\gt \fam\bffam \setfontstyle{bf}}\def\bfstylename{bf}
+\def\tt{\fam=\ttfam \setfontstyle{tt}}
+\else
 \def\rm{\fam=0 \setfontstyle{rm}}
 \def\it{\fam=\itfam \setfontstyle{it}}
 \def\sl{\fam=\slfam \setfontstyle{sl}}
 \def\bf{\fam=\bffam \setfontstyle{bf}}\def\bfstylename{bf}
 \def\tt{\fam=\ttfam \setfontstyle{tt}}
+\fi
 
 % Unfortunately, we have to override this for titles and the like, since
 % in those cases "rm" is bold.  Sigh.
+\ifjaTeX
+\def\rmisbold{\rm\gt\def\curfontstyle{bf}}
+\else
 \def\rmisbold{\rm\def\curfontstyle{bf}}
+\fi
 
 % Texinfo sort of supports the sans serif font style, which plain TeX does not.
 % So we set up a \sf.
 \newfam\sffam
+\ifjaTeX
+\def\sf{\gt \fam\sffam \setfontstyle{sf}}
+\else
 \def\sf{\fam=\sffam \setfontstyle{sf}}
+\fi
 \let\li = \sf % Sometimes we call it \li, not \sf.
 
 % We don't need math for this font style.
@@ -1811,6 +1847,14 @@ end
 \edef\mainmagstep{\magstephalf}
 \setfont\textrm\rmshape{10}{\mainmagstep}{OT1}
 \setfont\texttt\ttshape{10}{\mainmagstep}{OT1TT}
+\ifpTeX
+\font\textmc=min10 scaled \mainmagstep
+\font\textgt=goth10 scaled \mainmagstep
+\fi
+\ifjTeX
+\jfont\textmc=dm10 scaled \mainmagstep
+\jfont\textgt=dg10 scaled \mainmagstep
+\fi
 \setfont\textbf\bfshape{10}{\mainmagstep}{OT1}
 \setfont\textit\itshape{10}{\mainmagstep}{OT1IT}
 \setfont\textsl\slshape{10}{\mainmagstep}{OT1}
@@ -1822,10 +1866,28 @@ end
 \def\textecsize{1095}
 
 % A few fonts for @defun names and args.
+\ifpTeX
 \setfont\defbf\bfshape{10}{\magstep1}{OT1}
 \setfont\deftt\ttshape{10}{\magstep1}{OT1TT}
 \setfont\defttsl\ttslshape{10}{\magstep1}{OT1TT}
-\def\df{\let\tentt=\deftt \let\tenbf = \defbf \let\tenttsl=\defttsl \bf}
+\font\defmc=min10 scaled \magstep1
+\font\defgt=goth10 scaled \magstep1
+\def\df{\let\tentt=\deftt \let\tenmin=\defmc
+\let\tengt=\defgt \let\tenbf=\defbf \let\tenttsl=\defttsl \bf}
+\else\ifjTeX
+\setfont\defbf\bfshape{10}{\magstep1}{OT1}
+\setfont\deftt\ttshape{10}{\magstep1}{OT1TT}
+\setfont\defttsl\ttslshape{10}{\magstep1}{OT1TT}
+\jfont\defmc=dm10 scaled \magstep1
+\jfont\defgt=dg10 scaled \magstep1
+\def\df{\let\tentt=\deftt \let\tenmin=\defmc
+\let\tengt=\defgt\let\tenbf=\defbf \let\tenttsl=\defttsl \bf}
+\else
+\setfont\defbf\bfshape{10}{\magstep1}{OT1}
+\setfont\deftt\ttshape{10}{\magstep1}{OT1TT}
+\setfont\defttsl\ttslshape{10}{\magstep1}{OT1TT}
+\def\df{\let\tentt=\deftt \let\tenbf=\defbf \let\tenttsl=\defttsl \bf}
+\fi\fi
 
 % Fonts for indices, footnotes, small examples (9pt).
 \def\smallnominalsize{9pt}
@@ -1839,6 +1901,14 @@ end
 \setfont\smallttsl\ttslshape{10}{900}{OT1TT}
 \font\smalli=cmmi9
 \font\smallsy=cmsy9
+\ifpTeX
+\font\smallmc=min9
+\font\smallgt=goth9
+\fi
+\ifjTeX
+\jfont\smallmc=dm9
+\jfont\smallgt=dg9
+\fi
 \def\smallecsize{0900}
 
 % Fonts for small examples (8pt).
@@ -1853,6 +1923,14 @@ end
 \setfont\smallerttsl\ttslshape{10}{800}{OT1TT}
 \font\smalleri=cmmi8
 \font\smallersy=cmsy8
+\ifpTeX
+\font\smallermc=min8
+\font\smallergt=goth8
+\fi
+\ifjTeX
+\jfont\smallermc=dm8
+\jfont\smallergt=dg8
+\fi
 \def\smallerecsize{0800}
 
 % Fonts for title page (20.4pt):
@@ -1863,6 +1941,14 @@ end
 \setfont\titlett\ttbshape{12}{\magstep3}{OT1TT}
 \setfont\titlettsl\ttslshape{10}{\magstep4}{OT1TT}
 \setfont\titlesf\sfbshape{17}{\magstep1}{OT1}
+\ifpTeX
+\font\titlemc=min10 scaled \magstep4
+\font\titlegt=goth10 scaled \magstep4
+\fi
+\ifjTeX
+\jfont\titlemc=dm10 scaled \magstep4
+\jfont\titlegt=dg10 scaled \magstep4
+\fi
 \let\titlebf=\titlerm
 \setfont\titlesc\scbshape{10}{\magstep4}{OT1}
 \font\titlei=cmmi12 scaled \magstep3
@@ -1877,6 +1963,14 @@ end
 \setfont\chaptt\ttbshape{12}{\magstep2}{OT1TT}
 \setfont\chapttsl\ttslshape{10}{\magstep3}{OT1TT}
 \setfont\chapsf\sfbshape{17}{1000}{OT1}
+\ifpTeX
+\font\chapmc=min10 scaled \magstep3
+\font\chapgt=goth10 scaled \magstep3
+\fi
+\ifjTeX
+\jfont\chapmc=dm10 scaled \magstep3
+\jfont\chapgt=dg10 scaled \magstep3
+\fi
 \let\chapbf=\chaprm
 \setfont\chapsc\scbshape{10}{\magstep3}{OT1}
 \font\chapi=cmmi12 scaled \magstep2
@@ -1891,6 +1985,14 @@ end
 \setfont\sectt\ttbshape{12}{\magstep1}{OT1TT}
 \setfont\secttsl\ttslshape{10}{\magstep2}{OT1TT}
 \setfont\secsf\sfbshape{12}{\magstep1}{OT1}
+\ifpTeX
+\font\secmc=min10 scaled \magstep2
+\font\secgt=goth10 scaled \magstep2
+\fi
+\ifjTeX
+\jfont\secmc=dm10 scaled \magstep2
+\jfont\secgt=dg10 scaled \magstep2
+\fi
 \let\secbf\secrm
 \setfont\secsc\scbshape{10}{\magstep2}{OT1}
 \font\seci=cmmi12 scaled \magstep1
@@ -1905,6 +2007,14 @@ end
 \setfont\ssectt\ttbshape{12}{\magstephalf}{OT1TT}
 \setfont\ssecttsl\ttslshape{10}{1315}{OT1TT}
 \setfont\ssecsf\sfbshape{12}{\magstephalf}{OT1}
+\ifpTeX
+\font\ssecmc=min10 scaled 1315
+\font\ssecgt=goth10 scaled 1315
+\fi
+\ifjTeX
+\jfont\ssecmc=dm10 scaled 1315
+\jfont\ssecgt=dg10 scaled 1315
+\fi
 \let\ssecbf\ssecrm
 \setfont\ssecsc\scbshape{10}{1315}{OT1}
 \font\sseci=cmmi12 scaled \magstephalf
@@ -1923,6 +2033,14 @@ end
 \setfont\reducedttsl\ttslshape{10}{1000}{OT1TT}
 \font\reducedi=cmmi10
 \font\reducedsy=cmsy10
+\ifpTeX
+\font\reducedmc=min10
+\font\reducedgt=goth10
+\fi
+\ifjTeX
+\jfont\reducedmc=dm10
+\jfont\reducedgt=dg10
+\fi
 \def\reducedecsize{1000}
 
 \textleading = 13.2pt % line spacing for 11pt CM
@@ -1942,6 +2060,14 @@ end
 \edef\mainmagstep{1000}
 \setfont\textrm\rmshape{10}{\mainmagstep}{OT1}
 \setfont\texttt\ttshape{10}{\mainmagstep}{OT1TT}
+\ifpTeX
+\font\textmc=min10 scaled \mainmagstep
+\font\textgt=goth10 scaled \mainmagstep
+\fi
+\ifjTeX
+\jfont\textmc=dm10 scaled \mainmagstep
+\jfont\textgt=dg10 scaled \mainmagstep
+\fi
 \setfont\textbf\bfshape{10}{\mainmagstep}{OT1}
 \setfont\textit\itshape{10}{\mainmagstep}{OT1IT}
 \setfont\textsl\slshape{10}{\mainmagstep}{OT1}
@@ -1953,10 +2079,28 @@ end
 \def\textecsize{1000}
 
 % A few fonts for @defun names and args.
+\ifpTeX
+\setfont\defbf\bfshape{10}{\magstephalf}{OT1}
+\setfont\deftt\ttshape{10}{\magstephalf}{OT1TT}
+\setfont\defttsl\ttslshape{10}{\magstephalf}{OT1TT}
+\font\defmc=min10 scaled \magstephalf
+\font\defgt=goth10 scaled \magstephalf
+\def\df{\let\tentt=\deftt \let\tenmin=\defmc
+\let\tengt=\defgt \let\tenbf=\defbf \let\tenttsl=\defttsl \bf}
+\else\ifjTeX
+\setfont\defbf\bfshape{10}{\magstephalf}{OT1}
+\setfont\deftt\ttshape{10}{\magstephalf}{OT1TT}
+\setfont\defttsl\ttslshape{10}{\magstephalf}{OT1TT}
+\jfont\defmc=dm10 scaled \magstephalf
+\jfont\defgt=dg10 scaled \magstephalf
+\def\df{\let\tentt=\deftt \let\tenmin=\defmc
+\let\tengt=\defgt \let\tenbf=\defbf \let\tenttsl=\defttsl \bf}
+\else
 \setfont\defbf\bfshape{10}{\magstephalf}{OT1}
 \setfont\deftt\ttshape{10}{\magstephalf}{OT1TT}
 \setfont\defttsl\ttslshape{10}{\magstephalf}{OT1TT}
 \def\df{\let\tentt=\deftt \let\tenbf = \defbf \let\tenttsl=\defttsl \bf}
+\fi\fi
 
 % Fonts for indices, footnotes, small examples (9pt).
 \def\smallnominalsize{9pt}
@@ -1970,6 +2114,14 @@ end
 \setfont\smallttsl\ttslshape{10}{900}{OT1TT}
 \font\smalli=cmmi9
 \font\smallsy=cmsy9
+\ifpTeX
+\font\smallmc=min9
+\font\smallgt=goth9
+\fi
+\ifjTeX
+\jfont\smallmc=dm9
+\jfont\smallgt=dg9
+\fi
 \def\smallecsize{0900}
 
 % Fonts for small examples (8pt).
@@ -1984,6 +2136,14 @@ end
 \setfont\smallerttsl\ttslshape{10}{800}{OT1TT}
 \font\smalleri=cmmi8
 \font\smallersy=cmsy8
+\ifpTeX
+\font\smallermc=min8
+\font\smallergt=goth8
+\fi
+\ifjTeX
+\jfont\smallermc=dm8
+\jfont\smallergt=dg8
+\fi
 \def\smallerecsize{0800}
 
 % Fonts for title page (20.4pt):
@@ -1994,6 +2154,14 @@ end
 \setfont\titlett\ttbshape{12}{\magstep3}{OT1TT}
 \setfont\titlettsl\ttslshape{10}{\magstep4}{OT1TT}
 \setfont\titlesf\sfbshape{17}{\magstep1}{OT1}
+\ifpTeX
+\font\titlemc=min10 scaled \magstep4
+\font\titlegt=goth10 scaled \magstep4
+\fi
+\ifjTeX
+\jfont\titlemc=dm10 scaled \magstep4
+\jfont\titlegt=dg10 scaled \magstep4
+\fi
 \let\titlebf=\titlerm
 \setfont\titlesc\scbshape{10}{\magstep4}{OT1}
 \font\titlei=cmmi12 scaled \magstep3
@@ -2008,6 +2176,14 @@ end
 \setfont\chaptt\ttbshape{12}{\magstep1}{OT1TT}
 \setfont\chapttsl\ttslshape{10}{\magstep2}{OT1TT}
 \setfont\chapsf\sfbshape{12}{\magstep1}{OT1}
+\ifpTeX
+\font\chapmc=min10 scaled \magstep2
+\font\chapgt=goth10 scaled \magstep2
+\fi
+\ifjTeX
+\jfont\chapmc=dm10 scaled \magstep2
+\jfont\chapgt=dg10 scaled \magstep2
+\fi
 \let\chapbf\chaprm
 \setfont\chapsc\scbshape{10}{\magstep2}{OT1}
 \font\chapi=cmmi12 scaled \magstep1
@@ -2022,6 +2198,14 @@ end
 \setfont\sectt\ttbshape{12}{1000}{OT1TT}
 \setfont\secttsl\ttslshape{10}{\magstep1}{OT1TT}
 \setfont\secsf\sfbshape{12}{1000}{OT1}
+\ifpTeX
+\font\secmc=min10 scaled \magstep1
+\font\secgt=goth10 scaled \magstep1
+\fi
+\ifjTeX
+\jfont\secmc=dm10 scaled \magstep1
+\jfont\secgt=dg10 scaled \magstep1
+\fi
 \let\secbf\secrm
 \setfont\secsc\scbshape{10}{\magstep1}{OT1}
 \font\seci=cmmi12
@@ -2036,6 +2220,14 @@ end
 \setfont\ssectt\ttbshape{10}{1000}{OT1TT}
 \setfont\ssecttsl\ttslshape{10}{1000}{OT1TT}
 \setfont\ssecsf\sfbshape{10}{1000}{OT1}
+\ifpTeX
+\font\ssecmc=min10
+\font\ssecgt=goth10
+\fi
+\ifjTeX
+\jfont\ssecmc=dm10
+\jfont\ssecgt=dg10
+\fi
 \let\ssecbf\ssecrm
 \setfont\ssecsc\scbshape{10}{1000}{OT1}
 \font\sseci=cmmi10
@@ -2054,6 +2246,14 @@ end
 \setfont\reducedttsl\ttslshape{10}{900}{OT1TT}
 \font\reducedi=cmmi9
 \font\reducedsy=cmsy9
+\ifpTeX
+\font\reducedmc=min9
+\font\reducedgt=goth9
+\fi
+\ifjTeX
+\jfont\reducedmc=dm9
+\jfont\reducedgt=dg9
+\fi
 \def\reducedecsize{0900}
 
 \divide\parskip by 2  % reduce space between paragraphs
@@ -2095,11 +2295,20 @@ end
 % in the main text, we don't bother to reset \scriptfont and
 % \scriptscriptfont (which would also require loading a lot more fonts).
 %
+\ifpTeX
+\def\resetmathfonts{%
+  \textfont0=\tenrm \textfont1=\teni \textfont2=\tensy
+  \textfont\itfam=\tenit \textfont\slfam=\tensl \textfont\bffam=\tenbf
+  \textfont\ttfam=\tentt \textfont\sffam=\tensf
+  \textfont\mcfam = \tenmin \textfont\gtfam = \tengt
+}
+\else
 \def\resetmathfonts{%
   \textfont0=\tenrm \textfont1=\teni \textfont2=\tensy
   \textfont\itfam=\tenit \textfont\slfam=\tensl \textfont\bffam=\tenbf
   \textfont\ttfam=\tentt \textfont\sffam=\tensf
 }
+\fi
 
 % The font-changing commands redefine the meanings of \tenSTYLE, instead
 % of just \STYLE.  We do this because \STYLE needs to also set the
@@ -2112,6 +2321,17 @@ end
 %
 % This all needs generalizing, badly.
 %
+\ifjaTeX
+\def\textfonts{%
+  \let\tenrm=\textrm \let\tenit=\textit \let\tensl=\textsl
+  \let\tenbf=\textbf \let\tentt=\texttt \let\smallcaps=\textsc
+  \let\tensf=\textsf \let\teni=\texti \let\tensy=\textsy
+  \let\tenttsl=\textttsl
+  \let\tenmin=\textmc \let\tengt=\textgt
+  \def\curfontsize{text}%
+  \def\lsize{reduced}\def\lllsize{smaller}%
+  \resetmathfonts \setleading{\textleading}}
+\else
 \def\textfonts{%
   \let\tenrm=\textrm \let\tenit=\textit \let\tensl=\textsl
   \let\tenbf=\textbf \let\tentt=\texttt \let\smallcaps=\textsc
@@ -2120,6 +2340,19 @@ end
   \def\curfontsize{text}%
   \def\lsize{reduced}\def\lllsize{smaller}%
   \resetmathfonts \setleading{\textleading}}
+\fi
+\ifjaTeX
+\def\titlefonts{%
+  \let\tenrm=\titlerm \let\tenit=\titleit \let\tensl=\titlesl
+  \let\tenbf=\titlebf \let\tentt=\titlett \let\smallcaps=\titlesc
+  \let\tensf=\titlesf \let\teni=\titlei \let\tensy=\titlesy
+  \let\tenttsl=\titlettsl
+  \let\tenmin=\titlemc \let\tengt=\titlegt
+  \def\curfontsize{title}%
+  \def\lsize{chap}\def\lllsize{subsec}%
+  \resetmathfonts \setleading{27pt}}
+\def\titlefont#1{{\titlefonts\rmisbold #1}}
+\else
 \def\titlefonts{%
   \let\tenrm=\titlerm \let\tenit=\titleit \let\tensl=\titlesl
   \let\tenbf=\titlebf \let\tentt=\titlett \let\smallcaps=\titlesc
@@ -2127,8 +2360,20 @@ end
   \let\tenttsl=\titlettsl
   \def\curfontsize{title}%
   \def\lsize{chap}\def\lllsize{subsec}%
-  \resetmathfonts \setleading{27pt}}
+  \resetmathfonts \setleading{25pt}}
 \def\titlefont#1{{\titlefonts\rmisbold #1}}
+\fi
+\ifjaTeX
+\def\chapfonts{%
+  \let\tenrm=\chaprm \let\tenit=\chapit \let\tensl=\chapsl
+  \let\tenbf=\chapbf \let\tentt=\chaptt \let\smallcaps=\chapsc
+  \let\tensf=\chapsf \let\teni=\chapi \let\tensy=\chapsy
+  \let\tenttsl=\chapttsl
+  \let\tenmin=\chapmc \let\tengt=\chapgt
+  \def\curfontsize{chap}%
+  \def\lsize{sec}\def\lllsize{text}%
+  \resetmathfonts \setleading{19pt}}
+\else
 \def\chapfonts{%
   \let\tenrm=\chaprm \let\tenit=\chapit \let\tensl=\chapsl
   \let\tenbf=\chapbf \let\tentt=\chaptt \let\smallcaps=\chapsc
@@ -2137,6 +2382,18 @@ end
   \def\curfontsize{chap}%
   \def\lsize{sec}\def\lllsize{text}%
   \resetmathfonts \setleading{19pt}}
+\fi
+\ifjaTeX
+\def\secfonts{%
+  \let\tenrm=\secrm \let\tenit=\secit \let\tensl=\secsl
+  \let\tenbf=\secbf \let\tentt=\sectt \let\smallcaps=\secsc
+  \let\tensf=\secsf \let\teni=\seci \let\tensy=\secsy
+  \let\tenttsl=\secttsl
+  \let\tenmin=\secmc \let\tengt=\secgt
+  \def\curfontsize{sec}%
+  \def\lsize{subsec}\def\lllsize{reduced}%
+  \resetmathfonts \setleading{16pt}}
+\else
 \def\secfonts{%
   \let\tenrm=\secrm \let\tenit=\secit \let\tensl=\secsl
   \let\tenbf=\secbf \let\tentt=\sectt \let\smallcaps=\secsc
@@ -2145,6 +2402,18 @@ end
   \def\curfontsize{sec}%
   \def\lsize{subsec}\def\lllsize{reduced}%
   \resetmathfonts \setleading{16pt}}
+\fi
+\ifjaTeX
+\def\subsecfonts{%
+  \let\tenrm=\ssecrm \let\tenit=\ssecit \let\tensl=\ssecsl
+  \let\tenbf=\ssecbf \let\tentt=\ssectt \let\smallcaps=\ssecsc
+  \let\tensf=\ssecsf \let\teni=\sseci \let\tensy=\ssecsy
+  \let\tenttsl=\ssecttsl
+  \let\tenmin=\ssecmc \let\tengt=\ssecgt
+  \def\curfontsize{ssec}%
+  \def\lsize{text}\def\lllsize{small}%
+  \resetmathfonts \setleading{15pt}}
+\else
 \def\subsecfonts{%
   \let\tenrm=\ssecrm \let\tenit=\ssecit \let\tensl=\ssecsl
   \let\tenbf=\ssecbf \let\tentt=\ssectt \let\smallcaps=\ssecsc
@@ -2153,6 +2422,20 @@ end
   \def\curfontsize{ssec}%
   \def\lsize{text}\def\lllsize{small}%
   \resetmathfonts \setleading{15pt}}
+\fi
+\ifjaTeX
+\let\subsubsecfonts = \subsecfonts
+\def\reducedfonts{%
+  \let\tenrm=\reducedrm \let\tenit=\reducedit \let\tensl=\reducedsl
+  \let\tenbf=\reducedbf \let\tentt=\reducedtt \let\reducedcaps=\reducedsc
+  \let\tensf=\reducedsf \let\teni=\reducedi \let\tensy=\reducedsy
+  \let\tenttsl=\reducedttsl
+  \let\tenmc=\reducedmc
+  \let\tengt=\reducedgt
+  \def\curfontsize{reduced}%
+  \def\lsize{small}\def\lllsize{smaller}%
+  \resetmathfonts \setleading{10.5pt}}
+\else
 \let\subsubsecfonts = \subsecfonts
 \def\reducedfonts{%
   \let\tenrm=\reducedrm \let\tenit=\reducedit \let\tensl=\reducedsl
@@ -2162,6 +2445,18 @@ end
   \def\curfontsize{reduced}%
   \def\lsize{small}\def\lllsize{smaller}%
   \resetmathfonts \setleading{10.5pt}}
+\fi
+\ifjaTeX
+\def\smallfonts{%
+  \let\tenrm=\smallrm \let\tenit=\smallit \let\tensl=\smallsl
+  \let\tenbf=\smallbf \let\tentt=\smalltt \let\smallcaps=\smallsc
+  \let\tensf=\smallsf \let\teni=\smalli \let\tensy=\smallsy
+  \let\tenttsl=\smallttsl
+  \let\tenmin=\smallmc \let\tengt=\smallgt
+  \def\curfontsize{small}%
+  \def\lsize{smaller}\def\lllsize{smaller}%
+  \resetmathfonts \setleading{10.5pt}}
+\else
 \def\smallfonts{%
   \let\tenrm=\smallrm \let\tenit=\smallit \let\tensl=\smallsl
   \let\tenbf=\smallbf \let\tentt=\smalltt \let\smallcaps=\smallsc
@@ -2170,6 +2465,18 @@ end
   \def\curfontsize{small}%
   \def\lsize{smaller}\def\lllsize{smaller}%
   \resetmathfonts \setleading{10.5pt}}
+\fi
+\ifjaTeX
+\def\smallerfonts{%
+  \let\tenrm=\smallerrm \let\tenit=\smallerit \let\tensl=\smallersl
+  \let\tenbf=\smallerbf \let\tentt=\smallertt \let\smallcaps=\smallersc
+  \let\tensf=\smallersf \let\teni=\smalleri \let\tensy=\smallersy
+  \let\tenttsl=\smallerttsl
+  \let\tenmin=\smallermc \let\tengt=\smallergt
+  \def\curfontsize{smaller}%
+  \def\lsize{smaller}\def\lllsize{smaller}%
+  \resetmathfonts \setleading{9.5pt}}
+\else
 \def\smallerfonts{%
   \let\tenrm=\smallerrm \let\tenit=\smallerit \let\tensl=\smallersl
   \let\tenbf=\smallerbf \let\tentt=\smallertt \let\smallcaps=\smallersc
@@ -2178,12 +2485,21 @@ end
   \def\curfontsize{smaller}%
   \def\lsize{smaller}\def\lllsize{smaller}%
   \resetmathfonts \setleading{9.5pt}}
+\fi
 
 % Fonts for short table of contents.
 \setfont\shortcontrm\rmshape{12}{1000}{OT1}
 \setfont\shortcontbf\bfshape{10}{\magstep1}{OT1}  % no cmb12
 \setfont\shortcontsl\slshape{12}{1000}{OT1}
 \setfont\shortconttt\ttshape{12}{1000}{OT1TT}
+\ifpTeX
+\font\shortcontmc=min10 scaled \magstep1
+\font\shortcontgt=goth10 scaled \magstep1
+\fi
+\ifjTeX
+\jfont\shortcontmc=dm10 scaled \magstep1
+\jfont\shortcontgt=dg10 scaled \magstep1
+\fi
 
 % Define these just so they can be easily changed for other fonts.
 \def\angleleft{$\langle$}
@@ -2381,7 +2697,9 @@ end
   \else\ifx\next-%
   \else\ifx\next.%
   \else\ptexslash
-  \fi\fi\fi}
+  \fi\fi\fi
+  \aftersmartic
+}
 
 % like \smartslanted except unconditionally uses \ttsl, and no ic.
 % @var is set to this for defun arguments.
@@ -2391,9 +2709,15 @@ end
 % ttsl for book titles, do we?
 \def\cite#1{{\sl #1}\futurelet\next\smartitaliccorrection}
 
+\def\aftersmartic{}
+\def\var#1{%
+  \let\saveaftersmartic = \aftersmartic
+  \def\aftersmartic{\null\let\aftersmartic=\saveaftersmartic}%
+  \smartslanted{#1}%
+}
+
 \let\i=\smartitalic
 \let\slanted=\smartslanted
-\def\var#1{\smartslanted{#1}}
 \let\dfn=\smartslanted
 \let\emph=\smartitalic
 
@@ -2489,7 +2813,7 @@ end
     \plainfrenchspacing
     #1%
   }%
-  \null
+  \null % reset spacefactor to 1000
 }
 
 % We *must* turn on hyphenation at `-' and `_' in @code.
@@ -2771,6 +3095,7 @@ end
   \ifx\temp\empty \else
     \space ({\unsepspaces \ignorespaces \temp \unskip})%
   \fi
+  \null % reset \spacefactor=1000
 }
 
 % @abbr for "Comput. J." and the like.
@@ -2783,6 +3108,7 @@ end
   \ifx\temp\empty \else
     \space ({\unsepspaces \ignorespaces \temp \unskip})%
   \fi
+  \null % reset \spacefactor=1000
 }
 
 % @asis just yields its argument.  Used with @table, for example.
@@ -2988,7 +3314,7 @@ end
 {\tentt \global\dimen0 = 3em}% Width of the box.
 \dimen2 = .55pt % Thickness of rules
 % The text. (`r' is open on the right, `e' somewhat less so on the left.)
-\setbox0 = \hbox{\kern-.75pt \reducedsf error\kern-1.5pt}
+\setbox0 = \hbox{\kern-.75pt \reducedsf \putworderror\kern-1.5pt}
 %
 \setbox\errorbox=\hbox to \dimen0{\hfil
    \hsize = \dimen0 \advance\hsize by -5.8pt % Space to left+right.
@@ -3123,10 +3449,9 @@ end
 % be smaller yet, but lllsize is the best we can do for now.
 % Adapted from the plain.tex definition of \copyright.
 %
+\font\onlytodefineregisteredsymbol=psyr at 7pt
 \def\registeredsymbol{%
-  $^{{\ooalign{\hfil\raise.07ex\hbox{\selectfonts\lllsize R}%
-               \hfil\crcr\Orb}}%
-    }$%
+$^{\hbox{\onlytodefineregisteredsymbol\char210\relax}}$%
 }
 
 % @textdegree - the normal degrees sign.
@@ -3227,7 +3552,7 @@ end
   \finishedtitlepagetrue
 }
 
-%%% Macros to be used within @titlepage:
+% Macros to be used within @titlepage:
 
 \let\subtitlerm=\tenrm
 \def\subtitlefont{\subtitlerm \normalbaselineskip = 13pt \normalbaselines}
@@ -3260,7 +3585,7 @@ end
 }
 
 
-%%% Set up page headings and footings.
+% Set up page headings and footings.
 
 \let\thispage=\folio
 
@@ -3959,18 +4284,18 @@ end
 \setbox0=\vbox{X}\global\multitablelinespace=\the\baselineskip
 \global\advance\multitablelinespace by-\ht0
 \fi
-%% Test to see if parskip is larger than space between lines of
-%% table. If not, do nothing.
-%%        If so, set to same dimension as multitablelinespace.
+% Test to see if parskip is larger than space between lines of
+% table. If not, do nothing.
+%        If so, set to same dimension as multitablelinespace.
 \ifdim\multitableparskip>\multitablelinespace
 \global\multitableparskip=\multitablelinespace
-\global\advance\multitableparskip-7pt %% to keep parskip somewhat smaller
-                                      %% than skip between lines in the table.
+\global\advance\multitableparskip-7pt % to keep parskip somewhat smaller
+                                      % than skip between lines in the table.
 \fi%
 \ifdim\multitableparskip=0pt
 \global\multitableparskip=\multitablelinespace
-\global\advance\multitableparskip-7pt %% to keep parskip somewhat smaller
-                                      %% than skip between lines in the table.
+\global\advance\multitableparskip-7pt % to keep parskip somewhat smaller
+                                      % than skip between lines in the table.
 \fi}
 
 
@@ -4841,7 +5166,11 @@ end
 
 \def\initial#1{{%
   % Some minor font changes for the special characters.
+\ifjaTeX
+  \let\tentt=\sectt \let\tt=\sectt \let\sf=\gt\sectt
+\else
   \let\tentt=\sectt \let\tt=\sectt \let\sf=\sectt
+\fi
   %
   % Remove any glue we may have, we'll be inserting our own.
   \removelastskip
@@ -4859,7 +5188,11 @@ end
   %
   % No shrink because it confuses \balancecolumns.
   \vskip 1.67\baselineskip plus .5\baselineskip
+  \ifjaTeX
+  \leftline{\secgt\secbf #1}%
+  \else
   \leftline{\secbf #1}%
+  \fi
   % Do our best not to break after the initial.
   \nobreak
   \vskip .33\baselineskip plus .1\baselineskip
@@ -5420,7 +5753,7 @@ end
 \let\top\unnumbered
 
 % Sections.
-% 
+%
 \outer\parseargdef\numberedsec{\numhead1{#1}} % normally calls seczzz
 \def\seczzz#1{%
   \global\subsecno=0 \global\subsubsecno=0  \global\advance\secno by 1
@@ -5536,12 +5869,10 @@ end
 % (including whitespace, linebreaking, etc. around it),
 % given all the information in convenient, parsed form.
 
-%%% Args are the skip and penalty (usually negative)
+% Args are the skip and penalty (usually negative)
 \def\dobreak#1#2{\par\ifdim\lastskip<#1\removelastskip\penalty#2\vskip#1\fi}
 
-%%% Define plain chapter starts, and page on/off switching for it
 % Parameter controlling skip before chapter headings (if needed)
-
 \newskip\chapheadingskip
 
 \def\chapbreak{\dobreak \chapheadingskip {-4000}}
@@ -5865,7 +6196,6 @@ end
   % This is purely so the last item on the list is a known \penalty >
   % 10000.  This is so \startdefun can avoid allowing breakpoints after
   % section headings.  Otherwise, it would insert a valid breakpoint between:
-  %
   %   @section sec-whatever
   %   @deffn def-whatever
   \penalty 10001
@@ -6283,6 +6613,12 @@ end
   \normbskip=\baselineskip \normpskip=\parskip \normlskip=\lineskip
   % Flag to tell @lisp, etc., not to narrow margin.
   \let\nonarrowing = t%
+  %
+  % If this cartouche directly follows a sectioning command, we need the
+  % \parskip glue (backspaced over by default) or the cartouche can
+  % collide with the section heading.
+  \ifnum\lastpenalty>10000 \vskip\parskip \fi
+  %
   \vbox\bgroup
       \baselineskip=0pt\parskip=0pt\lineskip=0pt
       \carttop
@@ -6296,7 +6632,7 @@ end
 	      \lineskip=\normlskip
 	      \parskip=\normpskip
 	      \vskip -\parskip
-	      \comment % For explanation, see the end of \def\group.
+	      \comment % For explanation, see the end of def\group.
 }
 \def\Ecartouche{%
               \ifhmode\par\fi
@@ -6702,7 +7038,7 @@ end
     % commands also insert a nobreak penalty, and we don't want to allow
     % a break between a section heading and a defun.
     %
-    % As a minor refinement, we avoid "club" headers by signalling
+    % As a further refinement, we avoid "club" headers by signalling
     % with penalty of 10003 after the very first @deffn in the
     % sequence (see above), and penalty of 10002 after any following
     % @def command.
@@ -6769,13 +7105,36 @@ end
 \def\domakedefun#1#2#3{%
   \envdef#1{%
     \startdefun
+    \doingtypefnfalse    % distinguish typed functions from all else
     \parseargusing\activeparens{\printdefunline#3}%
   }%
   \def#2{\dodefunx#1}%
   \def#3%
 }
 
-%%% Untyped functions:
+\newif\ifdoingtypefn       % doing typed function?
+\newif\ifrettypeownline    % typeset return type on its own line?
+
+% @deftypefnnewline on|off says whether the return type of typed functions
+% are printed on their own line.  This affects @deftypefn, @deftypefun,
+% @deftypeop, and @deftypemethod.
+% 
+\parseargdef\deftypefnnewline{%
+  \def\temp{#1}%
+  \ifx\temp\onword
+    \expandafter\let\csname SETtxideftypefnnl\endcsname
+      = \empty
+  \else\ifx\temp\offword
+    \expandafter\let\csname SETtxideftypefnnl\endcsname
+      = \relax
+  \else
+    \errhelp = \EMsimple
+    \errmessage{Unknown @txideftypefnnl value `\temp',
+                must be on|off}%
+  \fi\fi
+}
+
+% Untyped functions:
 
 % @deffn category name args
 \makedefun{deffn}{\deffngeneral{}}
@@ -6794,7 +7153,7 @@ end
   \defname{#2}{}{#3}\magicamp\defunargs{#4\unskip}%
 }
 
-%%% Typed functions:
+% Typed functions:
 
 % @deftypefn category type name args
 \makedefun{deftypefn}{\deftypefngeneral{}}
@@ -6809,10 +7168,11 @@ end
 %
 \def\deftypefngeneral#1#2 #3 #4 #5\endheader{%
   \dosubind{fn}{\code{#4}}{#1}%
+  \doingtypefntrue
   \defname{#2}{#3}{#4}\defunargs{#5\unskip}%
 }
 
-%%% Typed variables:
+% Typed variables:
 
 % @deftypevr category type var args
 \makedefun{deftypevr}{\deftypecvgeneral{}}
@@ -6830,7 +7190,7 @@ end
   \defname{#2}{#3}{#4}\defunargs{#5\unskip}%
 }
 
-%%% Untyped variables:
+% Untyped variables:
 
 % @defvr category var args
 \makedefun{defvr}#1 {\deftypevrheader{#1} {} }
@@ -6841,7 +7201,8 @@ end
 % \defcvof {category of}class var args
 \def\defcvof#1#2 {\deftypecvof{#1}#2 {} }
 
-%%% Type:
+% Types:
+
 % @deftp category name args
 \makedefun{deftp}#1 #2 #3\endheader{%
   \doind{tp}{\code{#2}}%
@@ -6869,25 +7230,49 @@ end
 % We are followed by (but not passed) the arguments, if any.
 %
 \def\defname#1#2#3{%
+  \par
   % Get the values of \leftskip and \rightskip as they were outside the @def...
   \advance\leftskip by -\defbodyindent
   %
-  % How we'll format the type name.  Putting it in brackets helps
+  % Determine if we are typesetting the return type of a typed function
+  % on a line by itself.
+  \rettypeownlinefalse
+  \ifdoingtypefn  % doing a typed function specifically?
+    % then check user option for putting return type on its own line:
+    \expandafter\ifx\csname SETtxideftypefnnl\endcsname\relax \else
+      \rettypeownlinetrue
+    \fi
+  \fi
+  %
+  % How we'll format the category name.  Putting it in brackets helps
   % distinguish it from the body text that may end up on the next line
   % just below it.
   \def\temp{#1}%
   \setbox0=\hbox{\kern\deflastargmargin \ifx\temp\empty\else [\rm\temp]\fi}
   %
-  % Figure out line sizes for the paragraph shape.
+  % Figure out line sizes for the paragraph shape.  We'll always have at
+  % least two.
+  \tempnum = 2
+  %
   % The first line needs space for \box0; but if \rightskip is nonzero,
   % we need only space for the part of \box0 which exceeds it:
   \dimen0=\hsize  \advance\dimen0 by -\wd0  \advance\dimen0 by \rightskip
+  %
+  % If doing a return type on its own line, we'll have another line.
+  \ifrettypeownline
+    \advance\tempnum by 1
+    \def\maybeshapeline{0in \hsize}%
+  \else
+    \def\maybeshapeline{}%
+  \fi
+  %
   % The continuations:
   \dimen2=\hsize  \advance\dimen2 by -\defargsindent
-  % (plain.tex says that \dimen1 should be used only as global.)
-  \parshape 2 0in \dimen0 \defargsindent \dimen2
   %
-  % Put the type name to the right margin.
+  % The final paragraph shape:
+  \parshape \tempnum  0in \dimen0  \maybeshapeline  \defargsindent \dimen2
+  %
+  % Put the category name at the right margin.
   \noindent
   \hbox to 0pt{%
     \hfil\box0 \kern-\hsize
@@ -6909,8 +7294,16 @@ end
     % . this still does not fix the ?` and !` ligatures, but so far no
     %   one has made identifiers using them :).
     \df \tt
-    \def\temp{#2}% return value type
-    \ifx\temp\empty\else \tclose{\temp} \fi
+    \def\temp{#2}% text of the return type
+    \ifx\temp\empty\else
+      \tclose{\temp}% typeset the return type
+      \ifrettypeownline
+        % put return type on its own line; prohibit line break following:
+        \hfil\vadjust{\nobreak}\break  
+      \else
+        \space  % type on same line, so just followed by a space
+      \fi
+    \fi           % no return type
     #3% output function name
   }%
   {\rm\enskip}% hskip 0.5 em of \tenrm
@@ -7053,12 +7446,14 @@ end
   % ... and for \example:
   \spaceisspace
   %
-  % The \empty here causes a following catcode 5 newline to be eaten
-  % as part of reading whitespace after a control sequence.  It does
-  % not eat a catcode 13 newline.  There's no good way to handle the
-  % two cases.  See the Macro Details node in the manual for the
-  % workaround we currently have to recommend for macros and
+  % The \empty here causes a following catcode 5 newline to be eaten as
+  % part of reading whitespace after a control sequence.  It does not
+  % eat a catcode 13 newline.  There's no good way to handle the two
+  % cases (untried: maybe e-TeX's \everyeof could help, though plain TeX
+  % would then have different behavior).  See the Macro Details node in
+  % the manual for the workaround we recommend for macros and
   % line-oriented commands.
+  %
   \scantokens{#1\empty}%
 \endgroup}
 
@@ -7193,9 +7588,15 @@ end
 \def\macroxxx#1{%
   \getargs{#1}% now \macname is the macname and \argl the arglist
   \ifx\argl\empty       % no arguments
-     \paramno=0
+     \paramno=0\relax
   \else
      \expandafter\parsemargdef \argl;%
+     \if\paramno>256\relax
+       \ifx\eTeXversion\thisisundefined
+         \errhelp = \EMsimple
+         \errmessage{You need eTeX to compile a file with macros with more than 256 arguments}
+       \fi
+     \fi
   \fi
   \if1\csname ismacro.\the\macname\endcsname
      \message{Warning: redefining \the\macname}%
@@ -7245,9 +7646,17 @@ end
 \def\getmacname#1 #2\relax{\macname={#1}}
 \def\getmacargs#1{\def\argl{#1}}
 
+% For macro processing make @ a letter so that we can make Texinfo private macro names.
+\edef\texiatcatcode{\the\catcode`\@}
+\catcode `@=11\relax
+
 % Parse the optional {params} list.  Set up \paramno and \paramlist
-% so \defmacro knows what to do.  Define \macarg.blah for each blah
-% in the params list to be ##N where N is the position in that list.
+% so \defmacro knows what to do.  Define \macarg.BLAH for each BLAH
+% in the params list to some hook where the argument si to be expanded.  If
+% there are less than 10 arguments that hook is to be replaced by ##N where N
+% is the position in that list, that is to say the macro arguments are to be
+% defined `a la TeX in the macro body.  
+%
 % That gets used by \mbodybackslash (above).
 %
 % We need to get `macro parameter char #' into several definitions.
@@ -7257,12 +7666,33 @@ end
 %
 % The same technique is used to protect \eatspaces till just before
 % the macro is used.
-
+%
+% If there are 10 or more arguments, a different technique is used, where the
+% hook remains in the body, and when macro is to be expanded the body is
+% processed again to replace the arguments.
+%
+% In that case, the hook is \the\toks N-1, and we simply set \toks N-1 to the
+% argument N value and then \edef  the body (nothing else will expand because of
+% the catcode regime underwhich the body was input).
+%
+% If you compile with TeX (not eTeX), and you have macros with 10 or more
+% arguments, you need that no macro has more than 256 arguments, otherwise an
+% error is produced.
 \def\parsemargdef#1;{%
   \paramno=0\def\paramlist{}%
   \let\hash\relax
   \let\xeatspaces\relax
   \parsemargdefxxx#1,;,%
+  % In case that there are 10 or more arguments we parse again the arguments
+  % list to set new definitions for the \macarg.BLAH macros corresponding to
+  % each BLAH argument. It was anyhow needed to parse already once this list
+  % in order to count the arguments, and as macros with at most 9 arguments
+  % are by far more frequent than macro with 10 or more arguments, defining
+  % twice the \macarg.BLAH macros does not cost too much processing power.
+  \ifnum\paramno<10\relax\else
+    \paramno0\relax
+    \parsemmanyargdef@@#1,;,% 10 or more arguments
+  \fi
 }
 \def\parsemargdefxxx#1,{%
   \if#1;\let\next=\relax
@@ -7273,16 +7703,205 @@ end
     \edef\paramlist{\paramlist\hash\the\paramno,}%
   \fi\next}
 
+\def\parsemmanyargdef@@#1,{%
+  \if#1;\let\next=\relax
+  \else 
+    \let\next=\parsemmanyargdef@@
+    \edef\tempb{\eatspaces{#1}}%
+    \expandafter\def\expandafter\tempa
+       \expandafter{\csname macarg.\tempb\endcsname}%
+   % Note that we need some extra \noexpand\noexpand, this is because we
+    % don't want \the  to be expanded in the \parsermacbody  as it uses an
+    % \xdef .
+    \expandafter\edef\tempa
+      {\noexpand\noexpand\noexpand\the\toks\the\paramno}%
+    \advance\paramno by 1\relax
+  \fi\next}
+
 % These two commands read recursive and nonrecursive macro bodies.
 % (They're different since rec and nonrec macros end differently.)
 %
+
+\catcode `\@\texiatcatcode
 \long\def\parsemacbody#1@end macro%
 {\xdef\temp{\eatcr{#1}}\endgroup\defmacro}%
 \long\def\parsermacbody#1@end rmacro%
 {\xdef\temp{\eatcr{#1}}\endgroup\defmacro}%
+\catcode `\@=11\relax
 
-% This defines the macro itself. There are six cases: recursive and
-% nonrecursive macros of zero, one, and many arguments.
+\let\endargs@\relax
+\let\nil@\relax
+\def\nilm@{\nil@}%
+\long\def\nillm@{\nil@}%
+
+% This macro is expanded during the Texinfo macro expansion, not during its
+% definition.  It gets all the arguments values and assigns them to macros
+% macarg.ARGNAME
+%
+% #1 is the macro name
+% #2 is the list of argument names
+% #3 is the list of argument values
+\def\getargvals@#1#2#3{%
+  \def\macargdeflist@{}%
+  \def\saveparamlist@{#2}% Need to keep a copy for parameter expansion.
+  \def\paramlist{#2,\nil@}%
+  \def\macroname{#1}%
+  \begingroup
+  \macroargctxt
+  \def\argvaluelist{#3,\nil@}%
+  \def\@tempa{#3}%
+  \ifx\@tempa\empty
+    \setemptyargvalues@
+  \else
+    \getargvals@@
+  \fi
+}
+
+% 
+\def\getargvals@@{%
+  \ifx\paramlist\nilm@
+      % Some sanity check needed here that \argvaluelist is also empty.
+      \ifx\argvaluelist\nillm@
+      \else
+        \errhelp = \EMsimple
+        \errmessage{Too many arguments in macro `\macroname'!}%
+      \fi
+      \let\next\macargexpandinbody@
+  \else
+    \ifx\argvaluelist\nillm@
+       % No more arguments values passed to macro.  Set remaining named-arg
+       % macros to empty.
+       \let\next\setemptyargvalues@
+    \else
+      % pop current arg name into \@tempb
+      \def\@tempa##1{\pop@{\@tempb}{\paramlist}##1\endargs@}%
+      \expandafter\@tempa\expandafter{\paramlist}%
+       % pop current argument value into \@tempc
+      \def\@tempa##1{\longpop@{\@tempc}{\argvaluelist}##1\endargs@}%
+      \expandafter\@tempa\expandafter{\argvaluelist}%
+       % Here \@tempb is the current arg name and \@tempc is the current arg value.
+       % First place the new argument macro definition into \@tempd
+       \expandafter\macname\expandafter{\@tempc}%
+       \expandafter\let\csname macarg.\@tempb\endcsname\relax
+       \expandafter\def\expandafter\@tempe\expandafter{%
+         \csname macarg.\@tempb\endcsname}%
+       \edef\@tempd{\long\def\@tempe{\the\macname}}%
+       \push@\@tempd\macargdeflist@
+       \let\next\getargvals@@
+    \fi
+  \fi
+  \next
+}
+
+\def\push@#1#2{%
+  \expandafter\expandafter\expandafter\def
+  \expandafter\expandafter\expandafter#2%
+  \expandafter\expandafter\expandafter{%
+  \expandafter#1#2}%
+}
+
+% Replace arguments by their values in the macro body, and place the result
+% in macro \@tempa
+\def\macvalstoargs@{%
+  %  To do this we use the property that token registers that are \the'ed
+  % within an \edef  expand only once. So we are going to place all argument
+  % values into respective token registers.
+  %
+  % First we save the token context, and initialize argument numbering.
+  \begingroup
+    \paramno0\relax
+    % Then, for each argument number #N, we place the corresponding argument
+    % value into a new token list register \toks#N
+    \expandafter\putargsintokens@\saveparamlist@,;,%
+    % Then, we expand the body so that argument are replaced by their
+    % values. The trick for values not to be expanded themselves is that they
+    % are within tokens and that tokens expand only once in an \edef .
+    \edef\@tempc{\csname mac.\macroname .body\endcsname}%
+    % Now we restore the token stack pointer to free the token list registers
+    % which we have used, but we make sure that expanded body is saved after
+    % group.
+    \expandafter
+  \endgroup
+  \expandafter\def\expandafter\@tempa\expandafter{\@tempc}%
+  }
+
+\def\macargexpandinbody@{% 
+  %% Define the named-macro outside of this group and then close this group. 
+  \expandafter
+  \endgroup
+  \macargdeflist@
+  % First the replace in body the macro arguments by their values, the result
+  % is in \@tempa .
+  \macvalstoargs@
+  % Then we point at the \norecurse or \gobble (for recursive) macro value
+  % with \@tempb .
+  \expandafter\let\expandafter\@tempb\csname mac.\macroname .recurse\endcsname
+  % Depending on whether it is recursive or not, we need some tailing
+  % \egroup .
+  \ifx\@tempb\gobble
+     \let\@tempc\relax
+  \else
+     \let\@tempc\egroup
+  \fi
+  % And now we do the real job:
+  \edef\@tempd{\noexpand\@tempb{\macroname}\noexpand\scanmacro{\@tempa}\@tempc}%
+  \@tempd
+}
+
+\def\putargsintokens@#1,{%
+  \if#1;\let\next\relax
+  \else
+    \let\next\putargsintokens@
+    % First we allocate the new token list register, and give it a temporary
+    % alias \@tempb .
+    \toksdef\@tempb\the\paramno
+    % Then we place the argument value into that token list register.
+    \expandafter\let\expandafter\@tempa\csname macarg.#1\endcsname
+    \expandafter\@tempb\expandafter{\@tempa}%
+    \advance\paramno by 1\relax
+  \fi
+  \next
+}
+
+% Save the token stack pointer into macro #1
+\def\texisavetoksstackpoint#1{\edef#1{\the\@cclvi}}
+% Restore the token stack pointer from number in macro #1
+\def\texirestoretoksstackpoint#1{\expandafter\mathchardef\expandafter\@cclvi#1\relax}
+% newtoks that can be used non \outer .
+\def\texinonouternewtoks{\alloc@ 5\toks \toksdef \@cclvi}
+
+% Tailing missing arguments are set to empty
+\def\setemptyargvalues@{%
+  \ifx\paramlist\nilm@
+    \let\next\macargexpandinbody@
+  \else
+    \expandafter\setemptyargvaluesparser@\paramlist\endargs@
+    \let\next\setemptyargvalues@
+  \fi
+  \next
+}
+
+\def\setemptyargvaluesparser@#1,#2\endargs@{%
+  \expandafter\def\expandafter\@tempa\expandafter{%
+    \expandafter\def\csname macarg.#1\endcsname{}}%
+  \push@\@tempa\macargdeflist@
+  \def\paramlist{#2}%
+}
+
+% #1 is the element target macro
+% #2 is the list macro
+% #3,#4\endargs@ is the list value
+\def\pop@#1#2#3,#4\endargs@{%
+   \def#1{#3}%
+   \def#2{#4}%
+}
+\long\def\longpop@#1#2#3,#4\endargs@{%
+   \long\def#1{#3}%
+   \long\def#2{#4}%
+}
+
+% This defines a Texinfo @macro. There are eight cases: recursive and
+% nonrecursive macros of zero, one, up to nine, and many arguments.
 % Much magic with \expandafter here.
 % \xdef is used so that macro definitions will survive the file
 % they're defined in; @include reads the file inside a group.
@@ -7301,17 +7920,25 @@ end
          \expandafter\noexpand\csname\the\macname xxx\endcsname}%
       \expandafter\xdef\csname\the\macname xxx\endcsname##1{%
          \egroup\noexpand\scanmacro{\temp}}%
-    \else % many
-      \expandafter\xdef\csname\the\macname\endcsname{%
-         \bgroup\noexpand\macroargctxt
-         \noexpand\csname\the\macname xx\endcsname}%
-      \expandafter\xdef\csname\the\macname xx\endcsname##1{%
-          \expandafter\noexpand\csname\the\macname xxx\endcsname ##1,}%
-      \expandafter\expandafter
-      \expandafter\xdef
-      \expandafter\expandafter
-        \csname\the\macname xxx\endcsname
-          \paramlist{\egroup\noexpand\scanmacro{\temp}}%
+    \else
+      \ifnum\paramno<10\relax % at most 9
+        \expandafter\xdef\csname\the\macname\endcsname{%
+           \bgroup\noexpand\macroargctxt
+           \noexpand\csname\the\macname xx\endcsname}%
+        \expandafter\xdef\csname\the\macname xx\endcsname##1{%
+            \expandafter\noexpand\csname\the\macname xxx\endcsname ##1,}%
+        \expandafter\expandafter
+        \expandafter\xdef
+        \expandafter\expandafter
+          \csname\the\macname xxx\endcsname
+            \paramlist{\egroup\noexpand\scanmacro{\temp}}%
+      \else % 10 or more
+        \expandafter\xdef\csname\the\macname\endcsname{%
+          \noexpand\getargvals@{\the\macname}{\argl}%
+        }%    
+        \global\expandafter\let\csname mac.\the\macname .body\endcsname\temp
+        \global\expandafter\let\csname mac.\the\macname .recurse\endcsname\gobble
+      \fi
     \fi
   \else
     \ifcase\paramno
@@ -7328,22 +7955,32 @@ end
         \egroup
         \noexpand\norecurse{\the\macname}%
         \noexpand\scanmacro{\temp}\egroup}%
-    \else % many
-      \expandafter\xdef\csname\the\macname\endcsname{%
-         \bgroup\noexpand\macroargctxt
-         \expandafter\noexpand\csname\the\macname xx\endcsname}%
-      \expandafter\xdef\csname\the\macname xx\endcsname##1{%
-          \expandafter\noexpand\csname\the\macname xxx\endcsname ##1,}%
-      \expandafter\expandafter
-      \expandafter\xdef
-      \expandafter\expandafter
-      \csname\the\macname xxx\endcsname
-      \paramlist{%
-          \egroup
-          \noexpand\norecurse{\the\macname}%
-          \noexpand\scanmacro{\temp}\egroup}%
+    \else % at most 9
+      \ifnum\paramno<10\relax
+        \expandafter\xdef\csname\the\macname\endcsname{%
+           \bgroup\noexpand\macroargctxt
+           \expandafter\noexpand\csname\the\macname xx\endcsname}%
+        \expandafter\xdef\csname\the\macname xx\endcsname##1{%
+            \expandafter\noexpand\csname\the\macname xxx\endcsname ##1,}%
+        \expandafter\expandafter
+        \expandafter\xdef
+        \expandafter\expandafter
+        \csname\the\macname xxx\endcsname
+        \paramlist{%
+            \egroup
+            \noexpand\norecurse{\the\macname}%
+            \noexpand\scanmacro{\temp}\egroup}%
+      \else % 10 or more:
+        \expandafter\xdef\csname\the\macname\endcsname{%
+          \noexpand\getargvals@{\the\macname}{\argl}%
+        }%
+        \global\expandafter\let\csname mac.\the\macname .body\endcsname\temp
+        \global\expandafter\let\csname mac.\the\macname .recurse\endcsname\norecurse
+      \fi
     \fi
   \fi}
+
+\catcode `\@\texiatcatcode\relax
 
 \def\norecurse#1{\bgroup\cslet{#1}{macsave.#1}}
 
@@ -7807,7 +8444,7 @@ end
 % space to prevent strange expansion errors.)
 \def\supereject{\par\penalty -20000\footnoteno =0 }
 
-% @footnotestyle is meaningful for info output only.
+% @footnotestyle is meaningful for Info output only.
 \let\footnotestyle=\comment
 
 {\catcode `\@=11
@@ -7870,6 +8507,8 @@ end
   % expands into a box, it must come within the paragraph, lest it
   % provide a place where TeX can split the footnote.
   \footstrut
+  %
+  % Invoke rest of plain TeX footnote routine.
   \futurelet\next\fo@t
 }
 }%end \catcode `\@=11
@@ -8422,7 +9061,7 @@ directory should work if nowhere else does.}
 %
 % Latin1 (ISO-8859-1) character definitions.
 \def\latonechardefs{%
-  \gdef^^a0{~}
+  \gdef^^a0{\tie}
   \gdef^^a1{\exclamdown}
   \gdef^^a2{\missingcharmsg{CENT SIGN}}
   \gdef^^a3{{\pounds}}
@@ -8544,7 +9183,7 @@ directory should work if nowhere else does.}
 
 % Latin2 (ISO-8859-2) character definitions.
 \def\lattwochardefs{%
-  \gdef^^a0{~}
+  \gdef^^a0{\tie}
   \gdef^^a1{\ogonek{A}}
   \gdef^^a2{\u{}}
   \gdef^^a3{\L}
@@ -9392,6 +10031,8 @@ directory should work if nowhere else does.}
 
 
 \message{and turning on texinfo input format.}
+
+\def^^L{\par} % remove \outer, so ^L can appear in an @comment
 
 % DEL is a comment character, in case @c does not suffice.
 \catcode`\^^? = 14
