@@ -8774,22 +8774,21 @@ HTMLはエクスポート時にテキストエリア,@xref{Text areas in HTML ex
 @cindex エクスポート中のマクロによる置き換え
 @cindex #+MACRO
 
-あなたはこのようにして
+あなたは次のようにしてテキストスニペットを定義することができます。
 
 @example
 #+MACRO: name   replacement text $1, $2 are arguments
 @end example
 
 @noindent
-which can be referenced anywhere in the document (even in code examples)
-with @code{@{@{@{name(arg1,arg2)@}@}@}}.  In addition to defined macros,
-@code{@{@{@{title@}@}@}}, @code{@{@{@{author@}@}@}}, etc., will reference
-information set by the @code{#+TITLE:}, @code{#+AUTHOR:}, and similar
-lines.  Also, @code{@{@{@{date(@var{FORMAT})@}@}@}} and
-@code{@{@{@{modification-time(@var{FORMAT})@}@}@}} refer to current date
-time and to the modification time of the file being exported, respectively.
-@var{FORMAT} should be a format string understood by
-@code{format-time-string}.
+これは
+@code{@{@{@{name(arg1,arg2)@}@}@}}と書くことでドキュメントのどこからも(コードの例
+からも)参照されます。マクロの定義に加えて、@code{@{@{@{title@}@}@}}、
+@code{@{@{@{author@}@}@}}などは@code{#+TITLE:}や@code{#+AUTHOR:}や他の似たような行によりセ
+ットされる情報を参照します。また、@code{@{@{@{date(@var{FORMAT})@}@}@}}と
+@code{@{@{@{modification-time(@var{FORMAT})@}@}@}}は現在の日付とファイルがエクスポー
+トされて変更された時刻をそれぞれ参照します。@var{FORMAT}は@code{format-time-string}で
+認識した文字列をフォーマットします。
 
 マクロ展開はエクスポート中に行われ、一部の人々は複雑なHTMLコードの構築に用い
 る。
@@ -8888,8 +8887,8 @@ the sun is R_@{sun@} = 6.96 x 10^8 m.
 @end example
 
 @noindent
-With this setting, @samp{a_b} will not be interpreted as a subscript, but
-@samp{a_@{b@}} will.
+この設定を有効にした場合、@samp{a_b}は下付き文字として解釈されず、@samp{a_@{b@}}とする
+ことで解釈されます。
 
 @table @kbd
 @kindex C-c C-x \
@@ -8926,7 +8925,7 @@ With this setting, @samp{a_b} will not be interpreted as a subscript, but
 @end itemize
 
 @noindent
-For example:
+例：
 
 @example
 \begin@{equation@}                          % arbitrary environments,
