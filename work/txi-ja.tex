@@ -263,7 +263,6 @@
 
 \gdef\printheadingappendix#1#2{\putwordAppendix{}#1\thischapterspace#2}
 \gdef\printheadingchapter#1#2{第#1\putwordChapter{}\thischapterspace#2}
-\gdef\printheadingsection#1#2{第#1\putwordSection{}\thischapterspace#2}
 
 \gdef\Ynumbered{%
   \ifnum\secno=0
@@ -300,16 +299,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  3. クロスレファレンスの表記
 
-% \global\def\xrefprintinmanual#1#2{\space \putwordin{} \cite{#1}}
-% \global\def\xrefprintrefinmanual#1#2{\cite{#2}の``#1''\putwordsection{}}
-% \global\def\xrefprintnodename#1#2#3{\def\temp{#1}\ifx\empty\temp\else#1\fi「#2」#3}
+\global\def\xrefprintinmanual#1#2{\space \putwordin{} \cite{#1}}
+\global\def\xrefprintrefinmanual#1#2{\cite{#2}の``#1''\putwordsection{}}
+\global\def\xrefprintnodename#1#2#3{\def\temp{#1}\ifx\empty\temp\else#1\fi「#2」#3}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  4. @dfn の表記
 
 \global\def\doublebracket#1{『#1』}
 \global\let\dfn=\doublebracket
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2011-12-10.11}
+\def\texinfoversion{2011-12-10.12}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -8111,7 +8111,7 @@ $^{\hbox{\onlytodefineregisteredsymbol\char210\relax}}$%
   \fi\fi
 }
 
-
+% @takaxp - replace
 % @xref, @pxref, and @ref generate cross-references.  For \xrefX, #1 is
 % the node name, #2 the name of the Info cross-reference, #3 the printed
 % node name, #4 the name of the Info file, #5 the name of the printed
@@ -8128,7 +8128,7 @@ $^{\hbox{\onlytodefineregisteredsymbol\char210\relax}}$%
   \setbox0=\hbox{\printedrefname\unskip}%
   \ifdim \wd0 = 0pt
     % No printed node name was explicitly given.
-    \expandafter\ifx\csname SETxref-automatic-section-title\endcsname \relax
+    \expandafter\ifx\csname SETxref-automatic-section-title\endcsname\relax
       % Use the node name inside the square brackets.
       \def\printedrefname{\ignorespaces #1}%
     \else
@@ -8195,7 +8195,8 @@ $^{\hbox{\onlytodefineregisteredsymbol\char210\relax}}$%
     % if the user also gave the printed manual name (fifth arg), append
     % "in MANUALNAME".
     \ifdim \wd1 > 0pt
-      \space \putwordin{} \cite{\printedmanual}%
+      %\space \putwordin{} \cite{\printedmanual}%
+      \xrefprintinmanual{\printedmanual}
     \fi
   \else
     % node/anchor (non-float) references.
@@ -8207,8 +8208,10 @@ $^{\hbox{\onlytodefineregisteredsymbol\char210\relax}}$%
     % is a loss.  Therefore, we give the text of the node name again, so it
     % is as if TeX is seeing it for the first time.
     \ifdim \wd1 > 0pt
-      \putwordSection{} ``\printedrefname'' \putwordin{} \cite{\printedmanual}%
+      %\putwordSection{} ``\printedrefname'' \putwordin{} \cite{\printedmanual}%
+      \xrefprintrefinmanual{\printedrefname}{\printedmanual}
     \else
+      \xrefprintnodename%
       % _ (for example) has to be the character _ for the purposes of the
       % control sequence corresponding to the node, but it has to expand
       % into the usual \leavevmode...\vrule stuff for purposes of
@@ -8218,27 +8221,41 @@ $^{\hbox{\onlytodefineregisteredsymbol\char210\relax}}$%
        % Only output a following space if the -snt ref is nonempty; for
        % @unnumbered and @anchor, it won't be.
        \setbox2 = \hbox{\ignorespaces \refx{#1-snt}{}}%
-       \ifdim \wd2 > 0pt \refx{#1-snt}\space\fi
+       \ifdim \wd2 > 0pt \refx{#1-snt}\fi
       }%
       % output the `[mynode]' via a macro so it can be overridden.
-      \xrefprintnodename\printedrefname
+      {\printedrefname}%
       %
       % But we always want a comma and a space:
-      ,\space
+      %,\space
       %
       % output the `page 3'.
-      \turnoffactive \putwordpage\tie\refx{#1-pg}{}%
+      {\turnoffactive \putwordpage\tie\refx{#1-pg}{}}%
     \fi
   \fi
   \endlink
 \endgroup}
 
+% @takaxp - replace
+% for localization hook point
+\def\xrefprintinmanual#1#2{\space \putwordin{} \cite{#1}}
+\def\xrefprintrefinmanual#1#2{\putwordSection{} ``#1'' \putwordin{} \cite{#2}}
+
+% @takaxp - replace
 % This macro is called from \xrefX for the `[nodename]' part of xref
 % output.  It's a separate macro only so it can be changed more easily,
 % since square brackets don't work well in some documents.  Particularly
 % one that Bob is working on :).
 %
-\def\xrefprintnodename#1{[#1]}
+%\def\xrefprintnodename#1{[#1]}
+\def\xrefprintnodename#1#2#3{%
+  \def\temp{#1}%
+  \ifx\temp\empty
+  \else
+    #1\space
+  \fi
+  [#2],\space#3
+}
 
 % Things referred to by \setref.
 %
