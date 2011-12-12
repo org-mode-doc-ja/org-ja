@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2011-12-13 01:03+0900\n"
+"PO-Revision-Date: 2011-12-13 05:36+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -25176,7 +25176,7 @@ msgstr "@code{:dir}とリモートでの実行"
 #. type: Plain text
 #: org.texi:12172
 msgid "While the @code{:file} header argument can be used to specify the path to the output file, @code{:dir} specifies the default directory during code block execution. If it is absent, then the directory associated with the current buffer is used. In other words, supplying @code{:dir path} temporarily has the same effect as changing the current directory with @kbd{M-x cd path}, and then not supplying @code{:dir}. Under the surface, @code{:dir} simply sets the value of the Emacs variable @code{default-directory}."
-msgstr "ヘッダー引数@code{:file}がアウトプットするファイルのパスを指定する一方で、@code{:dir}はコードブロックを実行する間のデフォルトのディレクトリを指定します。指定されなければ、現在のバッファに関連するディレクトリが使われます。言い換えると、@code{:dir path}を与えることは、@kbd{M-x cd path}でカレントディレクトリを変えるだけで@code{:dir}を設定しない場合と一時的には同じ効果を持ちます。水面下で、@code{:dir}がEmacsの変数@code{default-directory}を変更しているだけです。"
+msgstr "ヘッダー引数@code{:file}がアウトプットするファイルのパスを指定する一方で、@code{:dir}はコードブロックを実行する間のデフォルトのディレクトリを指定します。指定されない場合、現在のバッファに関連するディレクトリが使われます。つまり、@code{:dir path}を一時的に与えることは、@kbd{M-x cd path}でカレントディレクトリを変えるだけで@code{:dir}を設定しない場合と同じ効果を持ちます。水面下では、@code{:dir}がEmacsの変数@code{default-directory}を変更しているだけなのです。"
 
 # glossary: default ( デフォルト|初期値 ) / directory ( ディレクトリ ) / file ( ファイル ) / output ( アウトプット )
 #. type: Plain text
@@ -25188,7 +25188,7 @@ msgstr "@code{:dir}を使う場合、アウトプットするファイルを相�
 #. type: Plain text
 #: org.texi:12179
 msgid "In other words, if you want your plot to go into a folder called @file{Work} in your home directory, you could use"
-msgstr "つまり、ホームディレクトリ内に@file{Work}というフォルダでプロット(グラフを描画)したい場合、次のように使えます。"
+msgstr "つまり、ホームディレクトリ内の@file{Work}フォルダでプロット(グラフを描画)したい場合、次のように使えます。"
 
 #. type: example
 #: org.texi:12184
@@ -25212,7 +25212,7 @@ msgstr "リモートでの実行"
 #. type: Plain text
 #: org.texi:12189
 msgid "A directory on a remote machine can be specified using tramp file syntax, in which case the code will be evaluated on the remote machine. An example is"
-msgstr "trampのファイル構文を使う事でリモートマシン上のディレクトリを記述できます。その場合、リモートマシン上でコードは評価されます。以下は例です。"
+msgstr "trampのファイル構文を使う事でリモートマシン上のディレクトリを指定できます。その場合、リモートマシン上でコードが評価されます。1つの例です。"
 
 #. type: example
 #: org.texi:12194
@@ -25230,13 +25230,13 @@ msgstr ""
 #. type: Plain text
 #: org.texi:12200
 msgid "Text results will be returned to the local Org-mode buffer as usual, and file output will be created on the remote machine with relative paths interpreted relative to the remote directory. An Org-mode link to the remote file will be created."
-msgstr "いつものようにローカルのOrg-modeのバッファにテキストの結果が返され、リモートマシン上のリモートディレクトリを基準とした相対パスにファイルがアウトプットされます。リモートファイルへのOrg-modeのリンクが生成されます。"
+msgstr "従来通りローカルのOrg-modeのバッファにテキストの結果が返されますが、リモートマシン上のリモートディレクトリを基準とした相対パスにファイルのアウトプットが作成されます。リモートのファイルへのOrg-modeのリンクが生成されます。"
 
 # glossary: example ( 例 ) / link ( リンク ) / org ( Org-mode )
 #. type: Plain text
 #: org.texi:12203
 msgid "So, in the above example a plot will be created on the remote machine, and a link of the following form will be inserted in the org buffer:"
-msgstr "従って、上の例ではリモートマシン上にグラフが生成されます。そしてOrg-modeバッファには次の形式のリンクが挿入されます。"
+msgstr "従って、上の例では、リモートマシン上にグラフが生成され、Org-modeバッファには次の形式のリンクが挿入されます。"
 
 #. type: example
 #: org.texi:12206
@@ -25248,14 +25248,14 @@ msgstr "[[file:/scp:dand@@yakuba.princeton.edu:/home/dand/plot.png][plot.png]]\n
 #. type: Plain text
 #: org.texi:12212
 msgid "Most of this functionality follows immediately from the fact that @code{:dir} sets the value of the Emacs variable @code{default-directory}, thanks to tramp. Those using XEmacs, or GNU Emacs prior to version 23 may need to install tramp separately in order for these features to work correctly."
-msgstr "trampのおかげで、@code{:dir}がEmacsの変数@code{default-directory}をセットすれば、すぐにこの機能の多くを使えます。これらの機能を正しく動かすためには、XEmacsやversion23より前のGNU Emacsを使っている人はtrampを別にインストールする必要があるかもしれません。"
+msgstr "trampのおかげで、@code{:dir}がEmacsの変数@code{default-directory}の値をセットした後すぐに、この機能を使えます。これらの機能を正しく動かすためには、XEmacsやversion23より前のGNU Emacsを使っている人はtrampを別にインストールする必要があるかもしれません。"
 
 # glossary: point ( ポイント )
 #. type: subsubheading
 #: org.texi:12213
 #, no-wrap
 msgid "Further points"
-msgstr "更なる点"
+msgstr "更なるポイント"
 
 # glossary: directory ( ディレクトリ )
 #. type: itemize
@@ -25267,7 +25267,7 @@ msgstr "もし@code{:session}と並行して@code{:dir}が使われるとき、�
 #. type: itemize
 #: org.texi:12228
 msgid "@code{:dir} should typically not be used to create files during export with @code{:exports results} or @code{:exports both}. The reason is that, in order to retain portability of exported material between machines, during export links inserted into the buffer will *not* be expanded against @code{default directory}. Therefore, if @code{default-directory} is altered using @code{:dir}, it is probable that the file will be created in a location to which the link does not point."
-msgstr "@code{:exports results}や@code{:exports both}を使ってファイルをエクスポートする間、通常は@code{:dir}を使ってファイルを生成するべきではありません。理由は以下の通りです。2つのマシンでエクスポートされた結果の移植性を維持するために、エクスポート時にバッファーへと挿入されるリンクは@code{default-directory}に対して展開*されていません*。それゆえ、もし@code{:dir}を使って@code{default directory}を変えてしまうと、リンクで意図していない場所にファイルが作られるという恐れがあります。"
+msgstr "@code{:exports results}や@code{:exports both}を使ってファイルをエクスポートする間、通常は@code{:dir}を使ってファイルを生成するべきではありません。理由は以下の通りです。2つのマシンでエクスポートされた結果の移植性を維持するために、エクスポート時にバッファへと挿入されるリンクは@code{default-directory}に対して展開 *されていません* 。それゆえ、もし@code{:dir}を使って@code{default directory}を変えてしまうと、リンクで意図していない場所にファイルが作られるという恐れがあります。"
 
 #. type: code{#1}
 #: org.texi:12231
