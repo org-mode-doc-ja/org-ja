@@ -501,7 +501,7 @@ Specific header arguments
 * dir::                      コードブロックの実行結果を出力する(可能ならばリ
 モートの)ディレクトリを特定する
 * exports::                  コードと(または)実行結果を出力する
-* 抽出::                   抽出の有無をトグルしてファイル名を特定する
+* tangle::                   抽出の有無をトグルしてファイル名を特定する
 * mkdirp::                   抽出している間、ターゲットファイルの親ディレク
 トリの生成をトグルする
 * comments::                 tangleされたコードファイルでコメントの挿入をト
@@ -10440,11 +10440,11 @@ File: org-ja,  Node: Working With Source Code,  Next: Miscellaneous,  Prev: Publ
           (if a (not b) b))
      #+END_SRC
 
-Org-modeでは生のソースコードと連携する幾つかの機能を用意してます。その機能と
-して、コードブロックをそのメジャーモードで編集する機能、コードブロックを評価
-する機能、コードブロックをソースコードへと変換する機能(文芸的プログラミング
-では"tangling"と知られている機能です)、そしてコードブロックとその結果を幾つ
-かのフォーマットに沿ってエクスポートする機能があります。この機能はもともと
+Org-modeでは生のソースコードと連携する幾つかの機能を用意してます。その機能に
+は、コードブロックをそのメジャーモードで編集する機能、コードブロックを評価す
+る機能、コードブロックをソースコードへと変換する機能(文芸的プログラミングで
+は"tangling"と知られている機能)、そしてコードブロックとその結果を幾つかのフ
+ォーマットに沿ってエクスポートする機能が含まれます。この機能はもともと
 Org-bablelと名付けられ、Eric SchultとDan Davidsonによって開発されました。
 
 以下のセクションでは、Org-modeでコードブロックを取り扱う機能について説明しま
@@ -10479,8 +10479,8 @@ File: org-ja,  Node: Structure of code blocks,  Next: Editing source code,  Prev
        <body>
      #+end_src
 
-スイッチとヘッダー引数は省略できます。次のように、コードも文章にインラインで
-埋め込むことができます。
+スイッチとヘッダー引数は省略可能です。次のように、コードを文章にインラインで
+埋め込むこともできます。
 
      src_<language>{<body>}
 
@@ -10489,25 +10489,27 @@ File: org-ja,  Node: Structure of code blocks,  Next: Editing source code,  Prev
      src_<language>[<header arguments>]{<body>}
 
 `<name>'
-     この「name」はコードブロックと関連があります。これは、Org-modeのファイ
-     ル内でテーブルを名付ける`#+tblname'と似ています。コードブロックの名前
-     を参照することで、そのファイル内や別のファイル、さらにはOrg-modeのテー
-     ブルの計算式にあるコードブロックを評価することができます。 (*note The
-     spreadsheet::を見て下さい)。
+     この「name」はコードブロックと関連付けられています。これは、Org-modeの
+     ファイル内でテーブルに名前を付ける`#+tblname'行と似ています。コードブ
+     ロックの名前を参照することで、そのファイル内の別の場所にあるコードブロ
+     ックや別のファイルの別の場所にあるコードブロック、またはOrg-modeのテー
+     ブルの計算式(*note The
+     spreadsheet::を見て下さい)にあるコードブロックから評
+     価することが可能となります。
 
 `<language>'
      ブロック内にあるコードの言語です。
 
 `<switches>'
-     コードブロックのエクスポートを管理するスイッチです。省略可能です。
-     (*note Literal examples::を参照してください。)
+     コードブロックのエクスポートを管理する省略可能なスイッチです (*note
+     Literal examples::を参照してください)
 
 `<header arguments>'
-     省略可能なヘッダー引数は、コードブロックの評価、エクスポートそして抽出
-     での多く特徴を管理します。*note Header
-     arguments::セクションを見て下さい。プ
-     ロパティを設定することで、バッファー毎に、サブツリー毎にヘッダー引数を
-     設定できます。
+     コードブロックの評価、コードブロックのエクスポート、そしてコードブロッ
+     クからのソースコードの抽出において、省略可能なヘッダー引数が多くの側面
+     を管理します。*note Header
+     arguments::セクションを見て下さい。プロパティを使
+     うことで、バッファー毎もしくはサブツリー毎にヘッダー引数を設定できます。
 
 `<body>'
      ソースコードです。
@@ -10519,25 +10521,27 @@ File: org-ja,  Node: Editing source code,  Next: Exporting code blocks,  Prev: S
 ========================
 
 現在のコードブロックを編集するには`C-c ''を使ってください。コードブロックの
-本文を含んだ編集バッファが、その言語のメジャーモードで新たに開かれます。その
-バッファを保存すると、Org-modeのバッファへ新しい内容を上書きします。コードブ
-ロックの編集バッファを閉じるには`C-c ''を再度押して下さい。
+本文を含んだ編集バッファが、その言語のメジャーモードで新たに開かれます。この
+バッファを保存すると、Org-modeのバッファへ新しい内容を上書きします。終了させ
+るには再度`C-c ''を使って下さい。
 
-編集バッファにて`org-src-mode'マイナーモードが起動します。編集バッファの振る
-舞いを設定するには、以下の変数が使えます。詳細な設定オプションについては、カ
-スタマイズグループ`org-edit-structure'も見て下さい。
+編集バッファにて`org-src-mode'のマイナーモードが起動します。編集バッファの振
+る舞いを設定するために、以下の変数が使えます。さらなる設定オプションについて
+は、カスタマイズのグループ`org-edit-structure'も見て下さい。
 
 `org-src-lang-modes'
-     コードブロックのヘッダー行で宣言した言語名`<lang>-mode'のメジャーモー
-     ドがEmacsに存在する場合、そのメジャーモードで編集バッファを開きます。
-     存在するメジャーモードに任意の言語名を割り振るためにこの変数を使えます。
+     `<lang>-mode'と名付けられたメジャーモードがEmacsに存在する場合、そのメ
+     ジャーモードで編集バッファを開きます。ここで`<lang>'とは、コードブロッ
+     クのヘッダー行で指名された言語のことです。存在するメジャーモードに任意
+     の言語名を割り当てるために、この変数を使えます。
 
 `org-src-window-setup'
-     編集バッファを新規作成する際の、Emacsのウィンドウ配置方法を管理します。
+     編集バッファを新規作成する時に、Emacsのウィンドウが再配置される方法を
+     管理します。
 
 `org-src-preserve-indentation'
-     Pythonなどのインデント幅が非常に重要な言語をtangling(コード本文を抽出)
-     するときに、この変数は特に役に立ちます。
+     ホワイトスペース(空白)のインデントが非常に重要であるPythonなどの言語を
+     tangling(コード本文を抽出)するときに、この変数は特に役に立ちます。
 
 `org-src-ask-before-returning-to-edit-buffer'
      デフォルトでは、既に開いてある編集バッファへと戻る前に、Org-modeが確認
@@ -10564,8 +10568,8 @@ examples::を参照し てください。
 ヘッダー引数`:exports'を設定することで、エクスポート時の振る舞いを指定できま
 す:
 
-ヘッダ引数:
-................
+ヘッダー引数:
+...................
 
 `:exports code'
      ほとんどの言語でのデフォルトの設定です。*note Literal
@@ -10574,20 +10578,20 @@ examples::を参照し てください。
 `:exports results'
      エクスポートするために、コードブロックが評価され、その結果がOrg-modeの
      バッファに出力されます。バッファ内に以前評価した結果があればその結果を
-     更新し、もし以前に評価した結果がなければ直ちに今回の評価結果をコードブ
-     ロックの後ろに追記します。コードブロックの本文はエクスポートされません。
+     更新し、もし以前に評価した結果が無ければ直ちに今回の評価結果をコードブ
+     ロックの後に追記します。コードブロックの本文はエクスポートされません。
 
 `:exports both'
-     コードブロックとその結果がエクスポートされます。
+     コードブロックとその結果の両方がエクスポートされます。
 
 `:exports none'
      コードブロックとその結果のいずれもエクスポートされません。
 
-   エクスポートの間、コードブロックは評価されません。変数
-`org-export-babel-evaluate'を`nil'に設定すると、エクスポートのプロセスの一部
-としてのコードブロックの評価は抑止されます。例えばwikiのマークアップ言語とし
-てOrg-modeを使う場合など、信頼できない可能性があるOrg-modeが自動的にエクスポ
-ートされる場合には、この設定が役立ちます。
+   エクスポートの間、コードブロックの評価を抑止することも可能です。変数
+`org-export-babel-evaluate'を`nil'と設定することで、エクスポートのプロセスの
+一部としてのコードブロックの評価を抑止できます。例えばwikiのマークアップ言語
+としてOrg-modeを使う場合など、信頼できない可能性があるOrg-modeが自動的にエク
+スポートされる場合には、この設定が役立ちます。
 
 
 File: org-ja,  Node: Extracting source code,  Next: Evaluating code blocks,  Prev: Exporting code blocks,  Up: Working With Source Code
@@ -10596,25 +10600,25 @@ File: org-ja,  Node: Extracting source code,  Next: Evaluating code blocks,  Pre
 ===========================
 
 ソースブロックからコードを抽出して純粋なソースコードファイルを作成することを
-、"tangling"といいます。この用語は文芸的プログラミングコミュニティで使われ
-ている専門用語です。コードブロックを"tangling"する時に、変数と"noweb"ス
-タイルの参照点(*note Noweb reference syntax::を参照)を展開できる
-`org-babel-expand-src-block'を使ってコード本文を展開します。
+、"tangling"といいます。この用語は文芸的プログラミングのコミュニティで使わ
+れている専門用語です。コードブロックを"tangling"する間、変数と"noweb"ス
+タイルの参照点(*note Noweb reference syntax::を参照)との両方を展開できる
+`org-babel-expand-src-block'を使ってコードブロックの本文を展開します。
 
 Header arguments
 ................
 
 `:tangle no'
-     デフォルトの設定です。コードブロックはtangleされたアウトプットには含ま
-     れません。
+     デフォルトの設定です。コードブロックは、tangleされたアウトプットには含
+     まれません。
 
 `:tangle yes'
-     tangleされたアウトプットにコードブロックを含むように設定します。アウト
-     プットされるファイル名は、orgファイルの拡張子`.org'をブロックに記述し
-     た言語の拡張子名に置換したものです。
+     tangleされたアウトプットにコードブロックが含まれます。アウトプットされ
+     るファイルの名前は、orgファイルの拡張子`.org'をブロックに記述した言語
+     の拡張子名に置換したものです。
 
 `:tangle filename'
-     `filename'に出力するアウトプットにコードブロックを含ませます。
+     `filename'へのtangleされたアウトプットにはコードブロックを含みます。
 
 関数
 ......
@@ -10629,9 +10633,9 @@ Hooks
 .....
 
 `org-babel-post-tangle-hook'
-     このhook関数は関数`org-babel-tangle'によってtangleされたコードファイル
-     の中から呼び出されます。実例応用ではtangleされたコードファイルの後処理
-     、編集や評価を含むことができます。
+     関数`org-babel-tangle'によってtangleされたコードファイルの中から、この
+     hookが実行されます。tangleされたコードファイルの後処理、編集もしくは評
+     価を、実用例として含められます。
 
 
 File: org-ja,  Node: Evaluating code blocks,  Next: Library of Babel,  Prev: Extracting source code,  Up: Working With Source Code
@@ -10639,22 +10643,23 @@ File: org-ja,  Node: Evaluating code blocks,  Next: Library of Babel,  Prev: Ext
 14.5 Evaluating code blocks
 ===========================
 
-コードブロックを評価し(1)、その結果をOrg-modeバッファに表示することが可能です。デフォルトでは、
-`emacs-lisp'コードブロックだけを評価しますが、多くの言語を評価できます。サポ
-ートされている言語のリストは、*note
-Languages::で見ることができます。コードブロッ クを定義する構文について*note
-Structure of code blocks::を参照してください。
+コードブロックを評価し(1)、その結果をOrg-modeバッファに表示することが可能です。デフォル
+トでは、`emacs-lisp'のコードブロックだけを評価しますが、多くの言語での評価の
+サポートがあります。サポートされている言語のリストは、*note
+Languages::で見ること ができます。コードブロックを定義する構文について*note
+Structure of code blocks::を 参照してください。
 
 コードブロックを評価する方法は多くあります。一番簡単な方法は、コードブロック
 (2)にて`C-c C-c'もしくは`C-c C-v e'を
 と入力することです。これが関数`org-babel-execute-src-block'をコール、コード
 ブロックを評価し、その結果をOrg-modeバッファに挿入します。
 
-Org-modeバッファもしくはOrg-modeテーブル内のどこからでも、名前付きコードブロ
-ックを評価できます。現在のOrg-modeバッファや"Library of Babel"(*note
-Library of Babel::にあるコードブロックを間接的に実行するには、 `#+call'行
-(もしくは同義語として`#+function'行や`#+lob'行)が使えます。これらは、以下の
-構文を使います。
+Org-modeのバッファ内、もしくはOrg-modeのテーブル内のどこからでも、名前付きの
+コードブロックを評価することも可能です。現在のOrg-modeバッファや"Library of
+Babel"(*note Library of
+Babel::にあるコードブロックを離れた場所から実行するに は、`#+call'行
+(もしくは同義語として`#+function'行や`#+lob'行)が使えます。これらの行は、以
+下の構文を使います。
 
      #+call: <name>(<arguments>) <header arguments>
      #+function: <name>(<arguments>) <header arguments>
@@ -10664,40 +10669,38 @@ Library of Babel::にあるコードブロックを間接的に実行するに�
      評価されるコードブロックの名前です。
 
 `<arguments>'
-     このセクションで説明されている引数をコードブロックへと渡します。通常の
-     関数コールの構文を使ってコールされたコードブロックにおいて、これらの引
-     数は`:var'というヘッダー引数と関連付けられています。例えば、`double'と
-     名付けられたもともとのコードブロックがヘッダー引数`:var n=2'を持つ場合
-     、上記call行により数値の4をブロックに渡すには`#+call: double(n=2)'と書
-     かれます。英文にてtypo?:number four->number two:"then the call line
-     passing the number four to that block would be written as `#+call:
-     double(n=2)'."
+     この場所に記述された引数をコードブロックへと渡します。通常の関数呼び出
+     しの構文を使って呼び出されたコードブロック内では、これらの引数はヘッダ
+     ー引数`:var'と関係しています。例えば、`double'と名付けられたもともとの
+     コードブロックではヘッダー引数が`:var n=2'と書かれている場合、そのコー
+     ドブロックへ数値の4を渡すには、call行を`#+call: double(n=4)'と記述しま
+     す。
 
 `<header arguments>'
-     関数を起動した後の、ヘッダー引数を指定できます。ヘッダー引数の(更なる
-     情報|詳細)については*note Header arguments::を参照してください。
+     関数呼び出しの後にヘッダー引数をセットできます。ヘッダー引数の詳細につ
+     いては*note Header arguments::を参照してください。
 
-   上の`<header
-arguments>'セクションに記述された全てのヘッダー引数は`#+call:'
-行の評価に適用されます。しかし、評価されているコードブロックに渡すヘッダー引
-数を指定することが望ましいときもあります。
+   上の`<header arguments>'という部分に記述された全てのヘッダー引数は、
+`#+call:'行の評価に適用されます。しかし、時には、コードブロックへ渡すヘッダ
+ー引数を指定することが好ましい場合もあります。
 
-   以下に示ように、オプションを拡張した構文も使えます。
+   これには、以下の選択可能な拡張された構文を使えます。
 
      #+call: <name>[<block header arguments>](<arguments>) <header arguments>
 
-   `<block header
-arguments>'セクション内の角括弧([])の間にあるヘッダー引数は、
-名前付きコードブロックの評価に適用されます。`#+call:'行へヘッダー引数を渡す
-例の更なる紹介は、*note Header arguments in function calls::をご覧ください。
+   角括弧([])で囲まれた`<block header
+arguments>'部分に置かれたヘッダー引数がど
+のようなものであっても、名前付きコードブロックの評価に適用されます。
+`#+call:'行へとヘッダー引数を渡す例については、 *note Header arguments in
+function calls::を参照してください。
 
    ---------- Footnotes ----------
 
    (1) コードを評価するときはいつでも、そのコードが害をなす
 可能性があります。Org-modeは、ユーザーから明示的な確認をできたときのみにコー
-ドを評価する安全装置をいくつも用意しています。これらの安全装置について(そし
-てそを無効化する方法について)、*note Code evaluation
-security::を参照してください 。
+ドを評価する安全装置をいくつも用意しています。これらの安全装置については(加
+えて、それらを無効化する方法についても)、*note Code evaluation
+security::を参照し てください。
 
    (2)
 変数`org-babel-no-eval-on-ctrl-c-ctrl-c'を設定することで、キーバインド `C-c
@@ -10709,21 +10712,20 @@ File: org-ja,  Node: Library of Babel,  Next: Languages,  Prev: Evaluating code 
 14.6 Library of Babel
 =====================
 
-"Library of Babel" はOrg-modeのファイルから呼び出せるコードブロックのライ
-ブラリです。
-ライブラリは、Org-modeの`contrib'ディレクトリのOrg-modeファイルに格納されて
-います。Org-modeのユーザーは、一般的に有用だと考えられる関数を、ライブラリ内
-に置くことができます。
+"Library of Babel"は、どのOrg-modeのファイルからも呼び出せるコードブロック
+のライブラリです。
+そのライブラリは、Org-modeの`contrib'ディレクトリのOrg-modeファイルに格納さ
+れています。Org-modeのユーザーは、一般的に有用だと考えられる関数をそのライブ
+ラリ内に置くことができます。
 
    "Library of
 Babel"で定義されたコードブロックは、あたかも現在のOrg-modeバッファで処理さ
-れるかのように、リモートで呼び出せます(callできます)。(リモートでコードブロ
-ックを評価する構文についての情報は、*note Evaluating code
-blocks::を参照してくださ い。)
+れるかのように、リモートで呼び出せます(リモートでコードブロックを評価する構
+文についての情報は、*note Evaluating code blocks::を参照してください)。
 
-   どんなOrg-modeファイルに記述されたコードブロックでも、"Library of
-Babel"の関数`org-babel-lob-ingest'を使って、ロードできます。キーバインドは
-`C-c C-v i'です。
+どんなOrg-modeファイルに記述されたコードブロックでも、`org-babel-lob-ingest'
+を使って"Library of Babel"の関数へロードできます。キーバインドは`C-c C-v
+i'です。
 
 
 File: org-ja,  Node: Languages,  Next: Header arguments,  Prev: Library of Babel,  Up: Working With Source Code
@@ -10751,11 +10753,11 @@ Sass                  sass                    Scheme            scheme
 GNU Screen            screen                  shell             sh
 SQL                   sql                     SQLite            sqlite
 
-   言語特有の文書が存在する場合があります。存在する場合、文書は
+   言語特有の文書が存在する場合があります。文書が存在する場合、それは
 `http://orgmode.org/worg/org-contrib/babel/languages'にて見つけられます。
 
-どの言語を評価するかの管理には、関数`org-babel-load-languages'を使います。(
-デフォルトでは`emacs-lisp'のみを評価可能です。)
+どの言語を評価するかの管理には、関数`org-babel-load-languages'を使います(デ
+フォルトでは`emacs-lisp'のみを評価可能です)。
 この変数を設定するには、カスタマイズのインターフェースを使うか、以下のコード
 をemacsの設定ファイルに追加します。
 
@@ -10770,7 +10772,7 @@ SQL                   sql                     SQLite            sqlite
 上記方法に加えて、`require'関数を使って関連するelispファイルをロードすること
 でも、言語のサポートを有効にできます.
 
-     次の例では、`clojure'コードブロックの評価を有効にしています。
+     以下は、`clojure'コードブロックの評価を有効にしています。
 
      (require 'ob-clojure)
 
@@ -10780,9 +10782,8 @@ File: org-ja,  Node: Header arguments,  Next: 評価の結果,  Prev: Languages,
 14.8 Header arguments
 =====================
 
-ヘッダー引数を通して、コードブロックの機能を設定できます。このセクションでは
-ヘッダー引数の使い方を概説し、その後、各ヘッダー引数の詳細について説明します
-。
+ヘッダー引数を通してコードブロックの機能を設定できます。このセクションではヘ
+ッダー引数の使い方を概説した後に、各ヘッダー引数の詳細について説明します。
 
 * Menu:
 
@@ -10823,9 +10824,9 @@ System-wide header arguments
      :cache      => "no"
      :noweb      => "no"
 
-次の例のように、ヘッダー引数`:noweb'の初期値を`yes'と設定できます。ソースコ
-ードブロックを評価する時に、デフォルトの設定として`:noweb'の参照記号を展開し
-ます。
+例えば、次の例ではヘッダー引数`:noweb'の初期値を`yes'と設定できます。この設
+定は、ソースコードブロックを評価する時にデフォルトの設定として`:noweb'の参照
+記号を展開します。
 
      (setq org-babel-default-header-args
      (cons '(:noweb . "yes")
@@ -10837,9 +10838,9 @@ File: org-ja,  Node: Language-specific header arguments,  Next: Buffer-wide head
 Language-specific header arguments
 ..................................
 
-それぞれの言語用にデフォルトのヘッダー引数を定義できます。言語の詳細な文書に
-ついては、オンラインの`http://orgmode.org/worg/org-contrib/babel'を見て下さ
-い。
+それぞれの言語用にデフォルトのヘッダー引数を定義できます。オンライン
+`http://orgmode.org/worg/org-contrib/babel'で閲覧可能な言語特有の文書を見て
+下さい。
 
 
 File: org-ja,  Node: Buffer-wide header arguments,  Next: Header arguments in Org-mode properties,  Prev: Language-specific header arguments,  Up: Using header arguments
@@ -10853,8 +10854,8 @@ Org-modeファイルにある特別な行を使って、バッファー全体に
 
    次の例は、`session'を`*R*'と設定し、バッファ内にあるコードブロック毎の
 `results'を`silent'と指定しています。この設定により、全ての(コードブロックが
-)同一のセッションで実行されることと、結果はバッファに挿入されないことを確か
-にしています。
+)同一のセッションで実行されること、そして、結果はそのバッファに挿入されない
+ことを確かにしています。
 
      #+BABEL: :session *R* :results silent
 
@@ -10872,10 +10873,11 @@ Property syntax::を見て下さい)。プロパティはバッファ全体も�
      #+property: tangle yes
 
 デフォルトのヘッダー引数を設定するためにプロパティを使う場合、プロパティは継
-承(関係)に沿って参照されます。したがって、以下の見出しにあるサブツリー内の全
-コードブロックでは、ヘッダー引数`:cache'の値はデフォルトの`yes'となります:
+承(関係)に沿って参照されます。したがって、以下の見出しに属するサブツリー内の
+全てのコードブロックでは、ヘッダー引数`:cache'の値はデフォルトで`yes'となり
+ます:
 
-     * アウトライン ヘッダー
+     * アウトラインの見出し
      :PROPERTIES:
      :cache:    yes
      :END:
@@ -10937,17 +10939,15 @@ File: org-ja,  Node: Header arguments in function calls,  Prev: Code block speci
 Header arguments in function calls
 ..................................
 
-一番個別のレベルにおいて、Babelのライブラリのためのヘッダー引数もしくは関数
-の呼び出し行は、下に示す2つの例のように設定されます。`#call:'行の構造ついつ
-いての更なる情報については、*note Evaluating code
-blocks::を参照してください。
+一番個別のレベルにおいて、Babelライブラリのためのヘッダー引数もしくは関数の
+呼び出し行は、下に示す2つの例のように設定できます。`#call:'行の構造について
+の更なる情報は、*note Evaluating code blocks::を参照してください。
 
-   以下の例では、ヘッダー引数`:exports
-results'を設定して、`#+call:'行を評価し ます。
+   以下は、ヘッダー引数`:exports results'を`#+call:'行の評価に適用します。
      #+call: factorial(n=5) :exports results
 
-   以下の例では、ヘッダー引数`:session special'を設定して、コードブロック
-`factorial'を評価します。
+   以下は、ヘッダー引数`:session
+special'をコードブロック`factorial'の評価に適 用します。
      #+call: factorial[:session special](n=5)
 
 
@@ -10966,7 +10966,7 @@ File: org-ja,  Node: Specific header arguments,  Prev: Using header arguments,  
 * dir::                      コードブロックの実行結果を出力する(可能ならばリ
 モートの)ディレクトリを特定する
 * exports::                  コードと(または)実行結果を出力する
-* 抽出::                   抽出の有無をトグルしてファイル名を特定する
+* tangle::                   抽出の有無をトグルしてファイル名を特定する
 * mkdirp::                   抽出している間、ターゲットファイルの親ディレク
 トリの生成をトグルする
 * comments::                 tangleされたコードファイルでコメントの挿入をト
@@ -10988,29 +10988,28 @@ File: org-ja,  Node: var,  Next: results,  Prev: Specific header arguments,  Up:
 14.8.2.1 `:var'
 ...............
 
-ヘッダー引数`:var'はコードブロックへ引数を渡すときに使われます。コードブロッ
-クに含まれている引数を受け取る方法は、言語によって異なります。これらは、言語
-固有の文書にて説明されています。しかし、引数を指定する構文は、すべての言語で
-共通です。引数に渡されうる値というのは、定数(リテラル値)、Org-modeのテーブル
-とexampleブロックそのもの文字列からの値、他のコードブロックの結果、あるいは
-Emacs_Lisp(原文スペースをアンダーバーで置換)のコードです。--Emacs_Lispにつ
-いては、以下の見出し"Emacs Lisp evaluation of variables"を見て下さい。
+ヘッダー引数`:var'はコードブロックへ引数を渡すために使われます。コードブロッ
+クに含まれている引数を受け取る方法は、言語によって異なります;これらは、言語
+固有の文書にて説明されています。しかし、引数を指定する構文はすべての言語で共
+通です。引数に渡される値は、定数(リテラル値)、Org-modeのテーブルとliteral
+exampleブロックからの値、他のコードブロックの結果、あるいはEmacs
+Lispのコードです。--Emacs_Lispについては、以下の見出し "Emacs Lisp
+evaluation of variables"を見て下さい。
 
-   これらの値は配列のようにインデックス化できます。--以下の見出し
-"indexable variable values"を見て下さい。
+   これらの値は配列のようにインデックス化できます--以下の見出し "indexable
+variable values"を見て下さい。
 
 ヘッダー引数`:var'を使ってコードブロックへ引数を渡すには、以下の構文を使いま
 す。
 
      :var name=assign
 
-   ここで、`assign'は以下の構造のうちどれかをとることができます。
+   ここで、`assign'は以下のフォームのどれかをとることができます。
 
-   * literal value
-     この文、文法的に分かりません。文字列(例:`"string"')もしくは数字(例
-     :`9')です。
+   * 定数(リテラル値)
+     文字列(例:`"string"')、もしくは数字(例:`9')のどちらかです。
 
-   * reference a table name:
+   * 参照 テーブルの名前:
 
           #+tblname: example-table
           | 1 |
@@ -11026,7 +11025,8 @@ Emacs_Lisp(原文スペースをアンダーバーで置換)のコードです�
           #+results: table-length
           : 4
 
-     `#+srcname:'と括弧「()」で挟まれたコードブロックの名前を参照します。
+     `#+srcname:'(訳者注:`#+source:'と同一のもの)で割り当てられたコードブロ
+     ックの名前で、後ろに括弧「()」が続きます。
 
           #+begin_src emacs-lisp :var length=table-length()
           (* 2 length)
@@ -11035,8 +11035,8 @@ Emacs_Lisp(原文スペースをアンダーバーで置換)のコードです�
           #+results:
           : 8
 
-     加えて、`:var'によって参照されたコードブロックへ引数を渡すこともできま
-     す。コードブロック名に続く括弧「()」内の引数が渡されます。
+     加えて、`:var'により参照されるコードブロックへと引数を渡すことも可能で
+     す。コードブロック名に続く括弧「()」内の引数が渡されます:
 
           #+source: double
           #+begin_src emacs-lisp :var input=8
@@ -11071,15 +11071,13 @@ Indexable variable values(インデックス化可能な変数の値)
 .....................................................................
 
 変数の"indexing"インデックス化によって割り当てられた変数の一部分を参照でき
-ます。インデックスは0から始まる値で、負の値もとります。インデックスが負の値
-の場合、それは要素の最後から逆順に数え上げた順番です。インデックスが「,」で
-分割されているとき、後続する部分のそれぞれが、次に深いネスティング(入れ子構
-造)にインデックス化するか、値の次元にインデックス化します。このインデックス
-化を実行する_前に_、ヘッダー引数`:hlines'、`:colnames'、そして`:rownames'に
-関連する他のテーブルが変更されることに注意して下さい。(最終文、typo?  the
-last cell of the first row *in* the table example-table to the variable
-data)次の例では、テーブル`example-table'1行目の最後のセルを変数`data'に割り
-当てています:
+ます。インデックス(添え字)は0から始まります。インデックスが負の値の場合、そ
+れは要素の最後から逆順に数え上げたものです。インデックスが「`,'」で分割され
+ているとき、後続する部分のそれぞれが、次に深いネスティング(入れ子構造)にイン
+デックス化するか、値の次元にインデックス化します。`:hlines'、`:colnames'、そ
+して`:rownames'のようなヘッダー引数と関連する他のテーブルが変更される_前に_
+、このインデックス化が行われることに注意して下さい。次の例では、テーブル
+`example-table'1行目の最後のセルを変数`data'に割り当てています:
 
      #+results: example-table
      | 1 | a |
@@ -11149,8 +11147,8 @@ data)次の例では、テーブル`example-table'1行目の最後のセルを�
      #+results:
      | 11 | 14 | 17 |
 
-Emacs Lispによる変数の評価
-..................................
+Emacs Lisp evaluation of variables(Emacs Lispによる変数の評価)
+......................................................................
 
 変数の値を初期化するときにEmacs Lispのコードを使えます。変数の値が `(',
 `[', `'' もしくは ``'で始まる場合、変数はEmacs
@@ -11164,7 +11162,7 @@ Org-file内でヘッダー引数が間違いなく評価されるということ
      #+end_src
 
    テーブルやリストから読み出された値はEmacs
-Lispとして評価されません。以下はそ の例です。
+Lispとして評価されないことに注意し て下さい。以下はその例です。
 
      #+results: table
      | (a b c) |
@@ -11275,7 +11273,7 @@ Handling
 す。
 
    * `silent'
-     結果はミニバッファに表示されますが、Org-odeのバッファには挿入されませ
+     結果はミニバッファに表示されますが、Org-modeのバッファには挿入されませ
      ん。例えば、`:results output silent'と記述します。
 
    * `replace'
@@ -11284,14 +11282,14 @@ Handling
      replace'と記述します。
 
    * `append'
-     コードブロックの結果が以前から存在する場合、新しい結果は現在存在する結
-     果に付け加えられます。結果が存在しなければ、`replace'のように新しい結
-     果が挿入されます。
+     コードブロックの結果が以前から存在する場合、現在存在する結果の最後に新
+     しい結果を付け加えます。結果が存在しない場合は、`replace'のように新し
+     い結果を挿入します。
 
    * `prepend'
-     もしコードブロックの結果が既に存在する場合、今現在の結果の先頭に新しい
-     結果追加します。結果が存在しなければ、`replace'のように新しい結果が挿
-     入されます。
+     もしコードブロックの結果が既に存在する場合、現在存在する結果の先頭に新
+     しい結果を追加します。結果が存在しない場合は、`replace'のように新しい
+     結果を挿入します。
 
 
 File: org-ja,  Node: file,  Next: dir,  Prev: results,  Up: Specific header arguments
@@ -11299,18 +11297,18 @@ File: org-ja,  Node: file,  Next: dir,  Prev: results,  Up: Specific header argu
 14.8.2.3 `:file'
 ................
 
-コードブロックの結果を保存する外部のファイルを指定するため、にヘッダー引数
-`:file'を使います。コードブロックの評価の後に、Org-modeスタイルのリンク
-`[[file:]]'(*note Link
-format::を参照)が、そのOrg-modeバッファーに挿入されます。 R, gnuplot,
+コードブロックの結果を保存する外部ファイルを指定するために、ヘッダー引数
+`:file'を使います。コードブロックの評価の後に、そのファイルへのOrg-modeスタ
+イルのリンク`[[file:]]'(*note Link
+format::を参照)が、Org-modeのバッファに挿入され ます。R, gnuplot,
 dotやditaaなどの言語では、ヘッダー引数`:file'を扱う特別な機能が用意されてい
-ます。その機能は、指定されたファイルへアウトプットを保存するために、必要な定
-型のコードでコードブロックの本文を囲みます。これは、コードブロックの画像出力
-を特定のファイルに保存する場合に、よく使います。
+ます。その機能とは、指定されたファイルへアウトプットを保存するために、必要な
+定型のコードでコードブロックの本文を囲むというものです。これは、コードブロッ
+クの画像出力を特定のファイルに保存する場合に、しばしば役立ちます。
 
-`:file'に対する引数は、ファイルのパスを示す文字列もしくは、次の2つの文字列か
-らなるリスト、のどちらかでなくてはなりません。2つの文字列からなるリストは、
-第1要素はファイルのパス、第2要素はそのリンクの説明から構成されます。
+`:file'に対する引数は、ファイルのパスを示す文字列、もしくは、次の2つの文字列
+からなるリスト、のどちらかでなくてはなりません。2つの文字列からなるリストと
+は、第1要素はファイルのパス、第2要素はそのリンクの説明から構成されます。
 
 
 File: org-ja,  Node: dir,  Next: exports,  Prev: file,  Up: Specific header arguments
@@ -11320,18 +11318,18 @@ File: org-ja,  Node: dir,  Next: exports,  Prev: file,  Up: Specific header argu
 
 ヘッダー引数`:file'がアウトプットするファイルのパスを指定する一方で、`:dir'
 はコードブロックを実行する間のデフォルトのディレクトリを指定します。指定され
-なければ、現在のバッファに関連するディレクトリが使われます。言い換えると、
-`:dir path'を与えることは、`M-x cd path'でカレントディレクトリを変えるだけで
-`:dir'を設定しない場合と一時的には同じ効果を持ちます。水面下で、`:dir'が
-Emacsの変数`default-directory'を変更しているだけです。
+ない場合、現在のバッファに関連するディレクトリが使われます。つまり、 `:dir
+path'を一時的に与えることは、`M-x cd path'でカレントディレクトリを変え
+るだけで`:dir'を設定しない場合と同じ効果を持ちます。水面下では、`:dir'が
+Emacsの変数`default-directory'を変更しているだけなのです。
 
    `:dir'を使う場合、アウトプットするファイルを相対パス(例 `:file
 myfile.jpg'も しくは`:file
 results/myfile.jpg')で与えなければなりません。その場合、与えた
 パスはデフォルトディレクトリに対する相対パスとして解釈されます。
 
-つまり、ホームディレクトリ内に`Work'というフォルダでプロット(グラフを描画)し
-たい場合、次のように使えます。
+つまり、ホームディレクトリ内の`Work'フォルダでプロット(グラフを描画)したい場
+合、次のように使えます。
 
      #+begin_src R :file myplot.png :dir ~/Work
      matplot(matrix(rnorm(100), 10), type="l")
@@ -11340,29 +11338,29 @@ results/myfile.jpg')で与えなければなりません。その場合、与え
 リモートでの実行
 ........................
 
-trampのファイル構文を使う事でリモートマシン上のディレクトリを記述できます。
-その場合、リモートマシン上でコードは評価されます。以下は例です。
+trampのファイル構文を使う事でリモートマシン上のディレクトリを指定できます。
+その場合、リモートマシン上でコードが評価されます。1つの例です。
 
      #+begin_src R :file plot.png :dir /dand@yakuba.princeton.edu:
      plot(1:10, main=system("hostname", intern=TRUE))
      #+end_src
 
-いつものようにローカルのOrg-modeのバッファにテキストの結果が返され、リモート
-マシン上のリモートディレクトリを基準とした相対パスにファイルがアウトプットさ
-れます。リモートファイルへのOrg-modeのリンクが生成されます。
+従来通りローカルのOrg-modeのバッファにテキストの結果が返されますが、リモート
+マシン上のリモートディレクトリを基準とした相対パスにファイルのアウトプットが
+作成されます。リモートのファイルへのOrg-modeのリンクが生成されます。
 
-従って、上の例ではリモートマシン上にグラフが生成されます。そしてOrg-modeバッ
-ファには次の形式のリンクが挿入されます。
+従って、上の例では、リモートマシン上にグラフが生成され、Org-modeバッファには
+次の形式のリンクが挿入されます。
 
      [[file:/scp:dand@yakuba.princeton.edu:/home/dand/plot.png][plot.png]]
 
-trampのおかげで、`:dir'がEmacsの変数`default-directory'をセットすれば、すぐ
-にこの機能の多くを使えます。これらの機能を正しく動かすためには、XEmacsや
+trampのおかげで、`:dir'がEmacsの変数`default-directory'の値をセットした後す
+ぐに、この機能を使えます。これらの機能を正しく動かすためには、XEmacsや
 version23より前のGNU
 Emacsを使っている人はtrampを別にインストールする必要があるかもしれません。
 
-更なる点
-............
+更なるポイント
+.....................
 
    * もし`:session'と並行して`:dir'が使われるとき、新規セッションを開始する
      場合には開始ディレクトリを予想して決定します。しかし、すでにセッション
@@ -11372,13 +11370,14 @@ Emacsを使っている人はtrampを別にインストールする必要があ�
    * `:exports results'や`:exports both'を使ってファイルをエクスポートする
      間、通常は`:dir'を使ってファイルを生成するべきではありません。理由は以
      下の通りです。2つのマシンでエクスポートされた結果の移植性を維持するた
-     めに、エクスポート時にバッファーへと挿入されるリンクは
-     `default-directory'に対して展開*されていません*。それゆえ、もし`:dir'
-     を使って`default directory'を変えてしまうと、リンクで意図していない場
-     所にファイルが作られるという恐れがあります。
+     めに、エクスポート時にバッファへと挿入されるリンクは
+     `default-directory'に対して展開 *されていません*
+     。それゆえ、もし`:dir'を使って`default directory'を変
+     えてしまうと、リンクで意図していない場所にファイルが作られるという恐れ
+     があります。
 
 
-File: org-ja,  Node: exports,  Next: 抽出,  Prev: dir,  Up: Specific header arguments
+File: org-ja,  Node: exports,  Next: tangle,  Prev: dir,  Up: Specific header arguments
 
 14.8.2.5 `:exports'
 ...................
@@ -11402,7 +11401,7 @@ File: org-ja,  Node: exports,  Next: 抽出,  Prev: dir,  Up: Specific header ar
      `:exports none'のように記述します。
 
 
-File: org-ja,  Node: 抽出,  Next: mkdirp,  Prev: exports,  Up: Specific header arguments
+File: org-ja,  Node: tangle,  Next: mkdirp,  Prev: exports,  Up: Specific header arguments
 
 14.8.2.6 `:tangle'
 ..................
@@ -11410,7 +11409,7 @@ File: org-ja,  Node: 抽出,  Next: mkdirp,  Prev: exports,  Up: Specific header
 ヘッダー引数`:tangle'は、ソースコードファイルを抽出したファイルにコードブロ
 ックを含めるか否かを指定します。
 
-   * `抽出'
+   * `tangle'
      コードブロックは、Org-modeのファイルのbasename(拡張子を取り除いた名前)
      にちなんだソースコードファイルにエクスポートされます。例えば、
      `:tangle yes'のように記述します。
@@ -11425,14 +11424,15 @@ File: org-ja,  Node: 抽出,  Next: mkdirp,  Prev: exports,  Up: Specific header
      に記述します。
 
 
-File: org-ja,  Node: mkdirp,  Next: comments,  Prev: 抽出,  Up: Specific header arguments
+File: org-ja,  Node: mkdirp,  Next: comments,  Prev: tangle,  Up: Specific header arguments
 
 14.8.2.7 `:mkdirp'
 ..................
 
-抽出した(tangled)ファイルの親ディレクトリが無いときに、ヘッダー引数`:mkdirp'
-を使って親ディレクトリを作成できます。ディレクトリ作成を許可するにはこのヘッ
-ダー引数を`yes'と設定し、ディレクトリ作成を禁止するには`no'と設定します。
+抽出(tangle)されたファイルの親ディレクトリが無いときに、ヘッダー引数
+`:mkdirp'を使って親ディレクトリを作成できます。ディレクトリ作成を許可するに
+はこのヘッダー引数を`yes'と設定し、ディレクトリ作成を禁止するには`no'と設定
+します。
 
 
 File: org-ja,  Node: comments,  Next: no-expand,  Prev: mkdirp,  Up: Specific header arguments
@@ -11440,30 +11440,30 @@ File: org-ja,  Node: comments,  Next: no-expand,  Prev: mkdirp,  Up: Specific he
 14.8.2.8 `:comments'
 ....................
 
-デフォルトでは、コードブロックをソースコードへと抽出するときに、コードブロッ
-ク本文に既に存在するコメント以外のコメントは挿入されません。抽出されたコード
-ファイルに追加のコメントを挿入するには、ヘッダー引数`:comments'を以下のよう
-に設定します。
+デフォルトの設定では、コードブロックをソースコードへと抽出するときに、コード
+ブロック本文に既に存在するコメントだけを挿入します。抽出されたコードファイル
+に追加のコメントを挿入するには、ヘッダー引数`:comments'を以下のように設定し
+ます。
 
    * `no'
-     デフォルトの設定です。抽出(tangling)の間にコメントは追加されません。
+     デフォルトの設定です。抽出(tangle)する間に、コメントは追加挿入されません。
 
    * `link'
-     コードブロックは、コードが抽出される元のOrg-modeファイルへ戻るポインタ
-     を示したコメントに囲まれます。
+     コードブロックは、コードが抽出された元のOrg-modeファイルへ戻るポインタ
+     を含むコメントに囲まれます。
 
-   * `yes' 後方互換性を保持する"link"と同じ意味です。
+   * `yes' "link"と同じ意味です。これは後方互換性を保持するためです。
 
-   * `org' Org-modeのファイルからのテキストをコメントとして含めます。
+   * `org' Org-modeのファイルからのテキストをコメントとして含みます。
 
-     抽出されたコードの先行する文脈からテキストが選ばれます。状況に応じて、
-     テキストは、一番近い見出しもしくはソースブロックソースに限定されます。
+     抽出されたコードに先行する文脈からテキストが選ばれます。テキストは、状
+     況に応じて、一番近い見出しもしくはソースブロックに限定されます。
 
    * `both' コメントのオプションの"link"と"org"との両方を有効にします。
 
    * `noweb'
-     コメントのオプション"link"を有効にした後に、nowebの参照記号をコード
-     ブロック本文に展開し、それをリンクのコメントで囲みます。
+     コメントのオプション"link"を有効にし、nowebの参照記号をコードブロッ
+     ク本文に展開し、それをリンクのコメントで囲みます。
 
 
 File: org-ja,  Node: no-expand,  Next: session,  Prev: comments,  Up: Specific header arguments
@@ -11471,12 +11471,12 @@ File: org-ja,  Node: no-expand,  Next: session,  Prev: comments,  Up: Specific h
 14.8.2.9 `:no-expand'
 .....................
 
-デフォルトの設定では、抽出される際に関数`org-babel-expand-src-block'によって
-コードブロックが展開されます。これは、`:var'を使って変数を割り当てること
-(*note var::を参照してください)に加えて、"noweb"の参照記号 (*note Noweb
-reference syntax::を参照してください)をそのターゲットで置き換えること
-と同様の効果があります。この動作を無効にするためにヘッダー引数`:no-expand'を
-使います。
+デフォルトの設定では、抽出の際に関数`org-babel-expand-src-block'によってコー
+ドブロックが展開されます。これには、`:var'を使って変数を割り当てる(*note
+var::を参 照してください)効果に加えて、"noweb"の参照記号(*note Noweb
+reference syntax::を
+参照してください)をそのターゲットで置き換える効果があります。この動作を無効
+にするためにヘッダー引数`:no-expand'を使います。
 
 
 File: org-ja,  Node: session,  Next: noweb,  Prev: no-expand,  Up: Specific header arguments
@@ -11484,13 +11484,13 @@ File: org-ja,  Node: session,  Next: noweb,  Prev: no-expand,  Up: Specific head
 14.8.2.10 `:session'
 ....................
 
-ヘッダー引数`:session'は、読み取られた言語のためにセッションを開始します。セ
-ッションでは、状態は保存されます。
+ヘッダー引数`:session'は、読み取られた言語のにセッションを開始します。セッシ
+ョンでは、状態は保存されます。
 
    デフォルトでは、セッションは開始されません。
 
-ヘッダー引数`:session'に渡された文字列が、セッションに名前を与えます。これに
-より、読み取られた言語のそれぞれについて同時セッションを実行可能です。
+ヘッダー引数`:session'に渡された文字列が、セッション名になります。これにより
+、読み取られた言語のそれぞれについて並列セッションを実行可能です。
 
 
 File: org-ja,  Node: noweb,  Next: cache,  Prev: session,  Up: Specific header arguments
@@ -11511,7 +11511,7 @@ reference syntax::を参照のこと)の参照記号を展開する動作を管�
      デフォルトの設定です。コードブロックの評価では"noweb"構文のアクショ
      ンはありません。しかし、抽出の間にnoweb参照記号は展開されます。
 
-   * `抽出'
+   * `tangle'
      ブロックを抽出する前に、コードブロックの本文にある全ての"noweb"構文
      の参照記号は展開されますが、ブロックが評価されるときやエクスポートされ
      るときは"noweb"の参照記号は展開されません。
@@ -15095,7 +15095,7 @@ Key index
                                                                   (line  21)
 * C-c C-v h:                             Key bindings and useful functions.
                                                                   (line  23)
-* C-c C-v i:                             Library of Babel.        (line  18)
+* C-c C-v i:                             Library of Babel.        (line  17)
 * C-c C-v l:                             Key bindings and useful functions.
                                                                   (line  24)
 * C-c C-v p:                             Key bindings and useful functions.
@@ -15172,7 +15172,7 @@ Key index
 * C-c C-x o <1>:                         Checkboxes.              (line  78)
 * C-c C-x o:                             TODO dependencies.       (line  28)
 * C-c C-x p <1>:                         Header arguments in Org-mode properties.
-                                                                  (line  22)
+                                                                  (line  23)
 * C-c C-x p:                             Property syntax.         (line  47)
 * C-c C-y <1>:                           Clocking commands.       (line  38)
 * C-c C-y:                               Creating timestamps.     (line  58)
@@ -15916,7 +15916,7 @@ Variable index
 * org-attach-directory:                  Attachments.             (line   6)
 * org-attach-method:                     Attachments.             (line  31)
 * org-babel-default-header-args <1>:     Header arguments in Org-mode properties.
-                                                                  (line  22)
+                                                                  (line  23)
 * org-babel-default-header-args:         System-wide header arguments.
                                                                   (line   6)
 * org-calc-default-modes:                Formula syntax for Calc. (line  13)
@@ -16551,100 +16551,100 @@ Node: Simple example585466
 Node: Complex example586170
 Node: 公開の開始588467
 Node: Working With Source Code589757
-Node: Structure of code blocks591920
-Node: Editing source code593688
-Node: Exporting code blocks595797
-Node: Extracting source code598056
-Node: Evaluating code blocks599855
-Ref: Evaluating code blocks-Footnote-1603227
-Ref: Evaluating code blocks-Footnote-2603648
-Node: Library of Babel603802
-Node: Languages604891
-Node: Header arguments607373
-Node: Using header arguments607923
-Node: System-wide header arguments608798
-Node: Language-specific header arguments609667
-Node: Buffer-wide header arguments610115
-Node: Header arguments in Org-mode properties611035
-Node: Code block specific header arguments612406
-Node: Header arguments in function calls614558
-Node: Specific header arguments615425
-Node: var617260
-Node: results624207
-Node: file629702
-Node: dir630888
-Node: exports634597
-Node: 抽出635574
-Node: mkdirp636576
-Node: comments637038
-Node: no-expand638519
-Node: session639182
-Node: noweb639772
-Node: cache641657
-Node: sep643503
-Node: hlines644373
-Node: colnames646119
-Node: rownames647649
-Node: shebang648789
-Node: eval649229
-Node: 評価の結果649863
-Node: Noweb reference syntax653729
-Node: Key bindings and useful functions655025
-Node: バッチ処理656681
-Node: Miscellaneous657901
-Node: Completion658795
-Node: Easy Templates661454
-Node: Speed keys663132
-Node: Code evaluation security664191
-Node: Customization667665
-Node: In-buffer settings668354
-Ref: In-buffer settings-Footnote-1679667
-Node: The very busy C-c C-c key679714
-Node: Clean view682151
-Ref: Clean view-Footnote-1687111
-Ref: Clean view-Footnote-2687177
-Ref: Clean view-Footnote-3687416
-Ref: Clean view-Footnote-4687492
-Ref: Clean view-Footnote-5687639
-Node: TTY keys687823
-Node: Interaction689686
-Node: Cooperation690082
-Node: Conflicts694882
-Node: Hacking699674
-Node: Hooks700664
-Node: Add-on packages701138
-Node: Adding hyperlink types701775
-Node: Context-sensitive commands706593
-Ref: Context-sensitive commands-Footnote-1708518
-Node: Tables in arbitrary syntax708678
-Node: Radio tables710426
-Node: A LaTeX example713464
-Ref: A LaTeX example-Footnote-1717998
-Ref: A LaTeX example-Footnote-2718214
-Node: Translator functions718700
-Ref: Translator functions-Footnote-1722477
-Node: ラジオリスト722624
-Node: Dynamic blocks724064
-Node: Special agenda views727016
-Ref: Special agenda views-Footnote-1732695
-Node: Extracting agenda information732886
-Node: Using the property API738045
-Node: マッピングAPIを使う742420
-Node: MobileOrg747782
-Node: Setting up the staging area749919
-Ref: Setting up the staging area-Footnote-1751436
-Ref: Setting up the staging area-Footnote-2751862
-Node: Pushing to MobileOrg752208
-Ref: Pushing to MobileOrg-Footnote-1753809
-Ref: Pushing to MobileOrg-Footnote-2754541
-Node: MobileOrgからpullする754628
-Ref: MobileOrgからpullする-Footnote-1758503
-Ref: MobileOrgからpullする-Footnote-2758576
-Node: History and Acknowledgments759170
-Node: Main Index775543
-Node: Key Index844292
-Node: Command and Function Index888181
-Node: Variable Index917662
+Node: Structure of code blocks591914
+Node: Editing source code593882
+Node: Exporting code blocks596097
+Node: Extracting source code598395
+Node: Evaluating code blocks600218
+Ref: Evaluating code blocks-Footnote-1603514
+Ref: Evaluating code blocks-Footnote-2603950
+Node: Library of Babel604104
+Node: Languages605188
+Node: Header arguments607670
+Node: Using header arguments608213
+Node: System-wide header arguments609088
+Node: Language-specific header arguments609975
+Node: Buffer-wide header arguments610417
+Node: Header arguments in Org-mode properties611352
+Node: Code block specific header arguments612732
+Node: Header arguments in function calls614884
+Node: Specific header arguments615702
+Node: var617537
+Node: results624438
+Node: file629946
+Node: dir631180
+Node: exports634894
+Node: tangle635871
+Node: mkdirp636873
+Node: comments637338
+Node: no-expand638820
+Node: session639461
+Node: noweb640039
+Node: cache641924
+Node: sep643770
+Node: hlines644640
+Node: colnames646386
+Node: rownames647916
+Node: shebang649056
+Node: eval649496
+Node: 評価の結果650130
+Node: Noweb reference syntax653996
+Node: Key bindings and useful functions655292
+Node: バッチ処理656948
+Node: Miscellaneous658168
+Node: Completion659062
+Node: Easy Templates661721
+Node: Speed keys663399
+Node: Code evaluation security664458
+Node: Customization667932
+Node: In-buffer settings668621
+Ref: In-buffer settings-Footnote-1679934
+Node: The very busy C-c C-c key679981
+Node: Clean view682418
+Ref: Clean view-Footnote-1687378
+Ref: Clean view-Footnote-2687444
+Ref: Clean view-Footnote-3687683
+Ref: Clean view-Footnote-4687759
+Ref: Clean view-Footnote-5687906
+Node: TTY keys688090
+Node: Interaction689953
+Node: Cooperation690349
+Node: Conflicts695149
+Node: Hacking699941
+Node: Hooks700931
+Node: Add-on packages701405
+Node: Adding hyperlink types702042
+Node: Context-sensitive commands706860
+Ref: Context-sensitive commands-Footnote-1708785
+Node: Tables in arbitrary syntax708945
+Node: Radio tables710693
+Node: A LaTeX example713731
+Ref: A LaTeX example-Footnote-1718265
+Ref: A LaTeX example-Footnote-2718481
+Node: Translator functions718967
+Ref: Translator functions-Footnote-1722744
+Node: ラジオリスト722891
+Node: Dynamic blocks724331
+Node: Special agenda views727283
+Ref: Special agenda views-Footnote-1732962
+Node: Extracting agenda information733153
+Node: Using the property API738312
+Node: マッピングAPIを使う742687
+Node: MobileOrg748049
+Node: Setting up the staging area750186
+Ref: Setting up the staging area-Footnote-1751703
+Ref: Setting up the staging area-Footnote-2752129
+Node: Pushing to MobileOrg752475
+Ref: Pushing to MobileOrg-Footnote-1754076
+Ref: Pushing to MobileOrg-Footnote-2754808
+Node: MobileOrgからpullする754895
+Ref: MobileOrgからpullする-Footnote-1758770
+Ref: MobileOrgからpullする-Footnote-2758843
+Node: History and Acknowledgments759437
+Node: Main Index775810
+Node: Key Index844559
+Node: Command and Function Index888448
+Node: Variable Index917929
 
 End Tag Table
 

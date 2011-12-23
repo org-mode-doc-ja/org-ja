@@ -755,7 +755,7 @@ Specific header arguments
 * file::                     ファイルを出力するパスを設定する
 * dir::                      コードブロックの実行結果を出力する(可能ならばリモートの)ディレクトリを特定する
 * exports::                  コードと(または)実行結果を出力する
-* 抽出::                   抽出の有無をトグルしてファイル名を特定する
+* tangle::                   抽出の有無をトグルしてファイル名を特定する
 * mkdirp::                   抽出している間、ターゲットファイルの親ディレクトリの生成をトグルする
 * comments::                 tangleされたコードファイルでコメントの挿入をトグルする
 * no-expand::                tangle中に変数割り当てとnowebの展開をオフにする
@@ -8172,7 +8172,7 @@ Org-modeはファイルが変更された時を記録するためにタイムス
 #+END_SRC
 @end example
 
-Org-modeでは生のソースコードと連携する幾つかの機能を用意してます。その機能として、コードブロックをそのメジャーモードで編集する機能、コードブロックを評価する機能、コードブロックをソースコードへと変換する機能(文芸的プログラミングでは@dfn{tangling}と知られている機能です)、そしてコードブロックとその結果を幾つかのフォーマットに沿ってエクスポートする機能があります。この機能はもともとOrg-bablelと名付けられ、Eric
+Org-modeでは生のソースコードと連携する幾つかの機能を用意してます。その機能には、コードブロックをそのメジャーモードで編集する機能、コードブロックを評価する機能、コードブロックをソースコードへと変換する機能(文芸的プログラミングでは@dfn{tangling}と知られている機能)、そしてコードブロックとその結果を幾つかのフォーマットに沿ってエクスポートする機能が含まれます。この機能はもともとOrg-bablelと名付けられ、Eric
 SchultとDan Davidsonによって開発されました。
 
 以下のセクションでは、Org-modeでコードブロックを取り扱う機能について説明します。
@@ -8209,7 +8209,7 @@ SchultとDan Davidsonによって開発されました。
 #+end_src
 @end example
 
-スイッチとヘッダー引数は省略できます。次のように、コードも文章にインラインで埋め込むことができます。
+スイッチとヘッダー引数は省略可能です。次のように、コードを文章にインラインで埋め込むこともできます。
 
 @example
 src_<language>@{<body>@}
@@ -8223,15 +8223,15 @@ src_<language>[<header arguments>]@{<body>@}
 
 @table @code
 @item <name>
-この「name」はコードブロックと関連があります。これは、Org-modeのファイル内でテーブルを名付ける@samp{#+tblname}と似ています。コードブロックの名前を参照することで、そのファイル内や別のファイル、さらにはOrg-modeのテーブルの計算式にあるコードブロックを評価することができます。(@ref{The
-spreadsheet}を見て下さい)。
+この「name」はコードブロックと関連付けられています。これは、Org-modeのファイル内でテーブルに名前を付ける@samp{#+tblname}行と似ています。コードブロックの名前を参照することで、そのファイル内の別の場所にあるコードブロックや別のファイルの別の場所にあるコードブロック、またはOrg-modeのテーブルの計算式(@ref{The
+spreadsheet}を見て下さい)にあるコードブロックから評価することが可能となります。
 @item <language>
 ブロック内にあるコードの言語です。
 @item <switches>
-コードブロックのエクスポートを管理するスイッチです。省略可能です。(@ref{Literal examples}を参照してください。)
+コードブロックのエクスポートを管理する省略可能なスイッチです(@ref{Literal examples}を参照してください)
 @item <header arguments>
-省略可能なヘッダー引数は、コードブロックの評価、エクスポートそして抽出での多く特徴を管理します。@ref{Header
-arguments}セクションを見て下さい。プロパティを設定することで、バッファー毎に、サブツリー毎にヘッダー引数を設定できます。
+コードブロックの評価、コードブロックのエクスポート、そしてコードブロックからのソースコードの抽出において、省略可能なヘッダー引数が多くの側面を管理します。@ref{Header
+arguments}セクションを見て下さい。プロパティを使うことで、バッファー毎もしくはサブツリー毎にヘッダー引数を設定できます。
 @item <body>
 ソースコードです。
 @end table
@@ -8246,18 +8246,18 @@ arguments}セクションを見て下さい。プロパティを設定するこ�
 
 @kindex C-c '
 現在のコードブロックを編集するには@kbd{C-c
-'}を使ってください。コードブロックの本文を含んだ編集バッファが、その言語のメジャーモードで新たに開かれます。そのバッファを保存すると、Org-modeのバッファへ新しい内容を上書きします。コードブロックの編集バッファを閉じるには@kbd{C-c
-'}を再度押して下さい。
+'}を使ってください。コードブロックの本文を含んだ編集バッファが、その言語のメジャーモードで新たに開かれます。このバッファを保存すると、Org-modeのバッファへ新しい内容を上書きします。終了させるには再度@kbd{C-c
+'}を使って下さい。
 
-編集バッファにて@code{org-src-mode}マイナーモードが起動します。編集バッファの振る舞いを設定するには、以下の変数が使えます。詳細な設定オプションについては、カスタマイズグループ@code{org-edit-structure}も見て下さい。
+編集バッファにて@code{org-src-mode}のマイナーモードが起動します。編集バッファの振る舞いを設定するために、以下の変数が使えます。さらなる設定オプションについては、カスタマイズのグループ@code{org-edit-structure}も見て下さい。
 
 @table @code
 @item org-src-lang-modes
-コードブロックのヘッダー行で宣言した言語名@code{<lang>-mode}のメジャーモードがEmacsに存在する場合、そのメジャーモードで編集バッファを開きます。存在するメジャーモードに任意の言語名を割り振るためにこの変数を使えます。
+@code{<lang>-mode}と名付けられたメジャーモードがEmacsに存在する場合、そのメジャーモードで編集バッファを開きます。ここで@code{<lang>}とは、コードブロックのヘッダー行で指名された言語のことです。存在するメジャーモードに任意の言語名を割り当てるために、この変数を使えます。
 @item org-src-window-setup
-編集バッファを新規作成する際の、Emacsのウィンドウ配置方法を管理します。
+編集バッファを新規作成する時に、Emacsのウィンドウが再配置される方法を管理します。
 @item org-src-preserve-indentation
-Pythonなどのインデント幅が非常に重要な言語をtangling(コード本文を抽出)するときに、この変数は特に役に立ちます。
+ホワイトスペース(空白)のインデントが非常に重要であるPythonなどの言語をtangling(コード本文を抽出)するときに、この変数は特に役に立ちます。
 @item org-src-ask-before-returning-to-edit-buffer
 デフォルトでは、既に開いてある編集バッファへと戻る前に、Org-modeが確認のプロンプトを出します。確認のプロンプトを出さずにバッファを変更するには、この変数をnilに設定してください。
 @end table
@@ -8278,19 +8278,19 @@ examples}を参照してください。
 
 ヘッダー引数@code{:exports}を設定することで、エクスポート時の振る舞いを指定できます:
 
-@subsubheading ヘッダ引数:
+@subsubheading ヘッダー引数:
 @table @code
 @item :exports code
 ほとんどの言語でのデフォルトの設定です。@ref{Literal examples}で述べたように、コードブロックの本文が出力されます。
 @item :exports results
-エクスポートするために、コードブロックが評価され、その結果がOrg-modeのバッファに出力されます。バッファ内に以前評価した結果があればその結果を更新し、もし以前に評価した結果がなければ直ちに今回の評価結果をコードブロックの後ろに追記します。コードブロックの本文はエクスポートされません。
+エクスポートするために、コードブロックが評価され、その結果がOrg-modeのバッファに出力されます。バッファ内に以前評価した結果があればその結果を更新し、もし以前に評価した結果が無ければ直ちに今回の評価結果をコードブロックの後に追記します。コードブロックの本文はエクスポートされません。
 @item :exports both
-コードブロックとその結果がエクスポートされます。
+コードブロックとその結果の両方がエクスポートされます。
 @item :exports none
 コードブロックとその結果のいずれもエクスポートされません。
 @end table
 
-エクスポートの間、コードブロックは評価されません。変数@code{org-export-babel-evaluate}を@code{nil}に設定すると、エクスポートのプロセスの一部としてのコードブロックの評価は抑止されます。例えばwikiのマークアップ言語としてOrg-modeを使う場合など、信頼できない可能性があるOrg-modeが自動的にエクスポートされる場合には、この設定が役立ちます。
+エクスポートの間、コードブロックの評価を抑止することも可能です。変数@code{org-export-babel-evaluate}を@code{nil}と設定することで、エクスポートのプロセスの一部としてのコードブロックの評価を抑止できます。例えばwikiのマークアップ言語としてOrg-modeを使う場合など、信頼できない可能性があるOrg-modeが自動的にエクスポートされる場合には、この設定が役立ちます。
 
 @comment  node-name,  next,  previous,  up
 @comment  Extracting source code, Evaluating code blocks, Exporting code blocks, Working With Source Code
@@ -8300,17 +8300,18 @@ examples}を参照してください。
 @cindex 抽出、ソースコード
 @cindex ソースコードの抽出、コードブロック
 
-ソースブロックからコードを抽出して純粋なソースコードファイルを作成することを、``tangling''といいます。この用語は文芸的プログラミングコミュニティで使われている専門用語です。コードブロックを``tangling''する時に、変数と``noweb''スタイルの参照点(@ref{Noweb
-reference syntax}を参照)を展開できる@code{org-babel-expand-src-block}を使ってコード本文を展開します。
+ソースブロックからコードを抽出して純粋なソースコードファイルを作成することを、``tangling''といいます。この用語は文芸的プログラミングのコミュニティで使われている専門用語です。コードブロックを``tangling''する間、変数と``noweb''スタイルの参照点(@ref{Noweb
+reference
+syntax}を参照)との両方を展開できる@code{org-babel-expand-src-block}を使ってコードブロックの本文を展開します。
 
 @subsubheading Header arguments
 @table @code
 @item :tangle no
-デフォルトの設定です。コードブロックはtangleされたアウトプットには含まれません。
+デフォルトの設定です。コードブロックは、tangleされたアウトプットには含まれません。
 @item :tangle yes
-tangleされたアウトプットにコードブロックを含むように設定します。アウトプットされるファイル名は、orgファイルの拡張子@samp{.org}をブロックに記述した言語の拡張子名に置換したものです。
+tangleされたアウトプットにコードブロックが含まれます。アウトプットされるファイルの名前は、orgファイルの拡張子@samp{.org}をブロックに記述した言語の拡張子名に置換したものです。
 @item :tangle filename
-@samp{filename}に出力するアウトプットにコードブロックを含ませます。
+@samp{filename}へのtangleされたアウトプットにはコードブロックを含みます。
 @end table
 
 @kindex C-c C-v t
@@ -8325,7 +8326,7 @@ tangleするファイルを選びます。キーバインドは@kbd{C-c C-v f}�
 @subsubheading Hooks
 @table @code
 @item org-babel-post-tangle-hook
-このhook関数は関数@code{org-babel-tangle}によってtangleされたコードファイルの中から呼び出されます。実例応用ではtangleされたコードファイルの後処理、編集や評価を含むことができます。
+関数@code{org-babel-tangle}によってtangleされたコードファイルの中から、このhookが実行されます。tangleされたコードファイルの後処理、編集もしくは評価を、実用例として含められます。
 @end table
 
 @node Evaluating code blocks, Library of Babel, Extracting source code, Working With Source Code
@@ -8333,9 +8334,9 @@ tangleするファイルを選びます。キーバインドは@kbd{C-c C-v f}�
 @cindex 評価、コードブロック
 @cindex 評価、ソースコード
 
-コードブロックを評価し@footnote{コードを評価するときはいつでも、そのコードが害をなす可能性があります。Org-modeは、ユーザーから明示的な確認をできたときのみにコードを評価する安全装置をいくつも用意しています。これらの安全装置について(そしてそを無効化する方法について)、@ref{Code
+コードブロックを評価し@footnote{コードを評価するときはいつでも、そのコードが害をなす可能性があります。Org-modeは、ユーザーから明示的な確認をできたときのみにコードを評価する安全装置をいくつも用意しています。これらの安全装置については(加えて、それらを無効化する方法についても)、@ref{Code
 evaluation
-security}を参照してください。}、その結果をOrg-modeバッファに表示することが可能です。デフォルトでは、@code{emacs-lisp}コードブロックだけを評価しますが、多くの言語を評価できます。サポートされている言語のリストは、@ref{Languages}で見ることができます。コードブロックを定義する構文について@ref{Structure
+security}を参照してください。}、その結果をOrg-modeバッファに表示することが可能です。デフォルトでは、@code{emacs-lisp}のコードブロックだけを評価しますが、多くの言語での評価のサポートがあります。サポートされている言語のリストは、@ref{Languages}で見ることができます。コードブロックを定義する構文について@ref{Structure
 of code blocks}を参照してください。
 
 @kindex C-c C-c
@@ -8343,9 +8344,9 @@ of code blocks}を参照してください。
 C-c}からコードの評価を除去できます。}にて@kbd{C-c C-c}もしくは@kbd{C-c C-v
 e}をと入力することです。これが関数@code{org-babel-execute-src-block}をコール、コードブロックを評価し、その結果をOrg-modeバッファに挿入します。
 
-Org-modeバッファもしくはOrg-modeテーブル内のどこからでも、名前付きコードブロックを評価できます。現在のOrg-modeバッファや``Library
-of Babel''(@ref{Library of Babel}にあるコードブロックを間接的に実行するには、@code{#+call}行
-(もしくは同義語として@code{#+function}行や@code{#+lob}行)が使えます。これらは、以下の構文を使います。
+Org-modeのバッファ内、もしくはOrg-modeのテーブル内のどこからでも、名前付きのコードブロックを評価することも可能です。現在のOrg-modeバッファや``Library
+of Babel''(@ref{Library of Babel}にあるコードブロックを離れた場所から実行するには、@code{#+call}行
+(もしくは同義語として@code{#+function}行や@code{#+lob}行)が使えます。これらの行は、以下の構文を使います。
 
 @example
 #+call: <name>(<arguments>) <header arguments>
@@ -8357,28 +8358,24 @@ of Babel''(@ref{Library of Babel}にあるコードブロックを間接的に�
 @item <name>
 評価されるコードブロックの名前です。
 @item <arguments>
-このセクションで説明されている引数をコードブロックへと渡します。通常の関数コールの構文を使ってコールされたコードブロックにおいて、これらの引数は@code{:var}というヘッダー引数と関連付けられています。例えば、@code{double}と名付けられたもともとのコードブロックがヘッダー引数@code{:var
-n=2}を持つ場合、上記call行により数値の4をブロックに渡すには@code{#+call:
-double(n=2)}と書かれます。英文にてtypo?:number four->number two:"then the call line
-passing the number four to that block would be written as @code{#+call:
-double(n=2)}."
+この場所に記述された引数をコードブロックへと渡します。通常の関数呼び出しの構文を使って呼び出されたコードブロック内では、これらの引数はヘッダー引数@code{:var}と関係しています。例えば、@code{double}と名付けられたもともとのコードブロックではヘッダー引数が@code{:var
+n=2}と書かれている場合、そのコードブロックへ数値の4を渡すには、call行を@code{#+call: double(n=4)}と記述します。
 @item <header arguments>
-関数を起動した後の、ヘッダー引数を指定できます。ヘッダー引数の(更なる情報|詳細)については@ref{Header
-arguments}を参照してください。
+関数呼び出しの後にヘッダー引数をセットできます。ヘッダー引数の詳細については@ref{Header arguments}を参照してください。
 @end table
 
 上の@code{<header
-arguments>}セクションに記述された全てのヘッダー引数は@code{#+call:}行の評価に適用されます。しかし、評価されているコードブロックに渡すヘッダー引数を指定することが望ましいときもあります。
+arguments>}という部分に記述された全てのヘッダー引数は、@code{#+call:}行の評価に適用されます。しかし、時には、コードブロックへ渡すヘッダー引数を指定することが好ましい場合もあります。
 
-以下に示ように、オプションを拡張した構文も使えます。
+これには、以下の選択可能な拡張された構文を使えます。
 
 @example
 #+call: <name>[<block header arguments>](<arguments>) <header arguments>
 @end example
 
-@code{<block header
-arguments>}セクション内の角括弧([])の間にあるヘッダー引数は、名前付きコードブロックの評価に適用されます。@code{#+call:}行へヘッダー引数を渡す例の更なる紹介は、@ref{Header
-arguments in function calls}をご覧ください。
+角括弧([])で囲まれた@code{<block header
+arguments>}部分に置かれたヘッダー引数がどのようなものであっても、名前付きコードブロックの評価に適用されます。@code{#+call:}行へとヘッダー引数を渡す例については、@ref{Header
+arguments in function calls}を参照してください。
 
 @node Library of Babel, Languages, Evaluating code blocks, Working With Source Code
 @section Library of Babel
@@ -8386,16 +8383,16 @@ arguments in function calls}をご覧ください。
 @cindex ライブラリ、ソースコード
 @cindex ライブラリ、コードブロック
 
-``Library of Babel'' はOrg-modeのファイルから呼び出せるコードブロックのライブラリです。
-ライブラリは、Org-modeの@samp{contrib}ディレクトリのOrg-modeファイルに格納されています。Org-modeのユーザーは、一般的に有用だと考えられる関数を、ライブラリ内に置くことができます。
+``Library of Babel''は、どのOrg-modeのファイルからも呼び出せるコードブロックのライブラリです。
+そのライブラリは、Org-modeの@samp{contrib}ディレクトリのOrg-modeファイルに格納されています。Org-modeのユーザーは、一般的に有用だと考えられる関数をそのライブラリ内に置くことができます。
 
 ``Library of
-Babel''で定義されたコードブロックは、あたかも現在のOrg-modeバッファで処理されるかのように、リモートで呼び出せます(callできます)。(リモートでコードブロックを評価する構文についての情報は、@ref{Evaluating
-code blocks}を参照してください。)
+Babel''で定義されたコードブロックは、あたかも現在のOrg-modeバッファで処理されるかのように、リモートで呼び出せます(リモートでコードブロックを評価する構文についての情報は、@ref{Evaluating
+code blocks}を参照してください)。
 
 @kindex C-c C-v i
-どんなOrg-modeファイルに記述されたコードブロックでも、``Library of
-Babel''の関数@code{org-babel-lob-ingest}を使って、ロードできます。キーバインドは@kbd{C-c C-v i}です。
+どんなOrg-modeファイルに記述されたコードブロックでも、@code{org-babel-lob-ingest}を使って``Library of
+Babel''の関数へロードできます。キーバインドは@kbd{C-c C-v i}です。
 
 @node Languages, Header arguments, Library of Babel, Working With Source Code
 @section Languages
@@ -8425,9 +8422,9 @@ Babel''の関数@code{org-babel-lob-ingest}を使って、ロードできます�
 @item SQL @tab sql @tab SQLite @tab sqlite
 @end multitable
 
-言語特有の文書が存在する場合があります。存在する場合、文書は@uref{http://orgmode.org/worg/org-contrib/babel/languages}にて見つけられます。
+言語特有の文書が存在する場合があります。文書が存在する場合、それは@uref{http://orgmode.org/worg/org-contrib/babel/languages}にて見つけられます。
 
-どの言語を評価するかの管理には、関数@code{org-babel-load-languages}を使います。(デフォルトでは@code{emacs-lisp}のみを評価可能です。)
+どの言語を評価するかの管理には、関数@code{org-babel-load-languages}を使います(デフォルトでは@code{emacs-lisp}のみを評価可能です)。
 この変数を設定するには、カスタマイズのインターフェースを使うか、以下のコードをemacsの設定ファイルに追加します。
 
 @quotation
@@ -8444,7 +8441,7 @@ Babel''の関数@code{org-babel-lob-ingest}を使って、ロードできます�
 上記方法に加えて、@code{require}関数を使って関連するelispファイルをロードすることでも、言語のサポートを有効にできます.
 
 @quotation
-次の例では、@code{clojure}コードブロックの評価を有効にしています。
+以下は、@code{clojure}コードブロックの評価を有効にしています。
 @end quotation
 
 @lisp
@@ -8456,7 +8453,7 @@ Babel''の関数@code{org-babel-lob-ingest}を使って、ロードできます�
 @cindex コードブロック、ヘッダー引数
 @cindex ソースコード、ブロックのヘッダー引数
 
-ヘッダー引数を通して、コードブロックの機能を設定できます。このセクションではヘッダー引数の使い方を概説し、その後、各ヘッダー引数の詳細について説明します。
+ヘッダー引数を通してコードブロックの機能を設定できます。このセクションではヘッダー引数の使い方を概説した後に、各ヘッダー引数の詳細について説明します。
 
 @menu
 * Using header arguments::   ヘッダー引数を設定するための別の方法
@@ -8504,7 +8501,7 @@ Babel''の関数@code{org-babel-lob-ingest}を使って、ロードできます�
 @c   Default arguments to use when evaluating a code block.
 @c @end example
 
-次の例のように、ヘッダー引数@code{:noweb}の初期値を@code{yes}と設定できます。ソースコードブロックを評価する時に、デフォルトの設定として@code{:noweb}の参照記号を展開します。
+例えば、次の例ではヘッダー引数@code{:noweb}の初期値を@code{yes}と設定できます。この設定は、ソースコードブロックを評価する時にデフォルトの設定として@code{:noweb}の参照記号を展開します。
 
 @lisp
 (setq org-babel-default-header-args
@@ -8514,13 +8511,13 @@ Babel''の関数@code{org-babel-lob-ingest}を使って、ロードできます�
 
 @node Language-specific header arguments, Buffer-wide header arguments, System-wide header arguments, Using header arguments
 @subsubheading Language-specific header arguments
-それぞれの言語用にデフォルトのヘッダー引数を定義できます。言語の詳細な文書については、オンラインの@uref{http://orgmode.org/worg/org-contrib/babel}を見て下さい。
+それぞれの言語用にデフォルトのヘッダー引数を定義できます。オンライン@uref{http://orgmode.org/worg/org-contrib/babel}で閲覧可能な言語特有の文書を見て下さい。
 
 @node Buffer-wide header arguments, Header arguments in Org-mode properties, Language-specific header arguments, Using header arguments
 @subsubheading Buffer-wide header arguments
 Org-modeファイルにある特別な行を使って、バッファー全体にわたるヘッダー引数を設定できます。その行では、キーワード@code{#BABEL:}に続いて、普通のヘッダー引数の構文を使って指定された一連のヘッダー引数があります。
 
-次の例は、@code{session}を@code{*R*}と設定し、バッファ内にあるコードブロック毎の@code{results}を@code{silent}と指定しています。この設定により、全ての(コードブロックが)同一のセッションで実行されることと、結果はバッファに挿入されないことを確かにしています。
+次の例は、@code{session}を@code{*R*}と設定し、バッファ内にあるコードブロック毎の@code{results}を@code{silent}と指定しています。この設定により、全ての(コードブロックが)同一のセッションで実行されること、そして、結果はそのバッファに挿入されないことを確かにしています。
 
 @example
 #+BABEL: :session *R* :results silent
@@ -8536,10 +8533,10 @@ syntax}を見て下さい)。プロパティはバッファ全体もしくは見
 #+property: tangle yes
 @end example
 
-デフォルトのヘッダー引数を設定するためにプロパティを使う場合、プロパティは継承(関係)に沿って参照されます。したがって、以下の見出しにあるサブツリー内の全コードブロックでは、ヘッダー引数@code{:cache}の値はデフォルトの@code{yes}となります:
+デフォルトのヘッダー引数を設定するためにプロパティを使う場合、プロパティは継承(関係)に沿って参照されます。したがって、以下の見出しに属するサブツリー内の全てのコードブロックでは、ヘッダー引数@code{:cache}の値はデフォルトで@code{yes}となります:
 
 @example
-* アウトライン ヘッダー
+* アウトラインの見出し
 :PROPERTIES:
 :cache:    yes
 :END:
@@ -8597,15 +8594,15 @@ src_haskell[:exports both]@{fac 5@}
 @comment  node-name,  next,  previous,  up
 @subsubheading Header arguments in function calls
 
-一番個別のレベルにおいて、Babelのライブラリのためのヘッダー引数もしくは関数の呼び出し行は、下に示す2つの例のように設定されます。@code{#call:}行の構造ついついての更なる情報については、@ref{Evaluating
+一番個別のレベルにおいて、Babelライブラリのためのヘッダー引数もしくは関数の呼び出し行は、下に示す2つの例のように設定できます。@code{#call:}行の構造についての更なる情報は、@ref{Evaluating
 code blocks}を参照してください。
 
-以下の例では、ヘッダー引数@code{:exports results}を設定して、@code{#+call:}行を評価します。
+以下は、ヘッダー引数@code{:exports results}を@code{#+call:}行の評価に適用します。
 @example
 #+call: factorial(n=5) :exports results
 @end example
 
-以下の例では、ヘッダー引数@code{:session special}を設定して、コードブロック@code{factorial}を評価します。
+以下は、ヘッダー引数@code{:session special}をコードブロック@code{factorial}の評価に適用します。
 @example
 #+call: factorial[:session special](n=5)
 @end example
@@ -8620,7 +8617,7 @@ code blocks}を参照してください。
 * file::                     ファイルを出力するパスを設定する
 * dir::                      コードブロックの実行結果を出力する(可能ならばリモートの)ディレクトリを特定する
 * exports::                  コードと(または)実行結果を出力する
-* 抽出::                   抽出の有無をトグルしてファイル名を特定する
+* tangle::                   抽出の有無をトグルしてファイル名を特定する
 * mkdirp::                   抽出している間、ターゲットファイルの親ディレクトリの生成をトグルする
 * comments::                 tangleされたコードファイルでコメントの挿入をトグルする
 * no-expand::                tangle中に変数割り当てとnowebの展開をオフにする
@@ -8637,10 +8634,12 @@ code blocks}を参照してください。
 
 @node var, results, Specific header arguments, Specific header arguments
 @subsubsection @code{:var}
-ヘッダー引数@code{:var}はコードブロックへ引数を渡すときに使われます。コードブロックに含まれている引数を受け取る方法は、言語によって異なります。これらは、言語固有の文書にて説明されています。しかし、引数を指定する構文は、すべての言語で共通です。引数に渡されうる値というのは、定数(リテラル値)、Org-modeのテーブルとexampleブロックそのもの文字列からの値、他のコードブロックの結果、あるいはEmacs_Lisp(原文スペースをアンダーバーで置換)のコードです。---Emacs_Lispについては、以下の見出し``Emacs
-Lisp evaluation of variables''を見て下さい。
+ヘッダー引数@code{:var}はコードブロックへ引数を渡すために使われます。コードブロックに含まれている引数を受け取る方法は、言語によって異なります;これらは、言語固有の文書にて説明されています。しかし、引数を指定する構文はすべての言語で共通です。引数に渡される値は、定数(リテラル値)、Org-modeのテーブルとliteral
+exampleブロックからの値、他のコードブロックの結果、あるいはEmacs
+Lispのコードです。---Emacs_Lispについては、以下の見出し``Emacs Lisp evaluation of
+variables''を見て下さい。
 
-これらの値は配列のようにインデックス化できます。---以下の見出し``indexable variable values''を見て下さい。
+これらの値は配列のようにインデックス化できます---以下の見出し``indexable variable values''を見て下さい。
 
 ヘッダー引数@code{:var}を使ってコードブロックへ引数を渡すには、以下の構文を使います。
 
@@ -8648,13 +8647,13 @@ Lisp evaluation of variables''を見て下さい。
 :var name=assign
 @end example
 
-ここで、@code{assign}は以下の構造のうちどれかをとることができます。
+ここで、@code{assign}は以下のフォームのどれかをとることができます。
 
 @itemize @bullet
-@item literal value
-この文、文法的に分かりません。文字列(例:@code{"string"})もしくは数字(例:@code{9})です。
-@item reference
-a table name:
+@item 定数(リテラル値)
+文字列(例:@code{"string"})、もしくは数字(例:@code{9})のどちらかです。
+@item 参照
+テーブルの名前:
 
 @example
 #+tblname: example-table
@@ -8672,7 +8671,7 @@ a table name:
 : 4
 @end example
 
-@code{#+srcname:}と括弧「()」で挟まれたコードブロックの名前を参照します。
+@code{#+srcname:}(訳者注:@code{#+source:}と同一のもの)で割り当てられたコードブロックの名前で、後ろに括弧「()」が続きます。
 
 @example
 #+begin_src emacs-lisp :var length=table-length()
@@ -8683,7 +8682,7 @@ a table name:
 : 8
 @end example
 
-加えて、@code{:var}によって参照されたコードブロックへ引数を渡すこともできます。コードブロック名に続く括弧「()」内の引数が渡されます。
+加えて、@code{:var}により参照されるコードブロックへと引数を渡すことも可能です。コードブロック名に続く括弧「()」内の引数が渡されます:
 
 @example
 #+source: double
@@ -8715,9 +8714,7 @@ a table name:
 @end example
 
 @subsubheading Indexable variable values(インデックス化可能な変数の値)
-変数の``indexing''インデックス化によって割り当てられた変数の一部分を参照できます。インデックスは0から始まる値で、負の値もとります。インデックスが負の値の場合、それは要素の最後から逆順に数え上げた順番です。インデックスが「,」で分割されているとき、後続する部分のそれぞれが、次に深いネスティング(入れ子構造)にインデックス化するか、値の次元にインデックス化します。このインデックス化を実行する@emph{前に}、ヘッダー引数@code{:hlines}、@code{:colnames}、そして@code{:rownames}に関連する他のテーブルが変更されることに注意して下さい。(最終文、typo?
-the last cell of the first row *in* the table example-table to the variable
-data)次の例では、テーブル@code{example-table}1行目の最後のセルを変数@code{data}に割り当てています:
+変数の``indexing''インデックス化によって割り当てられた変数の一部分を参照できます。インデックス(添え字)は0から始まります。インデックスが負の値の場合、それは要素の最後から逆順に数え上げたものです。インデックスが「@code{,}」で分割されているとき、後続する部分のそれぞれが、次に深いネスティング(入れ子構造)にインデックス化するか、値の次元にインデックス化します。@code{:hlines}、@code{:colnames}、そして@code{:rownames}のようなヘッダー引数と関連する他のテーブルが変更される@emph{前に}、このインデックス化が行われることに注意して下さい。次の例では、テーブル@code{example-table}1行目の最後のセルを変数@code{data}に割り当てています:
 
 @example
 #+results: example-table
@@ -8789,7 +8786,7 @@ data)次の例では、テーブル@code{example-table}1行目の最後のセル
 | 11 | 14 | 17 |
 @end example
 
-@subsubheading Emacs Lispによる変数の評価
+@subsubheading Emacs Lisp evaluation of variables(Emacs Lispによる変数の評価)
 
 変数の値を初期化するときにEmacs Lispのコードを使えます。変数の値が@code{(}, @code{[}, @code{'} もしくは
 @code{`}で始まる場合、変数はEmacs
@@ -8801,7 +8798,7 @@ Lispとして評価され、その評価結果を変数の値として代入さ�
 #+end_src
 @end example
 
-テーブルやリストから読み出された値はEmacs Lispとして評価されません。以下はその例です。
+テーブルやリストから読み出された値はEmacs Lispとして評価されないことに注意して下さい。以下はその例です。
 
 @example
 #+results: table
@@ -8882,38 +8879,38 @@ PythonとRubyをサポートしています。例えば、@code{:results value p
 
 @itemize @bullet
 @item @code{silent}
-結果はミニバッファに表示されますが、Org-odeのバッファには挿入されません。例えば、@code{:results output
+結果はミニバッファに表示されますが、Org-modeのバッファには挿入されません。例えば、@code{:results output
 silent}と記述します。
 @item @code{replace}
 デフォルトの設定です。どんな結果でも存在していれば削除し、新しい結果をOrg-modeのバッファのその場所に挿入します。例えば、@code{:results
 output replace}と記述します。
 @item @code{append}
-コードブロックの結果が以前から存在する場合、新しい結果は現在存在する結果に付け加えられます。結果が存在しなければ、@code{replace}のように新しい結果が挿入されます。
+コードブロックの結果が以前から存在する場合、現在存在する結果の最後に新しい結果を付け加えます。結果が存在しない場合は、@code{replace}のように新しい結果を挿入します。
 @item @code{prepend}
-もしコードブロックの結果が既に存在する場合、今現在の結果の先頭に新しい結果追加します。結果が存在しなければ、@code{replace}のように新しい結果が挿入されます。
+もしコードブロックの結果が既に存在する場合、現在存在する結果の先頭に新しい結果を追加します。結果が存在しない場合は、@code{replace}のように新しい結果を挿入します。
 @end itemize
 
 @node file, dir, results, Specific header arguments
 @subsubsection @code{:file}
 
-コードブロックの結果を保存する外部のファイルを指定するため、にヘッダー引数@code{:file}を使います。コードブロックの評価の後に、Org-modeスタイルのリンク@code{[[file:]]}(@ref{Link
-format}を参照)が、そのOrg-modeバッファーに挿入されます。R, gnuplot,
-dotやditaaなどの言語では、ヘッダー引数@code{:file}を扱う特別な機能が用意されています。その機能は、指定されたファイルへアウトプットを保存するために、必要な定型のコードでコードブロックの本文を囲みます。これは、コードブロックの画像出力を特定のファイルに保存する場合に、よく使います。
+コードブロックの結果を保存する外部ファイルを指定するために、ヘッダー引数@code{:file}を使います。コードブロックの評価の後に、そのファイルへのOrg-modeスタイルのリンク@code{[[file:]]}(@ref{Link
+format}を参照)が、Org-modeのバッファに挿入されます。R, gnuplot,
+dotやditaaなどの言語では、ヘッダー引数@code{:file}を扱う特別な機能が用意されています。その機能とは、指定されたファイルへアウトプットを保存するために、必要な定型のコードでコードブロックの本文を囲むというものです。これは、コードブロックの画像出力を特定のファイルに保存する場合に、しばしば役立ちます。
 
-@code{:file}に対する引数は、ファイルのパスを示す文字列もしくは、次の2つの文字列からなるリスト、のどちらかでなくてはなりません。2つの文字列からなるリストは、第1要素はファイルのパス、第2要素はそのリンクの説明から構成されます。
+@code{:file}に対する引数は、ファイルのパスを示す文字列、もしくは、次の2つの文字列からなるリスト、のどちらかでなくてはなりません。2つの文字列からなるリストとは、第1要素はファイルのパス、第2要素はそのリンクの説明から構成されます。
 
 @node dir, exports, file, Specific header arguments
 @subsubsection @code{:dir}とリモートでの実行
 
-ヘッダー引数@code{:file}がアウトプットするファイルのパスを指定する一方で、@code{:dir}はコードブロックを実行する間のデフォルトのディレクトリを指定します。指定されなければ、現在のバッファに関連するディレクトリが使われます。言い換えると、@code{:dir
-path}を与えることは、@kbd{M-x cd
-path}でカレントディレクトリを変えるだけで@code{:dir}を設定しない場合と一時的には同じ効果を持ちます。水面下で、@code{:dir}がEmacsの変数@code{default-directory}を変更しているだけです。
+ヘッダー引数@code{:file}がアウトプットするファイルのパスを指定する一方で、@code{:dir}はコードブロックを実行する間のデフォルトのディレクトリを指定します。指定されない場合、現在のバッファに関連するディレクトリが使われます。つまり、@code{:dir
+path}を一時的に与えることは、@kbd{M-x cd
+path}でカレントディレクトリを変えるだけで@code{:dir}を設定しない場合と同じ効果を持ちます。水面下では、@code{:dir}がEmacsの変数@code{default-directory}を変更しているだけなのです。
 
 @code{:dir}を使う場合、アウトプットするファイルを相対パス(例@: @code{:file
 myfile.jpg}もしくは@code{:file
 results/myfile.jpg})で与えなければなりません。その場合、与えたパスはデフォルトディレクトリに対する相対パスとして解釈されます。
 
-つまり、ホームディレクトリ内に@file{Work}というフォルダでプロット(グラフを描画)したい場合、次のように使えます。
+つまり、ホームディレクトリ内の@file{Work}フォルダでプロット(グラフを描画)したい場合、次のように使えます。
 
 @example
 #+begin_src R :file myplot.png :dir ~/Work
@@ -8922,7 +8919,7 @@ matplot(matrix(rnorm(100), 10), type="l")
 @end example
 
 @subsubheading リモートでの実行
-trampのファイル構文を使う事でリモートマシン上のディレクトリを記述できます。その場合、リモートマシン上でコードは評価されます。以下は例です。
+trampのファイル構文を使う事でリモートマシン上のディレクトリを指定できます。その場合、リモートマシン上でコードが評価されます。1つの例です。
 
 @example
 #+begin_src R :file plot.png :dir /dand@@yakuba.princeton.edu:
@@ -8930,29 +8927,30 @@ plot(1:10, main=system("hostname", intern=TRUE))
 #+end_src
 @end example
 
-いつものようにローカルのOrg-modeのバッファにテキストの結果が返され、リモートマシン上のリモートディレクトリを基準とした相対パスにファイルがアウトプットされます。リモートファイルへのOrg-modeのリンクが生成されます。
+従来通りローカルのOrg-modeのバッファにテキストの結果が返されますが、リモートマシン上のリモートディレクトリを基準とした相対パスにファイルのアウトプットが作成されます。リモートのファイルへのOrg-modeのリンクが生成されます。
 
-従って、上の例ではリモートマシン上にグラフが生成されます。そしてOrg-modeバッファには次の形式のリンクが挿入されます。
+従って、上の例では、リモートマシン上にグラフが生成され、Org-modeバッファには次の形式のリンクが挿入されます。
 
 @example
 [[file:/scp:dand@@yakuba.princeton.edu:/home/dand/plot.png][plot.png]]
 @end example
 
-trampのおかげで、@code{:dir}がEmacsの変数@code{default-directory}をセットすれば、すぐにこの機能の多くを使えます。これらの機能を正しく動かすためには、XEmacsやversion23より前のGNU
+trampのおかげで、@code{:dir}がEmacsの変数@code{default-directory}の値をセットした後すぐに、この機能を使えます。これらの機能を正しく動かすためには、XEmacsやversion23より前のGNU
 Emacsを使っている人はtrampを別にインストールする必要があるかもしれません。
 
-@subsubheading 更なる点
+@subsubheading 更なるポイント
 
 @itemize @bullet
 @item
 もし@code{:session}と並行して@code{:dir}が使われるとき、新規セッションを開始する場合には開始ディレクトリを予想して決定します。しかし、すでにセッションが存在する場合には、現バージョンでは、そのセッションと関連したディレクトリを変更しません。
 @item
 @code{:exports results}や@code{:exports
-both}を使ってファイルをエクスポートする間、通常は@code{:dir}を使ってファイルを生成するべきではありません。理由は以下の通りです。2つのマシンでエクスポートされた結果の移植性を維持するために、エクスポート時にバッファーへと挿入されるリンクは@code{default-directory}に対して展開*されていません*。それゆえ、もし@code{:dir}を使って@code{default
+both}を使ってファイルをエクスポートする間、通常は@code{:dir}を使ってファイルを生成するべきではありません。理由は以下の通りです。2つのマシンでエクスポートされた結果の移植性を維持するために、エクスポート時にバッファへと挿入されるリンクは@code{default-directory}に対して展開
+*されていません* 。それゆえ、もし@code{:dir}を使って@code{default
 directory}を変えてしまうと、リンクで意図していない場所にファイルが作られるという恐れがあります。
 @end itemize
 
-@node exports, 抽出, dir, Specific header arguments
+@node exports, tangle, dir, Specific header arguments
 @subsubsection @code{:exports}
 
 ヘッダー引数@code{:exports}は、Org-modeファイルのHTMLエクスポートやLaTeXエクスポートに、何を含めるかを指定します。
@@ -8968,13 +8966,13 @@ directory}を変えてしまうと、リンクで意図していない場所に�
 エクスポートされるファイルには何も含まれません。例えば、@code{:exports none}のように記述します。
 @end itemize
 
-@node 抽出, mkdirp, exports, Specific header arguments
+@node tangle, mkdirp, exports, Specific header arguments
 @subsubsection @code{:tangle}
 
 ヘッダー引数@code{:tangle}は、ソースコードファイルを抽出したファイルにコードブロックを含めるか否かを指定します。
 
 @itemize @bullet
-@item @code{抽出}
+@item @code{tangle}
 コードブロックは、Org-modeのファイルのbasename(拡張子を取り除いた名前)にちなんだソースコードファイルにエクスポートされます。例えば、@code{:tangle
 yes}のように記述します。
 @item @code{no}
@@ -8984,47 +8982,47 @@ yes}のように記述します。
 basename}のように記述します。
 @end itemize
 
-@node mkdirp, comments, 抽出, Specific header arguments
+@node mkdirp, comments, tangle, Specific header arguments
 @subsubsection @code{:mkdirp}
 
-抽出した(tangled)ファイルの親ディレクトリが無いときに、ヘッダー引数@code{:mkdirp}を使って親ディレクトリを作成できます。ディレクトリ作成を許可するにはこのヘッダー引数を@code{yes}と設定し、ディレクトリ作成を禁止するには@code{no}と設定します。
+抽出(tangle)されたファイルの親ディレクトリが無いときに、ヘッダー引数@code{:mkdirp}を使って親ディレクトリを作成できます。ディレクトリ作成を許可するにはこのヘッダー引数を@code{yes}と設定し、ディレクトリ作成を禁止するには@code{no}と設定します。
 
 @node comments, no-expand, mkdirp, Specific header arguments
 @subsubsection @code{:comments}
-デフォルトでは、コードブロックをソースコードへと抽出するときに、コードブロック本文に既に存在するコメント以外のコメントは挿入されません。抽出されたコードファイルに追加のコメントを挿入するには、ヘッダー引数@code{:comments}を以下のように設定します。
+デフォルトの設定では、コードブロックをソースコードへと抽出するときに、コードブロック本文に既に存在するコメントだけを挿入します。抽出されたコードファイルに追加のコメントを挿入するには、ヘッダー引数@code{:comments}を以下のように設定します。
 
 @itemize @bullet
 @item @code{no}
-デフォルトの設定です。抽出(tangling)の間にコメントは追加されません。
+デフォルトの設定です。抽出(tangle)する間に、コメントは追加挿入されません。
 @item @code{link}
-コードブロックは、コードが抽出される元のOrg-modeファイルへ戻るポインタを示したコメントに囲まれます。
+コードブロックは、コードが抽出された元のOrg-modeファイルへ戻るポインタを含むコメントに囲まれます。
 @item @code{yes}
-後方互換性を保持する``link''と同じ意味です。
+``link''と同じ意味です。これは後方互換性を保持するためです。
 @item @code{org}
-Org-modeのファイルからのテキストをコメントとして含めます。
+Org-modeのファイルからのテキストをコメントとして含みます。
 
-抽出されたコードの先行する文脈からテキストが選ばれます。状況に応じて、テキストは、一番近い見出しもしくはソースブロックソースに限定されます。
+抽出されたコードに先行する文脈からテキストが選ばれます。テキストは、状況に応じて、一番近い見出しもしくはソースブロックに限定されます。
 @item @code{both}
 コメントのオプションの``link''と``org''との両方を有効にします。
 @item @code{noweb}
-コメントのオプション``link''を有効にした後に、nowebの参照記号をコードブロック本文に展開し、それをリンクのコメントで囲みます。
+コメントのオプション``link''を有効にし、nowebの参照記号をコードブロック本文に展開し、それをリンクのコメントで囲みます。
 @end itemize
 
 @node no-expand, session, comments, Specific header arguments
 @subsubsection @code{:no-expand}
 
-デフォルトの設定では、抽出される際に関数@code{org-babel-expand-src-block}によってコードブロックが展開されます。これは、@code{:var}を使って変数を割り当てること(@ref{var}を参照してください)に加えて、``noweb''の参照記号(@ref{Noweb
+デフォルトの設定では、抽出の際に関数@code{org-babel-expand-src-block}によってコードブロックが展開されます。これには、@code{:var}を使って変数を割り当てる(@ref{var}を参照してください)効果に加えて、``noweb''の参照記号(@ref{Noweb
 reference
-syntax}を参照してください)をそのターゲットで置き換えることと同様の効果があります。この動作を無効にするためにヘッダー引数@code{:no-expand}を使います。
+syntax}を参照してください)をそのターゲットで置き換える効果があります。この動作を無効にするためにヘッダー引数@code{:no-expand}を使います。
 
 @node session, noweb, no-expand, Specific header arguments
 @subsubsection @code{:session}
 
-ヘッダー引数@code{:session}は、読み取られた言語のためにセッションを開始します。セッションでは、状態は保存されます。
+ヘッダー引数@code{:session}は、読み取られた言語のにセッションを開始します。セッションでは、状態は保存されます。
 
 デフォルトでは、セッションは開始されません。
 
-ヘッダー引数@code{:session}に渡された文字列が、セッションに名前を与えます。これにより、読み取られた言語のそれぞれについて同時セッションを実行可能です。
+ヘッダー引数@code{:session}に渡された文字列が、セッション名になります。これにより、読み取られた言語のそれぞれについて並列セッションを実行可能です。
 
 @node noweb, cache, session, Specific header arguments
 @subsubsection @code{:noweb}
@@ -9038,7 +9036,7 @@ syntax}を参照のこと)の参照記号を展開する動作を管理してい
 評価、抽出、エクスポートされる前に、コードブロックの本文にある全ての``noweb''構文の参照記号が展開されます。
 @item @code{no}
 デフォルトの設定です。コードブロックの評価では``noweb''構文のアクションはありません。しかし、抽出の間にnoweb参照記号は展開されます。
-@item @code{抽出}
+@item @code{tangle}
 ブロックを抽出する前に、コードブロックの本文にある全ての``noweb''構文の参照記号は展開されますが、ブロックが評価されるときやエクスポートされるときは``noweb''の参照記号は展開されません。
 @end itemize
 
