@@ -1096,9 +1096,8 @@ modeの上で実行されます。アウトラインによって階層構造で�
 @end example
 
 @noindent
-Some people find the many stars too noisy and would prefer an outline that
-has whitespace followed by a single star as headline starters.  @ref{Clean
-view}, describes a setup to realize this.
+たくさんの「＊」があるとうるさく感じ、空白のあとに、見出しの始まりとしてのひとつの「＊」があるという形式のアウトラインを好む人もいるでしょう。このような形式の設定について、@ref{Clean
+view},で説明しています。
 
 @vindex org-cycle-separator-lines
 最後のサブツリーの直後の空白行は、そのサブツリーの一部と見なされます。そのためサブツリーが折り畳まれたときには、隠れてしまいます。しかしながら、すくなくとも2行の空白行を残したときは、折り畳んだビューを構造化するために、サブツリーを折り畳んだあとも、1つの空白行は残ったままになります。この動作を修正したいときは、@code{org-cycle-separator-lines}を参照してください。
@@ -1322,8 +1321,7 @@ dispatcher})を通してアクセスすることができる。例えば。
 @end lisp
 
 @noindent
-will define the key @kbd{C-c a f} as a shortcut for creating a sparse tree
-matching the string @samp{FIXME}.
+@samp{FIXME}という文字列にマッチするツリーの抽出するためのショートカットとして、@kbd{C-c a f}を定義します。
 
 他のツリーの抽出のためのコマンドは、TODOキーワード、タグ、あるいは属性に基づいて見出しを選択するもので、このマニュアルの後の部分で議論されるだろう。
 
@@ -1542,7 +1540,7 @@ LaTeX})と衝突する危険性があるのでお奨めはできません。以�
 脚注のラベルは自動的に作成することができます。そうしないならば、あなた自身で名前を作成することができます。これは@code{org-footnote-auto-label}変数で操作され、@code{#+STARTUP}キーワードに対応します。詳細については変数の説明を参照してください。
 
 @noindent
-The following command handles footnotes:
+以下のコマンドはプロパティを操作する助けとなります。
 
 @table @kbd
 @kindex C-c C-x f
@@ -3385,8 +3383,7 @@ selection}と呼ばれるもう一つの速い実装もあります．これは�
 @end lisp
 
 @noindent
-If the tag is only relevant to the file you are working on, then you can
-instead set the TAGS option line as:
+もしそのタグが作業中のファイルにおいてのみふさわしいのであれば，かわりに次のようにTAGSオプションを書くこともできます．
 
 @example
 #+TAGS: @@work(w)  @@home(h)  @@tennisclub(t)  laptop(l)  pc(p)
@@ -3418,8 +3415,7 @@ instead set the TAGS option line as:
 これは@samp{@@work}，@samp{@@home}，@samp{@@tennisclub}のうち少なくとも一つは選択されることを意図しています．そのようなグループを複数持つことも可能です．
 
 @noindent
-Don't forget to press @kbd{C-c C-c} with the cursor in one of these lines to
-activate any changes.
+これらの変更を有効にするために，その行にカーソルを置いて@key{C-c C-c}を押すことを忘れないようにしてください．
 
 @noindent
 これらの相互排除グループを変数@code{org-tags-alist}で設定するためには，ブレースの代わりにダミーのタグとして@code{:startgroup}と@code{:endgroup}を使わなければなりません．同様に改行を表現するためにダミーのタグとして@code{:newline}を使うことができます．直前の例を設定すると次のような記述になります．
@@ -3495,9 +3491,9 @@ tags and properties}を見てください．
 @chapter プロパティ（属性）とカラム（列）
 @cindex properties
 
-プロパティは、エントリーに関連付けられたキーと値を持つペアの集合です。Org-modeでは、プロパティのための2つの主要なアプリケショーンがあります。一番目に、プロパティはタグのようですが値を持ちます。二番目に、Org-modeのバッファで(とても基本的な)データベース機能を実装するためにプロパティを使う事ができます。一番目のアプリケショーンの例のために、ソフトウェアのリリース計画とバグを文章化するファイルを管理する事を想像して下さい。@code{:release_1:}、@code{:release_2:}のようなタグを使う代わりに、@code{:Release:}というプロパティを使い、異なるサブツリーの中に@code{1.0}や@code{2.0}のような異なる値を持たせれば良いのです。プロパティの二番目のアプリケーションの例のために、音楽CDのトラックを管理する事を想像して下さい。そこではアルバム名、アーティスト名、リリース日、トラックの数などがプロパティとなるでしょう。
+プロパティはエントリーに関連付けられたキーと値を持つペアのあつまりです。Org-modeでは、プロパティのための主要なアプリケーションが2つあります。1つ目は、プロパティはタグのようですが値を持つことです。2つ目は、Org-modeのバッファで(とても基本的な)データベース機能を実装するためにプロパティを使えることです。1つ目のアプリケーションの例に、ソフトウェアのリリース計画とバグを文章化するファイルを管理することを想像して下さい。@code{:release_1:}、@code{:release_2:}のようなタグを使う代わりに、@code{:Release:}というプロパティを使い、異なるサブツリーの中に@code{1.0}や@code{2.0}のような異なる値を持たせれば良いのです。プロパティの2つ目のアプリケーションの例に、音楽CDのトラックを管理する事を想像して下さい。そこではアルバム名、アーティスト名、リリース日、トラックの数などがプロパティとなるでしょう。
 
-プロパティは、カラムビューで便利に編集、閲覧できます(@pxref{Column view})。
+プロパティはカラムビューで便利に編集、閲覧できます(@pxref{Column view})。
 
 @menu
 * Property syntax::          プロパティの表記の仕方
@@ -3513,7 +3509,7 @@ tags and properties}を見てください．
 @cindex プロパティシンタックス
 @cindex 引き出し、プロパティ用
 
-プロパティは、キーと値のペアです。それらは、名前@code{PROPERTIES}を持つ特別な引き出し(@pxref{Drawers})の中に入る必要があります。各プロパティは最初に(コロンで囲われた)キーを持ち、その後に値を持つ1行で記述されます。以下に例を示します。
+プロパティはキーと値のペアです。それらは、名前@code{PROPERTIES}を持つ特別な引き出し(@pxref{Drawers})の中にある必要があります。各プロパティは最初に(コロンで囲われた)キーを持ち、その後に値を持つ1行で記述されます。以下に例を示します。
 
 @example
 * CD collection
@@ -3528,7 +3524,7 @@ tags and properties}を見てください．
     :END:
 @end example
 
-プロパティ@samp{:Xyz_ALL:}のように設定する事で、特定のプロパティ@samp{:Xyz:}のため許容値を定義できます。この特別なプロパティは、もしレベル1のエントリに設定されたならば、全てのツリーに適用されるように@emph{継承}されます。許可値を定義すると、対応するプロパティの設定が簡単になり、入力ミスを防ぐ事ができます。CDコレクションの例では、以下のように1つのボックスの中に発売元とディスクの数を予め定義できます。
+プロパティ@samp{:Xyz_ALL:}のように設定する事で、特定なプロパティ@samp{:Xyz:}の許容値を定義できます。この特別なプロパティは、もしレベル1のエントリに設定されたならば全てのツリーに適用されるように@emph{継承}されます。許容値を定義すると、対応するプロパティの設定が簡単になり、入力ミスを防ぐ事ができます。CDコレクションの例では、以下のように1つのボックスの中に発売元とディスクの数をあらかじめ定義できます。
 
 @example
 * CD collection
@@ -3538,7 +3534,7 @@ tags and properties}を見てください．
   :END:
 @end example
 
-1つのファイル全体で継承されるプロパティを設定したいならば、以下の行のように使います。
+1つのファイル全体で継承されるプロパティを設定したいならば、以下の行のようにします。
 @cindex プロパティ、_ALL
 @cindex #+PROPERTY
 @example
@@ -3552,7 +3548,7 @@ tags and properties}を見てください．
 以下のコマンドはプロパティを操作する助けとなります。
 
 @table @kbd
-@orgcmd{M-@key{TAB},pcomplete}行の最初のコロンの後で、プロパティのキーを補完します。現在のファイルで使われた全てのキーは、可能な補完候補として提供されます。@orgcmd{C-c
+@orgcmd{M-@key{TAB},pcomplete}行にある最初のコロンのうしろで、プロパティのキーを補完します。現在のファイルで使われた全てのキーは可能な補完候補として提供されます。@orgcmd{C-c
 C-x
 p,org-set-property}プロパティを設定します。プロパティ名と値の入力を促します。必要なら、プロパティの引き出しがさらに作られます。
 @item M-x org-insert-property-drawer
@@ -3560,7 +3556,7 @@ p,org-set-property}プロパティを設定します。プロパティ名と値�
 現在のエントリーの中にプロパティの引き出しを入れます。引き出しはエントリーのはじめに入りますが、デッドラインのような計画情報を持つ行の後となります。@orgcmd{C-c
 C-c,org-property-action}プロパティの引き出しの中にカーソルがあるとき、プロパティコマンドを実行します。@orgcmd{C-c
 C-c
-s,org-set-property}現在のエントリにプロパティを設定します。プロパティと値の両方共、補完を使って入力できます。@orgcmdkkcc{S-@key{right},S-@key{left},org-property-next-allowed-value,org-property-previous-allowed-value}ポイントのプロパティを次/前の許可値に切り替えます。@orgcmd{C-c
+s,org-set-property}現在のエントリにプロパティを設定します。プロパティと値の両方共、補完を使って入力できます。@orgcmdkkcc{S-@key{right},S-@key{left},org-property-next-allowed-value,org-property-previous-allowed-value}ポイントのプロパティを次/前の許容値に切り替えます。@orgcmd{C-c
 C-c d,org-delete-property}現在のエントリからプロパティを削除します。@orgcmd{C-c C-c
 D,org-delete-property-globally}プロパティを現在のファイルにある全てのエントリからグローバルに削除します。@orgcmd{C-c
 C-c
@@ -3571,7 +3567,7 @@ c,org-compute-property-at-point}ポイントにあるプロパティを最も近
 @section Special properties
 @cindex プロパティ、スペシャル
 
-以前の章で述べたTODO状態や、エントリの優先度のようなスペシャルプロパティは、Org-modeの機能への別のアクセス方法を提供します。このインターフェイスは、カラムビュー(@pxref{Column
+以前の章で述べたTODO状態や、エントリの優先度のようなスペシャルプロパティは、Org-modeの機能への別のアクセス方法を提供します。このインターフェイスはカラムビュー(@pxref{Column
 view})にそれらの状態を含めたり、クエリにそれらを使ったりする事で生じます。次のプロパティ名は特別(@code{:CATEGORY:}を除いて)で、プロパティの引き出しでキーとして使われません。
 
 @cindex プロパティ、スペシャル，TODO
@@ -3600,8 +3596,9 @@ SCHEDULED    @r{山括弧(<>)のないスケジュールタイムスタンプ}
 CLOSED       @r{いつこのエントリがクローズされたか}
 TIMESTAMP    @r{エントリで最初のキーワードのないタイムスタンプ}
 TIMESTAMP_IA @r{エントリで最初のアクティブでないタイムスタンプ}
-CLOCKSUM     @r{サブツリーでのCLOCKインターバルの合計。@code{org-clock-sum}が値を計算するために最初に実行されなければならない。}
-BLOCKED      @r{\t\ であれば、タスクが子供や兄弟に現在ブロックされている}
+CLOCKSUM     @r{サブツリーでのCLOCKインターバルの合計。@code{org-clock-sum}\n}
+             @r{が値を計算するために最初に実行されなければならない。\n}
+BLOCKED      @r{"t" であれば、タスクが子供や兄弟に現在ブロックされている}
 ITEM         @r{エントリの内容}
 FILE         @r{エントリのあるファイル名}
 @end example
@@ -3615,12 +3612,11 @@ FILE         @r{エントリのあるファイル名}
 searches})の場合と同じコマンドが使えます。
 @table @kbd
 @orgcmdkkc{C-c / m,C-c \\,org-match-sparse-tree}
-全てのマッチしたエントリについて抽出したツリーを作成します。前置引数@kbd{C-u}をつけると、TODO行でない見出しは無視されます。
-@orgcmd{C-c a m,org-tags-view} 全てのアジェンダファイルからタグ・プロパティにマッチしたグローバルなリストを作成します。
+全てのマッチしたエントリについて抽出したツリーを作成します。前置引数@kbd{C-u}をつけると、TODO行でない見出しは無視します。
+@orgcmd{C-c a m,org-tags-view} 全てのアジェンダファイルからマッチするタグ・プロパティのグローバルなリストを作成します。
 @xref{Matching tags and properties}.  @orgcmd{C-c a M,org-tags-view}
 @vindex org-tags-match-list-sublevels
-全てのアジェンダファイルからタグにマッチするグローバルなリストを作成します。しかし、TODO
-項目と下位項目の強制チェック(変数@code{org-tags-match-list-sublevels}参照)のみチェックします。
+全てのアジェンダファイルからマッチするタグのグローバルなリストを作成します。しかし、TODO項目と下位項目の強制チェック(変数@code{org-tags-match-list-sublevels}参照)のみチェックします。
 @end table
 
 検索文字列のための文法は、@ref{Matching tags and properties}で説明されています。
@@ -3629,7 +3625,7 @@ searches})の場合と同じコマンドが使えます。
 
 @table @kbd
 @orgkey{C-c /
-p}プロパティの値に基いて抽出したツリーを作成します。これは最初にプロパティ名、次にその値の入力を促します。抽出したツリーは、与えられた値を持つこのプロパティを定義されている全てのエントリで作られます。その値を大括弧で括っていたならば、正規表現として解釈され、プロパティ値に対してマッチします。
+p}プロパティの値に基いて抽出したツリーを作成します。これは最初にプロパティ名、次にその値の入力を促します。抽出したツリーは与えられた値でこのプロパティを定義する全てのエントリで作られます。その値を大括弧で括っていたならば正規表現として解釈され、プロパティ値に対してマッチします。
 @end table
 
 @node Property inheritance, Column view, Property searches, Properties and Columns
@@ -3649,7 +3645,7 @@ Org-modeは、継承がハードコードされているプロパティがいく
 view})のフォーマットを定義します。@code{:COLUMNS:}プロパティが定義されているレベルがカラムビューテーブルの開始地点として使われるという意味で継承されます。そして、列表示が有効である場所とサブツリーの場所とは無関係です。
 @item CATEGORIES
 @cindex プロパティ（CATEGORY）
-アジェンダビュー用えす。@code{:CATEGORY:}プロパティを通して設定されたカテゴリがサブツリー全体に適用されます。
+アジェンダビュー用です。@code{:CATEGORY:}プロパティを通して設定されたカテゴリがサブツリー全体に適用されます。
 @item ARCHIVE
 @cindex プロパティ（ARCHIVE）
 アーカイブ用です。@code{:ARCHIVE:}プロパティは、サブツリー全体のアーカイブ位置を定義します(@pxref{Moving
@@ -3724,13 +3720,15 @@ Views})でも動作します。
                 @r{メタデータを示す特別なプロパティがここで許容されます。}
                 @r{(@pxref{Special properties})}
 @var{title}     @r{列の見出しテキスト。省略するとプロパティ名が使われます。}
-@{@var{summary-type}@}  @r{サマリタイプ。指定すると親ノードの列の値は子から計算されます。}
-                @r{サポートされる概要のタイプは以下です。}
+@{@var{summary-type}@}  @r{サマリタイプ。}
+                        @r{指定すると親ノードの列の値は子から計算されます。}
+                @r{サポートされるサマリのタイプは以下です。}
                 @{+@}       @r{この列にある数の和。}
                 @{+;%.1f@}  @r{@samp{+}と似ているが、フォーマットが@samp{%.1f}となる。}
                 @{$@}       @r{通貨。@samp{+;%.2f}の略。}
                 @{:@}       @r{時刻の合計。HH:MM。数値は時間。}
-                @{X@}       @r{チェックボックスの状態。子が全て@samp{[X]}ならば、@samp{[X]}。}
+                @{X@}       @r{チェックボックスの状態。}
+                            @r{子が全て@samp{[X]}ならば、@samp{[X]}です。}
                 @{X/@}      @r{チェックボックスの状態。@samp{[n/m]}。}
                 @{X%@}      @r{チェックボックスの状態。@samp{[n%]}。}
                 @{min@}     @r{列の最も小さい数値。}
@@ -3752,10 +3750,10 @@ Views})でも動作します。
 
 そのような見積りを組み合わせるとき、単純に低と高を追加すると非現実的な幅の結果を作ります。代わりに、@code{est+}は合計から最終的な見積りを生成する事で統計的意味やサブタスクの分散を追加します。例えば、10個のタスクがあるとき、各々が0.5から2日の仕事であると見積られました。全てが非常によく進む、もしくは悪く進むと期待する事による計算で、ストレートな追加は5日から20日の見積りであると生成します。対照的に、@code{est+}は全ての仕事より現実的に10日から15日であると見積ります。
 
-以下は許容値にそって列定義を計算する例です。
+以下は許可値にそって列定義を計算する例です。
 
 @example
-:COLUMNS:  %25ITEM %9Approved(Approved?)@{X@} %Owner %11Status \@footnote{Please note that the COLUMNS definition must be on a single line---it is wrapped here only because of formatting constraints.}
+:COLUMNS:  %25ITEM %9Approved(Approved?)@{X@} %Owner %11Status \@footnote{COLUMNS定義は1行でなければならないことに注意して下さい。書式の制約のためここでラップされます。}
                    %10Time_Estimate@{:@} %CLOCKSUM
 :Owner_ALL:    Tammy Mark Karl Lisa Don
 :Status_ALL:   "In progress" "Not started yet" "Finished" ""
@@ -3763,7 +3761,7 @@ Views})でも動作します。
 @end example
 
 @noindent
-最初の列、@samp{%25ITEM}はその項目の25文字を意味します。すなわち見出しの\@:です。おそらく常に@samp{ITEM}指示子を持つ列定義をはじめるべきでしょう。その他の指示子は許容値の名前のリストを持つ列@samp{Owner}、4つの異なる利用可能な値を持つ@samp{Status}、チェックボックスフィールドを持つ@samp{Approved}を生成します。@samp{%}文字の後に幅が与えられていないとき、列は全ての値を完全に表示するために必要な幅と同じぐらい正確に広くなります。@samp{Approved}列は修正れたタイトル(クエスチョンマークのある@samp{Approved?})を持っています。サマリはHH:MMのように表現される持続時間を追加した@samp{Time_Estimate}列と子が全てチェックされているならば、@samp{[X]}状態を持った@samp{Approved}列で作られます。@samp{CLOCKSUM}は特別で、サブツリーにあるCLOCKインターバルの合計をリストします。
+最初の列、@samp{%25ITEM}はその項目の25文字を意味します。すなわち見出しの@:です。おそらく常に@samp{ITEM}指示子を持つ列定義をはじめるべきでしょう。その他の指示子は許容値の名前のリストを持つ列@samp{Owner}、4つの異なる利用可能な値を持つ@samp{Status}、チェックボックスフィールドを持つ@samp{Approved}を生成します。@samp{%}文字の後に幅が与えられていないとき、列は全ての値を完全に表示するために必要な幅と同じぐらい正確に広くなります。@samp{Approved}列は修正れたタイトル(クエスチョンマークのある@samp{Approved?})を持っています。サマリは、HH:MMのように表現する持続時間を追加することで@samp{Time_Estimete}を、全ての子がチェックされているなら@samp{[X]}を提供することで@samp{Approved}を作ります。@samp{CLOCKSUM}は特別で、サブツリーにあるCLOCKインターバルの合計をリストします。
 
 @node Using column view, カラム表示の保存, Defining columns, Column view
 @subsection Using column view
@@ -3771,16 +3769,16 @@ Views})でも動作します。
 @table @kbd
 @tsubheading{カラムビューのオン・オフ} @orgcmd{C-c C-x C-c,org-columns}
 @vindex org-columns-default-format
-カラムビューを有効とします。カーソルがそのファイルの最初の見出しより前にあるならば、カラムビューは@code{#+COLUMNS}定義を使う事によりファイル全体に対して有効となります。カーソルがアウトラインの内側のどこかにあるならば、このコマンドはフォーマットを定義する@code{:COLUMNS:}プロパティをポイントから上部の階層に向かって検索します。1つ見つかったとき、カラムビューテーブルは@code{:COLUMNS:}プロパティを含むエントリではじまるツリー用に設立されます。そのようなプロパティが見付からないときは、フォーマットは@code{#+COLUMNS}行もしくは、変数@code{org-columns-default-format}から取得され、カラムビューは現在のエントリとそのサブツリーのために設立されます。@orgcmd{r,org-columns-redo}バッファにある最近作られた変更を反映するためにカラムビューを再生成します。@orgcmd{g,org-columns-redo}@kbd{r}と同じです。@orgcmd{q,org-columns-quit}カラムビュー抜けます。@tsubheading{値を編集する}
+カラムビューを有効とします。カーソルがそのファイルの最初の見出しより前にあるならば、カラムビューは@code{#+COLUMNS}定義を使う事によりファイル全体に対して有効となります。カーソルがアウトラインの内側のどこかにあるならば、このコマンドはフォーマットを定義する@code{:COLUMNS:}プロパティをポイントから上部の階層に向かって検索します。1つ見つかったとき、カラムビューテーブルは@code{:COLUMNS:}プロパティを含むエントリではじまるツリー用に設立されます。そのようなプロパティが見付からないときは、フォーマットは@code{#+COLUMNS}行もしくは、変数@code{org-columns-default-format}から取得され、カラムビューは現在のエントリとそのサブツリーのために設置されます。@orgcmd{r,org-columns-redo}バッファにある最近作られた変更を反映するためにカラムビューを再生成します。@orgcmd{g,org-columns-redo}@kbd{r}と同じです。@orgcmd{q,org-columns-quit}カラムビューを抜けます。@tsubheading{値を編集する}
 @item @key{left} @key{right} @key{up} @key{down}
 フィールドからフィールドへカラムビューを通じて移動します。
 @kindex S-@key{left}
 @kindex S-@key{right}
 @item S-@key{left}/@key{right}
-フィールドの次と前の許容値を切り替えます。このために、プロパティの指定された許容値を持つ必要があります。
+フィールドの次と前の許可値を切り替えます。このために、プロパティの指定された許可値を持つ必要があります。
 @item 1..9,0
-直接にN番目の許容値を選択します。@kbd{0}は10番目の値を選択します。@orgcmdkkcc{n,p,org-columns-next-allowed-value,org-columns-previous-allowed-value}@kbd{S-@key{left}/@key{right}}と同じです。@orgcmd{e,org-columns-edit-value}ポイント下のプロパティを編集します。特別なプロパティでは通常そのプロパティを変更するために使うのと同じインタフェースを呼び出します。例えば、TAGSプロパティを編集するとき、タグ補完や高速選択インタフェースがポップアップします。@orgcmd{C-c
-C-c,org-columns-set-tags-or-toggle}チェックボックスがあるならば、それを切り替えます。@orgcmd{v,org-columns-show-value}このプロパティの完全な値を表示します。列の幅がその値よりも小さいときに便利です。@orgcmd{a,org-columns-edit-allowed}このプロパティの許容値のリストを編集します。リストが階層に見つかるならば、修正値はそこに保存されます。リストが見つからないならば、新しい値は現在のカラムビューの一部えある最初のエントリに保存されます。@tsubheading{テーブル構造を編集する}@orgcmdkkcc{<,>,org-columns-narrow,org-columns-widen}1文字分列を狭く・広くする@orgcmd{S-M-@key{right},org-columns-new}現在の列の左に新しい列を挿入する。@orgcmd{S-M-@key{left},org-columns-delete}現在の列を削除する。
+直接にN番目の許可値を選択します。@kbd{0}は10番目の値を選択します。@orgcmdkkcc{n,p,org-columns-next-allowed-value,org-columns-previous-allowed-value}@kbd{S-@key{left}/@key{right}}と同じです。@orgcmd{e,org-columns-edit-value}ポイント下のプロパティを編集します。特別なプロパティでは通常そのプロパティを変更するために使うのと同じインタフェースを呼び出します。例えば、TAGSプロパティを編集するとき、タグ補完や高速選択インタフェースがポップアップします。@orgcmd{C-c
+C-c,org-columns-set-tags-or-toggle}チェックボックスがあるならば、それを切り替えます。@orgcmd{v,org-columns-show-value}このプロパティの完全な値を表示します。列の幅がその値よりも小さいときに便利です。@orgcmd{a,org-columns-edit-allowed}このプロパティの許可値のリストを編集します。リストが階層で見つかるならば、修正された値はそこに保存されます。リストが見つからないならば、新しい値は現在のカラムビューの一部である最初のエントリに保存されます。@tsubheading{テーブル構造を編集する}@orgcmdkkcc{<,>,org-columns-narrow,org-columns-widen}1文字分列を狭く・広くする@orgcmd{S-M-@key{right},org-columns-new}現在の列の左に新しい列を挿入する。@orgcmd{S-M-@key{left},org-columns-delete}現在の列を削除する。
 @end table
 
 @node カラム表示の保存, , Using column view, Column view
@@ -3802,16 +3800,19 @@ blocks})を使って下さい。このブロックのフレームは以下のよ
 
 @table @code
 @item :id
-これは最も重要なパラメータです。カラムビューはあるツリーによくローカライズされる機能であり、キャプチャブロックはファイル内の異なる位置にあるかもしれません。キャプチャへのビューのツリーを識別するために、4つの値を使えます。
+これは最も重要なパラメータです。カラムビューはある(サブ)ツリーによくローカライズされる機能であり、キャプチャブロックはファイル内の異なる位置にあるかもしれません。キャプチャするビューをもつツリーを識別するために、4つの値を使えます。
 @cindex property, ID
 @example
 local     @r{キャプチャブロックに位置するツリーを使います。}
-global    @r{そのファイル内の全ての見出しを含む、グローバルビューを作ります。}
+global    @r{そのファイル内の全ての見出しを含む、}
+          @r{グローバルビューを作ります。}
 "file:@var{path-to-file}"
           @r{このファイルの一番上のカラムビューを実行します。}
-"@var{ID}"      @r{@code{:ID:}を持つツリーにあるカラムビューを呼び出します。}
-          @r{値@i{label}を持つプロパティ。現在のエントリ用にグローバルにユニークな}
-          @r{IDを作るために@kbd{M-x org-id-copy}を使い、それをkill-ringにコピーします。}
+"@var{ID}"      @r{値@i{label}である@code{:ID:}プロパティを}
+          @r{持つツリーにあるカラムビューを呼び出します。現在の}
+          @r{エントリ用にグローバルにユニーグなIDを作り、}
+          @r{kill-ringにそれをコピーするために}
+          @r{@kbd{M-x org-id-copy}を使えます。}
 @end example
 @item :hlines
 @code{t}のとき、全ての行の後に横線を挿入します。数値@var{N}のとき、レベル@code{<=
@@ -3821,7 +3822,7 @@ global    @r{そのファイル内の全ての見出しを含む、グローバ�
 @item :maxlevel
 数値を設定すると、そのレベル以下のエントリをキャプチャしません。
 @item :skip-empty-rows
-@code{t}に設定すると、カラムビューが@code{ITEM}である空でない識別子のみの行をスキップします。
+@code{t}に設定すると、カラムビューの空でない指定子が@code{ITEM}のみである行をスキップします。
 
 @end table
 
@@ -5192,15 +5193,10 @@ Emacsの日記からOrg-modeのアジェンダに項目を落とし込むため�
 @end lisp
 
 @noindent
-After that, everything will happen automatically.  All diary entries
-including holidays, anniversaries, etc., will be included in the agenda
-buffer created by Org-mode.  @key{SPC}, @key{TAB}, and @key{RET} can be used
-from the agenda buffer to jump to the diary file in order to edit existing
-diary entries.  The @kbd{i} command to insert new entries for the current
-date works in the agenda buffer, as well as the commands @kbd{S}, @kbd{M},
-and @kbd{C} to display Sunrise/Sunset times, show lunar phases and to
-convert to other calendars, respectively.  @kbd{c} can be used to switch
-back and forth between calendar and agenda.
+その後、すべてが自動的に行われます。祝祭日や記念日などを含むすべての項目は、Org-modeで作成されるジェンダバッファに取り込むことができます。日記に記録されている項目を編集するために、アジェンダバッファ上で@key{SPC}、
+@key{TAB}、及び
+@key{RET}を入力することで、日記のファイルにジャンプすることができます。その日に新しいエントリーを挿入する@kbd{i}というコマンドはアジェンダバッファ上で動作します。あたかも、日の出日の入りの時刻を表示したり、月の満ち欠けの状態を表示したり、他の暦に変換するための、@kbd{S}、@kbd{M}、および@kbd{C}というコマンドと同様です。
+@kbd{c}はカレンダーとアジェンダの間を行ったり来たりすることができます。
 
 もしもあなたが日記をS式項目と祝祭日だけで使用しているのならば、上のような設定をするよりも、Org-modeファイルに直接コピーしたり移動したりしたほうが手っ取り早いです。Org-modeは日記形式のS式項目を評価し、しかもより早く、というのは、最初にカレンダーを表示するという負荷がかからないからです。S式項目は左端から記述し、式の前にスペースが入ってはいけないことに注意してください。たとえば、あるOrg-modeファイルについての、以下にのべるセグメントが処理され、項目がアジェンダの中に作成されます。
 

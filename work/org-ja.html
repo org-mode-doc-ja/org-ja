@@ -1263,8 +1263,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Document-Structure">Document Structure
      
      * Another top level headline
 </pre>
-   <p class="noindent">Some people find the many stars too noisy and would prefer an outline that
-has whitespace followed by a single star as headline starters.  <a href="#Clean-view">Clean view</a>, describes a setup to realize this.
+   <p class="noindent">たくさんの「＊」があるとうるさく感じ、空白のあとに、見出しの始まりとしてのひとつの「＊」があるという形式のアウトラインを好む人もいるでしょう。このような形式の設定について、<a href="#Clean-view">Clean view</a>,で説明しています。
 
    <p><a name="index-org_002dcycle_002dseparator_002dlines-28"></a>最後のサブツリーの直後の空白行は、そのサブツリーの一部と見なされます。そのためサブツリーが折り畳まれたときには、隠れてしまいます。しかしながら、すくなくとも2行の空白行を残したときは、折り畳んだビューを構造化するために、サブツリーを折り畳んだあとも、1つの空白行は残ったままになります。この動作を修正したいときは、<code>org-cycle-separator-lines</code>を参照してください。
 
@@ -1469,8 +1468,7 @@ C-c</kbd>を押すことで消える。<kbd>C-u</kbd>前置引数が呼ばれた
 <pre class="lisp">     (setq org-agenda-custom-commands
            '(("f" occur-tree "FIXME")))
 </pre>
-   <p class="noindent">will define the key <kbd>C-c a f</kbd> as a shortcut for creating a sparse tree
-matching the string &lsquo;<samp><span class="samp">FIXME</span></samp>&rsquo;.
+   <p class="noindent">&lsquo;<samp><span class="samp">FIXME</span></samp>&rsquo;という文字列にマッチするツリーの抽出するためのショートカットとして、<kbd>C-c a f</kbd>を定義します。
 
    <p>他のツリーの抽出のためのコマンドは、TODOキーワード、タグ、あるいは属性に基づいて見出しを選択するもので、このマニュアルの後の部分で議論されるだろう。
 
@@ -1633,7 +1631,7 @@ Org-modeは脚注の作成をサポートしています。Org-modeは、<samp><
 
    <p><a name="index-org_002dfootnote_002dauto_002dlabel-218"></a>脚注のラベルは自動的に作成することができます。そうしないならば、あなた自身で名前を作成することができます。これは<code>org-footnote-auto-label</code>変数で操作され、<code>#+STARTUP</code>キーワードに対応します。詳細については変数の説明を参照してください。
 
-<p class="noindent">The following command handles footnotes:
+<p class="noindent">以下のコマンドはプロパティを操作する助けとなります。
 
      
 <a name="index-C_002dc-C_002dx-f-219"></a>
@@ -3358,8 +3356,7 @@ selection</em>と呼ばれるもう一つの速い実装もあります．これ
 
 <pre class="lisp">     (setq org-tag-alist '(("@work" . ?w) ("@home" . ?h) ("laptop" . ?l)))
 </pre>
-   <p class="noindent">If the tag is only relevant to the file you are working on, then you can
-instead set the TAGS option line as:
+   <p class="noindent">もしそのタグが作業中のファイルにおいてのみふさわしいのであれば，かわりに次のようにTAGSオプションを書くこともできます．
 
 <pre class="example">     #+TAGS: @work(w)  @home(h)  @tennisclub(t)  laptop(l)  pc(p)
 </pre>
@@ -3378,8 +3375,7 @@ instead set the TAGS option line as:
 </pre>
    <p class="noindent">これは&lsquo;<samp><span class="samp">@work</span></samp>&rsquo;，&lsquo;<samp><span class="samp">@home</span></samp>&rsquo;，&lsquo;<samp><span class="samp">@tennisclub</span></samp>&rsquo;のうち少なくとも一つは選択されることを意図しています．そのようなグループを複数持つことも可能です．
 
-<p class="noindent">Don't forget to press <kbd>C-c C-c</kbd> with the cursor in one of these lines to
-activate any changes.
+<p class="noindent">これらの変更を有効にするために，その行にカーソルを置いて&lt;C-c C-c&gt;を押すことを忘れないようにしてください．
 
 <p class="noindent">これらの相互排除グループを変数<code>org-tags-alist</code>で設定するためには，ブレースの代わりにダミーのタグとして<code>:startgroup</code>と<code>:endgroup</code>を使わなければなりません．同様に改行を表現するためにダミーのタグとして<code>:newline</code>を使うことができます．直前の例を設定すると次のような記述になります．
 
@@ -3453,9 +3449,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <h2 class="chapter">7 プロパティ（属性）とカラム（列）</h2>
 
 <p><a name="index-properties-635"></a>
-プロパティは、エントリーに関連付けられたキーと値を持つペアの集合です。Org-modeでは、プロパティのための2つの主要なアプリケショーンがあります。一番目に、プロパティはタグのようですが値を持ちます。二番目に、Org-modeのバッファで(とても基本的な)データベース機能を実装するためにプロパティを使う事ができます。一番目のアプリケショーンの例のために、ソフトウェアのリリース計画とバグを文章化するファイルを管理する事を想像して下さい。<code>:release_1:</code>、<code>:release_2:</code>のようなタグを使う代わりに、<code>:Release:</code>というプロパティを使い、異なるサブツリーの中に<code>1.0</code>や<code>2.0</code>のような異なる値を持たせれば良いのです。プロパティの二番目のアプリケーションの例のために、音楽CDのトラックを管理する事を想像して下さい。そこではアルバム名、アーティスト名、リリース日、トラックの数などがプロパティとなるでしょう。
+プロパティはエントリーに関連付けられたキーと値を持つペアのあつまりです。Org-modeでは、プロパティのための主要なアプリケーションが2つあります。1つ目は、プロパティはタグのようですが値を持つことです。2つ目は、Org-modeのバッファで(とても基本的な)データベース機能を実装するためにプロパティを使えることです。1つ目のアプリケーションの例に、ソフトウェアのリリース計画とバグを文章化するファイルを管理することを想像して下さい。<code>:release_1:</code>、<code>:release_2:</code>のようなタグを使う代わりに、<code>:Release:</code>というプロパティを使い、異なるサブツリーの中に<code>1.0</code>や<code>2.0</code>のような異なる値を持たせれば良いのです。プロパティの2つ目のアプリケーションの例に、音楽CDのトラックを管理する事を想像して下さい。そこではアルバム名、アーティスト名、リリース日、トラックの数などがプロパティとなるでしょう。
 
-   <p>プロパティは、カラムビューで便利に編集、閲覧できます(see <a href="#Column-view">Column view</a>)。
+   <p>プロパティはカラムビューで便利に編集、閲覧できます(see <a href="#Column-view">Column view</a>)。
 
 <ul class="menu">
 <li><a accesskey="1" href="#Property-syntax">Property syntax</a>:           プロパティの表記の仕方
@@ -3478,7 +3474,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Properties-and-Columns">Properties and
 <h3 class="section">7.1 Property syntax</h3>
 
 <p><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0082_00b7_00e3_0083_00b3_00e3_0082_00bf_00e3_0083_0083_00e3_0082_00af_00e3_0082_00b9-636"></a><a name="index-g_t_00e5_00bc_0095_00e3_0081_008d_00e5_0087_00ba_00e3_0081_0097_00e3_0080_0081_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e7_0094_00a8-637"></a>
-プロパティは、キーと値のペアです。それらは、名前<code>PROPERTIES</code>を持つ特別な引き出し(see <a href="#Drawers">Drawers</a>)の中に入る必要があります。各プロパティは最初に(コロンで囲われた)キーを持ち、その後に値を持つ1行で記述されます。以下に例を示します。
+プロパティはキーと値のペアです。それらは、名前<code>PROPERTIES</code>を持つ特別な引き出し(see <a href="#Drawers">Drawers</a>)の中にある必要があります。各プロパティは最初に(コロンで囲われた)キーを持ち、その後に値を持つ1行で記述されます。以下に例を示します。
 
 <pre class="example">     * CD collection
      ** Classic
@@ -3491,7 +3487,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Properties-and-Columns">Properties and
          :NDisks:    1
          :END:
 </pre>
-   <p>プロパティ&lsquo;<samp><span class="samp">:Xyz_ALL:</span></samp>&rsquo;のように設定する事で、特定のプロパティ&lsquo;<samp><span class="samp">:Xyz:</span></samp>&rsquo;のため許容値を定義できます。この特別なプロパティは、もしレベル1のエントリに設定されたならば、全てのツリーに適用されるように<em>継承</em>されます。許可値を定義すると、対応するプロパティの設定が簡単になり、入力ミスを防ぐ事ができます。CDコレクションの例では、以下のように1つのボックスの中に発売元とディスクの数を予め定義できます。
+   <p>プロパティ&lsquo;<samp><span class="samp">:Xyz_ALL:</span></samp>&rsquo;のように設定する事で、特定なプロパティ&lsquo;<samp><span class="samp">:Xyz:</span></samp>&rsquo;の許容値を定義できます。この特別なプロパティは、もしレベル1のエントリに設定されたならば全てのツリーに適用されるように<em>継承</em>されます。許容値を定義すると、対応するプロパティの設定が簡単になり、入力ミスを防ぐ事ができます。CDコレクションの例では、以下のように1つのボックスの中に発売元とディスクの数をあらかじめ定義できます。
 
 <pre class="example">     * CD collection
        :PROPERTIES:
@@ -3499,7 +3495,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Properties-and-Columns">Properties and
        :Publisher_ALL: "Deutsche Grammophon" Philips EMI
        :END:
 </pre>
-   <p>1つのファイル全体で継承されるプロパティを設定したいならば、以下の行のように使います。
+   <p>1つのファイル全体で継承されるプロパティを設定したいならば、以下の行のようにします。
 <a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_005fALL-638"></a><a name="index-g_t_0023_002bPROPERTY-639"></a>
 <pre class="example">     #+PROPERTY: NDisks_ALL 1 2 3 4
 </pre>
@@ -3510,7 +3506,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Properties-and-Columns">Properties and
      
 <a name="index-M_002d_0040key_007bTAB_007d-641"></a>
 <a name="index-pcomplete-642"></a>
-<dl><dt><kbd>M-&lt;TAB&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>pcomplete</code><kbd>)</kbd><dd>行の最初のコロンの後で、プロパティのキーを補完します。現在のファイルで使われた全てのキーは、可能な補完候補として提供されます。<a name="index-C_002dc-643"></a>C-x
+<dl><dt><kbd>M-&lt;TAB&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>pcomplete</code><kbd>)</kbd><dd>行にある最初のコロンのうしろで、プロパティのキーを補完します。現在のファイルで使われた全てのキーは可能な補完候補として提供されます。<a name="index-C_002dc-643"></a>C-x
 p
 <a name="index-org_002dset_002dproperty-644"></a><br><dt><kbd>C-c<dd>C-x
 p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>org-set-property</code>)
@@ -3521,7 +3517,7 @@ p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>org-set-property</code>)
 s
 <a name="index-org_002dset_002dproperty-649"></a><br><dt><kbd>C-c<dd>C-c
 s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>org-set-property</code>)
-現在のエントリにプロパティを設定します。プロパティと値の両方共、補完を使って入力できます。<a name="index-S_002d_0040key_007bright_007d-650"></a><a name="index-S_002d_0040key_007bleft_007d-651"></a><a name="index-org_002dproperty_002dnext_002dallowed_002dvalue-652"></a><a name="index-org_002dproperty_002dprevious_002dallowed_002dvalue-653"></a><br><dt><kbd>S-&lt;right&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-property-next-allowed-value</code><kbd>)</kbd><dt><kbd>S-&lt;left&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-property-previous-allowed-value</code><kbd>)</kbd><dd>ポイントのプロパティを次/前の許可値に切り替えます。<a name="index-C_002dc-654"></a>C-c d
+現在のエントリにプロパティを設定します。プロパティと値の両方共、補完を使って入力できます。<a name="index-S_002d_0040key_007bright_007d-650"></a><a name="index-S_002d_0040key_007bleft_007d-651"></a><a name="index-org_002dproperty_002dnext_002dallowed_002dvalue-652"></a><a name="index-org_002dproperty_002dprevious_002dallowed_002dvalue-653"></a><br><dt><kbd>S-&lt;right&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-property-next-allowed-value</code><kbd>)</kbd><dt><kbd>S-&lt;left&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-property-previous-allowed-value</code><kbd>)</kbd><dd>ポイントのプロパティを次/前の許容値に切り替えます。<a name="index-C_002dc-654"></a>C-c d
 <a name="index-org_002ddelete_002dproperty-655"></a><br><dt><kbd>C-c<dd>C-c d</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>org-delete-property</code>)
 現在のエントリからプロパティを削除します。<a name="index-C_002dc-C_002dc-656"></a>D
 <a name="index-org_002ddelete_002dproperty_002dglobally-657"></a><br><dt><kbd>C-c C-c<dd>D</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>org-delete-property-globally</code>)
@@ -3544,7 +3540,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Properties-and-Columns">Properties and
 <h3 class="section">7.2 Special properties</h3>
 
 <p><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab-660"></a>
-以前の章で述べたTODO状態や、エントリの優先度のようなスペシャルプロパティは、Org-modeの機能への別のアクセス方法を提供します。このインターフェイスは、カラムビュー(see <a href="#Column-view">Column view</a>)にそれらの状態を含めたり、クエリにそれらを使ったりする事で生じます。次のプロパティ名は特別(<code>:CATEGORY:</code>を除いて)で、プロパティの引き出しでキーとして使われません。
+以前の章で述べたTODO状態や、エントリの優先度のようなスペシャルプロパティは、Org-modeの機能への別のアクセス方法を提供します。このインターフェイスはカラムビュー(see <a href="#Column-view">Column view</a>)にそれらの状態を含めたり、クエリにそれらを使ったりする事で生じます。次のプロパティ名は特別(<code>:CATEGORY:</code>を除いて)で、プロパティの引き出しでキーとして使われません。
 
    <p><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00ef_00bc_008cTODO-661"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081TAGS-662"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081ALLTAGS-663"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081CATEGORY-664"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081PRIORITY-665"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081DEADLINE-666"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081SCHEDULED-667"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081CLOSED-668"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081TIMESTAMP-669"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081TIMESTAMP_005fIA-670"></a><a name="index-g_t_00e7_0089_00b9_00e5_0088_00a5_00e3_0081_00aa_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088CLOCKSUM_00ef_00bc_0089-671"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081BLOCKED-672"></a><!-- guessing that ITEM is needed in this area; also, should this list be sorted? -->
 <a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081ITEM-673"></a><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0082_00b9_00e3_0083_009a_00e3_0082_00b7_00e3_0083_00a3_00e3_0083_00ab_00e3_0080_0081FILE-674"></a>
@@ -3558,8 +3554,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Properties-and-Columns">Properties and
      CLOSED       <span class="roman">いつこのエントリがクローズされたか</span>
      TIMESTAMP    <span class="roman">エントリで最初のキーワードのないタイムスタンプ</span>
      TIMESTAMP_IA <span class="roman">エントリで最初のアクティブでないタイムスタンプ</span>
-     CLOCKSUM     <span class="roman">サブツリーでのCLOCKインターバルの合計。</span><code>org-clock-sum</code><span class="roman">が値を計算するために最初に実行されなければならない。</span>
-     BLOCKED      <span class="roman">\t\ であれば、タスクが子供や兄弟に現在ブロックされている</span>
+     CLOCKSUM     <span class="roman">サブツリーでのCLOCKインターバルの合計。</span><code>org-clock-sum</code><span class="roman">\n</span>
+                  <span class="roman">が値を計算するために最初に実行されなければならない。\n</span>
+     BLOCKED      <span class="roman">"t" であれば、タスクが子供や兄弟に現在ブロックされている</span>
      ITEM         <span class="roman">エントリの内容</span>
      FILE         <span class="roman">エントリのあるファイル名</span>
 </pre>
@@ -3581,11 +3578,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Properties-and-Columns">Properties and
 <a name="index-C_002dc-_005c-678"></a>
 <a name="index-org_002dmatch_002dsparse_002dtree-679"></a>
 <dl><dt><kbd>C-c / m  </kbd><span class="roman">or</span><kbd>  C-c \ &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-match-sparse-tree</code><kbd>)</kbd><dd>
-全てのマッチしたエントリについて抽出したツリーを作成します。前置引数<kbd>C-u</kbd>をつけると、TODO行でない見出しは無視されます。
-<a name="index-C_002dc-a-m-680"></a><a name="index-org_002dtags_002dview-681"></a><br><dt><kbd>C-c a m &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-tags-view</code><kbd>)</kbd><dd> 全てのアジェンダファイルからタグ・プロパティにマッチしたグローバルなリストを作成します。
+全てのマッチしたエントリについて抽出したツリーを作成します。前置引数<kbd>C-u</kbd>をつけると、TODO行でない見出しは無視します。
+<a name="index-C_002dc-a-m-680"></a><a name="index-org_002dtags_002dview-681"></a><br><dt><kbd>C-c a m &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-tags-view</code><kbd>)</kbd><dd> 全てのアジェンダファイルからマッチするタグ・プロパティのグローバルなリストを作成します。
 See <a href="#Matching-tags-and-properties">Matching tags and properties</a>.  <a name="index-C_002dc-a-M-682"></a><a name="index-org_002dtags_002dview-683"></a><br><dt><kbd>C-c a M &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-tags-view</code><kbd>)</kbd><dd>
-<a name="index-org_002dtags_002dmatch_002dlist_002dsublevels-684"></a>全てのアジェンダファイルからタグにマッチするグローバルなリストを作成します。しかし、TODO
-項目と下位項目の強制チェック(変数<code>org-tags-match-list-sublevels</code>参照)のみチェックします。
+<a name="index-org_002dtags_002dmatch_002dlist_002dsublevels-684"></a>全てのアジェンダファイルからマッチするタグのグローバルなリストを作成します。しかし、TODO項目と下位項目の強制チェック(変数<code>org-tags-match-list-sublevels</code>参照)のみチェックします。
 </dl>
 
    <p>検索文字列のための文法は、<a href="#Matching-tags-and-properties">Matching tags and properties</a>で説明されています。
@@ -3595,7 +3591,7 @@ See <a href="#Matching-tags-and-properties">Matching tags and properties</a>.  <
      
 <a name="index-C_002dc-_002f-685"></a>
 <dl>p
-<dt><kbd>C-c /<dd>p</kbd>プロパティの値に基いて抽出したツリーを作成します。これは最初にプロパティ名、次にその値の入力を促します。抽出したツリーは、与えられた値を持つこのプロパティを定義されている全てのエントリで作られます。その値を大括弧で括っていたならば、正規表現として解釈され、プロパティ値に対してマッチします。
+<dt><kbd>C-c /<dd>p</kbd>プロパティの値に基いて抽出したツリーを作成します。これは最初にプロパティ名、次にその値の入力を促します。抽出したツリーは与えられた値でこのプロパティを定義する全てのエントリで作られます。その値を大括弧で括っていたならば正規表現として解釈され、プロパティ値に対してマッチします。
 </dl>
 
 <div class="node">
@@ -3617,7 +3613,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Properties-and-Columns">Properties and
    <p><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088COLUMNS_00ef_00bc_0089-689"></a>
      <dl>
 <dt><code>COLUMNS</code><dd><code>:COLUMNS:</code>プロパティは、カラムビュー(see <a href="#Column-view">Column view</a>)のフォーマットを定義します。<code>:COLUMNS:</code>プロパティが定義されているレベルがカラムビューテーブルの開始地点として使われるという意味で継承されます。そして、列表示が有効である場所とサブツリーの場所とは無関係です。
-<br><dt><code>CATEGORIES</code><dd><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088CATEGORY_00ef_00bc_0089-690"></a>アジェンダビュー用えす。<code>:CATEGORY:</code>プロパティを通して設定されたカテゴリがサブツリー全体に適用されます。
+<br><dt><code>CATEGORIES</code><dd><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088CATEGORY_00ef_00bc_0089-690"></a>アジェンダビュー用です。<code>:CATEGORY:</code>プロパティを通して設定されたカテゴリがサブツリー全体に適用されます。
 <br><dt><code>ARCHIVE</code><dd><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00ef_00bc_0088ARCHIVE_00ef_00bc_0089-691"></a>アーカイブ用です。<code>:ARCHIVE:</code>プロパティは、サブツリー全体のアーカイブ位置を定義します(see <a href="#Moving-subtrees">Moving subtrees</a>)。
 <br><dt><code>LOGGING</code><dd><a name="index-g_t_00e3_0083_0097_00e3_0083_00ad_00e3_0083_0091_00e3_0083_0086_00e3_0082_00a3_00e3_0080_0081_00e3_0083_00ad_00e3_0082_00b0_00e3_0082_0092_00e3_0081_00a8_00e3_0082_008b-692"></a>LOGGINGプロパティは、エントリやサブツリーのログ取得設定について定義します(see <a href="#Tracking-TODO-state-changes">Tracking TODO state changes</a>)。
 </dl>
@@ -3708,13 +3704,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Defining-columns">Defining columns</a>
                      <span class="roman">メタデータを示す特別なプロパティがここで許容されます。</span>
                      <span class="roman">(see <a href="#Special-properties">Special properties</a>)</span>
      <var>title</var>     <span class="roman">列の見出しテキスト。省略するとプロパティ名が使われます。</span>
-     {<var>summary-type</var>}  <span class="roman">サマリタイプ。指定すると親ノードの列の値は子から計算されます。</span>
-                     <span class="roman">サポートされる概要のタイプは以下です。</span>
+     {<var>summary-type</var>}  <span class="roman">サマリタイプ。</span>
+                             <span class="roman">指定すると親ノードの列の値は子から計算されます。</span>
+                     <span class="roman">サポートされるサマリのタイプは以下です。</span>
                      {+}       <span class="roman">この列にある数の和。</span>
                      {+;%.1f}  <span class="roman">&lsquo;</span><samp><span class="samp">+</span></samp><span class="roman">&rsquo;と似ているが、フォーマットが&lsquo;</span><samp><span class="samp">%.1f</span></samp><span class="roman">&rsquo;となる。</span>
                      {$}       <span class="roman">通貨。&lsquo;</span><samp><span class="samp">+;%.2f</span></samp><span class="roman">&rsquo;の略。</span>
                      {:}       <span class="roman">時刻の合計。HH:MM。数値は時間。</span>
-                     {X}       <span class="roman">チェックボックスの状態。子が全て&lsquo;</span><samp><span class="samp">[X]</span></samp><span class="roman">&rsquo;ならば、&lsquo;</span><samp><span class="samp">[X]</span></samp><span class="roman">&rsquo;。</span>
+                     {X}       <span class="roman">チェックボックスの状態。</span>
+                                 <span class="roman">子が全て&lsquo;</span><samp><span class="samp">[X]</span></samp><span class="roman">&rsquo;ならば、&lsquo;</span><samp><span class="samp">[X]</span></samp><span class="roman">&rsquo;です。</span>
                      {X/}      <span class="roman">チェックボックスの状態。&lsquo;</span><samp><span class="samp">[n/m]</span></samp><span class="roman">&rsquo;。</span>
                      {X%}      <span class="roman">チェックボックスの状態。&lsquo;</span><samp><span class="samp">[n%]</span></samp><span class="roman">&rsquo;。</span>
                      {min}     <span class="roman">列の最も小さい数値。</span>
@@ -3734,7 +3732,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Defining-columns">Defining columns</a>
 
    <p>そのような見積りを組み合わせるとき、単純に低と高を追加すると非現実的な幅の結果を作ります。代わりに、<code>est+</code>は合計から最終的な見積りを生成する事で統計的意味やサブタスクの分散を追加します。例えば、10個のタスクがあるとき、各々が0.5から2日の仕事であると見積られました。全てが非常によく進む、もしくは悪く進むと期待する事による計算で、ストレートな追加は5日から20日の見積りであると生成します。対照的に、<code>est+</code>は全ての仕事より現実的に10日から15日であると見積ります。
 
-   <p>以下は許容値にそって列定義を計算する例です。
+   <p>以下は許可値にそって列定義を計算する例です。
 
 <pre class="example">     :COLUMNS:  %25ITEM %9Approved(Approved?){X} %Owner %11Status \<a rel="footnote" href="#fn-55" name="fnd-55"><sup>55</sup></a>
                         %10Time_Estimate{:} %CLOCKSUM
@@ -3742,7 +3740,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Defining-columns">Defining columns</a>
      :Status_ALL:   "In progress" "Not started yet" "Finished" ""
      :Approved_ALL: "[ ]" "[X]"
 </pre>
-   <p class="noindent">最初の列、&lsquo;<samp><span class="samp">%25ITEM</span></samp>&rsquo;はその項目の25文字を意味します。すなわち見出しの\です。おそらく常に&lsquo;<samp><span class="samp">ITEM</span></samp>&rsquo;指示子を持つ列定義をはじめるべきでしょう。その他の指示子は許容値の名前のリストを持つ列&lsquo;<samp><span class="samp">Owner</span></samp>&rsquo;、4つの異なる利用可能な値を持つ&lsquo;<samp><span class="samp">Status</span></samp>&rsquo;、チェックボックスフィールドを持つ&lsquo;<samp><span class="samp">Approved</span></samp>&rsquo;を生成します。&lsquo;<samp><span class="samp">%</span></samp>&rsquo;文字の後に幅が与えられていないとき、列は全ての値を完全に表示するために必要な幅と同じぐらい正確に広くなります。&lsquo;<samp><span class="samp">Approved</span></samp>&rsquo;列は修正れたタイトル(クエスチョンマークのある&lsquo;<samp><span class="samp">Approved?</span></samp>&rsquo;)を持っています。サマリはHH:MMのように表現される持続時間を追加した&lsquo;<samp><span class="samp">Time_Estimate</span></samp>&rsquo;列と子が全てチェックされているならば、&lsquo;<samp><span class="samp">[X]</span></samp>&rsquo;状態を持った&lsquo;<samp><span class="samp">Approved</span></samp>&rsquo;列で作られます。&lsquo;<samp><span class="samp">CLOCKSUM</span></samp>&rsquo;は特別で、サブツリーにあるCLOCKインターバルの合計をリストします。
+   <p class="noindent">最初の列、&lsquo;<samp><span class="samp">%25ITEM</span></samp>&rsquo;はその項目の25文字を意味します。すなわち見出しのです。おそらく常に&lsquo;<samp><span class="samp">ITEM</span></samp>&rsquo;指示子を持つ列定義をはじめるべきでしょう。その他の指示子は許容値の名前のリストを持つ列&lsquo;<samp><span class="samp">Owner</span></samp>&rsquo;、4つの異なる利用可能な値を持つ&lsquo;<samp><span class="samp">Status</span></samp>&rsquo;、チェックボックスフィールドを持つ&lsquo;<samp><span class="samp">Approved</span></samp>&rsquo;を生成します。&lsquo;<samp><span class="samp">%</span></samp>&rsquo;文字の後に幅が与えられていないとき、列は全ての値を完全に表示するために必要な幅と同じぐらい正確に広くなります。&lsquo;<samp><span class="samp">Approved</span></samp>&rsquo;列は修正れたタイトル(クエスチョンマークのある&lsquo;<samp><span class="samp">Approved?</span></samp>&rsquo;)を持っています。サマリは、HH:MMのように表現する持続時間を追加することで&lsquo;<samp><span class="samp">Time_Estimete</span></samp>&rsquo;を、全ての子がチェックされているなら&lsquo;<samp><span class="samp">[X]</span></samp>&rsquo;を提供することで&lsquo;<samp><span class="samp">Approved</span></samp>&rsquo;を作ります。&lsquo;<samp><span class="samp">CLOCKSUM</span></samp>&rsquo;は特別で、サブツリーにあるCLOCKインターバルの合計をリストします。
 
 <div class="node">
 <a name="Using-column-view"></a>
@@ -3757,12 +3755,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Column-view">Column view</a>
 
      <dl>
 <dt><b>カラムビューのオン・オフ</b><dd> <a name="index-C_002dc-C_002dx-C_002dc-696"></a><a name="index-org_002dcolumns-697"></a><br><dt><kbd>C-c C-x C-c &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns</code><kbd>)</kbd><dd>
-<a name="index-org_002dcolumns_002ddefault_002dformat-698"></a>カラムビューを有効とします。カーソルがそのファイルの最初の見出しより前にあるならば、カラムビューは<code>#+COLUMNS</code>定義を使う事によりファイル全体に対して有効となります。カーソルがアウトラインの内側のどこかにあるならば、このコマンドはフォーマットを定義する<code>:COLUMNS:</code>プロパティをポイントから上部の階層に向かって検索します。1つ見つかったとき、カラムビューテーブルは<code>:COLUMNS:</code>プロパティを含むエントリではじまるツリー用に設立されます。そのようなプロパティが見付からないときは、フォーマットは<code>#+COLUMNS</code>行もしくは、変数<code>org-columns-default-format</code>から取得され、カラムビューは現在のエントリとそのサブツリーのために設立されます。<a name="index-r-699"></a><a name="index-org_002dcolumns_002dredo-700"></a><br><dt><kbd>r &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-redo</code><kbd>)</kbd><dd>バッファにある最近作られた変更を反映するためにカラムビューを再生成します。<a name="index-g-701"></a><a name="index-org_002dcolumns_002dredo-702"></a><br><dt><kbd>g &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-redo</code><kbd>)</kbd><dd><kbd>r</kbd>と同じです。<a name="index-q-703"></a><a name="index-org_002dcolumns_002dquit-704"></a><br><dt><kbd>q &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-quit</code><kbd>)</kbd><dd>カラムビュー抜けます。<br><dt><b>値を編集する</b>
+<a name="index-org_002dcolumns_002ddefault_002dformat-698"></a>カラムビューを有効とします。カーソルがそのファイルの最初の見出しより前にあるならば、カラムビューは<code>#+COLUMNS</code>定義を使う事によりファイル全体に対して有効となります。カーソルがアウトラインの内側のどこかにあるならば、このコマンドはフォーマットを定義する<code>:COLUMNS:</code>プロパティをポイントから上部の階層に向かって検索します。1つ見つかったとき、カラムビューテーブルは<code>:COLUMNS:</code>プロパティを含むエントリではじまるツリー用に設立されます。そのようなプロパティが見付からないときは、フォーマットは<code>#+COLUMNS</code>行もしくは、変数<code>org-columns-default-format</code>から取得され、カラムビューは現在のエントリとそのサブツリーのために設置されます。<a name="index-r-699"></a><a name="index-org_002dcolumns_002dredo-700"></a><br><dt><kbd>r &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-redo</code><kbd>)</kbd><dd>バッファにある最近作られた変更を反映するためにカラムビューを再生成します。<a name="index-g-701"></a><a name="index-org_002dcolumns_002dredo-702"></a><br><dt><kbd>g &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-redo</code><kbd>)</kbd><dd><kbd>r</kbd>と同じです。<a name="index-q-703"></a><a name="index-org_002dcolumns_002dquit-704"></a><br><dt><kbd>q &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-quit</code><kbd>)</kbd><dd>カラムビューを抜けます。<br><dt><b>値を編集する</b>
 <br><dt><kbd>&lt;left&gt; &lt;right&gt; &lt;up&gt; &lt;down&gt;</kbd><dd>フィールドからフィールドへカラムビューを通じて移動します。
-<a name="index-S_002d_0040key_007bleft_007d-705"></a><a name="index-S_002d_0040key_007bright_007d-706"></a><br><dt><kbd>S-&lt;left&gt;/&lt;right&gt;</kbd><dd>フィールドの次と前の許容値を切り替えます。このために、プロパティの指定された許容値を持つ必要があります。
-<br><dt><kbd>1..9,0</kbd><dd>直接にN番目の許容値を選択します。<kbd>0</kbd>は10番目の値を選択します。<a name="index-n-707"></a><a name="index-p-708"></a><a name="index-org_002dcolumns_002dnext_002dallowed_002dvalue-709"></a><a name="index-org_002dcolumns_002dprevious_002dallowed_002dvalue-710"></a><br><dt><kbd>n &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-next-allowed-value</code><kbd>)</kbd><dt><kbd>p &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-previous-allowed-value</code><kbd>)</kbd><dd><kbd>S-&lt;left&gt;/&lt;right&gt;</kbd>と同じです。<a name="index-e-711"></a><a name="index-org_002dcolumns_002dedit_002dvalue-712"></a><br><dt><kbd>e &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-edit-value</code><kbd>)</kbd><dd>ポイント下のプロパティを編集します。特別なプロパティでは通常そのプロパティを変更するために使うのと同じインタフェースを呼び出します。例えば、TAGSプロパティを編集するとき、タグ補完や高速選択インタフェースがポップアップします。<a name="index-C_002dc-713"></a>C-c
+<a name="index-S_002d_0040key_007bleft_007d-705"></a><a name="index-S_002d_0040key_007bright_007d-706"></a><br><dt><kbd>S-&lt;left&gt;/&lt;right&gt;</kbd><dd>フィールドの次と前の許可値を切り替えます。このために、プロパティの指定された許可値を持つ必要があります。
+<br><dt><kbd>1..9,0</kbd><dd>直接にN番目の許可値を選択します。<kbd>0</kbd>は10番目の値を選択します。<a name="index-n-707"></a><a name="index-p-708"></a><a name="index-org_002dcolumns_002dnext_002dallowed_002dvalue-709"></a><a name="index-org_002dcolumns_002dprevious_002dallowed_002dvalue-710"></a><br><dt><kbd>n &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-next-allowed-value</code><kbd>)</kbd><dt><kbd>p &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-previous-allowed-value</code><kbd>)</kbd><dd><kbd>S-&lt;left&gt;/&lt;right&gt;</kbd>と同じです。<a name="index-e-711"></a><a name="index-org_002dcolumns_002dedit_002dvalue-712"></a><br><dt><kbd>e &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-edit-value</code><kbd>)</kbd><dd>ポイント下のプロパティを編集します。特別なプロパティでは通常そのプロパティを変更するために使うのと同じインタフェースを呼び出します。例えば、TAGSプロパティを編集するとき、タグ補完や高速選択インタフェースがポップアップします。<a name="index-C_002dc-713"></a>C-c
 <a name="index-org_002dcolumns_002dset_002dtags_002dor_002dtoggle-714"></a><br><dt><kbd>C-c<dd>C-c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>org-columns-set-tags-or-toggle</code>)
-チェックボックスがあるならば、それを切り替えます。<a name="index-v-715"></a><a name="index-org_002dcolumns_002dshow_002dvalue-716"></a><br><dt><kbd>v &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-show-value</code><kbd>)</kbd><dd>このプロパティの完全な値を表示します。列の幅がその値よりも小さいときに便利です。<a name="index-a-717"></a><a name="index-org_002dcolumns_002dedit_002dallowed-718"></a><br><dt><kbd>a &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-edit-allowed</code><kbd>)</kbd><dd>このプロパティの許容値のリストを編集します。リストが階層に見つかるならば、修正値はそこに保存されます。リストが見つからないならば、新しい値は現在のカラムビューの一部えある最初のエントリに保存されます。<br><dt><b>テーブル構造を編集する</b><dd><a name="index-g_t_003c-719"></a><a name="index-g_t_003e-720"></a><a name="index-org_002dcolumns_002dnarrow-721"></a><a name="index-org_002dcolumns_002dwiden-722"></a><br><dt><kbd>&lt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-narrow</code><kbd>)</kbd><dt><kbd>&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-widen</code><kbd>)</kbd><dd>1文字分列を狭く・広くする<a name="index-S_002dM_002d_0040key_007bright_007d-723"></a><a name="index-org_002dcolumns_002dnew-724"></a><br><dt><kbd>S-M-&lt;right&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-new</code><kbd>)</kbd><dd>現在の列の左に新しい列を挿入する。<a name="index-S_002dM_002d_0040key_007bleft_007d-725"></a><a name="index-org_002dcolumns_002ddelete-726"></a><br><dt><kbd>S-M-&lt;left&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-delete</code><kbd>)</kbd><dd>現在の列を削除する。
+チェックボックスがあるならば、それを切り替えます。<a name="index-v-715"></a><a name="index-org_002dcolumns_002dshow_002dvalue-716"></a><br><dt><kbd>v &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-show-value</code><kbd>)</kbd><dd>このプロパティの完全な値を表示します。列の幅がその値よりも小さいときに便利です。<a name="index-a-717"></a><a name="index-org_002dcolumns_002dedit_002dallowed-718"></a><br><dt><kbd>a &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-edit-allowed</code><kbd>)</kbd><dd>このプロパティの許可値のリストを編集します。リストが階層で見つかるならば、修正された値はそこに保存されます。リストが見つからないならば、新しい値は現在のカラムビューの一部である最初のエントリに保存されます。<br><dt><b>テーブル構造を編集する</b><dd><a name="index-g_t_003c-719"></a><a name="index-g_t_003e-720"></a><a name="index-org_002dcolumns_002dnarrow-721"></a><a name="index-org_002dcolumns_002dwiden-722"></a><br><dt><kbd>&lt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-narrow</code><kbd>)</kbd><dt><kbd>&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-widen</code><kbd>)</kbd><dd>1文字分列を狭く・広くする<a name="index-S_002dM_002d_0040key_007bright_007d-723"></a><a name="index-org_002dcolumns_002dnew-724"></a><br><dt><kbd>S-M-&lt;right&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-new</code><kbd>)</kbd><dd>現在の列の左に新しい列を挿入する。<a name="index-S_002dM_002d_0040key_007bleft_007d-725"></a><a name="index-org_002dcolumns_002ddelete-726"></a><br><dt><kbd>S-M-&lt;left&gt; &nbsp;&nbsp;&nbsp;&nbsp;(</kbd><code>org-columns-delete</code><kbd>)</kbd><dd>現在の列を削除する。
 </dl>
 
 <div class="node">
@@ -3787,21 +3785,24 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Column-view">Column view</a>
    <p class="noindent">ダイナミックブロックを更新するには以下のコマンドを使用します。
 
      <dl>
-<dt><code>:id</code><dd>これは最も重要なパラメータです。カラムビューはあるツリーによくローカライズされる機能であり、キャプチャブロックはファイル内の異なる位置にあるかもしれません。キャプチャへのビューのツリーを識別するために、4つの値を使えます。
+<dt><code>:id</code><dd>これは最も重要なパラメータです。カラムビューはある(サブ)ツリーによくローカライズされる機能であり、キャプチャブロックはファイル内の異なる位置にあるかもしれません。キャプチャするビューをもつツリーを識別するために、4つの値を使えます。
 <a name="index-property_002c-ID-728"></a>
      <pre class="example">          local     <span class="roman">キャプチャブロックに位置するツリーを使います。</span>
-          global    <span class="roman">そのファイル内の全ての見出しを含む、グローバルビューを作ります。</span>
+          global    <span class="roman">そのファイル内の全ての見出しを含む、</span>
+                    <span class="roman">グローバルビューを作ります。</span>
           "file:<var>path-to-file</var>"
                     <span class="roman">このファイルの一番上のカラムビューを実行します。</span>
-          "<var>ID</var>"      <code>:ID:</code><span class="roman">を持つツリーにあるカラムビューを呼び出します。</span>
-                    <span class="roman">値</span><i>label</i><span class="roman">を持つプロパティ。現在のエントリ用にグローバルにユニークな</span>
-                    <span class="roman">IDを作るために</span><kbd>M-x org-id-copy</kbd><span class="roman">を使い、それをkill-ringにコピーします。</span>
+          "<var>ID</var>"      <span class="roman">値</span><i>label</i><span class="roman">である</span><code>:ID:</code><span class="roman">プロパティを</span>
+                    <span class="roman">持つツリーにあるカラムビューを呼び出します。現在の</span>
+                    <span class="roman">エントリ用にグローバルにユニーグなIDを作り、</span>
+                    <span class="roman">kill-ringにそれをコピーするために</span>
+                    <kbd>M-x org-id-copy</kbd><span class="roman">を使えます。</span>
 </pre>
      <br><dt><code>:hlines</code><dd><code>t</code>のとき、全ての行の後に横線を挿入します。数値<var>N</var>のとき、レベル<code>&lt;=
 </code><var>N</var>を持つ各見出しの前に縦線を挿入します。
 <br><dt><code>:vlines</code><dd><code>t</code>に設定するとき、列グループに縦線を強制します。
 <br><dt><code>:maxlevel</code><dd>数値を設定すると、そのレベル以下のエントリをキャプチャしません。
-<br><dt><code>:skip-empty-rows</code><dd><code>t</code>に設定すると、カラムビューが<code>ITEM</code>である空でない識別子のみの行をスキップします。
+<br><dt><code>:skip-empty-rows</code><dd><code>t</code>に設定すると、カラムビューの空でない指定子が<code>ITEM</code>のみである行をスキップします。
 
    </dl>
 
@@ -5194,15 +5195,10 @@ Reingoldによって開発されたカレンダーと日記の機能がありま
 
 <pre class="lisp">     (setq org-agenda-include-diary t)
 </pre>
-   <p class="noindent">After that, everything will happen automatically.  All diary entries
-including holidays, anniversaries, etc., will be included in the agenda
-buffer created by Org-mode.  &lt;SPC&gt;, &lt;TAB&gt;, and &lt;RET&gt; can be used
-from the agenda buffer to jump to the diary file in order to edit existing
-diary entries.  The <kbd>i</kbd> command to insert new entries for the current
-date works in the agenda buffer, as well as the commands <kbd>S</kbd>, <kbd>M</kbd>,
-and <kbd>C</kbd> to display Sunrise/Sunset times, show lunar phases and to
-convert to other calendars, respectively.  <kbd>c</kbd> can be used to switch
-back and forth between calendar and agenda.
+   <p class="noindent">その後、すべてが自動的に行われます。祝祭日や記念日などを含むすべての項目は、Org-modeで作成されるジェンダバッファに取り込むことができます。日記に記録されている項目を編集するために、アジェンダバッファ上で&lt;SPC&gt;、
+&lt;TAB&gt;、及び
+&lt;RET&gt;を入力することで、日記のファイルにジャンプすることができます。その日に新しいエントリーを挿入する<kbd>i</kbd>というコマンドはアジェンダバッファ上で動作します。あたかも、日の出日の入りの時刻を表示したり、月の満ち欠けの状態を表示したり、他の暦に変換するための、<kbd>S</kbd>、<kbd>M</kbd>、および<kbd>C</kbd>というコマンドと同様です。
+<kbd>c</kbd>はカレンダーとアジェンダの間を行ったり来たりすることができます。
 
    <p>もしもあなたが日記をS式項目と祝祭日だけで使用しているのならば、上のような設定をするよりも、Org-modeファイルに直接コピーしたり移動したりしたほうが手っ取り早いです。Org-modeは日記形式のS式項目を評価し、しかもより早く、というのは、最初にカレンダーを表示するという負荷がかからないからです。S式項目は左端から記述し、式の前にスペースが入ってはいけないことに注意してください。たとえば、あるOrg-modeファイルについての、以下にのべるセグメントが処理され、項目がアジェンダの中に作成されます。
 
@@ -13198,7 +13194,7 @@ C-c</kbd>とタイプすることでその行の変更を有効にすること�
 
    <p class="footnote"><small>[<a name="fn-54" href="#fnd-54">54</a>]</small> キーが設定されていないタグにはは自動的にキーがアサインされます．</p>
 
-   <p class="footnote"><small>[<a name="fn-55" href="#fnd-55">55</a>]</small> Please note that the COLUMNS definition must be on a single line&mdash;it is wrapped here only because of formatting constraints.</p>
+   <p class="footnote"><small>[<a name="fn-55" href="#fnd-55">55</a>]</small> COLUMNS定義は1行でなければならないことに注意して下さい。書式の制約のためここでラップされます。</p>
 
    <p class="footnote"><small>[<a name="fn-56" href="#fnd-56">56</a>]</small> 寄付されたパッケージはEmacsの一部ではありませんがOrgのメインの配布物と共に配布されます(<a href="http://orgmode.org">http://orgmode.org</a>を訪ずれて下さい)。</p>
 
