@@ -607,11 +607,11 @@ Org-modeは、高速かつ効率的に動作するプレーンテキストのシ
 を動的にアジェンダへ蓄積します。アジェンダはEmacsのcalendarとdiaryの多くの機
 能を利用し、スムーズに統合しています。プレーンテキストで記述されるURLに似た
 リンクは、ウェブサイト、メール、ネットのメッセージ、BBDBのデータ、そして、プ
-ロジェクトに関連するどのようなファイルとも結びついています。印刷したりノート
-を共有するために、構造化されたアスキー形式のファイルやHTMLのファイル、または
-（TODOとアジェンダアイテムに限り）iCalendar形式のファイルへOrg-modeのファイ
-ルをエクスポートできます。また、リンクの張られたウェブページ一式を公開するツ
-ールとしても役立ちます。
+ロジェクトに関連するどのようなファイルとも結びついています。ノートを印刷した
+りノートを共有するために、構造化されたアスキー形式のファイルやHTMLのファイル
+、または（TODOとアジェンダアイテムに限り）iCalendar形式のファイルへOrg-mode
+のファイルをエクスポートできます。また、リンクの張られたウェブページ一式を公
+開するツールとしても役立ちます。
 
 見出しとなるノードにメタデータを追加することで、Org-modeはプロジェクトを計画
 する環境となります。そのメタデータに基づくことでクエリの中から特定のエントリ
@@ -633,19 +633,18 @@ Org-modeは単純なものは単純なまま保持します。初めて起動し
 ックスであり、様々な方法で、そして様々な目的で利用できます。例えば、具体的に
 は以下のようなものです。
 
-     * 必要な部分の表示が視覚的に循環し、構造を編集するように拡張されたアウトライ
-     ナー
-     * 構造化されたノートを取るためのアスキーシステムと表編集機能
-     * TODOリストの編集機能
-     * 締切日とスケジュールを含む完全なアジェンダと予定表
+     * an outline extension with visibility cycling and structure editing
+     * an ASCII system and table editor for taking structured notes
+     * a TODO list editor
+     * a full agenda and planner with deadlines and work scheduling
      * Devid Allen 氏のGTDシステムを実行するための環境
      * シンプルなハイパーテキストシステム（HTMLとLaTeXエクスポートを含む）
      * 内部リンクで構成されたウェブページ群を生成するための公開ツール
      * 文芸的プログラミングのための環境
 
-最新のOrg-modeへのリンクを提供するOrg-modeのウェブページがあります。追加情報
-やよくある質問、チュートリアルなどもあります。`http://orgmode.org'で公開され
-ています。
+最新バージョンへのリンクがある、Org-modeのためのウェブサイトがあります。関連
+情報、よくある質問(FAQ)、または、チュートリアルなどへのリンクも集約されてい
+ます。`http://orgmode.org' で公開されています。
 
    このマニュアルのバージョン7.3は paperback book from Network Theory Ltd.
 (http://www.network-theory.co.uk/org/manual/)で手に入ります。
@@ -657,8 +656,8 @@ File: org-ja,  Node: Installation,  Next: アクティベーション,  Prev: Su
 ================
 
 重要:
-もしあなたが、Emacsに含まれる古いバージョンのOrg-modeを利用している、もしくは
-、XEmacsのパッケージを利用している場合には、このセクションを飛ばして直接
+もしあなたが、Emacsの一部として組み込まれたOrg-modeを利用している、もしくは、
+XEmacsのパッケージを利用している場合には、このセクションを飛ばして直接
 *note
 アクティベーション::に移動してください。あなたのEmacsに含まれているOrg-mode
 （存在する場合）のバージョンを見るためには、`M-x load-library RET org'を実行
@@ -667,13 +666,13 @@ File: org-ja,  Node: Installation,  Next: アクティベーション,  Prev: Su
 すでにインターネットからOrg-modeをダウンロードしているならば、`.zip'か`.tar'
 もしくはGitアーカイブかを問いませんが、以下の手順に沿ってインストールしてく
 ださい。まず、配布されたOrg-modeのディレクトリを解凍し、そこに移動します。次
-に、`Makefile'の最初のセクションを編集します。Emacsライブラリの名前を記入し
-なければなりません。たとえば、`emacs'もしくは`xemacs'のような名前です。最後
-に、ローカルのLispとInfoファイルが保存されているディレクトリへのパスを記入し
-ます。システムディレクトリへのアクセス権を持っていないならば、Emacsのロード
-パスにサブディレクトリとして`lisp'を加えることで、配布されたOrg-modeのディレ
-クトリでOrg-modeをそのまま動かせます。そうするために、`.emacs'に次の行を加え
-てください。
+に、`Makefile'の最初のセクションを編集します。Emacsバイナリの名前を記入しな
+ければなりません。たとえば、`emacs'もしくは`xemacs'のような名前です。最後に
+、ローカルのLispとInfoファイルが保存されているディレクトリへのパスを記入しま
+す。システムディレクトリへのアクセス権を持っていないならば、`lisp'（訳注：解
+凍したディレクトリの直下にあるサブディレクトリ）をEmacsのロードパスに加える
+ことで、配布されたOrg-modeのディレクトリを使って、簡単にOrg-modeを動かせます
+。このようにするためには、`.emacs'に次の行を加えてください。
 
      (setq load-path (cons "~/path/to/orgdir/lisp" load-path))
 
@@ -693,12 +692,12 @@ File: org-ja,  Node: Installation,  Next: アクティベーション,  Prev: Su
      make install
 
 INFOファイルのインストール方法はシステムに依存します。これは、`install-info'
-プログラムの違いに原因があります。Debianであれば、INFOファイルはカレントディ
-レクトリにインストールされ、INFO directoryファイルを変更します。その他の多
-くのシステムでは、各ファイルが別々に正しいディレクトリにコピーされる必要があ
-ります。そして、`install-info'がディレクトリファイルだけを修正します。システ
-ムのドキュメントを読んで、次のどちらのコマンドを必要とするかを調査してくださ
-い。
+プログラムの違いに原因があります。Debianであれば、`install-info'がINFOファイ
+ルを正しいディレクトリにコピーし、INFOディレクトリファイル（訳注：dirのこと
+）を変更します。その他の多くのシステムでは、各ファイルが別々に正しいディレク
+トリにコピーされる必要があります。そして、`install-info'がディレクトリファイ
+ルだけを修正します。システムのドキュメントを読んで、次のどちらのコマンドを必
+要とするかを調査してください。
 
      make install-info
      make install-info-debian
@@ -722,17 +721,17 @@ Org-modeのバッファは、フォントロックが有効になっている必
 Emacsの標準の設定です(1)。
 
    Org-modeの4つのコマンド（`org-store-link', `org-capture', `org-agenda',
-`org-iswitchb'）は、グローバルキーを割り当てて使いやすくするべきでしょう。（
-つまり、Org-modeのバッファだけではなく、Emcasでいつでも使えるようにします。
-）これらのキーバインドとして以下を割り当てることをお勧めします。自分の環境に
+`org-iswitchb'）は、グローバルキーを割り当てて使いやすくするべきでしょう（つ
+まり、Org-modeのバッファだけではなく、Emcasでいつでも使えるようにします。）
+。これらのキーバインドとして以下を割り当てることをお勧めします。自分の環境に
 応じて適当にキーを変更してください。
      (global-set-key "\C-cl" 'org-store-link)
      (global-set-key "\C-cc" 'org-capture)
      (global-set-key "\C-ca" 'org-agenda)
      (global-set-key "\C-cb" 'org-iswitchb)
 
-ここまでの設定では、拡張子が`.org'のファイルのすべてがOrg-modeに設定されます
-。別の方法として、ファイルの一行目に次のような一文を追加することでも、
+ここまでの設定を用いると、拡張子が`.org'のファイルのすべてがOrg-modeに設定さ
+れます。別の方法として、ファイルの一行目に次のような一文を追加することでも、
 Org-modeに設定できます。
 
      MY PROJECTS    -*- mode: org; -*-
@@ -740,10 +739,11 @@ Org-modeに設定できます。
 この設定が書き込まれたバッファは、ファイルの名前とは無関係にOrg-modeが有効に
 なります。変数`org-insert-mode-line-in-empty-file'も確認してください。
 
-Org-modeの多くのコマンドは、リージョンがアクティブな場合に動作します。アクテ
-ィブなリージョンをハイライトするためには、`transient-mark-mode'（XEmacsでは
-`zmacs-regions'）を有効にする必要があります。Emacs23では標準で有効になていま
-すが、Emacs22では次のように自分で設定する必要があります。
+Org-modeの多くのコマンドは、リージョンがアクティブならば、そのリージョンに対
+して動作します。アクティブなリージョンをハイライトするためには、
+`transient-mark-mode'（XEmacsでは`zmacs-regions'）を有効にする必要があります
+。Emacs23では標準で有効になっていますが、Emacs22では次のように自分で設定する
+必要があります。
      (transient-mark-mode 1)
 もし`transient-mark-mode'が好みでないならば、マウスを利用した領域の選択で、
 アクティブなリージョンを指定できます。もしくは、カーソルを移動する前に
@@ -780,9 +780,9 @@ org-version <RET>'）、また、Org-modeに関連する`.emacs'の設定をバ�
 メールを送信しない場合は、テンプレートの内容をメールクライアントにコピー＆ペ
 ーストしてください。
 
-もしOrg-modeを使っていてエラーが発生したら、バックトレースが非常に便利です（
-作り方は次節を参照してください）。しばしば次の明瞭な情報を含む小さな凡例ファ
-イルが問題解決の手助けになります。
+もしOrg-modeを使っていてエラーが発生したら、バックトレースがとても役立ちます
+（作り方は次節を参照してください）。しばしば例となる小さなファイルが問題解決
+の手助けになります。それらには次のような明瞭な情報を含んでいます。
 
   1. 正確に何を実行したのか
 
@@ -800,15 +800,16 @@ Org-modeを利用していて理解できないメッセージのエラーが発
 ンされたデバッガーによるエラーの発生箇所とどのように発生したかについての情報
 を含みます。以下に、有用なバックトレースを生成する手順を示します。
 
-  1. コンパイルされていないOrg-modeのLispファイル群を再度読み込む。コンパイ
-     ルされていないコードを利用して生成したバックトレースは、より多くの情報
-     を含みます。そのために、次のコマンドを実行します。
+  1. コンパイルされていないOrg-modeのLispファイル群を再度読み込みます。コン
+     パイルされていないコードを利用して生成したバックトレースは、より多くの
+     情報を含みます。そのために、次のコマンドを実行します。
           C-u M-x org-reload RET
      もしくは、`Org -> Refresh/Reload -> Reload Org uncompiled'をメニューか
      ら選択します。
 
-  2. オプションメニュー`Options'から、`Enter Debugger on Error'を選択する（
-     XEmacsでは、このオプションは`Troubleshooting'サブメニューにあります）。
+  2. オプションメニュー`Options'から、`Enter Debugger on Error'を選択します
+     （XEmacsでは、このオプションは`Troubleshooting'サブメニューにあります
+     ）。
 
   3. エラーを再現するために必要な操作を行なってください。実行した操作を忘れ
      ずにメモしておいてください。
@@ -14300,14 +14301,15 @@ Concept index
 * headline, promotion and demotion:      Structure editing.       (line   6)
 * headlines:                             Headlines.               (line   6)
 * hide text:                             Visibility cycling.      (line   6)
-* hideblocks, STARTUP keyword <1>:       Blocks.                  (line  13)
-* hideblocks, STARTUP keyword:           In-buffer settings.      (line 147)
+* hideblocks, STARTUP keyword <1>:       In-buffer settings.      (line 147)
+* hideblocks, STARTUP keyword:           Blocks.                  (line  13)
 * iCalendarエクスポート:                 iCalendarエクスポート.   (line   6)
 * iPhone:                                MobileOrg.               (line   6)
 * imenu.el:                              Cooperation.             (line  32)
-* inlineimages, STARTUP keyword <1>:     Handling links.          (line 129)
-* inlineimages, STARTUP keyword:         In-buffer settings.      (line  87)
+* inlineimages, STARTUP keyword <1>:     In-buffer settings.      (line  87)
+* inlineimages, STARTUP keyword:         Handling links.          (line 129)
 * jumping, to headlines:                 Motion.                  (line   6)
+* key bindings, global:                  アクティベーション.      (line   6)
 * level, require for tags/property match: Matching tags and properties.
                                                                   (line  59)
 * links, external:                       External links.          (line   6)
@@ -14325,8 +14327,8 @@ Concept index
 * narrow columns in tables:              列幅と整列.              (line   6)
 * nofnadjust, STARTUPキーワード:         In-buffer settings.      (line 134)
 * nofninline, STARTUPキーワード:         In-buffer settings.      (line 134)
-* nohideblocks, STARTUP keyword <1>:     In-buffer settings.      (line 147)
-* nohideblocks, STARTUP keyword:         Blocks.                  (line  13)
+* nohideblocks, STARTUP keyword <1>:     Blocks.                  (line  13)
+* nohideblocks, STARTUP keyword:         In-buffer settings.      (line 147)
 * noinlineimages, STARTUP keyword <1>:   In-buffer settings.      (line  87)
 * noinlineimages, STARTUP keyword:       Handling links.          (line 129)
 * occur, command:                        Sparse trees.            (line   6)
@@ -14339,8 +14341,8 @@ Concept index
 * org-publish-project-alist:             Project alist.           (line   6)
 * outline tree:                          Headlines.               (line   6)
 * outlines:                              Outlines.                (line   6)
-* overview, STARTUPキーワード <1>:       In-buffer settings.      (line  69)
-* overview, STARTUPキーワード:           Visibility cycling.      (line  56)
+* overview, STARTUPキーワード <1>:       Visibility cycling.      (line  56)
+* overview, STARTUPキーワード:           In-buffer settings.      (line  69)
 * overview, global visibility state:     Visibility cycling.      (line  23)
 * pasting, of subtrees:                  Structure editing.       (line   6)
 * plain lists:                           Plain lists.             (line   6)
@@ -14351,11 +14353,11 @@ Concept index
                                                                   (line   6)
 * promotion, of subtrees:                Structure editing.       (line   6)
 * properties:                            Properties and Columns.  (line   6)
-* property, CUSTOM_ID <1>:               Internal links.          (line   6)
-* property, CUSTOM_ID:                   Handling links.          (line  20)
+* property, CUSTOM_ID <1>:               Handling links.          (line  20)
+* property, CUSTOM_ID:                   Internal links.          (line   6)
 * property, ID <1>:                      カラム表示の保存.        (line  22)
-* property, ID <2>:                      Handling links.          (line  20)
-* property, ID:                          iCalendarエクスポート.   (line  19)
+* property, ID <2>:                      iCalendarエクスポート.   (line  19)
+* property, ID:                          Handling links.          (line  20)
 * property, LATEX_CLASS:                 Header and sectioning.   (line   8)
 * property, LATEX_CLASS_OPTIONS:         Header and sectioning.   (line   8)
 * property, VISIBILITY:                  Visibility cycling.      (line  67)
@@ -14364,14 +14366,14 @@ Concept index
 * proverty, ATTACH_DIR_INTERIT:          Attachments.             (line  73)
 * query editing, in agenda:              Agenda commands.         (line 177)
 * refiling notes:                        Refiling notes.          (line   6)
-* region, active <1>:                    Built-in table editor.   (line 157)
-* region, active <2>:                    DocBook export commands. (line   6)
-* region, active <3>:                    LaTeX/PDF export commands.
-                                                                  (line   6)
-* region, active <4>:                    Structure editing.       (line 129)
-* region, active <5>:                    HTML Export commands.    (line   6)
-* region, active:                        ASCII/Latin-1/UTF-8 export.
+* region, active <1>:                    ASCII/Latin-1/UTF-8 export.
                                                                   (line  10)
+* region, active <2>:                    Built-in table editor.   (line 157)
+* region, active <3>:                    Structure editing.       (line 129)
+* region, active <4>:                    HTML Export commands.    (line   6)
+* region, active <5>:                    LaTeX/PDF export commands.
+                                                                  (line   6)
+* region, active:                        DocBook export commands. (line   6)
 * regular expressions, with tags search: Matching tags and properties.
                                                                   (line  55)
 * remember.el:                           Cooperation.             (line  41)
@@ -14385,10 +14387,10 @@ Concept index
 * show all, command:                     Visibility cycling.      (line  34)
 * show all, global visibility state:     Visibility cycling.      (line  23)
 * show hidden text:                      Visibility cycling.      (line   6)
-* showall, STARTUPキーワード <1>:        Visibility cycling.      (line  56)
-* showall, STARTUPキーワード:            In-buffer settings.      (line  69)
-* showeverything, STARTUPキーワード <1>: Visibility cycling.      (line  56)
-* showeverything, STARTUPキーワード:     In-buffer settings.      (line  69)
+* showall, STARTUPキーワード <1>:        In-buffer settings.      (line  69)
+* showall, STARTUPキーワード:            Visibility cycling.      (line  56)
+* showeverything, STARTUPキーワード <1>: In-buffer settings.      (line  69)
+* showeverything, STARTUPキーワード:     Visibility cycling.      (line  56)
 * sorting, of agenda items:              agendaの項目をソートする.
                                                                   (line   6)
 * sorting, of subtrees:                  Structure editing.       (line   6)
@@ -14404,9 +14406,9 @@ Concept index
 * subtree, subtree visibility state:     Visibility cycling.      (line  10)
 * subtrees, cut and paste:               Structure editing.       (line   6)
 * table editor, table.el:                Cooperation.             (line  52)
-* table.el:                              Cooperation.             (line  49)
-* tables <1>:                            Export options.          (line  43)
-* tables:                                Tables.                  (line   6)
+* table.el:                              Cooperation.             (line  52)
+* tables <1>:                            Tables.                  (line   6)
+* tables:                                Export options.          (line  43)
 * tag filtering, in agenda:              Agenda commands.         (line 177)
 * tags view:                             Matching tags and properties.
                                                                   (line   6)
@@ -14417,11 +14419,11 @@ Concept index
 * time-of-day specification:             Time-of-day specifications.
                                                                   (line   6)
 * timeline, single file:                 Timeline.                (line   6)
-* transient-mark-mode <1>:               DocBook export commands. (line   6)
-* transient-mark-mode <2>:               ASCII/Latin-1/UTF-8 export.
+* transient-mark-mode <1>:               ASCII/Latin-1/UTF-8 export.
                                                                   (line  10)
-* transient-mark-mode <3>:               LaTeX/PDF export commands.
+* transient-mark-mode <2>:               LaTeX/PDF export commands.
                                                                   (line   6)
+* transient-mark-mode <3>:               DocBook export commands. (line   6)
 * transient-mark-mode:                   HTML Export commands.    (line   6)
 * trees, sparse:                         Sparse trees.            (line   6)
 * trees, visibility:                     Visibility cycling.      (line   6)
@@ -14452,7 +14454,7 @@ Concept index
 * 画像,インライン:                       Handling links.          (line 129)
 * 補完,ファイル名の:                     Handling links.          (line  86)
 * フック:                                Hooks.                   (line   6)
-* 印刷版:                                Summary.                 (line  60)
+* 印刷版:                                Summary.                 (line  59)
 * リンク,次/前を探す:                    Handling links.          (line 147)
 * リンク,内部:                           Internal links.          (line   6)
 * リンク,戻る:                           Handling links.          (line 141)
@@ -14519,7 +14521,7 @@ Concept index
 * 依存関係、TODOの状態:                  TODO dependencies.       (line   6)
 * フェイス、TODOキーワード:              Faces for TODO keywords. (line   6)
 * 拡張されたTODOキーワード:              TODO extensions.         (line   6)
-* よくある質問:                          Summary.                 (line  56)
+* よくある質問:                          Summary.                 (line  55)
 * インストール:                          Installation.            (line   6)
 * エクスポート:                          Exporting.               (line   6)
 * カスタマイズ:                          Customization.           (line   6)
@@ -14542,36 +14544,36 @@ Concept index
 * 特別な文字列:                          Export options.          (line  43)
 * 継承、タグの:                          Tag inheritance.         (line   6)
 * 見出しの階層:                          Export options.          (line  43)
-* 計算中の定数:                          References.              (line 100)
+* 計算中の定数:                          References.              (line 121)
 * フォーマット,リンクの:                 Link format.             (line   6)
-* プロパティ（API） <1>:                 Using the property API.  (line   6)
-* プロパティ（API）:                     Property API.            (line   6)
-* プロパティ（ARCHIVE） <1>:             Property inheritance.    (line  31)
-* プロパティ（ARCHIVE）:                 Moving subtrees.         (line  27)
-* プロパティ（CATEGORY） <1>:            Categories.              (line  12)
-* プロパティ（CATEGORY）:                Property inheritance.    (line  27)
+* プロパティ（API） <1>:                 Property API.            (line   6)
+* プロパティ（API）:                     Using the property API.  (line   6)
+* プロパティ（ARCHIVE） <1>:             Moving subtrees.         (line  27)
+* プロパティ（ARCHIVE）:                 Property inheritance.    (line  31)
+* プロパティ（CATEGORY） <1>:            Property inheritance.    (line  27)
+* プロパティ（CATEGORY）:                Categories.              (line  12)
 * プロパティ（COLUMNS） <1>:             In-buffer settings.      (line  26)
 * プロパティ（COLUMNS）:                 Property inheritance.    (line  19)
 * プロパティ、COOKIE_DATA <1>:           Breaking down tasks.     (line  19)
 * プロパティ、COOKIE_DATA:               Checkboxes.              (line  31)
-* プロパティ、EXPORT_FILE_NAME <1>:      LaTeX/PDF export commands.
-                                                                  (line   7)
+* プロパティ、EXPORT_FILE_NAME <1>:      DocBook export commands. (line   7)
 * プロパティ、EXPORT_FILE_NAME <2>:      HTML Export commands.    (line   7)
-* プロパティ、EXPORT_FILE_NAME <3>:      ASCII/Latin-1/UTF-8 export.
+* プロパティ、EXPORT_FILE_NAME <3>:      LaTeX/PDF export commands.
+                                                                  (line   7)
+* プロパティ、EXPORT_FILE_NAME:          ASCII/Latin-1/UTF-8 export.
                                                                   (line  11)
-* プロパティ、EXPORT_FILE_NAME:          DocBook export commands. (line   7)
 * プロパティ、EXPORT_TITLE:              Document title.          (line  15)
 * プロパティ、LOG_INTO_DRAWER:           Tracking TODO state changes.
                                                                   (line   6)
 * 構造の分割、LaTeXエクスポートのための: Header and sectioning.   (line   6)
-* プロパティ、ORDERED <1>:               TODO dependencies.       (line   6)
-* プロパティ、ORDERED <2>:               Checkboxes.              (line  45)
-* プロパティ、ORDERED:                   TODO dependencies.       (line  29)
+* プロパティ、ORDERED <1>:               Checkboxes.              (line  81)
+* プロパティ、ORDERED <2>:               TODO dependencies.       (line  29)
+* プロパティ、ORDERED:                   Checkboxes.              (line  45)
 * プロパティ、_ALL:                      Property syntax.         (line  36)
 * ライブラリ、babel:                     Library of Babel.        (line   6)
 * インライン画像:                        Handling links.          (line 129)
-* タイムスタンプ <1>:                    Timestamps.              (line  14)
-* タイムスタンプ:                        日付や時間.              (line   6)
+* タイムスタンプ <1>:                    日付や時間.              (line   6)
+* タイムスタンプ:                        Timestamps.              (line  14)
 * タスク、細分化:                        Breaking down tasks.     (line   6)
 * ハイパーリンク:                        Hyperlinks.              (line   6)
 * ファイルリンク:                        External links.          (line   6)
@@ -14648,8 +14650,8 @@ Concept index
 * 検索、プロパティの:                    Property searches.       (line   6)
 * 継承、プロパティの:                    Property inheritance.    (line   6)
 * 評価、ソースコード:                    Evaluating code blocks.  (line   6)
-* プロパティのためのAPI <1>:             Using the property API.  (line   6)
-* プロパティのためのAPI:                 Property API.            (line   6)
+* プロパティのためのAPI <1>:             Property API.            (line   6)
+* プロパティのためのAPI:                 Using the property API.  (line   6)
 * 特別なプロパティ（CLOCKSUM） <1>:      Special properties.      (line  13)
 * 特別なプロパティ（CLOCKSUM）:          Agenda column view.      (line  28)
 * チェックボックスとTODO依存関係:        TODO dependencies.       (line  42)
@@ -14663,8 +14665,8 @@ Concept index
 * スペシャルキーワード:                  In-buffer settings.      (line   6)
 * タイムスタンプ、作成:                  Creating timestamps.     (line   6)
 * タイムスタンプの作成:                  Creating timestamps.     (line   6)
-* テーブルの中での計算 <1>:              Built-in table editor.   (line 157)
-* テーブルの中での計算:                  The spreadsheet.         (line   6)
+* テーブルの中での計算 <1>:              The spreadsheet.         (line   6)
+* テーブルの中での計算:                  Built-in table editor.   (line 157)
 * リスト、他のモードで:                  Tables in arbitrary syntax.
                                                                   (line   6)
 * リンクのフォーマット:                  Link format.             (line   6)
@@ -14677,14 +14679,14 @@ Concept index
 * 数式のシンタックス（Calc）:            Formula syntax for Calc. (line   6)
 * 内部リンク、出力するHTMLの:            Links in HTML export.    (line   6)
 * 外部リンク、出力するHTMLの:            Links in HTML export.    (line   6)
-* アクティブなリージョン <1>:            HTML Export commands.    (line   6)
-* アクティブなリージョン <2>:            Built-in table editor.   (line 157)
-* アクティブなリージョン <3>:            ASCII/Latin-1/UTF-8 export.
-                                                                  (line  10)
-* アクティブなリージョン <4>:            Structure editing.       (line 129)
-* アクティブなリージョン <5>:            DocBook export commands. (line   6)
-* アクティブなリージョン:                LaTeX/PDF export commands.
+* アクティブなリージョン <1>:            DocBook export commands. (line   6)
+* アクティブなリージョン <2>:            Structure editing.       (line 129)
+* アクティブなリージョン <3>:            LaTeX/PDF export commands.
                                                                   (line   6)
+* アクティブなリージョン <4>:            ASCII/Latin-1/UTF-8 export.
+                                                                  (line  10)
+* アクティブなリージョン <5>:            HTML Export commands.    (line   6)
+* アクティブなリージョン:                Built-in table editor.   (line 157)
 * アジェンダビューの出力 <1>:            Agenda commands.         (line 484)
 * アジェンダビューの出力:                Exporting Agenda Views.  (line  12)
 * アジェンダ用のファイル:                Agenda files.            (line   6)
@@ -14697,9 +14699,9 @@ Concept index
                                                                   (line   6)
 * ファイル毎のキーワード:                Per-file keywords.       (line   6)
 * プロパティ、スペシャル:                Special properties.      (line   6)
-* プロパティ、ログをとる <1>:            Tracking TODO state changes.
+* プロパティ、ログをとる <1>:            Property inheritance.    (line  35)
+* プロパティ、ログをとる:                Tracking TODO state changes.
                                                                   (line  40)
-* プロパティ、ログをとる:                Property inheritance.    (line  35)
 * プロパティシンタックス:                Property syntax.         (line   6)
 * リンクの省略記法の補完:                Completion.              (line   6)
 * 列（フィールドの座標）:                References.              (line  86)
@@ -14750,7 +14752,6 @@ Concept index
 * オプションキーワードの補完:            Completion.              (line   6)
 * カラムビュー、プロパティ用:            Defining columns.        (line   6)
 * カレンダー、日付選択のため:            The date/time prompt.    (line  66)
-* キーバインド（グローバル）:            アクティベーション.      (line   6)
 * コードブロック、バッチ処理:            バッチ処理.              (line   6)
 * コードブロック、評価の結果:            評価の結果.              (line   6)
 * サイトマップ、ページの公開:            Sitemap.                 (line   6)
@@ -14784,9 +14785,9 @@ Concept index
 * ベクトル（テーブルでの計算）:          Formula syntax for Calc. (line  10)
 * リスト、マークアップのルール:          Lists.                   (line   6)
 * 奇数レベルのみのアウトライン:          Clean view.              (line   6)
-* 補完、オプションのキーワード <1>:      Per-file keywords.       (line  23)
-* 補完、オプションのキーワード <2>:      Completion.              (line   6)
-* 補完、オプションのキーワード:          Export options.          (line   6)
+* 補完、オプションのキーワード <1>:      Export options.          (line   6)
+* 補完、オプションのキーワード <2>:      Per-file keywords.       (line  23)
+* 補完、オプションのキーワード:          Completion.              (line   6)
 * アクティブでないタイムスタンプ:        Timestamps.              (line  47)
 * アジェンダのコマンドを選択する:        Agenda dispatcher.       (line   6)
 * アジェンダビュー、ユーザー定義:        Special agenda views.    (line   6)
@@ -14824,12 +14825,12 @@ Concept index
 * コードのテキスト、マークアップのルール: Emphasis and monospace. (line   6)
 * 太字のテキスト、マーックアップのルール: Emphasis and monospace. (line   6)
 * 斜体のテキスト、マーックアップのルール: Emphasis and monospace. (line   6)
-* （外部出力に用いる）ヘッドラインレベル <1>: ASCII/Latin-1/UTF-8 export.
-                                                                  (line  37)
+* （外部出力に用いる）ヘッドラインレベル <1>: LaTeX/PDF export commands.
+                                                                  (line  36)
 * （外部出力に用いる）ヘッドラインレベル <2>: HTML Export commands.
                                                                   (line  39)
-* （外部出力に用いる）ヘッドラインレベル: LaTeX/PDF export commands.
-                                                                  (line  36)
+* （外部出力に用いる）ヘッドラインレベル: ASCII/Latin-1/UTF-8 export.
+                                                                  (line  37)
 * 下線のあるテキスト、マークアップのルール: Emphasis and monospace.
                                                                   (line   6)
 * 見出しとセクション、マークアップのルール: Headings and sections.
@@ -16223,425 +16224,425 @@ Tag Table:
 Node: Top1358
 Node: Introduction24487
 Node: Summary24972
-Node: Installation29571
-Node: アクティベーション32994
-Ref: アクティベーション-Footnote-135361
-Node: Feedback35585
-Ref: Feedback-Footnote-139532
-Node: Conventions39689
-Node: Document Structure41702
-Node: Outlines42893
-Node: Headlines43859
-Ref: Headlines-Footnote-145243
-Node: Visibility cycling45471
-Ref: Visibility cycling-Footnote-149694
-Ref: Visibility cycling-Footnote-249793
-Ref: Visibility cycling-Footnote-349851
-Node: Motion50206
-Node: Structure editing51894
-Ref: Structure editing-Footnote-160828
-Node: Sparse trees60969
-Ref: Sparse trees-Footnote-164562
-Ref: Sparse trees-Footnote-264828
-Ref: Sparse trees-Footnote-364915
-Node: Plain lists65148
-Ref: Plain lists-Footnote-176404
-Ref: Plain lists-Footnote-277061
-Ref: Plain lists-Footnote-377192
-Ref: Plain lists-Footnote-477474
-Ref: Plain lists-Footnote-577819
-Ref: Plain lists-Footnote-677925
-Ref: Plain lists-Footnote-778003
-Ref: Plain lists-Footnote-878308
-Ref: Plain lists-Footnote-978449
-Node: Drawers78577
-Ref: Drawers-Footnote-180334
-Node: Blocks80482
-Node: Footnotes81243
-Ref: Footnotes-Footnote-187434
-Ref: Footnotes-Footnote-287561
-Node: Orgstruct mode87665
-Node: Tables89293
-Node: Built-in table editor90104
-Node: 列幅と整列103597
-Ref: 列幅と整列-Footnote-1107180
-Ref: 列幅と整列-Footnote-2107238
-Node: Column groups107374
-Node: Orgtbl mode109231
-Node: The spreadsheet110314
-Node: References111940
-Ref: References-Footnote-1120171
-Ref: References-Footnote-2120458
-Ref: References-Footnote-3120773
-Ref: References-Footnote-4121020
-Ref: References-Footnote-5121193
-Node: Formula syntax for Calc121524
-Ref: Formula syntax for Calc-Footnote-1124882
-Node: Formula syntax for Lisp125241
-Node: Field and range formulas127424
-Node: Column formulas130216
-Node: Editing and debugging formulas132467
-Node: Updating the table138370
-Node: Advanced features140021
-Node: Org-Plot145220
-Node: Hyperlinks149069
-Node: Link format149932
-Node: Internal links151676
-Ref: Internal links-Footnote-1154219
-Ref: Internal links-Footnote-2154470
-Node: Radio targets154777
-Node: External links155700
-Node: Handling links160132
-Ref: Handling links-Footnote-1170510
-Ref: Handling links-Footnote-2171032
-Ref: Handling links-Footnote-3171388
-Ref: Handling links-Footnote-4171505
-Ref: Handling links-Footnote-5171599
-Node: Using links outside Org171674
-Node: Link abbreviations172290
-Node: Search options175098
-Ref: Search options-Footnote-1177517
-Node: Custom searches177629
-Node: TODO Items179037
-Ref: TODO Items-Footnote-1180520
-Node: TODO basics180687
-Node: TODO extensions184331
-Node: Workflow states185614
-Ref: Workflow states-Footnote-1187321
-Node: TODO types187438
-Ref: TODO types-Footnote-1189579
-Node: Multiple sets in one file189694
-Node: Fast access to TODO states192119
-Ref: Fast access to TODO states-Footnote-1193079
-Node: Per-file keywords193420
-Ref: Per-file keywords-Footnote-1195239
-Node: Faces for TODO keywords195521
-Node: TODO dependencies196865
-Node: Progress logging199781
-Node: Closing items200661
-Ref: Closing items-Footnote-1201935
-Ref: Closing items-Footnote-2202015
-Node: Tracking TODO state changes202099
-Ref: Tracking TODO state changes-Footnote-1205935
-Ref: Tracking TODO state changes-Footnote-2206009
-Node: 習慣の追跡206415
-Node: Priorities211562
-Ref: Priorities-Footnote-1214217
-Node: Breaking down tasks214318
-Ref: Breaking down tasks-Footnote-1216866
-Node: Checkboxes217023
-Ref: Checkboxes-Footnote-1223471
-Ref: Checkboxes-Footnote-2223621
-Node: Tags223829
-Node: Tag inheritance225094
-Ref: Tag inheritance-Footnote-1226561
-Ref: Tag inheritance-Footnote-2226709
-Node: Setting tags226926
-Ref: Setting tags-Footnote-1234939
-Node: Tag searches235045
-Node: Properties and Columns236590
-Node: Property syntax238419
-Node: Special properties242053
-Node: Property searches243799
-Node: Property inheritance245596
-Node: Column view247845
-Node: Defining columns249467
-Node: Scope of column definitions249963
-Node: Column attributes251049
-Ref: Column attributes-Footnote-1256272
-Node: Using column view256420
-Node: カラム表示の保存259884
-Ref: カラム表示の保存-Footnote-1263876
-Node: Property API264060
-Node: 日付や時間264528
-Node: Timestamps265784
-Ref: Timestamps-Footnote-1269133
-Node: Creating timestamps269360
-Node: The date/time prompt273052
-Ref: The date/time prompt-Footnote-1278441
-Ref: The date/time prompt-Footnote-2278654
-Ref: The date/time prompt-Footnote-3278779
-Node: Custom time format278938
-Node: Deadlines and scheduling281289
-Ref: Deadlines and scheduling-Footnote-1284928
-Node: Inserting deadline/schedule285140
-Ref: Inserting deadline/schedule-Footnote-1287905
-Ref: Inserting deadline/schedule-Footnote-2288095
-Ref: Inserting deadline/schedule-Footnote-3288209
-Node: Repeated tasks288324
-Ref: Repeated tasks-Footnote-1292933
-Ref: Repeated tasks-Footnote-2293189
-Node: Clocking work time293486
-Ref: Clocking work time-Footnote-1294943
-Node: Clocking commands295110
-Ref: Clocking commands-Footnote-1299957
-Ref: Clocking commands-Footnote-2300121
-Ref: Clocking commands-Footnote-3300174
-Ref: Clocking commands-Footnote-4300237
-Node: The clock table300333
-Ref: The clock table-Footnote-1308116
-Ref: The clock table-Footnote-2308244
-Node: Resolving idle time308444
-Ref: Resolving idle time-Footnote-1312868
-Node: Effort estimates313362
-Ref: Effort estimates-Footnote-1316962
-Ref: Effort estimates-Footnote-2317070
-Node: Relative timer317198
-Node: カウントダウンタイマ319881
-Node: Capture - Refile - Archive320645
-Node: Capture321993
-Node: Setting up capture323767
-Ref: Setting up capture-Footnote-1324230
-Node: Using capture324316
-Node: Capture templates326955
-Node: Template elements329140
-Node: テンプレートの拡張335781
-Ref: テンプレートの拡張-Footnote-1339911
-Ref: テンプレートの拡張-Footnote-2340044
-Ref: テンプレートの拡張-Footnote-3340323
-Node: Attachments340439
-Ref: Attachments-Footnote-1344807
-Node: RSS Feeds344998
-Node: Protocols347112
-Node: Refiling notes348012
-Ref: Refiling notes-Footnote-1350703
-Node: Archiving350818
-Node: Moving subtrees351686
-Ref: Moving subtrees-Footnote-1353912
-Node: ファイル内部でのアーカイブ354438
-Node: Agenda Views357829
-Node: Agenda files361023
-Ref: Agenda files-Footnote-1365312
-Ref: Agenda files-Footnote-2365527
-Node: Agenda dispatcher365833
-Ref: Agenda dispatcher-Footnote-1368972
-Ref: Agenda dispatcher-Footnote-2369099
-Node: Built-in agenda views369267
-Node: Weekly/daily agenda370081
-Ref: Weekly/daily agenda-Footnote-1376894
-Ref: Weekly/daily agenda-Footnote-2377261
-Node: Global TODO list377374
-Node: Matching tags and properties381040
-Node: Timeline390067
-Node: Search view391167
-Node: Stuck projects393114
-Ref: Stuck projects-Footnote-1396598
-Node: Presentation and sorting396628
-Node: Categories397771
-Ref: Categories-Footnote-1398928
-Node: Time-of-day specifications399647
-Node: agendaの項目をソートする402170
-Node: Agenda commands404367
-Ref: Agenda commands-Footnote-1434840
-Ref: Agenda commands-Footnote-2434955
-Ref: Agenda commands-Footnote-3435650
-Node: Custom agenda views435785
-Node: Storing searches436640
-Ref: Storing searches-Footnote-1440232
-Node: Block agenda440420
-Node: Setting Options442122
-Node: Exporting Agenda Views446382
-Ref: Exporting Agenda Views-Footnote-1453167
-Ref: Exporting Agenda Views-Footnote-2453271
-Ref: Exporting Agenda Views-Footnote-3453536
-Ref: Exporting Agenda Views-Footnote-4453867
-Node: Agenda column view454003
-Node: Markup458013
-Node: Structural markup elements459212
-Node: Document title459989
-Node: Headings and sections461027
-Node: Table of contents461621
-Node: Initial text462494
-Node: Lists463950
-Node: Paragraphs464335
-Node: Footnote markup465640
-Node: Emphasis and monospace466053
-Node: Horizontal rules466543
-Node: コメント行466869
-Node: Images and tables467539
-Node: Literal examples469254
-Ref: Literal examples-Footnote-1473579
-Ref: Literal examples-Footnote-2474697
-Ref: Literal examples-Footnote-3474876
-Ref: Literal examples-Footnote-4475096
-Node: Include files475215
-Node: Index entries477005
-Node: Macro replacement477567
-Node: Embedded LaTeX478583
-Ref: Embedded LaTeX-Footnote-1479664
-Node: Special symbols479882
-Ref: Special symbols-Footnote-1481798
-Node: Subscripts and superscripts481953
-Node: LaTeX fragments483514
-Ref: LaTeX fragments-Footnote-1486150
-Ref: LaTeX fragments-Footnote-2486158
-Ref: LaTeX fragments-Footnote-3486394
-Node: Previewing LaTeX fragments486589
-Node: CDLaTeX mode487895
-Ref: CDLaTeX mode-Footnote-1490998
-Node: Exporting491223
-Node: Selective export493772
-Node: Export options494878
-Ref: Export options-Footnote-1500570
-Node: The export dispatcher500717
-Ref: The export dispatcher-Footnote-1502589
-Node: ASCII/Latin-1/UTF-8 export502721
-Ref: ASCII/Latin-1/UTF-8 export-Footnote-1506076
-Ref: ASCII/Latin-1/UTF-8 export-Footnote-2506149
-Node: HTML export506245
-Node: HTML Export commands507414
-Ref: HTML Export commands-Footnote-1510118
-Ref: HTML Export commands-Footnote-2510191
-Node: Quoting HTML tags510287
-Node: Links in HTML export511061
-Node: Tables in HTML export512518
-Node: Images in HTML export513196
-Ref: Images in HTML export-Footnote-1514801
-Node: Math formatting in HTML export514883
-Ref: Math formatting in HTML export-Footnote-1516611
-Node: Text areas in HTML export516799
-Node: CSS support517966
-Ref: CSS support-Footnote-1521438
-Ref: CSS support-Footnote-2521682
-Node: JavaScript support521908
-Node: LaTeX and PDF export526683
-Ref: LaTeX and PDF export-Footnote-1527965
-Node: LaTeX/PDF export commands528297
-Ref: LaTeX/PDF export commands-Footnote-1530870
-Ref: LaTeX/PDF export commands-Footnote-2530943
-Node: Header and sectioning531038
-Ref: Header and sectioning-Footnote-1532481
-Node: Quoting LaTeX code532601
-Node: Tables in LaTeX export533413
-Node: Images in LaTeX export534663
-Node: Beamerクラスのエクスポート536496
-Node: DocBook export543441
-Node: DocBook export commands544469
-Ref: DocBook export commands-Footnote-1546349
-Ref: DocBook export commands-Footnote-2546428
-Node: Quoting DocBook code546512
-Node: Recursive sections547872
-Node: Tables in DocBook export548876
-Node: Images in DocBook export549393
-Node: Special characters551717
-Node: TaskJuggler export552976
-Node: Freemind export559472
-Node: XOXO export559837
-Node: iCalendarエクスポート560393
-Ref: iCalendarエクスポート-Footnote-1563950
-Ref: iCalendarエクスポート-Footnote-2564062
-Ref: iCalendarエクスポート-Footnote-3564201
-Node: Publishing564351
-Node: Configuration565393
-Node: Project alist566232
-Node: Sources and destinations567416
-Node: Selecting files569237
-Node: Publishing action570418
-Ref: Publishing action-Footnote-1572591
-Node: Publishing options573076
-Node: Publishing links577026
-Node: Sitemap579315
-Node: Generating an index582550
-Node: Uploading files583296
-Node: Sample configuration585545
-Node: Simple example586118
-Node: Complex example586822
-Node: 公開の開始589119
-Node: Working With Source Code590409
-Node: Structure of code blocks592566
-Node: Editing source code594534
-Node: Exporting code blocks596749
-Node: Extracting source code599047
-Node: Evaluating code blocks600870
-Ref: Evaluating code blocks-Footnote-1604166
-Ref: Evaluating code blocks-Footnote-2604602
-Node: Library of Babel604756
-Node: Languages605840
-Node: Header arguments608322
-Node: Using header arguments608865
-Node: System-wide header arguments609740
-Node: Language-specific header arguments610627
-Node: Buffer-wide header arguments611069
-Node: Header arguments in Org-mode properties612004
-Node: Code block specific header arguments613384
-Node: Header arguments in function calls615536
-Node: Specific header arguments616354
-Node: var618189
-Node: results625090
-Node: file630598
-Node: dir631832
-Node: exports635546
-Node: tangle636523
-Node: mkdirp637525
-Node: comments637990
-Node: no-expand639472
-Node: session640113
-Node: noweb640691
-Node: cache642576
-Node: sep644422
-Node: hlines645292
-Node: colnames647038
-Node: rownames648568
-Node: shebang649708
-Node: eval650148
-Node: 評価の結果650782
-Node: Noweb reference syntax654648
-Node: Key bindings and useful functions655944
-Node: バッチ処理657600
-Node: Miscellaneous658820
-Node: Completion659714
-Node: Easy Templates662373
-Node: Speed keys664051
-Node: Code evaluation security665110
-Node: Customization668584
-Node: In-buffer settings669273
-Ref: In-buffer settings-Footnote-1680586
-Node: The very busy C-c C-c key680633
-Node: Clean view683070
-Ref: Clean view-Footnote-1688030
-Ref: Clean view-Footnote-2688096
-Ref: Clean view-Footnote-3688335
-Ref: Clean view-Footnote-4688411
-Ref: Clean view-Footnote-5688558
-Node: TTY keys688742
-Node: Interaction690605
-Node: Cooperation691001
-Node: Conflicts695801
-Node: Hacking700593
-Node: Hooks701583
-Node: Add-on packages702057
-Node: Adding hyperlink types702694
-Node: Context-sensitive commands707512
-Ref: Context-sensitive commands-Footnote-1709437
-Node: Tables in arbitrary syntax709597
-Node: Radio tables711345
-Node: A LaTeX example714383
-Ref: A LaTeX example-Footnote-1718917
-Ref: A LaTeX example-Footnote-2719133
-Node: Translator functions719619
-Ref: Translator functions-Footnote-1723396
-Node: ラジオリスト723543
-Node: Dynamic blocks724983
-Node: Special agenda views727935
-Ref: Special agenda views-Footnote-1733614
-Node: Extracting agenda information733805
-Node: Using the property API738964
-Node: マッピングAPIを使う743339
-Node: MobileOrg748701
-Node: Setting up the staging area750838
-Ref: Setting up the staging area-Footnote-1752355
-Ref: Setting up the staging area-Footnote-2752781
-Node: Pushing to MobileOrg753127
-Ref: Pushing to MobileOrg-Footnote-1754728
-Ref: Pushing to MobileOrg-Footnote-2755460
-Node: MobileOrgからpullする755547
-Ref: MobileOrgからpullする-Footnote-1759422
-Ref: MobileOrgからpullする-Footnote-2759495
-Node: History and Acknowledgments760089
-Node: Main Index776462
-Node: Key Index845309
-Node: Command and Function Index889198
-Node: Variable Index918679
+Node: Installation29529
+Node: アクティベーション33058
+Ref: アクティベーション-Footnote-135471
+Node: Feedback35695
+Ref: Feedback-Footnote-139705
+Node: Conventions39862
+Node: Document Structure41875
+Node: Outlines43066
+Node: Headlines44032
+Ref: Headlines-Footnote-145416
+Node: Visibility cycling45644
+Ref: Visibility cycling-Footnote-149867
+Ref: Visibility cycling-Footnote-249966
+Ref: Visibility cycling-Footnote-350024
+Node: Motion50379
+Node: Structure editing52067
+Ref: Structure editing-Footnote-161001
+Node: Sparse trees61142
+Ref: Sparse trees-Footnote-164735
+Ref: Sparse trees-Footnote-265001
+Ref: Sparse trees-Footnote-365088
+Node: Plain lists65321
+Ref: Plain lists-Footnote-176577
+Ref: Plain lists-Footnote-277234
+Ref: Plain lists-Footnote-377365
+Ref: Plain lists-Footnote-477647
+Ref: Plain lists-Footnote-577992
+Ref: Plain lists-Footnote-678098
+Ref: Plain lists-Footnote-778176
+Ref: Plain lists-Footnote-878481
+Ref: Plain lists-Footnote-978622
+Node: Drawers78750
+Ref: Drawers-Footnote-180507
+Node: Blocks80655
+Node: Footnotes81416
+Ref: Footnotes-Footnote-187607
+Ref: Footnotes-Footnote-287734
+Node: Orgstruct mode87838
+Node: Tables89466
+Node: Built-in table editor90277
+Node: 列幅と整列103770
+Ref: 列幅と整列-Footnote-1107353
+Ref: 列幅と整列-Footnote-2107411
+Node: Column groups107547
+Node: Orgtbl mode109404
+Node: The spreadsheet110487
+Node: References112113
+Ref: References-Footnote-1120344
+Ref: References-Footnote-2120631
+Ref: References-Footnote-3120946
+Ref: References-Footnote-4121193
+Ref: References-Footnote-5121366
+Node: Formula syntax for Calc121697
+Ref: Formula syntax for Calc-Footnote-1125055
+Node: Formula syntax for Lisp125414
+Node: Field and range formulas127597
+Node: Column formulas130389
+Node: Editing and debugging formulas132640
+Node: Updating the table138543
+Node: Advanced features140194
+Node: Org-Plot145393
+Node: Hyperlinks149242
+Node: Link format150105
+Node: Internal links151849
+Ref: Internal links-Footnote-1154392
+Ref: Internal links-Footnote-2154643
+Node: Radio targets154950
+Node: External links155873
+Node: Handling links160305
+Ref: Handling links-Footnote-1170683
+Ref: Handling links-Footnote-2171205
+Ref: Handling links-Footnote-3171561
+Ref: Handling links-Footnote-4171678
+Ref: Handling links-Footnote-5171772
+Node: Using links outside Org171847
+Node: Link abbreviations172463
+Node: Search options175271
+Ref: Search options-Footnote-1177690
+Node: Custom searches177802
+Node: TODO Items179210
+Ref: TODO Items-Footnote-1180693
+Node: TODO basics180860
+Node: TODO extensions184504
+Node: Workflow states185787
+Ref: Workflow states-Footnote-1187494
+Node: TODO types187611
+Ref: TODO types-Footnote-1189752
+Node: Multiple sets in one file189867
+Node: Fast access to TODO states192292
+Ref: Fast access to TODO states-Footnote-1193252
+Node: Per-file keywords193593
+Ref: Per-file keywords-Footnote-1195412
+Node: Faces for TODO keywords195694
+Node: TODO dependencies197038
+Node: Progress logging199954
+Node: Closing items200834
+Ref: Closing items-Footnote-1202108
+Ref: Closing items-Footnote-2202188
+Node: Tracking TODO state changes202272
+Ref: Tracking TODO state changes-Footnote-1206108
+Ref: Tracking TODO state changes-Footnote-2206182
+Node: 習慣の追跡206588
+Node: Priorities211735
+Ref: Priorities-Footnote-1214390
+Node: Breaking down tasks214491
+Ref: Breaking down tasks-Footnote-1217039
+Node: Checkboxes217196
+Ref: Checkboxes-Footnote-1223644
+Ref: Checkboxes-Footnote-2223794
+Node: Tags224002
+Node: Tag inheritance225267
+Ref: Tag inheritance-Footnote-1226734
+Ref: Tag inheritance-Footnote-2226882
+Node: Setting tags227099
+Ref: Setting tags-Footnote-1235112
+Node: Tag searches235218
+Node: Properties and Columns236763
+Node: Property syntax238592
+Node: Special properties242226
+Node: Property searches243972
+Node: Property inheritance245769
+Node: Column view248018
+Node: Defining columns249640
+Node: Scope of column definitions250136
+Node: Column attributes251222
+Ref: Column attributes-Footnote-1256445
+Node: Using column view256593
+Node: カラム表示の保存260057
+Ref: カラム表示の保存-Footnote-1264049
+Node: Property API264233
+Node: 日付や時間264701
+Node: Timestamps265957
+Ref: Timestamps-Footnote-1269306
+Node: Creating timestamps269533
+Node: The date/time prompt273225
+Ref: The date/time prompt-Footnote-1278614
+Ref: The date/time prompt-Footnote-2278827
+Ref: The date/time prompt-Footnote-3278952
+Node: Custom time format279111
+Node: Deadlines and scheduling281462
+Ref: Deadlines and scheduling-Footnote-1285101
+Node: Inserting deadline/schedule285313
+Ref: Inserting deadline/schedule-Footnote-1288078
+Ref: Inserting deadline/schedule-Footnote-2288268
+Ref: Inserting deadline/schedule-Footnote-3288382
+Node: Repeated tasks288497
+Ref: Repeated tasks-Footnote-1293106
+Ref: Repeated tasks-Footnote-2293362
+Node: Clocking work time293659
+Ref: Clocking work time-Footnote-1295116
+Node: Clocking commands295283
+Ref: Clocking commands-Footnote-1300130
+Ref: Clocking commands-Footnote-2300294
+Ref: Clocking commands-Footnote-3300347
+Ref: Clocking commands-Footnote-4300410
+Node: The clock table300506
+Ref: The clock table-Footnote-1308289
+Ref: The clock table-Footnote-2308417
+Node: Resolving idle time308617
+Ref: Resolving idle time-Footnote-1313041
+Node: Effort estimates313535
+Ref: Effort estimates-Footnote-1317135
+Ref: Effort estimates-Footnote-2317243
+Node: Relative timer317371
+Node: カウントダウンタイマ320054
+Node: Capture - Refile - Archive320818
+Node: Capture322166
+Node: Setting up capture323940
+Ref: Setting up capture-Footnote-1324403
+Node: Using capture324489
+Node: Capture templates327128
+Node: Template elements329313
+Node: テンプレートの拡張335954
+Ref: テンプレートの拡張-Footnote-1340084
+Ref: テンプレートの拡張-Footnote-2340217
+Ref: テンプレートの拡張-Footnote-3340496
+Node: Attachments340612
+Ref: Attachments-Footnote-1344980
+Node: RSS Feeds345171
+Node: Protocols347285
+Node: Refiling notes348185
+Ref: Refiling notes-Footnote-1350876
+Node: Archiving350991
+Node: Moving subtrees351859
+Ref: Moving subtrees-Footnote-1354085
+Node: ファイル内部でのアーカイブ354611
+Node: Agenda Views358002
+Node: Agenda files361196
+Ref: Agenda files-Footnote-1365485
+Ref: Agenda files-Footnote-2365700
+Node: Agenda dispatcher366006
+Ref: Agenda dispatcher-Footnote-1369145
+Ref: Agenda dispatcher-Footnote-2369272
+Node: Built-in agenda views369440
+Node: Weekly/daily agenda370254
+Ref: Weekly/daily agenda-Footnote-1377067
+Ref: Weekly/daily agenda-Footnote-2377434
+Node: Global TODO list377547
+Node: Matching tags and properties381213
+Node: Timeline390240
+Node: Search view391340
+Node: Stuck projects393287
+Ref: Stuck projects-Footnote-1396771
+Node: Presentation and sorting396801
+Node: Categories397944
+Ref: Categories-Footnote-1399101
+Node: Time-of-day specifications399820
+Node: agendaの項目をソートする402343
+Node: Agenda commands404540
+Ref: Agenda commands-Footnote-1435013
+Ref: Agenda commands-Footnote-2435128
+Ref: Agenda commands-Footnote-3435823
+Node: Custom agenda views435958
+Node: Storing searches436813
+Ref: Storing searches-Footnote-1440405
+Node: Block agenda440593
+Node: Setting Options442295
+Node: Exporting Agenda Views446555
+Ref: Exporting Agenda Views-Footnote-1453340
+Ref: Exporting Agenda Views-Footnote-2453444
+Ref: Exporting Agenda Views-Footnote-3453709
+Ref: Exporting Agenda Views-Footnote-4454040
+Node: Agenda column view454176
+Node: Markup458186
+Node: Structural markup elements459385
+Node: Document title460162
+Node: Headings and sections461200
+Node: Table of contents461794
+Node: Initial text462667
+Node: Lists464123
+Node: Paragraphs464508
+Node: Footnote markup465813
+Node: Emphasis and monospace466226
+Node: Horizontal rules466716
+Node: コメント行467042
+Node: Images and tables467712
+Node: Literal examples469427
+Ref: Literal examples-Footnote-1473752
+Ref: Literal examples-Footnote-2474870
+Ref: Literal examples-Footnote-3475049
+Ref: Literal examples-Footnote-4475269
+Node: Include files475388
+Node: Index entries477178
+Node: Macro replacement477740
+Node: Embedded LaTeX478756
+Ref: Embedded LaTeX-Footnote-1479837
+Node: Special symbols480055
+Ref: Special symbols-Footnote-1481971
+Node: Subscripts and superscripts482126
+Node: LaTeX fragments483687
+Ref: LaTeX fragments-Footnote-1486323
+Ref: LaTeX fragments-Footnote-2486331
+Ref: LaTeX fragments-Footnote-3486567
+Node: Previewing LaTeX fragments486762
+Node: CDLaTeX mode488068
+Ref: CDLaTeX mode-Footnote-1491171
+Node: Exporting491396
+Node: Selective export493945
+Node: Export options495051
+Ref: Export options-Footnote-1500743
+Node: The export dispatcher500890
+Ref: The export dispatcher-Footnote-1502762
+Node: ASCII/Latin-1/UTF-8 export502894
+Ref: ASCII/Latin-1/UTF-8 export-Footnote-1506249
+Ref: ASCII/Latin-1/UTF-8 export-Footnote-2506322
+Node: HTML export506418
+Node: HTML Export commands507587
+Ref: HTML Export commands-Footnote-1510291
+Ref: HTML Export commands-Footnote-2510364
+Node: Quoting HTML tags510460
+Node: Links in HTML export511234
+Node: Tables in HTML export512691
+Node: Images in HTML export513369
+Ref: Images in HTML export-Footnote-1514974
+Node: Math formatting in HTML export515056
+Ref: Math formatting in HTML export-Footnote-1516784
+Node: Text areas in HTML export516972
+Node: CSS support518139
+Ref: CSS support-Footnote-1521611
+Ref: CSS support-Footnote-2521855
+Node: JavaScript support522081
+Node: LaTeX and PDF export526856
+Ref: LaTeX and PDF export-Footnote-1528138
+Node: LaTeX/PDF export commands528470
+Ref: LaTeX/PDF export commands-Footnote-1531043
+Ref: LaTeX/PDF export commands-Footnote-2531116
+Node: Header and sectioning531211
+Ref: Header and sectioning-Footnote-1532654
+Node: Quoting LaTeX code532774
+Node: Tables in LaTeX export533586
+Node: Images in LaTeX export534836
+Node: Beamerクラスのエクスポート536669
+Node: DocBook export543614
+Node: DocBook export commands544642
+Ref: DocBook export commands-Footnote-1546522
+Ref: DocBook export commands-Footnote-2546601
+Node: Quoting DocBook code546685
+Node: Recursive sections548045
+Node: Tables in DocBook export549049
+Node: Images in DocBook export549566
+Node: Special characters551890
+Node: TaskJuggler export553149
+Node: Freemind export559645
+Node: XOXO export560010
+Node: iCalendarエクスポート560566
+Ref: iCalendarエクスポート-Footnote-1564123
+Ref: iCalendarエクスポート-Footnote-2564235
+Ref: iCalendarエクスポート-Footnote-3564374
+Node: Publishing564524
+Node: Configuration565566
+Node: Project alist566405
+Node: Sources and destinations567589
+Node: Selecting files569410
+Node: Publishing action570591
+Ref: Publishing action-Footnote-1572764
+Node: Publishing options573249
+Node: Publishing links577199
+Node: Sitemap579488
+Node: Generating an index582723
+Node: Uploading files583469
+Node: Sample configuration585718
+Node: Simple example586291
+Node: Complex example586995
+Node: 公開の開始589292
+Node: Working With Source Code590582
+Node: Structure of code blocks592739
+Node: Editing source code594707
+Node: Exporting code blocks596922
+Node: Extracting source code599220
+Node: Evaluating code blocks601043
+Ref: Evaluating code blocks-Footnote-1604339
+Ref: Evaluating code blocks-Footnote-2604775
+Node: Library of Babel604929
+Node: Languages606013
+Node: Header arguments608495
+Node: Using header arguments609038
+Node: System-wide header arguments609913
+Node: Language-specific header arguments610800
+Node: Buffer-wide header arguments611242
+Node: Header arguments in Org-mode properties612177
+Node: Code block specific header arguments613557
+Node: Header arguments in function calls615709
+Node: Specific header arguments616527
+Node: var618362
+Node: results625263
+Node: file630771
+Node: dir632005
+Node: exports635719
+Node: tangle636696
+Node: mkdirp637698
+Node: comments638163
+Node: no-expand639645
+Node: session640286
+Node: noweb640864
+Node: cache642749
+Node: sep644595
+Node: hlines645465
+Node: colnames647211
+Node: rownames648741
+Node: shebang649881
+Node: eval650321
+Node: 評価の結果650955
+Node: Noweb reference syntax654821
+Node: Key bindings and useful functions656117
+Node: バッチ処理657773
+Node: Miscellaneous658993
+Node: Completion659887
+Node: Easy Templates662546
+Node: Speed keys664224
+Node: Code evaluation security665283
+Node: Customization668757
+Node: In-buffer settings669446
+Ref: In-buffer settings-Footnote-1680759
+Node: The very busy C-c C-c key680806
+Node: Clean view683243
+Ref: Clean view-Footnote-1688203
+Ref: Clean view-Footnote-2688269
+Ref: Clean view-Footnote-3688508
+Ref: Clean view-Footnote-4688584
+Ref: Clean view-Footnote-5688731
+Node: TTY keys688915
+Node: Interaction690778
+Node: Cooperation691174
+Node: Conflicts695974
+Node: Hacking700766
+Node: Hooks701756
+Node: Add-on packages702230
+Node: Adding hyperlink types702867
+Node: Context-sensitive commands707685
+Ref: Context-sensitive commands-Footnote-1709610
+Node: Tables in arbitrary syntax709770
+Node: Radio tables711518
+Node: A LaTeX example714556
+Ref: A LaTeX example-Footnote-1719090
+Ref: A LaTeX example-Footnote-2719306
+Node: Translator functions719792
+Ref: Translator functions-Footnote-1723569
+Node: ラジオリスト723716
+Node: Dynamic blocks725156
+Node: Special agenda views728108
+Ref: Special agenda views-Footnote-1733787
+Node: Extracting agenda information733978
+Node: Using the property API739137
+Node: マッピングAPIを使う743512
+Node: MobileOrg748874
+Node: Setting up the staging area751011
+Ref: Setting up the staging area-Footnote-1752528
+Ref: Setting up the staging area-Footnote-2752954
+Node: Pushing to MobileOrg753300
+Ref: Pushing to MobileOrg-Footnote-1754901
+Ref: Pushing to MobileOrg-Footnote-2755633
+Node: MobileOrgからpullする755720
+Ref: MobileOrgからpullする-Footnote-1759595
+Ref: MobileOrgからpullする-Footnote-2759668
+Node: History and Acknowledgments760262
+Node: Main Index776635
+Node: Key Index845469
+Node: Command and Function Index889358
+Node: Variable Index918839
 
 End Tag Table
 
