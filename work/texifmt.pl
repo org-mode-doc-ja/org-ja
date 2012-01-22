@@ -349,11 +349,16 @@ sub pre_processing {
 	# @table @var will be cause of MOJIBAKE with UTF-8
 	$line =~ s/\@table \@var/\@table \@code/;
 
-	# @orgcmd{\\,org-agenda-filter-by-tag-refine}
+	# @orgcmd{\\,org-agenda-filter-by-tag-refine}, only for org7.5
 	$line =~ s/\@orgcmd\{\\,/\@orgcmd\{\\\\,/;
 
+	# if($line =~ /^\@item $/){
+	#     push(@dst,"\@item \@w\{ \}");
+	#     next;
+	# }
+
 	# Remove unexpected line break (@item\nhoge => @item hoge)
-	if($line =~ /^\@item *$/){
+	if($line =~ /^\@item +$/){
 	    if($buffer ne ""){
 		exit;
 	    }
