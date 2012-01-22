@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2012-01-22 14:13+0900\n"
+"PO-Revision-Date: 2012-01-22 14:53+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -29377,7 +29377,7 @@ msgstr "ソースコード、評価の結果"
 #. type: Plain text
 #: org.texi:12591
 msgid "The way in which results are handled depends on whether a session is invoked, as well as on whether @code{:results value} or @code{:results output} is used. The following table shows the table possibilities.  For a full listing of the possible results header arguments see @ref{results}."
-msgstr "結果の取り扱われ方は、セッションが呼び出されたかに依存することに加えて、@code{:results value}もしくは@code{:results output}が使われているかに依存します。(この一文分からず)次のテーブルは起こりうることを表形式にまとめました。ヘッダー引数resultsが取り得る完全なリストは、@ref{results}を見て下さい。"
+msgstr "結果の取り扱われ方は、セッションが呼び出されたかに依存することに加えて、@code{:results value}もしくは@code{:results output}が使われているかに依存します。(table possibilies:の意味が分からない)次のテーブルでは全ての場合を表形式にまとめました。ヘッダー引数resultsが取り得る完全なリストは、@ref{results}を見て下さい。"
 
 # [Org7.5-3407::@]
 #. type: item
@@ -29407,7 +29407,7 @@ msgstr "@code{:results output} @tab STDOUTの内容 @tab インタプリタの�
 #. type: Plain text
 #: org.texi:12601
 msgid "Note: With @code{:results value}, the result in both @code{:session} and non-session is returned to Org-mode as a table (a one- or two-dimensional vector of strings or numbers) when appropriate."
-msgstr "以下に注意すること:@code{:results value}と設定することで、@code{:session}とnon-sessionの両方の結果はOrg-modeにテーブル(文字列もしくは数字からなる1次元もしくは2次元のベクトル)を適切に返されます。"
+msgstr "以下に注意すること:@code{:results value}と設定することで、適切な場合は、@code{:session}とnon-sessionの両方の結果はテーブル(文字列もしくは数字からなる1次元もしくは2次元のベクトル)の形でOrg-modeに返されます。"
 
 # [Org7.5-3411::@]
 #. type: subsection
@@ -29430,7 +29430,7 @@ msgstr ":results value"
 #. type: Plain text
 #: org.texi:12610
 msgid "This is the default. Internally, the value is obtained by wrapping the code in a function definition in the external language, and evaluating that function. Therefore, code should be written as if it were the body of such a function. In particular, note that Python does not automatically return a value from a function unless a @code{return} statement is present, and so a @samp{return} statement will usually be required in Python."
-msgstr "デフォルトの設定です。外部の言語で書かれた関数定義のコードを囲むことと、内部でその関数を評価することによってその値が得られます。それゆえ、コードはその関数の本文でであるかのように書かなければなりません。特に、Pythonは@code{return}文が存在しない限り自動的に関数から返り値を返しませんので、Pythonでは多くの場合に@samp{return}文が必要なことに注意してください。"
+msgstr "デフォルトの設定です。外部の言語で書かれた関数定義のコードを囲むことと、内部でその関数を評価することによってその値が得られます。それゆえ、コードはその関数の本文であるかのように書かなければなりません。特に、Pythonは@code{return}文が存在しない限り自動的に関数から返り値を返しませんので、Pythonでは多くの場合に@samp{return}文が必要なことに注意してください。"
 
 # [Org7.5-3414::@]
 # glossary: code ( コード ) / context ( コンテクスト|状況|文脈 ) / evaluation ( 評価 ) / function ( 機能|関数 )
@@ -29453,7 +29453,7 @@ msgstr ":results output"
 #. type: Plain text
 #: org.texi:12619
 msgid "The code is passed to the interpreter as an external process, and the contents of the standard output stream are returned as text. (In certain languages this also contains the error output stream; this is an area for future work.)"
-msgstr "外部プロセスとしてコードはインタープリタに渡され、標準出力のストリームの内容がテキストとして返されます。(いくつかの言語ではエラー出力のストリームも含まれます; これは今後の課題です。)"
+msgstr "外部プロセスとしてのインタープリタにコードが渡され、標準出力ストリームの内容がテキストとして返されます。(いくつかの言語ではエラー出力のストリームも含まれます; これは今後の課題です。)"
 
 # [Org7.5-3417::@]
 #. type: subsection
@@ -29467,14 +29467,14 @@ msgstr "Session"
 #. type: Plain text
 #: org.texi:12627
 msgid "The code is passed to the interpreter running as an interactive Emacs inferior process. The result returned is the result of the last evaluation performed by the interpreter. (This is obtained in a language-specific manner: the value of the variable @code{_} in Python and Ruby, and the value of @code{.Last.value} in R)."
-msgstr "対話式のEmacsの下位プロセスとして実行しているインタープリタ(解釈プログラム)にコードが渡されます。そのインタープリタが最後に評価した結果を、結果として受け取ります。 (これは言語固有の方法で得られています:PythonやRubyでの変数@code{_}の値と、Rでの@code{.Last.value}の値です)。"
+msgstr "Emacsのインタラクティブな下位プロセスとして実行しているインタープリタにコードが渡されます。返される結果は、そのインタープリタが最後に評価した結果です。 (これは言語固有の方法で得られています:PythonやRubyでの変数@code{_}の値であり、Rでの@code{.Last.value}の値です)。"
 
 # [Org7.5-3419::@]
 # glossary: code ( コード ) / example ( 例 ) / external ( 外部 ) / output ( アウトプット ) / running ( 実行中の ) / sequence ( 順序 )
 #. type: Plain text
 #: org.texi:12635
 msgid "The code is passed to the interpreter running as an interactive Emacs inferior process. The result returned is the concatenation of the sequence of (text) output from the interactive interpreter. Notice that this is not necessarily the same as what would be sent to @code{STDOUT} if the same code were passed to a non-interactive interpreter running as an external process. For example, compare the following two blocks:"
-msgstr "対話式のEmacsの下位プロセスとして実行しているインタープリタ(解釈プログラム)にコードが渡されます。返される結果は、そのインタープリタからの一連の(テキストの)アウトプットを結合したものです。もし外部プロセスとして実行している対話式でないインタープリタに同じコードが送られるなら、@code{STDOUT}へと送られるであろうものと全く同じである必要はかならずしも無いことに気づいて下さい。例として、次の2つのブロックを比べて下さい:"
+msgstr "Emacsのインタラクティブな下位プロセスとして実行しているインタープリタにコードが渡されます。返される結果は、そのインタープリタからの一連の(テキストの)アウトプットを結合したものです。もし外部プロセスとして実行しているインタラクティブでないインタープリタに同じコードが送られるなら、@code{STDOUT}へと送られるであろうものと全く同じである必要は無いことに注意して下さい。例えば、次の2つのブロックを比べて下さい:"
 
 # [Org7.5-3420::@]
 #. type: example
@@ -29555,7 +29555,7 @@ msgstr ""
 #. type: Plain text
 #: org.texi:12665
 msgid "But in @code{:session} mode, the interactive interpreter receives input `2' and prints out its value, `2'. (Indeed, the other print statements are unnecessary here)."
-msgstr "しかし@code{:session}モードでは、対話的なインタープリタは入力`2'を受け取り、その値`2'を表示します。(実際には、ここでは他のprint文は不要でした)。"
+msgstr "しかし@code{:session}モードでは、インタラクティブなインタープリタは入力`2'を受け取り、その値`2'を表示します。(実際には、ここでは他のprint文は不要です)。"
 
 # [Org7.5-3426::@]
 # glossary: code block ( コードブロック )
