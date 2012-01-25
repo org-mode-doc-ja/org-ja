@@ -87,7 +87,7 @@ sub is_open_bracket {
 # Check the line is finished in @ref{, @xref{, or @pxref{
 sub is_open_ref_bracket {
     my $line = shift;
-    $$line =~ /@[r|xr|pxr]ef{[^\}]*$/;
+    $$line =~ /\@(?:x|px)*ref{[^\}]*$/;
 }
 
 # Check the line is begun with "hoge}".
