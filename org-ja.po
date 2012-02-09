@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2012-02-09 01:47+0900\n"
+"PO-Revision-Date: 2012-02-10 00:28+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -19585,7 +19585,7 @@ msgstr "アジェンダバッファからリモートで編集するとは、例
 # [Org7.5-2110::@]
 #. type: subsubheading
 #: org.texi:7103
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "Calendar/Diary integration"
 msgstr "カレンダー／日記の統合"
 
@@ -19593,7 +19593,7 @@ msgstr "カレンダー／日記の統合"
 # glossary: calendar ( カレンダー )
 #. type: cindex
 #: org.texi:7104
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "calendar integration"
 msgstr "カレンダーの統合"
 
@@ -19601,11 +19601,12 @@ msgstr "カレンダーの統合"
 # glossary: diary ( 日記 )
 #. type: cindex
 #: org.texi:7105
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "diary integration"
 msgstr "日記の統合"
 
-# [Org7.5-2113::@]
+# [Org7.5-2113::@f_frhs] in this way, このように、
+# 日記には記念日、... -> 日記には、記念日...
 # glossary: appointment ( 予約|アポイント ) / calendar ( カレンダー ) / diary ( 日記 ) / display ( ディスプレイ|表示 ) / org ( Org-mode ) / output ( アウトプット )
 #. type: Plain text
 #: org.texi:7114
@@ -19617,18 +19618,18 @@ msgstr "Emacsには、Edward M. Reingoldによって開発されたカレンダ�
 # glossary: agenda ( アジェンダ ) / customize ( カスタマイズ ) / diary ( 日記 ) / entries ( エントリー|文|入力 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:7117
-#, fuzzy
 msgid "In order to include entries from the Emacs diary into Org-mode's agenda, you only need to customize the variable"
 msgstr "Emacsの日記からOrg-modeのアジェンダに項目を落とし込むために、あなたは次のように変数を設定するだけです。"
 
 # [Org7.5-2115::@]
 #. type: lisp
 #: org.texi:7120
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "(setq org-agenda-include-diary t)\n"
 msgstr "(setq org-agenda-include-diary t)\n"
 
-# [Org7.5-2116::@]
+# [Org7.5-2116::@f_frhs] as well as..., respectively. の処理
+# 修正案)その後、すべてが自動的に行われます。祝祭日や記念日などを含むすべての項目は、Org-modeで作成されるジェンダバッファに取り込むことができます。日記に記録されている項目を編集するために、アジェンダバッファ上で@key{SPC}、 @key{TAB}、及び @key{RET}を入力することで、日記のファイルにジャンプすることができます。現在カーソルがある日付に新しいエントリーを挿入する@kbd{i}というコマンドはアジェンダバッファ上で動作します。同様に、日の出日の入りの時刻を表示するには@kbd{S}というコマンドを、月の満ち欠けの状態を表示するには@kbd{M}というコマンドを、他の暦に変換するためには@kbd{C}というコマンドをそれぞれ使えます。 @kbd{c}はカレンダーとアジェンダの間を行ったり来たりすることができます。
 # glossary: agenda ( アジェンダ ) / buffer ( バッファ ) / calendar ( カレンダー ) / command ( コマンド ) / current ( カレント|現在の ) / date ( 日付 ) / diary ( 日記 ) / display ( ディスプレイ|表示 ) / entries ( エントリー|文|入力 ) / file ( ファイル ) / insert ( 挿入 ) / org-mode ( Org-mode ) / time ( 時刻|時間|回 ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:7133
@@ -19645,7 +19646,8 @@ msgstr "(setq org-agenda-include-diary t)\n"
 msgid "After that, everything will happen automatically.  All diary entries including holidays, anniversaries, etc., will be included in the agenda buffer created by Org-mode.  @key{SPC}, @key{TAB}, and @key{RET} can be used from the agenda buffer to jump to the diary file in order to edit existing diary entries.  The @kbd{i} command to insert new entries for the current date works in the agenda buffer, as well as the commands @kbd{S}, @kbd{M}, and @kbd{C} to display Sunrise/Sunset times, show lunar phases and to convert to other calendars, respectively.  @kbd{c} can be used to switch back and forth between calendar and agenda."
 msgstr "その後、すべてが自動的に行われます。祝祭日や記念日などを含むすべての項目は、Org-modeで作成されるジェンダバッファに取り込むことができます。日記に記録されている項目を編集するために、アジェンダバッファ上で@key{SPC}、 @key{TAB}、及び @key{RET}を入力することで、日記のファイルにジャンプすることができます。その日に新しいエントリーを挿入する@kbd{i}というコマンドはアジェンダバッファ上で動作します。あたかも、日の出日の入りの時刻を表示したり、月の満ち欠けの状態を表示したり、他の暦に変換するための、@kbd{S}、@kbd{M}、および@kbd{C}というコマンドと同様です。 @kbd{c}はカレンダーとアジェンダの間を行ったり来たりすることができます。"
 
-# [Org7.5-2117::@]
+# [Org7.5-2117::@f_frhs] fasterの処理
+# もしもあなたが日記をS式項目と祝祭日だけで使用しているのならば、上のような設定をするよりも、Org-modeファイルに項目をコピーするか、もっと言えばOrg-modeファイルに項目を移動する方が高速に処理されます。Org-modeは日記(diary)形式のS式項目を評価し、しかもより高速に評価します。というのは、最初にカレンダーを表示するという負荷がかからないからです。S式項目は左端から記述し、式の前にスペースが入ってはいけないことに注意してください。たとえば、あるOrg-modeファイルについての、以下にのべるセグメントが処理され、項目がアジェンダの中に作成されます。
 # glossary: sexp entries ( Ｓ式項目 ) / copy ( コピー ) / creating ( 作成 ) / diary ( 日記 ) / display ( ディスプレイ|表示 ) / entries ( エントリー|文|入力 ) / evaluate ( 評価する ) / example ( 例 ) / file ( ファイル ) / note ( ノート|メモ ) / org ( Org-mode ) / org-mode ( Org-mode ) / setting ( 設定 )
 #. type: Plain text
 #: org.texi:7142
@@ -19653,7 +19655,7 @@ msgstr "その後、すべてが自動的に行われます。祝祭日や記念
 msgid "If you are using the diary only for sexp entries and holidays, it is faster to not use the above setting, but instead to copy or even move the entries into an Org file. Org-mode evaluates diary-style sexp entries, and does it faster because there is no overhead for first creating the diary display.  Note that the sexp entries must start at the left margin, no whitespace is allowed before them.  For example, the following segment of an Org file will be processed and entries will be made in the agenda:"
 msgstr "もしもあなたが日記をS式項目と祝祭日だけで使用しているのならば、上のような設定をするよりも、Org-modeファイルに直接コピーしたり移動したりしたほうが手っ取り早いです。Org-modeは日記形式のS式項目を評価し、しかもより早く、というのは、最初にカレンダーを表示するという負荷がかからないからです。S式項目は左端から記述し、式の前にスペースが入ってはいけないことに注意してください。たとえば、あるOrg-modeファイルについての、以下にのべるセグメントが処理され、項目がアジェンダの中に作成されます。"
 
-# [Org7.5-2118::@]
+# [Org7.5-2118::@f_frhs] サンプルコード中のコメントを翻訳しませんか?
 # glossary: argument ( 引数 ) / day ( 日付|日にち ) / function ( 機能|関数 ) / setting ( 設定 )
 #. type: example
 #: org.texi:7150
