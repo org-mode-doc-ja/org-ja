@@ -1,0 +1,159 @@
+#+TITLE: README
+#+TEXT:                                           Create:      2011-04-20
+#+TEXT:                                           Last Update: 2012-03-10@12:47
+#+STARTUP: showall
+
+* Notice
+
+*Any question? please contact @takaxp on Twitter*
+
+(2011-06-02)
+  - We have started translation work based on PO.
+(2011-05-12)
+  - We have been finished the pre-test. Thank you for your cooperation :-)
+  - We'll start working at mainstream soon.
+
+* What's org-ja
+
+This project will provide a Japanese translation of the official org-mode manual written in English.
+
+* Work-flow for translation of org.texi
+
+=There is no restriction for participators to play both roles.=
+
+** For translator
+
+** For maintainer
+
+* Requirements
+** Translator (Type1)
+  - Knowledge of language translation from English to Japanese
+  - Knowledge of GNU Texinfo
+** Translator (Type2)
+  - Knowledge of language translation from English to Japanese
+  - Knowledge of GNU Texinfo
+  - Knowledge of version control system, git and github
+  - Having Github account and participating in a team "org-mode-doc-ja"
+** Maintainer
+  - Knowledge of GNU Texinfo
+  - Knowledge of version control system, git and github
+  - Having Github account and participating in a team "org-mode-doc-ja"
+  - Knowledge of po4a commands
+  - Knowledge for generating of INFO file and PDF file
+
+* Useful tools
+** For translator
+  - po-mode for Emacs
+  - po.vim for vim
+  - PoEdit
+  - OmegaT
+  - sdic for Emacs
+  - lookup for Emacs
+  - ispell for Emacs
+** For maintainer
+  - po4a-translate
+  - makeinfo
+  - ptex
+  - patch
+  - perl
+  - magit for Emacs
+  - ediff for Emacs
+  - vc for Emacs
+
+* Related resources
+  - The Official website for Japanese translation
+    [[http://orgmode.jp/doc-ja/]]
+  - previous translation (version4.6) by Takeshi Okano
+    [[http://hpcgi1.nifty.com/spen/index.cgi?OrgMode/Manual]]
+  - previous translation (version 6.26d)
+    [[http://hpcgi1.nifty.com/spen/index.cgi?OrgMode%2fOrgMode6%2e26dManual]]
+  - Togetter
+    [[http://togetter.com/li/126723]]
+  - Mailing list to contact developers and other document users (public)
+    [[org2ja-users@lists.sourceforge.net]]
+  - Mailing list to share information within project members (closed)
+    [[org2ja-devel@lists.sourceforge.net]]
+  - An instruction for Japanese translation work in this project
+    [[http://dl.dropbox.com/u/2440/2011/org-mode-doc-ja_tr_manual.pdf]]
+  - An instruction how to translate within this project
+    [[http://dl.dropbox.com/u/2440/2011/howtowork.html]]
+  - A style guilde for Japanese translation
+    [[http://dl.dropbox.com/u/2440/2011/style.html]]
+  - An instruction how to do the pretest (old document)
+    [[http://dl.dropbox.com/u/2440/2011/howtotest.html]]
+  - An initial glossay list (old document)
+    [[http://dl.dropbox.com/u/2440/2011/init_glossary.xls]]
+  - wiki (unofficial)
+	1. orgjpn.texi (version 4.6)
+	2. orgjpn (Info file, version 4.6)
+	3. A PDF file generated from orgjpn.texi (version 4.6)
+
+* Distributing files
+
+| README                    | This file                                      |
+| org-ja.po                 | (OUTPUT) PO file with Japanese translation     |
+| org.texi                  | The original texinfo file provided by org-mode |
+| glossary/glossary.csv     | A glossary for org-ja translation              |
+| work/Makefile             | A simple tool to help maintainers              |
+| work/org-ja               | INFO file generated from org-ja.texi           |
+| work/dir                  | DIR file to read INFO file in Emacs            |
+| work/org-ja.pdf           | PDF manual generated from org-ja.texi          |
+| work/org-ja.texi          | (OUTPUT) Japanese translated texinfo file      |
+| work/org-ja.texi.patch    | A patch file for a newly created texinfo file  |
+| work/org-ja.html          | An HTML version of INFO file                   |
+| work/org.pot              | PO template generated from org-ja.texi         |
+| work/texifmt.pl           | A script to generate an UTF-8 based INFO file  |
+| work/texinfo.tex          | The original config file provided by org-mode  |
+| tmp/                      | To store translated files not merged yet       |
+| arc/                      | To store old documents                         |
+
+* Members
+=Twitter accounts in alphabetical order=
+
+#+BEGIN_SRC
+@cola_zero
+@f_frhs
+@khiker
+@kikukawatei
+@knb2
+@myuhe
+@peccul
+@shoichit
+@takaxp
+@takeshi_o
+@tsuyoshiinoue
+@regluu503
+@r_takaishi
+@yehl431
+#+END_SRC
+
+* The owner of chapters
+
+| Page | Qt. | Done[%] | Owner          | Chap. | Title                        |
+|------+-----+---------+----------------+-------+------------------------------|
+|    1 |   4 |   100.0 | @takaxp        |     1 | Introduction                 |
+|    5 |  12 |    98.6 | @takeshi_o     |     2 | Document Structure           |
+|   17 |  15 |   100.0 | @takaxp        |     3 | Tables                       |
+|   32 |   8 |   100.0 | @yehl431       |     4 | Hyperlinks                   |
+|   40 |  12 |   100.0 | @shoichit      |     5 | TODO Items                   |
+|   52 |   4 |    97.3 | @peccul        |     6 | Tags                         |
+|   56 |   8 |   100.0 | @khiker        |     7 | Properties and Columns       |
+|   64 |  14 |    99.5 | @tsuyoshiinoue |     8 | Dates and Times              |
+|   78 |  10 |   100.0 | @cola_zero     |     9 | Capture - Refile - Archive   |
+|   88 |  25 |    99.7 | @takeshi_o     |    10 | Agenda Views                 |
+|  113 |   9 |   100.0 | @r_takaishi    |    11 | Markup                       |
+|  122 |  22 |    99.7 | @myuhe         |    12 | Exporting                    |
+|  144 |   5 |   100.0 | @r_takaishi    |    13 | Publishing                   |
+|  149 |  22 |   100.0 | @f_frhs        |    14 | Working With Source Code[*1] |
+|  171 |  12 |   100.0 | @r_takaishi    |    15 | Miscellaneous                |
+|  183 |  14 |   100.0 | @f_frhs        |    16 | Hacking                      |
+|  197 |   2 |   100.0 | @takeshi_o     |    17 | MobileOrg                    |
+|  199 |   4 |   100.0 | @takaxp        |    18 | History and Acknowledgments  |
+|  203 |   7 |   100.0 | @takaxp        |    19 | Concept Index                |
+|  210 |   5 |   100.0 | @takaxp        |    20 | Key Index                    |
+|  215 |   3 |   100.0 | @takaxp        |    21 | Command and Function Index   |
+|  218 |   3 |   100.0 |                |    22 | Variable Index               |
+|------+-----+---------+----------------+-------+------------------------------|
+|      | 220 |         |                |       |                              |
+
+[*1] This section has been divided into two parts.
