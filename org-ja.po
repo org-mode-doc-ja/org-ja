@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2012-04-03 12:27+0900\n"
+"PO-Revision-Date: 2012-04-22 17:32+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -20772,7 +20772,7 @@ msgstr "org-agenda-sorting-strategy"
 msgid "Sorting can be customized using the variable @code{org-agenda-sorting-strategy}, and may also include criteria based on the estimated effort of an entry (@pxref{Effort estimates})."
 msgstr "並び替えは、@code{org-agenda-sorting-strategy}変数でカスタマイズすることができます。そして、並び替えはそのエントリーの工数の見積りに基づく評価も含まれます。"
 
-# [Org7.5-2248::@]
+# [Org7.5-2248::@f_frhs] アジェンダバッファでのコマンド
 # glossary: agenda ( アジェンダ ) / buffer ( バッファ ) / command ( コマンド )
 #. type: section
 #: org.texi:7662
@@ -20780,7 +20780,7 @@ msgstr "並び替えは、@code{org-agenda-sorting-strategy}変数でカスタ�
 msgid "Commands in the agenda buffer"
 msgstr "Commands in the agenda buffer"
 
-# [Org7.5-2249::@]
+# [Org7.5-2249::@f_frhs] コマンド、アジェンダバッファでの
 # glossary: agenda ( アジェンダ ) / buffer ( バッファ ) / command ( コマンド )
 #. type: cindex
 #: org.texi:7663
@@ -20788,7 +20788,8 @@ msgstr "Commands in the agenda buffer"
 msgid "commands, in agenda buffer"
 msgstr "commands, in agenda buffer"
 
-# [Org7.5-2250::@]
+# [Org7.5-2250::@f_frhs] アジェンダバッファで作成されるリンク先; 独立分詞構文の主語youを省略?
+# 改善案)アジェンダバッファでのエントリーは、その項目が作成されたOrg-modeファイルや日記ファイルへリンクされます。アジェンダバッファそのものを編集することはできませんが、そのエントリーがある場所を表示したり、そこへジャンプしたり、アジェンダバッファから「遠隔的に」Org-modeファイルを編集できるコマンドがあります。このようにして、すべての情報を1度だけ格納し、アジェンダとノートのファイルとが別の情報になるというリスクを取り除きます。
 # glossary: agenda ( アジェンダ ) / buffer ( バッファ ) / command ( コマンド ) / diary ( 日記 ) / diverge ( 分かれる ) / entries ( エントリー|文|入力 ) / entry ( エントリー|文|入力 ) / file ( ファイル ) / information ( 情報 ) / note ( ノート|メモ ) / org ( Org-mode )
 #. type: Plain text
 #: org.texi:7671
@@ -20800,18 +20801,17 @@ msgstr "アジェンダバッファでのエントリーは、その項目が作
 # glossary: agenda ( アジェンダ ) / command ( コマンド ) / cursor ( カーソル ) / line ( 行|ライン|線 ) / mouse ( マウス|mouse )
 #. type: Plain text
 #: org.texi:7674
-#, fuzzy
 msgid "Some commands can be executed with mouse clicks on agenda lines.  For the other commands, the cursor needs to be in the desired line."
 msgstr "いくつかのコマンドはアジェンダの行上でマウスをクリックすることで実行されます。それ以外のコマンドは、必要とされる行の中にカーソルが置かれている必要があります。"
 
-# [Org7.5-2252::@]
+# [Org7.5-2252::@f_frhs] @tsubheading{移動}
 #. type: table
 #: org.texi:7677
 #, fuzzy
 msgid "@tsubheading{Motion}"
 msgstr "@tsubheading{Motion}"
 
-# [Org7.5-2253::@]
+# [Org7.5-2253::@f_frhs] アジェンダ内の移動コマンド
 # glossary: agenda ( アジェンダ ) / command ( コマンド ) / motion ( 移動 )
 #. type: cindex
 #: org.texi:7677
@@ -20819,7 +20819,8 @@ msgstr "@tsubheading{Motion}"
 msgid "motion commands in agenda"
 msgstr "motion commands in agenda"
 
-# [Org7.5-2254::@]
+# [Org7.5-2254::@f_frhs] 説明の入れ違い n,org-agenda-next-line <-> p,org-agenda-previous-line
+# 英文(org.texi)も修正されました。改善案)@orgcmd{n,org-agenda-next-line}　次の行へ(@key{down}及び@kbd{C-n}と同じ)。@orgcmd{p,org-agenda-previous-line}　次の行へ(@key{up}及び@kbd{C-p}と同じ)。@tsubheading{Org-modeファイルの表示/Org-modeファイルへの移動}
 # glossary: prefix arg ( 前置引数 ) / display ( ディスプレイ|表示 ) / entry ( エントリー|文|入力 ) / heading ( 見出し ) / item ( アイテム|項目 ) / line ( 行|ライン|線 ) / org ( Org-mode ) / outline ( アウトライン|outline ) / previous ( 前の ) / visible ( 表示 ) / window ( ウインドウ )
 #. type: table
 #: org.texi:7698
@@ -20830,11 +20831,12 @@ msgstr "@orgcmd{n,org-agenda-next-line}　次の行へ(@key{up}及び@kbd{C-p}�
 # [Org7.5-2255::@]
 #. type: vindex
 #: org.texi:7698
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "org-agenda-start-with-follow-mode"
 msgstr "org-agenda-start-with-follow-mode"
 
-# [Org7.5-2256::@]
+# [Org7.5-2256::@f_frhs] 引数の説明変更 org-agenda-tree-to-indirect-buffer
+# 改善案)Followモードをトグルする。Followモードではアジェンダバッファ上でカーソルを動かすと、Org-modeファイルの中で対応する場所を別のウインドウ上に表示する。新しいアジェンダバッファの中でこのモードの初期設定値は、@code{org-agenda-start-with-follow-mode}変数で設定することができる。@orgcmd{C-c C-x b,org-agenda-tree-to-indirect-buffer}　現在のアイテムのサブツリー全体を間接バッファに表示する。数値の前置引数Nをつけると、第N階層まで階層を上がり、そのツリーを取得する。もしもNがマイナスならば、N(の絶対値)分だけ階層を上がる。@kbd{C-u}という前置引数を付けた場合は、既に使われた間接バッファは消去されない。
 # glossary: agenda ( アジェンダ ) / argument ( 引数 ) / buffer ( バッファ ) / current ( カレント|現在の ) / cursor ( カーソル ) / display ( ディスプレイ|表示 ) / file ( ファイル ) / item ( アイテム|項目 ) / level ( レベル|階層 ) / mode ( モード|モード ) / org ( Org-mode ) / prefix ( 接頭辞 ) / setting ( 設定 ) / subtree ( サブツリー ) / toggle ( トグル ) / tree ( ツリー ) / variable ( 変数 ) / window ( ウインドウ )
 #. type: table
 #: org.texi:7710
@@ -20842,7 +20844,8 @@ msgstr "org-agenda-start-with-follow-mode"
 msgid "Toggle Follow mode.  In Follow mode, as you move the cursor through the agenda buffer, the other window always shows the corresponding location in the Org file.  The initial setting for this mode in new agenda buffers can be set with the variable @code{org-agenda-start-with-follow-mode}.  @orgcmd{C-c C-x b,org-agenda-tree-to-indirect-buffer} Display the entire subtree of the current item in an indirect buffer.  With a numeric prefix argument N, go up to level N and then take that tree.  If N is negative, go up that many levels.  With a @kbd{C-u} prefix, do not remove the previously used indirect buffer."
 msgstr "Followモードをトグルする。Followモードではアジェンダバッファ上でカーソルを動かすと、Org-modeファイルの中で、別のウインドウ上で対応する場所を表示する。新しいアジェンダバッファの中でこのモードの初期設定値は、@code{org-agenda-start-with-follow-mode}変数で設定することができる。@orgcmd{C-c C-x b,org-agenda-tree-to-indirect-buffer}　間接的なバッファの中で可憐とアイテムのサブツリー全体を表示する。数値付きの前置引数Nをつけると、第N階層まで階層を上がり、そのツリーを取得する。もしもNがマイナスならば、多くの階層まで上がる。@kbd{C-u}という前置引数を付けた場合は、既に使われた間接的バッファは消去されない。"
 
-# [Org7.5-2257::@]
+# [Org7.5-2257::@f_frhs] follow a link リンクをたどる
+# 改善案)@orgcmd{C-c C-o,org-agenda-open-link}　エントリーの中にあるリンクをたどる。このコマンドにより、参照先のOrg-modeのノード(?)に属するテキスト内にあるすべてのリンクから選択する機能を提供する。もしもリンクが1つしかない場合は、選択画面を表示せずに、リンクをたどる。
 # glossary: entry ( エントリー|文|入力 ) / link ( リンク ) / node ( ノード ) / org ( Org-mode ) / prompt ( 入力 ) / text ( テキスト|文章 )
 #. type: table
 #: org.texi:7715
@@ -20850,14 +20853,14 @@ msgstr "Followモードをトグルする。Followモードではアジェンダ
 msgid "@orgcmd{C-c C-o,org-agenda-open-link} Follow a link in the entry.  This will offer a selection of any links in the text belonging to the referenced Org node.  If there is only one link, it will be followed without a selection prompt."
 msgstr "@orgcmd{C-c C-o,org-agenda-open-link}　エントリーの中にあるリンクをフォローする。この機能は、参照されているOrg-modeのノードに属しているテキストの中に含まれているいくつかのリンクの中から選択するという機能を提供する。もしもリンクが1つしかない場合は、選択画面を表示せずに、そこにリンクを貼る。"
 
-# [Org7.5-2258::@]
+# [Org7.5-2258::@f_frhs] @tsubheading{表示の変更}
 #. type: table
 #: org.texi:7717
 #, fuzzy
 msgid "@tsubheading{Change display}"
 msgstr "@tsubheading{Change display}"
 
-# [Org7.5-2259::@]
+# [Org7.5-2259::@f_frhs] 表示の変更、アジェンダで
 # glossary: agenda ( アジェンダ ) / display ( ディスプレイ|表示 )
 #. type: cindex
 #: org.texi:7717
@@ -20869,19 +20872,20 @@ msgstr "display changing, in agenda"
 #. type: item
 #: org.texi:7718
 #: org.texi:7719
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "o"
 msgstr "o"
 
-# [Org7.5-2261::@]
+# [Org7.5-2261::@f_frhs] コマンド名の書き間違い(org.texiでも)
+# 改善案)他のウインドウを削除します。@orgcmdkskc{v d,d,org-aganda-day-view} @xorgcmdkskc{v w,w,org-aganda-week-view} @xorgcmd{v m,org-agenda-month-view} @xorgcmd{v y,org-agenda-year-view} @xorgcmd{v SPC,org-agenda-reset-view}
 # glossary: window ( ウインドウ )
 #. type: table
 #: org.texi:7727
-#, fuzzy
 msgid "Delete other windows.  @orgcmdkskc{v d,d,org-aganda-day-view} @xorgcmdkskc{v w,w,org-aganda-day-view} @xorgcmd{v m,org-agenda-month-view} @xorgcmd{v y,org-agenda-month-year} @xorgcmd{v SPC,org-agenda-reset-view}"
 msgstr "他のウインドウを削除します。@orgcmdkskc{v d,d,org-aganda-day-view} @xorgcmdkskc{v w,w,org-aganda-day-view} @xorgcmd{v m,org-agenda-month-view} @xorgcmd{v y,org-agenda-month-year} @xorgcmd{v SPC,org-agenda-reset-view}"
 
-# [Org7.5-2262::@]
+# [Org7.5-2262::@f_frhs] 翻訳漏れのコマンドを補充
+# 改善案)日／週／月／年のビューを切り替えます。日または週のビューに切り替えたとき、この設定が、その後にアジェンダを更新する際のデフォルトの設定となります。月および年のビューは、作成するために時間を要するので、デフォルトとはしていません。数字の付いた前置引数をつけると、特定の年間通算日、ISOの週番号、月、年のそれぞれに直接ジャンプします。例えば@kbd{32 d}と書いたときは2月1日、@kbd{9 w}と書いたらISOの週番号が9を指します。日、週あるいは月のビューを設定したときは、1年は同様に前置引数の中でコード化されます。例えば、@kbd{200712 w}と書いたときは2007年の第12週にジャンプするでしょう。もしもそのような年の指定を、1桁もしくは2桁の数字で行いたいたときは、1938年から2037年の間に位置づけられます。@kbd{v @key{SPC}}によって、@code{org-agenda-span}での設定をリセットすることができます。@orgcmd{f,org-agenda-later}　次の@code{org-agenda-current-span}日分を表示するために時間を進めます。@orgcmd{b,org-agenda-earlier}　前の日付を表示するために時間を遡ります。@orgcmd{.,org-agenda-goto-today}　今日へ移動します。@orgcmd{j,org-agenda-goto-date}　日付の選択画面を出し、入力した日に移動します。@orgcmd{J,org-agenda-clock-goto}　@i{アジェンダバッファの中で}現在時間を計測中のタスクに移動します。@orgcmd{D,org-agenda-toggle-diary}　日記のエントリーに含めるかどうかトグルします。参照@ref{毎週／毎日のアジェンダ}.@orgcmdkskc{v l,l,org-agenda-log-mode}
 # glossary: prefix arg ( 前置引数 ) / agenda ( アジェンダ ) / argument ( 引数 ) / date ( 日付 ) / day ( 日付|日にち ) / default ( デフォルト|初期値 ) / diary ( 日記 ) / display ( ディスプレイ|表示 ) / entries ( エントリー|文|入力 ) / example ( 例 ) / prefix ( 接頭辞 ) / prompt ( 入力 ) / setting ( 設定 ) / specification ( 指定 ) / task ( タスク ) / time ( 時刻|時間|回 ) / toggle ( トグル ) / view ( ビュー )
 #. type: table
 #: org.texi:7761
@@ -20892,18 +20896,19 @@ msgstr "日／週／月／年のビューを切り替えます。日または週
 # [Org7.5-2263::@]
 #. type: kindex
 #: org.texi:7761
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "v L"
 msgstr "v L"
 
 # [Org7.5-2264::@]
 #. type: vindex
 #: org.texi:7763
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "org-agenda-log-mode-items"
 msgstr "org-agenda-log-mode-items"
 
-# [Org7.5-2265::@]
+# [Org7.5-2265::@f_frhs] ,as are entries, conj. V S; コマンドの修正 v [, v
+# 改善案)Logbookモードをトグルします。Logbookモードでは、その日に時間を計測されたエントリーと同様に、ログをとる状態(変数 @code{org-log-done})の間にDONEと印が付けられたエントリーがアジェンダに表示されます。@code{org-agenda-log-mode-items}変数を用いてlogモードに含まれるエントリーのタイプを設定することができます。@kbd{C-u}という前置引数をつけて呼び出すと、状態の変化を含め、考えられるすべてのlogbookのエントリーを表示します。@kbd{C-u C-u}という2つの前置引数をつけて呼び出すと、ログの情報のみが表示され、それ以外は表示されません。@kbd{v L}は、@kbd{C-u v l}と等価です。@orgkey{v [}@orgkey{[}　現在のビューに、不活性のタイムスタンプを含めます。週／日のアジェンダとタイムラインビューのみで使えます。@orgcmd{v a,org-agenda-archives-mode} @xorgcmd{v A,org-agenda-archives-mode 'files}　アーカイブモードをトグルします。アーカイブモードでは、@code{ARCHIVED}と印されたツリーもまたアジェンダを作成するときにスキャンされます。大文字の@kbd{A}を使用したときは、全てのアーカイブファイルを含みます。アーカイブモードを終了するには、再度@kbd{v a}を押してください。@orgcmdkskc{v R,R,org-agenda-clockreport-mode}
 # glossary: prefix arg ( 前置引数 ) / weekly/daily agenda ( 1週間/1日のアジェンダ ) / agenda ( アジェンダ ) / archive ( アーカイブ ) / current ( カレント|現在の ) / day ( 日付|日にち ) / entries ( エントリー|文|入力 ) / entry ( エントリー|文|入力 ) / file ( ファイル ) / information ( 情報 ) / logging ( 記録|ログ|ログを取る ) / marked ( マーク ) / mode ( モード|モード ) / prefix ( 接頭辞 ) / timeline ( タイムライン ) / timestamp ( タイムスタンプ ) / toggle ( トグル ) / tree ( ツリー ) / type ( タイプ|入力する ) / variable ( 変数 ) / view ( ビュー )
 #. type: table
 #: org.texi:7785
@@ -20914,11 +20919,12 @@ msgstr "Logbook modeにするかどうかをトグルします。Logbook modeの
 # [Org7.5-2266::@]
 #. type: vindex
 #: org.texi:7785
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "org-agenda-start-with-clockreport-mode"
 msgstr "org-agenda-start-with-clockreport-mode"
 
-# [Org7.5-2267::@]
+# [Org7.5-2267::@f_frhs] for timespan and file scope; By using a prefix argument when ...
+# クロックレポートモードをトグルします。クロックレポートモードでは、現在のアジェンダビューの期間とファイルの範囲にわたり計測された時間の表を常に日／週のアジェンダに表示します。新しいアジェンダバッファにおけるこのモードの初期設定は、@code{org-agenda-start-with-clockreport-mode}変数で設定することができます。前置引数を使ってこのモードをトグル(すなわち@: @kbd{C-u R})すると、アジェンダのフィルタリング@footnote{ここではタグのフィルターだけが有効です。工数のフィルターは無視されます。(訳注:フィルタリングするには、アジェンダバッファで"/"キーを押して下さい。)}によって隠されているエントリーの寄与をクロックテーブルは表示しません。@orgcmdkskc{v E,E,org-agenda-entry-text-mode}
 # glossary: clock table ( クロックテーブル ) / agenda ( アジェンダ ) / argument ( 引数 ) / buffer ( バッファ ) / current ( カレント|現在の ) / effort ( 工数 ) / entries ( エントリー|文|入力 ) / file ( ファイル ) / mode ( モード|モード ) / prefix ( 接頭辞 ) / setting ( 設定 ) / table ( テーブル ) / tag ( タグ ) / time ( 時刻|時間|回 ) / toggle ( トグル ) / variable ( 変数 ) / view ( ビュー )
 #. type: table
 #: org.texi:7796
@@ -20929,18 +20935,19 @@ msgstr "Clockreportモードをトグルします。Clockreportモードでは�
 # [Org7.5-2268::@]
 #. type: vindex
 #: org.texi:7796
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "org-agenda-start-with-entry-text-mode"
 msgstr "org-agenda-start-with-entry-text-mode"
 
 # [Org7.5-2269::@]
 #. type: vindex
 #: org.texi:7797
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "org-agenda-entry-text-maxlines"
 msgstr "org-agenda-entry-text-maxlines"
 
-# [Org7.5-2270::@]
+# [Org7.5-2270::@f_frhs] a number of (いくつかの); temporarily modify 一時的に変更する
+# 改善案)エントリーのテキスト表示モードをトグルします。エントリーのテキスト表示モードでは、アジェンダの行の下に、その行が参照しているOrg-modeのアウトラインのノードの数行分を表示します。行数の最大値は、@code{org-agenda-entry-text-maxlines}変数で指定します。数値の前置引数を付けてこのコマンドを呼び出すと、その数を前置引数の値へと一時的に変更します。@orgcmd{G,org-agenda-toggle-time-grid}
 # glossary: agenda ( アジェンダ ) / argument ( 引数 ) / command ( コマンド ) / entry ( エントリー|文|入力 ) / line ( 行|ライン|線 ) / mode ( モード|モード ) / modify ( 修正 ) / node ( ノード ) / org ( Org-mode ) / outline ( アウトライン|outline ) / prefix ( 接頭辞 ) / text ( テキスト|文章 ) / toggle ( トグル ) / value ( 値 ) / variable ( 変数 )
 #. type: table
 #: org.texi:7805
@@ -20948,7 +20955,8 @@ msgstr "org-agenda-entry-text-maxlines"
 msgid "Toggle entry text mode.  In entry text mode, a number of lines from the Org outline node referenced by an agenda line will be displayed below the line.  The maximum number of lines is given by the variable @code{org-agenda-entry-text-maxlines}.  Calling this command with a numeric prefix argument will temporarily modify that number to the prefix value.  @orgcmd{G,org-agenda-toggle-time-grid}"
 msgstr "entry text modeをトグルします。entry text modeでは、アジェンダ行によって参照されているOrg-modeのアウトラインのノードから、多数の行が、その行の下に表示されるでしょう。最大の行数は、@code{org-agenda-entry-text-maxlines}変数で指定します。数値付きの前置引数を付けて、このコマンドを呼び出すと、前置引数の値の数によって、即座に修正されます。@orgcmd{G,org-agenda-toggle-time-grid}"
 
-# [Org7.5-2271::@]
+# [Org7.5-2271::@f_frhs] TODOリストでのorg-agenda-redoコマンドの説明(修正); 抜けていたコマンドを補充(org-save-all-bufffers)
+# 改善案)時間のグリッドの表示をトグルします。@code{org-agenda-use-time-grid}と@code{org-agenda-time-grid}変数を参照してください。@orgcmd{r,org-agenda-rodo}　アジェンダバッファを再構築します。例えば、@kbd{S-@key{left}}や@kbd{S-@key{right}}を使ってアイテムのタイムスタンプを変更した後で、その変更を反映するためにアジェンダバッファを再構築します。そのバッファがグローバルなTODOリストの場合は、特定のTODOキーワードで選択可能なリストを作成するために、前置引数を解釈します。@orgcmd{g,org-agenda-rodo} @kbd{r}と同じです。@orgcmdkskc{C-x C-s,s,org-save-all-org-buffers}　現在ののEmacsのセッションにおいて、すべてのOrg-modeのバッファを保存し、あわせてIDの場所も保存します。@orgcmd{C-c C-x C-c,org-agenda-columns}
 # glossary: agenda ( アジェンダ ) / argument ( 引数 ) / buffer ( バッファ ) / current ( カレント|現在の ) / example ( 例 ) / global ( グローバルな ) / grid ( グリッド ) / item ( アイテム|項目 ) / keyword ( キーワード ) / list ( リスト ) / org ( Org-mode ) / prefix ( 接頭辞 ) / time ( 時刻|時間|回 ) / timestamp ( タイムスタンプ ) / toggle ( トグル ) / variable ( 変数 )
 #. type: table
 #: org.texi:7824
@@ -20956,7 +20964,8 @@ msgstr "entry text modeをトグルします。entry text modeでは、アジェ
 msgid "Toggle the time grid on and off.  See also the variables @code{org-agenda-use-time-grid} and @code{org-agenda-time-grid}.  @orgcmd{r,org-agenda-rodo} Recreate the agenda buffer, for example to reflect the changes after modification of the timestamps of items with @kbd{S-@key{left}} and @kbd{S-@key{right}}.  When the buffer is the global TODO list, a prefix argument is interpreted to create a selective list for a specific TODO keyword.  @orgcmd{g,org-agenda-rodo} Same as @kbd{r}.  @orgcmdkskc{C-x C-s,s,org-save-all-org-buffers} Save all Org buffers in the current Emacs session, and also the locations of IDs.  @orgcmd{C-c C-x C-c,org-agenda-columns}"
 msgstr "時間のグリッドの表示をトグルします。@code{org-agenda-use-time-grid}と@code{org-agenda-time-grid}変数を参照してください。@orgcmd{r,org-agenda-rodo}　アジェンダバッファを再構築する。例えば、@kbd{S-@key{left}}と@kbd{S-@key{right}}を使って、アイテムのタイムスタンプを改修したあと、その変更を反映するために。そのバッファがグローバルなTODOリストの場合は、指定したTODOキーワードを選択できるリストを作成するために、前置引数を解釈します。@orgcmd{g,org-agenda-rodo}　カレントのEmacsのセッションにおいて、すべてのOrg-modeのバッファを保存します。あわせてIDの場所も。@orgcmd{C-c C-x C-c,org-agenda-columns}"
 
-# [Org7.5-2272::@]
+# [Org7.5-2272::@f_frhs] whatever the format would be ...(taken from..., from... or from ...), will be used.
+# 改善案)アジェンダバッファの中でカラムビュー(@pxref{カラムビュー})を表示します。カラムビューのフォーマットは、その地点のエントリーから作成されるか、(もしもその地点にエントリーが存在しない場合は)アジェンダビューの最初のエントリーから作成されます。従って、そのエントリーのオリジナルのバッファで(プロパティから取得されるか、@code{#+COLUMNS}という行から取得されるか、デフォルトの変数である@code{org-columns-default-format}から取得される)フォーマットがどのようなものであっても、それがアジェンダで使われます。
 # glossary: column view ( カラムビュー ) / agenda ( アジェンダ ) / buffer ( バッファ ) / default ( デフォルト|初期値 ) / entry ( エントリー|文|入力 ) / format ( フォーマット|形成 ) / line ( 行|ライン|線 ) / point ( ポイント ) / property ( プロパティ ) / variable ( 変数 ) / view ( ビュー )
 #. type: table
 #: org.texi:7831
@@ -20964,7 +20973,8 @@ msgstr "時間のグリッドの表示をトグルします。@code{org-agenda-u
 msgid "Invoke column view (@pxref{Column view}) in the agenda buffer.  The column view format is taken from the entry at point, or (if there is no entry at point), from the first entry in the agenda view.  So whatever the format for that entry would be in the original buffer (taken from a property, from a @code{#+COLUMNS} line, or from the default variable @code{org-columns-default-format}), will be used in the agenda."
 msgstr "アジェンダバッファの中でカラムビュー(@pxref{カラムビュー})を作成します。カラムビューのフォーマットは、その時点のエントリーから作成され、あるいは(もしも、その時点でエントリーが存在しないなら)、アジェンダビューの最初のエントリーから作成されます。そのエントリーのためのフォーマットが何であれ、(プロパティから、@code{#+COLUMNS}という行から、あるいは@code{org-columns-default-format}変数のデフォルトから作成された)オリジナルのバッファに存在しているエントリーのフォーマットがアジェンダで使用されます。"
 
-# [Org7.5-2273::@]
+# [Org7.5-2273::@f_frhs] currently(現在); is restricted to (対象を**に制限される); the restriction lock on the agenda (アジェンダに対する制限のロック)
+# 改善案)@orgcmd{C-c C-x >,org-agenda-remove-restriction-lock}　もしもファイルまたはサブツリーに対象を現在制限している(@pxref{アジェンダファイル})ならば、アジェンダの対象を制限するロックを取り除きます。
 # glossary: agenda ( アジェンダ ) / file ( ファイル ) / subtree ( サブツリー )
 #. type: table
 #: org.texi:7835
@@ -20972,14 +20982,14 @@ msgstr "アジェンダバッファの中でカラムビュー(@pxref{カラム�
 msgid "@orgcmd{C-c C-x >,org-agenda-remove-restriction-lock} Remove the restriction lock on the agenda, if it is currently restricted to a file or subtree (@pxref{Agenda files})."
 msgstr "@orgcmd{C-c C-x >,org-agenda-remove-restriction-lock}　もしもファイルまたはサブツリーをその時点で制限しているならば、アジェンダをロックする制限を取り除きます。 (@pxref{アジェンダファイル})."
 
-# [Org7.5-2274::@]
+# [Org7.5-2274::@f_frhs] @tsubheading{補助的なフィルタリングとクエリーの編集}
 #. type: table
 #: org.texi:7837
 #, fuzzy
 msgid "@tsubheading{Secondary filtering and query editing}"
 msgstr "@tsubheading{Secondary filtering and query editing}"
 
-# [Org7.5-2275::@]
+# [Org7.5-2275::@f_frhs] フィルタリング、タグと工数による、アジェンダで
 # glossary: agenda ( アジェンダ ) / effort ( 工数 ) / tag ( タグ )
 #. type: cindex
 #: org.texi:7837
@@ -20987,7 +20997,7 @@ msgstr "@tsubheading{Secondary filtering and query editing}"
 msgid "filtering, by tag and effort, in agenda"
 msgstr "filtering, by tag and effort, in agenda"
 
-# [Org7.5-2276::@]
+# [Org7.5-2276::@f_frhs] タグのフィルタリング、アジェンダで
 # glossary: agenda ( アジェンダ ) / tag ( タグ )
 #. type: cindex
 #: org.texi:7838
@@ -20995,7 +21005,7 @@ msgstr "filtering, by tag and effort, in agenda"
 msgid "tag filtering, in agenda"
 msgstr "tag filtering, in agenda"
 
-# [Org7.5-2277::@]
+# [Org7.5-2277::@f_frhs] 工数のフィルタリング、アジェンダで
 # glossary: agenda ( アジェンダ ) / effort ( 工数 )
 #. type: cindex
 #: org.texi:7839
@@ -21003,7 +21013,7 @@ msgstr "tag filtering, in agenda"
 msgid "effort filtering, in agenda"
 msgstr "effort filtering, in agenda"
 
-# [Org7.5-2278::@]
+# [Org7.5-2278::@f_frhs] クエリーの編集、アジェンダで
 # glossary: agenda ( アジェンダ ) / editing ( 編集 )
 #. type: cindex
 #: org.texi:7840
@@ -21014,18 +21024,18 @@ msgstr "query editing, in agenda"
 # [Org7.5-2279::@]
 #. type: table
 #: org.texi:7843
-#, fuzzy
 msgid "@orgcmd{/,org-agenda-filter-by-tag}"
 msgstr "@orgcmd{/,org-agenda-filter-by-tag}"
 
 # [Org7.5-2280::@]
 #. type: vindex
 #: org.texi:7843
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "org-agenda-filter-preset"
 msgstr "org-agenda-filter-preset"
 
-# [Org7.5-2281::@]
+# [Org7.5-2281::@] 削除 (注1); persist through ~の間存続する
+# 改善案)タグおよび（または）工数の見積りに対して、カレントのアジェンダビューにフィルターをかけます。これとカスタムなアジェンダコマンドとの間の差異は、このフィルターが非常に早いということです。このため、あなたは、アジェンダを再表示することなく、異なるフィルターの間を素早く切り替えることができます。@footnote{カスタムコマンドによって、オプションとして@code{org-agenda-filter-preset}変数と結びつけることで、フィルターを事前にセットすることができます。このフィルターはビューに適用され、リフレッシュや追加の補助的なフィルタリングの間は基本的なフィルターとして存続します。このフィルターは、アジェンダビュー全体のグローバルなプロパティです。アジェンダのブロックの中でこの設定を行うためには、個別のブロックのセクションではなく、グローバルオプションのセクションで行います。}
 # glossary: effort estimate ( 工数の見積り ) / agenda ( アジェンダ ) / block ( ブロック ) / command ( コマンド ) / current ( カレント|現在の ) / custom ( カスタム|カスタマイズ ) / global ( グローバルな ) / option ( オプション ) / property ( プロパティ ) / section ( セクション ) / tag ( タグ ) / variable ( 変数 ) / view ( ビュー )
 #. type: table
 #: org.texi:7853
@@ -21033,7 +21043,8 @@ msgstr "org-agenda-filter-preset"
 msgid "Filter the current agenda view with respect to a tag and/or effort estimates.  The difference between this and a custom agenda command is that filtering is very fast, so that you can switch quickly between different filters without having to recreate the agenda.@footnote{Custom commands can preset a filter by binding the variable @code{org-agenda-filter-preset} as an option.  This filter will then be applied to the view and persist as a basic filter through refreshes and more secondary filtering.  The filter is a global property of the entire agenda view---in a block agenda, you should only set this in the global options section, not in the section of an individual block.}"
 msgstr "タグおよび（または）工数の見積りに対して、カレントのアジェンダビューにフィルターをかけます。これとカスタムなアジェンダコマンドとの間の差異は、このフィルターが非常に早いということです。このため、あなたは、アジェンダ（注１）を再表示することなく、異なるフィルターの間を素早く切り替えることができます。@footnote{カスタムコマンドによって、オプションとして@code{org-agenda-filter-preset}変数と結びつけることで、フィルターを事前にセットすることができます。このフィルターは、ビューに適用されます。そして、リフレッシュや２番目のフィルターを通して、基本的なフィルターとして存続します。このフィルターは、アジェンダのブロックの中で、アジェンダビュー全体のグローバルなプロパティです。この設定を行うためには、個別のブロックのセクションではなく、グローバルオプションのセクションで行います。}"
 
-# [Org7.5-2282::@]
+# [Org7.5-2282::@] SPCの挙動は any tag -> no tags?; do have the tag 強意; immediately 直接に
+# 改善案)タグ選択の文字を入力するプロンプトが表示されます。@key{SPC}はタグが無いことを意味します。入力部分で@key{TAB}を押すと、選択するタグの補完機能を使用できます(すべてのタグに選択用の文字が指定されているとはかぎりません)。そのコマンドは、そのときにこのタグを含んでいないか継承していないエントリーを全て隠します。前置引数をつけて呼び出した場合は、そのタグが@emph{ついている}エントリーを取り除きます。プロンプトで再び@kbd{/}を押すとフィルターを終了し、隠されているエントリーを再度出現させます。もしも最初に入力したキーが@kbd{+}または@kbd{-}ならば、選択された追加のタグの要求あるいは禁止に応じて、以前のフィルターの範囲を制限します。@kbd{/}の後に@kbd{+}あるいは@kbd{-}を入力する代わりに、@kbd{\} コマンドを直接使用することもできます。
 # glossary: prefix arg ( 前置引数 ) / command ( コマンド ) / completion ( 補完 ) / entries ( エントリー|文|入力 ) / key ( キー ) / narrowed ( ナローされた|幅を狭くした ) / previous ( 前の ) / prompt ( 入力 ) / tag ( タグ )
 #. type: table
 #: org.texi:7864
@@ -21044,11 +21055,12 @@ msgstr "タグ選択の文字を入力しましょう。@key{SPC}はタグの全
 # [Org7.5-2283::@]
 #. type: vindex
 #: org.texi:7865
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "org-sort-agenda-noeffort-is-high"
 msgstr "org-sort-agenda-noeffort-is-high"
 
-# [Org7.5-2284::@]
+# [Org7.5-2284::@f_frhs] globally 汎用的な->グローバルに
+# 改善案)工数見積にフィルターをかけるために、認められている工数を予めグローバルに設定しなくてはなりません。例えば
 # glossary: effort estimate ( 工数の見積り ) / effort ( 工数 ) / example ( 例 )
 #. type: table
 #: org.texi:7868
@@ -21059,7 +21071,7 @@ msgstr "工数見積のフィルターをかけるために、予め認められ
 # [Org7.5-2285::@]
 #. type: lisp
 #: org.texi:7871
-#, no-wrap, fuzzy
+#, no-wrap
 msgid ""
 "(setq org-global-properties\n"
 "    '((\"Effort_ALL\". \"0 0:10 0:30 1:00 2:00 3:00 4:00\")))\n"
@@ -21067,7 +21079,8 @@ msgstr ""
 "(setq org-global-properties\n"
 "    '((\"Effort_ALL\". \"0 0:10 0:30 1:00 2:00 3:00 4:00\")))\n"
 
-# [Org7.5-2286::@]
+# [Org7.5-2286::@f_frhs] operator 演算子; fast access key アクセスキー?; filter フィルターをかける(残ったもの?除去したいもの?)
+# 改善案)工数のためにフィルターをかけるには、最初に演算子である@kbd{<}、@kbd{>}および@kbd{=}の1つを入力し、それから、あらかじめ認められた値のリストにある工数見積りのインデックスを1桁の数字で入力します。そこでは@kbd{0}は10番目の値を意味します。フィルターは、選択された値と比較してそれ以下、イコール、それ以上のエントリーに限定します。もしも0-9のキーがタグへのアクセスキーとして使用されていないならば、演算子を利用することなく単にインデックスとなる数字をそのまま入力することもできます。この場合@kbd{<}が仮定されます。演算子の運用では、定義された工数がないエントリーは、@code{org-sort-agenda-noeffort-is-high}変数の値に従って取り扱われます。フィルターをかけて工数の定義のないタスクを得るには、演算子として@kbd{?}を入力します。
 # glossary: effort estimate ( 工数の見積り ) / effort ( 工数 ) / entries ( エントリー|文|入力 ) / index ( インデックス ) / key ( キー ) / tag ( タグ ) / task ( タスク ) / value ( 値 )
 #. type: table
 #: org.texi:7882
@@ -21075,7 +21088,8 @@ msgstr ""
 msgid "You can then filter for an effort by first typing an operator, one of @kbd{<}, @kbd{>}, and @kbd{=}, and then the one-digit index of an effort estimate in your array of allowed values, where @kbd{0} means the 10th value.  The filter will then restrict to entries with effort smaller-or-equal, equal, or larger-or-equal than the selected value.  If the digits 0-9 are not used as fast access keys to tags, you can also simply press the index digit directly without an operator.  In this case, @kbd{<} will be assumed.  For application of the operator, entries without a defined effort will be treated according to the value of @code{org-sort-agenda-noeffort-is-high}.  To filter for tasks without effort definition, press @kbd{?} as the operator."
 msgstr "あなたは、@kbd{<}、@kbd{>}および@kbd{=}のひとつの操作を最初に入力することで、工数のためのフィルターをかけることができます。それから、あらかじめ認められた値のリストの中で、工数見積りのインデックスの数字を入力します。そこでは@kbd{0}は１０番目の値を意味します。フィルターは選択された値よりも、以下、イコール、以上であるかによって限定されます。もしも0-9のキーがタグへのアクセスキーとして使用されていないならば、単純にあなたは操作コマンドを利用することなく、直接インデックスとなる数字を入力するだけです。この場合@kbd{<}が仮定されます。操作のアプリケーションのために、定義された工数がないエントリーでは、@code{org-sort-agenda-noeffort-is-high}変数の値に従って取り扱われます。工数の定義のないタスクにフィルターをかけるには、@kbd{?}を操作の値として入力します。"
 
-# [Org7.5-2287::@]
+# [Org7.5-2287::@f_frhs] function 関数; sub-option 下位の選択肢; run 実行する; let's say 例えば...とする。; business hours 終業時間
+# 改善案)Org-modeはまた、コンテクストに対応する自動のタグのフィルターをサポートしています。もしも、@code{org-agenda-auto-exclude-function}変数の値がユーザーによって定義された関数に設定されているときは、その関数によって、どのタグがアジェンダから自動的に排除されるべきかを決定できます。一度これを設定すると、その後@kbd{/}コマンドは@kbd{RET}を下位の選択肢のキーとして受け付け、自動的に排除ロジックを実行します。例えば、ネットワークへのアクセスを必要とするタスクと識別するためには@code{Net}というタグを、街での用事のためには@code{Errand}というタグを、電話を掛けるには@code{Call}というタグを使用しているとします。あなたは、「インターネットを利用できるかどうか」「終業時間外かどうか」という状況に基づいてこれらのタグを自動的に排除できます。
 # glossary: agenda ( アジェンダ ) / command ( コマンド ) / example ( 例 ) / function ( 機能|関数 ) / key ( キー ) / org ( Org-mode ) / tag ( タグ ) / task ( タスク ) / variable ( 変数 )
 #. type: table
 #: org.texi:7892
@@ -21087,7 +21101,7 @@ msgstr "Org-modeはまた、コンテクストに対応したタグのフィル�
 # glossary: nil ( nil ) / tag ( タグ )
 #. type: group
 #: org.texi:7904
-#, no-wrap, fuzzy
+#, no-wrap
 msgid ""
 "(defun org-my-auto-exclude-function (tag)\n"
 "  (and (cond\n"
@@ -21114,11 +21128,12 @@ msgstr ""
 # [Org7.5-2289::@]
 #. type: group
 #: org.texi:7906
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "(setq org-agenda-auto-exclude-function 'org-my-auto-exclude-function)\n"
 msgstr "(setq org-agenda-auto-exclude-function 'org-my-auto-exclude-function)\n"
 
-# [Org7.5-2290::@]
+# [Org7.5-2290::@f_frhs] narrow ここでは「この結果を更に絞り込む」の意?; with とともに; do 対比を示す強調?; @emph{}の補充;
+# 改善案)@orgcmd{\,org-agenda-filter-by-tag-refine}現在のアジェンダのフィルターに対して条件を追加することでさらに絞り込みます。前置引数とともにコマンドを呼び出したときは、そのタグが@emph{ついている}エントリーを、あるいは工数の条件に合致するエントリーを取り除きます。@kbd{/}コマンドのあとの最初のキーとして@kbd{+}あるいは@kbd{-}を押すことで、同じ効果を得られます。
 # glossary: prefix arg ( 前置引数 ) / agenda ( アジェンダ ) / command ( コマンド ) / current ( カレント|現在の ) / effort ( 工数 ) / entries ( エントリー|文|入力 ) / key ( キー ) / narrow ( ナローイングする|幅を狭くする ) / tag ( タグ )
 #. type: table
 #: org.texi:7914
@@ -21129,39 +21144,39 @@ msgstr "@orgcmd{\\,org-agenda-filter-by-tag-refine}追加の条件によって�
 # [Org7.5-2291::@]
 #. type: kindex
 #: org.texi:7916
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "["
 msgstr "["
 
 # [Org7.5-2292::@]
 #. type: kindex
 #: org.texi:7917
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "]"
 msgstr "]"
 
 # [Org7.5-2293::@]
 #. type: kindex
 #: org.texi:7918
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "@{"
 msgstr "@{"
 
 # [Org7.5-2294::@]
 #. type: kindex
 #: org.texi:7919
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "@}"
 msgstr "@}"
 
 # [Org7.5-2295::@]
 #. type: item
 #: org.texi:7920
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "[ ] @{ @}"
 msgstr "[ ] @{ @}"
 
-# [Org7.5-2296::@]
+# [Org7.5-2296::@f_frhs] 検索ビュー@r{の中で}
 # glossary: search ( 検索 ) / view ( ビュー )
 #. type: item
 #: org.texi:7922
@@ -21169,7 +21184,8 @@ msgstr "[ ] @{ @}"
 msgid "@r{in} search view"
 msgstr "@r{in} search view"
 
-# [Org7.5-2297::@]
+# [Org7.5-2297::@] brace 波括弧; search term 検索語; occur 存在する; @emph 補充; the entry for it to be selected.
+# 改善案)新しい検索語(@kbd{[}と@kbd{]})あるいは新しい正規表現(@kbd{@{}と@kbd{@}})をクエリ文字列に追加する。開いた角括弧／波括弧は、@samp{+}が前についたポジティブな検索の用語を追加します。それは、この検索語がそのエントリーに存在／合致@emph{しなければならない}ことを意味します。閉じた角括弧／波括弧はネガティブな検索の用語を追加します。選択されるには、エントリーの中にその検索用語が存在／合致@i{してはいけない}ということです。
 # glossary: closing ( 完了 ) / entry ( エントリー|文|入力 ) / search ( 検索 ) / string ( 文字列 )
 #. type: table
 #: org.texi:7929
@@ -21177,14 +21193,14 @@ msgstr "@r{in} search view"
 msgid "add new search words (@kbd{[} and @kbd{]}) or new regular expressions (@kbd{@{} and @kbd{@}}) to the query string.  The opening bracket/brace will add a positive search term prefixed by @samp{+}, indicating that this search term @i{must} occur/match in the entry.  The closing bracket/brace will add a negative search term which @i{must not} occur/match in the entry for it to be selected."
 msgstr "新しい検索の単語(@kbd{[}と@kbd{]})、あるいは新しい正規表現(@kbd{@{}と@kbd{@}})をクエリ文字列に追加する。開いた角括弧／大括弧は、@samp{+}という接頭辞のついたポジティブな検索用語を追加する。この検索用語は、@i{必ず}そのエントリーに発生／合致しなければならないことを示す。閉じた角括弧／大括弧は、ネガティブな検索用語を追加し、それは、選択されているエントリーの中で、@i{絶対に}発生／合致しないということである。"
 
-# [Org7.5-2298::@]
+# [Org7.5-2298::@f_frhs] @tsubheading{遠隔による編集}
 #. type: table
 #: org.texi:7932
 #, fuzzy
 msgid "@tsubheading{Remote editing}"
 msgstr "@tsubheading{Remote editing}"
 
-# [Org7.5-2299::@]
+# [Org7.5-2299::@f_frhs] 遠隔による編集、アジェンダから
 # glossary: agenda ( アジェンダ ) / editing ( 編集 )
 #. type: cindex
 #: org.texi:7932
@@ -21195,11 +21211,11 @@ msgstr "remote editing, from agenda"
 # [Org7.5-2300::@]
 #. type: item
 #: org.texi:7934
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "0-9"
 msgstr "0-9"
 
-# [Org7.5-2301::@]
+# [Org7.5-2301::@f_frhs] 数字の引数です。?
 # glossary: argument ( 引数 )
 #. type: table
 #: org.texi:7937
@@ -21207,14 +21223,15 @@ msgstr "0-9"
 msgid "Digit argument."
 msgstr "Digit argument."
 
-# [Org7.5-2302::@]
+# [Org7.5-2302::@f_frhs] 遠隔による編集結果を元に戻す
+# event が「結果」という意味になるでしょうか。
 #. type: cindex
 #: org.texi:7937
 #, no-wrap, fuzzy
 msgid "undoing remote-editing events"
 msgstr "undoing remote-editing events"
 
-# [Org7.5-2303::@]
+# [Org7.5-2303::@f_frhs] 遠隔による編集、元に戻す
 # glossary: editing ( 編集 )
 #. type: cindex
 #: org.texi:7938
@@ -21222,7 +21239,8 @@ msgstr "undoing remote-editing events"
 msgid "remote editing, undo"
 msgstr "remote editing, undo"
 
-# [Org7.5-2304::@]
+# [Org7.5-2304::@] remote 遠隔の; the change is undone; state 状態; set 集合
+# 改善案)@orgcmd{C-_,org-agenda-undo}　遠隔の編集コマンドによる変更を元に戻します。アジェンダバッファと遠隔のバッファのどちらの変化も元に戻します。@orgcmd{t,org-agenda-todo}　アイテムのTODOの状態を変更します。アジェンダとオリジナルのOrgファイルの両方を変更します。@orgcmd{C-S-@key{right},org-agenda-todo-nextset} @orgcmd{C-S-@key{left},org-agenda-todo-previousset}　次／前のTODOキーワードの集合へと切り替えます。@orgcmd{C-k,org-agenda-kill}
 # glossary: TODO keywords ( TODOキーワード ) / agenda ( アジェンダ ) / buffer ( バッファ ) / command ( コマンド ) / editing ( 編集 ) / file ( ファイル ) / item ( アイテム|項目 ) / org ( Org-mode )
 #. type: table
 #: org.texi:7952
@@ -21233,11 +21251,12 @@ msgstr "@orgcmd{C-_,org-agenda-undo}　外部の編集コマンドでの変更�
 # [Org7.5-2305::@]
 #. type: vindex
 #: org.texi:7952
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "org-agenda-confirm-kill"
 msgstr "org-agenda-confirm-kill"
 
-# [Org7.5-2306::@]
+# [Org7.5-2306::@f_frhs] confirm 承認する; remote 遠隔の; at point その地点; refile 配置し直す
+# 現在のアジェンダのアイテムを、オリジナルのOrgファイルの中でそのアイテムが属しているサブツリー全体と共にを削除します。もしも遠隔で削除するテキストが1行以上の場合、削除を行うにはユーザーの承認が必要です。@code{org-agenda-confirm-kill}変数を参照のこと。@orgcmd{C-c C-w,org-agenda-refile}　その場所のエントリーを配置し直します。@orgcmdkskc{C-c C-x C-a,a,org-agenda-archive-default-with-confirmation}
 # glossary: agenda ( アジェンダ ) / current ( カレント|現在の ) / entry ( エントリー|文|入力 ) / file ( ファイル ) / item ( アイテム|項目 ) / kill ( キル ) / line ( 行|ライン|線 ) / org ( Org-mode ) / point ( ポイント ) / refile ( 再配置 ) / subtree ( サブツリー ) / text ( テキスト|文章 ) / user ( ユーザー ) / variable ( 変数 )
 #. type: table
 #: org.texi:7962
@@ -21245,7 +21264,8 @@ msgstr "org-agenda-confirm-kill"
 msgid "Delete the current agenda item along with the entire subtree belonging to it in the original Org file.  If the text to be deleted remotely is longer than one line, the kill needs to be confirmed by the user.  See variable @code{org-agenda-confirm-kill}.  @orgcmd{C-c C-w,org-agenda-refile} Refile the entry at point.  @orgcmdkskc{C-c C-x C-a,a,org-agenda-archive-default-with-confirmation}"
 msgstr "オリジナルのOrgファイルの中で、そのアイテムが属しているサブツリー全体と共に、カレントのアジェンダアイテムを削除する。もしも外部ファイルの削除するテキストが１行以上ならば、削除を行うには、ユーザーが指定する必要がある。@code{org-agenda-confirm-kill}変数を参照のこと。@orgcmd{C-c C-w,org-agenda-refile}　その時点でそのエントリーを差し替える。@orgcmdkskc{C-c C-x C-a,a,org-agenda-archive-default-with-confirmation} "
 
-# [Org7.5-2307::@]
+# [Org7.5-2307::@f_frhs] at point その地点の; current 現在の; sibling 兄弟ノード(不明)?
+# 改善案)@code{org-archive-default-command}に設定されたデフォルトのアーカイブコマンドを使用して、その地点のでエントリーに対応したサブツリーをアーカイブする。@code{a}キーを使用したときは、承認が必要である。@orgcmd{C-c C-x a,org-agenda-toggle-archive-tag}　現在のの見出しのためのARCHIVEタグをトグルする。@orgcmd{C-c C-x A,org-agenda-archive-to-archive-sibling}　現在のエントリーに対応したサブツリーを、@emph{アーカイブファイル}に移動する。@orgcmdkskc{C-c C-x C-s,$,org-agenda-archive}　現在の見出しに対応したサブツリーをアーカイブする。これは、設定されたアーカイブの場所、おそらくは異なるファイルへとエントリーを移動することを意味する。@orgcmd{T,org-agenda-show-tags}
 # glossary: archive tag ( アーカイブタグ ) / archive ( アーカイブ ) / archiving ( アーカイブ ) / command ( コマンド ) / current ( カレント|現在の ) / default ( デフォルト|初期値 ) / entry ( エントリー|文|入力 ) / file ( ファイル ) / headline ( 見出し ) / key ( キー ) / point ( ポイント ) / subtree ( サブツリー ) / toggle ( トグル )
 #. type: table
 #: org.texi:7980
@@ -21256,11 +21276,12 @@ msgstr "@code{org-archive-default-command}に設定されたデフォルトの�
 # [Org7.5-2308::@]
 #. type: vindex
 #: org.texi:7980
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "org-agenda-show-inherited-tags"
 msgstr "org-agenda-show-inherited-tags"
 
-# [Org7.5-2309::@]
+# [Org7.5-2309::@] current; occasionally ときどき
+# 改善案)現在のアイテムと関連づけられたすべてのタグを表示する。もしも、あなたたが@code{org-agenda-show-inherited-tags}機能を停止しているが、それにもかかわらずときどき見出しのすべてのタグを確認したいというときに役に立つ。@orgcmd{:,org-agenda-set-tags}　現在の見出しにタグを設定する。もしもアジェンダの中にアクティブなリージョンがあるときは、そのリージョンの中のすべての見出しに対してタグを変更する。
 # glossary: active region ( アクティブなリージョン ) / agenda ( アジェンダ ) / current ( カレント|現在の ) / heading ( 見出し ) / headline ( 見出し ) / item ( アイテム|項目 ) / region ( リージョン|領域 ) / tag ( タグ )
 #. type: table
 #: org.texi:7989
@@ -21272,11 +21293,11 @@ msgstr "カレントアイテムと関連づけられたすべてのタグを表
 #. type: item
 #: org.texi:7989
 #: org.texi:7990
-#, no-wrap, fuzzy
+#, no-wrap
 msgid ","
 msgstr ","
 
-# [Org7.5-2311::@]
+# [Org7.5-2311::@f_frhs] the priority cookie とは何?; priority 優先度
 # glossary: agenda ( アジェンダ ) / buffer ( バッファ ) / current ( カレント|現在の ) / display ( ディスプレイ|表示 ) / entry ( エントリー|文|入力 ) / item ( アイテム|項目 ) / key ( キー ) / org-mode ( Org-mode ) / priority ( 優先順位|プライオリティ ) / prompt ( 入力 )
 #. type: table
 #: org.texi:8007
@@ -21284,7 +21305,8 @@ msgstr ","
 msgid "Set the priority for the current item (@command{org-agenda-priority}).  Org-mode prompts for the priority character. If you reply with @key{SPC}, the priority cookie is removed from the entry.  @orgcmd{P,org-agenda-show-priority} Display weighted priority of current item.  @orgcmdkkc{+,S-@key{up},org-agenda-priority-up} Increase the priority of the current item.  The priority is changed in the original buffer, but the agenda is not resorted.  Use the @kbd{r} key for this.  @orgcmdkkc{-,S-@key{down},org-agenda-priority-down} Decrease the priority of the current item.  @orgcmdkkc{z,C-c C-z,org-agenda-add-note}"
 msgstr "カレントアイテムに優先順位を設定する。(@command{org-agenda-priority})　Org-modeは優先順位を表す文字を指示します。もしも、@key{SPC}を使って返答すると、優先順位のクッキーがそのエントリーから取り除かれる。@orgcmd{P,org-agenda-show-priority}　カレントアイテムの優先順位の重み付けを表示する。@orgcmdkkc{+,S-@key{up},org-agenda-priority-up}　カレントアイテムの優先順位を高くする。優先順位はオリジナルのバッファで変更される。しかしアジェンダ上では並び替えの更新は行われない。このためには、@kbd{r}キーを使用する。@orgcmdkkc{-,S-@key{down},org-agenda-priority-down} 　カレントアイテムの優先順位を低くする。@orgcmdkkc{z,C-c C-z,org-agenda-add-note}"
 
-# [Org7.5-2312::@]
+# [Org7.5-2312::@f_frhs] typo; drawer 「引き出し」とは何を意味する?; for all command の位置変更; schedule スケジュールする; additional 更に; 文体
+# そのエントリーにノートを追加する。このノートは記録され、ノートが置かれている状態を変更した同じ場所にファイルされる。@code{org-log-into-drawer}によって、これは引き出しの中に入る。@orgcmd{C-c C-a,org-attach}　添付に関連するすべてのコマンドの選択画面を表示する。@orgcmd{C-c C-s,org-agenda-schedule}　このアイテムをスケジューリングする。前置引数をつけると、スケジュールのタイムスタンプが削除される。@orgcmd{C-c C-d,org-agenda-deadline}　このアイテムにデッドラインを設定する。前置引数をつけるとデッドラインが削除される。@orgcmd{k,org-agenda-action}　カーソルの置かれた日付に選択されたアイテムの日付を設定するための、アジェンダのアクション。このコマンドはカレンダーでも動作する！コマンドはさらに追加のキーの入力をするよう促す。
 # glossary: prefix arg ( 前置引数 ) / agenda ( アジェンダ ) / command ( コマンド ) / cursor ( カーソル ) / date ( 日付 ) / deadline ( デッドライン ) / dispatcher ( コマンド選択画面 ) / entry ( エントリー|文|入力 ) / item ( アイテム|項目 ) / note ( ノート|メモ ) / prompt ( 入力 ) / schedule ( スケジュール ) / scheduling ( スケジューリング ) / timestamp ( タイムスタンプ ) / work ( 作業 )
 #. type: table
 #: org.texi:8025
@@ -21292,7 +21314,12 @@ msgstr "カレントアイテムに優先順位を設定する。(@command{org-a
 msgid "Add a note to the entry.  This note will be recorded, and then filed to the same location where state change notes are put.  Depending on @code{org-log-into-drawer}, this may be inside a drawer.  @orgcmd{C-c C-a,org-attach} Dispatcher for all command related to attachments.  @orgcmd{C-c C-s,org-agenda-schedule} Schedule this item.  With prefix arg remove the scheduling timestamp @orgcmd{C-c C-d,org-agenda-deadline} Set a deadline for this item.  With prefix arg remove the deadline.  @orgcmd{k,org-agenda-action} Agenda actions, to set dates for selected items to the cursor date.  This command also works in the calendar! The command prompts for an additional key:"
 msgstr "そのエントリーにのノートを追加する。このノートは記録され、ノートが置かれている状態を変更した同じ場所にファイルされる。@code{org-log-into-drawer}によって、これは引き出しの中に入る。@orgcmd{C-c C-a,org-attach}　すべてのコマンドの選択画面は、付属するものに関連づけられる。@orgcmd{C-c C-s,org-agenda-schedule}　このアイテムを予約する。前置引数をつけると、予約のタイムスタンプが削除される。@orgcmd{C-c C-d,org-agenda-deadline}　このアイテムにデッドラインを設定する。前置引数をつけるとデッドラインが削除される。@orgcmd{k,org-agenda-action}　カーソルの置かれた日付に選択されたアイテムの日付を設定するための、アジェンダのアクション。このコマンドはカレンダーでも動作する！コマンドは追加されたキーで入力する。"
 
-# [Org7.5-2313::@]
+# [Org7.5-2313::@] at point ポイント位置の; make->mark? 英文の検討が必要?; 一行目と2行目は続く; schedule 予約?; 移動「デフォルトの日付として」
+# m   @r{アクションのためにポイント位置のエントリーをマークする。}
+#     @r{Org-modeのファイル内でも@kbd{C-c C-x C-k}を用いて複数のエントリーをマークできる。}
+# d   @r{マークされたエントリーのデッドラインをポイント位置の日付に設定する。}
+# s   @r{マークされたエントリーの予約をポイント位置の日付にする。}
+# r   @r{カーソルの日付をデフォルトの日付として@code{org-capture}を呼び出す。}
 # glossary: cursor ( カーソル ) / date ( 日付 ) / deadline ( デッドライン ) / default ( デフォルト|初期値 ) / entry ( エントリー|文|入力 ) / file ( ファイル ) / marked ( マーク ) / org ( Org-mode ) / point ( ポイント )
 #. type: example
 #: org.texi:8031
@@ -21310,7 +21337,8 @@ msgstr ""
 "s   @r{その時点の日付でマークされたエントリーを予約する。}\n"
 "r   @r{デフォルトの日付としてカーソルの日付とともに@code{org-capture}を呼び出す。}\n"
 
-# [Org7.5-2314::@]
+# [Org7.5-2314::@] (移動)アジェンダを更新; current line 現在の行; (移動+変更)2重の; (移動) 直接; 命令形; associated with と関連する; clock 時間を計測する
+# 改善案)その後に@kbd{r}を押してアジェンダを更新し、コマンドの効果を確認します。@orgcmd{S-@key{right},org-agenda-do-date-later}　現在の行に関連するタイムスタンプを1日先に変更する。数値の前置引数をつけると、その日数分だけ先に変更する。例えば、@kbd{3 6 5 S-@key{right}}と入力するとタイムスタンプを1年先に変更する。@kbd{C-u}という前置引数をつけると、1時間ずつ時間を変更する。即座に同じコマンドを繰り返すと、前置引数を付けなくても1時間単位で変化し続ける。@kbd{C-u C-u}と2つの前置引数をつけると、同様に分単位で変更する。オリジナルのOrg-modeファイルの中でタイムスタンプは変更されるが、その変更は直接アジェンダバッファに反映されない。バッファを更新するには、@kbd{r}または@kbd{g}を使用してください。@orgcmd{S-@key{left},org-agenda-do-date-earlier}　現在の行に関連するタイムスタンプを1日過去に変更する。@orgcmd{>,org-agenda-date-prompt}　現在の行に関連するタイムスタンプを変更する。@kbd{>}キーを選んだのは、私のキーボード上では@kbd{S-.}と同じだからです。@orgcmd{I,org-agenda-clock-in}　カレントアイテムについて時間計測をスタートする。もしも時間計測がすでに実行中であれば、まずはそれを停止する。@orgcmd{O,org-agenda-clock-out}　すでにスタートした時間計測を停止する。@orgcmd{X,org-agenda-clock-cancel}　現在実行中の時間計測をキャンセルする。@orgcmd{J,org-agenda-clock-goto}　別のウインドウの中で実行中の時間計測にジャンプする。
 # glossary: prefix arg ( 前置引数 ) / agenda ( アジェンダ ) / argument ( 引数 ) / buffer ( バッファ ) / command ( コマンド ) / current ( カレント|現在の ) / day ( 日付|日にち ) / example ( 例 ) / file ( ファイル ) / item ( アイテム|項目 ) / key ( キー ) / line ( 行|ライン|線 ) / org ( Org-mode ) / prefix ( 接頭辞 ) / running ( 実行中の ) / stamp ( スタンプ ) / time ( 時刻|時間|回 ) / timestamp ( タイムスタンプ ) / update ( アップデート|更新 ) / window ( ウインドウ )
 #. type: table
 #: org.texi:8066
@@ -21318,7 +21346,7 @@ msgstr ""
 msgid "Press @kbd{r} afterward to refresh the agenda and see the effect of the command.  @orgcmd{S-@key{right},org-agenda-do-date-later} Change the timestamp associated with the current line by one day into the future.  With a numeric prefix argument, change it by that many days.  For example, @kbd{3 6 5 S-@key{right}} will change it by a year.  With a @kbd{C-u} prefix, change the time by one hour.  If you immediately repeat the command, it will continue to change hours even without the prefix arg.  With a double @kbd{C-u C-u} prefix, do the same for changing minutes.  The stamp is changed in the original Org file, but the change is not directly reflected in the agenda buffer.  Use @kbd{r} or @kbd{g} to update the buffer.  @orgcmd{S-@key{left},org-agenda-do-date-earlier} Change the timestamp associated with the current line by one day into the past.  @orgcmd{>,org-agenda-date-prompt} Change the timestamp associated with the current line.  The key @kbd{>} has been chosen, because it is the same as @kbd{S-.} on my keyboard.  @orgcmd{I,org-agenda-clock-in} Start the clock on the current item.  If a clock is running already, it is stopped first.  @orgcmd{O,org-agenda-clock-out} Stop the previously started clock.  @orgcmd{X,org-agenda-clock-cancel} Cancel the currently running clock.  @orgcmd{J,org-agenda-clock-goto} Jump to the running clock in another window."
 msgstr "アジェンダを更新した後に、@kbd{r}を押すと、コマンドの効果を確認できる。@orgcmd{S-@key{right},org-agenda-do-date-later}　カレント行に関連づけられたタイムスタンプを１日先に変更する。数値付きの前置引数をつけると、その数字の日数分だけ先に変更する。例えば、@kbd{3 6 5 S-@key{right}}と入力すると１年先に変更される。@kbd{C-u}という前置引数をつけると、１時間ずつ時間を変更する。もしもあなたが、同じコマンドを即座に繰り返したいときは、前置変数を付けなくても１時間単位で変化し続けるでしょう。二重の@kbd{C-u C-u}という前置引数をつけると、同様に分単位で変更される。オリジナルのOrg-modeファイルの中でタイムスタンプは変更されるが、その変更はアジェンダバッファには直接は反映されない。バッファを更新するには、@kbd{r}または@kbd{g}を使用する。@orgcmd{S-@key{left},org-agenda-do-date-earlier}　カレント行のに関連づけられたタイムスタンプを1日過去に変更する。@orgcmd{>,org-agenda-date-prompt}　カレント行に関連づけられたタイムスタンプを変更する。@kbd{>}キーが選択される。というのは、私のキーボード上では@kbd{S-.}と同じだからである。@orgcmd{I,org-agenda-clock-in}　カレントアイテムの時計をスタートする。もしもすでに時計が動いているのならば、まずそれが停止する。@orgcmd{O,org-agenda-clock-out}　すでにスタートした時計を停止する。@orgcmd{X,org-agenda-clock-cancel}　カレントで動いている時計をキャンセルする。@orgcmd{J,org-agenda-clock-goto}　別のウインドウの中の動いている時計にジャンプする。"
 
-# [Org7.5-2315::@]
+# [Org7.5-2315::@f_frhs] @tsubheading{選択したエントリーを遠隔で一括処理する}
 # glossary: editing ( 編集 )
 #. type: table
 #: org.texi:8068
@@ -21326,7 +21354,8 @@ msgstr "アジェンダを更新した後に、@kbd{r}を押すと、コマン�
 msgid "@tsubheading{Bulk remote editing selected entries}"
 msgstr "@tsubheading{Bulk remote editing selected entries}"
 
-# [Org7.5-2316::@]
+# [Org7.5-2316::@f_frhs] 遠隔の編集、一括、アジェンダから
+# bulkは一括とするかバルクとするか?
 # glossary: agenda ( アジェンダ ) / editing ( 編集 )
 #. type: cindex
 #: org.texi:8068
@@ -21334,7 +21363,8 @@ msgstr "@tsubheading{Bulk remote editing selected entries}"
 msgid "remote editing, bulk, from agenda"
 msgstr "remote editing, bulk, from agenda"
 
-# [Org7.5-2317::@]
+# [Org7.5-2317::@f_frhs] bulk 一括; that many successing その個数の後続する...; be passed through to ~まで渡される
+# 改善案)@orgcmd{m,org-agenda-bulk-mark}　一括処理のためにポイント位置のエントリーをマークする。前置引数を付けると、その個数の後続するエントリーをマークする。@orgcmd{U,org-agenda-bulk-remove-all-marks}　一括処理のマークを取り除く。@orgcmd{U,org-agenda-bulk-remove-all-marks}　一括処理のためにエントリーにつけられたマークを全て取り除く。@orgcmd{B,org-agenda-bulk-action}　一括処理: アジェンダでマークをつけられた全てのエントリーに作用する。この機能では、適用されるアクションを選択するために、もう1つキーを入力する。@kbd{B}に前置引数をつけるとそれが@kbd{s}や@kbd{d}コマンドまで渡され、これらの特別なタイムスタンプをまとめて取り除く。
 # glossary: prefix arg ( 前置引数 ) / agenda ( アジェンダ ) / command ( コマンド ) / entries ( エントリー|文|入力 ) / entry ( エントリー|文|入力 ) / key ( キー ) / mark ( マーク ) / marked ( マーク ) / point ( ポイント ) / prompt ( 入力 ) / timestamp ( タイムスタンプ )
 #. type: table
 #: org.texi:8085
@@ -21342,7 +21372,23 @@ msgstr "remote editing, bulk, from agenda"
 msgid "@orgcmd{m,org-agenda-bulk-mark} Mark the entry at point for bulk action.  With prefix arg, mark that many successive entries.  @orgcmd{u,org-agenda-bulk-unmark} Unmark entry for bulk action.  @orgcmd{U,org-agenda-bulk-remove-all-marks} Unmark all marked entries for bulk action.  @orgcmd{B,org-agenda-bulk-action} Bulk action: act on all marked entries in the agenda.  This will prompt for another key to select the action to be applied.  The prefix arg to @kbd{B} will be passed through to the @kbd{s} and @kbd{d} commands, to bulk-remove these special timestamps."
 msgstr "@orgcmd{m,org-agenda-bulk-mark}　大量のアクションについて、その時点でエントリーにマークをつける。前置引数を付けると、多くの連続したエントリーにマークをつける。@orgcmd{U,org-agenda-bulk-remove-all-marks}　大量のアクションのマークを取り除く。@orgcmd{U,org-agenda-bulk-remove-all-marks}　大量のアクションのためにマークがつけられたエントリーのマークを取り除く。@orgcmd{B,org-agenda-bulk-action}　大量のアクション。アジェンダの中ですべてのマークをつかられたエントリーについて実行する。この機能では、適用されるアクションを選択するために、別のキーを入力する。@kbd{B}に前置引数をつけると、@kbd{s}や@kbd{d}のコマンドをパスして、これらの特別なタイムスタンプをまとめて取り除く。"
 
-# [Org7.5-2318::@]
+# [Org7.5-2318::@f_frhs] single refile target; ブロックへ訳注を追加; 日時のシフト
+# 改善案)数行に渡ります。
+# r  @r{再配置のターゲットを1つ入力するようプロンプトを表示し、すべてのエントリーを移動する。そのエントリー群は}
+#    @r{もはやアジェンダ上に表示されない;再表示(@kbd{g})によって再度表示される。}
+# $  @r{選択されているエントリーをすべてアーカイブする。}
+# A  @r{エントリーをアーカイブし、それぞれの所定のアーカイブ先に移動する。}
+# t  @r{TODOの状態を変更する。これはTODOキーワード1文字を入力し、そして}
+#    @r{(訳注:TODOの依存関係による)ブロッキングを無視し、ログのノート(タイムスタンプは別です)を抑制して}
+#    @r{選択されたエントリーすべての状態を変更する。}
+# +  @r{選択されたエントリーのすべてにタグを付加する。}
+# -  @r{選択されたエントリーのすべてから、タグのひとつを削除する。}
+# s  @r{すべてのアイテムに新しい日付で予約する。すでに存在している予約の日付を}
+#    @r{固定された日数分だけずらすには、入力欄でプラス2つに続けて何かを打って下さい。}
+#    @r{例えば、@samp{++8d}とか@samp{++2w}のように。}
+# S  @r{N日まででランダムに再スケジューリングする。Nは入力欄で指定する。前置引数}
+#    @r{をつけることで(@kbd{C-u B S})、平日のみにまき散らす。}
+# d  @r{デッドラインとして特定の日を設定する。}
 # glossary: archive ( アーカイブ ) / date ( 日付 ) / day ( 日付|日にち ) / deadline ( デッドライン ) / entries ( エントリー|文|入力 ) / example ( 例 ) / item ( アイテム|項目 ) / keyword ( キーワード ) / logging ( 記録|ログ|ログを取る ) / moving ( 移動 ) / note ( ノート|メモ ) / prompt ( 入力 ) / refile ( 再配置 ) / schedule ( スケジュール ) / tag ( タグ )
 #. type: example
 #: org.texi:8101
@@ -21380,14 +21426,14 @@ msgstr ""
 "   @r{(@kbd{C-u B S})をつけることで、平日のみに指定できる。}\n"
 "d  @r{指定した日をデッドラインとして設定する。}\n"
 
-# [Org7.5-2319::@]
+# [Org7.5-2319::@f_frhs] @tsubheading{カレンダーのコマンド}
 #. type: table
 #: org.texi:8105
 #, fuzzy
 msgid "@tsubheading{Calendar commands}"
 msgstr "@tsubheading{Calendar commands}"
 
-# [Org7.5-2320::@]
+# [Org7.5-2320::@f_frhs] カレンダーのコマンド、アジェンダから
 # glossary: agenda ( アジェンダ ) / calendar ( カレンダー ) / command ( コマンド )
 #. type: cindex
 #: org.texi:8105
@@ -21395,7 +21441,8 @@ msgstr "@tsubheading{Calendar commands}"
 msgid "calendar commands, from agenda"
 msgstr "calendar commands, from agenda"
 
-# [Org7.5-2321::@]
+# [Org7.5-2321::@f_frhs] compute 自動詞?
+# 改善案)カレンダーの中にあるときは、計算して、カーソルの置かれている日付をOrg-modeのアジェンダに表示します。
 # glossary: agenda ( アジェンダ ) / calendar ( カレンダー ) / cursor ( カーソル ) / date ( 日付 ) / org-mode ( Org-mode )
 #. type: table
 #: org.texi:8114
@@ -21403,7 +21450,7 @@ msgstr "calendar commands, from agenda"
 msgid "@orgcmd{c,org-agenda-goto-calendar} Open the Emacs calendar and move to the date at the agenda cursor.  @orgcmd{c,org-calendar-goto-agenda} When in the calendar, compute and show the Org-mode agenda for the date at the cursor."
 msgstr "@orgcmd{c,org-agenda-goto-calendar}　Emacsのカレンダーを開き、アジェンダのカーソルの置かれている日付に移動します。@orgcmd{c,org-calendar-goto-agenda}　すでにカレンダーの中にあるときは、カーソルの置かれている日付で計算し、Org-modeのアジェンダを表示します。"
 
-# [Org7.5-2322::@]
+# [Org7.5-2322::@f_frhs] 日記のエントリー、アジェンダから作成する
 # glossary: agenda ( アジェンダ ) / creating ( 作成 ) / diary ( 日記 ) / entries ( エントリー|文|入力 )
 #. type: cindex
 #: org.texi:8114
@@ -21414,18 +21461,18 @@ msgstr "diary entries, creating from agenda"
 # [Org7.5-2323::@]
 #. type: table
 #: org.texi:8116
-#, fuzzy
 msgid "@orgcmd{i,org-agenda-diary-entry}"
 msgstr "@orgcmd{i,org-agenda-diary-entry}"
 
 # [Org7.5-2324::@]
 #. type: vindex
 #: org.texi:8116
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "org-agenda-diary-file"
 msgstr "org-agenda-diary-file"
 
-# [Org7.5-2325::@]
+# [Org7.5-2325::@f_frhs] (変更) ブロックエントリーに; 変更 in a way similar to 似た方法で
+# 改善案)カーソルの置かれている日付および（ブロックエントリーに）マークされた日付を使って、新しいエントリーを日記に書き込みます。これは、カレンダーの@kbd{i}コマンドと似た方法で、Emacsの日記ファイル@footnote{@code{org-agenda-include-diary}が設定されているときは、このファイルはアジェンダ用に解析されます。}に追加します。日記ファイルは別のウインドウにポップアップし、そこでエントリーを書き加えることができます。
 # glossary: agenda ( アジェンダ ) / block ( ブロック ) / calendar ( カレンダー ) / command ( コマンド ) / cursor ( カーソル ) / date ( 日付 ) / diary ( 日記 ) / entry ( エントリー|文|入力 ) / file ( ファイル ) / insert ( 挿入 ) / mark ( マーク ) / window ( ウインドウ )
 #. type: table
 #: org.texi:8123
@@ -21433,7 +21480,8 @@ msgstr "org-agenda-diary-file"
 msgid "Insert a new entry into the diary, using the date at the cursor and (for block entries) the date at the mark.  This will add to the Emacs diary file@footnote{This file is parsed for the agenda when @code{org-agenda-include-diary} is set.}, in a way similar to the @kbd{i} command in the calendar.  The diary file will pop up in another window, where you can add the entry."
 msgstr "カーソルの置かれている日付および（ブロックエントリーでは）マークされた日付を使って、新しいエントリーを日記に書き込みます。この機能ではEmacsの日記ファイル@footnote{@code{org-agenda-include-diary}が設定されているときは、このファイルはアジェンダ用に解析されます。}に追加することになります。ある意味では、カレンダーの@kbd{i}コマンドと似た機能です。日記ファイルは別のウインドウにポップアップし、そこでエントリーを書き加えることができます。"
 
-# [Org7.5-2326::@]
+# [Org7.5-2326::@f_frhs] (変更) org-agenda-diary-fileを設定した時の説明; 他
+# 改善案)もしも@code{org-agenda-diary-file} を設定してOrg-modeファイルを指定したならば、Org-modeは代わりにそのファイルの中に（Org-modeの構文を使って）エントリーを作成します。ほとんどのエントリーは、あとで過去の月／年の中から予定をアーカイブするのを簡単にする、日付を元にしたアウトラインのツリーに保存されます。そのツリーは、@code{DATE_TREE}属性が付与されたエントリーの下か、さもなくば第1階層のエントリーを年としたエントリーの下で構築されます。Emacsでエントリーのテキストを入力するようプロンプトが表示されます。---もしもあなたがそれを明記するならば、それ以上のやりとりはなく、@code{org-agenda-diary-file}にそのエントリーを作成します。テキストを入力することなくその入力欄で直接@key{RET}を入力すると、エントリーを入力し終えるために、そのターゲットとなるファイルを別のウインドウで表示します。@kbd{k r}コマンドを参照してください。@orgcmd{M,org-agenda-phases-of-moon}　その日を中心として3ヶ月間の月齢を表示する。@orgcmd{S,org-agenda-sunrise-sunset}　日の出と日の入りの時刻を表示する。地理上の場所によって、カレンダーの変数が設定される。Emacsのcalendarの章を参照のこと。@orgcmd{C,org-agenda-convert-date}　カーソルの置かれている日付を、他の多くの文化的・歴史的な暦に変換する。@orgcmd{H,org-agenda-holidays}　カーソルのある日付を中心に3ヶ月間の祝祭日を表示する。
 # glossary: appointment ( 予約|アポイント ) / archive ( アーカイブ ) / calendar ( カレンダー ) / command ( コマンド ) / current ( カレント|現在の ) / cursor ( カーソル ) / date ( 日付 ) / entries ( エントリー|文|入力 ) / entry ( エントリー|文|入力 ) / file ( ファイル ) / interaction ( 連携 ) / org ( Org-mode ) / org-mode ( Org-mode ) / outline ( アウトライン|outline ) / point ( ポイント ) / previous ( 前の ) / prompt ( 入力 ) / property ( プロパティ ) / text ( テキスト|文章 ) / time ( 時刻|時間|回 ) / tree ( ツリー ) / variable ( 変数 ) / window ( ウインドウ )
 #. type: table
 #: org.texi:8148
@@ -21444,11 +21492,12 @@ msgstr "もしもOrg-modeファイルに@code{org-agenda-diary-file} を指定�
 # [Org7.5-2327::@]
 #. type: item
 #: org.texi:8149
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "M-x org-export-icalendar-combine-agenda-files"
 msgstr "M-x org-export-icalendar-combine-agenda-files"
 
-# [Org7.5-2328::@]
+# [Org7.5-2328::@f_frhs] (追加) 単一
+# すべてのアジェンダファイルからエントリーを含んだiCalendar形式の単一ファイルにエクスポートする。これはグローバルに利用できるコマンドで、そしてまたアジェンダメニューの中で利用できるコマンドです。
 # glossary: agenda files ( アジェンダファイル ) / agenda ( アジェンダ ) / available ( 利用できる ) / command ( コマンド ) / entries ( エントリー|文|入力 ) / export ( エクスポート ) / file ( ファイル ) / icalendar ( iCalendar|iCalendar形式 ) / menu ( メニュー )
 #. type: table
 #: org.texi:8152
@@ -21456,14 +21505,15 @@ msgstr "M-x org-export-icalendar-combine-agenda-files"
 msgid "Export a single iCalendar file containing entries from all agenda files.  This is a globally available command, and also available in the agenda menu."
 msgstr "すべてのアジェンダファイルからエントリーを含んだiCalendar形式のファイルにエクスポートする。これはグローバルに利用できるコマンドで、そしてまたアジェンダメニューの中で利用できるコマンドです。"
 
-# [Org7.5-2329::@]
+# [Org7.5-2329::@f_frhs] @tsubheading{ファイルにエクスポートする} @orgcmd{C-x C-w,org-write-agenda}
 #. type: table
 #: org.texi:8155
 #, fuzzy
 msgid "@tsubheading{Exporting to a file} @orgcmd{C-x C-w,org-write-agenda}"
 msgstr "@tsubheading{Exporting to a file} @orgcmd{C-x C-w,org-write-agenda}"
 
-# [Org7.5-2330::@]
+# [Org7.5-2330::@f_frhs] 改善案)アジェンダビューのエクスポート
+# 出力だとディスプレイの表示も含まれるため。
 # glossary: exporting agenda views ( アジェンダビューの出力 )
 #. type: cindex
 #: org.texi:8155
@@ -21478,7 +21528,7 @@ msgstr "アジェンダビューの出力"
 #: org.texi:8156
 #: org.texi:8370
 #: org.texi:8383
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "agenda views, exporting"
 msgstr "アジェンダビュー，エクスポート"
 
@@ -21486,11 +21536,12 @@ msgstr "アジェンダビュー，エクスポート"
 #. type: vindex
 #: org.texi:8157
 #: org.texi:8384
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "org-agenda-exporter-settings"
 msgstr "org-agenda-exporter-settings"
 
-# [Org7.5-2333::@]
+# [Org7.5-2333::@f_frhs] (削除) など; (typo)作成されたファイルを; (修正) 使用されている->使用される
+# アジェンダビューを1つのファイルに書き出します。選択したファイル名の拡張子に従って、そのビューは、HTML (拡張子が@file{.html}または@file{.htm})、Postscript (拡張子@file{.ps})、PDF (拡張子@file{.pdf})、そしてプレーンテキスト(その他の拡張子）にエクスポートされます。@kbd{C-u}という前置引数を用いてコマンドを呼び出したならば、即座に新しく作成されたファイルを開きます。エクスポートの間に使用される@file{ps-print}および@file{htmlize}のためのオプションを設定するために、@code{org-agenda-exporter-settings}変数を使用します。
 # glossary: plain text ( プレーンテキスト|単純なテキスト ) / agenda ( アジェンダ ) / argument ( 引数 ) / export ( エクスポート ) / exported ( エクスポート|出力された ) / extension ( 拡張|拡張子 ) / file ( ファイル ) / option ( オプション ) / prefix ( 接頭辞 ) / variable ( 変数 ) / view ( ビュー )
 #. type: table
 #: org.texi:8165
@@ -21502,11 +21553,10 @@ msgstr "アジェンダビューを1つのファイルに書き出します。�
 # glossary: agenda ( アジェンダ ) / buffer ( バッファ )
 #. type: table
 #: org.texi:8170
-#, fuzzy
 msgid "@tsubheading{Quit and Exit} @orgcmd{q,org-agenda-quit} Quit agenda, remove the agenda buffer."
 msgstr "@tsubheading{Quit and Exit}　@orgcmd{q,org-agenda-quit}　アジェンダを終了し、アジェンダバッファを削除しますｓ。"
 
-# [Org7.5-2335::@]
+# [Org7.5-2335::@f_frhs] アジェンダファイル、バッファを削除する
 # glossary: agenda files ( アジェンダファイル ) / buffer ( バッファ )
 #. type: cindex
 #: org.texi:8170
@@ -21518,7 +21568,6 @@ msgstr "agenda files, removing buffers"
 # glossary: agenda ( アジェンダ ) / buffer ( バッファ ) / file ( ファイル ) / org ( Org-mode ) / user ( ユーザー )
 #. type: table
 #: org.texi:8175
-#, fuzzy
 msgid "@orgcmd{x,org-agenda-exit} Exit agenda, remove the agenda buffer and all buffers loaded by Emacs for the compilation of the agenda.  Buffers created by the user to visit Org files will not be removed."
 msgstr "@orgcmd{x,org-agenda-exit}　アジェンダを終了し、アジェンダバッファとアジェンダを編集するためにEmacsで読み込まれたすべてのバッファを削除する。Org-modeファイルを読み込むためにユーザーによって作成されたバッファは削除されない。"
 
