@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2012-04-29 01:13+0900\n"
+"PO-Revision-Date: 2012-04-29 09:34+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -21937,7 +21937,8 @@ msgstr ""
 msgid "As you see, the values and parentheses setting is a little complex.  When in doubt, use the customize interface to set this variable---it fully supports its structure.  Just one caveat: when setting options in this interface, the @emph{values} are just Lisp expressions.  So if the value is a string, you need to add the double-quotes around the value yourself."
 msgstr "おわかりだと思いますが、変数とカッコで囲んでいる設定はやや複雑なところがあります。わかりにくいときは、カスタマイズのインターフェースとしてこの変数を設定してください。これはカスタマイズの構造を完全にサポートしています。注意しなければならないのは、このインターフェースでオプションを設定するときに、@emph{変数}は、Lispによる表現をとっているということです。そのため、もしもその変数が１つの文字ならば、あなた自身でその変数の値に「”（ダブルクォート）」で囲む必要があるということです。"
 
-# [Org7.5-2372::@]
+# [Org7.5-2372::@f_frhs] (修正) 持ち歩くためにいつくかのアジェンダの印刷板; (修正) ときどきこれを実行したいのならば
+# 改善案)もしもあなたが自分のコンピュータから離れるなら、持ち歩くためにいくつかのアジェンダの印刷版を持つことは大変役に立ちます。Org-modeはカスタムアジェンダビューをプレーンテキスト、HTML@footnote{あなたはHrvoje Niksic氏の@file{htmlize.el}をインストールする必要があります。}、Postscript、PDF@footnote{PDFの出力を作成するためには、Ghostscriptの@file{ps2pdf}ユーティリティがシステムにインストールされている必要があります。pdfファイルを選択するとポストスクリプトファイルも作成されます。}、iCalenderファイルとしてエキスポートできます。もしも、ときどきこれを実行したいのならばコマンドを使用しましょう。
 # glossary: agenda views ( アジェンダビュー ) / plain text ( プレーンテキスト|単純なテキスト ) / command ( コマンド ) / custom ( カスタム|カスタマイズ ) / export ( エクスポート ) / file ( ファイル ) / icalendar ( iCalendar|iCalendar形式 ) / install ( インストール ) / org-mode ( Org-mode ) / output ( アウトプット ) / selecting ( 選択する ) / system ( システム ) / version ( バージョン )
 #. type: Plain text
 #: org.texi:8379
@@ -21948,11 +21949,11 @@ msgstr "もしもあなたが自分のコンピュータから離れていると
 # [Org7.5-2373::@]
 #. type: table
 #: org.texi:8382
-#, fuzzy
 msgid "@orgcmd{C-x C-w,org-write-agenda}"
 msgstr "@orgcmd{C-x C-w,org-write-agenda}"
 
-# [Org7.5-2374::@]
+# [Org7.5-2374::@f_frhs] (修正)エクスポートの間に使用する...
+# 改善案)アジェンダビューを１つのファイルに書き出します。選択したファイル名の拡張子により、そのビューはHTML（拡張子が@file{.html}または@file{.htm}）、Postscript（拡張子が@file{.ps}）、iCalendar（拡張子が@file{.ics}）、あるいはプレーンなテキスト（何かほかの拡張子）としてエクスポートされます。エクスポートの間に使用する@file{ps-print}および@file{htmlize}のためにオプションを設定するには、@code{org-agenda-exporter-settings}変数を使用します。例えば
 # glossary: plain text ( プレーンテキスト|単純なテキスト ) / agenda ( アジェンダ ) / example ( 例 ) / export ( エクスポート ) / exported ( エクスポート|出力された ) / extension ( 拡張|拡張子 ) / file ( ファイル ) / icalendar ( iCalendar|iCalendar形式 ) / option ( オプション ) / variable ( 変数 ) / view ( ビュー )
 #. type: table
 #: org.texi:8391
@@ -21963,35 +21964,35 @@ msgstr "アジェンダビューを１つのファイルに書き出します。
 # [Org7.5-2375::@]
 #. type: vindex
 #: org.texi:8392
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "org-agenda-add-entry-text-maxlines"
 msgstr "org-agenda-add-entry-text-maxlines"
 
 # [Org7.5-2376::@]
 #. type: vindex
 #: org.texi:8393
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "htmlize-output-type"
 msgstr "htmlize-output-type"
 
 # [Org7.5-2377::@]
 #. type: vindex
 #: org.texi:8394
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "ps-number-of-columns"
 msgstr "ps-number-of-columns"
 
 # [Org7.5-2378::@]
 #. type: vindex
 #: org.texi:8395
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "ps-landscape-mode"
 msgstr "ps-landscape-mode"
 
 # [Org7.5-2379::@]
 #. type: lisp
 #: org.texi:8402
-#, no-wrap, fuzzy
+#, no-wrap
 msgid ""
 "(setq org-agenda-exporter-settings\n"
 "      '((ps-number-of-columns 2)\n"
@@ -22005,7 +22006,8 @@ msgstr ""
 "        (org-agenda-add-entry-text-maxlines 5)\n"
 "        (htmlize-output-type 'css)))\n"
 
-# [Org7.5-2380::@]
+# [Org7.5-2380::@f_frhs] (追加) ある; (削除) など; (変更)を->も同様に; (変更) たくさんの->いくつかの
+# 改善案)もしも、あなたがあるアジェンダビューをたびたびエクスポートする必要があるのならば、アウトプットのファイルの名前@footnote{もしもあなたが週間アジェンダやグローバルなTODOリストのような標準的なビューも同様に保存したいならば、ファイル名を指定することができるようにするために、それらのビューのためにカスタムなコマンドを定義する必要があります。}のリストに、いくつかのカスタムなアジェンダのコマンドを関連づけることができます。ここに一つの例があります。最初のものはアジェンダとグローバルなTODOリストに対するカスタムなコマンドを定義しており、それらをエクスポートするいくつかのファイルと一緒になっています。それから２つのブロックアジェンダコマンドを定義し、同様にそれらのためのファイル名を指定しています。ファイル名は、現在作業しているディレクトリに対して相対パスにすることも絶対パスにすることもできます。
 # glossary: agenda views ( アジェンダビュー ) / agenda ( アジェンダ ) / block ( ブロック ) / command ( コマンド ) / current ( カレント|現在の ) / custom ( カスタム|カスタマイズ ) / directory ( ディレクトリ ) / example ( 例 ) / export ( エクスポート ) / file ( ファイル ) / global ( グローバルな ) / list ( リスト ) / output ( アウトプット ) / view ( ビュー ) / weekly ( 週の|1週の )
 #. type: Plain text
 #: org.texi:8415
@@ -22017,7 +22019,7 @@ msgstr "もしも、あなたがアジェンダビューをたびたびエクス
 # glossary: agenda ( アジェンダ ) / nil ( nil )
 #. type: group
 #: org.texi:8433
-#, no-wrap, fuzzy
+#, no-wrap
 msgid ""
 "(setq org-agenda-custom-commands\n"
 "      '((\"X\" agenda \"\" nil (\"agenda.html\" \"agenda.ps\"))\n"
@@ -22051,15 +22053,17 @@ msgstr ""
 "         nil\n"
 "         (\"~/views/office.ps\" \"~/calendars/office.ics\"))))\n"
 
-# [Org7.5-2382::@]
-# glossary: export to ( ?への出力 ) / iCalendar export ( iCalendarエクスポート ) / agenda ( アジェンダ ) / buffer ( バッファ ) / entries ( エントリー|文|入力 ) / export ( エクスポート ) / extension ( 拡張|拡張子 ) / file ( ファイル ) / org-mode ( Org-mode ) / output ( アウトプット ) / package ( パッケージ ) / plain ( プレーン ) / type ( タイプ|入力する )
+# [Org7.5-2382::@f_frhs] iCalendarの説明部分の構文を説明してもらえますか?
+# If the extension is @file{.ics}, iCalendar export is (to) run export over all files .., and limit the exoprt...か?
+# glossary: export to ( 〜への出力 ) / iCalendar export ( iCalendarエクスポート ) / agenda ( アジェンダ ) / buffer ( バッファ ) / entries ( エントリー|文|入力 ) / export ( エクスポート ) / extension ( 拡張|拡張子 ) / file ( ファイル ) / org-mode ( Org-mode ) / output ( アウトプット ) / package ( パッケージ ) / plain ( プレーン ) / type ( タイプ|入力する )
 #. type: Plain text
 #: org.texi:8444
 #, fuzzy
 msgid "The extension of the file name determines the type of export.  If it is @file{.html}, Org-mode will use the @file{htmlize.el} package to convert the buffer to HTML and save it to this file name.  If the extension is @file{.ps}, @code{ps-print-buffer-with-faces} is used to produce Postscript output.  If the extension is @file{.ics}, iCalendar export is run export over all files that were used to construct the agenda, and limit the export to entries listed in the agenda.  Any other extension produces a plain ASCII file."
 msgstr "ファイル名の拡張子がエクスポートのタイプを決定します。もしも拡張子が@file{.html}ならば、Org-modeは@file{htmlize.el}パッケージを使用し、バッファをHTMLに変換し、そのファイル名で保存します。もしも拡張子が@file{.ps}ならば、@code{ps-print-buffer-with-faces}がPostscriptの出力をするために使用されます。もしも拡張子が@file{.ics}ならば、iCalendarのエクスポートは、アジェンダを構成しているすべてのファイルにわたってエクスポートを実行し、現在アジェンダの中ではリスト化されたエントリーのエクスポートに限定されます。ほかの拡張子がついた場合は、プレーンなASCIIテキストファイルが作成されます。"
 
-# [Org7.5-2383::@]
+# [Org7.5-2383::@f_frhs] (変更); (追加) @emph
+# 改善案)これらのコマンドの一つを対話的に使う時は、エクスポートファイルは作成@emph{されません}。オーバーヘッドが過大となる恐れがあるためです。そのかわり、1ステップで@emph{すべて}の指定されたファイルを出力する特別なコマンドが用意されています。
 # glossary: command ( コマンド ) / export ( エクスポート ) / file ( ファイル )
 #. type: Plain text
 #: org.texi:8449
@@ -22071,11 +22075,11 @@ msgstr "エクスポートファイルは、非常に負荷が高いので、こ
 # glossary: agenda views ( アジェンダビュー ) / export ( エクスポート ) / file ( ファイル )
 #. type: table
 #: org.texi:8454
-#, fuzzy
 msgid "@orgcmd{C-c a e,org-store-agenda-views} Export all agenda views that have export file names associated with them."
 msgstr "@orgcmd{C-c a e,org-store-agenda-views}　アジェンダに関連するエクスポートファイル名を持つすべてのアジェンダビューをエクスポートします。"
 
-# [Org7.5-2385::@]
+# [Org7.5-2385::@f_frhs] (変更) オプションの設定をするために。->オプションも設定するために、
+# 改善案)あなたは、エクスポートコマンドのためのオプションも設定するために、カスタムアジェンダコマンドのオプションのセクションを使用することができます。例えば、
 # glossary: agenda ( アジェンダ ) / command ( コマンド ) / custom ( カスタム|カスタマイズ ) / export ( エクスポート ) / option ( オプション ) / section ( セクション )
 #. type: Plain text
 #: org.texi:8458
@@ -22087,7 +22091,7 @@ msgstr "あなたは、エクスポートコマンドのためのオプション
 # glossary: agenda ( アジェンダ )
 #. type: lisp
 #: org.texi:8468
-#, no-wrap, fuzzy
+#, no-wrap
 msgid ""
 "(setq org-agenda-custom-commands\n"
 "      '((\"X\" agenda \"\"\n"
@@ -22107,7 +22111,8 @@ msgstr ""
 "          (org-agenda-remove-tags t))\n"
 "         (\"theagenda.ps\"))))\n"
 
-# [Org7.5-2387::@]
+# [Org7.5-2387::@f_frhs] (移動) 行頭の; (修正) チェックするための; (削除) 用にすることもできます; (修正) 指定された設定も適用されますが
+# このコマンドは、Postscriptのエクスポートのために、２つのオプションを設定します。横長のフォーマットで２段のプリントを作成するためです。出力されたページは、２つにカットして、紙のアジェンダとして使えるようになります。残りの設定は、カテゴリーとスケジューリング情報を省き、その代わりに項目をチェックするためのチェックボックスを含むようにアジェンダの行頭を修正します。私たちは行をコンパクトに表示するためにタグを省略し、白黒プリンタのためにカラーを使いません。@code{org-agenda-exporter-settings}の中で指定された設定も適用されますが、@code{org-agenda-custom-commands}での設定が優先します。
 # glossary: agenda ( アジェンダ ) / category ( カテゴリー ) / check ( チェック ) / checkbox ( チェックボックス ) / column ( 列 ) / command ( コマンド ) / exporter ( エクスポート機能 ) / information ( 情報 ) / item ( アイテム|項目 ) / line ( 行|ライン|線 ) / modify ( 修正 ) / option ( オプション ) / page ( ページ ) / prefix ( 接頭辞 ) / scheduling ( スケジューリング ) / setting ( 設定 ) / tag ( タグ )
 #. type: Plain text
 #: org.texi:8480
@@ -22115,7 +22120,8 @@ msgstr ""
 msgid "This command sets two options for the Postscript exporter, to make it print in two columns in landscape format---the resulting page can be cut in two and then used in a paper agenda.  The remaining settings modify the agenda prefix to omit category and scheduling information, and instead include a checkbox to check off items.  We also remove the tags to make the lines compact, and we don't want to use colors for the black-and-white printer.  Settings specified in @code{org-agenda-exporter-settings} will also apply, but the settings in @code{org-agenda-custom-commands} take precedence."
 msgstr "このコマンドは、Postscriptのエクスポートのために、２つのオプションを設定します。横長のフォーマットで２段のプリントを作成するためです。出力されたページは、２つにカットして、紙のアジェンダとして使えるようになります。もうひとつの設定は、行頭のカテゴリーとスケジューリング情報を省き、その代わりにチェックのついてないチェックボックスの項目となるようにアジェンダを修正します。私たちは各行をコンパクトに表示するためにタグを省略したり、白黒プリンタのためにカラーを使わない用にすることもできます。@code{org-agenda-exporter-settings}の中で指定する設定もできますが、@code{org-agenda-custom-commands}での設定が優先します。"
 
-# [Org7.5-2388::@]
+# [Org7.5-2388::@f_frhs] 訳し直しました。
+# 改善案)コマンドラインから次の様に使えます。
 # glossary: command line ( コマンドライン )
 #. type: Plain text
 #: org.texi:8483
@@ -22126,11 +22132,12 @@ msgstr "コマンドラインで次のような設定を使用することがで
 # [Org7.5-2389::@]
 #. type: example
 #: org.texi:8485
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "emacs -f org-batch-store-agenda-views -kill\n"
 msgstr "emacs -f org-batch-store-agenda-views -kill\n"
 
-# [Org7.5-2390::@]
+# [Org7.5-2390::@f_frhs] (変更)引用->クォーティング; (変更) 事例が存在するかどうかFAQを確認してください
+# 改善案)また、いくつかのパラメーター@footnote{クォーティングの方法はあなたの使用しているシステムに依存します。事例が存在するかどうかFAQを確認してください。}を修正する必要があります。
 # glossary: check ( チェック ) / modify ( 修正 ) / system ( システム )
 #. type: Plain text
 #: org.texi:8489
@@ -22142,7 +22149,7 @@ msgstr "また、いくつかのパラメーター@footnote{引用の方法は�
 # glossary: nil ( nil )
 #. type: example
 #: org.texi:8496
-#, no-wrap, fuzzy
+#, no-wrap
 msgid ""
 "emacs -eval '(org-batch-store-agenda-views                      \\\n"
 "              org-agenda-span month                             \\\n"
@@ -22158,7 +22165,8 @@ msgstr ""
 "              org-agenda-files (quote (\"~/org/project.org\")))'  \\\n"
 "      -kill\n"
 
-# [Org7.5-2392::@]
+# [Org7.5-2392::@f_frhs] (修正) どちらも->これは
+# 改善案)これは@file{~/org/project.org}のファイルを対象として、日記のエントリーは除かれ、30日以内に限定したアジェンダビューを作成します。
 # glossary: agenda views ( アジェンダビュー ) / diary ( 日記 ) / entries ( エントリー|文|入力 ) / file ( ファイル )
 #. type: Plain text
 #: org.texi:8501
@@ -22166,7 +22174,8 @@ msgstr ""
 msgid "which will create the agenda views restricted to the file @file{~/org/project.org}, without diary entries and with a 30-day extent."
 msgstr "どちらも@file{~/org/project.org}のファイルを対象として、日記のエントリーは除かれ、30日以内に限定したアジェンダビューを作成します。"
 
-# [Org7.5-2393::@]
+# [Org7.5-2393::@f_frhs] 修正
+# 改善案)あなたは、他のプログラムによりそれ以上の処理を許す方法でも、アジェンダの情報を抽出することもできます。詳細は@ref{アジェンダ情報の抽出}を参照してください。
 # glossary: agenda ( アジェンダ ) / information ( 情報 ) / processing ( 処理 )
 #. type: Plain text
 #: org.texi:8505
