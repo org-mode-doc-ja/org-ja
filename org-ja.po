@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2012-04-29 09:34+0900\n"
+"PO-Revision-Date: 2012-04-29 12:27+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -22183,7 +22183,7 @@ msgstr "どちらも@file{~/org/project.org}のファイルを対象として、
 msgid "You can also extract agenda information in a way that allows further processing by other programs.  See @ref{Extracting agenda information}, for more information."
 msgstr "あなたは、他のプログラムで将来の進行過程を認める方法で、アジェンダの情報を絞り込むことができます。詳細は@ref{アジェンダ情報の抽出},のノートの情報を参照してください。"
 
-# [Org7.5-2394::@]
+# [Org7.5-2394::@f_frhs] アジェンダでカラムビューを使う
 # glossary: column view ( カラムビュー ) / agenda ( アジェンダ )
 #. type: section
 #: org.texi:8508
@@ -22191,7 +22191,7 @@ msgstr "あなたは、他のプログラムで将来の進行過程を認める
 msgid "Using column view in the agenda"
 msgstr "Using column view in the agenda"
 
-# [Org7.5-2395::@]
+# [Org7.5-2395::@f_frhs] カラムビュー、アジェンダで
 # glossary: column view ( カラムビュー ) / agenda ( アジェンダ )
 #. type: cindex
 #: org.texi:8509
@@ -22199,7 +22199,7 @@ msgstr "Using column view in the agenda"
 msgid "column view, in agenda"
 msgstr "column view, in agenda"
 
-# [Org7.5-2396::@]
+# [Org7.5-2396::@f_frhs] アジェンダ、カラムビュー
 # glossary: column view ( カラムビュー ) / agenda ( アジェンダ )
 #. type: cindex
 #: org.texi:8510
@@ -22211,11 +22211,11 @@ msgstr "agenda, column view"
 # glossary: column view ( カラムビュー ) / agenda ( アジェンダ ) / criteria ( 基準 ) / embedded ( 組み込み ) / entries ( エントリー|文|入力 ) / file ( ファイル ) / org ( Org-mode ) / structure ( 構造 ) / view ( ビュー )
 #. type: Plain text
 #: org.texi:8516
-#, fuzzy
 msgid "Column view (@pxref{Column view}) is normally used to view and edit properties embedded in the hierarchical structure of an Org file.  It can be quite useful to use column view also from the agenda, where entries are collected by certain criteria."
 msgstr "カラムビュー(@pxref{カラムビュー})は、Org-modeファイルの階層構造の中に組み込まれている属性を見たり編集したりするために通常は使われます。エントリーがある評価基準で収集されているアジェンダから、カラムビューを使用することは大変便利です。"
 
-# [Org7.5-2398::@]
+# [Org7.5-2398::@f_frhs] (変更)切り替えます->有効にします
+# @orgcmd{C-c C-x C-c,org-agenda-columns}　アジェンダの中でカラムビューを有効にします。
 # glossary: column view ( カラムビュー ) / agenda ( アジェンダ )
 #. type: table
 #: org.texi:8520
@@ -22223,7 +22223,8 @@ msgstr "カラムビュー(@pxref{カラムビュー})は、Org-modeファイル
 msgid "@orgcmd{C-c C-x C-c,org-agenda-columns} Turn on column view in the agenda."
 msgstr "@orgcmd{C-c C-x C-c,org-agenda-columns}　アジェンダの中でカラムビューに切り替えます。"
 
-# [Org7.5-2399::@]
+# [Org7.5-2399::@] (修正) properly; (訳文修正) be in ~にある
+# 改善案)正しい使い方を理解するために、アジェンダのエントリーはもはや本来のアウトラインの環境にないと理解することが重要です。これによって以下のようなことが生じます。
 # glossary: agenda ( アジェンダ ) / entries ( エントリー|文|入力 ) / outline ( アウトライン|outline )
 #. type: Plain text
 #: org.texi:8525
@@ -22234,11 +22235,12 @@ msgstr "この属性がどのようなものか理解するために、アジェ
 # [Org7.5-2400::@]
 #. type: vindex
 #: org.texi:8529
-#, no-wrap, fuzzy
+#, no-wrap
 msgid "org-overriding-columns-format"
 msgstr "org-overriding-columns-format"
 
-# [Org7.5-2401::@]
+# [Org7.5-2401::@] (変更)
+# 改善案)Org-modeは、どの@code{COLUMNS}のフォーマットを使用するかを決定する必要があります。アジェンダの中のエントリーは異なるファイルから集められるということと、ファイルが異なると@code{COLUMNS}のフォーマットも異なるかもしれないということから、このことは些細な問題であるとはいえないのです。Org-modeは最初に、@code{org-overriding-columns-format}変数が現在設定されているかどうか、また設定されていればそこからフォーマットを取り出します。そうでなければ、アジェンダの最初のアイテムに使われたフォーマットを取り出すか、もしもそのアイテムが(属性もしくはそのファイルの中で定義された)明示的なフォーマットを持たないならば、@code{org-columns-default-format}を使用します。
 # glossary: agenda ( アジェンダ ) / check ( チェック ) / entries ( エントリー|文|入力 ) / file ( ファイル ) / format ( フォーマット|形成 ) / item ( アイテム|項目 ) / org ( Org-mode ) / property ( プロパティ ) / variable ( 変数 )
 #. type: enumerate
 #: org.texi:8538
@@ -22246,7 +22248,8 @@ msgstr "org-overriding-columns-format"
 msgid "Org needs to make a decision which @code{COLUMNS} format to use.  Since the entries in the agenda are collected from different files, and different files may have different @code{COLUMNS} formats, this is a non-trivial problem.  Org first checks if the variable @code{org-overriding-columns-format} is currently set, and if so, takes the format from there.  Otherwise it takes the format associated with the first item in the agenda, or, if that item does not have a specific format (defined in a property, or in its file), it uses @code{org-columns-default-format}."
 msgstr "Org-modeでは、どの@code{COLUMNS}のフォーマットを使用するか、決定する必要があります。アジェンダの中のエントリーは、異なるファイルから集められるということと、ファイルが異なると@code{COLUMNS}のフォーマットも異なるということから、このことは些細な問題であるとはいえないのです。Org-modeは最初に、@code{org-overriding-columns-format}変数がカレントで設定されているかどうか、またそこからフォーマットを取り出すことができるかどうかチェックします。一方、アジェンダの最初のアイテムに関連したフォーマットを使用するか、もしもそのアイテムが特別なフォーマット（属性もしくはファイルの中で定義された）を持たないならば、@code{org-columns-default-format}を使用します。"
 
-# [Org7.5-2402::@]
+# [Org7.5-2402::@f_frhs] (変更)
+# 改善案)もしも、どれかカラムに要約形式(@pxref{カラム・アトリビュート})が定義されているならば、アジェンダでカラムビューに切り替えると、すべての関連するアジェンダファイルを確認して、この属性の計算の更新を確実に行います。これは、特別な@code{CLOCKSUM}の属性にもあてはまります。Org-modeはアジェンダの中で表示された値を合計するでしょう。一日／週間アジェンダの中で、合計は1日を対象とします。他のビューでは、ブロック全体を対象とします。アジェンダでは同じエントリーを@emph{2度}表示したり(例えばスケジュールと期限というように)、同じ階層から@emph{２つ}のエントリー(例えば@emph{親}と@emph{子})を表示したりするかもしれない、ということを理解することは重要なことです。このような場合、ある値は二重にカウントされるため、アジェンダの中で合計することは間違った結果をもたらします。
 # glossary: agenda files ( アジェンダファイル ) / column view ( カラムビュー ) / agenda ( アジェンダ ) / block ( ブロック ) / column ( 列 ) / date ( 日付 ) / entries ( エントリー|文|入力 ) / entry ( エントリー|文|入力 ) / example ( 例 ) / hierarchy ( 階層 ) / org ( Org-mode ) / property ( プロパティ ) / scheduled ( スケジューリングされる ) / summary ( 概要 ) / type ( タイプ|入力する ) / value ( 値 ) / view ( ビュー )
 #. type: enumerate
 #: org.texi:8551
@@ -22254,7 +22257,8 @@ msgstr "Org-modeでは、どの@code{COLUMNS}のフォーマットを使用す�
 msgid "If any of the columns has a summary type defined (@pxref{Column attributes}), turning on column view in the agenda will visit all relevant agenda files and make sure that the computations of this property are up to date.  This is also true for the special @code{CLOCKSUM} property.  Org will then sum the values displayed in the agenda.  In the daily/weekly agenda, the sums will cover a single day; in all other views they cover the entire block.  It is vital to realize that the agenda may show the same entry @emph{twice} (for example as scheduled and as a deadline), and it may show two entries from the same hierarchy (for example a @emph{parent} and its @emph{child}).  In these cases, the summation in the agenda will lead to incorrect results because some values will count double."
 msgstr "もしも、どれかカラムに要約形式(@pxref{カラム・アトリビュート})が定義されているならば、アジェンダでカラムビューに切り替えるときに、すべての関連するアジェンダファイルを確認して、この属性の計算の更新を確実に行います。このことは、特別な@code{CLOCKSUM}の属性が真であると設定されているということです。Org-modeはアジェンダの中で表示された値を合計するでしょう。一日／週間アジェンダの中で、合計は1日をカバーしています。他のビューでは、ブロック全体をカバーするのです。アジェンダでは同じエントリーを@emph{２度}表示したり（例えばスケジュールと期限というように）、同じ階層（例えば@emph{親}と@emph{子}）から@emph{２つ}のエントリーを表示したりするかもしれない、ということを理解することは重要なことです。これらの場合、アジェンダの中での要約は、いくつかの値が二重にカウントされるという間違った結果を導く可能性があります。"
 
-# [Org7.5-2403::@]
+# [Org7.5-2403::@f_frhs] 変更しました
+# 改善案)アジェンダの中のカラムビューが@code{CLOCKSUM}を表示するときは、それは常にこのアイテムのために計測した時間全体です。そのため1日/週間アジェンダにおいてすら、カラムビューでリスト化された時間合計は、現在のビュー以外の時間を起源とできます。これには、これらの値とタスクについて計画された総工数を列挙したカラムとを比較できるという強みがあります---アジェンダ内のコラムビューの主な応用例の1つです。もしもあなたが表示されている期間の中での作業時間について情報を得たいならば、クロックテーブルモード(@kbd{R}をアジェンダの中で入力する)を使用してください。
 # glossary: clock table ( クロックテーブル ) / column view ( カラムビュー ) / agenda ( アジェンダ ) / column ( 列 ) / current ( カレント|現在の ) / effort ( 工数 ) / information ( 情報 ) / item ( アイテム|項目 ) / major ( メジャー ) / mode ( モード|モード ) / time ( 時刻|時間|回 ) / value ( 値 ) / view ( ビュー )
 #. type: enumerate
 #: org.texi:8560
