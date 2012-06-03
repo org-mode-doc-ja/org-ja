@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2012-06-15 22:16+0900\n"
+"PO-Revision-Date: 2012-06-20 23:11+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: \n"
@@ -29164,7 +29164,8 @@ msgstr "アジェンダの中のカラムビューが、@code{CLOCKSUM}を表示
 
 
 
-# [Org7.5-2404::@]
+# [Org7.5-2404::@f_frhs] (訳抜け補充) in the backend; (構文修正) 2文目
+# 改善案)Org-modeの文書をエクスポートする時，バックエンドでエクスポート機能は文書の構造をできるだけ正確に反映しようとします．HTMLや@LaTeX{}，DocBookのようなエクスポート先によって更に豊かな書式設定が可能となるので，表現力豊かなエクスポートのためにテキストをどのようにして変換するかというルールがOrg-modeにはあります．このセクションはOrg-modeのバッファで使われるマークアップのルールについて説明します．
 # glossary: buffer ( バッファ ) / document ( ドキュメント|文書 ) / export ( エクスポート ) / exporter ( エクスポート機能 ) / exporting ( エクスポート ) / org-mode ( Org-mode ) / section ( セクション ) / structure ( 構造 ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:8571
@@ -29190,7 +29191,6 @@ msgstr "文書のタイトル，マークアップのルール"
 # glossary: document ( ドキュメント|文書 ) / exported ( エクスポート|出力された ) / line ( 行|ライン|線 )
 #. type: Plain text
 #: org.texi:8604
-#, fuzzy
 msgid "The title of the exported document is taken from the special line"
 msgstr "エクスポートされた文書のタイトルは専用の行で設定されます．"
 
@@ -29201,7 +29201,7 @@ msgstr "エクスポートされた文書のタイトルは専用の行で設定
 #. type: cindex
 #: org.texi:8605
 #: org.texi:9377
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "#+TITLE"
 msgstr "#+TITLE"
 
@@ -29211,14 +29211,15 @@ msgstr "#+TITLE"
 # [Org7.5-2408::@]
 #. type: example
 #: org.texi:8608
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "#+TITLE: This is the title of the document\n"
 msgstr "#+TITLE: これは文書のタイトルです．\n"
 
 
 
 
-# [Org7.5-2409::@]
+# # [Org7.5-2409::@f_frhs] (変更) no wuch line; (訳抜け補充) "(see below)"
+# # 改善案)もしこの行が存在しなければ，タイトルはバッファ中の最初の空でない，コメントでない行を用います．もしそのような行が存在していない，またはあなたが最初の見出しより前のテキストをエクスポートをしないよう設定(下記参照)していたら，タイトルは拡張子無しのファイル名となります．
 # glossary: buffer ( バッファ ) / exporting ( エクスポート ) / extension ( 拡張|拡張子 ) / file ( ファイル ) / headline ( 見出し ) / line ( 行|ライン|線 ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:8615
@@ -29233,7 +29234,7 @@ msgstr "もしこの行が存在しなければ，タイトルはバッファ中
 # glossary: property ( プロパティ )
 #. type: cindex
 #: org.texi:8616
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "property, EXPORT_TITLE"
 msgstr "プロパティ，EXPORT_TITLE"
 
@@ -29244,7 +29245,6 @@ msgstr "プロパティ，EXPORT_TITLE"
 # glossary: document ( ドキュメント|文書 ) / exporting ( エクスポート ) / heading ( 見出し ) / property ( プロパティ ) / region ( リージョン|領域 ) / subtree ( サブツリー )
 #. type: Plain text
 #: org.texi:8620
-#, fuzzy
 msgid "If you are exporting only a subtree by marking is as the region, the heading of the subtree will become the title of the document.  If the subtree has a property @code{EXPORT_TITLE}, that will take precedence."
 msgstr "もしあなたがリージョンでマークしたサブツリーのみをエクスポートしているなら，サブツリーの見出しは文書のタイトルとなるでしょう．もしサブツリーが@code{EXPORT_TITLE}プロパティを持っているなら，そのプロパティの値が優先して用いられるでしょう．"
 
@@ -29255,7 +29255,7 @@ msgstr "もしあなたがリージョンでマークしたサブツリーのみ
 # glossary: heading ( 見出し ) / section ( セクション )
 #. type: cindex
 #: org.texi:8623
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "headings and sections, markup rules"
 msgstr "見出しとセクション，マークアップのルール"
 
@@ -29266,14 +29266,15 @@ msgstr "見出しとセクション，マークアップのルール"
 #. type: vindex
 #: org.texi:8625
 #: org.texi:10888
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "org-export-headline-levels"
 msgstr "org-export-headline-levels"
 
 
 
 
-# [Org7.5-2414::@]
+# [Org7.5-2414::@f_frhs] (修正) defining sections; (訳抜け補充) より深いレベルの処理; (訳抜け補充) 設定方法
+# 改善案)@ref{ドキュメントの構造}で説明されているような文書のアウトライン構造が，エクスポートされる文書のセクションを定義する基礎となっています．しかしながら，アウトライン構造はまた(例えば)タスクのリストとしても使われているので，最初の3アウトラインレベルのみ見出しとして使われます．より深いレベルは箇条書きのリストとなります．この切り替え箇所は変更可能で，変数@code{org-export-headline-levels}とグローバルに設定するか，1ファイル単位で設定するには次行を用います．
 # glossary: document ( ドキュメント|文書 ) / exported ( エクスポート|出力された ) / heading ( 見出し ) / level ( レベル|階層 ) / line ( 行|ライン|線 ) / list ( リスト ) / outline ( アウトライン|outline ) / section ( セクション ) / setting ( 設定 ) / structure ( 構造 ) / task ( タスク ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:8633
@@ -29288,7 +29289,7 @@ msgstr "@ref{ドキュメントの構造}で説明されているような文書
 #. type: cindex
 #: org.texi:8634
 #: org.texi:9385
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "#+OPTIONS"
 msgstr "#+OPTIONS"
 
@@ -29298,7 +29299,7 @@ msgstr "#+OPTIONS"
 # [Org7.5-2416::@]
 #. type: example
 #: org.texi:8637
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "#+OPTIONS: H:4\n"
 msgstr "#+OPTIONS: H:4\n"
 
@@ -29309,7 +29310,7 @@ msgstr "#+OPTIONS: H:4\n"
 # glossary: content ( コンテンツ|内容 ) / table ( テーブル )
 #. type: cindex
 #: org.texi:8641
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "table of contents, markup rules"
 msgstr "目次，マークアップのルール"
 
@@ -29320,7 +29321,7 @@ msgstr "目次，マークアップのルール"
 #. type: vindex
 #: org.texi:8643
 #: org.texi:10891
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "org-export-with-toc"
 msgstr "org-export-with-toc"
 
@@ -29331,7 +29332,6 @@ msgstr "org-export-with-toc"
 # glossary: content ( コンテンツ|内容 ) / default ( デフォルト|初期値 ) / file ( ファイル ) / headline ( 見出し ) / insert ( 挿入 ) / level ( レベル|階層 ) / line ( 行|ライン|線 ) / string ( 文字列 ) / table ( テーブル ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:8651
-#, fuzzy
 msgid "The table of contents is normally inserted directly before the first headline of the file.  If you would like to get it to a different location, insert the string @code{[TABLE-OF-CONTENTS]} on a line by itself at the desired location.  The depth of the table of contents is by default the same as the number of headline levels, but you can choose a smaller number, or turn off the table of contents entirely, by configuring the variable @code{org-export-with-toc}, or on a per-file basis with a line like"
 msgstr "目次は通常ファイルの最初の見出しの前に直接挿入されます．もしあなたが異なる場所に目次を挿入したいのなら，その場所に@code{[TABLE-OF-CONTENTS]}文字列を書いてください．目次の深さはデフォルトでは見出しのレベルの数と同じですが，@code{org-export-with-toc}変数を設定するか，ファイルに以下のように書くことによって，あなたはこれより小さな値に変更することも，目次を完全に表示させないようにすることも可能です．"
 
@@ -29342,7 +29342,7 @@ msgstr "目次は通常ファイルの最初の見出しの前に直接挿入さ
 # glossary: level ( レベル|階層 )
 #. type: example
 #: org.texi:8655
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "#+OPTIONS: toc:2          (only to two levels in TOC)\n"
 "#+OPTIONS: toc:nil        (no TOC at all)\n"
@@ -29357,7 +29357,7 @@ msgstr ""
 # glossary: headline ( 見出し ) / text ( テキスト|文章 )
 #. type: subheading
 #: org.texi:8658
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Text before the first headline"
 msgstr "最初の見出しより前のテキスト"
 
@@ -29368,7 +29368,7 @@ msgstr "最初の見出しより前のテキスト"
 # glossary: headline ( 見出し ) / text ( テキスト|文章 )
 #. type: cindex
 #: org.texi:8659
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "text before first headline, markup rules"
 msgstr "最初の見出しより前のテキスト，マークアップのルール"
 
@@ -29379,14 +29379,15 @@ msgstr "最初の見出しより前のテキスト，マークアップのルー
 #. type: cindex
 #: org.texi:8660
 #: org.texi:9384
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "#+TEXT"
 msgstr "#+TEXT"
 
 
 
 
-# [Org7.5-2424::@]
+# [Org7.5-2424::@f_frhs] (訳し直し) before; (訳抜け)even; (訳し直し) literal .... code;
+# 改善案)Org-modeは最初の見出しの前にあるテキストを普通にエクスポートし、さらに最初の行を文書のタイトルとして使います。テキストは完全にマークアップされているでしょう．もしあなたが文字通りのHTMLや@LaTeX{}，DocBookのコードを含めたい場合，個々のエクスポート機構のセクションで後述されている特別な構造を使います．
 # glossary: code ( コード ) / document ( ドキュメント|文書 ) / export ( エクスポート ) / exporter ( エクスポート機能 ) / headline ( 見出し ) / line ( 行|ライン|線 ) / marked ( マーク ) / org-mode ( Org-mode ) / section ( セクション ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:8666
@@ -29401,14 +29402,15 @@ msgstr "Org-modeは通常最初の見出しの前にテキストをエクスポ�
 #. type: vindex
 #: org.texi:8667
 #: org.texi:10904
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "org-export-skip-text-before-1st-heading"
 msgstr "org-export-skip-text-before-1st-heading"
 
 
 
 
-# [Org7.5-2426::@]
+# [Org7.5-2426::@f_frhs] Some people; use the space ... for; would like to; on a per-file basis;
+# 改善案)最初の見出しの前のスペースを設定と内部リンクのために使いたい人がいて、したがって最初の見出しの前のテキストを異なる方法でエクスポートされるように制御したい人もいるでしょう．あなたは@code{orgexport-skip-text-before-1st-heading}変数を@code{t}にすることで設定できます．ファイル単位で設定する場合，あなたは@samp{#+OPTIONS: skip:t}とすることで同等の設定を行うことができます．
 # glossary: internal link ( 内部リンク ) / exported ( エクスポート|出力された ) / headline ( 見出し ) / setting ( 設定 ) / setup ( 設定 ) / text ( テキスト|文章 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:8673
@@ -29423,14 +29425,13 @@ msgstr "多くの人々は内部リンクの設定のためとそのために異
 # glossary: headline ( 見出し ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:8677
-#, fuzzy
 msgid "If you still want to have some text before the first headline, use the @code{#+TEXT} construct:"
 msgstr "もし，あなたがまだ最初の見出しの前にテキストを置きたいのであれば，@code{#+TEXT}構造を使います:"
 
 
 
 
-# [Org7.5-2428::@]
+# [Org7.5-2428::@] typo 説明文中の *...* の前後のスペースを追加.
 # glossary: content ( コンテンツ|内容 ) / table ( テーブル ) / text ( テキスト|文章 )
 #. type: example
 #: org.texi:8683
@@ -29442,7 +29443,7 @@ msgid ""
 "#+TEXT: This goes between the table of contents and the first headline\n"
 msgstr ""
 "#+OPTIONS: skip:t\n"
-"#+TEXT: このテキストは*最初の*見出しの前に置かれます\n"
+"#+TEXT: このテキストは *最初の* 見出しの前に置かれます\n"
 "#+TEXT: [TABLE-OF-CONTENTS]\n"
 "#+TEXT: このテキストは目次と最初の見出しの間に置かれます\n"
 
@@ -29453,7 +29454,7 @@ msgstr ""
 # glossary: list ( リスト )
 #. type: cindex
 #: org.texi:8687
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "lists, markup rules"
 msgstr "リスト，マークアップのルール"
 
@@ -29475,7 +29476,7 @@ msgstr "@ref{エントリー中の階層構造}で説明されているプレー
 # glossary: line break ( 改行 ) / quoting ( 引用 )
 #. type: subheading
 #: org.texi:8694
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Paragraphs, line breaks, and quoting"
 msgstr "段落，改行，引用"
 
@@ -29485,7 +29486,7 @@ msgstr "段落，改行，引用"
 # [Org7.5-2432::@]
 #. type: cindex
 #: org.texi:8695
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "paragraphs, markup rules"
 msgstr "段落，マークアップのルール"
 
@@ -29496,14 +29497,14 @@ msgstr "段落，マークアップのルール"
 # glossary: line break ( 改行 ) / line ( 行|ライン|線 )
 #. type: Plain text
 #: org.texi:8699
-#, fuzzy
 msgid "Paragraphs are separated by at least one empty line.  If you need to enforce a line break within a paragraph, use @samp{\\\\} at the end of a line."
 msgstr "段落は最低1つの空白行で区切られます．もしあなたが強制的に段落の中で改行しないなら，@samp{\\\\}を行の末尾に書いてください．"
 
 
 
 
-# [Org7.5-2434::@]
+# [Org7.5-2434::@f_frhs] (要検討) 構文
+# 改善案)リージョンで改行を保ちその他の点で普通の書式を使うためには、この構文を使うことができ、これは詩の書式を整えるためにも使えます。
 # glossary: line break ( 改行 ) / format ( フォーマット|形成 ) / region ( リージョン|領域 )
 #. type: Plain text
 #: org.texi:8702
@@ -29517,7 +29518,7 @@ msgstr "リージョンで改行を保つためには，しかしそうでなけ
 # [Org7.5-2435::@]
 #. type: cindex
 #: org.texi:8703
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "#+BEGIN_VERSE"
 msgstr "#+BEGIN_VERSE"
 
@@ -29527,7 +29528,7 @@ msgstr "#+BEGIN_VERSE"
 # [Org7.5-2436::@]
 #. type: example
 #: org.texi:8709
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "#+BEGIN_VERSE\n"
 " Great clouds overhead\n"
@@ -29547,7 +29548,7 @@ msgstr ""
 # [Org7.5-2437::@]
 #. type: example
 #: org.texi:8712
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "     -- AlexSchroeder\n"
 "#+END_VERSE\n"
@@ -29562,7 +29563,6 @@ msgstr ""
 # glossary: document ( ドキュメント|文書 ) / format ( フォーマット|形成 ) / org-mode ( Org-mode ) / quoting ( 引用 )
 #. type: Plain text
 #: org.texi:8717
-#, fuzzy
 msgid "When quoting a passage from another document, it is customary to format this as a paragraph that is indented on both the left and the right margin.  You can include quotations in Org-mode documents like this:"
 msgstr "別の文書から一節を引用する時，段落の左右の余白を空けることが慣習となっています．あなたは以下を用いることで引用をOrg-modeの文書に含めることができます:"
 
@@ -29572,7 +29572,7 @@ msgstr "別の文書から一節を引用する時，段落の左右の余白を
 # [Org7.5-2439::@]
 #. type: cindex
 #: org.texi:8718
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "#+BEGIN_QUOTE"
 msgstr "#+BEGIN_QUOTE"
 
@@ -29582,7 +29582,7 @@ msgstr "#+BEGIN_QUOTE"
 # [Org7.5-2440::@]
 #. type: example
 #: org.texi:8724
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "#+BEGIN_QUOTE\n"
 "Everything should be made as simple as possible,\n"
@@ -29601,7 +29601,6 @@ msgstr ""
 # glossary: text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:8727
-#, fuzzy
 msgid "If you would like to center some text, do it like this:"
 msgstr "もしあなたがテキストを中央寄せにしたいなら，以下を使うことができます:"
 
@@ -29611,7 +29610,7 @@ msgstr "もしあなたがテキストを中央寄せにしたいなら，以下
 # [Org7.5-2442::@]
 #. type: cindex
 #: org.texi:8727
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "#+BEGIN_CENTER"
 msgstr "#+BEGIN_CENTER"
 
@@ -29621,7 +29620,7 @@ msgstr "#+BEGIN_CENTER"
 # [Org7.5-2443::@]
 #. type: example
 #: org.texi:8733
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "#+BEGIN_CENTER\n"
 "Everything should be made as simple as possible, \\\\\n"
@@ -29640,7 +29639,7 @@ msgstr ""
 # glossary: footnote ( 脚注|footnote )
 #. type: cindex
 #: org.texi:8738
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "footnotes, markup rules"
 msgstr "脚注，マークアップのルール"
 
@@ -29651,14 +29650,15 @@ msgstr "脚注，マークアップのルール"
 #. type: file{#1}
 #: org.texi:8739
 #: org.texi:13582
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "footnote.el"
 msgstr "footnote.el"
 
 
 
 
-# [Org7.5-2446::@]
+# [Org7.5-2446::@f_frhs] (要検討) 構文 2文とも
+# 改善案)@ref{脚注}で説明された方法で定義された脚注は、全てのバックエンドによってエクスポートされます。Org-modeは同じ注釈に対しての複数の参照を許しており、種々のバックエンドはさまざまな程度にこれをサポートしています。
 # glossary: exported ( エクスポート|出力された ) / footnote ( 脚注|footnote ) / note ( ノート|メモ ) / org ( Org-mode )
 #. type: Plain text
 #: org.texi:8744
@@ -29673,7 +29673,7 @@ msgstr "脚注は@ref{脚注}で説明されたように定義されていて，
 # glossary: text ( テキスト|文章 )
 #. type: cindex
 #: org.texi:8748
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "underlined text, markup rules"
 msgstr "下線のあるテキスト，マークアップのルール"
 
@@ -29684,14 +29684,15 @@ msgstr "下線のあるテキスト，マークアップのルール"
 # glossary: text ( テキスト|文章 )
 #. type: cindex
 #: org.texi:8749
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "bold text, markup rules"
 msgstr "太字のテキスト，マーックアップのルール"
 
 
 
 
-# [Org7.5-2449::@]
+# [Org7.5-2449::@f_frhs] イタリック体のテキスト，マークアップのルール
+# 斜体(oblique)とイタリック体(italic)とは異なるようなので。
 # glossary: text ( テキスト|文章 )
 #. type: cindex
 #: org.texi:8750
@@ -29706,7 +29707,7 @@ msgstr "斜体のテキスト，マーックアップのルール"
 # glossary: text ( テキスト|文章 ) / verbatim ( 文字通りな )
 #. type: cindex
 #: org.texi:8751
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "verbatim text, markup rules"
 msgstr "文字通りのテキスト，マーックアップのルール"
 
@@ -29717,14 +29718,15 @@ msgstr "文字通りのテキスト，マーックアップのルール"
 # glossary: code ( コード ) / text ( テキスト|文章 )
 #. type: cindex
 #: org.texi:8752
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "code text, markup rules"
 msgstr "コードのテキスト，マークアップのルール"
 
 
 
 
-# [Org7.5-2452::@]
+# [Org7.5-2452::@f_frhs] (提案とtypo) 取り消し線のあるテキスト，マークアップのルール
+# 検索しやすい用語はあるでしょうか?
 # glossary: text ( テキスト|文章 )
 #. type: cindex
 #: org.texi:8753
@@ -29735,7 +29737,8 @@ msgstr "取り消されたテキスト，マーックアップのルール"
 
 
 
-# [Org7.5-2453::@]
+# [Org7.5-2453::@f_frhs] (提案) 書式設定例を和訳してみました; (要検討) ここでの specific の訳語
+# 改善案)あなたは単語を@b{*太字に*}, @i{/イタリック体に/}, _下線を引いて_, @code{=コードで=}, @code{~文字通りに~}出力でき、そして必要なら@samp{+打ち消し線を引く+}ことができます。「コードで」と「文字通りに」の文字列の中のテキストはOrg-modeの詳述された構文として処理されません; それは「文字通りに」(verbatim)エクスポートされます。
 # glossary: code ( コード ) / exported ( エクスポート|出力された ) / org-mode ( Org-mode ) / string ( 文字列 ) / text ( テキスト|文章 ) / verbatim ( 文字通りな )
 #. type: Plain text
 #: org.texi:8758
@@ -29746,18 +29749,19 @@ msgstr "あなたは@b{*bold*}と@i{/italic/}，_underlined_，@code{=code=}，@
 
 
 
-# [Org7.5-2454::@]
+# [Org7.5-2454::@] typo
 # glossary: horizontal ( 水平|横線 )
 #. type: cindex
 #: org.texi:8761
 #, fuzzy, no-wrap
 msgid "horizontal rules, markup rules"
-msgstr "水平線，マーックアップのルール"
+msgstr "水平線，マークアップのルール"
 
 
 
 
-# [Org7.5-2455::@]
+# [Org7.5-2455::@] (細かい修正) 行成 線 にエクスポート; (提案) ダッシュ「-」の表示
+# 改善案)少なくとも5文字のダッシュ文字「-」のみで構成される行は水平線(HTMLでは@samp{<hr/>}，@LaTeX{}では@code{\hrule})としてエクスポートされます．
 # glossary: exported ( エクスポート|出力された ) / horizontal ( 水平|横線 ) / line ( 行|ライン|線 )
 #. type: Plain text
 #: org.texi:8764
@@ -29772,14 +29776,15 @@ msgstr "少なくとも5文字のダッシュ文字のみで行成される線�
 # glossary: comment lines ( コメント行 )
 #. type: cindex
 #: org.texi:8767
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "comment lines"
 msgstr "コメント行"
 
 
 
 
-# [Org7.5-2457::@]
+# [Org7.5-2457::@f_frhs] (希望) 検討
+# カンマ区切りを考慮するなら、たたき台として「エクスポート、されない」はいかがでしょうか。
 # glossary: exporting ( エクスポート )
 #. type: cindex
 #: org.texi:8768
@@ -29793,14 +29798,14 @@ msgstr "エクスポートされない部分"
 # [Org7.5-2458::@]
 #. type: cindex
 #: org.texi:8769
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "#+BEGIN_COMMENT"
 msgstr "#+BEGIN_COMMENT"
 
 
 
 
-# [Org7.5-2459::@]
+# [Org7.5-2459::@f_frhs] また@samp{COMMENT}ワードで開始するサブツリー
 # glossary: column ( 列 ) / comment ( コメント ) / exported ( エクスポート|出力された ) / line ( 行|ライン|線 ) / region ( リージョン|領域 ) / subtree ( サブツリー )
 #. type: Plain text
 #: org.texi:8776
@@ -29815,7 +29820,7 @@ msgstr "行頭の文字が@samp{#}から始まる行はコメントとして扱�
 #. type: item
 #: org.texi:8778
 #: org.texi:8779
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "C-c ;"
 msgstr "C-c ;"
 
@@ -29826,7 +29831,6 @@ msgstr "C-c ;"
 # glossary: comment ( コメント ) / entry ( エントリー|文|入力 ) / keyword ( キーワード ) / toggle ( トグル )
 #. type: table
 #: org.texi:8781
-#, fuzzy
 msgid "Toggle the COMMENT keyword at the beginning of an entry."
 msgstr "エントリー先頭のCOMMENTキーワードをトグルします．"
 
@@ -29837,7 +29841,7 @@ msgstr "エントリー先頭のCOMMENTキーワードをトグルします．"
 # glossary: image ( 画像 ) / table ( テーブル )
 #. type: section
 #: org.texi:8785
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Images and Tables"
 msgstr "画像と表"
 
@@ -29848,7 +29852,7 @@ msgstr "画像と表"
 # glossary: table ( テーブル )
 #. type: cindex
 #: org.texi:8787
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "tables, markup rules"
 msgstr "表，マークアップのルール"
 
@@ -29864,7 +29868,7 @@ msgstr "表，マークアップのルール"
 #: org.texi:10114
 #: org.texi:10149
 #: org.texi:10444
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "#+CAPTION"
 msgstr "#+CAPTION"
 
@@ -29878,14 +29882,15 @@ msgstr "#+CAPTION"
 #: org.texi:10115
 #: org.texi:10150
 #: org.texi:10445
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "#+LABEL"
 msgstr "#+LABEL"
 
 
 
 
-# [Org7.5-2466::@]
+# [Org7.5-2466::@f_frhs] (要検討) somewhere before; (要検討) 構文
+# 改善案)キャプションと相互参照の指定をするには，表の前のどこかで以下の行を使うことができ，文章中では@code{\\ref@{tab:basic-data@}}を用いて目標を参照できます．
 # glossary: exported ( エクスポート|出力された ) / header ( ヘッダー ) / horizontal ( 水平|横線 ) / line ( 行|ライン|線 ) / org-mode ( Org-mode ) / package ( パッケージ ) / table ( テーブル ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:8796
@@ -29900,7 +29905,7 @@ msgstr "Org-modeネイティブなテーブル(@pxref{テーブル})と@file{tab
 # glossary: table ( テーブル )
 #. type: example
 #: org.texi:8802
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "#+CAPTION: This is the caption for the next table (or link)\n"
 "#+LABEL:   tbl:basic-data\n"
@@ -29919,14 +29924,15 @@ msgstr ""
 # glossary: image ( 画像 )
 #. type: cindex
 #: org.texi:8804
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "inlined images, markup rules"
 msgstr "インライン画像，マークアップのルール"
 
 
 
 
-# [Org7.5-2469::@]
+# [Org7.5-2469::@f_frhs] (修正) Some backends; (訳抜け補充) the link is on a line by itself;
+# 改善案)いくつかのバックエンド(HTML，@LaTeX{}，DocBook)はエクスポートされた文書の中に直接画像を挿入することができます．もし，例えば，@code{[[./img/a.jpg]]}のような説明部分を持たない画像ファイルへのリンクがあるなら，Org-modeは画像の挿入を行います．もしあなたが画像のキャプションや内部相互参照のラベルを定義したいなら，必ずリンクだけの行を書き，以下のように@code{#+CAPTION}と@code{#+LABEL}をリンクの前に書きます:
 # glossary: document ( ドキュメント|文書 ) / example ( 例 ) / exported ( エクスポート|出力された ) / file ( ファイル ) / image ( 画像 ) / internal ( 内部 ) / line ( 行|ライン|線 ) / link ( リンク ) / org ( Org-mode )
 #. type: Plain text
 #: org.texi:8811
@@ -29941,7 +29947,7 @@ msgstr "多くのバックエンド(HTML，@LaTeX{}，DocBook)はエクスポー
 # glossary: link ( リンク )
 #. type: example
 #: org.texi:8816
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "#+CAPTION: This is the caption for the next figure link (or table)\n"
 "#+LABEL:   fig:SED-HR4049\n"
@@ -29954,7 +29960,8 @@ msgstr ""
 
 
 
-# [Org7.5-2471::@]
+# [Org7.5-2471::@f_frhs] (修正) attributes 要素->属性; (修正) backend-specific (修正) individual 独立した->個々の
+# 改善案)あなたは画像に対する追加属性を定義するかもしれません．これはバックエンドに固有なので，さらに情報が必要なら個々のバックエンドについてのセクションを見てください．
 # glossary: information ( 情報 ) / section ( セクション )
 #. type: Plain text
 #: org.texi:8821
@@ -29965,7 +29972,8 @@ msgstr "あなたは画像に対する追加要素を定義するかもしれま
 
 
 
-# [Org7.5-2472::@]
+# [Org7.5-2472::@f_frhs] (希望) 検討 discussionの訳語
+# 詳解?
 # glossary: image ( 画像 )
 #. type: Plain text
 #: org.texi:8823
@@ -29980,7 +29988,7 @@ msgstr "@xref{リンクの扱い,画像リンクの議論}."
 # glossary: example ( 例 )
 #. type: cindex
 #: org.texi:8826
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "literal examples, markup rules"
 msgstr "リテラルの例，マークアップのルール"
 
@@ -29998,11 +30006,11 @@ msgstr "コードラインのリファレンス，マークアップのルール
 
 
 
-# [Org7.5-2475::@]
+# [Org7.5-2475::@f_frhs] (要検討) literal リテラル? 文字通りの?
+# ここ使い方は?
 # glossary: code ( コード ) / example ( 例 ) / source ( ソース )
 #. type: Plain text
 #: org.texi:8832
-#, fuzzy
 msgid "You can include literal examples that should not be subjected to markup.  Such examples will be typeset in monospace, so this is well suited for source code and similar examples."
 msgstr "あなたはマークアップに依存しないリテラルの例を含めることができます．そのような例に等幅のタイプセットがあり，それはソースコードやそれに似た例向きです．"
 
@@ -30012,7 +30020,7 @@ msgstr "あなたはマークアップに依存しないリテラルの例を含
 # [Org7.5-2476::@]
 #. type: cindex
 #: org.texi:8832
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "#+BEGIN_EXAMPLE"
 msgstr "#+BEGIN_EXAMPLE"
 
@@ -30023,7 +30031,7 @@ msgstr "#+BEGIN_EXAMPLE"
 # glossary: example ( 例 ) / text ( テキスト|文章 )
 #. type: example
 #: org.texi:8838
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "#+BEGIN_EXAMPLE\n"
 "Some example from a text file.\n"
@@ -30036,7 +30044,8 @@ msgstr ""
 
 
 
-# [Org7.5-2478::@]
+# [Org7.5-2478::@f_frhs] (修正) 構文
+# 改善案)そのようなブロックは、インデントされたテキストや，特にプレーンリスト構造(@xref{エントリー中の階層構造})とうまく整列させるためとのために@i{インデント}されるでしょう．
 # glossary: plain list ( プレーンリスト|単純なリスト ) / block ( ブロック ) / example ( 例 ) / line ( 行|ライン|線 ) / note ( ノート|メモ ) / structure ( 構造 ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:8845
@@ -30051,7 +30060,7 @@ msgstr "そのようなブロックはインデントされたテキストをう
 # glossary: example ( 例 ) / text ( テキスト|文章 )
 #. type: example
 #: org.texi:8849
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "Here is an example\n"
 "   : Some example from a text file.\n"
@@ -30062,7 +30071,7 @@ msgstr ""
 
 
 
-# [Org7.5-2480::@]
+# [Org7.5-2480::@f_frhs] ソースコードを書式設定する，マークアップのルール
 # glossary: code ( コード ) / source ( ソース )
 #. type: cindex
 #: org.texi:8851
@@ -30073,7 +30082,8 @@ msgstr "ソースコードのフォーマット，マークアップのルール
 
 
 
-# [Org7.5-2481::@]
+# [Org7.5-2481::@f_frhs] (要検討) fontify 強調表示?; (移動) @footnoteの位置; (修正) achive 達成する・得られる; (訳抜け補充) obtaining; (修正) 構文
+# 改善案)もし例がプログラミング言語のソースコードなら，もしくはEmacsでフォントロックによりマークアップされたテキストなら，あなたは例に強調表示?(fontify)されたEmacsバッファのように見えるようと求めることができます@footnote{HTMLバックエンドに対しては，これは自動的に行われます(Org-modeと一緒に配布されている@file{htmlize.el}のバージョン1.34が必要です)．LaTeXの強調表示を施されたコードの塊は、listingsパッケージか，@url{http://coe.google.com/p/minted, minted,}パッケージによって得られます．listingパッケージを使うには，@code{org-export-latex-listings}変数をオンにし，LaTeXのヘッダにlistingsパッケージが含まれているようにします(例@: @code{org-export-latex-packages-alist}を設定します)．色付きの出力を得ることを含む設定のオプションについては，リスティングのドキュメントを見てください．mintedパッケージを使うには，@code{org-export-latex-minted}を設定し、LaTeXのヘッダーにmintedパッケージが含まれていることを確認し、@code{-shell-escape}オプションが@file{pdflatex}に引き継がれていること(@code{org-latex-to-pdf-process}を見てください)を確認し，さらに、@url{http://pygemnts.org, pygemnts}プログラムをインストールする必要があります．}．これは@samp{src}ブロックで処理され、そこであなたが例に色付けするために使うメジャーモードの名前を指定する必要もあります:
 # glossary: block ( ブロック ) / code ( コード ) / configuration ( 設定 ) / example ( 例 ) / header ( ヘッダー ) / install ( インストール ) / language ( 言語 ) / major ( メジャー ) / marked ( マーク ) / mode ( モード|モード ) / option ( オプション ) / output ( アウトプット ) / package ( パッケージ ) / setting ( 設定 ) / source ( ソース ) / text ( テキスト|文章 ) / variable ( 変数 ) / version ( バージョン ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:8872
@@ -30087,7 +30097,7 @@ msgstr "もし例がソースコードなら，もしくはEmacsでフォント�
 # [Org7.5-2482::@]
 #. type: cindex
 #: org.texi:8872
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "#+BEGIN_SRC"
 msgstr "#+BEGIN_SRC"
 
@@ -30098,7 +30108,7 @@ msgstr "#+BEGIN_SRC"
 #. type: example
 #: org.texi:8880
 #: org.texi:11259
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "#+BEGIN_SRC emacs-lisp\n"
 "  (defun org-xor (a b)\n"
@@ -30115,7 +30125,8 @@ msgstr ""
 
 
 
-# [Org7.5-2484::@]
+# [Org7.5-2484::@f_frhs] (修正) 構文; (訳抜け) strings like; (和訳) i.e. すなわち; 他
+# 改善案)@code{example}と@code{src}スニペットでは，あなたは@code{BEGIN}の行の最後に@code{-n}を追加することで，例の行番号を表示することができます．もしあなたが@code{+n}とすると，前のスニペットから現在のものに番号が引き継がれます．リテラルの例で，@samp{(ref:name)}のような文字列をOrg-modeはラベルとして解釈し，@code{[[(name)]]}のような特別なハイパーリンクの目標として使います(すなわち@: 参照名は1つの括弧に囲まれています)．HTMLでは，そのようなリンクの上にマウスポインタを重ねると、対応するコード行を遠隔的にハイライト表示になり，少しクールです．
 # glossary: code ( コード ) / current ( カレント|現在の ) / example ( 例 ) / hyperlinks ( ハイパーリンク ) / line ( 行|ライン|線 ) / link ( リンク ) / mouse ( マウス|mouse ) / org ( Org-mode ) / previous ( 前の ) / snippet ( スニペット ) / string ( 文字列 )
 #. type: Plain text
 #: org.texi:8891
@@ -30126,7 +30137,8 @@ msgstr "@code{example}と@code{src}スニペットでは，あなたは@code{BEG
 
 
 
-# [Org7.5-2485::@]
+# [Org7.5-2485::@f_frhs] (修正) while の間->であるものの; 他
+# 改善案)また，ソースコードからラベルを@i{消去する}スイッチ@code{-r}を追加することもできます@footnote{@code{-n -r}に@code{-k}を追加すると、リンクに行番号を使うものの，ソースコードのラベルを@i{維持}します。そして、それはOrg-modeの例で説明するのに便利です。}．@code{-n}スイッチを用いると，これらのリファレンスへのリンクは記載しているコードの行番号によってラベルを付けられ，そうでなければリンクは括弧無しのラベルを使います．例を以下に示します:
 # glossary: code ( コード ) / example ( 例 ) / line ( 行|ライン|線 ) / link ( リンク ) / org-mode ( Org-mode ) / source ( ソース )
 #. type: Plain text
 #: org.texi:8899
@@ -30137,7 +30149,8 @@ msgstr "また，ソースコード@footnote{Org-modeの例で説明するのに
 
 
 
-# [Org7.5-2486::@]
+# [Org7.5-2486::@f_frhs] (訳抜け)ブロックの後の説明
+# 改善案)[[(sc)]]の行では、現在位置を覚えます。[[(jump)][Line (jump)]]は「point-min」の位置にジャンプします。
 # glossary: current ( カレント|現在の ) / line ( 行|ライン|線 )
 #. type: example
 #: org.texi:8907
@@ -30163,14 +30176,15 @@ msgstr ""
 # [Org7.5-2487::@]
 #. type: vindex
 #: org.texi:8909
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "org-coderef-label-format"
 msgstr "org-coderef-label-format"
 
 
 
 
-# [Org7.5-2488::@]
+# [Org7.5-2488::@f_frhs] (訳抜け)
+# 改善案)もしラベルの構文が言語の構文と衝突した場合，@code{-l}スイッチを例えば@samp{#+BEGIN_SRC pascal -n -r -l "((%s))"}と使ってフォーマットを変更できます．@code{org-coderef-label-format}変数も見てください．
 # glossary: conflict ( 衝突する ) / example ( 例 ) / format ( フォーマット|形成 ) / language ( 言語 ) / syntax ( 構文|シンタックス ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:8913
@@ -30181,7 +30195,8 @@ msgstr "もし，ラベルの構文が言語の構文と衝突した場合，@co
 
 
 
-# [Org7.5-2489::@]
+# [Org7.5-2489::@f_frhs] (修正) 構文; (訳抜け)
+# 改善案)HTMLへのエクスポート時には例をテキストエリアともできます@xref{HTMLエクスポートでのテキストエリア}。
 # glossary: example ( 例 ) / export ( エクスポート ) / published ( 公開 ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:8916
@@ -30199,14 +30214,15 @@ msgstr "HTMLはエクスポート時にテキストエリア,@xref{HTMLエクス
 #: org.texi:8981
 #: org.texi:8982
 #: org.texi:11344
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "C-c '"
 msgstr "C-c '"
 
 
 
 
-# [Org7.5-2491::@]
+# [Org7.5-2491::@f_frhs] (訳抜け) 1つ目の@footnoteの後半部; (提案) region 領域 ここではEmacsの「リージョン」の意味とは違いそう
+# 改善案)カーソル位置のソースコード例をそのネイティブモードで編集します．これはソースコードを一時バッファに表示し，切り替えることで働きます．あなたは@kbd{C-c '}をもう一度押すことで編集を終了します@footnote{終了時，Org-modeによってアウトラインの見出しや特別なコメントと間違えられないようにするために，@samp{*}か@samp{#}から始まる行はカンマが先頭に追加されます．これらのカンマは、@kbd{C-c '}による編集の間やエクスポートの間は取り除かれます。}．編集されたバージョンはOrg-modeバッファ内の古いバージョンを置き換えます．(各行がカンマに続くスペースで開始する)固定幅の領域は、簡単にASCII drawing(文字絵?アスキーアート?)を描くのを可能にする@code{artist-mode}@footnote{@code{org-edit-fixed-width-region-mode}変数により，異なるモードを選択することもできます．}を使って編集されます．空行でこのコマンドを使うと，新しい固定幅の領域を作成します．
 # glossary: buffer ( バッファ ) / code ( コード ) / command ( コマンド ) / comment ( コメント ) / creating ( 作成 ) / editing ( 編集 ) / example ( 例 ) / line ( 行|ライン|線 ) / mode ( モード|モード ) / node ( ノード ) / org ( Org-mode ) / outline ( アウトライン|outline ) / point ( ポイント ) / region ( リージョン|領域 ) / source ( ソース ) / variable ( 変数 ) / version ( バージョン ) / work ( 作業 )
 #. type: table
 #: org.texi:8932
@@ -30221,14 +30237,15 @@ msgstr "カーソル位置のソースコード例をそのネイティブモー
 #. type: item
 #: org.texi:8932
 #: org.texi:8933
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "C-c l"
 msgstr "C-c l"
 
 
 
 
-# [Org7.5-2493::@]
+# [Org7.5-2493::@f_frhs] (提案) 2分目の命令文2個; (提案) unique ユニークな->唯一な?固有な?; (修正) 3文目の構文
+# 改善案)@kbd{C-c '}によって作成した一時バッファでのソースコード例の編集中に@code{org-store-link}の呼び出しはラベルの入力を要求します．現在のバッファ内で必ずそれが唯一であるようにし，現在の行の最後に@samp{(ref:label)}のように適切に書式を整えて挿入してください．それから@kbd{C-c C-l}で検索するために、@samp{(label)}のようなリンクとしてラベルを記憶します．
 # glossary: current buffer ( カレントバッファ ) / buffer ( バッファ ) / code ( コード ) / current ( カレント|現在の ) / editing ( 編集 ) / example ( 例 ) / insert ( 挿入 ) / line ( 行|ライン|線 ) / link ( リンク ) / prompt ( 入力 ) / source ( ソース )
 #. type: table
 #: org.texi:8939
@@ -30243,7 +30260,7 @@ msgstr "@kbd{C-c '}によって作成した一時バッファでのソースコ�
 # glossary: file ( ファイル )
 #. type: cindex
 #: org.texi:8944
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "include files, markup rules"
 msgstr "ファイルのインクルード，マークアップのルール"
 
@@ -30254,7 +30271,6 @@ msgstr "ファイルのインクルード，マークアップのルール"
 # glossary: content ( コンテンツ|内容 ) / example ( 例 ) / export ( エクスポート ) / file ( ファイル )
 #. type: Plain text
 #: org.texi:8948
-#, fuzzy
 msgid "During export, you can include the content of another file.  For example, to include your @file{.emacs} file, you could use:"
 msgstr "エクスポート中，あなたは別のファイルの内容をインクルードすることができます．例えば，@file{.emacs}をインクルードするなら，あなたは次のようにします:"
 
@@ -30264,7 +30280,7 @@ msgstr "エクスポート中，あなたは別のファイルの内容をイン
 # [Org7.5-2496::@]
 #. type: cindex
 #: org.texi:8948
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "#+INCLUDE"
 msgstr "#+INCLUDE"
 
@@ -30274,14 +30290,15 @@ msgstr "#+INCLUDE"
 # [Org7.5-2497::@]
 #. type: example
 #: org.texi:8952
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "#+INCLUDE: \"~/.emacs\" src emacs-lisp\n"
 msgstr "#+INCLUDE: \"~/.emacs\" src emacs-lisp\n"
 
 
 
 
-# [Org7.5-2498::@]
+# [Org7.5-2498::@f_frhs] (提案) optional オプション->任意の; (訳抜け) parameter; (訳抜け) will be processed normally; (提案) 構文を変えて訳し直し
+# 改善案)任意の2つ目のパラメータはマークアップ(例えば@: @samp{quote}や@samp{example}，@samp{src})で，もしそのマークアップが@samp{src}なら、任意の3つ目のパラメータは中身の書式を整えるための言語です．マークアップは任意です; もし与えられなければ，Org-modeフォーマットのテキストと仮定され、標準的にに処理されます．include行によって，追加のキーワードのパラメータである@code{:prefix1}と@code{:prefix}に，1行目や後続する行のためのプレフィックスを記述可能になります．パラメータとはすなわちOrg-modeのコンテンツを指定したレベルに下げるための@code{:minlevel}のことで，選択されたマークアップによって受け入れられるどのようなオプションと同様です．例えば，ファイルをインクルードするには:
 # glossary: content ( コンテンツ|内容 ) / example ( 例 ) / file ( ファイル ) / format ( フォーマット|形成 ) / item ( アイテム|項目 ) / keyword ( キーワード ) / language ( 言語 ) / level ( レベル|階層 ) / line ( 行|ライン|線 ) / option ( オプション ) / org-mode ( Org-mode ) / parameters ( パラメーター ) / prefix ( 接頭辞 ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:8964
@@ -30295,14 +30312,15 @@ msgstr "2つ目のオプションは(e.g.@: @samp{quote}や@samp{example}，@sam
 # [Org7.5-2499::@]
 #. type: example
 #: org.texi:8967
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "#+INCLUDE: \"~/snippets/xx\" :prefix1 \"   + \" :prefix \"     \"\n"
 msgstr "#+INCLUDE: \"~/snippets/xx\" :prefix1 \"   + \" :prefix \"     \"\n"
 
 
 
 
-# [Org7.5-2500::@]
+# [Org7.5-2500::@f_frhs] (移動) 指定した行範囲; (修正) 範囲の上端行を除外すること; (修正) 省略時の行範囲選択の挙動
+# 改善案)@code{:line}パラメーターを使って行範囲を指定することで，ファイルの一部のインクルードもできます．範囲の上端の行はインクルードされません．範囲の開始と終了は省略でき、明らかなデフォルトを使います．
 # glossary: default ( デフォルト|初期値 ) / file ( ファイル ) / line ( 行|ライン|線 )
 #. type: Plain text
 #: org.texi:8973
@@ -30313,7 +30331,7 @@ msgstr "@code{:line}パラメーターを使うことで，ファイルの指定
 
 
 
-# [Org7.5-2501::@]
+# [Org7.5-2501::@f_frhs] (提案) 説明の和訳
 # glossary: line ( 行|ライン|線 )
 #. type: example
 #: org.texi:8978
@@ -30323,14 +30341,14 @@ msgid ""
 "#+INCLUDE: \"~/.emacs\" :lines \"-10\"    @r{Include lines 1 to 10, 10 excluded}\n"
 "#+INCLUDE: \"~/.emacs\" :lines \"10-\"    @r{Include lines from 10 to EOF}\n"
 msgstr ""
-"#+INCLUDE: \"~/.emacs\" :lines \"5-10\"   @r{Include lines 5 to 10, 10 excluded}\n"
-"#+INCLUDE: \"~/.emacs\" :lines \"-10\"    @r{Include lines 1 to 10, 10 excluded}\n"
-"#+INCLUDE: \"~/.emacs\" :lines \"10-\"    @r{Include lines from 10 to EOF}\n"
+"#+INCLUDE: \"~/.emacs\" :lines \"5-10\"   @r{5行目から10行目までを含みます。10行目を除きます。}\n"
+"#+INCLUDE: \"~/.emacs\" :lines \"-10\"    @r{1行目から10行目までを含みます。10行目を除きます。}\n"
+"#+INCLUDE: \"~/.emacs\" :lines \"10-\"    @r{10行目からEOFまでを含みます。}\n"
 
 
 
 
-# [Org7.5-2502::@]
+# [Org7.5-2502::@f_frhs] (提案) visit the file ファイルを訪問する
 # glossary: file ( ファイル ) / point ( ポイント )
 #. type: table
 #: org.texi:8984
@@ -30341,7 +30359,8 @@ msgstr "ポイント位置のインクルードされたファイルに移動し
 
 
 
-# [Org7.5-2503::@]
+# [Org7.5-2503::@f_frhs] (提案) インデックスのエントリ、公開のための
+# ここでは、インデックス=索引の意味であって、添字の意味ではない点で限定できますが。
 # glossary: entries ( エントリー|文|入力 ) / index ( インデックス ) / publishing ( 公開 )
 #. type: cindex
 #: org.texi:8988
@@ -30352,7 +30371,8 @@ msgstr "公開のためのインデックスのエントリ"
 
 
 
-# [Org7.5-2504::@]
+# [Org7.5-2504::@f_frhs] (修正; 要検討) 一文目
+# publishing(出版?出版作業?)の間、索引作成に使われるであろう項目を指定できます。
 # glossary: entries ( エントリー|文|入力 ) / entry ( エントリー|文|入力 ) / index ( インデックス ) / information ( 情報 ) / item ( アイテム|項目 ) / line ( 行|ライン|線 ) / mark ( マーク ) / publishing ( 公開 ) / sub ( サブ|下位の階層の )
 #. type: Plain text
 #: org.texi:8994
@@ -30363,7 +30383,7 @@ msgstr "あなたは公開した文書のインデックスに用いるエント
 
 
 
-# [Org7.5-2505::@]
+# [Org7.5-2505::@f_frhs] (提案) 例の和訳を付記
 #. type: example
 #: org.texi:8999
 #, fuzzy, no-wrap
@@ -30372,14 +30392,14 @@ msgid ""
 "#+INDEX: CV\n"
 "#+INDEX: Application!CV\n"
 msgstr ""
-"* Curriculum Vitae\n"
-"#+INDEX: CV\n"
-"#+INDEX: Application!CV\n"
+"* Curriculum Vitae (履歴書)\n"
+"#+INDEX: CV (履歴書)\n"
+"#+INDEX: Application!CV (出願!履歴書)\n"
 
 
 
 
-# [Org7.5-2506::@]
+# [Org7.5-2506::@f_frhs] (提案) マクロによる置換、エクスポート中に
 # glossary: export ( エクスポート ) / macro ( マクロ )
 #. type: cindex
 #: org.texi:9006
@@ -30393,7 +30413,7 @@ msgstr "エクスポート中のマクロによる置き換え"
 # [Org7.5-2507::@]
 #. type: cindex
 #: org.texi:9007
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "#+MACRO"
 msgstr "#+MACRO"
 
@@ -30404,14 +30424,14 @@ msgstr "#+MACRO"
 # glossary: snippet ( スニペット ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:9010
-#, fuzzy
 msgid "You can define text snippets with"
 msgstr "あなたは次のようにしてテキストスニペットを定義することができます．"
 
 
 
 
-# [Org7.5-2509::@]
+# [Org7.5-2509::@f_frhs] (提案) 例の和訳を付記
+# 改善案)#+MACRO: name   置換テキスト $1, $2 は引数
 # glossary: text ( テキスト|文章 )
 #. type: example
 #: org.texi:9013
@@ -30422,7 +30442,7 @@ msgstr "#+MACRO: name   replacement text $1, $2 are arguments\n"
 
 
 
-# [Org7.5-2510::@]
+# [Org7.5-2510::@f_frhs] (修正) 最終文 current date time 現在の日付->現在の日時
 # glossary: code ( コード ) / current ( カレント|現在の ) / date ( 日付 ) / exported ( エクスポート|出力された ) / file ( ファイル ) / format ( フォーマット|形成 ) / information ( 情報 ) / line ( 行|ライン|線 ) / macro ( マクロ ) / string ( 文字列 ) / time ( 時刻|時間|回 )
 #. type: Plain text
 #: org.texi:9025
@@ -30433,7 +30453,8 @@ msgstr "これは @code{@{@{@{name(arg1,arg2)@}@}@}}と書くことでドキュ�
 
 
 
-# [Org7.5-2511::@]
+# [Org7.5-2511::@f_frhs] (訳抜け) it それを; (文体の修正) 用いる->用います
+# 改善案)マクロ展開はエクスポート中に行われ，一部の人々はそれを複雑なHTMLコードの構築に用います．
 # glossary: code ( コード ) / expansion ( 拡張|展開 ) / export ( エクスポート ) / macro ( マクロ )
 #. type: Plain text
 #: org.texi:9028
@@ -30447,7 +30468,7 @@ msgstr "マクロ展開はエクスポート中に行われ，一部の人々は
 # [Org7.5-2512::@]
 #. type: cindex
 #: org.texi:9032
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "@TeX{} interpretation"
 msgstr "@TeX{}の解釈"
 
@@ -30457,14 +30478,15 @@ msgstr "@TeX{}の解釈"
 # [Org7.5-2513::@]
 #. type: cindex
 #: org.texi:9033
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "@LaTeX{} interpretation"
 msgstr "@LaTeX{}の解釈"
 
 
 
 
-# [Org7.5-2514::@]
+# [Org7.5-2514::@f_frhs] 書きなおしました。ご検討ください。
+# 改善案)通常，ほとんどのメモには，単純な文字(Plain ASCII)で十分です．例外としては科学に関するメモがあり，頻繁に数学の記号が，時おり数式が必要とされます．@LaTeX{}@footnote{@LaTeX{}はドナルド・クヌースの@TeX{}システムを基としたマクロシステムです．``@LaTeX{}''で説明される多くの機能は本当は@TeX{}からのものですが，簡便のためにこの区別を曖昧にしておきます．}は科学に関する文書の組版に広く使われています．Org-modeは@LaTeX{}コードをOrg-modeファイルへの組込みをサポートしてます．その理由は，多くの学者達は@LaTeX{}のソースコードの読み書きに慣れているため，そして，多くのエクスポートバックエンド用に整形した出力を容易に加工可能なためです．
 # glossary: code ( コード ) / document ( ドキュメント|文書 ) / export ( エクスポート ) / feature ( 機能 ) / file ( ファイル ) / formula ( 数式 ) / macro ( マクロ ) / mathematical ( 数学 ) / note ( ノート|メモ ) / org-mode ( Org-mode ) / output ( アウトプット ) / plain ( プレーン ) / source ( ソース ) / symbol ( 記号 ) / system ( システム ) / writing ( 書き出す )
 #. type: Plain text
 #: org.texi:9044
@@ -30479,7 +30501,7 @@ msgstr "プレーンなASCIIはほとんどの場合ノートをとるのに十�
 # glossary: math ( 数学 ) / symbol ( 記号 )
 #. type: cindex
 #: org.texi:9055
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "math symbols"
 msgstr "数学記号"
 
@@ -30490,7 +30512,7 @@ msgstr "数学記号"
 # glossary: symbol ( 記号 )
 #. type: cindex
 #: org.texi:9056
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "special symbols"
 msgstr "特殊記号"
 
@@ -30502,7 +30524,7 @@ msgstr "特殊記号"
 #. type: cindex
 #: org.texi:9057
 #: org.texi:9432
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "@TeX{} macros"
 msgstr "@TeX{}マクロ"
 
@@ -30513,34 +30535,35 @@ msgstr "@TeX{}マクロ"
 # glossary: fragment ( フラグメント )
 #. type: cindex
 #: org.texi:9058
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "@LaTeX{} fragments, markup rules"
 msgstr "@LaTeX{}の断片，マークアップのルール"
 
 
 
 
-# [Org7.5-2519::@]
+# [Org7.5-2519::@] typo
 #. type: cindex
 #: org.texi:9059
 #, fuzzy, no-wrap
 msgid "HTML entities"
-msgstr "HTMLのエントリ"
+msgstr "HTMLのエンティティ"
 
 
 
 
-# [Org7.5-2520::@]
+# [Org7.5-2520::@] typo
 #. type: cindex
 #: org.texi:9060
 #, fuzzy, no-wrap
 msgid "@LaTeX{} entities"
-msgstr "@LaTeX{}のエントリ"
+msgstr "@LaTeX{}のエンティティ"
 
 
 
 
-# [Org7.5-2521::@]
+# [Org7.5-2521::@f_frhs] (提案) 書き直しました。ご検討ください。
+# 改善案)あなたは、ギリシャ文字を表す@samp{\alpha}や矢印を表す@samp{\to}のような特殊記号の挿入に@LaTeX{}マクロを使うことができます．これらのマクロは補完が可能で，@samp{\\}とおそらく数文字入力し，その後@kbd{M-@key{TAB}}を押して考えられる補完を見ます．@LaTeX{}のコードとは違い，Org-modeでは数学の区切り文字に囲まれずにこれらのマクロを存在させることが可能です．以下に例を挙げます:
 # glossary: available ( 利用できる ) / code ( コード ) / completion ( 補完 ) / insert ( 挿入 ) / macro ( マクロ ) / math ( 数学 ) / org-mode ( Org-mode ) / symbol ( 記号 ) / type ( タイプ|入力する )
 #. type: Plain text
 #: org.texi:9068
@@ -30551,7 +30574,8 @@ msgstr "あなたは@LaTeX{}マクロをギリシャ文字を表す@samp{\\alpha
 
 
 
-# [Org7.5-2522::@]
+# [Org7.5-2522::@f_frhs] (提案) 和訳
+# 改善案)角度をギリシア文字 \\alpha, \\beta and \\gamma と書く。
 #. type: example
 #: org.texi:9071
 #, fuzzy, no-wrap
@@ -30565,14 +30589,15 @@ msgstr "Angles are written as Geek letters \\alpha, \\beta and \\gamma.\n"
 #. type: vindex
 #: org.texi:9073
 #: org.texi:10465
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "org-entities"
 msgstr "org-entities"
 
 
 
 
-# [Org7.5-2524::@]
+# [Org7.5-2524::@f_frhs] (移動) 「HTMLでは」; (訳抜け) such a symbol そのような記号を
+# 改善案)@code{\alpha}のような文字列は、HTMLでは@code{&alpha;}とエクスポートされ，@LaTeX{}では@code{$\alpha$}となります．
 # glossary: export ( エクスポート ) / exported ( エクスポート|出力された ) / exporter ( エクスポート機能 ) / format ( フォーマット|形成 ) / output ( アウトプット ) / string ( 文字列 ) / symbol ( 記号 )
 #. type: Plain text
 #: org.texi:9080
@@ -30587,7 +30612,8 @@ msgstr ""
 
 
 
-# [Org7.5-2525::@]
+# [Org7.5-2525::@f_frhs] (要検討) shy hyphen ソフトハイフン(Soft Hyphen)?; (提案) 句点の挿入 異なる長さのハイフンか「，」ドットの集合
+# 改善案)非常に多くのエンティティが提供されていて，HTMLと@LaTeX{}からその名前を引き継いでいます;完全なリストは@code{org-entities}変数を見てください．@samp{\-}はソフトハイフンとして扱われます．@samp{--}や@samp{---}，@samp{...}は全て特殊コマンドに変換され，異なる長さのハイフンか，ドットの集合を作成します．
 # glossary: command ( コマンド ) / creating ( 作成 ) / list ( リスト ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:9086
@@ -30598,7 +30624,8 @@ msgstr "非常に多くのエンティティが提供されていて，HTMLと@L
 
 
 
-# [Org7.5-2526::@]
+# [Org7.5-2526::@f_frhs] (訳抜け) 以下のコマンド@footnote{...}「を使ってください」; (提案) footnoteの部分の訳文
+# 改善案)もしあなたがUTF-8文字としてエンティティを表示したいのなら，以下のコマンド@footnote{これのデフォルト設定を有効とできます。@code{org-pretty-entities}変数を設定するか、またはファイル毎に@code{#+STARTUP}オプションの@code{entitiespretty}を設定してください。}を使ってください:
 # glossary: characters ( 文字 ) / default ( デフォルト|初期値 ) / option ( オプション ) / setting ( 設定 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:9091
@@ -30615,14 +30642,15 @@ msgstr "もしあなたがUTF-8文字でエンティティを表示したいの�
 #: org.texi:9094
 #: org.texi:9133
 #: org.texi:9134
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "C-c C-x \\"
 msgstr "C-c C-x \\"
 
 
 
 
-# [Org7.5-2528::@]
+# [Org7.5-2528::@f_frhs] (訳抜け) plain ASCII; (訳抜け) display purposes 「only」; (要検討) 「UTF-8の文字を表示するためにオーバレイを用いています．」とエンティティのUTF-8表示の仕組み
+# これは単純な文字(plain ASCII)のままであるバッファの内容を変更するのではなく、表示のみを目的としてUTF-8の文字で重ね書き(overlay)します。
 # glossary: buffer ( バッファ ) / characters ( 文字 ) / content ( コンテンツ|内容 ) / display ( ディスプレイ|表示 ) / plain ( プレーン ) / toggle ( トグル )
 #. type: table
 #: org.texi:9098
@@ -30636,7 +30664,7 @@ msgstr "エンティティのUTF-8での表示をトグルします．これは�
 # [Org7.5-2529::@]
 #. type: cindex
 #: org.texi:9102
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "subscript"
 msgstr "下付き文字"
 
@@ -30647,25 +30675,25 @@ msgstr "下付き文字"
 # glossary: superscript ( 上付き文字 )
 #. type: cindex
 #: org.texi:9103
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "superscript"
 msgstr "上付き文字"
 
 
 
 
-# [Org7.5-2531::@]
+# [Org7.5-2531::@] typo
 # glossary: curly braces ( 中括弧{} ) / example ( 例 ) / subscripts ( 下付き文字 ) / superscript ( 上付き文字 ) / text ( テキスト|文章 )
 #. type: Plain text
 #: org.texi:9110
 #, fuzzy
 msgid "Just like in @LaTeX{}, @samp{^} and @samp{_} are used to indicate super- and subscripts.  Again, these can be used without embedding them in math-mode delimiters.  To increase the readability of ASCII text, it is not necessary (but OK) to surround multi-character sub- and superscripts with curly braces.  For example"
-msgstr "@LaTeX{}と同じように，@samp{^}と@samp{_}が下付き文字と上付き文字を示しています．さらに，それらはmath-modeにの区切り文字に組込まずに使うことができます．ASCIIテキストの可読性の向上のため，複数文字の下付き文字と上付き文字を波括弧で囲む必要はありません(囲んでもかまいませんが)．例"
+msgstr "@LaTeX{}と同じように，@samp{^}と@samp{_}が下付き文字と上付き文字を示しています．さらに，これらはmath-modeの区切り文字に組込まずに使うことができます．ASCIIテキストの可読性の向上のため，複数文字の下付き文字と上付き文字を波括弧で囲む必要はありません(囲んでもかまいませんが)．例"
 
 
 
 
-# [Org7.5-2532::@]
+# [Org7.5-2532::@f_frhs] (提案) 例の和訳
 #. type: example
 #: org.texi:9114
 #, fuzzy, no-wrap
@@ -30673,8 +30701,8 @@ msgid ""
 "The mass of the sun is M_sun = 1.989 x 10^30 kg.  The radius of\n"
 "the sun is R_@{sun@} = 6.96 x 10^8 m.\n"
 msgstr ""
-"The mass of the sun is M_sun = 1.989 x 10^30 kg.  The radius of\n"
-"the sun is R_@{sun@} = 6.96 x 10^8 m.\n"
+"太陽(the sun)の質量は M_sun = 1.989 x 10^30 kg です．\n"
+"太陽の半径は R_@{sun@} = 6.96 x 10^8 m です．\n"
 
 
 
@@ -30683,14 +30711,15 @@ msgstr ""
 #. type: vindex
 #: org.texi:9116
 #: org.texi:10895
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "org-export-with-sub-superscripts"
 msgstr "org-export-with-sub-superscripts"
 
 
 
 
-# [Org7.5-2534::@]
+# [Org7.5-2534::@f_frhs] (要検討) quote ... with a backslash; 他 細かい調整
+# 改善案)上付きテキストもしくは下付きテキストとして解釈されることを避けるため，あなたは@samp{^}と@samp{_}をバックスラッシュで囲む(エスケープするの意?)ことができます: つまり@samp{\^}と@samp{\_}です．異なる文脈でアンダーラインを頻繁に使うテキストを書くなら，常にこれらを下付き文字として解釈するOrg-modeの慣習を，あなたのやり方に合わせることができます．この慣習をグローバルに変更するには@code{org-export-with-sb-superscripts}変数を設定し，ファイル毎に設定するには次のように書いてください:
 # glossary: context ( コンテクスト|状況|文脈 ) / quote ( 引用 ) / subscripts ( 下付き文字 ) / text ( テキスト|文章 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:9123
@@ -30704,14 +30733,15 @@ msgstr "上付きテキスト，下付きテキストの説明を避けるため
 # [Org7.5-2535::@]
 #. type: example
 #: org.texi:9126
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "#+OPTIONS: ^:@{@}\n"
 msgstr "#+OPTIONS: ^:@{@}\n"
 
 
 
 
-# [Org7.5-2536::@]
+# [Org7.5-2536::@f_frhs] (修正) この設定を有効にした場合->この設定では; (削除) することで
+# 改善案)この設定では，@samp{a_b}は下付き文字として解釈されず，@samp{a_@{b@}}と解釈されます．
 #. type: Plain text
 #: org.texi:9131
 #, fuzzy
@@ -30721,7 +30751,8 @@ msgstr "この設定を有効にした場合，@samp{a_b}は下付き文字と�
 
 
 
-# [Org7.5-2537::@]
+# [Org7.5-2537::@f_frhs] (修正); (要検討) WYSIWYMの説明を付記するか?
+# 改善案)エンティティをUTF-8の文字として表示することに加えて，このコマンドは下付き文字と上付き文字をWYSIWYM方式(訳者注:ここでは下付き・上付きを表示に反映する方式の意)で書式を整えます．
 # glossary: characters ( 文字 ) / command ( コマンド ) / format ( フォーマット|形成 ) / superscript ( 上付き文字 )
 #. type: table
 #: org.texi:9137
@@ -30738,7 +30769,7 @@ msgstr "さらにUTF-8のエンティティを見るため，このコマンド�
 #: org.texi:9140
 #: org.texi:9141
 #: org.texi:9433
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "@LaTeX{} fragments"
 msgstr "@LaTeX{}の断片的なコード"
 
@@ -30748,14 +30779,15 @@ msgstr "@LaTeX{}の断片的なコード"
 # [Org7.5-2539::@]
 #. type: vindex
 #: org.texi:9143
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "org-format-latex-header"
 msgstr "org-format-latex-header"
 
 
 
 
-# [Org7.5-2540::@]
+# [Org7.5-2540::@f_frhs] (修正) 1文目 構文; (修正) 2文目 各エクスポート先->いくつかのエクスポート先; (訳抜け) 3文目 as it is; (訳抜け) 4文目 @footnote{}部分; (修正) 5文目 finally 最後に->最終的に; (訳抜け) 5文目 also
+# 改善案)シンボルや上付き文字，下付き文字以上のことをするには，完全な数式言語が必要です．Org-modeは@LaTeX{}の数式の断片を含むことができ，いくつかのエクスポート先への変換もサポートしています．@LaTeX{}にエクスポートするとき，明らかにコードはそのままに残っています．HTMLへエクスポートするとき，Org-modeは数式@footnote{これを常時使用するか重要なページの表示に使用する場合には，私達のサーバへの負担を制限するために，あなたが所有するサーバーへ@file{MathJax}をインストールすべきです．}の処理と描画のために@uref{http://www.mathjax.org, MathJax library} (@pxref{HTMLエクスポートでの数式フォーマット})を呼び出します．最終的に，Org-modeは数式表現をブラウザかDocBook文書で描画可能な画像@footnote{これを行うには，あなたのシステムに@LaTeX{}をインストールする必要があります．そしてまた，@url{http://sourceforge.net/projects/dvipng/}で入手できる@file{dvipng}プログラムも必要です．}へと処理することも可能です．
 # glossary: available ( 利用できる ) / code ( コード ) / display ( ディスプレイ|表示 ) / document ( ドキュメント|文書 ) / export ( エクスポート ) / exporting ( エクスポート ) / formula ( 数式 ) / fragment ( フラグメント ) / header ( ヘッダー ) / install ( インストール ) / installation ( インストール ) / language ( 言語 ) / math ( 数学 ) / mathematical ( 数学 ) / org ( Org-mode ) / org-mode ( Org-mode ) / page ( ページ ) / processing ( 処理 ) / superscript ( 上付き文字 ) / symbol ( 記号 ) / system ( システム ) / variable ( 変数 ) / view ( ビュー ) / work ( 作業 )
 #. type: Plain text
 #: org.texi:9160
@@ -30766,7 +30798,7 @@ msgstr "シンボルと上付き，下付き，完全な式を越えることが
 
 
 
-# [Org7.5-2541::@]
+# [Org7.5-2541::@f_frhs] (修正) be identified 以下のコードは@LaTeX{}のソースコードと見なされます:
 # glossary: fragment ( フラグメント ) / snippet ( スニペット ) / source ( ソース )
 #. type: Plain text
 #: org.texi:9163
@@ -30777,7 +30809,8 @@ msgstr "@LaTeX{}のコード片は，特別なマークは全く必要ありま�
 
 
 
-# [Org7.5-2542::@]
+# [Org7.5-2542::@f_frhs] (修正) 唯一必要な条件について
+# 改善案)唯一必要なことは、新しい行に空白のみに続いて@code{\begin}文が表示されることです．
 # glossary: image ( 画像 ) / line ( 行|ライン|線 )
 #. type: itemize
 #: org.texi:9170
@@ -30788,7 +30821,8 @@ msgstr "あらゆる種類の環境@footnote{@file{MathJax}が使われている
 
 
 
-# [Org7.5-2543::@]
+# [Org7.5-2543::@f_frhs] (訳抜け)
+# 改善案)通貨の仕様との衝突を避けるため，@samp{$}文字が数学の区切り文字のみとして認識されるのは，囲まれたテキストに最大2つの改行が含まれている場合，そして囲まれたテキストが@samp{$}文字に空白文字無く挟まれている場合，そして右側の@samp{$}(閉じる@samp{$})に続いてスペースもしくは句読点もしくはダッシュが在る場合です．他の区切り文字についてはそのような制限がありませんので，判別がつかないときは，インラインの数学の区切り文字として@samp{\\(...\\)}を使ってください．
 # glossary: line break ( 改行 ) / characters ( 文字 ) / closing ( 完了 ) / conflict ( 衝突する ) / inline ( インライン ) / math ( 数学 ) / specification ( 指定 ) / text ( テキスト|文章 )
 #. type: itemize
 #: org.texi:9178
@@ -30803,14 +30837,13 @@ msgstr "通常の@LaTeX{}の数学の区切り文字内部のテキスト．流�
 # glossary: example ( 例 )
 #. type: Plain text
 #: org.texi:9182
-#, fuzzy
 msgid "For example:"
 msgstr "例："
 
 
 
 
-# [Org7.5-2545::@]
+# [Org7.5-2545::@f_frhs] (提案) 例の和訳
 # glossary: table ( テーブル )
 #. type: example
 #: org.texi:9187
@@ -30821,15 +30854,15 @@ msgid ""
 "\\end@{equation@}                            % etc\n"
 "\n"
 msgstr ""
-"\\begin@{equation@}                          % arbitrary environments,\n"
-"x=\\sqrt@{b@}                                % even tables, figures\n"
-"\\end@{equation@}                            % etc\n"
+"\\begin@{equation@}                          % 任意の環境，\n"
+"x=\\sqrt@{b@}                                % table環境や，figure環境\n"
+"\\end@{equation@}                            % その他\n"
 "\n"
 
 
 
 
-# [Org7.5-2546::@]
+# [Org7.5-2546::@f_frhs] (提案) 例の和訳
 #. type: example
 #: org.texi:9190
 #, fuzzy, no-wrap
@@ -30837,8 +30870,8 @@ msgid ""
 "If $a^2=b$ and \\( b=2 \\), then the solution must be\n"
 "either $$ a=+\\sqrt@{2@} $$ or \\[ a=-\\sqrt@{2@} \\].\n"
 msgstr ""
-"If $a^2=b$ and \\( b=2 \\), then the solution must be\n"
-"either $$ a=+\\sqrt@{2@} $$ or \\[ a=-\\sqrt@{2@} \\].\n"
+"もし$a^2=b$そして\\( b=2 \\)ならば，解は\n"
+"$$ a=+\\sqrt@{2@} $$ か \\[ a=-\\sqrt@{2@} \\] のどちらかでなければならない．\n"
 
 
 
@@ -30847,14 +30880,15 @@ msgstr ""
 #. type: vindex
 #: org.texi:9193
 #: org.texi:9233
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "org-format-latex-options"
 msgstr "org-format-latex-options"
 
 
 
 
-# [Org7.5-2548::@]
+# [Org7.5-2548::@f_frhs] (修正) interpret 邪魔する->解釈する; 他
+# 改善案)もしあなたが他の目的にASCIIの区切り文字が必要なら，@LaTeX{}コンバータに解釈させたくない文字を除外するために@code{org-format-latex-options}オプションを設定することができます．
 # glossary: option ( オプション ) / sequence ( 順序 )
 #. type: Plain text
 #: org.texi:9197
@@ -30869,14 +30903,15 @@ msgstr "もしあなたが他の目的にASCIIの区切り文字が必要なら�
 #. type: vindex
 #: org.texi:9198
 #: org.texi:10903
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "org-export-with-LaTeX-fragments"
 msgstr "org-export-with-LaTeX-fragments"
 
 
 
 
-# [Org7.5-2550::@]
+# [Org7.5-2550::@f_frhs] (修正) 1文目 主語と動詞の対応; (修正) 2文目 and が接続する等位の品詞; (削除) 3文目 ファイルの冒頭部分; 他
+# 改善案)@LaTeX{}の処理は@code{org-export-with-LaTeX-fragments}変数で設定できます．デフォルトの設定は@code{t}で，HTMLには@file{MathJax}を，DocBookとASCII，@LaTeX{}では処理しないことを意味します．この変数をファイル毎に設定することも可能で、この数行のうち1行を使います:
 # glossary: default ( デフォルト|初期値 ) / processing ( 処理 ) / setting ( 設定 ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:9204
@@ -30887,7 +30922,7 @@ msgstr "@LaTeX{}の処理は@code{org-export-with-LaTeX-fragments}変数を設�
 
 
 
-# [Org7.5-2551::@]
+# [Org7.5-2551::@f_frhs] (提案) 例の和訳
 # glossary: export ( エクスポート ) / fragment ( フラグメント )
 #. type: example
 #: org.texi:9210
@@ -30898,10 +30933,10 @@ msgid ""
 "#+OPTIONS: LaTeX:nil        @r{Do not process @LaTeX{} fragments at all}\n"
 "#+OPTIONS: LaTeX:verbatim   @r{Verbatim export, for jsMath or so}\n"
 msgstr ""
-"#+OPTIONS: LaTeX:t          @r{Do the right thing automatically (MathJax)}\n"
-"#+OPTIONS: LaTeX:dvipng     @r{Force using dvipng images}\n"
-"#+OPTIONS: LaTeX:nil        @r{Do not process @LaTeX{} fragments at all}\n"
-"#+OPTIONS: LaTeX:verbatim   @r{Verbatim export, for jsMath or so}\n"
+"#+OPTIONS: LaTeX:t          @r{自動的にうまく処理する(MathJax)}\n"
+"#+OPTIONS: LaTeX:dvipng     @r{強制的にdvipngの画像を使う}\n"
+"#+OPTIONS: LaTeX:nil        @r{@LaTeX{}の断片を全く加工しない}\n"
+"#+OPTIONS: LaTeX:verbatim   @r{jsMath他のために、文字通りにエクスポートする}\n"
 
 
 
@@ -30910,14 +30945,15 @@ msgstr ""
 # glossary: fragment ( フラグメント )
 #. type: cindex
 #: org.texi:9214
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "LaTeX fragments, preview"
 msgstr "LaTeXのコード片，プレビュー"
 
 
 
 
-# [Org7.5-2553::@]
+# [Org7.5-2553::@f_frhs] (修正) 他動詞と目的語の対応
+# 改善案)もしあなたが@file{dvipng}をインストールしているのであれば，@LaTeX{}のコード片は処理され，組版された数式の画像を作成します:
 # glossary: fragment ( フラグメント ) / image ( 画像 )
 #. type: Plain text
 #: org.texi:9218
@@ -30932,14 +30968,15 @@ msgstr "もしあなたが@file{dvipng}をインストールしているので�
 #. type: item
 #: org.texi:9220
 #: org.texi:9221
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "C-c C-x C-l"
 msgstr "C-c C-x C-l"
 
 
 
 
-# [Org7.5-2555::@]
+# [Org7.5-2555::@f_frhs] (修正) 1文目 a preview image of ...
+# 改善案)ポイント位置の@LaTeX{}コード片のプレビューの画像を作成してソースコード上に重ねて表示(overlay)します．
 # glossary: argument ( 引数 ) / buffer ( バッファ ) / code ( コード ) / current ( カレント|現在の ) / cursor ( カーソル ) / entry ( エントリー|文|入力 ) / fragment ( フラグメント ) / headline ( 見出し ) / image ( 画像 ) / point ( ポイント ) / prefix ( 接頭辞 ) / source ( ソース ) / subtree ( サブツリー )
 #. type: table
 #: org.texi:9228
@@ -30954,14 +30991,14 @@ msgstr "ポイント位置の@LaTeX{}コード片の画像プレビューの提�
 # glossary: image ( 画像 )
 #. type: table
 #: org.texi:9231
-#, fuzzy
 msgid "Remove the overlay preview images."
 msgstr "オーバレイされたプレビュー画像を消去します．"
 
 
 
 
-# [Org7.5-2557::@]
+# [Org7.5-2557::@f_frhs] (修正) 文末 the sie of the preview images; 他
+# 改善案)とりわけ@code{:scale}(...)プロパティはプレビュー画像のサイズの調整にも使えます．
 # glossary: customize ( カスタマイズ ) / export ( エクスポート ) / image ( 画像 ) / influence ( 変更する ) / property ( プロパティ ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:9238
@@ -30976,7 +31013,7 @@ msgstr "プレビューの外観を変更するために，あなたは@code{org
 # glossary: math ( 数学 )
 #. type: subsection
 #: org.texi:9240
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Using CDLa@TeX{} to enter math"
 msgstr "CDLa@TeX{}を数学の入力に使う"
 
@@ -30986,14 +31023,15 @@ msgstr "CDLa@TeX{}を数学の入力に使う"
 # [Org7.5-2559::@]
 #. type: cindex
 #: org.texi:9241
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "CDLa@TeX{}"
 msgstr "CDLa@TeX{}"
 
 
 
 
-# [Org7.5-2560::@]
+# [Org7.5-2560::@f_frhs] (修正) the latter comes also with AUC@TeX{}; (提案) itself 自身->自体; (修正) 最後の文
+# 改善案)CDLa@TeX{}モードは環境や数学テンプレートの挿入をスピードアップするためにAUC@TeX{}に似たメジャーモードである@LaTeX{}モードと併用して通常使われるマイナーモードです．Org-modeでは，あなたはCDLa@TeX{}モードのいくつかの機能を使用できます．あなたは@url{http://www.astro.uva.nl/~dominik/Tools/cdlatex}から@file{cdlatex.el}と@file{texmathp.el}(後者にはAUC@TeX{}にも含まれています)をインストールする必要があります．Org-mode中ではCDLa@TeX{}モード自体は使わないでください，代わりにOrg-modeに一部である，より軽量なバージョンの@code{org-cdlatex-mode}を使ってください．カレントバッファで有効にするには@code{M-x org-cdlatex-mode}を実行し，全てのOrg-modeファイルで有効にするために次の設定を行います:
 # glossary: current buffer ( カレントバッファ ) / minor mode ( マイナーモード ) / feature ( 機能 ) / file ( ファイル ) / install ( インストール ) / major ( メジャー ) / math ( 数学 ) / mode ( モード|モード ) / org ( Org-mode ) / org-mode ( Org-mode ) / template ( テンプレート ) / version ( バージョン )
 #. type: Plain text
 #: org.texi:9253
@@ -31007,25 +31045,26 @@ msgstr "CDLa@TeX{}モードは環境や数学テンプレートの挿入をス�
 # [Org7.5-2561::@]
 #. type: lisp
 #: org.texi:9256
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "(add-hook 'org-mode-hook 'turn-on-org-cdlatex)\n"
 msgstr "(add-hook 'org-mode-hook 'turn-on-org-cdlatex)\n"
 
 
 
 
-# [Org7.5-2562::@]
+# [Org7.5-2562::@] typo
 # glossary: feature ( 機能 ) / mode ( モード|モード )
 #. type: Plain text
 #: org.texi:9260
 #, fuzzy
 msgid "When this mode is enabled, the following features are present (for more details see the documentation of CDLa@TeX{} mode):"
-msgstr "このモードが有効である時，以下の機能が提供されます(詳細はCD@LaTeX{}モードのドキュメントを参照してください)::"
+msgstr "このモードが有効である時，以下の機能が提供されます(詳細はCD@LaTeX{}モードのドキュメントを参照してください):"
 
 
 
 
-# [Org7.5-2563::@]
+# [Org7.5-2563::@f_frhs] (修正) 体言止め->主語と述語を持つ文へ
+# 改善案)@kbd{C-c @{}により環境のテンプレートを挿入できます．
 # glossary: template ( テンプレート )
 #. type: itemize
 #: org.texi:9264
@@ -31036,7 +31075,8 @@ msgstr "@kbd{C-c @{}による環境テンプレートの挿入．"
 
 
 
-# [Org7.5-2564::@]
+# [Org7.5-2564::@f_frhs] (修正) 1文目 a method to test if...; (訳抜け) 2文目 correctly; (訳抜け) 2文目 inside the first brace; (修正) even だと->でも; (修正) 書いていて->書いてから; (訳抜け) 全ての略語「のリスト」を見るには;
+# 改善案)カーソルが@LaTeX{}のコード片@footnote{カーソルがコード片の中にあるか判断する方法をOrg-modeは持ちます．詳細は@code{org-inside-LaTeX-fragment-p}関数のドキュメントを参照してください．}の中にある場合，@key{TAB}キーはテンプレートの展開を行います．例えば，@key{TAB}は@code{fr}を@code{\frac@{@}@{@}}に展開しカーソルを正確に最初の括弧の内側に移動します．もう一度@key{TAB}を押すと2つ目の括弧にカーソルが移動します．コード片の外でも，@key{TAB}は行の先頭にある環境の略語を展開します．例えば，もしあなたが行頭に@samp{equ}と書いてから@key{TAB}を押すと，この略語は@code{equation}環境に展開されます．全ての略語のリストを見るには，@kbd{M-x cdlatex-command-help}をタイプしてください．
 # glossary: abbreviation ( 省略記法 ) / cursor ( カーソル ) / example ( 例 ) / expansion ( 拡張|展開 ) / fragment ( フラグメント ) / function ( 機能|関数 ) / key ( キー ) / line ( 行|ライン|線 ) / list ( リスト ) / template ( テンプレート ) / type ( タイプ|入力する )
 #. type: itemize
 #: org.texi:9277
@@ -31050,14 +31090,15 @@ msgstr "カーソルが@LaTeX{}のコード片@footnote{カーソルがコード
 # [Org7.5-2565::@]
 #. type: vindex
 #: org.texi:9280
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "cdlatex-simplify-sub-super-scripts"
 msgstr "cdlatex-simplify-sub-super-scripts"
 
 
 
 
-# [Org7.5-2566::@]
+# [Org7.5-2566::@f_frhs] (修正) 1文目 @kbd{_} and @kbd{^} -> @kbd{_} や @kbd{^]; (修正) brace 括弧->波括弧
+# 改善案)@LaTeX{}コード片の中で@kbd{_}や@kbd{^}を押すと，それらの文字が一対の波括弧と一緒に挿入されます．もしあなたが@key{TAB}を括弧から抜け出すために使うなら，また括弧が1文字の文字かマクロのみを囲っているなら，それらは再び消去されます(@code{cdlatex-simplify-sub-super-script}変数に依存します)．
 # glossary: characters ( 文字 ) / fragment ( フラグメント ) / insert ( 挿入 ) / macro ( マクロ ) / variable ( 変数 )
 #. type: itemize
 #: org.texi:9286
@@ -31071,14 +31112,15 @@ msgstr "@LaTeX{}コード片の中で@kbd{_}と@kbd{^}を押すと，それら�
 # [Org7.5-2567::@]
 #. type: kindex
 #: org.texi:9287
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "`"
 msgstr "`"
 
 
 
 
-# [Org7.5-2568::@]
+# [Org7.5-2568::@f_frhs] (修正) 1文目 構文
+# 改善案)@LaTeX{}のコード片の外側でも、バッククォート@kbd{`}に続いて@kbd{TAB}を押すと，数学のマクロが挿入されます．
 # glossary: fragment ( フラグメント ) / insert ( 挿入 ) / macro ( マクロ ) / math ( 数学 ) / window ( ウインドウ )
 # @LaTeX{}のコード片以外の文字に続いて@kbd{TAB}を押すと，数学のマクロが挿入されます．もしあなたがバッククォートを押して1.5秒以上待つと，ヘルプウィンドウがポップアップします．
 #. type: itemize
@@ -31093,14 +31135,15 @@ msgstr "@LaTeX{}のコード片以外の文字に続いて@kbd{TAB}を押すと�
 # [Org7.5-2569::@]
 #. type: kindex
 #: org.texi:9292
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "'"
 msgstr "'"
 
 
 
 
-# [Org7.5-2570::@]
+# [Org7.5-2570::@f_frhs] (修正) A followed by B Aに続いてB; 他
+# 改善案)シングルクォート@kbd{'}に続いて別の文字を押すと，ポイント位置の前の記号をアクセントやフォントで変更します．もしシングルクォートを入力した後1.5秒以上待つと，ヘルプウィンドウがポップアップします．文字の変更は@LaTeX{}コード片の中でのみ働きます; それ以外ではクォートは通常通りの働きをします．
 # glossary: font ( フォント ) / point ( ポイント ) / quote ( 引用 ) / symbol ( 記号 ) / window ( ウインドウ ) / work ( 作業 )
 #. type: itemize
 #: org.texi:9298
