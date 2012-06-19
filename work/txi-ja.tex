@@ -55,53 +55,53 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Set up fixed words for Japanese.
-\gdef\putwordAppendix{付録}
-\gdef\putwordChapter{章}
-\gdef\putwordfile{ファイル}
+\gdef\putwordAppendix{$BIUO?(B}
+\gdef\putwordChapter{$B>O(B}
+\gdef\putwordfile{$B%U%!%$%k(B}
 \gdef\putwordin{in}
-\gdef\putwordIndexIsEmpty{(索引が空です)}
-\gdef\putwordIndexNonexistent{(索引がありません)}
+\gdef\putwordIndexIsEmpty{($B:w0z$,6u$G$9(B)}
+\gdef\putwordIndexNonexistent{($B:w0z$,$"$j$^$;$s(B)}
 \gdef\putwordInfo{Info}
 \gdef\putwordInstanceVariableof{Instance Variable of}
 \gdef\putwordMethodon{Method on}
-\gdef\putwordNoTitle{無題}
+\gdef\putwordNoTitle{$BL5Bj(B}
 \gdef\putwordof{of}
 \gdef\putwordon{on}
 \gdef\putwordpage{p.\gobble}
-\gdef\putwordsection{節}
-\gdef\putwordSection{節}
-\gdef\putwordsee{を参照}
-\gdef\putwordSee{を参照してください}
-\gdef\putwordShortTOC{簡略目次}
-\gdef\putwordTOC{目次}
+\gdef\putwordsection{$B@a(B}
+\gdef\putwordSection{$B@a(B}
+\gdef\putwordsee{$B$r;2>H(B}
+\gdef\putwordSee{$B$r;2>H$7$F$/$@$5$$(B}
+\gdef\putwordShortTOC{$B4JN,L\<!(B}
+\gdef\putwordTOC{$BL\<!(B}
 %
-\gdef\putwordMJan{1月}
-\gdef\putwordMFeb{2月}
-\gdef\putwordMMar{3月}
-\gdef\putwordMApr{4月}
-\gdef\putwordMMay{5月}
-\gdef\putwordMJun{6月}
-\gdef\putwordMJul{7月}
-\gdef\putwordMAug{8月}
-\gdef\putwordMSep{9月}
-\gdef\putwordMOct{10月}
-\gdef\putwordMNov{11月}
-\gdef\putwordMDec{12月}
+\gdef\putwordMJan{1$B7n(B}
+\gdef\putwordMFeb{2$B7n(B}
+\gdef\putwordMMar{3$B7n(B}
+\gdef\putwordMApr{4$B7n(B}
+\gdef\putwordMMay{5$B7n(B}
+\gdef\putwordMJun{6$B7n(B}
+\gdef\putwordMJul{7$B7n(B}
+\gdef\putwordMAug{8$B7n(B}
+\gdef\putwordMSep{9$B7n(B}
+\gdef\putwordMOct{10$B7n(B}
+\gdef\putwordMNov{11$B7n(B}
+\gdef\putwordMDec{12$B7n(B}
 %
-\gdef\putwordDefmac{マクロ}
-\gdef\putwordDefspec{特殊フォーム}
-\gdef\putwordDefvar{変数}
-\gdef\putwordDefopt{オプション}
-\gdef\putwordDeffunc{関数}
+\gdef\putwordDefmac{$B%^%/%m(B}
+\gdef\putwordDefspec{$BFC<l%U%)!<%`(B}
+\gdef\putwordDefvar{$BJQ?t(B}
+\gdef\putwordDefopt{$B%*%W%7%g%s(B}
+\gdef\putwordDeffunc{$B4X?t(B}
 
-\def\today{\number\year 年 \number\month 月 \number\day 日}
+\def\today{\number\year $BG/(B \number\month $B7n(B \number\day $BF|(B}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 日本語組の段落インデントのデフォルトを設定
+% $BF|K\8lAH$NCJMn%$%s%G%s%H$N%G%U%)%k%H$r@_Dj(B
 \global\defaultparindent = 1em
 \global\def\suppressfirstparagraphindent{\relax}
 
-% 日本人好きのギッシリ詰まった紙
+% $BF|K\?M9%$-$N%.%C%7%j5M$^$C$?;f(B
 \global\def\afourpaperj{{\globaldefs = 1
   \parskip = 3pt plus 2pt minus 1pt
   \textleading = 12pt
@@ -143,7 +143,7 @@
 \gdef\addcsafteryyy{\orig\addcs}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% 日本語フォント
+%% $BF|K\8l%U%)%s%H(B
 
 \def\jafont{%
 \ifNTT%
@@ -174,7 +174,7 @@
 }
 
 %
-% 日本語フォントの定義
+% $BF|K\8l%U%)%s%H$NDj5A(B
 %
 
 % Text fonts (11.2pt, magstep1).
@@ -250,23 +250,23 @@
 \globaldefs = 0
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 日本語表記の改善
-%  1. ヘッドの章の表記
-%  2. See 訳語に合わせて動詞の後置
-%  3. クロスレファレンスの表記
-%  4. @dfn の表記
+% $BF|K\8lI=5-$N2~A1(B
+%  1. $B%X%C%I$N>O$NI=5-(B
+%  2. See $BLu8l$K9g$o$;$FF0;l$N8eCV(B
+%  3. $B%/%m%9%l%U%!%l%s%9$NI=5-(B
+%  4. @dfn $B$NI=5-(B
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  1. ヘッドの章の表記
+%  1. $B%X%C%I$N>O$NI=5-(B
 \gdef\thischapterspace{\hskip \SETthischapterspace em}
 \set thischapterspace 1
 
 \gdef\printheadingappendix#1#2{\putwordAppendix{}#1\thischapterspace#2}
-\gdef\printheadingchapter#1#2{第#1\putwordChapter{}\thischapterspace#2}
+\gdef\printheadingchapter#1#2{$BBh(B#1\putwordChapter{}\thischapterspace#2}
 
 \gdef\Ynumbered{%
   \ifnum\secno=0
-    第\the\chapno\putwordChapter%
+    $BBh(B\the\chapno\putwordChapter%
   \else \ifnum\subsecno=0
     \the\chapno.\the\secno\putwordSection%
   \else \ifnum\subsubsecno=0
@@ -278,35 +278,35 @@
 
 \gdef\Yappendix{%
   \ifnum\secno=0
-     \putwordAppendix@tie @char\the\appendixno{}%
+     \putwordAppendix@tie \appendixletter%
   \else \ifnum\subsecno=0
-     @char\the\appendixno.\the\secno\putwordSection%
+     \appendixletter.\the\secno\putwordSection%
   \else \ifnum\subsubsecno=0
-     @char\the\appendixno.\the\secno.\the\subsecno\putwordSection%
+     \appendixletter.\the\secno.\the\subsecno\putwordSection%
   \else
      @char\the\appendixno.\the\secno.\the\subsecno.\the\subsubsecno\putwordSection%
   \fi\fi\fi
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  2. See 訳語に合わせて動詞の後置
+%  2. See $BLu8l$K9g$o$;$FF0;l$N8eCV(B
 
-\global\def\inforefzzz #1,#2,#3,#4**{\putwordInfo{}\putwordfile{} \file{\ignorespaces #3{}}, ノード\samp{\ignorespaces#1{}}\putwordSee{}}
+\global\def\inforefzzz #1,#2,#3,#4**{\putwordInfo{}\putwordfile{} \file{\ignorespaces #3{}}, $B%N!<%I(B\samp{\ignorespaces#1{}}\putwordSee{}}
 
 \global\def\pxref#1{\xrefX[#1,,,,,,,]\putwordsee{}}
 \global\def\xref#1{\xrefX[#1,,,,,,,]\putwordSee{}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  3. クロスレファレンスの表記
+%  3. $B%/%m%9%l%U%!%l%s%9$NI=5-(B
 
 \global\def\xrefprintinmanual#1#2{\space \putwordin{} \cite{#1}}
-\global\def\xrefprintrefinmanual#1#2{\cite{#2}の``#1''\putwordsection{}}
-\global\def\xrefprintnodename#1#2#3{\def\temp{#1}\ifx\empty\temp\else#1\fi「#2」#3}
+\global\def\xrefprintrefinmanual#1#2{\cite{#2}$B$N(B``#1''\putwordsection{}}
+\global\def\xrefprintnodename#1#2#3{\def\temp{#1}\ifx\empty\temp\else#1\fi$B!V(B#2$B!W(B#3}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  4. @dfn の表記
+%  4. @dfn $B$NI=5-(B
 
-\global\def\doublebracket#1{『#1』}
+\global\def\doublebracket#1{$B!X(B#1$B!Y(B}
 \global\let\dfn=\doublebracket
 
 
