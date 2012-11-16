@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2011-04-20 21:27+0900\n"
-"PO-Revision-Date: 2012-11-17 02:52+0900\n"
+"PO-Revision-Date: 2012-11-17 03:52+0900\n"
 "Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: ja_JP\n"
@@ -9358,15 +9358,14 @@ msgstr "参照，フィールド"
 # glossary: field ( フィールド ) / formula ( 数式 ) / row ( 行 ) / value ( 値 )
 #. type: Plain text
 #: org.texi:2275
-#, fuzzy
 msgid ""
 "Formulas can reference the value of another field in two ways.  Like in any "
 "other spreadsheet, you may reference fields with a letter/number combination "
 "like @code{B3}, meaning the 2nd field in the 3rd row."
 msgstr ""
 "数式は別フィールドの値を2つの方法で参照できます．他の表計算ソフトと同じよう"
-"に，@code{B3}のような文字と数値の組み合わせでフィールドを参照できます．三行目"
-"の第二フィールドを意味しています．"
+"に，@code{B3}のような文字と数値の組み合わせでフィールドを参照できます．@code"
+"{B3}は3行目の第2フィールドを意味しています．"
 
 # [Org7.5-0960::@]
 #. type: vindex
@@ -9380,7 +9379,6 @@ msgstr "org-table-use-standard-references"
 # glossary: customize ( カスタマイズ ) / editing ( 編集 ) / formula ( 数式 ) / org ( Org-mode ) / syntax ( 構文|シンタックス ) / user ( ユーザー ) / variable ( 変数 )
 #. type: Plain text
 #: org.texi:2283
-#, fuzzy
 msgid ""
 "Org prefers@footnote{Org will understand references typed by the user as "
 "@samp{B4}, but it will not use this syntax when offering a formula for "
@@ -9391,7 +9389,7 @@ msgstr ""
 "org-modeでは，もう一つの方法を好みます@footnote{org-modeはユーザーが指定する"
 "@samp{B4}のような参照を理解しますが，編集を目的とした数式を提供するときはこの"
 "シンタックスは使われません．変数@code{org-table-use-standard-references}を使"
-"うことで，この動作を変更できます．}．より一般的な次のような表記です．"
+"うことで，この動作を変更できます．}．次のような，より一般化された表記です．"
 
 # [Org7.5-0962::@]
 #. type: example
@@ -9405,16 +9403,15 @@ msgstr "@@@var{row}$@var{column}\n"
 # glossary: field ( フィールド ) / formula ( 数式 ) / value ( 値 )
 #. type: Plain text
 #: org.texi:2292
-#, fuzzy
 msgid ""
 "and allows relative references, i.e. references relative to the row/column "
 "of the field whose value is being computed.  These relative references make "
 "it possible to store a formula only once and use it in many fields without "
 "copying and modifying it."
 msgstr ""
-"また，相対的な参照も認めています．すなわち，値が計算されいるフィールドの行と"
-"列に相対的な参照です．このような相対的な参照は，数式を一度だけ記録すればよ"
-"く，数式のコピーや変更せずにたくさんのフィールドで利用できます．"
+"また，相対的な参照も認めています．すなわち，値が計算されているフィールドの行"
+"と列について相対的な参照です．このような相対的な参照は，数式を一度だけ記録す"
+"ればよく，数式を変更せずにたくさんのフィールドで利用できます．"
 
 # [Org7.5-0964::@]
 # glossary: column ( 列 ) / current ( カレント|現在の ) / table ( テーブル )
@@ -10096,7 +10093,6 @@ msgstr "Lisp形式，テーブルの数式として"
 # glossary: default ( デフォルト|初期値 ) / double-quotes ( ダブルクォーテーション ) / evaluation ( 評価 ) / field ( フィールド ) / format ( フォーマット|形成 ) / formula ( 数式 ) / functionality ( 機能性 ) / list ( リスト ) / mode ( モード|モード ) / provide ( 用意する ) / quote ( 引用 ) / string ( 文字列 ) / structure ( 構造 ) / syntax ( 構文|シンタックス )
 #. type: Plain text
 #: org.texi:2543
-#, fuzzy
 msgid ""
 "It is also possible to write a formula in Emacs Lisp; this can be useful for "
 "string manipulation and control structures, if Calc's functionality is not "
@@ -10117,14 +10113,14 @@ msgid ""
 "the @samp{N} mode is used when we do computations in Lisp:"
 msgstr ""
 "Emacs Lispで数式を記述することもできます．Calcの機能では不十分なら，文字列操"
-"作と構造の制御に役立ちます．開き括弧が後ろに続くシングルクォートで数式が始ま"
-"るとき，Lisp形式として解釈されます．評価値は，文字列か数値で返ります．@file"
-"{Calc}の数式と同じように，セミコロンの後にモードとprintfフォーマットを指定で"
-"きます．Emacs Lisp形式では，フィールドの参照がLisp形式で挿入されることを意識"
-"する必要があります．デフォルトで，参照はフィールドを含む（ダブルクォートで括"
-"られた）Lispの文字列として挿入されます．もし@samp{N}モードスイッチを指定する"
-"と，全ての参照された要素は数値になり（非数値のフィールドは0になる），クォート"
-"なしでLisp形式の数値として挿入されます．@samp{L}フラッグを指定すると，全ての"
+"作と構造の制御に役立ちます．シングルクォートに続く開き括弧で数式が始まると"
+"き，Lisp形式として解釈されます．評価値は，文字列か数値で返ります．@file{Calc}"
+"の数式と同じように，セミコロンの後にモードとprintfフォーマットを指定できま"
+"す．Emacs Lisp形式では，フィールドの参照がLisp形式で挿入されることを意識する"
+"必要があります．デフォルトで，参照はフィールドを含む（ダブルクォートで括られ"
+"た）Lispの文字列として挿入されます．もし@samp{N}モードスイッチを指定すると，"
+"全ての参照された要素は数値になり（非数値のフィールドは0になる），クォートなし"
+"でLisp形式の数値として挿入されます．@samp{L}フラッグを指定すると，全ての"
 "フィールドは，クォートなしでそのままの内容が挿入されます．すなわち，もしLisp"
 "形式の文字列として参照が挿入されることを望むなら，@code{\"$3\"}のように，ダブ"
 "ルクォートで参照のオペレータ自体を包んでください．範囲はスペースで区切られた"
@@ -10350,7 +10346,6 @@ msgstr "数式（テーブルの列）"
 # glossary: column formula ( 列の数式 ) / column ( 列 ) / field ( フィールド ) / formula ( 数式 ) / horizontal ( 水平|横線 ) / line ( 行|ライン|線 ) / table ( テーブル ) / value ( 値 )
 #. type: Plain text
 #: org.texi:2617
-#, fuzzy
 msgid ""
 "When you assign a formula to a simple column reference like @code{$3=}, the "
 "same formula will be used in all fields of that column, with the following "
@@ -10362,7 +10357,7 @@ msgid ""
 "to use."
 msgstr ""
 "@code{$3=}のような，シンプルな列の参照を数式に指定すると，同じ数式がその列の"
-"全てのフィールドで使用されます．次の項目を利便性の高めるための例外としていま"
+"全てのフィールドで使用されます．利便性を高めるため，次の項目を例外としていま"
 "す．（1）テーブルが水平ラインを含む場合は，最初の水平ラインよりも上に存在する"
 "全ての行がテーブルの@emph{ヘッダー}の一部であると考えられ，列の数式によって変"
 "更されません．（2）フィールドや範囲の数式からすでに値を取得しているフィールド"
