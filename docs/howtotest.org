@@ -1,0 +1,184 @@
+#+TITLE:    Org-mode 翻訳プロジェクト プレテスト
+#+AUTHOR:   Takaaki ISHIKAWA
+#+EMAIL:    takaxp@ieee.org
+#+LANGUAGE: ja
+#+STARTUP:  showall
+#+TEXT:     org-ja.po の頻出用語512個だけをプレテストとして翻訳する手順です
+#+TEXT:     Rev.8 (2011-05-02@00:45)
+#+OPTIONS:  H:3 num:t toc:t \n:nil @:t ::t |:t ^:t *:t TeX:t
+#+setupfile: theme-readtheorg.setup
+#+READONLY
+#
+* はじめに
+Org-mode 翻訳プロジェクトは，全部で4000個を超える英文を日本語翻訳する必要があります．原文は，texinfo 形式で配布されていますが，今回の翻訳作業では，texinfo 形式を翻訳カタログに変換した po 形式のファイルを編集します．
+
+po 形式のファイルは，
+  - po-mode for Emacs (http://www.gnu.org/software/gettext/)
+  - PoEdit (http://www.poedit.net/)
+などのツールを利用して効率良く編集することができます．プレーンテキストとして編集することもできますが，ツールの利用を推奨します．
+
+プレテストは，あらかじめ github というソースコード管理を行うリポジトリに登録されているチケットを担当することで，他の翻訳者との作業の重複を避けます．チケットで翻訳する英文を宣言し，翻訳結果を po 形式のファイルに書き込みます．翻訳が終了したら，翻訳済みの po 形式のファイルを，github のリポジトリに登録します．MLを使って提出することも可能です．
+
+翻訳の結果の見栄えについては，特に気にせずに，ひたすら訳してください m(_ _)m
+
+* プレテストの目的
+  - github を利用した翻訳ワークフローのあら探し
+  - コンフリクトがどのように生じるかの検証
+  - INFO／PDFの自動生成を阻害する翻訳作業の特定
+  - 頻出用語の訳語決定
+  - 翻訳者がツールに慣れる機会を提供する
+
+* 注意点（必ず読んでください！）
+  - UTF-8 を利用してください．
+	別のコードを使う場合は，github にコミットせず，MLに提出してください．
+  - 改行コードはLFにしてください．
+	別のコードを使う場合は，github にコミットせず，MLに提出してください．
+  - 対訳に半角スペースを入れないでください．
+  - texinfo の制御文は残してください．
+	どれが制御文かはあえて明示しません．これは，INFO自動生成時に問題になる
+	ところを今回のプレテストで知るためです．ミスして訳しても全く問題ありません！
+  - 翻訳は，4.6版の訳を積極的に参照してください．
+	未公開のwikiで入手可能なので，#org2ja で聞いて下さい．
+  - 翻訳中に気付いたことは，担当チケットのコメント欄に記入してください．
+  - 基本は「ですます調」で訳してください．
+	ただし，「である調（〜する．〜と書く．など）」が相応しい場合（箇条書きの中やコマンドの説明など）には，翻訳者の判断で「である調」を使用してください．
+
+** github ユーザ
+  - 翻訳プロジェクトに参加したら，すみやかに git clone でデータを取り寄せてください．
+ => ダウンロードによるデータの取り寄せは行わないでください．
+  - git clone で入手した org-ja.po を編集（翻訳）してください．
+  - git push（コミット）後は，github のウェブサイトで差分を確認してください．
+
+** po-mode ユーザ
+  - po ファイルを編集する時に，余計なヘッダが加わる場合があります．
+	コミットする前に必ず重複ヘッダを削除してください．
+  - MacPorts で配布されている po-mode.el は，version2.1です．
+	gettext で配布される po-mode.el は，version2.2ですので，こちらを推奨します．
+	http://www.gnu.org/software/gettext/
+*** 正しいヘッダ（翻訳日時と名前などは，通常，保存時に変更されます）
+@<pre>
+	# SOME DESCRIPTIVE TITLE
+	# Copyright (C) YEAR Free Software Foundation, Inc.
+	# This file is distributed under the same license as the PACKAGE package.
+	# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+	#
+	msgid ""
+	msgstr ""
+	"Project-Id-Version: org-ja\n"
+	"POT-Creation-Date: 2011-04-20 21:27+0900\n"
+	"PO-Revision-Date: 2011-04-24 18:19+0900\n"
+	"Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
+	"Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
+	"Language: \n"
+	"MIME-Version: 1.0\n"
+	"Content-Type: text/plain; charset=UTF-8\n"
+	"Content-Transfer-Encoding: 8bit\n"
+	"X-Poedit-Language: Japanese\n"
+	"X-Poedit-Country: JAPAN\n"
+	"X-Poedit-SourceCharset: utf-8\n"
+	"X-Poedit-Basepath: .\n"
+	"X-Poedit-SearchPath-0: .\n"
+@</pre>
+* 作業手順（github アカウントがない人）
+** 翻訳者用のメーリングリストに参加してください．
+  - 登録依頼を出すと，参加承認が下り次第連絡がいきます．
+https://lists.sourceforge.net/lists/listinfo/org2ja-devel
+にて登録を済ませてください．
+** メンテナーにチケット予約を依頼する
+  - Twitter でハッシュタグ（#org2ja）を利用してツイートする．
+	 => メンテナーは，すみやかに自分のアカウントでチケットを予約して，
+	 => 翻訳者に報告する
+  - 合せてMLでも依頼するとより確実に伝わります．
+24時間応答がない場合は，依頼のチェックミスがあったと考えられますので，再投稿をお願いします．	
+** github から翻訳リソースをダウンロードする
+	次のサイトの画面右側に「Downloads」があります．
+	https://github.com/org-mode-doc-ja/org-ja
+** ダウンロードファイルの中の org-jp.po を開く
+  - 翻訳ツールの利用を推奨します．
+  - 通常のテキストエディタでもいけます
+** チケットで指定された訳文番号を探します．
+  - チケットで指定された訳文番号は，org-ja.po\_words\_1\_512.txt の一列目に示されたインデックスと一致しています．
+  - 同じファイルの2列目は，org-ja.po の行数を表しています．
+ => 現段階（2011-04-25@01:40）で，2行の誤差が生じております．
+ => （2011-04-29@13:30）誤差は解消されました．
+  - なお，3列目は原文における登場回数です．
+*** 例
+  - preTR[ 40 - 60 ] という名前のチケット担当した場合，まずorg-ja.po\_words\_1\_512.txt の一列目で対応するインデックスを探します．
+@<pre>
+38:	1143	2	The table editor has spreadsheet capabilities	
+39:	1153	5	Org-Plot	
+40:	1159	2	Plotting from org tables	
+41:	1175	2	How to refer to another field or range	
+42:	1192	2	Using Calc to compute stuff	
+@</pre>
+  - インデックスが 40 に対応する org-ja.po 上の行数は，1159 とわかります．
+  - org-ja.po を開いて 1159 行目に移動すれば，Plotting from org tables があります．
+@<pre>
+1151> msgid "Org-Plot"
+1152> msgstr ""
+1153>
+1154> #. type: menuentry
+1155> #: org.texi:375
+1156> #: org.texi:1889
+1157> msgid "Plotting from org tables"
+1158> msgstr ""
+1159>
+1160> #. type: node
+1161> #: org.texi:386
+@</pre>
+  - org-ja.po にある org.texi: 375 という数字は，原文の org.texi ファイルの行数に対応しています．原文の周囲の英文をチェックすれば，より正確に翻訳できるでしょう．
+  - （注意）チケットで指定された翻訳対象用語は，必ずしも org-ja.po で連続して表示されるわけではありません．ご注意下さい．
+** 翻訳します
+  - 英語文は，msgid "hogehoge" と書かれているので，msgstr "ほげほげ" と
+	訳文を記入して保存します．
+  - 翻訳時には，このファイルに記載された「注意点」に気をつけてください．
+** データをチケット発行の代行をしたメンテナーに提出します．
+  - MLに翻訳を終えた org-ja.po を提出します．
+  - 翻訳データは特に圧縮しなくてもMLに投げられるようになっています．
+  - 該当部分だけをメール本文にコピペしても構いません．
+* 作業手順（github アカウントがある人）
+** @takaxp に org-mode-doc-ja への参加を依頼します．
+  - github のアカウントをDMなどで教えてください．
+  - 合せてMLにも参加してください．
+https://lists.sourceforge.net/lists/listinfo/org2ja-devel
+にて登録を済ませてください．
+** 発行済みチケットの担当を宣言します．
+  - githubのチケット一覧から，OPENかつ担当者がアサインされていないものを選びます．
+preTR [501 - 520] のようなタイトルになっていますので，これをクリックするとチケットの詳細画面がでます．その中の右側で緑色の「OPEN」があれば，翻訳が完了していないチケットです．さらに，タイトル下に「No one is assigned」があれば，担当者がいません．
+ => このプルダウンで，自分のアカウントを選択すれば担当完了です．
+
+https://github.com/org-mode-doc-ja/org-ja/issues/
+** リポジトリを入手します．
+	git clone git@github.com:org-mode-doc-ja/org-ja.git
+** ダウンロードファイルの中の org-jp.po を開く
+ =>	作業手順（github アカウントがない人）と同じです．
+** チケットで指定された訳文番号を探します．
+ =>	作業手順（github アカウントがない人）と同じです．
+** 翻訳します
+ =>	作業手順（github アカウントがない人）と同じです．
+** 翻訳データを登録します
+*** 翻訳データを登録します（コンフリクト経験が浅い方）
+@<pre>
+	 cp org-ja.po tmp/org-ja\_usrname.po
+	 git add tmp/org-ja\_usrname.po
+	 git commit -m 'ここにどの部分を編集したかのメッセージを書きます．'
+	 git push
+@</pre>
+*** 翻訳データを登録します（自力で何とかできる方）
+@<pre>
+	 git add org-jp.po
+	 git commit -m 'ここにどの部分を編集したかのメッセージを書きます．'
+	 git push
+@</pre>
+**** コンフリクトが発生した場合
+   - 今回のテストでは，おそらくヘッダの日付部分でコンフリクトします．
+コンフリクトを解消して，コミットし直してください．
+  - よく解らないコンフリクトが発生した場合
+github で新しいチケットを作り，twitter で報告してください．MLで報告してもかまいません．
+** github で登録した情報を確認します．
+  - 情報を登録すると https://github.com/org-mode-doc-ja/org-ja のトップページに
+	自分が登録した情報に対応した commit / tree / parent の3つのリンクが表示されます．
+ => commit をクリックして移動するサイトで，差分を確認できるます．
+ => 翻訳した部分が正しく反映されているかを確認してください．
+*** 登録ミスに気付いた場合
+  - 自力で元に戻すかメンテナーに相談してください．

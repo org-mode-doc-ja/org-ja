@@ -1,0 +1,1036 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<!-- 2018-10-27 Sat 07:51 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Org-mode 翻訳プロジェクト 翻訳手順</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Takaaki ISHIKAWA" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://www.pirilampo.org/styles/readtheorg/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Org-mode 翻訳プロジェクト 翻訳手順</h1>
+<div id="table-of-contents">
+<h2>&#30446;&#27425;</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgd2bb70c">1. はじめに</a></li>
+<li><a href="#org2bf3538">2. 翻訳本作業の目的</a></li>
+<li><a href="#orga415f6a">3. 既知の問題</a>
+<ul>
+<li><a href="#orga166902">3.1. noindent 問題</a></li>
+<li><a href="#orgae07c3d">3.2. node 問題</a></li>
+<li><a href="#org370174f">3.3. po-mode での過剰なエスケープシーケンスの入力</a></li>
+<li><a href="#org549ac0b">3.4. po-mode と PoEdit の差異により生じる問題</a></li>
+</ul>
+</li>
+<li><a href="#org757bd61">4. 注意点（必ず読んでください！）</a>
+<ul>
+<li><a href="#org6e87fbd">4.1. github ユーザ</a></li>
+<li><a href="#orgcf2e42d">4.2. po-mode ユーザ</a>
+<ul>
+<li><a href="#org2ebff39">4.2.1. 正しいヘッダ（翻訳日時と名前などは，通常，保存時に変更されます）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org8b07e04">5. 作業手順（github アカウントがない人）</a>
+<ul>
+<li><a href="#org619df47">5.1. 翻訳者用のメーリングリストに参加してください．</a></li>
+<li><a href="#org5290b20">5.2. メンテナーにチケット予約を依頼する</a></li>
+<li><a href="#org0e26fb1">5.3. github から翻訳リソースをダウンロードする</a></li>
+<li><a href="#orgfa361a0">5.4. ダウンロードファイルの中の org-jp.po を開く</a></li>
+<li><a href="#orgab49382">5.5. 翻訳箇所の特定</a>
+<ul>
+<li><a href="#org1d3bf5a">5.5.1. 例</a></li>
+</ul>
+</li>
+<li><a href="#orgaefb2ef">5.6. 翻訳します</a></li>
+<li><a href="#org00cdf41">5.7. データをチケット発行の代行をしたメンテナーに提出します．</a></li>
+<li><a href="#orgdd67018">5.8. 用語集の更新</a>
+<ul>
+<li><a href="#orga5937e0">5.8.1. 例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgc493647">6. 作業手順（github アカウントがある人）</a>
+<ul>
+<li><a href="#orge2c7b3d">6.1. @takaxp に org-mode-doc-ja への参加を依頼します．</a></li>
+<li><a href="#org12ea104">6.2. 発行済みチケットの担当を宣言します．</a></li>
+<li><a href="#org31ccb49">6.3. リポジトリを入手します．</a></li>
+<li><a href="#org7721185">6.4. ダウンロードファイルの中の org-jp.po を開く</a></li>
+<li><a href="#org22d75f7">6.5. チケットで指定された訳文番号を探します．</a></li>
+<li><a href="#orgb9dab54">6.6. 翻訳します</a></li>
+<li><a href="#org5919adb">6.7. 用語集の更新</a></li>
+<li><a href="#org9f19e13">6.8. 翻訳データを登録します</a>
+<ul>
+<li><a href="#orgd1e535e">6.8.1. 翻訳データを登録します（コンフリクト経験が浅い方）</a></li>
+<li><a href="#org1f0ef62">6.8.2. 翻訳データを登録します（自力で何とかできる方）</a></li>
+</ul>
+</li>
+<li><a href="#orgaf8e6aa">6.9. github で登録した情報を確認します．</a>
+<ul>
+<li><a href="#org28d0615">6.9.1. 登録ミスに気付いた場合</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+#+READONLY
+</p>
+<div id="outline-container-orgd2bb70c" class="outline-2">
+<h2 id="orgd2bb70c"><span class="section-number-2">1</span> はじめに</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Org-mode 翻訳プロジェクトは，Org-mode の公式マニュアルを日本語化することを目的にしています．公式マニュアルはPDFで200ページを超える分量が有り，4000を超える英文を日本語翻訳する必要があります．原文は，texinfo 形式で配布されていますが，今回の翻訳作業では，texinfo 形式を翻訳カタログに変換，po 形式のファイルを編集します．
+</p>
+
+<p>
+po 形式のファイルは，
+</p>
+<ul class="org-ul">
+<li>po-mode for Emacs (<a href="http://www.gnu.org/software/gettext/">http://www.gnu.org/software/gettext/</a>)</li>
+<li>PoEdit (<a href="http://www.poedit.net/">http://www.poedit.net/</a>)</li>
+</ul>
+<p>
+などのツールを利用して，効率良く編集することができます．プレーンテキストとして編集することもできますが，ツールの利用を推奨します．
+</p>
+
+<p>
+翻訳作業は，原則として章ごとに翻訳担当者を割り当てて行ないます．翻訳者は，担当箇所をあらかじめ宣言することで他の翻訳者との作業の重複を避けます．そのために，github というソースコード管理を行うリポジトリ上において，翻訳箇所をチケットに区分してあります．翻訳者は登録されているチケットを担当することで翻訳する英文を宣言し，翻訳結果を github から取得した po 形式のファイルに書き込みます．翻訳が終了したら，翻訳済みの po 形式のファイルを，github のリポジトリに登録します．MLを使って提出することも可能です．
+</p>
+
+<p>
+翻訳の結果の見栄えについては別途議論するので，特に気にせずに，ひたすら訳してください m(_ _)m
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2bf3538" class="outline-2">
+<h2 id="org2bf3538"><span class="section-number-2">2</span> 翻訳本作業の目的</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>PO 形式のすべての原文に翻訳文を割り当てる（翻訳率100％）</li>
+<li>翻訳内容の査読は別途行なうため，完全でなくてもよい</li>
+<li>用語集の完成</li>
+<li>INFO／PDFの自動生成を阻害する翻訳作業の特定</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga415f6a" class="outline-2">
+<h2 id="orga415f6a"><span class="section-number-2">3</span> 既知の問題</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orga166902" class="outline-3">
+<h3 id="orga166902"><span class="section-number-3">3.1</span> noindent 問題</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+@noindent で始まる行が，一部 PO ファイルに存在しない．po4a が以下のようなソースをPOファイルに変換しないのが原因．
+</p>
+
+<p>
+@&lt;pre&gt;
+@noindent Now byte-compile the Lisp files with the shell command:
+@&lt;/pre&gt;
+</p>
+
+<p>
+本来，@noindent の直後には改行コードを入れ，
+</p>
+
+<p>
+@&lt;pre&gt;
+@noindent
+Now byte-compile the Lisp files with the shell command:
+@&lt;/pre&gt;
+</p>
+
+<p>
+とするのが正しい利用法であり，ソースがこの形式を守っている場合には，POファイルに正しく変換されている．
+</p>
+
+<p>
+（see <a href="http://www.gnu.org/s/hello/manual/texinfo/noindent.html">http://www.gnu.org/s/hello/manual/texinfo/noindent.html</a> "since @noindent is a command used outside of paragraphs (see Command Syntax)."）
+</p>
+
+<p>
+以下の40箇所のPOに存在しない原文は，査読作業を開始する時点で新しいPOTファイルを作成して対処する予定である．
+</p>
+
+<p>
+@&lt;pre&gt;
+   851:@noindent Now byte-compile the Lisp files with the shell command:
+   857:@noindent If you are running Org from the distribution directory, this is
+   899:@noindent Org mode buffers need font-lock to be turned on - this is the
+   925:@noindent which will select Org-mode for this buffer no matter what
+   936:@noindent If you do not like @code{transient-mark-mode}, you can create an
+   964:@noindent which will put all this information into an Emacs mail buffer so
+   977:@noindent Thank you for helping to improve this program.
+  1105:@noindent Some people find the many stars too noisy and would prefer an
+  1456:@noindent will define the key @kbd{C-c a f} as a shortcut for creating
+  1782:@noindent The following command handles footnotes:
+  1921:@noindent and then press @key{TAB} to align the table and start filling in
+  2100:@noindent Then the only table command that still works is
+  2346:@noindent Range references return a vector of values that can be fed
+  2369:@noindent For the second example, table FOO must have at least as many rows
+  2805:@noindent @b{Important}: please note that for these special tables,
+  3033:@noindent In HTML export (@pxref{HTML export}), such targets will become
+  3767:@noindent (you may also write @code{#+SEQ<sub>TODO</sub>} to be explicit about the
+  3783:@noindent To make sure you are using the correct keyword, type
+  4295:@noindent The following commands work with checkboxes:
+  4483:@noindent If the tag is only relevant to the file you are working on, then you
+  4490:@noindent The tags interface will show the available tags in a splash
+  4498:@noindent or write them in two lines:
+  4513:@noindent you indicate that at most one of @samp{@@work}, @samp{@@home},
+  4516:@noindent Don't forget to press @kbd{C-c C-c} with the cursor in one of
+  5088:@noindent This dynamic block has the following parameters:
+  5854:@noindent First there are options that determine which clock entries are to
+  6162:@noindent and then customize the new variable with @kbd{M-x customize-variable org-capture-templates}, check the result, and save the
+  6265:@noindent If you then press @kbd{C-c c t}, Org will prepare the template
+  6310:@noindent If you do not define a template for the @kbd{C} key, this key will
+  6527:@noindent The following commands deal with attachments:
+  7092:@noindent After that, everything will happen automatically.  All diary
+  8984:@noindent which can be referenced anywhere in the document (even in
+  9096:@noindent With this setting, @samp{a<sub>b</sub>} will not be interpreted as a
+  9147:@noindent For example:
+  9737:@noindent See the docstring of the variable
+ 14827:@noindent OK, now to the full list of contributions!  Again, please let me
+@&lt;/pre&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgae07c3d" class="outline-3">
+<h3 id="orgae07c3d"><span class="section-number-3">3.2</span> node 問題</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+node や ref に関連する一部の訳語は，info 生成時にエラーが発生するため，一時的に原文を採用している部分が存在します．
+</p>
+
+<p>
+<a href="http://dl.dropbox.com/u/2440/2011/preservation-words.html">http://dl.dropbox.com/u/2440/2011/preservation-words.html</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org370174f" class="outline-3">
+<h3 id="org370174f"><span class="section-number-3">3.3</span> po-mode での過剰なエスケープシーケンスの入力</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+見た目上のミスリードから生じる人為的問題です．
+</p>
+
+<p>
+原文の表記に「For example, type @code{\"\\t\"} at the line.」とある場合，これを翻訳する時，PO-modeの編集画面で，
+@&lt;pre&gt;
+例えば，文中に@code{\"\\t"\}と入力する．&lt;
+@&lt;/pre&gt;
+と翻訳するのは，「誤り」です．
+</p>
+
+<p>
+正解は，
+@&lt;pre&gt;
+例えば，文中に@code{"\t"}と入力する．&lt;
+@&lt;/pre&gt;
+になります．
+</p>
+
+<p>
+PO-modeは，C-c C-cで編集モードを抜けるときに自動的にエスケープシーケンスを挿入するようです．上の誤りの例で翻訳すると，
+</p>
+
+<p>
+@&lt;pre&gt;
+例えば，文中に@code{\\\"\\\\t"\\\}と入力する．
+@&lt;/pre&gt;
+</p>
+
+<p>
+という訳文が振られ，PDFでは \"\\t"\と表示されてしまいます（正しくは，\t）．
+</p>
+
+<p>
+したがって，C-c C-c で編集モードを抜けた直後に，msgid と msgstr の表記を見比べて，余分なバックスラッシュが加わっていないかを確認してください．
+</p>
+</div>
+</div>
+
+<div id="outline-container-org549ac0b" class="outline-3">
+<h3 id="org549ac0b"><span class="section-number-3">3.4</span> po-mode と PoEdit の差異により生じる問題</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+@&lt;pre&gt;
+事象：PoEdit で保存できなくなる場合がある
+原因：不要な改行コード「\n」
+対処：msgidに \n がない場合は，msgstr でも改行しない．
+@&lt;/pre&gt;
+</p>
+
+<p>
+PO-modeで編集する場合，
+</p>
+
+<p>
+@&lt;pre&gt;
+hoge1
+&lt;
+@&lt;/pre&gt;
+</p>
+
+<p>
+の状態で保存すると，PoEdit側でエラーが出て保存できません．理由は，POファイルに
+</p>
+
+<p>
+@&lt;pre&gt;
+msgstr "hoge\n"
+@&lt;/pre&gt;
+</p>
+
+<p>
+と保存されて，msgstr に \n が一つ多く含まれるためです．PoEdit では，msgid と msgstr に含まれる \n の数を検査しており，これが一致しないとエラーが出ます．
+</p>
+
+<p>
+今回の場合は，
+@&lt;pre&gt;
+hoge1&lt;
+@&lt;/pre&gt;
+の状態で保存してください．一方，PoEditを利用している方は，\nを明示的に書き込まないと改行されません．つまり，
+@&lt;pre&gt;
+hoge1
+hoge2
+@&lt;/pre&gt;
+と入力し保存すると，
+@&lt;pre&gt;
+msgstr = "hoge1hoge2"
+@&lt;/pre&gt;
+と書き込まれますので注意してください．
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org757bd61" class="outline-2">
+<h2 id="org757bd61"><span class="section-number-2">4</span> 注意点（必ず読んでください！）</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>スタイルガイドを読んでから翻訳作業を開始してください．</li>
+</ul>
+<p>
+<a href="http://dl.dropbox.com/u/2440/2011/style.html">http://dl.dropbox.com/u/2440/2011/style.html</a>
+</p>
+<ul class="org-ul">
+<li>用語集の更新を心がけてください．</li>
+</ul>
+<p>
+頻繁に更新されれば，他のメンバーのダブルワークを防ぐことができます．個人の翻訳用語集に新しい用語，もしくは，修正対象とする用語を登録したら，「すみやかに commit/push」してください．
+</p>
+<ul class="org-ul">
+<li>UTF-8 を利用してください．</li>
+</ul>
+<p>
+別のコードを使う場合は，github にコミットせず，MLに提出してください．
+</p>
+<ul class="org-ul">
+<li>改行コードはLFにしてください．</li>
+</ul>
+<p>
+別のコードを使う場合は，github にコミットせず，MLに提出してください．
+</p>
+<ul class="org-ul">
+<li>対訳に半角スペースを入れないでください．</li>
+<li>texinfo の制御文は残してください．</li>
+</ul>
+<p>
+どれが制御文かはあえて明示しません．これは，INFO自動生成時に問題になる
+ところを今回のプレテストで知るためです．ミスして訳しても全く問題ありません！
+ただし，typo に注意してください．
+</p>
+<ul class="org-ul">
+<li>翻訳は，4.6版の訳を積極的に参照してください．</li>
+</ul>
+<p>
+未公開のwikiで入手可能なので，#org2ja で聞いて下さい．
+</p>
+<ul class="org-ul">
+<li>翻訳中に気付いたことは，担当チケットのコメント欄に記入してください．</li>
+<li>基本は「ですます調」で訳してください．</li>
+</ul>
+<p>
+ただし，「である調（〜する．〜と書く．など）」が相応しい場合（箇条書きの中やコマンドの説明など）には，翻訳者の判断で「である調」を使用してください．
+</p>
+<ul class="org-ul">
+<li>改行コードの有無に気を付けてください</li>
+</ul>
+</div>
+
+<div id="outline-container-org6e87fbd" class="outline-3">
+<h3 id="org6e87fbd"><span class="section-number-3">4.1</span> github ユーザ</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>翻訳プロジェクトに参加したら，すみやかに git clone でデータを取り寄せてください．</li>
+</ul>
+<p>
+=&gt; ダウンロードによるデータの取り寄せは行わないでください．
+</p>
+<ul class="org-ul">
+<li>git clone で入手した org-ja.po を編集（翻訳）してください．</li>
+<li>git push（コミット）後は，github のウェブサイトで差分を確認してください．</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcf2e42d" class="outline-3">
+<h3 id="orgcf2e42d"><span class="section-number-3">4.2</span> po-mode ユーザ</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>po ファイルを編集する時に，余計なヘッダが加わる場合があります．</li>
+</ul>
+<p>
+コミットする前に必ず重複ヘッダを削除してください．
+</p>
+<ul class="org-ul">
+<li>MacPorts で配布されている po-mode.el は，version2.1です．</li>
+</ul>
+<p>
+gettext で配布される po-mode.el は，version2.2ですので，こちらを推奨します．
+<a href="http://www.gnu.org/software/gettext/">http://www.gnu.org/software/gettext/</a>
+</p>
+</div>
+<div id="outline-container-org2ebff39" class="outline-4">
+<h4 id="org2ebff39"><span class="section-number-4">4.2.1</span> 正しいヘッダ（翻訳日時と名前などは，通常，保存時に変更されます）</h4>
+<div class="outline-text-4" id="text-4-2-1">
+<p>
+@&lt;pre&gt;
+</p>
+
+<p>
+	msgid ""
+	msgstr ""
+	"Project-Id-Version: org-ja\n"
+	"POT-Creation-Date: 2011-04-20 21:27+0900\n"
+	"PO-Revision-Date: 2011-04-24 18:19+0900\n"
+	"Last-Translator: Takaaki ISHIKAWA &lt;takaxp@ieee.org&gt;\n"
+	"Language-Team: org-mode-doc-ja &lt;org2ja-users@lists.sourceforge.net&gt;\n"
+	"Language: \n"
+	"MIME-Version: 1.0\n"
+	"Content-Type: text/plain; charset=UTF-8\n"
+	"Content-Transfer-Encoding: 8bit\n"
+	"X-Poedit-Language: Japanese\n"
+	"X-Poedit-Country: JAPAN\n"
+	"X-Poedit-SourceCharset: utf-8\n"
+	"X-Poedit-Basepath: .\n"
+	"X-Poedit-SearchPath-0: .\n"
+@&lt;/pre&gt;
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org8b07e04" class="outline-2">
+<h2 id="org8b07e04"><span class="section-number-2">5</span> 作業手順（github アカウントがない人）</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org619df47" class="outline-3">
+<h3 id="org619df47"><span class="section-number-3">5.1</span> 翻訳者用のメーリングリストに参加してください．</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>登録依頼を出すと，参加承認が下り次第，連絡がいきます．</li>
+</ul>
+<p>
+<a href="https://lists.sourceforge.net/lists/listinfo/org2ja-devel">https://lists.sourceforge.net/lists/listinfo/org2ja-devel</a>
+にて登録を済ませてください．
+</p>
+</div>
+</div>
+<div id="outline-container-org5290b20" class="outline-3">
+<h3 id="org5290b20"><span class="section-number-3">5.2</span> メンテナーにチケット予約を依頼する</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>Twitter でハッシュタグ（#org2ja）を利用してツイートする．
+=&gt; メンテナーは，すみやかに自分のアカウントでチケットを予約して，
+=&gt; 翻訳者に報告する</li>
+<li>合せてMLでも依頼するとより確実に伝わります．</li>
+</ul>
+<p>
+24時間以内に応答がない場合は，依頼のチェックミスがあったと考えられますので，再投稿をお願いします．	
+</p>
+</div>
+</div>
+<div id="outline-container-org0e26fb1" class="outline-3">
+<h3 id="org0e26fb1"><span class="section-number-3">5.3</span> github から翻訳リソースをダウンロードする</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+次のサイトの画面右側に「Downloads」があります．
+<a href="https://github.com/org-mode-doc-ja/org-ja">https://github.com/org-mode-doc-ja/org-ja</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgfa361a0" class="outline-3">
+<h3 id="orgfa361a0"><span class="section-number-3">5.4</span> ダウンロードファイルの中の org-jp.po を開く</h3>
+<div class="outline-text-3" id="text-5-4">
+<ul class="org-ul">
+<li>翻訳ツールの利用を推奨します．</li>
+<li>通常のテキストエディタでもいけます</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgab49382" class="outline-3">
+<h3 id="orgab49382"><span class="section-number-3">5.5</span> 翻訳箇所の特定</h3>
+<div class="outline-text-3" id="text-5-5">
+<ol class="org-ol">
+<li>org.texi 上で，@chapter を検索し行番号を抽出します．</li>
+<li>PO 上でその行番号を有するブロックを探索します．</li>
+</ol>
+</div>
+<div id="outline-container-org1d3bf5a" class="outline-4">
+<h4 id="org1d3bf5a"><span class="section-number-4">5.5.1</span> 例</h4>
+<div class="outline-text-4" id="text-5-5-1">
+<p>
+@chapter Working with source code を，org.texi 上で検索すると，11210行目に存在します．PO上のブロックがこの行数以降の行数を有していれば，翻訳対象になります．具体的には，
+</p>
+
+<p>
+@&lt;pre&gt;
+	#. type: cindex
+	#: org.texi:11211
+	#, no-wrap
+	msgid "Schulte, Eric"
+	msgstr ""
+@&lt;/pre&gt;
+が最初の翻訳対象となります．#: org.texi:11211 (&gt;11210)になっています．
+</p>
+
+<p>
+一度翻訳開始箇所がわかると，後は昇順になっていますので，連続して作業できます．どこまで翻訳作業をすすめればよいかは，次の章を@chapterで探索して，同様に行数を調べれば特定可能です．
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgaefb2ef" class="outline-3">
+<h3 id="orgaefb2ef"><span class="section-number-3">5.6</span> 翻訳します</h3>
+<div class="outline-text-3" id="text-5-6">
+<ul class="org-ul">
+<li>英語文は，msgid "hogehoge" と書かれているので，msgstr "ほげほげ" と</li>
+</ul>
+<p>
+訳文を記入して保存します．
+</p>
+<ul class="org-ul">
+<li>改行コードに気を付けてください．</li>
+</ul>
+<p>
+msgid "hoge\nhoge\n" であるならば，msgstr "ほげ\nほげ\n"が正しい翻訳です．
+</p>
+<ul class="org-ul">
+<li>翻訳時には，このファイルに記載された「注意点」に気をつけてください．</li>
+<li>POファイルに埋め込まれた用語集を参照してください．</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org00cdf41" class="outline-3">
+<h3 id="org00cdf41"><span class="section-number-3">5.7</span> データをチケット発行の代行をしたメンテナーに提出します．</h3>
+<div class="outline-text-3" id="text-5-7">
+<ul class="org-ul">
+<li>MLに翻訳を終えた org-ja.po を提出します．</li>
+<li>翻訳データは特に圧縮しなくてもMLに投げられるようになっています．</li>
+<li>該当部分だけをメール本文にコピペしても構いません．</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdd67018" class="outline-3">
+<h3 id="orgdd67018"><span class="section-number-3">5.8</span> 用語集の更新</h3>
+<div class="outline-text-3" id="text-5-8">
+<ul class="org-ul">
+<li>翻訳過程で，特定の用語について訳語を統一したい場合，MLに報告してください．</li>
+<li>POファイルに埋め込まれた用語集について，異なる訳語を当てはめたい場合についても同様に報告してください．</li>
+<li>ML報告形式は以下のようなテンプレートにしたがってください．</li>
+</ul>
+
+<p>
+@&lt;pre&gt;
+メールタイトル: [glossary] 用語
+本文:
+用語（タブ）訳語1|訳語2 // 旧対訳
+&#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; 
+用語（タブ）訳語1|訳語2 // 修正案
+コメント）修正理由などを書く
+@&lt;/pre&gt;
+</p>
+</div>
+
+<div id="outline-container-orga5937e0" class="outline-4">
+<h4 id="orga5937e0"><span class="section-number-4">5.8.1</span> 例</h4>
+<div class="outline-text-4" id="text-5-8-1">
+<p>
+@&lt;pre&gt;
+Subject: [glossary] prefix
+prefix	prefix
+prefix arg	prefix
+prefix argment	prefix
+&#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; 
+prefix	プレフィックス
+prefix arg	プレフィックス
+prefix argment	プレフィックス
+コメント）好みの問題かもしれない．他の方の意見も欲しい．
+@&lt;/pre&gt;
+</p>
+
+<p>
+@&lt;pre&gt;
+toggle	切り替える|トグル	どう訳したら良いか悩む。
+&#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; 
+toggle	トグル|切り替える
+コメント）トグルするで通用すると思うが，
+読者に優しいのかは分かりません．．．
+他の方のご意見募集．
+@&lt;/pre&gt;
+</p>
+
+<p>
+@&lt;pre&gt;
+context	状況|文脈
+&#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; &#x2013; 
+context	コンテクスト|状況|文脈
+コメント）TODOアイテムと関連してGTDの用語として
+出てくることが多いようです．カタカナ訳がより
+好ましいと思います．
+@&lt;/pre&gt;
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc493647" class="outline-2">
+<h2 id="orgc493647"><span class="section-number-2">6</span> 作業手順（github アカウントがある人）</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-orge2c7b3d" class="outline-3">
+<h3 id="orge2c7b3d"><span class="section-number-3">6.1</span> @takaxp に org-mode-doc-ja への参加を依頼します．</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>github のアカウントをDMなどで教えてください．</li>
+<li>合せてMLにも参加してください．</li>
+</ul>
+<p>
+<a href="https://lists.sourceforge.net/lists/listinfo/org2ja-devel">https://lists.sourceforge.net/lists/listinfo/org2ja-devel</a>
+にて登録を済ませてください．
+</p>
+</div>
+</div>
+<div id="outline-container-org12ea104" class="outline-3">
+<h3 id="org12ea104"><span class="section-number-3">6.2</span> 発行済みチケットの担当を宣言します．</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>githubのチケット一覧から，OPENかつ担当者がアサインされていないものを選びます．</li>
+</ul>
+<p>
+チケットの名称は，基本的に，章番号＋章タイトルになっています．クリックするとチケットの詳細画面がでます．その中の右側で緑色の「OPEN」があれば，翻訳が完了していないチケットです．さらに，タイトル下に「No one is assigned」があれば，担当者がいません．
+ =&gt; このプルダウンで，自分のアカウントを選択すれば担当完了です．
+</p>
+
+<p>
+<a href="https://github.com/org-mode-doc-ja/org-ja/issues/">https://github.com/org-mode-doc-ja/org-ja/issues/</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org31ccb49" class="outline-3">
+<h3 id="org31ccb49"><span class="section-number-3">6.3</span> リポジトリを入手します．</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+git clone git@github.com:org-mode-doc-ja/org-ja.git
+</p>
+</div>
+</div>
+<div id="outline-container-org7721185" class="outline-3">
+<h3 id="org7721185"><span class="section-number-3">6.4</span> ダウンロードファイルの中の org-jp.po を開く</h3>
+<div class="outline-text-3" id="text-6-4">
+<p>
+=&gt;	作業手順（github アカウントがない人）と同じです．
+</p>
+</div>
+</div>
+<div id="outline-container-org22d75f7" class="outline-3">
+<h3 id="org22d75f7"><span class="section-number-3">6.5</span> チケットで指定された訳文番号を探します．</h3>
+<div class="outline-text-3" id="text-6-5">
+<p>
+=&gt;	作業手順（github アカウントがない人）と同じです．
+</p>
+</div>
+</div>
+<div id="outline-container-orgb9dab54" class="outline-3">
+<h3 id="orgb9dab54"><span class="section-number-3">6.6</span> 翻訳します</h3>
+<div class="outline-text-3" id="text-6-6">
+<p>
+=&gt;	作業手順（github アカウントがない人）と同じです．
+</p>
+</div>
+</div>
+<div id="outline-container-org5919adb" class="outline-3">
+<h3 id="org5919adb"><span class="section-number-3">6.7</span> 用語集の更新</h3>
+<div class="outline-text-3" id="text-6-7">
+<p>
+=&gt;	作業手順（github アカウントがない人）と同じです．ただし，github ユーザには，用語集を申請する特別なファイルがあります．新しい用語集を申請する時は，MLへの報告以外に，このファイルへ書き込むことでもOKです．メンテナーがプロジェクト全体の用語集に反映します．
+</p>
+
+<p>
+@hoge がユーザの場合，./glossary/hoge.txt を利用してください．
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9f19e13" class="outline-3">
+<h3 id="org9f19e13"><span class="section-number-3">6.8</span> 翻訳データを登録します</h3>
+<div class="outline-text-3" id="text-6-8">
+</div>
+<div id="outline-container-orgd1e535e" class="outline-4">
+<h4 id="orgd1e535e"><span class="section-number-4">6.8.1</span> 翻訳データを登録します（コンフリクト経験が浅い方）</h4>
+<div class="outline-text-4" id="text-6-8-1">
+<p>
+@&lt;pre&gt;
+	 cp org-ja.po tmp/org-ja\<sub>usrname.po</sub>
+	 git add tmp/org-ja\<sub>usrname.po</sub>
+	 git commit -m 'ここにどの部分を編集したかのメッセージを書きます．'
+	 git push
+@&lt;/pre&gt;
+</p>
+</div>
+</div>
+<div id="outline-container-org1f0ef62" class="outline-4">
+<h4 id="org1f0ef62"><span class="section-number-4">6.8.2</span> 翻訳データを登録します（自力で何とかできる方）</h4>
+<div class="outline-text-4" id="text-6-8-2">
+<p>
+@&lt;pre&gt;
+	 git add org-jp.po
+	 git commit -m 'ここにどの部分を編集したかのメッセージを書きます．'
+	 git push
+@&lt;/pre&gt;
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="orgc248e0a"></a>コンフリクトが発生した場合<br />
+<div class="outline-text-5" id="text-6-8-2-1">
+<ul class="org-ul">
+<li>今回のテストでは，おそらくヘッダの日付部分でコンフリクトします．</li>
+</ul>
+<p>
+コンフリクトを解消して，コミットし直してください．
+</p>
+<ul class="org-ul">
+<li>よく解らないコンフリクトが発生した場合</li>
+</ul>
+<p>
+github で新しいチケットを作り，twitter で報告してください．MLで報告してもかまいません．
+</p>
+<ul class="org-ul">
+<li>以下のコンフリクト解消法も参照してください</li>
+</ul>
+
+<p>
+<a href="http://dl.dropbox.com/u/2440/2011/conflict.html">http://dl.dropbox.com/u/2440/2011/conflict.html</a>
+</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgaf8e6aa" class="outline-3">
+<h3 id="orgaf8e6aa"><span class="section-number-3">6.9</span> github で登録した情報を確認します．</h3>
+<div class="outline-text-3" id="text-6-9">
+<ul class="org-ul">
+<li>情報を登録すると <a href="https://github.com/org-mode-doc-ja/org-ja">https://github.com/org-mode-doc-ja/org-ja</a> のトップページに</li>
+</ul>
+<p>
+ 自分が登録した情報に対応した commit / tree / parent の3つのリンクが表示されます．
+=&gt; commit をクリックして移動するサイトで，差分を確認できるます．
+=&gt; 翻訳した部分が正しく反映されているかを確認してください．
+</p>
+</div>
+<div id="outline-container-org28d0615" class="outline-4">
+<h4 id="org28d0615"><span class="section-number-4">6.9.1</span> 登録ミスに気付いた場合</h4>
+<div class="outline-text-4" id="text-6-9-1">
+<ul class="org-ul">
+<li>自力で元に戻すかメンテナーに相談してください．</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">&#33879;&#32773;: Takaaki ISHIKAWA</p>
+<p class="date">Created: 2018-10-27 Sat 07:51</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
