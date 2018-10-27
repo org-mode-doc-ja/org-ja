@@ -1,0 +1,360 @@
+#+TITLE:    Org-mode 翻訳プロジェクト 翻訳手順
+#+AUTHOR:   Takaaki ISHIKAWA
+#+EMAIL:    takaxp@ieee.org
+#+LANGUAGE: ja
+#+STARTUP:  showall
+#+TEXT:     全章を翻訳する本作業の手順を説明します．
+#+TEXT:     Rev.1 (2011-09-18@14:05)
+#+OPTIONS:  H:3 num:t toc:t \n:nil @:t ::t |:t ^:t *:t TeX:t
+#+setupfile: theme-readtheorg.setup
+#
+* はじめに
+Org-mode 翻訳プロジェクトは，Org-mode の公式マニュアルを日本語化することを目的にしています．公式マニュアルはPDFで200ページを超える分量が有り，4000を超える英文を日本語翻訳する必要があります．原文は，texinfo 形式で配布されていますが，今回の翻訳作業では，texinfo 形式を翻訳カタログに変換，po 形式のファイルを編集します．
+
+po 形式のファイルは，
+  - po-mode for Emacs (http://www.gnu.org/software/gettext/)
+  - PoEdit (http://www.poedit.net/)
+などのツールを利用して，効率良く編集することができます．プレーンテキストとして編集することもできますが，ツールの利用を推奨します．
+
+翻訳作業は，原則として章ごとに翻訳担当者を割り当てて行ないます．翻訳者は，担当箇所をあらかじめ宣言することで他の翻訳者との作業の重複を避けます．そのために，github というソースコード管理を行うリポジトリ上において，翻訳箇所をチケットに区分してあります．翻訳者は登録されているチケットを担当することで翻訳する英文を宣言し，翻訳結果を github から取得した po 形式のファイルに書き込みます．翻訳が終了したら，翻訳済みの po 形式のファイルを，github のリポジトリに登録します．MLを使って提出することも可能です．
+
+翻訳の結果の見栄えについては別途議論するので，特に気にせずに，ひたすら訳してください m(_ _)m
+
+* 翻訳本作業の目的
+  - PO 形式のすべての原文に翻訳文を割り当てる（翻訳率100％）
+  - 翻訳内容の査読は別途行なうため，完全でなくてもよい
+  - 用語集の完成
+  - INFO／PDFの自動生成を阻害する翻訳作業の特定
+* 既知の問題
+** noindent 問題
+
+@noindent で始まる行が，一部 PO ファイルに存在しない．po4a が以下のようなソースをPOファイルに変換しないのが原因．
+
+@<pre>
+@noindent Now byte-compile the Lisp files with the shell command:
+@</pre>
+
+本来，@noindent の直後には改行コードを入れ，
+
+@<pre>
+@noindent
+Now byte-compile the Lisp files with the shell command:
+@</pre>
+
+とするのが正しい利用法であり，ソースがこの形式を守っている場合には，POファイルに正しく変換されている．
+
+（see http://www.gnu.org/s/hello/manual/texinfo/noindent.html "since @noindent is a command used outside of paragraphs (see Command Syntax)."）
+
+以下の40箇所のPOに存在しない原文は，査読作業を開始する時点で新しいPOTファイルを作成して対処する予定である．
+
+@<pre>
+   851:@noindent Now byte-compile the Lisp files with the shell command:
+   857:@noindent If you are running Org from the distribution directory, this is
+   899:@noindent Org mode buffers need font-lock to be turned on - this is the
+   925:@noindent which will select Org-mode for this buffer no matter what
+   936:@noindent If you do not like @code{transient-mark-mode}, you can create an
+   964:@noindent which will put all this information into an Emacs mail buffer so
+   977:@noindent Thank you for helping to improve this program.
+  1105:@noindent Some people find the many stars too noisy and would prefer an
+  1456:@noindent will define the key @kbd{C-c a f} as a shortcut for creating
+  1782:@noindent The following command handles footnotes:
+  1921:@noindent and then press @key{TAB} to align the table and start filling in
+  2100:@noindent Then the only table command that still works is
+  2346:@noindent Range references return a vector of values that can be fed
+  2369:@noindent For the second example, table FOO must have at least as many rows
+  2805:@noindent @b{Important}: please note that for these special tables,
+  3033:@noindent In HTML export (@pxref{HTML export}), such targets will become
+  3767:@noindent (you may also write @code{#+SEQ_TODO} to be explicit about the
+  3783:@noindent To make sure you are using the correct keyword, type
+  4295:@noindent The following commands work with checkboxes:
+  4483:@noindent If the tag is only relevant to the file you are working on, then you
+  4490:@noindent The tags interface will show the available tags in a splash
+  4498:@noindent or write them in two lines:
+  4513:@noindent you indicate that at most one of @samp{@@work}, @samp{@@home},
+  4516:@noindent Don't forget to press @kbd{C-c C-c} with the cursor in one of
+  5088:@noindent This dynamic block has the following parameters:
+  5854:@noindent First there are options that determine which clock entries are to
+  6162:@noindent and then customize the new variable with @kbd{M-x customize-variable org-capture-templates}, check the result, and save the
+  6265:@noindent If you then press @kbd{C-c c t}, Org will prepare the template
+  6310:@noindent If you do not define a template for the @kbd{C} key, this key will
+  6527:@noindent The following commands deal with attachments:
+  7092:@noindent After that, everything will happen automatically.  All diary
+  8984:@noindent which can be referenced anywhere in the document (even in
+  9096:@noindent With this setting, @samp{a_b} will not be interpreted as a
+  9147:@noindent For example:
+  9737:@noindent See the docstring of the variable
+ 14827:@noindent OK, now to the full list of contributions!  Again, please let me
+@</pre>
+
+** node 問題
+
+node や ref に関連する一部の訳語は，info 生成時にエラーが発生するため，一時的に原文を採用している部分が存在します．
+
+http://dl.dropbox.com/u/2440/2011/preservation-words.html
+
+** po-mode での過剰なエスケープシーケンスの入力
+
+見た目上のミスリードから生じる人為的問題です．
+
+原文の表記に「For example, type @code{\"\\t\"} at the line.」とある場合，これを翻訳する時，PO-modeの編集画面で，
+@<pre>
+例えば，文中に@code{\"\\t"\}と入力する．<
+@</pre>
+と翻訳するのは，「誤り」です．
+
+正解は，
+@<pre>
+例えば，文中に@code{"\t"}と入力する．<
+@</pre>
+になります．
+
+PO-modeは，C-c C-cで編集モードを抜けるときに自動的にエスケープシーケンスを挿入するようです．上の誤りの例で翻訳すると，
+
+@<pre>
+例えば，文中に@code{\\\"\\\\t"\\\}と入力する．
+@</pre>
+
+という訳文が振られ，PDFでは \"\\t"\と表示されてしまいます（正しくは，\t）．
+
+したがって，C-c C-c で編集モードを抜けた直後に，msgid と msgstr の表記を見比べて，余分なバックスラッシュが加わっていないかを確認してください．
+
+** po-mode と PoEdit の差異により生じる問題
+
+@<pre>
+事象：PoEdit で保存できなくなる場合がある
+原因：不要な改行コード「\n」
+対処：msgidに \n がない場合は，msgstr でも改行しない．
+@</pre>
+
+PO-modeで編集する場合，
+
+@<pre>
+hoge1
+<
+@</pre>
+
+の状態で保存すると，PoEdit側でエラーが出て保存できません．理由は，POファイルに
+
+@<pre>
+msgstr "hoge\n"
+@</pre>
+
+と保存されて，msgstr に \n が一つ多く含まれるためです．PoEdit では，msgid と msgstr に含まれる \n の数を検査しており，これが一致しないとエラーが出ます．
+
+今回の場合は，
+@<pre>
+hoge1<
+@</pre>
+の状態で保存してください．一方，PoEditを利用している方は，\nを明示的に書き込まないと改行されません．つまり，
+@<pre>
+hoge1
+hoge2
+@</pre>
+と入力し保存すると，
+@<pre>
+msgstr = "hoge1hoge2"
+@</pre>
+と書き込まれますので注意してください．
+
+* 注意点（必ず読んでください！）
+  - スタイルガイドを読んでから翻訳作業を開始してください．
+	http://dl.dropbox.com/u/2440/2011/style.html
+  - 用語集の更新を心がけてください．
+	頻繁に更新されれば，他のメンバーのダブルワークを防ぐことができます．個人の翻訳用語集に新しい用語，もしくは，修正対象とする用語を登録したら，「すみやかに commit/push」してください．
+  - UTF-8 を利用してください．
+	別のコードを使う場合は，github にコミットせず，MLに提出してください．
+  - 改行コードはLFにしてください．
+	別のコードを使う場合は，github にコミットせず，MLに提出してください．
+  - 対訳に半角スペースを入れないでください．
+  - texinfo の制御文は残してください．
+	どれが制御文かはあえて明示しません．これは，INFO自動生成時に問題になる
+	ところを今回のプレテストで知るためです．ミスして訳しても全く問題ありません！
+	ただし，typo に注意してください．
+  - 翻訳は，4.6版の訳を積極的に参照してください．
+	未公開のwikiで入手可能なので，#org2ja で聞いて下さい．
+  - 翻訳中に気付いたことは，担当チケットのコメント欄に記入してください．
+  - 基本は「ですます調」で訳してください．
+	ただし，「である調（〜する．〜と書く．など）」が相応しい場合（箇条書きの中やコマンドの説明など）には，翻訳者の判断で「である調」を使用してください．
+  - 改行コードの有無に気を付けてください
+
+** github ユーザ
+  - 翻訳プロジェクトに参加したら，すみやかに git clone でデータを取り寄せてください．
+ => ダウンロードによるデータの取り寄せは行わないでください．
+  - git clone で入手した org-ja.po を編集（翻訳）してください．
+  - git push（コミット）後は，github のウェブサイトで差分を確認してください．
+
+** po-mode ユーザ
+  - po ファイルを編集する時に，余計なヘッダが加わる場合があります．
+	コミットする前に必ず重複ヘッダを削除してください．
+  - MacPorts で配布されている po-mode.el は，version2.1です．
+	gettext で配布される po-mode.el は，version2.2ですので，こちらを推奨します．
+	http://www.gnu.org/software/gettext/
+*** 正しいヘッダ（翻訳日時と名前などは，通常，保存時に変更されます）
+@<pre>
+	# SOME DESCRIPTIVE TITLE
+	# Copyright (C) YEAR Free Software Foundation, Inc.
+	# This file is distributed under the same license as the PACKAGE package.
+	# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+	#
+	msgid ""
+	msgstr ""
+	"Project-Id-Version: org-ja\n"
+	"POT-Creation-Date: 2011-04-20 21:27+0900\n"
+	"PO-Revision-Date: 2011-04-24 18:19+0900\n"
+	"Last-Translator: Takaaki ISHIKAWA <takaxp@ieee.org>\n"
+	"Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
+	"Language: \n"
+	"MIME-Version: 1.0\n"
+	"Content-Type: text/plain; charset=UTF-8\n"
+	"Content-Transfer-Encoding: 8bit\n"
+	"X-Poedit-Language: Japanese\n"
+	"X-Poedit-Country: JAPAN\n"
+	"X-Poedit-SourceCharset: utf-8\n"
+	"X-Poedit-Basepath: .\n"
+	"X-Poedit-SearchPath-0: .\n"
+@</pre>
+* 作業手順（github アカウントがない人）
+** 翻訳者用のメーリングリストに参加してください．
+  - 登録依頼を出すと，参加承認が下り次第，連絡がいきます．
+https://lists.sourceforge.net/lists/listinfo/org2ja-devel
+にて登録を済ませてください．
+** メンテナーにチケット予約を依頼する
+  - Twitter でハッシュタグ（#org2ja）を利用してツイートする．
+	 => メンテナーは，すみやかに自分のアカウントでチケットを予約して，
+	 => 翻訳者に報告する
+  - 合せてMLでも依頼するとより確実に伝わります．
+24時間以内に応答がない場合は，依頼のチェックミスがあったと考えられますので，再投稿をお願いします．	
+** github から翻訳リソースをダウンロードする
+	次のサイトの画面右側に「Downloads」があります．
+	https://github.com/org-mode-doc-ja/org-ja
+** ダウンロードファイルの中の org-jp.po を開く
+  - 翻訳ツールの利用を推奨します．
+  - 通常のテキストエディタでもいけます
+** 翻訳箇所の特定
+1. org.texi 上で，@chapter を検索し行番号を抽出します．
+2. PO 上でその行番号を有するブロックを探索します．
+*** 例
+@chapter Working with source code を，org.texi 上で検索すると，11210行目に存在します．PO上のブロックがこの行数以降の行数を有していれば，翻訳対象になります．具体的には，
+
+@<pre>
+	#. type: cindex
+	#: org.texi:11211
+	#, no-wrap
+	msgid "Schulte, Eric"
+	msgstr ""
+@</pre>
+が最初の翻訳対象となります．#: org.texi:11211 (>11210)になっています．
+
+一度翻訳開始箇所がわかると，後は昇順になっていますので，連続して作業できます．どこまで翻訳作業をすすめればよいかは，次の章を@chapterで探索して，同様に行数を調べれば特定可能です．
+
+** 翻訳します
+  - 英語文は，msgid "hogehoge" と書かれているので，msgstr "ほげほげ" と
+	訳文を記入して保存します．
+  - 改行コードに気を付けてください．
+	msgid "hoge\nhoge\n" であるならば，msgstr "ほげ\nほげ\n"が正しい翻訳です．
+  - 翻訳時には，このファイルに記載された「注意点」に気をつけてください．
+  - POファイルに埋め込まれた用語集を参照してください．
+** データをチケット発行の代行をしたメンテナーに提出します．
+  - MLに翻訳を終えた org-ja.po を提出します．
+  - 翻訳データは特に圧縮しなくてもMLに投げられるようになっています．
+  - 該当部分だけをメール本文にコピペしても構いません．
+** 用語集の更新
+  - 翻訳過程で，特定の用語について訳語を統一したい場合，MLに報告してください．
+  - POファイルに埋め込まれた用語集について，異なる訳語を当てはめたい場合についても同様に報告してください．
+  - ML報告形式は以下のようなテンプレートにしたがってください．
+
+@<pre>
+メールタイトル: [glossary] 用語
+本文:
+用語（タブ）訳語1|訳語2 // 旧対訳
+-- -- -- -- -- -- -- -- -- -- -- -- 
+用語（タブ）訳語1|訳語2 // 修正案
+コメント）修正理由などを書く
+@</pre>
+
+*** 例
+@<pre>
+Subject: [glossary] prefix
+prefix	prefix
+prefix arg	prefix
+prefix argment	prefix
+-- -- -- -- -- -- -- -- -- -- -- -- 
+prefix	プレフィックス
+prefix arg	プレフィックス
+prefix argment	プレフィックス
+コメント）好みの問題かもしれない．他の方の意見も欲しい．
+@</pre>
+
+@<pre>
+toggle	切り替える|トグル	どう訳したら良いか悩む。
+-- -- -- -- -- -- -- -- -- -- -- -- 
+toggle	トグル|切り替える
+コメント）トグルするで通用すると思うが，
+読者に優しいのかは分かりません．．．
+他の方のご意見募集．
+@</pre>
+
+@<pre>
+context	状況|文脈
+-- -- -- -- -- -- -- -- -- -- -- -- 
+context	コンテクスト|状況|文脈
+コメント）TODOアイテムと関連してGTDの用語として
+出てくることが多いようです．カタカナ訳がより
+好ましいと思います．
+@</pre>
+
+* 作業手順（github アカウントがある人）
+** @takaxp に org-mode-doc-ja への参加を依頼します．
+  - github のアカウントをDMなどで教えてください．
+  - 合せてMLにも参加してください．
+https://lists.sourceforge.net/lists/listinfo/org2ja-devel
+にて登録を済ませてください．
+** 発行済みチケットの担当を宣言します．
+  - githubのチケット一覧から，OPENかつ担当者がアサインされていないものを選びます．
+チケットの名称は，基本的に，章番号＋章タイトルになっています．クリックするとチケットの詳細画面がでます．その中の右側で緑色の「OPEN」があれば，翻訳が完了していないチケットです．さらに，タイトル下に「No one is assigned」があれば，担当者がいません．
+ => このプルダウンで，自分のアカウントを選択すれば担当完了です．
+
+https://github.com/org-mode-doc-ja/org-ja/issues/
+** リポジトリを入手します．
+	git clone git@github.com:org-mode-doc-ja/org-ja.git
+** ダウンロードファイルの中の org-jp.po を開く
+ =>	作業手順（github アカウントがない人）と同じです．
+** チケットで指定された訳文番号を探します．
+ =>	作業手順（github アカウントがない人）と同じです．
+** 翻訳します
+ =>	作業手順（github アカウントがない人）と同じです．
+** 用語集の更新
+ =>	作業手順（github アカウントがない人）と同じです．ただし，github ユーザには，用語集を申請する特別なファイルがあります．新しい用語集を申請する時は，MLへの報告以外に，このファイルへ書き込むことでもOKです．メンテナーがプロジェクト全体の用語集に反映します．
+
+@hoge がユーザの場合，./glossary/hoge.txt を利用してください．
+
+** 翻訳データを登録します
+*** 翻訳データを登録します（コンフリクト経験が浅い方）
+@<pre>
+	 cp org-ja.po tmp/org-ja\_usrname.po
+	 git add tmp/org-ja\_usrname.po
+	 git commit -m 'ここにどの部分を編集したかのメッセージを書きます．'
+	 git push
+@</pre>
+*** 翻訳データを登録します（自力で何とかできる方）
+@<pre>
+	 git add org-jp.po
+	 git commit -m 'ここにどの部分を編集したかのメッセージを書きます．'
+	 git push
+@</pre>
+**** コンフリクトが発生した場合
+   - 今回のテストでは，おそらくヘッダの日付部分でコンフリクトします．
+コンフリクトを解消して，コミットし直してください．
+  - よく解らないコンフリクトが発生した場合
+github で新しいチケットを作り，twitter で報告してください．MLで報告してもかまいません．
+  - 以下のコンフリクト解消法も参照してください
+
+http://dl.dropbox.com/u/2440/2011/conflict.html
+
+** github で登録した情報を確認します．
+  - 情報を登録すると https://github.com/org-mode-doc-ja/org-ja のトップページに
+	自分が登録した情報に対応した commit / tree / parent の3つのリンクが表示されます．
+ => commit をクリックして移動するサイトで，差分を確認できるます．
+ => 翻訳した部分が正しく反映されているかを確認してください．
+*** 登録ミスに気付いた場合
+  - 自力で元に戻すかメンテナーに相談してください．

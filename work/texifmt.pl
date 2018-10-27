@@ -10,7 +10,7 @@ use warnings;
 use File::Copy;
 use Encode;
 use utf8;
-use encoding 'utf8';
+# use encoding 'utf8';
 use open ":utf8";
 use open ":std";
 
@@ -87,7 +87,7 @@ sub is_open_bracket {
 # Check the line is finished in @ref{, @xref{, or @pxref{
 sub is_open_ref_bracket {
     my $line = shift;
-    $$line =~ /\@(?:x|px)*ref{[^\}]*$/;
+    $$line =~ /\@(?:x|px)*ref\{[^\}]*$/;
 }
 
 # Check the line is begun with "hoge}".
