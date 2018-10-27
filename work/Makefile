@@ -55,7 +55,7 @@ endif
 
 # Cite: org
 
-#doc/org.html: doc/org.texi
+# doc/org.html: doc/org.texi
 #	(cd doc && makeinfo --html --number-sections --no-split -o org.html org.texi)
 #	UTILITIES/manfull.pl doc/org.html
 
