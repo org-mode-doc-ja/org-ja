@@ -58,9 +58,9 @@ sub replace_marks {
     my @dst = ();
 
     foreach my $line (@$src){
-	$line =~ s/．/。/g;
-	$line =~ s/，/、/g;
-	push(@dst, $line);
+        $line =~ s/．/。/g;
+        $line =~ s/，/、/g;
+        push(@dst, $line);
     }
     return \@dst;
 }
@@ -70,11 +70,11 @@ sub bytecount {
     my $length = length(encode($stringcode,$$line)); # length = abc[U][U]=3+6=9
     my $ascii=0;
     for(my $i=0; $i<length($$line); ++$i){           # length = abc[U][U]=5
-	if(&is_ascii(encode($stringcode,substr($$line,$i,1)))){ ++$ascii; }
+        if(&is_ascii(encode($stringcode,substr($$line,$i,1)))){ ++$ascii; }
     }
     my $utf = $length-$ascii;
     my $width = 2*$utf/3+$ascii;
-#    print $length."\t".$width."\t".$ascii."\t".$utf."\t(".$$line.")\n";
+    #    print $length."\t".$width."\t".$ascii."\t".$utf."\t(".$$line.")\n";
     return $width;
 }
 
@@ -108,7 +108,7 @@ sub get_split_position {
     my $words = shift;
     # The line has 0 or 1 word.
     if(@$words < 2){
-	return @$words;
+        return @$words;
     }
 
     my $count = 0;
@@ -116,26 +116,26 @@ sub get_split_position {
     my $anchor = 0;
     # The line has at least 2 words.
     for(my $i=0; $i<@$words; ++$i){
-	if(&is_ascii($$words[$i])){
-	    ++$count;
-	}else{
-	    $count += 2;
-	}
+        if(&is_ascii($$words[$i])){
+            ++$count;
+        }else{
+            $count += 2;
+        }
 
-	$buffer .= $$words[$i];
-	if(&is_utf($$words[$i-1]) && &is_ascii($$words[$i])){
-	    $anchor = $i;
-	}
-	# update virtual_wrap
-	my $virtual_wrap = &get_virtual_wrap(\$buffer);
-	if($count > $virtual_wrap){
-#	    print "break: $anchor\t".$$words[$i-1]."\t".$$words[$i]."\n";
-	    if( &is_ascii($$words[$i-1]) && &is_ascii($$words[$i]) ||
-		&is_open_ref_bracket(\$buffer)){
-		return $anchor;
-	    }
-	    return $i;
-	}
+        $buffer .= $$words[$i];
+        if(&is_utf($$words[$i-1]) && &is_ascii($$words[$i])){
+            $anchor = $i;
+        }
+        # update virtual_wrap
+        my $virtual_wrap = &get_virtual_wrap(\$buffer);
+        if($count > $virtual_wrap){
+            #	    print "break: $anchor\t".$$words[$i-1]."\t".$$words[$i]."\n";
+            if( &is_ascii($$words[$i-1]) && &is_ascii($$words[$i]) ||
+                &is_open_ref_bracket(\$buffer)){
+                return $anchor;
+            }
+            return $i;
+        }
     }
 
     return @$words;
@@ -146,35 +146,35 @@ sub get_virtual_wrap {
 
     my @commands = ();
     while($$buffer =~ /(@[^\}@]+?)[{ ]/g){
-	push(@commands,$1);
+        push(@commands,$1);
     }
 
     my $virtual_wrap = $wrap;
     foreach my $command (@commands){
-#	print "command: $command\n";
-	if($command eq "\@LaTeX"){      # "@LaTeX{}" => "LaTeX", 8 => 5
-	    $virtual_wrap += 3;
-	}elsif($command eq "\@bullet"){ # "@bullet{}" => "*", 9 => 1
-	    $virtual_wrap += 8;
-	}elsif($command eq "\@r"){      # "@r{}" => "", 4 => 0
-	    $virtual_wrap += 4;         
-	}elsif($command eq "\@i"){      # "@i{}" => "", 4 => 0
-	    $virtual_wrap += 4;         
-	}elsif($command eq "\@b"){      # "@b{}" => "", 4 => 0
-	    $virtual_wrap += 4;         
-	}elsif($command eq "\@item"){   # "@item " => "", 6 => 0
-	    $virtual_wrap += 6;         
-	}else{
-	    $virtual_wrap += length($command);
-	}
+        #	print "command: $command\n";
+        if($command eq "\@LaTeX"){      # "@LaTeX{}" => "LaTeX", 8 => 5
+            $virtual_wrap += 3;
+        }elsif($command eq "\@bullet"){ # "@bullet{}" => "*", 9 => 1
+            $virtual_wrap += 8;
+        }elsif($command eq "\@r"){      # "@r{}" => "", 4 => 0
+            $virtual_wrap += 4;
+        }elsif($command eq "\@i"){      # "@i{}" => "", 4 => 0
+            $virtual_wrap += 4;
+        }elsif($command eq "\@b"){      # "@b{}" => "", 4 => 0
+            $virtual_wrap += 4;
+        }elsif($command eq "\@item"){   # "@item " => "", 6 => 0
+            $virtual_wrap += 6;
+        }else{
+            $virtual_wrap += length($command);
+        }
     }
 
     if( $$buffer =~ /^(.*?)@\*.*?$/){
-	$virtual_wrap += &bytecount(\$1);
+        $virtual_wrap += &bytecount(\$1);
     }
 
     if($global_line_status ne ""){
-	$virtual_wrap -= 6;
+        $virtual_wrap -= 6;
     }
 
     return $virtual_wrap;
@@ -183,9 +183,9 @@ sub get_virtual_wrap {
 sub update_line_status {
     my $buffer = shift;
     if($$buffer =~ /^\@table|^\@itemize|^\@enumerate/){
-	$global_line_status = "true";
+        $global_line_status = "true";
     }elsif($$buffer =~ /^\@end table|^\@end itemize|^\@end enumerate/){
-	$global_line_status = "";
+        $global_line_status = "";
     }
 }
 
@@ -196,18 +196,18 @@ sub get_valid_texinfo_data {
     my $count = 0;
     my $buffer = "";
     foreach my $line (@$src){
-	chomp($line);
-	print STDERR ++$count."/".@$src."\r";
-	if(&brackets_validation(\$buffer)){
-	    &update_line_status(\$buffer);
-	    &flash_buffer(\@dst,\$buffer);
-	    $buffer = $line;
-	}else{
-	    $buffer .= " ".$line;
-	}
+        chomp($line);
+        print STDERR ++$count."/".@$src."\r";
+        if(&brackets_validation(\$buffer)){
+            &update_line_status(\$buffer);
+            &flash_buffer(\@dst,\$buffer);
+            $buffer = $line;
+        }else{
+            $buffer .= " ".$line;
+        }
     }
     if($buffer ne ""){
-	&flash_buffer(\@dst,\$buffer);
+        &flash_buffer(\@dst,\$buffer);
     }
     print "==================== END  =========================\n";
     return \@dst;
@@ -217,38 +217,38 @@ sub flash_buffer {
     my ($dst, $buffer) = @_;
     my @lines = split /\n/, $$buffer;
     if(@lines == 0){
-	push(@lines,$$buffer);
+        push(@lines,$$buffer);
     }
 
     my $wraped_string = "";
     my $count = 0;
     foreach my $line (@lines){
-	$count = &bytecount(\$line);
-	print ">>>> INPUT::\n".$line."\n";
-	if($count > $wrap && $line !~ /^\@node/){
-	    # many translated sentences will pass through
-	    $wraped_string = &get_wraped_string(\$line);
-	    print "<<<< OUTPUT::\n";
-	    my @wraped_lines = split /\n/, $$wraped_string;
-	    foreach my $wraped_line (@wraped_lines){
-		my $wraped_count = &bytecount(\$wraped_line);
-		if($wraped_count>$wrap+$debug_wrap_limit &&
-		   $wraped_count!=length($wraped_line)){
-		    print "<< something wrong! >>\n";
-		}
-		if($global_line_status eq ""){
-		    print $wraped_count."::".$wraped_line."\n";
-		}else{
-		    print $wraped_count.":|".$wraped_line."\n";
-		}
-	    }
-	    print "\n----------------\n\n";	    
-	    push(@$dst,$$wraped_string);
-	}else{
-	    # many original sentences will pass through
-	    print "<<<< OUTPUT::\n".$line."\n----------------\n\n";
-	    push(@$dst,$line);
-	}
+        $count = &bytecount(\$line);
+        print ">>>> INPUT::\n".$line."\n";
+        if($count > $wrap && $line !~ /^\@node/){
+            # many translated sentences will pass through
+            $wraped_string = &get_wraped_string(\$line);
+            print "<<<< OUTPUT::\n";
+            my @wraped_lines = split /\n/, $$wraped_string;
+            foreach my $wraped_line (@wraped_lines){
+                my $wraped_count = &bytecount(\$wraped_line);
+                if($wraped_count>$wrap+$debug_wrap_limit &&
+                   $wraped_count!=length($wraped_line)){
+                    print "<< something wrong! >>\n";
+                }
+                if($global_line_status eq ""){
+                    print $wraped_count."::".$wraped_line."\n";
+                }else{
+                    print $wraped_count.":|".$wraped_line."\n";
+                }
+            }
+            print "\n----------------\n\n";
+            push(@$dst,$$wraped_string);
+        }else{
+            # many original sentences will pass through
+            print "<<<< OUTPUT::\n".$line."\n----------------\n\n";
+            push(@$dst,$line);
+        }
     }
     $$buffer = "";    
 }
@@ -263,24 +263,24 @@ sub get_wraped_string {
 
     print "文字数 = ".@words.", バイト数 = ".$word_count."\n";
     if(@words == $word_count){
-	# Line is composed of ascii codes without any utf codes.
-	# makeinfo will be able to handle this line properly.
-	return $line;
+        # Line is composed of ascii codes without any utf codes.
+        # makeinfo will be able to handle this line properly.
+        return $line;
     }
 
     my $prev_count = $word_count;
     while($word_count > $wrap){
-	&insert_linebreak(\$stream,\$buffer);
-	$word_count = &bytecount(\$buffer);
-	# avoid infinity loop
-	if($word_count >= $prev_count && $word_count > 0){
-	    $word_count = 0;
-	}
-	$prev_count = $word_count;
+        &insert_linebreak(\$stream,\$buffer);
+        $word_count = &bytecount(\$buffer);
+        # avoid infinity loop
+        if($word_count >= $prev_count && $word_count > 0){
+            $word_count = 0;
+        }
+        $prev_count = $word_count;
     }	
 
     if($buffer ne ""){
-	$stream .= $buffer."\n";
+        $stream .= $buffer."\n";
     }
     return \$stream;
 }
@@ -300,14 +300,14 @@ sub split_buffer {
     my $buffer1 = "";
     my $buffer2 = "";
     if($split_position == 0){
-	print "No stack.\n";
-	return ($buffer, \$buffer2);
+        print "No stack.\n";
+        return ($buffer, \$buffer2);
     }
     for(my $i=0; $i<$split_position; ++$i){
-	$buffer1 .= $words[$i];
+        $buffer1 .= $words[$i];
     }
     for(my $i=$split_position; $i<@words; ++$i){
-	$buffer2 .= $words[$i];
+        $buffer2 .= $words[$i];
     }
     return(\$buffer1, \$buffer2);
 }
@@ -320,11 +320,11 @@ sub brackets_validation {
     my $begin_count = 0;
     my $end_count = 0;
     foreach my $word (@words){
-	if( $word eq "{" ){ ++$begin_count; }
-	if( $word eq "}" ){ ++$end_count; }
+        if( $word eq "{" ){ ++$begin_count; }
+        if( $word eq "}" ){ ++$end_count; }
     }
     if($begin_count == $end_count){
-	return 1;
+        return 1;
     }
     print "Brackets mismatch!\n";
     print "{ = ".$begin_count.", } = ".$end_count.".\n";
@@ -344,29 +344,29 @@ sub pre_processing {
     my @dst = ();
     my $buffer = "";
     foreach my $line (@$src){
-	chomp($line);
+        chomp($line);
 
-	# @table @var will be cause of MOJIBAKE with UTF-8
-	$line =~ s/\@table \@var/\@table \@code/;
+        # @table @var will be cause of MOJIBAKE with UTF-8
+        $line =~ s/\@table \@var/\@table \@code/;
 
-	# @orgcmd{\\,org-agenda-filter-by-tag-refine}, only for org7.5
-	$line =~ s/\@orgcmd\{\\,/\@orgcmd\{\\\\,/;
+        # @orgcmd{\\,org-agenda-filter-by-tag-refine}, only for org7.5
+        $line =~ s/\@orgcmd\{\\,/\@orgcmd\{\\\\,/;
 
-	# if($line =~ /^\@item $/){
-	#     push(@dst,"\@item \@w\{ \}");
-	#     next;
-	# }
+        # if($line =~ /^\@item $/){
+        #     push(@dst,"\@item \@w\{ \}");
+        #     next;
+        # }
 
-	# Remove unexpected line break (@item\nhoge => @item hoge)
-	if($line =~ /^\@item +$/){
-	    if($buffer ne ""){
-		exit;
-	    }
-	    $buffer = "\@item ";
-	}else{
-	    push(@dst,$buffer.$line);
-	    $buffer = "";
-	}
+        # Remove unexpected line break (@item\nhoge => @item hoge)
+        if($line =~ /^\@item +$/){
+            if($buffer ne ""){
+                exit;
+            }
+            $buffer = "\@item ";
+        }else{
+            push(@dst,$buffer.$line);
+            $buffer = "";
+        }
     }
     return \@dst;
 }
@@ -377,9 +377,9 @@ sub pre_processing {
 sub update_brackets_count {
     my ($line, $count) = @_;
     if(&is_close_bracket($line)){
-	--$$count;
+        --$$count;
     }
     if(&is_open_bracket($line)){
-	++$$count;
+        ++$$count;
     }
 }
