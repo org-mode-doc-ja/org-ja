@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org-ja\n"
 "POT-Creation-Date: 2018-10-29 02:50+0900\n"
-"PO-Revision-Date: 2018-10-31 16:23+0900\n"
+"PO-Revision-Date: 2018-11-01 02:25+0900\n"
 "Last-Translator: Takaaki Ishikawa <takaxp@ieee.org>\n"
 "Language-Team: org-mode-doc-ja <org2ja-users@lists.sourceforge.net>\n"
 "Language: ja_JP\n"
@@ -5560,13 +5560,13 @@ msgstr "Emacsの他のパッケージ"
 #: org.texi:877
 #, no-wrap
 msgid "By downloading Org as an archive."
-msgstr ""
+msgstr "アーカイブされたOrg Modeをダウンロードする"
 
 #. type: item
 #: org.texi:878
 #, no-wrap
 msgid "By using Org's git repository."
-msgstr ""
+msgstr "Org Mode のGitリポジトリを使用する"
 
 #. type: Plain text
 #: org.texi:882
@@ -5577,7 +5577,7 @@ msgstr ""
 #: org.texi:883
 #, no-wrap
 msgid "Using Emacs packaging system"
-msgstr ""
+msgstr "Emacsのパッケージシステムを使用する"
 
 #. type: Plain text
 #: org.texi:888
@@ -5635,7 +5635,7 @@ msgstr ""
 #: org.texi:920
 #, no-wrap
 msgid "Using Org's git repository"
-msgstr ""
+msgstr "Org Mode のGitリポジトリを使用"
 
 #. type: Plain text
 #: org.texi:923
@@ -5922,7 +5922,7 @@ msgstr "$ emacs -Q -l /path/to/minimal-org.el\n"
 #. type: Plain text
 #: org.texi:1043
 msgid "However if you are using Org mode as distributed with Emacs, a minimal setup is not necessary.  In that case it is sufficient to start Emacs as @code{emacs -Q}.  The @code{minimal-org.el} setup file can have contents as shown below."
-msgstr ""
+msgstr "もしもEmacsと共に配布されているOrg Modeを使う場合には，上記の最小設定は不要です．この場合は，@code{emacs -Q}でEmacsを起動するだけで十分です．設定ファイルの@code{minimal-org.el}には，次に示すような設定を記述できます．"
 
 #. type: lisp
 #: org.texi:1046
@@ -5931,6 +5931,8 @@ msgid ""
 ";;; Minimal setup to load latest 'org-mode'\n"
 "\n"
 msgstr ""
+";;; Minimal setup to load latest 'org-mode'\n"
+"\n"
 
 #. type: lisp
 #: org.texi:1051
@@ -5942,6 +5944,11 @@ msgid ""
 "      debug-on-quit nil)\n"
 "\n"
 msgstr ""
+";; activate debugging\n"
+"(setq debug-on-error t\n"
+"      debug-on-signal nil\n"
+"      debug-on-quit nil)\n"
+"\n"
 
 #. type: lisp
 #: org.texi:1055
@@ -5951,6 +5958,9 @@ msgid ""
 "(add-to-list 'load-path \"/path/to/org-mode/lisp\")\n"
 "(add-to-list 'load-path \"/path/to/org-mode/contrib/lisp\" t)\n"
 msgstr ""
+";; add latest org-mode to load path\n"
+"(add-to-list 'load-path \"/path/to/org-mode/lisp\")\n"
+"(add-to-list 'load-path \"/path/to/org-mode/contrib/lisp\" t)\n"
 
 # [Org7.5-0652:83:@f_frhs] s/小さな凡例ファイル/例となる小さなファイル/
 # glossary: backtrace ( バックトレース ) / error ( エラー ) / example ( 例 ) / file ( ファイル ) / information ( 情報 )
