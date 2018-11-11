@@ -43,7 +43,7 @@ $(POT): $(TEXI)
 
 html: $(INFO)
 	$(TRANSLATE) -f texinfo -m $(TEXI) -M UTF-8 -p $(PO) -l $(TEXI_JA) -k 0  -w 1000
-	patch -p0 < org-ja.html.patch
+#	patch -p0 < org-ja.html.patch
 	makeinfo --no-split --html $(TEXI_JA) -o $(INFO).html --fill-column=$(INFO_LINE)
 
 install-info: $(INFO)
